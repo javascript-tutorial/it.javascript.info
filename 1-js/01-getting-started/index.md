@@ -1,3 +1,3 @@
-# An introduction
+# Introduzione
 
-About the JavaScript language and the environment to develop with it.
+Riguardo il linguaggio JavaScript e l'ambiente di sviluppo.
