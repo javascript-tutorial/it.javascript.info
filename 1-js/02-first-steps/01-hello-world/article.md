@@ -1,17 +1,16 @@
 # Hello, world!
 
-The tutorial that you're reading is about core JavaScript, which is platform-independent. Further on, you will learn Node.JS and other platforms that use it.
+Il seguente tutorial tratta del core(nucleo) JavaScript, che è indipendete dalla piattaforma. Inoltre, più avanti, imparerai Node.JS e altre piattaforme che ne fanno utilizzo.
 
-But, we need a working environment to run our scripts, and, just because this book is online, the browser is a good choice. We'll keep the amount of browser-specific commands (like `alert`) to a minimum so that you don't spend time on them if you plan to concentrate on another environment like Node.JS. On the other hand, browser details are explained in detail in the [next part](/ui) of the tutorial.
+Abbiamo bisogno di un ambiente di lavoro per eseguire i nostri script, e il fatto che questo libro sia online, rende il browser un ottima scelta. Cerchermo di mantere al minimo l'utilizzo dei comandi specifici per browser (come `alert`), cosi non dovrai perdere la testa se deciderai di spostarti in altri ambienti come Node.JS. In ogni caso, i dettagli browser vengono spiegati in dettaglio nella [prossima parte](/ui) del tutorial.
 
-So first, let's see how to attach a script to a webpage. For server-side environments, you can just execute it with a command like `"node my.js"` for Node.JS.
+Quindi prima di tutto, vediamo come inseire uno script in una pagina web. Per ambienti server-side, è sufficiente eseguirli con un comando come `"node my.js"` in Node.JS.
 
+## Il tag "script"
 
-## The "script" tag
+I programmi JavaScript possono essere inseriti in qualunque parte di un documento HTML, con l'utiizzo del tag `<script>`.
 
-JavaScript programs can be inserted in any part of an HTML document with the help of the `<script>` tag.
-
-For instance:
+Ad esempio:
 
 ```html run height=100
 <!DOCTYPE HTML>
@@ -35,25 +34,24 @@ For instance:
 ```
 
 ```online
-You can run the example by clicking on the "Play" button in its right-top corner.
+Puoi eseguire l'esempio cliccando su "Play" tramite il bottone in altro a destra.
 ```
 
-The `<script>` tag contains JavaScript code which is automatically executed when the browser meets the tag.
+Il tag `<script>` contiene codice JavaScript che viene autmaticamente eseguito quando il browser incontra il tag.
 
+## La segnatura moderna
 
-## The modern markup
+Il tag `<script>` ha un paio di attributi che vengono utilizzati raramente, ma è comunque possibile trovarli nei vecchi codici:
 
-The `<script>` tag has a few attributes that are rarely used nowadays, but we can find them in old code:
+ L'attributo `type`: <code>&lt;script <u>type</u>=...&gt;</code>
 
- The `type` attribute: <code>&lt;script <u>type</u>=...&gt;</code>
+ : Il vecchio standard HTML4 richiedeva che ogni script avesse un tipo. Solitamente era `type="text/javascript"`. Ora non è più richiesto. Infatti, i nuobi standard hanno completamente cambiato il significato di questo attributo. Adesso viene utilizzato per i moduli JavaScript. Questo è un argomento avanzato e ne parleremo più avanti in un'altra parte del tutorial.
 
- : The old standard HTML4 required a script to have a type. Usually it was `type="text/javascript"`. It's not required anymore. Also, the modern standard totally changed the meaning of this attribute. Now it can be used for Javascript modules. But that's an advanced topic; we'll talk about modules later in another part of the tutorial. 
+ L'attributo `language`: <code>&lt;script <u>language</u>=...&gt;</code>
+  : Questo attributo intendeva mostrare il linguaggio dello script. Questo attributo ormai non ha più signigicato, poichè JavaScript è il linguaggio di default. Non è necessario utilizzarlo.
 
- The `language` attribute: <code>&lt;script <u>language</u>=...&gt;</code>
-  : This attribute was meant to show the language of the script. This attribute no longer makes sense, because JavaScript is the default language. No need to use it.
-
-Comments before and after scripts.
-: In really ancient books and guides, one may find comments inside `<script>`, like this:
+Commenti prima e dopo lo script.
+: Nei più vecchi libri, è possibile trovare un commento all'interno dell'elemento `<script>`, come segue:
 
     ```html no-beautify
     <script type="text/javascript"><!--
@@ -61,30 +59,29 @@ Comments before and after scripts.
     //--></script>
     ```
 
-    This trick isn't used in modern JavaScript. These comments were used to hide the JavaScript code from old browsers that didn't know about a `<script>` tag. Since browsers released in the last 15 years don't have this issue, this kind of comment can help you identify really old code.
+    Questo trucco non viene più utilizzato nel moderno JavaScript. I commenti venivano utilizzati per nascondere il codice JavaScript dai vecchi browser che non conoscevano il tag `<script>`.I browser rilasciati negli utlimi 15 anni non hanno questo problema, questo tipo di strategia può aiutarti a riconsocere i vecchi codici.
 
+## Script esterni
 
-## External scripts
+Se abbiamo molto codice JavaScript, possiamo inserirlo in un file separato.
 
-If we have a lot of JavaScript code, we can put it into a separate file.
-
-The script file is attached to HTML with the `src` attribute:
+Il file dello script viene integrato nel codice HTML tramtie l'attributo `src`:
 
 ```html
 <script src="/path/to/script.js"></script>
 ```
 
-Here `/path/to/script.js` is an absolute path to the file with the script (from the site root).
+Questo `/path/to/script.js` è il percorso assoluto al file che contiene lo script (dalla root del sito).
 
-It is also possible to provide a path relative to the current page. For instance, `src="script.js"` would mean a file `"script.js"` in the current folder.
+E' anche possibile fornire un percorso relativo a partire dalla pagina corrente. Per esempio `src="script.js"` significa che il file `"script.js"` si trova nella cartella corrente.
 
-We can give a full URL as well. For instance:
+Possiamo anche fornire un URL. Per esempio:
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js"></script>
 ```
 
-To attach several scripts, use multiple tags:
+Per integrare più script, utilzzate più volte il tag:
 
 ```html
 <script src="/js/script1.js"></script>
@@ -93,19 +90,19 @@ To attach several scripts, use multiple tags:
 ```
 
 ```smart
-As a rule, only the simplest scripts are put into HTML. More complex ones reside in separate files.
+Come regola da seguire, solo gli script molto semplici vanno inseriti all'interno dell'HTML. Quelli più complessi vanno inseriti in file separati.
 
-The benefit of a separate file is that the browser will download it and then store it in its [cache](https://en.wikipedia.org/wiki/Web_cache).
+Il beneficio di inserire gli script in file separati è che il browser andrà a scaricarli e li memorizzerà nella sua [cache](https://en.wikipedia.org/wiki/Web_cache).
 
-After this, other pages that want the same script will take it from the cache instead of downloading it. So the file is actually downloaded only once.
+Cosi facendo, le altre pagine che vorranno utilizzare lo stesso script lo preleveranno dallacache invece che riscaricarlo. Quindi il file verrà scaricato una sola volta.
 
-That saves traffic and makes pages faster.
+Questo risparmierà traffico e renderà le pagine più veloci.
 ```
 
-````warn header="If `src` is set, the script content is ignored."
-A single `<script>` tag can't have both the `src` attribute and the code inside.
+````warn header="Se `src` è impostato, il contenuto all'interno di script verrà ignorato."
+Quindi un tag `<script>` non può avere sia `src` che codice incorporato.
 
-This won't work:
+Questo non funziona:
 
 ```html
 <script *!*src*/!*="file.js">
@@ -113,9 +110,9 @@ This won't work:
 </script>
 ```
 
-We must choose: either it's an external `<script src="…">` or a regular `<script>` with code.
+Dobbiamo scegliere: o esterno `<script src="…">` o il semplice tag `<script>` con all'interno il codice.
 
-The example above can be split into two scripts to work:
+L'esempio precedete può essere diviso in due script:
 
 ```html
 <script src="file.js"></script>
@@ -125,11 +122,10 @@ The example above can be split into two scripts to work:
 ```
 ````
 
-## Summary
+## Riepilogo
 
-- We can use a `<script>` tag to add JavaScript code to the page.
-- The `type` and `language` attributes are not required.
-- A script in an external file can be inserted with `<script src="path/to/script.js"></script>`.
+- Possiamo usare il tag `<script>` per aggiungere codice JavaScript alla pagina.
+- Gli attributi `type` e `language` non sono richiesti.
+- Uno script in un file esterno può essere inserito con `<script src="path/to/script.js"></script>`.
 
-
-There is much more to learn about browser scripts and their interaction with the web-page. But let's keep in mind that this part of the tutorial is devoted to the JavaScript language, so we shouldn't distract ourselves from it. We'll be using a browser as a way to run JavaScript, which is very convenient for online reading, but yet one of many.
+C'e ancora molto da imparare riguaro gli script browser e la loro interazione con le pagine web. Ma tenete a mente che questa parte del tutorial è dedicata al linguaggio JavaScript, quindi non dobbiamo distrarci da questo obbiettivo. Andremo ad utilizzare il browser come piattaforma in cui eseguire JavaScript, che è molto utile, ma è solo uno dei tanti modi. 

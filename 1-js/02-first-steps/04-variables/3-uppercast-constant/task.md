@@ -2,9 +2,9 @@ importance: 4
 
 ---
 
-# Uppercase const?
+# Costanti maiuscole?
 
-Examine the following code:
+Analizziamo il seguente codice:
 
 ```js
 const birthday = '18.04.1982';
@@ -12,9 +12,9 @@ const birthday = '18.04.1982';
 const age = someCode(birthday);
 ```
 
-Here we have a constant `birthday` date and the `age` is calculated from `birthday` with the help of some code (it is not provided for shortness, and because details don't matter here).
+Abbiamo una costante `birthday` che indica una data e  `age` che viene calcolata da `birthday` tramite un algoritmo (non viene fornito per brevità, e perchè non è importante per descrivere l'argomento).
 
-Would it be right to use upper case for `birthday`? For `age`? Or even for both?
+Sarebbe giusto utilizzare lettere maiuscole per `birthday`? E per `age`? O anche per entrambe?
 
 ```js
 const BIRTHDAY = '18.04.1982'; // make uppercase?
