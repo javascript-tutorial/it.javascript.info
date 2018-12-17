@@ -1,5 +1,5 @@
 
-Backticks embed the expression inside `${...}` into the string.
+L'accento grave integra espressioni all'interno delle stringhe `${...}`.
 
 ```js run
 let name = "Ilya";

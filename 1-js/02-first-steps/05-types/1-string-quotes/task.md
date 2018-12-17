@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# String quotes
+# Gli apici nelle stringhe
 
-What is the output of the script?
+Qual'è l'output dello script?
 
 ```js
 let name = "Ilya";

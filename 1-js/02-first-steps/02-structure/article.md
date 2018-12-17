@@ -35,7 +35,7 @@ alert('World')
 
 Qui JavaScript interpreta la fine della riga come un punto e virgola "implicito". Viene anche chiamato [automatic semicolon insertion](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion).
 
-**In molti casi la nuova riga viene intrpretata come un punto e virgola implicito. Ma "in molti casi" non significa "sempre"!**
+**In molti casi la nuova riga viene interpretata come un punto e virgola implicito. Ma "in molti casi" non significa "sempre"!**
 
 Ci sono casi in cui la nuova riga non implica una punto e virgola, per esempio:
 
@@ -49,7 +49,7 @@ Il codice stampa `6` perchè JavaScript non inserisce un punto e virgola qui. E'
 
 **Ma ci sono casi in cui JavaScript "fallisce"  But there are situations where JavaScript "fails" nell'interpretare un punto e virgola.**
 
-Gli errori di questo tipo sono molto dificili da trovare e sistemare.
+Gli errori di questo tipo sono molto difficili da trovare e sistemare.
 
 ````smart header="Un esempio di errore"
 Se sei curioso di vedere un esempio concreto di questo tipo di errore, dai un occhiata al seguente codice:

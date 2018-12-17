@@ -1,5 +1,5 @@
 
-The answer is:
+La soluzione:
 
 - `a = 2`
 - `b = 2`

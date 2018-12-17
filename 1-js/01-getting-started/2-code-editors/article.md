@@ -6,7 +6,7 @@ Ce ne sono due esemplari: IDE ed editor semplici. Molte persone si trovano bene 
 
 ## IDE
 
-Il termine [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment) (Integrated Development Environment) descrive un potente editor con molte funzionalità che comprono lo sviluppo dell'intero progetto. Come anche il nome suggerisce, non sono semplici editor, ma sono degli "ambienti di sviluppo" scalabili.
+Il termine [IDE](https://en.wikipedia.org/wiki/Integrated_development_environment) (Integrated Development Environment) descrive un potente editor con molte funzionalità che coprono lo sviluppo dell'intero progetto. Come anche il nome suggerisce, non sono semplici editor, ma sono degli "ambienti di sviluppo" scalabili.
 
 Un IDE carica il progetto (possono essere molti file), consente la navigazione tra i file, fornisce il completamento automatico basandosi sull'intero progetto (non sul singolo file), può essere integrato con sistemi di gestione della versione (come [git](https://git-scm.com/)), un ambiente dedicato al test e altre funzionalità per i vari livelli del progetto.
 
@@ -20,15 +20,15 @@ Tutti gli IDE sono multi-piattaforma.
 
 Per Windows, c'e anche l'editor "Visual Studio", da non confondere con "Visual Studio Code". "Visual Studio" è a pagamento ed è un potente editor disponibile solo per Windows, ottimo per piattaforme .NET. E' disponibile una versione gratuita ([Visual Studio Community](https://www.visualstudio.com/vs/community/).
 
-Molti IDE sono a pagamento ma offronto un periodo di prova gratuito. Solitamente il loro costo è trascurabile se paragonato allo stipendio di una sviluppatore qualificato, è quindi imporatante scegliere il migliore in base alle proprie esigenze.
+Molti IDE sono a pagamento ma offrono un periodo di prova gratuito. Solitamente il loro costo è trascurabile se paragonato allo stipendio di una sviluppatore qualificato, è quindi importante scegliere il migliore in base alle proprie esigenze.
 
 ## Editor semplici
 
-Gli "Edito Semplici"  non sono potenti come gli IDE ma sono molto veloci, eleganti e semplici.
+Gli "Editor Semplici" non sono potenti come gli IDE ma sono molto veloci, eleganti e semplici.
 
 Sono principalmente utilizzati per aprire un file e modificarlo rapidamente.
 
-La principale differenza tra gli editor semplici e un IDE è che gli IDE lavorano nei vari livelli del progeto, quindi caricano molti dati all'apertura, analizzano la struttura del progetto e motli altri aspetti. Un editor semplice è molto più veloce poichè necessita solo del file.
+La principale differenza tra gli editor semplici e un IDE è che gli IDE lavorano nei vari livelli del progetto, quindi caricano molti dati all'apertura, analizzano la struttura del progetto e molti altri aspetti. Un editor semplice è molto più veloce poichè necessita solo del file.
 
 Nella pratica, gli editor semplici possono avere molti plugin tra cui sintassi a livello directory e l'autocompletamento, quindi non ci sono delle differenze ben definite tra un editor semplice e un IDE.
 
@@ -42,7 +42,7 @@ Meritano attenzione le seguenti opzioni:
 
 ## I miei preferiti
 
-La personale preferenza dell'autore è di avere entrambti, un IDE per il progetto e un editor semplice per le modifiche rapide.
+La personale preferenza dell'autore è di avere entrambi, un IDE per il progetto e un editor semplice per le modifiche rapide.
 
 Io personalmente utilizzo:
 
@@ -51,8 +51,8 @@ Io personalmente utilizzo:
 
 ## Non intestarditevi
 
-Gli editor elecanti sopra sono sono quelli che io e i miei amici, che considero buoni sviluppatori, abbiamo utilizzato senza problemi per molto tempo.
+Gli editor elencanti sopra sono sono quelli che io e i miei amici, che considero buoni sviluppatori, abbiamo utilizzato senza problemi per molto tempo.
 
 Ci sono altri grandi edito nel nostro grande mondo. Scegli quindi quello che più ti si addice.
 
-La scelta di un edito, come degli altri strumeti, è individuale e dipende dai progetti, abitudini e preferenze personali.
+La scelta di un edito, come degli altri strumenti, è individuale e dipende dai progetti, abitudini e preferenze personali.

@@ -1,6 +1,6 @@
 # Introduzione a JavaScript
 
-Vediamo cosa rende JavaScript cosi speciale, cosa è possibile ottenere tramite il suo  utilizzo e tutte le tecnologie che possono essere applicate per renderlo adatto ad ogni necessità.
+Vediamo cosa rende JavaScript cosi speciale, cosa è possibile ottenere tramite il suo utilizzo e tutte le tecnologie che possono essere applicate per renderlo adatto ad ogni necessità.
 
 ## Cos'è JavaScript?
 
@@ -39,7 +39,7 @@ Il funzionamento di questi motori è complicato, ma i concetti alla base sono se
 2. Successivamente convertono ("compilano") lo script in linguaggio macchina.
 3. Infine il codice macchina viene eseguito, molto rapidamente.
 
-Il motore applica ottimizzazioni ad ogni passo del processp. Anche durate l'esecuzione dello script già compilato, il motore analizza il flusso dati e applica ottimizzazioni al codice macchina. Nonostante tutto lo script risulta molto veloce.
+Il motore applica ottimizzazioni ad ogni passo del processo. Anche durate l'esecuzione dello script già compilato, il motore analizza il flusso dati e applica ottimizzazioni al codice macchina. Nonostante tutto lo script risulta molto veloce.
 ```
 
 ## Cosa può fare JavaScript a livello browser?
@@ -51,28 +51,28 @@ Le possibilità dipendono molto dall'ambiente in cui si esegue JavaScript. Ad es
 
 JavaScript integrato nel browser può fare qualsiasi cosa legata alla manipolazione della pagina, interagire con l'utente e con il server.
 
-Ad esempio, è possibilie:
+Ad esempio, è possibile:
 
-- Aggiungere HTML alla pagina, cambiare il contenuto esistente, mofificare lo stile.
+- Aggiungere HTML alla pagina, cambiare il contenuto esistente, modificare lo stile.
 - Reagire alle azioni dell'utente, click del mouse, movimenti del cursore, input da tastiera.
-- Inviare richieste al server tramite la rete, caricare e scaricare file (con l'ausilio di  [AJAX](https://en.wikipedia.org/wiki/Ajax_(programming)) e [COMET](https://en.wikipedia.org/wiki/Comet_(programming))).
+- Inviare richieste al server tramite la rete, caricare e scaricare file (con l'ausilio di[AJAX](https://en.wikipedia.org/wiki/Ajax_(programming)) e [COMET](https://en.wikipedia.org/wiki/Comet_(programming))).
 - Prelevare e Impostare cookies, interrogare l'utente e mostrare messaggi.
 - Memorizzare i dati client-side("memorizzazione locale").
 
 ## Cosa NON può fare JavaScript a livello browser?
 
-Le possibilità di JavaScript nel browser sono limitate per la sicurezza dell'utente. L'intento è di prevenire che una pagina "maligna" tenti di accedere alle informazoni personali o di danneggiare i dati degli utenti.
+Le possibilità di JavaScript nel browser sono limitate per la sicurezza dell'utente. L'intento è di prevenire che una pagina "maligna" tenti di accedere alle informazioni personali o di danneggiare i dati degli utenti.
 
 Degli esempi di queste restrizioni possono essere:
 
-- JavaScript in una pagina web non puo leggere o scrivere in qualsiasi file nell'hard disk, ne copiare o eseguire programmi. Non ha accesso diretto alle funzioni di sistema.
+- JavaScript in una pagina web non può leggere o scrivere in qualsiasi file nell'hard disk, ne copiare o eseguire programmi. Non ha accesso diretto alle funzioni di sistema.
 
     I moderni browser gli consentono di lavorare con i file, sempre con un accesso limitato e comunque solo se il comando proviene da utente, come il "dropping" di un file nella finestra del browser, o con la selezione  tramite il tag `<input>`.
 
     Ci sono anche funzionalità che consentono di interagire con la camera/microfono e altri dispositivi, ma in ogni caso richiedono il permesso esplicito dell'utente. Quindi una pagina con JavaScript abilitato non può attivare la web-cam di nascosto, osservare i nostri comportamenti e inviare le informazioni all' [NSA](https://en.wikipedia.org/wiki/National_Security_Agency).
-- Pagine o Schede diverse generalmente non sono a conoscenza dell'esistenza delle altre. In certi casi può però capitare, ad esempio quando una finestra ne apre un'altra tramite JavaScript. Ma anche in questo caso, il codice JavaScript non può accedere all'altra pagina se non appartiente allo stesso sito(stesso dominio, protocollo o porta).
+- Pagine o Schede diverse generalmente non sono a conoscenza dell'esistenza delle altre. In certi casi può però capitare, ad esempio quando una finestra ne apre un'altra tramite JavaScript. Ma anche in questo caso, il codice JavaScript non può accedere all'altra pagina se non appartiene allo stesso sito(stesso dominio, protocollo o porta).
 
-    Questa viene definita la "Politia di Appartenenza alla Stessa Origine". Per poter aggirare questo limite, *entrambe le pagine* devono contenere unp speciale codice JavaScript che consente di gestire lo scambio di dati.
+    Questa viene definita la "Politica di Appartenenza alla Stessa Origine". Per poter aggirare questo limite, *entrambe le pagine* devono contenere uno speciale codice JavaScript che consente di gestire lo scambio di dati.
 
     Questa limitazione è sempre dovuta alla sicurezza dell'utente. Una pagina proveniente da `http://anysite.com` che è stata aperta da un utente, non deve essere in grado di accedere ad un altra Scheda del browser con l'URL `http://gmail.com` (per esempio) e rubare le informazioni.
 - JavaScript può facilmente comunicare con il server da cui la pagina proviene. Ma la sua abilità di ricevere dati da altri siti/domini è limitata. Sebbene sia possibile, richiede delle richieste esplicite(passate tramite HTTP headers) dall'indirizzo remoto. Ancora una volta, queste sono limitazioni dovute alla sicurezza.
@@ -87,15 +87,15 @@ Ci sono almeno *tre* cose che rendono grande JavaScript:
 
 ```compare
 + Completa integrazione con HTML/CSS.
-+ Operazioni semplici vengono eseguite semplicemente.
-+ Supporato dai maggiori browser ed è attivo di default.
++ Operazioni seSupporatomplici vengono eseguite semplicemente.
++ Supportato dai maggiori browser ed è attivo di default.
 ```
 
 Queste tre caratteristiche combinate esistono solo in JavaScript e in nessun'altra tecnologia web.
 
-Questo rende JavaScript unico. Ed è il motico per cui è lo strumento più diffuso per creare interfacce web.
+Questo rende JavaScript unico. Ed è il motivo per cui è lo strumento più diffuso per creare interfacce web.
 
-Quando si ha in programma di imparare una nuova tecnologia, è fondamentale verficare le sue prospettive. Quindi diamo uno sguardo alle nuove tendenze che includono nuovi linguaggi e tecnologie.
+Quando si ha in programma di imparare una nuova tecnologia, è fondamentale verificare le sue prospettive. Quindi diamo uno sguardo alle nuove tendenze che includono nuovi linguaggi e tecnologie.
 
 ## Linguaggi "oltre" JavaScript
 
@@ -105,15 +105,15 @@ Questo è prevedibile, poichè i progetti e i requisiti sono diversi di persona 
 
 Quindi recentemente una elevata quantità di nuovi linguaggi è apparsa, che vengono *convertiti* in JavaScript prima di essere eseguite nel browser.
 
-Gli strumenti moderni rendono la conversione molto veloce e pulita, consentendo agli sviluppatori di programmare in un altro linguaggio e di auto-convertirlo "di nasscosto".
+Gli strumenti moderni rendono la conversione molto veloce e pulita, consentendo agli sviluppatori di programmare in un altro linguaggio e di auto-convertirlo "di nascosto".
 
 Esempi di alcuni linguaggi:
 
-- [CoffeeScript](http://coffeescript.org/) è un linguaggio con sintassi "leggera" per JavaScript, introduce una sintassi più breve, consente di sccirvere codice più pulito e preciso. Amato dagli sviluppatori provenienti da Ruby.
-- [TypeScript](http://www.typescriptlang.org/) si occupa di aggiungere "tipizzazione dei dati", per semplificare lo sviluppo e supporatare sistemi più complessi. E' stato sviluppato da Microsoft.
-- [Dart](https://www.dartlang.org/) è un linguaggio autonomo che possiede il suo motore che esegue in ambieti esterni al browser (come mobile apps). E' stato introdotto da Google come alternatia a JavaScript, ma attualmente, i browser richiedono la conversione in JavaScript, proprio come i precedenti.
+- [CoffeeScript](http://coffeescript.org/) è un linguaggio con sintassi "leggera" per JavaScript, introduce una sintassi più breve, consente di scirvere codice più pulito e preciso. Amato dagli sviluppatori provenienti da Ruby.
+- [TypeScript](http://www.typescriptlang.org/) si occupa di aggiungere "tipizzazione dei dati", per semplificare lo sviluppo e supportare sistemi più complessi. E' stato sviluppato da Microsoft.
+- [Dart](https://www.dartlang.org/) è un linguaggio autonomo che possiede il suo motore che esegue in ambienti esterni al browser (come mobile apps). E' stato introdotto da Google come alternativa a JavaScript, ma attualmente, i browser richiedono la conversione in JavaScript, proprio come i precedenti.
 
-Ce ne sono molti altri. Ovviamente se utilizzaimo uno di questi linguaggi, dovremmo almeno conoscere JavaScript, per comprendere cosa stiamo facendo.
+Ce ne sono molti altri. Ovviamente se utilizziamo uno di questi linguaggi, dovremmo almeno conoscere JavaScript, per comprendere cosa stiamo facendo.
 
 ## Ricapitolazione
 

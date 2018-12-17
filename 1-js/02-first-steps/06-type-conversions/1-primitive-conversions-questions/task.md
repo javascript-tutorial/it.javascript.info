@@ -4,7 +4,7 @@ importance: 5
 
 # Type conversions
 
-What are results of these expressions?
+Qual'e il risultato di questa espressione?
 
 ```js no-beautify
 "" + 1 + 0
@@ -23,4 +23,4 @@ null + 1
 undefined + 1
 ```
 
-Think well, write down and then compare with the answer.
+Pensaci bene, scrivi le risposte su un foglio e poi compara le tue risposte con le soluzioni.

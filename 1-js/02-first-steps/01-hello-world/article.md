@@ -1,14 +1,14 @@
 # Hello, world!
 
-Il seguente tutorial tratta del core(nucleo) JavaScript, che è indipendete dalla piattaforma. Inoltre, più avanti, imparerai Node.JS e altre piattaforme che ne fanno utilizzo.
+Il seguente tutorial tratta del core(nucleo) JavaScript, che è indipendente dalla piattaforma. Inoltre, più avanti, imparerai Node.JS e altre piattaforme che ne fanno utilizzo.
 
-Abbiamo bisogno di un ambiente di lavoro per eseguire i nostri script, e il fatto che questo libro sia online, rende il browser un ottima scelta. Cerchermo di mantere al minimo l'utilizzo dei comandi specifici per browser (come `alert`), cosi non dovrai perdere la testa se deciderai di spostarti in altri ambienti come Node.JS. In ogni caso, i dettagli browser vengono spiegati in dettaglio nella [prossima parte](/ui) del tutorial.
+Abbiamo bisogno di un ambiente di lavoro per eseguire i nostri script, e il fatto che questo libro sia online, rende il browser un ottima scelta. Cercheremo di mantenere al minimo l'utilizzo dei comandi specifici per browser (come `alert`), cosi non dovrai perdere la testa se deciderai di spostarti in altri ambienti come Node.JS. In ogni caso, i dettagli browser vengono spiegati in dettaglio nella [prossima parte](/ui) del tutorial.
 
-Quindi prima di tutto, vediamo come inseire uno script in una pagina web. Per ambienti server-side, è sufficiente eseguirli con un comando come `"node my.js"` in Node.JS.
+Quindi prima di tutto, vediamo come inserire uno script in una pagina web. Per ambienti server-side, è sufficiente eseguirli con un comando come `"node my.js"` in Node.JS.
 
 ## Il tag "script"
 
-I programmi JavaScript possono essere inseriti in qualunque parte di un documento HTML, con l'utiizzo del tag `<script>`.
+I programmi JavaScript possono essere inseriti in qualunque parte di un documento HTML, con l'utilizzo del tag `<script>`.
 
 Ad esempio:
 
@@ -37,7 +37,7 @@ Ad esempio:
 Puoi eseguire l'esempio cliccando su "Play" tramite il bottone in altro a destra.
 ```
 
-Il tag `<script>` contiene codice JavaScript che viene autmaticamente eseguito quando il browser incontra il tag.
+Il tag `<script>` contiene codice JavaScript che viene automaticamente eseguito quando il browser incontra il tag.
 
 ## La segnatura moderna
 

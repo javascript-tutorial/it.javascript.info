@@ -15,7 +15,7 @@ Gli strumenti di sviluppo sono potenti; hanno molte caratteristiche. Prima di tu
 
 Apri la pagina [bug.html](bug.html).
 
-C'è un errore nel codice JavaScript. E' nascosto agli occhi di un normale utente, quindi dobbiamo aprire gli strumeti di sviluppo per trovarlo.
+C'è un errore nel codice JavaScript. E' nascosto agli occhi di un normale utente, quindi dobbiamo aprire gli strumenti di sviluppo per trovarlo.
 
 Premi `key:F12`, se sei su Mac utilizza `key:Cmd+Opt+J`.
 
@@ -30,7 +30,7 @@ Il look esatto degli strumenti di sviluppo dipenderà dalla tua versione di Chro
 - Qui possiamo notare il messaggio in d'errore in rosso. In questo caso, lo script contiene un comando "lalala" non riconosciuto.
 - Sulla destra, c'e un link alla sorgente `bug.html:12` con il numero della linea in cui si è verificato l'errore.
 
-Sotto il messaggio d'errore, c'e un simbolo blu `>`. Questo indica la "riga di comando" dove noi possiam digitare dei comandi JavaScript. Premendo `key:Enter` si eseguono (`key:Shift+Enter` per inserire comandi multi-linea).
+Sotto il messaggio d'errore, c'e un simbolo blu `>`. Questo indica la "riga di comando" dove noi possiamo digitare dei comandi JavaScript. Premendo `key:Enter` si eseguono (`key:Shift+Enter` per inserire comandi multi-linea).
 
 Adesso possiamo visualizzare gli errori, ed è già abbastanza come inizio. Ritorneremo sugli strumenti di sviluppo più avanti e analizzeremo il debugging più in profondità nel capitolo <info:debugging-chrome>.
 
@@ -45,7 +45,7 @@ Lo stile è comunque molto simile. Quando avrai imparato come utilizzare uno di 
 
 Safari (Mac browser, non supportato da Windows/Linux) è un pò speciale in questo ambito. E' necessario attivare prima il "Menu di Sviluppo".
 
-Apri le Impostanzioni e vai sul pannello "Avanzate". In basso troverai un'opzione da spuntare:
+Apri le Impostazioni e vai sul pannello "Avanzate". In basso troverai un'opzione da spuntare:
 
 ![safari](safari.png)
 
@@ -56,4 +56,4 @@ Adesso tramite `key:Cmd+Opt+C` puoi attivare/disattivare la console. Inoltre not
 - Gli strumenti di sviluppo ci consentono di trovare gli errori, eseguire comandi, esaminare variabili e molto altro.
 - Possono essere aperti con `key:F12` per la maggior parte dei browser in Windows. Chrome su Mac `key:Cmd+Opt+J`, Safari: `key:Cmd+Opt+C` (avendolo precedentemente abilitato).
 
-Adesso abbiamo l'abmbiente di sviluppo pronto. Nella prossima sezione inizieremo ad analizzare JavaScript.
+Adesso abbiamo l'ambiente di sviluppo pronto. Nella prossima sezione inizieremo ad analizzare JavaScript.

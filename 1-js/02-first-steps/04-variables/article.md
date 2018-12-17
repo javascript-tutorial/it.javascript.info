@@ -1,6 +1,6 @@
 # Variabili
 
-La maggior parte delle volte, le applicazioni JavaScript necessitano di informazione per poter lavorare. Vediamo due esempi:
+La maggior parte delle volte, le applicazioni JavaScript necessitano d'informazione per poter lavorare. Vediamo due esempi:
 1. Un negozio online -- le informazioni possono riguardare i beni venduti e il carrello.
 2. Un applicazione di messaggistica -- le informazioni possono riguardare utenti, messaggi e molto altro.
 
@@ -8,7 +8,7 @@ Le variabili vengono utilizzate per memorizzare informazioni.
 
 ## Variabile
 
-Una variabile [variable](https://en.wikipedia.org/wiki/Variable_(computer_science)) è un "memorizzatore con nome" per i dati. Possiamo usare le variabile per memorizzare informazioni extra, visitatori ed altri dati.
+Una variabile [variable](https://en.wikipedia.org/wiki/Variable_(computer_science)) è un "memorizzatore con nome" per i dati. Possiamo usare le variabile per memorizzare informazioni extra, visitatori e altri dati.
 
 Per creare una variabile in JavaScript, dobbiamo utilizzare la parola chiave `let`.
 
@@ -47,7 +47,7 @@ let message = 'Hello!'; // define the variable and assign the value
 alert(message); // Hello!
 ```
 
-Possiamo anche dichiarare più variabii in una riga:
+Possiamo anche dichiarare più variabili in una riga:
 
 ```js no-beautify
 let user = 'John', age = 25, message = 'Hello';
@@ -63,7 +63,7 @@ let age = 25;
 let message = 'Hello';
 ```
 
-Alcune persone scrivono varibili multiple in questo modo:
+Alcune persone scrivono variabili multiple in questo modo:
 ```js no-beautify
 let user = 'John',
   age = 25,
@@ -78,7 +78,7 @@ let user = 'John'
   , message = 'Hello';
 ```
 
-Tecnicamente, tutte queste vaarianti fanno la stessa cosa. Quindi è una questione di gusto personale ed estetico.
+Tecnicamente, tutte queste varianti fanno la stessa cosa. Quindi è una questione di gusto personale ed estetico.
 
 ````smart header="`var` piuttosto che `let`"
 Nei vecchi script potresti trovare: `var` piuttosto che `let`:
@@ -87,7 +87,7 @@ Nei vecchi script potresti trovare: `var` piuttosto che `let`:
 *!*var*/!* message = 'Hello';
 ```
 
-La parola chiave `var` è *quasi* la stessa cosa di `let`. Dichiara comunque una variabile, ma in un maniera leggermente divera, "vecchio stile".
+La parola chiave `var` è *quasi* la stessa cosa di `let`. Dichiara comunque una variabile, ma in un maniera leggermente diversa, "vecchio stile".
 
 Ci sono delle sottili differenze tra `let` e `var`, ma per ora non hanno importanza. Le copriremo in dettaglio più avanti, nel capitolo <info:var>.
 ````
@@ -117,7 +117,7 @@ alert(message);
 Quando il valore viene cambiato, il dato vecchio viene rimosso dalla variabile:
 ![](variable-change.png)
 
-Possiamo anche dichiarare due variabili e copiare i dati da un all'atra.
+Possiamo anche dichiarare due variabili e copiare i dati da un all'altra.
 
 ```js run
 let hello = 'Hello world!';
@@ -137,9 +137,9 @@ alert(message); // Hello world!
 ```smart header="Linguaggi funzionali"
 Può essere interessante sapere che esistono anche linguaggi di programmazione [funzionale](https://en.wikipedia.org/wiki/Functional_programming) che vietano di cambiare il valore di una variabile. Per esempio, [Scala](http://www.scala-lang.org/) o [Erlang](http://www.erlang.org/).
 
-In questo tipo di linguaggi, una volta che il valore viene memorizzato "dentro la scatola", ci rimane per sempre. Se sbbiamo bisogno di memorizzare qualcos altro, il linguaggio ci forza a creare una nuova scatola (dichiarare una nuova variabile). Non possiamo quindi riutilizzare quelle vecchie.
+In questo tipo di linguaggi, una volta che il valore viene memorizzato "dentro la scatola", ci rimane per sempre. Se abbiamo bisogno di memorizzare qualcos altro, il linguaggio ci forza a creare una nuova scatola (dichiarare una nuova variabile). Non possiamo quindi riutilizzare quelle vecchie.
 
-Anche se potrebbero sembrare un pò strano a prima vista, questi linguaggi sono veramente capaci di sviluppare grandi cose. Inoltre, ci sono certe situazioni come calcoli paralleli in cui questi limiti portano dei benefici. Studiare un linguaggio di questo tipo (anche se non abbiamo intenzione di utilizzarlo a brebe) è consigliato per allargare le proprie conoscenze.
+Anche se potrebbero sembrare un pò strano a prima vista, questi linguaggi sono veramente capaci di sviluppare grandi cose. Inoltre, ci sono certe situazioni come calcoli paralleli in cui questi limiti portano dei benefici. Studiare un linguaggio di questo tipo (anche se non abbiamo intenzione di utilizzarlo a breve) è consigliato per allargare le proprie conoscenze.
 ```
 
 ## Nomi delle variabili [#variable-naming]
@@ -160,7 +160,7 @@ Quando il nome contiene più parole, viene utilizzato il [camelCase](https://en.
 
 Una cosa interessante è che -- il simbolo del dollaro `'$'` e l'underscore `'_'` possono essere utilizzati nei nomi. Sono dei semplici simboli, come le lettere, senza alcun significato speciale.
 
-Ad esempio questi nonmi sono validi:
+Ad esempio questi nomi sono validi:
 
 ```js run untrusted
 let $ = 1; // declared a variable with the name "$"
@@ -189,7 +189,7 @@ let имя = '...';
 let 我 = '...';
 ```
 
-Tecnicamente, non ci sono errori, questo tipo di nomi sono permessi, ma la tradizione internazionale è di utilizzare l'alfabero inglese per il nome delle varibili. Anche se stiamo scrivendo un piccolo script, potrebbe infatti avere una lunga vita. Persone di altre nazionalità potrebbero aver bisogno di leggerlo.
+Tecnicamente, non ci sono errori, questo tipo di nomi sono permessi, ma la tradizione internazionale è di utilizzare l'alfabeto inglese per il nome delle variabili. Anche se stiamo scrivendo un piccolo script, potrebbe infatti avere una lunga vita. Persone di altre nazionalità potrebbero aver bisogno di leggerlo.
 ````
 
 ````warn header="Nomi riservati"
@@ -207,7 +207,7 @@ let return = 5; // also can't name it "return", error!
 
 ````warn header="Un assegnazione senza `use strict`"
 
-Normalmente, abbiamo bisogno di definire variabili prima di utilizzarle. Ma una volta, era possibile definire una variabile semplicemente assegnadogli un valore, senza `let`. Questo è ancora possibile se non utilizziamo `use strict`. E' necessario per mantere la compatibilità con i vecchi script.
+Normalmente, abbiamo bisogno di definire variabili prima di utilizzarle. Ma una volta, era possibile definire una variabile semplicemente assegnandogli un valore, senza `let`. Questo è ancora possibile se non utilizziamo `use strict`. E' necessario per mantenere la compatibilità con i vecchi script.
 
 ```js run no-strict
 // note: no "use strict" in this example
@@ -217,7 +217,7 @@ num = 5; // the variable "num" is created if didn't exist
 alert(num); // 5
 ```
 
-Però è una pessia pratica, se inseriamo "use script" provocherà un errore:
+Però è una pessima pratica, se inseriamo "use script" provocherà un errore:
 
 ```js
 "use strict";
@@ -293,23 +293,23 @@ Una rapida occhiata ai nomi delle variabili può rivelare se il codice è stato 
 
 In un progetto reale, la maggior parte del tempo lo si perde a modificare ed estendere del codice già esistente, piuttosto che riscriverne uno nuovo. E quando ritorneremo sul codice, dopo aver fatto qualcos'altro, sarà molto pù facile trovare informazioni se sono ben descritte. In altre parole, quando le variabili utilizzano dei nomi efficaci.
 
-Quindi è utile spendere del tempo a pensare il giusto nome per una variabile, prima di dichiararla. Questo approcio vi ripagherà.
+Quindi è utile spendere del tempo a pensare il giusto nome per una variabile, prima di dichiararla. Questo approccio vi ripagherà.
 
 Alcune regole da seguire:
 
 - Utilizzare nomi leggibili da persone, come `userName` o `shoppingCart`.
 - Evitate abbreviazioni o nomi brevi come `a`, `b`, `c`, senza che abbiano veramente senso.
-- Rendete il nome il più descrittivo e preciso posssibile. Esempi di pessimi nomi sono `data` e `value`. Questo tipo di nomi non dicono niente. Si possono utilizzare eccezionalemte se il contesto rende esplicito il significato.
+- Rendete il nome il più descrittivo e preciso possibile. Esempi di pessimi nomi sono `data` e `value`. Questo tipo di nomi non dicono niente. Si possono utilizzare eccezionalmente se il contesto rende esplicito il significato.
 - Definire delle regole personali o con il team. Se il visitatore del sito viene chiamato "user" allora dovremmo chiamare la relativa variabile come `currentUser` o `newUser`, non `currentVisitor` o `newManInTown`.
 
 Sembra facile? Infatti lo è, ma trovare dei buoni nomi che siano precisi e descrittivi nella pratica non è sempre cosi semplice.
 
 ```smart header="Nuovo o Riciclo?"
-Come ultima cosa. Ci sono alcuni programmatori un pò pigri, che invece di dichiarare nuove variabili tendendono a riutilizzare quelle già esistenti.
+Come ultima cosa. Ci sono alcuni programmatori un pò pigri, che invece di dichiarare nuove variabili tendono a riutilizzare quelle già esistenti.
 
 Il risultato che si ottiene, è che le variabili sono come delle scatole in cui si possono mettere varie cose, senza cambiare l'etichetta. Cosa ci sarà dentro in un dato momento? Chi lo sa... Siamo costretti a controllare manualmente.
 
-Questi programmatori risparmiano qualche bit nella dichiarazione delle variabilim ma perdono dieci volte il tempo risparmiato per fare debugging del codice.
+Questi programmatori risparmiano qualche bit nella dichiarazione delle variabili ma perdono dieci volte il tempo risparmiato per fare debugging del codice.
 
 Una variable in più va bene, non sono il diavolo.
 
