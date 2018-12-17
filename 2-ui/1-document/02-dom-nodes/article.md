@@ -36,7 +36,6 @@ Per esempio, analizziamo il DOM di questo documento:
 ```
 
 Il DOM rappresenta l'HTML sotto forma di alberatura di tag. Questo è come appare:
-<!-- The DOM represents HTML as a tree structure of tags. Here's how it looks: -->
 
 <div class="domtree"></div>
 
@@ -48,18 +47,15 @@ drawHtmlTree(node1, 'div.domtree', 690, 320);
 
 ```online
 Nella figura qui sopra è possibile cliccare sui nodi e i rispettivi figli si apriranno/chiuderanno.
-<!-- On the picture above, you can click on element nodes and their children will open/collapse. -->
 ```
 
 I tag sono chiamati *nodi elemento* (o semplicemente elementi). I tag annidati diventano figli dei tag che li contengono. Come risultato abbiamo un albero di elementi: `<html>` è alla radice, abbiamo poi `<head>` e `<body>` che sono i suoi figli, etc.
-<!-- Tags are called *element nodes* (or just elements). Nested tags become children of the enclosing ones. As a result we have a tree of elements: `<html>` is at the root, then `<head>` and `<body>` are its children, etc. -->
 
 Il testo all'interno degli elementi forma dei *nodi testuali*, etichettati come `#text`. Un nodo di testo contiene solo una stringa. Potrebbe non avere figli ed è sempre una foglia dell'albero.
 
 Per esempio, il tag `<title>` contiene il testo `"About elks"`.
 
 Fai caso ai caratteri speciali nei nodi di testo:
-<!-- Please note the special characters in text nodes: -->
 
 - il ritorno a capo: `↵` (conosciuto in JavaScript come `\n`)
 - lo spazio: `␣`
@@ -114,11 +110,9 @@ let node3 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,
 drawHtmlTree(node3, 'div.domtree', 690, 150);
 </script>
 
-In fase di generazione del DOM, i browser processeranno automaticamente gli errori chiudendo i tags e così via.
-<!-- While generating the DOM, browsers automatically process errors in the document, close tags and so on. -->
+In fase di generazione del DOM, i browser processeranno automaticamente gli errori chiudendo i tags e via procedendo.
 
 Il seguente documento "invalido":
-<!-- Such an "invalid" document: -->
 
 ```html no-beautify
 <p>Hello
@@ -139,7 +133,6 @@ drawHtmlTree(node4, 'div.domtree', 690, 360);
 
 ````warn header="Le tabelle hanno sempre il `<tbody>`"
 Un interessante "caso speciale" è quello delle tabelle. Secondo le specifiche DOM le tabelle devono avere il tag `<tbody>`, ma nell'HTML può (ufficialmente) essere omesso. In questo caso il browser creerà il tag nel DOM automaticamente.
- <!-- An interesting "special case" is tables. By the DOM specification they must have `<tbody>`, but HTML text may (officially) omit it. Then the browser creates `<tbody>` in DOM automatically. -->
 
 Per il seguente HTML:
 
@@ -157,12 +150,10 @@ drawHtmlTree(node5,  'div.domtree', 600, 200);
 </script>
 
 Visto? Il `<tbody>` è apparso dal nulla. Per evitare sorprese, dovresti ricordarti di questa cosa in futuro nel momento in cui ti troverai a lavorare con le tabelle.
-<!-- You see? The `<tbody>` appeared out of nowhere. You should keep this in mind while working with tables to avoid surprises. -->````
 
 ## Altre tipologie di nodo
 
 Aggiungiamo ulteriori tags e commenti alla pagina:
-<!-- Let's add more tags and a comment to the page: -->
 
 ```html
 <!DOCTYPE HTML>
@@ -189,7 +180,6 @@ drawHtmlTree(node6, 'div.domtree', 690, 500);
 </script>
 
 Vediamo ora un nuovo tipo di nodo -- *nodo commento*, etichettato come `#comment`.
-<!-- Here we see a new tree node type -- *comment node*, labeled as `#comment`. -->
 
 Potremmo chiederci "perché il commento viene aggiunto al DOM? Non incide sul risultato grafico finale". Esiste in realtà una regola che se qualcosa è nell'HTML, allora deve essere presente anche nell'alberatura del DOM.
 
@@ -221,12 +211,10 @@ Dovrebbe apparire così:
 ![](elks.png)
 
 Puoi vedere il DOM, clicca sugli elementi e controlla i loro dettagli.
-<!-- You can see the DOM, click on elements, see their details and so on. -->
 
 Nota che la struttura del DOM negli strumenti per sviluppatori è semplificata. I nodi testuali vengono mostrati come semplice testo e non ci sono nemmeno nodi testuali contenenti spazi vuoti. Ma va bene così, a noi interessano solo i nodi elemento.
 
 Cliccando sul bottone <span class="devtools" style="background-position:-328px -124px"></span>, nell'angolo in alto a sinistra, avremo la possibilità di scegliere un nodo della pagina utilizzando il puntatore del mouse (o qualunque altro dispositivo a puntatore) e "ispezionarlo" (salteremo direttamente a visualizzare il nodo nella scheda Elements). Questo procedimento è ottimo nel caso in cui avessimo una pagina HTML gigantesca (con relativo DOM) e fossimo interessati a vedere il posizionamento di un particolare elemento.
-<!-- Clicking the <span class="devtools" style="background-position:-328px -124px"></span> button in the left-upper corner allows to choose a node from the webpage using a mouse (or other pointer devices) and "inspect" it (scroll to it in the Elements tab). This works great when we have a huge HTML page (and corresponding huge DOM) and would like to see the place of a particular element in it. -->
 
 Un altro metodo sarebbe quello di premere con il tasto destro su uno specifico elemento della pagina e cliccare poi su "Ispeziona" dal menù contestuale.
 
