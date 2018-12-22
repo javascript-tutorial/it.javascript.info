@@ -1,14 +1,14 @@
-# Conditional operators: if, '?'
+# Operatori condizionali: if, '?'
 
-Sometimes we need to perform different actions based on a condition.
+Qualche volta abbiamo bisogno di eseguire certe azioni solo nel caso valgano determinate condizioni.
 
-There is the `if` statement for that and also the conditional (ternary) operator for conditional evaluation which we will be referring as  the “question mark” operator `?` for simplicity.
+Per questo c'è l'istruzione `if` e anche l'operatore condizionale di valutazione (ternario) a cui noi ci riferiremo con l'operatore "punto di domanda" `?` per semplicità.
 
-## The "if" statement
+## L'istruzione "if" 
 
-The `if` statement gets a condition, evaluates it and, if the result is `true`, executes the code.
+L'istruzione `if` richiede una condizione, la valuta, e se il risultato è `true`, esegue il codice.
 
-For example:
+Ad esempio:
 
 ```js run
 let year = prompt('In which year was ECMAScript-2015 specification published?', '');
@@ -18,9 +18,9 @@ if (year == 2015) alert( 'You are right!' );
 */!*
 ```
 
-In the example above, the condition is a simple equality check: `year == 2015`, but it can be much more complex.
+Nell'esempio sopra, la condizione è un semplice controllo di uguaglianza: `year == 2015`, ma potrebbe essere qualcosa di molto più complesso.
 
-If there is more than one statement to be executed, we have to wrap our code block inside curly braces:
+Se dobbiamo eseguire più di un'istruzione, queste vanno raggruppate tramite le parentesi graffe:
 
 ```js
 if (year == 2015) {
@@ -29,18 +29,18 @@ if (year == 2015) {
 }
 ```
 
-It is recommended to wrap your code block with curly braces `{}` every time with `if`, even if there is only one statement. That improves readability.
+E' consigliabile raggruppare sempre il codice all'interno delle parentesi graffe `{}` quando si usa un `if`, anche se contiene una sola istruzione. La leggibilità viene migliorata.
 
-## Boolean conversion
+## Conversione booleana
 
-The `if (…)` statement evaluates the expression in parentheses and converts it to the boolean type.
+L'istruzione `if (…)` valuta la condizione tra le parentesi e la converte al tipo booleano.
 
-Let's recall the conversion rules from the chapter <info:type-conversions>:
+Ricordiamo le regole di conversione viste nel capitolo <info:type-conversions>:
 
-- A number `0`, an empty string `""`, `null`, `undefined` and `NaN` become `false`. Because of that they are called "falsy" values.
-- Other values become `true`, so they are called "truthy".
+- Il numero `0`, una stringa vuota `""`, `null`, `undefined` e `NaN` diventano `false`. Per questo vengono chiamati valori "falsi".
+- Gli altri valori diventano `true`, quindi vengono chiamati "veri".
 
-So, the code under this condition would never execute:
+Quindi, il codice nell'esempio qui sotto, non verrà mai eseguito:
 
 ```js
 if (0) { // 0 is falsy
@@ -48,7 +48,7 @@ if (0) { // 0 is falsy
 }
 ```
 
-...And inside this condition -- always works:
+...Invece nel prossimo esempio -- verrà eseguito sempre:
 
 ```js
 if (1) { // 1 is truthy
@@ -56,7 +56,7 @@ if (1) { // 1 is truthy
 }
 ```
 
-We can also pass a pre-evaluated boolean value to `if`, like here:
+Possiamo anche passare un valore booleano già valutato, come qui:
 
 ```js
 let cond = (year == 2015); // equality evaluates to true or false
@@ -66,11 +66,11 @@ if (cond) {
 }
 ```
 
-## The "else" clause
+## La clausola "else" 
 
-The `if` statement may contain an optional "else" block. It executes when the condition is wrong.
+L'istruzione `if` può essere seguita da un blocco opzionale "else". Questo viene eseguito quando la condizione è falsa.
 
-For example:
+Ad esempio:
 ```js run
 let year = prompt('In which year was ECMAScript-2015 specification published?', '');
 
@@ -81,11 +81,11 @@ if (year == 2015) {
 }
 ```
 
-## Several conditions: "else if"
+## Condizione multiple: "else if"
 
-Sometimes we'd like to test several variants of a condition. There is an `else if` clause for that.
+Qualche volta vorremmo testare diverse varianti di una condizione. Per questo esiste la clausola `else if`.
 
-For example:
+Ad esempio:
 
 ```js run
 let year = prompt('In which year was ECMAScript-2015 specification published?', '');
@@ -99,15 +99,15 @@ if (year < 2015) {
 }
 ```
 
-In the code above JavaScript first checks `year < 2015`. If it is falsy it then goes to the next condition `year > 2015`, and otherwise shows the last `alert`.
+Nel codice sopra JavaScript controlla prima `year < 2015`. Se risulta falso allora va alla successiva condizione `year > 2015`, altrimenti mostra il blocco else con l'`alert`.
 
-There can be more `else if` blocks. The ending `else` is optional.
+Ci possono essere molti blocchi `else if`. L'`else` finale è opzionale.
 
-## Ternary operator '?'
+## Operatore Ternario '?'
 
-Sometimes we need to assign a variable depending on a condition.
+Qualche volta abbiamo bisogno di assegnare un valore ad una variabile in base ad una condizione.
 
-For instance:
+Ad esempio:
 
 ```js run no-beautify
 let accessAllowed;
@@ -124,24 +124,24 @@ if (age > 18) {
 alert(accessAllowed);
 ```
 
-The so-called "ternary" or "question mark" operator lets us do that shorter and simpler.
+Esiste un'operatore "ternario" o "punto interrogativo" che ci consente di farlo in maniera più breve e semplice.
 
-The operator is represented by a question mark `?`.  The formal term "ternary" means that the operator has three operands. It is actually the one and only operator in JavaScript which has that many.
+L'operatore viene rappresentato dal punto interrogativo `?`.  Il termine formale è "ternario", il che significa che richiede tre operatori. E' l'unico operatore in JavaScript di questo tipo.
 
-The syntax is:
+La sintassi è:
 ```js
 let result = condition ? value1 : value2
 ```
 
-The `condition` is evaluated, if it's truthy then `value1` is returned, otherwise -- `value2`.
+La `condition` viene valutata, se risulta viene ritornato il `value1`, altrimenti viene ritornato il -- `value2`.
 
-For example:
+Ad esempio:
 
 ```js
 let accessAllowed = (age > 18) ? true : false;
 ```
 
-Technically, we can omit parentheses around `age > 18`. The question mark operator has a low precedence. It executes after the comparison `>`, so that'll do the same:
+Tecnicamente, potremmo omettere le parentesi su `age > 18`. L'operatore ternario ha una precedenza molto bassa. Viene eseguito dopo gli operatori di confronto `>`, quindi il risultato sarebbe lo stesso:
 
 ```js
 // the comparison operator "age > 18" executes first anyway
@@ -149,10 +149,10 @@ Technically, we can omit parentheses around `age > 18`. The question mark operat
 let accessAllowed = age > 18 ? true : false;
 ```
 
-But parentheses make the code more readable, so it's recommended to use them.
+Le parentesi rendono però il codice più leggibile, quindi è consigliabile utilizzarle.
 
 ````smart
-In the example above it's possible to evade the question mark operator, because the comparison by itself returns `true/false`:
+Nell'esempio sopra sarebbe possibile evitare l'operatore ternario, perchè l'operatore di confronto ritorna già di suo `true/false`:
 
 ```js
 // the same
@@ -160,11 +160,11 @@ let accessAllowed = age > 18;
 ```
 ````
 
-## Multiple '?'
+## Operatori '?' multipli
 
-A sequence of question mark `?` operators allows returning a value that depends on more than one condition.
+Una sequenza di operatori `?` consente di ritornare un valore che dipende da più condizioni.
 
-For instance:
+Ad esempio:
 ```js run
 let age = prompt('age?', 18);
 
@@ -176,14 +176,14 @@ let message = (age < 3) ? 'Hi, baby!' :
 alert( message );
 ```
 
-It may be difficult at first to grasp what's going on. But after a closer look we can see that it's just an ordinary sequence of tests.
+Potrebbe essere difficile inizialmente capirne la logica. Ma dopo averlo guardato da più vicino ci accorgiamo è una semplice sequenza di condizioni.
 
-1. The first question mark checks whether `age < 3`.
-2. If true -- returns `'Hi, baby!'`, otherwise -- goes after the colon `":"` and checks for `age < 18`.
-3. If that's true -- returns `'Hello!'`, otherwise -- goes after the next colon `":"` and checks for `age < 100`.
-4. If that's true -- returns `'Greetings!'`, otherwise -- goes after the last colon `":"` and returns `'What an unusual age!'`.
+1. Il primo operatore "?" controlla `age < 3`.
+2. Se è vero -- ritorna `'Hi, baby!'`, altrimenti -- segue la colonna `":"` e controlla `age < 18`.
+3. Se questo è vero -- ritorna `'Hello!'`, altrimenti -- segue la colonna `":"` e controlla `age < 100`.
+4. Se questo è vero -- ritorna `'Greetings!'`, altrimenti -- segue la colonna `":"` e ritorna `'What an unusual age!'`.
 
-The same logic using `if..else`:
+La stessa logica viene usata con `if..else`:
 
 ```js
 if (age < 3) {
@@ -197,9 +197,9 @@ if (age < 3) {
 }
 ```
 
-## Non-traditional use of '?'
+## Uso non tradizionale dell'operatore '?'
 
-Sometimes the question mark `?` is used as a replacement for `if`:
+Qualche volta l'operatore `?` si utilizza per rimpiazzare l'istruzione `if`:
 
 ```js run no-beautify
 let company = prompt('Which company created JavaScript?', '');
@@ -210,15 +210,15 @@ let company = prompt('Which company created JavaScript?', '');
 */!*
 ```
 
-Depending on the condition `company == 'Netscape'`, either the first or the second part after `?` gets executed and shows the alert.
+In base al risultato della condizione `company == 'Netscape'`, viene eseguita la prima o la seconda parte, e mostra il giusto alert.
 
-We don't assign a result to a variable here. The idea is to execute different code depending on the condition.
+Qui non assegnamo il risultato ad una variabile. L'idea è di eseguire codice differente in base alla condizione.
 
-**It is not recommended to use the question mark operator in this way.**
+**Non è consigliabile utilizzare l'operatore ternario in questo modo.**
 
-The notation seems to be shorter than `if`, which appeals to some programmers. But it is less readable.
+La notazione risulta essere molto più breve rispetto all'istruzione `if`, questo viene sfruttato da molti programmatori. Ma risulta meno leggibile.
 
-Here is the same code with `if` for comparison:
+Lo stesso codice realizzato con un istruzione `if`:
 
 ```js run no-beautify
 let company = prompt('Which company created JavaScript?', '');
@@ -232,6 +232,6 @@ if (company == 'Netscape') {
 */!*
 ```
 
-Our eyes scan the code vertically. The constructs which span several lines are easier to understand than a long horizontal instruction set.
+I nostri occhi scannerizzano il codice verticalmente. Quindi i costrutti che si estendono per qualche riga risultano più semplici da capire piuttosto di un'unica istruzione che si estende orrizontalmente.
 
-The idea of a question mark `?` is to return one or another value depending on the condition. Please use it for exactly that. There is `if` to execute different branches of the code.
+L'idea dell'operatore ternario `?` è di ritornare un valore piuttosto che un altro, in base al valore di una condizione. Va quindi utilizzato solo per questo tipo di situazioni. Invece per eseguire diversi codice è consigliabile utilizzare il costrutto `if`.

@@ -1,8 +1,8 @@
-**Yes, it will.**
+**Certo.**
 
-Any string except an empty one (and `"0"` is not empty) becomes `true` in the logical context.
+Qualunque stringa ad eccezione di quella vuota (`"0"` non è vuota) diventa `true` in un contesto logico.
 
-We can run and check:
+Possiamo eseguirlo e controllare:
 
 ```js run
 if ("0") {

@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Rewrite 'if..else' into '?'
+# Riscrivi 'if..else' con '?'
 
-Rewrite `if..else` using multiple ternary operators `'?'`.
+Riscrivi `if..else` utilizzando più volte l'operatore ternario `'?'`.
 
-For readability, it's recommended to split the code into multiple lines.
+Per migliorare la leggibilità, è consigliato dividere il codice in più linee.
 
 ```js
 let message;

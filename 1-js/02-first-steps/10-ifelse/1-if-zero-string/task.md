@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# if (a string with zero)
+# if (una stringa con zero)
 
-Will `alert` be shown?
+L'`alert` verrà mostrato?
 
 ```js
 if ("0") {
