@@ -2,8 +2,8 @@ importance: 3
 
 ---
 
-# Check the range outside
+# Controlla l'intervallo esternamente
 
-Write an `if` condition to check that `age` is NOT between 14 and 90 inclusively.
+Scrivi una condizione `if` che controlli la variabile `age`, questa NON deve essere compresa tra 14 e 90, estremi inclusi.
 
-Create two variants: the first one using NOT `!`, the second one -- without it.
+Scrivi due varianti: la prima utilizzando NOT `!`, la seconda -- senza.

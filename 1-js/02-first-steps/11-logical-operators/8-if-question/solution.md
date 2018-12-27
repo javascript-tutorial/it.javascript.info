@@ -1,6 +1,6 @@
-The answer: the first and the third will execute.
+La risposta: il primo e il terzo verranno eseguiti.
 
-Details:
+I dettagli:
 
 ```js run
 // Runs.

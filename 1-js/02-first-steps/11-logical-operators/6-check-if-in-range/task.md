@@ -2,8 +2,8 @@ importance: 3
 
 ---
 
-# Check the range between
+# Controlla l'intervallo
 
-Write an "if" condition to check that `age` is between `14` and `90` inclusively.
+Scrivi una condizione "if" per controllare che `age` sia compresa tra `14` e `90` estremi inclusi.
 
-"Inclusively" means that `age` can reach the edges `14` or `90`.
+"Inclusi" significa che `age` può valere anche `14` o `90`.
