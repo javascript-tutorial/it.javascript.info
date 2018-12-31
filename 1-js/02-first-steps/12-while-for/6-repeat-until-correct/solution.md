@@ -7,9 +7,9 @@ do {
 } while (num <= 100 && num);
 ```
 
-The loop `do..while` repeats while both checks are truthy:
+Il ciclo `do..while` si ripete fino a chè entrambe le condizioni non risultano vere:
 
-1. The check for `num <= 100` -- that is, the entered value is still not greater than `100`.
-2. The check `&& num` is false when `num` is `null` or a empty string. Then the `while` loop stops too.
+1. Il controllo `num <= 100` -- controlla se il valore non risulta ancora maggiore di `100`.
+2. Il controllo `&& num` è falso quando `num` è `null` o una stringa. Quindi il ciclo `while` termina.
 
-P.S. If `num` is `null` then `num <= 100` is `true`, so without the 2nd check the loop wouldn't stop if the user clicks CANCEL. Both checks are required.
+P.S. Se `num` è `null` allora la condizione `num <= 100` è `true`, quindi senza il secondo controllo il ciclo non terminerebbe nel caso in cui l'utente prema CANCEL. Entrambi i controlli sono necessari.

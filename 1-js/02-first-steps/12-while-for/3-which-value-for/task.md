@@ -2,18 +2,18 @@ importance: 4
 
 ---
 
-# Which values get shown by the "for" loop?
+# Quali valori verrano mostrati dal ciclo "for"?
 
-For each loop write down which values it is going to show. Then compare with the answer.
+Per ogni ciclo scrivete quali valori verranno mostrati. Poi confrontateli con la soluzione.
 
-Both loops `alert` same values or not?
+Entrambi gli `alert` mostrano gli stessi valori?
 
-1. The postfix form:
+1. Forma postfissa:
 
     ```js
     for (let i = 0; i < 5; i++) alert( i );
     ```
-2. The prefix form:
+2. Forma prefissa:
 
     ```js
     for (let i = 0; i < 5; ++i) alert( i );

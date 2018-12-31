@@ -2,8 +2,8 @@ importance: 5
 
 ---
 
-# Output even numbers in the loop
+# Stampare i numeri pari con un ciclo
 
-Use the `for` loop to output even numbers from `2` to `10`.
+Utilizzate il ciclo `for` per stampare i numeri pari da `2` a `10`.
 
 [demo]

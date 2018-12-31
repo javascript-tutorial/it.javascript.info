@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Replace "for" with "while"
+# Sostituisci "for" con "while"
 
-Rewrite the code changing the `for` loop to `while` without altering its behavior (the output should stay same).
+Riscrivi il codice cambiando il ciclo `for` con `while` senza modificare il comportamento (l'output deve rimanere lo stesso).
 
 ```js run
 for (let i = 0; i < 3; i++) {

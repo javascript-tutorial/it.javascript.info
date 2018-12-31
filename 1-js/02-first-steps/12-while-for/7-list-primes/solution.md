@@ -1,6 +1,6 @@
-There are many algorithms for this task.
+Ci sono diversi algoritmi per compiere questa attività.
 
-Let's use a nested loop:
+Usiamo un ciclo annidato:
 
 ```js
 For each i in the interval {
@@ -10,7 +10,7 @@ For each i in the interval {
 }
 ```
 
-The code using a label:
+Il codice usa un etichetta:
 
 ```js run
 let n = 10;
@@ -26,4 +26,4 @@ for (let i = 2; i <= n; i++) { // for each i...
 }
 ```
 
-There's a lot of space to opimize it. For instance, we could look for the divisors from `2` to square root of `i`. But anyway, if we want to be really efficient for large intervals, we need change the approach and rely on advanced maths and complex algorithms like [Quadratic sieve](https://en.wikipedia.org/wiki/Quadratic_sieve), [General number field sieve](https://en.wikipedia.org/wiki/General_number_field_sieve) etc.
+Ci sono molti modi per ottimizzarlo. Ad esempio, potremmo controllare i divisori di `2` fino alla radice di `i`. In ogni caso, se vogliamo essere veramete efficenti su grandi intervalli, abbiamo bisogno di cambiare approcio ed affidarci ad algoritmi matematici più avanzati e complessi, come [Quadratic sieve](https://en.wikipedia.org/wiki/Quadratic_sieve), [General number field sieve](https://en.wikipedia.org/wiki/General_number_field_sieve) etc.

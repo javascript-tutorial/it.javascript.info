@@ -2,16 +2,16 @@ importance: 3
 
 ---
 
-# Output prime numbers
+# Stampare i numeri primi
 
-An integer number greater than `1` is called a [prime](https://en.wikipedia.org/wiki/Prime_number) if it cannot be divided without a remainder by anything except `1` and itself.
+Un valore intero maggiore di `1` si definisce [primo](https://en.wikipedia.org/wiki/Prime_number) se non può essere diviso, senza resto, da nessun numero ad eccezione di `1` e se stesso.
 
-In other words, `n > 1` is a prime if it can't be evenly divided by anything except `1` and `n`.
+In altre parole, `n > 1` è primo se non può essere diviso da nessun altro numero ad eccezione di `1` e `n`.
 
-For example, `5` is a prime, because it cannot be divided without a remainder by `2`, `3` and `4`.
+Ad esempio, `5` è primo, perchè non può essere diviso senza resto da `2`, `3` e `4`.
 
-**Write the code which outputs prime numbers in the interval from `2` to `n`.**
+**scrivi un codice che stampa i numeri primi nell'interballo da `2` a `n`.**
 
-For `n = 10` the result will be `2,3,5,7`.
+Per `n = 10` il risultato sarà `2,3,5,7`.
 
-P.S. The code should work for any `n`, not be hard-tuned for any fixed value.
+P.S. Il codice dovrebbe funzionare per qualsiasi numero `n`, non solo per un valore numerico prefissato.

@@ -1,4 +1,4 @@
-The answer: `1`.
+La risposta: `1`.
 
 ```js run
 let i = 3;
@@ -8,9 +8,9 @@ while (i) {
 }
 ```
 
-Every loop iteration decreases `i` by `1`. The check `while(i)` stops the loop when `i = 0`.
+Ogni iterazione del ciclo decrementa `i` di `1`. Il controllo `while(i)` interrompe il ciclo quando `i = 0`.
 
-Hence, the steps of the loop form the following sequence ("loop unrolled"):
+Quindi, gli step del ciclo sono ("loop unrolled"):
 
 ```js
 let i = 3;
