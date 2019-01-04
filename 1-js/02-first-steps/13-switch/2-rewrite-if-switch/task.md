@@ -2,9 +2,9 @@ importance: 4
 
 ---
 
-# Rewrite "if" into "switch"
+# Riscrivi "if" con "switch"
 
-Rewrite the code below using a single `switch` statement:
+Riscrivi il codice sotto utilizzando un singolo `switch`:
 
 ```js run
 let a = +prompt('a?', '');
