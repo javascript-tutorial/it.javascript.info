@@ -1,23 +1,23 @@
-# JavaScript specials
+# Specialità di JavaScript
 
-This chapter briefly recaps the features of JavaScript that we've learned by now, paying special attention to subtle moments.
+Questo capitolo ricapitola brevemente le caratteristiche di JavaScript apprese fino ad ora, prestando particolare attenzioni ai punti più sottili.
 
-## Code structure
+## Struttura del codice
 
-Statements are delimited with a semicolon:
+Le istruzioni sono delimitate da un punto e virgola:
 
 ```js run no-beautify
 alert('Hello'); alert('World');
 ```
 
-Usually, a line-break is also treated as a delimiter, so that would also work:
+Solitamente, un "a capo" viene considerato come nuova riga, quindi questo codice funzionerebbe ugualmente:
 
 ```js run no-beautify
 alert('Hello')
 alert('World')
 ```
 
-That's called "automatic semicolon insertion". Sometimes it doesn't work, for instance:
+Questo viene definito "inserimento automatico del punto e virgola". In qualche caso non funziona, ad esempio:
 
 ```js run
 alert("There will be an error after this message")
@@ -25,9 +25,9 @@ alert("There will be an error after this message")
 [1, 2].forEach(alert)
 ```
 
-Most codestyle guides agree that we should put a semicolon after each statement.
+Molte linee guida che descrivono lo stile del codice consigliano di mettere un punto e virgola alla fine di ogni istruzione.
 
-Semicolons are not required after code blocks `{...}` and syntax constructs with them like loops:
+Il punto e virgola non è richiesto dopo un blocco di codice `{...}` e i costrutti sintattici che le utilizzano, come i cicli:
 
 ```js
 function f() {
@@ -39,13 +39,13 @@ for(;;) {
 }
 ```
 
-...But even if we can put an "extra" semicolon somewhere, that's not an error. It will be ignored.
+...Anche se mettessimo un punto e virgola "extra" da qualche parte, non sarebbe un errore. Sarà semplicemente ignorato.
 
-More in: <info:structure>.
+Più dettagli: <info:structure>.
 
 ## Strict mode
-
-To fully enable all features of modern JavaScript, we should start scripts with `"use strict"`.
+ 
+Per abilitare completamente tutte le caratteristiche del moderno JavaScript, dovremmo iniziare lo script con `"use strict"`.
 
 ```js
 'use strict';
@@ -53,67 +53,67 @@ To fully enable all features of modern JavaScript, we should start scripts with 
 ...
 ```
 
-The directive must be at the top of a script or at the beginning of a function.
+La direttiva deve essere posta all'inizio di ogni script o all'inizio di una funzione.
 
-Without `"use strict"`, everything still works, but some features behave in the old-fashion, "compatible" way. We'd generally prefer the modern behavior.
+Senza `"use strict"`, tutto continuerebbe a funzionare, ma alcune caratteristiche si comporterebbero in vecchio-stile, per retrocompatibilità. Generalmente si preferisce la modalità con i comportamenti moderni.
 
-Some modern features of the language (like classes that we'll study in the future) enable strict mode implicitly.
+Alcune caratteristiche moderne del linguaggio (come le classi che studieremo più avanti) attivano automaticamente la modalità script.
 
-More in: <info:strict-mode>.
+Di più: <info:strict-mode>.
 
-## Variables
+## Variabili
 
-Can be declared using:
+Possono essere dichiarate utilizzando:
 
 - `let`
-- `const` (constant, can't be changed)
-- `var` (old-style, will see later)
+- `const` (costante, non può essere modificata)
+- `var` (vecchio stile, lo vedremo più avanti)
 
-A variable name can include:
-- Letters and digits, but the first character may not be a digit.
-- Characters `$` and `_` are normal, on par with letters.
-- Non-Latin alphabets and hieroglyphs are also allowed, but commonly not used.
+Il nome di una variabile può includere:
+- Lettere e numeri, il primo carattere non può però essere un numero.
+- I caratteri come `$` e `_` vengono considerati normalmente, come se fossero lettere.
+- Alfabeti non-latini e geroglifici sono comunque consentiti, ma non vengono comunemente utilizzati.
 
-Variables are dynamically typed. They can store any value:
+Le variabili vengono tipizzate dinamicamente. Possono memorizzare qualsiasi valore:
 
 ```js
 let x = 5;
 x = "John";
 ```
 
-There are 7 data types:
+Ci sono 7 tipi di dato:
 
-- `number` for both floating-point and integer numbers,
-- `string` for strings,
-- `boolean` for logical values: `true/false`,
-- `null` -- a type with a single value `null`, meaning "empty" or "does not exist",
-- `undefined` -- a type with a single value `undefined`, meaning "not assigned",
-- `object` and `symbol` -- for complex data structures and unique identifiers, we haven't learnt them yet.
+- `number` si per i numeri in virgola mobile, che per quelli interi,
+- `string` per le stringhe,
+- `boolean` per i valori logici: `true/false`,
+- `null` -- un tipo con un singolo valore `null`, che ha il significato di "vuoto" o "non esistente",
+- `undefined` -- un tipo con un singolo valore `undefined`, che significa "non assegnato",
+- `object` e `symbol` -- per strutture dati più complesse e identificatori unici, non li abbiamo ancora studiati.
 
-The `typeof` operator returns the type for a value, with two exceptions:
+L'operatore `typeof` ritorna il tipo di un valore, con due eccezioni:
 ```js
 typeof null == "object" // error in the language
 typeof function(){} == "function" // functions are treated specially
 ```
 
-More in: <info:variables> and <info:types>.
+Di più in: <info:variables> e <info:types>.
 
-## Interaction
+## Interazioni
 
-We're using a browser as a working environment, so basic UI functions will be:
+Abbiamo utilizzato solo il browser come ambiente di sviluppo, quindi le interfacce di base saranno:
 
 [`prompt(question[, default])`](mdn:api/Window/prompt)
-: Ask a `question`, and return either what the visitor entered or `null` if they pressed "cancel".
+: Pone una domanda `question`, e ritorna quello che l'utente ha inserito oppure `null` se ha premuto "cancel".
 
 [`confirm(question)`](mdn:api/Window/confirm)
-: Ask a `question` and suggest to choose between Ok and Cancel. The choice is returned as `true/false`.
+: Pone una domanda `question` e fornisce la possibilità di scegliere tra Ok e Cancel. La scelta viene ritornata come `true/false`.
 
 [`alert(message)`](mdn:api/Window/alert)
-: Output a `message`.
+: Stampa un messaggio `message`.
 
-All these functions are *modal*, they pause the code execution and prevent the visitor from interacting with the page until they answer.
+Tutte queste funzioni sono dei *modal*, interrompono l'esecuzione e impediscono all'utente di interagire con una pagina fino a che il visitatore non risponde.
 
-For instance:
+Ad esempio:
 
 ```js run
 let userName = prompt("Your name?", "Alice");
@@ -123,58 +123,58 @@ alert( "Visitor: " + userName ); // Alice
 alert( "Tea wanted: " + isTeaWanted ); // true
 ```
 
-More in: <info:alert-prompt-confirm>.
+Di più: <info:alert-prompt-confirm>.
 
-## Operators
+## Operatori
 
-JavaScript supports the following operators:
+JavaScript supporta i seguenti operatori:
 
-Arithmetical
-: Regular: `* + - /`, also `%` for the remainder and `**` for power of a number.
+Aritmetici
+: Regolari: `* + - /`, anche `%` per la divisione con resto e `**` per le potenze.
 
-    The binary plus `+` concatenates strings. And if any of the operands is a string, the other one is converted to string too:
+    La somma binaria `+` che concatena stringhe. E se almeno uno degli operandi è una stringa, anche gli altri vengono convertiti a stringa:
 
     ```js run
     alert( '1' + 2 ); // '12', string
     alert( 1 + '2' ); // '12', string
     ```
 
-Assignments
-: There is a simple assignment: `a = b` and combined ones like `a *= 2`.
+Assegnazione
+: Ci sono le assegnazioni semplici: `a = b` e quelle combinate `a *= 2`.
 
-Bitwise
-: Bitwise operators work with integers on bit-level: see the [docs](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) when they are needed.
+Bit a Bit
+: Gli operatori bit a bit funzionano con gli interi a livello di bit: guarda la [documentazione](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) se ne avrai bisogno.
 
-Ternary
-: The only operator with three parameters: `cond ? resultA : resultB`. If `cond` is truthy, returns `resultA`, otherwise `resultB`.
+Ternari
+: C'è un solo operatore con tre parametri: `cond ? resultA : resultB`. Se `cond` è vera, ritorna `resultA`, altrimenti `resultB`.
 
-Logical operators
-: Logical AND `&&` and OR `||` perform short-circuit evaluation and then return the value where it stopped.
+Operatori logici
+: AND logico `&&` e OR `||` eseguono delle valutazioni locali e ritornano un valore quando si fermano.
 
-Comparisons
-: Equality check `==` for values of different types converts them to a number (except `null` and `undefined` that equal each other and nothing else), so these are equal:
+Confronto
+: Confronto di uguaglianza `==` valori di tipi diversi vengono convertiti in numeri (ad eccezione di `null` e `undefined` che si eguagliano tra di loro e con nient'altro), quindi questi sono uguali:
 
     ```js run
     alert( 0 == false ); // true
     alert( 0 == '' ); // true
     ```
 
-    Other comparisons convert to a number as well.
+    Anche gli altri confronti convertono i valori in numeri.
 
-    The strict equality operator `===` doesn't do the conversion: different types always mean different values for it, so:
+    L'operatore di uguaglianza stretta `===` non esegue la conversione: tipi differenti vengono interpretati com valori differenti, quindi:
 
-    Values `null` and `undefined` are special: they equal `==` each other and don't equal anything else.
+    I valori `null` e `undefined` sono speciali: sono uguali `==` tra di loro ma non con nessun altro.
 
-    Greater/less comparisons compare strings character-by-character, other types are converted to a number.
+    Maggiore/minore confrontano le stringhe carattere per carattere, gli altri valori vengono convertiti a numeri.
 
-Logical operators
-: There are few others, like a comma operator.
+Operatori logici
+: Ce ne sono altri, come l'operatore virgola.
 
-More in: <info:operators>, <info:comparison>, <info:logical-operators>.
+Di più in: <info:operators>, <info:comparison>, <info:logical-operators>.
 
-## Loops
+## Cicli
 
-- We covered 3 types of loops:
+- Abbiamo studiato tre tipi di ciclo:
 
     ```js
     // 1
@@ -193,18 +193,18 @@ More in: <info:operators>, <info:comparison>, <info:logical-operators>.
     }
     ```
 
-- The variable declared in `for(let...)` loop is visible only inside the loop. But we can also omit `let` and reuse an existing variable.
-- Directives `break/continue` allow to exit the whole loop/current iteration. Use labels to break nested loops.
+- La variabile dichiarata nel ciclo `for(let...)` è visibile solo internamente al ciclo. Possiamo anche omettere `let` e riutilizzare una variabile esistente.
+- Le direttive `break/continue` permettono di uscire dall'intero ciclo/iterazione. Con l'utilizzo di etichette si possono saltare cicli annidati.
 
-Details in: <info:while-for>.
+Maggiori dettagli in: <info:while-for>.
 
-Later we'll study more types of loops to deal with objects.
+Più avanti studieremo più tipi di ciclo per lavorare con gli oggetti.
 
-## The "switch" construct
+## Il costrutto "switch" 
 
-The "switch" construct can replace multiple `if` checks. It uses `===` (strict equality) for comparisons.
+Il costrutto "switch" può rimpiazzare controlli multipli con `if`. Utilizza `===` (uguaglianza stretta) per i confronti.
 
-For instance:
+Ad esempio:
 
 ```js run
 let age = prompt('Your age?', 18);
@@ -222,13 +222,13 @@ switch (age) {
 }
 ```
 
-Details in: <info:switch>.
+Più dettagli in: <info:switch>.
 
-## Functions
+## Funzioni
 
-We covered three ways to create a function in JavaScript:
+Abbiamo studiato tre modi per creare funzioni in JavaScript:
 
-1. Function Declaration: the function in the main code flow
+1. Dichiarazione di funzione: la funzione nel flusso principale
 
     ```js
     function sum(a, b) {
@@ -238,7 +238,7 @@ We covered three ways to create a function in JavaScript:
     }
     ```
 
-2. Function Expression: the function in the context of an expression
+2. Espressione di funzione: la funzione nel contesto di un espressione
 
     ```js
     let sum = function(a, b) {
@@ -248,9 +248,9 @@ We covered three ways to create a function in JavaScript:
     }
     ```
 
-    Function expressions can have a name, like `sum = function name(a, b)`, but that `name` is only visible inside that function.
+    Le espressioni di funzione possono avere un nome, come `sum = function name(a, b)`, questo `name` è visibile solamente all'interno della funzione.
 
-3. Arrow functions:
+3. Funzione freccia:
 
     ```js
     // expression at the right side
@@ -270,18 +270,18 @@ We covered three ways to create a function in JavaScript:
     ```
 
 
-- Functions may have local variables: those declared inside its body. Such variables are only visible inside the function.
-- Parameters can have default values: `function sum(a = 1, b = 2) {...}`.
-- Functions always return something. If there's no `return` statement, then the result is `undefined`.
+- Le funzioni possono avere variabili locali: queste vengono dichiarate all'interno del ciclo. Queste variabili sono visibili solamente all'interno della funzione.
+- I parametri possono avere valori di default: `function sum(a = 1, b = 2) {...}`.
+- Le funzioni ritornano sempre qualcosa. Se non c'è nessuna istruzione `return`, allora il risultato `undefined`.
 
 
-| Function Declaration | Function Expression |
+| Dichiarazione di Funzione | Espressione di Funzione |
 |----------------------|---------------------|
-| visible in the whole code block | created when the execution reaches it |
-|   - | can have a name, visible only inside the function |
+| visibile nell'intero blocco di codice | creata quando l'esecuzione la incontra |
+|   - | può avere un nome, visibile solamente all'interno della funzione |
 
-More: see <info:function-basics>, <info:function-expressions-arrows>.
+Per più informazioni: vedi <info:function-basics>, <info:function-expressions-arrows>.
 
-## More to come
+## C'è di più
 
-That was a brief list of JavaScript features. As of now we've studied only basics. Further in the tutorial you'll find more specials and advanced features of JavaScript.
+Questa era solo una breve lista delle caratteristiche di JavaScript. Per ora abbiamo studiato solo le basi. Più avanti nel tutorial troverai caratteristiche più avanzate di JavaScript.

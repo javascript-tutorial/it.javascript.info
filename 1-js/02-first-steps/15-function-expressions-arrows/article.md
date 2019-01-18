@@ -1,8 +1,8 @@
-# Function expressions and arrows
+# Espressioni di funzione e funzioni a freccia
 
-In JavaScript, a function is not a "magical language structure", but a special kind of value.
+In JavaScript, una funzione non è una "struttura magica del linguaggio", ma un valore speciale.
 
-The syntax that we used before is called a *Function Declaration*:
+La sintassi che abbiamo utilizzato prima vien chiamata *Dichiarazione di Funzione*:
 
 ```js
 function sayHi() {
@@ -10,9 +10,9 @@ function sayHi() {
 }
 ```
 
-There is another syntax for creating a function that is called a *Function Expression*.
+E' disponibile un'altra sintassi per creare una funzione chiamata *Espressione di Funzione*.
 
-It looks like this:
+Ed appare cosi:
 
 ```js
 let sayHi = function() {
@@ -20,12 +20,11 @@ let sayHi = function() {
 };
 ```
 
-Here, the function is created and assigned to the variable explicitly, like any other value. No matter how the function is defined, it's just a value stored in the variable `sayHi`.
+Qui la funzione viene creata ed assegnata ad una variabile esplicitamente proprio come qualsiasi altro valore. Non ha importanza come la funzione viene definita, è solo una valor salvato nella variabile `sayHi`.
 
+Il significato di questo esempio è lo stesso di: "creare una funzione e metterla dentro la variabile `sayHi`".
 
-The meaning of these code samples is the same: "create a function and put it into the variable `sayHi`".
-
-We can even print out that value using `alert`:
+Possiamo anche stamparne il valore usando `alert`:
 
 ```js run
 function sayHi() {
@@ -37,15 +36,15 @@ alert( sayHi ); // shows the function code
 */!*
 ```
 
-Please note that the last line does not run the function, because there are no parentheses after `sayHi`. There are programming languages where any mention of a function name causes its execution, but JavaScript is not like that.
+Da notare che l'ultima riga di codice non esegue la funzione, perchè non ci sono parentesi dopo `sayHi`. Ci sono linguaggi di programmazione in cui la semplice menzione del nome di funzione ne causa l'esecuzione, JavaScript non si comporta cosi.
 
-In JavaScript, a function is a value, so we can deal with it as a value. The code above shows its string representation, which is the source code.
+In JavaScript, una funzione è un valore, quindi possiamo trattarla come un valore. Il codice sopra ne mostra la sua rappresentazione in stringa, cioè il codice contenuto dentro la funzione.
 
-It is a special value of course, in the sense that we can call it like `sayHi()`.
+E' chiaramente un valore speciale, poichè possiamo richiamarla con `sayHi()`.
 
-But it's still a value. So we can work with it like with other kinds of values.
+Ma rimane comunque un valore. Quindi possiamo trattarlo come un qualsiasi altro valore.
 
-We can copy a function to another variable:
+Possiamo copiare la funzione in un'altra variabile:
 
 ```js run no-beautify
 function sayHi() {   // (1) create
@@ -58,15 +57,15 @@ func(); // Hello     // (3) run the copy (it works)!
 sayHi(); // Hello    //     this still works too (why wouldn't it)
 ```
 
-Here's what happens above in detail:
+Quello che succede nel dettaglio è:
 
-1. The Function Declaration `(1)` creates the function and puts it into the variable named `sayHi`.
-2. Line `(2)` copies it into the variable `func`.
+1. La dichiarazione di funzione `(1)` crea la funzione e la inserisce nella variabile denominata `sayHi`.
+2. La linea `(2)` la copia nella variabile `func`.
 
-    Please note again: there are no parentheses after `sayHi`. If there were, then `func = sayHi()` would write  *the result of the call* `sayHi()` into `func`, not *the function* `sayHi` itself.
-3. Now the function can be called as both `sayHi()` and `func()`.
+    Ancora una volta: non ci sono parentesi dopo `sayHi`. Se ci fossero state, allora `func = sayHi()` avrebbe scritto *il risultato della chiamata* `sayHi()` in `func`, non *la funzione* `sayHi`.
+3. Adesso la funzione può essere richiamata sia con `sayHi()` che con `func()`.
 
-Note that we could also have used a Function Expression to declare `sayHi`, in the first line:
+Avremmo anche potuto utilizzare un espressione di funzione per dichiarare `sayHi`, nella prima riga:
 
 ```js
 let sayHi = function() { ... };
@@ -75,11 +74,11 @@ let func = sayHi;
 // ...
 ```
 
-Everything would work the same. Even more obvious what's going on, right?
+Tutto funzionerebbe ugualmente. Risulta anche più chiaro cosa sta succedendo, giusto?
 
 
-````smart header="Why is there a semicolon at the end?"
-You might wonder, why does Function Expression have a semicolon `;` at the end, but Function Declaration does not:
+````smart header="Perchè c'è un punto e virgola alla fine?"
+Vi starete chiedendo perchè con l'espressione di funzione bisogna mettere `;` alla fine, mentre con la dichiarazione di funzione non serve:
 
 ```js
 function sayHi() {
@@ -91,27 +90,27 @@ let sayHi = function() {
 }*!*;*/!*
 ```
 
-The answer is simple:
-- There's no need for `;` at the end of code blocks and syntax structures that use them like `if { ... }`, `for {  }`, `function f { }` etc.
-- A Function Expression is used inside the statement: `let sayHi = ...;`, as a value. It's not a code block. The semicolon `;` is recommended at the end of statements, no matter what is the value. So the semicolon here is not related to the Function Expression itself in any way, it just terminates the statement.
+La risposta è semplice:
+- Non c'è bisogno di `;` alla fine dei blocchi di codice che utilizzano una sintassi del tipo `if { ... }`, `for {  }`, `function f { }` etc.
+- Un espressione di funzione viene utilizzata all'interno di un istruzione: `let sayHi = ...;`, come valore. Non è un blocco di codice. Quindi il `;` è consigliato al termine dell'istruzione, indipendentemente dal valore. Quindi il punto e virgola non è collegato all'espressione di funzione, più semplicemente termina un istruzione.
 ````
 
-## Callback functions
+## Funzioni richiamate
 
-Let's look at more examples of passing functions as values and using function expressions.
+Diamo un occhiata ad ulteriori esempi di passaggio di funzione come valore e utilizzo di espressioni di funzione.
 
-We'll write a function `ask(question, yes, no)` with three parameters:
+Scriveremo una funzione `ask(question, yes, no)` con tre parametri:
 
 `question`
-: Text of the question
+: Il testo della domanda
 
 `yes`
-: Function to run if the answer is "Yes"
+: Funzione da eseguire se la risposta è "Yes"
 
 `no`
-: Function to run if the answer is "No"
+: Funzione da eseguire se la risposta è "No"
 
-The function should ask the `question` and, depending on the user's answer, call `yes()` or `no()`:
+La funzione dovrebbe richiedere la `question` e, in base alla risposta dell'utente, chiamare `yes()` o `no()`:
 
 ```js run
 *!*
@@ -133,13 +132,13 @@ function showCancel() {
 ask("Do you agree?", showOk, showCancel);
 ```
 
-Before we explore how we can write it in a much shorter way, let's note that in the browser (and on the server-side in some cases) such functions are quite popular. The major difference between a real-life implementation and the example above is that real-life functions use more complex ways to interact with the user than a simple `confirm`. In the browser, such a function usually draws a nice-looking question window. But that's another story.
+Prima abbiamo visto come riscrivere le funzioni in maniera più breve, da notare che nel browser (e in alcuni casi anche lato server) queste funzioni risultano molto popolari. La principale differenza tra un implementazione realistica e gli esempi sopra è solo che le funzioni reali utilizzano modalità più complesse per interagire con l'utente, non un semplice `confirm`. In ambiente browser, queste funzioni spesso mostrano delle interrogazioni molto carine. Ma questo è un altro discorso.
 
-**The arguments of `ask` are called *callback functions* or just *callbacks*.**
+**Gli argomenti della `ask` sono chiamati *funzioni di richiamo* o semplicemente *callbacks*.**
 
-The idea is that we pass a function and expect it to be "called back" later if necessary. In our case, `showOk` becomes the callback for the "yes" answer, and `showCancel` for the "no" answer.
+L'idea è che passiamo una funzione e ci aspettiamo di "richiamarla" più tardi se necessario. Nel nostro caso `showOk` diventa la callback per la risposta "yes", e `showCancel` per la risposta "no".
 
-We can use Function Expressions to write the same function much shorter:
+Possiamo utilizzare un espressione di funzione per scrivere la stessa funzione più in breve:s
 
 ```js run no-beautify
 function ask(question, yes, no) {
@@ -157,27 +156,27 @@ ask(
 ```
 
 
-Here, functions are declared right inside the `ask(...)` call. They have no name, and so are called *anonymous*. Such functions are not accessible outside of `ask` (because they are not assigned to variables), but that's just what we want here.
+Qui la funzione viene dichiarata dentro alla chiamata di `ask(...)`. Queste non hanno nome, e sono denominate *anonime*. Queste funzioni non sono accessibili dall'esterno di `ask` (perchè non sono assegnate a nessuna variabile), ma è proprio quello che vogliamo in questo caso.
 
-Such code appears in our scripts very naturally, it's in the spirit of JavaScript.
+Questo tipo codice apparirà nei nostri script molto naturalmente, è nello spirito del JavaScript.
 
 
-```smart header="A function is a value representing an \"action\""
-Regular values like strings or numbers represent the *data*.
+```smart header="Una funzione è un valore che rappresenta un \"azione\""
+I valori regolari come le stringhe o i numeri rappresentano *dati*.
 
-A function can be perceived as an *action*.
+Una funzione può anche essere vista come un *azione*.
 
-We can pass it between variables and run when we want.
+Possiamo passarla tra le variabili ed eseguirla quando vogliamo.
 ```
 
 
-## Function Expression vs Function Declaration
+## Espressione di Funzioni vs Dichiarazione di Funzioni
 
-Let's formulate the key differences between Function Declarations and Expressions.
+Cerchiamo di elencare le differenze chiave tra Dichiarazioni ed Espressioni di Funzione.Expressions.
 
-First, the syntax: how to see what is what in the code.
+Primo, la sintassi: come capire cosa è cosa nel codice.
 
-- *Function Declaration:* a function, declared as a separate statement, in the main code flow.
+- *Dichiarazione di funzione:* una funzione, dichiarata come un istruzione separata, nel flusso principale del programma.
 
     ```js
     // Function Declaration
@@ -185,7 +184,7 @@ First, the syntax: how to see what is what in the code.
       return a + b;
     }
     ```
-- *Function Expression:* a function, created inside an expression or inside another syntax construct. Here, the function is created at the right side of the "assignment expression" `=`:
+- *Espressione di funzione:* una funzione, creata all'interno di un espressione o all'interno di un altro costrutto. Qui, la funzione è creata alla destra dell' "espressione di assegnazione" `=`:
     
     ```js
     // Function Expression
@@ -194,23 +193,23 @@ First, the syntax: how to see what is what in the code.
     };
     ```
 
-The more subtle difference is *when* a function is created by the JavaScript engine.
+La differenza più subdola è *quando* una funzione viene creata dal motore JavaScript engine.
 
-**A Function Expression is created when the execution reaches it and is usable from then on.**
+**Un espressione di funzione viene creata quando l'esecuzione la raggiunge ed è utilizzabile da quel momento in poi.**
 
-Once the execution flow passes to the right side of the assignment `let sum = function…` -- here we go, the function is created and can be used (assigned, called, etc. ) from now on.
+Quando il flusso di esecuzione passa alla destra dell'operatore di assegnazione `let sum = function…` -- , la funzione viene creata e può essere utilizzata (assegnata, chiamata, etc...) a partire da quel momento.
 
-Function Declarations are different.
+La dichiarazione di funzione si comporta diversamente.
 
-**A Function Declaration is usable in the whole script/code block.**
+**Una dichiarazione di funzione è utilizzabile nell'intero script/blocco di codice.**
 
-In other words, when JavaScript *prepares* to run the script or a code block, it first looks for Function Declarations in it and creates the functions. We can think of it as an "initialization stage".
+In altre parole, quando JavaScript si *prepara* ad eseguire lo script o un blocco di codice, come prima cosa guarda le dichiarazioni di funzione contenute e le crea. Possiamo pensare a questo processo come uno "stage di inizializzazione".
 
-And after all of the Function Declarations are processed, the execution goes on.
+E dopo che tutte le dichiarazioni di funzione sono state processate, l'esecuzione potrà procedere.
 
-As a result, a function declared as a Function Declaration can be called earlier than it is defined.
+Come risultato, una funzione creata come dichiarazione di funzione può essere richiamata anche prima della sua definizione.
 
-For example, this works:
+Ad esempio il seguente codice funziona:
 
 ```js run refresh untrusted
 *!*
@@ -222,9 +221,9 @@ function sayHi(name) {
 }
 ```
 
-The Function Declaration `sayHi` is created when JavaScript is preparing to start the script and is visible everywhere in it.
+La dichiarazione di funzione `sayHi` viene creata quando JavaScript si sta preparando ad eseguire lo script ed è visibile in qualsiasi punto.
 
-...If it was a Function Expression, then it wouldn't work:
+...Se fosse stata un espressione di funzione, non avrebbe funzionato:
 
 ```js run refresh untrusted
 *!*
@@ -236,15 +235,15 @@ let sayHi = function(name) {  // (*) no magic any more
 };
 ```
 
-Function Expressions are created when the execution reaches them. That would happen only in the line `(*)`. Too late.
+Le espressioni di funzione sono create quando l'esecuzione le incontra. In questo esempio avverà solo alla riga `(*)`. Troppo tardi.
 
-**When a Function Declaration is made within a code block, it is visible everywhere inside that block. But not outside of it.**
+**Quando una dichiarazione di funzione viene fatta all'interno di un blocco di codice, sarà visibile ovunque all'interno del blocco, ma non al suo esterno.**
 
-Sometimes that's handy to declare a local function only needed in that block alone. But that feature may also cause problems.
+Qualche volta è comodo dichiarare funzioni locali utili in un singolo blocco. Ma questa caratteristica potrebbe causare problemi.
 
-For instance, let's imagine that we need to declare a function `welcome()` depending on the `age` variable that we get during runtime. And then we plan to use it some time later.
+Ad esempio, immaginiamo di aver bisogno di dichiarare una funzione `welcome()` in base ad un parametro `age` che valuteremo a runtime. E abbiamo intenzione di utilizzarlo più avanti.
 
-The code below doesn't work:
+Il codice sotto non funziona:
 
 ```js run
 let age = prompt("What is your age?", 18);
@@ -270,9 +269,9 @@ welcome(); // Error: welcome is not defined
 */!*
 ```
 
-That's because a Function Declaration is only visible inside the code block in which it resides.
+Questo accade perchè una dichiarazione di funzione è visibile solamente all'interno del blocco di codice in cui è scritta.
 
-Here's another example:
+Un altro esempio:
 
 ```js run
 let age = 16; // take 16 as an example
@@ -305,11 +304,11 @@ welcome(); // Error: welcome is not defined
 */!*
 ```
 
-What can we do to make `welcome` visible outside of `if`?
+Cosa possiamo fare per rendere visibile `welcome` all'esterno del blocco `if`?
 
-The correct approach would be to use a Function Expression and assign `welcome` to the variable that is declared outside of `if` and has the proper visibility.
+Il giusto approccio è quello di utilizzare un espressione di funzione ed assegnarla ad una variabile `welcome` che viene dichiarata all'esterno di `if` ed ha quindi la corretta visibilità.
 
-Now it works as intended:
+Ora funziona:
 
 ```js run
 let age = prompt("What is your age?", 18);
@@ -335,7 +334,7 @@ welcome(); // ok now
 */!*
 ```
 
-Or we could simplify it even further using a question mark operator `?`:
+Oppure possiamo semplificarla con l'utilizzo dell'operatore `?`:
 
 ```js run
 let age = prompt("What is your age?", 18);
@@ -350,27 +349,27 @@ welcome(); // ok now
 ```
 
 
-```smart header="When should you choose Function Declaration versus Function Expression?"
-As a rule of thumb, when we need to declare a function, the first to consider is Function Declaration syntax, the one we used before. It gives more freedom in how to organize our code, because we can call such functions before they are declared.
+```smart header="Quando conviene scegliere un dichiarazione di funzione vs espressione di funzione?"
+Come regola fondamentale, quando abbiamo la necessita di dichiarare una funzione, la prima opzione da considerare è la dichiarazione di funzione. Fornisce maggiore libertà sul come organizzare il codice, poichè possiamo utilizzare quella funzione anche prima della sua dichiarazione.
 
-It's also a little bit easier to look up `function f(…) {…}` in the code than `let f = function(…) {…}`. Function Declarations are more "eye-catching".
+Risulta anche più facile vedere `function f(…) {…}` nel codice, piuttosto che `let f = function(…) {…}`. La dichiarazione di funzione è più facile da "notare".
 
-...But if a Function Declaration does not suit us for some reason (we've seen an example above), then Function Expression should be used.
+...Ma se per qualche ragione la dichiarazione di funzione non si applica bene al caso in questione (abbiamo visto degli esempi sopra), allora l'espressione di funzione può essere utilizzata.
 ```
 
 
-## Arrow functions [#arrow-functions]
+## Funzioni freccia [#arrow-functions]
 
-There's one more very simple and concise syntax for creating functions, that's often better than Function Expressions. It's called "arrow functions", because it looks like this:
+C'è anche un ulteriore modo molto semplice e breve per creare funzioni, questo a volte è anche meglio delle espressioni di funzione. Vengono chiamate "funzioni freccia" perchè si scrivono in questo modo:
 
 
 ```js
 let func = (arg1, arg2, ...argN) => expression
 ```
 
-...This creates a function `func` that has arguments `arg1..argN`, evaluates the `expression` on the right side with their use and returns its result.
+...Questa riga di codice crea una funzione `func` che ha come argomenti `arg1..argN`, valuta `expression` sulla destra e ritorna il risultato.
 
-In other words, it's roughly the same as:
+In altre parole, è quasi la stessa cosa di:
 
 ```js
 let func = function(arg1, arg2, ...argN) {
@@ -378,9 +377,9 @@ let func = function(arg1, arg2, ...argN) {
 };
 ```
 
-...But much more concise.
+...Ma più breve.
 
-Let's see an example:
+Vediamo un esempio:
 
 ```js run
 let sum = (a, b) => a + b;
@@ -396,7 +395,7 @@ alert( sum(1, 2) ); // 3
 
 ```
 
-If we have only one argument, then parentheses can be omitted, making that even shorter:
+Se abbiamo un solo argomento, le parentesi possono essere omesse, rendendo il tutto ancora più breve:
 
 ```js run
 // same as
@@ -408,7 +407,7 @@ let double = n => n * 2;
 alert( double(3) ); // 6
 ```
 
-If there are no arguments, parentheses should be empty (but they should be present):
+Se non ci sono argomenti, le parentesi possono essere vuote (ma devono comunque esserci):
 
 ```js run
 let sayHi = () => alert("Hello!");
@@ -416,9 +415,9 @@ let sayHi = () => alert("Hello!");
 sayHi();
 ```
 
-Arrow functions can be used in the same way as Function Expressions.
+Le funzioni a freccia possono essere utilizzate allo stesso modo delle espressioni di funzione.
 
-For instance, here's the rewritten example with `welcome()`:
+Ad esempio, qui proviamo a riscrivere l'esempio `welcome()`:
 
 ```js run
 let age = prompt("What is your age?", 18);
@@ -430,17 +429,17 @@ let welcome = (age < 18) ?
 welcome(); // ok now
 ```
 
-Arrow functions may appear unfamiliar and not very readable at first, but that quickly changes as the eyes get used to the structure.
+Le funzioni freccia potrebbero sembrare poco familiari e non molto leggibili al primo sguardo, ma vi ci abituerete molto velocemente.
 
-They are very convenient for simple one-line actions, when we're just too lazy to write many words.
+Sono molto convenienti per azioni di una singola riga, soprattutto quando siamo pigri e vogliamo risparmiare parole.
 
-```smart header="Multiline arrow functions"
+```smart header="Funzioni freccia a più righe"
 
-The examples above took arguments from the left of `=>` and evaluated the right-side expression with them.
+L'esempio sopra prende gli argomenti dalla sinistra del simbolo `=>` e valuta la parte destra dell'espressione.
 
-Sometimes we need something a little bit more complex, like multiple expressions or statements. It is also possible, but we should enclose them in curly braces. Then use a normal `return` within them.
+Qualche voltra potremmo aver bisogno di qualcosa di molto più complesso, come espressioni multiple o più istruzioni. E' possibile farlo con le funzioni freccia, ma dovremmo racchiudere il corpo all'interno delle parentesi graffe. Ed utilizzare il `return`.
 
-Like this:
+Come in questo esempio:
 
 ```js run
 let sum = (a, b) => {  // the curly brace opens a multiline function
@@ -453,26 +452,26 @@ let sum = (a, b) => {  // the curly brace opens a multiline function
 alert( sum(1, 2) ); // 3
 ```
 
-```smart header="More to come"
-Here we praised arrow functions for brevity. But that's not all! Arrow functions have other interesting features. We'll return to them later in the chapter <info:arrow-functions>.
+```smart header="C'è dell'altro"
+Fini qui ho lodato le funzioni a freccia per brevità. Ma non è tutto! Le funzioni a freccia hanno altre caratteristiche interessanti. Ci ritorneremo più avanti nel capitolo <info:arrow-functions>.
 
-For now, we can already use them for one-line actions and callbacks.
+Per ora possiamo comunque utilizzarle per azioni a singola riga e callback.
 ```
 
-## Summary
+## Riepilogo
 
-- Functions are values. They can be assigned, copied or declared in any place of the code.
-- If the function is declared as a separate statement in the main code flow, that's called a "Function Declaration".
-- If the function is created as a part of an expression, it's called a "Function Expression".
-- Function Declarations are processed before the code block is executed. They are visible everywhere in the block.
-- Function Expressions are created when the execution flow reaches them.
+- Le funzioni sono valori. Possono essere assegnate, copiate o dichiarate in ogni punto del codice.
+- Se la funzione viene dichiarata come istruzione a sè nel flusso principale, questa viene chiamata "Dichiarazione di Funzione".
+- Se al funzione viene creata come parte di un espressione, viene detta un "Espressione di Funzione".
+- Dichiarazioni di funzione vengono processate prima dell'esecuzione del blocco. Sono visibili ovunque nel blocco.
+- Espressioni di funzione create quando il flusso di esecuzione le incontra.
 
 
-In most cases when we need to declare a function, a Function Declaration is preferable, because it is visible prior to the declaration itself. That gives us more flexibility in code organization, and is usually more readable.
+Nella maggior parte dei casi quando abbiamo bisogno di dichiarare una funzione, una dichiarazione di funzione è preferibile, poichè è visibile anche prima della riga di dichiarazione. Questo ci fornisce più flessibilità nell'organizzazione del codice, e solitamente risulta più leggibile.
 
-So we should use a Function Expression only when a Function Declaration is not fit for the task. We've seen a couple of examples of that in this chapter, and will see more in the future.
+Quindi dovremmo utilizzare un espressione di funzione solo quando una dichiarazione di funzione non è adatta al caso specifico. Abbiamo visto un paio di esempi in questo capitolo, e ne vederemo altri in futuro.
 
-Arrow functions are handy for one-liners. They come in two flavors:
+Le funzioni a freccia sono comode per funzioni composte da una singola riga. Forniscono dei vantaggi:
 
-1. Without curly braces: `(...args) => expression` -- the right side is an expression: the function evaluates it and returns the result.
-2. With curly braces: `(...args) => { body }` -- brackets allow us to write multiple statements inside the function, but we need an explicit `return` to return something.
+1. Possono essere omesse le parentesi graffe: `(...args) => expression` -- la parte destra è un'espressione: la funzione la valuta e ritorna il risultato.
+2. Con parentesi graffe: `(...args) => { body }` -- le parentesi ci consento di scrivere più istruzioni all'interno della funzione, ma è necessario un `return` esplicito per ritornare qualcosa.
