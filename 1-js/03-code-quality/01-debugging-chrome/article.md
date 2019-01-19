@@ -1,76 +1,76 @@
 # Debugging in Chrome
 
-Before writing more complex code, let's talk about debugging.
+Prima di scrivere codice più complesso, dovremmo parlare di debugging.
 
-All modern browsers and most other environments support "debugging" -- a special UI in developer tools that makes finding and fixing errors much easier.
+Tutti i moderni browser e anche molto altri ambienti di sviluppo supportano il "debugging" -- una speciale interfaccia negli strumenti da sviluppatore che rende la ricerca e la correzioni degli errori molto più facile.
 
-We'll be using Chrome here, because it's probably the most feature-rich in this aspect.
+Noi useremo Chrome, poiché è probabilmente il più ricco di caratteristiche sotto questo aspetto.
 
-## The "sources" pane
+## Il pannello "sources" 
 
-Your Chrome version may look a little bit different, but it still should be obvious what's there.
+La tua versione di Chrome potrebbe essere differente, ma le funzioni principali dovrebbe essere molto simili.
 
-- Open the [example page](debugging/index.html) in Chrome.
-- Turn on developer tools with `key:F12` (Mac: `key:Cmd+Opt+I`).
-- Select the `sources` pane.
+- Apri la [pagina di esempio](debugging/index.html) in Chrome.
+- Attiva gli strumenti da sviluppatore con `key:F12` (Mac: `key:Cmd+Opt+I`).
+- Seleziona il pannello `sources`.
 
-Here's what you should see if you are doing it for the first time:
+Questo è quello che dovreste vedere se è la prima volta che lo aprite:
 
 ![](chrome-open-sources.png)
 
-The toggler button <span class="devtools" style="background-position:-168px -76px"></span> opens the tab with files.
+Il bottone <span class="devtools" style="background-position:-168px -76px"></span> apre la barra laterale con i file.
 
-Let's click it and select `index.html` and then `hello.js` in the tree view. Here's what should show up:
+Clicchiamoci sopra e selezioniamo `index.html` e poi `hello.js` dalla vista ad albero. Questo è quello che dovrebbe apparire:
 
 ![](chrome-tabs.png)
 
-Here we can see three zones:
+Possiamo vedere tre zone:
 
-1. The **Resources zone** lists HTML, JavaScript, CSS and other files, including images that are attached to the page. Chrome extensions may appear here too.
-2. The **Source zone** shows the source code.
-3. The **Information and control zone** is for debugging, we'll explore it soon.
+1. La **zona Risorse** con la lista degli HTML, JavaScript, CSS e altri file, incluse le immagini che sono collegate alla pagina. Potrebbero apparire anche le estensioni di Chrome.
+2. La **zona Sorgente** mostra il codice.
+3. La **zona Informazione e controllo** utile per il debugging, la esplerermo meglio.
 
-Now you could click the same toggler <span class="devtools" style="background-position:-200px -76px"></span> again to hide the resources list and give the code some space.
+Ora puoi cliccare nuovamente lo stesso bottone <span class="devtools" style="background-position:-200px -76px"></span> per nascondere la lista risorse e dare più spazio al codice.
 
 ## Console
 
-If we press `Esc`, then a console opens below. We can type commands there and press `key:Enter` to execute.
+Se premiamo `Esc`, si apre una console in basso. Possiamo digitare comandi e premere `key:Enter` per eseguirli.
 
-After a statement is executed, its result is shown below.
+Dopo l'esecuzione dell'istruzione, il risultato viene mostrato sotto.
 
-For example, here `1+2` results in `3`, and `hello("debugger")` returns nothing, so the result is `undefined`:
+Ad esempio, `1+2` con risultato `3`, ed `hello("debugger")` non ritorna nulla, quindi il risultato è `undefined`:
 
 ![](chrome-sources-console.png)
 
-## Breakpoints
+## Breakpoint
 
-Let's examine what's going on within the code of the [example page](debugging/index.html). In `hello.js`, click at line number `4`. Yes, right on the `4` digit, not on the code.
+Esaminiamo cosa sta succedendo nel codice della [pagina di esempio](debugging/index.html). In `hello.js`, cliccate nel numero della riga `4`. Si, cliccate proprio sopra il numero `4`, non dentro il codice.
 
-Congratulations! You've set a breakpoint. Please also click on the number for line `8`.
+Congratulazioni! Avete settato un breakpoint. Ora premete anche nella riga numero `8`.
 
-It should look like this (blue is where you should click):
+Dovrebbe apparire qualcosa di simile (in blu dove avreste dovuto cliccare):
 
 ![](chrome-sources-breakpoint.png)
 
-A *breakpoint* is a point of code where the debugger will automatically pause the JavaScript execution.
+Un *breakpoint* è un punto del codice in cui il debugger si metterà in pausa automaticamente durante l'esecuzione del codice  JavaScript.
 
-While the code is paused, we can examine current variables, execute commands in the console etc. In other words, we can debug it.
+Mentre il codice è in pause, è possibile esaminare le variabili, eseguire comandi tramite la console etc. In altre parole, possiamo eseguire il debug.
 
-We can always find a list of breakpoints in the right pane. That's useful when we have many breakpoints in various files. It allows to:
-- Quickly jump to the breakpoint in the code (by clicking on it in the right pane).
-- Temporarily disable the breakpoint by unchecking it.
-- Remove the breakpoint by right-clicking and selecting Remove.
-- ...And so on.
+Possiamo anche visualizzare la lista dei breakpoint nel pannello di destra. Questo pannello può risultare utile quando abbiamo più breakpoint in file diversi. Infatti ci consente di:
+- Salatare rapidamente ad un breakpoint (cliccando sopra al nome del breakpoint che ci interessa).
+- Disabilitare temporaneamente un breakpoint semplicemente togliendo la spunta.
+- Rimuovere breakpoint cliccando con il tasto destro e selezionando Rimuovi.
+- ...E molto altro.
 
-```smart header="Conditional breakpoints"
-*Right click* on the line number allows to create a *conditional* breakpoint. It only triggers when the given expression is truthy.
+```smart header="Breakpoint condizionali"
+*Tasto destro* sul numero della riga ci consente di creare un breakpoint *condizionale*. Che viene attivato solo quando l'espressione fornita risulta vera.
 
-That's handy when we need to stop only for a certain variable value or for certain function parameters.
+Questa caratteristica risulta molto utile quando abbiamo bisogno di fermare il flusso di esecuzione per determinati valori di una variabile.
 ```
 
-## Debugger command
+## Comando debugger
 
-We can also pause the code by using the `debugger` command, like this:
+Possiamo mettere in pausa il codice anche utilizzando il comando `debugger`, come nell'esempio:
 
 ```js
 function hello(name) {
@@ -84,77 +84,77 @@ function hello(name) {
 }
 ```
 
-That's very convenient when we are in a code editor and don't want to switch to the browser and look up the script in developer tools to set the breakpoint.
+Questo risulta molto utile quando stiamo lavorando in un editor e non vogliamo passare alla finestra del browser, cercare il punto corretto nello script interessato e settare il breakpoint.
 
 
-## Pause and look around
+## Pausa per guardarsi attorno
 
-In our example, `hello()` is called during the page load, so the easiest way to activate the debugger is to reload the page. So let's press `key:F5` (Windows, Linux) or `key:Cmd+R` (Mac).
+Nel nostro esempio, `hello()` viene richiamato durante il caricamento della pagina, quindi il metodo più facile per attivare il debugger è ricaricare la pagina. Quindi premete `key:F5` (Windows, Linux) o `key:Cmd+R` (Mac).
 
-As the breakpoint is set, the execution pauses at the 4th line:
+Con il breakpoint impostato, l'esecuzione si fermerà alla quarta linea:
 
 ![](chrome-sources-debugger-pause.png)
 
-Please open the informational dropdowns to the right (labeled with arrows). They allow you to examine the current code state:
+Ora aprite i menu a cascata (quelli con la freccetta accanto al nome). Vi consentiranno di esaminare lo stato corrente del codice:
 
-1. **`Watch` -- shows current values for any expressions.**
+1. **`Watch` -- mostra il valore corrente per ogni espressione.**
 
-    You can click the plus `+` and input an expression. The debugger will show its value at any moment, automatically recalculating it in the process of execution.
+    Puoi cliccare su `+` e inserire un espressione. Il debugger ti mostrerà il suo valore ad ogni istante, che verrà automaticamente ricalcolato durante l'esecuzione.
 
-2. **`Call Stack` -- shows the nested calls chain.**
+2. **`Call Stack` -- mostra la catena delle chiamate annidate.**
 
-    At the current moment the debugger is inside `hello()` call, called by a script in `index.html` (no function there, so it's called "anonymous").
+    Attualmente il debugger si trova all'interno della chiamata `hello()`, chiamata da uno script interno a `index.html` (non ci sono funzioni qui, quindi viene definito "anonimo").
 
-    If you click on a stack item, the debugger jumps to the corresponding code, and all its variables can be examined as well.
-3. **`Scope` -- current variables.**
+    Se premi su un elemento della pila, il debugger salterà al codice corrispondente, e potranno essere esaminate tutte le variabili.
+3. **`Scope` -- variabili correnti.**
 
-    `Local` shows local function variables. You can also see their values highlighted right over the source.
+    `Local` mostra le variabili locali alla funzione. Potente anche vedere i valori evidenziati nel codice.
 
-    `Global` has global variables (out of any functions).
+    `Global` mostra le variabili globali (fuori da tutte le funzioni).
 
-    There's also `this` keyword there that we didn't study yet, but we'll do that soon.
+    C'è anche la keyword `this`, che studieremo più avanti.
 
-## Tracing the execution
+## Tracciamento dell'esecuzione
 
-Now it's time to *trace* the script.
+Ora è il momento di *tracciare* lo script.
 
-There are buttons for it at the top of the right pane. Let's engage them.
+Ci sono dei bottoni appositi nella parte superiore del pannello di destra. Proviamo ad attivarli.
 
-<span class="devtools" style="background-position:-7px -76px"></span> -- continue the execution, hotkey `key:F8`.
-: Resumes the execution. If there are no additional breakpoints, then the execution just continues and the debugger loses control.
+<span class="devtools" style="background-position:-7px -76px"></span> -- continua l'esecuzione, tasto `key:F8`.
+: Riprende l'esecuzione. Se non ci sono ulteriori breakpoint l'esecuzione continua e il debugger non avrà più il controllo.
 
-    Here's what we can see after a click on it:
+    Questo e quello che vedremo dopo aver cliccato:
 
     ![](chrome-sources-debugger-trace-1.png)
 
-    The execution has resumed, reached another breakpoint inside `say()` and paused there. Take a look at the "Call stack" at the right. It has increased by one more call. We're inside `say()` now.
+    L'esecuzione è ripartita, ha incontrato un altro breakpoint dentro `say()` e si è fermato nuovamente. Diamo un'occhiata al "Call stack" sulla destra. E' stato incrementato con un ulteriore chiamata. Ora siamo all'interno di `say()`.
 
-<span class="devtools" style="background-position:-137px -76px"></span> -- make a step (run the next command), but *don't go into the function*, hotkey `key:F10`.
-: If we click it now, `alert` will be shown. The important thing is that `alert` can be any function, the execution "steps over it", skipping the function internals.
+<span class="devtools" style="background-position:-137px -76px"></span> -- fa un singolo step (esegue il comando successivo), ma non *entra nella funzione*, tasto `key:F10`.
+: Se lo clicchiamo ora, verrà mostrato `alert`. La cosa importante è che `alert` potrebbe essere una funzione qualsiasi, l'esecuzione farebbe "uno step oltre" comunque, saltando l'interno della funzione.
 
-<span class="devtools" style="background-position:-72px -76px"></span> -- make a step, hotkey `key:F11`.
-: The same as the previous one, but "steps into" nested functions. Clicking this will step through all script actions one by one.
+<span class="devtools" style="background-position:-72px -76px"></span> -- fai uno step, tasto `key:F11`.
+: Lo stesso di quello precedente, ma fa "un passo all'interno" della funzione. Cliccando qui è possibile avanzare uno step alla volta tutte le azioni dello script.
 
-<span class="devtools" style="background-position:-104px -76px"></span> -- continue the execution till the end of the current function, hotkey `key:Shift+F11`.
-: The execution would stop at the very last line of the current function. That's handy when we accidentally entered a nested call using <span class="devtools" style="background-position:-72px -76px"></span>, but it does not interest us, and we want to continue to its end as soon as possible.
+<span class="devtools" style="background-position:-104px -76px"></span> -- continua l'esecuzione fino alla fine della funzione corrente, tasto `key:Shift+F11`.
+: L'esecuzione si fermerà all'ultima linea della funzione corrente. Questa funzione è comoda quando entriamo per sbaglio in una funzione annidata usando <span class="devtools" style="background-position:-72px -76px"></span>, ma non siamo interessati, e vogliamo arrivare alla fine di questa il più velocemente possibile.
 
-<span class="devtools" style="background-position:-7px -28px"></span> -- enable/disable all breakpoints.
-: That button does not move the execution. Just a mass on/off for breakpoints.
+<span class="devtools" style="background-position:-7px -28px"></span> -- attiva/disattiva tutti i breakpoint.
+: Questo bottone non influenza l'esecuzione. E' semplicemente un on/off per i breakpoint.
 
-<span class="devtools" style="background-position:-264px -4px"></span> -- enable/disable automatic pause in case of an error.
-: When enabled, and the developer tools is open, a script error automatically pauses the execution. Then we can analyze variables to see what went wrong. So if our script dies with an error, we can open debugger, enable this option and reload the page to see where it dies and what's the context at that moment.
+<span class="devtools" style="background-position:-264px -4px"></span> -- attiva/disattiva la pausa automatica in caso di errori.
+: Quando attiva, e il pannello degli strumenti svilupattore è aperto, un errore nello script metterà automaticamente in pausa l'esecuzione. Cosi potremmo analizzare le variabili per capire cosa è andato storto. Quindi se il nostro script si blocca con un errore, possiamo aprire il debugger, attivare questa opzione e ricaricare la pagina per veder dove si blocca lo script e capirne il motivo.
 
-```smart header="Continue to here"
-Right click on a line of code opens the context menu with a great option called "Continue to here".
+```smart header="Continua fino a qui"
+Premendo tasto destro su una riga di codice si aprirà un menu con una bellissima opzione denominata  "Continua fino a qui".
 
-That's handy when we want to move multiple steps forward, but we're too lazy to set a breakpoint.
+Questa è molto utile quando vogliamo muoverci di più passi, ma siamo troppo pigri per impostare un breakpoint.
 ```
 
 ## Logging
 
-To output something to console, there's `console.log` function.
+Per stampare qualcosa sulla console, c'è una funzione `console.log`.
 
-For instance, this outputs values from `0` to `4` to console:
+Ad  esempio, questo stamperà i valori da `0` a `4` sulla console:
 
 ```js run
 // open console to see
@@ -163,21 +163,21 @@ for (let i = 0; i < 5; i++) {
 }
 ```
 
-Regular users don't see that output, it is in the console. To see it, either open the Console tab of developer tools or press `key:Esc` while in another tab: that opens the console at the bottom.
+Gli utenti normali non vedranno questo output poiché viene mostrato in console. Per vederlo dovrebbe aprire il menu Console degli strumenti sviluppatore, oppure premere  `key:Esc` mentre si trova in un altro tab: questo tasto aprirà la console nella parte inferiore della schermata.
 
-If we have enough logging in our code, then we can see what's going on from the records, without the debugger.
+Se abbiamo abbastanza log nel nostro codice, possiamo vedere cosa sta accadendo anche senza utilizzare il debugger.
 
-## Summary
+## Riepilogo
 
-As we can see, there are three main ways to pause a script:
-1. A breakpoint.
-2. The `debugger` statements.
-3. An error (if dev tools are open and the button <span class="devtools" style="background-position:-264px -4px"></span> is "on")
+Come abbiamo visto, ci sono tre diversi modi di metter in pausa uno script:
+1. Un breakpoint.
+2. L'istruzione `debugger`.
+3. Un errore (solo se gli strumenti sviluppatore sono aperti ed è attivo il bottone <span class="devtools" style="background-position:-264px -4px"></span>)
 
-Then we can examine variables and step on to see where the execution goes wrong.
+Cosi possiamo esaminare le variabili e capire cosa è andato male durante l'esecuzione.
 
-There are many more options in developer tools than covered here. The full manual is at <https://developers.google.com/web/tools/chrome-devtools>.
+Ci sono veramente troppe opzioni negli strumenti da sviluppatore per coprirle qui. Il manuale completo è disponibile all'indirizzo <https://developers.google.com/web/tools/chrome-devtools>.
 
-The information from this chapter is enough to begin debugging, but later, especially if you do a lot of browser stuff, please go there and look through more advanced capabilities of developer tools.
+Le informazioni fornite da questo capitolo sono sufficienti per iniziare a fare un pò di debug, anche se più avanti, specialmente quando farete cose più avanzate, seguite il link sopra e consultate il manuale per ulteriori informazioni.
 
-Oh, and also you can click at various places of dev tools and just see what's showing up. That's probably the fastest route to learn dev tools. Don't forget about the right click as well!
+Ah, inoltre potete anche cliccare i vari bottoni negli strumenti da sviluppatore e vedere cosa succede. E' probabilmente il metodo più rapido per imparare tutto. Non dimenticate che molte opzini sono disponibili anche con il click del tasto destro!
