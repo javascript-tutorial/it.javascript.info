@@ -1,14 +1,14 @@
-# Comments
+# Commenti
 
-As we know from the chapter <info:structure>, comments can be single-line: starting with `//` and multiline: `/* ... */`.
+Come abbiamo già appreso dal capitolo <info:structure>, i commenti possono essere di una singola-riga: ed iniziano con `//` oppure multilinea: `/* ... */`.
 
-We normally use them to describe how and why the code works.
+Normalmente li utilizziamo per descrivere come e perché funziona il codice.
 
-From the first sight, commenting might be obvious, but novices in programming usually get it wrong.
+Inizialmente, l'inserimento di commenti può sembrare ovvio, ma i novizi solitamente non lo fanno nella maniera corretta.
 
-## Bad comments
+## Commenti sbagliati
 
-Novices tend to use comments to explain "what is going on in the code". Like this:
+I novizi tendono ad utilizzare i commenti per spiegare "cosa sta succedendo nel codice". Come in questo esempio:
 
 ```js
 // This code will do this thing (...) and that thing (...)
@@ -18,13 +18,13 @@ complex;
 code;
 ```
 
-But in good code the amount of such "explanatory" comments should be minimal. Seriously, code should be easy to understand without them.
+Nel buon codice la quantità di commenti "esplicativi" dovrebbe essere minima. In realtà il codice dovrebbe essere facile da comprendere anche senza.
 
-There's a great rule about that: "if the code is so unclear that it requires a comment, then maybe it should be rewritten instead".
+C'è una bellissima regola a riguardo: "Se il codice è cosi poco chiaro da richiedere un commento, probabilmente dovrebbe essere riscritto".
 
-### Recipe: factor out functions
+### Ricetta: raccogliere in una funzione
 
-Sometimes it's beneficial to replace a code piece with a function, like here:
+Qualche volta può essere un beneficio rimpiazzare un pezzo di codice in una funzione, come in questo esempio:
 
 ```js
 function showPrimes(n) {
@@ -43,7 +43,7 @@ function showPrimes(n) {
 }
 ```
 
-The better variant, with a factored out function `isPrime`:
+La migliore variante, sarebbe raccogliere il tutto in una funzione `isPrime`:
 
 
 ```js
@@ -65,11 +65,11 @@ function isPrime(n) {
 }
 ```
 
-Now we can understand the code easily. The function itself becomes the comment. Such code is called *self-descriptive*.
+Ora possiamo capire il codice più facilmente. La funzione stessa diventa un commento. Questo tipo di codice viene definito *self-descriptive* (auto-descrittivo). 
 
-### Recipe: create functions
+### Ricetta: creare funzioni
 
-And if we have a long "code sheet" like this:
+Anche se avete un lungo "pezzo di codice" come questo:
 
 ```js
 // here we add whiskey
@@ -90,7 +90,7 @@ for(let t = 0; t < 3; t++) {
 // ...
 ```
 
-Then it might be a better variant to refactor it into functions like:
+Potrebbe essere una buona idea raccogliere tutto in una funzione:
 
 ```js
 addWhiskey(glass);
@@ -111,21 +111,21 @@ function addJuice(container) {
 }
 ```
 
-Once again, functions themselves tell what's going on. There's nothing to comment. And also the code structure is better when split. It's clear what every function does, what it takes and what it returns.
+Ripeto nuovamente, le funzioni stesse dicono cosa andranno a fare. Inoltre la struttura del codice è migliore quando è spezzata. E' chiaro cosa ogni funzione faccia, cosa richiede e cosa eventualmente ritorna.
 
-In reality, we can't totally avoid "explanatory" comments. There are complex algorithms. And there are smart "tweaks" for purposes of optimization. But generally we should try to keep the code simple and self-descriptive.
+Nella pratica, non possiamo evitare del tutto i commenti "esplicativi". Ci sono algoritmi molto complesso. E ci sono vari "trucchi" con lo scopo di ottimizzare questo tipo di commenti. In linea di massima dovremmo però cercar di tenere il codice semplice ed auto-descrittivo.
 
-## Good comments
+## Buoni commenti
 
-So, explanatory comments are usually bad. Which comments are good?
+Quindi, solitamente i commenti esplicativi sono sbagliati. Quali sono allora i commenti giusti?
 
-Describe the architecture
-: Provide a high-level overview of components, how they interact, what's the control flow in various situations... In short -- the bird's eye view of the code. There's a special diagram language [UML](http://wikipedia.org/wiki/Unified_Modeling_Language) for high-level architecture diagrams. Definitely worth studying.
+Descrivere l'architettura
+: Fornire un visuale di alto livello dei componenti, come interagiscono, come si comporta il flusso d'esecuzione in certe situazioni... In breve -- gli "occhi d'aquila" del codice. C'è uno speciale linguaggio schematico [UML](http://wikipedia.org/wiki/Unified_Modeling_Language) per schematizzare ad alto livello. Assolutamente da conoscere.
 
-Document a function usage
-: There's a special syntax [JSDoc](http://en.wikipedia.org/wiki/JSDoc) to document a function: usage, parameters, returned value.
+Documentare l'utilizzo di una funzione
+: Esiste una particolare sintassi [JSDoc](http://en.wikipedia.org/wiki/JSDoc) per documentare le funzioni: utilizzo, parametri, valori di ritorno.
 
-    For instance:
+    Ad esempio:
     ```js
     /**
      * Returns x raised to the n-th power.
@@ -139,42 +139,42 @@ Document a function usage
     }
     ```
 
-    Such comments allow us to understand the purpose of the function and use it the right way without looking in its code.
+    Questi commenti ci consentono di capire lo scopo della funzione e come utilizzarla correttamente senza guardarne il codice.
 
-    By the way, many editors like [WebStorm](https://www.jetbrains.com/webstorm/) can understand them as well and use them to provide autocomplete and some automatic code-checking.
+    In ogni caso, molti editor come [WebStorm](https://www.jetbrains.com/webstorm/) li comprendono e possono quindi utilizzarli per autocomplete e alcune verifiche automatiche del codice.
 
-    Also, there are tools like [JSDoc 3](https://github.com/jsdoc3/jsdoc) that can generate HTML-documentation from the comments. You can read more information about JSDoc at <http://usejsdoc.org/>.
+    Ci sono anche tool come [JSDoc 3](https://github.com/jsdoc3/jsdoc) che possono generare documentazione in HTML a partire dai commenti. Puoi scoprire di più riguardo JSDoc su <http://usejsdoc.org/>.
 
-Why is the task solved this way?
-: What's written is important. But what's *not* written may be even more important to understand what's going on. Why is the task solved exactly this way? The code gives no answer.
+Perché l'azione viene risolta in quel modo?
+: Quello che viene scritto è fondamentale. Ma quello che *non* viene scritto potrebbe esserlo anche di più per capire cosa sta succedendo. Perché l'azione viene portata a termine in quel modo? Il codice non fornisce risposte.
 
-    If there are many ways to solve the task, why this one? Especially when it's not the most obvious one.
+    Se ci sono diverse modalità di risolvere una determinata azione, perché si è scelta questa? Specialmente quando non risulta la scelta più ovvia.
 
-    Without such comments the following situation is possible:
-    1. You (or your colleague) open the code written some time ago, and see that it's "suboptimal".
-    2. You think: "How stupid I was then, and how much smarter I'm now", and rewrite using the "more obvious and correct" variant.
-    3. ...The urge to rewrite was good. But in the process you see that the "more obvious" solution is actually lacking. You even dimly remember why, because you already tried it long ago. You revert to the correct variant, but the time was wasted.
+    Senza dei commenti si potrebbero generare le seguenti situazioni:
+    1. Tu (o un tuo collega) apre il codice un pò di tempo dopo, lo guarda e pensa che il codice è "poco ottimale".
+    2. Voi stessi potreste pensare: "Quanto stupido sono stato qui, e quanto intelligente sono adesso", e riscriverla utilizzando "la più ovvia e corretta" variante.
+    3. ...Lo stimolo di riscriverla sarebbe corretto. Ma quando l'avete scritta vi siete resi conto che la soluzione "più ovvia" era effettivamente peggiore. Andando a rileggerla potreste non ricordarvi neanche perché. Quindi dopo averla riscritta vi rendete conto che è meglio tornare indietro, avete sprecato tempo.
 
-    Comments that explain the solution are very important. They help to continue development the right way.
+    Commenti che spiegano la soluzione sono fondamentali. Vi aiutano a sviluppare mantenendo sempre la strada corretta.
 
-Any subtle features of the code? Where they are used?
-: If the code has anything subtle and counter-intuitive, it's definitely worth commenting.
+Ci sono alcune piccolezze? Dove vengono utilizzate?
+: Se il codice contiene sottigliezze contro-intuitive, vale certamente la pena commentarle.
 
-## Summary
+## Riepilogo
 
-An important sign of a good developer is comments: their presence and even their absence.
+Un importante valore che possiede un bravo sviluppatore sono i commenti: la loro presenza o assenza.
 
-Good comments allow us to maintain the code well, come back to it after a delay and use it more effectively.
+I buoni commenti ci consentono di mantenere bene il codice, di poterci tornare dopo un pò di tempo e capire le scelte prese.
 
-**Comment this:**
+**Commenti utili:**
 
-- Overall architecture, high-level view.
-- Function usage.
-- Important solutions, especially when not immediately obvious.
+- Architettura complessiva, vista ad alto livello.
+- Utilizzo delle funzioni.
+- Soluzioni importanti, soprattutto quando poco ovvie.
 
-**Avoid comments:**
+**Commenti da evitare:**
 
-- That tell "how code works" and "what it does".
-- Put them only if it's impossible to make the code so simple and self-descriptive that it doesn't require those.
+- Quelli che dicono "come il codice funziona" e "cosa fa".
+- Inseriteli solo se risulta impossibile rendere il codice semplice ed auto-descrittivo.
 
-Comments are also used for auto-documenting tools like JSDoc3: they read them and generate HTML-docs (or docs in another format).
+I commenti vengono utilizzati anche da strumenti che generano documentazione, come JSDoc3: li leggono e generano documenti HTML (o in altri formati).

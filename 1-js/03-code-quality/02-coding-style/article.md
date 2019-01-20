@@ -78,7 +78,7 @@ In sintesi:
 
 ### Lunghezza della riga
 
-Nessuno ama leggere lunghe righe orrizontali di codice. Una buona norma è dividere le righe più lunghe in qualcosa di più breve.
+Nessuno ama leggere lunghe righe orizzontali di codice. Una buona norma è dividere le righe più lunghe in qualcosa di più breve.
 
 La lunghezza massima dovrebbe essere accordata a livello di team. Solitamente tra gli 80-120 caratteri.
 
@@ -86,9 +86,9 @@ La lunghezza massima dovrebbe essere accordata a livello di team. Solitamente tr
 
 Ci sono due tipi di indentazione:
 
-- **Indentazione orrizzontale: 2 o 4 spazi.**
+- **Indentazione orizzontale: 2 o 4 spazi.**
 
-    Un indentazione orrizzontale è realizzata usando 2 o 4 spazi oppure il tasto "Tab". Quale scegliere è una guerra che dura da anni. Ad oggi gli spazi sono i più comuni.
+    Un indentazione orizzontale è realizzata usando 2 o 4 spazi oppure il tasto "Tab". Quale scegliere è una guerra che dura da anni. Ad oggi gli spazi sono i più comuni.
 
     Un vantaggio degli spazi contro i tabs è che gli spazi permettono configurazioni più flessibili.
 
@@ -105,7 +105,7 @@ Ci sono due tipi di indentazione:
     }
     ```
 
-- **Indentazione verticale: righe vuote per divididere il codice in blocchi logici.**
+- **Indentazione verticale: righe vuote per dividere il codice in blocchi logici.**
 
     Anche una singola funzione può essere divisa in più blocchi logici. Nell'esempio sotto, l'inizializzazione delle variabili, il corpo del ciclo e il ritorno del risultato sono divisi verticalmente:
 
@@ -201,7 +201,7 @@ La seconda opzione è molto più leggibile perché il "caso limite" `n < 0` vien
 
 ## Posizionamento delle funzioni
 
-Se state scrivento molte funzioni "ausiliarie", ci sono tre modi per organizziarle nel codice.
+Se state scrivendo molte funzioni "ausiliarie", ci sono tre modi per organizzarle nel codice.
 
 1. Dichiarare le funzioni sopra il codice che le utilizza:
 
@@ -257,7 +257,7 @@ Una guida di stile contiene  regole generali riguardo a "come scrivere" il codic
 
 Quando tutti i membri del team utilizzano lo stesso stile tende ad essere uniforme.
 
-Certamente, un team può utilizzare il proprio stile guida. Molte volte non serve. Ci sono moltre opzioni tra cui scegliere, quindi scegliere tra una di queste generalmente è la scelta migliore.
+Certamente, un team può utilizzare il proprio stile guida. Molte volte non serve. Ci sono molte opzioni tra cui scegliere, quindi scegliere tra una di queste generalmente è la scelta migliore.
 
 Alcune delle scelte più popolari:
 
@@ -273,7 +273,7 @@ Se sei un nuovo sviluppatore, inizia con i consigli di questo capitolo. Quando a
 
 I linters sono strumenti che controllano automaticamente lo stile del codice e vi danno consigli su come sistemarlo.
 
-La miglior cosa di questi strumenti è che il controllo dello stile in qualche occasione può rilevare dei bug, ad esempio degli errori di battitura nei nomi delle funzioni. Proprio per queste sue caratteristiche, installare un linter è fortemente consigliato anche se non avete intenzioni di rimanere fedeli ad uno particolare "stiel di programmazione".
+La miglior cosa di questi strumenti è che il controllo dello stile in qualche occasione può rilevare dei bug, ad esempio degli errori di battitura nei nomi delle funzioni. Proprio per queste sue caratteristiche, installare un linter è fortemente consigliato anche se non avete intenzioni di rimanere fedeli ad uno particolare "stile di programmazione".
 
 Alcuni fra i linter più conosciuti:
 
@@ -281,7 +281,7 @@ Alcuni fra i linter più conosciuti:
 - [JSHint](http://www.jshint.com/) -- molte più opzioni di JSLint.
 - [ESLint](http://eslint.org/) -- il più recente.
 
-Tutti quelli elecanti svolgono molto bene il lavoro. L'autore utilizza [ESLint](http://eslint.org/).
+Tutti quelli elencati svolgono molto bene il lavoro. L'autore utilizza [ESLint](http://eslint.org/).
 
 Molti linter sono integrati negli editor più popolari: è sufficiente attivare il plugin e configurare lo stile.
 
