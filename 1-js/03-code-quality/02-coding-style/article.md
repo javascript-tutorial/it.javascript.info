@@ -1,12 +1,12 @@
-# Coding Style
+# Stile di programmazione
 
-Our code must be as clean and easy to read as possible.
+Il codice dovrebbe essere il più pulito e leggibile possibile.
 
-That is actually the art of programming -- to take a complex task and code it in a way that is both correct and human-readable.
+Questa è l'arte della programmazione -- programmare funzionalità complesse che siano allo stesso tempo correte e leggibili.
 
-## Syntax
+## Sintassi
 
-Here is a cheatsheet with some suggested rules (see below for more details):
+Qui una lista di alcune regole da seguire (guardare sotto per maggiori dettagli):
 
 ![](code-style.png)
 <!--
@@ -34,15 +34,15 @@ if (n < 0) {
 
 -->
 
-Now let's discuss the rules and reasons for them in detail.
+Adesso discutiamo le regole e le rispettive motivazioni nel dettaglio.
 
-```warn header="Irony Detected"
-Nothing is set in stone here. These are style preferences, not religious dogmas.
+```warn header="Ironia delle regole"
+Niente di quello che stiamo dicendo è scolpito sulla pietra. Sono solo delle preferenze, non dei dogmi religiosi.
 ```
 
-### Curly Braces
+### Parentesi graffe
 
-In most JavaScript projects curly braces are written in "Egyptian" style with the opening brace on the same line as the corresponding keyword -- not on a new line. There should also be a space before the opening bracket, like this:
+In molti progetti JavaScript le parentesi graffe sono scritte con lo stile "Egiziano" con la parentesi aperta nella stessa linea della keyword -- non in una nuova linea. Dovrebbe comunque esserci spazio prima della parentesi aperta, come in questo esempio:
 
 ```js
 if (condition) {
@@ -52,9 +52,9 @@ if (condition) {
 }
 ```
 
-A single-line construct is an important edge case. Should we use brackets at all? If yes, then where?
+Un caso limite è un costrutto con una singola linea. Dovremmo comunque usare le parentesi? Se si come?
 
-Here are the annotated variants so you can judge their readability for yourself:
+Qui ci sono un paio di varianti, cosi potete giudicare voi stessi:
 
 <!--
 ```js no-beautify
@@ -72,27 +72,27 @@ if (n < 0) {
 -->
 ![](figure-bracket-style.png)
 
-In summary:
-- For very short code, one line is acceptable. For example: `if (cond) return null`.
-- But a separate line for each statement in brackets is usually easier to read.
+In sintesi:
+- Per codici molto brevi, una sola riga è accettabile. Ad esempio:  `if (cond) return null`.
+- Ma una singola riga per ogni istruzione è generalmente più facile da leggere.
 
-### Line Length
+### Lunghezza della riga
 
-No one likes to read a long horizontal line of code. It's best practice to split them up and limit the length of your lines.
+Nessuno ama leggere lunghe righe orrizontali di codice. Una buona norma è dividere le righe più lunghe in qualcosa di più breve.
 
-The maximum line length should be agreed upon at the team-level. It's usually 80 or 120 characters.
+La lunghezza massima dovrebbe essere accordata a livello di team. Solitamente tra gli 80-120 caratteri.
 
-### Indents
+### Indentazione
 
-There are two types of indents:
+Ci sono due tipi di indentazione:
 
-- **Horizontal indents: 2 or 4 spaces.**
+- **Indentazione orrizzontale: 2 o 4 spazi.**
 
-    A horizontal indentation is made using either 2 or 4 spaces or the "Tab" symbol. Which one to choose is an old holy war. Spaces are more common nowadays.
+    Un indentazione orrizzontale è realizzata usando 2 o 4 spazi oppure il tasto "Tab". Quale scegliere è una guerra che dura da anni. Ad oggi gli spazi sono i più comuni.
 
-    One advantage of spaces over tabs is that spaces allow more flexible configurations of indents than the "Tab" symbol.
+    Un vantaggio degli spazi contro i tabs è che gli spazi permettono configurazioni più flessibili.
 
-    For instance, we can align the arguments with the opening bracket, like this:
+    Ad esempio, possiamo allineare gli argomenti con l'apertura della parentesi, come qui:
 
     ```js no-beautify
     show(parameters,
@@ -105,9 +105,9 @@ There are two types of indents:
     }
     ```
 
-- **Vertical indents: empty lines for splitting code into logical blocks.**
+- **Indentazione verticale: righe vuote per divididere il codice in blocchi logici.**
 
-    Even a single function can often be divided into logical blocks. In the example below, the initialization of variables, the main loop and returning the result are split vertically:
+    Anche una singola funzione può essere divisa in più blocchi logici. Nell'esempio sotto, l'inizializzazione delle variabili, il corpo del ciclo e il ritorno del risultato sono divisi verticalmente:
 
     ```js
     function pow(x, n) {
@@ -121,23 +121,23 @@ There are two types of indents:
     }
     ```
 
-    Insert an extra newline where it helps to make the code more readable. There should not be more than nine lines of code without a vertical indentation.
+    Inserire una nuova riga vuota aiuta a rendere il codice più leggibile. Non dovrebbero esserci più di nove righe di codice senza un indentazione verticale.
 
-### Semicolons
+### Punto e virgola
 
-A semicolon should be present after each statement, even if it could possibly be skipped.
+Un punto e virgola dovrebbe essere presente alla fine di ogni istruzione, anche se potrebbe essere evitata.
 
-There are languages where a semicolon is truly optional and it is rarely used. In JavaScript, though, there are cases where a line break is not interpreted as a semicolon, leaving the code vulnerable to errors.
+Esistono linguaggi in cui il punto e virgola sono realmente opzionali e possono essere evitati. In JavaScript, esistono casi in cui un "a capo" non viene interpretato come un punto e virgola, lasciando quindi il codice vulnerabile agli errori.
 
-As you become more mature as a programmer, you may choose a no-semicolon style like [StandardJS](https://standardjs.com/). Until then, it's best to use semicolons to avoid possible pitfalls.
+Quando diventerete più maturi come programmatori, potreste scegliere lo stile senza punto e virgola [StandardJS](https://standardjs.com/). Fino a quel momento la miglio scelta è di inserirla alla fine di ogni istruzione per evitare errori.
 
-### Nesting Levels
+### Livelli di annidamento
 
-Try to avoid nesting code too many levels deep.
+Nel codice vanno evitati elevati liveeli di annidamento.
 
-Sometimes it's a good idea to use the ["continue"](info:while-for#continue) directive in a loop to avoid extra nesting.
+Qualche volta torna utile la direttiva ["continue"](info:while-for#continue) per evitare annidamenti extra.
 
-For example, instead of adding a nested `if` conditional like this:
+Ad esempio, invece che aggiungere un `if`:
 
 ```js
 for (let i = 0; i < 10; i++) {
@@ -147,7 +147,7 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-We can write:
+Possiamo scriverlo come:
 
 ```js
 for (let i = 0; i < 10; i++) {
@@ -156,11 +156,11 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
-A similar thing can be done with `if/else` and `return`.
+Una cosa simile può essere risolta con `if/else` e `return`.
 
-For example, two constructs below are identical.
+Ad esempio, i due costrutti sotto sono identici.
 
-Option 1:
+Opzione 1:
 
 ```js
 function pow(x, n) {
@@ -178,7 +178,7 @@ function pow(x, n) {
 }
 ```
 
-Option 2:
+Opzione 2:
 
 ```js
 function pow(x, n) {
@@ -197,13 +197,13 @@ function pow(x, n) {
 }
 ```
 
-The second one is more readable because the "edge case" of `n < 0` is handled early on. Once the check is done we can move on to the "main" code flow without the need for additional nesting.
+La seconda opzione è molto più leggibile perché il "caso limite" `n < 0` viene gestito in anticipo. Dopo aver eseguito il controllo possiamo proseguire con il flusso principale senza doverci preoccupare di ulteriori casi di annidamento.
 
-## Function Placement
+## Posizionamento delle funzioni
 
-If you are writing several "helper" functions and the code that uses them, there are three ways to organize the functions.
+Se state scrivento molte funzioni "ausiliarie", ci sono tre modi per organizziarle nel codice.
 
-1. Functions declared above the code that uses them:
+1. Dichiarare le funzioni sopra il codice che le utilizza:
 
     ```js
     // *!*function declarations*/!*
@@ -224,7 +224,7 @@ If you are writing several "helper" functions and the code that uses them, there
     setHandler(elem);
     walkAround();
     ```
-2. Code first, then functions
+2. Prima il codice, poi le funzioni:
 
     ```js
     // *!*the code which uses the functions*/!*
@@ -245,54 +245,54 @@ If you are writing several "helper" functions and the code that uses them, there
       ...
     }
     ```
-3. Mixed: a function is declared where it's first used.
+3. Mix: una funzione viene dichiarata nel punto in cui viene utilizzata la prima volta.
 
-Most of time, the second variant is preferred.
+Nella maggioranza dei casi si preferisce la seconda opzione.
 
-That's because when reading code, we first want to know *what it does*. If the code goes first, then it provides that information. Then, maybe we won't need to read the functions at all, especially if their names are descriptive of what they actually do.
+Questo perché quando leggiamo il codice vogliamo prima di tutto sapere *cosa fa*. Mettendo prima il codice possiamo fornire queste informazioni. Successivamente, potrebbe non essere necessario leggere le funzioni, soprattutto se i loro nomi sono autodescrittivi.
 
-## Style Guides
+## Guida di stile
 
-A style guide contains general rules about "how to write" code, e.g. which quotes to use, how many spaces to indent, where to put line breaks, etc. A lot of minor things.
+Una guida di stile contiene  regole generali riguardo a "come scrivere" il codice, ad esempio quali apici utilizzare, di quanti spazi indentare, quando andare a capo, etc. Molti altri dettagli.
 
-When all members of a team use the same style guide the code tends looks uniform, regardless of which team member wrote it.
+Quando tutti i membri del team utilizzano lo stesso stile tende ad essere uniforme.
 
-Of course, a team can always write their own style guide. Most of the time though, there's no need to. There are many existing tried and true options to choose from, so adopting one of these is usually your best bet.
+Certamente, un team può utilizzare il proprio stile guida. Molte volte non serve. Ci sono moltre opzioni tra cui scegliere, quindi scegliere tra una di queste generalmente è la scelta migliore.
 
-Some popular choices:
+Alcune delle scelte più popolari:
 
 - [Google JavaScript Style Guide](https://google.github.io/styleguide/javascriptguide.xml)
 - [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 - [Idiomatic.JS](https://github.com/rwaldron/idiomatic.js)
 - [StandardJS](https://standardjs.com/)
-- (plus many more)
+- (e molte altre)
 
-If you're a novice developer, start with the cheatsheet at the beginning of this chapter. Once you've mastered that you can browse other style guides to pick up common principles and decide which one you like best.
+Se sei un nuovo sviluppatore, inizia con i consigli di questo capitolo. Quando avrai appreso bene lo stile potrai cercare quello che più ti appartiene.
 
-## Automated Linters
+## Pulitori automatizzati
 
-Linters are tools that can automatically check the style of your code and make suggestions for refactoring.
+I linters sono strumenti che controllano automaticamente lo stile del codice e vi danno consigli su come sistemarlo.
 
-The great thing about them is that style-checking can also find some bugs, like typos in variable or function names. Because of this feature, installing a linter is recommended even if you don't want to stick to one particular "code style".
+La miglior cosa di questi strumenti è che il controllo dello stile in qualche occasione può rilevare dei bug, ad esempio degli errori di battitura nei nomi delle funzioni. Proprio per queste sue caratteristiche, installare un linter è fortemente consigliato anche se non avete intenzioni di rimanere fedeli ad uno particolare "stiel di programmazione".
 
-Here are the most well-known linting tools:
+Alcuni fra i linter più conosciuti:
 
-- [JSLint](http://www.jslint.com/) -- one of the first linters.
-- [JSHint](http://www.jshint.com/) -- more settings than JSLint.
-- [ESLint](http://eslint.org/) -- probably the newest one.
+- [JSLint](http://www.jslint.com/) -- uno dei primi linter.
+- [JSHint](http://www.jshint.com/) -- molte più opzioni di JSLint.
+- [ESLint](http://eslint.org/) -- il più recente.
 
-All of them can do the job. The author uses [ESLint](http://eslint.org/).
+Tutti quelli elecanti svolgono molto bene il lavoro. L'autore utilizza [ESLint](http://eslint.org/).
 
-Most linters are integrated with many popular editors: just enable the plugin in the editor and configure the style.
+Molti linter sono integrati negli editor più popolari: è sufficiente attivare il plugin e configurare lo stile.
 
-For instance, for ESLint you should do the following:
+Ad esempio, per ESLint dovreste seguire quanto segue:
 
-1. Install [Node.JS](https://nodejs.org/).
-2. Install ESLint with the command `npm install -g eslint` (npm is a JavaScript package installer).
-3. Create a config file named `.eslintrc` in the root of your JavaScript project (in the folder that contains all your files).
-4. Install/enable the plugin for your editor that integrates with ESLint. The majority of editors have one.
+1. Installare [Node.JS](https://nodejs.org/).
+2. Installare ESLint con il comando `npm install -g eslint` (npm è package installer di JavaScript).
+3. Create un file di configurazione e rinominatelo `.eslintrc` nella root del vostro progetto JavaScript (la cartella che contiene tutti i file).
+4. Installa/abilita il plugin per il tuo editor per integrare ESLint. La maggior parte degli editor ne ha uno.
 
-Here's an example of an `.eslintrc` file:
+Qui un esempio di di un file `.eslintrc`:
 
 ```js
 {
@@ -309,16 +309,16 @@ Here's an example of an `.eslintrc` file:
 }
 ```
 
-Here the directive `"extends"` denotes that the configuration is based on the "eslint:recommended" set of settings. After that, we specify our own.
+La direttiva `"extends"` indica che la configurazione è basata sulla lista dei setting "eslint:recommended". Dopodiché potremo specificare il nostro stile personale.
 
-It is also possible to download style rule sets from the web and extend them instead. See <http://eslint.org/docs/user-guide/getting-started> for more details about installation.
+E' anche possible scaricare un set di regole dal web ed estenderle a nostro piacimento. Vedi <http://eslint.org/docs/user-guide/getting-started> per maggiori dettagli riguardo l'installazione.
 
-Also certain IDEs have built-in linting, which is convenient but not as customizable as ESLint.
+Molti IDE hanno dei linter integrati, che sono comodi ma non sono editabili come ESLint.
 
-## Summary
+## Riepilogo
 
-All syntax rules described in this chapter (and in the style guides referenced) aim to increase the readability of your code, but all of them are debatable.
+Tutte le regole sintattiche descritte in questo capitolo (e nei riferimenti dei vari stili di programmazione) aiutano ad incrementare la leggibilità del codice, ma sono tutti contestabili.
 
-When we think about writing "better" code, the questions we should ask are, "What makes the code more readable and easier to understand?" and "What can help us avoid errors?" These are the main things to keep in mind when choosing and debating code styles.
+Quando stiamo pensando a come scrivere codice "migliore", la domanda dovrebbe essere "Cosa rende il codice più leggibile e facile da capire?" e "Cosa può aiutarmi ad evitare gli errori?". Queste sono le principali cose da tenere a mente quando stiamo cercando di scegliere uno stile guida.
 
-Reading popular style guides will allow you to keep up to date with the latest ideas about code style trends and best practices.
+Leggere fra gli stili più popolari vi consentirà di tenervi aggiornati con le ultime idee riguardo gli stili di programmazione e le best practices.

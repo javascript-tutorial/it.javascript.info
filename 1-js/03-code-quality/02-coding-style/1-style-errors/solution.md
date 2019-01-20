@@ -1,5 +1,5 @@
 
-You could note the following:
+Avrete notato:
 
 ```js no-beautify
 function pow(x,n)  // <- no space between arguments
@@ -23,7 +23,7 @@ else // <- could write it on a single line like "} else {"
 }
 ```
 
-The fixed variant:
+La variante sistemata:
 
 ```js
 function pow(x, n) {
