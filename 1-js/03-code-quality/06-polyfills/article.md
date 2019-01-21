@@ -1,57 +1,57 @@
 
 # Polyfills
 
-The JavaScript language steadily evolves. New proposals to the language appear regularly, they are analyzed and, if considered worthy, are appended to the list at <https://tc39.github.io/ecma262/> and then progress to the [specification](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
+Il linguaggio JavaScript si evolte costantemente. Nuove proposte per il linguaggio arrivano regolarmente, vengono analizzatte, e successivamente se ritenute valide vengono aggiunte alla lista <https://tc39.github.io/ecma262/> fino a diventare delle [specifiche](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
 
-Teams behind JavaScript engines have their own ideas about what to implement first. They may decide to implement proposals that are in draft and postpone things that are already in the spec, because they are less interesting or just harder to do.
+I team che stanno dietro il motore di JavaScript hanno le loro personali idee riguardo cosa implementare. Potrebbero quindi decidere di implementare delle proposte recenti e posticipare quelle più vecchie a causa di difficoltà nell'implementazione.
 
-So it's quite common for an engine to implement only the part of the standard.
+Quindi per un motore di script è naturale implementare solo le cose che si trovano nello standard.
 
-A good page to see the current state of support for language features is <https://kangax.github.io/compat-table/es6/> (it's big, we have a lot to study yet).
+Se si vuole rimanere aggiornati riguardo lo stato di supporto delle caratteristiche si può controllare la pagina <https://kangax.github.io/compat-table/es6/> (è molt grande, dovremmo studiare ancora molto).
 
 ## Babel
 
-When we use modern features of the language, some engines may fail to support such code. Just as said, not all features are implemented everywhere.
+Quando utilizziamo caratteristiche moderne del linguaggio, alcuni motori potrebbero non supportarle. Infatti, non tutte le caratteristiche sono implementate ovunque.
 
-Here Babel comes to the rescue.
+Qui Babel ci viene in soccorso.
 
-[Babel](https://babeljs.io) is a [transpiler](https://en.wikipedia.org/wiki/Source-to-source_compiler). It rewrites modern JavaScript code into the previous standard.
+[Babel](https://babeljs.io) è un [transpiler](https://en.wikipedia.org/wiki/Source-to-source_compiler). Riscrive il codice da JavaScript moderno ad uno standard precedente.
 
-Actually, there are two parts in Babel:
+Babel è composto da due parti:
 
-1. First, the transpiler program, which rewrites the code. The developer runs it on their own computer. It rewrites the code into the older standard. And then the code is delivered to the website for users. Modern project build system like [webpack](http://webpack.github.io/) or [brunch](http://brunch.io/) provide means to run transpiler automatically on every code change, so that doesn't involve any time loss from our side.
+1. Primo, il programma che esegue la traduzione, che riscrive quindi il codice. Lo sviuppatore lo esegue sul computer personale. Questo si occuperà di tradurre il codice nei vecchi standard. Questo verrà poi fornito al sito per gli utenti. Esistono dei progetti di sistemi come [webpack](http://webpack.github.io/) o [brunch](http://brunch.io/) che si occupano di eseguire la traduzione ad ogni cambiamente, evitando perdite di tempo al programmatore.
 
-2. Second, the polyfill.
+2. Secondo, il polyfill.
 
-    The transpiler rewrites the code, so syntax features are covered. But for new functions we need to write a special script that implements them. JavaScript is a highly dynamic language, scripts may not just add new functions, but also modify built-in ones, so that they behave according to the modern standard.
+    Il transpiler riscrive il codice, quindi la sintassi utilizzata è riconosciuta. Ma per le nuove funzionalità abbiamo bisogno di scrivere uno speciale script che le implementi. JavaScript è un linguaggio altamente dinamico, gli script potrebbero non solo aggiungere nuove funzionalità, ma modificare anche quelle integrate, queste devono quindi essere conformi allo standard.
 
-    There's a term "polyfill" for scripts that "fill in" the gap and add missing implementations.
+    Esiste un termine "polyfill" per gli script che "riempiono" il vuoto aggiungendo funzionalità mancanti.
 
-    Two interesting polyfills are:
-    - [babel polyfill](https://babeljs.io/docs/usage/polyfill/) that supports a lot, but is big.
-    - [polyfill.io](http://polyfill.io) service that allows to load/construct polyfills on-demand, depending on the features we need.
+    Due polyfill importanti sono:
+    - [babel polyfill](https://babeljs.io/docs/usage/polyfill/) che ne supporta molti, ma è molto pesante.
+    - [polyfill.io](http://polyfill.io) servizio che consente di caricare costrutti polyfills, in base alle nostre necessità.
 
-So, we need to setup the transpiler and add the polyfill for old engines to support modern features.
+Quindi è necessario settare il transplier e aggiungere polyfill per i vecchi motori di JavaScript, per far si che supportino le caratteristiche moderne.
 
-If we orient towards modern engines and do not use features except those supported everywhere, then we don't need to use Babel.
+Se ci spostiamo nella direzione dei moderni motori e non utilizziamo altre caratteristiche se non quelle supportate ovunque, allora non abbiamo bisogno di Babel.
 
-## Examples in the tutorial
+## Esempi nel tutorial
 
 
 ````online
-Most examples are runnable at-place, like this:
+Molti esempi sono eseguibili sul posto, come questi:
 
 ```js run
 alert('Press the "Play" button in the upper-right corner to run');
 ```
 
-Examples that use modern JS will work only if your browser supports it.
+Gli esempio che utilizzano il moderno JS funzioneranno solo se il vostr browser li supporta.
 ````
 
 ```offline
-As you're reading the offline version, examples are not runnable. But they usually work :)
+Se satate leggendo la versione offline, gli esempi non sono eseguibili. Ma solitamente funzionano :)
 ```
 
-[Chrome Canary](https://www.google.com/chrome/browser/canary.html) is good for all examples, but other modern browsers are mostly fine too.
+[Chrome Canary](https://www.google.com/chrome/browser/canary.html) è ottimo per tutti gli esempi, ma vanno bene anche gli altri browser moderni.
 
-Note that on production we can use Babel to translate the code into suitable for less recent browsers, so there will be no such limitation, the code will run everywhere.
+Da notare che in produzione possiamo utilizzare Babel per tradurre il codice moderno in codice adatto a tutti i browser, senza alcune limitazioni, il codice eseguirà ovunque.

@@ -1,14 +1,14 @@
-The test demonstrates one of the temptations a developer meets when writing tests.
+Il test dimostra una delle tentazion che uno sviluppatore potrebbe incontrare mentre scrive dei test.
 
-What we have here is actually 3 tests, but layed out as a single function with 3 asserts.
+Quello che abbiamo qui sono 3 test, ma sono stati scritti come una singola funzione con 3 assunzioni.
 
-Sometimes it's easier to write this way, but if an error occurs, it's much less obvious what went wrong.
+Qualche volta può risultare più semplice scrivere in questo modo, ma in caso di errori, risulta molto meno ovvio cosa è andato storto.
 
-If an error happens inside a complex execution flow, then we'll have to figure out the data at that point. We'll actually have to *debug the test*.
+Se si genera un errore all'interno di un flusso d'esecuzione complesso, dovremmo controllare ogni dato. Saremmo costretti a *debuggare il test*.
 
-It would be much better to break the test into multiple `it` blocks with clearly written inputs and outputs.
+Una scelta migliore potrebbe essere di rompere i test in più `it` scrivendo chiaramente gli inpute gli output.
 
-Like this:
+Come qui:
 ```js
 describe("Raises x to power n", function() {
   it("5 in the power of 1 equals 5", function() {
@@ -25,9 +25,9 @@ describe("Raises x to power n", function() {
 });
 ```
 
-We replaced the single `it` with `describe` and a group of `it` blocks. Now if something fails we would see clearly what the data was.
+Rimpiazziamo quindi il singolo `it` con `describe` e creiamo un gruppo di blocchi `it`. Ora se qualche test fallisce saremmo in grado di vedere chiaramente quale.
 
-Also we can isolate a single test and run it in standalone mode by writing `it.only` instead of `it`:
+Possiamo anche isolare un singolo test ed eseguirlo in solitaria scrivendo `it.only` piuttosto di `it`:
 
 
 ```js
