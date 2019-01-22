@@ -1,4 +1,4 @@
-Just loop over the object and `return false` immediately if there's at least one property.
+E' sufficiente eseguire un ciclo e `return false` (ritornare falso) se l'oggetto contiene almeno una proprietà.
 
 ```js
 function isEmpty(obj) {

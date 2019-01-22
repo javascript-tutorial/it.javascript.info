@@ -1,8 +1,8 @@
-Sure, it works, no problem.
+Certo, funziona senza problemi.
 
-The `const` only protects the variable itself from changing. 
+Il `const` protegge solo la variabile da cambiamenti. 
 
-In other words, `user` stores a reference to the object. And it can't be changed. But the content of the object can.
+In altre parole, `user` memorizza un riferimento all'oggetto. Questo non può cambiare. Ma l'oggetto contenuto non ha nessun vincolo.
 
 ```js run
 const user = {

@@ -2,11 +2,11 @@ importance: 3
 
 ---
 
-# Multiply numeric properties by 2
+# Moltiplica le proprietà numeriche per 2
 
-Create a function `multiplyNumeric(obj)` that multiplies all numeric properties of `obj` by `2`.
+Crea una funzione `multiplyNumeric(obj)` che moltiplica tutte le prprietà numeriche di `obj` per `2`.
 
-For instance:
+Ad esempio:
 
 ```js
 // before the call
@@ -26,8 +26,8 @@ menu = {
 };
 ```
 
-Please note that `multiplyNumeric` does not need to return anything. It should modify the object in-place.
+Nota che `multiplyNumeric` non deve ritornare nulla. Deve solamente modificare l'oggetto.
 
-P.S. Use `typeof` to check for a number here.
+P.S. Usa `typeof` per controllare il tipo.
 
 

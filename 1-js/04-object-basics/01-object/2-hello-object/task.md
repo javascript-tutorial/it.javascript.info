@@ -4,11 +4,11 @@ importance: 5
 
 # Hello, object
 
-Write the code, one line for each action:
+Scrivi il codice, una riga per ogni azione:
 
-1. Create an empty object `user`.
-2. Add the property `name` with the value `John`.
-3. Add the property `surname` with the value `Smith`.
-4. Change the value of the `name` to `Pete`.
-5. Remove the property `name` from the object.
+1. Crea un oggetti vuoto `user`.
+2. Aggiungi la proprietà `name` con valore `John`.
+3. Aggiungi la proprietà `surname` con valore `Smith`.
+4. Cambia il valore di `name` con `Pete`.
+5. Rimuovi la proprietà `name` dall'oggetto.
 
