@@ -1,7 +1,6 @@
 # Il Browser come ambiente, specifiche
 
 Il linguaggio JavaScript è stato inizialmente creato per i browser. Da allora, si è evoluto fino a diventare un linguaggio adatto a molte piattaforme e differenti usi.
-<!-- The JavaScript language was initially created for web browsers. Since then, it has evolved and become a language with many uses and platforms. -->
 
 La piattaforma di utilizzo può essere un browser, un web-server, una lavatrice o un qualunque altro tipo di *host*. Ognuno di essi fornisce delle funzionalità specifiche alla piattaforma stessa. Secondo la specifica JavaScript questa è la definizione di *ambiente host*
 
