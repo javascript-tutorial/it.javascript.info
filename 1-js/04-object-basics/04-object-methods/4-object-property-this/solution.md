@@ -1,6 +1,6 @@
-**Answer: an error.**
+**Risposta: un errore.**
 
-Try it:
+Provate:
 ```js run
 function makeUser() {
   return {
@@ -14,15 +14,15 @@ let user = makeUser();
 alert( user.ref.name ); // Error: Cannot read property 'name' of undefined
 ```
 
-That's because rules that set `this` do not look at object literals. 
+Questo avviene perché le regole che impostano `this` non guardano agli oggetti letterali. 
 
-Here the value of `this` inside `makeUser()` is `undefined`, because it is called as a function, not as a method.
+Qui il valore di `this` dentro `makeUser()` è `undefined`, perchè viene chiamato come una funzione, non come un metodo.
 
-And the object literal itself has no effect on `this`. The value of `this` is one for the whole function, code blocks and object literals do not affect it.
+E gli oggetti letterali non hanno alcun effetto su `this`. Il valore di `this` è unico per tutta la funzione, quindi i blocchi di codice e gli oggetti letterali non hanno alcuna importanza.
 
-So `ref: this` actually takes current `this` of the function.
+Quindi `ref: this` prende il `this` della funzione.
 
-Here's the opposite case:
+Qui abbiamo il caso opposto:
 
 ```js run
 function makeUser() {
@@ -41,6 +41,6 @@ let user = makeUser();
 alert( user.ref().name ); // John
 ```
 
-Now it works, because `user.ref()` is a method. And the value of `this` is set to the object before dot `.`.
+Ora funziona, perché `user.ref()` è un metodo. E il valore di `this` viene impostato all'oggetto prima del punto `.`.
 
 

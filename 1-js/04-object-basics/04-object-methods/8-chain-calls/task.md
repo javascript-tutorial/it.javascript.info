@@ -2,9 +2,9 @@ importance: 2
 
 ---
 
-# Chaining
+# Concatenazione
 
-There's a `ladder` object that allows to go up and down:
+Qui abbiamo un oggetto `ladder` che ci consente di salire e scendere:
 
 ```js
 let ladder = {
@@ -21,7 +21,7 @@ let ladder = {
 };
 ```
 
-Now, if we need to make several calls in sequence, can do it like this:
+Ora, se abbiamo bisogno di eseguire più chiamate in sequenza, possiamo:
 
 ```js
 ladder.up();
@@ -30,10 +30,10 @@ ladder.down();
 ladder.showStep(); // 1
 ```
 
-Modify the code of `up` and `down` to make the calls chainable, like this:
+Modificare il codice di `up` e `down` per rendere le chiamate concatenabili, come in questo esempio:
 
 ```js
 ladder.up().up().down().showStep(); // 1
 ```
 
-Such approach is widely used across JavaScript libraries.
+Questo approcio è largamente utilizzato dalle librerie JavaScript.

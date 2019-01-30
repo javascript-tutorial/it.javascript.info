@@ -2,11 +2,11 @@ importance: 3
 
 ---
 
-# Explain the value of "this"
+# Spiegate il valore di "this"
 
-In the code below we intend to call `user.go()` method 4 times in a row.
+Nel codice sotto vogliamo chiamare il metodo `user.go()`  volte di fila.
 
-But calls `(1)` and `(2)` works differently from `(3)` and `(4)`. Why?
+Ma le chiamate `(1)` e `(2)` funzionano diversamente da `(3)` e `(4)`. Perché?
 
 ```js run no-beautify
 let obj, method;

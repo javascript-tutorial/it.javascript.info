@@ -1,6 +1,6 @@
-**Error**!
+**Errore**!
 
-Try it:
+Provatelo:
 
 ```js run
 let user = {
@@ -11,19 +11,19 @@ let user = {
 (user.go)() // error!
 ```
 
-The error message in most browsers does not give understanding what went wrong.
+La maggior parte dei browser non vi darà informazioni necessarie per capire cosa è andato storto.
 
-**The error appears because a semicolon is missing after `user = {...}`.**
+**L'errore viene causato dalla mancanza di un punto e virgola dopo `user = {...}`.**
 
-JavaScript does not assume a semicolon before a bracket `(user.go)()`, so it reads the code like:
+JavaScript non inserisce automaticamente un punto e virgola prima di `(user.go)()`, quindi leggerà il codice in questo modo:
 
 ```js no-beautify
 let user = { go:... }(user.go)()
 ```
 
-Then we can also see that such a joint expression is syntactically a call of the object `{ go: ... }` as a function with the argument `(user.go)`. And that also happens on the same line with `let user`, so the `user` object has not yet even been defined, hence the error. 
+Possiamo anche vedere questa come una comune espressione, è sintatticamente una chiamata all'oggetto `{ go: ... }` come una funzione con argomento `(user.go)`. E questo avviene nella stessa riga di `let user`, quindi l'oggetto `user` non è ancora stato definito, quindi c'è un errore. 
 
-If we insert the semicolon, all is fine:
+Se inseriamo un punto e virgola, tutto funziona correttamente:
 
 ```js run
 let user = {
@@ -34,7 +34,7 @@ let user = {
 (user.go)() // John
 ```
 
-Please note that brackets around `(user.go)` do nothing here. Usually they setup the order of operations, but here the dot `.` works first anyway, so there's no effect. Only the semicolon thing matters.
+Da notare che le parentesi su `(user.go)` non fanno nulla. Solitamente servono ad organizzare l'ordine delle operazioni, in questo  caso è presente un `.` che verrebbe comunque eseguito per primo, non hanno quindi alcun effetto. L'unico errore stava nel punto e virgola.
 
 
 

@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Using "this" in object literal
+# Utilizzare "this" in un oggetto letterale
 
-Here the function `makeUser` returns an object.
+Qui la funzione `makeUser` ritorna un oggetto.
 
-What is the result of accessing its `ref`? Why?
+Qual'è il risultato dell'accesso a `ref`? Perché?
 
 ```js
 function makeUser() {
