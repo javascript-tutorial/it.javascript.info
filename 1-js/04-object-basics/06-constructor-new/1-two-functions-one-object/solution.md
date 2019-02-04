@@ -1,8 +1,8 @@
-Yes, it's possible.
+Si, è possibile.
 
-If a function returns an object then `new` returns it instead of `this`.
+Se una funzione ritorna un oggetto, questo verrà fornito alla `new` piuttosto che `this`.
 
-So they can, for instance, return the same externally defined object `obj`:
+Quindi, le due funzioni potrebbero ritornare un oggetto definito esternamente `obj`:
 
 ```js run no-beautify
 let obj = {};
