@@ -1,5 +1,5 @@
 
-Try running it:
+Provate ad eseguirlo:
 
 ```js run
 let str = "Hello";
@@ -9,23 +9,23 @@ str.test = 5; // (*)
 alert(str.test); 
 ```
 
-There may be two kinds of result:
+Potrebbero esserci due diversi risultati:
 1. `undefined`
-2. An error.
+2. Un errore.
 
-Why? Let's replay what's happening at line `(*)`:
+Perché? Proviamo ad esaminare cosa succede nella linea `(*)`:
 
-1. When a property of `str` is accessed, a "wrapper object" is created.
-2. The operation with the property is carried out on it. So, the object gets the `test` property.
-3. The operation finishes and the "wrapper object" disappears.
+1. Quando si prova ad accedere ad una proprietà di `str`, viene creato un "oggetto contenitore".
+2. L'operazione di accesso viene eseguito su questo. Quindi l'oggetto ottiene la proprietà `test`.
+3. L'operazione termina e "l'oggetto contenitore" viene distrutto.
 
-So, on the last line, `str` has no trace of the property. A new wrapper object for every object operation on a string.
+Quindi, nell'ultima riga di codice, `str` non possiede alcuna traccia di quella proprietà. Viene creato un nuovo oggetto per ogni operazione su un tipo stringa.
 
-Some browsers though may decide to further limit the programmer and disallow to assign properties to primitives at all. That's why in practice we can also see errors at line `(*)`. It's a little bit farther from the specification though.
+Alcuni browser potrebbero decidere di limitare ulteriormente le possibilità offerte al programmatore bloccando la possibilità di assegnare proprietà ai tipi primitivi. Questo è il motivo per cui potremmo anche visualizzare un errore alla riga `(*)`. Anche se questo comportamento non rispetta pienamente le specifiche offerte dal linguaggio.
 
-**This example clearly shows that primitives are not objects.**
+**Questo esempio mostra chiaramente che le variabili primitive non sono oggetti.**
 
-They just can not store data. 
+Le variabili di tipo primitivo infatti non possono memorizzare dati.
 
-All property/method operations are performed with the help of temporary objects.
+Qualsiasi proprietà/metodo viene eseguita con il supporto di un oggetto temporaneo.
 
