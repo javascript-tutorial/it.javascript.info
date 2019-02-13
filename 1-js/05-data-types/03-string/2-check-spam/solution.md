@@ -1,4 +1,4 @@
-To make the search case-insensitive, let's bring the stirng to lower case and then search:
+Per far si che la ricerca non si preoccupi del timbro delle lettere, portiamo l'intera stringa a lettere minuscole e poi eseguiamo la ricerca:
 
 ```js run
 function checkSpam(str) {
