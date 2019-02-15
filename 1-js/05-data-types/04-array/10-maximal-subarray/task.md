@@ -2,15 +2,15 @@ importance: 2
 
 ---
 
-# A maximal subarray
+# Il sotto-array massimo
 
-The input is an array of numbers, e.g. `arr = [1, -2, 3, 4, -9, 6]`.
+Come input si ha un array di numeri, ad esempio `arr = [1, -2, 3, 4, -9, 6]`.
 
-The task is: find the contiguous subarray of `arr` with the maximal sum of items.
+Il compito è: trovate il sotto-array contiguo di `arr` con la massima somma degli elementi.
 
-Write the function `getMaxSubSum(arr)` that will return that sum.
+Scrivete la funzione `getMaxSubSum(arr)` che ritorna quella somma.
 
-For instance: 
+Ad esempio: 
 
 ```js
 getMaxSubSum([-1, *!*2, 3*/!*, -9]) = 5 (the sum of highlighted items)
@@ -21,10 +21,10 @@ getMaxSubSum([*!*100*/!*, -9, 2, -3, 5]) = 100
 getMaxSubSum([*!*1, 2, 3*/!*]) = 6 (take all)
 ```
 
-If all items are negative, it means that we take none (the subarray is empty), so the sum is zero:
+Se tutti gli elementi sono negativi, significa che non prendiamo nulla (il sotto-array vuoto), quindi la somma è zero:
 
 ```js
 getMaxSubSum([-1, -2, -3]) = 0
 ```
 
-Please try to think of a fast solution: [O(n<sup>2</sup>)](https://en.wikipedia.org/wiki/Big_O_notation) or even O(n) if you can.
+Provate a pensare ad una soluzione rapida: [O(n<sup>2</sup>)](https://en.wikipedia.org/wiki/Big_O_notation) o addirittura O(n) se riuscite.

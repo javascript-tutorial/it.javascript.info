@@ -1,31 +1,31 @@
-# Arrays 
+# Array
 
-Objects allow you to store keyed collections of values. That's fine.
+Gli oggetti consentono la meorizzazione di una collezzione di valori con chiave.
 
-But quite often we find that we need an *ordered collection*, where we have a 1st, a 2nd, a 3rd element and so on. For example, we need that to store a list of something: users, goods, HTML elements etc. 
+Molto spesso abbiamo bisogno di una *collezione ordinata*, dove abbiamo un primo, un secondo, un terzo elemento e cosi via. Ad esempio, abbiamo bisogno di memorizzare una lista di cose: utenti, beni, elementi HTML etc.
 
-It is not convenient to use an object here, because it provides no methods to manage the order of elements. We can’t insert a new property “between” the existing ones. Objects are just not meant for such use.
+Non è conveniente utilizzare un oggetto per questo tipo di lavori, poiché non avremmo alcun metodo per gestire l'ordine degli elementi. Non possiamo inserire una nuova proprietà "tra" due già esistenti. Infatti gli oggetti non sono pensati per questo scopo.
 
-There exists a special data structure named `Array`, to store ordered collections. 
+Esistono delle speciali strutture dati chiamate `Array`, che consentono la memorizzazione di collezioni ordinate. 
 
-## Declaration
+## Dichiarazione
 
-There are two syntaxes for creating an empty array:
+Ci sono due differenti sintatti per la creazioni di un array vuoto:
 
 ```js
 let arr = new Array();
 let arr = [];
 ```
 
-Almost all the time, the second syntax is used. We can supply initial elements in the brackets:
+Nella maggioranza dei casi, la seconda sintassi è quella preferita. Possiamo già fornire degli elementi da inserire, all'interno delle parentesi:
 
 ```js
 let fruits = ["Apple", "Orange", "Plum"];
 ```
 
-Array elements are numbered, starting with zero.
+Gli elementi di un array sono numerati, a partire dallo zero.
 
-We can get an element by its number in square brackets:
+Possiamo ottenere un elemento tramite il suo numero di indice:
 
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
@@ -35,19 +35,19 @@ alert( fruits[1] ); // Orange
 alert( fruits[2] ); // Plum
 ```
 
-We can replace an element:
+Possiamo rimpiazzare un elemento:
 
 ```js
 fruits[2] = 'Pear'; // now ["Apple", "Orange", "Pear"]
 ```
 
-...Or add a new one to the array:
+...o aggiungerne uno nuovo:
 
 ```js
 fruits[3] = 'Lemon'; // now ["Apple", "Orange", "Pear", "Lemon"]
 ```
 
-The total count of the elements in the array is its `length`:
+Il contatore locale degli elementi dell'array è `length`:
 
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
@@ -55,7 +55,7 @@ let fruits = ["Apple", "Orange", "Plum"];
 alert( fruits.length ); // 3
 ```
 
-We can also use `alert` to show the whole array.
+Possiamo anche utilizzare `alert` per mostrare l'intero array.
 
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
@@ -63,9 +63,9 @@ let fruits = ["Apple", "Orange", "Plum"];
 alert( fruits ); // Apple,Orange,Plum
 ```
 
-An array can store elements of any type.
+Un array può memorizzare elementi di qualsiasi tipo.
 
-For instance:
+Ad esempio:
 
 ```js run no-beautify
 // mix of values
@@ -79,8 +79,8 @@ arr[3](); // hello
 ```
 
 
-````smart header="Trailing comma"
-An array, just like an object, may end with a comma:
+````smart header="Virgola pendente"
+Negli array, proprio come per gli oggetti, c'è la possibilità di terminare con una virgola:
 ```js 
 let fruits = [
   "Apple", 
@@ -89,46 +89,46 @@ let fruits = [
 ];
 ```
 
-The "trailing comma" style makes it easier to insert/remove items, because all lines become alike.
+La "virgola pendente" rende più semplice inserire/rimuovere elementi, perché tutte le linee seguono la stessa struttura.
 ````
 
 
-## Methods pop/push, shift/unshift
+## I metodi pop/push, shift/unshift
 
-A [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) is one of most common uses of an array. In computer science, this means an ordered collection of elements which supports two operations:
+Una [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) (coda) è una delle maggiori applicazioni di un array. In ambito informatico, questa è una collezione ordinata che consente due operazioni:
 
-- `push` appends an element to the end.
-- `shift` get an element from the beginning, advancing the queue, so that the 2nd element becomes the 1st.
+- `push` inserisce un elemento in coda.
+- `shift` per estrarre un elemento dalla testa della cda, e scorrere in avanti la lista, in questo modo il secondo elemento diventa il primo.
 
 ![](queue.png)
 
-Arrays support both operations.
+Gli array supportano entrambre le operazioni.
 
-In practice we meet it very often. For example, a queue of messages that need to be shown on-screen.
+Nella pratica non è strano incontrare questo "tipo" di array. Ad esempiom una coda di messaggi che devono essere mostrati a schermo.
 
-There's another use case for arrays -- the data structure named [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)). 
+Esiste un altro caso d'uso degli array -- la struttrura dati chiamata [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)). 
 
-It supports two operations:
+Questa supporta due operazioni:
 
-- `push` adds an element to the end.
-- `pop` takes an element from the end.
+- `push` aggiunge un elemento in coda.
+- `pop` estrae un elemento dalla coda.
 
-So new elements are added or taken always from the "end".
+Quindi gli elementi vengono sempre aggiunti o presi dalla "fine".
 
-A stack is usually illustrated as a pack of cards: new cards are added to the top or taken from the top:
+Uno stack viene spesso illustrato come un pacco di carte: le nuove carte vengono aggiunte sempre in cima o prese dalla cima:
 
 ![](stack.png)
 
-For stacks, the latest pushed item is received first, that's also called LIFO (Last-In-First-Out) principle. For queues, we have FIFO (First-In-First-Out).
+Per gli stack, l'ultimo elemento inserito viene prelevato per primo, questo comportamento viene definito LIFO (Last-In-First-Out). Nel caso delle code, il comportamento viene chiamato FIFO (First-In-First-Out).
 
-Arrays in JavaScript can work both as a queue and as a stack. They allow you to add/remove elements both to/from the beginning or the end. 
+Gli array in JavaScript possono implementare sia una queue che uno stack. C'è la possibilità di aggiungere/rimuovere elementi sia in cima che in coda.
 
-In computer science the data structure that allows it is called [deque](https://en.wikipedia.org/wiki/Double-ended_queue).
+In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/wiki/Double-ended_queue).
 
-**Methods that work with the end of the array:**
+**Metodi che operano sulla coda di un array:**
 
 `pop`
-: Extracts the last element of the array and returns it:
+: Estrae l'ultimo elemento dell'array e lo ritorna:
 
     ```js run
     let fruits = ["Apple", "Orange", "Pear"];
@@ -139,7 +139,7 @@ In computer science the data structure that allows it is called [deque](https://
     ```
 
 `push`
-: Append the element to the end of the array:
+: Inserisce l'elemento in coda all'array:
 
     ```js run
     let fruits = ["Apple", "Orange"];
@@ -149,12 +149,12 @@ In computer science the data structure that allows it is called [deque](https://
     alert( fruits ); // Apple, Orange, Pear
     ```
 
-    The call `fruits.push(...)` is equal to `fruits[fruits.length] = ...`.
+    La chiamata `fruits.push(...)` è equivalente a `fruits[fruits.length] = ...`.
 
-**Methods that work with the beginning of the array:**
+**Metodi che operano sulla testa dell'array:**
 
 `shift`
-: Extracts the first element of the array and returns it:
+: Estrae il primo elemento dell'array e lo ritorna:
 
     ```js
     let fruits = ["Apple", "Orange", "Pear"];
@@ -165,7 +165,7 @@ In computer science the data structure that allows it is called [deque](https://
     ```
 
 `unshift`
-: Add the element to the beginning of the array:
+: Aggiunge l'elemento in testa dell'array:
 
     ```js
     let fruits = ["Orange", "Pear"];
@@ -175,7 +175,7 @@ In computer science the data structure that allows it is called [deque](https://
     alert( fruits ); // Apple, Orange, Pear
     ```
 
-Methods `push` and `unshift` can add multiple elements at once:
+I metodi `push` e `unshift` possono aggiungere anche più elementi in una volta sola:
 
 ```js run
 let fruits = ["Apple"];
@@ -187,15 +187,15 @@ fruits.unshift("Pineapple", "Lemon");
 alert( fruits );
 ```
 
-## Internals
+## Internamente
 
-An array is a special kind of object. The square brackets used to access a property `arr[0]` actually come from the object syntax. Numbers are used as keys. 
+Un array è uno speciale tipo di oggetto. Le parentesi quadre vengono utilizzate per accedere alla proprietà `arr[0]`, questa sintassi deriva da quella utilizzata per gli oggetti. I numeri vengono utilizzati come chiave. 
 
-They extend objects providing special methods to work with ordered collections of data and also the `length` property. But at the core it's still an object.
+Inoltre estendono gli oggetti fornendo speciali metodi per operare ordinatamente su collezioni di dati, e contengono la proprietà `length`. Ma internamente rimane sempre un oggetto.
 
-Remember, there are only 7 basic types in JavaScript. Array is an object and thus behaves like an object. 
+Ricordate, ci sono solo 7 tipi di base in JavaScript. Gli array sono oggetti e si comportano come tali. 
 
-For instance, it is copied by reference:
+Ad esempio, vengono copiati per riferimento:
 
 ```js run
 let fruits = ["Banana"]
@@ -209,11 +209,11 @@ arr.push("Pear"); // modify the array by reference
 alert( fruits ); // Banana, Pear - 2 items now
 ```
 
-...But what makes arrays really  special is their internal representation. The engine tries to store its elements in the contiguous memory area, one after another, just as depicted on the illustrations in this chapter, and there are other optimizations as well, to make arrays work really fast.
+... Ma ciò che li rende realmente speciali è la loro rappresentazione interna. Il motore prova a memorizzare gli elementi in aree di memoria contigue, uno dopo l'altro, propri come nelle illustrazioni di questo capitolo, ci sono anche altre ottimizzazioni per rendere gli array molto veloci.
 
-But they all break if we quit working with an array as with an "ordered collection" and start working with it as if it were a regular object.
+Se iniziamo a trattare gli array come oggetti ordinari tutte le ottimizzazioni vengono a meno.
 
-For instance, technically we can do this:
+Ad esempio, tecnicamente possiamo fare:
 
 ```js
 let fruits = []; // make an array
@@ -223,47 +223,46 @@ fruits[99999] = 5; // assign a property with the index far greater than its leng
 fruits.age = 25; // create a property with an arbitrary name
 ```
 
-That's possible, because arrays are objects at their base. We can add any properties to them.
+Questo è possibile, perché gli array sono comunque degli oggetti. Possiamo anche aggiungere proprietà.
 
-But the engine will see that we're working with the array as with a regular object. Array-specific optimizations are not suited for such cases and will be turned off, their benefits disappear.
+Il motore si accorgerà che stiamo gli array come comuni oggetti. Le ottimizzazioni specifiche per gli array non sono studiate per questi casi, verranno quindi disattivate.
 
-The ways to misuse an array:
+I modi per "maltrattare" un array:
 
-- Add a non-numeric property like `arr.test = 5`. 
-- Make holes, like: add `arr[0]` and then `arr[1000]` (and nothing between them).
-- Fill the array in the reverse order, like `arr[1000]`, `arr[999]` and so on.
+- Aggiungere una proprietà non numerica, come `arr.test = 5`. 
+- Creare buchi: aggiungendo `arr[0]` e poi `arr[1000]` (lasciando spazio vuoto tra di loro).
+- Riempire l'array nell'ordine inverso, ad esempio `arr[1000]`, `arr[999]`.
 
-Please think of arrays as special structures to work with the *ordered data*. They provide special methods for that. Arrays are carefully tuned inside JavaScript engines to work with contiguous ordered data, please use them this way. And if you need arbitrary keys, chances are high that you actually require a regular object `{}`.
+E' molto conveniente pensare agli array come delle speciali strutture utili a lavorare con *dati ordinati*. Infatti contengono degli speciali metodi per poterli trattare. Inoltre sono attentamente ottimizzati dal motore JavaScript per lavorare con dati ordinati e memorizzati in posizioni contigue. Quindi se dovreste aver bisogno di utilizzare una proprietà con una chiave arbitraria, molto probabilmente un oggetto soddisferà maggiormente le vostre necessità.
 
 ## Performance
 
-Methods `push/pop` run fast, while `shift/unshift` are slow.
+I metodi `push/pop` vengono eseguiti rapidamente, mentre `shift/unshift` sono più lenti.
 
 ![](array-speed.png)
 
-Why is it faster to work with the end of an array than with its beginning? Let's see what happens during the execution:
+Perché è più veloce eseguire operazioni sulla coda degli array piuttosto che in testa? Andiamo a vedere cosa accade durante l'esecuzione:
 
 ```js
 fruits.shift(); // take 1 element from the start
 ```
 
-It's not enough to take and remove the element with the number `0`. Other elements need to be renumbered as well.
+Non è sufficiente prelevare e rimuovere l'elemento con l'indice `0`. Gli altri elementi dovranno essere rinumerati.
 
-The `shift` operation must do 3 things:
+L'operazione di `shift` deve seguire 3 passi:
 
-1. Remove the element with the index `0`.
-2. Move all elements to the left, renumber them from the index `1` to `0`, from `2` to `1` and so on.
-3. Update the `length` property.
+1. Rimuovere l'elemento con indice `0`.
+2. Spostare tutti gli elementi a sinistra, rinumerare gli indici da `1` a `0`, da `2` a `1` e cosi via.
+3. Aggiornare la propreità `length`.
 
 ![](array-shift.png)
 
-**The more elements in the array, the more time to move them, more in-memory operations.**
+**Maggiore sarà il numero di elementi, maggiore sarà il tempo richiesto, e maggiori saranno il numero di operazioni in memoria.**
 
-The similar thing happens with `unshift`: to add an element to the beginning of the array, we need first to move existing elements to the right, increasing their indexes.
+Una cosa simile accade con `unshift`: per aggiungere un elemento in testa all'array, abbiamo prima bisogno di spostare tutti gli elementi a destra e aggiornare gli indici.
+Invece con `push/pop`? Non richiedono lo spostamento di nulla in memoria. Per poter prelevare un elemento dalla coda, il metodo `pop` pulisce l'indirizzo e decrementa la `length`.
 
-And what's with `push/pop`? They do not need to move anything. To extract an element from the end, the `pop` method cleans the index and shortens `length`.
-
-The actions for the `pop` operation:
+Le azioni eseguite da `pop`:
 
 ```js
 fruits.pop(); // take 1 element from the end
@@ -271,13 +270,13 @@ fruits.pop(); // take 1 element from the end
 
 ![](array-pop.png)
 
-**The `pop` method does not need to move anything, because other elements keep their indexes. That's why it's blazingly fast.**
+**Il metodo `pop` non richiede spostamenti, perché ogni elemento mantiene il suo indice. Questo è il motivo per cui risulta essere un operazione molto veloce.**
 
-The similar thing with the `push` method.
+Una cosa simile accade con il metodo `push`.
 
-## Loops
+## Cicli
 
-One of the oldest ways to cycle array items is the `for` loop over indexes:
+Uno dei modi più utilizzati per eseguire cicli sugli elementi di un array è il `for` utilizzando gli indici:
 
 ```js run
 let arr = ["Apple", "Orange", "Pear"];
@@ -289,7 +288,7 @@ for (let i = 0; i < arr.length; i++) {
 }
 ```
 
-But for arrays there is another form of loop, `for..of`:
+Per gli array c'è un'altra forma di ciclo, `for..of`:
 
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
@@ -300,9 +299,9 @@ for (let fruit of fruits) {
 }
 ```
 
-The `for..of` doesn't give access to the number of the current element, just its value, but in most cases that's enough. And it's shorter.
+Il ciclo `for..of` non fornisce il numero dell'indice dell'elemento corrente, solo il suo valore, in molte situazioni questo è più che sufficiente. E più breve.
 
-Technically, because arrays are objects, it is also possible to use `for..in`:
+Tecnicamente, poiché gli array sono oggetti, è anche possibile utilizzare `for..in`:
 
 ```js run
 let arr = ["Apple", "Orange", "Pear"];
@@ -314,22 +313,22 @@ for (let key in arr) {
 }
 ```
 
-But that's actually a bad idea. There are potential problems with it:
+Non è comunque un ottima idea. Si possono verificare diversi errori:
 
-1. The loop `for..in` iterates over *all properties*, not only the numeric ones.
+1. Il ciclo `for..in` itera su *tutte le proprietà*, non solo su quelle numeriche.
 
-    There are so-called "array-like" objects in the browser and in other environments, that *look like arrays*. That is, they have `length` and indexes properties, but they may also have other non-numeric properties and methods, which we usually don't need. The `for..in` loop will list them though. So if we need to work with array-like objects, then these "extra" properties can become a problem.
+    Ci sono anche degli oggetti chiamati "array-like" (simili ad array) nei browser e in altri ambienti, che *assomigliano ad array*. Infatti come proprietà possiedono `length` e degli indici, ma allo stesso tempo contengono proprietà e metodi di tipo non numerico, di cui solitamente non abbiamo bisogno. Il ciclo `for..in` li passerà tutti. Quindi se stiamo utilizzando degli oggetti array-like, questi "extra" potrebbero rivelarsi un problema.
 
-2. The `for..in` loop is optimized for generic objects, not arrays, and thus is 10-100 times slower. Of course, it's still very fast. The speedup may matter only in bottlenecks or just irrelevant. But still we should be aware of the difference.
+2. Il ciclo `for..in` è ottimizzato per oggetti generici, non array, può risultare quindi 10-100 volte più lento. Ovviamente rimane comunque un operazione molto veloce. Può essere un problema solo in caso si verifichino ingorghi. 
 
-Generally, we shouldn't use `for..in` for arrays.
+Generalmente, non dovremmo utilizzare `for..in` per array.
 
 
-## A word about "length"
+## Una parola riguardo "length"
 
-The `length` property automatically updates when we modify the array. To be precise, it is actually not the count of values in the array, but the greatest numeric index plus one.
+La prorietà `length` si aggiorna automaticamente ad ogni modifica. Volendo essere precisi non ne rappresenta la lunghezza, ma l'indirizzo più grande più uno.
 
-For instance, a single element with a large index gives a big length:
+Ad esempio, un singolo elemento con un indirizzo molto alto fornisce una grande lunghezza:
 
 ```js run
 let fruits = [];
@@ -338,11 +337,11 @@ fruits[123] = "Apple";
 alert( fruits.length ); // 124
 ```
 
-Note that we usually don't use arrays like that. 
+Ovviamente questo non è il modo corretto di utilizzare un array. 
 
-Another interesting thing about the `length` property is that it's writable.
+Un'altra cosa interessante riguardo la proprietà `length` è che è sovra scrivibile.
 
-If we increase it manually, nothing interesting happens. But if we decrease it, the array is truncated. The process is irreversible, here's the example:
+Se provassimo ad incrementarla manualmente, non accadrebbe nulla di interessante. Se invece la decrementiamo, l'array verrà troncato. Il processo è irreversibile, vediamo questo esempio:
 
 ```js run
 let arr = [1, 2, 3, 4, 5];
@@ -354,22 +353,22 @@ arr.length = 5; // return length back
 alert( arr[3] ); // undefined: the values do not return
 ```
 
-So, the simplest way to clear the array is: `arr.length = 0;`.
+Quindi il modo più semplice per ripulire un array è: `arr.length = 0;`.
 
 
 ## new Array() [#new-array]
 
-There is one more syntax to create an array:
+C'è un ulteriore sintassi per creare un array:
 
 ```js
 let arr = *!*new Array*/!*("Apple", "Pear", "etc");
 ```
 
-It's rarely used, because square brackets `[]` are shorter. Also there's a tricky feature with it.
+Viene utilizzata raramente, le parentesi `[]` risultano più brevi. Anche se c'è una caratteristica interessante che va osservata.
 
-If `new Array` is called with a single argument which is a number, then it creates an array *without items, but with the given length*.
+Se utilizziamo `new Array` con un solo argomento di tipo numerico, allora verrà creato un array *vuoto, ma con lunghezza data*.
 
-Let's see how one can shoot themself in the foot:
+Quindi vediamo come ci si potrebbe sparare sui piedi:
 
 ```js run
 let arr = new Array(2); // will it create an array of [2] ?
@@ -379,13 +378,13 @@ alert( arr[0] ); // undefined! no elements.
 alert( arr.length ); // length 2
 ```
 
-In the code above, `new Array(number)` has all elements `undefined`.
+Nel codice sopra, `new Array(number)` ha tutti gli elementi `undefined`.
 
-To evade such surprises, we usually use square brackets, unless we really know what we're doing.
+Per evitare queste spiacevoli sorprese, solitamente si utilizzano le parentesi, senza doversi preoccupare di cosa stia accadendo.
 
-## Multidimensional arrays
+## Array multi-dimensionali
 
-Arrays can have items that are also arrays. We can use it for multidimensional arrays, to store matrices:
+Gli array possono contenere oggetti che sono a loro volta array. Possiamo quindi utilizzare questa proprietà per creare array multi-dimensionali, per memorizzare matrici:
 
 ```js run
 let matrix = [
@@ -399,9 +398,9 @@ alert( matrix[1][1] ); // the central element
 
 ## toString
 
-Arrays have their own implementation of `toString` method that returns a comma-separated list of elements.
+Gli array hanno una propria implementazione del metodo `toString`, il quale ritorna la lista degli elementi separati da una virgola.
 
-For instance:
+Ad esempio:
 
 
 ```js run
@@ -411,7 +410,7 @@ alert( arr ); // 1,2,3
 alert( String(arr) === '1,2,3' ); // true
 ```
 
-Also, let's try this:
+Proviamo anche:
 
 ```js run
 alert( [] + 1 ); // "1"
@@ -419,9 +418,9 @@ alert( [1] + 1 ); // "11"
 alert( [1,2] + 1 ); // "1,21"
 ```
 
-Arrays do not have `Symbol.toPrimitive`, neither a viable `valueOf`, they implement only `toString` conversion, so here `[]` becomes an empty string, `[1]` becomes `"1"` and `[1,2]` becomes `"1,2"`.
+Gli array non possiedono `Symbol.toPrimitive`, e nemmeno `valueOf`, implementano solamente la conversione `toString`, quindi `[]` diventa una stringa vuota, `[1]` diventa `"1"` e `[1,2]` diventa `"1,2"`.
 
-When the binary plus `"+"` operator adds something to a string, it converts it to a string as well, so the next step looks like this:
+Quando l'operatore di somma binaria `"+"` aggiunge qualcosa ad una stringa, converte tutto a stringa, quindi l'esempio di prima sarà equivalente a:
 
 ```js run
 alert( "" + 1 ); // "1"
@@ -429,11 +428,11 @@ alert( "1" + 1 ); // "11"
 alert( "1,2" + 1 ); // "1,21"
 ```
 
-## Summary
+## Riepilogo
 
-Array is a special kind of object, suited to storing and managing ordered data items.
+Gli array sono uno speciale tipo di oggetto, studiati per immagazzinare e gestire collezioni ordinate di dati.
 
-- The declaration:
+- La dichiarazione:
 
     ```js
     // square brackets (usual)
@@ -443,22 +442,22 @@ Array is a special kind of object, suited to storing and managing ordered data i
     let arr = new Array(item1, item2...);
     ```
 
-    The call to `new Array(number)` creates an array with the given length, but without elements.
+    La chiamata a `new Array(number)` crea un array con lunghezza data, ma senza elementi.
 
-- The `length` property is the array length or, to be precise, its last numeric index plus one. It is auto-adjusted by array methods. 
-- If we shorten `length` manually, the array is truncated.
+- La proprietà `length` è la lunghezza dell'array, in realtà per essere precisi, contiene l'indice dell'ultimo elemento più uno. Questo valore viene aggiornato automaticamente. 
+- Se decrementiamo manualmente `length`, l'array viene troncato.
 
-We can use an array as a deque with the following operations:
+Possiamo utilizzare un array come deque con le seguenti operazioni:
 
-- `push(...items)` adds `items` to the end.
-- `pop()` removes the element from the end and returns it.
-- `shift()` removes the element from the beginning and returns it.
-- `unshift(...items)` adds items to the beginning.
+- `push(...items)` aggiunge `items` in coda.
+- `pop()` rimuove un elemento dalla coda e lo ritorna.
+- `shift()` rimuove un elemento dalla testa e lo ritorna.
+- `unshift(...items)` aggiunge un elemento in testa.
 
-To loop over the elements of the array:
-  - `for (let i=0; i<arr.length; i++)` -- works fastest, old-browser-compatible.
-  - `for (let item of arr)` -- the modern syntax for items only,
-  - `for (let i in arr)` -- never use.
+Per eseguire un ciclo sugli elementi di un array:
+  - `for (let i=0; i<arr.length; i++)` -- elabora rapidamente, compatibile con i vecchi browser.
+  - `for (let item of arr)` -- la sintassi moderna utilizzate per ottenere l'elemento,
+  - `for (let i in arr)` -- mai utilizzata.
 
-We will return to arrays and study more methods to add, remove, extract elements and sort arrays in the chapter <info:array-methods>.
+Ritorneremo sugli array e studieremo più metodi per aggiungere, rimuovere,estrarre ed ordinare elementi nel capitolo <info:array-methods>.
 
