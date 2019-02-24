@@ -2,24 +2,24 @@ importance: 5
 
 ---
 
-# Create an extendable calculator
+# Create una calcolatrice estensibile
 
-Create a constructor function `Calculator` that creates "extendable" calculator objects.
+Create un costruttore `Calculator` che crei oggetti calcoltrice "estensibili".
 
-The task consists of two parts.
+Il compito consiste in due parti.
 
-1. First, implement the method `calculate(str)` that takes a string like `"1 + 2"` in the format "NUMBER operator NUMBER" (space-delimited) and returns the result. Should understand plus `+` and minus `-`.
+1. La priam parte, consiste nell'implementare il metodo `calculate(str)` che prenda una stringa come `"1 + 2"` nel formato "NUMERO operatore NUMERO" (delimitata da spazi) e ne ritorni il risultato. Dovrebbe interpretare sia `+` che `-`.
 
-    Usage example:
+    Esempio d'uso:
 
     ```js
     let calc = new Calculator;
 
     alert( calc.calculate("3 + 7") ); // 10
     ```
-2. Then add the method `addMethod(name, func)` that teaches the calculator a new operation. It takes the operator `name` and the two-argument function `func(a,b)` that implements it.
+2. Successivamente aggiungete il metodo `addMethod(name, func)` che ha lo scopo di insegnare alla calcolatrice una nuova operazione. Questo prende il nome dell'operatore `name` e i due argomenti della funzione `func(a,b)` che lo implementa.
 
-    For instance, let's add the multiplication `*`, division `/` and power `**`:
+    Ad esempio, proviamo ad aggiungere la moltiplicazione `*`, divisione `/` e la potenza `**`:
 
     ```js
     let powerCalc = new Calculator;
@@ -31,6 +31,6 @@ The task consists of two parts.
     alert( result ); // 8
     ```
 
-- No brackets or complex expressions in this task.
-- The numbers and the operator are delimited with exactly one space.
-- There may be error handling if you'd like to add it.
+- Non è richiesta la gestione delle parentesi o di operazioni complesse.
+- I numeri e l'operatore sono separati esattamente da un singolo carattere spaziatore.
+- Se ne hai voglia potresti provare ad aggiungere un minimo di gestione degli errori.

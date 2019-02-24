@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Sort objects
+# Riordinare oggetti
 
-Write the function `sortByName(users)` that gets an array of objects with property `name` and sorts it.
+Scrivete una funzione `sortByName(users)` che prenda un array di oggetti con proprietà `name` e lo riordini.
 
-For instance:
+Ad esempio:
 
 ```js no-beautify
 let john = { name: "John", age: 25 };

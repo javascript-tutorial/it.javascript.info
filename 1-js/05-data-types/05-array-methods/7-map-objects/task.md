@@ -2,13 +2,13 @@ importance: 5
 
 ---
 
-# Map to objects
+# Map di oggetti
 
-You have an array of `user` objects, each one has `name`, `surname` and `id`.
+Avete un array di oggetti `user`, ognuno di questi possiede `name`, `surname` e `id`.
 
-Write the code to create another array from it, of objects with `id` and `fullName`, where `fullName` is generated from `name` and `surname`.
+Scrivete il codice per creare un altro array che provenga da questo, sempre composta da oggetti con `id` e `fullName`, dove `fullName` viene generato da `name` e `surname`.
 
-For instance:
+Un esempio:
 
 ```js no-beautify
 let john = { name: "John", surname: "Smith", id: 1 };
@@ -33,4 +33,4 @@ alert( usersMapped[0].id ) // 1
 alert( usersMapped[0].fullName ) // John Smith
 ```
 
-So, actually you need to map one array of objects to another. Try using `=>` here. There's a small catch.
+Quindi, in realtà avrete bisogno di mappare un array di oggetti in un altro. Provate ad utilizzare `=>`.

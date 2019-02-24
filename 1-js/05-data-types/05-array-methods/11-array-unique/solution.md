@@ -1,6 +1,6 @@
-Let's walk the array items:
-- For each item we'll check if the resulting array already has that item.
-- If it is so, then ignore, otherwise add to results.
+Attraversiamo gli elementi dell'array:
+- Per ogni elemento controlliamo se l'array risultante già lo contiene.
+- Se lo troviamo, passiamo al prossimo, altrimenti lo aggiungiamo.
 
 ```js run
 function unique(arr) {
@@ -22,18 +22,18 @@ let strings = ["Hare", "Krishna", "Hare", "Krishna",
 alert( unique(strings) ); // Hare, Krishna, :-O
 ```
 
-The code works, but there's a potential performance problem in it.
+Il codice funziona, ma c'è un potenziale problmea di performace.
 
-The method `result.includes(str)` internally walks the array `result` and compares each element against `str` to find the match.
+Il metodo `result.includes(str)` internamente attraversa l'array `result` e confronta ogni elemento con `str` per trovare una corrispondenza.
 
-So if there are `100` elements in `result` and no one matches `str`, then it will walk the whole `result` and do exactly `100` comparisons. And if `result` is large, like `10000`, then there would be `10000` comparisons.
+Quindi se ci sono `100` elementi in `result` e nessuna corrispondenza con `str`, attraverseremo l'intero array `result` eseguendo essattamente `100` confronti. Se l'array `result` è grande, ad esempio `10000`, ci sarebbero `10000` di confronti.
 
-That's not a problem by itself, because JavaScript engines are very fast, so walk `10000` array is a matter of microseconds.
+Non è propriamente un problema, perché il motore JavaScript è molto rapido, quindi un array grande `10000` è questione di pochi microsecondi.
 
-But we do such test for each element of `arr`, in the `for` loop.
+Ma dovremo eseguire questo test per ogni elemento di `arr`, nel ciclo `for`.
 
-So if `arr.length` is `10000` we'll have something like `10000*10000` = 100 millions of comparisons. That's a lot.
+Quindi se `arr.length` è `10000` avremmo qualcosa come `10000*10000` = 100 milioni di confronti. Sono molti.
 
-So the solution is only good for small arrays.
+Quindi la soluzione funziona bene solo con array di piccola taglia.
 
-Further in the chapter <info:map-set-weakmap-weakset> we'll see how to optimize it.
+Più avanti nel capitolo <info:map-set-weakmap-weakset> vedremo come ottimizare questo metodo.

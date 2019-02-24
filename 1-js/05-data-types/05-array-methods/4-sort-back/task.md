@@ -2,7 +2,7 @@ importance: 4
 
 ---
 
-# Sort in the reverse order
+# Riordinare al contrario 
 
 ```js
 let arr = [5, 2, 1, -10, 8];

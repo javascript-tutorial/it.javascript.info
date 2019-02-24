@@ -1,4 +1,4 @@
-The simple solution could be:
+La soluzione più semplice potrebbe essere:
 
 ```js run
 *!*
@@ -12,11 +12,11 @@ shuffle(arr);
 alert(arr);
 ```
 
-That somewhat works, because `Math.random() - 0.5` is a random number that may be positive or negative, so the sorting function reorders elements randomly.
+Questa in qualche modo funziona, perché `Math.random() - 0.5` è un numero casuale che può essere sia positivo che negativo, quindi la funzione riordina gli elementi casualmente.
 
-But because the sorting function is not meant to be used this way, not all permutations have the same probability.
+Con questa funzione di ordinamento, non tutte le permutazioni hanno la stessa probabilità.
 
-For instance, consider the code below. It runs `shuffle` 1000000 times and counts appearances of all possible results:
+Ad esempio, considerando il codice sotto. Esegue `shuffle` 1000000 di volte e conta il numero di occorrenze di tutti i risultati possibili:
 
 ```js run
 function shuffle(array) {
@@ -45,7 +45,7 @@ for (let key in count) {
 }
 ```
 
-An example result (for V8, July 2017):
+Un esempio di risultato possibile (per V8, Luglio 2017):
 
 ```js
 123: 250706
@@ -55,14 +55,13 @@ An example result (for V8, July 2017):
 312: 125148
 321: 125223
 ```
+Possiamo chiaramente vedere: `123` e `213` appaiono molto più spesso delle altre.
 
-We can see the bias clearly: `123` and `213` appear much more often than others.
+Il risultato del codice potrebbe variare in base al motore JavaScript, ma già possiamo notare che questo tipo di approccio è inaccettabile.
 
-The result of the code may vary between JavaScript engines, but we can already see that the approach is unreliable.
+Perché non funziona? Generalmente parlando, `sort` è una "scatola nera": gli passiamo un array ed una funzione di confronto e ci aspettiamo di ottenere l'array ordinato. Ma a causa della difficoltà nell'implementazione della casualità la scatola nera potrebbe funzionare male, quanto male dipende dal motore JavaScript.
 
-Why it doesn't work? Generally speaking, `sort` is a "black box": we throw an array and a comparison function into it and expect the array to be sorted. But due to the utter randomness of the comparison the black box goes mad, and how exactly it goes mad depends on the concrete implementation that differs between engines.
-
-There are other good ways to do the task. For instance, there's a great algorithm called [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle). The idea is to walk the array in the reverse order and swap each element with a random one before it:
+Esistono altri modi per compiere questo compito. Ad esempio, c'è un ottimo algoritmo chiamato [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle). L'idea è di attraversare l'array in ordine inverso e di scambiare l'elemento con un altro casuale, che venga prima di lui:
 
 ```js
 function shuffle(array) {
@@ -73,7 +72,7 @@ function shuffle(array) {
 }
 ```
 
-Let's test it the same way:
+Proviamo ad eseguire lo stesso test:
 
 ```js run
 function shuffle(array) {
@@ -105,7 +104,7 @@ for (let key in count) {
 }
 ```
 
-The example output:
+Un possibile risultato:
 
 ```js
 123: 166693
@@ -116,6 +115,6 @@ The example output:
 321: 166316
 ```
 
-Looks good now: all permutations appear with the same probability.
+Ora sembra funzionare: tutte lo occorrenze appaiono con la stessa probabilità.
 
-Also, performance-wise the Fisher-Yates algorithm is much better, there's no "sorting" overhead.
+Inoltre, anche le performance dell'algoritmo Fisher-Yates sono migliori, poichè non è richiesto alcun riordinamento.

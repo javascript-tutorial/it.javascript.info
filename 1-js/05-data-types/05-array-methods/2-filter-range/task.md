@@ -2,13 +2,13 @@ importance: 4
 
 ---
 
-# Filter range
+# Filtri
 
-Write a function `filterRange(arr, a, b)` that gets an array `arr`, looks for elements between `a` and `b` in it and returns an array of them. 
+Scrivete una funzione `filterRange(arr, a, b)` che prende un array `arr`, cerca un elemento tra `a` e `b` e ne ritorna un array. 
 
-The function should not modify the array. It should return the new array.
+La funzione non dovrebbe modificare l'array. Dovrebbe invece ritornare il nuovo array.
 
-For instance:
+Ad esempio:
 
 ```js
 let arr = [5, 3, 8, 1];

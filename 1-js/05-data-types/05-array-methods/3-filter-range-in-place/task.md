@@ -2,13 +2,13 @@ importance: 4
 
 ---
 
-# Filter range "in place"
+# Filtrare un range "sul post"
 
-Write a function `filterRangeInPlace(arr, a, b)` that gets an array `arr` and removes from it all values except those that are between `a` and `b`. The test is: `a ≤ arr[i] ≤ b`.
+Scrivi una funzione `filterRangeInPlace(arr, a, b)` che prenda un array `arr` e ne rimuova tutti i valori, tranne quelli contenuti tra `a` e `b`. Il test è: `a ≤ arr[i] ≤ b`.
 
-The function should only modify the array. It should not return anything.
+La funzione dovrebbe solamente modificare l'array. Senza ritornare nulla.
 
-For instance:
+Ad esempio:
 ```js
 let arr = [5, 3, 8, 1];
 
