@@ -1,6 +1,6 @@
-To find all anagrams, let's split every word to letters and sort them. When letter-sorted, all anagrams are same.
+Per trovare tutti gli anagrammi, dividiamo ogni parola in lettere ed ordiniamole. Con le lettere ordinate, tutti gli anagrammi sono uguali.
 
-For instance:
+Ad esempio:
 
 ```
 nap, pan -> anp
@@ -9,7 +9,7 @@ cheaters, hectares, teachers -> aceehrst
 ...
 ```
 
-We'll use the letter-sorted variants as map keys to store only one value per each key:
+Utilizzeremo la variante con le lettere ordite come chiave di una map per memorizzare un solo valore:
 
 ```js run
 function aclean(arr) {
@@ -31,9 +31,9 @@ let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
 alert( aclean(arr) );
 ```
 
-Letter-sorting is done by the chain of calls in the line `(*)`.
+L'ordinamento delle lettere è fatto dalla concatenazione di chiamate alla riga `(*)`.
 
-For convenience let's split it into multiple lines:
+Per convenzione le dividiamo in più linee:
 
 ```js
 let sorted = arr[i] // PAN
@@ -43,21 +43,21 @@ let sorted = arr[i] // PAN
   .join(''); // anp
 ```
 
-Two different words `'PAN'` and `'nap'` receive the same letter-sorted form `'anp'`.
+Due parole diverse `'PAN'` e `'nap'` possiedono la stessa forma in lettere ordinate `'anp'`.
 
-The next line put the word into the map:
+La prossima lettera inserirà la parola nella map:
 
 ```js
 map.set(sorted, word);
 ```
 
-If we ever meet a word the same letter-sorted form again, then it would overwrite the previous value with the same key in the map. So we'll always have at maximum one word per letter-form.
+Se abbiamo già incontrato una parola con la stessa forma, la sovrascriviamo con quella nuova, in modo tale da avere sempre una sola occorrenza all'interno della map. 
 
-At the end `Array.from(map.values())` takes an iterable over map values (we don't need keys in the result) and returns an array of them.
+Alla fine `Array.from(map.values())` prende un iteratore sui valori di map (non abbiamo bisogno delle chiavi nel risultato) e ne ritorna un array.
 
-Here we could also use a plain object instead of the `Map`, because keys are strings.
+Qui potremmo anche utilizzare un normale oggetto piuttosto di `Map`, poiché le chiavi sono stringhe.
 
-That's how the solution can look:
+Questo è un esempio di possibile soluzione:
 
 ```js run
 function aclean(arr) {

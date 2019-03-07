@@ -1,28 +1,28 @@
 
-# Map, Set, WeakMap and WeakSet
+# Map, Set, WeakMap e WeakSet
 
-Now we've learned about the following complex data structures:
+Fino ad ora abbiamo imparato ad utilizzare le seguenti strutture dati:
 
-- Objects for storing keyed collections.
-- Arrays for storing ordered collections.
+- Oggetti per memorizzare collezioni etichettate.
+- Array per memorizzare collezioni ordinate.
 
-But that's not enough for real life. That's why `Map` and `Set` also exist.
+Ma nel mondo reale non sono sufficienti. Questo è il motivo per cui esistono anche `Map` e `Set`.
 
 ## Map
 
-[Map](mdn:js/Map) is a collection of keyed data items, just like an `Object`. But the main difference is that `Map` allows keys of any type.
+[Map](mdn:js/Map) è una collezione di elementi etichettati proprio come un `Object`. La principale differenza è che le `Map` consentono di utilizzare chiavi di qualsiasi tipo.
 
-The main methods are:
+I principali metodi sono:
 
-- `new Map()` -- creates the map.
-- `map.set(key, value)` -- stores the value by the key.
-- `map.get(key)` -- returns the value by the key, `undefined` if `key` doesn't exist in map.
-- `map.has(key)` -- returns `true` if the `key` exists, `false` otherwise.
-- `map.delete(key)` -- removes the value by the key.
-- `map.clear()` -- clears the map
-- `map.size` -- returns the current element count.
+- `new Map()` -- crea la map.
+- `map.set(key, value)` -- memorizza il `value` con la `key` fornita.
+- `map.get(key)` -- ritorna il valore con la chiave fornita, `undefined` se la `key` non è presente nella map.
+- `map.has(key)` -- ritorna `true` se la `key` esiste, `false` altrimenti.
+- `map.delete(key)` -- rimuove il valore con la `key` fornita.
+- `map.clear()` -- ripulisce la map.
+- `map.size` -- ritorna il numero di elementi contenuti.
 
-For instance:
+Ad esempio:
 
 ```js run
 let map = new Map();
@@ -39,11 +39,11 @@ alert( map.get('1') ); // 'str1'
 alert( map.size ); // 3
 ```
 
-As we can see, unlike objects, keys are not converted to strings. Any type of key is possible.
+Come possiamo vedere, a differenza degli oggetti, le chiavi non vengono convertite a stringhe. E' consentita qualsiasi tipo di chiave.
 
-**Map can also use objects as keys.**
+**Una map può anche usare oggetti come chiavi.**
 
-For instance:
+Ad esempio:
 ```js run
 let john = { name: "John" };
 
@@ -56,9 +56,9 @@ visitsCountMap.set(john, 123);
 alert( visitsCountMap.get(john) ); // 123
 ```
 
-Using objects as keys is one of most notable and important `Map` features. For string keys, `Object` can be fine, but it would be difficult to replace the `Map` with a regular `Object` in the example above.
+La possibilità di utilizzare oggetti come chiave è una delle caratteristiche fondamentali delle `Map`. Per chiavi di tipo stringa, `Object` può essere sufficiente, ma sarebbe molto difficile rimpiazzare la `Map` dell'esempio sopra, con un `Object`.
 
-In the old times, before `Map` existed, people added unique identifiers to objects for that:
+Prima che venissero introdotte le `Map`, le persone aggiungevano un identificatore univoco come proprietà dell'oggetto:
 
 ```js run
 // we add the id field
@@ -75,16 +75,16 @@ alert( visitsCounts[john.id] ); // 123
 ...But `Map` is much more elegant.
 
 
-```smart header="How `Map` compares keys"
-To test values for equivalence, `Map` uses the algorithm [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero). It is roughly the same as strict equality `===`, but the difference is that `NaN` is considered equal to `NaN`. So `NaN` can be used as the key as well.
+```smart header="Come confronta le chiavi una `Map`"
+Per eseguire test di uguaglianza, `Map` utilizza l'algoritmo [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero). E' molto simile al controllo di uguaglianza stretta `===`, la vera differenza è che `NaN` viene considerato uguale a `NaN`. Quindi anche `NaN` può essere utilizzato come chiave.
 
-This algorithm can't be changed or customized.
+Questo algoritmo non può essere cambiato o modificato in alcun modo.
 ```
 
 
-````smart header="Chaining"
+````smart header="Concatenare"
 
-Every `map.set` call returns the map itself, so we can "chain" the calls:
+Ogni chiamata a `map.set` ritorna la mappa stessa, in questo modo possiamo concatenare le chiamate:
 
 ```js
 map.set('1', 'str1')
@@ -93,9 +93,9 @@ map.set('1', 'str1')
 ```
 ````
 
-## Map from Object
+## Map da un Object
 
-When a `Map` is created, we can pass an array (or another iterable) with key-value pairs, like this:
+Quando viene creata una `Map`, possiamo fornirgli un array (o un oggetto iterabile) con delle coppie chiave/valore, come nell'esempio:
 
 ```js
 // array of [key, value] pairs
@@ -106,9 +106,9 @@ let map = new Map([
 ]);
 ```
 
-There is a built-in method [Object.entries(obj)](mdn:js/Object/entries) that returns an array of key/value pairs for an object exactly in that format.
+Esiste un metodo integrato [Object.entries(obj)](mdn:js/Object/entries) che ritorna un array di coppie chiave/valore a partire da un oggetto.
 
-So we can initialize a map from an object like this:
+Quindi possiamo inizializzare una map a partire da un oggetto in questo modo:
 
 ```js
 let map = new Map(Object.entries({
@@ -117,17 +117,17 @@ let map = new Map(Object.entries({
 }));
 ```
 
-Here, `Object.entries` returns the array of key/value pairs: `[ ["name","John"], ["age", 30] ]`. That's what `Map` needs.
+Qui, `Object.entries` ritorna l'array di coppie chiave/valore: `[ ["name","John"], ["age", 30] ]`. Che sono necessarie alla `Map`.
 
-## Iteration over Map
+## Iterazione su Map
 
-For looping over a `map`, there are 3 methods:
+Per eseguire cicli su una `map`, ci sono 3 metodi:
 
-- `map.keys()` -- returns an iterable for keys,
-- `map.values()` -- returns an iterable for values,
-- `map.entries()` -- returns an iterable for entries `[key, value]`, it's used by default in `for..of`.
+- `map.keys()` -- ritorna un iteratore sulle chiavi,
+- `map.values()` -- ritorna un iteratore sui valori,
+- `map.entries()` -- ritorna un iteratore per ogni elemento `[key, value]`, viene utilizzato di default in `for..of`.
 
-For instance:
+Ad esempio:
 
 ```js run
 let recipeMap = new Map([
@@ -152,11 +152,11 @@ for (let entry of recipeMap) { // the same as of recipeMap.entries()
 }
 ```
 
-```smart header="The insertion order is used"
-The iteration goes in the same order as the values were inserted. `Map` preserves this order, unlike a regular `Object`.
+```smart header="Viene utilizzato l'ordine di inserimento"
+L'iterazione segue lo stesso ordine in cui sono stati inseriti i valori. `Map` conserva quindi l'ordine, a differenza di un normale `Object`.
 ```
 
-Besides that, `Map` has a built-in `forEach` method, similar to `Array`:
+Inoltre, `Map` possiede un metodo integrato `forEach`, simile agli `Array`:
 
 ```js
 recipeMap.forEach( (value, key, map) => {
@@ -167,20 +167,20 @@ recipeMap.forEach( (value, key, map) => {
 
 ## Set
 
-A `Set` is a collection of values, where each value may occur only once.
+Un `Set` è un insieme di valori, in cui ogni valore ha una singola occorrenza.
 
-Its main methods are:
+I metodi principali sono:
 
-- `new Set(iterable)` -- creates the set, optionally from an array of values (any iterable will do).
-- `set.add(value)` -- adds a value, returns the set itself.
-- `set.delete(value)` -- removes the value, returns `true` if `value` existed at the moment of the call, otherwise `false`.
-- `set.has(value)` -- returns `true` if the value exists in the set, otherwise `false`.
-- `set.clear()` -- removes everything from the set.
-- `set.size` -- is the elements count.
+- `new Set(iterable)` -- crea un set, eventualmente a partire da un array (o un oggetto iterabile).
+- `set.add(value)` -- aggiunge `value`, e ritorna il set stesso.
+- `set.delete(value)` -- rimuove il `value`, ritorna `true` se `value` esiste, altrimenti `false`.
+- `set.has(value)` -- ritorna `true` se il valore è contenuto nel set, altrimenti `false`.
+- `set.clear()` -- rimuove tutto il contenuto del set.
+- `set.size` -- ritorna il numero di elementi contenuti.
 
-For example, we have visitors coming, and we'd like to remember everyone. But repeated visits should not lead to duplicates. A visitor must be "counted" only once.
+Ad esempio, vogliamo tenere una lista di visitatori. Le visite ripetute non devono però produrre dei duplicati. Un visitatore può "apparire" una sola volta.
 
-`Set` is just the right thing for that:
+`Set` è la soluzione corretta in questo tipo di situazione:
 
 ```js run
 let set = new Set();
@@ -204,11 +204,10 @@ for (let user of set) {
 }
 ```
 
-The alternative to `Set` could be an array of users, and the code to check for duplicates on every insertion using [arr.find](mdn:js/Array/find). But the performance would be much worse, because this method walks through the whole array checking every element. `Set` is much better optimized internally for uniqueness checks.
+L'alternativa a `Set` potrebbe essere un array di utenti, con un codice che verifichi la presenza di eventuali duplicati ad ogni inserimento, tramite il metodo [arr.find](mdn:js/Array/find). In questo modo le prestazioni calerebbero, poiché questo metodo attraverserebbe l'intero array per controllare ogni elemento. `Set` rimane quindi la struttura migliore, poiché internamente è ottimizzata per i controlli di unicità.
 
-## Iteration over Set
-
-We can loop over a set either with `for..of` or using `forEach`:
+## Iteration su Set
+Possiamo eseguire cicli su un set sia con `for..of` che con `forEach`:
 
 ```js run
 let set = new Set(["oranges", "apples", "bananas"]);
@@ -221,23 +220,23 @@ set.forEach((value, valueAgain, set) => {
 });
 ```
 
-Note the funny thing. The `forEach` function in the `Set` has 3 arguments: a value, then *again a value*, and then the target object. Indeed, the same value appears in the arguments twice.
+Una cosa divertente. La funzione `forEach` nel caso di `Set` possiede 3 argomenti: un valore, poi *un altro valore*, e infine l'oggetto. Infatti, lo stesso valore appare due volte nella lista degli argomenti.
 
-That's for compatibility with `Map` where `forEach` has three arguments. Looks a bit strange, for sure. But may help to replace `Map` with `Set` in certain cases with ease, and vice versa.
+Questo è per mantenere la compatibilità con `Map` dove `forEach` possiede tre argomenti. Ovviamente risulta essere un po' strano. Ma può aiutare a rimpiazzare `Map` con `Set` con facilità, e vice versa.
 
-The same methods `Map` has for iterators are also supported:
+Per la gestione degli iteratori supporta gli stessi metodi di `Map`:
 
-- `set.keys()` -- returns an iterable object for values,
-- `set.values()` -- same as `set.keys`, for compatibility with `Map`,
-- `set.entries()` -- returns an iterable object for entries `[value, value]`, exists for compatibility with `Map`.
+- `set.keys()` -- ritorna un oggetto iterabile sui valori,
+- `set.values()` -- simile a `set.keys`, per compatibilità con `Map`,
+- `set.entries()` -- ritorna un oggetto iterabile per i valori `[value, value]`, esiste per compatibilità con `Map`.
 
-## WeakMap and WeakSet
+## WeakMap e WeakSet
 
-`WeakSet` is a special kind of `Set` that does not prevent JavaScript from removing its items from memory. `WeakMap` is the same thing for `Map`.
+`WeakSet` è uno speciale tipo di `Set` che non impedisce a JavaScript di rimuovere i suoi elementi dalla memoria. `WeakMap` è analogo per `Map`.
 
-As we know from the chapter <info:garbage-collection>, JavaScript engine stores a value in memory while it is reachable (and can potentially be used).
+Come abbiamo già compreso nel capitolo <info:garbage-collection>, il motore JavaScript mantiene un valore in memoria fino a che questo risulta accessibile (e potrebbe potenzialmente essere utilizzato).
 
-For instance:
+Ad esempio:
 ```js
 let john = { name: "John" };
 
@@ -251,11 +250,11 @@ john = null;
 */!*
 ```
 
-Usually, properties of an object or elements of an array or another data structure are considered reachable and kept in memory while that data structure is in memory.
+Solitamente, le  proprietà di un oggetto o gli elementi di un array o di qualsiasi altra struttura dati vengono considerati accessibili e mantenuti in memoria fino a che la struttura di dati rimane in memoria.
 
-For instance, if we put an object into an array, then while the array is alive, the object will be alive as well, even if there are no other references to it.
+Ad esempio, se inseriamo un oggetto in un array, fino a che l'array rimane vivo, anche l'oggetto rimarrà vivo, anche se non sono presenti riferimenti.
 
-Like this:
+Come nell'esempio:
 
 ```js
 let john = { name: "John" };
@@ -270,9 +269,9 @@ john = null; // overwrite the reference
 */!*
 ```
 
-Or, if we use an object as the key in a regular `Map`, then while the `Map` exists, that object exists as well. It occupies memory and may not be garbage collected.
+O, se utilizziamo un oggetto come chiave in un `Map`, fino a che la `Map` esiste, anche l'oggetto esisterà. Occuperà memoria e non potrà essere ripulito dal garbage collector.
 
-For instance:
+Ad esempio:
 
 ```js
 let john = { name: "John" };
@@ -288,11 +287,11 @@ john = null; // overwrite the reference
 */!*
 ```
 
-`WeakMap/WeakSet` are fundamentally different in this aspect. They do not prevent garbage-collection of key objects.
+`WeakMap/WeakSet` sono fondamentalmente diversi in questo aspetto. Infatti non prevengono l'azione del garbage collector sugli oggetti utilizzati come chiave.
 
-Let's explain it starting with `WeakMap`.
+Iniziamo a spiegarle più in dettaglio partendo da `WeakMap`.
 
-The first difference from `Map` is that `WeakMap` keys must be objects, not primitive values:
+La prima differenza tra `Map` è che le chiavi di `WeakMap` devono essere oggetti, non valori primitivi:
 
 ```js run
 let weakMap = new WeakMap();
@@ -307,7 +306,7 @@ weakMap.set("test", "Whoops"); // Error, because "test" is not an object
 */!*
 ```
 
-Now, if we use an object as the key in it, and there are no other references to that object -- it will be removed from memory (and from the map) automatically.
+Ora, se utilizziamo un oggetto come chiave, e perdiamo tutti i riferimenti a quell'oggetto -- questo verrà rimosso dalla memoria (e dalla map) automaticamente.
 
 ```js
 let john = { name: "John" };
@@ -320,37 +319,37 @@ john = null; // overwrite the reference
 // john is removed from memory!
 ```
 
-Compare it with the regular `Map` example above. Now if `john` only exists as the key of `WeakMap` -- it is to be automatically deleted.
+Fate il confronto con l'esempio di `Map` sopra. Ora se `john` esiste solo come chiave della `WeakMap` -- verrà eliminato automaticamente.
 
-`WeakMap` does not support iteration and methods `keys()`, `values()`, `entries()`, so there's no way to get all keys or values from it.
+`WeakMap` non supportano gli iteratori e i metodi `keys()`, `values()`, `entries()`, quindi non c'è alcun modo di ottenere tutte le chiavi o valori tramite questi metodi.
 
-`WeakMap` has only the following methods:
+`WeakMap` possiede solamente i seguenti metodi:
 
 - `weakMap.get(key)`
 - `weakMap.set(key, value)`
 - `weakMap.delete(key, value)`
 - `weakMap.has(key)`
 
-Why such a limitation? That's for technical reasons. If an object has lost all other references (like `john` in the code above), then it is to be garbage-collected automatically. But technically it's not exactly specified *when the cleanup happens*.
+Perché questa limitazione? Per ragioni tecniche. Se un oggetto ha perso tutti i riferimenti (come `john` nel codice sopra), allora verrà automaticamente eliminato. Ma tecnicamente non è specificato esattamente quando *averrà la pulizia*.
 
-The JavaScript engine decides that. It may choose to perform the memory cleanup immediately or to wait and do the cleaning later when more deletions happen. So, technically the current element count of a `WeakMap` is not known. The engine may have cleaned it up or not, or did it partially. For that reason, methods that access `WeakMap` as a whole are not supported.
+Sarà il motore JavaScript a deciderlo. Potrebbe decidere di effettuare subito la pulizia della memoria oppure aspettare più oggetti per eliminarli in blocco. Quindi, tecnicamente il conteggio degli elementi di un `WeakMap` non è conosciuto. Il motore potrebbe già aver effettuato la pulizia oppure no, o averlo fatto solo parzialmente. Per questo motivo, i metodi che accedono a `WeakMap` per intero, non sopo supportati.
 
-Now where do we need such thing?
+Dove potremmo avere bisogno di una struttura simile?
 
-The idea of `WeakMap` is that we can store something for an object that should exist only while the object exists. But we do not force the object to live by the mere fact that we store something for it.
+L'idea di `WeakMap` è che possiamo memorizzare qualcosa relativo ad un oggetto solamente fino a chè anche l'oggetto stesso esiste. Ma non vogliamo forzare la presenza in memoria dell'oggetto solamente perché abbiamo memorizzato un dettaglio collegato ad esso.
 
 ```js
 weakMap.set(john, "secret documents");
 // if john dies, secret documents will be destroyed automatically
 ```
 
-That's useful for situations when we have a main storage for the objects somewhere and need to keep additional information, that is only relevant while the object lives.
+Questo diventa utile per situazioni in cui abbiamo memorizzato gli oggetti da qualche parte, ma vogliamo anche tenere nota di alcune informazioni addizionali, che sono rilevanti solamente finché l'oggetto vive.
 
-Let's look at an example.
+Proviamo a guardare un esempio.
 
-For instance, we have code that keeps a visit count for each user. The information is stored in a map: a user is the key and the visit count is the value. When a user leaves, we don't want to store their visit count anymore.
+Possiamo pensare di avere del codice che tiene nota del conteggio delle visite per ogni utente. L'informazioni viene memorizzata in un map: l'utente è la chiave mentre il conteggio delle visite è il valore. Quando l'utente esce, vogliamo smettere di mantenere in memoria il conteggio delle visite.
 
-One way would be to keep track of users, and when they leave -- clean up the map manually:
+Un modo potrebbe essere quello di mantenere traccia degli utenti, e all'uscita -- pulire la map manualmente:
 
 ```js run
 let john = { name: "John" };
@@ -371,7 +370,7 @@ alert( visitsCountMap.size ); // 1
 // and john is also in the memory, because Map uses it as the key
 ```
 
-Another way would be to use `WeakMap`:
+Un'altra strada potrebbe essere quella di utilizzare una `WeakMap`:
 
 ```js
 let john = { name: "John" };
@@ -387,19 +386,19 @@ john = null;
 // so the object is removed both from the memory and from visitsCountMap automatically
 ```
 
-With a regular `Map`, cleaning up after a user has left becomes a tedious task: we not only need to remove the user from its main storage (be it a variable or an array), but also need to clean up the additional stores like `visitsCountMap`. And it can become cumbersome in more complex cases when users are managed in one place of the code and the additional structure is in another place and is getting no information about removals.
+Con una normale `Map`, la pulizia dopo l'uscita dell'utente potrebbe diventare un compito tedioso: non dobbiamo solamente preoccuparci di rimuovere l'utente (che potrebbe una variabile o un array), ma vanno pulite anche le informazioni addizionali come `visitsCountMap`. Può diventare quindi ingombrante e molto complesso quando le informazioni dell'utente sono memorizzate in diverse sezioni.
 
 ```summary
-`WeakMap` can make things simpler, because it is cleaned up automatically. The information in it like visits count in the example above lives only while the key object exists.
+`WeakMap` può rendere certe operazioni più semplici, poiché la pulizia degli "scarti" viene effettuata automaticamente. Le informazioni contenute, come il conteggio delle visite nell'esempio sopra, vivono solamente fino a chè l'oggetto stesso vive.
 ```
 
-`WeakSet` behaves similarly:
+`WeakSet` si comporta in maniera simile:
 
-- It is analogous to `Set`, but we may only add objects to `WeakSet` (not primitives).
-- An object exists in the set while it is reachable from somewhere else.
-- Like `Set`, it supports `add`, `has` and `delete`, but not `size`, `keys()` and no iterations.
+- E' analogo a `Set`, ma possiamo solamente aggiungere oggetti a `WeakSet` (non primitive).
+- Un oggetto esiste in un set solamente finché rimane accessibile in un altro punto del codice.
+- Come `Set`,  supporta `add`, `has` e `delete`, ma non `size`, `keys()` e nemmeno gli iteratori.
 
-For instance, we can use it to keep track of whether a message is read:
+Ad esempio, possiamo utilizzarlo per tenere traccia dei messaggi letti:
 
 ```js
 let messages = [
@@ -426,32 +425,32 @@ messages.shift();
 // (though technically we don't know for sure when the JS engine clears it)
 ```
 
-The most notable limitation of `WeakMap` and `WeakSet` is the absence of iterations, and inability to get all current content. That may appear inconvenient, but does not prevent `WeakMap/WeakSet` from doing their main job -- be an "additional" storage of data for objects which are stored/managed at another place.
+La maggior limitazione di `WeakMap` e `WeakSet` è l'assenza di iteratori, e la mancanza della possibilità di ottenere tutti gli elementi contenuti. Potrebbe sembrare un inconveniente, ma non vieta a `WeakMap/WeakSet` di compiere il proprio lavoro -- essere una struttura "addizionale" per memorizzare informazioni relative a dati memorizzati in un altro posto.
 
-## Summary
+## Riepilogo
 
-Regular collections:
-- `Map` -- is a collection of keyed values.
+Strutture dati classiche:
+- `Map` -- è una collezione di valori etichettati.
 
-    The differences from a regular `Object`:
+    Le differenze da un normale `Object` sono:
 
-    - Any keys, objects can be keys.
-    - Iterates in the insertion order.
-    - Additional convenient methods, the `size` property.
+    - Qualsiasi chiave è consentita, anche una chiave di tipo oggetto.
+    - Possibilità di iterare in ordine di inserimento.
+    - Metodi addizionali come la proprietà `size`.
 
-- `Set` -- is a collection of unique values.
+- `Set` -- è una collezione di valori unici.
 
-    - Unlike an array, does not allow to reorder elements.
-    - Keeps the insertion order.
+    - A differenza di un array, non consente di riordinare gli elementi.
+    - Mantiene l'ordine di inserimento.
 
-Collections that allow garbage-collection:
+Esistono strutture dati che consentono la pulizia automatica:
 
-- `WeakMap` -- a variant of `Map` that allows only objects as keys and removes them once they become inaccessible by other means.
+- `WeakMap` -- è una variante di `Map` che consente di utilizzare solamente oggetti come chiave e rimuovendoli automaticamente quando questi diventano inaccessibili.
 
-    - It does not support operations on the structure as a whole: no `size`, no `clear()`, no iterations.
+    - Non supporta operazioni alla struttura nella sua interezza: come `size`, `clear()`, e gli iteratori.
 
-- `WeakSet` -- is a variant of `Set` that only stores objects and removes them once they become inaccessible by other means.
+- `WeakSet` -- è una variante di `Set` che memorizza solamente oggetti e li rimuove automaticamente quando questi diventano inaccessibili.
 
-    - Also does not support `size/clear()` and iterations.
+    - Non supporta `size/clear()` e gli iteratori.
 
-`WeakMap` and `WeakSet` are used as "secondary" data structures in addition to the "main" object storage. Once the object is removed from the main storage, if it is only found in the `WeakMap/WeakSet`, it will be cleaned up automatically.
+`WeakMap` e `WeakSet` vengono utilizzati come strutture dati "secondarie", per memorizzare informazioni addizionali all'oggetto "principale". Quando l'oggetto viene rimosso dalla struttura principale, verrà rimosso anche da `WeakMap/WeakSet`.

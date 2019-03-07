@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Iterable keys
+# Chiavi iterabili
 
-We want to get an array of `map.keys()` and go on working with it (apart from the map itself).
+Vogliamo avere un rray di `map.keys()` e poterci lavorare.
 
-But there's a problem:
+Ma c'è un problema:
 
 ```js run
 let map = new Map();
@@ -21,4 +21,4 @@ keys.push("more");
 */!*
 ```
 
-Why? How can we fix the code to make `keys.push` work?
+Perchè? Come possiamo sistemare il codice per rendere `keys.push` funzionante?

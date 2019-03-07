@@ -1,4 +1,4 @@
-The sane choice here is a `WeakSet`:
+La scelta più logica è un `WeakSet`:
 
 ```js
 let messages = [
@@ -25,17 +25,17 @@ messages.shift();
 // now readMessages has 1 element (technically memory may be cleaned later)
 ```
 
-The `WeakSet` allows to store a set of messages and easily check for the existance of a message in it.
+La struttura `WeakSet` consente di memorizzare un insieme di messaggi e di verificare molto rapidamente la presenza di un dato messaggio.
 
-It cleans up itself automatically. The tradeoff is that we can't iterate over it. We can't get "all read messages" directly. But we can do it by iterating over all messages and filtering those that are in the set.
+Viene ripulita automaticamente. Il lato negativo è che non possiamo eseguire iterazioni. Non possiamo ottenere direttamente "tutti i messaggi letti". Ma possiamo farlo iterando su tutti i messaggi e filtrando tutti quelli che sono presenti nel set.
 
-P.S. Adding a property of our own to each message may be dangerous if messages are managed by someone else's code, but we can make it a symbol to evade conflicts.
+P.S. Aggiungere una proprietà ad ogni messaggio potrebbe essere pericoloro, se questo oggetto viene gestito dal codice di un'altra persona, possiamo però utilizzare un symbol per evitare conflitti.
 
-Like this:
+Come qui:
 ```js
 // the symbolic property is only known to our code
 let isRead = Symbol("isRead");
 messages[0][isRead] = true;
 ```
 
-Now even if someone else's code uses `for..in` loop for message properties, our secret flag won't appear.
+Ora anche se qualcun'altro utilizza `for..in` per avere accesso a tutte le proprietà di messagge, la nostra etichetta sarà segreta.

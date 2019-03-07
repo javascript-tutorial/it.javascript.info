@@ -1,5 +1,5 @@
 
-To store a date, we can use `WeakMap`:
+Per memorizzare una data possiamo utilizzare `WeakMap`:
 
 ```js
 let messages = [
