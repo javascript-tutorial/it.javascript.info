@@ -1,42 +1,42 @@
 
 # Object.keys, values, entries
 
-Let's step away from the individual data structures and talk about the iterations over them. 
+Facciamo un passo oltre le strutture dati in sé e discutiamo dei metodi di iterazione su di esse. 
 
-In the previous chapter we saw methods `map.keys()`, `map.values()`, `map.entries()`.
+Nel capitolo precedente abbiamo visto i metodi `map.keys()`, `map.values()`, `map.entries()`.
 
-These methods are generic, there is a common agreement to use them for data structures. If we ever create a data structure of our own, we should implement them too. 
+Questi sono dei metodi generici, c'è un comune accordo sul loro utilizzo per le strutture dati. Se dovessimo mai creare una nostra struttura dati personale, dovremmo implementare anche questi metodi. 
 
-They are supported for:
+Vengono supportati da:
 
 - `Map`
 - `Set`
-- `Array` (except `arr.values()`)
+- `Array` (ad eccezione `arr.values()`)
 
-Plain objects also support similar methods, but the syntax is a bit different.
+Anche gli oggetti supportano dei metodi simili, ma la loro sintassi è leggermente differente.
 
 ## Object.keys, values, entries
 
-For plain objects, the following methods are available:
+Per i semplici oggetti, sono resi disponibile i seguenti metodi:
 
-- [Object.keys(obj)](mdn:js/Object/keys) -- returns an array of keys.
-- [Object.values(obj)](mdn:js/Object/values) -- returns an array of values.
-- [Object.entries(obj)](mdn:js/Object/entries) -- returns an array of `[key, value]` pairs.
+- [Object.keys(obj)](mdn:js/Object/keys) -- ritorna un array di chiavi.
+- [Object.values(obj)](mdn:js/Object/values) -- ritorna un array di valori.
+- [Object.entries(obj)](mdn:js/Object/entries) -- ritorna un array di coppie `[key, value]`.
 
-...But please note the distinctions (compared to map for example):
+...Da notare le differenze (confrontandoli con quelli delle map):
 
 |             | Map              | Object       |
 |-------------|------------------|--------------|
-| Call syntax | `map.keys()`  | `Object.keys(obj)`, but not `obj.keys()` |
-| Returns     | iterable    | "real" Array                     |
+| Chiamata | `map.keys()`  | `Object.keys(obj)`, non `obj.keys()` |
+| Valore di ritorno     | oggetti iterabile    | Array                     |
 
-The first difference is that we have to call `Object.keys(obj)`, and not `obj.keys()`.
+La prima differenza è che dobbiamo chiamare `Object.keys(obj)`, non `obj.keys()`.
 
-Why so? The main reason is flexibility. Remember, objects are a base of all complex structures in JavaScript. So we may have an object of our own like `order` that implements its own `order.values()` method. And we still can call `Object.values(order)` on it.
+Perché? La principale motivazione è la flessibilità. Ricordate, gli oggetti sono la base di tutte le strutture complesse in JavaScript. Quindi potremmo avere un nostro oggetto come `order` che implementa il proprio metodo `order.values()`. E potremmo ancora chiamare `Object.values(order)`.
 
-The second difference is that `Object.*` methods return "real" array objects, not just an iterable. That's mainly for historical reasons.
+La seconda differenza è che i metodi `Object.*` ritornano un array, non un oggetto iterabile. Questo è comportamento è dovuto a ragioni storiche.
 
-For instance:
+Ad esempio:
 
 ```js
 let user = {
@@ -49,7 +49,7 @@ let user = {
 - `Object.values(user) = ["John", 30]`
 - `Object.entries(user) = [ ["name","John"], ["age",30] ]`
 
-Here's an example of using `Object.values` to loop over property values:
+Qui un esempio di utilizzo di `Object.values` per eseguire cicli sui valori delle proprietà:
 
 ```js run
 let user = {
@@ -63,8 +63,8 @@ for (let value of Object.values(user)) {
 }
 ```
 
-## Object.keys/values/entries ignore symbolic properties
+## Object.keys/values/entries ignorano proprietà di tipo symbol
 
-Just like a `for..in` loop, these methods ignore properties that use `Symbol(...)` as keys.
+Proprio come per il ciclo `for..in`, questi metodi ignorano le proprietà che utilizzano una chiave `Symbol(...)`.
 
-Usually that's convenient. But if we want symbolic keys too, then there's a separate method [Object.getOwnPropertySymbols](mdn:js/Object/getOwnPropertySymbols) that returns an array of only symbolic keys. Also, the method [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) returns *all* keys.
+Solitamente questo è un vantaggio. Ma se volessimo ottenere anche le chiavi di tipo symbol, esiste un secondo metodo [Object.getOwnPropertySymbols](mdn:js/Object/getOwnPropertySymbols)  che ritorna un array di chiavi di tipo symbol. Invece, il metodo [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) ritorna *tutte* le chiavi.
