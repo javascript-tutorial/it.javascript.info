@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Destructuring assignment
+# Assegnamento di destrutturazione
 
-We have an object:
+Abbiamo un oggetto:
 
 ```js
 let user = {
@@ -13,13 +13,13 @@ let user = {
 };
 ```
 
-Write the destructuring assignment that reads:
+Scrivete l'assegnamento di destrutturazione che legge:
 
-- `name` property into the variable `name`.
-- `years` property into the variable `age`.
-- `isAdmin` property into the variable `isAdmin` (false if absent)
+- la proprietà `name` nella variabile `name`.
+- la proprietà `years` nella variabile `age`.
+- la proprietà `isAdmin` nella variabile `isAdmin` (falsa se assete)
 
-The values after the assignment should be:
+I valori dopo l'assegnazione dovrebbero essere:
 
 ```js
 let user = { name: "John", years: 30 };
