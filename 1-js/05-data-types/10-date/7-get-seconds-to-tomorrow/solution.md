@@ -1,6 +1,6 @@
-To get the number of milliseconds till tomorrow, we can from "tomorrow 00:00:00" substract the current date.
+Per ottenere il numero di millisecondi mancanti al giorno successivo, possiamo sottrarre da "domani alle 00:00:00" la data attuale.
 
-First, we generate that "tomorrow", and then do it:
+Prima generiamo l'oggetto "domani":
 
 ```js run
 function getSecondsToTomorrow() {
@@ -14,7 +14,7 @@ function getSecondsToTomorrow() {
 }
 ```
 
-Alternative solution:
+Soluzione alternativa:
 
 ```js run
 function getSecondsToTomorrow() {
@@ -29,4 +29,4 @@ function getSecondsToTomorrow() {
 }
 ```
 
-Please note that many countries have Daylight Savings Time (DST), so there may be days with 23 or 25 hours. We may want to treat such days separately.
+Da notare che molti stati potrebbero sottostare a DST, quindi alcuni giorni potrebbero durare 23 ore mentre altri 25. Vorremmo trattare queste situazioni separatamente.

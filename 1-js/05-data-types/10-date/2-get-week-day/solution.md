@@ -1,10 +1,10 @@
-The method `date.getDay()` returns the number of the weekday, starting from sunday.
+Il metodo `date.getDay()` ritorna il numero del giorno della settimana, cominciando da Domenica.
 
-Let's make an array of weekdays, so that we can get the proper day name by its number:
+Creiamo quindi un array di giorni della settimana, che utilizzeremo per assegnare il numero della settimana al giorno corretto:
 
 ```js run
 function getWeekDay(date) {
-  let days = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
+  let days = ['DOM', 'LUN', 'MAR', 'MER', 'GIO', 'VEN', 'SAB'];
 
   return days[date.getDay()];
 }

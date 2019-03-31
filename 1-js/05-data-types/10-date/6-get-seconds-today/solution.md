@@ -1,6 +1,6 @@
-To get the number of seconds, we can generate a date using the current day and time 00:00:00, then substract it from "now".
+Per ottenere il numero di secondi, possiamo generare una data usando il giorno corrente e il tempo 00:00:00, la differenza rappresenta il tempo trascorso.
 
-The difference is the number of milliseconds from the beginning of the day, that we should divide by 1000 to get seconds:
+La differenza è il numero di millisecondi trascorsi dall'inizio del giorno, che dovremmo poi divider per 100 per ottenere i secondi:
 
 ```js run
 function getSecondsToday() {
@@ -16,7 +16,7 @@ function getSecondsToday() {
 alert( getSecondsToday() );
 ```
 
-An alternative solution would be to get hours/minutes/seconds and convert them to seconds:
+Una soluzione alternativa potrebbe essere quella di ottenere ore/minuti/secondi e convertirli tutti in secondi:
 
 ```js run
 function getSecondsToday() {

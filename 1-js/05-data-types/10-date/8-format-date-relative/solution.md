@@ -1,4 +1,4 @@
-To get the time from `date` till now -- let's substract the dates.
+Per ottenere il tempo passato da `date` fino ad ora -- sottraiamo le date.
 
 ```js run
 function formatDate(date) {
@@ -44,7 +44,7 @@ alert( formatDate(new Date(new Date - 5 * 60 * 1000)) ); // "5 min. ago"
 alert( formatDate(new Date(new Date - 86400 * 1000)) );
 ```
 
-Alternative solution:
+Soluzione alternativa:
 
 ```js run
 function formatDate(date) {

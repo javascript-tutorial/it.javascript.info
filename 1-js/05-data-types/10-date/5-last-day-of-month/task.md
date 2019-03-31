@@ -2,13 +2,13 @@ importance: 5
 
 ---
 
-# Last day of month?
+# Ultimo giorno del mese?
 
-Write a function `getLastDayOfMonth(year, month)` that returns the last day of month. Sometimes it is 30th, 31st or even 28/29th for Feb.
+Scrivi una funzione `getLastDayOfMonth(year, month)` che ritorna l'ultimo giorno del mese. Potrebbe essere il 30, il 31 o anche 28/29.
 
-Parameters:
+Parametri:
 
-- `year` -- four-digits year, for instance 2012.
-- `month` -- month, from 0 to 11.
+- `year` -- anno nel formato 4 cifre, ad esempio.
+- `month` -- mese, da 0 a 11.
 
-For instance, `getLastDayOfMonth(2012, 1) = 29` (leap year, Feb).
+Ad esempio, `getLastDayOfMonth(2012, 1) = 29` (anno bisestile, Febbraio).

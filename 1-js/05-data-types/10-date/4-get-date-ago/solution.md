@@ -1,4 +1,4 @@
-The idea is simple: to substract given number of days from `date`:
+L'idea è semplice: sottrarre il numero di giorni da `date`:
 
 ```js
 function getDateAgo(date, days) {
@@ -7,9 +7,9 @@ function getDateAgo(date, days) {
 }
 ```
 
-...But the function should not change `date`. That's an important thing, because the outer code which gives us the date does not expect it to change.
+...Ma la funzione non dovrebbe modificare l'oggetto `date`. Questo è un aspetto importante, poiché chi ci fornisce l'oggetto non si aspetta cambiamenti.
 
-To implement it let's clone the date, like this:
+Per implementarlo correttamente dovremmo clonare l'oggetto, come nel codice seguente:
 
 ```js run
 function getDateAgo(date, days) {
