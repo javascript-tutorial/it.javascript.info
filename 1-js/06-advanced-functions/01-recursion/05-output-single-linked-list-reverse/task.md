@@ -2,8 +2,8 @@ importance: 5
 
 ---
 
-# Output a single-linked list in the reverse order
+# Stampare una single-linked list in ordine inverso
 
-Output a single-linked list from the previous task <info:task/output-single-linked-list> in the reverse order.
+Stampate una single-linked list dell'esercizio precedente <info:task/output-single-linked-list> in ordine inverso.
 
-Make two solutions: using a loop and using a recursion.
+Scrivete due soluzioni: iterativa e ricorsiva.

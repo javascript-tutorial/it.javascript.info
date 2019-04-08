@@ -1,6 +1,6 @@
-# Loop-based solution
+# Soluzione iterativa
 
-The loop-based variant of the solution:
+La soluzione iterativa:
 
 ```js run
 let list = {
@@ -30,7 +30,7 @@ function printList(list) {
 printList(list);
 ```
 
-Please note that we use a temporary variable `tmp` to walk over the list. Technically, we could use a function parameter `list` instead:
+Da notare l'utilizzo di una variabile temporanea `tmp` per attraversare la lista. Tecnicamente, potremmo utilizzare `list`:
 
 ```js
 function printList(list) {
@@ -43,15 +43,15 @@ function printList(list) {
 }
 ```
 
-...But that would be unwise. In the future we may need to extend a function, do something else with the list. If we change `list`, then we loose such ability.
+...Ma potrebbe portare ad errori. In futuro potremmo voler estendere una funzione, fare qualcos altro con la lista. Se modifichiamo `list`, perderemmo questa capacità.
 
-Talking about good variable names, `list` here is the list itself. The first element of it. And it should remain like that. That's clear and reliable.
+Parlando della scelta dei nomi delle variabili, `list` è la lista stessa. Il primo elemento. E dovrebbe rimanere tale. 
 
-From the other side, the role of `tmp` is exclusively a list traversal, like `i` in the `for` loop.
+D'altra parte, l'utilizzo di `tmp` ha esclusivamente lo scopo di attraversare la lista, come `i` nel caso di cicli `for`.
 
-# Recursive solution
+# Soluzione ricorsiva
 
-The recursive variant of `printList(list)` follows a simple logic: to output a list we should output the current element `list`, then do the same for `list.next`:
+La variante ricorsiva di `printList(list)` segue una semplice logica: per stampare una lista dovremmo stampare l'elemento corrente `list`, e fare lo stesso per `list.next`:
 
 ```js run
 let list = {
@@ -81,8 +81,8 @@ function printList(list) {
 printList(list);
 ```
 
-Now what's better?
+In questo caso qual'è la soluzione migliore?
 
-Technically, the loop is more effective. These two variants do the same, but the loop does not spend resources for nested function calls.
+Tecnicamente, la soluzione iterativa è più efficace. Queste due varianti portano allo stesso risultato, ma il ciclo non spende risorse aggiuntive per le chiamate annidate.
 
-From the other side, the recursive variant is shorter and sometimes easier to understand.
+D'altra parte, la soluzione ricorsica è più breve e talvolta più semplice da capire.

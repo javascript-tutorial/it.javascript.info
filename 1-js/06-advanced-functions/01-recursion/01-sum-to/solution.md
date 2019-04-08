@@ -1,4 +1,4 @@
-The solution using a loop:
+La soluzione che utilizza il ciclo:
 
 ```js run
 function sumTo(n) {
@@ -12,7 +12,7 @@ function sumTo(n) {
 alert( sumTo(100) );
 ```
 
-The solution using recursion:
+La soluzione ricorsiva:
 
 ```js run
 function sumTo(n) {
@@ -23,7 +23,7 @@ function sumTo(n) {
 alert( sumTo(100) );
 ```
 
-The solution using the formula: `sumTo(n) = n*(n+1)/2`:
+La soluzione che sfrutta la formula: `sumTo(n) = n*(n+1)/2`:
 
 ```js run
 function sumTo(n) {
@@ -33,8 +33,8 @@ function sumTo(n) {
 alert( sumTo(100) );
 ```
 
-P.S. Naturally, the formula is the fastest solution. It uses only 3 operations for any number `n`. The math helps!
+P.S. Naturalmente, la formula risulta essere la soluzione più rapida. Arriva al risultato con solamente 3 operazioni, qualsiasi sia `n`. La matematica serve!
 
-The loop variant is the second in terms of speed. In both the recursive and the loop variant we sum the same numbers. But the recursion involves nested calls and execution stack management. That also takes resources, so it's slower.
+La soluzione che utilizza il ciclo è la seconda in termini di velocità. Sia nella soluzione ricorsiva che in quella iterativa sommiamo gli stessi numeri. La ricorsione però coinvolge un gran numero di chiamate annidate e richiede una gestione dei contesti d'esecuzione. Richiede molte più risorse, questo la rende più lenta.
 
-P.P.S. The standard describes a "tail call" optimization: if the recursive call is the very last one in the function (like in `sumTo` above), then the outer function will not need to resume the execution and we don't need to remember its execution context. In that case `sumTo(100000)` is countable. But if your JavaScript engine does not support it, there will be an error: maximum stack size exceeded, because there's usually a limitation on the total stack size.
+P.P.S. Lo standard descrive un ottimizzazione: se la chiamata ricorsiva è l'ultima cosa che avviene nella funzione (come in `sumTo`), allora la funzione esterna non ha alcuna necessita di riprende l'esecuzione e non c'è quindi bisogno di memorizzare il contesto d'esecuzione In questo particolare caso `sumTo(100000)` viene risolta. Ma se il motore JavaScript non lo supporta, ci sarà un errore: "maximum stack size exceeded", che indica il raggiungimento del massimo numero di esecuzioni annidate.
