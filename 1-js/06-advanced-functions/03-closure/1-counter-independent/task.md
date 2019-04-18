@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Are counters independent?
+# Sono indipendenti i contatori?
 
-Here we make two counters: `counter` and `counter2` using the same `makeCounter` function.
+Qui costruiamo due contatori: `counter` e `counter2` utilizzando la stessa funzione `makeCounter`.
 
-Are they independent? What is the second counter going to show? `0,1` or `2,3` or something else?
+Sono indipendenti? Cosa mostrerà il secondo contatore? `0,1` oppure `2,3` o qualcos altro?
 
 ```js
 function makeCounter() {

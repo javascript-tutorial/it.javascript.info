@@ -26,7 +26,7 @@ Guardando avanti, notiamo che `"use strict"` può essere applicato all'inizio di
 ````warn header="Assicurati che \"use strict\" sia all'inizio"
 Assicurati `"use strict"` sia all'inizio dello script, altrimenti la modalità script non verrà abilitata.
 
-Qui non ai attiva la modalità strict:
+Qui non si attiva la modalità strict:
 
 ```js no-strict
 alert("some code");

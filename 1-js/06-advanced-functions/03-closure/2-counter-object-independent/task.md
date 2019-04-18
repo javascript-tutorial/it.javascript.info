@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Counter object
+# Oggetto contatore
 
-Here a counter object is made with the help of the constructor function.
+Qui l'oggetto contatore viene creato con il costruttore.
 
-Will it work? What will it show?
+Funziona? Cosa mostra?
 
 ```js
 function Counter() {

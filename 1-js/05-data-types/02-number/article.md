@@ -408,6 +408,7 @@ Un paio di esempi:
 
 Ci sono molte altre funzioni e costanti nell'oggetto `Math`, incluse quelle trigonometriche, che potete trovare nella [documentazione dell'oggetto Math](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math).
 
+``````
 ## Riepilogo
 
 Per scrivere numeri molto grandi:

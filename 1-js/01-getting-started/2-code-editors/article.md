@@ -1,6 +1,6 @@
-# Code editors
+# Code editor
 
-Un code editor è il luogo in cui i programmatori spendo la maggior parte del loro tempo.
+Un code editor è il posto in cui i programmatori spendo la maggior parte del loro tempo.
 
 Ce ne sono due esemplari: IDE ed editor semplici. Molte persone si trovano bene a scegliere uno strumento per ognuno dei due tipi.
 
@@ -24,7 +24,7 @@ Molti IDE sono a pagamento ma offrono un periodo di prova gratuito. Solitamente 
 
 ## Editor semplici
 
-Gli "Editor Semplici" non sono potenti come gli IDE ma sono molto veloci, eleganti e semplici.
+Gli "editor Semplici" non sono potenti come gli IDE ma sono molto veloci, eleganti e semplici.
 
 Sono principalmente utilizzati per aprire un file e modificarlo rapidamente.
 

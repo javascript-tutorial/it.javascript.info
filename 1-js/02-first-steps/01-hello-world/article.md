@@ -120,7 +120,6 @@ L'esempio precedete può essere diviso in due script:
   alert(1);
 </script>
 ```
-````
 
 ## Riepilogo
 

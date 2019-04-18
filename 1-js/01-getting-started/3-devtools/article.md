@@ -51,7 +51,7 @@ Apri le Impostazioni e vai sul pannello "Avanzate". In basso troverai un'opzione
 
 Adesso tramite `key:Cmd+Opt+C` puoi attivare/disattivare la console. Inoltre noterai che un nuovo menu "Sviluppo" è apparso. Contiene molti comandi e opzioni.
 
-## Riassunto
+## Riepilogo
 
 - Gli strumenti di sviluppo ci consentono di trovare gli errori, eseguire comandi, esaminare variabili e molto altro.
 - Possono essere aperti con `key:F12` per la maggior parte dei browser in Windows. Chrome su Mac `key:Cmd+Opt+J`, Safari: `key:Cmd+Opt+C` (avendolo precedentemente abilitato).

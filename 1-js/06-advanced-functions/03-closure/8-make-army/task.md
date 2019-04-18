@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Army of functions
+# Funzione crea eserciti
 
-The following code creates an array of `shooters`.
+Il seguente codice crea un array di `shooters`.
 
-Every function is meant to output its number. But something is wrong...
+Ogni funzione è pensata per ritornare il numero, Ma qualcosa non va...
 
 ```js run
 function makeArmy() {
@@ -31,5 +31,5 @@ army[5](); // and number 5 also outputs 10...
 // ... all shooters show 10 instead of their 0, 1, 2, 3...
 ```
 
-Why all shooters show the same? Fix the code so that they work as intended.
+Perché tutti gli eserciti possiedono lo stesso numero di militari? Modificate il codice in modo tale che funzioni correttamente.
 

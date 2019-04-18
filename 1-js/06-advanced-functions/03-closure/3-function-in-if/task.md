@@ -1,7 +1,7 @@
 
-# Function in if
+# Funzionie interna ad if
 
-Look at the code. What will be result of the call at the last line?
+Guardate il codice. Quale sarà il risultato della chiamata all'ultima riga?
 
 ```js run
 let phrase = "Hello";

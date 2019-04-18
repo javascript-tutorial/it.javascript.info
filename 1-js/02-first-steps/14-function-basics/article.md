@@ -432,7 +432,7 @@ La seconda variante è più semplice da capire, non vi pare? Piuttosto che un pe
 
 Quindi, le funzioni possono essere create anche se non abbiamo intenzione di riutilizzarle. Infatti forniscono una struttura migliore al codice e lo rendono più leggibile.
 
-## Ricapitolazione
+## Riepilogo
 
 La dichiarazione di una funzione assomiglia a:
 
