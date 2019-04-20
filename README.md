@@ -1,50 +1,49 @@
 # The Modern JavaScript Tutorial in Italian
 
-This repository hosts the translation of <https://javascript.info> in Italian.
+In questa repository viene pubblicata la traduzione italiana di <https://javascript.info>.
 
-Please help us to make the translation better.
+Vi chiediamo di aiutarci a rendere il processo di traduzione il più semplice possibile.
 
-- See the [issue](https://github.com/javascript-tutorial/it.javascript.info/issues) named "Translate Progress".
-- Choose an unchecked article you'd like to translate.
-- Create an issue to inform the maintainer that you're translating it.
-- Fork the repository, translate and send a PR when done.
+- Leggete tra gli [issue](https://github.com/javascript-tutorial/it.javascript.info/issues) quello denominato "Translate Progress".
+- Scegliete l'articolo che desiderate tradurre e mettete la spunta.
+- Create un issue per informare il gestore della repository sull'articolo scelto.
+- Procedete con il fork della repository, traducete e infine infine inviate una PR (Pull Request).
 
-🎉 Thank you!
+🎉 Grazie!
 
-Your name and the contribution size will appear in the "About project" page when the translation gets published.
+Il vostro nome e la quantità dei contributi forniti apparirà nella pagina "About project" quando la traduzione verrà pubblicata.
 
-P.S. The full list of languages can be found at <https://github.com/javascript-tutorial/translate>.
+P.S. Potete trovare la lista completa delle traduzioni a questo link: <https://github.com/javascript-tutorial/translate>.
 
-## Structure
+## Struttura
 
-Every chapter, an article or a task resides in its own folder.
+Ogni capitolo, articolo o esercizio appartiene ad una cartella.
 
-The folder is named `N-url`, where `N` – is the number for sorting (articles are ordered), and `url` is the URL-slug on the site.
+Il nome della cartella è `N-url`, dove `N` – è il numero per l'ordinamento (gli articoli sono ordinati), e `url` è il prefisso dell'URL sul sito.
 
-The folder has one of files:
+Una cartella possiede uno di questi tipi di file:
 
-- `index.md` for a section,
-- `article.md` for an article,
-- `task.md` for a task formulation (+`solution.md` with the solution text if any).
+- `index.md` per una sezione,
+- `article.md` per un articolo,
+- `task.md` per gli esercizi(+`solution.md` con la soluzione ed eventuale spiegazione).
 
-A file starts with the `# Title Header`, and then the text in Markdown-like format, editable in a simple text editor. 
+Un file inizia con `# Title Header`, e il testo è in formato Markdown, che può esserre modificato con un semplice editor di testo. 
 
-Additional resources and examples for the article or the task, are also in the same folder.
+Eventuali risorse aggiuntive ed esempi utili per un articolo o esercizio, risiedono nella stessa cartella.
 
-## Translation Tips
+## Consigli per la traduzione
 
-The translation doesn't have to be word-by-word precise. It should be technically correct and explain well.
+La traduzione non deve necessariamente essere fatta parola per parola. Dovrebbe essere tecnicamente corretta ed esplicativa.
 
-If you see that the English version can be improved – great, please send a PR to it.
+Se avete dei suggerimenti per migliorare anche la versione Inglese - ottimo, inviatemi una PR e valuterò la vostra proposta.
 
-### Text in Code Blocks
+### Esempi ed Esercizi
 
-- Translate comments.
-- Translate user-messages and example strings.
-- Don't translate variables, classes, identifiers.
-- Ensure that the code works after the translation :)
+- I commenti possono essere tradotti
+- Le variabili, classi o identificatori non devono essere assolutamente tradotte
+- Assicuratevi che il codice funzioni dopo averlo tradotto
 
-Example:
+Esempio:
 
 ```js
 // Example
@@ -52,47 +51,53 @@ const text = "Hello, world";
 document.querySelector('.hello').innerHTML = text;
 ```
 
-✅ DO (translate comment):
+✅ GIUSTO (traduzione commento):
 
 ```js
-// Ejemplo
+// Esempio
 const text = 'Hola mundo';
 document.querySelector('.hello').innerHTML = text;
 ```
 
-❌ DON'T (translate class):
+❌ SBAGLIATO (traduzione classi):
 
 ```js
-// Ejemplo
-const text = 'Hola mundo';
+// Esempio
+const testo = 'Ciao mondo';
 // ".hello" is a class
 // DO NOT TRANSLATE
 document.querySelector('.hola').innerHTML = text;
 ```
 
-### External Links
+### Link esterni
 
-If an external link is to Wikipedia, e.g. `https://en.wikipedia.org/wiki/JavaScript`, and a version of that article exists in your language that is of decent quality, link to that version instead.
+Se trovate dei link esterni verso Wikipedia, esempio `https://en.wikipedia.org/wiki/JavaScript`, ed esiste la versione italiana, accertatevi che questa sia di qualità prima di cambiare il link.
 
-Example:
+Esempio:
 
 ```md
 [JavaScript](https://en.wikipedia.org/wiki/JavaScript) is a programming language.
 ```
 
-✅ OK (en -> es):
+✅ OK (en -> it):
 
 ```md
-[JavaScript](https://es.wikipedia.org/wiki/JavaScript) es un lenguaje de programación.
+[JavaScript](https://it.wikipedia.org/wiki/JavaScript) è un linguaggio di programmazione.
 ```
 
-For links to MDN, that are only partially translated, also use the language-specific version.
+Per i link verso MDN, che sono tradotti solo parzialmente, conviene utilizzare quelli originali.
 
-If a linked article has no translated version, leave the link "as is".
+Se un articolo linkato non possiede una versione italiana, allora mantenete quello originale.
 
+### Glossario dei termini
 
-## Running locally
+Alcuni termini utilizzati spesso:
 
-You can run the tutorial locally, to immediately see the changes on-site.
+- 'Summary' viene tradotto con 'Riepilogo'
+- Il nome dei tipi come: 'primitives', 'string', 'object' viene tradotto ('primitivi', 'stringhe', 'oggetto') mantenendo tra parentesi la versione in lingua originale
 
-The server is at <https://github.com/javascript-tutorial/server>. 
+## Controllo locale
+
+Potete eseguire il tutorial localmente, per vedere immediatamente i cambiamenti.
+
+Qui trovate il server: <https://github.com/javascript-tutorial/server>. 
