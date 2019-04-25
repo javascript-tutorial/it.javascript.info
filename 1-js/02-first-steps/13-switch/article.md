@@ -148,7 +148,7 @@ Mettiamo in risalto che il confronto di uguaglianza è sempre stretto. I valori 
 Ad esempio, consideriamo il codice:
 
 ```js run
-let arg = prompt("Enter a value?")
+let arg = prompt("Enter a value?");
 switch (arg) {
   case '0':
   case '1':
@@ -163,7 +163,7 @@ switch (arg) {
     alert( 'Never executes!' );
     break;
   default:
-    alert( 'An unknown value' )
+    alert( 'An unknown value' );
 }
 ```
 

@@ -1,6 +1,6 @@
 Per ottenere il tempo passato da `date` fino ad ora -- sottraiamo le date.
 
-```js run
+```js run demo
 function formatDate(date) {
   let diff = new Date() - date; // the difference in milliseconds
 
@@ -57,12 +57,12 @@ function formatDate(date) {
   let diffSec = Math.round(diffMs / 1000);
   let diffMin = diffSec / 60;
   let diffHour = diffMin / 60;
-      
+
   // formatting
   year = year.toString().slice(-2);
   month = month < 10 ? '0' + month : month;
   dayOfMonth = dayOfMonth < 10 ? '0' + dayOfMonth : dayOfMonth;
-      
+
   if (diffSec < 1) {
     return 'right now';  
   } else if (diffMin < 1) {

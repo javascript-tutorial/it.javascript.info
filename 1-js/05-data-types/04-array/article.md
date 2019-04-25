@@ -104,7 +104,11 @@ Una [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) (coda) è 
 
 Gli array supportano entrambre le operazioni.
 
+<<<<<<< HEAD
 Nella pratica non è strano incontrare questo "tipo" di array. Ad esempiom una coda di messaggi che devono essere mostrati a schermo.
+=======
+In practice we need it very often. For example, a queue of messages that need to be shown on-screen.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Esiste un altro caso d'uso degli array -- la struttrura dati chiamata [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)). 
 
@@ -319,7 +323,11 @@ Non è comunque un ottima idea. Si possono verificare diversi errori:
 
     Ci sono anche degli oggetti chiamati "array-like" (simili ad array) nei browser e in altri ambienti, che *assomigliano ad array*. Infatti come proprietà possiedono `length` e degli indici, ma allo stesso tempo contengono proprietà e metodi di tipo non numerico, di cui solitamente non abbiamo bisogno. Il ciclo `for..in` li passerà tutti. Quindi se stiamo utilizzando degli oggetti array-like, questi "extra" potrebbero rivelarsi un problema.
 
+<<<<<<< HEAD
 2. Il ciclo `for..in` è ottimizzato per oggetti generici, non array, può risultare quindi 10-100 volte più lento. Ovviamente rimane comunque un operazione molto veloce. Può essere un problema solo in caso si verifichino ingorghi. 
+=======
+2. The `for..in` loop is optimized for generic objects, not arrays, and thus is 10-100 times slower. Of course, it's still very fast. The speedup may only matter in bottlenecks or seem irrelevant. But still we should be aware of the difference.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Generalmente, non dovremmo utilizzare `for..in` per array.
 

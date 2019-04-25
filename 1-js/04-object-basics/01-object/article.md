@@ -218,7 +218,11 @@ alert(obj.__proto__); // [object Object], didn't work as intended
 
 Come possiamo veder dal codice, l'assegnazione alla primitiva `5` viene ignorata.
 
+<<<<<<< HEAD
 Questa può diventare una situazione vulnerabile se abbiamo intenzione di memorizzare una coppia chiave-valore in un oggetto, consentendo al visitatore di specificare al chiave.
+=======
+That can become a source of bugs and even vulnerabilities if we intend to store arbitrary key-value pairs in an object, and allow a visitor to specify the keys.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 In questo caso il visitatore potrebbe scegliere "__proto__" come chiave, e l'assegnazione verrebbe rovinata (come abbiamo visto sopra).
 
@@ -336,7 +340,7 @@ Per attraversare tutte le chiavi di un oggetto, esiste una speciale forma di cic
 La sintassi:
 
 ```js
-for(key in object) {
+for (key in object) {
   // executes the body for each key among object properties
 }
 ```
@@ -350,7 +354,7 @@ let user = {
   isAdmin: true
 };
 
-for(let key in user) {
+for (let key in user) {
   // keys
   alert( key );  // name, age, isAdmin
   // values for the keys
@@ -360,7 +364,11 @@ for(let key in user) {
 
 Da notare che tutti i costrutti "for" ci consentono di dichiarare delle variabili di ciclo da utilizzare all'interno del ciclo stesso, come `let key` in questo esempio.
 
+<<<<<<< HEAD
 Inoltre possiamo utilizzare qualsiasi altr variabile al posto di `key`. Ad esempio `"for(let prop in obj)"` è molto utilizzato.
+=======
+Also, we could use another variable name here instead of `key`. For instance, `"for (let prop in obj)"` is also widely used.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 
 ### Ordine degli oggetti
@@ -381,7 +389,7 @@ let codes = {
 };
 
 *!*
-for(let code in codes) {
+for (let code in codes) {
   alert(code); // 1, 41, 44, 49
 }
 */!*
@@ -439,7 +447,7 @@ let codes = {
   "+1": "USA"
 };
 
-for(let code in codes) {
+for (let code in codes) {
   alert( +code ); // 49, 41, 44, 1
 }
 ```
@@ -613,7 +621,7 @@ Possiamo anche utilizzare il metodo [Object.assign](mdn:js/Object/assign).
 La sintassi è:
 
 ```js
-Object.assign(dest[, src1, src2, src3...])
+Object.assign(dest, [src1, src2, src3...])
 ```
 
 - Gli argomenti `dest`, e `src1, ..., srcN` (possono essere anche di più se necessario) sono oggetti.
@@ -719,7 +727,14 @@ Operatori specifici:
 - Per controllare se un una proprietà con un certo nome esiste: `"key" in obj`.
 - Per iterare un oggetto: `for(let key in obj)`.
 
+<<<<<<< HEAD
 Gli oggetti vengono assegnati e copiati per riferimento. In altre parole, la variabile non memorizza il "valore dell'oggetto", ma puittosto un "riferimento" (indirizzo di memoria). Quindi copiando questa variabile o passandola come argomento ad una funzione, fornirà un riferimento all'oggetto e non una copia. Tutte le operazioni effettuate su un oggetto copiato per riferimento (come aggiungere/rimuovere proprietà) vengono effettuate sullo stesso oggetto.
+=======
+Additional operators:
+- To delete a property: `delete obj.prop`.
+- To check if a property with the given key exists: `"key" in obj`.
+- To iterate over an object: `for (let key in obj)` loop.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Per fare una "copia" (un clone) possiamo utilizzare `Object.assign` oppure [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
 

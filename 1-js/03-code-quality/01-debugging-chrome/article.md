@@ -56,11 +56,19 @@ Un *breakpoint* è un punto del codice in cui il debugger si metterà in pausa a
 
 Mentre il codice è in pause, è possibile esaminare le variabili, eseguire comandi tramite la console etc. In altre parole, possiamo eseguire il debug.
 
+<<<<<<< HEAD
 Possiamo anche visualizzare la lista dei breakpoint nel pannello di destra. Questo pannello può risultare utile quando abbiamo più breakpoint in file diversi. Infatti ci consente di:
 - Salatare rapidamente ad un breakpoint (cliccando sopra al nome del breakpoint che ci interessa).
 - Disabilitare temporaneamente un breakpoint semplicemente togliendo la spunta.
 - Rimuovere breakpoint cliccando con il tasto destro e selezionando Rimuovi.
 - ...E molto altro.
+=======
+We can always find a list of breakpoints in the right pane. That's useful when we have many breakpoints in various files. It allows us to:
+- Quickly jump to the breakpoint in the code (by clicking on it in the right pane).
+- Temporarily disable the breakpoint by unchecking it.
+- Remove the breakpoint by right-clicking and selecting Remove.
+- ...And so on.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 ```smart header="Breakpoint condizionali"
 *Tasto destro* sul numero della riga ci consente di creare un breakpoint *condizionale*. Che viene attivato solo quando l'espressione fornita risulta vera.
@@ -169,10 +177,17 @@ Se abbiamo abbastanza log nel nostro codice, possiamo vedere cosa sta accadendo 
 
 ## Riepilogo
 
+<<<<<<< HEAD
 Come abbiamo visto, ci sono tre diversi modi di metter in pausa uno script:
 1. Un breakpoint.
 2. L'istruzione `debugger`.
 3. Un errore (solo se gli strumenti sviluppatore sono aperti ed è attivo il bottone <span class="devtools" style="background-position:-264px -4px"></span>)
+=======
+As we can see, there are three main ways to pause a script:
+1. A breakpoint.
+2. The `debugger` statements.
+3. An error (if dev tools are open and the button <span class="devtools" style="background-position:-264px -4px"></span> is "on").
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Cosi possiamo esaminare le variabili e capire cosa è andato male durante l'esecuzione.
 

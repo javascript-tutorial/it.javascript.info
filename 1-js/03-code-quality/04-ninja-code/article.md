@@ -81,7 +81,11 @@ Quando scegliete un nome cercare di utilizzare parole più astratte possibili. C
 
     Dategli una possibilità. Un giovane iniziato potrebbe pensare -- sono veramente utili ad un ninja questi nomi? Infatti lo sono!
 
+<<<<<<< HEAD
     Certamente il nome della variabile contiene comunque un significato. Infatti informa riguardo cosa è contenuto nella variabile: una stringa, un numero o qualcos'altro. Ma quando un estraneo cercherà di capire il codice, rimarrà sorpreso scoprendo che in realtà non forniscono alcuna informazione! Quindi fallirà nel suo intento di modificare il vostro codice.
+=======
+    Sure, the variable name still means something. It says what's inside the variable: a string, a number or something else. But when an outsider tries to understand the code, they'll be surprised to see that there's actually no information at all! And will ultimately fail to alter your well-thought code.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
     Il tipo del valore è semplice da trovare con un debugger. Ma qual'è il significato della variabile? Quale numero/stringa contiene?
 
@@ -151,7 +155,13 @@ function ninjaFunction(elem) {
 }
 ```
 
+<<<<<<< HEAD
 Un programmatore esterno che vorrebbe provare ad interagire con `elem` nella seconda parte della funzione, rimarrà sorpreso... Solamente in fase di debugging , dopo aver esaminato attentamente il codice si renderà conto che stava lavorando con un clone!
+=======
+A fellow programmer who wants to work with `elem` in the second half of the function will be surprised... Only during the debugging, after examining the code they will find out that they're working with a clone!
+
+Seen in code regularly. Deadly effective even against an experienced ninja. 
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Se ripetuto regolarmente nel codice, diventa letale anche contro i ninja più esperti. 
 
@@ -194,7 +204,11 @@ function render() {
 
 Un programmatore che si trova dentro `render` probabilmente non si accorgerà che la variabile locale `user` sta nascondendo quella esterna.
 
+<<<<<<< HEAD
 Quindi potrebbe provare a lavorare con `user` pensando erroneamente che sia quella esterna, quella con il risultato di `authenticateUser()`... La trappola è servita! Addio debugger...
+=======
+Then they'll try to work with `user` assuming that it's the external variable, the result of `authenticateUser()`... The trap is sprung! Hello, debugger...
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 
 ## Side-effect ovunque!

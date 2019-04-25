@@ -102,8 +102,13 @@ Di più in: <info:variables> e <info:types>.
 
 Abbiamo utilizzato solo il browser come ambiente di sviluppo, quindi le interfacce di base saranno:
 
+<<<<<<< HEAD
 [`prompt(question[, default])`](mdn:api/Window/prompt)
 : Pone una domanda `question`, e ritorna quello che l'utente ha inserito oppure `null` se ha premuto "cancel".
+=======
+[`prompt(question, [default])`](mdn:api/Window/prompt)
+: Ask a `question`, and return either what the visitor entered or `null` if they pressed "cancel".
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 [`confirm(question)`](mdn:api/Window/confirm)
 : Pone una domanda `question` e fornisce la possibilità di scegliere tra Ok e Cancel. La scelta viene ritornata come `true/false`.
@@ -148,8 +153,13 @@ Bit a Bit
 Ternari
 : C'è un solo operatore con tre parametri: `cond ? resultA : resultB`. Se `cond` è vera, ritorna `resultA`, altrimenti `resultB`.
 
+<<<<<<< HEAD
 Operatori logici
 : AND logico `&&` e OR `||` eseguono delle valutazioni locali e ritornano un valore quando si fermano.
+=======
+Logical operators
+: Logical AND `&&` and OR `||` perform short-circuit evaluation and then return the value where it stopped. Logical NOT `!` converts the operand to boolean type and returns the inverse value.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Confronto
 : Confronto di uguaglianza `==` valori di tipi diversi vengono convertiti in numeri (ad eccezione di `null` e `undefined` che si eguagliano tra di loro e con nient'altro), quindi questi sono uguali:
@@ -167,8 +177,13 @@ Confronto
 
     Maggiore/minore confrontano le stringhe carattere per carattere, gli altri valori vengono convertiti a numeri.
 
+<<<<<<< HEAD
 Operatori logici
 : Ce ne sono altri, come l'operatore virgola.
+=======
+Other operators
+: There are few others, like a comma operator.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Di più in: <info:operators>, <info:comparison>, <info:logical-operators>.
 

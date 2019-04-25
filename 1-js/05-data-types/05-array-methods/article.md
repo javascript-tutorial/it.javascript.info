@@ -122,7 +122,11 @@ La sintassi è:
 arr.slice(start, end)
 ```
 
+<<<<<<< HEAD
 Ritorna un nuovo array contente tutti gli elementi a partire da `"start"` fino ad `"end"` (`"end"` esclusa). Sia `start` che `end` possono essere negativi, in tal caso si inizierà a contare dalla coda dell'array.
+=======
+It returns a new array containing all items from index `"start"` to `"end"` (not including `"end"`). Both `start` and `end` can be negative, in that case position from array end is assumed.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Funziona come `str.slice`, ma crea dei sotto-array piuttosto che sotto-stringhe.
 
@@ -201,7 +205,40 @@ let arrayLike = {
 alert( arr.concat(arrayLike) ); // 1,2,something,else
 ```
 
+<<<<<<< HEAD
 ## Ricerca in array
+=======
+## Iterate: forEach
+
+The [arr.forEach](mdn:js/Array/forEach) method allows to run a function for every element of the array.
+
+The syntax:
+```js
+arr.forEach(function(item, index, array) {
+  // ... do something with item
+});
+```
+
+For instance, this shows each element of the array:
+
+```js run
+// for each element call alert
+["Bilbo", "Gandalf", "Nazgul"].forEach(alert);
+```
+
+And this code is more elaborate about their positions in the target array:
+
+```js run
+["Bilbo", "Gandalf", "Nazgul"].forEach((item, index, array) => {
+  alert(`${item} is at index ${index} in ${array}`);
+});
+```
+
+The result of the function (if it returns any) is thrown away and ignored.
+
+
+## Searching in array
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Ora vedremo dei metodi per effettuare ricerche in un array.
 
@@ -246,7 +283,8 @@ In questi casi si utilizza il metodo [arr.find](mdn:js/Array/find).
 La sintassi è:
 ```js
 let result = arr.find(function(item, index, array) {
-  // should return true if the item is what we are looking for
+  // if true is returned, item is returned and iteration is stopped
+  // for falsy scenario returns undefined
 });
 ```
 
@@ -274,9 +312,15 @@ alert(user.name); // John
 
 Nella realtà gli array di oggetti sono una cosa molto comune, quindi il metodo `find` risulta molto utile.
 
+<<<<<<< HEAD
 Da notare che nell'esempio noi forniamo a `find` un singolo argomento `item => item.id == 1`. Gli altri parametri di `find` sono raramente utilizzati.
 
 Il metodo [arr.findIndex](mdn:js/Array/findIndex) fa essenzialmente la stessa cosa, semplicemente ritorna l'indice in cui è stata trovata la corrispondenza piuttosto di ritornare l'oggetto stesso.
+=======
+Note that in the example we provide to `find` the function `item => item.id == 1` with one argument. Other arguments of this function are rarely used.
+
+The [arr.findIndex](mdn:js/Array/findIndex) method is essentially the same, but it returns the index where the element was found instead of the element itself and `-1` is returned when nothing is found.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 ### filter
 
@@ -284,11 +328,16 @@ Il metodo `find` cerca un singola occorrenza dell'elemento (la prima) e ritorna 
 
 Se vogliamo cercare più occorrenze, possiamo utilizzare [arr.filter(fn)](mdn:js/Array/filter).
 
+<<<<<<< HEAD
 La sintassi è pressoché la stessa di `find`, ma ritorna un array contenente tutte le corrispondenze trovate:
+=======
+The syntax is similar to `find`, but filter continues to iterate for all array elements even if `true` is already returned:
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 ```js
 let results = arr.filter(function(item, index, array) {
-  // should return true if the item passes the filter
+  // if true item is pushed to results and iteration continues
+  // returns empty array for complete falsy scenario
 });
 ```
 
@@ -328,7 +377,7 @@ La funzione viene chiamata per ogni elemento dell'array e ritorna un array di ri
 Ad esempio, qui trasformiamo ogni elemento nella sua lunghezza:
 
 ```js run
-let lengths = ["Bilbo", "Gandalf", "Nazgul"].map(item => item.length)
+let lengths = ["Bilbo", "Gandalf", "Nazgul"].map(item => item.length);
 alert(lengths); // 5,7,6
 ```
 
@@ -476,7 +525,11 @@ alert( str.split('') ); // t,e,s,t
 ```
 ````
 
+<<<<<<< HEAD
 La chiamata [arr.join(str)](mdn:js/Array/join) fa esattamente l'inverso di `split`. Crea una stringa con gli elementi di `arr` divisi da un carattere di tipo stringa `str`.
+=======
+The call [arr.join(separator)](mdn:js/Array/join) does the reverse to `split`. It creates a string of `arr` items glued by `separator` between them.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Ad esempio:
 
@@ -491,23 +544,35 @@ alert( str ); // Bilbo;Gandalf;Nazgul
 ### reduce/reduceRight
 Quando vogliamo iterare su un array -- possiamo utilizzare `forEach`.
 
+<<<<<<< HEAD
 Quando invece abbiamo la necessità di iterare e ritornare dati per ogni elemento -- possiamo usare `map`.
+=======
+When we need to iterate over an array -- we can use `forEach`, `for` or `for..of`.
+
+When we need to iterate and return the data for each element -- we can use `map`.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 I metodi [arr.reduce](mdn:js/Array/reduce) e [arr.reduceRight](mdn:js/Array/reduceRight) fanno parte della stessa categoria, ma sono leggermente più complessi. Vengono utilizzati per calcolare un singolo valore basato sul contenuto dell'array.
 
 La sintassi è:
 
 ```js
-let value = arr.reduce(function(previousValue, item, index, arr) {
+let value = arr.reduce(function(previousValue, item, index, array) {
   // ...
 }, initial);
 ```
 
 La funzione viene applicata agli elementi. Potrete notare che fra gli argomenti ce ne sono alcuni di familiari, a partire dal secondo:
 
+<<<<<<< HEAD
 - `item` -- è l'elemento corrente.
 - `index` -- è la sua posizione.
 - `arr` -- è l'array.
+=======
+- `item` -- is the current array item.
+- `index` -- is its position.
+- `array` -- is the array.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Finora, è uguale a `forEach/map`. Ma c'è un ulteriore argomento:
 
@@ -537,7 +602,11 @@ Il flusso di calcolo:
 
 ![](reduce.png)
 
+<<<<<<< HEAD
 O nella forma tabellare, in cui ogni riga rappresenta una chiamata di funzione:
+=======
+Or in the form of a table, where each row represents a function call on the next array element:
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 |   |`sum`|`current`|`result`|
 |---|-----|---------|---------|
@@ -583,6 +652,7 @@ Quindi è fortemente consigliato di specificare sempre un valore iniziale.
 Il metodo [arr.reduceRight](mdn:js/Array/reduceRight) fa esattamente la stessa cosa, ma da destra verso sinistra.
 
 
+<<<<<<< HEAD
 ## Iterate: forEach
 
 Il metodo [arr.forEach](mdn:js/Array/forEach) consente di eseguire una funzione per ogni elemento dell'array.
@@ -611,6 +681,8 @@ Questo codice è più elaborato e mostra anche la posizione:
 
 Il risultato della funzione (sempre se ritorna qualcosa) viene ignorato.
 
+=======
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 ## Array.isArray
 
 Gli array non utilizzano una sintassi differente. Sono comunque basati sugli oggetti.
@@ -687,11 +759,22 @@ Un breve riepilogo dei metodi per array:
   - `slice(start, end)` -- crea un nuovo array, e copia al suo interno gli elementi da `start` fino ad `end` (esclusa).
   - `concat(...items)` -- ritorna un nuovo array: copia tutti gli elementi di quello corrente e ci aggiunge `items`. Se uno degli `items` è un array, allora vengono presi anche i suoi elementi.
 
+<<<<<<< HEAD
 - Ricercare elementi:
   - `indexOf/lastIndexOf(item, pos)` -- cerca `item` a partire da `pos`, e ritorna l'indice, oppure `-1` se non lo trova.
   - `includes(value)` -- ritorna `true` se l'array contiene `value`, altrimenti `false`.
   - `find/filter(func)` -- filtra gli elementi tramite la funzione, ritorna il primo/tutti i valori che ritornano `true`.
   - `findIndex` è simile a `find`, ma ritorna l'indice piuttosto del valore.
+=======
+- To search among elements:
+  - `indexOf/lastIndexOf(item, pos)` -- look for `item` starting from position `pos`, return the index or `-1` if not found.
+  - `includes(value)` -- returns `true` if the array has `value`, otherwise `false`.
+  - `find/filter(func)` -- filter elements through the function, return first/all values that make it return `true`.
+  - `findIndex` is like `find`, but returns the index instead of a value.
+  
+- To iterate over elements:
+  - `forEach(func)` -- calls `func` for every element, does not return anything.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 - Per modificare un array:
   - `map(func)` -- crea un nuovo array con i risultati della chiamata `func` su tutti i suoi elementi.
@@ -700,11 +783,16 @@ Un breve riepilogo dei metodi per array:
   - `split/join` -- converte una stringa in array e vice versa.
   - `reduce(func, initial)` -- calculate a single value over the array by calling `func` for each element and passing an intermediate result between the calls.
 
+<<<<<<< HEAD
 - Per iterare sugli elementi:
   - `forEach(func)` -- chiama `func` su ogni elemento, ma non ritorna nulla.
 
 - Un altro metodo utile:
   - `Array.isArray(arr)` controlla se `arr` è un array.
+=======
+- Additionally:
+  - `Array.isArray(arr)` checks `arr` for being an array.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Da notare che i metodi `sort`, `reverse` e `splice` modificano l'array stesso.
 

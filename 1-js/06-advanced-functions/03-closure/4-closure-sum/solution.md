@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Perchè la seconda parentesi funzioni, la prima deve ritornare una funzione.
+=======
+For the second parentheses to work, the first ones must return a function.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Come in questo esempio:
 

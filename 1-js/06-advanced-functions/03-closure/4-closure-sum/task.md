@@ -6,7 +6,11 @@ importance: 4
 
 Scrivete la funzione `sum` che funziona in questo modo: `sum(a)(b) = a+b`.
 
+<<<<<<< HEAD
 Esattamente, due parentesi tonde (non è un errore).
+=======
+Yes, exactly this way, using double parentheses (not a mistype).
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Ad esempio:
 

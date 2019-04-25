@@ -11,7 +11,11 @@ Nei primi capitoli in cui abbiamo parlato di [variabili](info:variables), abbiam
 
 Invece `var` è totalmente diverso, poiché deriva dalle prime versioni del linguaggio. Generalmente negli script più recenti non viene utilizzato, ma appare ancora in quelli più vecchi.
 
+<<<<<<< HEAD
 Se non avete intenzione di avere a che fare con gli script più vecchi, potete saltare questo capitolo o studiarlo in futuro, ma molto probabilmente prima o poi vi ci imbatterete.
+=======
+If you don't plan on meeting such scripts you may even skip this chapter or postpone it, but then there's a chance that it bites you later.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 A prima vista, `var` si comporta in maniera analoga a `let`. Ad esempio:
 
@@ -74,7 +78,11 @@ sayHi();
 alert(phrase); // Errore: phrase non è definito
 ```
 
+<<<<<<< HEAD
 Come possiamo vedere, `var` passa attraverso `if`, `for` o altri blocchi di codice. Questo accade perché molto tempo fa i blocchi JavaScript non possedevano un Lexical Environments. E `var` ne è un ricordo.
+=======
+As we can see, `var` pierces through `if`, `for` or other code blocks. That's because a long time ago in JavaScript blocks had no Lexical Environments. And `var` is a remnant of that.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 ## "var" viene processata all'inizio della funzione
 
@@ -182,4 +190,8 @@ Ci sono due principali differenze con `var`:
 
 C'è un ulteriore differenza di minore importanza legata all'oggetto globale, che andremo ad analizzare nel prossimo capitolo.
 
+<<<<<<< HEAD
 L'insieme di queste differenze fa si che `var` venga considerato uno svantaggio. Come prima cosa, non possiamo creare delle variabili locali al blocco. Il "sollevameto" genera solamente confusione. Quindi, negli script più recenti `var` viene utilizzato solamente in casi eccezionali.
+=======
+These differences are actually a bad thing most of the time. Block-level variables is such a great thing. That's why `let` was introduced in the standard long ago, and is now a major way (along with `const`) to declare a variable.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb

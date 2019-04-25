@@ -2,7 +2,7 @@ Il metodo `date.getDay()` ritorna il numero del giorno della settimana, comincia
 
 Creiamo quindi un array di giorni della settimana, che utilizzeremo per assegnare il numero della settimana al giorno corretto:
 
-```js run
+```js run demo
 function getWeekDay(date) {
   let days = ['DOM', 'LUN', 'MAR', 'MER', 'GIO', 'VEN', 'SAB'];
 

@@ -46,9 +46,15 @@ Questo è il paradosso contro cui si è scontato il creatore di JavaScript:
 
 La soluzione sembra un po' strana:
 
+<<<<<<< HEAD
 1. Le primitive rimangono primitive. Contengono un singolo valore.
 2. Il linguaggio consente di accedere alle proprietà e ai metodi di stringhe, numeri, booleani e symbol.
 3. Quando questo accade, viene creato uno speciale "oggetto contenitore" che fornisce le funzionalità extra, successivamente verrà distrutto.
+=======
+1. Primitives are still primitive. A single value, as desired.
+2. The language allows access to methods and properties of strings, numbers, booleans and symbols.
+3. When this happens, a special "object wrapper" that provides the extra functionality is created, and then is destroyed.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Gli "oggetti contenitore" sono diversi per ogni primitiva e sono chiamati: `String`, `Number`, `Boolean` e `Symbol`. Questi forniscono diversi insiemi di metodi.
 

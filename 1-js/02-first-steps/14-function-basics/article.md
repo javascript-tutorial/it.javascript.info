@@ -128,7 +128,11 @@ Le variabili dichiarate all'esterno di qualsiasi funzione, come `userName` nel c
 
 Le variabili globali sono visibili a qualsiasi funzione (se non sono oscurate da quelle locali).
 
+<<<<<<< HEAD
 Solitamente, una funzione dichiara tutte le variabili necessarie per svolgere il compito. Le variabili locali vengono utilizzate per memorizzare dati relativi al progetto, quindi quando è importante che queste siano accessibili in qualsiasi punto del codice. I codici moderni cercano di evitare le variabili globali. La maggior parte delle variabili appartengono quindi a delle specifiche funzioni.
+=======
+Usually, a function declares all variables specific to its task. Global variables only store project-level data, and it's important that these variables are accessible from anywhere. Modern code has few or no globals. Most variables reside in their functions.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 ```
 
 ## Parametri
@@ -204,8 +208,15 @@ function showMessage(from, text = anotherFunction()) {
 }
 ```
 
+<<<<<<< HEAD
 ```smart header="Valutazione dei parametri di default"
 In JavaScript, un parametro di default viene valutato ogni volta che viene chiamata una funzione senza i rispettivi parametri. Nell'esempio sopra, `anotherFunctions()` viene richiamata ogni volta che `someMessage()` viene richiamata senza il parametro `text`. Questo è in contrasto con altri linguaggi come Python, dove ogni parametro di default viene valutato solo durante la fase di interpretazione.
+=======
+```smart header="Evaluation of default parameters"
+
+In JavaScript, a default parameter is evaluated every time the function is called without the respective parameter. In the example above, `anotherFunction()` is called every time `showMessage()` is called without the `text` parameter. This is in contrast to some other languages like Python, where any default parameters are evaluated only once during the initial interpretation.
+
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 ```
 
 
@@ -370,9 +381,15 @@ Due azioni separate solitamente meritano due funzioni diverse, anche se molto sp
 
 Un paio di esempi che non rispettano queste regole:
 
+<<<<<<< HEAD
 - `getAge` -- sarebbe un pessimo nome se mostrasse un `alert` con l'età (dovrebbe solo restituirlo).
 - `createForm` -- sarebbe un pessimo nome se modificasse il documento, aggiungendo il form (infatti dovrebbe solo crearlo e restituirlo).
 - `checkPermission` -- sarebbe un pessimo nome se mostrasse il messaggio `access granted/denied` (dovrebbe solo eseguire il controllo e ritornare il risultato).
+=======
+- `getAge` -- would be bad if it shows an `alert` with the age (should only get).
+- `createForm` -- would be bad if it modifies the document, adding a form to it (should only create it and return).
+- `checkPermission` -- would be bad if it displays the `access granted/denied` message (should only perform the check and return the result).
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Questi esempi assumono i significati comuni dei prefissi. Il loro significato dipende da voi e dal vostro team. E' comunque normale che il tuo codice abbia caratteristiche diverse. Ma è fondamentale avere una firma il cui prefisso sia sensato, che faccia capire cosa un determinato tipo di funzione può o non può fare. Tutte le funzione che iniziano con lo stesso prefisso dovrebbero seguire determinate regole. E' fondamentale che il team condivida queste informazioni.
 ```

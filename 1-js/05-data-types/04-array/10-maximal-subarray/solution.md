@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # La soluzione lenta
+=======
+# Slow solution
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Possiamo calcoalre tutte le somme possibili.
 
@@ -29,8 +33,8 @@ Ad esempio, per `[-1, 2, 3, -9, 11]`:
 -9
 -9 + 11
 
-// Starting from -11
--11
+// Starting from 11
+11
 ```
 
 Il codice è un ciclo annidato: il ciclo esterno cicla tutti gli elementi dell'array, quello interno esegue le somme a partire dall'elemento corrente.
@@ -59,7 +63,11 @@ alert( getMaxSubSum([100, -9, 2, -3, 5]) ); // 100
 
 La soluzione ha una complessità di [O(n<sup>2</sup>)](https://en.wikipedia.org/wiki/Big_O_notation). In altre parole, se l'array fosse 2 volte più grande, l'algoritmo lavorerebbe 4 volte più lentamente.
 
+<<<<<<< HEAD
 Per grandi array (1000, 10000 o più elementi) questi algoritmi possono portare ad enormi attese.
+=======
+For big arrays (1000, 10000 or more items) such algorithms can lead to a serious sluggishness.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 # Soluzione performante
 
@@ -67,7 +75,7 @@ Iniziamo ad esaminare l'array mantenendo la somma parizale degli elementi nella 
 
 Se la risposta vi sembra troppo vaga, date un'occhiata al codice:
 
-```js run
+```js run demo
 function getMaxSubSum(arr) {
   let maxSum = 0;
   let partialSum = 0;

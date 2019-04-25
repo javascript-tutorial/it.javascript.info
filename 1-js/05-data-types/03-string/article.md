@@ -548,8 +548,13 @@ Questo metodo in realtà ha due argomenti opzionali specificati nella [documenta
 
 ## Internamente, Unicode
 
+<<<<<<< HEAD
 ```warn header="Apprendimento avanzato"
 Questa sezione andrà più in profondità riguardo le stringhe. Quello che leggerai ti potrà essere utile se hai intenzione di utilizzare emoji, simboli matematici o geroglifici.
+=======
+```warn header="Advanced knowledge"
+The section goes deeper into string internals. This knowledge will be useful for you if you plan to deal with emoji, rare mathematical or hieroglyphic characters or other rare symbols.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Puoi semplicemente saltare questa sezione se non hai in programma di utilizzarle.
 ```

@@ -43,19 +43,28 @@ let surname = arr[1];
 ```
 ````
 
+<<<<<<< HEAD
 ````smart header="Ignora i primi elementi"
 Possono essere ignorati degli elementi dell'array inserendo una virgola:
+=======
+````smart header="Ignore elements using commas"
+Unwanted elements of the array can also be thrown away via an extra comma:
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 ```js run
 *!*
-// first and second elements are not needed
-let [, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
+// second element is not needed
+let [firstName, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
 */!*
 
 alert( title ); // Consul
 ```
 
+<<<<<<< HEAD
 Nel codice sopra, il primo e secondo elemento vengono saltati, il terzo viene assegnato a `title`, il resto dell'array viene ignorato.
+=======
+In the code above, the second element of the array is skipped, the third one is assigned to `title`, and the rest of the array is also skipped.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 ````
 
 ````smart header="Funziona con qualsiasi itarabile"
@@ -129,6 +138,7 @@ alert(name1); // Julius
 alert(name2); // Caesar
 
 *!*
+// Note that type of `rest` is Array.
 alert(rest[0]); // Consul
 alert(rest[1]); // of the Roman Republic
 alert(rest.length); // 2
@@ -147,6 +157,7 @@ let [firstName, surname] = [];
 */!*
 
 alert(firstName); // undefined
+alert(surname); // undefined
 ```
 
 Se volessimo utilizzare un nostro valore di "default", potremmo fornirlo con la sintassi `=`:
@@ -336,7 +347,11 @@ Il problema è che JavaScript tratta `{...}` come un blocco di codice. Questo bl
 }
 ```
 
+<<<<<<< HEAD
 Per informare JavaScript che non ci troviamo in un blocco di codice, possiamo raggruppare l'intera assegnazione tra parentesi `(...)`:
+=======
+To show JavaScript that it's not a code block, we can wrap the whole assignment in parentheses `(...)`:
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 ```js run
 let title, width, height;
@@ -383,6 +398,8 @@ alert(item2);  // Donut
 ```
 
 L'intero oggetto `options` ad eccezione di `extra` il quale non viene menzionato, viene assegnato alle corrispondenti variabili.
+
+Note that `size` and `items` itself is not destructured.
 
 ![](destructuring-complex.png)
 

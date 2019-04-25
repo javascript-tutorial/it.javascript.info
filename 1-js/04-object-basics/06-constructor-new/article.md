@@ -226,5 +226,9 @@ JavaScript fornisce costruttori per la maggior parte degli oggetti integrati nel
 ```smart header="Oggetti, ci ritorneremo!"
 In questo capitolo abbiamo coperto solamente le basi degli oggetti e dei costruttori. Era necessario conoscerne le basi per capire meglio riguardo i data types e le funzioni che studieremo nel prossimo capitolo.
 
+<<<<<<< HEAD
 Dopo averli imparati, nel capitolo <info:object-oriented-programming> ritorneremo sugli oggetti e li copriremo più in profondità, coprendo anche i concetti di ereditarietà e classi.
+=======
+After we learn that, we return to objects and cover them in-depth in the chapters <info:prototypes> and <info:classes>.
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 ```

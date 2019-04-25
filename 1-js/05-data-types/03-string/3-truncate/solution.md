@@ -2,10 +2,9 @@ La lunghezza massima deve essere `maxlength`, quindi abbiamo bisgnono di troncar
 
 Da notare che esiste un codice che identifica il simbolo "...". Quindi non vengono contati come tre punti.
 
-```js run
+```js run demo
 function truncate(str, maxlength) {
-  return (str.length > maxlength) ? 
+  return (str.length > maxlength) ?
     str.slice(0, maxlength - 1) + '…' : str;
 }
 ```
-
