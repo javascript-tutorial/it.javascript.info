@@ -181,7 +181,11 @@ drawHtmlTree(node6, 'div.domtree', 690, 500);
 
 Vediamo ora un nuovo tipo di nodo -- *nodo commento*, etichettato come `#comment`.
 
+<<<<<<< HEAD
 Potremmo chiederci "perché il commento viene aggiunto al DOM? Non incide sul risultato grafico finale". Esiste in realtà una regola che se qualcosa è nell'HTML, allora deve essere presente anche nell'alberatura del DOM.
+=======
+We may think -- why is a comment added to the DOM? It doesn't affect the visual representation in any way. But there's a rule -- if something's in HTML, then it also must be in the DOM tree.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 **Tutto ciò che è presente nell'HTML, anche i commenti, finisce per essere parte del DOM.**
 

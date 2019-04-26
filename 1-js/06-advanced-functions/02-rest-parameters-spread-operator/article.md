@@ -61,8 +61,13 @@ function showName(firstName, lastName, ...titles) {
 showName("Julius", "Caesar", "Consul", "Imperator");
 ```
 
+<<<<<<< HEAD
 ````warn header="I parametri resto devono apparire alla fine"
 I parametri resto raccolgono tutti gli argomenti che avanzano, quindi non avrebbe senso fare:
+=======
+````warn header="The rest parameters must be at the end"
+The rest parameters gather all remaining arguments, so the following does not make sense and causes an error:
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 ```js
 function f(arg1, ...rest, arg2) { // arg2 after ...rest ?!

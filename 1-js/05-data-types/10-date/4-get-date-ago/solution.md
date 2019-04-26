@@ -11,7 +11,7 @@ function getDateAgo(date, days) {
 
 Per implementarlo correttamente dovremmo clonare l'oggetto, come nel codice seguente:
 
-```js run
+```js run demo
 function getDateAgo(date, days) {
   let dateCopy = new Date(date);
 

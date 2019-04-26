@@ -159,6 +159,7 @@ L'iterazione segue lo stesso ordine in cui sono stati inseriti i valori. `Map` c
 Inoltre, `Map` possiede un metodo integrato `forEach`, simile agli `Array`:
 
 ```js
+// runs the function for each (key, value) pair 
 recipeMap.forEach( (value, key, map) => {
   alert(`${key}: ${value}`); // cucumber: 500 etc
 });
@@ -327,7 +328,7 @@ Fate il confronto con l'esempio di `Map` sopra. Ora se `john` esiste solo come c
 
 - `weakMap.get(key)`
 - `weakMap.set(key, value)`
-- `weakMap.delete(key, value)`
+- `weakMap.delete(key)`
 - `weakMap.has(key)`
 
 Perché questa limitazione? Per ragioni tecniche. Se un oggetto ha perso tutti i riferimenti (come `john` nel codice sopra), allora verrà automaticamente eliminato. Ma tecnicamente non è specificato esattamente quando *averrà la pulizia*.

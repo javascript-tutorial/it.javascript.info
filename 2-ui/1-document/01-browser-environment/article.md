@@ -4,7 +4,11 @@ Il linguaggio JavaScript è stato inizialmente creato per i browser. Da allora, 
 
 La piattaforma di utilizzo può essere un browser, un web-server, una lavatrice o un qualunque altro tipo di *host*. Ognuno di essi fornisce delle funzionalità specifiche alla piattaforma stessa. Secondo la specifica JavaScript questa è la definizione di *ambiente host*
 
+<<<<<<< HEAD
 Un ambiente host, oltre alle funzionalità core del linguaggio, fornisce oggetti e funzioni specifiche della piattaforma. I browser web, ad esempio, permettono di interagire con le pagine web, mentre Node.JS fornisce funzionalità dedicate al server e così via.
+=======
+A host environment provides platform-specific objects and functions additional to the language core. Web browsers give a means to control web pages. Node.js provides server-side features, and so on.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 Di seguito una panoramica di cosa succede quando JavaScript viene eseguito nel browser:
 

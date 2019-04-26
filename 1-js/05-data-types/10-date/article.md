@@ -2,7 +2,11 @@
 
 Ora analizziamo un nuovo oggetto integrato: [Date](mdn:js/Date). Che memorizza la data, l'ora e fornisce dei metodi utili per il trattamento della data/ora.
 
+<<<<<<< HEAD
 Ad esempio, possiamo utilizzarlo per memorizzare modifiche su orari, o per misurare il tempo, o solamente per ottenere l'informazione della data corrente.
+=======
+For instance, we can use it to store creation/modification times, to measure time, or just to print out the current date.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 ## Creazione
 
@@ -39,7 +43,13 @@ Per creare un nuovo oggetto `Date`, chiamiamo `new Date()` con uno dei seguenti 
 
     ```js run
     let date = new Date("2017-01-26");
-    alert(date); // Thu Jan 26 2017 ...
+    alert(date);
+    // The time portion of the date is assumed to be midnight GMT and 
+    // is adjusted according to the timezone the code is run in
+    // So the result could be
+    // Thu Jan 26 2017 11:00:00 GMT+1100 (Australian Eastern Daylight Time)
+    // or
+    // Wed Jan 25 2017 16:00:00 GMT-0800 (Pacific Standard Time)
     ```
 
 `new Date(year, month, date, hours, minutes, seconds, ms)`
@@ -108,8 +118,12 @@ alert( date.getHours() );
 alert( date.getUTCHours() );
 ```
 
+<<<<<<< HEAD
 
 Oltre ai metodi forniti, ce ne sono altri due di speciali, che non possiedono la variante UTC:
+=======
+Besides the given methods, there are two special ones that do not have a UTC-variant:
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 [getTime()](mdn:js/Date/getTime)
 : Ritorna il timestamp della data -- il numero di millisecondi trascorsi dal 1 Gennaio 1970 in UTC+0.
@@ -420,4 +434,8 @@ alert(`Loading started ${performance.now()}ms ago`);
 // more than 3 digits after the decimal point are precision errors, but only the first 3 are correct
 ```
 
+<<<<<<< HEAD
 Node.JS possiede un modulo `microtime` e altri metodi. Tecnicamente, la maggior parte degli ambienti forniscono un modo per gestire precisioni più elevate, questo non è pero previsto dall'oggetto `Date`.
+=======
+Node.js has `microtime` module and other ways. Technically, any device and environment allows to get more precision, it's just not in `Date`.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847

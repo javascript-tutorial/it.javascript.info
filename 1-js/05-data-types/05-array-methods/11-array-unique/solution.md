@@ -2,7 +2,7 @@ Attraversiamo gli elementi dell'array:
 - Per ogni elemento controlliamo se l'array risultante già lo contiene.
 - Se lo troviamo, passiamo al prossimo, altrimenti lo aggiungiamo.
 
-```js run
+```js run demo
 function unique(arr) {
   let result = [];
 

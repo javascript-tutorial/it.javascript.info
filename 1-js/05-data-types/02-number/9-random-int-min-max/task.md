@@ -12,9 +12,9 @@ Qualsiasi numero nell'intervallo `min..max` deve poter apparire con la stessa pr
 Esempi:
 
 ```js
-alert( random(1, 5) ); // 1
-alert( random(1, 5) ); // 3
-alert( random(1, 5) ); // 5
+alert( randomInteger(1, 5) ); // 1
+alert( randomInteger(1, 5) ); // 3
+alert( randomInteger(1, 5) ); // 5
 ```
 
 Potete utilizzare la soluzione dell'[esercizio precedente](info:task/random-min-max) come base.

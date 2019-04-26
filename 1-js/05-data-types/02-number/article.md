@@ -26,11 +26,15 @@ In altre parole, `"e"` moltiplica il numero `1` seguito dal numero di zeri dati.
 
 ```js
 1e3 = 1 * 1000
-1.23e6 = 1.23 * 1000000 
+1.23e6 = 1.23 * 1000000
 ```
 
 
+<<<<<<< HEAD
 Ora proviamo a scrivere qualcosa di molto piccolo. Ad esempio, 1 microsecondo (un milionesimo di secondo): 
+=======
+Now let's write something very small. Say, 1 microsecond (one millionth of a second):
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 ```js
 let ms = 0.000001;
@@ -39,7 +43,7 @@ let ms = 0.000001;
 Come prima, l'utilizzo di `"e"` può aiutare. Se volessimo evitare di scrivere esplicitamente tutti gli "0", potremmo scrivere:
 
 ```js
-let ms = 1e-6; // six zeroes to the left from 1 
+let ms = 1e-6; // six zeroes to the left from 1
 ```
 
 Se contiamo gli zeri in `0.000001`, ce ne sono 6. Quindi ovviamente `1e-6`.  
@@ -152,8 +156,13 @@ Ci sono due modi per farlo:
     alert( Math.floor(num * 100) / 100 ); // 1.23456 -> 123.456 -> 123 -> 1.23
     ```
 
+<<<<<<< HEAD
 2. Il metodo [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed) arrotonda il numero a `n` cifre dopo la virgola e ritorna una rappresentazione in stringa del risultato.
         
+=======
+2. The method [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed) rounds the number to `n` digits after the point and returns a string representation of the result.
+
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
     ```js run
     let num = 12.34;
     alert( num.toFixed(1) ); // "12.3"
@@ -170,7 +179,7 @@ Ci sono due modi per farlo:
 
     ```js run
     let num = 12.34;
-    alert( num.toFixed(5) ); // "12.34000", added zeroes to make exactly 5 digits 
+    alert( num.toFixed(5) ); // "12.34000", added zeroes to make exactly 5 digits
     ```
 
     Possiamo convertire il risultato al tipo numerico utilizzando la somma unaria o chiamando il metodo `Number()`: `+num.toFixed(5)`.
@@ -182,7 +191,7 @@ Internamente, un numero è rappresentato in formato 64-bit [IEEE-754](http://en.
 Se un numero è troppo grande, tale da superare i 64 bit disponibili, come ad esempio un numero potenzialmente infinito:
 
 ```js run
-alert( 1e500 ); // Infinity 
+alert( 1e500 ); // Infinity
 ```
 
 Potrebbe essere poco ovvio, ma quello che accade è la perdita di precisione.
@@ -193,7 +202,11 @@ Consideriamo questo test (falso!):
 alert( 0.1 + 0.2 == 0.3 ); // *!*false*/!*
 ```
 
+<<<<<<< HEAD
 Esatto, se proviamo a confrontare il risultato della somma tra `0.1` e `0.2` con `0.3`, otteniamo `false`. 
+=======
+That's right, if we check whether the sum of `0.1` and `0.2` is `0.3`, we get `false`.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 Strano! Quale può essere il risultato se non `0.3`?
 
@@ -207,7 +220,11 @@ Ma perché accade questo?
 
 Un numero viene memorizzato nella sua forma binaria, una sequenza di "1" e "0". I numeri con virgola come `0.1`, `0.2` che visti nella loro forma decimale sembrano semplici, sono in realtà una sequenza infinita di cifre nella forma binaria.
 
+<<<<<<< HEAD
 In altre parole, cos'è `0.1`? Vale 1 diviso 10 `1/10`, "un decimo". Nel sistema decimale questi numeri sono facilmente rappresentabili. Prendiamo invece "un terzo": `1/3`. Diventa un numero con infiniti decimali `0.33333(3)`. 
+=======
+In other words, what is `0.1`? It is one divided by ten `1/10`, one-tenth. In decimal numeral system such numbers are easily representable. Compare it to one-third: `1/3`. It becomes an endless fraction `0.33333(3)`.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 Quindi, le divisioni per potenze di `10` funzionano molto bene nel sistema decimale, non vale lo stesso con la divisione per `3`. Per la stessa ragione, nel sistema binario le divisioni per potenze di `2` sono una garanzia, ma `1/10` diventa una sequenza infinita di cifre.
 
@@ -227,40 +244,62 @@ Questo è il motivo per cui `0.1 + 0.2` non vale esattamente `0.3`.
 ```smart header="Non solo JavaScript"
 Lo stesso problema esiste in molti altri linguaggi di programmazione.
 
+<<<<<<< HEAD
 PHP, Java, C, Perl, Ruby hanno lo stesso tipo di problema, poiché si basano sullo stesso formato numerico. 
 ```
 
 Possiamo risolvere questo problema? Certamente, ci sono diverse soluzioni:
 
 1. Possiamo arrotondare il risultato con un metodo [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed):
+=======
+PHP, Java, C, Perl, Ruby give exactly the same result, because they are based on the same numeric format.
+```
 
-    ```js run
-    let sum = 0.1 + 0.2;
-    alert( sum.toFixed(2) ); // 0.30
-    ```
+Can we work around the problem? Sure, the most reliable method is to round the result with the help of a method [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed):
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
+```js run
+let sum = 0.1 + 0.2;
+alert( sum.toFixed(2) ); // 0.30
+```
+
+<<<<<<< HEAD
     Da notare che `toFixed` ritorna sempre una stringa. Viene cosi garantito che ci siano almeno due cifre dopo la virgola decimale. Questo ci torna molto utile se abbiamo un e-shopping e vogliamo mostrare `$0.30`. Per tutti gli altri casi possiamo semplicemente chiamare la conversione con l'operatore di somma unaria:
+=======
+Please note that `toFixed` always returns a string. It ensures that it has 2 digits after the decimal point. That's actually convenient if we have an e-shopping and need to show `$0.30`. For other cases, we can use the unary plus to coerce it into a number:
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
-    ```js run
-    let sum = 0.1 + 0.2;
-    alert( +sum.toFixed(2) ); // 0.3
-    ```
+```js run
+let sum = 0.1 + 0.2;
+alert( +sum.toFixed(2) ); // 0.3
+```
 
+<<<<<<< HEAD
 2. Possiamo temporaneamente convertire i numeri ad interi per eseguire le operazioni e poi riconvertirli. In questo modo:
+=======
+We also can temporarily multiply the numbers by 100 (or a bigger number) to turn them into integers, do the maths, and then divide back. Then, as we're doing maths with integers, the error somewhat decreases, but we still get it on division:
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
-    ```js run
-    alert( (0.1 * 10 + 0.2 * 10) / 10 ); // 0.3
-    ```
+```js run
+alert( (0.1 * 10 + 0.2 * 10) / 10 ); // 0.3
+alert( (0.28 * 100 + 0.14 * 100) / 100); // 0.4200000000000001
+```
 
+<<<<<<< HEAD
     Questo funziona perché quando facciamo `0.1 * 10 = 1` e `0.2 * 10 = 2` entrambi diventano interi, non vi è quindi perdita di precisione. 
 
 3. Se abbiamo a che fare con dei prezzi, la miglior soluzione rimane quella di memorizzare tutti i prezzi in centesimi, evitando quindi di utilizzare i numeri con virgola. Ma cosa succede se proviamo ad applicare uno sconto del 30%? Nella pratica, evadere completamente questo problema è difficile, in alcuni casi possono tornare utili entrambe le soluzioni spiegate sopra.
+=======
+So, multiply/divide approach reduces the error, but doesn't remove it totally.
+
+Sometimes we could try to evade fractions at all. Like if we're dealing with a shop, then we can store prices in cents instead of dollars. But what if we apply a discount of 30%? In practice, totally evading fractions is rarely possible. Just round them to cut "tails" when needed.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 ````smart header="La cosa divertente"
 Provate ad eseguire questo:
 
 ```js run
-// Hello! I'm a self-increasing number! 
+// Hello! I'm a self-increasing number!
 alert( 9999999999999999 ); // shows 10000000000000000
 ```
 
@@ -272,7 +311,11 @@ JavaScript non mostra errori in questi casi. Semplicemente fa del suo meglio per
 ```smart header="Due zeri"
 Un'altra conseguenza divertente della rappresentazione interna è l'esistenza di due zeri: `0` e `-0`.
 
+<<<<<<< HEAD
 Questo perché il segno viene rappresentato con un solo bit, in questo modo ogni numero può essere positivo o negativo, lo stesso vale per lo zero.
+=======
+That's because a sign is represented by a single bit, so every number can be positive or negative, including a zero.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 Nella maggior parte dei casi questa differenza è impercettibile, poiché gli operatori sono studiati per trattarli allo stesso modo.
 ```
@@ -326,10 +369,17 @@ Da notare che una stringa vuota o contenente solo spazi viene trattata come `0` 
 
 Esiste uno speciale metodo integrato [Object.is](mdn:js/Object/is) che confronta valori proprio come `===`, ma risulta molto più affidabile in due casi limite:
 
+<<<<<<< HEAD
 1. Funziona con `NaN`: `Object.is(NaN, NaN) === true`, e questo è un bene. 
 2. I valori `0` e `-0` sono diversi: `Object.is(0, -0) === false`, raramente ha importanza, ma questi due valori sono comunque differenti.
 
 In tutti gli altri casi, `Object.is(a, b)` equivale a `a === b`. 
+=======
+1. It works with `NaN`: `Object.is(NaN, NaN) === true`, that's a good thing.
+2. Values `0` and `-0` are different: `Object.is(0, -0) === false`, it rarely matters, but these values technically are different.
+
+In all other cases, `Object.is(a, b)` is the same as `a === b`.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 Questo metodo di confronto viene spesso utilizzato in JavaScript. Quando un algoritmo interno ha necessità di verificare che due valori siano esattamente la stessa cosa, si utilizza `Object.is` (internamente chiamato [SameValue](https://tc39.github.io/ecma262/#sec-samevalue)).
 ```
@@ -424,7 +474,11 @@ Per diversi sistemi numerici:
 
 Per convertire a numeri valori del tipo `12pt` e `100px`:
 
+<<<<<<< HEAD
 - Usate `parseInt/parseFloat` per una conversione "leggera", che legge numeri da una stringa e ritorna il valore che è riuscito a leggere prima dell'errore. 
+=======
+- Use `parseInt/parseFloat` for the "soft" conversion, which reads a number from a string and then returns the value they could read before the error.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 Per i numeri con la virgola:
 
@@ -433,6 +487,10 @@ Per i numeri con la virgola:
 
 Altre funzioni matematiche:
 
+<<<<<<< HEAD
 - Guardate l'oggetto [Math](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math) in caso di necessità. La libreria non è molto ampia, ma è in grado di coprire le necessità di base.
 
 
+=======
+- See the [Math](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math) object when you need them. The library is very small, but can cover basic needs.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847

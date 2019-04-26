@@ -117,7 +117,7 @@ Per il futuro, vi faccio notare che ci sono dei test più avanzati, come [karma]
 Proviamo a fornire una semplice implementazione di `pow`, per passare il test:
 
 ```js
-function pow() {
+function pow(x, n) {
   return 8; // :) we cheat!
 }
 ```
@@ -233,7 +233,7 @@ Il raggruppamento viene effettuato con un `describe` annidato:
 describe("pow", function() {
 
 *!*
-  describe("raises x to power n", function() {
+  describe("raises x to power 3", function() {
 */!*
 
     function makeTest(x) {
@@ -296,7 +296,11 @@ Testing finished – after all tests (after)
 
 [edit src="beforeafter" title="Open the example in the sandbox."]
 
+<<<<<<< HEAD
 Solitamente, `beforeEach/afterEach` (`before/each`) vengono utilizzari per eseguire inizializzazioni, azzerare i contatori o fare qualcosa prima di iniziare il prossimo test.
+=======
+Usually, `beforeEach/afterEach` (`before/after`) are used to perform initialization, zero out counters or do something else between the tests (or test groups).
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 ````
 
 ## Estendere le spec

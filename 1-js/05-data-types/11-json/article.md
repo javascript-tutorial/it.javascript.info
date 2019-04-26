@@ -359,7 +359,11 @@ alert( JSON.stringify(meetup) );
 
 Qui possiamo vedere che `date` `(1)` diventa una stringa. Questo accade perché tutti gi oggetti di tipo `Date` possiedono un metodo `toJSON`.
 
+<<<<<<< HEAD
 Ora proviamo ad aggiungere un metodo `toJSON` personalizzato per il nostro oggetto `room`:
+=======
+Now let's add a custom `toJSON` for our object `room` `(2)`:
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 ```js run
 let room = {

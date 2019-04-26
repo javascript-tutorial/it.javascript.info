@@ -55,9 +55,13 @@ function makeArmy() {
 
 Il risultato è che tutte le funzioni `shooter` la prendono dallo stesso lexical envrironment esterno, in cui l'ultimo valore è `i=10`.
 
+<<<<<<< HEAD
 Questo può essere sistemato molto facilmente:
+=======
+We can fix it by moving the variable definition into the loop:
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
-```js run
+```js run demo
 function makeArmy() {
 
   let shooters = [];
@@ -81,14 +85,19 @@ army[5](); // 5
 ```
 Ora funziona correttamente, perché ogni volta che viene eseguito il blocco di codice `for (..) {...}`, viene creato un nuovo Lexical Environment, con il corrispondente valore `i`.
 
+<<<<<<< HEAD
 Quindi, il valore di `i` ora si trova più "vicino". Non più nel lexical environment di `makeArmy()`, ma in quello del corrispondente ciclo. Uno `shooter` preleva il valore esattamente da dove è stato creato.
+=======
+Now it works correctly, because every time the code block in `for (let i=0...) {...}` is executed, a new Lexical Environment is created for it, with the corresponding variable `i`.
+
+So, the value of `i` now lives a little bit closer. Not in `makeArmy()` Lexical Environment, but in the Lexical Environment that corresponds the current loop iteration. That's why now it works.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 ![](lexenv-makearmy.png)
 
 Qui abbiamo riscritto `while` in `for`.
 
 Eì possibile farlo in un altro modo, vediamolo per capirlo meglio:
-
 
 ```js run
 function makeArmy() {

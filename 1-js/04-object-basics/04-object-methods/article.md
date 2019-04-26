@@ -63,7 +63,11 @@ user.sayHi(); // Hello!
 ```smart header="Programmazione orientata agli oggetti"
 Quando scriviamo codice utilizzando gli oggetti per rappresentare le entità, questa viene definita [programmazione orientata agli oggetti](https://en.wikipedia.org/wiki/Object-oriented_programming), in breve: "OOP".
 
+<<<<<<< HEAD
 OOP è una grande cosa, un ambito di interesse con i propri studi. Come scegliere le giuste entità? Come organizzare le interazioni tra loro? Questa è l'architettura di un codice, e ci sono molti libri importanti che trattano questo argomento, come "Design Patterns: Elements of Reusable Object-Oriented Software" by E.Gamma, R.Helm, R.Johnson, J.Vissides or "Object-Oriented Analysis and Design with Applications" by G.Booch. Noi cercheremo di capire i concetti chiave nel capitolo <info:object-oriented-programming>.
+=======
+OOP is a big thing, an interesting science of its own. How to choose the right entities? How to organize the interaction between them? That's architecture, and there are great books on that topic, like "Design Patterns: Elements of Reusable Object-Oriented Software" by E.Gamma, R.Helm, R.Johnson, J.Vissides or "Object-Oriented Analysis and Design with Applications" by G.Booch, and more. 
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 ```
 ### La forma breve dei metodi
 
@@ -214,7 +218,11 @@ sayHi(); // undefined
 
 In questo caso `this`  è `undefined` in modalità strict. Se tentiamo di accedere a `this.name`, ci sarà un errore.
 
+<<<<<<< HEAD
 Se non è attiva la modalità strict (quindi se ci dimentichiamo `use strict`) il valor di `this` in questo sarà *l'oggetto globale* (`window` in un browser, lo studieremo più avanti). Questo strano comportamento ha delle motivazioni storiche, che `"use strict"` sistema.
+=======
+In non-strict mode the value of `this` in such case will be the *global object* (`window` in a browser, we'll get to it later in the chapter [](info:global-object)). This is a historical behavior that `"use strict"` fixes.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 Va detto che solitamente una chiamata a funzione che utilizza `this` senza un oggetto non è comune, nella maggior part dei casi è un errore di programmazione. Se una funzione utilizza `this`, ha senso che venga invocata nel contesto di un oggetto.
 
@@ -257,7 +265,13 @@ Nell'ultima riga c'è un operatore ternario che deve decidere tra `user.hi` o `u
 
 Il metodo viene immediatamente chiamato con le parentesi `()`. Ma non funziona!
 
+<<<<<<< HEAD
 Questo funziona (oggetto punto metodo):
+=======
+You can see that the call results in an error, because the value of `"this"` inside the call becomes `undefined`.
+
+This works (object dot method):
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 ```js
 user.hi();
 ```

@@ -255,7 +255,11 @@ Questo perché quando leggiamo il codice vogliamo prima di tutto sapere *cosa fa
 
 Una guida di stile contiene  regole generali riguardo a "come scrivere" il codice, ad esempio quali apici utilizzare, di quanti spazi indentare, quando andare a capo, etc. Molti altri dettagli.
 
+<<<<<<< HEAD
 Quando tutti i membri del team utilizzano lo stesso stile tende ad essere uniforme.
+=======
+When all members of a team use the same style guide, the code looks uniform, regardless of which team member wrote it.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 Certamente, un team può utilizzare il proprio stile guida. Molte volte non serve. Ci sono molte opzioni tra cui scegliere, quindi scegliere tra una di queste generalmente è la scelta migliore.
 
@@ -287,10 +291,17 @@ Molti linter sono integrati negli editor più popolari: è sufficiente attivare 
 
 Ad esempio, per ESLint dovreste seguire quanto segue:
 
+<<<<<<< HEAD
 1. Installare [Node.JS](https://nodejs.org/).
 2. Installare ESLint con il comando `npm install -g eslint` (npm è package installer di JavaScript).
 3. Create un file di configurazione e rinominatelo `.eslintrc` nella root del vostro progetto JavaScript (la cartella che contiene tutti i file).
 4. Installa/abilita il plugin per il tuo editor per integrare ESLint. La maggior parte degli editor ne ha uno.
+=======
+1. Install [Node.js](https://nodejs.org/).
+2. Install ESLint with the command `npm install -g eslint` (npm is a JavaScript package installer).
+3. Create a config file named `.eslintrc` in the root of your JavaScript project (in the folder that contains all your files).
+4. Install/enable the plugin for your editor that integrates with ESLint. The majority of editors have one.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 Qui un esempio di di un file `.eslintrc`:
 

@@ -18,7 +18,7 @@ let id = Symbol();
 
 Possiamo fornire anche una descrizione al symbol (chiamata nome del symbol), utile per il debugging:
 
-```js
+```js run
 // id is a symbol with the description "id"
 let id = Symbol("id");
 ```
@@ -49,7 +49,14 @@ let id = Symbol("id");
 alert(id); // TypeError: Cannot convert a Symbol value to a string
 */!*
 ```
+<<<<<<< HEAD
 Se vogliamo veramente mostrare un symbol, dobbiamo utilizzare `.toString()`:
+=======
+
+That's a "language guard" against messing up, because strings and symbols are fundamentally different and should not occasionally convert one into another.
+
+If we really want to show a symbol, we need to call `.toString()` on it, like here:
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 ```js run
 let id = Symbol("id");
 *!*
@@ -57,7 +64,18 @@ alert(id.toString()); // Symbol(id), now it works
 */!*
 ```
 
+<<<<<<< HEAD
 Questo blocco è un "controllo di linguaggio" contro gli errori accidentali, perché le stringhe e i symbol sono fondamentalmente differenti e spesso non dovrebbe essere necessario convertirli.
+=======
+Or get `symbol.description` property to get the description only:
+```js run
+let id = Symbol("id");
+*!*
+alert(id.description); // id
+*/!*
+```
+
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 ````
 
 ## Proprietà "nascoste"

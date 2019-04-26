@@ -46,8 +46,12 @@ Il motore applica ottimizzazioni ad ogni passo del processo. Anche durate l'esec
 
 Il JavaScript ad giorno d'oggi è un linguaggio di programmazione "sicuro". Non consente alcun accesso a basso livello alla memoria o alla CPU, questo perchè è stato creato con lo scopo di funzionare nei browser, che non richiedono questo tipo di privilegi.
 
+<<<<<<< HEAD
 Le possibilità dipendono molto dall'ambiente in cui si esegue JavaScript. Ad esempio, 
  [Node.JS](https://wikipedia.org/wiki/Node.js) supporta funzioni che consentono a JavaScript di scrivere/leggere file, eseguire richieste web, etc.
+=======
+JavaScript's capabilities greatly depend on the environment it's running in. For instance, [Node.js](https://wikipedia.org/wiki/Node.js) supports functions that allow JavaScript to read/write arbitrary files, perform network requests, etc.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 JavaScript integrato nel browser può fare qualsiasi cosa legata alla manipolazione della pagina, interagire con l'utente e con il server.
 
@@ -90,6 +94,10 @@ Ci sono almeno *tre* cose che rendono grande JavaScript:
 + Operazioni seSupporatomplici vengono eseguite semplicemente.
 + Supportato dai maggiori browser ed è attivo di default.
 ```
+<<<<<<< HEAD
+=======
+JavaScript is the only browser technology that combines these three things.
+>>>>>>> 19223ae762f03cdff4e83f6f963f4f427af93847
 
 Queste tre caratteristiche combinate esistono solo in JavaScript e in nessun'altra tecnologia web.
 
