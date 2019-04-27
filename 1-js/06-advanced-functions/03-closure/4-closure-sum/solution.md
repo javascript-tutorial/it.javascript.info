@@ -1,6 +1,6 @@
-For the second parentheses to work, the first ones must return a function.
+Perchè la seconda parentesi funzioni, la prima deve ritornare una funzione.
 
-Like this:
+Come in questo esempio:
 
 ```js run
 function sum(a) {
