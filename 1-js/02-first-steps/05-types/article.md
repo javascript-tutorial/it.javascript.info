@@ -44,7 +44,7 @@ Oltre i normali numeri, ci sono anche i "valori numerici speciali" che apparteng
     alert( "not a number" / 2 ); // NaN, such division is erroneous
     ```
 
-    `NaN` è appiccicoso. Qualsiasi operazione su `NaN` restituirà `NaN`:
+    `NaN` è "appiccicoso". Qualsiasi operazione su `NaN` restituirà `NaN`:
 
     ```js run
     alert( "not a number" / 2 + 5 ); // NaN

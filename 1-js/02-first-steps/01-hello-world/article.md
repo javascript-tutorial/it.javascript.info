@@ -1,6 +1,6 @@
 # Hello, world!
 
-Il seguente tutorial tratta del core(nucleo) JavaScript, che è indipendente dalla piattaforma. Inoltre, più avanti, imparerai Node.JS e altre piattaforme che ne fanno utilizzo.
+Il seguente tutorial tratta del core (nucleo) JavaScript, che è indipendente dalla piattaforma. Inoltre, più avanti, imparerai Node.JS e altre piattaforme che ne fanno utilizzo.
 
 Abbiamo bisogno di un ambiente di lavoro per eseguire i nostri script, e il fatto che questo libro sia online, rende il browser un ottima scelta. Cercheremo di mantenere al minimo l'utilizzo dei comandi specifici per browser (come `alert`), cosi non dovrai perdere la testa se deciderai di spostarti in altri ambienti come Node.JS. In ogni caso, i dettagli browser vengono spiegati in dettaglio nella [prossima parte](/ui) del tutorial.
 

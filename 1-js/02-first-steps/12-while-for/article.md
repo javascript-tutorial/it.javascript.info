@@ -199,7 +199,7 @@ for (;;) {
 
 Nota che le due `;` del ciclo `for` devono essere presenti, altrimenti sarebbe un errore di sintassi.
 
-## Interromper un ciclo 
+## Interrompere un ciclo 
 
 Normalmente un ciclo termina quando la condizione diventa falsa.
 
@@ -283,7 +283,7 @@ if (i > 5) {
 
 
 ```js no-beautify
-(i > 5) ? alert(i) : *!*continue*/!*; // continue not allowed here
+(i > 5) ? alert(i) : *!*continue*/!*; // continue isn't allowed here
 ```
 
 ...Questo smetterà di funzionare. Codice scritto cosi vi darà un errore di sintassi:

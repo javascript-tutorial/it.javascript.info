@@ -30,7 +30,7 @@ ladder.down();
 ladder.showStep(); // 1
 ```
 
-Modificare il codice di `up` e `down` per rendere le chiamate concatenabili, come in questo esempio:
+Modificare il codice di `up`, `down` e `showStep` per rendere le chiamate concatenabili, come in questo esempio:
 
 ```js
 ladder.up().up().down().showStep(); // 1

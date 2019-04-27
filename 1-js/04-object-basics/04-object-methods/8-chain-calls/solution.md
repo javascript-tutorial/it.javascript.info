@@ -1,6 +1,6 @@
 La soluzione sta nel ritornare l'oggetto stesso ad ogni chiamata.
 
-```js run
+```js run demo
 let ladder = {
   step: 0,
   up() {
@@ -28,7 +28,7 @@ ladder.up().up().down().up().down().showStep(); // 1
 
 Possiamo anche scrivere una singola chiamata per riga. Per catene molto lunghe diventa più leggibile:
 
-```js 
+```js
 ladder
   .up()
   .up()
@@ -37,4 +37,3 @@ ladder
   .down()
   .showStep(); // 1
 ```
-

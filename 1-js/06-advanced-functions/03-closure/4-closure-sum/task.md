@@ -2,13 +2,13 @@ importance: 4
 
 ---
 
-# Somma con le closure
+# Sum with closures
 
-Scrivete la funzione `sum` che funziona in questo modo: `sum(a)(b) = a+b`.
+Write function `sum` that works like this: `sum(a)(b) = a+b`.
 
-Esattamente, due parentesi tonde (non è un errore).
+Yes, exactly this way, using double parentheses (not a mistype).
 
-Ad esempio:
+For instance:
 
 ```js
 sum(1)(2) = 3

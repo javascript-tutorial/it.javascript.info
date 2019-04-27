@@ -1,15 +1,15 @@
 # Developer console
 
-Il codice è incline a contenere errori. E' molto probabile che tu commetta errori... Di cosa sto parlando? *Sicuramente* commetterai errori, sempre che tu sia umano, e non un [robot](https://en.wikipedia.org/wiki/Bender_(Futurama)).
+Il codice è incline a contenere errori. E' molto probabile che tu commetta errori... Di cosa sto parlando? *Sicuramente* commetterai errori, sempre che tu sia umano, e non un [robot](https://it.wikipedia.org/wiki/Bender_(personaggio)).
 
-In un browser però, l'utente non può vedere gli errori. Quindi se qualcosa non funziona nello script, noi non possiamo vedere cosa non va e non possiamo perciò sistemarlo.
+In un browser però, l'utente non può vedere gli errori. Quindi se qualcosa non funziona nello script, non saremo in grado di capire quale sia il problema e sistemarlo.
 
 Per poter visualizzare gli errori e ricevere altre informazioni utili riguardo gli script, i browser integrano degli "strumenti di sviluppo".
 
-Molto spesso gli sviluppatori tendono ad utilizzare Chrome o Firefox poichè questi browser forniscono i migliori strumenti per lo sviluppo. Anche gli altri browser contengono gli strumenti per lo sviluppo, talvolta con caratteristiche speciali, ma più che altro giocano a "prendere" Chrome e Firefox.
+Molto spesso gli sviluppatori tendono ad utilizzare Chrome o Firefox poichè questi browser forniscono i migliori strumenti per lo sviluppo. Anche gli altri browser contengono gli strumenti per lo sviluppo, talvolta con caratteristiche speciali, ma più che altro giocano ad "avvicinarsi" a Chrome e Firefox.
 Quindi molte perone hanno un browser "preferito" e utilizzano gli altri solo quando un problema è specifico di quel browser.
 
-Gli strumenti di sviluppo sono potenti; hanno molte caratteristiche. Prima di tutto, dobbiamo capire come ottenerli, come cercare errori e come eseguire comandi JavaScript.
+Gli strumenti da sviluppatore sono potenti; hanno molte caratteristiche. Prima di tutto, dobbiamo capire come ottenerli, come cercare errori e come eseguire comandi JavaScript.
 
 ## Google Chrome
 
@@ -50,6 +50,12 @@ Apri le Impostazioni e vai sul pannello "Avanzate". In basso troverai un'opzione
 ![safari](safari.png)
 
 Adesso tramite `key:Cmd+Opt+C` puoi attivare/disattivare la console. Inoltre noterai che un nuovo menu "Sviluppo" è apparso. Contiene molti comandi e opzioni.
+
+## Input multi-riga
+
+Solitamente, quando inseriamo una riga di codice nella console, e premiamo `key:Enter`, questa viene eseguita.
+
+Per poter inserire più righe di codice, è necessario premere `key:Shift+Enter`.
 
 ## Riepilogo
 

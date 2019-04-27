@@ -43,19 +43,19 @@ let surname = arr[1];
 ```
 ````
 
-````smart header="Ignora i primi elementi"
+````smart header="Ignora gli elementi con la virgola"
 Possono essere ignorati degli elementi dell'array inserendo una virgola:
 
 ```js run
 *!*
-// first and second elements are not needed
-let [, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
+// second element is not needed
+let [firstName, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
 */!*
 
 alert( title ); // Consul
 ```
 
-Nel codice sopra, il primo e secondo elemento vengono saltati, il terzo viene assegnato a `title`, il resto dell'array viene ignorato.
+Nel codice sopra, il secondo elemento viene ignorato, il terzo viene assegnato a `title`, il resto dell'array viene ignorato.
 ````
 
 ````smart header="Funziona con qualsiasi itarabile"
@@ -129,6 +129,7 @@ alert(name1); // Julius
 alert(name2); // Caesar
 
 *!*
+// Note that type of `rest` is Array.
 alert(rest[0]); // Consul
 alert(rest[1]); // of the Roman Republic
 alert(rest.length); // 2
@@ -147,6 +148,7 @@ let [firstName, surname] = [];
 */!*
 
 alert(firstName); // undefined
+alert(surname); // undefined
 ```
 
 Se volessimo utilizzare un nostro valore di "default", potremmo fornirlo con la sintassi `=`:
@@ -383,6 +385,8 @@ alert(item2);  // Donut
 ```
 
 L'intero oggetto `options` ad eccezione di `extra` il quale non viene menzionato, viene assegnato alle corrispondenti variabili.
+
+Note that `size` and `items` itself is not destructured.
 
 ![](destructuring-complex.png)
 

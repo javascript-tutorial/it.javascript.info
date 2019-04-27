@@ -102,7 +102,7 @@ Per esempio, la variabile `message` può essere immaginata come una scatola con 
 
 Possiamo inserire qualsiasi valore all'interno della scatola.
 
-Possiamo ance cambiarlo. Il valore può cambiare tutte le volte che ne abbiamo bisogno:
+Possiamo anche cambiarlo. Il valore può cambiare tutte le volte che ne abbiamo bisogno:
 
 ```js run
 let message;
@@ -174,11 +174,11 @@ Questi invece non lo sono:
 ```js no-beautify
 let 1a; // cannot start with a digit
 
-let my-name; // a hyphen '-' is not allowed in the name
+let my-name; // hyphens '-' aren't allowed in the name
 ```
 
 ```smart header="La questione delle lettere"
-Le variabili `apple` ed `AppLE` -- sono due variabili distinte.
+Le variabili `apple` ed `AppLE` sono distinte.
 ```
 
 ````smart header="Le lettere non inglesi sono permesse, ma sono sconsigliate"
@@ -212,12 +212,12 @@ Normalmente, abbiamo bisogno di definire variabili prima di utilizzarle. Ma una 
 ```js run no-strict
 // note: no "use strict" in this example
 
-num = 5; // the variable "num" is created if didn't exist
+num = 5; // the variable "num" is created if it didn't exist
 
 alert(num); // 5
 ```
 
-Però è una pessima pratica, se inseriamo "use script" provocherà un errore:
+Questa però è una pessima pratica, che causerebbe un errore in strict mode:
 
 ```js
 "use strict";
@@ -230,7 +230,7 @@ num = 5; // error: num is not defined
 
 ## Constanti
 
-Per dichiarare una variabile costante(immutabile), dobbiamo utilizzare `const` invece di `let`:
+Per dichiarare una variabile costante (immutabile), dobbiamo utilizzare `const` invece di `let`:
 
 ```js
 const myBirthday = '18.04.1982';
@@ -309,7 +309,7 @@ Come ultima cosa. Ci sono alcuni programmatori un pò pigri, che invece di dichi
 
 Il risultato che si ottiene, è che le variabili sono come delle scatole in cui si possono mettere varie cose, senza cambiare l'etichetta. Cosa ci sarà dentro in un dato momento? Chi lo sa... Siamo costretti a controllare manualmente.
 
-Questi programmatori risparmiano qualche bit nella dichiarazione delle variabili ma perdono dieci volte il tempo risparmiato per fare debugging del codice.
+Questo genere di programmatori risparmiano qualche bit nella dichiarazione delle variabili ma perdono dieci volte il tempo risparmiato per fare debugging del codice.
 
 Una variable in più va bene, non sono il diavolo.
 

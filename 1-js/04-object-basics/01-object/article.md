@@ -336,7 +336,7 @@ Per attraversare tutte le chiavi di un oggetto, esiste una speciale forma di cic
 La sintassi:
 
 ```js
-for(key in object) {
+for (key in object) {
   // executes the body for each key among object properties
 }
 ```
@@ -350,7 +350,7 @@ let user = {
   isAdmin: true
 };
 
-for(let key in user) {
+for (let key in user) {
   // keys
   alert( key );  // name, age, isAdmin
   // values for the keys
@@ -381,7 +381,7 @@ let codes = {
 };
 
 *!*
-for(let code in codes) {
+for (let code in codes) {
   alert(code); // 1, 41, 44, 49
 }
 */!*
@@ -439,7 +439,7 @@ let codes = {
   "+1": "USA"
 };
 
-for(let code in codes) {
+for (let code in codes) {
   alert( +code ); // 49, 41, 44, 1
 }
 ```
@@ -613,7 +613,7 @@ Possiamo anche utilizzare il metodo [Object.assign](mdn:js/Object/assign).
 La sintassi è:
 
 ```js
-Object.assign(dest[, src1, src2, src3...])
+Object.assign(dest, [src1, src2, src3...])
 ```
 
 - Gli argomenti `dest`, e `src1, ..., srcN` (possono essere anche di più se necessario) sono oggetti.

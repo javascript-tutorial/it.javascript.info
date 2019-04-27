@@ -287,7 +287,7 @@ Molti linter sono integrati negli editor più popolari: è sufficiente attivare 
 
 Ad esempio, per ESLint dovreste seguire quanto segue:
 
-1. Installare [Node.JS](https://nodejs.org/).
+1. Installare [Node.js](https://nodejs.org/).
 2. Installare ESLint con il comando `npm install -g eslint` (npm è package installer di JavaScript).
 3. Create un file di configurazione e rinominatelo `.eslintrc` nella root del vostro progetto JavaScript (la cartella che contiene tutti i file).
 4. Installa/abilita il plugin per il tuo editor per integrare ESLint. La maggior parte degli editor ne ha uno.

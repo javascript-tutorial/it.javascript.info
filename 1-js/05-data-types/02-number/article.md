@@ -26,7 +26,7 @@ In altre parole, `"e"` moltiplica il numero `1` seguito dal numero di zeri dati.
 
 ```js
 1e3 = 1 * 1000
-1.23e6 = 1.23 * 1000000 
+1.23e6 = 1.23 * 1000000
 ```
 
 
@@ -39,7 +39,7 @@ let ms = 0.000001;
 Come prima, l'utilizzo di `"e"` può aiutare. Se volessimo evitare di scrivere esplicitamente tutti gli "0", potremmo scrivere:
 
 ```js
-let ms = 1e-6; // six zeroes to the left from 1 
+let ms = 1e-6; // six zeroes to the left from 1
 ```
 
 Se contiamo gli zeri in `0.000001`, ce ne sono 6. Quindi ovviamente `1e-6`.  
@@ -170,7 +170,7 @@ Ci sono due modi per farlo:
 
     ```js run
     let num = 12.34;
-    alert( num.toFixed(5) ); // "12.34000", added zeroes to make exactly 5 digits 
+    alert( num.toFixed(5) ); // "12.34000", added zeroes to make exactly 5 digits
     ```
 
     Possiamo convertire il risultato al tipo numerico utilizzando la somma unaria o chiamando il metodo `Number()`: `+num.toFixed(5)`.
@@ -182,7 +182,7 @@ Internamente, un numero è rappresentato in formato 64-bit [IEEE-754](http://en.
 Se un numero è troppo grande, tale da superare i 64 bit disponibili, come ad esempio un numero potenzialmente infinito:
 
 ```js run
-alert( 1e500 ); // Infinity 
+alert( 1e500 ); // Infinity
 ```
 
 Potrebbe essere poco ovvio, ma quello che accade è la perdita di precisione.
@@ -193,7 +193,7 @@ Consideriamo questo test (falso!):
 alert( 0.1 + 0.2 == 0.3 ); // *!*false*/!*
 ```
 
-Esatto, se proviamo a confrontare il risultato della somma tra `0.1` e `0.2` con `0.3`, otteniamo `false`. 
+Esatto, se provassimo a confrontare il risultato della somma tra `0.1` e `0.2` con `0.3`, otterremmo `false`. 
 
 Strano! Quale può essere il risultato se non `0.3`?
 
@@ -234,33 +234,38 @@ Possiamo risolvere questo problema? Certamente, ci sono diverse soluzioni:
 
 1. Possiamo arrotondare il risultato con un metodo [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed):
 
-    ```js run
-    let sum = 0.1 + 0.2;
-    alert( sum.toFixed(2) ); // 0.30
-    ```
+```js run
+let sum = 0.1 + 0.2;
+alert( sum.toFixed(2) ); // 0.30
+```
 
     Da notare che `toFixed` ritorna sempre una stringa. Viene cosi garantito che ci siano almeno due cifre dopo la virgola decimale. Questo ci torna molto utile se abbiamo un e-shopping e vogliamo mostrare `$0.30`. Per tutti gli altri casi possiamo semplicemente chiamare la conversione con l'operatore di somma unaria:
 
-    ```js run
-    let sum = 0.1 + 0.2;
-    alert( +sum.toFixed(2) ); // 0.3
-    ```
+```js run
+let sum = 0.1 + 0.2;
+alert( +sum.toFixed(2) ); // 0.3
+```
 
 2. Possiamo temporaneamente convertire i numeri ad interi per eseguire le operazioni e poi riconvertirli. In questo modo:
 
-    ```js run
-    alert( (0.1 * 10 + 0.2 * 10) / 10 ); // 0.3
-    ```
+```js run
+alert( (0.1 * 10 + 0.2 * 10) / 10 ); // 0.3
+alert( (0.28 * 100 + 0.14 * 100) / 100); // 0.4200000000000001
+```
 
     Questo funziona perché quando facciamo `0.1 * 10 = 1` e `0.2 * 10 = 2` entrambi diventano interi, non vi è quindi perdita di precisione. 
 
-3. Se abbiamo a che fare con dei prezzi, la miglior soluzione rimane quella di memorizzare tutti i prezzi in centesimi, evitando quindi di utilizzare i numeri con virgola. Ma cosa succede se proviamo ad applicare uno sconto del 30%? Nella pratica, evadere completamente questo problema è difficile, in alcuni casi possono tornare utili entrambe le soluzioni spiegate sopra.
+3. Se abbiamo a che fare con dei prezzi, la miglior soluzione rimane quella di memorizzare tutti i prezzi in centesimi, evitando quindi di utilizzare i numeri con virgola. Ma cosa succede se proviamo ad applicare uno sconto del 30%? Nella pratica, evadere completamente questo problema è difficile, in alcuni casi possono tornare utili entrambe le soluzioni viste sopra.
+
+Quindi, l'approccio moltiplicazipne/divisione riduce gli errori, ma non li elimina completamente.
+
+Talvolta possiamo evitare le frazioni. Ad esempio se abbiamo a che fare con un negozio, allora possiamo memorizzare i prezzi in centesimi piuttosto che in dollari.  
 
 ````smart header="La cosa divertente"
 Provate ad eseguire questo:
 
 ```js run
-// Hello! I'm a self-increasing number! 
+// Hello! I'm a self-increasing number!
 alert( 9999999999999999 ); // shows 10000000000000000
 ```
 

@@ -18,7 +18,7 @@ let id = Symbol();
 
 Possiamo fornire anche una descrizione al symbol (chiamata nome del symbol), utile per il debugging:
 
-```js
+```js run
 // id is a symbol with the description "id"
 let id = Symbol("id");
 ```

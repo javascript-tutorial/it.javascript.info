@@ -117,7 +117,7 @@ Per il futuro, vi faccio notare che ci sono dei test più avanzati, come [karma]
 Proviamo a fornire una semplice implementazione di `pow`, per passare il test:
 
 ```js
-function pow() {
+function pow(x, n) {
   return 8; // :) we cheat!
 }
 ```
@@ -233,7 +233,7 @@ Il raggruppamento viene effettuato con un `describe` annidato:
 describe("pow", function() {
 
 *!*
-  describe("raises x to power n", function() {
+  describe("raises x to power 3", function() {
 */!*
 
     function makeTest(x) {

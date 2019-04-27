@@ -30,7 +30,7 @@ Qui non si attiva la modalità strict:
 
 ```js no-strict
 alert("some code");
-// "use strict" below is ignored, must be on the top
+// "use strict" below is ignored--it must be at the top
 
 "use strict";
 
@@ -46,7 +46,26 @@ Non esiste nessuna direttiva `"no use strict"` o simile, che possa riportare lo 
 Una volta abilitata la modalità strict, non c'e ritorno.
 ```
 
-## Usare sempre "use strict"
+## Browser console
+
+In futuro, quando utilizzerete la console integrata in un browser, dovete tenere a mente che di default non vale `use strict`.
+
+In certe situazioni, `use strict` fa veramente la differenza, quindi potreste ottenere dei risultati indesiderati.
+
+Anche se provate con `key:Shift+Enter` per inserire più righe di codice, ed inserite `use strict` in cima, non funzionerà. Questo accade a causa di come la console esegue il codice internamente.
+
+Un modo affidabile per assicurare il funzionamento di `use strict` è quello di inserire nella console un codice del tipo:
+
+```js
+(function() {
+  'use strict';
+
+  // ...codice...
+})()
+
+
+
+## Utilizzare sempre "use strict"
 
 Le differenze tra `"use strict"` contro la modalità di "default" non è ancora stata spiegata.
 

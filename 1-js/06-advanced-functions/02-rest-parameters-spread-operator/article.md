@@ -1,20 +1,20 @@
-# Parametri resto e operatore di espansione
+# Rest parameters and spread operator
 
-Molte funzioni integrate in JavaScript supportano un numero arbitrario di argomenti.
+Many JavaScript built-in functions support an arbitrary number of arguments.
 
-Ad esempio:
+For instance:
 
-- `Math.max(arg1, arg2, ..., argN)` -- ritorna il maggiore degli argomenti.
-- `Object.assign(dest, src1, ..., srcN)` -- copia le proprietà da `src1..N` in `dest`.
-- ...e molto altro.
+- `Math.max(arg1, arg2, ..., argN)` -- returns the greatest of the arguments.
+- `Object.assign(dest, src1, ..., srcN)` -- copies properties from `src1..N` into `dest`.
+- ...and so on.
 
-In questo capitolo impareremo come farlo. Ma soprattutto, impareremo come utilizzare al meglio questo tipo di funzioni.
+In this chapter we'll learn how to do the same. And, more importantly, how to feel comfortable working with such functions and arrays.
 
-## Parametri resto `...`
+## Rest parameters `...`
 
-Una funzione può essere invocata con un qualsiasi numero di argomenti, non ha importanza come sono definiti.
+A function can be called with any number of arguments, no matter how it is defined.
 
-Come qui:
+Like here:
 ```js run
 function sum(a, b) {
   return a + b;
@@ -23,11 +23,11 @@ function sum(a, b) {
 alert( sum(1, 2, 3, 4, 5) );
 ```
 
-In questo caso non ci saranno errori dovuti "all'eccesso" di argomenti. Ma ovviamente il risultato terrò conto solamente dei primi due.
+There will be no error because of "excessive" arguments. But of course in the result only the first two will be counted.
 
-I parametri restanti possono essere menzionati nella definizione di una funzione con i tre punti `...`. Che significano letteralmente "raccogli gli altri parametri in un array".
+The rest parameters can be mentioned in a function definition with three dots `...`. They literally mean "gather the remaining parameters into an array".
 
-Ad esempio, per raccogliere tutti gli argomenti in un array `args`:
+For instance, to gather all arguments into array `args`:
 
 ```js run
 function sumAll(...args) { // args is the name for the array
@@ -43,9 +43,9 @@ alert( sumAll(1, 2) ); // 3
 alert( sumAll(1, 2, 3) ); // 6
 ```
 
-Possiamo anche decidere di prendere i primi parametri e memorizzarli in variabili, e i parametri avanzati metterli in un array.
+We can choose to get the first parameters as variables, and gather only the rest.
 
-In questo caso i primi due argomenti vengono memorizzati in variabli i restanti finiscono nell'array `titles`:
+Here the first two arguments go into variables and the rest go into `titles` array:
 
 ```js run
 function showName(firstName, lastName, ...titles) {
@@ -61,8 +61,8 @@ function showName(firstName, lastName, ...titles) {
 showName("Julius", "Caesar", "Consul", "Imperator");
 ```
 
-````warn header="I parametri resto devono apparire alla fine"
-I parametri resto raccolgono tutti gli argomenti che avanzano, quindi non avrebbe senso fare:
+````warn header="The rest parameters must be at the end"
+The rest parameters gather all remaining arguments, so the following does not make sense and causes an error:
 
 ```js
 function f(arg1, ...rest, arg2) { // arg2 after ...rest ?!
@@ -70,14 +70,14 @@ function f(arg1, ...rest, arg2) { // arg2 after ...rest ?!
 }
 ```
 
-L'array `...rest` deve sempre apparire come ultimo.
+The `...rest` must always be last.
 ````
 
-## La variabile "arguments"
+## The "arguments" variable
 
-Esiste anche un oggetto simil-array denominato `arguments` che contiene tutti gli argomenti per indice.
+There is also a special array-like object named `arguments` that contains all arguments by their index.
 
-Ad esempio:
+For instance:
 
 ```js run
 function showName() {
@@ -96,20 +96,20 @@ showName("Julius", "Caesar");
 showName("Ilya");
 ```
 
-Agli inizi, i parametri resto non esistevano nel linguaggio, e si utilizzava `arguments` per ottenere tutti gli argomenti di una funzione.
+In old times, rest parameters did not exist in the language, and using `arguments` was the only way to get all arguments of the function, no matter their total number.
 
-Questa funzionalità ovviamente è ancora presente, possiamo quindi utilizzarla.
+And it still works, we can use it today.
 
-Il lato negativo è che `arguments` è un oggetto simil-array iterabile, non è un array puro. Non supporta quindi i metodi dedicati agli array, come ad esempio `arguments.map(...)`.
+But the downside is that although `arguments` is both array-like and iterable, it's not an array. It does not support array methods, so we can't call `arguments.map(...)` for example.
 
-Inoltre, questo conterrà sempre tutti gli elementi. Non possiamo raccoglierli parzialmente, come abbiamo fatto con i parametri resto.
+Also, it always contains all arguments. We can't capture them partially, like we did with rest parameters.
 
-Quindi, in queste sitauzioni, si preferisce utilizzare i parametri resto.
+So when we need these features, then rest parameters are preferred.
 
-````smart header="Le funzioni freccia non possiedono `\"argomenti\"`"
-Se provassimo ad accedere all'oggetto `arguments` all'interno di una funzione freccia, questo preleverebbe le variabili dal contesto esterno.
+````smart header="Arrow functions do not have `\"arguments\"`"
+If we access the `arguments` object from an arrow function, it takes them from the outer "normal" function.
 
-Un esempio:
+Here's an example:
 
 ```js run
 function f() {
@@ -121,23 +121,23 @@ f(1); // 1
 ```
 ````
 
-In sostanza, le funzioni freccia non hanno un proprio `this`. Ora sappiamo anche che non possiedono nemmeno l'oggetto `arguments`.
+As we remember, arrow functions don't have their own `this`. Now we know they don't have the special `arguments` object either.
 
-## Operatore di espansione [#spread-operator]
+## Spread operator [#spread-operator]
 
-Abbiamo appena visto come ottenere un array da una lista di parametri.
+We've just seen how to get an array from the list of parameters.
 
-In certe situazioni abbiamo bisogno di fare esattamente il contrario.
+But sometimes we need to do exactly the reverse.
 
-Ad esempio, esempio esiste una funzione integrata [Math.max](mdn:js/Math/max) che ritorna il numero maggiore di una lista:
+For instance, there's a built-in function [Math.max](mdn:js/Math/max) that returns the greatest number from a list:
 
 ```js run
 alert( Math.max(3, 5, 1) ); // 5
 ```
 
-Ora ipotizziamo di avere un array `[3, 5, 1]`. Come invochiamo `Math.max` su un array?
+Now let's say we have an array `[3, 5, 1]`. How do we call `Math.max` with it?
 
-Il semplice passaggio "cosi com'è" non funzionerebbe, perché `Math.max` si aspetta di ricevere una lista di argomenti numerici, non un singolo array:
+Passing it "as is" won't work, because `Math.max` expects a list of numeric arguments, not a single array:
 
 ```js run
 let arr = [3, 5, 1];
@@ -147,13 +147,13 @@ alert( Math.max(arr) ); // NaN
 */!*
 ```
 
-E ovviamente non possiamo nemmeno elencare manualmente tutti gli elementi in questo modo: `Math.max(arr[0], arr[1], arr[2])`, poiché il numero di elementi contenuti nell'array potrebbe non essere noto. In ogni caso non sarebbe nemmeno elegante.
+And surely we can't manually list items in the code `Math.max(arr[0], arr[1], arr[2])`, because we may be unsure how many there are. As our script executes, there could be a lot, or there could be none. And that would get ugly.
 
-L'*operatore di espansione* ci aiuta in questo! La sintassi è simile a quella dei parametri resto, utilizza `...`, ma fa esattamente l'opposto.
+*Spread operator* to the rescue! It looks similar to rest parameters, also using `...`, but does quite the opposite.
 
-Quando si utilizza `...arr` in una chiamata a funzione, l'array `arr` verrà "espanso" in una lista di argomenti.
+When `...arr` is used in the function call, it "expands" an iterable object `arr` into the list of arguments.
 
-Nel caso `Math.max`:
+For `Math.max`:
 
 ```js run
 let arr = [3, 5, 1];
@@ -161,7 +161,7 @@ let arr = [3, 5, 1];
 alert( Math.max(...arr) ); // 5 (spread turns array into a list of arguments)
 ```
 
-Possiamo anche fornire più oggetti iterabili in questo modo:
+We also can pass multiple iterables this way:
 
 ```js run
 let arr1 = [1, -2, 3, 4];
@@ -170,7 +170,7 @@ let arr2 = [8, 3, -8, 1];
 alert( Math.max(...arr1, ...arr2) ); // 8
 ```
 
-Possiamo anche combinare l'operatore di espansione con valori "normali":
+We can even combine the spread operator with normal values:
 
 
 ```js run
@@ -180,7 +180,7 @@ let arr2 = [8, 3, -8, 1];
 alert( Math.max(1, ...arr1, 2, ...arr2, 25) ); // 25
 ```
 
-Inoltre, l'operatore di spread può essere utilizzato anche per fondere array:
+Also, the spread operator can be used to merge arrays:
 
 ```js run
 let arr = [3, 5, 1];
@@ -193,9 +193,9 @@ let merged = [0, ...arr, 2, ...arr2];
 alert(merged); // 0,3,5,1,2,8,9,15 (0, then arr, then 2, then arr2)
 ```
 
-Negli esempi sopra abbiamo utilizzato un array per dimostrare l'operatore di espansione, ma funziona correttamente con qualsiasi oggetto iterabile.
+In the examples above we used an array to demonstrate the spread operator, but any iterable will do.
 
-Ad esempio, in questo esempio utilizziamo l'operatore di espansione per convertire la stringa in un array di caratteri:
+For instance, here we use the spread operator to turn the string into array of characters:
 
 ```js run
 let str = "Hello";
@@ -203,11 +203,11 @@ let str = "Hello";
 alert( [...str] ); // H,e,l,l,o
 ```
 
-L'operatore di spread internamente sfrutta gli iteratori per ottenere  gli elementi, proprio come `for..of`.
+The spread operator internally uses iterators to gather elements, the same way as `for..of` does.
 
-Quindi, per una stringa, `for..of` ritorna dei caratteri e `...str` diventa `"H","e","l","l","o"`. La lista di caratteri viene passata per inizializzare un array `[...str]`.
+So, for a string, `for..of` returns characters and `...str` becomes `"H","e","l","l","o"`. The list of characters is passed to array initializer `[...str]`.
 
-Per quest'attività in particolare potremmo anche utilizzare `Array.from`, poiché converte un oggetto iterabile (come una stringa) in un array:
+For this particular task we could also use `Array.from`, because it converts an iterable (like a string) into an array:
 
 ```js run
 let str = "Hello";
@@ -216,30 +216,30 @@ let str = "Hello";
 alert( Array.from(str) ); // H,e,l,l,o
 ```
 
-Il risultato è lo stesso ottenuto con `[...str]`.
+The result is the same as `[...str]`.
 
-C'è però una sottile differenza tra `Array.from(obj)` e `[...obj]`:
+But there's a subtle difference between `Array.from(obj)` and `[...obj]`:
 
-- `Array.from` funziona sia con array che con oggetti iterabili.
-- L'operatore di espansione opera solamente su oggetti iterabili.
+- `Array.from` operates on both array-likes and iterables.
+- The spread operator operates only on iterables.
 
-Quindi, per convertire qualcosa in array, la scelta migliore è `Array.from`.
+So, for the task of turning something into an array, `Array.from` tends to be more universal.
 
 
-## Riepilogo
+## Summary
 
-Quando nel codice incontriamo: `"..."`, potrebbe essere sia i l'operatore di resto dei parametri che l'operatore di espansione.
+When we see `"..."` in the code, it is either rest parameters or the spread operator.
 
-Un modo semplice per distinguere i due casi:
+There's an easy way to distinguish between them:
 
-- Quando `...` si trova alla fine della lista dei parametri della funzione, allora è l'operatore "resto dei parametri", il quale raccoglie tutti i parametri forniti (sotto forma di array) alla funzione che non trovano spazio nelle variabili.
-- Quando `...` si trova in una chiamata a funzione o situazioni simili, viene chiamato "operatore operatore di espansione", che espande un array in una lista.
+- When `...` is at the end of function parameters, it's "rest parameters" and gathers the rest of the list of arguments into an array.
+- When `...` occurs in a function call or alike, it's called a "spread operator" and expands an array into a list.
 
-Casi d'uso:
+Use patterns:
 
-- L'operatore parametri di resto viene utilizzato per creare una funzione che accetta un qualsiasi numero di argomenti.
-- L'operatore di espansione viene utilizzato per passare un array ad una funzione che richiede una lista di argomenti.
+- Rest parameters are used to create functions that accept any number of arguments.
+- The spread operator is used to pass an array to functions that normally require a list of many arguments.
 
-Insieme questi due operatori consentono di lavorare facilmente con le funzioni e i parametri passati.
+Together they help to travel between a list and an array of parameters with ease.
 
-Tutti gli argomenti di una funzione sono accessibili anche con il metodo "vecchio stile" `arguments`: un oggetto simil-array.
+All arguments of a function call are also available in "old-style" `arguments`: array-like iterable object.

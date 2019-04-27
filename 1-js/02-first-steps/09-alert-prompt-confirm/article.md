@@ -27,7 +27,7 @@ La finestra che appare con il messaggio si chiama *modal window*. La parola "mod
 La funzione `prompt` accetta due argomenti:
 
 ```js no-beautify
-result = prompt(title[, default]);
+result = prompt(title, [default]);
 ```
 
 Questo mostrerà una modal window con un messaggio testuale, un campo di input per l'utente ed il bottone OK/CANCEL.
@@ -94,12 +94,7 @@ Abbiamo osservato 3 funzioni specifiche dei browser per interagire con l'utente:
 : mostra un messaggio.
 
 `prompt`
-: mostra un messaggio chiedendo all'utente un input testuale. Ritorna il testo o, se viene premuto CANCEL o il tasto `key:Esc`, tutti i browser ritornano `null`.
-
-`confirm`
-: mostra un messaggio e aspetta che l'utente prema "OK" o "CANCEL". Ritorna `true` se viene premuto OK e `false` per CANCEL/`key:Esc`.
-
-Tutti questi metodi sono dei modal window: quindi interrompono l'esecuzione dello script e non consentono all'utente di interagire con il resto della pagina finchè il messaggio non viene rimosso:
+Tutti questi metodi sono dei modal window: quindi interrompono l'esecuzione dello script e non consentono all'utente di interagire con il resto della pagina finchè il messaggio non viene rimosso.
 
 Ci sono due limitazioni che sono condivise da tutti i metodi visti sopra:
 

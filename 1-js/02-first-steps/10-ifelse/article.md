@@ -56,7 +56,7 @@ if (1) { // 1 is truthy
 }
 ```
 
-Possiamo anche passare un valore booleano già valutato, come qui:
+Possiamo anche passare un valore già valutato in precedenza su un `if`, come qui:
 
 ```js
 let cond = (year == 2015); // equality evaluates to true or false
@@ -72,7 +72,7 @@ L'istruzione `if` può essere seguita da un blocco opzionale "else". Questo vien
 
 Ad esempio:
 ```js run
-let year = prompt('In which year was ECMAScript-2015 specification published?', '');
+let year = prompt('In which year was the ECMAScript-2015 specification published?', '');
 
 if (year == 2015) {
   alert( 'You guessed it right!' );
@@ -88,7 +88,7 @@ Qualche volta vorremmo testare diverse varianti di una condizione. Per questo es
 Ad esempio:
 
 ```js run
-let year = prompt('In which year was ECMAScript-2015 specification published?', '');
+let year = prompt('In which year was the ECMAScript-2015 specification published?', '');
 
 if (year < 2015) {
   alert( 'Too early...' );
@@ -130,7 +130,7 @@ L'operatore viene rappresentato dal punto interrogativo `?`.  Il termine formale
 
 La sintassi è:
 ```js
-let result = condition ? value1 : value2
+let result = condition ? value1 : value2;
 ```
 
 La `condition` viene valutata, se risulta viene ritornato il `value1`, altrimenti viene ritornato il -- `value2`.
@@ -141,7 +141,9 @@ Ad esempio:
 let accessAllowed = (age > 18) ? true : false;
 ```
 
-Tecnicamente, potremmo omettere le parentesi su `age > 18`. L'operatore ternario ha una precedenza molto bassa. Viene eseguito dopo gli operatori di confronto `>`, quindi il risultato sarebbe lo stesso:
+Tecnicamente, potremmo omettere le parentesi su `age > 18`. L'operatore ternario ha una precedenza molto bassa. Viene eseguito dopo gli operatori di confronto `>`.
+
+Questo esempio porta allo stesso risultato di quello precedente:
 
 ```js
 // the comparison operator "age > 18" executes first anyway

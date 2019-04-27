@@ -39,7 +39,13 @@ Per creare un nuovo oggetto `Date`, chiamiamo `new Date()` con uno dei seguenti 
 
     ```js run
     let date = new Date("2017-01-26");
-    alert(date); // Thu Jan 26 2017 ...
+    alert(date);
+    // The time portion of the date is assumed to be midnight GMT and 
+    // is adjusted according to the timezone the code is run in
+    // So the result could be
+    // Thu Jan 26 2017 11:00:00 GMT+1100 (Australian Eastern Daylight Time)
+    // or
+    // Wed Jan 25 2017 16:00:00 GMT-0800 (Pacific Standard Time)
     ```
 
 `new Date(year, month, date, hours, minutes, seconds, ms)`
@@ -420,4 +426,4 @@ alert(`Loading started ${performance.now()}ms ago`);
 // more than 3 digits after the decimal point are precision errors, but only the first 3 are correct
 ```
 
-Node.JS possiede un modulo `microtime` e altri metodi. Tecnicamente, la maggior parte degli ambienti forniscono un modo per gestire precisioni più elevate, questo non è pero previsto dall'oggetto `Date`.
+Node.js possiede un modulo `microtime` e altri metodi. Tecnicamente, la maggior parte degli ambienti forniscono un modo per gestire precisioni più elevate, questo non è pero previsto dall'oggetto `Date`.

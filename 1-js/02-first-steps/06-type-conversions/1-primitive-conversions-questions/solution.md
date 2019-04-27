@@ -10,13 +10,15 @@ true + false = 1
 "4" - 2 = 2
 "4px" - 2 = NaN
 7 / 0 = Infinity
-" -9\n" + 5 = " -9\n5"
-" -9\n" - 5 = -14
-null + 1 = 1 // (3)
-undefined + 1 = NaN // (4)
+" -9  " + 5 = " -9  5" // (3)
+" -9  " - 5 = -14 // (4)
+null + 1 = 1 // (5)
+undefined + 1 = NaN // (6)
 ```
 
-1. L'addizione con una stringa di `"" + 1` converte `1` a stringa: `"" + 1 = "1"`, successivamente in `"1" + 0`, viene applicatala stessa regola.
-2. La sottrazione `-` (come la maggior parte delle operazioni matematiche) funzionano solo con i numeri, converte quindi una stringa vuota `""` in `0`.
-3. `null` diventa `0` dopo la conversione numerica.
-4. `undefined` diventa `NaN` dopo la conversione numerica.
+1. L'addizione con una stringa `"" + 1` converte `1` a stringa: `"" + 1 = "1"`, applichiamo la stessa regola a `"1" + 0`.
+2. La sottrazione `-` (come molte altre operazioni matematiche) funziona solamente con i numeri, mentre una stringa vuota come: `""` viene convertita a `0`.
+3. La somma con una stringa appende in coda alla stringa il numero `5`.
+4. La sottrazione converte sempre ad un numero, quindi `"  -9  "` diventa `-9` (gli spazi vuoti vengono ignorati).
+5. `null` diventa `0` dopo la conversione numerica.
+6. `undefined` diventa `NaN` dopo la conversione numerica.

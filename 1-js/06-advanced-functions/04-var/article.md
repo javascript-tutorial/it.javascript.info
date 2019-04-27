@@ -1,53 +1,53 @@
 
-# Il vecchio "var"
+# The old "var"
 
-Nei primi capitoli in cui abbiamo parlato di [variabili](info:variables), abbiamo menzionato tre diversi tipi di dichiarazione:
+In the very first chapter about [variables](info:variables), we mentioned three ways of variable declaration:
 
 1. `let`
 2. `const`
 3. `var`
 
-`let` e `const` si comportano esattamente allo stesso modo in termini di Lexical Environments.
+`let` and `const` behave exactly the same way in terms of Lexical Environments.
 
-Invece `var` è totalmente diverso, poiché deriva dalle prime versioni del linguaggio. Generalmente negli script più recenti non viene utilizzato, ma appare ancora in quelli più vecchi.
+But `var` is a very different beast, that originates from very old times. It's generally not used in modern scripts, but still lurks in the old ones.
 
-Se non avete intenzione di avere a che fare con gli script più vecchi, potete saltare questo capitolo o studiarlo in futuro, ma molto probabilmente prima o poi vi ci imbatterete.
+If you don't plan on meeting such scripts you may even skip this chapter or postpone it, but then there's a chance that it bites you later.
 
-A prima vista, `var` si comporta in maniera analoga a `let`. Ad esempio:
+From the first sight, `var` behaves similar to `let`. That is, declares a variable:
 
 ```js run
 function sayHi() {
-  var phrase = "Hello"; // variabile locale, "var" piuttosto di "let"
+  var phrase = "Hello"; // local variable, "var" instead of "let"
 
   alert(phrase); // Hello
 }
 
 sayHi();
 
-alert(phrase); // Errore, phrase non è definito
+alert(phrase); // Error, phrase is not defined
 ```
 
-...Abbiamo trovato una differenza.
+...But here are the differences.
 
-## "var" non ha uno scope di blocco
+## "var" has no block scope
 
-Le variabili dichiarate tramite `var` possono essere: locali alla funzione oppure globali.
+`var` variables are either function-wide or global, they are visible through blocks.
 
-Ad esempio:
+For instance:
 
 ```js
 if (true) {
-  var test = true; // utilizziamo "var" piuttosto di "let"
+  var test = true; // use "var" instead of "let"
 }
 
 *!*
-alert(test); // vero, la variabile vive dopo if
+alert(test); // true, the variable lives after if
 */!*
 ```
 
-Se avessimo utilizzato `let test` nella seconda riga, allora non sarebbe stata visibile ad `alert`. Ma `var` ignora i blocchi di codice, quindi `test` risulta essere globale.
+If we used `let test` on the 2nd line, then it wouldn't be visible to `alert`. But `var` ignores code blocks, so we've got a global `test`.
 
-La stessa cosa accade con i cicli: `var` non può essere locale ad un blocco/ciclo:
+The same thing for loops: `var` cannot be block- or loop-local:
 
 ```js
 for (var i = 0; i < 10; i++) {
@@ -55,11 +55,11 @@ for (var i = 0; i < 10; i++) {
 }
 
 *!*
-alert(i); // 10, "i" è visibile anche dopo il ciclo, è una variabile globale
+alert(i); // 10, "i" is visible after loop, it's a global variable
 */!*
 ```
 
-Se un blocco di codice si trova all'interno di una funzione, allora `var` diventa una variabile a livello di funzione:
+If a code block is inside a function, then `var` becomes a function-level variable:
 
 ```js
 function sayHi() {
@@ -67,22 +67,22 @@ function sayHi() {
     var phrase = "Hello";
   }
 
-  alert(phrase); // funziona
+  alert(phrase); // works
 }
 
 sayHi();
-alert(phrase); // Errore: phrase non è definito
+alert(phrase); // Error: phrase is not defined
 ```
 
-Come possiamo vedere, `var` passa attraverso `if`, `for` o altri blocchi di codice. Questo accade perché molto tempo fa i blocchi JavaScript non possedevano un Lexical Environments. E `var` ne è un ricordo.
+As we can see, `var` pierces through `if`, `for` or other code blocks. That's because a long time ago in JavaScript blocks had no Lexical Environments. And `var` is a remnant of that.
 
-## "var" viene processata all'inizio della funzione
+## "var" are processed at the function start
 
-Le dichiarazioni con `var` vengono processata quando la funzione inizia (o lo script, nel caso delle variabili globali).
+`var` declarations are processed when the function starts (or script starts for globals).
 
-In altre parole, le variabili `var` sono definite dall'inizio della funzione, non ha importanza dove vengano definite (ovviamente non vale nel caso di funzioni annidate).
+In other words, `var` variables are defined from the beginning of the function, no matter where the definition is (assuming that the definition is not in the nested function).
 
-Guardate questo esempio:
+So this code:
 
 ```js
 function sayHi() {
@@ -96,7 +96,7 @@ function sayHi() {
 }
 ```
 
-...E' tecnicamente la stessa cosa di (spostando `var phrase`):
+...Is technically the same as this (moved `var phrase` above):
 
 ```js
 function sayHi() {
@@ -110,7 +110,7 @@ function sayHi() {
 }
 ```
 
-...O anche di questa (ricordate, i blocchi di codice vengono attraversati dallo scope della variabile):
+...Or even as this (remember, code blocks are ignored):
 
 ```js
 function sayHi() {
@@ -126,13 +126,13 @@ function sayHi() {
 }
 ```
 
-Questo comportamento viene chiamato "sollevamento", perché tutte `var` vengono "sollevate" fino all'inizio della funzione.
+People also call such behavior "hoisting" (raising), because all `var` are "hoisted" (raised) to the top of the function.
 
-Quindi nell'esempio sopra, `if (false)` il ramo non eseguirà mai, ma non ha importanza. La `var` all'interno viene processata all'inizio della funzione, quindi quando ci troviamo in `(*)` la variabile esiste.
+So in the example above, `if (false)` branch never executes, but that doesn't matter. The `var` inside it is processed in the beginning of the function, so at the moment of `(*)` the variable exists.
 
-**Le dichiarazioni vengono sollevate, le assegnazioni no.**
+**Declarations are hoisted, but assignments are not.**
 
-Lo dimostriamo con un esempio, come quello seguente:
+That's better to demonstrate with an example, like this:
 
 ```js run
 function sayHi() {
@@ -146,40 +146,40 @@ function sayHi() {
 sayHi();
 ```
 
-La riga `var phrase = "Hello"` può essere suddivisa in due:
+The line `var phrase = "Hello"` has two actions in it:
 
-1. Dichiarazione della variabile `var`
-2. Assegnazione della variabile con `=`.
+1. Variable declaration `var`
+2. Variable assignment `=`.
 
-La dichiarazione viene processata all'inizio della funzione ("sollevata"), l'assegnazione invece ha luogo sempre nel posto in cui appare. Quindi il codice funziona in questo modo:
+The declaration is processed at the start of function execution ("hoisted"), but the assignment always works at the place where it appears. So the code works essentially like this:
 
 ```js run
 function sayHi() {
 *!*
-  var phrase; // la dichiarazione viene processata...
+  var phrase; // declaration works at the start...
 */!*
 
   alert(phrase); // undefined
 
 *!*
-  phrase = "Hello"; // ...assegnazione - quando viene raggiunta dal flusso d'esecuzione.
+  phrase = "Hello"; // ...assignment - when the execution reaches it.
 */!*
 }
 
 sayHi();
 ```
 
-Il fatto che la dichiarazione di `var` venga processata all'inizio della funzione, ci consente di farne riferimento in qualsiasi punto. Ma la variabile rimane `undefined` fino all'assegnazione.
+Because all `var` declarations are processed at the function start, we can reference them at any place. But variables are undefined until the assignments.
 
-In entrambi gli esempi sopra `alert` esegue senza errori, poiché la variabile `phrase` esiste. Il suo valore però non gli è ancora stato assegnato, quindi viene mostrato `undefined`.
+In both examples above `alert` runs without an error, because the variable `phrase` exists. But its value is not yet assigned, so it shows `undefined`.
 
-## Riepilogo
+## Summary
 
-Ci sono due principali differenze con `var`:
+There are two main differences of `var`:
 
-1. Le variabili non hanno uno scope locale al blocco, sono infatti visibili a livello di funzione.
-2. La dichiarazione di variabili viene processata all'inizio della funzione.
+1. Variables have no block scope, they are visible minimum at the function level.
+2. Variable declarations are processed at function start.
 
-C'è un ulteriore differenza di minore importanza legata all'oggetto globale, che andremo ad analizzare nel prossimo capitolo.
+There's one more minor difference related to the global object, we'll cover that in the next chapter.
 
-L'insieme di queste differenze fa si che `var` venga considerato uno svantaggio. Come prima cosa, non possiamo creare delle variabili locali al blocco. Il "sollevameto" genera solamente confusione. Quindi, negli script più recenti `var` viene utilizzato solamente in casi eccezionali.
+These differences are actually a bad thing most of the time. Block-level variables is such a great thing. That's why `let` was introduced in the standard long ago, and is now a major way (along with `const`) to declare a variable.

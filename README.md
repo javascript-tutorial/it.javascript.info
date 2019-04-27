@@ -1,31 +1,20 @@
 # The Modern JavaScript Tutorial in Italian
 
-In questa repository viene pubblicata la traduzione italiana di <https://javascript.info>.
+In questa repository viene pubblicata la traduzione italiana di [https://javascript.info](https://javascript.info).
 
-Vi chiediamo di aiutarci a rendere il processo di traduzione il più semplice possibile.
+Ci piacerebbe rendere questo tutorial disponibile in molte lingue. Aiutaci a tradurlo.
 
-- Leggete tra gli [issue](https://github.com/javascript-tutorial/it.javascript.info/issues) quello denominato "Translate Progress".
-- Scegliete l'articolo che desiderate tradurre e mettete la spunta.
-- Create un issue per informare il gestore della repository sull'articolo scelto.
-- Procedete con il fork della repository, traducete e infine infine inviate una PR (Pull Request).
+Guarda il link <https://github.com/javascript-tutorial/translate> per maggiori dettagli.
 
-🎉 Grazie!
+## Contributi
 
-Il vostro nome e la quantità dei contributi forniti apparirà nella pagina "About project" quando la traduzione verrà pubblicata.
+Ci piacerebbe anche avere la vostra collaborazione nel tutorial.
 
-P.S. Potete trovare la lista completa delle traduzioni a questo link: <https://github.com/javascript-tutorial/translate>.
+Hai trovato un errore? Manca un argomento? Createlo voi, e inviate un PR 👏
 
-## Struttura
+**Puoi modificare i file con un qualsiasi editor di testo.** Il tutorial sfrutta il formato "markdown", molto facile da utilizzare. Potete anche testare in tempo reale le modifiche, utilizzando il server locale presente a questo link <https://github.com/javascript-tutorial/server>.  
 
-Ogni capitolo, articolo o esercizio appartiene ad una cartella.
-
-Il nome della cartella è `N-url`, dove `N` – è il numero per l'ordinamento (gli articoli sono ordinati), e `url` è il prefisso dell'URL sul sito.
-
-Una cartella possiede uno di questi tipi di file:
-
-- `index.md` per una sezione,
-- `article.md` per un articolo,
-- `task.md` per gli esercizi(+`solution.md` con la soluzione ed eventuale spiegazione).
+E' disponibile una lista di chi ha contribuito: <https://javascript.info/about#contributors>.
 
 Un file inizia con `# Title Header`, e il testo è in formato Markdown, che può esserre modificato con un semplice editor di testo. 
 
@@ -33,9 +22,14 @@ Eventuali risorse aggiuntive ed esempi utili per un articolo o esercizio, risied
 
 ## Consigli per la traduzione
 
-La traduzione non deve necessariamente essere fatta parola per parola. Dovrebbe essere tecnicamente corretta ed esplicativa.
+Se volete tradurre un articolo vi chiedo di seguire questi semplici passi:
 
-Se avete dei suggerimenti per migliorare anche la versione Inglese - ottimo, inviatemi una PR e valuterò la vostra proposta.
+- Leggete tra gli [issue](https://github.com/javascript-tutorial/it.javascript.info/issues) quello denominato "Translate Progress".
+- Scegliete l'articolo che desiderate tradurre e mettete la spunta.
+- Create un issue per informare il gestore della repository sull'articolo scelto.
+- Procedete con il fork della repository, traducete e infine infine inviate una PR (Pull Request).
+
+Il vostro nome apparirà nella pagina "About project" quando la traduzione verrà pubblicata.
 
 ### Esempi ed Esercizi
 
@@ -96,8 +90,7 @@ Alcuni termini utilizzati spesso:
 - 'Summary' viene tradotto con 'Riepilogo'
 - Il nome dei tipi come: 'primitives', 'string', 'object' viene tradotto ('primitivi', 'stringhe', 'oggetto') mantenendo tra parentesi la versione in lingua originale
 
-## Controllo locale
-
-Potete eseguire il tutorial localmente, per vedere immediatamente i cambiamenti.
-
-Qui trovate il server: <https://github.com/javascript-tutorial/server>. 
+---
+💓  
+Ilya Kantor @iliakan
+>>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb

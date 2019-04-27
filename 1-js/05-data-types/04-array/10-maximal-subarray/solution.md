@@ -1,4 +1,4 @@
-# La soluzione lenta
+# La soluzione più lenta
 
 Possiamo calcoalre tutte le somme possibili.
 
@@ -29,8 +29,8 @@ Ad esempio, per `[-1, 2, 3, -9, 11]`:
 -9
 -9 + 11
 
-// Starting from -11
--11
+// Starting from 11
+11
 ```
 
 Il codice è un ciclo annidato: il ciclo esterno cicla tutti gli elementi dell'array, quello interno esegue le somme a partire dall'elemento corrente.
@@ -67,7 +67,7 @@ Iniziamo ad esaminare l'array mantenendo la somma parizale degli elementi nella 
 
 Se la risposta vi sembra troppo vaga, date un'occhiata al codice:
 
-```js run
+```js run demo
 function getMaxSubSum(arr) {
   let maxSum = 0;
   let partialSum = 0;

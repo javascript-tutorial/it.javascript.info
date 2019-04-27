@@ -1,14 +1,14 @@
 
-Esaminiamo cosa accade dentro `makeArmy`, e la soluzioni ci apparirà ovvia.
+Let's examine what's done inside `makeArmy`, and the solution will become obvious.
 
-1. Crea un array vuoto `shooters`:
+1. It creates an empty array `shooters`:
 
     ```js
     let shooters = [];
     ```
-2. Lo riempie con un ciclo `shooters.push(function...)`.
+2. Fills it in the loop via `shooters.push(function...)`.
 
-    Ogni elemento è una funzione, quindi l'array finale risulterà essere:
+    Every element is a function, so the resulting array looks like this:
 
     ```js no-beautify
     shooters = [
@@ -25,17 +25,17 @@ Esaminiamo cosa accade dentro `makeArmy`, e la soluzioni ci apparirà ovvia.
     ];
     ```
 
-3. L'array viene ritornato dalla funzione.
+3. The array is returned from the function.
 
-Successivamente, la chiamata `army[5]()` otterrà l'elemento `army[5]` dall'array (cioè una funzione) e la invocherà.
+Then, later, the call to `army[5]()` will get the element `army[5]` from the array (it will be a function) and call it.
 
-Ora perchè tutte le funzione mostrano lo stesso risultato?
+Now why all such functions show the same?
 
-Questo accade perchè non c'è alcuna variabile locale `i` interna alla funzione `shooter`. Quando questa funzione viene invocata, prende `i` dal lexical environment esterno.
+That's because there's no local variable `i` inside `shooter` functions. When such a function is called, it takes `i` from its outer lexical environment.
 
-Quale sarà il valore di `i`?
+What will be the value of `i`?
 
-Se guardiamo il codice:
+If we look at the source:
 
 ```js
 function makeArmy() {
@@ -51,13 +51,13 @@ function makeArmy() {
 }
 ```
 
-...Notiamo che si trova nel lexival environment associato a `makeArmy()`. Ma quando invochiamo `army[5]()`, `makeArmy` ha già terminato l'esecuzione, e `i` possiede l'ultimo valore: `10`.
+...We can see that it lives in the lexical environment associated with the current `makeArmy()` run. But when `army[5]()` is called, `makeArmy` has already finished its job, and `i` has the last value: `10` (the end of `while`).
 
-Il risultato è che tutte le funzioni `shooter` la prendono dallo stesso lexical envrironment esterno, in cui l'ultimo valore è `i=10`.
+As a result, all `shooter` functions get from the outer lexical envrironment the same, last value `i=10`.
 
-Questo può essere sistemato molto facilmente:
+We can fix it by moving the variable definition into the loop:
 
-```js run
+```js run demo
 function makeArmy() {
 
   let shooters = [];
@@ -79,16 +79,16 @@ let army = makeArmy();
 army[0](); // 0
 army[5](); // 5
 ```
-Ora funziona correttamente, perché ogni volta che viene eseguito il blocco di codice `for (..) {...}`, viene creato un nuovo Lexical Environment, con il corrispondente valore `i`.
 
-Quindi, il valore di `i` ora si trova più "vicino". Non più nel lexical environment di `makeArmy()`, ma in quello del corrispondente ciclo. Uno `shooter` preleva il valore esattamente da dove è stato creato.
+Now it works correctly, because every time the code block in `for (let i=0...) {...}` is executed, a new Lexical Environment is created for it, with the corresponding variable `i`.
+
+So, the value of `i` now lives a little bit closer. Not in `makeArmy()` Lexical Environment, but in the Lexical Environment that corresponds the current loop iteration. That's why now it works.
 
 ![](lexenv-makearmy.png)
 
-Qui abbiamo riscritto `while` in `for`.
+Here we rewrote `while` into `for`.
 
-Eì possibile farlo in un altro modo, vediamolo per capirlo meglio:
-
+Another trick could be possible, let's see it for better understanding of the subject:
 
 ```js run
 function makeArmy() {
@@ -115,6 +115,6 @@ army[0](); // 0
 army[5](); // 5
 ```
 
-Il ciclo `while`, come `for`, crea un nuovo Lexical Environment ad ogni esecuzone. Quindi siamo sicuri di ottener il giusto valore di `shooter`.
+The `while` loop, just like `for`, makes a new Lexical Environment for each run. So here we make sure that it gets the right value for a `shooter`.
 
-Copiamo `let j = i`. Questo rende il corpo del ciclo locale e copia su `j` il valore di `i`. Gli oggetti primitivi vengono copiati per valore, quindi ora abbiamo un copia indipendente di `i`, che appartiene all iterazione corrente.
+We copy `let j = i`. This makes a loop body local `j` and copies the value of `i` to it. Primitives are copied "by value", so we actually get a complete independent copy of `i`, belonging to the current loop iteration.

@@ -1,6 +1,6 @@
 # Struttura del codice
 
-La prima cosa da studiare riguarda il come è strutturato il codice.
+La prima cosa da studiare riguarda la struttura del codice.
 
 ## Istruzioni
 
@@ -15,7 +15,7 @@ Ad esempio, qui dividiamo il messaggio in due:
 ```js run no-beautify
 alert('Hello'); alert('World');
 ```
-Di solito ogni istruzione viene scritta in una linea separata -- questo rende il codice molto più leggibile:
+Di solito ogni istruzione viene scritta in una riga separata per rendere il codice molto più leggibile:
 
 ```js run no-beautify
 alert('Hello');
@@ -58,7 +58,7 @@ Se sei curioso di vedere un esempio concreto di questo tipo di errore, dai un oc
 [1, 2].forEach(alert)
 ```
 
-Non c'e bisogno di pensare al significato delle parentesi `[]` e al `forEach`. Li studieremo più avanti, per ora non hanno importanza. Sappiate che il risultato mostra `1` e poi `2`.
+Non c'e bisogno di pensare al significato delle parentesi `[]` e al `forEach`. Li studieremo più avanti, per ora è sufficiente sapere il risultato: che mostrerà `1` e poi `2`.
 
 Adesso andiamo ad aggiungere un `alert` prima del codice e *non* concludiamo la riga con il punto e virgola:
 
@@ -68,7 +68,7 @@ alert("There will be an error")
 [1, 2].forEach(alert)
 ```
 
-Adesso se noi lo eseguiamo, solo il primo `alert` viene mostrato, poi avremmo un errore!
+Adesso se lo eseguiamo, solo il primo `alert` viene mostrato, poi avremmo un errore!
 
 Ma tutto si risolve se aggiungiamo un punto e virgola dopo `alert`:
 ```js run
@@ -77,9 +77,9 @@ alert("All fine now");
 [1, 2].forEach(alert)  
 ```
 
-Adesso avremmo il messaggio "All fine now" e successivamente `1` seguito da `2`.
+Adesso avremmo il messaggio "All fine now", successivamente `1` seguito da `2`.
 
-L'errore nel non aver messo il punto e virgola è avvenuto perchè JavaScript non implica un punto e virgola prima delle parentesi quadre `[...]`.
+L'errore nel non aver messo il punto e virgola è avvenuto perchè JavaScript non inserisce automaticamente un punto e virgola prima delle parentesi quadre `[...]`.
 
 Quindi, poichè il punto e virgola non viene auto-inserito, il codice del precedente esempio viene trattato come un istruzione singola. Quindi il motore JavaScript lo vede cosi:
 
@@ -87,11 +87,10 @@ Quindi, poichè il punto e virgola non viene auto-inserito, il codice del preced
 alert("There will be an error")[1, 2].forEach(alert)
 ```
 
-Anche se dovrebbero essere due istruzioni separate, non una singola. 
-But it should be two separate statements, not a single one. Questo tipo di unione, in questo caso è errata, quindi produce un errore. Ci sono altre situazioni in cui si verifica questo tipo di errore.
+Anche se dovrebbero essere due istruzioni separate, non una singola. Questo tipo di unione, in questo caso è errata, quindi produce un errore. Ci sono altre situazioni in cui si verifica questo tipo di errore.
 ````
 
-E' consigliato quindi, di mettere il punto e virgola fra ogni istruzione, anche se vengono scritte in righe diverse. Questa regola è largamente adottata dalla community. Ripetiamolo nuovamente -- *è possibile* evitare di scrivere il punto e virgola la maggior parte delle volte. Ma è più sicuro -- specialmente per un beginner -- inserirle al termine di ogni istruzione.
+E' consigliato quindi, di mettere il punto e virgola fra ogni istruzione, anche se vengono scritte in righe diverse. Questa regola è largamente adottata dalla community. Ripetiamolo nuovamente -- *è possibile* evitare di scrivere il punto e virgola la maggior parte delle volte. Ma è più sicuro -- specialmente per un novizio -- inserirle al termine di ogni istruzione.
 
 ## Commenti
 

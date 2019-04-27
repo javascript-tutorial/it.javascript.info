@@ -51,9 +51,7 @@ L'algoritmo per confrontare due stringhe è semplice:
 4. Viene ripetuto questo procedimento fino alla fine di una delle due stringhe.
 5. Se entrambe le stringhe finiscono nello stesso istante, allora sono uguali. Altrimenti la stringa più lunga è maggiore.
 
-Nell'esempio sopra, il confronto `'Z' > 'A'` ritorna il risultato al primo passo dell'algoritmo.
-
-Le stringhe `"Glow"` e `"Glee"` vengono confrontate carattere per carattere:
+Nell'esempio sopra, il confronto `'Z' > 'A'` ritorna il risultato al primo passo dell'algoritmo, mentre le stringhe `"Glow"` e `"Glee"` vengono confrontate carattere per carattere:
 
 1. `G` è uguale a `G`.
 2. `l` è uguale a `l`.

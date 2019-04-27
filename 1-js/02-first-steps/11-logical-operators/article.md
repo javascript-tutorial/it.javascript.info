@@ -133,7 +133,7 @@ Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR 
     alert(x); // undefined, because (x = 1) not evaluated
     ```
 
-    ...Se il primo argomento è `false`, allora `OR` prosegue e valuta il secondo, in questo caso l'assegnazione funziona:
+    Se invece il primo argomento è `false`, allora `||` prosegue e valuta il secondo, in questo caso l'assegnazione funziona:
 
     ```js run no-beautify
     let x;
@@ -173,7 +173,7 @@ let hour = 12;
 let minute = 30;
 
 if (hour == 12 && minute == 30) {
-  alert( 'Time is 12:30' );
+  alert( 'The time is 12:30' );
 }
 ```
 
@@ -186,7 +186,7 @@ if (1 && 0) { // evaluated as true && false
 ```
 
 
-## AND cerca il primo valore falso
+## AND trova il primo valore falso
 
 Fornire più valori AND:
 
@@ -233,7 +233,7 @@ alert( 1 && 2 && 3 ); // 3, the last one
 ````smart header="Precedenza di AND `&&` è maggiore dell'OR `||`"
 La precedenza dell'operatore AND`&&` è maggiore di quella dell'OR `||`.
 
-Quindi il codice `a && b || c && d` è praticamente uguale all'espressione: `(a && b) || (c && d)`.
+Quindi il codice `a && b || c && d` esegue in maniera analoga all'espressione: `(a && b) || (c && d)`.
 ````
 
 Proprio come l'OR, anche AND `&&` può qualche volta rimpiazzare `if`.
