@@ -14,15 +14,15 @@ alert("Hello");
 window.alert("Hello");
 ```
 
-LO stesso vale per tutte le altre funzioni integrate, ad esempio possiamo invocare `Array` come `window.Array` e creare le nostre personali propriet‡.
+Lo stesso vale per tutte le altre funzioni integrate, ad esempio possiamo invocare `Array` come `window.Array` e creare le nostre personali propriet√†.
 
 ## Browser: l'oggetto "window" 
 
-Per ragioni storiche, l'oggetto `window` Ë leggermente incasinato.
+Per ragioni storiche, l'oggetto `window` √® leggermente incasinato.
 
-1. Fornisce la funzionalit‡ di "finestra del browser", oltre a svolgere il ruolo di oggetto globale.
+1. Fornisce la funzionalit√† di "finestra del browser", oltre a svolgere il ruolo di oggetto globale.
 
-    Possiamo utilizzare `window` per accedere a propriet‡ e metodi, specifici di una finestra del browser:
+    Possiamo utilizzare `window` per accedere a propriet√† e metodi, specifici di una finestra del browser:
 
     ```js run
     alert(window.innerHeight); // mostra l'altezza della window 
@@ -30,25 +30,25 @@ Per ragioni storiche, l'oggetto `window` Ë leggermente incasinato.
     window.open('http://google.com'); // apre una nuova browser window
     ```
 
-2. Le variabili `var` e le dichiarazioni di funzioni diventano automaticamente delle propriet‡ di `window`.
+2. Le variabili `var` e le dichiarazioni di funzioni diventano automaticamente delle propriet√† di `window`.
 
     Ad esempio:
     ```js untrusted run no-strict refresh
     var x = 5;
 
-    alert(window.x); // 5 (var x diventa una propriet‡ di window)
+    alert(window.x); // 5 (var x diventa una propriet√† di window)
 
     window.x = 0;
 
     alert(x); // 0, variabile modificata
     ```
 
-    Da notare che tutto ciÚ non vale per le dichiarazioni `let/const`:
+    Da notare che tutto ci√≤ non vale per le dichiarazioni `let/const`:
 
     ```js untrusted run no-strict refresh
     let x = 5;
 
-    alert(window.x); // undefined ("let" non crea propriet‡ sull'oggetto window)
+    alert(window.x); // undefined ("let" non crea propriet√† sull'oggetto window)
     ```
 
 3. Inoltre, tutti gli script condividono lo stesso scope globale, quindi le variabili dichiarate all'interno di uno `<script>` diventano visibili anche negli altri:
@@ -65,13 +65,13 @@ Per ragioni storiche, l'oggetto `window` Ë leggermente incasinato.
     </script>
     ```
 
-4. Un ultima cosa, il valore di `this` nello scope globale Ë `window`.
+4. Un'ultima cosa, il valore di `this` nello scope globale √® `window`.
 
     ```js untrusted run no-strict refresh
     alert(this); // window
     ```
 
-PerchÈ Ë stato fatto cosi? Nel momento in cui Ë stato creato il linguaggio, l'idea era quella di fondere diversi aspetti in un unico oggetto `window` per "rendere le cose pi˘ semplici". Ma da quel momento sono cambiate molte cose. Da piccoli script si Ë passati a grandi applicazioni le quali richiedono una propria architettura.
+Perch√© √® stato fatto cosi? Nel momento in cui √® stato creato il linguaggio, l'idea era quella di fondere diversi aspetti in un unico oggetto `window` per "rendere le cose pi√π semplici". Ma da quel momento sono cambiate molte cose. Da piccoli script si √® passati a grandi applicazioni le quali richiedono una propria architettura.
 
 E' una cosa buona che diversi script (eventualmente anche provenienti da altri sviluppatori) si vedano le variabili a vicenda?
 
@@ -79,11 +79,11 @@ Ovviamente no, questa caratteristica potrebbe portare ad errori dovuti a conflit
 
 Ad oggi, questa caratteristica di `window` viene considerata un errore nel design del linguaggio.
 
-Fortunatamente esiste una soluzione per "aggirare" questo problema, ed Ë chiamata "JavaScript module".
+Fortunatamente esiste una soluzione per "aggirare" questo problema, ed √® chiamata "JavaScript module".
 
-Se impostiamo `type="module"` come attributo su un tag `<script>`, allora questo script verr‡ considerato un "modulo" separato con il suo suo personale scope globale (lexical environment), e non interferir‡ con `window`.
+Se impostiamo `type="module"` come attributo su un tag `<script>`, allora questo script verr√† considerato un "modulo" separato con il suo suo personale scope globale (lexical environment), e non interferir√† con `window`.
 
-- In un modulo, `var x` non diventer‡ una propriet‡ di `window`:
+- In un modulo, `var x` non diventer√† una propriet√† di `window`:
 
     ```html run
     <script type="module">
@@ -106,7 +106,7 @@ Se impostiamo `type="module"` come attributo su un tag `<script>`, allora questo
     </script>
     ```
 
-- E come ultima cosa, il valore di `this` (al livello globale) in un modulo sar‡ `undefined` (non avrebbe alcun senso se contenesse `window`?):
+- E come ultima cosa, il valore di `this` (al livello globale) in un modulo sar√† `undefined` (non avrebbe alcun senso se contenesse `window`?):
 
     ```html run
     <script type="module">
@@ -116,11 +116,11 @@ Se impostiamo `type="module"` come attributo su un tag `<script>`, allora questo
 
 **L'utilizzo di `<script type="module">` risolve i difetti di design del linguaggio, separando il livello massimo (top-level) da `window`.**
 
-Pi˘ avanti tratteremo pi˘ in dettaglio questo argomento, nel capitolo [](info:modules).
+Pi√π avanti tratteremo pi√π in dettaglio questo argomento, nel capitolo [](info:modules).
 
 ## Utilizzi sensati dell'oggetto globale
 
-1. L'utilizzo delle variabili globali, solitamente Ë sconsigliato. Dovrebbero esserci il minor numero di variabili globali possibili, ma se proprio ne avessimo bisogno possiamo comunque sfruttare l'oggetto globale `window` (o `global` in Node.js).
+1. L'utilizzo delle variabili globali, solitamente √® sconsigliato. Dovrebbero esserci il minor numero di variabili globali possibili, ma se proprio ne avessimo bisogno possiamo comunque sfruttare l'oggetto globale `window` (o `global` in Node.js).
 
     Qui inseriamo delle informazioni riguardo l'utente nell'oggetto globale, in modo tale da renderle accessibili anche agli altri script:
 

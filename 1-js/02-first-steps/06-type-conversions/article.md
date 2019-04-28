@@ -1,6 +1,6 @@
 # Conversione di tipi
 
- Nella maggior parte dei casi, operatori e funzioni convertono automaticamente il valore nel tipo corretto. Questo viene detto "conversione di tipi".
+ Nella maggior parte dei casi, operatori e funzioni convertono automaticamente il valore nel tipo corretto.
 
 Ad esempio, `alert` converte automaticamente un valore qualsiasi in una stringa, per poterla mostrare. Le operazioni matematica convertono i valori in numeri.
 

@@ -380,7 +380,7 @@ Questi esempi assumono i significati comuni dei prefissi. Il loro significato di
 ```smart header="Nomi di funzioni ultra-corti"
 Funzioni che vengono utilizzate *molto spesso* potrebbero avere nomi molto corti.
 
-Ad esempio il framework [jQuery](http://jquery.com) definisce una funzione con `$`. La libreria [LoDash](http://lodash.com/) ha nel core una funzione denominata `_`.
+Ad esempio il framework [jQuery](http://jquery.com) definisce una funzione con `$`. La libreria [Lodash](http://lodash.com/) ha nel core una funzione denominata `_`.
 
 Queste sono eccezioni. Generalmente i nomi delle funzioni sono precisi e descrittivi.
 ```
