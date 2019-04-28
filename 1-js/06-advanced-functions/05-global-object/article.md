@@ -14,7 +14,7 @@ alert("Hello");
 window.alert("Hello");
 ```
 
-LO stesso vale per tutte le altre funzioni integrate, ad esempio possiamo invocare `Array` come `window.Array` e creare le nostre personali proprietà.
+Lo stesso vale per tutte le altre funzioni integrate, ad esempio possiamo invocare `Array` come `window.Array` e creare le nostre personali proprietà.
 
 ## Browser: l'oggetto "window" 
 
@@ -65,7 +65,7 @@ Per ragioni storiche, l'oggetto `window` è leggermente incasinato.
     </script>
     ```
 
-4. Un ultima cosa, il valore di `this` nello scope globale è `window`.
+4. Un'ultima cosa, il valore di `this` nello scope globale è `window`.
 
     ```js untrusted run no-strict refresh
     alert(this); // window
