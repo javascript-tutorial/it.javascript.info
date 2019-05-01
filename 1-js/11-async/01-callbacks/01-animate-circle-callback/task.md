@@ -1,15 +1,15 @@
 
 # Animated circle with callback
 
-In the task <info:task/animate-circle> an animated growing circle is shown.
+Nel task <info:task/animate-circle> è mostrato un cerchio crescente animato.
 
-Now let's say we need not just a circle, but to show a message inside it. The message should appear *after* the animation is complete (the circle is fully grown), otherwise it would look ugly.
+Ora diciamo che non vogliamo solo un cerchio, ma anche mostrare un messaggio al suo interno. Il messaggio dovrebbe apparire *dopo* che l'animazione è completa (il cerchio è cresciuto del tutto), altrimenti sarebbe brutto.
 
-In the solution of the task, the function `showCircle(cx, cy, radius)` draws the circle, but gives no way to track when it's ready.
+Nella soluzione del task, la funzione `showCircle(cx, cy, radius)` disegna il cerchio, ma non da modo di tracciare quando è pronto.
 
-Add a callback argument: `showCircle(cx, cy, radius, callback)` to be called when the animation is complete. The `callback` should receive the circle `<div>` as an argument.
+Aggiungi un argomento callback: `showCircle(cx, cy, radius, callback)` da chiamare quando l'animazione è completa. La `callback` dovrebbe il `<div>` cerchio come argomento.
 
-Here's the example:
+Ecco l'esempio:
 
 ```js
 showCircle(150, 150, 100, div => {
@@ -22,4 +22,4 @@ Demo:
 
 [iframe src="solution" height=260]
 
-Take the solution of the task <info:task/animate-circle> as the base.
+Prendi la soluzione task <info:task/animate-circle> come base.
