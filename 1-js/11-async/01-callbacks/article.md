@@ -2,7 +2,7 @@
 
 # Introduzione: callbacks
 
-Molte azioni in Javascript sono *asincrone*
+Molte azioni in JavaScript sono *asincrone*
 
 Per esempio, guardiamo la funzione `loadScript(src)`:
 
@@ -23,7 +23,7 @@ Possiamo usare la funzione in questo modo:
 loadScript('/my/script.js');
 ```
 
-La funzione è chiamata "asincronamente", perchè l'azione (il caricamento dello script) non finirà adesso ma in seguito.
+La funzione è chiamata "asincronamente", perché l'azione (il caricamento dello script) non finirà adesso ma in seguito.
 
 La chiamata alla funzione da inizio al caricamento dello script, poi l'esecuzione continua. Mentre lo script sta caricando, il codice sotto potrebbe finire l'esecuzione, e se il caricamento richiede tempo, anche altri script potrebbero venire eseguiti nel frattempo.
 
@@ -33,7 +33,7 @@ loadScript('/my/script.js');
 // ...
 ```
 
-Ora diciamo che vogliamo eseguire il nuovo script quando carica. Probabilmente dichierarà nuove funzioni, quindi vorremmo eseguirle.
+Ora diciamo che vogliamo eseguire il nuovo script quando carica. Probabilmente dichiarerà nuove funzioni, quindi vorremmo eseguirle.
 
 Ma se lo facciamo immediatamente dopo la chiamata `loadScript(…)` non funzionerebbe:
 
@@ -76,7 +76,7 @@ loadScript('/my/script.js', function() {
 
 Questa è l'idea: il secondo argomento è una funzione (solitamente anonima) che viene eseguita quando l'azione è completata.
 
-Ecco un'esempio eseguibile con un vero script:
+Ecco un esempio eseguibile con un vero script:
 
 ```js run
 function loadScript(src, callback) {
@@ -220,7 +220,7 @@ Nel codice sopra:
 2. Carichiamo `2.js`, poi se non ci sono errori.
 3. Carichiamo `3.js`, poi se non ci sono errori -- facciamo qualcos'altro `(*)`.
 
-Mano a mano che le chiamate diventano più annidate, il codice diventa più profondo e via via più complicato da gestire, specialmetne se abbiamo codice reale invece di `...`, che può includere più cicli, condizioni e così via.
+Mano a mano che le chiamate diventano più annidate, il codice diventa più profondo e via via più complicato da gestire, specialmente se abbiamo codice reale invece di `...`, che può includere più cicli, condizioni e così via.
 
 Questo viene chiamato "callback hell" o "pyramid of doom."
 
@@ -262,9 +262,9 @@ function step3(error, script) {
 };
 ```
 
-Visto? Fa la stessa cosa, e non ci sono annidamenti profondi perchè abbiamo reso ogni azione una funzione separata di primo livello.
+Visto? Fa la stessa cosa, e non ci sono annidamenti profondi perché abbiamo reso ogni azione una funzione separata di primo livello.
 
-Funziona ma il codice sembra un foglio di lavoro diviso. È difficile da leggere e probabilemnete hai notato che bisogna saltare con lo sguaroo tra i vari pezzi quando lo si legge. Non è conveniente, in particolare se il lettore non è familiare con il codice e non sa dove saltare con lo sguardo.
+Funziona ma il codice sembra un foglio di lavoro diviso. È difficile da leggere e probabilmente hai notato che bisogna saltare con lo sguardo tra i vari pezzi quando lo si legge. Non è conveniente, in particolare se il lettore non è familiare con il codice e non sa dove saltare con lo sguardo.
 
 Inoltre, le funzioni chiamate `step*` sono tutte usate una sola volta, sono create solo per evitare la "pyramid of doom." Nessuno le riutilizzerà al di fuori della catena di azioni. Quindi abbiamo un po' di inquinamento del namespace.
 
