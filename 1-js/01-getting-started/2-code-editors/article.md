@@ -1,8 +1,8 @@
 # Code editor
 
-Un code editor è il posto in cui i programmatori spendo la maggior parte del loro tempo.
+Un code editor è il posto in cui i programmatori spendono la maggior parte del loro tempo.
 
-Ci sono due principali tipi di code editor: IDE ed editor semplici. Molte persone si trovano bene a scegliere uno di entrambe le categorie.
+Ci sono due principali tipi di code editor: IDE ed editor semplici. Molte persone si trovano bene a sceglierne uno di entrambe le categorie.
 
 ## IDE
 
@@ -52,6 +52,6 @@ Io personalmente utilizzo:
 
 Gli editor elencanti sopra sono sono quelli che io e i miei amici, che considero buoni sviluppatori, abbiamo utilizzato senza problemi per molto tempo.
 
-Ci sono altri grandi edito nel nostro grande mondo. Scegli quindi quello che più ti si addice.
+Ci sono altri grandi editor nel nostro grande mondo. Scegli quindi quello che più ti si addice.
 
-La scelta di un edito, come degli altri strumenti, è individuale e dipende dai progetti, abitudini e preferenze personali.
+La scelta di un editor, come degli altri strumenti, è individuale e dipende dai progetti, abitudini e preferenze personali.
