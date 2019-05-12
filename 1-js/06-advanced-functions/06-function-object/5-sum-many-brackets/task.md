@@ -2,9 +2,9 @@ importance: 2
 
 ---
 
-# Sum with an arbitrary amount of brackets
+# Sommare con un numero arbitrario di parentesi
 
-Write function `sum` that would work like this:
+Scrivete una funzione `sum` che funzioni in questo modo:
 
 ```js
 sum(1)(2) == 3; // 1 + 2
@@ -14,4 +14,4 @@ sum(6)(-1)(-2)(-3) == 0
 sum(0)(1)(2)(3)(4)(5) == 15
 ```
 
-P.S. Hint: you may need to setup custom object to primitive conversion for your function.
+P.S. Aiuto: potresti impostare una conversione "toPrimitive" del tuo oggetto.

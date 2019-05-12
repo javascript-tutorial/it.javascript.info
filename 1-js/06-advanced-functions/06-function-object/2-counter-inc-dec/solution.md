@@ -1,2 +1,4 @@
 
-The solution uses `count` in the local variable, but addition methods are written right into the `counter`. They share the same outer lexical environment and also can access the current `count`.
+La soluzione utilizza `count` come variabile locale, ma i metodi aggiuntivi sono scritti dentro `counter`. Condividono lo stesso lexical environment esterno e possono accedere al valore di `count`.
+
+
