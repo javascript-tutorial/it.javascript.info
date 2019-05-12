@@ -104,10 +104,10 @@ Il resto della linea è il commento. Può occupare un intera linea oppure seguir
 
 Come segue:
 ```js run
-// This comment occupies a line of its own
+// Questo commento occupa una riga a parte
 alert('Hello');
 
-alert('World'); // This comment follows the statement
+alert('World'); // Questo commento segue l'istruzione
 ```
 
 **I commenti multilinea incominciano con un singolo carattere di slahs ed un asterisco <code>/&#42;</code> e finiscono con un asterisco ed un carattere di slash <code>&#42;/</code>.**
@@ -115,8 +115,8 @@ alert('World'); // This comment follows the statement
 Come segue:
 
 ```js run
-/* An example with two messages.
-This is a multiline comment.
+/* Un esempio con due messaggi.
+Questo è un commento multilinea.
 */
 alert('Hello');
 alert('World');
@@ -126,7 +126,7 @@ Il contenuto dei commenti viene ignorato, quindi se inseriamo codice al suo inte
 
 Qualche volta diventa utile per bloccare temporaneamente qualche porzione di codice:
 ```js run
-/* Commenting out the code
+/* Commentiamo il codice
 alert('Hello');
 */
 alert('World');
@@ -143,7 +143,7 @@ Questo codice si bloccherebbe con un errore:
 
 ```js run no-beautify
 /*
-  /* nested comment ?!? */
+  /* commento annidato ?!? */
 */
 alert( 'World' );
 ```
