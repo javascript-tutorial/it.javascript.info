@@ -6,7 +6,11 @@ Ci piacerebbe rendere questo tutorial disponibile in molte lingue. Aiutaci a tra
 
 Guarda il link <https://github.com/javascript-tutorial/translate> per maggiori dettagli.
 
+<<<<<<< HEAD
 ## Contributi
+=======
+See <https://javascript.info/translate> for the details.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Ci piacerebbe anche avere la vostra collaborazione nel tutorial.
 

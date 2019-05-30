@@ -1,6 +1,10 @@
 # Numeri
 
+<<<<<<< HEAD
 Tutti i numeri in JavaScript sono memorizzati in formato 64-bit [IEEE-754](http://en.wikipedia.org/wiki/IEEE_754-1985), conosciuto anche come "doppia precisione".
+=======
+All numbers in JavaScript are stored in 64-bit format [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), also known as "double precision floating point numbers".
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Cerchiamo di ricapitolare ed espandere tutto ciò che già conosciamo.
 
@@ -177,7 +181,11 @@ Ci sono due modi per farlo:
 
 ## Calcoli imprecisi
 
+<<<<<<< HEAD
 Internamente, un numero è rappresentato in formato 64-bit [IEEE-754](http://en.wikipedia.org/wiki/IEEE_754-1985), quindi vengono utilizzati esattamente 64 bit per rappresentare un numero: 52 vengono utilizzati per rappresentare le cifre, 11 per la parte decimale, e infine 1 bit per il segno.
+=======
+Internally, a number is represented in 64-bit format [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), so there are exactly 64 bits to store a number: 52 of them are used to store the digits, 11 of them store the position of the decimal point (they are zero for integer numbers), and 1 bit is for the sign.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Se un numero è troppo grande, tale da superare i 64 bit disponibili, come ad esempio un numero potenzialmente infinito:
 
@@ -205,7 +213,11 @@ Ouch! Ci possono essere molte conseguenze dovute ad un errato confronto. Immagin
 
 Ma perché accade questo?
 
+<<<<<<< HEAD
 Un numero viene memorizzato nella sua forma binaria, una sequenza di "1" e "0". I numeri con virgola come `0.1`, `0.2` che visti nella loro forma decimale sembrano semplici, sono in realtà una sequenza infinita di cifre nella forma binaria.
+=======
+A number is stored in memory in its binary form, a sequence of bits - ones and zeroes. But fractions like `0.1`, `0.2` that look simple in the decimal numeric system are actually unending fractions in their binary form.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 In altre parole, cos'è `0.1`? Vale 1 diviso 10 `1/10`, "un decimo". Nel sistema decimale questi numeri sono facilmente rappresentabili. Prendiamo invece "un terzo": `1/3`. Diventa un numero con infiniti decimali `0.33333(3)`. 
 
@@ -331,8 +343,13 @@ Da notare che una stringa vuota o contenente solo spazi viene trattata come `0` 
 
 Esiste uno speciale metodo integrato [Object.is](mdn:js/Object/is) che confronta valori proprio come `===`, ma risulta molto più affidabile in due casi limite:
 
+<<<<<<< HEAD
 1. Funziona con `NaN`: `Object.is(NaN, NaN) === true`, e questo è un bene. 
 2. I valori `0` e `-0` sono diversi: `Object.is(0, -0) === false`, raramente ha importanza, ma questi due valori sono comunque differenti.
+=======
+1. It works with `NaN`: `Object.is(NaN, NaN) === true`, that's a good thing.
+2. Values `0` and `-0` are different: `Object.is(0, -0) === false`, technically that's true, because internally the number has a sign bit that may be different even if all other bits are zeroes.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 In tutti gli altri casi, `Object.is(a, b)` equivale a `a === b`. 
 

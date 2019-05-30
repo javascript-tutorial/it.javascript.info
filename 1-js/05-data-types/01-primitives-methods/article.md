@@ -13,8 +13,13 @@ Un primitivo
 
 Un oggetto
 
+<<<<<<< HEAD
 - E' in grado di memorizzare molti valori come proprietà.
 - Può essere creato con `{}`, ad esempio: `{name: "John", age: 30}`. Ci sono altri tipi di oggetto in JavaScript; le funzioni ad esempio sono oggetti.
+=======
+- Is capable of storing multiple values as properties.
+- Can be created with `{}`, for instance: `{name: "John", age: 30}`. There are other kinds of objects in JavaScript: functions, for example, are objects.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Uno dei migliori vantaggi degli oggetti è che possiamo memorizzarci funzioni come proprietà dello stesso.
 
@@ -46,9 +51,15 @@ Questo è il paradosso contro cui si è scontato il creatore di JavaScript:
 
 La soluzione sembra un po' strana:
 
+<<<<<<< HEAD
 1. Le primitive rimangono primitive. Contengono un singolo valore.
 2. Il linguaggio consente di accedere alle proprietà e ai metodi di stringhe, numeri, booleani e symbol.
 3. Quando questo accade, viene creato uno speciale "oggetto contenitore" che fornisce le funzionalità extra, successivamente verrà distrutto.
+=======
+1. Primitives are still primitive. A single value, as desired.
+2. The language allows access to methods and properties of strings, numbers, booleans and symbols.
+3. In order for that to work, a special "object wrapper" that provides the extra functionality is created, and then is destroyed.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Gli "oggetti contenitore" sono diversi per ogni primitiva e sono chiamati: `String`, `Number`, `Boolean` e `Symbol`. Questi forniscono diversi insiemi di metodi.
 
@@ -91,18 +102,22 @@ In JavaScript, è altrettanto possibile per ragioni storiche, ma è altamente **
 Ad esempio:
 
 ```js run
-alert( typeof 1 ); // "number"
+alert( typeof 0 ); // "number"
 
-alert( typeof new Number(1) ); // "object"!
+alert( typeof new Number(0) ); // "object"!
 ```
 
+<<<<<<< HEAD
 Anche nel'esempio che segue, `zero`, è un oggetto, quindi verrà eseguito l'alert:
+=======
+Objects are always truthy in `if`, so here the alert will show up:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js run
 let zero = new Number(0);
 
 if (zero) { // zero is true, because it's an object
-  alert( "zero is truthy?!?" );
+  alert( "zero is truthy!?!" );
 }
 ```
 

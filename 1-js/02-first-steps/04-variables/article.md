@@ -134,8 +134,13 @@ alert(hello); // Hello world!
 alert(message); // Hello world!
 ```
 
+<<<<<<< HEAD
 ```smart header="Linguaggi funzionali"
 Può essere interessante sapere che esistono anche linguaggi di programmazione [funzionale](https://en.wikipedia.org/wiki/Functional_programming) che vietano di cambiare il valore di una variabile. Per esempio, [Scala](http://www.scala-lang.org/) o [Erlang](http://www.erlang.org/).
+=======
+```smart header="Functional languages"
+It's interesting to note that there exist [functional](https://en.wikipedia.org/wiki/Functional_programming) programming languages, like [Scala](http://www.scala-lang.org/) or [Erlang](http://www.erlang.org/) that forbid changing variable values.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 In questo tipo di linguaggi, una volta che il valore viene memorizzato "dentro la scatola", ci rimane per sempre. Se abbiamo bisogno di memorizzare qualcos altro, il linguaggio ci forza a creare una nuova scatola (dichiarare una nuova variabile). Non possiamo quindi riutilizzare quelle vecchie.
 
@@ -181,8 +186,13 @@ let my-name; // hyphens '-' aren't allowed in the name
 Le variabili `apple` ed `AppLE` sono distinte.
 ```
 
+<<<<<<< HEAD
 ````smart header="Le lettere non inglesi sono permesse, ma sono sconsigliate"
 E' possibile utilizzare qualsiasi alfabeto, compreso quello cirillico o addirittura i geroglifici:
+=======
+````smart header="Non-Latin letters are allowed, but not recommended"
+It is possible to use any language, including cyrillic letters or even hieroglyphs, like this:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js
 let имя = '...';
@@ -251,7 +261,15 @@ Una pratica molto diffusa è di utilizzare le variabili costanti come alias di v
 
 Questo tipo di costanti vengono identificate con lettere maiuscole e underscore.
 
+<<<<<<< HEAD
 Come in questo esempio:
+=======
+There is a widespread practice to use constants as aliases for difficult-to-remember values that are known prior to execution.
+
+Such constants are named using capital letters and underscores.
+
+For instance, let's make constants for colors in so-called "web" (hexadecimal) format:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js run
 const COLOR_RED = "#F00";
@@ -286,7 +304,11 @@ In altre parole, i nomi delle costanti in maiuscolo vengono utilizzati con varia
 
 Parlando di variabili, c'è un'altra cosa estremamente importante.
 
+<<<<<<< HEAD
 Per favore, utilizzate i nomi delle variabili con sensibilità. Prendetevi del tempo per pensare se necessario.
+=======
+A variable name should have a clean, obvious meaning, describe the data that it stores.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Dare i giusti nomi alle variabili è una delle abilità più importanti (e difficili) nella programmazione. 
 Una rapida occhiata ai nomi delle variabili può rivelare se il codice è stato scritto da un beginner o da uno sviluppatore esperto.

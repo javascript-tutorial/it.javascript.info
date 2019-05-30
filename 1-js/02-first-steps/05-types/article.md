@@ -227,6 +227,7 @@ Le ultime tre linee potrebbero richiedere una spiegazione ulteriore:
 
 Ci sono 7 tipi base in JavaScript.
 
+<<<<<<< HEAD
 - `number` per numeri di qualsiasi tipo: interi o in virgola mobile.
 - `string` per stringhe. Una stringa può contenere uno o più caratteri, non esiste nessun tipo `character`.
 - `boolean` per `true`/`false`.
@@ -234,6 +235,9 @@ Ci sono 7 tipi base in JavaScript.
 - `undefined` per valori non assegnati -- un tipo a parte che ha il solo valore `undefined`.
 - `object` per strutture dati più complesse.
 - `symbol` per identificatori unici.
+=======
+There are 7 basic data types in JavaScript.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 L'operatore `typeof` ci consente di vedere quale tipo è memorizzato nella variabile.
 

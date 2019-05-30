@@ -1,9 +1,15 @@
 
 # Closure
 
+<<<<<<< HEAD
 JavaScript è un linguaggio fortemente orientato alle funzioni. Fornisce molta libertà. Una funzione può essere creata in qualsiasi momento, copiata su una variabile o passata come argomento ad un'altra funzione e richiamata da qualsiasi punto del codice.
 
 Sappiamo che una funzione può accedere alle variabili esterne, questa caratteristica viene spesso utilizzata.
+=======
+JavaScript is a very function-oriented language. It gives us a lot of freedom. A function can be created dynamically,  copied to another variable or passed as an argument to another function and called from a totally different place later.
+
+We know that a function can access variables outside of it, this feature is used quite often.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Cosa accade quando una variabile esterna cambia? La funzione utilizza il valore più recente o quello presente al momento della creazione della funzione?
 
@@ -63,33 +69,59 @@ Consideriamo due situazioni, di cui studieremo le meccaniche interne pezzo per p
 
 Per capire in quale contesto ci troviamo, dobbiamo prima discutere di cosa sia realmente una "variabile".
 
+<<<<<<< HEAD
 In JavaScript, ogni funzione in esecuzione, blocco di codice, e lo script nella sua interezza possiedono un oggetto associato conosciuto come *Lexical Environment*.
+=======
+In JavaScript, every running function, code block `{...}`, and the script as a whole have an internal (hidden) associated object known as the *Lexical Environment*.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 L'oggetto Lexical Environment consiste di due parti:
 
+<<<<<<< HEAD
 1. *Environment Record* -- un oggetto che contiene tutte le variabili locali e le relative proprietà (e alcune altre informazioni come il valore di  `this`).
 2. Un riferimento al *outer lexical environment* (lexical environment esterno).
 
 Quindi, una "variabile" è solamente una proprietà di questo speciale oggetto, l'Environment Record. "Per ottenere o modificare una variabile" si traduce in "per ottenere o modificare una variabile del Lexical Environment".
+=======
+1. *Environment Record* -- an object that stores all local variables as its properties (and some other information like the value of `this`).
+2. A reference to the *outer lexical environment*, the one associated with the outer code.
+
+**So, a "variable" is just a property of the special internal object, `Environment Record`. "To get or change a variable" means "to get or change a property of that object".**
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Ad esempio, in questo semplice codice, esiste un solo Lexical Environment:
 
 ![lexical environment](lexical-environment-global.png)
 
+<<<<<<< HEAD
 Questo viene anche chiamato global Lexical Environment (Lexical Environment globale), associato all'intero script. Su browser, tutti i tag `<script>` condividono lo stesso global environment.
+=======
+This is a so-called global Lexical Environment, associated with the whole script.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Nella figura sopra, il rettangolo significa Environment Record, mentre la freccia indica il riferimento esterno. Il global Lexical Environment non possiede riferimenti esterni, quindi questo punta a `null`.
 
+<<<<<<< HEAD
 Qui vediamo una figura più grande sul funzionamento di `let`:
+=======
+Here's the bigger picture of what happens when a `let` changes:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ![lexical environment](lexical-environment-global-2.png)
 
 I rettangoli dalla parte destra dimostrano come cambia il global Lexical Environment durante l'esecuzione:
 
+<<<<<<< HEAD
 1. Quando lo script inizia, il Lexical Environment è vuoto.
 2. Appare la definizione `let phrase`. Non gli viene assegnato alcun valore, quindi viene memorizzato `undefined`.
 3. Viene assegnato un valor a `phrase`.
 4. `phrase` punta ad un nuovo valore.
+=======
+1. When the script starts, the Lexical Environment is empty.
+2. The `let phrase` definition appears. It has been assigned no value, so `undefined` is stored.
+3. `phrase` is assigned a value.
+4. `phrase` changes value.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Finora è tutto piuttosto semplice, giusto?
 
@@ -128,16 +160,27 @@ Inizialmente, quando una funzione viene eseguita, viene creato un nuovo Lexical 
 
 In questa figura vediamo il contenuto del Lexical Environments quando il flusso d'esecuzione si trova all0interno di `say("John")`, nella riga etichettata con la freccia:
 
+<<<<<<< HEAD
 ![lexical environment](lexical-environment-simple.png)
  
 Durante la chiamata di funzione abbiamo due Lexical Environments: quello interno (relativo alla funzione) e quello esterno (globale):
+=======
+- The inner Lexical Environment corresponds to the current execution of `say`.
+
+    It has a single property: `name`, the function argument. We called `say("John")`, so the value of `name` is `"John"`.
+- The outer Lexical Environment is the global Lexical Environment.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 - Il Lexical Environment interno che corrisponde all'esecuzione di `say`. Che possiede una sola variabile: `name`, che è l'unico argomento della funzione. Abbiamo invocato `say("John")`, quindi il valore di name `name` è `"John"`.
 - Il Lexical Environment esterno è quello globale.
 
 Il Lexical Environment interno ha un riferimento a quello esterno, memorizzato su `outer`.
 
+<<<<<<< HEAD
 **Quando il codice vuole accedere ad una variabile -- come prima cosa la si cerca nel Lexical Environment interno, successivamente in quello esterno, poi in quello ancora più esterno e cosi via fino a quello più esterno.**
+=======
+**When the code wants to access a variable -- the inner Lexical Environment is searched first, then the outer one, then the more outer one and so on until the global one.**
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
  Se una variabile non viene trovata, si ha un errore in strict mode. Senza `use strict`, viene creata una variabile globale, per consentire la retro-compatibilità.
 
@@ -238,7 +281,7 @@ function makeCounter() {
   let count = 0;
 
   return function() {
-    return count++; // has access to the outer counter
+    return count++; // has access to the outer "count"
   };
 }
 
@@ -299,11 +342,19 @@ alert( counter2() ); // 0 (independent)
 ```
 
 
+<<<<<<< HEAD
 Dovrebbe esservi abbastanza chiara la situazione delle variabili esterne. In alcune situazioni più complesse potrebbe essere necessaria un'analisi più profonda. Quindi andiamo più in profondità.
 
 ## Environment nel dettaglio
 
 Ora che avete una maggiore conoscenza delle closure, possiamo scendere più in profondità.
+=======
+Hopefully, the situation with outer variables is clear now. For most situations such understanding is enough. There are few details in the specification that we omitted for brevity. So in the next section we cover even more details, not to miss anything.
+
+## Environments in detail
+
+Here's what's going on in the `makeCounter` example step-by-step, follow it to make sure that you know things in the very detail.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Qui analizziamo cosa succede nell'esempio `makeCounter` passo per passo, seguitelo attentamente per essere certi di comprenderne il funzionamento. Da notare un ulteriore proprietà `[[Environment]]` di cui non abbiamo ancora parlato.
 
@@ -339,7 +390,11 @@ Qui analizziamo cosa succede nell'esempio `makeCounter` passo per passo, seguite
 
     ![](lexenv-nested-makecounter-3.png)
 
+<<<<<<< HEAD
     Da notare che in questo passaggio la funzione viene solamente creata, non c'è stata ancora nessuna chiamata. Il codice contenuto in `function() { return count++; }` non viene eseguito; su questo ci ritorneremo presto.
+=======
+    Please note that on this step the inner function was created, but not yet called. The code inside `function() { return count++; }` is not running.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 4. L'esecuzione della funzione prosegue, e la chiamata di `makeCounter()` termina, il risultato (la funzione annidata) viene assegnata alla variabile globale `counter`:
 
@@ -437,7 +492,11 @@ Al termine del ciclo, `i` non sarà più visibile.
 
 Possiamo anche utilizzare un blocco di codice "puro" con lo scopo di isolare delle variabili in uno "scope locale".
 
+<<<<<<< HEAD
 Ad esempio, in un browser tutti gli script condividono la stessa area globale. Quindi se creiamo una variabile globale in uno script, questa diventa accessibili anche agli altri. Questo potrebbe essere sorgente di conflitti tra due script che utilizzano variabili con gli stessi nomi.
+=======
+For instance, in a web browser all scripts (except with `type="module"`) share the same global area. So if we create a global variable in one script, it becomes available to others. But that becomes a source of conflicts if two scripts use the same variable name and overwrite each other.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Questa situazione può accadere con nomi di variabili molto diffusi.
 
@@ -562,8 +621,16 @@ Gli oggetti Lexical Environment di cui abbiamo parlato fino ad ora sono soggetti
     function f() {
       let value = Math.random();
 
+<<<<<<< HEAD
       return function() { alert(value); };
     }
+=======
+// 3 functions in array, every one of them links to Lexical Environment (LE for short)
+// from the corresponding f() run
+//         LE   LE   LE
+let arr = [f(), f(), f()];
+```
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
     // 3 functions in array, every one of them links to Lexical Environment
     // from the corresponding f() run

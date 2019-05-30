@@ -1,6 +1,10 @@
 # Interazioni: alert, prompt, confirm
 
+<<<<<<< HEAD
 Questa parte del tutorial ha l'intenzione di coprire JavaScript cosi per "com'è", senza i ritocchi specifici di ogni ambiente.
+=======
+In this part of the tutorial we cover JavaScript language "as is", without environment-specific tweaks.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Ma continueremo comunque ad utilizzare un browser come ambiente di test. Quindi dovremmo conoscere almeno un paio di funzioni dell'interfaccia utente. In questo capitolo prenderemo familiarità con le funzioni browser `alert`, `prompt` e `confirm`.
 

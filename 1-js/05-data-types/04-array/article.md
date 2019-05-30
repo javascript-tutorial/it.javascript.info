@@ -1,12 +1,24 @@
+<<<<<<< HEAD
 # Array
+=======
+# Arrays
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Gli oggetti consentono la meorizzazione di una collezzione di valori con chiave.
 
+<<<<<<< HEAD
 Molto spesso abbiamo bisogno di una *collezione ordinata*, dove abbiamo un primo, un secondo, un terzo elemento e cosi via. Ad esempio, abbiamo bisogno di memorizzare una lista di cose: utenti, beni, elementi HTML etc.
+=======
+But quite often we find that we need an *ordered collection*, where we have a 1st, a 2nd, a 3rd element and so on. For example, we need that to store a list of something: users, goods, HTML elements etc.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Non è conveniente utilizzare un oggetto per questo tipo di lavori, poiché non avremmo alcun metodo per gestire l'ordine degli elementi. Non possiamo inserire una nuova proprietà "tra" due già esistenti. Infatti gli oggetti non sono pensati per questo scopo.
 
+<<<<<<< HEAD
 Esistono delle speciali strutture dati chiamate `Array`, che consentono la memorizzazione di collezioni ordinate. 
+=======
+There exists a special data structure named `Array`, to store ordered collections.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ## Dichiarazione
 
@@ -79,12 +91,18 @@ arr[3](); // hello
 ```
 
 
+<<<<<<< HEAD
 ````smart header="Virgola pendente"
 Negli array, proprio come per gli oggetti, c'è la possibilità di terminare con una virgola:
 ```js 
+=======
+````smart header="Trailing comma"
+An array, just like an object, may end with a comma:
+```js
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 let fruits = [
-  "Apple", 
-  "Orange", 
+  "Apple",
+  "Orange",
   "Plum"*!*,*/!*
 ];
 ```
@@ -95,7 +113,11 @@ La "virgola pendente" rende più semplice inserire/rimuovere elementi, perché t
 
 ## I metodi pop/push, shift/unshift
 
+<<<<<<< HEAD
 Una [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) (coda) è una delle maggiori applicazioni di un array. In ambito informatico, questa è una collezione ordinata che consente due operazioni:
+=======
+A [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) is one of the most common uses of an array. In computer science, this means an ordered collection of elements which supports two operations:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 - `push` inserisce un elemento in coda.
 - `shift` per estrarre un elemento dalla testa della cda, e scorrere in avanti la lista, in questo modo il secondo elemento diventa il primo.
@@ -106,7 +128,11 @@ Gli array supportano entrambre le operazioni.
 
 Nella pratica non è strano incontrare questo "tipo" di array. Ad esempiom una coda di messaggi che devono essere mostrati a schermo.
 
+<<<<<<< HEAD
 Esiste un altro caso d'uso degli array -- la struttrura dati chiamata [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)). 
+=======
+There's another use case for arrays -- the data structure named [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)).
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Questa supporta due operazioni:
 
@@ -121,7 +147,11 @@ Uno stack viene spesso illustrato come un pacco di carte: le nuove carte vengono
 
 Per gli stack, l'ultimo elemento inserito viene prelevato per primo, questo comportamento viene definito LIFO (Last-In-First-Out). Nel caso delle code, il comportamento viene chiamato FIFO (First-In-First-Out).
 
+<<<<<<< HEAD
 Gli array in JavaScript possono implementare sia una queue che uno stack. C'è la possibilità di aggiungere/rimuovere elementi sia in cima che in coda.
+=======
+Arrays in JavaScript can work both as a queue and as a stack. They allow you to add/remove elements both to/from the beginning or the end.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/wiki/Double-ended_queue).
 
@@ -189,11 +219,19 @@ alert( fruits );
 
 ## Internamente
 
+<<<<<<< HEAD
 Un array è uno speciale tipo di oggetto. Le parentesi quadre vengono utilizzate per accedere alla proprietà `arr[0]`, questa sintassi deriva da quella utilizzata per gli oggetti. I numeri vengono utilizzati come chiave. 
+=======
+An array is a special kind of object. The square brackets used to access a property `arr[0]` actually come from the object syntax. That's essentially the same as `obj[key]`, where `arr` is the object, while numbers are used as keys.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Inoltre estendono gli oggetti fornendo speciali metodi per operare ordinatamente su collezioni di dati, e contengono la proprietà `length`. Ma internamente rimane sempre un oggetto.
 
+<<<<<<< HEAD
 Ricordate, ci sono solo 7 tipi di base in JavaScript. Gli array sono oggetti e si comportano come tali. 
+=======
+Remember, there are only 7 basic types in JavaScript. Array is an object and thus behaves like an object.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Ad esempio, vengono copiati per riferimento:
 
@@ -203,7 +241,7 @@ let fruits = ["Banana"]
 let arr = fruits; // copy by reference (two variables reference the same array)
 
 alert( arr === fruits ); // true
- 
+
 arr.push("Pear"); // modify the array by reference
 
 alert( fruits ); // Banana, Pear - 2 items now
@@ -229,9 +267,15 @@ Il motore si accorgerà che stiamo gli array come comuni oggetti. Le ottimizzazi
 
 I modi per "maltrattare" un array:
 
+<<<<<<< HEAD
 - Aggiungere una proprietà non numerica, come `arr.test = 5`. 
 - Creare buchi: aggiungendo `arr[0]` e poi `arr[1000]` (lasciando spazio vuoto tra di loro).
 - Riempire l'array nell'ordine inverso, ad esempio `arr[1000]`, `arr[999]`.
+=======
+- Add a non-numeric property like `arr.test = 5`.
+- Make holes, like: add `arr[0]` and then `arr[1000]` (and nothing between them).
+- Fill the array in the reverse order, like `arr[1000]`, `arr[999]` and so on.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 E' molto conveniente pensare agli array come delle speciali strutture utili a lavorare con *dati ordinati*. Infatti contengono degli speciali metodi per poterli trattare. Inoltre sono attentamente ottimizzati dal motore JavaScript per lavorare con dati ordinati e memorizzati in posizioni contigue. Quindi se dovreste aver bisogno di utilizzare una proprietà con una chiave arbitraria, molto probabilmente un oggetto soddisferà maggiormente le vostre necessità.
 
@@ -295,7 +339,7 @@ let fruits = ["Apple", "Orange", "Plum"];
 
 // iterates over array elements
 for (let fruit of fruits) {
-  alert( fruit ); 
+  alert( fruit );
 }
 ```
 
@@ -319,7 +363,11 @@ Non è comunque un ottima idea. Si possono verificare diversi errori:
 
     Ci sono anche degli oggetti chiamati "array-like" (simili ad array) nei browser e in altri ambienti, che *assomigliano ad array*. Infatti come proprietà possiedono `length` e degli indici, ma allo stesso tempo contengono proprietà e metodi di tipo non numerico, di cui solitamente non abbiamo bisogno. Il ciclo `for..in` li passerà tutti. Quindi se stiamo utilizzando degli oggetti array-like, questi "extra" potrebbero rivelarsi un problema.
 
+<<<<<<< HEAD
 2. Il ciclo `for..in` è ottimizzato per oggetti generici, non array, può risultare quindi 10-100 volte più lento. Ovviamente rimane comunque un operazione molto veloce. Può essere un problema solo in caso si verifichino ingorghi. 
+=======
+2. The `for..in` loop is optimized for generic objects, not arrays, and thus is 10-100 times slower. Of course, it's still very fast. The speedup may only matter in bottlenecks. But still we should be aware of the difference.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Generalmente, non dovremmo utilizzare `for..in` per array.
 
@@ -337,7 +385,11 @@ fruits[123] = "Apple";
 alert( fruits.length ); // 124
 ```
 
+<<<<<<< HEAD
 Ovviamente questo non è il modo corretto di utilizzare un array. 
+=======
+Note that we usually don't use arrays like that.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Un'altra cosa interessante riguardo la proprietà `length` è che è sovra scrivibile.
 
@@ -384,7 +436,11 @@ Per evitare queste spiacevoli sorprese, solitamente si utilizzano le parentesi, 
 
 ## Array multi-dimensionali
 
+<<<<<<< HEAD
 Gli array possono contenere oggetti che sono a loro volta array. Possiamo quindi utilizzare questa proprietà per creare array multi-dimensionali, per memorizzare matrici:
+=======
+Arrays can have items that are also arrays. We can use it for multidimensional arrays, for example to store matrices:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js run
 let matrix = [
@@ -444,8 +500,13 @@ Gli array sono uno speciale tipo di oggetto, studiati per immagazzinare e gestir
 
     La chiamata a `new Array(number)` crea un array con lunghezza data, ma senza elementi.
 
+<<<<<<< HEAD
 - La proprietà `length` è la lunghezza dell'array, in realtà per essere precisi, contiene l'indice dell'ultimo elemento più uno. Questo valore viene aggiornato automaticamente. 
 - Se decrementiamo manualmente `length`, l'array viene troncato.
+=======
+- The `length` property is the array length or, to be precise, its last numeric index plus one. It is auto-adjusted by array methods.
+- If we shorten `length` manually, the array is truncated.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Possiamo utilizzare un array come deque con le seguenti operazioni:
 
@@ -459,5 +520,9 @@ Per eseguire un ciclo sugli elementi di un array:
   - `for (let item of arr)` -- la sintassi moderna utilizzate per ottenere l'elemento,
   - `for (let i in arr)` -- mai utilizzata.
 
+<<<<<<< HEAD
 Ritorneremo sugli array e studieremo più metodi per aggiungere, rimuovere,estrarre ed ordinare elementi nel capitolo <info:array-methods>.
 
+=======
+We will return to arrays and study more methods to add, remove, extract elements and sort arrays in the chapter <info:array-methods>.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f

@@ -5,7 +5,11 @@ Le azioni asincrione a volte possono fallire: in caso di errore la promise corri
 
 IL concatenemanto delle Promise è ottimo sotto questo aspetto. Quando una promise viene rifiutata (rejects), il controllo passa al gestore del rifiuto (rejection handler) più vicino nella catena. Questo è molto conveniente.
 
+<<<<<<< HEAD
 Per esempio, nel codice sotto l'URL è errato (no such server) e `.catch` gestisce l'errore:
+=======
+For instance, in the code below the URL is wrong (no such site) and `.catch` handles the error:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js run
 *!*
@@ -15,10 +19,17 @@ fetch('https://no-such-server.blabla') // viene respinta (rejects)
   .catch(err => alert(err)) // TypeError: failed to fetch (il testo può variare)
 ```
 
+<<<<<<< HEAD
 Oppure, forse, è tutto a posto con il server, ma la risposta non è JSON valido:
 
 ```js run
 fetch('/') // fetch funziona bene adesso, il server risponde con successo
+=======
+Or, maybe, everything is all right with the site, but the response is not valid JSON:
+
+```js run
+fetch('/') // fetch works fine now, the server responds with the HTML page
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 *!*
   .then(response => response.json()) // viene respinta (rejects): the page is HTML, not a valid json
 */!*
@@ -52,7 +63,11 @@ Normalmente, `.catch` non viene eseguito, perchè non ci sono errori. Ma se una 
 
 ## Try..catch implicito
 
+<<<<<<< HEAD
 Il codice di un esecutore (executor) e dei gestori (handlers) delle promise hanno un "`try..catch` invisibile". Se si verifica un errore, viene catturato e gestitito come un rigettamento (rejection).
+=======
+The code of a promise executor and promise handlers has an "invisible `try..catch`" around it. If an exception happens, it gets caught and treated as a rejection.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Per esempio, questo codice:
 
@@ -120,7 +135,7 @@ new Promise((resolve, reject) => {
 
   throw new Error("Whoops!");
 
-}).catch(function(error) { 
+}).catch(function(error) {
 
   alert("L'errore è gestito, continua normalmente");
 
@@ -169,7 +184,11 @@ Miglioriamo la gestione degli errori per l'esempio del caricamento degli utenti.
 
 La promise ritornata da [fetch](mdn:api/WindowOrWorkerGlobalScope/fetch) viene respinta (rejects) quando è impossibile fare una richiesta. Per esempio, un server remoto non è disponibile, o l'URL è malformato. Ma se il server remoto risponde con un errore 404, o anche un errore 500, allora è considerata una risposta valida.
 
+<<<<<<< HEAD
 Cosa accade se il server ritorna una pagina non JSON con un errore 500 nella linea `(*)`? Cosa accade se l'utente non esiste e GitHub ritorna una pagina conun errore 404 a `(**)`?
+=======
+What if the server returns a non-JSON page with error 500 in the line `(*)`? What if there's no such user, and GitHub returns a page with error 404 at `(**)`?
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js run
 fetch('no-such-user.json') // (*)
@@ -211,15 +230,27 @@ loadJson('no-such-user.json') // (3)
   .catch(alert); // HttpError: 404 for .../no-such-user.json
 ```
 
+<<<<<<< HEAD
 1. Creiamo una classe custom per gli errori HTTP per distinguerli dagli altri tipi di errore. Inoltre, la nuova classe ha un costruttore che accetta l'oggetto `response` e lo salva nell'errore. Così il codice per la gestione degli errori sarà in grado di accedervi.
 2. Dopo mettiamo insieme il codice per effettuare la richiesta e per gestire gli errori in una funzione che recupera l'`url` *e* tratta  ogni stato non 200 come un errore. È conveniente, perchè spesso avremo bisogno di una logica simile.
 3. Ora `alert` mostra un messaggio più utile e descrittivo.
 
 Il bello di avere una nostra classe per gli errori è che possiamo facilmente verificarli nel nostro codice di gestione degli errori.
+=======
+1. We make a custom class for HTTP Errors to distinguish them from other types of errors. Besides, the new class has a constructor that accepts `response` object and saves it in the error. So error-handling code will be able to access the response.
+2. Then we put together the requesting and error-handling code into a function that fetches the `url` *and* treats any non-200 status as an error. That's convenient, because we often need such logic.
+3. Now `alert` shows a more helpful descriptive message.
+
+The great thing about having our own class for errors is that we can easily check for it in error-handling code using `instanceof`.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Per esempio, possiamo fare una richiesta, e poi se riceviamo un 404 -- chiedere all'utente di modificare l'informazione.
 
+<<<<<<< HEAD
 Il codice sotto carica un utente con il nome da GitHub. Se non c'è l'utente, allora chiede il nome corretto:
+=======
+The code below loads a user with the given name from GitHub. If there's no such user, then it asks for the correct name:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js run
 function demoGithubUser() {
@@ -260,6 +291,7 @@ new Promise(function() {
   noSuchFunction(); // Errore qui (non esiste la funzione)
 })
   .then(() => {
+<<<<<<< HEAD
     // zero o molti handler di promise
   }); // senza .catch alla fine!
 ```
@@ -269,6 +301,19 @@ Nel caso di un errore, lo stato della promise diventa "rejected", e l'esecuzione
 In pratica, giusto come con un normale errore non gestito, significa che qualcosa è andato terribilmente storto, lo script probabilmente è morto.
 
 La maggior parte dei motori JavaScript tracciano queste situazioni e generano un errore globale in questo caso. Possiamo vederlo nella console.
+=======
+    // successful promise handlers, one or more
+  }); // without .catch at the end!
+```
+
+In case of an error, the promise state becomes "rejected", and the execution should jump to the closest rejection handler. But there is no such handler in the examples above. So the error gets "stuck". There's no code to handle it.
+
+In practice, just like with a regular unhandled errors, it means that something has terribly gone wrong.
+
+What happens when a regular error occurs and is not caught by `try..catch`? The script dies. Similar thing happens with unhandled promise rejections.
+
+The JavaScript engine tracks such rejections and generates a global error in that case. You can see it in the console if you run the example above.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Nel browser possiamo catturare (catch) questi errori usando `unhandledrejection`:
 
@@ -297,10 +342,17 @@ In ambienti esterni al browser come Node.js ci sono altri modi simili di traccia
 
 ## Riassunto
 
+<<<<<<< HEAD
 - `.catch` gestisce i respingimenti (rejections) delle promise di tutti i tipi: che sia una chiamata `reject()`, o un errore sollevato in un gestore (handler).
 - Dovremmo mettere `.catch` esattamente nei posti in cui  vogliamo gestire gli errori sapendo come gestirli. Il gestore (handler) dovrebbe analizzare gli errori (Le classi di errori ci sono di aiuto) e ri-sollevare (rethrow) quelli sconosciuti.
 - È normale non usare `.catch` se non sappiamo come gestire gli errori (tutti gli errori sono irrecuperabili).
 - In ogni caso dovremmo avere i gestore (handler) dell'evento `unhandledrejection` (per il browser e quelli analoghi per gli altri ambienti), per tracciare gli errori non gestiti ed informarne l'utente (e probabilmente il nostro server), così che non accada mai che la nostra app "muoia e basta".
+=======
+- `.catch` handles promise rejections of all kinds: be it a `reject()` call, or an error thrown in a handler.
+- We should place `.catch` exactly in places where we want to handle errors and know how to handle them. The handler should analyze errors (custom error classes help) and rethrow unknown ones.
+- It's ok not to use `.catch` at all, if there's no way to recover from an error.
+- In any case we should have the `unhandledrejection` event handler (for browsers, and analogs for other environments), to track unhandled errors and inform the user (and probably our server) about the them, so that our app never "just dies".
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Ed infine, se abbiamo l'indicatore di caricamento, allora `.finally` è un ottimo gestore (handler) per fermarlo quando il caricamento è completo:
 
@@ -316,7 +368,7 @@ function demoGithubUser() {
 *!*
     .finally(() => { // (2) stop the indication
       document.body.style.opacity = '';
-      return new Promise(resolve => setTimeout(resolve, 0)); // (*)
+      return new Promise(resolve => setTimeout(resolve)); // (*)
     })
 */!*
     .then(user => {

@@ -2,7 +2,11 @@
 
 Qualche volta abbiamo bisogno di eseguire certe azioni solo nel caso valgano determinate condizioni.
 
+<<<<<<< HEAD
 Per questo c'è l'istruzione `if` e anche l'operatore condizionale di valutazione (ternario) a cui noi ci riferiremo con l'operatore "punto di domanda" `?` per semplicità.
+=======
+To do that, we can use the `if` statement and the conditional operator `?`, that's also called a "question mark" operator.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ## L'istruzione "if" 
 
@@ -103,7 +107,11 @@ Nel codice sopra JavaScript controlla prima `year < 2015`. Se risulta falso allo
 
 Ci possono essere molti blocchi `else if`. L'`else` finale è opzionale.
 
+<<<<<<< HEAD
 ## Operatore Ternario '?'
+=======
+## Conditional operator '?'
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Qualche volta abbiamo bisogno di assegnare un valore ad una variabile in base ad una condizione.
 
@@ -124,9 +132,15 @@ if (age > 18) {
 alert(accessAllowed);
 ```
 
+<<<<<<< HEAD
 Esiste un'operatore "ternario" o "punto interrogativo" che ci consente di farlo in maniera più breve e semplice.
 
 L'operatore viene rappresentato dal punto interrogativo `?`.  Il termine formale è "ternario", il che significa che richiede tre operatori. E' l'unico operatore in JavaScript di questo tipo.
+=======
+The so-called "conditional" or "question mark" operator lets us do that in a shorter and simpler way.
+
+The operator is represented by a question mark `?`. Sometimes it's called "ternary", because the operator has three operands. It is actually the one and only operator in JavaScript which has that many.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 La sintassi è:
 ```js
@@ -141,7 +155,11 @@ Ad esempio:
 let accessAllowed = (age > 18) ? true : false;
 ```
 
+<<<<<<< HEAD
 Tecnicamente, potremmo omettere le parentesi su `age > 18`. L'operatore ternario ha una precedenza molto bassa. Viene eseguito dopo gli operatori di confronto `>`.
+=======
+Technically, we can omit the parentheses around `age > 18`. The question mark operator has a low precedence, so it executes after the comparison `>`.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Questo esempio porta allo stesso risultato di quello precedente:
 

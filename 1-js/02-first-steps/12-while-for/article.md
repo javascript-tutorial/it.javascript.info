@@ -47,8 +47,13 @@ while (i) { // when i becomes 0, the condition becomes falsy, and the loop stops
 }
 ```
 
+<<<<<<< HEAD
 ````smart header="Le parentesi non sono richieste per un corpo composto da una singola linea"
 Se il corpo del ciclo ha una singola istruzione, possiamo omettere le parentesi `{…}`:
+=======
+````smart header="Curly braces are not required for a single-line body"
+If the loop body has a single statement, we can omit the curly braces `{…}`:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```js run
 let i = 3;

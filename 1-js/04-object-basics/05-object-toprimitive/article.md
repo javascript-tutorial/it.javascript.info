@@ -3,6 +3,7 @@
 
 Cosa acca de quando degli oggetti vengono sommati `obj1 + obj2`, sottratti `obj1 - obj2` o stampati tramite `alert(obj)`?
 
+<<<<<<< HEAD
 Ci sono dei metodi speciali che effettuano la conversione.
 
 Nel capitolo <info:type-conversions> abbiamo visto le regole per quelle di tipo numerico, string e boolean. Però abbiamo lasciato un vuoto riguardo gli oggetti. Adesso che conosciamo i metodi e i symbol diventa più semplice parlarne.
@@ -20,11 +21,30 @@ Quando un oggetto viene utilizzato in un contesto in cui è richiesto un tipo pr
 Questo algoritmo ci consente di modellare la conversione utilizzando uno speciale metodo dell'oggetto.
 
 In base al contesto, la conversione viene definita "hint" ("suggerimento").
+=======
+In that case objects are auto-converted to primitives, and then the operation is carried out.
+
+In the chapter <info:type-conversions> we've seen the rules for numeric, string and boolean conversions of primitives. But we left a gap for objects. Now, as we know about methods and symbols it becomes possible to fill it.
+
+1. All objects are `true` in a boolean context. There are only numeric and string conversions.
+2. The numeric conversion happens when we subtract objects or apply mathematical functions. For instance, `Date` objects (to be covered in the chapter <info:date>) can be subtracted, and the result of `date1 - date2` is the time difference between two dates.
+3. As for the string conversion -- it usually happens when we output an object like `alert(obj)` and in similar contexts.
+
+## ToPrimitive
+
+We can fine-tune string and numeric conversion, using special object methods.
+
+The conversion algorithm is called `ToPrimitive` in the [specification](https://tc39.github.io/ecma262/#sec-toprimitive). It's called with a "hint" that specifies the conversion type.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Ci sono tre varianti:
 
 `"string"`
+<<<<<<< HEAD
 : Quando un operazione si aspetta una stringa, per una conversione oggetto-a-stringa, come `alert`:
+=======
+: For an object-to-string conversion, when we're doing an operation on an object that expects a string, like `alert`:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
     ```js
     // output
@@ -35,7 +55,11 @@ Ci sono tre varianti:
     ```
 
 `"number"`
+<<<<<<< HEAD
 : Quando un operazione si aspetta un numero, per una conversione oggetto-a-numero, come nel caso delle operazioni matematiche:
+=======
+: For an object-to-number conversion, like when we're doing maths:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
     ```js
     // explicit conversion
@@ -52,7 +76,11 @@ Ci sono tre varianti:
 `"default"`
 : Utilizzata in casi rari quando l'operatore "non è sicuro" del tipo necessario.
 
+<<<<<<< HEAD
     Ad esempio, la somma binaria `+` può essere utilizzata sia con le stringhe (per concatenarle) sia con i numeri (per eseguire la somma), quindi sia la conversione a stringa che quella a tipo numerico potrebbero andare bene. Oppure quando un oggetto viene confrontato usando `==` con una stringa, un numero o un symbol.
+=======
+    For instance, binary plus `+` can work both with strings (concatenates them) and numbers (adds them), so both strings and numbers would do. Or when an object is compared using `==` with a string, number or a symbol, it's also unclear which conversion should be done.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
     ```js
     // binary plus
@@ -159,14 +187,30 @@ alert(user + 500); // toString -> John500
 
 In assenza di `Symbol.toPrimitive` e `valueOf`, `toString` gestirà tutte le conversioni a primitive.
 
+<<<<<<< HEAD
 
 ## ToPrimitive e ToString/ToNumber
+=======
+## Return types
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Una cosa importante da sapere riguardo tutte le conversioni primitive è che non devono necessariamente ritornare il tipo "hint" (suggerito).
 
 Non c'è alcun controllo per verificare che `toString()` ritorni esattamente una stringa, o che il metodo `Symbol.toPrimitive` ritorni un numero per un "hint" di tipo "number".
 
+<<<<<<< HEAD
 **L'unico obbligo: questi metodi devono ritornare un tipo primitivo.**
+=======
+The only mandatory thing: these methods must return a primitive, not an object.
+
+```smart header="Historical notes"
+For historical reasons, if `toString` or `valueOf` returns an object, there's no error, but such value is ignored (like if the method didn't exist). That's because in ancient times there was no good "error" concept in JavaScript.
+
+In contrast, `Symbol.toPrimitive` *must* return a primitive, otherwise there will be an error.
+```
+
+## Further operations
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 Un operazione che richiede una conversione ottiene quella primitiva, e continua a lavorarci, applicando ulteriori conversioni se necessario.
 
@@ -208,11 +252,14 @@ Ad esempio:
     alert(obj + 2); // 3 (ToPrimitive returned boolean, not string => ToNumber)
     ```
 
+<<<<<<< HEAD
 ```smart header="Note storiche"
 Per ragioni storiche, i metodi `toString` o `valueOf` *dovrebbero* ritornare una primitiva: se uno di questi ritorna un oggetto, non ci sarà alcun errore, ma quell'oggetto verrà ignorato (come se il metodo non esistesse).
 
 In maniera differente `Symbol.toPrimitive` *deve* ritornare una primitiva, altrimenti, si verificherà un errore.
 ```
+=======
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ## Riepilogo
 

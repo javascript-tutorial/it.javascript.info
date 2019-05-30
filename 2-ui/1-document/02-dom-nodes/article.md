@@ -112,7 +112,11 @@ drawHtmlTree(node3, 'div.domtree', 690, 150);
 
 In fase di generazione del DOM, i browser processeranno automaticamente gli errori chiudendo i tags e via procedendo.
 
+<<<<<<< HEAD
 Il seguente documento "invalido":
+=======
+Such an document with unclosed tags:
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 ```html no-beautify
 <p>Hello
@@ -234,7 +238,11 @@ Il miglior modo per studiare è curiosare tra le varie schede e opzioni. La magg
 
 ## Interazione con la console
 
+<<<<<<< HEAD
 Mano a mano che si procede con l'esplorazione del DOM è anche possibile giocare con un po' di JavaScript. Ad esempio: scegli un nodo ed esegui del codice per modificarlo e vederne il risultato. Alcune dritte per spostarsi tra la scheda "Elements" e la console:
+=======
+As we explore the DOM, we also may want to apply JavaScript to it. Like: get a node and run some code to modify it, to see the result. Here are few tips to travel between the Elements tab and the console.
+>>>>>>> 08734734021aa128c13da2382fe8fa062677bb9f
 
 - Seleziona il primo `<li>` nella scheda Elements.
 - Premi il tasto `key:Esc` -- si aprirà la console proprio sotto la scheda Elements.
