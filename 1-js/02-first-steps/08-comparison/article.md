@@ -17,15 +17,15 @@ Come tutti gli altri operatori, quelli di confronto ritornano un valore. In ques
 Ad esempio:
 
 ```js run
-alert( 2 > 1 );  // true (correct)
-alert( 2 == 1 ); // false (wrong)
-alert( 2 != 1 ); // true (correct)
+alert( 2 > 1 );  // true (corretto)
+alert( 2 == 1 ); // false (sbagliato)
+alert( 2 != 1 ); // true (corretto)
 ```
 
 Il risultato di un confronto può essere assegnato ad una variabile, proprio come qualsiasi altro valore:
 
 ```js run
-let result = 5 > 4; // assign the result of the comparison
+let result = 5 > 4; // assegna il valore del confronto
 alert( result ); // true
 ```
 
@@ -70,8 +70,8 @@ Quando compariamo valori che appartengono a tipi differenti, questi vengono conv
 Ad esempio:
 
 ```js run
-alert( '2' > 1 ); // true, string '2' becomes a number 2
-alert( '01' == 1 ); // true, string '01' becomes a number 1
+alert( '2' > 1 ); // true, la stringa '2' diventa il numero 2
+alert( '01' == 1 ); // true, la stringa '01' diventa il numero 1
 ```
 
 Per i valori booleani, `true` diventa `1` e `false` diventa `0`, quindi:
@@ -127,7 +127,7 @@ In altre parole, se `a` e `b` sono di tipi differenti, allora `a === b` ritorner
 Proviamolo:
 
 ```js run
-alert( 0 === false ); // false, because the types are different
+alert( 0 === false ); // false, perché i tipi sono differenti
 ```
 
 Esiste anche un operatore di "disuguaglianza stretta" `!==`, come analogo per l'operatore `!=`.

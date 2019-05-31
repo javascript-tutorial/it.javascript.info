@@ -12,14 +12,14 @@ Il valore "Symbol" rappresenta un identificatore unico.
 Un valore di questo tipo può essere creato `Symbol()`:
 
 ```js
-// id is a new symbol
+// id è un nuovo symbol
 let id = Symbol();
 ```
 
 Possiamo fornire anche una descrizione al symbol (chiamata nome del symbol), utile per il debugging:
 
 ```js run
-// id is a symbol with the description "id"
+// id è un symbol con descrizione "id"
 let id = Symbol("id");
 ```
 
@@ -53,7 +53,7 @@ Se vogliamo veramente mostrare un symbol, dobbiamo utilizzare `.toString()`:
 ```js run
 let id = Symbol("id");
 *!*
-alert(id.toString()); // Symbol(id), now it works
+alert(id.toString()); // Symbol(id), ora funziona
 */!*
 ```
 
@@ -71,7 +71,7 @@ let user = { name: "John" };
 let id = Symbol("id");
 
 user[id] = "ID Value";
-alert( user[id] ); // we can access the data using the symbol as the key
+alert( user[id] ); // possiamo accedere ai dati utilizzando il symbol come chiave
 ```
 
 Qual'è il beneficio di utilizzare `Symbol("id")` piuttosto che `"id"`?
@@ -96,13 +96,13 @@ Invece se proviamo ad utilizzare una stringa `"id"` piuttosto del symbol, *otter
 ```js run
 let user = { name: "John" };
 
-// our script uses "id" property
+// il nostro script utilizza la proprietà "id"
 user.id = "ID Value";
 
-// ...if later another script the uses "id" for its purposes...
+// ...se in seguito un altro script utilizza "id" per i suoi scopi...
 
 user.id = "Their id value"
-// boom! overwritten! it did not mean to harm the colleague, but did it!
+// boom! sovrascritto! non intendeva danneggiare il codice del collega, ma lo ha fatto!
 ```
 
 ### Symbol negli oggetti letterali
@@ -117,7 +117,7 @@ let id = Symbol("id");
 let user = {
   name: "John",
 *!*
-  [id]: 123 // not just "id: 123"
+  [id]: 123 // non basta "id: 123"
 */!*
 };
 ```
@@ -141,7 +141,7 @@ let user = {
 for (let key in user) alert(key); // name, age (no symbols)
 */!*
 
-// the direct access by the symbol works
+// l'accesso diretto al symbol funziona
 alert( "Direct: " + user[id] );
 ```
 
@@ -169,12 +169,12 @@ Ad esempio, un numero `0` diventa una stringa `"0"` quando lo utilizziamo come c
 
 ```js run
 let obj = {
-  0: "test" // same as "0": "test"
+  0: "test" // equivale a "0": "test"
 };
 
-// both alerts access the same property (the number 0 is converted to string "0")
+// entrambi gli alert accedono alla stessa proprietà (il numero 0 è convertito a stringa "0")
 alert( obj["0"] ); // test
-alert( obj[0] ); // test (same property)
+alert( obj[0] ); // test (stessa proprietà)
 ```
 ````
 
@@ -193,13 +193,13 @@ Questa chiamata controlla il registro globale, se trova un symbol descritto dall
 Ad esempio:
 
 ```js run
-// read from the global registry
-let id = Symbol.for("id"); // if the symbol did not exist, it is created
+// lettura dal registro globale
+let id = Symbol.for("id"); // se il symbol non esiste, allora viene creato
 
-// read it again
+// lo legge nuovamente
 let idAgain = Symbol.for("id");
 
-// the same symbol
+// lo stesso symbol
 alert( id === idAgain ); // true
 ```
 
@@ -221,7 +221,7 @@ Ad esempio:
 let sym = Symbol.for("name");
 let sym2 = Symbol.for("id");
 
-// get name from symbol
+// prende name da symbol
 alert( Symbol.keyFor(sym) ); // name
 alert( Symbol.keyFor(sym2) ); // id
 ```
@@ -231,9 +231,9 @@ La funzione `Symbol.keyFor` internamente utilizza il registro globale dei symbol
 Ad esempio:
 
 ```js run
-alert( Symbol.keyFor(Symbol.for("name")) ); // name, global symbol
+alert( Symbol.keyFor(Symbol.for("name")) ); // name, è un symbol globale
 
-alert( Symbol.keyFor(Symbol("name2")) ); // undefined, the argument isn't a global symbol
+alert( Symbol.keyFor(Symbol("name2")) ); // undefined, l'argomento non è un symbol globale
 ```
 
 ## Sistemi per symbol

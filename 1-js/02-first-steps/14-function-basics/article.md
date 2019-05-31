@@ -54,7 +54,7 @@ Ad esempio:
 ```js run
 function showMessage() {
 *!*
-  let message = "Hello, I'm JavaScript!"; // local variable
+  let message = "Hello, I'm JavaScript!"; // variabile locale
 */!*
 
   alert( message );
@@ -62,7 +62,7 @@ function showMessage() {
 
 showMessage(); // Hello, I'm JavaScript!
 
-alert( message ); // <-- Error! The variable is local to the function
+alert( message ); // <-- Errore! La variabile è locale alla funzione
 ```
 
 ## Variabili esterne
@@ -94,11 +94,11 @@ function showMessage() {
   alert(message);
 }
 
-alert( userName ); // *!*John*/!* before the function call
+alert( userName ); // *!*John*/!* prima della chiamata di funzione
 
 showMessage();
 
-alert( userName ); // *!*Bob*/!*, the value was modified by the function
+alert( userName ); // *!*Bob*/!*, il valore è stato modificato dalla funzione
 ```
 
 La variabile esterna viene utilizzata solo se non ce n'è nessuna di locale. Quindi si può avere eventualmente una modifica se ci dimentichiamo `let`.
@@ -110,17 +110,17 @@ let userName = 'John';
 
 function showMessage() {
 *!*
-  let userName = "Bob"; // declare a local variable
+  let userName = "Bob"; // dichiara una variabile locale
 */!*
 
   let message = 'Hello, ' + userName; // *!*Bob*/!*
   alert(message);
 }
 
-// the function will create and use its own userName
+// la funzione creerà è utilizzerà un suo personale userName
 showMessage();
 
-alert( userName ); // *!*John*/!*, unchanged, the function did not access the outer variable
+alert( userName ); // *!*John*/!*, intoccatto, la funzione non accedere alla variabile esterna
 ```
 
 ```smart header="Variabili globali"
@@ -138,7 +138,7 @@ Possiamo passare dei dati arbitrari ad una funzione usando i parametri (chiamati
 Nell'esempio sotto, la funzione ha due parametri: `from` e `text`.
 
 ```js run
-function showMessage(*!*from, text*/!*) { // arguments: from, text
+function showMessage(*!*from, text*/!*) { // argomenti: from, text
   alert(from + ': ' + text);
 }
 
@@ -157,7 +157,7 @@ Guardiamo un altro esempio: abbiamo una variabile `from` e la passiamo alla funz
 function showMessage(from, text) {
 
 *!*
-  from = '*' + from + '*'; // make "from" look nicer
+  from = '*' + from + '*'; // rende "from" più carino
 */!*
 
   alert( from + ': ' + text );
@@ -167,7 +167,7 @@ let from = "Ann";
 
 showMessage(from, "Hello"); // *Ann*: Hello
 
-// the value of "from" is the same, the function modified a local copy
+// il valore di "from" è lo stesso, la funzione ne ha modificato una copia locale
 alert( from ); // Ann
 ```
 
@@ -190,7 +190,7 @@ function showMessage(from, *!*text = "no text given"*/!*) {
   alert( from + ": " + text );
 }
 
-showMessage("Ann"); // Ann: no text given
+showMessage("Ann"); // Ann: nessun text fornito
 ```
 
 Adesso se il parametro `text` non viene passato, assumerà il valore `"no text given"`
@@ -199,8 +199,8 @@ In questo caso `"no text given"` è una stringa, ma potrebbe essere un espressio
 
 ```js run
 function showMessage(from, text = anotherFunction()) {
-  // anotherFunction() only executed if no text given
-  // its result becomes the value of text
+  // anotherFunction() viene eseguita solamente se non viene fornito text 
+  // il risultato diventa il valore di text
 }
 ```
 
@@ -230,7 +230,7 @@ function showMessage(from, text) {
 
 ```js
 function showMessage(from, text) {
-  // if text is falsy then text gets the "default" value
+  // se text è falso allora text assume il valore di default
   text = text || 'no text given';
   ...
 }
@@ -304,7 +304,7 @@ Nel codice sopra, se `checkAge(age)` ritorna `false`, allora `showMovie` non pro
 Se una funzione non ritorna alcun valore, è come se ritornasse `undefined`:
 
 ```js run
-function doNothing() { /* empty */ }
+function doNothing() { /* vuoto */ }
 
 alert( doNothing() === undefined ); // true
 ```
@@ -354,11 +354,11 @@ Funzioni che iniziano per...
 Esempi di nomi:
 
 ```js no-beautify
-showMessage(..)     // shows a message
-getAge(..)          // returns the age (gets it somehow)
-calcSum(..)         // calculates a sum and returns the result
-createForm(..)      // creates a form (and usually returns it)
-checkPermission(..) // checks a permission, returns true/false
+showMessage(..)     // mostra un messaggio
+getAge(..)          // ritonra l'età (prendendola da qualche parte)
+calcSum(..)         // calcola la somma e ritorna il risultato
+createForm(..)      // crea un form (e solitamente lo ritorna)
+checkPermission(..) // controlla i permessi, ritorna true/false
 ```
 
 Con il prefisso, una semplice occhiata al nome della funzione dovrebbe far capire che tipo di lavoro eseguirà e quale sarà il tipo di valore ritornato.
@@ -403,7 +403,7 @@ function showPrimes(n) {
       if (i % j == 0) continue nextPrime;
     }
 
-    alert( i ); // a prime
+    alert( i ); // un primo
   }
 }
 ```
@@ -416,7 +416,7 @@ function showPrimes(n) {
   for (let i = 2; i < n; i++) {
     *!*if (!isPrime(i)) continue;*/!*
 
-    alert(i);  // a prime
+    alert(i);  // un primo
   }
 }
 
@@ -438,7 +438,7 @@ La dichiarazione di una funzione assomiglia a:
 
 ```js
 function name(parameters, delimited, by, comma) {
-  /* code */
+  /* codice */
 }
 ```
 

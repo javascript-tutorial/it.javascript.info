@@ -32,7 +32,7 @@ function sayHi() {
 }
 
 *!*
-alert( sayHi ); // shows the function code
+alert( sayHi ); // mostra il codice della funzione
 */!*
 ```
 
@@ -47,14 +47,14 @@ Ma rimane comunque un valore. Quindi possiamo trattarlo come un qualsiasi altro 
 Possiamo copiare la funzione in un'altra variabile:
 
 ```js run no-beautify
-function sayHi() {   // (1) create
+function sayHi() {   // (1) creazione
   alert( "Hello" );
 }
 
-let func = sayHi;    // (2) copy
+let func = sayHi;    // (2) copia
 
-func(); // Hello     // (3) run the copy (it works)!
-sayHi(); // Hello    //     this still works too (why wouldn't it)
+func(); // Hello     // (3) esegue la copia (funziona)!
+sayHi(); // Hello    //     anche questa continua a funzionare (ed è giusto che sia cosi)
 ```
 
 Quello che succede nel dettaglio è:
@@ -128,7 +128,7 @@ function showCancel() {
   alert( "You canceled the execution." );
 }
 
-// usage: functions showOk, showCancel are passed as arguments to ask
+// utilizzo: funzioni showOk, showCancel vengono passate come argomenti ad ask
 ask("Do you agree?", showOk, showCancel);
 ```
 
@@ -179,7 +179,7 @@ Primo, la sintassi: come capire cosa è cosa nel codice.
 - *Dichiarazione di funzione:* una funzione, dichiarata come un istruzione separata, nel flusso principale del programma.
 
     ```js
-    // Function Declaration
+    // Dichiarazione di funzione
     function sum(a, b) {
       return a + b;
     }
@@ -187,7 +187,7 @@ Primo, la sintassi: come capire cosa è cosa nel codice.
 - *Espressione di funzione:* una funzione, creata all'interno di un espressione o all'interno di un altro costrutto. Qui, la funzione è creata alla destra dell' "espressione di assegnazione" `=`:
     
     ```js
-    // Function Expression
+    // Espressione di funzione
     let sum = function(a, b) {
       return a + b;
     };
@@ -227,10 +227,10 @@ La dichiarazione di funzione `sayHi` viene creata quando JavaScript si sta prepa
 
 ```js run refresh untrusted
 *!*
-sayHi("John"); // error!
+sayHi("John"); // errore!
 */!*
 
-let sayHi = function(name) {  // (*) no magic any more
+let sayHi = function(name) {  // (*) nessuna magia
   alert( `Hello, ${name}` );
 };
 ```
@@ -248,7 +248,7 @@ Il codice sotto non funziona:
 ```js run
 let age = prompt("What is your age?", 18);
 
-// conditionally declare a function
+// dichiarazione di funzione condizionale
 if (age < 18) {
 
   function welcome() {
@@ -263,9 +263,9 @@ if (age < 18) {
 
 }
 
-// ...use it later
+// ...utilizzo successivo
 *!*
-welcome(); // Error: welcome is not defined
+welcome(); // Errore: welcome non è definita
 */!*
 ```
 
@@ -274,33 +274,33 @@ Questo accade perchè una dichiarazione di funzione è visibile solamente all'in
 Un altro esempio:
 
 ```js run
-let age = 16; // take 16 as an example
+let age = 16; // prendiamo 16 come esempio
 
 if (age < 18) {
 *!*
-  welcome();               // \   (runs)
+  welcome();               // \   (esegue)
 */!*
                            //  |
   function welcome() {     //  |  
-    alert("Hello!");       //  |  Function Declaration is available
-  }                        //  |  everywhere in the block where it's declared
+    alert("Hello!");       //  |  Dichiarazione di funzione disponibile
+  }                        //  |  ovunque nel blocco in cui è stata dichiarata
                            //  |
 *!*
-  welcome();               // /   (runs)
+  welcome();               // /   (esegue)
 */!*
 
 } else {
 
-  function welcome() {     //  for age = 16, this "welcome" is never created
+  function welcome() {     //  per age = 16, "welcome" non verrà mai creata
     alert("Greetings!");
   }
 }
 
-// Here we're out of curly braces,
-// so we can not see Function Declarations made inside of them.
+// Qui siamo all'esterno delle parentesi graffe, 
+// quindi non possiamo vedere le dichiarazioni di funzione fatte al suo interno.
 
 *!*
-welcome(); // Error: welcome is not defined
+welcome(); // Errore: welcome non è definita
 */!*
 ```
 
@@ -330,7 +330,7 @@ if (age < 18) {
 }
 
 *!*
-welcome(); // ok now
+welcome(); // ora funziona
 */!*
 ```
 
@@ -344,7 +344,7 @@ let welcome = (age < 18) ?
   function() { alert("Greetings!"); };
 
 *!*
-welcome(); // ok now
+welcome(); // ora funziona
 */!*
 ```
 
@@ -384,7 +384,7 @@ Vediamo un esempio:
 ```js run
 let sum = (a, b) => a + b;
 
-/* The arrow function is a shorter form of:
+/* La funzione a freccia è una forma più breve di:
 
 let sum = function(a, b) {
   return a + b;
@@ -398,7 +398,7 @@ alert( sum(1, 2) ); // 3
 Se abbiamo un solo argomento, le parentesi possono essere omesse, rendendo il tutto ancora più breve:
 
 ```js run
-// same as
+// lo stesso vale per 
 // let double = function(n) { return n * 2 }
 *!*
 let double = n => n * 2;
@@ -426,7 +426,7 @@ let welcome = (age < 18) ?
   () => alert('Hello') :
   () => alert("Greetings!");
 
-welcome(); // ok now
+welcome(); // ora funziona
 ```
 
 Le funzioni freccia potrebbero sembrare poco familiari e non molto leggibili al primo sguardo, ma vi ci abituerete molto velocemente.
@@ -442,10 +442,10 @@ Qualche voltra potremmo aver bisogno di qualcosa di molto più complesso, come e
 Come in questo esempio:
 
 ```js run
-let sum = (a, b) => {  // the curly brace opens a multiline function
+let sum = (a, b) => {  // la parentesi graffa apre una funzione multiriga
   let result = a + b;
 *!*
-  return result; // if we use curly braces, use return to get results
+  return result; // se utilizziamo le parentesi graffe, dobbiamo utilizzare esplicitamente return per ritornare il risultato
 */!*
 };
 

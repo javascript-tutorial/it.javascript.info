@@ -38,15 +38,15 @@ In altre parole, `new User(...)` fa qualcosa del genere:
 ```js
 function User(name) {
 *!*
-  // this = {};  (implicitly)
+  // this = {};  (implicito)
 */!*
 
-  // add properties to this
+  // aggiungiamo proprietaà a this
   this.name = name;
   this.isAdmin = false;
 
 *!*
-  // return this;  (implicitly)
+  // return this;  (implicito)
 */!*
 }
 ```
@@ -74,9 +74,9 @@ let user = new function() {
   this.name = "John";
   this.isAdmin = false;
 
-  // ...other code for user creation
-  // maybe complex logic and statements
-  // local variables etc
+  // ...altro codice per la creazione di user
+  // magari logiche complesse e istruzioni
+  // variabili locali etc
 };
 ```
 
@@ -98,12 +98,12 @@ function User() {
   alert(new.target);
 }
 
-// without "new":
+// senza "new":
 *!*
 User(); // undefined
 */!*
 
-// with "new":
+// con "new":
 *!*
 new User(); // function User { ... }
 */!*
@@ -113,14 +113,14 @@ Questo può essere utilizzato per consentire ad entrambe le chiamate di funziona
 
 ```js run
 function User(name) {
-  if (!new.target) { // if you run me without new
-    return new User(name); // ...I will add new for you
+  if (!new.target) { // se mi esegui senza new 
+    return new User(name); // ...Aggiungo new al posto tuo
   }
 
   this.name = name;
 }
 
-let john = User("John"); // redirects call to new User
+let john = User("John"); // reindirizza la chiamata a new User
 alert(john.name); // John
 ```
 
@@ -147,10 +147,10 @@ function BigUser() {
 
   this.name = "John";
 
-  return { name: "Godzilla" };  // <-- returns an object
+  return { name: "Godzilla" };  // <-- ritorna un oggetto
 }
 
-alert( new BigUser().name );  // Godzilla, got that object ^^
+alert( new BigUser().name );  // Godzilla, preso l'oggetto ^^
 ```
 
 Qui invece abbiamo un esempio con un `return` vuoto (potremmo anche ritornare un qualsiasi valore di tipo primitivo):
@@ -160,7 +160,7 @@ function SmallUser() {
 
   this.name = "John";
 
-  return; // finishes the execution, returns this
+  return; // al termine dell'esecuzione, ritorna this
 
   // ...
 
@@ -203,7 +203,7 @@ function User(name) {
 *!*
 let john = new User("John");
 
-john.sayHi(); // My name is: John
+john.sayHi(); // Il mio nome è: John
 */!*
 
 /*

@@ -31,11 +31,11 @@ Il punto e virgola non è richiesto dopo un blocco di codice `{...}` e i costrut
 
 ```js
 function f() {
-  // no semicolon needed after function declaration
+  // non è richiesto il punto e virola dopo la dichiarazione di funzione
 }
 
 for(;;) {
-  // no semicolon needed after the loop
+  // non è richiesto il punto e virgola dopo il ciclo
 }
 ```
 
@@ -92,8 +92,8 @@ Ci sono 7 tipi di dato:
 
 L'operatore `typeof` ritorna il tipo di un valore, con due eccezioni:
 ```js
-typeof null == "object" // error in the language
-typeof function(){} == "function" // functions are treated specially
+typeof null == "object" // errore nel linguaggio
+typeof function(){} == "function" // le funzioni vengono trattate diversamente
 ```
 
 Di più in: <info:variables> e <info:types>.
@@ -211,7 +211,7 @@ let age = prompt('Your age?', 18);
 
 switch (age) {
   case 18:
-    alert("Won't work"); // the result of prompt is a string, not a number
+    alert("Won't work"); // il risultato di prompr è una stringa, non un numero
 
   case "18":
     alert("This works!");
@@ -253,19 +253,19 @@ Abbiamo studiato tre modi per creare funzioni in JavaScript:
 3. Funzione freccia:
 
     ```js
-    // expression at the right side
+    // espressione dalla parte destra
     let sum = (a, b) => a + b;
 
-    // or multi-line syntax with { ... }, need return here:
+    // oppure la sintassi multi-riga con { ... }, è necessario esplicitare return
     let sum = (a, b) => {
       // ...
       return a + b;
     }
 
-    // without arguments
+    // senza argomenti
     let sayHi = () => alert("Hello");
 
-    // with a single argument
+    // con un solo argomento
     let double = n => n * 2;
     ```
 

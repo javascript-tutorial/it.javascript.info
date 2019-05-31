@@ -27,7 +27,7 @@ Lasciate che le sottigliezze del linguaggio vi guidino.
 Ad esempio, date un'occhiata all'operatore ternario `'?'`:
 
 ```js
-// taken from a well-known javascript library
+// preso da una libreria javascript famosa
 i = i ? i < 0 ? Math.max(0, len + i) : i : 0;
 ```
 
@@ -143,11 +143,11 @@ Ad esempio:
 
 ```js
 function ninjaFunction(elem) {
-  // 20 lines of code working with elem
+  // 20 righe di codice che lavorano su elem
 
   elem = clone(elem);
 
-  // 20 more lines, now working with the clone of the elem!
+  // altre 20 righe, che lavorano sul clone di elem!
 }
 ```
 
@@ -187,7 +187,7 @@ function render() {
   ...
   ...many lines...
   ...
-  ... // <-- a programmer wants to work with user here and...
+  ... // <-- un programmatore vorrebbe utilizzare user...
   ...
 }
 ```

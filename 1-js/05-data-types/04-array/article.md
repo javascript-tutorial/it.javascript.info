@@ -38,13 +38,13 @@ alert( fruits[2] ); // Plum
 Possiamo rimpiazzare un elemento:
 
 ```js
-fruits[2] = 'Pear'; // now ["Apple", "Orange", "Pear"]
+fruits[2] = 'Pear'; // ora ["Apple", "Orange", "Pear"]
 ```
 
 ...o aggiungerne uno nuovo:
 
 ```js
-fruits[3] = 'Lemon'; // now ["Apple", "Orange", "Pear", "Lemon"]
+fruits[3] = 'Lemon'; // ora ["Apple", "Orange", "Pear", "Lemon"]
 ```
 
 Il contatore locale degli elementi dell'array è `length`:
@@ -68,13 +68,13 @@ Un array può memorizzare elementi di qualsiasi tipo.
 Ad esempio:
 
 ```js run no-beautify
-// mix of values
+// insieme di valori
 let arr = [ 'Apple', { name: 'John' }, true, function() { alert('hello'); } ];
 
-// get the object at index 1 and then show its name
+// prende l'oggetto all'indice 1 e ne mostra il name
 alert( arr[1].name ); // John
 
-// get the function at index 3 and run it
+// prende la funzione all'indice 3 e la esegue
 arr[3](); // hello
 ```
 
@@ -133,7 +133,7 @@ In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/
     ```js run
     let fruits = ["Apple", "Orange", "Pear"];
 
-    alert( fruits.pop() ); // remove "Pear" and alert it
+    alert( fruits.pop() ); // rimuove "Pear" e lo ritorna con alert
 
     alert( fruits ); // Apple, Orange
     ```
@@ -159,7 +159,7 @@ In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/
     ```js
     let fruits = ["Apple", "Orange", "Pear"];
 
-    alert( fruits.shift() ); // remove Apple and alert it
+    alert( fruits.shift() ); // rimuove Apple e lo ritorna con alert
 
     alert( fruits ); // Orange, Pear
     ```
@@ -200,13 +200,13 @@ Ad esempio, vengono copiati per riferimento:
 ```js run
 let fruits = ["Banana"]
 
-let arr = fruits; // copy by reference (two variables reference the same array)
+let arr = fruits; // copia per riferimento (due variabili fanno riferimento allo stesso array)
 
 alert( arr === fruits ); // true
  
-arr.push("Pear"); // modify the array by reference
+arr.push("Pear"); // modifica l'array per riferimento
 
-alert( fruits ); // Banana, Pear - 2 items now
+alert( fruits ); // Banana, Pear - ora sono 2 elementi
 ```
 
 ... Ma ciò che li rende realmente speciali è la loro rappresentazione interna. Il motore prova a memorizzare gli elementi in aree di memoria contigue, uno dopo l'altro, propri come nelle illustrazioni di questo capitolo, ci sono anche altre ottimizzazioni per rendere gli array molto veloci.
@@ -216,11 +216,11 @@ Se iniziamo a trattare gli array come oggetti ordinari tutte le ottimizzazioni v
 Ad esempio, tecnicamente possiamo fare:
 
 ```js
-let fruits = []; // make an array
+let fruits = []; // crea una array
 
-fruits[99999] = 5; // assign a property with the index far greater than its length
+fruits[99999] = 5; // assegna una proprietà con indice maggiore della sua lunghezza
 
-fruits.age = 25; // create a property with an arbitrary name
+fruits.age = 25; // crea una proprietà con un nome a scelta
 ```
 
 Questo è possibile, perché gli array sono comunque degli oggetti. Possiamo anche aggiungere proprietà.
@@ -244,7 +244,7 @@ I metodi `push/pop` vengono eseguiti rapidamente, mentre `shift/unshift` sono pi
 Perché è più veloce eseguire operazioni sulla coda degli array piuttosto che in testa? Andiamo a vedere cosa accade durante l'esecuzione:
 
 ```js
-fruits.shift(); // take 1 element from the start
+fruits.shift(); // prende 1 elemento dall'inizio
 ```
 
 Non è sufficiente prelevare e rimuovere l'elemento con l'indice `0`. Gli altri elementi dovranno essere rinumerati.
@@ -265,7 +265,7 @@ Invece con `push/pop`? Non richiedono lo spostamento di nulla in memoria. Per po
 Le azioni eseguite da `pop`:
 
 ```js
-fruits.pop(); // take 1 element from the end
+fruits.pop(); // prende 1 elemento dalla fine
 ```
 
 ![](array-pop.png)
@@ -293,7 +293,7 @@ Per gli array c'è un'altra forma di ciclo, `for..of`:
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
 
-// iterates over array elements
+// itera sugli elementi dell'array
 for (let fruit of fruits) {
   alert( fruit ); 
 }
@@ -346,11 +346,11 @@ Se provassimo ad incrementarla manualmente, non accadrebbe nulla di interessante
 ```js run
 let arr = [1, 2, 3, 4, 5];
 
-arr.length = 2; // truncate to 2 elements
+arr.length = 2; // tronca a 2 elementi
 alert( arr ); // [1, 2]
 
-arr.length = 5; // return length back
-alert( arr[3] ); // undefined: the values do not return
+arr.length = 5; // ritorna alla lunghezza precedente
+alert( arr[3] ); // undefined: i valori non vegono ritornati
 ```
 
 Quindi il modo più semplice per ripulire un array è: `arr.length = 0;`.
@@ -371,9 +371,9 @@ Se utilizziamo `new Array` con un solo argomento di tipo numerico, allora verrà
 Quindi vediamo come ci si potrebbe sparare sui piedi:
 
 ```js run
-let arr = new Array(2); // will it create an array of [2] ?
+let arr = new Array(2); // creerà un array di [2] ?
 
-alert( arr[0] ); // undefined! no elements.
+alert( arr[0] ); // undefined! nessun elemento.
 
 alert( arr.length ); // length 2
 ```
@@ -393,7 +393,7 @@ let matrix = [
   [7, 8, 9]
 ];
 
-alert( matrix[1][1] ); // the central element
+alert( matrix[1][1] ); // l'elemento centrale
 ```
 
 ## toString
@@ -435,10 +435,10 @@ Gli array sono uno speciale tipo di oggetto, studiati per immagazzinare e gestir
 - La dichiarazione:
 
     ```js
-    // square brackets (usual)
+    // parentesi quadrea (usuale)
     let arr = [item1, item2...];
 
-    // new Array (exceptionally rare)
+    // new Array (eccezionalmente raro)
     let arr = new Array(item1, item2...);
     ```
 

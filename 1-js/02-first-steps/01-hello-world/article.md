@@ -106,7 +106,7 @@ Questo non funziona:
 
 ```html
 <script *!*src*/!*="file.js">
-  alert(1); // the content is ignored, because src is set
+  alert(1); // il contenuto viene ignorato, perchè src è impostato
 </script>
 ```
 

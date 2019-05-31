@@ -101,7 +101,7 @@ Anche nel'esempio che segue, `zero`, è un oggetto, quindi verrà eseguito l'ale
 ```js run
 let zero = new Number(0);
 
-if (zero) { // zero is true, because it's an object
+if (zero) { // zero è true, perché è un oggetto
   alert( "zero is truthy?!?" );
 }
 ```
@@ -110,7 +110,7 @@ In altre parole, utilizzare le stesse funzioni con `String/Number/Boolean` senza
 
 Ad esempio, è corretto fare:
 ```js
-let num = Number("123"); // convert a string to number
+let num = Number("123"); // converte una string in number
 ```
 ````
 
@@ -121,7 +121,7 @@ Le primitive speciali `null` e `undefined` sono delle eccezioni. Non possiedono 
 Un tentativo di accedere ad una proprietà con questi tipi di valore, lancerà un errore:
 
 ```js run
-alert(null.test); // error
+alert(null.test); // errore
 ````
 
 ## Riepilogo

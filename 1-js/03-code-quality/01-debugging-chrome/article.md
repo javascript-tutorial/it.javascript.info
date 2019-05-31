@@ -77,7 +77,7 @@ function hello(name) {
   let phrase = `Hello, ${name}!`;
 
 *!*
-  debugger;  // <-- the debugger stops here
+  debugger;  // <-- il debugger si ferma qui
 */!*
 
   say(phrase);
@@ -157,7 +157,7 @@ Per stampare qualcosa sulla console, c'è una funzione `console.log`.
 Ad  esempio, questo stamperà i valori da `0` a `4` sulla console:
 
 ```js run
-// open console to see
+// apri la console per vedere il messaggio
 for (let i = 0; i < 5; i++) {
   console.log("value", i);
 }

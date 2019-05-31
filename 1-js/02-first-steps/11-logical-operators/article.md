@@ -34,7 +34,7 @@ Se un operando non è booleano, allora viene convertito in booleano per essere v
 Ad esempio, il numero `1` viene visto come `true`, il numero `0` -- come `false`:
 
 ```js run
-if (1 || 0) { // works just like if( true || false )
+if (1 || 0) { // fun<iona proprio come ( true || false )
   alert( 'truthy!' );
 }
 ```
@@ -60,7 +60,7 @@ let hour = 12;
 let isWeekend = true;
 
 if (hour < 10 || hour > 18 || isWeekend) {
-  alert( 'The office is closed.' ); // it is the weekend
+  alert( 'The office is closed.' ); // è il fine settimana
 }
 ```
 
@@ -89,12 +89,12 @@ In altra parole, una catena di OR `"||"` ritorna il primo valore vero, se invece
 Ad esempio:
 
 ```js run
-alert( 1 || 0 ); // 1 (1 is truthy)
-alert( true || 'no matter what' ); // (true is truthy)
+alert( 1 || 0 ); // 1 (1 è vero)
+alert( true || 'no matter what' ); // (true è vero)
 
-alert( null || 1 ); // 1 (1 is the first truthy value)
-alert( null || 0 || 1 ); // 1 (the first truthy value)
-alert( undefined || null || 0 ); // 0 (all falsy, returns the last value)
+alert( null || 1 ); // 1 (1 è il primo valore true)
+alert( null || 0 || 1 ); // 1 (il primo valore true)
+alert( undefined || null || 0 ); // 0 (tutti falsi, ritorna l'ultimo valore)
 ```
 
 Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR booleano".boolean-only OR".
@@ -113,7 +113,7 @@ Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR 
     let name = currentUser || defaultUser || "unnamed";
     */!*
 
-    alert( name ); // selects "John" – the first truthy value
+    alert( name ); // seleziona "John" – il primo valore true
     ```
 
     Se entrambe `currentUser` e `defaultUser` sono false allora il risultato sarà `"unnamed"`.
@@ -130,7 +130,7 @@ Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR 
 
     *!*true*/!* || (x = 1);
 
-    alert(x); // undefined, because (x = 1) not evaluated
+    alert(x); // undefined, perché (x = 1) non viene valutato
     ```
 
     Se invece il primo argomento è `false`, allora `||` prosegue e valuta il secondo, in questo caso l'assegnazione funziona:
@@ -180,7 +180,7 @@ if (hour == 12 && minute == 30) {
 Proprio come per OR, qualsiasi valore è consentito come operando per AND:
 
 ```js run
-if (1 && 0) { // evaluated as true && false
+if (1 && 0) { // valutato come true && false
   alert( "won't work, because the result is falsy" );
 }
 ```
@@ -207,13 +207,13 @@ Le regole sono molto simili a quelle dell'OR. La differenza è che AND ritorna i
 Esempi:
 
 ```js run
-// if the first operand is truthy,
-// AND returns the second operand:
+// se il primo operando è vero,
+// AND ritorna il secondo operando:
 alert( 1 && 0 ); // 0
 alert( 1 && 5 ); // 5
 
-// if the first operand is falsy,
-// AND returns it. The second operand is ignored
+// se il primo operando è falso
+// AND lo ritorna. Il secondo operando viene ignorato
 alert( null && 5 ); // null
 alert( 0 && "no matter what" ); // 0
 ```
@@ -227,7 +227,7 @@ alert( 1 && 2 && null && 3 ); // null
 Quando tutti i valori sono veri, viene ritornato l'ultimo valore:
 
 ```js run
-alert( 1 && 2 && 3 ); // 3, the last one
+alert( 1 && 2 && 3 ); // 3, l'ultimo
 ```
 
 ````smart header="Precedenza di AND `&&` è maggiore dell'OR `||`"

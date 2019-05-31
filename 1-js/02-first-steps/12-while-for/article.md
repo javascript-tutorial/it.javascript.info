@@ -12,8 +12,8 @@ Il ciclo `while` ha la seguente sintassi:
 
 ```js
 while (condition) {
-  // code
-  // so-called "loop body"
+  // codice
+  // "corpo del ciclo"
 }
 ```
 
@@ -23,7 +23,7 @@ Ad esempio, il ciclo qui sotto stampa `i` fino a che `i < 3`:
 
 ```js run
 let i = 0;
-while (i < 3) { // shows 0, then 1, then 2
+while (i < 3) { // mostra 0, poi 1, poi 2
   alert( i );
   i++;
 }
@@ -40,7 +40,7 @@ Ad esempio, un modo più breve di scrivere `while (i != 0)` potrebbe essere `whi
 ```js run
 let i = 3;
 *!*
-while (i) { // when i becomes 0, the condition becomes falsy, and the loop stops
+while (i) { // quando i diventa 0, la condizione diventa falsa e il ciclo si conclude
 */!*
   alert( i );
   i--;
@@ -64,7 +64,7 @@ La condizione da controllare può essere messa *dopo* il corpo del ciclo utilizz
 
 ```js
 do {
-  // loop body
+  // corpo del ciclo
 } while (condition);
 ```
 
@@ -90,14 +90,14 @@ La sua forma è del tipo:
 
 ```js
 for (begin; condition; step) {
-  // ... loop body ...
+  // ... corpo del ciclo ...
 }
 ```
 
 Cerchiamo ora di capire il significato tramite degli esempi. Il ciclo sotto esegue `alert(i)` per `i` da `0` fino a (ma non incluso) `3`:
 
 ```js run
-for (let i = 0; i < 3; i++) { // shows 0, then 1, then 2
+for (let i = 0; i < 3; i++) { // mostra 0, poi 1, poi 2
   alert(i);
 }
 ```
@@ -125,15 +125,15 @@ Questo è quello che succede esattamente nel nostro codice:
 ```js
 // for (let i = 0; i < 3; i++) alert(i)
 
-// run begin
+// inizia l'esecuzione
 let i = 0
-// if condition → run body and run step
+// if condition → esegue il corpo e avanza
 if (i < 3) { alert(i); i++ }
-// if condition → run body and run step
+// if condition → esegue il corpo e avanza
 if (i < 3) { alert(i); i++ }
-// if condition → run body and run step
+// if condition → esegue il corpo e avanza
 if (i < 3) { alert(i); i++ }
-// ...finish, because now i == 3
+// ...si conclude, perché ora i == 3
 ```
 
 ````smart header="Dichiarazioni di variabili inline"
@@ -143,7 +143,7 @@ Qui il "counter" è una variabile `i` che viene dichiarata all'interno del ciclo
 for (*!*let*/!* i = 0; i < 3; i++) {
   alert(i); // 0, 1, 2
 }
-alert(i); // error, no such variable
+alert(i); // errore, nessuna variabile
 ```
 
 Invece che definire una nuova variabile, possiamo utilizzarne una già esistente:
@@ -151,11 +151,11 @@ Invece che definire una nuova variabile, possiamo utilizzarne una già esistente
 ```js run
 let i = 0;
 
-for (i = 0; i < 3; i++) { // use an existing variable
+for (i = 0; i < 3; i++) { // utilizza una variabile esistente
   alert(i); // 0, 1, 2
 }
 
-alert(i); // 3, visible, because declared outside of the loop
+alert(i); // 3, visibile, perché è stata dichiarata fuori dal ciclo
 ```
 
 ````
@@ -170,9 +170,9 @@ Ad esempio, possiamo omettere `begin` se non abbiamo bisogno di fare niente all'
 Come in questo esempio:
 
 ```js run
-let i = 0; // we have i already declared and assigned
+let i = 0; // la abbiamo già dichiarata e assegnata
 
-for (; i < 3; i++) { // no need for "begin"
+for (; i < 3; i++) { // non c'è alcun bisogno di "begin"
   alert( i ); // 0, 1, 2
 }
 ```
@@ -193,7 +193,7 @@ Possiamo rimuovere tutto, questo genererà un ciclo infinito:
 
 ```js
 for (;;) {
-  // repeats without limits
+  // ripete senza terminare
 }
 ```
 
@@ -239,10 +239,10 @@ Il ciclo sotto usa `continue` per ritornare i valori dispari:
 ```js run no-beautify
 for (let i = 0; i < 10; i++) {
 
-  // if true, skip the remaining part of the body
+  // se è true, salta la restante parte di codice
   *!*if (i % 2 == 0) continue;*/!*
 
-  alert(i); // 1, then 3, 5, 7, 9
+  alert(i); // 1, poi 3, 5, 7, 9
 }
 ```
 
@@ -283,7 +283,7 @@ if (i > 5) {
 
 
 ```js no-beautify
-(i > 5) ? alert(i) : *!*continue*/!*; // continue isn't allowed here
+(i > 5) ? alert(i) : *!*continue*/!*; // continue non è consentito qui
 ```
 
 ...Questo smetterà di funzionare. Codice scritto cosi vi darà un errore di sintassi:
@@ -305,7 +305,7 @@ for (let i = 0; i < 3; i++) {
 
     let input = prompt(`Value at coords (${i},${j})`, '');
 
-    // what if I want to exit from here to Done (below)?
+    // come potremmo fare per uscire di qui e proseguire verso Done (sotto)?
 
   }
 }
@@ -335,10 +335,10 @@ Come nell'esempio:
 
     let input = prompt(`Value at coords (${i},${j})`, '');
 
-    // if an empty string or canceled, then break out of both loops
+    // se si ha una stringa vuota, allora si esce da entrambi i cicli
     if (!input) *!*break outer*/!*; // (*)
 
-    // do something with the value...
+    // fa qualcosa con i valori...
   }
 }
 alert('Done!');
@@ -362,7 +362,7 @@ Le Label non permettono di saltare in un punto arbitrario del codice.
 
 Ad esempio, non è possibile fare:
 ```js
-break label;  // jumps to label? No.
+break label;  // salta a label? No.
 
 label: for (...)
 ```

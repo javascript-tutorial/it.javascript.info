@@ -30,7 +30,7 @@ Ci sono tre varianti:
     // output
     alert(obj);
 
-    // using object as a property key
+    // utilizziamo un oggetto come chiave di una proprietà
     anotherObj[obj] = 123;
     ```
 
@@ -38,14 +38,14 @@ Ci sono tre varianti:
 : Quando un operazione si aspetta un numero, per una conversione oggetto-a-numero, come nel caso delle operazioni matematiche:
 
     ```js
-    // explicit conversion
+    // conversione esplicita
     let num = Number(obj);
 
-    // maths (except binary plus)
-    let n = +obj; // unary plus
+    // conversione matematica (ad eccezione per la somma binaria)
+    let n = +obj; // somma unaria
     let delta = date1 - date2;
 
-    // less/greater comparison
+    // confronto maggiore/minore
     let greater = user1 > user2;
     ```
 
@@ -55,7 +55,7 @@ Ci sono tre varianti:
     Ad esempio, la somma binaria `+` può essere utilizzata sia con le stringhe (per concatenarle) sia con i numeri (per eseguire la somma), quindi sia la conversione a stringa che quella a tipo numerico potrebbero andare bene. Oppure quando un oggetto viene confrontato usando `==` con una stringa, un numero o un symbol.
 
     ```js
-    // binary plus
+    // somma binaria
     let total = car1 + car2;
 
     // obj == string/number/symbol
@@ -82,8 +82,8 @@ Iniziamo dal primo metodo. C'è un symbol integrato denominato `Symbol.toPrimiti
 
 ```js
 obj[Symbol.toPrimitive] = function(hint) {
-  // return a primitive value
-  // hint = one of "string", "number", "default"
+  // ritorna un valore primitivo
+  // hint = uno fra "string", "number", "default"
 }
 ```
 
@@ -100,7 +100,7 @@ let user = {
   }
 };
 
-// conversions demo:
+// esempi di conversione:
 alert(user); // hint: string -> {name: "John"}
 alert(+user); // hint: number -> 1000
 alert(user + 500); // hint: default -> 1500
@@ -125,12 +125,12 @@ let user = {
   name: "John",
   money: 1000,
 
-  // for hint="string"
+  // per hint="string"
   toString() {
     return `{name: "${this.name}"}`;
   },
 
-  // for hint="number" or "default"
+  // per hint="number" or "default"
   valueOf() {
     return this.money;
   }
@@ -176,12 +176,12 @@ Ad esempio:
 
     ```js run
     let obj = {
-      toString() { // toString handles all conversions in the absence of other methods
+      toString() { // toString gestisce tutte le conversione in assenza di altri metodi
         return "2";
       }
     };
 
-    alert(obj * 2); // 4, ToPrimitive gives "2", then it becomes 2
+    alert(obj * 2); // 4, ToPrimitive ritorna "2", che successivamente diventa 2
     ```
 
 - La somma binaria controlla la primitiva -- se è una stringa, questa viene concatenata, altrimenti esegue `ToNumber` e lavora con i numeri.
@@ -194,7 +194,7 @@ Ad esempio:
       }
     };
 
-    alert(obj + 2); // 22 (ToPrimitive returned string => concatenation)
+    alert(obj + 2); // 22 (ToPrimitive ha ritornato string => concatenazione)
     ```
 
     Esempio numerico:
@@ -205,7 +205,7 @@ Ad esempio:
       }
     };
 
-    alert(obj + 2); // 3 (ToPrimitive returned boolean, not string => ToNumber)
+    alert(obj + 2); // 3 (ToPrimitive ha ritornato boolean, no string => ToNumber)
     ```
 
 ```smart header="Note storiche"

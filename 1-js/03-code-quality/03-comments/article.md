@@ -11,8 +11,8 @@ Inizialmente, l'inserimento di commenti può sembrare ovvio, ma i novizi solitam
 I novizi tendono ad utilizzare i commenti per spiegare "cosa sta succedendo nel codice". Come in questo esempio:
 
 ```js
-// This code will do this thing (...) and that thing (...)
-// ...and who knows what else...
+// Questo codice farà questa cosa (...) e questa (...)
+// ...e altre cose...
 very;
 complex;
 code;
@@ -32,7 +32,7 @@ function showPrimes(n) {
   for (let i = 2; i < n; i++) {
 
 *!*
-    // check if i is a prime number
+    // controlla se i è un numero primo
     for (let j = 2; j < i; j++) {
       if (i % j == 0) continue nextPrime;
     }
@@ -72,14 +72,14 @@ Ora possiamo capire il codice più facilmente. La funzione stessa diventa un com
 Anche se avete un lungo "pezzo di codice" come questo:
 
 ```js
-// here we add whiskey
+// qui aggiungiamo whiskey
 for(let i = 0; i < 10; i++) {
   let drop = getWhiskey();
   smell(drop);
   add(drop, glass);
 }
 
-// here we add juice
+// qui aggiungiamo della spremuta (juice)
 for(let t = 0; t < 3; t++) {
   let tomato = getTomato();
   examine(tomato);
@@ -128,11 +128,11 @@ Documentare l'utilizzo di una funzione
     Ad esempio:
     ```js
     /**
-     * Returns x raised to the n-th power.
+     * Ritorna la potenza n di x.
      *
-     * @param {number} x The number to raise.
-     * @param {number} n The power, must be a natural number.
-     * @return {number} x raised to the n-th power.
+     * @param {number} x La base della potenza.
+     * @param {number} n Esponente, deve essere un numero naturale.
+     * @return {number} x elevato alla n.
      */
     function pow(x, n) {
       ...

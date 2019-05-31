@@ -32,7 +32,7 @@ C'è un processo che lavora in background nel motore JavaScript, chiamato [garba
 Qui un esempio molto semplice:
 
 ```js
-// user has a reference to the object
+// user ha un riferimento all'oggetto
 let user = {
   name: "John"
 };
@@ -57,7 +57,7 @@ Ora John diventa irraggiungibie. Non c'è modo per accedervi, nessun riferimento
 Ora proviamo a pensare di aver copiato il riferimento da `user` su `admin`:
 
 ```js
-// user has a reference to the object
+// user ha un riferimento all'oggetto
 let user = {
   name: "John"
 };

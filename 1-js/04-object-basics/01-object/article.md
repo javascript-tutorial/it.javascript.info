@@ -15,8 +15,8 @@ Possiamo immaginare un oggetto come un archivio con dei documenti firmati. Ogni 
 Un oggetto vuoto ("archivio vuoto") può essere creato utilizzando una delle due sintassi:
 
 ```js
-let user = new Object(); // "object constructor" syntax
-let user = {};  // "object literal" syntax
+let user = new Object(); // sintassi "costruttore oggetto"
+let user = {};  // sintassi "oggetto letterale"
 ```
 
 ![](object-user-empty.png)
@@ -28,9 +28,9 @@ Solitamente vengono utilizzate le `{...}`. La dichiarazione viene chiamata *obje
 Possiamo inserire subito delle proprietà in `{...}` come una coppia "key: value":
 
 ```js
-let user = {     // an object
-  name: "John",  // by key "name" store value "John"
-  age: 30        // by key "age" store value 30
+let user = {     // un oggetto
+  name: "John",  // una chiave "name" memorizza il valore "John"
+  age: 30        // una chiave "age" memorizza 30
 };
 ```
 
@@ -50,7 +50,7 @@ Noi possiamo aggiungere, rimuovere e leggere file in qualsiasi momento.
 I valori delle proprietà sono accessibili utilizzando la notazione puntata:
 
 ```js
-// get fields of the object:
+// ottiene i campi dell'oggetto:
 alert( user.name ); // John
 alert( user.age ); // 30
 ```
@@ -77,7 +77,7 @@ Possiamo anche utilizzare nomi di proprietà composti da più parole ("multi-par
 let user = {
   name: "John",
   age: 30,
-  "likes birds": true  // multiword property name must be quoted
+  "likes birds": true  // nome di proprietà composta da più parole deve essere racchiusa tra virgolette
 };
 ```
 
@@ -97,7 +97,7 @@ Questa viene chiamata virgola di "trailing" ("trascinamento") o "hanging" ("sosp
 Per le proprietà con nomi "multi-parola", l'accesso con notazione puntata non funziona:
 
 ```js run
-// this would give a syntax error
+// questo darebbe un errore di sintassi
 user.likes birds = true
 ```
 Questo perché il punto richiede che la chiave sia un identificatore valido. Un identificatore non deve avere spazi (oltre a seguire le altre limitazioni già studiate).
@@ -125,7 +125,7 @@ Le parentesi quadre forniscono anche un modo per fornire il nome della propriet�
 ```js
 let key = "likes birds";
 
-// same as user["likes birds"] = true;
+// lo stesso di user["likes birds"] = true;
 user[key] = true;
 ```
 
@@ -141,8 +141,8 @@ let user = {
 
 let key = prompt("What do you want to know about the user?", "name");
 
-// access by variable
-alert( user[key] ); // John (if enter "name")
+// accesso tramite variabile
+alert( user[key] ); // John (se si inserisce "name")
 ```
 
 
@@ -157,11 +157,11 @@ let fruit = prompt("Which fruit to buy?", "apple");
 
 let bag = {
 *!*
-  [fruit]: 5, // the name of the property is taken from the variable fruit
+  [fruit]: 5, // il nome della proprietà viene preso dalla variabile fruit
 */!*
 };
 
-alert( bag.apple ); // 5 if fruit="apple"
+alert( bag.apple ); // 5 se fruit="apple"
 ```
 
 Il significato delle proprietà calcolate è semplice: `[fruit]` significa che il nome della proprietà deve essere preso da `fruit`.
@@ -173,7 +173,7 @@ Essenzialmente, questo funziona allo stesso modo:
 let fruit = prompt("Which fruit to buy?", "apple");
 let bag = {};
 
-// take property name from the fruit variable
+// prende il nome della proprietà dalla variabile fruit
 bag[fruit] = 5;
 ```
 
@@ -213,7 +213,7 @@ Praticamente ogni nome è consentito, ma c'è n'è uno speciale: `"__proto__"` q
 ```js run
 let obj = {};
 obj.__proto__ = 5;
-alert(obj.__proto__); // [object Object], didn't work as intended
+alert(obj.__proto__); // [object Object], non funzionerebbe
 ```
 
 Come possiamo veder dal codice, l'assegnazione alla primitiva `5` viene ignorata.
@@ -238,7 +238,7 @@ function makeUser(name, age) {
   return {
     name: name,
     age: age
-    // ...other properties
+    // ...altre proprietà
   };
 }
 
@@ -254,8 +254,8 @@ Invece che scrivere `name:name` possiamo semplicemente scrivere `name`, come in 
 function makeUser(name, age) {
 *!*
   return {
-    name, // same as name: name
-    age   // same as age: age
+    name, // equivalente a name: name
+    age   // equivalente a age: age
     // ...
   };
 */!*
@@ -265,7 +265,7 @@ Nello stesso oggetto possiamo usare entrambe ler proprietà:
 
 ```js
 let user = {
-  name,  // same as name:name
+  name,  // equivalente a name:name
   age: 30
 };
 ```
@@ -277,7 +277,7 @@ Un importante caratteristica degli oggetti è che è possibile accedere qualsias
 ```js run
 let user = {};
 
-alert( user.noSuchProperty === undefined ); // true means "no such property"
+alert( user.noSuchProperty === undefined ); // true significa "no such property"
 ```
 
 Esiste anche uno speciale operatore `"in"` per controllare l'esistenza di una proprietà.
@@ -292,8 +292,8 @@ Ad esempio:
 ```js run
 let user = { name: "John", age: 30 };
 
-alert( "age" in user ); // true, user.age exists
-alert( "blabla" in user ); // false, user.blabla doesn't exist
+alert( "age" in user ); // true, significa che user.age esiste
+alert( "blabla" in user ); // false, significa che user.blabla non esiste
 ```
 
 Da notare che alla sinistra di  `in` deve esserci il *nome di una proprietà*. Questa solitamente è una stringa tra apici.
@@ -304,7 +304,7 @@ Se omettiamo gli apici, allora verrà cercata una variabile con quel nome e verr
 let user = { age: 30 };
 
 let key = "age";
-alert( *!*key*/!* in user ); // true, takes the name from key and checks for such property
+alert( *!*key*/!* in user ); // true, prende il nome da key e controlla l'esistenza della proprietà
 ```
 
 ````smart header="Utilizzare \"in\" con le proprietà che contengono `undefined`"
@@ -317,9 +317,9 @@ let obj = {
   test: undefined
 };
 
-alert( obj.test ); // it's undefined, so - no such property?
+alert( obj.test ); // è undefined, quindi -- non esiste la proprietà?
 
-alert( "test" in obj ); // true, the property does exist!
+alert( "test" in obj ); // true, la proprietà esiste!
 ```
 
 
@@ -337,7 +337,7 @@ La sintassi:
 
 ```js
 for (key in object) {
-  // executes the body for each key among object properties
+  // esegue il corpo del ciclo per ogni proprietà dell'oggetto
 }
 ```
 
@@ -353,7 +353,7 @@ let user = {
 for (let key in user) {
   // keys
   alert( key );  // name, age, isAdmin
-  // values for the keys
+  // valori delle keys
   alert( user[key] ); // John, 30, true
 }
 ```
@@ -402,10 +402,10 @@ La "proprietà degli interi" è un termine che indica una stringa che può esser
 Quindi "49" segue la proprietà degli interi, perché quando viene trasformato in un numero intero e riportato a stringa, rimane uguale. Ad esempio "+49" e "1.2" non lo sono:
 
 ```js run
-// Math.trunc is a built-in function that removes the decimal part
-alert( String(Math.trunc(Number("49"))) ); // "49", same, integer property
-alert( String(Math.trunc(Number("+49"))) ); // "49", not same "+49" ⇒ not integer property
-alert( String(Math.trunc(Number("1.2"))) ); // "1", not same "1.2" ⇒ not integer property
+// Math.trunc è una proprietà integrata che rimuove la parte decimale
+alert( String(Math.trunc(Number("49"))) ); // "49", rimane uguale
+alert( String(Math.trunc(Number("+49"))) ); // "49", è diverso da "+49" ⇒ non è un intero
+alert( String(Math.trunc(Number("1.2"))) ); // "1", è diverso da "1.2" ⇒ non è un intero
 ```
 ````
 
@@ -416,10 +416,10 @@ let user = {
   name: "John",
   surname: "Smith"
 };
-user.age = 25; // add one more
+user.age = 25; // aggiungiamone un'altra
 
 *!*
-// non-integer properties are listed in the creation order
+// le proprietà non intere vengono elencate nell'ordine di creazione
 */!*
 for (let prop in user) {
   alert( prop ); // name, surname, age
@@ -488,7 +488,7 @@ Ad esempio:
 ```js no-beautify
 let user = { name: "John" };
 
-let admin = user; // copy the reference
+let admin = user; // copia il riferiemento
 ```
 
 Ora abbiamo due variabili, entrambe con un riferimento allo stesso oggetto:
@@ -503,7 +503,7 @@ let user = { name: 'John' };
 let admin = user;
 
 *!*
-admin.name = 'Pete'; // changed by the "admin" reference
+admin.name = 'Pete'; // modificato dal riferimento "admin" 
 */!*
 
 alert(*!*user.name*/!*); // 'Pete', changes are seen from the "user" reference
@@ -521,9 +521,9 @@ Ad esempio, due variabili che si riferiscono allo stesso oggetto, sono uguali:
 
 ```js run
 let a = {};
-let b = a; // copy the reference
+let b = a; // copia il riferimento
 
-alert( a == b ); // true, both variables reference the same object
+alert( a == b ); // true, entrambe le variabili fanno riferimento allo stesso oggetto
 alert( a === b ); // true
 ```
 
@@ -531,7 +531,7 @@ Qui invece vediamo due oggetti che non sono uguali, nonostante siano entrambi vu
 
 ```js run
 let a = {};
-let b = {}; // two independent objects
+let b = {}; // due oggetti indipendenti
 
 alert( a == b ); // false
 ```
@@ -566,7 +566,7 @@ const user = {
 };
 
 *!*
-// Error (can't reassign user)
+// Errore (non è possibili riassegnare user)
 */!*
 user = {
   name: "Pete"
@@ -594,18 +594,18 @@ let user = {
 };
 
 *!*
-let clone = {}; // the new empty object
+let clone = {}; // un nuovo oggetto vuoto
 
-// let's copy all user properties into it
+// copiamoci tutte le proprietà di user
 for (let key in user) {
   clone[key] = user[key];
 }
 */!*
 
-// now clone is a fully independent clone
-clone.name = "Pete"; // changed the data in it
+// ora clone è una copia indipendente
+clone.name = "Pete"; // cambiamo i suoi dati 
 
-alert( user.name ); // still John in the original object
+alert( user.name ); // nell'oggetto originale rimane ancora John
 ```
 
 Possiamo anche utilizzare il metodo [Object.assign](mdn:js/Object/assign).
@@ -627,11 +627,11 @@ let permissions1 = { canView: true };
 let permissions2 = { canEdit: true };
 
 *!*
-// copies all properties from permissions1 and permissions2 into user
+// copia tutte le proprietà da permissions1 e permissions2 in user
 Object.assign(user, permissions1, permissions2);
 */!*
 
-// now user = { name: "John", canView: true, canEdit: true }
+// ora user = { name: "John", canView: true, canEdit: true }
 ```
 
 Se l'oggetto destinazione (`user`) possiede già un elemento con lo stesso nome, questo verrà sovrascritto:
@@ -639,10 +639,10 @@ Se l'oggetto destinazione (`user`) possiede già un elemento con lo stesso nome,
 ```js
 let user = { name: "John" };
 
-// overwrite name, add isAdmin
+// sovrascriviamo name, add isAdmin
 Object.assign(user, { name: "Pete", isAdmin: true });
 
-// now user = { name: "Pete", isAdmin: true }
+// ora user = { name: "Pete", isAdmin: true }
 ```
 
 Possiamo anche utilizzare `Object.assign` per una semplice clonazione:
@@ -689,11 +689,11 @@ let user = {
 
 let clone = Object.assign({}, user);
 
-alert( user.sizes === clone.sizes ); // true, same object
+alert( user.sizes === clone.sizes ); // true, stesso oggetto
 
-// user and clone share sizes
-user.sizes.width++;       // change a property from one place
-alert(clone.sizes.width); // 51, see the result from the other one
+// user e clone condividono sizes
+user.sizes.width++;       // cambia una proprietà in un punto
+alert(clone.sizes.width); // 51, ed è possibile vedere il riusltato anche nel clone
 ```
 
 Per risolvere, dovremmo utilizzare il ciclo di clonazione per esaminare ogni valore di `user[key]`, e se troviamo oggetti, dovremmo replicare la struttura anche di questi. Questa viene definita "copia profonda".

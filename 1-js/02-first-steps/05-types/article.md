@@ -3,7 +3,7 @@
 Una variabile in JavaScript può contenere qualsiasi dato. Una variabile può essere di tipo stringa in un istante e successivamente ricevere un valore numerico:
 
 ```js
-// no error
+// nessun errore
 let message = "hello";
 message = 123456;
 ```
@@ -85,18 +85,18 @@ L'accento grave (backticks) sono degli apici per le "funzionalità estese". Ci c
 ```js run
 let name = "John";
 
-// embed a variable
+// variabile integrata
 alert( `Hello, *!*${name}*/!*!` ); // Hello, John!
 
-// embed an expression
-alert( `the result is *!*${1 + 2}*/!*` ); // the result is 3
+// espressione integrata
+alert( `the result is *!*${1 + 2}*/!*` ); // il risultato è 3
 ```
 
 L'espressione all'interno di `${…}` viene valutata ed il risultato diventa parte della stringa. Possiamo metterci qualsiasi cosa: una variabile come `name` oppure un espressione aritmetica come `1 + 2` o qualcosa di più complesso.
 
 Nota che questo è possibile sono tramite l'accento grave. Gli altri apici non lo consentono!
 ```js run
-alert( "the result is ${1 + 2}" ); // the result is ${1 + 2} (double quotes do nothing)
+alert( "the result is ${1 + 2}" ); // il risultato è ${1 + 2} (le virgolette non fanno nulla)
 ```
 
 Copriremo meglio le stringhe nel capitolo <info:string>.
@@ -116,8 +116,8 @@ Questo tipo viene tipicamente utilizzato per memorizzare valori si/no: `true` si
 Per esempio:
 
 ```js
-let nameFieldChecked = true; // yes, name field is checked
-let ageFieldChecked = false; // no, age field is not checked
+let nameFieldChecked = true; // si, il campo nome è spuntato
+let ageFieldChecked = false; // no, il campo age non è spuntato
 ```
 
 I valori booleani si ottengono anche come risultato di operazioni di confronto:
@@ -125,7 +125,7 @@ I valori booleani si ottengono anche come risultato di operazioni di confronto:
 ```js run
 let isGreater = 4 > 1;
 
-alert( isGreater ); // true (the comparison result is "yes")
+alert( isGreater ); // true (il risultato del confronto è "si")
 ```
 
 Copriremo i valori booleani più in dettaglio nel capitolo <info:logical-operators>.
@@ -157,7 +157,7 @@ Se una variabile viene dichiarata, ma non assegnata, il suo valore è esattament
 ```js run
 let x;
 
-alert(x); // shows "undefined"
+alert(x); // mostra "undefined"
 ```
 
 Tecnicamente, è possibile assegnare `undefined` a qualsiasi variabile:

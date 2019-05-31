@@ -46,9 +46,9 @@ In molti progetti JavaScript le parentesi graffe sono scritte con lo stile "Egiz
 
 ```js
 if (condition) {
-  // do this
-  // ...and that
-  // ...and that
+  // fai questo
+  // ...e questo
+  // ...e questo
 }
 ```
 
@@ -96,7 +96,7 @@ Ci sono due tipi di indentazione:
 
     ```js no-beautify
     show(parameters,
-         aligned, // 5 spaces padding at the left  
+         aligned, // padding di 5 spazi a sinistra
          one,
          after,
          another
@@ -142,7 +142,7 @@ Ad esempio, invece che aggiungere un `if`:
 ```js
 for (let i = 0; i < 10; i++) {
   if (cond) {
-    ... // <- one more nesting level
+    ... // <- un ulteriore livello di annidamento
   }
 }
 ```
@@ -152,7 +152,7 @@ Possiamo scriverlo come:
 ```js
 for (let i = 0; i < 10; i++) {
   if (!cond) *!*continue*/!*;
-  ...  // <- no extra nesting level
+  ...  // <- nessun ulteriore livello di annidamento
 }
 ```
 
@@ -206,7 +206,7 @@ Se state scrivendo molte funzioni "ausiliarie", ci sono tre modi per organizzarl
 1. Dichiarare le funzioni sopra il codice che le utilizza:
 
     ```js
-    // *!*function declarations*/!*
+    // *!*dichiarazione di funzioni*/!*
     function createElement() {
       ...
     }
@@ -219,7 +219,7 @@ Se state scrivendo molte funzioni "ausiliarie", ci sono tre modi per organizzarl
       ...
     }
 
-    // *!*the code which uses them*/!*
+    // *!*codice che le utilizza*/!*
     let elem = createElement();
     setHandler(elem);
     walkAround();
@@ -227,12 +227,12 @@ Se state scrivendo molte funzioni "ausiliarie", ci sono tre modi per organizzarl
 2. Prima il codice, poi le funzioni:
 
     ```js
-    // *!*the code which uses the functions*/!*
+    // *!*il codice che utilizza le funzioni*/!*
     let elem = createElement();
     setHandler(elem);
     walkAround();
 
-    // --- *!*helper functions*/!* ---
+    // --- *!*funzioni di supporto*/!* ---
     function createElement() {
       ...
     }

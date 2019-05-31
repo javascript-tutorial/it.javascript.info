@@ -17,9 +17,9 @@ Nella vita reale però cerchiamo di evitare di scrivere lunghe file di zeri per 
 In JavaScript, possiamo abbreviare un numero inserendo la lettera `"e"` con il numero di zeri a seguire:
 
 ```js run
-let billion = 1e9;  // 1 billion, literally: 1 and 9 zeroes
+let billion = 1e9;  // 1 miliardo, letteralmente: 1 e 9 zeri
 
-alert( 7.3e9 );  // 7.3 billions (7,300,000,000)
+alert( 7.3e9 );  // 7.3 miliardo (7,300,000,000)
 ```
 
 In altre parole, `"e"` moltiplica il numero `1` seguito dal numero di zeri dati.
@@ -39,7 +39,7 @@ let ms = 0.000001;
 Come prima, l'utilizzo di `"e"` può aiutare. Se volessimo evitare di scrivere esplicitamente tutti gli "0", potremmo scrivere:
 
 ```js
-let ms = 1e-6; // six zeroes to the left from 1
+let ms = 1e-6; // sei zeri alla sinistra di 1
 ```
 
 Se contiamo gli zeri in `0.000001`, ce ne sono 6. Quindi ovviamente `1e-6`.  
@@ -47,10 +47,10 @@ Se contiamo gli zeri in `0.000001`, ce ne sono 6. Quindi ovviamente `1e-6`.
 In altre parole, un numero negativo dopo `"e"` significa una divisione per 1 seguito dal numero di zeri dati:
 
 ```js
-// -3 divides by 1 with 3 zeroes
+// -3 divide 1 con 3 zeri
 1e-3 = 1 / 1000 (=0.001)
 
-// -6 divides by 1 with 6 zeroes
+// -6 divide 1 con 6 zeri
 1.23e-6 = 1.23 / 1000000 (=0.00000123)
 ```
 
@@ -62,17 +62,17 @@ Ad esempio:
 
 ```js run
 alert( 0xff ); // 255
-alert( 0xFF ); // 255 (the same, case doesn't matter)
+alert( 0xFF ); // 255 (equivalente)
 ```
 
 I sistemi binario e ottale sono utilizzati raramente, ma sono comunque supportati con l'utilizzo dei prefissi `0b` e `0o`:
 
 
 ```js run
-let a = 0b11111111; // binary form of 255
-let b = 0o377; // octal form of 255
+let a = 0b11111111; // forma binaria di 255
+let b = 0o377; // forma ottale di 255
 
-alert( a == b ); // true, the same number 255 at both sides
+alert( a == b ); // true, lo stesso numero 255 da entrambe le parti
 ```
 
 Ci sono solo 3 sistemi di numerazione con questo livello di supporto. Per gli altri sistemi, dovremmo utilizzare la funzione `parseInt` (che vedremo più avanti in questo capitolo).
@@ -170,7 +170,7 @@ Ci sono due modi per farlo:
 
     ```js run
     let num = 12.34;
-    alert( num.toFixed(5) ); // "12.34000", added zeroes to make exactly 5 digits
+    alert( num.toFixed(5) ); // "12.34000", aggiunti gli zeri per renderlo esattamente di 5 cifre decimali
     ```
 
     Possiamo convertire il risultato al tipo numerico utilizzando la somma unaria o chiamando il metodo `Number()`: `+num.toFixed(5)`.
@@ -265,8 +265,8 @@ Talvolta possiamo evitare le frazioni. Ad esempio se abbiamo a che fare con un n
 Provate ad eseguire questo:
 
 ```js run
-// Hello! I'm a self-increasing number!
-alert( 9999999999999999 ); // shows 10000000000000000
+// Ciao! Sono un numero autoincrementante!
+alert( 9999999999999999 ); // mostra 10000000000000000
 ```
 
 Questo esempio ha lo stesso problema: perdita di precisione. Per la rappresentazione di un numero sono disponibili 64bit, ne vengono utilizzati 52 per le cifre, questi potrebbero non essere sufficienti. Quindi le cifre meno significative vengono perse.
@@ -311,8 +311,8 @@ Questi appartengono al tipo `number`, ma non sono dei numeri "normali", esistono
 
     ```js run
     alert( isFinite("15") ); // true
-    alert( isFinite("str") ); // false, because a special value: NaN
-    alert( isFinite(Infinity) ); // false, because a special value: Infinity
+    alert( isFinite("str") ); // false, perché rappresenta un valore speciale: NaN
+    alert( isFinite(Infinity) ); // false, perché rappresenta un valore speciale: Infinity
     ```
 
 In alcuni casi `isFinite` viene utilizzato per verificare se una stringa qualunque è un numero:
@@ -321,7 +321,7 @@ In alcuni casi `isFinite` viene utilizzato per verificare se una stringa qualunq
 ```js run
 let num = +prompt("Enter a number", '');
 
-// will be true unless you enter Infinity, -Infinity or not a number
+// risulterà true se non verrà inserito Infinity, -Infinity o un NaN
 alert( isFinite(num) );
 ```
 
@@ -360,14 +360,14 @@ Questi metodi "leggono" numeri dalla stringa finché ne sono in grado. In caso d
 alert( parseInt('100px') ); // 100
 alert( parseFloat('12.5em') ); // 12.5
 
-alert( parseInt('12.3') ); // 12, only the integer part is returned
-alert( parseFloat('12.3.4') ); // 12.3, the second point stops the reading
+alert( parseInt('12.3') ); // 12, viene ritornata solamente la parte intera
+alert( parseFloat('12.3.4') ); // 12.3, il secondo punto interrompe la lettura
 ```
 
 Ci possono essere situazioni in cui `parseInt/parseFloat` ritornano `NaN`. Questo accade quando non viene letta nessuna cifra:
 
 ```js run
-alert( parseInt('a123') ); // NaN, the first symbol stops the process
+alert( parseInt('a123') ); // NaN, il primo simbolo interrompe la lettura
 ```
 
 ````smart header="Il secondo argomento di `parseInt(str, radix)`"
@@ -375,7 +375,7 @@ La funzione `parseInt()` possiede un secondo parametro opzionale. Questo specifi
 
 ```js run
 alert( parseInt('0xff', 16) ); // 255
-alert( parseInt('ff', 16) ); // 255, without 0x also works
+alert( parseInt('ff', 16) ); // 255, senza 0x funziona ugualmente
 
 alert( parseInt('2n9c', 36) ); // 123456
 ```
@@ -393,7 +393,7 @@ Un paio di esempi:
     ```js run
     alert( Math.random() ); // 0.1234567894322
     alert( Math.random() ); // 0.5435252343232
-    alert( Math.random() ); // ... (any random numbers)
+    alert( Math.random() ); // ... (numero casuale)
     ```
 
 `Math.max(a, b, c...)` / `Math.min(a, b, c...)`
@@ -408,7 +408,7 @@ Un paio di esempi:
 : Ritorna `n` elevato alla `power`
 
     ```js run
-    alert( Math.pow(2, 10) ); // 2 in power 10 = 1024
+    alert( Math.pow(2, 10) ); // 2 alla 10 = 1024
     ```
 
 Ci sono molte altre funzioni e costanti nell'oggetto `Math`, incluse quelle trigonometriche, che potete trovare nella [documentazione dell'oggetto Math](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math).

@@ -17,13 +17,13 @@ Prima di procedere, cerchiamo di capire la terminologia.
     *!*
     x = -x;
     */!*
-    alert( x ); // -1, unary negation was applied
+    alert( x ); // -1, viene applicata la negazione unaria
     ```
 - Un operatore è *binario* se ha due operandi. Lo stesso operatore "meno" esiste nella forma binaria:
 
     ```js run no-beautify
     let x = 1, y = 3;
-    alert( y - x ); // 2, binary minus subtracts values
+    alert( y - x ); // 2, la sottrazione binaria sottrae i valori
     ```
 
     Formalmente, stiamo parlando di due operatori diversi: la negazione unaria (un singolo operando, inverte il segno) e la sottrazione binaria (due operandi, si esegue la sottrazione).
@@ -56,7 +56,7 @@ Comunque, queste operazioni vengono eseguite da sinistra verso destra, Se ci son
 
 
 ```js run
-alert(2 + 2 + '1' ); // "41" and not "221"
+alert(2 + 2 + '1' ); // "41" non "221"
 ```
 
 La concatenazione di stringhe e la conversione è una caratteristica particolare dell'operatore binario `+`. Gli altri operatori aritmetici funzionano solamente con i numeri. Infatti convertono sempre i loro operandi a numeri.
@@ -77,7 +77,7 @@ L'operatore unario di somma `+` viene applicato ad un singolo valore, non fa nul
 Ad esempio:
 
 ```js run
-// No effect on numbers
+// Nessun effetto sui numeri
 let x = 1;
 alert( +x ); // 1
 
@@ -85,7 +85,7 @@ let y = -2;
 alert( +y ); // -2
 
 *!*
-// Converts non-numbers
+// Converte i valori non numerici
 alert( +true ); // 1
 alert( +"" );   // 0
 */!*
@@ -103,7 +103,7 @@ La somma binaria li concatena come stringhe:
 let apples = "2";
 let oranges = "3";
 
-alert( apples + oranges ); // "23", the binary plus concatenates strings
+alert( apples + oranges ); // "23", la somma binaria concatena le stringhe
 ```
 
 Se invece vogliamo trattarli come numeri, possiamo prima convertirli e successivamente sommarli:
@@ -113,11 +113,11 @@ let apples = "2";
 let oranges = "3";
 
 *!*
-// both values converted to numbers before the binary plus
+// entrambi i valori vengono convertiti a nuemri prima della solla binaria
 alert( +apples + +oranges ); // 5
 */!*
 
-// the longer variant
+// la variante più lunga
 // alert( Number(apples) + Number(oranges) ); // 5
 ```
 
@@ -213,9 +213,9 @@ Il risultato di `a % b` è il resto della divisione intera tra `a` e `b`.
 Ad esempio:
 
 ```js run
-alert( 5 % 2 ); // 1 is a remainder of 5 divided by 2
-alert( 8 % 3 ); // 2 is a remainder of 8 divided by 3
-alert( 6 % 3 ); // 0 is a remainder of 6 divided by 3
+alert( 5 % 2 ); // 1 è il resto della divisione tra 5 e 2
+alert( 8 % 3 ); // 2 è il resto della divisione tra 8 e 3
+alert( 6 % 3 ); // 0 è il resto della divisione tra 6 e 3
 ```
 
 ## Potenza **
@@ -235,8 +235,8 @@ alert( 2 ** 4 ); // 16 (2 * 2 * 2 * 2)
 L'operatore funziona anche con valori non interi di `a` e `b`, ad esempio:
 
 ```js run
-alert( 4 ** (1/2) ); // 2 (power of 1/2 is the same as a square root, that's maths)
-alert( 8 ** (1/3) ); // 2 (power of 1/3 is the same as a cubic root)
+alert( 4 ** (1/2) ); // 2 (potenza di 1/2 è equivalente alla radice quadrata, semplice matematica)
+alert( 8 ** (1/3) ); // 2 (potenza di 1/3 è equivalente alla radice cubica)
 ```
 
 ## Incremento/Decremento
@@ -251,14 +251,14 @@ Quindi, c'è un operatore speciale per questo:
 
     ```js run no-beautify
     let counter = 2;
-    counter++;      // works the same as counter = counter + 1, but is shorter
+    counter++;      // funziona alla stessa maniera di counter = counter + 1, ma in maniera più breve
     alert( counter ); // 3
     ```
 - **Decremento** `--` decrementa la variabile di 1:
 
     ```js run no-beautify
     let counter = 2;
-    counter--;      // works the same as counter = counter - 1, but is shorter
+    counter--;      // funziona in maniera equivalente a counter = counter - 1, ma è più breve da scrivere
     alert( counter ); // 1
     ```
 
@@ -292,7 +292,7 @@ Adesso proviamo ad utilizzare la forma post-fissa:
 
 ```js run
 let counter = 1;
-let a = counter++; // (*) changed ++counter to counter++
+let a = counter++; // (*) abbiamo sostituito ++counter con counter++
 
 alert(a); // *!*1*/!*
 ```
@@ -307,7 +307,7 @@ Per ricapitolare:
     let counter = 0;
     counter++;
     ++counter;
-    alert( counter ); // 2, the lines above did the same
+    alert( counter ); // 2, le righe sopra fanno la stessa cosa
     ```
 - Se l'intenzione è di incrementare il valore *e* utilizzare il valore, allora si utilizza la forma pre-fissa:
 
@@ -336,7 +336,7 @@ Confrontatelo con:
 
 ```js run
 let counter = 1;
-alert( 2 * counter++ ); // 2, because counter++ returns the "old" value
+alert( 2 * counter++ ); // 2, perché counter++ ritorna il "vecchio" valore
 ```
 
 Sebbene sia tecnicamente permesso, questa notazione rende il codice meno leggibile. Una linea che esegue più operazioni -- non è mai un bene.
@@ -386,8 +386,8 @@ Questa notazione può essere accorciata utilizzando gli operatori `+=` e `*=`:
 
 ```js run
 let n = 2;
-n += 5; // now n = 7 (same as n = n + 5)
-n *= 2; // now n = 14 (same as n = n * 2)
+n += 5; // ora n = 7 (equivale a n = n + 5)
+n *= 2; // ora n = 14 (equivale a n = n * 2)
 
 alert( n ); // 14
 ```
@@ -401,7 +401,7 @@ let n = 2;
 
 n *= 3 + 5;
 
-alert( n ); // 16  (right part evaluated first, same as n *= 8)
+alert( n ); // 16  (la parte destra viene valutata per prima, lo stesso vale per n *= 8)
 ```
 
 ## Virgola
@@ -417,7 +417,7 @@ Ad esempio:
 let a = (1 + 2, 3 + 4);
 */!*
 
-alert( a ); // 7 (the result of 3 + 4)
+alert( a ); // 7 (il risultato di 3 + 4)
 ```
 
 Qui la prima espressione `1 + 2` viene valutata, ed il suo risultato viene scartato, successivamente viene eseguito `3 + 4` e il suo risultato viene ritornato.
@@ -435,7 +435,7 @@ Qualche volta le persone lo utilizzano in costrutti  più complessi per eseguire
 Ad esempio:
 
 ```js
-// three operations in one line
+// tre operazioni in un'unica riga
 for (*!*a = 1, b = 3, c = a * b*/!*; a < 10; a++) {
  ...
 }

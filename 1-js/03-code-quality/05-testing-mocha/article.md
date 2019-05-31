@@ -118,7 +118,7 @@ Proviamo a fornire una semplice implementazione di `pow`, per passare il test:
 
 ```js
 function pow(x, n) {
-  return 8; // :) we cheat!
+  return 8; // :) abbiamo barato!
 }
 ```
 
@@ -251,7 +251,7 @@ describe("pow", function() {
   });
 */!*
 
-  // ... more tests to follow here, both describe and it can be added
+  // ... altri test
 });
 ```
 

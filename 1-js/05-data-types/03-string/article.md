@@ -36,7 +36,7 @@ let guestList = `Guests:
  * Mary
 `;
 
-alert(guestList); // a list of guests, multiple lines
+alert(guestList); // una lista di guest, in piu righe
 ```
 
 Se proviamo a utilizzare gli apici singoli o doppi allo stesso modo, otterremo un errore:
@@ -57,15 +57,15 @@ E' comunque possibile creare stringhe multilinea con singoli apici utilizzando i
 ```js run
 let guestList = "Guests:\n * John\n * Pete\n * Mary";
 
-alert(guestList); // a multiline list of guests
+alert(guestList); // una lista di guest multi riga
 ```
 
 Ad esempio, queste due funzioni portano allo stesso risultato:
 
 ```js run
-alert( "Hello\nWorld" ); // two lines using a "newline symbol"
+alert( "Hello\nWorld" ); // due righe con il simbolo "nuova riga"
 
-// two lines using a normal newline and backticks
+// due righe utilizzando le backticks
 alert( `Hello
 World` );
 ```
@@ -86,8 +86,8 @@ Esempi di unicode:
 
 ```js run
 alert( "\u00A9" ); // ©
-alert( "\u{20331}" ); // 佫, a rare chinese hieroglyph (long unicode)
-alert( "\u{1F60D}" ); // 😍, a smiling face symbol (another long unicode)
+alert( "\u{20331}" ); // 佫, un raro geroglifico cinese (long unicode)
+alert( "\u{1F60D}" ); // 😍, un simbolo di faccia sorridente (long unicode)
 ```
 
 Tutti i caratteri speciali iniziano con un backslash `\`. Che viene anche chiamato "carattere di escape".
@@ -140,11 +140,11 @@ Per ottenere un carattere alla posizione `pos`, si utilizzano le parentesi quadr
 ```js run
 let str = `Hello`;
 
-// the first character
+// il primo carattere
 alert( str[0] ); // H
 alert( str.charAt(0) ); // H
 
-// the last character
+// l'ultimo carattere
 alert( str[str.length - 1] ); // o
 ```
 
@@ -156,14 +156,14 @@ L'unica differenza sta nel comportamento in casi di carattere non trovato, `[]` 
 let str = `Hello`;
 
 alert( str[1000] ); // undefined
-alert( str.charAt(1000) ); // '' (an empty string)
+alert( str.charAt(1000) ); // '' (una stringa vuota)
 ```
 
 Possiamo iterare sui caratteri utilizzando `for..of`:
 
 ```js run
 for (let char of "Hello") {
-  alert(char); // H,e,l,l,o (char becomes "H", then "e", then "l" etc)
+  alert(char); // H,e,l,l,o (char diventa "H", poi "e", poi "l" etc)
 }
 ```
 
@@ -176,8 +176,8 @@ Possiamo anche provare a modificarla per vedere che non funziona:
 ```js run
 let str = 'Hi';
 
-str[0] = 'h'; // error
-alert( str[0] ); // doesn't work
+str[0] = 'h'; // errore
+alert( str[0] ); // non funziona
 ```
 
 Il metodo utilizzato per aggirare questo problema è creare una nuova stringa ed assegnarla a `str` sostituendo quella vecchia.
@@ -187,7 +187,7 @@ Ad esemepio:
 ```js run
 let str = 'Hi';
 
-str = 'h' + str[1];  // replace the string
+str = 'h' + str[1];  // rimpiazza str
 
 alert( str ); // hi
 ```
@@ -224,10 +224,10 @@ Ad esempio:
 ```js run
 let str = 'Widget with id';
 
-alert( str.indexOf('Widget') ); // 0, because 'Widget' is found at the beginning
-alert( str.indexOf('widget') ); // -1, not found, the search is case-sensitive
+alert( str.indexOf('Widget') ); // 0, perché 'Widget' è stato trovato all'inizio
+alert( str.indexOf('widget') ); // -1, non trovato, la ricerca è case-sensitive
 
-alert( str.indexOf("id") ); // 1, "id" is found at the position 1 (..idget with id)
+alert( str.indexOf("id") ); // 1, "id" è stato trovato alla posizione di indice 1 
 ```
 
 Il secondo parametro opzionale ci consente di cercare a partire dalla posizione fornita.
@@ -247,7 +247,7 @@ Se siamo interessati a tutte le occorrenze, possiamo utilizzare `indexOf` in un 
 ```js run
 let str = 'As sly as a fox, as strong as an ox';
 
-let target = 'as'; // let's look for it
+let target = 'as'; // procediamo con la ricerca
 
 let pos = 0;
 while (true) {
@@ -255,7 +255,7 @@ while (true) {
   if (foundPos == -1) break;
 
   alert( `Found at ${foundPos}` );
-  pos = foundPos + 1; // continue the search from the next position
+  pos = foundPos + 1; // continua la ricerca a partire dalla prossima posizio
 }
 ```
 
@@ -285,7 +285,7 @@ C'è solo un piccolo inconveniente con `indexOf` nei test `if`. Non possiamo ins
 let str = "Widget with id";
 
 if (str.indexOf("Widget")) {
-    alert("We found it"); // doesn't work!
+    alert("We found it"); // non funziona!
 }
 ```
 
@@ -299,7 +299,7 @@ let str = "Widget with id";
 *!*
 if (str.indexOf("Widget") != -1) {
 */!*
-    alert("We found it"); // works now!
+    alert("We found it"); // ora funziona!
 }
 ```
 
@@ -311,11 +311,11 @@ Per gli interi in 32bit la chiamata `~n` ha lo stesso risultato di `-(n+1)` (a c
 Ad esempio:
 
 ```js run
-alert( ~2 ); // -3, the same as -(2+1)
-alert( ~1 ); // -2, the same as -(1+1)
-alert( ~0 ); // -1, the same as -(0+1)
+alert( ~2 ); // -3, lo stesso di -(2+1)
+alert( ~1 ); // -2, lo stesso di -(1+1)
+alert( ~0 ); // -1, lo stesso di -(0+1)
 *!*
-alert( ~-1 ); // 0, the same as -(-1+1)
+alert( ~-1 ); // 0, lo stesso di -(-1+1)
 */!*
 ```
 
@@ -329,7 +329,7 @@ Le persone lo utilizzano per abbreviare i controlli con `indexOf`:
 let str = "Widget";
 
 if (~str.indexOf("Widget")) {
-  alert( 'Found it!' ); // works
+  alert( 'Found it!' ); // funziona
 }
 ```
 
@@ -354,14 +354,14 @@ Il secondo argomento opzionale di `str.includes` è la posizioni da cui iniziare
 
 ```js run
 alert( "Midget".includes("id") ); // true
-alert( "Midget".includes("id", 3) ); // false, from position 3 there is no "id"
+alert( "Midget".includes("id", 3) ); // false, dalla posizione 3 non c'è "id"
 ```
 
 I metodi [str.startsWith](mdn:js/String/startsWith) e [str.endsWith](mdn:js/String/endsWith) fanno esattamente ciò che dicono i loro nomi:
 
 ```js run
-alert( "Widget".startsWith("Wid") ); // true, "Widget" starts with "Wid"
-alert( "Widget".endsWith("get") );   // true, "Widget" ends with "get"
+alert( "Widget".startsWith("Wid") ); // true, "Widget" inizia con "Wid"
+alert( "Widget".endsWith("get") );   // true, "Widget" finisce con "get"
 ```
 
 ## Estrarre una sotto-stringa
@@ -375,15 +375,15 @@ Ci sono 3 metodi in JavaScript per estrarre una sotto-stringa: `substring`, `sub
 
     ```js run
     let str = "stringify";
-    alert( str.slice(0, 5) ); // 'strin', the substring from 0 to 5 (not including 5)
-    alert( str.slice(0, 1) ); // 's', from 0 to 1, but not including 1, so only character at 0
+    alert( str.slice(0, 5) ); // 'strin', la sottostringa da 0 a 5 (escluso 5)
+    alert( str.slice(0, 1) ); // 's', da 0 a 1, escluso 1, quindi solamente il carattere 0
     ```
 
     Se non c'è un secondo argomento, allora `slice` si ferma alla fine della stringa:
 
     ```js run
     let str = "st*!*ringify*/!*";
-    alert( str.slice(2) ); // ringify, from the 2nd position till the end
+    alert( str.slice(2) ); // ringify, dalla seconda posizione fino alla fine
     ```
 
     Sono possibili anche valori negativi per `start/end`. Questo significa che la posizione verrà contata a partire dalla fine della stringa:
@@ -391,7 +391,7 @@ Ci sono 3 metodi in JavaScript per estrarre una sotto-stringa: `substring`, `sub
     ```js run
     let str = "strin*!*gif*/!*y";
 
-    // start at the 4th position from the right, end at the 1st from the right
+    // incomincia dalla 4 posizione a partire da destra, e si termina alla prima a partire da destra
     alert( str.slice(-4, -1) ); // gif
     ```
 
@@ -407,13 +407,13 @@ Ci sono 3 metodi in JavaScript per estrarre una sotto-stringa: `substring`, `sub
     ```js run
     let str = "st*!*ring*/!*ify";
 
-    // these are same for substring
+    // questi sono identici per substring
     alert( str.substring(2, 6) ); // "ring"
     alert( str.substring(6, 2) ); // "ring"
 
-    // ...but not for slice:
-    alert( str.slice(2, 6) ); // "ring" (the same)
-    alert( str.slice(6, 2) ); // "" (an empty string)
+    // ...non per slice:
+    alert( str.slice(2, 6) ); // "ring" (lo stesso)
+    alert( str.slice(6, 2) ); // "" (una stringa vuota)
 
     ```
 
@@ -427,14 +427,14 @@ Ci sono 3 metodi in JavaScript per estrarre una sotto-stringa: `substring`, `sub
 
     ```js run
     let str = "st*!*ring*/!*ify";
-    alert( str.substr(2, 4) ); // ring, from the 2nd position get 4 characters
+    alert( str.substr(2, 4) ); // ring, dalla seconda posizione prende 4 caratteri
     ```
 
     Il primo argomento può anche essere negativo come con slice:
 
     ```js run
     let str = "strin*!*gi*/!*fy";
-    alert( str.substr(-4, 2) ); // gi, from the 4th position get 2 characters
+    alert( str.substr(-4, 2) ); // gi, dalla quarta posizione prende 4 caratteri
     ```
 
 Ricapitoliamo questi metodi per evitare confusione:
@@ -480,7 +480,7 @@ Tutte le stringhe vengono codificate utilizzando [UTF-16](https://en.wikipedia.o
 : Ritorna il codice per il carattere alla posizione `pos`:
 
     ```js run
-    // different case letters have different codes
+    // lettere di timbro differente possiedono codici differenti
     alert( "z".codePointAt(0) ); // 122
     alert( "Z".codePointAt(0) ); // 90
     ```
@@ -495,7 +495,7 @@ Tutte le stringhe vengono codificate utilizzando [UTF-16](https://en.wikipedia.o
     Possiamo anche aggiungere caratteri unicode tramite il loro codice utilizzando `\u` seguito dal codice esadecimale:
 
     ```js run
-    // 90 is 5a in hexadecimal system
+    // 90 è 5a nel istema esadecimale
     alert( '\u005a' ); // Z
     ```
 
@@ -563,9 +563,9 @@ Ma con 2 byte sono consentite solamente 65536 combinazioni, non sono comunque su
 La lunghezza di questi simboli è `2`:
 
 ```js run
-alert( '𝒳'.length ); // 2, MATHEMATICAL SCRIPT CAPITAL X
-alert( '😂'.length ); // 2, FACE WITH TEARS OF JOY
-alert( '𩷶'.length ); // 2, a rare chinese hieroglyph
+alert( '𝒳'.length ); // 2, X matematica
+alert( '😂'.length ); // 2, faccia con lacrime di felicità
+alert( '𩷶'.length ); // 2, un raro geroglifico cinese
 ```
 
 Da notare che le coppie surrogate non esistevano al momento della creazione di JavaScript, non vengono quindi processate correttamente dal linguaggio!
@@ -577,8 +577,8 @@ In realtà abbiamo un solo simbolo in ogni stringa sopra, ma la `length` vale `2
 Però cercare di ottenere un simbolo può essere difficile, perché una coppia surrogata viene trattata come due caratteri:
 
 ```js run
-alert( '𝒳'[0] ); // strange symbols...
-alert( '𝒳'[1] ); // ...pieces of the surrogate pair
+alert( '𝒳'[0] ); // uno strano simbolo...
+alert( '𝒳'[1] ); // ...parte di una coppia surrogata
 ```
 
 Da notare che un pezzo di una coppia surrogata non ha alcun senza l'altro. Quindi nell'esempio sopra verrà mostrata "spazzatura".
@@ -588,10 +588,10 @@ Tecnicamente, le coppie surrogate sono decifrabili anche per i loro codici: se i
 Nell'esempio sopra:
 
 ```js run
-// charCodeAt is not surrogate-pair aware, so it gives codes for parts
+// charCodeAt non è consapevole delle coppie surrogate, quindi fornisce i codici delle due parti
 
-alert( '𝒳'.charCodeAt(0).toString(16) ); // d835, between 0xd800 and 0xdbff
-alert( '𝒳'.charCodeAt(1).toString(16) ); // dcb3, between 0xdc00 and 0xdfff
+alert( '𝒳'.charCodeAt(0).toString(16) ); // d835, tra 0xd800 e 0xdbff
+alert( '𝒳'.charCodeAt(1).toString(16) ); // dcb3, tra 0xdc00 e 0xdfff
 ```
 
 Nel capitolo <info:iterable> troverete molti altri modi per operare con le coppie surrogate. Ci sono anche delle librerie dedicate, ma nulla di abbastanza completo da meritare di essere menzionato.
@@ -625,8 +625,8 @@ Questo consente una grande flessibilità, ma crea anche un potenziale problema: 
 Ad esempio:
 
 ```js run
-alert( 'S\u0307\u0323' ); // Ṩ, S + dot above + dot below
-alert( 'S\u0323\u0307' ); // Ṩ, S + dot below + dot above
+alert( 'S\u0307\u0323' ); // Ṩ, S + punto sopra + punto sotto
+alert( 'S\u0323\u0307' ); // Ṩ, S + punto sotto + punto sopra
 
 alert( 'S\u0307\u0323' == 'S\u0323\u0307' ); // false
 ```

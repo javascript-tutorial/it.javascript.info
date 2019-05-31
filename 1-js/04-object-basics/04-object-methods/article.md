@@ -48,12 +48,12 @@ let user = {
 };
 
 *!*
-// first, declare
+// prima la dichiaramo
 function sayHi() {
   alert("Hello!");
 };
 
-// then add as a method
+// poi la aggiungiamo come metodo
 user.sayHi = sayHi;
 */!*
 
@@ -70,7 +70,7 @@ OOP è una grande cosa, un ambito di interesse con i propri studi. Come sceglier
 Esiste una sintassi più breve per i metodi in un oggetto letterale:
 
 ```js
-// these objects do the same
+// questi oggetti sono la stessa cosa
 
 let user = {
   sayHi: function() {
@@ -78,10 +78,10 @@ let user = {
   }
 };
 
-// method shorthand looks better, right?
+// la sintassi più breve risulta più carina
 let user = {
 *!*
-  sayHi() { // same as "sayHi: function()"
+  sayHi() { // equivalente a "sayHi: function()"
 */!*
     alert("Hello");
   }
@@ -131,7 +131,7 @@ let user = {
 
   sayHi() {
 *!*
-    alert(user.name); // "user" instead of "this"
+    alert(user.name); // "user" piuttosto di "this"
 */!*
   }
 
@@ -149,7 +149,7 @@ let user = {
 
   sayHi() {
 *!*
-    alert( user.name ); // leads to an error
+    alert( user.name ); // porta ad un errore
 */!*
   }
 
@@ -157,9 +157,9 @@ let user = {
 
 
 let admin = user;
-user = null; // overwrite to make things obvious
+user = null; // sovrascriviamo per rendere tutto più ovvio
 
-admin.sayHi(); // Whoops! inside sayHi(), the old name is used! error!
+admin.sayHi(); // Whoops! all'interno di sayHi(), viene utilizzato il vecchio name! Errore!
 ```
 
 Se scriviamo `this.name` piuttosto di `user.name` all'interno di `alert`, il codice funzionerà.
@@ -189,17 +189,17 @@ function sayHi() {
 }
 
 *!*
-// use the same functions in two objects
+// utilizzare le stesse funzioni su due oggetti
 user.f = sayHi;
 admin.f = sayHi;
 */!*
 
-// these calls have different this
-// "this" inside the function is the object "before the dot"
+// queste chiamate hanno un this diverso
+// "this" all'interno della funzione è riferito all'oggetto "prima del punto"
 user.f(); // John  (this == user)
 admin.f(); // Admin  (this == admin)
 
-admin['f'](); // Admin (dot or square brackets access the method – doesn't matter)
+admin['f'](); // Admin (il punto o le parentesi quadre forniscono entrambi accesso ai metodi - non c'è differenza)
 ```
 
 In realtà potremmo chiamare la funzione anche senza un oggetto:
@@ -245,11 +245,11 @@ let user = {
   bye() { alert("Bye"); }
 };
 
-user.hi(); // John (the simple call works)
+user.hi(); // John (la chiamata semplice funzione)
 
 *!*
-// now let's call user.hi or user.bye depending on the name
-(user.name == "John" ? user.hi : user.bye)(); // Error!
+// ora proviamo a chiamare user.hi o user.bye in base a name
+(user.name == "John" ? user.hi : user.bye)(); // Errore!
 */!*
 ```
 
@@ -264,7 +264,7 @@ user.hi();
 
 Questo non funziona (valutazione del metodo):
 ```js
-(user.name == "John" ? user.hi : user.bye)(); // Error!
+(user.name == "John" ? user.hi : user.bye)(); // Errore!
 ```
 
 Perché? Se voglia capire perché accade questo, dobbiamo capire come funziona la chiamata `obj.method()`.
@@ -285,9 +285,9 @@ let user = {
 }
 
 *!*
-// split getting and calling the method in two lines
+// preleviamo la funzione e la invochiamo successivamente
 let hi = user.hi;
-hi(); // Error, because this is undefined
+hi(); // Errore, perhcé this è undefined
 */!*
 ```
 

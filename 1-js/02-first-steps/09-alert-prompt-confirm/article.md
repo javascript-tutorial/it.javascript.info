@@ -47,7 +47,7 @@ Ad esempio:
 ```js run
 let age = prompt('How old are you?', 100);
 
-alert(`You are ${age} years old!`); // You are 100 years old!
+alert(`You are ${age} years old!`); // Tu hai 100 anni!
 ```
 
 ````warn header="IE: inserisce sempre un valore `default`"
@@ -62,7 +62,7 @@ let test = prompt("Test");
 Quindi, per farlo funzionare ugualmente su IE, è consigliato fornire sempre il secondo argomento:
 
 ```js run
-let test = prompt("Test", ''); // <-- for IE
+let test = prompt("Test", ''); // <-- per IE
 ```
 ````
 
@@ -83,7 +83,7 @@ Ad esempio:
 ```js run
 let isBoss = confirm("Are you the boss?");
 
-alert( isBoss ); // true if OK is pressed
+alert( isBoss ); // true se viene premuto OK
 ```
 
 ## Riepilogo

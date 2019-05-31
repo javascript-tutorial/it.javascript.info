@@ -43,7 +43,7 @@ Ricordiamo le regole di conversione viste nel capitolo <info:type-conversions>:
 Quindi, il codice nell'esempio qui sotto, non verrà mai eseguito:
 
 ```js
-if (0) { // 0 is falsy
+if (0) { // 0 è falso
   ...
 }
 ```
@@ -51,7 +51,7 @@ if (0) { // 0 is falsy
 ...Invece nel prossimo esempio -- verrà eseguito sempre:
 
 ```js
-if (1) { // 1 is truthy
+if (1) { // 1 è vero
   ...
 }
 ```
@@ -59,7 +59,7 @@ if (1) { // 1 is truthy
 Possiamo anche passare un valore già valutato in precedenza su un `if`, come qui:
 
 ```js
-let cond = (year == 2015); // equality evaluates to true or false
+let cond = (year == 2015); // l'uguaglianza diventa vera o falsa
 
 if (cond) {
   ...
@@ -77,7 +77,7 @@ let year = prompt('In which year was the ECMAScript-2015 specification published
 if (year == 2015) {
   alert( 'You guessed it right!' );
 } else {
-  alert( 'How can you be so wrong?' ); // any value except 2015
+  alert( 'How can you be so wrong?' ); // qualsiasi valore tranne 2015
 }
 ```
 
@@ -146,8 +146,8 @@ Tecnicamente, potremmo omettere le parentesi su `age > 18`. L'operatore ternario
 Questo esempio porta allo stesso risultato di quello precedente:
 
 ```js
-// the comparison operator "age > 18" executes first anyway
-// (no need to wrap it into parentheses)
+// l'operatore di confronto "age > 18" viene eseguito per primo
+// (non c'è bisogno di racchiuderlo tra parentesi)
 let accessAllowed = age > 18 ? true : false;
 ```
 

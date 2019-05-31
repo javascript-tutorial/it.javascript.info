@@ -24,7 +24,7 @@ Adesso possiamo inserirci dati utilizzando l'operatore di assegnazione `=`:
 let message;
 
 *!*
-message = 'Hello'; // store the string
+message = 'Hello'; // memorizzazione della stringa
 */!*
 ```
 
@@ -35,14 +35,14 @@ let message;
 message = 'Hello!';
 
 *!*
-alert(message); // shows the variable content
+alert(message); // mostra il contenuto della variabile
 */!*
 ```
 
 Per essere precisi, potremmo unire la dichiarazione e l'assegnazione in una singola riga:
 
 ```js run
-let message = 'Hello!'; // define the variable and assign the value
+let message = 'Hello!'; // definisce la variabile e gli assegna il valore
 
 alert(message); // Hello!
 ```
@@ -109,7 +109,7 @@ let message;
 
 message = 'Hello!';
 
-message = 'World!'; // value changed
+message = 'World!'; // il valore è cambiato
 
 alert(message);
 ```
@@ -125,11 +125,11 @@ let hello = 'Hello world!';
 let message;
 
 *!*
-// copy 'Hello world' from hello into message
+// copia 'Hello world' da hello in message
 message = hello;
 */!*
 
-// now two variables hold the same data
+// ora le due variabili contengono gli stessi dati
 alert(hello); // Hello world!
 alert(message); // Hello world!
 ```
@@ -163,8 +163,8 @@ Una cosa interessante è che -- il simbolo del dollaro `'$'` e l'underscore `'_'
 Ad esempio questi nomi sono validi:
 
 ```js run untrusted
-let $ = 1; // declared a variable with the name "$"
-let _ = 2; // and now a variable with the name "_"
+let $ = 1; // dichiarata una variabile con nome "$"
+let _ = 2; // qui una variabile con nome "_"
 
 alert($ + _); // 3
 ```
@@ -172,9 +172,9 @@ alert($ + _); // 3
 Questi invece non lo sono:
 
 ```js no-beautify
-let 1a; // cannot start with a digit
+let 1a; // non può cominciare con una stringa
 
-let my-name; // hyphens '-' aren't allowed in the name
+let my-name; // '-' non è consentito nei nomi
 ```
 
 ```smart header="La questione delle lettere"
@@ -200,8 +200,8 @@ Per esempio, le parole `let`, `class`, `return`, `function` sono riservate.
 Questo codice provocherà un errore di sintassi:
 
 ```js run no-beautify
-let let = 5; // can't name a variable "let", error!
-let return = 5; // also can't name it "return", error!
+let let = 5; // non è possibile chiamare una variabile "let", errore!
+let return = 5; // nemmeno "return", errore!
 ```
 ````
 
@@ -210,9 +210,9 @@ let return = 5; // also can't name it "return", error!
 Normalmente, abbiamo bisogno di definire variabili prima di utilizzarle. Ma una volta, era possibile definire una variabile semplicemente assegnandogli un valore, senza `let`. Questo è ancora possibile se non utilizziamo `use strict`. E' necessario per mantenere la compatibilità con i vecchi script.
 
 ```js run no-strict
-// note: no "use strict" in this example
+// da notare: no si utilizza "use strict" in questo esempio
 
-num = 5; // the variable "num" is created if it didn't exist
+num = 5; // la variabile "num" se non esiste già
 
 alert(num); // 5
 ```
@@ -223,7 +223,7 @@ Questa però è una pessima pratica, che causerebbe un errore in strict mode:
 "use strict";
 
 *!*
-num = 5; // error: num is not defined
+num = 5; // errore: num non è definita
 */!*
 ```
 ````
@@ -241,7 +241,7 @@ Le variabili dichiarate con `const` vengono chiamate "costanti". Non possono cam
 ```js run
 const myBirthday = '18.04.1982';
 
-myBirthday = '01.01.2001'; // error, can't reassign the constant!
+myBirthday = '01.01.2001'; // errore, non è possibile riassegnare la costante!
 ```
 Quando il programmatore è sicuro che il valore della variabile non cambierà mai, può utilizzare `const` per soddisfare questa esigenza, e metterlo anche in mostra a tutti gli altri.
 
@@ -259,7 +259,7 @@ const COLOR_GREEN = "#0F0";
 const COLOR_BLUE = "#00F";
 const COLOR_ORANGE = "#FF7F00";
 
-// ...when we need to pick a color
+// ...quando abbiamo bisogno di prelevare un colore
 let color = COLOR_ORANGE;
 alert(color); // #FF7F00
 ```
@@ -276,7 +276,7 @@ Essere una "costante" significa che il valore non potrà mai cambiare. Ci sono c
 
 Per esempio:
 ```js
-const pageLoadTime = /* time taken by a webpage to load */;
+const pageLoadTime = /* tempo necessario da una pagina web per caricare */;
 ```
 Il valore di `pageLoadTime` non è noto prima del caricamento della pagina, quindi viene trattato come una normale variabile. Ma rimane comunque una costante, perchè non potrà più cambiare dopo che gli sarà stato assegnato un valore.
 

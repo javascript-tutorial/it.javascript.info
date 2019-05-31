@@ -15,7 +15,7 @@ Per esempio:
 ```js
 "use strict";
 
-// this code works the modern way
+// questo codice viene eseguito secondo gli standard moderni
 ...
 ```
 
@@ -30,11 +30,11 @@ Qui non si attiva la modalità strict:
 
 ```js no-strict
 alert("some code");
-// "use strict" below is ignored--it must be at the top
+// "use strict" qui sotto viene ignorato -- la dichiarazione deve stare sempre in cima
 
 "use strict";
 
-// strict mode is not activated
+// strict mode non è attiva
 ```
 
 Solo i commenti possono apparire prima di `"use strict"`.

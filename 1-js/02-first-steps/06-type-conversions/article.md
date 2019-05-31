@@ -23,7 +23,7 @@ let value = true;
 alert(typeof value); // boolean
 
 *!*
-value = String(value); // now value is a string "true"
+value = String(value); // ora value è una stringa contenente "true"
 alert(typeof value); // string
 */!*
 ```
@@ -46,7 +46,7 @@ Possiamo utilizzare la funzione `Number(value)` per convertire esplicitamente un
 let str = "123";
 alert(typeof str); // string
 
-let num = Number(str); // becomes a number 123
+let num = Number(str); // diventa il numero 123
 
 alert(typeof num); // number
 ```
@@ -58,7 +58,7 @@ Se la stringa non risulta essere un numero valido, il risultato della conversion
 ```js run
 let age = Number("an arbitrary string instead of a number");
 
-alert(age); // NaN, conversion failed
+alert(age); // NaN, conversione fallita
 ```
 
 Le regole di conversione numerica:
@@ -74,7 +74,7 @@ Esempi:
 
 ```js run
 alert( Number("   123   ") ); // 123
-alert( Number("123z") );      // NaN (error reading a number at "z")
+alert( Number("123z") );      // NaN (errore nella lettura del numero "z")
 alert( Number(true) );        // 1
 alert( Number(false) );       // 0
 ```
@@ -120,7 +120,7 @@ Alcun linguaggi (come il PHP) trattano `"0"` come `false`. Diversamente in JavaS
 
 ```js run
 alert( Boolean("0") ); // true
-alert( Boolean(" ") ); // spaces, also true (any non-empty string is true)
+alert( Boolean(" ") ); // spazi, valgono true (qualsiasi stringa non buota viene interpretata come true)
 ```
 ````
 

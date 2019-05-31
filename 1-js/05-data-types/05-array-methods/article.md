@@ -22,11 +22,11 @@ Gli array sono oggetti, quindi possiamo provare ad utilizzare `delete`:
 ```js run
 let arr = ["I", "go", "home"];
 
-delete arr[1]; // remove "go"
+delete arr[1]; // rimuove "go"
 
 alert( arr[1] ); // undefined
 
-// now arr = ["I",  , "home"];
+// ora arr = ["I",  , "home"];
 alert( arr.length ); // 3
 ```
 
@@ -54,7 +54,7 @@ Proviamo ad eliminare degli elementi:
 let arr = ["I", "study", "JavaScript"];
 
 *!*
-arr.splice(1, 1); // from index 1 remove 1 element
+arr.splice(1, 1); // a partire da indice 1 rimuove 1 elemento
 */!*
 
 alert( arr ); // ["I", "JavaScript"]
@@ -67,10 +67,10 @@ Nel prossimo esempio, rimuoviamo 3 elementi e li rimpiazziamo con altri due:
 ```js run
 let arr = [*!*"I", "study", "JavaScript",*/!* "right", "now"];
 
-// remove 3 first elements and replace them with another
+// rimuove i primi 3 elementi e li rimpiazza con altri
 arr.splice(0, 3, "Let's", "dance");
 
-alert( arr ) // now [*!*"Let's", "dance"*/!*, "right", "now"]
+alert( arr ) // ora [*!*"Let's", "dance"*/!*, "right", "now"]
 ```
 
 Possiamo vedere l'array ritornato da `splice` contenente gli elementi rimossi:
@@ -78,10 +78,10 @@ Possiamo vedere l'array ritornato da `splice` contenente gli elementi rimossi:
 ```js run
 let arr = [*!*"I", "study",*/!* "JavaScript", "right", "now"];
 
-// remove 2 first elements
+// rimuove i primi 2 elementi
 let removed = arr.splice(0, 2);
 
-alert( removed ); // "I", "study" <-- array of removed elements
+alert( removed ); // "I", "study" <-- array di elementi rimossi
 ```
 
 Il metodo `splice` è anche in grado di inserire elementi senza alcuna rimozione. Per ottenere questo dobbiamo impostare `deleteCount` a `0`:
@@ -89,9 +89,9 @@ Il metodo `splice` è anche in grado di inserire elementi senza alcuna rimozione
 ```js run
 let arr = ["I", "study", "JavaScript"];
 
-// from index 2
-// delete 0
-// then insert "complex" and "language"
+// da indice 2
+// ne rimuove 0
+// poi inserisce "complex" e "language"
 arr.splice(2, 0, "complex", "language");
 
 alert( arr ); // "I", "study", "complex", "language", "JavaScript"
@@ -103,9 +103,9 @@ In questo come in altri metodi dedicati agli array, sono permessi indici negativ
 ```js run
 let arr = [1, 2, 5];
 
-// from index -1 (one step from the end)
-// delete 0 elements,
-// then insert 3 and 4
+// dall'indice -1 (un passo dalla fine)
+// cancella 0 elementi,
+// poi inserice 3 e 4
 arr.splice(-1, 0, 3, 4);
 
 alert( arr ); // 1,2,3,4,5
@@ -160,13 +160,13 @@ Un esempio:
 ```js run
 let arr = [1, 2];
 
-// merge arr with [3,4]
+// unisce arr con [3,4]
 alert( arr.concat([3, 4])); // 1,2,3,4
 
-// merge arr with [3,4] and [5,6]
+// unisce arr con [3,4] e [5,6]
 alert( arr.concat([3, 4], [5, 6])); // 1,2,3,4,5,6
 
-// merge arr with [3,4], then add values 5 and 6
+// unisce arr con [3,4], poi aggiunge i valori 5 e 6
 alert( arr.concat([3, 4], 5, 6)); // 1,2,3,4,5,6
 ```
 
@@ -208,14 +208,14 @@ Il metodo [arr.forEach](mdn:js/Array/forEach) consente di eseguire una funzione 
 La sintassi:
 ```js
 arr.forEach(function(item, index, array) {
-  // ... do something with item
+  // ... fa qualcosa con l'elemento
 });
 ```
 
 Ad esempio, il codice sotto mostra ogni elemento dell'array:
 
 ```js run
-// for each element call alert
+// per ogni elemento chiama alert
 ["Bilbo", "Gandalf", "Nazgul"].forEach(alert);
 ```
 
@@ -262,8 +262,8 @@ Inoltre, una piccola differenza è che `includes` gestisce correttamente `NaN`, 
 
 ```js run
 const arr = [NaN];
-alert( arr.indexOf(NaN) ); // -1 (should be 0, but === equality doesn't work for NaN)
-alert( arr.includes(NaN) );// true (correct)
+alert( arr.indexOf(NaN) ); // -1 (dovrebbe essere 0, ma l'uguaglianza === non funziona con NaN)
+alert( arr.includes(NaN) );// true (corretto)
 ```
 
 ### find and findIndex
@@ -275,8 +275,8 @@ In questi casi si utilizza il metodo [arr.find](mdn:js/Array/find).
 La sintassi è:
 ```js
 let result = arr.find(function(item, index, array) {
-  // if true is returned, item is returned and iteration is stopped
-  // for falsy scenario returns undefined
+  // se viene ritornato true, viene ritornato l'elemento e l'iterazione si ferma
+  // altrimenti ritorna undeined
 });
 ```
 
@@ -318,8 +318,8 @@ La sintassi è pressoché la stessa di `find`, ma ritorna un array contenente tu
 
 ```js
 let results = arr.filter(function(item, index, array) {
-  // if true item is pushed to results and iteration continues
-  // returns empty array for complete falsy scenario
+  // se viene messo un item true su results e l'iteazione continua
+  // ritorna un array vuoto per uno scenario falso
 });
 ```
 
@@ -332,7 +332,7 @@ let users = [
   {id: 3, name: "Mary"}
 ];
 
-// returns array of the first two users
+// ritorna un array dei primi due users
 let someUsers = users.filter(item => item.id < 3);
 
 alert(someUsers.length); // 2
@@ -350,7 +350,7 @@ La sintassi è:
 
 ```js
 let result = arr.map(function(item, index, array) {
-  // returns the new value instead of item
+  // ritorna il nuovo valore piuttosto di item
 })
 ```
 
@@ -372,7 +372,7 @@ Ad esempio:
 ```js run
 let arr = [ 1, 2, 15 ];
 
-// the method reorders the content of arr (and returns it)
+// il metodo riordina il contenuto di arr (e lo ritorna)
 arr.sort();
 
 alert( arr );  // *!*1, 15, 2*/!*
@@ -485,7 +485,7 @@ let names = 'Bilbo, Gandalf, Nazgul';
 let arr = names.split(', ');
 
 for (let name of arr) {
-  alert( `A message to ${name}.` ); // A message to Bilbo  (and other names)
+  alert( `A message to ${name}.` ); // A message to Bilbo (e altri name)
 }
 ```
 
@@ -586,7 +586,7 @@ Possiamo anche omettere il valore iniziale:
 ```js run
 let arr = [1, 2, 3, 4, 5];
 
-// removed initial value from reduce (no 0)
+// rimosso il valore iniziale da rimuover (no 0)
 let result = arr.reduce((sum, current) => sum + current);
 
 alert( result ); // 15
@@ -603,8 +603,8 @@ Vediamo un esempio:
 ```js run
 let arr = [];
 
-// Error: Reduce of empty array with no initial value
-// if the initial value existed, reduce would return it for the empty arr.
+// Errore: Riduzione di un array vuoto senza valore iniziale
+// se il valore iniziale esistesse, reduce lo restituirebbe all'array vuoto.
 arr.reduce((sum, current) => sum + current);
 ```
 
@@ -622,7 +622,7 @@ Quindi `typeof` non aiuta a distinguere un oggetto da un array:
 
 ```js run
 alert(typeof {}); // object
-alert(typeof []); // same
+alert(typeof []); // lo stesso
 ```
 
 ...Ma vengono utilizzati cosi spesso che esiste un metodo dedicato per farlo: [Array.isArray(value)](mdn:js/Array/isArray). Ritorna `true` se `value` è un array, `false` altrimenti.
@@ -646,7 +646,7 @@ arr.find(func, thisArg);
 arr.filter(func, thisArg);
 arr.map(func, thisArg);
 // ...
-// thisArg is the optional last argument
+// thisArg è l'ultimo argomento opzionale
 ```
 
 Il valore del parametro `thisArg` diventa `this` per `func`.
@@ -668,7 +668,7 @@ let users = [
 ];
 
 *!*
-// find all users younger than user
+// trova tutti gli users più giovani di user
 let youngerUsers = users.filter(user.younger, user);
 */!*
 
