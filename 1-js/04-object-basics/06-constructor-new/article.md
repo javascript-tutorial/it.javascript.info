@@ -83,7 +83,7 @@ let user = new function() {
 Il costruttore non può essere chiamato nuovamente, perché non è salvato da nessuna parte, viene solo creato e chiamato. Quindi questo trucco consente di incapsulare codice che costruisce un singolo oggetto, senza possibilità di riutilizzo futuro.
 ````
 
-## Costruttori con doppia sintassi: new.target
+## Costruttori modalità test: new.target
 
 ```smart header="Tecniche avanzate"
 La sintassi presentata in questa sessione viene utilizzata raramente, potete tranquillamente saltarlo se non siete interessati.
@@ -109,7 +109,9 @@ new User(); // function User { ... }
 */!*
 ```
 
-Questo può essere utilizzato per consentire ad entrambe le chiamate di funzionare (con `new` e senza). Creando comunque lo stesso oggetto:
+Questo può essere utilizzato per consentire ad entrambe le chiamate di funzionare (con `new` e senza), quindi sia in in "modalità costruttore" che in "modalità classica".
+
+Possiamo anche utilizzarli entrambi `new` e chiamata regole, per fare la stessa cosa, come in questo esempio:
 
 ```js run
 function User(name) {

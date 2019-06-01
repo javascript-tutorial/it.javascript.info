@@ -120,7 +120,7 @@ new Promise((resolve, reject) => {
 
   throw new Error("Whoops!");
 
-}).catch(function(error) { 
+}).catch(function(error) {
 
   alert("L'errore è gestito, continua normalmente");
 
@@ -264,9 +264,11 @@ new Promise(function() {
   }); // senza .catch alla fine!
 ```
 
-Nel caso di un errore, lo stato della promise diventa "rejected", e l'esecuzione dovrebbe saltare al gestore del respingimento (rejection handler). Ma negli esempi sopra non c'è questo gestore (handler). Quindi l'errore si "blocca".
+Nel caso di un errore, lo stato della promise diventa "rejected", e l'esecuzione dovrebbe saltare al gestore del respingimento (rejection handler). Ma negli esempi sopra non c'è questo gestore (handler). Quindi l'errore porta ad un "blocco".
 
-In pratica, giusto come con un normale errore non gestito, significa che qualcosa è andato terribilmente storto, lo script probabilmente è morto.
+In pratica, proprio come con un normale errore non gestito, significa che qualcosa è andato terribilmente storto.
+
+Cosa accade quando viene sollevato un errore e non viene gestito da `try..catch`? Lo script muore. Lo stesso accade con una promise rigettata che non viene gestita.
 
 La maggior parte dei motori JavaScript tracciano queste situazioni e generano un errore globale in questo caso. Possiamo vederlo nella console.
 
@@ -295,7 +297,7 @@ Solitamente questi errori sono irrecuperabili, quindi la cosa migliore da fare �
 In ambienti esterni al browser come Node.js ci sono altri modi simili di tracciare gli errori non gestiti.
 
 
-## Riassunto
+## Riepilogo
 
 - `.catch` gestisce i respingimenti (rejections) delle promise di tutti i tipi: che sia una chiamata `reject()`, o un errore sollevato in un gestore (handler).
 - Dovremmo mettere `.catch` esattamente nei posti in cui  vogliamo gestire gli errori sapendo come gestirli. Il gestore (handler) dovrebbe analizzare gli errori (Le classi di errori ci sono di aiuto) e ri-sollevare (rethrow) quelli sconosciuti.
@@ -316,7 +318,7 @@ function demoGithubUser() {
 *!*
     .finally(() => { // (2) stop the indication
       document.body.style.opacity = '';
-      return new Promise(resolve => setTimeout(resolve, 0)); // (*)
+      return new Promise(resolve => setTimeout(resolve)); // (*)
     })
 */!*
     .then(user => {

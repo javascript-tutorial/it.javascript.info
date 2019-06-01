@@ -27,7 +27,7 @@ La funzione passata a 'new Promise' è chiamata *esecutore (executor)*. Quando l
 L'oggetto `promise` risultante ha queste proprietà interne:
 
 - `state` — inizialmente "pending", poi cambia con "fulfilled" o "rejected",
-- `result` — un valore arbitrario di tua scelta, inizialmente 'undefined'.
+- `result` — un valore arbitrario di tua scelta, inizialmente `undefined`.
 
 Quando l'esecutore finisce il lavoro (job), dovrebbe chiamare una delle funzioni che riceve come argomento:
 
@@ -291,7 +291,7 @@ function loadScript(src, callback) {
   script.src = src;
 
   script.onload = () => callback(null, script);
-  script.onerror = () => callback(new Error(`Script load error ` + src));
+  script.onerror = () => callback(new Error(`Script load error for ${src}`));
 
   document.head.append(script);
 }

@@ -1,6 +1,6 @@
 # Numeri
 
-Tutti i numeri in JavaScript sono memorizzati in formato 64-bit [IEEE-754](http://en.wikipedia.org/wiki/IEEE_754-1985), conosciuto anche come "doppia precisione".
+Tutti i numeri in JavaScript sono memorizzati in formato 64-bit [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), conosciuto anche come "doppia precisione".
 
 Cerchiamo di ricapitolare ed espandere tutto ciò che già conosciamo.
 
@@ -177,7 +177,7 @@ Ci sono due modi per farlo:
 
 ## Calcoli imprecisi
 
-Internamente, un numero è rappresentato in formato 64-bit [IEEE-754](http://en.wikipedia.org/wiki/IEEE_754-1985), quindi vengono utilizzati esattamente 64 bit per rappresentare un numero: 52 vengono utilizzati per rappresentare le cifre, 11 per la parte decimale, e infine 1 bit per il segno.
+Internamente, un numero è rappresentato in formato 64-bit [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), quindi vengono utilizzati esattamente 64 bit per rappresentare un numero: 52 vengono utilizzati per rappresentare le cifre, 11 per la parte decimale, e infine 1 bit per il segno.
 
 Se un numero è troppo grande, tale da superare i 64 bit disponibili, come ad esempio un numero potenzialmente infinito:
 
@@ -332,7 +332,7 @@ Da notare che una stringa vuota o contenente solo spazi viene trattata come `0` 
 Esiste uno speciale metodo integrato [Object.is](mdn:js/Object/is) che confronta valori proprio come `===`, ma risulta molto più affidabile in due casi limite:
 
 1. Funziona con `NaN`: `Object.is(NaN, NaN) === true`, e questo è un bene. 
-2. I valori `0` e `-0` sono diversi: `Object.is(0, -0) === false`, raramente ha importanza, ma questi due valori sono comunque differenti.
+2. I valori `0` e `-0` sono diversi: `Object.is(0, -0) === false`, tecnicamente sarebbero uguali, però internamente vengono rappresentati con il bit di segno, che in questo caso è diverso.
 
 In tutti gli altri casi, `Object.is(a, b)` equivale a `a === b`. 
 

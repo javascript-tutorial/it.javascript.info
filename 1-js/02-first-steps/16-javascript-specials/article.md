@@ -161,7 +161,7 @@ Confronto
 
     Anche gli altri confronti convertono i valori in numeri.
 
-    L'operatore di uguaglianza stretta `===` non esegue la conversione: tipi differenti vengono interpretati com valori differenti, quindi:
+    L'operatore di uguaglianza stretta `===` non esegue la conversione: tipi differenti vengono interpretati com valori differenti.
 
     I valori `null` e `undefined` sono speciali: sono uguali `==` tra di loro ma non con nessun altro.
 

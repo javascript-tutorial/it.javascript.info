@@ -6,12 +6,12 @@ let str = "Hello";
 
 str.test = 5; // (*)
 
-alert(str.test); 
+alert(str.test);
 ```
 
 Potrebbero esserci due diversi risultati:
 1. `undefined`
-2. Un errore.
+2. Un errore (strict mode).
 
 Perché? Proviamo ad esaminare cosa succede nella linea `(*)`:
 

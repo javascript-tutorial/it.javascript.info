@@ -70,13 +70,13 @@ L'oggetto Lexical Environment consiste di due parti:
 1. *Environment Record* -- un oggetto che contiene tutte le variabili locali e le relative proprietà (e alcune altre informazioni come il valore di  `this`).
 2. Un riferimento al *outer lexical environment* (lexical environment esterno).
 
-Quindi, una "variabile" è solamente una proprietà di questo speciale oggetto, l'Environment Record. "Per ottenere o modificare una variabile" si traduce in "per ottenere o modificare una variabile del Lexical Environment".
+**Quindi, una "variabile" è solamente una proprietà di questo speciale oggetto, l'`Environment Record`. "Per ottenere o modificare una variabile" si traduce in "per ottenere o modificare una variabile del Lexical Environment".**
 
 Ad esempio, in questo semplice codice, esiste un solo Lexical Environment:
 
 ![lexical environment](lexical-environment-global.png)
 
-Questo viene anche chiamato global Lexical Environment (Lexical Environment globale), associato all'intero script. Su browser, tutti i tag `<script>` condividono lo stesso global environment.
+Questo viene anche chiamato global Lexical Environment (Lexical Environment globale), associato all'intero script.
 
 Nella figura sopra, il rettangolo significa Environment Record, mentre la freccia indica il riferimento esterno. Il global Lexical Environment non possiede riferimenti esterni, quindi questo punta a `null`.
 
@@ -238,7 +238,7 @@ function makeCounter() {
   let count = 0;
 
   return function() {
-    return count++; // has access to the outer counter
+    return count++; // has access to the outer "count"
   };
 }
 

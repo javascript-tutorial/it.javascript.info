@@ -112,7 +112,7 @@ drawHtmlTree(node3, 'div.domtree', 690, 150);
 
 In fase di generazione del DOM, i browser processeranno automaticamente gli errori chiudendo i tags e via procedendo.
 
-Il seguente documento "invalido":
+Il seguente documento senza tag di chiusura:
 
 ```html no-beautify
 <p>Hello
@@ -181,11 +181,7 @@ drawHtmlTree(node6, 'div.domtree', 690, 500);
 
 Vediamo ora un nuovo tipo di nodo -- *nodo commento*, etichettato come `#comment`.
 
-<<<<<<< HEAD
-Potremmo chiederci "perché il commento viene aggiunto al DOM? Non incide sul risultato grafico finale". Esiste in realtà una regola che se qualcosa è nell'HTML, allora deve essere presente anche nell'alberatura del DOM.
-=======
-We may think -- why is a comment added to the DOM? It doesn't affect the visual representation in any way. But there's a rule -- if something's in HTML, then it also must be in the DOM tree.
->>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
+Potremmo chiederci -- perché il commento viene aggiunto al DOM? Non incide sul risultato grafico finale. Esiste in realtà una regola -- che se qualcosa è nell'HTML, allora deve essere presente anche nell'alberatura del DOM.
 
 **Tutto ciò che è presente nell'HTML, anche i commenti, finisce per essere parte del DOM.**
 

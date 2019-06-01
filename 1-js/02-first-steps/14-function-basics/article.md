@@ -101,7 +101,7 @@ showMessage();
 alert( userName ); // *!*Bob*/!*, il valore è stato modificato dalla funzione
 ```
 
-La variabile esterna viene utilizzata solo se non ce n'è nessuna di locale. Quindi si può avere eventualmente una modifica se ci dimentichiamo `let`.
+La variabile esterna viene utilizzata solo se non ce n'è nessuna di locale. 
 
 Se una variabile con lo stesso nome viene dichiarata all'interno di una funzione, questa *oscurerà* quella esterna. Ad esempio, nel codice sotto la funzione usa la variabile locale `userName`. Quella esterna viene ignorata:
 

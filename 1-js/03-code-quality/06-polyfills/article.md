@@ -19,7 +19,7 @@ Qui Babel ci viene in soccorso.
 
 Babel è composto da due parti:
 
-1. Primo, il programma che esegue la traduzione, che riscrive quindi il codice. Lo sviuppatore lo esegue sul computer personale. Questo si occuperà di tradurre il codice nei vecchi standard. Questo verrà poi fornito al sito per gli utenti. Esistono dei progetti di sistemi come [webpack](http://webpack.github.io/) o [brunch](http://brunch.io/) che si occupano di eseguire la traduzione ad ogni cambiamente, evitando perdite di tempo al programmatore.
+1. Primo, il programma che esegue la traduzione, che riscrive quindi il codice. Lo sviluppatore lo esegue sul computer personale. Questo si occuperà di tradurre il codice nei vecchi standard. Verrà poi fornito al sito per gli utenti. Esistono dei progetti di sistemi come [webpack](http://webpack.github.io/) che si occupano di eseguire la traduzione ad ogni cambiamente, evitando perdite di tempo al programmatore.
 
 2. Secondo, il polyfill.
 
@@ -49,9 +49,7 @@ Gli esempio che utilizzano il moderno JS funzioneranno solo se il vostr browser 
 ````
 
 ```offline
-Se satate leggendo la versione offline, gli esempi non sono eseguibili. Ma solitamente funzionano :)
+Se satate leggendo la versione offline, gli esempi non sono eseguibili.  In EPUB alcuni riescono ad eseguire.
 ```
 
-[Chrome Canary](https://www.google.com/chrome/browser/canary.html) è ottimo per tutti gli esempi, ma vanno bene anche gli altri browser moderni.
-
-Da notare che in produzione possiamo utilizzare Babel per tradurre il codice moderno in codice adatto a tutti i browser, senza alcune limitazioni, il codice eseguirà ovunque.
+Google Chrome solitamente è quello più aggiornato con le caratteristiche del linguaggio, è ottimo per fare tutti gli esperimenti senza transpilers, ma anche gli altri browser moderni dovrebbero andare bene.

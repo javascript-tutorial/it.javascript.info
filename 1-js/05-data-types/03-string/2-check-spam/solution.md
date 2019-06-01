@@ -1,6 +1,6 @@
 Per far si che la ricerca sia case-insensitive (non distingue lettere minuscole da quelle maiuscole), portiamo l'intera stringa a lettere minuscole e poi eseguiamo la ricerca:
 
-```js run
+```js run demo
 function checkSpam(str) {
   let lowerStr = str.toLowerCase();
 

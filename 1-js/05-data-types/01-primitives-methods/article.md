@@ -91,12 +91,12 @@ In JavaScript, è altrettanto possibile per ragioni storiche, ma è altamente **
 Ad esempio:
 
 ```js run
-alert( typeof 1 ); // "number"
+alert( typeof 0 ); // "number"
 
-alert( typeof new Number(1) ); // "object"!
+alert( typeof new Number(0) ); // "object"!
 ```
 
-Anche nel'esempio che segue, `zero`, è un oggetto, quindi verrà eseguito l'alert:
+Gli oggetti valutati da un `if` sono sempre true, quindi l'alert verrà mostrato:
 
 ```js run
 let zero = new Number(0);

@@ -101,7 +101,7 @@ Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR 
 
 1. **Prelevare il primo valore vero da una lista di variabili o espressioni.**
 
-    Immaginiamo di avere diverse variabili, che possono contenere sia dati che `null/undefined`. Abbiamo bisogno di scegliere la prima che contiene dati.
+    Immaginiamo di avere diverse variabili, che possono contenere sia dati che `null/undefined`. Come potremmo fare per trovare la prima che contione dati?
 
     Possiamo utilizzare OR `||` per questo:
 

@@ -63,7 +63,7 @@ user.sayHi(); // Hello!
 ```smart header="Programmazione orientata agli oggetti"
 Quando scriviamo codice utilizzando gli oggetti per rappresentare le entità, questa viene definita [programmazione orientata agli oggetti](https://en.wikipedia.org/wiki/Object-oriented_programming), in breve: "OOP".
 
-OOP è una grande cosa, un ambito di interesse con i propri studi. Come scegliere le giuste entità? Come organizzare le interazioni tra loro? Questa è l'architettura di un codice, e ci sono molti libri importanti che trattano questo argomento, come "Design Patterns: Elements of Reusable Object-Oriented Software" by E.Gamma, R.Helm, R.Johnson, J.Vissides or "Object-Oriented Analysis and Design with Applications" by G.Booch. Noi cercheremo di capire i concetti chiave nel capitolo <info:object-oriented-programming>.
+OOP è una grande cosa, un ambito di interesse con i propri studi. Come scegliere le giuste entità? Come organizzare le interazioni tra loro? Questa è l'architettura di un codice, e ci sono molti libri importanti che trattano questo argomento, come "Design Patterns: Elements of Reusable Object-Oriented Software" di E.Gamma, R.Helm, R.Johnson, J.Vissides oppure "Object-Oriented Analysis and Design with Applications" di G.Booch, e molti altri.
 ```
 ### La forma breve dei metodi
 
@@ -72,7 +72,7 @@ Esiste una sintassi più breve per i metodi in un oggetto letterale:
 ```js
 // questi oggetti sono la stessa cosa
 
-let user = {
+user = {
   sayHi: function() {
     alert("Hello");
   }
@@ -189,7 +189,7 @@ function sayHi() {
 }
 
 *!*
-// utilizzare le stesse funzioni su due oggetti
+// vengono utilizzate le stesse funzioni su due oggetti
 user.f = sayHi;
 admin.f = sayHi;
 */!*
@@ -202,7 +202,10 @@ admin.f(); // Admin  (this == admin)
 admin['f'](); // Admin (il punto o le parentesi quadre forniscono entrambi accesso ai metodi - non c'è differenza)
 ```
 
-In realtà potremmo chiamare la funzione anche senza un oggetto:
+La regola è semplice: se viene chiamato `obj.f()`, allora `this` vale `obj` durante la chiamata di `f`. Quindi nell'esempio sopra assume il valore sia di `user` che di `admin`.
+
+````smart header="Invocazione senza un oggetto: `this == undefined`"
+Possiamo anche chiamare la funzione senza un oggetto:
 
 ```js run
 function sayHi() {

@@ -83,8 +83,8 @@ arr[3](); // hello
 Negli array, proprio come per gli oggetti, c'è la possibilità di terminare con una virgola:
 ```js 
 let fruits = [
-  "Apple", 
-  "Orange", 
+  "Apple",
+  "Orange",
   "Plum"*!*,*/!*
 ];
 ```
@@ -190,6 +190,7 @@ alert( fruits );
 ## Internamente
 
 Un array è uno speciale tipo di oggetto. Le parentesi quadre vengono utilizzate per accedere alla proprietà `arr[0]`, questa sintassi deriva da quella utilizzata per gli oggetti. I numeri vengono utilizzati come chiave. 
+Equivale a `obj[key]`, dove `arr` è l'oggetto, mentre i numeri vengono utilizzati come chiavi.
 
 Inoltre estendono gli oggetti fornendo speciali metodi per operare ordinatamente su collezioni di dati, e contengono la proprietà `length`. Ma internamente rimane sempre un oggetto.
 
@@ -295,7 +296,7 @@ let fruits = ["Apple", "Orange", "Plum"];
 
 // itera sugli elementi dell'array
 for (let fruit of fruits) {
-  alert( fruit ); 
+  alert( fruit );
 }
 ```
 
@@ -459,5 +460,5 @@ Per eseguire un ciclo sugli elementi di un array:
   - `for (let item of arr)` -- la sintassi moderna utilizzate per ottenere l'elemento,
   - `for (let i in arr)` -- mai utilizzata.
 
-Ritorneremo sugli array e studieremo più metodi per aggiungere, rimuovere,estrarre ed ordinare elementi nel capitolo <info:array-methods>.
+Ritorneremo sugli array e studieremo più metodi per aggiungere, rimuovere, estrarre ed ordinare elementi nel capitolo <info:array-methods>.
 

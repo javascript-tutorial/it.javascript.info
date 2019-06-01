@@ -20,7 +20,7 @@ Questo è quello che dovreste vedere se è la prima volta che lo aprite:
 
 Il bottone <span class="devtools" style="background-position:-168px -76px"></span> apre la barra laterale con i file.
 
-Clicchiamoci sopra e selezioniamo `index.html` e poi `hello.js` dalla vista ad albero. Questo è quello che dovrebbe apparire:
+Clicchiamoci sopra e selezioniamo `hello.js` dalla vista ad albero. Questo è quello che dovrebbe apparire:
 
 ![](chrome-tabs.png)
 
@@ -34,7 +34,7 @@ Ora puoi cliccare nuovamente lo stesso bottone <span class="devtools" style="bac
 
 ## Console
 
-Se premiamo `Esc`, si apre una console in basso. Possiamo digitare comandi e premere `key:Enter` per eseguirli.
+Se premiamo `key:Esc`, si apre una console in basso. Possiamo digitare comandi e premere `key:Enter` per eseguirli.
 
 Dopo l'esecuzione dell'istruzione, il risultato viene mostrato sotto.
 

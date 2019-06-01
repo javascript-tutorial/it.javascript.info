@@ -3,28 +3,26 @@
 
 Cosa acca de quando degli oggetti vengono sommati `obj1 + obj2`, sottratti `obj1 - obj2` o stampati tramite `alert(obj)`?
 
-Ci sono dei metodi speciali che effettuano la conversione.
+In questo caso gli oggetti vengono auto convertiti a primitivi, e successivamente viene gestita l'operazione.
 
 Nel capitolo <info:type-conversions> abbiamo visto le regole per quelle di tipo numerico, string e boolean. Però abbiamo lasciato un vuoto riguardo gli oggetti. Adesso che conosciamo i metodi e i symbol diventa più semplice parlarne.
 
-Per gli oggetti, non c'è alcuna conversione a boolean, perché tutti gli oggetti valgono `true` nei contesti in cui è richiesto un valore di tipo boolean. Quindi esistono solo la conversione numerica e a string.
-
-La conversione numerica avviene quando sottraiamo due oggetti o applichiamo delle funzioni matematiche. Ad esempio, gli oggetti `Date` (che studieremo nel capitolo <info:date>) possono essere sottratti, ed il risultato di `date1 - date2` è la differenza di tempo tra le due date.
-
-Per le conversioni a string -- avvengono quando proviamo a stampare un oggetto con `alert(obj)` e altri contesti simili.
+1. Tutti gli oggetti sono `true` in un contesto booleano. Ci sono solamente conversioni numeriche e a stringhe.
+2. La conversione numerica avviene quando eseguiamo una sottrazione tra oggetti oppure applichiamo funzioni matematiche. Ad esempio, gli oggetti `Date` (che studieremo nel capitolo <info:date>) possono essere sottratti, ed il risultato di `date1 - date2` è la differenza di tempo tra le due date.
+3. Le conversioni a stringa -- solitamente accadono quando stampiamo un oggetto come `alert(obj)` e in altri contesti simili.
 
 ## ToPrimitive
 
-Quando un oggetto viene utilizzato in un contesto in cui è richiesto un tipo primitivo, ad esempio, in un `alert` o in un operazione matematica, questo viene convertito ad una primitiva utilizzando l'algoritmo `ToPrimitive` ([specification](https://tc39.github.io/ecma262/#sec-toprimitive)).
+Possiamo gestire la conversione numerica o a stringa, utilizzando dei metodi speciali dell'oggetto.
 
-Questo algoritmo ci consente di modellare la conversione utilizzando uno speciale metodo dell'oggetto.
+Quando un oggetto viene utilizzato in un contesto in cui è richiesto un tipo primitivo, ad esempio, in un `alert` o in un operazione matematica, questo viene convertito ad una primitiva utilizzando l'algoritmo `ToPrimitive` ([specification](https://tc39.github.io/ecma262/#sec-toprimitive)).
 
 In base al contesto, la conversione viene definita "hint" ("suggerimento").
 
 Ci sono tre varianti:
 
 `"string"`
-: Quando un operazione si aspetta una stringa, per una conversione oggetto-a-stringa, come `alert`:
+: Un operazione di conversione oggetto a stringa, avviene quando un operazione si apetta una stringa, come `alert`:
 
     ```js
     // output
@@ -35,7 +33,7 @@ Ci sono tre varianti:
     ```
 
 `"number"`
-: Quando un operazione si aspetta un numero, per una conversione oggetto-a-numero, come nel caso delle operazioni matematiche:
+: Un operazione di conversione oggetto a numero, come nel caso delle operazioni matematiche:
 
     ```js
     // conversione esplicita
@@ -160,13 +158,21 @@ alert(user + 500); // toString -> John500
 In assenza di `Symbol.toPrimitive` e `valueOf`, `toString` gestirà tutte le conversioni a primitive.
 
 
-## ToPrimitive e ToString/ToNumber
+## Tipi di ritorno
 
 Una cosa importante da sapere riguardo tutte le conversioni primitive è che non devono necessariamente ritornare il tipo "hint" (suggerito).
 
 Non c'è alcun controllo per verificare che `toString()` ritorni esattamente una stringa, o che il metodo `Symbol.toPrimitive` ritorni un numero per un "hint" di tipo "number".
 
-**L'unico obbligo: questi metodi devono ritornare un tipo primitivo.**
+L'unico obbligo: questi metodi devono ritornare un tipo primitivo, non un oggetto.
+
+```smart header="Note storiche"
+Per ragioni storiche, se `toString` o `valueOf` ritornasse un oggetto, non ci sarebbero errori, ma sarebbe semplicemente ignorato(come se il metodo non esistesse). Questo accade perché inzialmente in JavaScript non c'era il concetto di "errore".
+
+Invece, `Symbol.toPrimitive` *deve* ritornare un tipo primitivo, altrimenti ci sarebbe un errore.
+```
+
+## Ulteriori operazioni
 
 Un operazione che richiede una conversione ottiene quella primitiva, e continua a lavorarci, applicando ulteriori conversioni se necessario.
 
@@ -208,11 +214,6 @@ Ad esempio:
     alert(obj + 2); // 3 (ToPrimitive ha ritornato boolean, no string => ToNumber)
     ```
 
-```smart header="Note storiche"
-Per ragioni storiche, i metodi `toString` o `valueOf` *dovrebbero* ritornare una primitiva: se uno di questi ritorna un oggetto, non ci sarà alcun errore, ma quell'oggetto verrà ignorato (come se il metodo non esistesse).
-
-In maniera differente `Symbol.toPrimitive` *deve* ritornare una primitiva, altrimenti, si verificherà un errore.
-```
 
 ## Riepilogo
 

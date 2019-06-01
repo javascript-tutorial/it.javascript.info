@@ -190,7 +190,7 @@ Perchè non va bene neanche uno zero? Sempre falso!
 Noi abbiamo questi risultati perchè:
 
 - Il confronto `(1)` e `(2)` ritorna `false` perchè `undefined` viene convertito a `NaN`. Mentre `NaN` è un valore numerico speciale che ritorna `false` con tutti i confronti.
-- Il confronto di uguaglianza `(3)` ritorna `false`, perchè `undefined` è uguale solo a `null` e a nessun altro  valore.
+- Il confronto di uguaglianza `(3)` ritorna `false`, perchè `undefined` è uguale solo a `null`, `undefined` e a nessun altro  valore.
 
 ### Eludere i problemi
 
