@@ -101,7 +101,11 @@ showMessage();
 alert( userName ); // *!*Bob*/!*, il valore è stato modificato dalla funzione
 ```
 
+<<<<<<< HEAD
 La variabile esterna viene utilizzata solo se non ce n'è nessuna di locale. 
+=======
+The outer variable is only used if there's no local one.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 Se una variabile con lo stesso nome viene dichiarata all'interno di una funzione, questa *oscurerà* quella esterna. Ad esempio, nel codice sotto la funzione usa la variabile locale `userName`. Quella esterna viene ignorata:
 
@@ -128,7 +132,11 @@ Le variabili dichiarate all'esterno di qualsiasi funzione, come `userName` nel c
 
 Le variabili globali sono visibili a qualsiasi funzione (se non sono oscurate da quelle locali).
 
+<<<<<<< HEAD
 Solitamente, una funzione dichiara tutte le variabili necessarie per svolgere il compito. Le variabili locali vengono utilizzate per memorizzare dati relativi al progetto, quindi quando è importante che queste siano accessibili in qualsiasi punto del codice. I codici moderni cercano di evitare le variabili globali. La maggior parte delle variabili appartengono quindi a delle specifiche funzioni.
+=======
+It's a good practice to minimize the use of global variables. Modern code has few or no globals. Most variables reside in their functions. Sometimes though, they can be useful to store project-level data.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 ```
 
 ## Parametri
@@ -374,7 +382,11 @@ Un paio di esempi che non rispettano queste regole:
 - `createForm` -- sarebbe un pessimo nome se modificasse il documento, aggiungendo il form (infatti dovrebbe solo crearlo e restituirlo).
 - `checkPermission` -- sarebbe un pessimo nome se mostrasse il messaggio `access granted/denied` (dovrebbe solo eseguire il controllo e ritornare il risultato).
 
+<<<<<<< HEAD
 Questi esempi assumono i significati comuni dei prefissi. Il loro significato dipende da voi e dal vostro team. E' comunque normale che il tuo codice abbia caratteristiche diverse. Ma è fondamentale avere una firma il cui prefisso sia sensato, che faccia capire cosa un determinato tipo di funzione può o non può fare. Tutte le funzione che iniziano con lo stesso prefisso dovrebbero seguire determinate regole. E' fondamentale che il team condivida queste informazioni.
+=======
+These examples assume common meanings of prefixes. You and your team are free to agree on other meanings, but usually they're not much different. In any case, you should have a firm understanding of what a prefix means, what a prefixed function can and cannot do. All same-prefixed functions should obey the rules. And the team should share the knowledge.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 ```
 
 ```smart header="Nomi di funzioni ultra-corti"

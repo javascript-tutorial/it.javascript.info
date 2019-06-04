@@ -20,7 +20,11 @@ Questo è quello che dovreste vedere se è la prima volta che lo aprite:
 
 Il bottone <span class="devtools" style="background-position:-168px -76px"></span> apre la barra laterale con i file.
 
+<<<<<<< HEAD
 Clicchiamoci sopra e selezioniamo `hello.js` dalla vista ad albero. Questo è quello che dovrebbe apparire:
+=======
+Let's click it and select `hello.js` in the tree view. Here's what should show up:
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 ![](chrome-tabs.png)
 
@@ -34,7 +38,11 @@ Ora puoi cliccare nuovamente lo stesso bottone <span class="devtools" style="bac
 
 ## Console
 
+<<<<<<< HEAD
 Se premiamo `key:Esc`, si apre una console in basso. Possiamo digitare comandi e premere `key:Enter` per eseguirli.
+=======
+If we press `key:Esc`, then a console opens below. We can type commands there and press `key:Enter` to execute.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 Dopo l'esecuzione dell'istruzione, il risultato viene mostrato sotto.
 

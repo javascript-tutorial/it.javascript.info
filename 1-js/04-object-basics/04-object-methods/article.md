@@ -63,7 +63,11 @@ user.sayHi(); // Hello!
 ```smart header="Programmazione orientata agli oggetti"
 Quando scriviamo codice utilizzando gli oggetti per rappresentare le entità, questa viene definita [programmazione orientata agli oggetti](https://en.wikipedia.org/wiki/Object-oriented_programming), in breve: "OOP".
 
+<<<<<<< HEAD
 OOP è una grande cosa, un ambito di interesse con i propri studi. Come scegliere le giuste entità? Come organizzare le interazioni tra loro? Questa è l'architettura di un codice, e ci sono molti libri importanti che trattano questo argomento, come "Design Patterns: Elements of Reusable Object-Oriented Software" di E.Gamma, R.Helm, R.Johnson, J.Vissides oppure "Object-Oriented Analysis and Design with Applications" di G.Booch, e molti altri.
+=======
+OOP is a big thing, an interesting science of its own. How to choose the right entities? How to organize the interaction between them? That's architecture, and there are great books on that topic, like "Design Patterns: Elements of Reusable Object-Oriented Software" by E.Gamma, R.Helm, R.Johnson, J.Vissides or "Object-Oriented Analysis and Design with Applications" by G.Booch, and more.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 ```
 ### La forma breve dei metodi
 
@@ -78,8 +82,13 @@ user = {
   }
 };
 
+<<<<<<< HEAD
 // la sintassi più breve risulta più carina
 let user = {
+=======
+// method shorthand looks better, right?
+user = {
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 *!*
   sayHi() { // equivalente a "sayHi: function()"
 */!*
@@ -166,7 +175,11 @@ Se scriviamo `this.name` piuttosto di `user.name` all'interno di `alert`, il cod
 
 ## "this" non ha limiti
 
+<<<<<<< HEAD
 In JavaScript, la parola chiave "this" si comporta diversamente da molti altri linguaggi di programmazione. Primo, può essere utilizzata in ogni funzione.
+=======
+In JavaScript, "this" keyword behaves unlike most other programming languages. It can be used in any function.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 Non c'è alcun errore di sintassi in un codice come questo:
 
@@ -176,9 +189,15 @@ function sayHi() {
 }
 ```
 
+<<<<<<< HEAD
 Il valore di `this` viene valutato in esecuzione. E può essere un valore qualsiasi.
 
 Ad esempio, la stessa funzione potrebbe avere diversi "this" quando viene chiamata da oggetti diversi:
+=======
+The value of `this` is evaluated during the run-time, depending on the context. And it can be anything.
+
+For instance, here the same function is assigned to two different objects and has different "this" in the calls:
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 ```js run
 let user = { name: "John" };
@@ -189,7 +208,11 @@ function sayHi() {
 }
 
 *!*
+<<<<<<< HEAD
 // vengono utilizzate le stesse funzioni su due oggetti
+=======
+// use the same function in two objects
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 user.f = sayHi;
 admin.f = sayHi;
 */!*
@@ -202,10 +225,17 @@ admin.f(); // Admin  (this == admin)
 admin['f'](); // Admin (il punto o le parentesi quadre forniscono entrambi accesso ai metodi - non c'è differenza)
 ```
 
+<<<<<<< HEAD
 La regola è semplice: se viene chiamato `obj.f()`, allora `this` vale `obj` durante la chiamata di `f`. Quindi nell'esempio sopra assume il valore sia di `user` che di `admin`.
 
 ````smart header="Invocazione senza un oggetto: `this == undefined`"
 Possiamo anche chiamare la funzione senza un oggetto:
+=======
+The rule is simple: if `obj.f()` is called, then `this` is `obj` during the call of `f`. So it's either `user` or `admin` in the example above.
+
+````smart header="Calling without an object: `this == undefined`"
+We can even call the function without an object at all:
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 ```js run
 function sayHi() {
@@ -219,7 +249,12 @@ In questo caso `this`  è `undefined` in modalità strict. Se tentiamo di accede
 
 Se non è attiva la modalità strict (quindi se ci dimentichiamo `use strict`) il valor di `this` in questo sarà *l'oggetto globale* (`window` in un browser, lo studieremo più avanti nel capitolo [](info:global-object)). Questo strano comportamento ha delle motivazioni storiche, che `"use strict"` risolve.
 
+<<<<<<< HEAD
 Va detto che solitamente una chiamata a funzione che utilizza `this` senza un oggetto non è comune, nella maggior part dei casi è un errore di programmazione. Se una funzione utilizza `this`, ha senso che venga invocata nel contesto di un oggetto.
+=======
+Usually such call is an programming error. If there's `this` inside a function, it expects to be called in an object context.
+````
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 ```smart header="Le conseguenze della libertà di `this`"
 Se avete utilizzato altri linguaggi di programmazione, probabilmente la vostra idea è di un "`this` limitato", quando viene definito un metodo in un oggetto questo avrà sempre in `this` il riferimento all'oggetto.

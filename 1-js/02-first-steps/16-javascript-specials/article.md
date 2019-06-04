@@ -102,8 +102,13 @@ Di più in: <info:variables> e <info:types>.
 
 Abbiamo utilizzato solo il browser come ambiente di sviluppo, quindi le interfacce di base saranno:
 
+<<<<<<< HEAD
 [`prompt(question[, default])`](mdn:api/Window/prompt)
 : Pone una domanda `question`, e ritorna quello che l'utente ha inserito oppure `null` se ha premuto "cancel".
+=======
+[`prompt(question, [default])`](mdn:api/Window/prompt)
+: Ask a `question`, and return either what the visitor entered or `null` if they clicked "cancel".
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 [`confirm(question)`](mdn:api/Window/confirm)
 : Pone una domanda `question` e fornisce la possibilità di scegliere tra Ok e Cancel. La scelta viene ritornata come `true/false`.
@@ -161,7 +166,11 @@ Confronto
 
     Anche gli altri confronti convertono i valori in numeri.
 
+<<<<<<< HEAD
     L'operatore di uguaglianza stretta `===` non esegue la conversione: tipi differenti vengono interpretati com valori differenti.
+=======
+    The strict equality operator `===` doesn't do the conversion: different types always mean different values for it.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
     I valori `null` e `undefined` sono speciali: sono uguali `==` tra di loro ma non con nessun altro.
 

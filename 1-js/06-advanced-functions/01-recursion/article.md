@@ -316,9 +316,15 @@ let company = {
 
 In altre parole, un'azienda ha dei dipartimenti.
 
+<<<<<<< HEAD
 - Un dipartimento può avere un array di staff. Ad esempio il dipartimento `sales` ("vendite") ha due impiegati: John e Alice.
 - Oppure un dipartimento può essere suddiviso in due sotto-dipartimenti, come `development` che ha due rami: `sites` e `internals`. Ognuno di questi ha il proprio staff.
 - E' anche possibile che un sotto-dipartimento cresca, dividendosi in sotto-sotto-dipartimenti (o team).
+=======
+- A department may have an array of staff. For instance, `sales` department has 2 employees: John and Alice.
+- Or a department may split into subdepartments, like `development` has two branches: `sites` and `internals`. Each of them has their own staff.
+- It is also possible that when a subdepartment grows, it divides into subsubdepartments (or teams).
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
     Ad esempio, il dipartimento `sites` in futuro potrebbe dividersi in due team dedicati a `siteA` e `siteB`. E questi, potenzialmente, potrebbero dividersi ulteriormente. Anche se nel nostro esempio non è cosi, va comunque tenuta in mente come possibilità.
 

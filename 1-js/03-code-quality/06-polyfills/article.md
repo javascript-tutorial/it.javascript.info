@@ -19,21 +19,36 @@ Qui Babel ci viene in soccorso.
 
 Babel è composto da due parti:
 
+<<<<<<< HEAD
 1. Primo, il programma che esegue la traduzione, che riscrive quindi il codice. Lo sviluppatore lo esegue sul computer personale. Questo si occuperà di tradurre il codice nei vecchi standard. Verrà poi fornito al sito per gli utenti. Esistono dei progetti di sistemi come [webpack](http://webpack.github.io/) che si occupano di eseguire la traduzione ad ogni cambiamente, evitando perdite di tempo al programmatore.
+=======
+1. First, the transpiler program, which rewrites the code. The developer runs it on their own computer. It rewrites the code into the older standard. And then the code is delivered to the website for users. Modern project build system like [webpack](http://webpack.github.io/) provide means to run transpiler automatically on every code change, so that very easy to integrate into development process.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 2. Secondo, il polyfill.
 
+<<<<<<< HEAD
     Il transpiler riscrive il codice, quindi la sintassi utilizzata è riconosciuta. Ma per le nuove funzionalità abbiamo bisogno di scrivere uno speciale script che le implementi. JavaScript è un linguaggio altamente dinamico, gli script potrebbero non solo aggiungere nuove funzionalità, ma modificare anche quelle integrate, queste devono quindi essere conformi allo standard.
 
     Esiste un termine "polyfill" per gli script che "riempiono" il vuoto aggiungendo funzionalità mancanti.
+=======
+    New language features may include new built-in functions and syntax constructs.
+    The transpiler rewrites the code, transforming syntax constructs into older ones. But as for new built-in functions, we need to implement them. JavaScript is a highly dynamic language, scripts may add/modify any functions, so that they behave according to the modern standard.
+
+    A script that updates/adds new functions is called "polyfill". It "fills in" the gap and adds missing implementations.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
     Due polyfill importanti sono:
     - [babel polyfill](https://babeljs.io/docs/usage/polyfill/) che ne supporta molti, ma è molto pesante.
     - [polyfill.io](http://polyfill.io) servizio che consente di caricare costrutti polyfills, in base alle nostre necessità.
 
+<<<<<<< HEAD
 Quindi è necessario settare il transplier e aggiungere polyfill per i vecchi motori di JavaScript, per far si che supportino le caratteristiche moderne.
 
 Se ci spostiamo nella direzione dei moderni motori e non utilizziamo altre caratteristiche se non quelle supportate ovunque, allora non abbiamo bisogno di Babel.
+=======
+So, if we're going to use modern language features, a transpiler and a polyfill are necessary.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 ## Esempi nel tutorial
 
@@ -49,7 +64,14 @@ Gli esempio che utilizzano il moderno JS funzioneranno solo se il vostr browser 
 ````
 
 ```offline
+<<<<<<< HEAD
 Se satate leggendo la versione offline, gli esempi non sono eseguibili.  In EPUB alcuni riescono ad eseguire.
 ```
 
 Google Chrome solitamente è quello più aggiornato con le caratteristiche del linguaggio, è ottimo per fare tutti gli esperimenti senza transpilers, ma anche gli altri browser moderni dovrebbero andare bene.
+=======
+As you're reading the offline version, in PDF examples are not runnable. In EPUB some of them can run.
+```
+
+Google Chrome is usually the most up-to-date with language features, good to run bleeding-edge demos without any transpilers, but other modern browsers also work fine.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb

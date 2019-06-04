@@ -153,7 +153,11 @@ alert( `Called ${sayHi.counter} times` ); // Chiamata 2 volte
 ```warn header="Una proprietà non è una variabile"
 Una proprietà assegnata ad una funzione, come `sayHi.counter = 0` non definisce una variabile locale `counter`. In altre parole, una proprietà `counter` ed una variabile `let counter` sono due cose separate.
 
+<<<<<<< HEAD
 Possiamo quindi trattare una funzione come un oggetto, memorizzare proprietà, ma non avranno alcun effetto sull'esecuzione. Le variabili non utilizzano mai le proprietà della funzione e vice versa. Sono come due mondi paralleli.
+=======
+We can treat a function as an object, store properties in it, but that has no effect on its execution. Variables are not function properties and vice versa. These are just parallel worlds.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 ```
 
 Le proprietà delle funzioni possono rimpiazzare le closure in alcun casi. Ad esempio, possiamo riscrivere la funzione contatore del capitolo <info:closure> sfruttando una proprietà della funzione:
@@ -339,8 +343,13 @@ Le funzioni sono oggetti.
 
 Qui abbiamo visto le proprietà:
 
+<<<<<<< HEAD
 - `name` -- il nome della funzione. Non esiste solamente quando viene fornito nella definizione della funzione, ma anche nel caso di assegnazioni o proprietà di un oggetto.
 - `length` -- il numero di argomenti nella definizione della funzione. I parametri di resto non vengono contati.
+=======
+- `name` -- the function name. Usually taken from the function definition, but if there's none, JavaScript tries to guess it from the context (e.g. an assignment).
+- `length` -- the number of arguments in the function definition. Rest parameters are not counted.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 Se una funzione viene dichiarata come espressione di funzione (non nel principale flusso di codice), e possiede un nome, questa viene definita una Named Function Expression. Il nome può essere utilizzato internamente per auto-riferimenti, per chiamate ricorsive e altri contesti simili.
 
