@@ -174,7 +174,11 @@ Possiamo passarla tra le variabili ed eseguirla quando vogliamo.
 
 Cerchiamo di elencare le differenze chiave tra Dichiarazioni ed Espressioni di Funzione.Expressions.
 
+<<<<<<< HEAD
 Primo, la sintassi: come capire cosa è cosa nel codice.
+=======
+First, the syntax: how to differentiate between them in the code.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 - *Dichiarazione di funzione:* una funzione, dichiarata come un istruzione separata, nel flusso principale del programma.
 
@@ -184,8 +188,13 @@ Primo, la sintassi: come capire cosa è cosa nel codice.
       return a + b;
     }
     ```
+<<<<<<< HEAD
 - *Espressione di funzione:* una funzione, creata all'interno di un espressione o all'interno di un altro costrutto. Qui, la funzione è creata alla destra dell' "espressione di assegnazione" `=`:
     
+=======
+- *Function Expression:* a function, created inside an expression or inside another syntax construct. Here, the function is created at the right side of the "assignment expression" `=`:
+
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
     ```js
     // Espressione di funzione
     let sum = function(a, b) {
@@ -201,7 +210,11 @@ Quando il flusso di esecuzione passa alla destra dell'operatore di assegnazione 
 
 La dichiarazione di funzione si comporta diversamente.
 
+<<<<<<< HEAD
 **Una dichiarazione di funzione è utilizzabile nell'intero script/blocco di codice.**
+=======
+**A Function Declaration is usable in the whole script (or a code block, if it's inside a block).**
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 In altre parole, quando JavaScript si *prepara* ad eseguire lo script o un blocco di codice, come prima cosa guarda le dichiarazioni di funzione contenute e le crea. Possiamo pensare a questo processo come uno "stage di inizializzazione".
 

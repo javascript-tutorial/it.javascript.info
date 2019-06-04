@@ -8,9 +8,15 @@ Tutti sono felici, tu perchè le persone non ti staranno più con il fiato sul c
 
 Questa è un'analogia, nella vita reale, di cose con cui abbiamo a che fare spesso nella programmazione:
 
+<<<<<<< HEAD
 1. Un "codice produttore" (producing code) che fa qualcosa e che richiede tempo. Per esempio, il codice che carica uno script remoto. Questo è un "cantante".
 2. Un "codice consumatore" (consuming code) che vuole il risultato del "codice produttore" una volta che è pronto. Molte funzioni possono aver bisogno di questo risultato. Queste sono i "fan".
 3. Una *promise* è uno speciale oggetto JavaScript che collega il "codice produttore" con il "codice consumatore". Nei termini della nostra analogia: questa è "la lista abbonamenti". Il "codice produttore" si prende tutto il tempo necessario a produrre il risultato promesso, e la "promise" rende il risultato disponibile per tutto il codice iscritto quando è pronto.
+=======
+1. A "producing code" that does something and takes time. For instance, the code loads data over a network. That's a "singer".
+2. A "consuming code" that wants the result of the "producing code" once it's ready. Many functions  may need that result. These are the "fans".
+3. A *promise* is a special JavaScript object that links the "producing code" and the "consuming code" together. In terms of our analogy: this is the "subscription list". The "producing code" takes whatever time it needs to produce the promised result, and the "promise" makes that result available to all of the subscribed code when it's ready.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 L'analogia non è completamente accurata, perché le promise di JavaScript sono più complesse di una semplice lista di abbonamenti: hanno altre caratteristiche e limiti. Ma va bene per iniziare.
 
@@ -26,8 +32,13 @@ La funzione passata a 'new Promise' è chiamata *esecutore (executor)*. Quando l
 
 L'oggetto `promise` risultante ha queste proprietà interne:
 
+<<<<<<< HEAD
 - `state` — inizialmente "pending", poi cambia con "fulfilled" o "rejected",
 - `result` — un valore arbitrario di tua scelta, inizialmente `undefined`.
+=======
+- `state` — initially "pending", then changes to either "fulfilled" or "rejected",
+- `result` — an arbitrary value, initially `undefined`.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 Quando l'esecutore finisce il lavoro (job), dovrebbe chiamare una delle funzioni che riceve come argomento:
 
@@ -55,8 +66,13 @@ let promise = new Promise(function(resolve, reject) {
 
 Possiamo vedere due cose eseguendo il codice sopra:
 
+<<<<<<< HEAD
 1. L'esecutore è chiamato automaticamente ed immediatamente (da `new Promise`).
 2. L'esecutore riceve due argomenti: `resolve` e `reject` — queste funzioni sono predefinite dal motore JavaScript. Quindi non abbiamo bisogno di crearle. Dovremo invece scrivere l'esecutore per chiamarle quando è il momento.
+=======
+1. The executor is called automatically and immediately (by the `new Promise`).
+2. The executor receives two arguments: `resolve` and `reject` — these functions are pre-defined by the JavaScript engine. So we don't need to create them. We only should call one of them when ready.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 Dopo un secondo di "elaborazione" l'esecutore chiama `resolve("done")` per produrre il risultato:
 
@@ -77,7 +93,11 @@ let promise = new Promise(function(resolve, reject) {
 
 Per riassumere, l'esecutore dovrebbe svolgere un lavoro (di solito qualcosa che richiede tempo) e successivamente chiamare `resolve` o `reject` per cambiare lo stato dell'oggetto Promise corrispondente.
 
+<<<<<<< HEAD
 La Promise che è soddisfatta (resolved) o respinta (rejected) è chiamata "ferma (settled)", al contrario di Promise "in attesa (pending)".
+=======
+The Promise that is either resolved or rejected is called "settled", as opposed to a initially "pending" Promise.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 ````smart header="Può esserci solo un risultato (result) o un errore (error)"
 L'esecutore può chiamare solo un `resolve` o un `reject`. Il cambiamento di stato della promise è definitivo.
@@ -113,9 +133,15 @@ let promise = new Promise(function(resolve, reject) {
 });
 ```
 
+<<<<<<< HEAD
 Per esempio, questo può accadere quando iniziamo a fare un lavoro ma poi vediamo che tutto è già stato completato.
 
 Questo va bene. Abbiamo immediatamente una Promise soddisfatta, non c'è niente di sbagliato in questo.
+=======
+For instance, this might happen when we start to do a job but then see that everything has already been completed and  cached.
+
+That's fine. We immediately have a resolved promise.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 ````
 
 ```smart header="`state` e `result` sono interni"
@@ -141,15 +167,27 @@ promise.then(
 
 Il primo argomento di `.then` è una funzione che:
 
+<<<<<<< HEAD
 1. viene eseguita quando la Promise è soddisfatta (resolved), e
 2. riceve il risultato.
+=======
+1. runs when the promise is resolved, and
+2. receives the result.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 Il secondo argomento di `.then` è una funzione che:
 
+<<<<<<< HEAD
 1. viene eseguita quando la Promise è respinta, e
 2. riceve l'errore.
 
 Per esempio, ecco una reazione ad una promise soddisfatta:
+=======
+1. runs when the promise is rejected, and
+2. receives the error.
+
+For instance, here's a reaction to a successfully resolved promise:
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 ```js run
 let promise = new Promise(function(resolve, reject) {
@@ -234,10 +272,17 @@ new Promise((resolve, reject) => {
   .then(result => show result, err => mostra l'errore)
 ```
 
+<<<<<<< HEAD
 Tuttavia non è esattamente un alias. Ci sono diverse importanti differenze:
 
 1. Un handler `finally` non ha argomenti. In `finally` non sappiamo se la promise ha successo oppure no. Questo va bene, dato che il nostro compito è solitamente quello di eseguire procedure di finalizzazione "generiche".
 2. Finally passa risultati ed errori al prossimo handler.
+=======
+It's not exactly an alias of `then(f,f)` though. There are several important differences:
+
+1. A `finally` handler has no arguments. In `finally` we don't know whether the promise is successful or not. That's all right, as our task is usually to perform "general" finalizing procedures.
+2. A `finally` handler passes through results and errors to the next handler.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
     Per esempio, qui il risultato è passato da `finally` a `then`:
     ```js run
@@ -258,11 +303,19 @@ Tuttavia non è esattamente un alias. Ci sono diverse importanti differenze:
       .catch(err => alert(err));  // <-- .catch gestisce l'oggetto errore
     ```  
 
+<<<<<<< HEAD
     Questo è molto utile, perché finally non è inteso per processare i risultati della promise. Quindi li passa avanti.
+=======
+    That's very convenient, because `finally` is not meant to process a promise result. So it passes it through.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
     Parleremo di più della catena di promise ed il passaggio di risultati tra handler nel prossimo capitolo
 
+<<<<<<< HEAD
 3. Ultimo, ma non meno importante, `.finally(f)` è una sintassi più conveniente di `.then(f, f)`: non c'è bisogno di duplicare la funzione.
+=======
+3. Last, but not least, `.finally(f)` is a more convenient syntax than `.then(f, f)`: no need to duplicate the function `f`.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 ````smart header="Sulle promise ferme gli handler vengono eseguiti immediatamente"
 Se una promise è pending, gli handler `.then/catch/finally` aspettano il risultato. Altrimenti, se una promise è già ferma, vengono eseguiti immediatamente:
@@ -308,7 +361,11 @@ function loadScript(src) {
     script.src = src;
 
     script.onload = () => resolve(script);
+<<<<<<< HEAD
     script.onerror = () => reject(new Error(`Errore di caricamento dello script per: ${src}`));
+=======
+    script.onerror = () => reject(new Error(`Script load error for ${src}`));
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
     document.head.append(script);
   });

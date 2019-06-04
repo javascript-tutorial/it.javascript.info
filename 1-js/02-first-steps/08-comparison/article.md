@@ -189,8 +189,13 @@ Perchè non va bene neanche uno zero? Sempre falso!
 
 Noi abbiamo questi risultati perchè:
 
+<<<<<<< HEAD
 - Il confronto `(1)` e `(2)` ritorna `false` perchè `undefined` viene convertito a `NaN`. Mentre `NaN` è un valore numerico speciale che ritorna `false` con tutti i confronti.
 - Il confronto di uguaglianza `(3)` ritorna `false`, perchè `undefined` è uguale solo a `null`, `undefined` e a nessun altro  valore.
+=======
+- Comparisons `(1)` and `(2)` return `false` because `undefined` gets converted to `NaN` and `NaN` is a special numeric value which returns `false` for all comparisons.
+- The equality check `(3)` returns `false` because `undefined` only equals `null`, `undefined`, and no other value.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 ### Eludere i problemi
 

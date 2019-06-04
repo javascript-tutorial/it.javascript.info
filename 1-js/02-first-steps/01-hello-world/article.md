@@ -1,6 +1,10 @@
 # Hello, world!
 
+<<<<<<< HEAD
 Il seguente tutorial tratta del core (nucleo) JavaScript, che è indipendente dalla piattaforma. Inoltre, più avanti, imparerai Node.js e altre piattaforme che ne fanno utilizzo.
+=======
+This part of the tutorial is about core JavaScript, the language itself. Later on, you'll learn about Node.js and other platforms that use it.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 Abbiamo bisogno di un ambiente di lavoro per eseguire i nostri script, e il fatto che questo libro sia online, rende il browser un ottima scelta. Cercheremo di mantenere al minimo l'utilizzo dei comandi specifici per browser (come `alert`), cosi non dovrai perdere la testa se deciderai di spostarti in altri ambienti come Node.JS. In ogni caso, i dettagli browser vengono spiegati in dettaglio nella [prossima parte](/ui) del tutorial.
 
@@ -45,7 +49,12 @@ Il tag `<script>` ha un paio di attributi che vengono utilizzati raramente, ma �
 
  L'attributo `type`: <code>&lt;script <u>type</u>=...&gt;</code>
 
+<<<<<<< HEAD
  : Il vecchio standard HTML4 richiedeva che ogni script avesse un tipo. Solitamente era `type="text/javascript"`. Ora non è più richiesto. Infatti, i nuobi standard hanno completamente cambiato il significato di questo attributo. Adesso viene utilizzato per i moduli JavaScript. Questo è un argomento avanzato e ne parleremo più avanti in un'altra parte del tutorial.
+=======
+The `type` attribute: <code>&lt;script <u>type</u>=...&gt;</code>
+: The old HTML standard, HTML4, required a script to have a `type`. Usually it was `type="text/javascript"`. It's not required anymore. Also, the modern HTML standard, HTML5, totally changed the meaning of this attribute. Now, it can be used for JavaScript modules. But that's an advanced topic; we'll talk about modules in another part of the tutorial.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
  L'attributo `language`: <code>&lt;script <u>language</u>=...&gt;</code>
   : Questo attributo intendeva mostrare il linguaggio dello script. Questo attributo ormai non ha più signigicato, poichè JavaScript è il linguaggio di default. Non è necessario utilizzarlo.

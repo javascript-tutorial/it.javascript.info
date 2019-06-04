@@ -66,7 +66,11 @@ alert(json);
 
 Il metodo `JSON.stringify(student)` prende l'oggetto e lo converte in stringa.
 
+<<<<<<< HEAD
 La stringa `json` risultante viene chiamata *codifica in JSON* o *serializzata*, *stringhificata*, o addirittura oggetto *caramellizzato*. Ora è pronto per essere inviato o memorizzato.
+=======
+The resulting `json` string is called a *JSON-encoded* or *serialized* or *stringified* or *marshalled* object. We are ready to send it over the wire or put into a plain data store.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 Da notare che un oggetto codificato in JSON possiede delle fondamentali differenze da un oggetto letterale:
 

@@ -83,7 +83,11 @@ let user = new function() {
 Il costruttore non può essere chiamato nuovamente, perché non è salvato da nessuna parte, viene solo creato e chiamato. Quindi questo trucco consente di incapsulare codice che costruisce un singolo oggetto, senza possibilità di riutilizzo futuro.
 ````
 
+<<<<<<< HEAD
 ## Costruttori modalità test: new.target
+=======
+## Constructor mode test: new.target
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 ```smart header="Tecniche avanzate"
 La sintassi presentata in questa sessione viene utilizzata raramente, potete tranquillamente saltarlo se non siete interessati.
@@ -109,9 +113,15 @@ new User(); // function User { ... }
 */!*
 ```
 
+<<<<<<< HEAD
 Questo può essere utilizzato per consentire ad entrambe le chiamate di funzionare (con `new` e senza), quindi sia in in "modalità costruttore" che in "modalità classica".
 
 Possiamo anche utilizzarli entrambi `new` e chiamata regole, per fare la stessa cosa, come in questo esempio:
+=======
+That can be used inside the function to know whether it was called with `new`, "in constructor mode", or without it, "in regular mode".
+
+We can also make both `new` and regular calls to do the same, like this:
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 ```js run
 function User(name) {

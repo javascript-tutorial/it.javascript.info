@@ -84,7 +84,11 @@ L'operatore OR `||` si comporta come segue:
 
 Un valore viene ritornato nella sua forma originale, non nella sua conversione booleana.
 
+<<<<<<< HEAD
 In altra parole, una catena di OR `"||"` ritorna il primo valore vero, se invece non ce ne sono ritorna l'ultimo valore trovato.
+=======
+In other words, a chain of OR `"||"` returns the first truthy value or the last one if no truthy value is found.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
 Ad esempio:
 
@@ -101,7 +105,11 @@ Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR 
 
 1. **Prelevare il primo valore vero da una lista di variabili o espressioni.**
 
+<<<<<<< HEAD
     Immaginiamo di avere diverse variabili, che possono contenere sia dati che `null/undefined`. Come potremmo fare per trovare la prima che contione dati?
+=======
+    Imagine we have a list of variables which can either contain data or be `null/undefined`. How can we find the first one with data?
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
     Possiamo utilizzare OR `||` per questo:
 
@@ -143,7 +151,11 @@ Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR 
     alert(x); // 1
     ```
 
+<<<<<<< HEAD
     Un assegnazione è un caso semplice, potrebbero essere coinvolti altri tipi di side-effect.
+=======
+    An assignment is a simple case. There may be side effects, that won't show up if the evaluation doesn't reach them.
+>>>>>>> a0266c574c0ab8a0834dd38ed65e7e4ee27f9cdb
 
     Quello che abbiamo visto, è un "modo breve di fare `if`". Il primo operando viene convertito a booleano e solo se è falso viene eseguito il secondo.
 
