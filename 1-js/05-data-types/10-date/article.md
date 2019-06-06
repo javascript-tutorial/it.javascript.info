@@ -13,18 +13,18 @@ Per creare un nuovo oggetto `Date`, chiamiamo `new Date()` con uno dei seguenti 
 
     ```js run
     let now = new Date();
-    alert( now ); // shows current date/time
+    alert( now ); // mostra l'attuale date/time
     ```
 
 `new Date(milliseconds)`
 : Crea un oggetto `Date` con l'ora impostata al numero di millisecondi trascorsi dal 1 Gennaio 1970 UTC+0.
 
     ```js run
-    // 0 means 01.01.1970 UTC+0
+    // 0 significa 01.01.1970 UTC+0
     let Jan01_1970 = new Date(0);
     alert( Jan01_1970 );
 
-    // now add 24 hours, get 02.01.1970 UTC+0
+    // ora vengono aggiunte 24 ore, si ha 02.01.1970 UTC+0
     let Jan02_1970 = new Date(24 * 3600 * 1000);
     alert( Jan02_1970 );
     ```

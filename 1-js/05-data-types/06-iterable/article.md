@@ -21,7 +21,7 @@ let range = {
   to: 5
 };
 
-// We want the for..of to work:
+// Vorremmo che il for..of funzioni:
 // for(let num of range) ... num=1,2,3,4,5
 ```
 
@@ -40,18 +40,18 @@ let range = {
   to: 5
 };
 
-// 1. call to for..of initially calls this
+// 1. la chiamata a for..of inizialmente chiama questo
 range[Symbol.iterator] = function() {
 
-  // ...it returns the iterator object:
-  // 2. Onward, for..of works only with this iterator, asking it for next values
+  // ...ritorna l'oggetto iteratore:
+  // 2. Da qui in poi, for..of lavora solamente con questo iteratore, richiedendogli il prossimo valore
   return {
     current: this.from,
     last: this.to,      
 
-    // 3. next() is called on each iteration by the for..of loop
+    // 3. next() viene invocato ad ogni iterazione del ciclo for..ot
     next() {
-      // 4. it should return the value as an object {done:.., value :...}
+      // 4. dovrebbe ritornare il valore sotto forma di oggetto {done:.., value :...}
       if (this.current <= this.last) {
         return { done: false, value: this.current++ };
       } else {
@@ -61,9 +61,9 @@ range[Symbol.iterator] = function() {
   };
 };
 
-// now it works!
+// ora funziona !
 for (let num of range) {
-  alert(num); // 1, then 2, 3, 4, 5
+  alert(num); // 1, poi 2, 3, 4, 5
 }
 ```
 
@@ -98,7 +98,7 @@ let range = {
 };
 
 for (let num of range) {
-  alert(num); // 1, then 2, 3, 4, 5
+  alert(num); // 1, poi 2, 3, 4, 5
 }
 ```
 
@@ -123,8 +123,8 @@ Per una stringa, `for..of` cicla sui caratteri:
 
 ```js run
 for (let char of "test") {
-  // triggers 4 times: once for each character
-  alert( char ); // t, then e, then s, then t
+  // attivato 4 volte: una volta per ogni carattere
+  alert( char ); // t, poi e, poi s, poi t
 }
 ```
 
@@ -133,7 +133,7 @@ E funziona correttamente anche con le coppie surrogate!
 ```js run
 let str = '𝒳😂';
 for (let char of str) {
-    alert( char ); // 𝒳, and then 😂
+    alert( char ); // 𝒳, e poi 😂
 }
 ```
 
@@ -148,7 +148,7 @@ Proveremo ad iterare su una stringa allo stesso modo di un ciclo `for..of`, ma c
 ```js run
 let str = "Hello";
 
-// does the same as
+// fa la stessa cosa di
 // for (let char of str) alert(char);
 
 let iterator = str[Symbol.iterator]();
@@ -156,7 +156,7 @@ let iterator = str[Symbol.iterator]();
 while (true) {
   let result = iterator.next();
   if (result.done) break;
-  alert(result.value); // outputs characters one by one
+  alert(result.value); // stampa i caratteri uno ad uno
 }
 ```
 
@@ -178,14 +178,14 @@ Ad esempio, l'esempio `range` utilizzato sopra è un oggetto iterabile, ma non a
 Qui invece vediamo un esempio di oggetto array-like, ma che non è iterabile:
 
 ```js run
-let arrayLike = { // has indexes and length => array-like
+let arrayLike = { // possiede indici e lenght => array-like
   0: "Hello",
   1: "World",
   length: 2
 };
 
 *!*
-// Error (no Symbol.iterator)
+// Errore (Symbol.iterator non trovato)
 for (let item of arrayLike) {}
 */!*
 ```
@@ -208,7 +208,7 @@ let arrayLike = {
 *!*
 let arr = Array.from(arrayLike); // (*)
 */!*
-alert(arr.pop()); // World (method works)
+alert(arr.pop()); // World (il metodo funziona)
 ```
 
 `Array.from` alla riga `(*)` prende l'oggetto, esamina se questo è un iterabile o un array-like, successivamente crea un nuova array e copia al suo interno tutti gli elementi.
@@ -216,9 +216,9 @@ alert(arr.pop()); // World (method works)
 Si comporta allo stesso modo con un oggetto iterabile:
 
 ```js
-// assuming that range is taken from the example above
+// assumiamo che il range venga preso dall'esempio sopra
 let arr = Array.from(range);
-alert(arr); // 1,2,3,4,5 (array toString conversion works)
+alert(arr); // 1,2,3,4,5 (la conversione array toString funziona)
 ```
 
 La sintassi completa di `Array.from` consente di fornire una funzione opzionale di "map":
@@ -231,9 +231,9 @@ Il secondo argomento `mapFn` dovrebbe essere la funzione da applicare ad ogni el
 Ad esempio:
 
 ```js
-// assuming that range is taken from the example above
+// assumiamo che il range venga preso dall'esempio sopra
 
-// square each number
+// quadrato di ogni numero
 let arr = Array.from(range, num => num * num);
 
 alert(arr); // 1,4,9,16,25
@@ -244,7 +244,7 @@ Qui utilizziamo `Array.from` per convertire una strina in un array di caratteri:
 ```js run
 let str = '𝒳😂';
 
-// splits str into array of characters
+// spezza str in un array di caratteri
 let chars = Array.from(str);
 
 alert(chars[0]); // 𝒳
@@ -259,7 +259,7 @@ Tecnicamente qui facciamo la stessa cosa:
 ```js run
 let str = '𝒳😂';
 
-let chars = []; // Array.from internally does the same loop
+let chars = []; // Array.from internamente esegue lo stesso ciclo
 for (let char of str) {
   chars.push(char);
 }
@@ -280,8 +280,8 @@ let str = '𝒳😂𩷶';
 
 alert( slice(str, 1, 3) ); // 😂𩷶
 
-// native method does not support surrogate pairs
-alert( str.slice(1, 3) ); // garbage (two pieces from different surrogate pairs)
+// il metodo nativo non supporta le coppie surrogate
+alert( str.slice(1, 3) ); // spazzatura (due pezzi da coppie surrogate differenti)
 ```
 
 

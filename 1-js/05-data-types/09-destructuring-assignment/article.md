@@ -12,11 +12,11 @@ La destrutturazione inoltre funziona molto bene con le funzione complesse che ri
 Un esempio di come un array viene destrutturato in variabili:
 
 ```js
-// we have an array with the name and surname
+// abbiamo un array con nome e cognome
 let arr = ["Ilya", "Kantor"]
 
 *!*
-// destructuring assignment
+// assegnamento di destrutturazione
 let [firstName, surname] = arr;
 */!*
 
@@ -48,7 +48,7 @@ Possono essere ignorati degli elementi dell'array inserendo una virgola:
 
 ```js run
 *!*
-// second element is not needed
+// il secondo elemento non è necessario
 let [firstName, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
 */!*
 
@@ -96,11 +96,11 @@ let user = {
   age: 30
 };
 
-// loop over keys-and-values
+// ciclo su chiavi e valori
 *!*
 for (let [key, value] of Object.entries(user)) {
 */!*
-  alert(`${key}:${value}`); // name:John, then age:30
+  alert(`${key}:${value}`); // name:John, poi age:30
 }
 ```
 
@@ -129,7 +129,7 @@ alert(name1); // Julius
 alert(name2); // Caesar
 
 *!*
-// Note that type of `rest` is Array.
+// Da notare che il tipo di `rest` è Array.
 alert(rest[0]); // Consul
 alert(rest[1]); // of the Roman Republic
 alert(rest.length); // 2
@@ -155,12 +155,12 @@ Se volessimo utilizzare un nostro valore di "default", potremmo fornirlo con la 
 
 ```js run
 *!*
-// default values
+// valori di default
 let [name = "Guest", surname = "Anonymous"] = ["Julius"];
 */!*
 
-alert(name);    // Julius (from array)
-alert(surname); // Anonymous (default used)
+alert(name);    // Julius (dall'array)
+alert(surname); // Anonymous (valore di default)
 ```
 
 I valori di default possono essere anche espressioni complesse o anche delle chiamate a funzione. Verranno presi in considerazione solamente se non verrà fornito alcun valore.
@@ -168,11 +168,11 @@ I valori di default possono essere anche espressioni complesse o anche delle chi
 Ad esempio, qui usiamo la funzione `prompt` come default. La chiamata avverrà solamente nel secondo caso:
 
 ```js run
-// runs only prompt for surname
+// viene eseguito solo il prompt per il cognome
 let [name = prompt('name?'), surname = prompt('surname?')] = ["Julius"];
 
-alert(name);    // Julius (from array)
-alert(surname); // whatever prompt gets
+alert(name);    // Julius (dall'array)
+alert(surname); // qualsiasi cosa provenga dal prompt
 ```
 
 
@@ -210,7 +210,7 @@ alert(height); // 200
 Le proprietà `options.title`, `options.width` e `options.height` vengono assegnate alle variabili corrispondenti. L'ordine non ha importanza. Questo codice funzionerebbe allo stesso modo:
 
 ```js
-// changed the order of properties in let {...}
+// cambiato l'ordine delle proprietà in let {...}
 let {height, width, title} = { title: "Menu", height: 200, width: 100 }
 ```
 
@@ -271,7 +271,7 @@ let {width = prompt("width?"), title = prompt("title?")} = options;
 */!*
 
 alert(title);  // Menu
-alert(width);  // (whatever you the result of prompt is)
+alert(width);  // (qualsiasi cosa arrivi dal prompt)
 ```
 
 Possiamo anche combinare entrambi, i due punti e l'uguaglianza:
@@ -309,7 +309,7 @@ let options = {
 let {title, ...rest} = options;
 */!*
 
-// now title="Menu", rest={height: 200, width: 100}
+// ora title="Menu", rest={height: 200, width: 100}
 alert(rest.height);  // 200
 alert(rest.width);   // 100
 ```
@@ -323,7 +323,7 @@ Questo non funzionerebbe:
 ```js run
 let title, width, height;
 
-// error in this line
+// errore in questa riga
 {title, width, height} = {title: "Menu", width: 200, height: 100};
 ```
 
@@ -331,7 +331,7 @@ Il problema è che JavaScript tratta `{...}` come un blocco di codice. Questo bl
 
 ```js run
 {
-  // a code block
+  // un blocco di codice
   let message = "Hello";
   // ...
   alert( message );
@@ -343,7 +343,7 @@ Per informare JavaScript che non ci troviamo in un blocco di codice, possiamo ra
 ```js run
 let title, width, height;
 
-// okay now
+// ora funziona
 *!*(*/!*{title, width, height} = {title: "Menu", width: 200, height: 100}*!*)*/!*;
 
 alert( title ); // Menu
@@ -364,17 +364,17 @@ let options = {
     height: 200
   },
   items: ["Cake", "Donut"],
-  extra: true    // something extra that we will not destruct
+  extra: true    // qualche extra che non destruttureremo
 };
 
 // destructuring assignment on multiple lines for clarity
 let {
-  size: { // put size here
+  size: { // mettiamo size qui
     width,
     height
   },
-  items: [item1, item2], // assign items here
-  title = "Menu" // not present in the object (default value is used)
+  items: [item1, item2], // assegniamo gli item qui
+  title = "Menu" // non presente nell'oggetto (viene utilizzato il valore di default)
 } = options;
 
 alert(title);  // Menu
@@ -396,7 +396,7 @@ Questo accade spesso con l'assegnamento di destrutturazione. Abbiamo un oggetto 
 
 Anche qui accade lo stesso:
 ```js
-// take size as a whole into a variable, ignore the rest
+// prende size per interno su una variabile, ignora il resto
 let { size } = options;
 ```
 
@@ -427,16 +427,16 @@ La destrutturazione ci viene in soccorso!
 Possiamo passare i parametri come un oggetto, e la funzione immediatamente lo destrutturizza in variabili:
 
 ```js run
-// we pass object to function
+// passiamo l'oggetto alla funzione
 let options = {
   title: "My menu",
   items: ["Item1", "Item2"]
 };
 
-// ...and it immediately expands it to variables
+// ...e immediatamente lo espandiamo su variabili
 function showMenu(*!*{title = "Untitled", width = 200, height = 100, items = []}*/!*) {
-  // title, items – taken from options,
-  // width, height – defaults used
+  // title, items – presi da options,
+  // width, height – valori di default
   alert( `${title} ${width} ${height}` ); // My Menu 200 100
   alert( items ); // Item1, Item2
 }
@@ -455,9 +455,9 @@ let options = {
 *!*
 function showMenu({
   title = "Untitled",
-  width: w = 100,  // width goes to w
-  height: h = 200, // height goes to h
-  items: [item1, item2] // items first element goes to item1, second to item2
+  width: w = 100,  // width va su w
+  height: h = 200, // height va su h
+  items: [item1, item2] // il primo elemento va su item1, il secondo su item2
 }) {
 */!*
   alert( `${title} ${w} ${h}` ); // My Menu 100 200
@@ -482,14 +482,14 @@ Da notare che la destrutturazione assume che `showMenu()` abbia un argomento. Se
 showMenu({});
 
 
-showMenu(); // this would give an error
+showMenu(); // questo darà errore
 ```
 
 Possiamo farlo ponendo `{}` il valore di default per l'intera destrutturazione:
 
 
 ```js run
-// simplified parameters a bit for clarity
+// parametri semplificati per chiarezza
 function showMenu(*!*{ title = "Menu", width = 100, height = 200 } = {}*/!*) {
   alert( `${title} ${width} ${height}` );
 }

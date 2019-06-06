@@ -27,12 +27,12 @@ Ad esempio:
 ```js run
 let map = new Map();
 
-map.set('1', 'str1');   // a string key
-map.set(1, 'num1');     // a numeric key
-map.set(true, 'bool1'); // a boolean key
+map.set('1', 'str1');   // una chiave di tipo stringa
+map.set(1, 'num1');     // una chiave numerica
+map.set(true, 'bool1'); // una chiave booleana
 
-// remember the regular Object? it would convert keys to string
-// Map keeps the type, so these two are different:
+// ricordate l'oggetto regolare? Convertirà le chiavi in stringa
+// Map mantiene i tipi, quindi questi due sono differenti:
 alert( map.get(1)   ); // 'num1'
 alert( map.get('1') ); // 'str1'
 
@@ -47,10 +47,10 @@ Ad esempio:
 ```js run
 let john = { name: "John" };
 
-// for every user, let's store their visits count
+// per ogni user, memorizziamo il count delle loro visite
 let visitsCountMap = new Map();
 
-// john is the key for the map
+// john è la chiave nella mappa
 visitsCountMap.set(john, 123);
 
 alert( visitsCountMap.get(john) ); // 123
@@ -61,12 +61,12 @@ La possibilità di utilizzare oggetti come chiave è una delle caratteristiche f
 Prima che venissero introdotte le `Map`, le persone aggiungevano un identificatore univoco come proprietà dell'oggetto:
 
 ```js run
-// we add the id field
+// aggiungiamo il campo id
 let john = { name: "John", *!*id: 1*/!* };
 
 let visitsCounts = {};
 
-// now store the value by id
+// ora memorizziamo un valore tramite id
 visitsCounts[john.id] = 123;
 
 alert( visitsCounts[john.id] ); // 123
@@ -98,7 +98,7 @@ map.set('1', 'str1')
 Quando viene creata una `Map`, possiamo fornirgli un array (o un oggetto iterabile) con delle coppie chiave/valore, come nell'esempio:
 
 ```js
-// array of [key, value] pairs
+// array di coppie [key, value]
 let map = new Map([
   ['1',  'str1'],
   [1,    'num1'],
@@ -136,19 +136,19 @@ let recipeMap = new Map([
   ['onion',    50]
 ]);
 
-// iterate over keys (vegetables)
+// iteriamo sulle chiavi (vegetables)
 for (let vegetable of recipeMap.keys()) {
   alert(vegetable); // cucumber, tomatoes, onion
 }
 
-// iterate over values (amounts)
+// iteriamo sui valori (amounts)
 for (let amount of recipeMap.values()) {
   alert(amount); // 500, 350, 50
 }
 
-// iterate over [key, value] entries
-for (let entry of recipeMap) { // the same as of recipeMap.entries()
-  alert(entry); // cucumber,500 (and so on)
+// iteriamo sulle coppie [key, value] 
+for (let entry of recipeMap) { // lo stesso di recipeMap.entries()
+  alert(entry); // cucumber,500 (e cosi via)
 }
 ```
 
@@ -159,7 +159,7 @@ L'iterazione segue lo stesso ordine in cui sono stati inseriti i valori. `Map` c
 Inoltre, `Map` possiede un metodo integrato `forEach`, simile agli `Array`:
 
 ```js
-// runs the function for each (key, value) pair 
+// esegue la funzione per ogni coppia (key, value) 
 recipeMap.forEach( (value, key, map) => {
   alert(`${key}: ${value}`); // cucumber: 500 etc
 });
@@ -190,18 +190,18 @@ let john = { name: "John" };
 let pete = { name: "Pete" };
 let mary = { name: "Mary" };
 
-// visits, some users come multiple times
+// visite, alcuni user sono entrati più volte
 set.add(john);
 set.add(pete);
 set.add(mary);
 set.add(john);
 set.add(mary);
 
-// set keeps only unique values
+// set mantiene solamente valori univoci
 alert( set.size ); // 3
 
 for (let user of set) {
-  alert(user.name); // John (then Pete and Mary)
+  alert(user.name); // John (poi Pete e Mary)
 }
 ```
 
@@ -215,7 +215,7 @@ let set = new Set(["oranges", "apples", "bananas"]);
 
 for (let value of set) alert(value);
 
-// the same with forEach:
+// lo stesso di forEach:
 set.forEach((value, valueAgain, set) => {
   alert(value);
 });
@@ -241,13 +241,13 @@ Ad esempio:
 ```js
 let john = { name: "John" };
 
-// the object can be accessed, john is the reference to it
+// l'oggetto è accessibilie, john è un suo riferimento
 
-// overwrite the reference
+// sovrascriviamo il riferimento
 john = null;
 
 *!*
-// the object will be removed from memory
+// l'oggetto verrà rimosso dalla memoria
 */!*
 ```
 
@@ -262,11 +262,11 @@ let john = { name: "John" };
 
 let array = [ john ];
 
-john = null; // overwrite the reference
+john = null; // sovrascriviamo il riferimento
 
 *!*
-// john is stored inside the array, so it won't be garbage-collected
-// we can get it as array[0]
+// john è memorizzato all'interno dell'array, quindi non verrà toccato dal garbage collector
+// possiamo ottenerlo tramite array[0]
 */!*
 ```
 
@@ -280,11 +280,11 @@ let john = { name: "John" };
 let map = new Map();
 map.set(john, "...");
 
-john = null; // overwrite the reference
+john = null; // sovrascriviamo il riferimento
 
 *!*
-// john is stored inside the map,
-// we can get it by using map.keys()
+// john viene memorizzato all'interno di map,
+// possiamo ottenerlo utilizzando map.keys()
 */!*
 ```
 
@@ -299,11 +299,11 @@ let weakMap = new WeakMap();
 
 let obj = {};
 
-weakMap.set(obj, "ok"); // works fine (object key)
+weakMap.set(obj, "ok"); // funziona
 
 *!*
-// can't use a string as the key
-weakMap.set("test", "Whoops"); // Error, because "test" is not an object
+// non possiamo utilizzare una stringa come chiave
+weakMap.set("test", "Whoops"); // Errore, perché "test" non è un oggetto
 */!*
 ```
 
@@ -315,9 +315,9 @@ let john = { name: "John" };
 let weakMap = new WeakMap();
 weakMap.set(john, "...");
 
-john = null; // overwrite the reference
+john = null; // sovrascriviamo il riferimento
 
-// john is removed from memory!
+// john è stato rimossa dalla memoria!
 ```
 
 Fate il confronto con l'esempio di `Map` sopra. Ora se `john` esiste solo come chiave della `WeakMap` -- verrà eliminato automaticamente.
@@ -341,7 +341,7 @@ L'idea di `WeakMap` è che possiamo memorizzare qualcosa relativo ad un oggetto 
 
 ```js
 weakMap.set(john, "secret documents");
-// if john dies, secret documents will be destroyed automatically
+// se john muore, i documenti segreti verrano distrutti automaticamente
 ```
 
 Questo diventa utile per situazioni in cui abbiamo memorizzato gli oggetti da qualche parte, ma vogliamo anche tenere nota di alcune informazioni addizionali, che sono rilevanti solamente finché l'oggetto vive.
@@ -355,20 +355,20 @@ Un modo potrebbe essere quello di mantenere traccia degli utenti, e all'uscita -
 ```js run
 let john = { name: "John" };
 
-// map: user => visits count
+// map: user => contatore di visite
 let visitsCountMap = new Map();
 
-// john is the key for the map
+// john è la chiave per map
 visitsCountMap.set(john, 123);
 
-// now john leaves us, we don't need him anymore
+// ora john ci lascia, non ne abbiamo più bisogno
 john = null;
 
 *!*
-// but it's still in the map, we need to clean it!
+// ma è ancora presente nella map, dobbiamo ripulirlo!
 */!*
 alert( visitsCountMap.size ); // 1
-// and john is also in the memory, because Map uses it as the key
+// john è anche in memoriam perchè Map lo utilizza come chiave
 ```
 
 Un'altra strada potrebbe essere quella di utilizzare una `WeakMap`:
@@ -380,11 +380,11 @@ let visitsCountMap = new WeakMap();
 
 visitsCountMap.set(john, 123);
 
-// now john leaves us, we don't need him anymore
+// ora john ci lascia, non ne abbiamo più bisogno
 john = null;
 
-// there are no references except WeakMap,
-// so the object is removed both from the memory and from visitsCountMap automatically
+// non ci sono riferimenti ad eccezione di WeakMap,
+// quindi l'oggetto viene rimosso sia dalla memoria che da visitsCountMap automaticamente
 ```
 
 Con una normale `Map`, la pulizia dopo l'uscita dell'utente potrebbe diventare un compito tedioso: non dobbiamo solamente preoccuparci di rimuovere l'utente (che potrebbe una variabile o un array), ma vanno pulite anche le informazioni addizionali come `visitsCountMap`. Può diventare quindi ingombrante e molto complesso quando le informazioni dell'utente sono memorizzate in diverse sezioni.
@@ -408,22 +408,22 @@ let messages = [
     {text: "See you soon", from: "Alice"}
 ];
 
-// fill it with array elements (3 items)
+// lo riempiamo con gli elementi dell'array (3 elementi)
 let unreadSet = new WeakSet(messages);
 
-// use unreadSet to see whether a message is unread
+// usiamo unreadSet per vedere se un messaggio non è ancora stato letto
 alert(unreadSet.has(messages[1])); // true
 
-// remove it from the set after reading
+// lo rimuoviamo dall'insieme dopo che è stato letto
 unreadSet.delete(messages[1]); // true
 
-// and when we shift our messages history, the set is cleaned up automatically
+// e quando scorriamo la cronologia dei nostri messaggi, l'insieme viene ripulito automaticamente
 messages.shift();
 
 *!*
-// no need to clean unreadSet, it now has 2 items
+// non c'è bisogno di pulire unreadSet, ora ha 2 elementi
 */!*
-// (though technically we don't know for sure when the JS engine clears it)
+// (anche se tecnicamente non sappiamo per certo quando il motore JS lo cancellerà)
 ```
 
 La maggior limitazione di `WeakMap` e `WeakSet` è l'assenza di iteratori, e la mancanza della possibilità di ottenere tutti gli elementi contenuti. Potrebbe sembrare un inconveniente, ma non vieta a `WeakMap/WeakSet` di compiere il proprio lavoro -- essere una struttura "addizionale" per memorizzare informazioni relative a dati memorizzati in un altro posto.

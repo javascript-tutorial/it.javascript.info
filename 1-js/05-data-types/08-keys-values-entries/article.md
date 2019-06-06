@@ -57,9 +57,9 @@ let user = {
   age: 30
 };
 
-// loop over values
+// ciclo sui valori
 for (let value of Object.values(user)) {
-  alert(value); // John, then 30
+  alert(value); // John, poi 30
 }
 ```
 
