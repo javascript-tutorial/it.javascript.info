@@ -6,7 +6,7 @@ Ci piacerebbe rendere questo tutorial disponibile in molte lingue. Aiutaci a tra
 
 Guarda il link <https://github.com/javascript-tutorial/translate> per maggiori dettagli.
 
-Ci piacerebbe anche avere la vostra collaborazione nel tutorial.
+Ci piacerebbe anche ricevere la vostra collaborazione nel tutorial.
 
 Hai trovato un errore? Manca un argomento? Createlo voi, e inviate un PR 👏
 

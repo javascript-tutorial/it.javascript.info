@@ -143,7 +143,7 @@ Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR 
     alert(x); // 1
     ```
 
-    Un assegnazione è un caso semplice, potrebbero essere coinvolti altri tipi di side-effect.
+    Un assegnazione è un caso semplice. Potrebbero essere coinvolti altri tipi di side-effect.
 
     Quello che abbiamo visto, è un "modo breve di fare `if`". Il primo operando viene convertito a booleano e solo se è falso viene eseguito il secondo.
 

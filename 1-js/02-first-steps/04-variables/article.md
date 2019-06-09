@@ -181,7 +181,7 @@ let my-name; // '-' non è consentito nei nomi
 Le variabili `apple` ed `AppLE` sono distinte.
 ```
 
-````smart header="Le lettere non inglesi sono permesse, ma sono sconsigliate"
+````smart header="Le lettere non latine sono permesse, ma sono sconsigliate"
 E' possibile utilizzare qualsiasi alfabeto, compreso quello cirillico o addirittura i geroglifici:
 
 ```js
@@ -251,7 +251,7 @@ Una pratica molto diffusa è di utilizzare le variabili costanti come alias di v
 
 Questo tipo di costanti vengono identificate con lettere maiuscole e underscore.
 
-Come in questo esempio:
+Come in questo esempio, creiamo delle costanti nel cosidetto formato "web" (esadecimale):
 
 ```js run
 const COLOR_RED = "#F00";

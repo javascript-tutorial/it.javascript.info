@@ -79,7 +79,7 @@ user = {
 };
 
 // la sintassi più breve risulta più carina
-let user = {
+user = {
 *!*
   sayHi() { // equivalente a "sayHi: function()"
 */!*
@@ -189,7 +189,7 @@ function sayHi() {
 }
 
 *!*
-// vengono utilizzate le stesse funzioni su due oggetti
+// utilizziamo la stessa funzione su due oggetti
 user.f = sayHi;
 admin.f = sayHi;
 */!*

@@ -45,7 +45,7 @@ Il tag `<script>` ha un paio di attributi che vengono utilizzati raramente, ma �
 
  L'attributo `type`: <code>&lt;script <u>type</u>=...&gt;</code>
 
- : Il vecchio standard HTML4 richiedeva che ogni script avesse un tipo. Solitamente era `type="text/javascript"`. Ora non è più richiesto. Infatti, i nuobi standard hanno completamente cambiato il significato di questo attributo. Adesso viene utilizzato per i moduli JavaScript. Questo è un argomento avanzato e ne parleremo più avanti in un'altra parte del tutorial.
+ : Il vecchio standard HTML4 richiedeva che ogni script avesse un `type` (tipo). Solitamente era `type="text/javascript"`. Ora non è più richiesto. Infatti, i nuobi standard hanno completamente cambiato il significato di questo attributo. Adesso viene utilizzato per i moduli JavaScript. Questo è un argomento avanzato e ne parleremo più avanti in un'altra parte del tutorial.
 
  L'attributo `language`: <code>&lt;script <u>language</u>=...&gt;</code>
   : Questo attributo intendeva mostrare il linguaggio dello script. Questo attributo ormai non ha più signigicato, poichè JavaScript è il linguaggio di default. Non è necessario utilizzarlo.

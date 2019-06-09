@@ -15,9 +15,7 @@ Nel capitolo <info:type-conversions> abbiamo visto le regole per quelle di tipo 
 
 Possiamo gestire la conversione numerica o a stringa, utilizzando dei metodi speciali dell'oggetto.
 
-Quando un oggetto viene utilizzato in un contesto in cui è richiesto un tipo primitivo, ad esempio, in un `alert` o in un operazione matematica, questo viene convertito ad una primitiva utilizzando l'algoritmo `ToPrimitive` ([specification](https://tc39.github.io/ecma262/#sec-toprimitive)).
-
-In base al contesto, la conversione viene definita "hint" ("suggerimento").
+L'algoritmo di conversione si chiama `ToPrimitive` ([specification](https://tc39.github.io/ecma262/#sec-toprimitive)). In base al contesto, la conversione viene definita "hint" ("suggerimento").
 
 Ci sono tre varianti:
 
@@ -157,7 +155,6 @@ alert(user + 500); // toString -> John500
 
 In assenza di `Symbol.toPrimitive` e `valueOf`, `toString` gestirà tutte le conversioni a primitive.
 
-
 ## Tipi di ritorno
 
 Una cosa importante da sapere riguardo tutte le conversioni primitive è che non devono necessariamente ritornare il tipo "hint" (suggerito).
@@ -213,7 +210,6 @@ Ad esempio:
 
     alert(obj + 2); // 3 (ToPrimitive ha ritornato boolean, no string => ToNumber)
     ```
-
 
 ## Riepilogo
 

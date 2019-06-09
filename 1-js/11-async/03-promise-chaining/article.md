@@ -146,7 +146,7 @@ Ritornare le promise ci permette di creare una catena di azioni asincrone.
 
 ## Esempio: loadScript
 
-Usiamo questa feature con `loadScript` per caricare gli script uno ad uno, in sequenza:
+Usiamo questa feature con `loadScript`, definita nel [capitolo precedente](/promise-basics#loadscript), per caricare gli script uno ad uno, in sequenza:
 
 ```js run
 loadScript("/article/promise-chaining/one.js")

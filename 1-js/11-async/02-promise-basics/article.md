@@ -279,7 +279,7 @@ La cosa buona è: un handler `.then` è garantito per l'esecuzione sia che la pr
 
 Ora, vediamo esempi più pratici di come le promise possano aiutarci a scrivere codice asincrono.
 
-## Esempio: loadScript
+## Esempio: loadScript [#loadscript]
 
 Abbiamo la funzione `loadScript` per caricare uno script dal capitolo precedente.
 
