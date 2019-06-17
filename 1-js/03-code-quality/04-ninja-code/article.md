@@ -135,7 +135,11 @@ Piuttosto utilizzate quelle già presenti. Semplicemente riscrivetele.
 
 In una funzione conviene utilizzare solo variabili passate come parametri.
 
+<<<<<<< HEAD
 Questo renderà davvero difficile capire cosa c'è esattamente all'interno della variabile *in questo momento*. E anche da dove proviene. Una persona con una pessima intuizione sarà costretta ad analizzare il codice linea per linea e tracciare tutti i possibili flussi.
+=======
+That would make it really hard to identify what's exactly in the variable *now*. And also where it comes from. The purpose is to develop the intuition and memory of a person reading the code. A person with weak intuition would have to analyze the code line-by-line and track the changes through every code branch.
+>>>>>>> 027933531e121650120f7e8385f691de99af12d2
 
 **Una variante avanzata è quella di sostituire di nascosto (!) i valori con qualcos'altro di simile nel bel mezzo di una ciclo o di una funzione.**
 
@@ -151,7 +155,13 @@ function ninjaFunction(elem) {
 }
 ```
 
+<<<<<<< HEAD
 Un programmatore esterno che vorrebbe provare ad interagire con `elem` nella seconda parte della funzione, rimarrà sorpreso... Solamente in fase di debugging , dopo aver esaminato attentamente il codice si renderà conto che stava lavorando con un clone!
+=======
+A fellow programmer who wants to work with `elem` in the second half of the function will be surprised... Only during the debugging, after examining the code they will find out that they're working with a clone!
+
+Seen in code regularly. Deadly effective even against an experienced ninja.
+>>>>>>> 027933531e121650120f7e8385f691de99af12d2
 
 Se ripetuto regolarmente nel codice, diventa letale anche contro i ninja più esperti. 
 
@@ -165,9 +175,13 @@ Un ninja intelligente mette gli underscore in un solo punto del codice e li evit
 
 ## Mostrate il vostro amore
 
+<<<<<<< HEAD
 Mostrate a tutti quando siano belli i vostri elementi! Nomi come `superElement`, `megaFrame` e `niceItem` sicuramente cattureranno l'animo del lettore.
 
 Infatti, utilizzerete dei bei nomi come: `super..`, `mega..`, `nice..` Ma in ogni caso non fornirete dettagli. Un lettore esterno potrebbe ragionare sui possibili significato perdendo una o due ore.
+=======
+Indeed, from one hand, something is written: `super..`, `mega..`, `nice..` But from the other hand -- that brings no details. A reader may decide to look for a hidden meaning and meditate for an hour or two of their paid working time.
+>>>>>>> 027933531e121650120f7e8385f691de99af12d2
 
 
 ## Sovrascrittura delle variabili esterne
@@ -177,7 +191,11 @@ Quando sei nella luce, non puoi vedere niente nell'oscurità.<br>
 Quando sei nell'oscurità, puoi vedere tutto nella luce.
 ```
 
+<<<<<<< HEAD
 Usare gli stessi nomi per le variabili interne ed esterne. E' semplice. Non sono richiesti ulteriori sforzi.
+=======
+Use same names for variables inside and outside a function. As simple. No efforts to invent new names.
+>>>>>>> 027933531e121650120f7e8385f691de99af12d2
 
 ```js
 let *!*user*/!* = authenticateUser();
