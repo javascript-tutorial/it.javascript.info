@@ -12,6 +12,7 @@ Un IDE carica il progetto (possono essere molti file), consente la navigazione t
 
 Se non hai ancora considerato di scegliere un IDE, dai un occhiata a queste alternative:
 
+<<<<<<< HEAD:1-js/01-getting-started/2-code-editors/article.md
 - [WebStorm](http://www.jetbrains.com/webstorm/) per sviluppatori frontend e altri editor della stessa compagnia per gli altri linguaggi (a pagamento).
 - [Netbeans](http://netbeans.org/) (gratuito).
 
@@ -20,6 +21,14 @@ Tutti gli IDE sono multi-piattaforma.
 Per Windows, c'e anche l'editor "Visual Studio", da non confondere con "Visual Studio Code". "Visual Studio" è a pagamento ed è un potente editor disponibile solo per Windows, ottimo per piattaforme .NET. E' disponibile una versione gratuita ([Visual Studio Community](https://www.visualstudio.com/vs/community/).
 
 Molti IDE sono a pagamento ma offrono un periodo di prova gratuito. Solitamente il loro costo è trascurabile se paragonato allo stipendio di una sviluppatore qualificato, è quindi importante scegliere il migliore in base alle proprie esigenze.
+=======
+- [Visual Studio Code](https://code.visualstudio.com/) (cross-platform, free).
+- [WebStorm](http://www.jetbrains.com/webstorm/) (cross-platform, paid).
+
+For Windows, there's also "Visual Studio", not to be confused with "Visual Studio Code". "Visual Studio" is a paid and mighty Windows-only editor, well-suited for the .NET platform. It's also good at JavaScript. There's also a free version [Visual Studio Community](https://www.visualstudio.com/vs/community/).
+
+Many IDEs are paid, but have a trial period. Their cost is usually negligible compared to a qualified developer's salary, so just choose the best one for you.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09:1-js/01-getting-started/3-code-editors/article.md
 
 ## Editor semplici
 
@@ -33,6 +42,7 @@ Nella pratica, gli editor semplici possono avere molti plugin tra cui sintassi a
 
 Meritano attenzione le seguenti opzioni:
 
+<<<<<<< HEAD:1-js/01-getting-started/2-code-editors/article.md
 - [Visual Studio Code](https://code.visualstudio.com/) (multi-piattaforma, gratuito) possiede molte caratteristiche in stile IDE.
 - [Atom](https://atom.io/) (multi-piattaforma, gratuito).
 - [Sublime Text](http://www.sublimetext.com) (multi-piattaforma, con prova gratuita).
@@ -49,6 +59,14 @@ Io personalmente utilizzo:
 - Come editor semplice -- [Sublime Text](http://www.sublimetext.com) o [Atom](https://atom.io/).
 
 ## Non intestarditevi
+=======
+- [Atom](https://atom.io/) (cross-platform, free).
+- [Sublime Text](http://www.sublimetext.com) (cross-platform, shareware).
+- [Notepad++](https://notepad-plus-plus.org/) (Windows, free).
+- [Vim](http://www.vim.org/) and [Emacs](https://www.gnu.org/software/emacs/) are also cool if you know how to use them.
+
+## Let's not argue
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09:1-js/01-getting-started/3-code-editors/article.md
 
 Gli editor elencanti sopra sono sono quelli che io e i miei amici, che considero buoni sviluppatori, abbiamo utilizzato senza problemi per molto tempo.
 

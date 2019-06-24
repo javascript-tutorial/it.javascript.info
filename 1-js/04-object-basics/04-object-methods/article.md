@@ -15,7 +15,11 @@ In JavaScript le azioni vengono rappresentate tramite le funzioni.
 
 ## Esempio di un metodo
 
+<<<<<<< HEAD
 Per iniziare, insegniamo a `user` a salutare:
+=======
+For a start, let's teach the `user` to say hello:
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 ```js run
 let user = {
@@ -256,11 +260,21 @@ user.hi(); // John (la chiamata semplice funzione)
 */!*
 ```
 
+<<<<<<< HEAD
 Nell'ultima riga c'è un operatore ternario che deve decidere tra `user.hi` o `user.bye`. In questo caso `user.hi`.
 
 Il metodo viene immediatamente chiamato con le parentesi `()`. Ma non funziona!
 
 Questo funziona (oggetto punto metodo):
+=======
+On the last line there is a conditinal operator that chooses either `user.hi` or `user.bye`. In this case the result is `user.hi`.
+
+Then the method is immediately called with parentheses `()`. But it doesn't work right!
+
+As you can see, the call results in an error, because the value of `"this"` inside the call becomes `undefined`.
+
+This works (object dot method):
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 ```js
 user.hi();
 ```
@@ -302,9 +316,15 @@ Il tipo riferimento è un "tipo specifico". Noi non possiamo utilizzarlo esplici
 
 Il valore del tipo riferimento è una combinazione di tre valori `(base, name, strict)`, dove:
 
+<<<<<<< HEAD
 - `base` è l'oggetto.
 - `name` è la proprietà.
 - `strict` è vero se `use strict` è attivo.
+=======
+- `base` is the object.
+- `name` is the property name.
+- `strict` is true if `use strict` is in effect.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 Il risultato dell'accesso ad un proprietà `user.hi` non è una funzione, ma un valore di tipo riferimento. Per `user.hi` con la modalità strict attiva:
 
@@ -315,7 +335,13 @@ Il risultato dell'accesso ad un proprietà `user.hi` non è una funzione, ma un 
 
 Quando le parentesi `()` vengono chiamate sul tipo riferimento, queste ricevono le informazioni riguardo l'oggetto e i suoi metodi, e possono settare il  `this` (`=user` in questo caso).
 
+<<<<<<< HEAD
 Qualsiasi operazione come l'assegnazione `hi = user.hi` scartano il tipo riferimento, prendono il valore di `user.hi` (una funzione) e lo ritornano per l'assegnazione. Quindi qualsiasi operazione ulteriore sul tipo riferimento perde il `this`.
+=======
+Reference type is a special "intermediary" internal type, with the purpose to pass information from dot `.` to calling parentheses `()`.
+
+Any other operation like assignment `hi = user.hi` discards the reference type as a whole, takes the value of `user.hi` (a function) and passes it on. So any further operation "loses" `this`.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 Quindi il valore `this` viene passato solamente chiamando la funzione direttamente usando la notazione puntata `obj.method()` o le parentesi quadre `obj['method']()`    (vanno bene entrambe). Più avanti in questa guida, studieremo vari modi per risolvere il problema come [func.bind()](/bind#solution-2-bind).
 

@@ -4,7 +4,11 @@ Immagina di essere un cantante famoso, ed i fan ti chiedono giorno e notte del t
 
 Per ottenere un po' di sollievo, gli prometti di inviarglielo una volta pubblicato. Dai ai tuoi fan una lista a cui si possono abbonare per gli aggiornamenti. Inserendo i propri indirizzi email, tutti gli abbonati riceveranno simultaneamente la canzone non appena disponibile. E anche se qualcosa andasse veramente male, ad esempio, se la pubblicazione della canzone fosse cancellata, ne riceveranno comunque notifica.
 
+<<<<<<< HEAD
 Tutti sono felici, tu perchè le persone non ti staranno più con il fiato sul collo, e i fan, perchè non perderanno il singolo.
+=======
+Everyone is happy, because the people don't crowd you anymore, and fans, because they won't miss the single.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 Questa è un'analogia, nella vita reale, di cose con cui abbiamo a che fare spesso nella programmazione:
 
@@ -219,7 +223,11 @@ Proprio come c'è la clausola `finally` in un regolare `try {...} catch {...}`, 
 
 La chiamata `.finally(f)` è simile a `.then(f, f)` nel senso che viene sempre eseguita quando la promise è ferma (settled): che sia soddisfatta o respinta.
 
+<<<<<<< HEAD
 `finally` è un buon handler per fare pulizia, ad esempio fermare i nostri indicatori di caricamento, dato che non sono più necessari, indipendentemente dall'esito.
+=======
+`finally` is a good handler for performing cleanup, e.g. stopping our loading indicators, as they are not needed anymore, no matter what the outcome is.
+>>>>>>> 9b5c1c95ec8a466150e519b0e94748717c747b09
 
 Ad esempio:
 
