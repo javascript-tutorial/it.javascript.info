@@ -2,10 +2,18 @@
 
 Le due strutture dati più utilizzate in JavaScritp sono `Object` e `Array`.
 
+<<<<<<< HEAD
 Gli oggetti ci consentono di raccogliere molti pezzi di informazione in una singola entità, mentre gli array ci consentono di memorizzare collezioni ordinate. Possiamo quindi costruire un oggetto o un array e gestirlo come singola entità, oppure passarlo ad una funzione.
 
 *L'assegnamento di destrutturazione* è una speciale sintassi che ci consente di "spacchettare" oggetti o array in un insieme di variabili, che in molti casi possono risultare più comode. 
 La destrutturazione inoltre funziona molto bene con le funzione complesse che richiedono molti parametri, valori di default, molto presto vedremo come gestire anche questi.
+=======
+Objects allow us to create a single entity that stores data items by key, and arrays allow us to gather data items into an ordered collection.
+
+But when we pass those to a function, it may need not an object/array as a whole, but rather individual pieces.
+
+*Destructuring assignment* is a special syntax that allows us to "unpack" arrays or objects into a bunch of variables, as sometimes that's more convenient. Destructuring also works great with complex functions that have a lot of parameters, default values, and so on.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 ## Destrutturazione di un array
 
@@ -16,7 +24,13 @@ Un esempio di come un array viene destrutturato in variabili:
 let arr = ["Ilya", "Kantor"]
 
 *!*
+<<<<<<< HEAD
 // assegnamento di destrutturazione
+=======
+// destructuring assignment
+// sets firstName = arr[0]
+// and surname = arr[1]
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 let [firstName, surname] = arr;
 */!*
 
@@ -55,7 +69,11 @@ let [firstName, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic
 alert( title ); // Consul
 ```
 
+<<<<<<< HEAD
 Nel codice sopra, il secondo elemento viene ignorato, il terzo viene assegnato a `title`, il resto dell'array viene ignorato.
+=======
+In the code above, the second element of the array is skipped, the third one is assigned to `title`, and the rest of the array items is also skipped (as there are no variables for them).
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 ````
 
 ````smart header="Funziona con qualsiasi itarabile"
@@ -112,7 +130,7 @@ user.set("name", "John");
 user.set("age", "30");
 
 *!*
-for (let [key, value] of user.entries()) {
+for (let [key, value] of user) {
 */!*
   alert(`${key}:${value}`); // name:John, then age:30
 }
@@ -210,7 +228,11 @@ alert(height); // 200
 Le proprietà `options.title`, `options.width` e `options.height` vengono assegnate alle variabili corrispondenti. L'ordine non ha importanza. Questo codice funzionerebbe allo stesso modo:
 
 ```js
+<<<<<<< HEAD
 // cambiato l'ordine delle proprietà in let {...}
+=======
+// changed the order in let {...}
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 let {height, width, title} = { title: "Menu", height: 200, width: 100 }
 ```
 
@@ -271,7 +293,11 @@ let {width = prompt("width?"), title = prompt("title?")} = options;
 */!*
 
 alert(title);  // Menu
+<<<<<<< HEAD
 alert(width);  // (qualsiasi cosa arrivi dal prompt)
+=======
+alert(width);  // (whatever the result of prompt is)
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 ```
 
 Possiamo anche combinare entrambi, i due punti e l'uguaglianza:
@@ -290,11 +316,19 @@ alert(w);      // 100
 alert(h);      // 200
 ```
 
+<<<<<<< HEAD
 ### L'operatore di resto
+=======
+### The rest pattern "..."
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 Cosa succede se l'oggetto possiede più proprietà delle variabili da noi fornite? Possiamo prendere solamente alcune ed assegnare tutto ciò che avanza da un'altra parte?
 
+<<<<<<< HEAD
 La specifica per l'utilizzo dell'operatore resto (tre punti) fa quasi parte dello standard, ma molti browser non lo supportano ancora.
+=======
+We can use the rest pattern, just like we did with arrays. It's not supported by some older browsers (IE, use Babel to polyfill it), but works in modern ones.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 Appare cosi:
 
@@ -306,6 +340,8 @@ let options = {
 };
 
 *!*
+// title = property named title
+// rest = object with the rest of properties
 let {title, ...rest} = options;
 */!*
 
@@ -316,8 +352,13 @@ alert(rest.width);   // 100
 
 
 
+<<<<<<< HEAD
 ````smart header="Catturare senza `let`"
 Negli esempi sopra le variabili vengono dichiarate appena prima di essere assegnate: `let {…} = {…}`. Ovviamente, potremmo anche utilizzare delle variabili già esistenti. Ma c'è un tranello.
+=======
+````smart header="Gotcha if there's no `let`"
+In the examples above variables were declared right in the assignment: `let {…} = {…}`. Of course, we could use existing variables too, without `let`. But there's a catch.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 Questo non funzionerebbe:
 ```js run
@@ -338,13 +379,22 @@ Il problema è che JavaScript tratta `{...}` come un blocco di codice. Questo bl
 }
 ```
 
+<<<<<<< HEAD
 Per informare JavaScript che non ci troviamo in un blocco di codice, possiamo raggruppare l'intera assegnazione tra parentesi `(...)`:
+=======
+To show JavaScript that it's not a code block, we can make it a part of an expression by wrapping in parentheses `(...)`:
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 ```js run
 let title, width, height;
 
+<<<<<<< HEAD
 // ora funziona
 *!*(*/!*{title, width, height} = {title: "Menu", width: 200, height: 100}*!*)*/!*;
+=======
+// okay now
+*!*(*/!*{title, width, height}*!*)*/!* = {title: "Menu", width: 200, height: 100};
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 alert( title ); // Menu
 ```
@@ -367,7 +417,7 @@ let options = {
   extra: true    // qualche extra che non destruttureremo
 };
 
-// destructuring assignment on multiple lines for clarity
+// destructuring assignment split in multiple lines for clarity
 let {
   size: { // mettiamo size qui
     width,
@@ -392,9 +442,14 @@ Note that `size` and `items` itself is not destructured.
 
 Infine, abbiamo `width`, `height`, `item1`, `item2` e `title` che assumo il valore di default.
 
+<<<<<<< HEAD
 Questo accade spesso con l'assegnamento di destrutturazione. Abbiamo un oggetto complesso e vogliamo estrarre solamente ciò di cui abbiamo bisogno.
 
 Anche qui accade lo stesso:
+=======
+If we have a complex object with many properties, we can extract only what we need:
+
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 ```js
 // prende size per interno su una variabile, ignora il resto
 let { size } = options;
@@ -402,7 +457,11 @@ let { size } = options;
 
 ## Parametri di funzione intelligenti
 
+<<<<<<< HEAD
 Ci sono casi in cui una funzione può accettare più parametri, molti dei quali opzionali. Questo è vero specialmente per le interfacce utente. Immaginate una funzione che crea un menu. Può avere una larghezza, un'altezza, un titolo, una lista di elementi e molto altro.
+=======
+There are times when a function has many parameters, most of which are optional. That's especially true for user interfaces. Imagine a function that creates a menu. It may have a width, a height, a title, items list and so on.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 Vediamo un pessimo modo per scrivere questo tipo di funzioni:
 
@@ -504,12 +563,18 @@ Nel codice sopra, tutti gli argomenti dell'oggetto sono `{}` di default, quindi 
 - L'assegnamento di destrutturazione ci consente di mappare un oggetto o un array su alcune variabili.
 - La sintassi per gli oggetti:
     ```js
-    let {prop : varName = default, ...} = object
+    let {prop : varName = default, ...rest} = object
     ```
 
     Questo significa che la proprietà `prop` dovrebbe andare nella variabile `varName` e, se non esiste alcuan proprietà, allora verrà utilizzato il valore di `default`.
 
+<<<<<<< HEAD
 - La sintassi per gli array:
+=======
+    Object properties that have no mapping are copied to the `rest` object.
+
+- The array syntax:
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
     ```js
     let [item1 = default, item2, ...rest] = array

@@ -4,7 +4,11 @@ Quello che abbiamo qui sono 3 test, ma sono stati scritti come una singola funzi
 
 Qualche volta può risultare più semplice scrivere in questo modo, ma in caso di errori, risulta molto meno ovvio cosa è andato storto.
 
+<<<<<<< HEAD
 Se si genera un errore all'interno di un flusso d'esecuzione complesso, dovremmo controllare ogni dato. Saremmo costretti a *debuggare il test*.
+=======
+If an error happens in the middle of a complex execution flow, then we'll have to figure out the data at that point. We'll actually have to *debug the test*.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 Una scelta migliore potrebbe essere di rompere i test in più `it` scrivendo chiaramente gli inpute gli output.
 

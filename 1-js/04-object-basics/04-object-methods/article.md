@@ -15,7 +15,11 @@ In JavaScript le azioni vengono rappresentate tramite le funzioni.
 
 ## Esempio di un metodo
 
+<<<<<<< HEAD
 Per iniziare, insegniamo a `user` a salutare:
+=======
+For a start, let's teach the `user` to say hello:
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 ```js run
 let user = {
@@ -256,11 +260,21 @@ user.hi(); // John (la chiamata semplice funzione)
 */!*
 ```
 
+<<<<<<< HEAD
 Nell'ultima riga c'è un operatore ternario che deve decidere tra `user.hi` o `user.bye`. In questo caso `user.hi`.
 
 Il metodo viene immediatamente chiamato con le parentesi `()`. Ma non funziona!
 
 Questo funziona (oggetto punto metodo):
+=======
+On the last line there is a conditinal operator that chooses either `user.hi` or `user.bye`. In this case the result is `user.hi`.
+
+Then the method is immediately called with parentheses `()`. But it doesn't work right!
+
+As you can see, the call results in an error, because the value of `"this"` inside the call becomes `undefined`.
+
+This works (object dot method):
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 ```js
 user.hi();
 ```
@@ -302,9 +316,15 @@ Il tipo riferimento è un "tipo specifico". Noi non possiamo utilizzarlo esplici
 
 Il valore del tipo riferimento è una combinazione di tre valori `(base, name, strict)`, dove:
 
+<<<<<<< HEAD
 - `base` è l'oggetto.
 - `name` è la proprietà.
 - `strict` è vero se `use strict` è attivo.
+=======
+- `base` is the object.
+- `name` is the property name.
+- `strict` is true if `use strict` is in effect.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 Il risultato dell'accesso ad un proprietà `user.hi` non è una funzione, ma un valore di tipo riferimento. Per `user.hi` con la modalità strict attiva:
 
@@ -315,7 +335,13 @@ Il risultato dell'accesso ad un proprietà `user.hi` non è una funzione, ma un 
 
 Quando le parentesi `()` vengono chiamate sul tipo riferimento, queste ricevono le informazioni riguardo l'oggetto e i suoi metodi, e possono settare il  `this` (`=user` in questo caso).
 
+<<<<<<< HEAD
 Qualsiasi operazione come l'assegnazione `hi = user.hi` scartano il tipo riferimento, prendono il valore di `user.hi` (una funzione) e lo ritornano per l'assegnazione. Quindi qualsiasi operazione ulteriore sul tipo riferimento perde il `this`.
+=======
+Reference type is a special "intermediary" internal type, with the purpose to pass information from dot `.` to calling parentheses `()`.
+
+Any other operation like assignment `hi = user.hi` discards the reference type as a whole, takes the value of `user.hi` (a function) and passes it on. So any further operation "loses" `this`.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 Quindi il valore `this` viene passato solamente chiamando la funzione direttamente usando la notazione puntata `obj.method()` o le parentesi quadre `obj['method']()`    (vanno bene entrambe). Più avanti in questa guida, studieremo vari modi per risolvere il problema come [func.bind()](/bind#solution-2-bind).
 
@@ -346,9 +372,16 @@ Questa è una speciale caratteristica delle funzioni freccia, è utile quando no
 - I metodi consentono agli oggetti di "agire" come `object.doSomething()`.
 - I metodi possono riferirsi all'oggetto tramite `this`.
 
+<<<<<<< HEAD
 Il valore `this` viene definito durante l'esecuzione (run-time).
 - Quando una funzione viene dichiarata, può utilizzare `this`, ma questo `this` non avrà alcun valore fino a che la funzione non verrà chiamata.
 - La funzione può essere copiata in vari oggetti.
 - Quando una funzione viene chiamata come "metodo": `object.method()`, il valore di `this` durante la chiamata vale `object`.
+=======
+The value of `this` is defined at run-time.
+- When a function is declared, it may use `this`, but that `this` has no value until the function is called.
+- A function can be copied between objects.
+- When a function is called in the "method" syntax: `object.method()`, the value of `this` during the call is `object`.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 Da notare che le funzioni freccia sono speciali: non hanno `this`. Quando si prova ad accedere a `this` in una funzione freccia, questo verrà preso dal contesto esterno.

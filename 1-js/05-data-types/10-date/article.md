@@ -49,7 +49,11 @@ Per creare un nuovo oggetto `Date`, chiamiamo `new Date()` con uno dei seguenti 
     ```
 
 `new Date(year, month, date, hours, minutes, seconds, ms)`
+<<<<<<< HEAD
 : Crea la data con le informazioni fornite. Solo i primi due argomenti sono obbligatori.
+=======
+: Create the date with the given components in the local time zone. Only the first two arguments are obligatory.
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
     Nota:
 

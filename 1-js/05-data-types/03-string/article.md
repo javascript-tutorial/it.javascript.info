@@ -102,7 +102,11 @@ alert( 'I*!*\'*/!*m the Walrus!' ); // *!*I'm*/!* the Walrus!
 
 Avete visto che abbiamo inserito un backslash `\'` prima dell'apice interno, altrimenti questo avrebbe indicato la fine della stringa.
 
+<<<<<<< HEAD
 Ovviamente, questo è valido per un apice uguale a quello utilizzato in apertura. Quindi, possiamo optare per una soluzione più elegante, ad esempio i doppi apici o i backticks:
+=======
+Of course, that refers only to the quotes that are the same as the enclosing ones. So, as a more elegant solution, we could switch to double quotes or backticks instead:
+>>>>>>> 6bbe0b4313a7845303be835d632ef8e5bc7715cd
 
 ```js run
 alert( `I'm the Walrus!` ); // I'm the Walrus!

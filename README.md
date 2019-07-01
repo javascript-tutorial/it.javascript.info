@@ -89,6 +89,6 @@ Alcuni termini utilizzati spesso:
 - Il nome dei tipi come: 'primitives', 'string', 'object' viene tradotto ('primitivi', 'stringhe', 'oggetto') mantenendo tra parentesi la versione in lingua originale
 
 ---
-💓  
+♥  
 Ilya Kantor @iliakan
 
