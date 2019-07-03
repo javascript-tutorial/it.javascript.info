@@ -58,7 +58,28 @@ alert( visitsCountMap.get(john) ); // 123
 
 La possibilità di utilizzare oggetti come chiave è una delle caratteristiche fondamentali delle `Map`. Per chiavi di tipo stringa, `Object` può essere sufficiente, ma sarebbe molto difficile rimpiazzare la `Map` dell'esempio sopra, con un `Object`.
 
+<<<<<<< HEAD
 Prima che venissero introdotte le `Map`, le persone aggiungevano un identificatore univoco come proprietà dell'oggetto:
+=======
+Let's try:
+
+```js run
+let john = { name: "John" };
+
+let visitsCountObj = {}; // try to use an object
+
+visitsCountObj[john] = 123; // try to use john object as the key
+
+*!*
+// That's what got written!
+alert( visitsCountObj["[object Object]"] ); // 123
+*/!*
+```
+
+As `john` is an object, it got converted to the key string `"[object Object]"`. All objects without a special conversion handling are converted to such string, so they'll all mess up.
+
+In the old times, before `Map` existed, people used to add unique identifiers to objects for that:
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 ```js run
 // aggiungiamo il campo id
@@ -159,7 +180,11 @@ L'iterazione segue lo stesso ordine in cui sono stati inseriti i valori. `Map` c
 Inoltre, `Map` possiede un metodo integrato `forEach`, simile agli `Array`:
 
 ```js
+<<<<<<< HEAD
 // esegue la funzione per ogni coppia (key, value) 
+=======
+// runs the function for each (key, value) pair
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 recipeMap.forEach( (value, key, map) => {
   alert(`${key}: ${value}`); // cucumber: 500 etc
 });
@@ -172,12 +197,21 @@ Un `Set` è un insieme di valori, in cui ogni valore ha una singola occorrenza.
 
 I metodi principali sono:
 
+<<<<<<< HEAD
 - `new Set(iterable)` -- crea un set, eventualmente a partire da un array (o un oggetto iterabile).
 - `set.add(value)` -- aggiunge `value`, e ritorna il set stesso.
 - `set.delete(value)` -- rimuove il `value`, ritorna `true` se `value` esiste, altrimenti `false`.
 - `set.has(value)` -- ritorna `true` se il valore è contenuto nel set, altrimenti `false`.
 - `set.clear()` -- rimuove tutto il contenuto del set.
 - `set.size` -- ritorna il numero di elementi contenuti.
+=======
+- `new Set(iterable)` -- creates the set, and if an `iterable` object is provided (usually an array), copies values from it into the set.
+- `set.add(value)` -- adds a value, returns the set itself.
+- `set.delete(value)` -- removes the value, returns `true` if `value` existed at the moment of the call, otherwise `false`.
+- `set.has(value)` -- returns `true` if the value exists in the set, otherwise `false`.
+- `set.clear()` -- removes everything from the set.
+- `set.size` -- is the elements count.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Ad esempio, vogliamo tenere una lista di visitatori. Le visite ripetute non devono però produrre dei duplicati. Un visitatore può "apparire" una sola volta.
 
@@ -221,9 +255,15 @@ set.forEach((value, valueAgain, set) => {
 });
 ```
 
+<<<<<<< HEAD
 Una cosa divertente. La funzione `forEach` nel caso di `Set` possiede 3 argomenti: un valore, poi *un altro valore*, e infine l'oggetto. Infatti, lo stesso valore appare due volte nella lista degli argomenti.
 
 Questo è per mantenere la compatibilità con `Map` dove `forEach` possiede tre argomenti. Ovviamente risulta essere un po' strano. Ma può aiutare a rimpiazzare `Map` con `Set` con facilità, e vice versa.
+=======
+Note the funny thing. The callback function passed in `forEach` has 3 arguments: a value, then *again a value*, and then the target object. Indeed, the same value appears in the arguments twice.
+
+That's for compatibility with `Map` where the callback passed `forEach` has three arguments. Looks a bit strange, for sure. But may help to replace `Map` with `Set` in certain cases with ease, and vice versa.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Per la gestione degli iteratori supporta gli stessi metodi di `Map`:
 

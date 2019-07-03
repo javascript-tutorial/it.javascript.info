@@ -35,7 +35,7 @@ Le variabili dichiarate tramite `var` possono essere: locali alla funzione oppur
 
 Ad esempio:
 
-```js
+```js run
 if (true) {
   var test = true; // utilizziamo "var" piuttosto di "let"
 }
@@ -45,7 +45,23 @@ alert(test); // vero, la variabile vive dopo if
 */!*
 ```
 
+<<<<<<< HEAD
 Se avessimo utilizzato `let test` nella seconda riga, allora non sarebbe stata visibile ad `alert`. Ma `var` ignora i blocchi di codice, quindi `test` risulta essere globale.
+=======
+`var` ignores code blocks, so we've got a global variable `test`.
+
+If we used `let test` instead of `var test`, then the variable would only be visible inside `if`:
+
+```js run
+if (true) {
+  let test = true; // use "let"
+}
+
+*!*
+alert(test); // Error: test is not defined
+*/!*
+```
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 La stessa cosa accade con i cicli: `var` non può essere locale ad un blocco/ciclo:
 
@@ -61,7 +77,7 @@ alert(i); // 10, "i" è visibile anche dopo il ciclo, è una variabile globale
 
 Se un blocco di codice si trova all'interno di una funzione, allora `var` diventa una variabile a livello di funzione:
 
-```js
+```js run
 function sayHi() {
   if (true) {
     var phrase = "Hello";
@@ -71,12 +87,20 @@ function sayHi() {
 }
 
 sayHi();
+<<<<<<< HEAD
 alert(phrase); // Errore: phrase non è definito
+=======
+alert(phrase); // Error: phrase is not defined (Check the Developer Console)
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 ```
 
 Come possiamo vedere, `var` passa attraverso `if`, `for` o altri blocchi di codice. Questo accade perché molto tempo fa i blocchi JavaScript non possedevano un Lexical Environments. E `var` ne è un ricordo.
 
+<<<<<<< HEAD
 ## "var" viene processata all'inizio della funzione
+=======
+## "var" declarations are processed at the function start
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Le dichiarazioni con `var` vengono processata quando la funzione inizia (o lo script, nel caso delle variabili globali).
 
@@ -84,7 +108,7 @@ In altre parole, le variabili `var` sono definite dall'inizio della funzione, no
 
 Guardate questo esempio:
 
-```js
+```js run
 function sayHi() {
   phrase = "Hello";
 
@@ -94,11 +118,12 @@ function sayHi() {
   var phrase;
 */!*
 }
+sayHi();
 ```
 
 ...E' tecnicamente la stessa cosa di (spostando `var phrase`):
 
-```js
+```js run
 function sayHi() {
 *!*
   var phrase;
@@ -108,11 +133,12 @@ function sayHi() {
 
   alert(phrase);
 }
+sayHi();
 ```
 
 ...O anche di questa (ricordate, i blocchi di codice vengono attraversati dallo scope della variabile):
 
-```js
+```js run
 function sayHi() {
   phrase = "Hello"; // (*)
 
@@ -124,6 +150,7 @@ function sayHi() {
 
   alert(phrase);
 }
+sayHi();
 ```
 
 Questo comportamento viene chiamato "sollevamento", perché tutte `var` vengono "sollevate" fino all'inizio della funzione.
@@ -175,11 +202,22 @@ In entrambi gli esempi sopra `alert` esegue senza errori, poiché la variabile `
 
 ## Riepilogo
 
+<<<<<<< HEAD
 Ci sono due principali differenze con `var`:
 
 1. Le variabili non hanno uno scope locale al blocco, sono infatti visibili a livello di funzione.
 2. La dichiarazione di variabili viene processata all'inizio della funzione.
+=======
+There are two main differences of `var` compared to `let/const`:
+
+1. `var` variables have no block scope, they are visible minimum at the function level.
+2. `var` declarations are processed at function start (script start for globals).
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 C'è un ulteriore differenza di minore importanza legata all'oggetto globale, che andremo ad analizzare nel prossimo capitolo.
 
+<<<<<<< HEAD
 L'insieme di queste differenze fa si che `var` venga considerato uno svantaggio. Come prima cosa, non possiamo creare delle variabili locali al blocco. Il "sollevameto" genera solamente confusione. Quindi, negli script più recenti `var` viene utilizzato solamente in casi eccezionali.
+=======
+These differences make `var` worse than `let` most of the time. Block-level variables is such a great thing. That's why `let` was introduced in the standard long ago, and is now a major way (along with `const`) to declare a variable.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af

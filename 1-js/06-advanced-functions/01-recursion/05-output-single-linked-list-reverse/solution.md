@@ -37,7 +37,11 @@ Anche la soluzione iterativa risulta essere un pò complicata.
 
 Non abbiamo alcun modo per ottenere l'ultimo valore della nostra `list`. E comunque non potremmo "andare indietro".
 
+<<<<<<< HEAD
 Quindi quello che dobbiamo fare in questo caso è attraversare gli elementi e memorizzarli in un array, successivamente stamparli in ordine inverso:
+=======
+So what we can do is to first go through the items in the direct order and remember them in an array, and then output what we remembered in the reverse order:
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 ```js run
 let list = {

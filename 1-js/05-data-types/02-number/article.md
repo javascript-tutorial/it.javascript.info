@@ -12,7 +12,11 @@ Immaginiamo di dover scrivere 1 milione. La via più ovvia è:
 let billion = 1000000000;
 ```
 
+<<<<<<< HEAD
 Nella vita reale però cerchiamo di evitare di scrivere lunghe file di zeri per evitare errori. E anche perché siamo pigri. Solitamente scriviamo qualcosa del tipo `"1ml"` per un milione o `"7.3ml"` 7 milioni e 300mila. Lo stesso vale per i numeri più grandi.
+=======
+But in real life, we usually avoid writing a long string of zeroes as it's easy to mistype. Also, we are lazy. We will usually write something like `"1bn"` for a billion or `"7.3bn"` for 7 billion 300 million. The same is true for most large numbers.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 In JavaScript, possiamo abbreviare un numero inserendo la lettera `"e"` con il numero di zeri a seguire:
 

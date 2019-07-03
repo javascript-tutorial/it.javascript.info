@@ -86,13 +86,22 @@ Esempi di unicode:
 
 ```js run
 alert( "\u00A9" ); // ©
+<<<<<<< HEAD
 alert( "\u{20331}" ); // 佫, un raro geroglifico cinese (long unicode)
 alert( "\u{1F60D}" ); // 😍, un simbolo di faccia sorridente (long unicode)
+=======
+alert( "\u{20331}" ); // 佫, a rare Chinese hieroglyph (long unicode)
+alert( "\u{1F60D}" ); // 😍, a smiling face symbol (another long unicode)
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 ```
 
 Tutti i caratteri speciali iniziano con un backslash `\`. Che viene anche chiamato "carattere di escape".
 
+<<<<<<< HEAD
 Dobbiamo utilizzarlo anche se abbiamo intenzione di inserire un apice all'interno della stringa.
+=======
+We might also use it if we wanted to insert a quote into the string.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Ad esempio:
 
@@ -102,7 +111,11 @@ alert( 'I*!*\'*/!*m the Walrus!' ); // *!*I'm*/!* the Walrus!
 
 Avete visto che abbiamo inserito un backslash `\'` prima dell'apice interno, altrimenti questo avrebbe indicato la fine della stringa.
 
+<<<<<<< HEAD
 Ovviamente, questo è valido per un apice uguale a quello utilizzato in apertura. Quindi, possiamo optare per una soluzione più elegante, ad esempio i doppi apici o i backticks:
+=======
+Of course, that refers only to the quotes that are the same as the enclosing ones. So, as a more elegant solution, we could switch to double quotes or backticks instead:
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 ```js run
 alert( `I'm the Walrus!` ); // I'm the Walrus!
@@ -303,8 +316,14 @@ if (str.indexOf("Widget") != -1) {
 }
 ```
 
+<<<<<<< HEAD
 ````smart header=Il trucco del NOT bit a bit"
 Uno dei trucchi più utilizzati è l'operatore di [NOT bit a bit](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Bitwise_NOT) `~`. Questo converte il numero ad un intero in 32bit (rimuovendo la parte decimale se presente) e successivamente inverte tutti i bit.
+=======
+#### The bitwise NOT trick
+
+One of the old tricks used here is the [bitwise NOT](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Bitwise_NOT) `~` operator. It converts the number to a 32-bit integer (removes the decimal part if exists) and then reverses all bits in its binary representation.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Per gli interi in 32bit la chiamata `~n` ha lo stesso risultato di `-(n+1)` (a causa del formato IEEE-754).
 
@@ -319,9 +338,15 @@ alert( ~-1 ); // 0, lo stesso di -(-1+1)
 */!*
 ```
 
+<<<<<<< HEAD
 Come avete potuto osservare, `~n` vale zero solo se `n == -1`.
 
 Quindi, il test `if ( ~str.indexOf("...") )` è vero allora il risultato di `indexOf` non è `-1`. In altre parole, è stata trovata una corrispondenza.
+=======
+As we can see, `~n` is zero only if `n == -1` (that's for any 32-bit signed integer `n`).
+
+So, the test `if ( ~str.indexOf("...") )` is truthy only if the result of `indexOf` is not `-1`. In other words, when there is a match.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Le persone lo utilizzano per abbreviare i controlli con `indexOf`:
 
@@ -335,8 +360,16 @@ if (~str.indexOf("Widget")) {
 
 Solitamente è sconsigliato utilizzare caratteristiche del linguaggio per azioni che possono risultare poco ovvie, ma questo particolare trucco è ampiamente utilizzato, quindi è giusto conoscerlo.
 
+<<<<<<< HEAD
 Ricordatevi solo che: `if (~str.indexOf(...))` si legge come "se trovi".
 ````
+=======
+Just remember: `if (~str.indexOf(...))` reads as "if found".
+
+Technically speaking, numbers are truncated to 32 bits by `~` operator, so there exist other big numbers that give `0`, the smallest is `~4294967295=0`. That makes such check is correct only if a string is not that long.
+
+Right now we can see this trick only in the old code, as modern JavaScript provides `.includes` method (see below).
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 ### includes, startsWith, endsWith
 
@@ -556,16 +589,26 @@ Puoi semplicemente saltare questa sezione se non hai in programma di utilizzarle
 
 ### Coppie surrogate
 
+<<<<<<< HEAD
 Molti simboli hanno un codice composto da 2 byte. Molte lettere di alfabeti europei, numeri, e anche molti geroglifici, hanno una rappresentazione in 2 byte.
+=======
+All frequently used characters have 2-byte codes. Letters in most european languages, numbers, and even most hieroglyphs, have a 2-byte representation.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Ma con 2 byte sono consentite solamente 65536 combinazioni, non sono comunque sufficienti per ogni tipo di simbolo possibile. Quindi molti simboli vengono codificati con una coppia di 2 byte chiamati "coppia surrogata".
 
 La lunghezza di questi simboli è `2`:
 
 ```js run
+<<<<<<< HEAD
 alert( '𝒳'.length ); // 2, X matematica
 alert( '😂'.length ); // 2, faccia con lacrime di felicità
 alert( '𩷶'.length ); // 2, un raro geroglifico cinese
+=======
+alert( '𝒳'.length ); // 2, MATHEMATICAL SCRIPT CAPITAL X
+alert( '😂'.length ); // 2, FACE WITH TEARS OF JOY
+alert( '𩷶'.length ); // 2, a rare Chinese hieroglyph
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 ```
 
 Da notare che le coppie surrogate non esistevano al momento della creazione di JavaScript, non vengono quindi processate correttamente dal linguaggio!
@@ -625,8 +668,13 @@ Questo consente una grande flessibilità, ma crea anche un potenziale problema: 
 Ad esempio:
 
 ```js run
+<<<<<<< HEAD
 alert( 'S\u0307\u0323' ); // Ṩ, S + punto sopra + punto sotto
 alert( 'S\u0323\u0307' ); // Ṩ, S + punto sotto + punto sopra
+=======
+alert( 'S\u0307\u0323' ); // Ṩ, S + dot above + dot below
+alert( 'S\u0323\u0307' ); // Ṩ, S + dot below + dot above
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 alert( 'S\u0307\u0323' == 'S\u0323\u0307' ); // false
 ```
@@ -647,7 +695,11 @@ alert( "S\u0307\u0323".normalize().length ); // 1
 alert( "S\u0307\u0323".normalize() == "\u1e68" ); // true
 ```
 
+<<<<<<< HEAD
 In realtà, non è sempre cosi. La ragione è che il simbolo `Ṩ` è "abbastanza comune", quindi la tabella UTF-16 lo contiene già.
+=======
+In reality, this is not always the case. The reason being that the symbol `Ṩ` is "common enough", so UTF-16 creators included it in the main table and gave it the code.
+>>>>>>> b300836f00536a5eb9a716ad2cbb6b8fe97c25af
 
 Se volete apprendere di più riguardo la normalizzazione e le sue varianti -- vengono descritte nell'appendice dello standard Unicode: [Unicode Normalization Forms](http://www.unicode.org/reports/tr15/), nella pratica le informazioni fornite in questa sezione sono sufficienti.
 
