@@ -11,7 +11,11 @@ Conosciamo già i metodi che consentono di aggiungere e rimuovere elementi in te
 - `arr.shift()` -- estrae un elemento dalla testa,
 - `arr.unshift(...items)` -- aggiunge un elemento in testa.
 
+<<<<<<< HEAD
 Vediamone altri.
+=======
+Here are a few others.
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 ### splice
 
@@ -238,9 +242,15 @@ Ora vedremo dei metodi per effettuare ricerche in un array.
 
 I metodi [arr.indexOf](mdn:js/Array/indexOf), [arr.lastIndexOf](mdn:js/Array/lastIndexOf) e [arr.includes](mdn:js/Array/includes) hanno la stessa sintassi, e fanno praticamente la stessa cosa della loro controparte per stringhe, semplicemente operano su elementi piuttosto che su caratteri:
 
+<<<<<<< HEAD
 - `arr.indexOf(item, from)` cerca un `item` a partire dall'indirizzo `from`, e ritorna l'indirizzo in cui è stato trovato, altrimenti ritorna `-1`.
 - `arr.lastIndexOf(item, from)` -- lo stesso, ma esegue la ricerca a partire da destra verso sinistra.
 - `arr.includes(item, from)` -- cerca un `item` a partire dall'indice `from`, e ritorna `true` se lo trova.
+=======
+- `arr.indexOf(item, from)` -- looks for `item` starting from index `from`, and returns the index where it was found, otherwise `-1`.
+- `arr.lastIndexOf(item, from)` -- same, but looks for from right to left.
+- `arr.includes(item, from)` -- looks for `item` starting from index `from`, returns `true` if found.
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 Ad esempio:
 
@@ -417,7 +427,11 @@ alert(arr);  // *!*1, 2, 15*/!*
 
 Ora funziona come dovrebbe.
 
+<<<<<<< HEAD
 Proviamo un attimo a capire cosa sta succedendo. L'array `arr` può contenere qualsiasi cosa, giusto? Può contenere numeri, stringhe, elementi HTML o qualsiasi altra cosa. Abbiamo quindi un insieme di *qualcosa*. Per poterlo ordinare abbiamo bisogno di una *funzione di ordinamento* che conosca gli elementi e sappia come confrontarli. L'ordinamento di default è di tipo stringa.
+=======
+Let's step aside and think what's happening. The `arr` can be array of anything, right? It may contain numbers or strings or HTML elements or whatever. We have a set of *something*. To sort it, we need an *ordering function* that knows how to compare its elements. The default is a string order.
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 Il metodo `arr.sort(fn)` possiede un implementazione dell'algoritmo di ordinamento. Non dovremmo preoccuparci di come funzioni esattamente (la maggior parte delle volte è un [quicksort](https://en.wikipedia.org/wiki/Quicksort) ottimizzato). Questo algoritmo, attraverserà l'intero array, e confronterà i valori, tutto quello che dobbiamo fare noi sarà fornirgli una funzione `fn` che esegua il confronto.
 
@@ -473,7 +487,11 @@ Inoltre ritorna `arr` dopo averlo invertito.
 
 ### split and join
 
+<<<<<<< HEAD
 Vediamo una situazione realistica. Stiamo scrivendo un'applicazione di messaggistica, e l'utente inserisce una lista di destinatari: `John, Pete, Mary`. Per noi sarebbe più comodo avere un array di nomi piuttosto di una singola stringa. Come possiamo farlo?
+=======
+Here's the situation from real life. We are writing a messaging app, and the person enters the comma-delimited list of receivers: `John, Pete, Mary`. But for us an array of names would be much more comfortable than a single string. How to get it?
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 Il metodo [str.split(delim)](mdn:js/String/split) fa esattamente questo. Divide la stringa in un array utilizzando il delimitatore `delim`.
 
@@ -546,7 +564,11 @@ Finora, è uguale a `forEach/map`. Ma c'è un ulteriore argomento:
 
 Il modo più semplice per spiegarlo è tramite esempi.
 
+<<<<<<< HEAD
 Qui otterremo una somma degli elementi dell'array in una riga:
+=======
+Here we get a sum of an array in one line:
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 ```js run
 let arr = [1, 2, 3, 4, 5];
@@ -681,6 +703,7 @@ Nella chiamata sopra, utilizziamo `user.younger` come filtro e forniamo `user` c
 
 Un breve riepilogo dei metodi per array:
 
+<<<<<<< HEAD
 - Per aggiungere/rimuovere elementi:
   - `push(...items)` -- aggiunge elementi in coda,
   - `pop()` -- estrae un elemento dalla coda,
@@ -689,6 +712,9 @@ Un breve riepilogo dei metodi per array:
   - `splice(pos, deleteCount, ...items)` -- all'indirizzo `pos` cancella `deleteCount` elementi e al loro posto inserisce `items`.
   - `slice(start, end)` -- crea un nuovo array, e copia al suo interno gli elementi da `start` fino ad `end` (esclusa).
   - `concat(...items)` -- ritorna un nuovo array: copia tutti gli elementi di quello corrente e ci aggiunge `items`. Se uno degli `items` è un array, allora vengono presi anche i suoi elementi.
+=======
+A cheat sheet of array methods:
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 - Ricercare elementi:
   - `indexOf/lastIndexOf(item, pos)` -- cerca `item` a partire da `pos`, e ritorna l'indice, oppure `-1` se non lo trova.
@@ -725,6 +751,12 @@ Per la lista completa, vedere il [manuale](mdn:js/Array).
 
 A prima vista potrebbero sembrare molti metodi da ricordare. Ma in realtà è molto più semplice di quanto sembri.
 
+<<<<<<< HEAD
 Tenente sempre un occhio al riassunto fornito sopra. Provate anche a risolvere gli esercizi di questo capitolo.
 
 In futuro quando avrete bisogno di fare qualcosa con un array, e non saprete come fare -- tornate qui, guardate il riassunto e trovate il metodo corretto. Gli esempi vi aiuteranno molto. In poco tempo vi risulterà naturale ricordare questi metodi, senza troppi sforzi.
+=======
+Look through the cheat sheet just to be aware of them. Then solve the tasks of this chapter to practice, so that you have experience with array methods.
+
+Afterwards whenever you need to do something with an array, and you don't know how -- come here, look at the cheat sheet and find the right method. Examples will help you to write it correctly. Soon you'll automatically remember the methods, without specific efforts from your side.
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d

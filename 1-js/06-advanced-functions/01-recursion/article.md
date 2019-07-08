@@ -85,7 +85,11 @@ Quindi, la ricorsione riduce una chiamata a funzione ad una più semplice, e suc
 ````smart header="La ricorsione è spesso più breve"
 Spesso una soluzione ricorsiva risulta più breve di una iterativa.
 
+<<<<<<< HEAD
 In questo caso possiamo riscrivere lo stesso codice utilizzando l'operatore ternario `?` piuttosto di un `if` per rendere `pow(x, n)` più breve e leggibile:
+=======
+Here we can rewrite the same using the conditional operator `?` instead of `if` to make `pow(x, n)` more terse and still very readable:
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 ```js run
 function pow(x, n) {
@@ -100,11 +104,19 @@ La massima profondità di ricorsione viene limitata dal motore JavaScript. Possi
 
 Questo fattore limita le possibili applicazioni della ricorsione, che rimangono comunque molte. Ci sono molte attività che possono essere semplificati tramite la ricorsione, rendendo i programmi più mantenibili.
 
+<<<<<<< HEAD
 ## La pila d'esecuzione
+=======
+## The execution context and stack
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 Ora vediamo come funzionano le chiamate ricorsive. Per farlo analizzeremo bene le funzioni.
 
+<<<<<<< HEAD
 L'informazione riguardo una funzione in esecuzione viene memorizzata nel suo *contesto di esecuzione*.
+=======
+The information about the process of execution of a running function is stored in its *execution context*.
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 Il [contesto di esecuzione](https://tc39.github.io/ecma262/#sec-execution-contexts) è una struttura dati interna che contiene i dettagli riguardo l'esecuzione di una funzione: dove si trova il flusso, le variabili, il valore di `this` (che non useremo in questo caso) e un paio di altri dettagli.
 
@@ -414,7 +426,11 @@ let arr = [obj1, obj2, obj3];
 
 ...Ma sorge un problema con gli array. Le operazioni di "delete" e "insert" (rispettivamente "cancellazione" e "inserimento") sono costose. Ad esempio, `arr.unshift(obj)` deve rinumerare tutti gli elementi per creare spazio al nuovo `obj`, e se l'array fosse grande, potrebbe volerci del tempo. Lo stesso vale per `arr.shift()`.
 
+<<<<<<< HEAD
 Le uniche operazioni sulla struttura di un array che non richiedono una renumerazione di massa, sono quelle eseguite in coda all'array: `arr.push/pop`. Quindi un array può risultare piuttosto lento per certe operazioni.
+=======
+The only structural modifications that do not require mass-renumbering are those that operate with the end of array: `arr.push/pop`. So an array can be quite slow for big queues, when we have to work with the beginning.
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 In alternativa, se la situazione richiede rapidità nelle operazioni di inserimento/rimozione, possiamo optare per una struttura dati chiamata [linked list](https://en.wikipedia.org/wiki/Linked_list).
 
@@ -504,14 +520,28 @@ Naturalmente, le liste non sono sempre la scelta migliore. Altrimenti verrebbero
 
 Il principale difetto è l'impossibilità di accedere direttamente ad un elemento tramite il numero. In un array è semplice: `arr[n]` è un riferimento diretto. Nelle liste è necessario partire dal primo elemento e scorrere `next` `N` volte per arrivare all'n-esimo elemento.
 
+<<<<<<< HEAD
 ...Non sempre abbiamo bisogno di queste operazioni. Ad esempio, potremmo utilizzare una queue oppure una [deque](https://en.wikipedia.org/wiki/Double-ended_queue) -- una struttura dati ordinata che consente operazioni di inserimento/rimozione molto rapide sia in testa che in coda.
 
 Talvolta vale la pena aggiungere un ulteriore variabile denominata `tail` per tenere traccia dell'ultimo elemento della lista (e aggiornarla ad ogni inserimento/rimozione in coda). Per grandi insiemi di elementi la differenza di velocità in confronto agli array è grande.
+=======
+...But we don't always need such operations. For instance, when we need a queue or even a [deque](https://en.wikipedia.org/wiki/Double-ended_queue) -- the ordered structure that must allow very fast adding/removing elements from both ends, but access to its middle is not needed.
+
+Lists can be enhanced:
+- We can add property `prev` in addition to `next` to reference the previous element, to move back easily.
+- We can also add a variable named `tail` referencing the last element of the list (and update it when adding/removing elements from the end).
+- ...The data structure may vary according to our needs.
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 ## Riepilogo
 
+<<<<<<< HEAD
 Terminologia:
 - *Ricorsione* è un termine della programmazione che rappresenta una funzione che esegue "chiamate a se stessa". Queste funzioni possono essere utilizzate per una risoluzione più elegante di determinati problemi.
+=======
+Terms:
+- *Recursion*  is a programming term that means calling a function from itself. Recursive functions can be used to solve tasks in elegant ways.
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
     Quando una funzione chiama se stessa, si indica questa azione come *passo ricorsivo*. La *base* della ricorsione sono degli argomenti che rendono la risoluzione del problema banale e immediata.
 

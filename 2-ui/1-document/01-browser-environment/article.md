@@ -38,7 +38,7 @@ alert(window.innerHeight); // inner window height
 
 Ci sono molte altre funzionalità dell'oggetto `window`, ma le vedremo più avanti.
 
-## Document Object Model (DOM)
+## DOM (Document Object Model)
 
 L'oggetto `document` dà accesso al contenuto della pagina e ci permette di cambiare o creare qualunque cosa all'interno della stessa.
 
@@ -52,6 +52,7 @@ document.body.style.background = "red";
 setTimeout(() => document.body.style.background = "", 1000);
 ```
 
+<<<<<<< HEAD
 In questo caso abbiamo usato `document.body.style`, ma c'è molto di più. Proprietà e metodi sono descritti all'interno delle specifiche. Due sono i gruppi che hanno contribuito al loro sviluppo:
 
 1. [W3C](https://en.wikipedia.org/wiki/World_Wide_Web_Consortium) -- la documentazione disponibile su <https://www.w3.org/TR/dom>.
@@ -66,6 +67,11 @@ In tempi antichi non esisteva uno standard comune, ogni browser aveva il proprio
 Anche oggi può capitare di incappare in vecchio codice che aggira delle incompatibilità e sfrutta delle proprietà specifiche del browser. In questo tutorial utilizzeremo strumenti moderni, non ci sarà bisogno di imparare codice obsoleto a meno che non sia strettamente necessario (le probabilità che questo accada sono molto basse).
 
 A questo punto fa la sua comparsa lo "standard" del DOM, nel tentativo di mettere tutti d'accordo. La prima versione era la "DOM Level 1", poi c'è stata la "DOM Level 2", la "DOM Level 3" e ad oggi abbiamo la "DOM Level 4". Il gruppo WhatWG, stufo di numerare le versioni, ha deciso di chiamarlo solamente "DOM", senza numerazione. Noi faremo lo stesso.
+=======
+Here we used `document.body.style`, but there's much, much more. Properties and methods are described in the specification:
+
+- **DOM Living Standard** at <https://dom.spec.whatwg.org>
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 ```smart header="Il DOM non è solo per i browser"
 La specifica del DOM spiega la struttura di un documento e fornisce oggetti per la sua manipolazione. Esistono strumenti al di fuori del browser che usano comunque il DOM.
@@ -79,7 +85,11 @@ Regole CSS e fogli di stile non sono strutturati come l'HTML. Esiste una specifi
 CSSOM è usato in concomitanza con il DOM quando modifichiamo delle regole di stile per il documento. In pratica però, CSSOM è raramente richiesto poiché di solito le regole CSS sono statiche. Di rado esiste la necessità di aggiungere/rimuovere regole CSS attraverso JavaScript, quindi non tratteremo l'argomento al momento.
 ```
 
+<<<<<<< HEAD
 ## BOM (parte della specifica HTML)
+=======
+## BOM (Browser object model)
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 Il Browser Object Model (BOM) rappresenta gli oggetti aggiuntivi forniti dal browser (ambiente host) per interagire con qualunque cosa a eccezione del documento.
 
@@ -97,6 +107,7 @@ if (confirm("Go to wikipedia?")) {
 }
 ```
 
+<<<<<<< HEAD
 Le funzioni `alert/confirm/prompt` fanno anch'esse parte del BOM: non sono direttamente correlate con il documento, ma rappresentano dei semplici metodi del browser per interagire con l'utente.
 
 ```smart header="Specifiche HTML"
@@ -104,6 +115,13 @@ Il BOM fa parte della [specifica HTML](https://html.spec.whatwg.org).
 
 Sì, avete capito bene. La specifica HTML presente al link <https://html.spec.whatwg.org> non è solo per il "linguaggio HTML" (tags, attributi), ma copre anche una miriade di oggetti, metodi ed estensioni del DOM relative ai browser. Questa è la definizione di "HTML a grandi linee".
 ```
+=======
+Functions `alert/confirm/prompt` are also a part of BOM: they are directly not related to the document, but represent pure browser methods of communicating with the user.
+
+BOM is the part of the general [HTML specification](https://html.spec.whatwg.org).
+
+Yes, you heard that right. The HTML spec at <https://html.spec.whatwg.org> is not only about the "HTML language" (tags, attributes), but also covers a bunch of objects, methods and browser-specific DOM extensions. That's "HTML in broad terms". Also, some parts have additional specs listed at <https://spec.whatwg.org>.
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
 
 ## Riepilogo
 
@@ -115,8 +133,20 @@ Specifica CSSOM: Descrive i fogli e le regole di stile, le loro manipolazioni e 
 
 Specifica HTML: Descrive il linguaggio HTML language (e.g. tags) e il BOM (browser object model) -- varie funzioni del browser: `setTimeout`, `alert`, `location` e così via, vedi <https://html.spec.whatwg.org>. Prende la specifica del DOM e l'arricchisce di ulteriori proprietà e metodi.
 
+<<<<<<< HEAD
 Adesso approfondiremo il DOM, il documento gioca un ruolo centrale nell'UI.
 
 Per favore prendi nota dei link indicati in precedenza perché c'è talmente tanto da imparare che è impossibile trattare e ricordare ogni argomento.
 
 Quando avrai voglia di informarti su una proprietà o un metodo, il manuale Mozilla <https://developer.mozilla.org/en-US/search> è sicuramente una buona risorsa, ma leggere la corrispondente specifica potrebbe essere addirittura meglio: è più complessa e lunga da leggere, ma consoliderà e completerà le tue conoscenze.
+=======
+Additionally, some classes are described separately at <https://spec.whatwg.org/>.
+
+Please note these links, as there's so much stuff to learn it's impossible to cover and remember everything.
+
+When you'd like to read about a property or a method, the Mozilla manual at <https://developer.mozilla.org/en-US/search> is also a nice resource, but the corresponding spec may be better: it's more complex and longer to read, but will make your fundamental knowledge sound and complete.
+
+To find something, it's often convenient to use an internet search "WHATWG [term]" or "MDN [term]", e.g <https://google.com?q=whatwg+localstorage>, <https://google.com?q=mdn+localstorage>.
+
+Now we'll get down to learning DOM, because the document plays the central role in the UI.
+>>>>>>> 5e9eca374f644ea85c7d548bbe344fd30e5fb89d
