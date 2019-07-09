@@ -63,8 +63,93 @@ for (let value of Object.values(user)) {
 }
 ```
 
-## Object.keys/values/entries ignorano proprietà di tipo symbol
-
-Proprio come per il ciclo `for..in`, questi metodi ignorano le proprietà che utilizzano una chiave `Symbol(...)`.
+```warn header="Object.keys/values/entries ingorano le proprietà di tipo symbol"
+Proprio come nel caso del ciclo `for..in`, questi metodi ignorano le proprietà che utilizzano `Symbol(...)` come chiave.
 
 Solitamente questo è un vantaggio. Ma se volessimo ottenere anche le chiavi di tipo symbol, esiste un secondo metodo [Object.getOwnPropertySymbols](mdn:js/Object/getOwnPropertySymbols)  che ritorna un array di chiavi di tipo symbol. Invece, il metodo [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) ritorna *tutte* le chiavi.
+```
+
+## Object.fromEntries per trasformare gli oggetti
+
+Talvolta abbiamo necesssità di trasformare un oggetto in `Map` e viceversa.
+
+Abbiamo a disposizione `new Map(Object.entries(obj))` per ottenere una `Map` a partire da `obj`.
+
+Il metodo `Object.fromEntries` fa esattamente l'operazione contraria. Fornito un array di coppie `[key, value]`, l'invocazione a questo metodo restituirà un oggetto:
+
+```js run
+let prices = Object.fromEntries([
+  ['banana', 1],
+  ['orange', 2],
+  ['meat', 4]
+]);
+
+// ora prices = { banana: 1, orange: 2, meat: 4 }
+
+alert(prices.orange); // 2
+```
+
+Proviamo a vedere un esempio pratico.
+
+Ad esempio, potremmo vole creare un nuovo oggetto con i prezzi raddoppiati a partire da uno già esistente.
+
+Con gli array possiamo utilizzare `.map` che consente di trasformare un array, ma non abbiamo nulla di simile per gli oggetti.
+
+Possiamo quindi utilizzare un ciclo:
+
+```js run
+let prices = {
+  banana: 1,
+  orange: 2,
+  meat: 4,
+};
+
+let doublePrices = {};
+for(let [product, price] of Object.entries(prices)) {
+  doublePrices[product] = price * 2;
+}
+
+alert(doublePrices.meat); // 8
+```
+
+...Oppure possiamo rappresentare l'oggetto come un `Array` utilizzando `Object.entries`, e successivamente applicare la funzione `map` (e potenzialmente qualsiasi altro metodo disponibile per gli array), e successivamente tornare ad un oggetto con `Object.fromEntries`.
+
+Proviamo ad applicare quanto detto:
+
+```js run
+let prices = {
+  banana: 1,
+  orange: 2,
+  meat: 4,
+};
+
+*!*
+let doublePrices = Object.fromEntries(
+  // converte ad array, map, e successivamente fromEntries ci ritorna l'oggetto
+  Object.entries(prices).map(([key, value]) => [key, value * 2])
+);
+*/!*
+
+alert(doublePrices.meat); // 8
+```   
+
+Ad un primo sguardo potrebbere risultare complesso, ma diventa molto più familiare dopo un paio di utilizzi.
+
+Possiamo anche utilizzare `fromEntries` per ottenere un oggetto a partire da una `Map`.
+
+Ad esempio, potremmo avere una `Map` di prezzi, e abbiamo bisogno di fornirla ad un codice esterno che si aspetta un oggetto.
+
+Quello che potremmo fare:
+
+```js run
+let map = new Map();
+map.set('banana', 1);
+map.set('orange', 2);
+map.set('meat', 4);
+
+let obj = Object.fromEntries(map);
+
+// ora obj = { banana: 1, orange: 2, meat: 4 }
+
+alert(obj.orange); // 2
+```

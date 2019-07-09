@@ -145,7 +145,7 @@ for (let key in user) alert(key); // name, age (no symbols)
 alert( "Direct: " + user[id] );
 ```
 
-Questo è un concetto fondamentale per il meccanismo di "hiding" ("nascondere"). Se uno script esterno o una libreria tenta di eseguire istruzioni sul nostro oggetto, non avrà la possibilità di accedere ad una proprietà di tipo symbol.
+Anche `Object.keys(user)` li ignora. Questo è il meccanisco di occultazione delle proprietà symbol. Se uno script esterno o una libreria tenta di eseguire istruzioni sul nostro oggetto, non avrà la possibilità di accedere ad una proprietà di tipo symbol.
 
 Invece [Object.assign](mdn:js/Object/assign) esegue la copia sia delle proprietà di tipo stringa si di quelle symbol:
 
@@ -186,7 +186,7 @@ Ad esempio, parti differente del codice potrebbero voler accedere al symbol `"id
 
 Per soddisfare questa necessità, esiste un *registro globale dei symbol*. Possiamo creare dei symbol al suo interno ed accedervi successivamente, e questo garantirà che lo stesso nome ritornerà esattamente lo stesso symbol.
 
-Per poter creare o leggere un symbol nel registro va usata la sintassi `Symbol.for(key)`.
+Per poter leggere (o creare in caso di assenza) un symbol nel registro va usata la sintassi `Symbol.for(key)`.
 
 Questa chiamata controlla il registro globale, se trova un symbol descritto dalla `key`, lo ritorna, altrimenti crea un nuovo simbolo  `Symbol(key)` e lo memorizza nel registro con la chiave `key`.
 

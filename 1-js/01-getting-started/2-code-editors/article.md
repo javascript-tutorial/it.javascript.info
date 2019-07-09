@@ -12,8 +12,8 @@ Un IDE carica il progetto (possono essere molti file), consente la navigazione t
 
 Se non hai ancora considerato di scegliere un IDE, dai un occhiata a queste alternative:
 
+- [Visual Studio Code](https://code.visualstudio.com/) (multi-piattaforma, gratutito).
 - [WebStorm](http://www.jetbrains.com/webstorm/) per sviluppatori frontend e altri editor della stessa compagnia per gli altri linguaggi (a pagamento).
-- [Netbeans](http://netbeans.org/) (gratuito).
 
 Tutti gli IDE sono multi-piattaforma.
 
@@ -33,20 +33,10 @@ Nella pratica, gli editor semplici possono avere molti plugin tra cui sintassi a
 
 Meritano attenzione le seguenti opzioni:
 
-- [Visual Studio Code](https://code.visualstudio.com/) (multi-piattaforma, gratuito) possiede molte caratteristiche in stile IDE.
 - [Atom](https://atom.io/) (multi-piattaforma, gratuito).
 - [Sublime Text](http://www.sublimetext.com) (multi-piattaforma, con prova gratuita).
 - [Notepad++](https://notepad-plus-plus.org/) (Windows, gratuito).
 - [Vim](http://www.vim.org/) e [Emacs](https://www.gnu.org/software/emacs/) sono particolarmente carini se si sanno utilizzare.
-
-## I miei preferiti
-
-La personale preferenza dell'autore è di avere entrambi, un IDE per il progetto e un editor semplice per le modifiche rapide.
-
-Io personalmente utilizzo:
-
-- Come IDE per lo sviluppo JS -- [WebStorm](http://www.jetbrains.com/webstorm/) (quando utilizzo altri linguaggi posso cambiare con altri pacchetti offerti da JetBrains).
-- Come editor semplice -- [Sublime Text](http://www.sublimetext.com) o [Atom](https://atom.io/).
 
 ## Non intestarditevi
 

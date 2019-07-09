@@ -455,10 +455,5 @@ Possiamo utilizzare un array come deque con le seguenti operazioni:
 - `shift()` rimuove un elemento dalla testa e lo ritorna.
 - `unshift(...items)` aggiunge un elemento in testa.
 
-Per eseguire un ciclo sugli elementi di un array:
-  - `for (let i=0; i<arr.length; i++)` -- elabora rapidamente, compatibile con i vecchi browser.
-  - `for (let item of arr)` -- la sintassi moderna utilizzate per ottenere l'elemento,
-  - `for (let i in arr)` -- mai utilizzata.
-
 Ritorneremo sugli array e studieremo più metodi per aggiungere, rimuovere, estrarre ed ordinare elementi nel capitolo <info:array-methods>.
 

@@ -100,7 +100,7 @@ La massima profondità di ricorsione viene limitata dal motore JavaScript. Possi
 
 Questo fattore limita le possibili applicazioni della ricorsione, che rimangono comunque molte. Ci sono molte attività che possono essere semplificati tramite la ricorsione, rendendo i programmi più mantenibili.
 
-## La pila d'esecuzione
+## Il contesto e la pila d'esecuzione
 
 Ora vediamo come funzionano le chiamate ricorsive. Per farlo analizzeremo bene le funzioni.
 

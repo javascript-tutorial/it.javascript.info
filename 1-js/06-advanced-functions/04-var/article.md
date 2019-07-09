@@ -35,7 +35,7 @@ Le variabili dichiarate tramite `var` possono essere: locali alla funzione oppur
 
 Ad esempio:
 
-```js
+```js run
 if (true) {
   var test = true; // utilizziamo "var" piuttosto di "let"
 }
@@ -61,7 +61,7 @@ alert(i); // 10, "i" è visibile anche dopo il ciclo, è una variabile globale
 
 Se un blocco di codice si trova all'interno di una funzione, allora `var` diventa una variabile a livello di funzione:
 
-```js
+```js run
 function sayHi() {
   if (true) {
     var phrase = "Hello";
@@ -71,7 +71,7 @@ function sayHi() {
 }
 
 sayHi();
-alert(phrase); // Errore: phrase non è definito
+alert(phrase); // Errore: phrase non è definito (Provate a controllare la console)
 ```
 
 Come possiamo vedere, `var` passa attraverso `if`, `for` o altri blocchi di codice. Questo accade perché molto tempo fa i blocchi JavaScript non possedevano un Lexical Environments. E `var` ne è un ricordo.
@@ -84,7 +84,7 @@ In altre parole, le variabili `var` sono definite dall'inizio della funzione, no
 
 Guardate questo esempio:
 
-```js
+```js run
 function sayHi() {
   phrase = "Hello";
 
@@ -94,11 +94,12 @@ function sayHi() {
   var phrase;
 */!*
 }
+sayHi();
 ```
 
 ...E' tecnicamente la stessa cosa di (spostando `var phrase`):
 
-```js
+```js run
 function sayHi() {
 *!*
   var phrase;
@@ -108,11 +109,12 @@ function sayHi() {
 
   alert(phrase);
 }
+sayHi();
 ```
 
 ...O anche di questa (ricordate, i blocchi di codice vengono attraversati dallo scope della variabile):
 
-```js
+```js run
 function sayHi() {
   phrase = "Hello"; // (*)
 
@@ -124,6 +126,7 @@ function sayHi() {
 
   alert(phrase);
 }
+sayHi();
 ```
 
 Questo comportamento viene chiamato "sollevamento", perché tutte `var` vengono "sollevate" fino all'inizio della funzione.

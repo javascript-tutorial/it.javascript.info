@@ -17,6 +17,8 @@ let arr = ["Ilya", "Kantor"]
 
 *!*
 // assegnamento di destrutturazione
+// imposta firstName = arr[0]
+// e surname = arr[1]
 let [firstName, surname] = arr;
 */!*
 
@@ -112,7 +114,7 @@ user.set("name", "John");
 user.set("age", "30");
 
 *!*
-for (let [key, value] of user.entries()) {
+for (let [key, value] of user) {
 */!*
   alert(`${key}:${value}`); // name:John, then age:30
 }
@@ -290,7 +292,7 @@ alert(w);      // 100
 alert(h);      // 200
 ```
 
-### L'operatore di resto
+### L'operatore di resto "..."
 
 Cosa succede se l'oggetto possiede più proprietà delle variabili da noi fornite? Possiamo prendere solamente alcune ed assegnare tutto ciò che avanza da un'altra parte?
 
@@ -306,6 +308,8 @@ let options = {
 };
 
 *!*
+// title = property named title
+// rest = object with the rest of properties
 let {title, ...rest} = options;
 */!*
 
@@ -367,7 +371,7 @@ let options = {
   extra: true    // qualche extra che non destruttureremo
 };
 
-// destructuring assignment on multiple lines for clarity
+// destructuring assignment split in multiple lines for clarity
 let {
   size: { // mettiamo size qui
     width,
@@ -504,7 +508,7 @@ Nel codice sopra, tutti gli argomenti dell'oggetto sono `{}` di default, quindi 
 - L'assegnamento di destrutturazione ci consente di mappare un oggetto o un array su alcune variabili.
 - La sintassi per gli oggetti:
     ```js
-    let {prop : varName = default, ...} = object
+    let {prop : varName = default, ...rest} = object
     ```
 
     Questo significa che la proprietà `prop` dovrebbe andare nella variabile `varName` e, se non esiste alcuan proprietà, allora verrà utilizzato il valore di `default`.
