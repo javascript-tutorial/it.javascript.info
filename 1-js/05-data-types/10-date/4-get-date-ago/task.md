@@ -8,7 +8,11 @@ Create una funzione `getDateAgo(date, days)` che ritorna il giorno del mese di `
 
 Ad esempio, se oggi è il 20, allora da `getDateAgo(new Date(), 1)` dovrebbe risultare il 19, e `getDateAgo(new Date(), 2)` dovrebbe ritornare 18.
 
+<<<<<<< HEAD
 Dovrebbe funzionare in maniera affidabile anche con i mesi/anni:
+=======
+Should work reliably for `days=365` or more:
+>>>>>>> be342e50e3a3140014b508437afd940cd0439ab7
 
 ```js
 let date = new Date(2015, 0, 2);

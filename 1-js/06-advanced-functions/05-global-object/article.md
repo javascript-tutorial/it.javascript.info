@@ -16,7 +16,11 @@ alert("Hello");
 window.alert("Hello");
 ```
 
+<<<<<<< HEAD
 In un browserm le variabili globalo dichiarate con `var` diventano proprietà dell'oggetto globale:
+=======
+In a browser, global functions and variables declared with `var` become the property of the global object:
+>>>>>>> be342e50e3a3140014b508437afd940cd0439ab7
 
 ```js run untrusted refresh
 var gVar = 5;
@@ -80,8 +84,15 @@ if (!window.Promise) {
     Incluse quelle integrate in JavaScript, come `Array` e valori specifici dell'ambiente, come `window.innerHeight` -- l'altezza della finestra nei browser.
 - L'oggetto globale ha un nome universale `globalThis`.
 
+<<<<<<< HEAD
     ...Ma è più facile trovarne riferimenti alla "vecchia maniera", quindi con nomi specifici dell'ambiente, come `window` (browser) e `global` (Node.js). Poiché `globalThis` è un aggiornamento recente, non è ancora supportato da Edge (ma può essere aggiunto con la tecnica polyfill).
 - Dovremmo memorizzare valori nell'oggetto globale solamente se questi hanno realmente uno scopo globale.
 - In ambiente browser, senza l'utilizzo dei [moduli](info:modules), una variabile globale dichiarata tramite `var` diventa una proprietà dell'oggetto globale.
 
     Per rendere il codice più semplice da interpretare e aggiornare, dovremmo accedere all'oggetto globale come `window.x`.
+=======
+    ...But more often is referred by "old-school" environment-specific names, such as `window` (browser) and `global` (Node.js). As `globalThis` is a recent proposal, it's not supported in non-Chromium Edge (but can be polyfilled).
+- We should store values in the global object only if they're truly global for our project. And keep their number at minimum.
+- In-browser, unless we're using [modules](info:modules), global functions and variables declared with `var` become a property of the global object.
+- To make our code future-proof and easier to understand, we should access properties of the global object directly, as `window.x`.
+>>>>>>> be342e50e3a3140014b508437afd940cd0439ab7

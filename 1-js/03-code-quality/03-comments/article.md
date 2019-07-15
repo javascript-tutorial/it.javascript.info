@@ -4,7 +4,11 @@ Come abbiamo già appreso dal capitolo <info:structure>, i commenti possono esse
 
 Normalmente li utilizziamo per descrivere come e perché funziona il codice.
 
+<<<<<<< HEAD
 Inizialmente, l'inserimento di commenti può sembrare ovvio, ma i novizi solitamente non lo fanno nella maniera corretta.
+=======
+At first sight, commenting might be obvious, but novices in programming usually get it wrong.
+>>>>>>> be342e50e3a3140014b508437afd940cd0439ab7
 
 ## Commenti sbagliati
 
@@ -18,7 +22,11 @@ complex;
 code;
 ```
 
+<<<<<<< HEAD
 Nel buon codice la quantità di commenti "esplicativi" dovrebbe essere minima. In realtà il codice dovrebbe essere facile da comprendere anche senza.
+=======
+But in good code, the amount of such "explanatory" comments should be minimal. Seriously, the code should be easy to understand without them.
+>>>>>>> be342e50e3a3140014b508437afd940cd0439ab7
 
 C'è una bellissima regola a riguardo: "Se il codice è cosi poco chiaro da richiedere un commento, probabilmente dovrebbe essere riscritto".
 

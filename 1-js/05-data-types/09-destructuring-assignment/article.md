@@ -273,7 +273,11 @@ let {width = prompt("width?"), title = prompt("title?")} = options;
 */!*
 
 alert(title);  // Menu
+<<<<<<< HEAD
 alert(width);  // (qualsiasi cosa arrivi dal prompt)
+=======
+alert(width);  // (whatever the result of prompt is)
+>>>>>>> be342e50e3a3140014b508437afd940cd0439ab7
 ```
 
 Possiamo anche combinare entrambi, i due punti e l'uguaglianza:
