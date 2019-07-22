@@ -111,6 +111,7 @@ Esempi di alcuni linguaggi:
 
 - [CoffeeScript](http://coffeescript.org/) è un linguaggio con sintassi "leggera" per JavaScript, introduce una sintassi più breve, consente di scirvere codice più pulito e preciso. Amato dagli sviluppatori provenienti da Ruby.
 - [TypeScript](http://www.typescriptlang.org/) si occupa di aggiungere "tipizzazione dei dati", per semplificare lo sviluppo e supportare sistemi più complessi. E' stato sviluppato da Microsoft.
+- [Flow](http://flow.org/) anche'esso aggiunge la tipizzazione dei dati, ma in un modo differente. Sviluppato da Facebook.
 - [Dart](https://www.dartlang.org/) è un linguaggio autonomo che possiede il suo motore che esegue in ambienti esterni al browser (come mobile apps). E' stato introdotto da Google come alternativa a JavaScript, ma attualmente, i browser richiedono la conversione in JavaScript, proprio come i precedenti.
 
 Ce ne sono molti altri. Ovviamente se utilizziamo uno di questi linguaggi, dovremmo almeno conoscere JavaScript, per comprendere cosa stiamo facendo.

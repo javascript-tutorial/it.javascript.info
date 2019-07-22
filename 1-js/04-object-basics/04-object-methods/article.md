@@ -258,7 +258,9 @@ user.hi(); // John (la chiamata semplice funzione)
 
 Nell'ultima riga c'è un operatore ternario che deve decidere tra `user.hi` o `user.bye`. In questo caso `user.hi`.
 
-Il metodo viene immediatamente chiamato con le parentesi `()`. Ma non funziona!
+Il metodo viene immediatamente chiamato con le parentesi `()`. Ma non funziona correttamente!
+
+Abbiamo visto che la chiamata ritorna un errore, questo è dovuto al fatto che il valore di `"this"` all'interno della chiamata diventa `undefined`.
 
 Questo funziona (oggetto punto metodo):
 ```js

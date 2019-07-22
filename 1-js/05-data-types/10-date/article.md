@@ -40,7 +40,7 @@ Per creare un nuovo oggetto `Date`, chiamiamo `new Date()` con uno dei seguenti 
     ```js run
     let date = new Date("2017-01-26");
     alert(date);
-    // The time portion of the date is assumed to be midnight GMT and 
+    // The time is not set, so it's assumed to be midnight GMT and
     // is adjusted according to the timezone the code is run in
     // So the result could be
     // Thu Jan 26 2017 11:00:00 GMT+1100 (Australian Eastern Daylight Time)
@@ -218,14 +218,14 @@ Un importante effetto collaterale, le date possono essere sottratte, il risultat
 Questa caratteristica può essere utilizzata per effettuare misurazioni:
 
 ```js run
-let start = new Date(); // start counting
+let start = new Date(); // start measuring time
 
 // do the job
 for (let i = 0; i < 100000; i++) {
   let doSomething = i * i * i;
 }
 
-let end = new Date(); // done
+let end = new Date(); // end measuring time
 
 alert( `The loop took ${end - start} ms` );
 ```
@@ -264,6 +264,8 @@ alert( `The loop took ${end - start} ms` ); // subtract numbers, not dates
 Se volessimo un benchmark affidabile del consumo di CPU di una funzione, dovremmo prestare attenzione.
 
 Ad esempio, proviamo a misurare due funzioni che calcolano la differenza tra due date: quale sarebbe più veloce?
+
+Such performance measurements are often called "benchmarks".
 
 ```js
 // we have date1 and date2, which function faster returns their difference in ms?

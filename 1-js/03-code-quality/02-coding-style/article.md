@@ -2,7 +2,7 @@
 
 Il codice dovrebbe essere il più pulito e leggibile possibile.
 
-Questa è l'arte della programmazione -- programmare funzionalità complesse che siano allo stesso tempo correte e leggibili.
+Questa è l'arte della programmazione -- programmare funzionalità complesse che siano allo stesso tempo correte e leggibili. Un corretto stile di programmazione aiuta molto in questo senso.
 
 ## Sintassi
 
@@ -36,7 +36,7 @@ if (n < 0) {
 
 Adesso discutiamo le regole e le rispettive motivazioni nel dettaglio.
 
-```warn header="Ironia delle regole"
+```warn header="Non ci sono delle regole obbligatorie"
 Niente di quello che stiamo dicendo è scolpito sulla pietra. Sono solo delle preferenze, non dei dogmi religiosi.
 ```
 
@@ -304,8 +304,8 @@ Qui un esempio di di un file `.eslintrc`:
   },
   "rules": {
     "no-console": 0,
-  },
-  "indent": 2
+    "indent": ["warning", 2]
+  }
 }
 ```
 

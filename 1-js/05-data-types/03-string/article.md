@@ -17,7 +17,7 @@ let double = "double-quoted";
 let backticks = `backticks`;
 ```
 
-Gli apici singoli e doppi sono essenzialmente uguali. I backticks, oltretutto, ci consentono di includere una qualsiasi espressione all'interno della stringa, incluse chiamate a funzioni:
+Gli apici singoli e doppi sono essenzialmente uguali. I backticks, oltretutto, ci consentono di includere una qualsiasi espressione all'interno della stringa, raccogliendole all'interno di `${…}`:
 
 ```js run
 function sum(a, b) {
@@ -41,7 +41,7 @@ alert(guestList); // una lista di guest, in piu righe
 
 Se proviamo a utilizzare gli apici singoli o doppi allo stesso modo, otterremo un errore:
 ```js run
-let guestList = "Guests:  // Error: Unexpected token ILLEGAL
+let guestList = "Guests: // Error: Unexpected token ILLEGAL
   * John";
 ```
 
@@ -74,13 +74,15 @@ Ci sono altri caratteri "speciali" meno comuni. Qui una lista:
 
 | Carattere | Descrizione |
 |-----------|-------------|
-|`\b`|Backspace|
-|`\f`|Campo di un form|
-|`\n`|Nuova riga|
-|`\r`|Ritorno a capo|
+|`\n`|Nuova linea|
+|`\r`|Ritorno a capo: non utilizzato da solo. I file di testo Windows utilizzano una combinazione di due caratteri `\n\r` per rappresentare il termine della riga. |
+|`\'`, `\"`|Apici|
+|`\\`|Backslash|
 |`\t`|Tab|
-|`\uNNNN`|Un simbolo unicode con il codice `NNNN`, ad esempio `\u00A9` -- è il codice unicode per il simbolo del copyright `©`. Devono essere esattamente quattro cifre esadecimali. |
-|`\u{NNNNNNNN}`|Alcuni caratteri speciali vengono codificati con due simboli unicode, quindi 4 byte. Sono richieste le parentesi graffe.|
+|`\b`, `\f`,`\v` | Backspace, Form Feed, Vertical Tab -- mantenuti per retrocompatibilità, oggi non sono utilizzati. |
+|`\xXX`|Carattere Unicode rappresentato dal codice esadecimale `XX`, esempio `'\x7A'` equivale a `'z'`.|
+|`\uXXXX`|Simbolo unicode rappresentato da codice esadecimale `XXXX` in  codifica UTF-16, ad esempio `\u00A9` -- equivale a `©`. |
+|`\u{X…XXXXXX}` (da 1 a 6 caratteri esadecimali)| Un simbolo Unicode in codifica UTF-32. Alcuni caratteri vengono codificati da due simboli unicode, ovvero 4 byte. |
 
 Esempi di unicode:
 
@@ -243,7 +245,6 @@ alert( str.indexOf('id', 2) ) // 12
 
 Se siamo interessati a tutte le occorrenze, possiamo utilizzare `indexOf` in un ciclo. Ogni chiamata viene fatta a partire dalla posizione della precedente corrispondenza:
 
-
 ```js run
 let str = 'As sly as a fox, as strong as an ox';
 
@@ -395,14 +396,12 @@ Ci sono 3 metodi in JavaScript per estrarre una sotto-stringa: `substring`, `sub
     alert( str.slice(-4, -1) ); // gif
     ```
 
-
 `str.substring(start [, end])`
 : Ritorna la parte di stringa *compresa tra* `start` e `end`.
 
     E' molto simile a `slice`, ma consente di avere `start` maggiore di `end`.
 
     Ad esempio:
-
 
     ```js run
     let str = "st*!*ring*/!*ify";
@@ -418,7 +417,6 @@ Ci sono 3 metodi in JavaScript per estrarre una sotto-stringa: `substring`, `sub
     ```
 
     Argomenti negativi (a differenza di slice) non sono supportati, vengono trattati come `0`.
-
 
 `str.substr(start [, length])`
 : Ritorna la parte di stringa a partire da `start`, e della lunghezza `length` data.
@@ -628,7 +626,7 @@ Ad esempio:
 alert( 'S\u0307\u0323' ); // Ṩ, S + punto sopra + punto sotto
 alert( 'S\u0323\u0307' ); // Ṩ, S + punto sotto + punto sopra
 
-alert( 'S\u0307\u0323' == 'S\u0323\u0307' ); // false
+alert( 'S\u0307\u0323' == 'S\u0323\u0307' ); // false, different characters (?!)
 ```
 
 Per risolvere questo, esiste un algoritmo di "normalizzazione unicode" che porta ogni stringa alla forma "normale".
@@ -669,4 +667,4 @@ Ci sono molti altri metodi utili per operare con le stringhe:
 - `str.repeat(n)` -- ripete la stringa `n` volte.
 - ...e molto altro. Guarda il [manuale](mdn:js/String) per maggiori dettagli.
 
-Le stringhe possiedono anche metodi per eseguire ricerche/rimpiazzi con le regular expression. Ma l'argomento merita un capitolo separato, quindi ci ritorneremo più avanti.
+Le stringhe possiedono anche metodi per eseguire ricerche/rimpiazzi con le regular expression. Ma l'argomento merita un capitolo separato, quindi ci ritorneremo più avanti, <info:regular-expressions>.
