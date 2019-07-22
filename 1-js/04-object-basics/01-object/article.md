@@ -50,7 +50,11 @@ Noi possiamo aggiungere, rimuovere e leggere file in qualsiasi momento.
 I valori delle proprietà sono accessibili utilizzando la notazione puntata:
 
 ```js
+<<<<<<< HEAD
 // ottiene i campi dell'oggetto:
+=======
+// get property values of the object:
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 alert( user.name ); // John
 alert( user.age ); // 30
 ```
@@ -104,7 +108,6 @@ Questo perché il punto richiede che la chiave sia un identificatore valido. Un 
 
 Esiste una "notazione con parentesi quadre", per aggirare questo vincolo:
 
-
 ```js run
 let user = {};
 
@@ -129,7 +132,11 @@ let key = "likes birds";
 user[key] = true;
 ```
 
+<<<<<<< HEAD
 Qui la variabile `key` può essere calcolata a run-time o dipendere dall'input dell'utente. Successivamente possiamo utilizzarla per accedere alla proprietà. Questa caratteristica ci fornisce una grande flessibilità. La notazione puntata non può essere utilizzata in questo modo.
+=======
+Here, the variable `key` may be calculated at run-time or depend on the user input. And then we use it to access the property. That gives us a great deal of flexibility.
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 Ad esempio:
 
@@ -145,6 +152,17 @@ let key = prompt("What do you want to know about the user?", "name");
 alert( user[key] ); // John (se si inserisce "name")
 ```
 
+The dot notation cannot be used in a similar way:
+
+```js run
+let user = {
+  name: "John",
+  age: 30
+};
+
+let key = "name";
+user.key // undefined
+```
 
 ### Proprietà calcolate
 
@@ -220,10 +238,18 @@ Come possiamo veder dal codice, l'assegnazione alla primitiva `5` viene ignorata
 
 Questa può diventare una situazione vulnerabile se abbiamo intenzione di memorizzare una coppia chiave-valore in un oggetto, consentendo al visitatore di specificare al chiave.
 
+<<<<<<< HEAD
 In questo caso il visitatore potrebbe scegliere "__proto__" come chiave, e l'assegnazione verrebbe rovinata (come abbiamo visto sopra).
 
 C'è un modo per trattare `__proto__` come una prorietà, lo vederemo più avanti, prima abbiamo bisogno di conoscere meglio gli oggetti.
 C'è un ulteriore struttura dati [Map](info:map-set-weakmap-weakset), che apprenderemo nel capitolo <info:map-set-weakmap-weakset>, che supporta chiavi arbitrarie.
+=======
+In that case the visitor may choose `__proto__` as the key, and the assignment logic will be ruined (as shown above).
+
+There is a way to make objects treat `__proto__` as a regular property, which we'll cover later, but first we need to know more about objects.
+
+There's also another data structure [Map](info:map-set-weakmap-weakset), that we'll learn in the chapter <info:map-set-weakmap-weakset>, which supports arbitrary keys.
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 ````
 
 

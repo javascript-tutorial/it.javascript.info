@@ -2,11 +2,19 @@
 
 Il codice dovrebbe essere il più pulito e leggibile possibile.
 
+<<<<<<< HEAD
 Questa è l'arte della programmazione -- programmare funzionalità complesse che siano allo stesso tempo correte e leggibili.
+=======
+That is actually the art of programming -- to take a complex task and code it in a way that is both correct and human-readable. A good code style greatly assists in that.  
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 ## Sintassi
 
+<<<<<<< HEAD
 Qui una lista di alcune regole da seguire (guardare sotto per maggiori dettagli):
+=======
+Here is a cheat sheet with some suggested rules (see below for more details):
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 ![](code-style.png)
 <!--
@@ -36,8 +44,13 @@ if (n < 0) {
 
 Adesso discutiamo le regole e le rispettive motivazioni nel dettaglio.
 
+<<<<<<< HEAD
 ```warn header="Ironia delle regole"
 Niente di quello che stiamo dicendo è scolpito sulla pietra. Sono solo delle preferenze, non dei dogmi religiosi.
+=======
+```warn header="There are no \"you must\" rules"
+Nothing is set in stone here. These are style preferences, not religious dogmas.
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 ```
 
 ### Parentesi graffe
@@ -52,7 +65,11 @@ if (condition) {
 }
 ```
 
+<<<<<<< HEAD
 Un caso limite è un costrutto con una singola linea. Dovremmo comunque usare le parentesi? Se si come?
+=======
+A single-line construct, such as `if (condition) doSomething()`, is an important edge case. Should we use braces at all?
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 Qui ci sono un paio di varianti, cosi potete giudicare voi stessi:
 
@@ -72,6 +89,7 @@ if (n < 0) {
 -->
 ![](figure-bracket-style.png)
 
+<<<<<<< HEAD
 In sintesi:
 - Per codici molto brevi, una sola riga è accettabile. Ad esempio:  `if (cond) return null`.
 - Ma una singola riga per ogni istruzione è generalmente più facile da leggere.
@@ -79,6 +97,33 @@ In sintesi:
 ### Lunghezza della riga
 
 Nessuno ama leggere lunghe righe orizzontali di codice. Una buona norma è dividere le righe più lunghe in qualcosa di più breve.
+=======
+### Line Length
+
+No one likes to read a long horizontal line of code. It's best practice to split them.
+
+For example:
+```js
+// backtick quotes ` allow to split the string into multiple lines
+let str = `
+  Ecma International's TC39 is a group of JavaScript developers,
+  implementers, academics, and more, collaborating with the community
+  to maintain and evolve the definition of JavaScript.
+`;
+```
+
+And, for `if` statements:
+
+```js
+if (
+  id === 123 &&
+  moonPhase === 'Waning Gibbous' &&
+  zodiacSign === 'Libra'
+) {
+  letTheSorceryBegin();
+}
+```
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 La lunghezza massima dovrebbe essere accordata a livello di team. Solitamente tra gli 80-120 caratteri.
 
@@ -127,15 +172,25 @@ Ci sono due tipi di indentazione:
 
 Un punto e virgola dovrebbe essere presente alla fine di ogni istruzione, anche se potrebbe essere evitata.
 
+<<<<<<< HEAD
 Esistono linguaggi in cui il punto e virgola sono realmente opzionali e possono essere evitati. In JavaScript, esistono casi in cui un "a capo" non viene interpretato come un punto e virgola, lasciando quindi il codice vulnerabile agli errori.
 
 Quando diventerete più maturi come programmatori, potreste scegliere lo stile senza punto e virgola [StandardJS](https://standardjs.com/). Fino a quel momento la miglio scelta è di inserirla alla fine di ogni istruzione per evitare errori.
+=======
+There are languages where a semicolon is truly optional and it is rarely used. In JavaScript, though, there are cases where a line break is not interpreted as a semicolon, leaving the code vulnerable to errors. See more about that in the chapter <info:structure#semicolon>.
+
+If you're an experienced JavaScript programmer, you may choose a no-semicolon code style like [StandardJS](https://standardjs.com/). Otherwise, it's best to use semicolons to avoid possible pitfalls. The majority of developers put semicolons.
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 ### Livelli di annidamento
 
 Nel codice vanno evitati elevati liveeli di annidamento.
 
+<<<<<<< HEAD
 Qualche volta torna utile la direttiva ["continue"](info:while-for#continue) per evitare annidamenti extra.
+=======
+For example, in the loop, it's sometimes a good idea to use the ["continue"](info:while-for#continue) directive to avoid extra nesting.
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 Ad esempio, invece che aggiungere un `if`:
 
@@ -197,13 +252,21 @@ function pow(x, n) {
 }
 ```
 
+<<<<<<< HEAD
 La seconda opzione è molto più leggibile perché il "caso limite" `n < 0` viene gestito in anticipo. Dopo aver eseguito il controllo possiamo proseguire con il flusso principale senza doverci preoccupare di ulteriori casi di annidamento.
+=======
+The second one is more readable because the "special case" of `n < 0` is handled early on. Once the check is done we can move on to the "main" code flow without the need for additional nesting.
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 ## Posizionamento delle funzioni
 
 Se state scrivendo molte funzioni "ausiliarie", ci sono tre modi per organizzarle nel codice.
 
+<<<<<<< HEAD
 1. Dichiarare le funzioni sopra il codice che le utilizza:
+=======
+1. Declare the functions *above* the code that uses them:
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
     ```js
     // *!*dichiarazione di funzioni*/!*
@@ -249,7 +312,11 @@ Se state scrivendo molte funzioni "ausiliarie", ci sono tre modi per organizzarl
 
 Nella maggioranza dei casi si preferisce la seconda opzione.
 
+<<<<<<< HEAD
 Questo perché quando leggiamo il codice vogliamo prima di tutto sapere *cosa fa*. Mettendo prima il codice possiamo fornire queste informazioni. Successivamente, potrebbe non essere necessario leggere le funzioni, soprattutto se i loro nomi sono autodescrittivi.
+=======
+That's because when reading code, we first want to know *what it does*. If the code goes first, then it becomes clear from the start. Then, maybe we won't need to read the functions at all, especially if their names are descriptive of what they actually do.
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 ## Guida di stile
 
@@ -257,7 +324,11 @@ Una guida di stile contiene  regole generali riguardo a "come scrivere" il codic
 
 Quando tutti i membri del team utilizzano lo stesso stile tende ad essere uniforme.
 
+<<<<<<< HEAD
 Certamente, un team può utilizzare il proprio stile guida. Molte volte non serve. Ci sono molte opzioni tra cui scegliere, quindi scegliere tra una di queste generalmente è la scelta migliore.
+=======
+Of course, a team can always write their own style guide, but usually there's no need to. There are many existing guides to choose from.
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 Alcune delle scelte più popolari:
 
@@ -267,15 +338,27 @@ Alcune delle scelte più popolari:
 - [StandardJS](https://standardjs.com/)
 - (e molte altre)
 
+<<<<<<< HEAD
 Se sei un nuovo sviluppatore, inizia con i consigli di questo capitolo. Quando avrai appreso bene lo stile potrai cercare quello che più ti appartiene.
+=======
+If you're a novice developer, start with the cheat sheet at the beginning of this chapter. Then you can browse other style guides to pick up more ideas and decide which one you like best.
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 ## Pulitori automatizzati
 
+<<<<<<< HEAD
 I linters sono strumenti che controllano automaticamente lo stile del codice e vi danno consigli su come sistemarlo.
 
 La miglior cosa di questi strumenti è che il controllo dello stile in qualche occasione può rilevare dei bug, ad esempio degli errori di battitura nei nomi delle funzioni. Proprio per queste sue caratteristiche, installare un linter è fortemente consigliato anche se non avete intenzioni di rimanere fedeli ad uno particolare "stile di programmazione".
 
 Alcuni fra i linter più conosciuti:
+=======
+Linters are tools that can automatically check the style of your code and make improving suggestions.
+
+The great thing about them is that style-checking can also find some bugs, like typos in variable or function names. Because of this feature, using a linter is recommended even if you don't want to stick to one particular "code style".
+
+Here are some well-known linting tools:
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 - [JSLint](http://www.jslint.com/) -- uno dei primi linter.
 - [JSHint](http://www.jshint.com/) -- molte più opzioni di JSLint.
@@ -304,8 +387,8 @@ Qui un esempio di di un file `.eslintrc`:
   },
   "rules": {
     "no-console": 0,
-  },
-  "indent": 2
+    "indent": ["warning", 2]
+  }
 }
 ```
 
@@ -317,8 +400,14 @@ Molti IDE hanno dei linter integrati, che sono comodi ma non sono editabili come
 
 ## Riepilogo
 
+<<<<<<< HEAD
 Tutte le regole sintattiche descritte in questo capitolo (e nei riferimenti dei vari stili di programmazione) aiutano ad incrementare la leggibilità del codice, ma sono tutti contestabili.
 
 Quando stiamo pensando a come scrivere codice "migliore", la domanda dovrebbe essere "Cosa rende il codice più leggibile e facile da capire?" e "Cosa può aiutarmi ad evitare gli errori?". Queste sono le principali cose da tenere a mente quando stiamo cercando di scegliere uno stile guida.
+=======
+All syntax rules described in this chapter (and in the style guides referenced) aim to increase the readability of your code. All of them are debatable.
+
+When we think about writing "better" code, the questions we should ask ourselves are: "What makes the code more readable and easier to understand?" and "What can help us avoid errors?" These are the main things to keep in mind when choosing and debating code styles.
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 Leggere fra gli stili più popolari vi consentirà di tenervi aggiornati con le ultime idee riguardo gli stili di programmazione e le best practices.

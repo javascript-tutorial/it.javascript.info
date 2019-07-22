@@ -31,7 +31,11 @@ alert(phrase); // Errore, phrase non è definito
 
 ## "var" non ha uno scope di blocco
 
+<<<<<<< HEAD
 Le variabili dichiarate tramite `var` possono essere: locali alla funzione oppure globali.
+=======
+Variables, declared with `var`, are either function-wide or global. They are visible through blocks.
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 Ad esempio:
 
@@ -45,7 +49,23 @@ alert(test); // vero, la variabile vive dopo if
 */!*
 ```
 
+<<<<<<< HEAD
 Se avessimo utilizzato `let test` nella seconda riga, allora non sarebbe stata visibile ad `alert`. Ma `var` ignora i blocchi di codice, quindi `test` risulta essere globale.
+=======
+As `var` ignores code blocks, we've got a global variable `test`.
+
+If we used `let test` instead of `var test`, then the variable would only be visible inside `if`:
+
+```js run
+if (true) {
+  let test = true; // use "let"
+}
+
+*!*
+alert(test); // Error: test is not defined
+*/!*
+```
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 La stessa cosa accade con i cicli: `var` non può essere locale ad un blocco/ciclo:
 
@@ -76,7 +96,11 @@ alert(phrase); // Errore: phrase non è definito (Provate a controllare la conso
 
 Come possiamo vedere, `var` passa attraverso `if`, `for` o altri blocchi di codice. Questo accade perché molto tempo fa i blocchi JavaScript non possedevano un Lexical Environments. E `var` ne è un ricordo.
 
+<<<<<<< HEAD
 ## "var" viene processata all'inizio della funzione
+=======
+## "var" declarations are processed at the function start
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 Le dichiarazioni con `var` vengono processata quando la funzione inizia (o lo script, nel caso delle variabili globali).
 
@@ -178,11 +202,22 @@ In entrambi gli esempi sopra `alert` esegue senza errori, poiché la variabile `
 
 ## Riepilogo
 
+<<<<<<< HEAD
 Ci sono due principali differenze con `var`:
 
 1. Le variabili non hanno uno scope locale al blocco, sono infatti visibili a livello di funzione.
 2. La dichiarazione di variabili viene processata all'inizio della funzione.
+=======
+There are two main differences of `var` compared to `let/const`:
+
+1. `var` variables have no block scope, they are visible minimum at the function level.
+2. `var` declarations are processed at function start (script start for globals).
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
 C'è un ulteriore differenza di minore importanza legata all'oggetto globale, che andremo ad analizzare nel prossimo capitolo.
 
+<<<<<<< HEAD
 L'insieme di queste differenze fa si che `var` venga considerato uno svantaggio. Come prima cosa, non possiamo creare delle variabili locali al blocco. Il "sollevameto" genera solamente confusione. Quindi, negli script più recenti `var` viene utilizzato solamente in casi eccezionali.
+=======
+These differences make `var` worse than `let` most of the time. Block-level variables is such a great thing. That's why `let` was introduced in the standard long ago, and is now a major way (along with `const`) to declare a variable.
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3

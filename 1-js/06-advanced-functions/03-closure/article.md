@@ -582,8 +582,13 @@ Gli oggetti Lexical Environment di cui abbiamo parlato fino ad ora sono soggetti
       return g;
     }
 
+<<<<<<< HEAD
     let g = f(); // while g is alive
     // there corresponding Lexical Environment lives
+=======
+let g = f(); // while g is alive
+// their corresponding Lexical Environment lives
+>>>>>>> 4a8d8987dfc3256045e6b4a3bd8810ad3b25d1b3
 
     g = null; // ...and now the memory is cleaned up
     ```
