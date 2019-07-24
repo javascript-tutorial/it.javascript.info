@@ -4,11 +4,7 @@ Il linguaggio JavaScript è stato inizialmente creato per i browser. Da allora, 
 
 La piattaforma di utilizzo può essere un browser, un web-server, una lavatrice o un qualunque altro tipo di *host*. Ognuno di essi fornisce delle funzionalità specifiche alla piattaforma stessa. Secondo la specifica JavaScript questa è la definizione di *ambiente host*
 
-<<<<<<< HEAD
 Un ambiente host, oltre alle funzionalità core del linguaggio, fornisce oggetti e funzioni specifiche della piattaforma. I browser web, ad esempio, permettono di interagire con le pagine web, mentre Node.JS fornisce funzionalità dedicate al server e così via.
-=======
-A host environment provides platform-specific objects and functions additional to the language core. Web browsers give a means to control web pages. Node.js provides server-side features, and so on.
->>>>>>> 273e47b70a14ae7a8b882b8d2543e581b000eefb
 
 Di seguito una panoramica di cosa succede quando JavaScript viene eseguito nel browser:
 
@@ -38,7 +34,7 @@ alert(window.innerHeight); // inner window height
 
 Ci sono molte altre funzionalità dell'oggetto `window`, ma le vedremo più avanti.
 
-## Document Object Model (DOM)
+## DOM (Document Object Model)
 
 L'oggetto `document` dà accesso al contenuto della pagina e ci permette di cambiare o creare qualunque cosa all'interno della stessa.
 
@@ -115,7 +111,6 @@ Specifica CSSOM: Descrive i fogli e le regole di stile, le loro manipolazioni e 
 
 Specifica HTML: Descrive il linguaggio HTML language (e.g. tags) e il BOM (browser object model) -- varie funzioni del browser: `setTimeout`, `alert`, `location` e così via, vedi <https://html.spec.whatwg.org>. Prende la specifica del DOM e l'arricchisce di ulteriori proprietà e metodi.
 
-Adesso approfondiremo il DOM, il documento gioca un ruolo centrale nell'UI.
 
 Per favore prendi nota dei link indicati in precedenza perché c'è talmente tanto da imparare che è impossibile trattare e ricordare ogni argomento.
 

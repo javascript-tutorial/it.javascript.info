@@ -178,10 +178,10 @@ In entrambi gli esempi sopra `alert` esegue senza errori, poiché la variabile `
 
 ## Riepilogo
 
-Ci sono due principali differenze con `var`:
+Ci sono due principali differenze tra `var` e `let/const`:
 
-1. Le variabili non hanno uno scope locale al blocco, sono infatti visibili a livello di funzione.
-2. La dichiarazione di variabili viene processata all'inizio della funzione.
+1. `var` non hanno uno scope locale al blocco, sono infatti visibili a livello di funzione.
+2. La dichiarazione di `var` viene processata all'inizio della funzione.
 
 C'è un ulteriore differenza di minore importanza legata all'oggetto globale, che andremo ad analizzare nel prossimo capitolo.
 
