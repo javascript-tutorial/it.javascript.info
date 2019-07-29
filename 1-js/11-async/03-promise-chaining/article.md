@@ -42,7 +42,7 @@ Il flusso dell'esempio è:
 
 Mano a mano che il risultato viene passato attraverso la catena di gestori (handler), possiamo vedere una sequenza di chiamate `alert`: `1` -> `2` -> `4`.
 
-![](promise-then-chain.png)
+![](promise-then-chain.svg)
 
 Tutto questo funziona, perché una chiamata a `promise.then` ritorna una promise, in questo modo possiamo chiamare il `.then` sula promise ritornata.
 
@@ -94,7 +94,7 @@ Quello che abbiamo fatto è giusto aggiungere diversi gestori (handler) ad una p
 
 Ecco una figura (da paragonare con il concatenamento di sopra):
 
-![](promise-then-many.png)
+![](promise-then-many.svg)
 
 Tutti i `.then` sulla stessa promise ricevono lo stesso risultato -- il risultato della promise. Così nel codice sopra tutti gli `alert` mostrano lo stesso: `1`.
 
@@ -384,4 +384,4 @@ Se un handler `.then` (o `catch/finally`, non importa) ritorna una promise, il r
 
 Ecco un disegno esteso:
 
-![](promise-handler-variants.png)
+![](promise-handler-variants.svg)

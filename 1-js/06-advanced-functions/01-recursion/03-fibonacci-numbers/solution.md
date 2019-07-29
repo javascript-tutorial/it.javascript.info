@@ -29,7 +29,7 @@ Qui possiamo vedere che il valore di `fib(3)` è richiesto sia per `fib(5)` che 
 
 L'albero di ricorsione completo:
 
-![fibonacci recursion tree](fibonacci-recursion-tree.png)
+![fibonacci recursion tree](fibonacci-recursion-tree.svg)
 
 Possiamo vedere chiaramente che `fib(3)` viene valutato due volte, mentre `fib(2)` viene valutato 3 volte. Il numero di computazioni eseguite cresce molto rapidamente, più di `n`, rendendo `n=77` un operazione molto lenta. 
 

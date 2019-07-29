@@ -16,13 +16,13 @@ La tua versione di Chrome potrebbe essere differente, ma le funzioni principali 
 
 Questo è quello che dovreste vedere se è la prima volta che lo aprite:
 
-![](chrome-open-sources.png)
+![](chrome-open-sources.svg)
 
 Il bottone <span class="devtools" style="background-position:-168px -76px"></span> apre la barra laterale con i file.
 
 Clicchiamoci sopra e selezioniamo `hello.js` dalla vista ad albero. Questo è quello che dovrebbe apparire:
 
-![](chrome-tabs.png)
+![](chrome-tabs.svg)
 
 Possiamo vedere tre zone:
 
@@ -40,7 +40,7 @@ Dopo l'esecuzione dell'istruzione, il risultato viene mostrato sotto.
 
 Ad esempio, `1+2` con risultato `3`, ed `hello("debugger")` non ritorna nulla, quindi il risultato è `undefined`:
 
-![](chrome-sources-console.png)
+![](chrome-sources-console.svg)
 
 ## Breakpoint
 
@@ -50,7 +50,7 @@ Congratulazioni! Avete settato un breakpoint. Ora premete anche nella riga numer
 
 Dovrebbe apparire qualcosa di simile (in blu dove avreste dovuto cliccare):
 
-![](chrome-sources-breakpoint.png)
+![](chrome-sources-breakpoint.svg)
 
 Un *breakpoint* è un punto del codice in cui il debugger si metterà in pausa automaticamente durante l'esecuzione del codice  JavaScript.
 
@@ -93,7 +93,7 @@ Nel nostro esempio, `hello()` viene richiamato durante il caricamento della pagi
 
 Con il breakpoint impostato, l'esecuzione si fermerà alla quarta linea:
 
-![](chrome-sources-debugger-pause.png)
+![](chrome-sources-debugger-pause.svg)
 
 Ora aprite i menu a cascata (quelli con la freccetta accanto al nome). Vi consentiranno di esaminare lo stato corrente del codice:
 
@@ -125,7 +125,7 @@ Ci sono dei bottoni appositi nella parte superiore del pannello di destra. Provi
 
     Questo e quello che vedremo dopo aver cliccato:
 
-    ![](chrome-sources-debugger-trace-1.png)
+    ![](chrome-sources-debugger-trace-1.svg)
 
     L'esecuzione è ripartita, ha incontrato un altro breakpoint dentro `say()` e si è fermato nuovamente. Diamo un'occhiata al "Call stack" sulla destra. E' stato incrementato con un ulteriore chiamata. Ora siamo all'interno di `say()`.
 

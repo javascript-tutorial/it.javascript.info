@@ -100,7 +100,7 @@ Una [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) (coda) è 
 - `push` inserisce un elemento in coda.
 - `shift` per estrarre un elemento dalla testa della cda, e scorrere in avanti la lista, in questo modo il secondo elemento diventa il primo.
 
-![](queue.png)
+![](queue.svg)
 
 Gli array supportano entrambre le operazioni.
 
@@ -117,7 +117,7 @@ Quindi gli elementi vengono sempre aggiunti o presi dalla "fine".
 
 Uno stack viene spesso illustrato come un pacco di carte: le nuove carte vengono aggiunte sempre in cima o prese dalla cima:
 
-![](stack.png)
+![](stack.svg)
 
 Per gli stack, l'ultimo elemento inserito viene prelevato per primo, questo comportamento viene definito LIFO (Last-In-First-Out). Nel caso delle code, il comportamento viene chiamato FIFO (First-In-First-Out).
 
@@ -240,7 +240,7 @@ E' molto conveniente pensare agli array come delle speciali strutture utili a la
 
 I metodi `push/pop` vengono eseguiti rapidamente, mentre `shift/unshift` sono più lenti.
 
-![](array-speed.png)
+![](array-speed.svg)
 
 Perché è più veloce eseguire operazioni sulla coda degli array piuttosto che in testa? Andiamo a vedere cosa accade durante l'esecuzione:
 
@@ -256,7 +256,7 @@ L'operazione di `shift` deve seguire 3 passi:
 2. Spostare tutti gli elementi a sinistra, rinumerare gli indici da `1` a `0`, da `2` a `1` e cosi via.
 3. Aggiornare la propreità `length`.
 
-![](array-shift.png)
+![](array-shift.svg)
 
 **Maggiore sarà il numero di elementi, maggiore sarà il tempo richiesto, e maggiori saranno il numero di operazioni in memoria.**
 
@@ -269,7 +269,7 @@ Le azioni eseguite da `pop`:
 fruits.pop(); // prende 1 elemento dalla fine
 ```
 
-![](array-pop.png)
+![](array-pop.svg)
 
 **Il metodo `pop` non richiede spostamenti, perché ogni elemento mantiene il suo indice. Questo è il motivo per cui risulta essere un operazione molto veloce.**
 

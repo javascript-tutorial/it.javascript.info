@@ -8,7 +8,7 @@ Usando il costrutto `if..else`, scrivi il codice che chiede: 'What is the "offic
 
 Se l'utente digita "ECMAScript", ritorna "Right!", altrimenti-- ritorna: "Didn't know? ECMAScript!"
 
-![](ifelse_task2.png)
+![](ifelse_task2.svg)
 
 [demo src="ifelse_task2"]
 

@@ -74,7 +74,7 @@ L'oggetto Lexical Environment consiste di due parti:
 
 Ad esempio, in questo semplice codice, esiste un solo Lexical Environment:
 
-![lexical environment](lexical-environment-global.png)
+![lexical environment](lexical-environment-global.svg)
 
 Questo viene anche chiamato global Lexical Environment (Lexical Environment globale), associato all'intero script.
 
@@ -82,7 +82,7 @@ Nella figura sopra, il rettangolo significa Environment Record, mentre la frecci
 
 Qui vediamo una figura più grande sul funzionamento di `let`:
 
-![lexical environment](lexical-environment-global-2.png)
+![lexical environment](lexical-environment-global-2.svg)
 
 I rettangoli dalla parte destra dimostrano come cambia il global Lexical Environment durante l'esecuzione:
 
@@ -106,7 +106,7 @@ Questo è il motivo per cui possiamo chiamare una funzione prima della sua defin
 
 Il codice sotto dimostra che il Lexical Environment inizialmente non è vuoto. Contiene `say`, perché è una dichiarazione di funzione. Successivamente verrà inserito anche `phrase`, dichiarato con `let`:
 
-![lexical environment](lexical-environment-global-3.png)
+![lexical environment](lexical-environment-global-3.svg)
 
 
 ### Lexical Environment interno ed esterno
@@ -128,7 +128,7 @@ Inizialmente, quando una funzione viene eseguita, viene creato un nuovo Lexical 
 
 In questa figura vediamo il contenuto del Lexical Environments quando il flusso d'esecuzione si trova all0interno di `say("John")`, nella riga etichettata con la freccia:
 
-![lexical environment](lexical-environment-simple.png)
+![lexical environment](lexical-environment-simple.svg)
  
 Durante la chiamata di funzione abbiamo due Lexical Environments: quello interno (relativo alla funzione) e quello esterno (globale):
 
@@ -146,7 +146,7 @@ Vediamo come procede la ricerca nel nostro esempio:
 - Quando `alert` all'interno di `say` vuole accedere a `name`, trova la variabile immediatamente nel Lexical Environment della funzione.
 - Quando vuole accedere a `phrase`, non trova nessun `phrase` localmente, quindi segue il riferimento `outer` e la trova nel Lexical Environment esterno.
 
-![lexical environment lookup](lexical-environment-simple-lookup.png)
+![lexical environment lookup](lexical-environment-simple-lookup.svg)
 
 Ora possiamo dare una risposta alla prima domanda che ci siamo posti a inizio capitolo.
 
@@ -255,7 +255,7 @@ Come funziona il counter internamente?
 
 Quando viene eseguita la funzione esterna , la variabile `count++` viene ricercata dall'interno verso l'esterno. Nell'esempio sopra, l'ordine sarà:
 
-![](lexical-search-order.png)
+![](lexical-search-order.svg)
 
 1. Variabili locali della funzione annidata...
 2. Variabili della funzione esterna...
@@ -309,7 +309,7 @@ Qui analizziamo cosa succede nell'esempio `makeCounter` passo per passo, seguite
 
 1. Quando lo script inizia, si ha solamente il Lexical Environment globale:
 
-    ![](lexenv-nested-makecounter-1.png)
+    ![](lexenv-nested-makecounter-1.svg)
 
     Inizialmente si ha solamente la funzione `makeCounter`, perché è una dichiarazione di funzione. Non ha ancora eseguito.
 
@@ -321,7 +321,7 @@ Qui analizziamo cosa succede nell'esempio `makeCounter` passo per passo, seguite
 
 2. Il codice prosegue nell'esecuzione, viene dichiarata una nuova variabile globale `counter` con valore `makeCounter()`. Nell'immagine vediamo il momento in cui l'esecuzione si trova nella prima riga di `makeCounter()`:
 
-    ![](lexenv-nested-makecounter-2.png)
+    ![](lexenv-nested-makecounter-2.svg)
 
     Quando viene invocata `makeCounter()`, viene creato un Lexical Environment, che dovrà memorizzare le variabili e gli argomenti.
 
@@ -337,19 +337,19 @@ Qui analizziamo cosa succede nell'esempio `makeCounter` passo per passo, seguite
 
     Per la nostra funzione annidata il valore di `[[Environment]]` è il Lexical Environment corrente, quello di `makeCounter()`:
 
-    ![](lexenv-nested-makecounter-3.png)
+    ![](lexenv-nested-makecounter-3.svg)
 
     Da notare che in questo passaggio la funzione viene solamente creata, non c'è stata ancora nessuna chiamata. Il codice contenuto in `function() { return count++; }` non viene eseguito; su questo ci ritorneremo presto.
 
 4. L'esecuzione della funzione prosegue, e la chiamata di `makeCounter()` termina, il risultato (la funzione annidata) viene assegnata alla variabile globale `counter`:
 
-    ![](lexenv-nested-makecounter-4.png)
+    ![](lexenv-nested-makecounter-4.svg)
 
     La funzione risultante possiede una sola riga di codice: `return count++`, che verrà eseguita solamente quando verrà invocata.
 
 5. Quando viene invocata `counter()`, viene creato un Lexical Environment "vuoto". Non si hanno variabili locali. Solamente la proprietà `[[Environment]]` di `counter` viene utilizzata come riferimento esterno, quindi questa funzione ha accesso alle variabili di `makeCounter()` presenti al momento della creazione:
 
-    ![](lexenv-nested-makecounter-5.png)
+    ![](lexenv-nested-makecounter-5.svg)
 
     Ora se proviamo ad accedere ad una variabile, questa verrà prima cercata nel Lexical Environment locale (vuoto), successivamente si andrà a controllare il Lexical Environment esterno, quello relativo a `makeCounter()`, infine si guarderà quello globale.
 
@@ -361,7 +361,7 @@ Qui analizziamo cosa succede nell'esempio `makeCounter` passo per passo, seguite
 
 6. La chiamata a `counter()` non ritorna solamente il valore di `count`, ma provvede anche ad incrementarlo. Da notare che la modifica viene eseguita "sul posto". Il valore di `count` viene modificato esattamente nell'environment in cui è stato trovato.
 
-    ![](lexenv-nested-makecounter-6.png)
+    ![](lexenv-nested-makecounter-6.svg)
 
     Quindi ritorniamo al passaggio precedente con un solo cambiamento -- il nuovo valore di `count`. Le chiamate successive faranno esattamente lo stesso.
 
@@ -371,7 +371,7 @@ La risposta alla seconda domanda ormai dovrebbe essere ovvia.
 
 La funzione `work()` nel codice sopra utilizza `name` nel posto in cui la trova, seguendo i riferimenti al lexical environment esterno:
 
-![](lexenv-nested-work.png)
+![](lexenv-nested-work.svg)
 
 Quindi, il risultato è `"Pete"`.
 
@@ -410,7 +410,7 @@ In questo esempio, quando l'esecuzione arriva dentro il blocco `if`, viene creat
     alert(user); // Error, can't see such variable!
     ```-->
 
-![](lexenv-if.png)
+![](lexenv-if.svg)
 
 Il nuovo Lexical Environment ottiene un riferimento a quello esterno, quindi `phrase` è accessibile. Invece tutte le variabili e funzioni create all'interno del blocco `if` appartengono al Lexical Environment interno e non sono quindi accessibili dall'esterno.
 

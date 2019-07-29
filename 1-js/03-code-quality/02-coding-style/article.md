@@ -8,7 +8,7 @@ Questa è l'arte della programmazione -- programmare funzionalità complesse che
 
 Qui una lista di alcune regole da seguire (guardare sotto per maggiori dettagli):
 
-![](code-style.png)
+![](code-style.svg)
 <!--
 ```js
 function pow(x, n) {

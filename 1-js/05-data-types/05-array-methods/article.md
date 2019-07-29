@@ -566,7 +566,7 @@ Proviamo a vedere nel dettaglio cosa succede.
 
 Il flusso di calcolo:
 
-![](reduce.png)
+![](reduce.svg)
 
 O nella forma tabellare, in cui ogni riga rappresenta una chiamata di funzione:
 

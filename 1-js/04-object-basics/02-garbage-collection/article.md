@@ -38,7 +38,7 @@ let user = {
 };
 ```
 
-![](memory-user-john.png)
+![](memory-user-john.svg)
 
 Qui la freccia indica un riferimento ad un oggetto. La variabile globale `"user"` fa riferimento all'oggetto `{name: "John"}` (lo chiameremo John per brevità). La proprietà `"name"` di John memorizza un tipo primitivo, quindi viene descritto all'interno dell'oggetto.
 
@@ -48,7 +48,7 @@ Se il valore di `user` viene sovrascritto, il riferimento viene perso.
 user = null;
 ```
 
-![](memory-user-john-lost.png)
+![](memory-user-john-lost.svg)
 
 Ora John diventa irraggiungibie. Non c'è modo per accedervi, nessun riferimento. Il Garbage collector scarterà il dato per liberare la memoria.
 
@@ -67,7 +67,7 @@ let admin = user;
 */!*
 ```
 
-![](memory-user-john-admin.png)
+![](memory-user-john-admin.svg)
 
 Ora se facciamo:
 ```js
@@ -102,7 +102,7 @@ La funzione `marry` "sposa" due oggetti facendo in modo di fornire un riferiment
 
 La struttura della memoria risultante:
 
-![](family.png)
+![](family.svg)
 
 Per ora tutti gli oggetti sono raggiungibili.
 
@@ -113,19 +113,19 @@ delete family.father;
 delete family.mother.husband;
 ```
 
-![](family-delete-refs.png)
+![](family-delete-refs.svg)
 
 Non è sufficiente cancellare solo uno dei due riferimenti, perché l'oggetto rimarrebbe comunque raggiungibile.
 
 Ma se li cancelliamo entrambi, allora John non ha più modo di essere raggiunto:
 
-![](family-no-father.png)
+![](family-no-father.svg)
 
 I riferimenti in uscita non contano. Solo quelli in entrata possono rendere l'oggetto raggiungibile. Quindi, John risulta ora irragiungibile e verrà quindi rimosso dalla memoria, come tutti i suoi dati visto che sono inaccessibili.
 
 Dopo la pulizia del Garabage collector:
 
-![](family-no-father-2.png)
+![](family-no-father-2.svg)
 
 ## Isola irraggiungibile
 
@@ -139,7 +139,7 @@ family = null;
 
 La memoria ora risulta cosi:
 
-![](family-no-family.png)
+![](family-no-family.svg)
 
 Questo esempio dimostra quanto sia importante il concetto della raggiungibilità.
 
@@ -161,25 +161,25 @@ Vengono seguiti questi step per eseguire un processo di "garbage collection":
 
 Ad esempio, rende la struttura del nostro oggetto del tipo:
 
-![](garbage-collection-1.png)
+![](garbage-collection-1.svg)
 
 Possiamo chiaramente vedere un "isola irraggiungibile" nella parte desta. Ora vediamo come la gestisce l'algoritmo "mark-and-sweep".
 
 Il primo step sta nel marcare le radici:
 
-![](garbage-collection-2.png)
+![](garbage-collection-2.svg)
 
 Poi vengono marcari i loro riferimenti:
 
-![](garbage-collection-3.png)
+![](garbage-collection-3.svg)
 
 ...E i loro riferimenti, finchè non si esauriscono:
 
-![](garbage-collection-4.png)
+![](garbage-collection-4.svg)
 
 Ora gli oggetti che non sono stati visitati vengono considerati irraggiungibili e verranno rimossi:
 
-![](garbage-collection-5.png)
+![](garbage-collection-5.svg)
 
 Questo è il concetto che sta dietro il funzionamento del Garbage collector.
 

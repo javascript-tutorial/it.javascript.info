@@ -98,7 +98,7 @@ Possiamo comprendere meglio il concetto di "variabile" se la immaginiamo come un
 
 Per esempio, la variabile `message` può essere immaginata come una scatola con etichetta `"message"` con il valore `"Hello!"` al suo interno:
 
-![](variable.png)
+![](variable.svg)
 
 Possiamo inserire qualsiasi valore all'interno della scatola.
 
@@ -115,7 +115,7 @@ alert(message);
 ```
 
 Quando il valore viene cambiato, il dato vecchio viene rimosso dalla variabile:
-![](variable-change.png)
+![](variable-change.svg)
 
 Possiamo anche dichiarare due variabili e copiare i dati da un all'altra.
 

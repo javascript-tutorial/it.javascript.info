@@ -392,7 +392,7 @@ L'intero oggetto `options` ad eccezione di `extra` il quale non viene menzionato
 
 Note that `size` and `items` itself is not destructured.
 
-![](destructuring-complex.png)
+![](destructuring-complex.svg)
 
 Infine, abbiamo `width`, `height`, `item1`, `item2` e `title` che assumo il valore di default.
 

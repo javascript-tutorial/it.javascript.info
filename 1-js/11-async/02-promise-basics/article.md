@@ -38,7 +38,7 @@ Quando l'esecutore finisce il lavoro (job), dovrebbe chiamare una delle funzioni
     - imposta `state` come `"rejected"`,
     - imposta `result` come `error`.
 
-![](promise-resolve-reject.png)
+![](promise-resolve-reject.svg)
 
 Più avanti vedremo come questi cambiamenti diventano noti ai "fan".
 
@@ -60,7 +60,7 @@ Possiamo vedere due cose eseguendo il codice sopra:
 
 Dopo un secondo di "elaborazione" l'esecutore chiama `resolve("done")` per produrre il risultato:
 
-![](promise-resolve-1.png)
+![](promise-resolve-1.svg)
 
 Questo era un esempio di un lavoro completato con successo, una "fulfilled promise".
 
@@ -73,7 +73,7 @@ let promise = new Promise(function(resolve, reject) {
 });
 ```
 
-![](promise-reject-1.png)
+![](promise-reject-1.svg)
 
 Per riassumere, l'esecutore dovrebbe svolgere un lavoro (di solito qualcosa che richiede tempo) e successivamente chiamare `resolve` o `reject` per cambiare lo stato dell'oggetto Promise corrispondente.
 
