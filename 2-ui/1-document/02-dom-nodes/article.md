@@ -112,7 +112,11 @@ drawHtmlTree(node3, 'div.domtree', 690, 150);
 
 In fase di generazione del DOM, i browser processeranno automaticamente gli errori chiudendo i tags e via procedendo.
 
+<<<<<<< HEAD
 Il seguente documento senza tag di chiusura:
+=======
+Such document with unclosed tags:
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 ```html no-beautify
 <p>Hello

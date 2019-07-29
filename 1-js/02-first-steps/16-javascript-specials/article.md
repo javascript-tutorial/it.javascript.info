@@ -142,11 +142,19 @@ Aritmetici
 Assegnazione
 : Ci sono le assegnazioni semplici: `a = b` e quelle combinate `a *= 2`.
 
+<<<<<<< HEAD
 Bit a Bit
 : Gli operatori bit a bit funzionano con gli interi a livello di bit: guarda la [documentazione](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) se ne avrai bisogno.
 
 Ternari
 : C'è un solo operatore con tre parametri: `cond ? resultA : resultB`. Se `cond` è vera, ritorna `resultA`, altrimenti `resultB`.
+=======
+Bitwise
+: Bitwise operators work with 32-bit integers at the lowest, bit-level: see the [docs](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) when they are needed.
+
+Conditional
+: The only operator with three parameters: `cond ? resultA : resultB`. If `cond` is truthy, returns `resultA`, otherwise `resultB`.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 Operatori logici
 : AND logico `&&` e OR `||` eseguono delle valutazioni locali e ritornano un valore quando si fermano. La negazione logica NOT `!` converte il valore a tipo booleano e ne ritorna l'inverso.
@@ -245,7 +253,7 @@ Abbiamo studiato tre modi per creare funzioni in JavaScript:
       let result = a + b;
 
       return result;
-    }
+    };
     ```
 
     Le espressioni di funzione possono avere un nome, come `sum = function name(a, b)`, questo `name` è visibile solamente all'interno della funzione.
@@ -277,8 +285,13 @@ Abbiamo studiato tre modi per creare funzioni in JavaScript:
 
 | Dichiarazione di Funzione | Espressione di Funzione |
 |----------------------|---------------------|
+<<<<<<< HEAD
 | visibile nell'intero blocco di codice | creata quando l'esecuzione la incontra |
 |   - | può avere un nome, visibile solamente all'interno della funzione |
+=======
+| visible in the whole code block/script | created when the execution reaches it |
+|    | can have a name, visible only inside the function |
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 Per più informazioni: vedi <info:function-basics>, <info:function-expressions-arrows>.
 

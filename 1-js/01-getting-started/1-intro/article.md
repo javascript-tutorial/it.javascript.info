@@ -76,7 +76,7 @@ Degli esempi di queste restrizioni possono essere:
     Questa limitazione è sempre dovuta alla sicurezza dell'utente. Una pagina proveniente da `http://anysite.com` che è stata aperta da un utente, non deve essere in grado di accedere ad un altra Scheda del browser con l'URL `http://gmail.com` (per esempio) e rubare le informazioni.
 - JavaScript può facilmente comunicare con il server da cui la pagina proviene. Ma la sua abilità di ricevere dati da altri siti/domini è limitata. Sebbene sia possibile, richiede delle richieste esplicite(passate tramite HTTP headers) dall'indirizzo remoto. Ancora una volta, queste sono limitazioni dovute alla sicurezza.
 
-![](limitations.png)
+![](limitations.svg)
 
 Queste limitazioni non esistono se JavaScript viene eseguito fuori dal browser, ad esempio in un server. I browser moderni permettono l'installazione di plugin ed estensioni che consentono di aumentare i permessi.
 
@@ -93,9 +93,13 @@ JavaScript è l'unica tecnologia in ambiente browser che combina queste tre cara
 
 Queste tre caratteristiche combinate esistono solo in JavaScript e in nessun'altra tecnologia web.
 
+<<<<<<< HEAD
 Questo rende JavaScript unico. Ed è il motivo per cui è lo strumento più diffuso per creare interfacce web.
 
 Quando si ha in programma di imparare una nuova tecnologia, è fondamentale verificare le sue prospettive. Quindi diamo uno sguardo alle nuove tendenze che includono nuovi linguaggi e tecnologie.
+=======
+That said, JavaScript also allows to create servers, mobile applications, etc.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 ## Linguaggi "oltre" JavaScript
 

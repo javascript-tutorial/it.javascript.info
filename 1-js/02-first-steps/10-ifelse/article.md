@@ -6,7 +6,11 @@ Per questo c'è l'istruzione `if` e anche l'operatore condizionale di valutazion
 
 ## L'istruzione "if" 
 
+<<<<<<< HEAD
 L'istruzione `if` richiede una condizione, la valuta, e se il risultato è `true`, esegue il codice.
+=======
+The `if(...)` statement evaluates a condition in parentheses and, if the result is `true`, executes a block of code.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 Ad esempio:
 
@@ -216,7 +220,11 @@ In base al risultato della condizione `company == 'Netscape'`, viene eseguita la
 
 Qui non assegnamo il risultato ad una variabile. L'idea è di eseguire codice differente in base alla condizione.
 
+<<<<<<< HEAD
 **Non è consigliabile utilizzare l'operatore ternario in questo modo.**
+=======
+**It's not recommended to use the question mark operator in this way.**
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 La notazione risulta essere molto più breve rispetto all'istruzione `if`, questo viene sfruttato da molti programmatori. Ma risulta meno leggibile.
 

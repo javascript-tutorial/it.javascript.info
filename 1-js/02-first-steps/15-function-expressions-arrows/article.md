@@ -40,7 +40,11 @@ Da notare che l'ultima riga di codice non esegue la funzione, perchè non ci son
 
 In JavaScript, una funzione è un valore, quindi possiamo trattarla come un valore. Il codice sopra ne mostra la sua rappresentazione in stringa, cioè il codice contenuto dentro la funzione.
 
+<<<<<<< HEAD
 E' chiaramente un valore speciale, poichè possiamo richiamarla con `sayHi()`.
+=======
+Surely, a function is a special values, in the sense that we can call it like `sayHi()`.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 Ma rimane comunque un valore. Quindi possiamo trattarlo come un qualsiasi altro valore.
 
@@ -59,11 +63,17 @@ sayHi(); // Hello    //     anche questa continua a funzionare (ed è giusto che
 
 Quello che succede nel dettaglio è:
 
+<<<<<<< HEAD
 1. La dichiarazione di funzione `(1)` crea la funzione e la inserisce nella variabile denominata `sayHi`.
 2. La linea `(2)` la copia nella variabile `func`.
 
     Ancora una volta: non ci sono parentesi dopo `sayHi`. Se ci fossero state, allora `func = sayHi()` avrebbe scritto *il risultato della chiamata* `sayHi()` in `func`, non *la funzione* `sayHi`.
 3. Adesso la funzione può essere richiamata sia con `sayHi()` che con `func()`.
+=======
+1. The Function Declaration `(1)` creates the function and puts it into the variable named `sayHi`.
+2. Line `(2)` copies it into the variable `func`. Please note again: there are no parentheses after `sayHi`. If there were, then `func = sayHi()` would write  *the result of the call* `sayHi()` into `func`, not *the function* `sayHi` itself.
+3. Now the function can be called as both `sayHi()` and `func()`.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 Avremmo anche potuto utilizzare un espressione di funzione per dichiarare `sayHi`, nella prima riga:
 
@@ -90,9 +100,15 @@ let sayHi = function() {
 }*!*;*/!*
 ```
 
+<<<<<<< HEAD
 La risposta è semplice:
 - Non c'è bisogno di `;` alla fine dei blocchi di codice che utilizzano una sintassi del tipo `if { ... }`, `for {  }`, `function f { }` etc.
 - Un espressione di funzione viene utilizzata all'interno di un istruzione: `let sayHi = ...;`, come valore. Non è un blocco di codice. Quindi il `;` è consigliato al termine dell'istruzione, indipendentemente dal valore. Quindi il punto e virgola non è collegato all'espressione di funzione, più semplicemente termina un istruzione.
+=======
+The answer is simple:
+- There's no need for `;` at the end of code blocks and syntax structures that use them like `if { ... }`, `for {  }`, `function f { }` etc.
+- A Function Expression is used inside the statement: `let sayHi = ...;`, as a value. It's not a code block, but rather an assignment. The semicolon `;` is recommended at the end of statements, no matter what is the value. So the semicolon here is not related to the Function Expression itself, it just terminates the statement.
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 ````
 
 ## Funzioni richiamate
@@ -209,7 +225,11 @@ E dopo che tutte le dichiarazioni di funzione sono state processate, l'esecuzion
 
 Come risultato, una funzione creata come dichiarazione di funzione può essere richiamata anche prima della sua definizione.
 
+<<<<<<< HEAD
 Ad esempio il seguente codice funziona:
+=======
+For example, this works:
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 ```js run refresh untrusted
 *!*
@@ -239,7 +259,13 @@ Le espressioni di funzione sono create quando l'esecuzione le incontra. In quest
 
 **Quando una dichiarazione di funzione viene fatta all'interno di un blocco di codice, sarà visibile ovunque all'interno del blocco, ma non al suo esterno.**
 
+<<<<<<< HEAD
 Qualche volta è comodo dichiarare funzioni locali utili in un singolo blocco. Ma questa caratteristica potrebbe causare problemi.
+=======
+Another special feature of Function Declarations is their block scope.
+
+**In strict mode, when a Function Declaration is within a code block, it's visible everywhere inside that block. But not outside of it.**
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 Ad esempio, immaginiamo di aver bisogno di dichiarare una funzione `welcome()` in base ad un parametro `age` che valuteremo a runtime. E abbiamo intenzione di utilizzarlo più avanti.
 
@@ -291,7 +317,11 @@ if (age < 18) {
 
 } else {
 
+<<<<<<< HEAD
   function welcome() {     //  per age = 16, "welcome" non verrà mai creata
+=======
+  function welcome() {    
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
     alert("Greetings!");
   }
 }
@@ -308,7 +338,11 @@ Cosa possiamo fare per rendere visibile `welcome` all'esterno del blocco `if`?
 
 Il giusto approccio è quello di utilizzare un espressione di funzione ed assegnarla ad una variabile `welcome` che viene dichiarata all'esterno di `if` ed ha quindi la corretta visibilità.
 
+<<<<<<< HEAD
 Ora funziona:
+=======
+This code works as intended:
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 ```js run
 let age = prompt("What is your age?", 18);
@@ -395,7 +429,11 @@ alert( sum(1, 2) ); // 3
 
 ```
 
+<<<<<<< HEAD
 Se abbiamo un solo argomento, le parentesi possono essere omesse, rendendo il tutto ancora più breve:
+=======
+If we have only one argument, then parentheses around parameters can be omitted, making that even shorter:
+>>>>>>> 34e9cdca3642882bd36c6733433a503a40c6da74
 
 ```js run
 // lo stesso vale per 
