@@ -94,7 +94,7 @@ For example:
 let url = new URL('https://google.com/search');
 url.searchParams.set('q', 'test me!'); // added parameter with a space and !
 
-alert(url); // https://google.com/search?query=test+me%21
+alert(url); // https://google.com/search?q=test+me%21
 
 url.searchParams.set('tbs', 'qdr:y'); // this parameter specifies for date range for Google Search
 
@@ -130,7 +130,7 @@ As you can see, both `Тест` in the url path and `ъ` in the parameter are en
 If we're using strings instead of URL objects, then we can encode manually using built-in functions:
 
 - [encodeURI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI) - encode URL as a whole.
-- [encodeURI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURI) - decode it back.
+- [decodeURI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURI) - decode it back.
 - [encodeURIComponent](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent) - encode URL components, such as search parameters, or a hash, or a pathname.
 - [decodeURIComponent](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent) - decodes it back.
 
@@ -185,7 +185,7 @@ So we should use only `encodeURIComponent` for each search parameter, to correct
 
 ### Why URL?
 
-Lots of old code uses these functions, these are sometimes convenient, and by noo means not dead.
+Lots of old code uses these functions, these are sometimes convenient, and by no means not dead.
 
 But in modern code, it's recommended to use classes [URL](https://url.spec.whatwg.org/#url-class) and [URLSearchParams](https://url.spec.whatwg.org/#interface-urlsearchparams).
 

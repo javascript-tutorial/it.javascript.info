@@ -2,7 +2,11 @@
 
 Tutti i numeri in JavaScript sono memorizzati in formato 64-bit [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), conosciuto anche come "doppia precisione".
 
+<<<<<<< HEAD
 Cerchiamo di ricapitolare ed espandere tutto ciò che già conosciamo.
+=======
+Let's expand upon what we currently know about them.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ## Diversi modi di scrivere un numero
 
@@ -213,7 +217,11 @@ Quindi, le divisioni per potenze di `10` funzionano molto bene nel sistema decim
 
 Non esiste alcun modo per rappresentare *esattamente 0.1* o *esattamente 0.2* usando il sistema binario, proprio come non è possibile memorizzare "un terzo" come decimale.
 
+<<<<<<< HEAD
 Il formato numerico IEEE-754 cerca di risolvere questo arrotondando al più vicino numero possibile. Questo tipo di arrotondamento non ci consente di vedere le "piccole perdite di precisione", quindi il numero viene mostrato come `0.3`. Ma comunque è presente una perdita.
+=======
+The numeric format IEEE-754 solves this by rounding to the nearest possible number. These rounding rules normally don't allow us to see that "tiny precision loss", but it exists.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Possiamo vedere un esempio:
 ```js run

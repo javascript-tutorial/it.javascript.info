@@ -216,7 +216,13 @@ john = {
 */
 ```
 
+<<<<<<< HEAD
 ## Riepilogo
+=======
+To create complex objects, there's a more advanced syntax, [classes](info:classes), that we'll cover later.
+
+## Summary
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 - Le funzioni di costruzione, o meglio, i costruttori, solo delle normali funzioni, che seguono però una regola di accordo comune che prevede di denominarle con la prima lettera maiuscola.
 - Un costruttore dovrebbe essere chiamato solamente utilizzando `new`. Questo tipo di chiamata implica la creazione di un oggetto vuoto `this`, che verrà popolato entro la fine della funzione.

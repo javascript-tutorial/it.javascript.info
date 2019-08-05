@@ -93,9 +93,13 @@ JavaScript è l'unica tecnologia in ambiente browser che combina queste tre cara
 
 Queste tre caratteristiche combinate esistono solo in JavaScript e in nessun'altra tecnologia web.
 
+<<<<<<< HEAD
 Questo rende JavaScript unico. Ed è il motivo per cui è lo strumento più diffuso per creare interfacce web.
 
 Quando si ha in programma di imparare una nuova tecnologia, è fondamentale verificare le sue prospettive. Quindi diamo uno sguardo alle nuove tendenze che includono nuovi linguaggi e tecnologie.
+=======
+That said, JavaScript also allows to create servers, mobile applications, etc.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ## Linguaggi "oltre" JavaScript
 

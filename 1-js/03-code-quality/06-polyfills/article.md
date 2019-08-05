@@ -27,9 +27,15 @@ Babel è composto da due parti:
 
     Esiste un termine "polyfill" per gli script che "riempiono" il vuoto aggiungendo funzionalità mancanti.
 
+<<<<<<< HEAD
     Due polyfill importanti sono:
     - [babel polyfill](https://babeljs.io/docs/usage/polyfill/) che ne supporta molti, ma è molto pesante.
     - [polyfill.io](http://polyfill.io) servizio che consente di caricare costrutti polyfills, in base alle nostre necessità.
+=======
+    Two interesting polyfills are:
+    - [core js](https://github.com/zloirock/core-js) that supports a lot, allows to include only needed features.
+    - [polyfill.io](http://polyfill.io) service that provides a script with polyfills, depending on the features and user's browser.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Quindi è necessario settare il transplier e aggiungere polyfill per i vecchi motori di JavaScript, per far si che supportino le caratteristiche moderne.
 

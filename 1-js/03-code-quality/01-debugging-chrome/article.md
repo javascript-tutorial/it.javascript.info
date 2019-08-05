@@ -2,9 +2,15 @@
 
 Prima di scrivere codice più complesso, dovremmo parlare di debugging.
 
+<<<<<<< HEAD
 Tutti i moderni browser e anche molto altri ambienti di sviluppo supportano il "debugging" -- una speciale interfaccia negli strumenti da sviluppatore che rende la ricerca e la correzioni degli errori molto più facile.
 
 Noi useremo Chrome, poiché è probabilmente il più ricco di caratteristiche sotto questo aspetto.
+=======
+All modern browsers and most other environments support "debugging" -- a special UI in developer tools that makes finding and fixing errors much easier. It also allows to trace the code step by step to see what exactly is going on.
+
+We'll be using Chrome here, because it has enough features, most other browsers have a similar process`.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ## Il pannello "sources" 
 
@@ -70,7 +76,11 @@ Questa caratteristica risulta molto utile quando abbiamo bisogno di fermare il f
 
 ## Comando debugger
 
+<<<<<<< HEAD
 Possiamo mettere in pausa il codice anche utilizzando il comando `debugger`, come nell'esempio:
+=======
+We can also pause the code by using the `debugger` command in it, like this:
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ```js
 function hello(name) {
@@ -89,7 +99,11 @@ Questo risulta molto utile quando stiamo lavorando in un editor e non vogliamo p
 
 ## Pausa per guardarsi attorno
 
+<<<<<<< HEAD
 Nel nostro esempio, `hello()` viene richiamato durante il caricamento della pagina, quindi il metodo più facile per attivare il debugger è ricaricare la pagina. Quindi premete `key:F5` (Windows, Linux) o `key:Cmd+R` (Mac).
+=======
+In our example, `hello()` is called during the page load, so the easiest way to activate the debugger (after we've set the breakpoints) is to reload the page. So let's press `key:F5` (Windows, Linux) or `key:Cmd+R` (Mac).
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Con il breakpoint impostato, l'esecuzione si fermerà alla quarta linea:
 
@@ -105,8 +119,13 @@ Ora aprite i menu a cascata (quelli con la freccetta accanto al nome). Vi consen
 
     Attualmente il debugger si trova all'interno della chiamata `hello()`, chiamata da uno script interno a `index.html` (non ci sono funzioni qui, quindi viene definito "anonimo").
 
+<<<<<<< HEAD
     Se premi su un elemento della pila, il debugger salterà al codice corrispondente, e potranno essere esaminate tutte le variabili.
 3. **`Scope` -- variabili correnti.**
+=======
+    If you click on a stack item (e.g. "anonymous"), the debugger jumps to the corresponding code, and all its variables can be examined as well.
+3. **`Scope` -- current variables.**
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
     `Local` mostra le variabili locali alla funzione. Potente anche vedere i valori evidenziati nel codice.
 
@@ -147,19 +166,27 @@ Ci sono dei bottoni appositi nella parte superiore del pannello di destra. Provi
 ```smart header="Continua fino a qui"
 Premendo tasto destro su una riga di codice si aprirà un menu con una bellissima opzione denominata  "Continua fino a qui".
 
+<<<<<<< HEAD
 Questa è molto utile quando vogliamo muoverci di più passi, ma siamo troppo pigri per impostare un breakpoint.
+=======
+That's handy when we want to move multiple steps forward to the line, but we're too lazy to set a breakpoint.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 ```
 
 ## Logging
 
+<<<<<<< HEAD
 Per stampare qualcosa sulla console, c'è una funzione `console.log`.
+=======
+To output something to console from our code, there's `console.log` function.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Ad  esempio, questo stamperà i valori da `0` a `4` sulla console:
 
 ```js run
 // apri la console per vedere il messaggio
 for (let i = 0; i < 5; i++) {
-  console.log("value", i);
+  console.log("значение", i);
 }
 ```
 
@@ -174,10 +201,18 @@ Come abbiamo visto, ci sono tre diversi modi di metter in pausa uno script:
 2. L'istruzione `debugger`.
 3. Un errore (solo se gli strumenti sviluppatore sono aperti ed è attivo il bottone <span class="devtools" style="background-position:-264px -4px"></span>)
 
+<<<<<<< HEAD
 Cosi possiamo esaminare le variabili e capire cosa è andato male durante l'esecuzione.
+=======
+When paused, we can debug - examine variables and trace the code to see where the execution goes wrong.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Ci sono veramente troppe opzioni negli strumenti da sviluppatore per coprirle qui. Il manuale completo è disponibile all'indirizzo <https://developers.google.com/web/tools/chrome-devtools>.
 
 Le informazioni fornite da questo capitolo sono sufficienti per iniziare a fare un pò di debug, anche se più avanti, specialmente quando farete cose più avanzate, seguite il link sopra e consultate il manuale per ulteriori informazioni.
 
+<<<<<<< HEAD
 Ah, inoltre potete anche cliccare i vari bottoni negli strumenti da sviluppatore e vedere cosa succede. E' probabilmente il metodo più rapido per imparare tutto. Non dimenticate che molte opzini sono disponibili anche con il click del tasto destro!
+=======
+Oh, and also you can click at various places of dev tools and just see what's showing up. That's probably the fastest route to learn dev tools. Don't forget about the right click and context menus!
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a

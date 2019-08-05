@@ -85,7 +85,11 @@ Quindi, il valore di `i` ora si trova più "vicino". Non più nel lexical enviro
 
 ![](lexenv-makearmy.svg)
 
+<<<<<<< HEAD
 Qui abbiamo riscritto `while` in `for`.
+=======
+![](lexenv-makearmy.svg)
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Eì possibile farlo in un altro modo, vediamolo per capirlo meglio:
 

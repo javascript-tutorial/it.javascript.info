@@ -138,7 +138,11 @@ new Promise(function(resolve, reject) {
 });
 ```
 
+<<<<<<< HEAD
 Qui il primo `.then` mostra `1` e ritorna `new Promise(…)` nella linea `(*)`. Dopo un secondo la promise ritorata risolve (resolves), ed il risultato (l'argomento di `resolve`, che è `result*2`) viene passato al secondo gestore (handler) `.then` nella linea `(**)`. Infine mostra `2` e fa la stessa cosa.
+=======
+Here the first `.then` shows `1` and returns `new Promise(…)` in the line `(*)`. After one second it resolves, and the result (the argument of `resolve`, here it's `result*2`) is passed on to handler of the second `.then` in the line `(**)`. It shows `2` and does the same thing.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Quindi l'output è ancora 1 -> 2 -> 4, ma ora con un secondo di ritardo tra le chiamate `alert`.
 
@@ -146,7 +150,11 @@ Ritornare le promise ci permette di creare una catena di azioni asincrone.
 
 ## Esempio: loadScript
 
+<<<<<<< HEAD
 Usiamo questa feature con `loadScript`, definita nel [capitolo precedente](/promise-basics#loadscript), per caricare gli script uno ad uno, in sequenza:
+=======
+Let's use this feature with the promisified `loadScript`, defined in the [previous chapter](info:promise-basics#loadscript), to load scripts one by one, in sequence:
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ```js run
 loadScript("/article/promise-chaining/one.js")
@@ -207,9 +215,13 @@ A volte va bene scrivere `.then` direttamente, perché la funzione annidata abbi
 
 
 ````smart header="Thenables"
+<<<<<<< HEAD
 Per essere precisi, `.then` può ritornare un qualsiasi oggetto "thenable", che verrà trattato nella stessa maniera di una promise.
 
 Un oggetto "thenable" è un qualsiasi oggetto con un metodo `.then`.
+=======
+To be precise, `.then` may return a so-called "thenable" object - an arbitrary object that has method `.then`, and it will be treated the same way as a promise.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 L'idea è che librerie di terze parti possano implementare oggetti "promise compatibili" per conto loro. Possono avere un insieme esteso di metodi, ma anche essere compatibili con le promise native, poiché implementano `.then`.
 
@@ -244,7 +256,11 @@ Questa feature permette di integrare oggetti custom con le catene di promise sen
 
 Nella programmazione frontend le promise sono spesso usate per le richieste di rete. Vediamone un esempio esteso.
 
+<<<<<<< HEAD
 Useremo il metodo [fetch](mdn:api/WindowOrWorkerGlobalScope/fetch) per caricare le informazioni sull'utente dal server remoto. Il metodo è abbastanza complesso, ha diversi parametri opzionali, ma l'utilizzo base è semplice:
+=======
+We'll use the [fetch](info:fetch) method to load the information about the user from the remote server. It has a lot of optional parameters covered in separate chapters, but the basic syntax is quite simple:
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ```js
 let promise = fetch(url);

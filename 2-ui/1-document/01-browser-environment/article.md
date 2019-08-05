@@ -2,9 +2,15 @@
 
 Il linguaggio JavaScript è stato inizialmente creato per i browser. Da allora, si è evoluto fino a diventare un linguaggio adatto a molte piattaforme e differenti usi.
 
+<<<<<<< HEAD
 La piattaforma di utilizzo può essere un browser, un web-server, una lavatrice o un qualunque altro tipo di *host*. Ognuno di essi fornisce delle funzionalità specifiche alla piattaforma stessa. Secondo la specifica JavaScript questa è la definizione di *ambiente host*
 
 Un ambiente host, oltre alle funzionalità core del linguaggio, fornisce oggetti e funzioni specifiche della piattaforma. I browser web, ad esempio, permettono di interagire con le pagine web, mentre Node.JS fornisce funzionalità dedicate al server e così via.
+=======
+A platform may be a browser, or a web-server or another *host*, even a coffee machine. Each of them provides platform-specific functionality. The JavaScript specification calls that a *host environment*.
+
+A host environment provides own objects and functions additional to the language core. Web browsers give a means to control web pages. Node.js provides server-side features, and so on.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Di seguito una panoramica di cosa succede quando JavaScript viene eseguito nel browser:
 
@@ -22,7 +28,7 @@ function sayHi() {
   alert("Hello");
 }
 
-// global functions are accessible as properties of window
+// global functions are methods of the global object:
 window.sayHi();
 ```
 
@@ -36,9 +42,15 @@ Ci sono molte altre funzionalità dell'oggetto `window`, ma le vedremo più avan
 
 ## DOM (Document Object Model)
 
+<<<<<<< HEAD
 L'oggetto `document` dà accesso al contenuto della pagina e ci permette di cambiare o creare qualunque cosa all'interno della stessa.
 
 Ad esempio:
+=======
+Document Object Model, or DOM for short, represents all page content as objects that can be modified.
+
+The `document` object is the main "entry point" to the page. We can change or create anything on the page using it.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ```js run
 // change the background color to red
@@ -61,6 +73,7 @@ In tempi antichi non esisteva uno standard comune, ogni browser aveva il proprio
 
 Anche oggi può capitare di incappare in vecchio codice che aggira delle incompatibilità e sfrutta delle proprietà specifiche del browser. In questo tutorial utilizzeremo strumenti moderni, non ci sarà bisogno di imparare codice obsoleto a meno che non sia strettamente necessario (le probabilità che questo accada sono molto basse).
 
+<<<<<<< HEAD
 A questo punto fa la sua comparsa lo "standard" del DOM, nel tentativo di mettere tutti d'accordo. La prima versione era la "DOM Level 1", poi c'è stata la "DOM Level 2", la "DOM Level 3" e ad oggi abbiamo la "DOM Level 4". Il gruppo WhatWG, stufo di numerare le versioni, ha deciso di chiamarlo solamente "DOM", senza numerazione. Noi faremo lo stesso.
 
 ```smart header="Il DOM non è solo per i browser"
@@ -73,6 +86,18 @@ Per esempio, strumenti lato server che scaricano e processano le pagine HTML sfr
 Regole CSS e fogli di stile non sono strutturati come l'HTML. Esiste una specifica separata [CSSOM](https://www.w3.org/TR/cssom-1/) che spiega come essi siano rappresentati come oggetti, come leggerli e scriverli.
 
 CSSOM è usato in concomitanza con il DOM quando modifichiamo delle regole di stile per il documento. In pratica però, CSSOM è raramente richiesto poiché di solito le regole CSS sono statiche. Di rado esiste la necessità di aggiungere/rimuovere regole CSS attraverso JavaScript, quindi non tratteremo l'argomento al momento.
+=======
+```smart header="DOM is not only for browsers"
+The DOM specification explains the structure of a document and provides objects to manipulate it. There are non-browser instruments that use DOM too.
+
+For instance, server-side scripts that download HTML pages and process them can also use DOM. They may support only a part of the specification though.
+```
+
+```smart header="CSSOM for styling"
+CSS rules and stylesheets are structured in a different way than HTML. There's a separate specification [CSSOM](https://www.w3.org/TR/cssom-1/) that explains how they are represented as objects, and how to read and write them.
+
+CSSOM is used together with DOM when we modify style rules for the document. In practice though, CSSOM is rarely required, because usually CSS rules are static. We rarely need to add/remove CSS rules from JavaScript, but that's also possible.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 ```
 
 ## BOM (parte della specifica HTML)
@@ -88,7 +113,7 @@ Ecco come possiamo usare l'oggetto `location`:
 
 ```js run
 alert(location.href); // shows current URL
-if (confirm("Go to wikipedia?")) {
+if (confirm("Go to Wikipedia?")) {
   location.href = "https://wikipedia.org"; // redirect the browser to another URL
 }
 ```

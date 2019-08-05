@@ -1,8 +1,12 @@
 # Metodi dei tipi primitivi
 
+<<<<<<< HEAD
 JavaScript ci consente di trattare i tipi primitivi (stringhe, numeri, etc.) come se fossero oggetti.
 
 Possiedono dei metodi per fare ciò. Molto presto li studieremo, prima dobbiamo vedere come funzionano, perché ovviamente i tipi primitivi non sono oggetti (cercheremo quindi di fare chiarezza).
+=======
+JavaScript allows us to work with primitives (strings, numbers, etc.) as if they were objects. They also provide methods to call as such. We will study those soon, but first we'll see how it works because, of course, primitives are not objects (and here we will make it even clearer).
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 Vediamo quali sono i punti chiave che distinguono i tipi primitivi dagli oggetti.
 
@@ -35,7 +39,11 @@ Esistono molti oggetti integrati, come quelli per manipolare le date, errori, el
 
 Ma tutte queste caratteristiche hanno un costo!
 
+<<<<<<< HEAD
 Gli oggetti sono più "pesanti" dei tipi primitivi. Richiedono risorse extra per supportarne il pieno funzionamento. Ma poiché queste proprietà sono fondamentali, JavaScript cerca di ottimizzarne l'utilizzo della memoria.
+=======
+Objects are "heavier" than primitives. They require additional resources to support the internal machinery.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 ## Un primitivo come un oggetto
 
@@ -83,8 +91,13 @@ alert( n.toFixed(2) ); // 1.23
 Vedremo più nello specifico altri metodi nei capitoli <info:number> e <info:string>.
 
 
+<<<<<<< HEAD
 ````warn header="I costruttori di `String/Number/Boolean` vengono utilizzati solo internamente"
 Alcuni linguaggi come Java ci consento di creare "oggetti contenitori" esplicitamente utilizzando la sintassi `new Number(1)` o `new Boolean(false)`.
+=======
+````warn header="Constructors `String/Number/Boolean` are for internal use only"
+Some languages like Java allow us to explicitly create "wrapper objects" for primitives using a syntax like `new Number(1)` or `new Boolean(false)`.
+>>>>>>> fb38a13978f6e8397005243bc13bc1a20a988e6a
 
 In JavaScript, è altrettanto possibile per ragioni storiche, ma è altamente **sconsigliato**. Poiché molte cose potrebbero non funzionare come dovrebbero.
 
