@@ -74,7 +74,13 @@ alert( '2' > 1 ); // true, la stringa '2' diventa il numero 2
 alert( '01' == 1 ); // true, la stringa '01' diventa il numero 1
 ```
 
+<<<<<<< HEAD
 Per i valori booleani, `true` diventa `1` e `false` diventa `0`, quindi:
+=======
+For boolean values, `true` becomes `1` and `false` becomes `0`.
+
+For example:
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 ```js run
 alert( true == 1 ); // true
@@ -134,6 +140,7 @@ Esiste anche un operatore di "disuguaglianza stretta" `!==`, come analogo per l'
 
 L'operatore di uguaglianza stretta è un pò più lungo da scrivere, ma rende ovvio il controllo e lascia meno spazio ad errori.
 
+<<<<<<< HEAD
 ## Confronto con null e undefined
 
 Diamo un'occhiata ad ulteriori casi limite.
@@ -142,6 +149,12 @@ C'è un comportamento non atteso quando `null` o `undefined` vengono comparati c
 
 Per un controllo di uguaglianza stretta `===`
 : Questi valori sono diversi, perchè ognuno di loro appartiene ad un tipo a se stante.
+=======
+There's a non-intuitive behavior when `null` or `undefined` are compared to other values.
+
+For a strict equality check `===`
+: These values are different, because each of them is a different type.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
     ```js run
     alert( null === undefined ); // false

@@ -4,7 +4,11 @@ Come abbiamo già appreso dal capitolo <info:structure>, i commenti possono esse
 
 Normalmente li utilizziamo per descrivere come e perché funziona il codice.
 
+<<<<<<< HEAD
 Inizialmente, l'inserimento di commenti può sembrare ovvio, ma i novizi solitamente non lo fanno nella maniera corretta.
+=======
+At first sight, commenting might be obvious, but novices in programming often use them wrongly.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 ## Commenti sbagliati
 
@@ -119,11 +123,19 @@ Nella pratica, non possiamo evitare del tutto i commenti "esplicativi". Ci sono 
 
 Quindi, solitamente i commenti esplicativi sono sbagliati. Quali sono allora i commenti giusti?
 
+<<<<<<< HEAD
 Descrivere l'architettura
 : Fornire un visuale di alto livello dei componenti, come interagiscono, come si comporta il flusso d'esecuzione in certe situazioni... In breve -- gli "occhi d'aquila" del codice. C'è uno speciale linguaggio schematico [UML](http://wikipedia.org/wiki/Unified_Modeling_Language) per schematizzare ad alto livello. Assolutamente da conoscere.
 
 Documentare l'utilizzo di una funzione
 : Esiste una particolare sintassi [JSDoc](http://en.wikipedia.org/wiki/JSDoc) per documentare le funzioni: utilizzo, parametri, valori di ritorno.
+=======
+Describe the architecture
+: Provide a high-level overview of components, how they interact, what's the control flow in various situations... In short -- the bird's eye view of the code. There's a special language [UML](http://wikipedia.org/wiki/Unified_Modeling_Language) to build high-level architecture diagrams explaining the code. Definitely worth studying.
+
+Document function parameters and usage
+: There's a special syntax [JSDoc](http://en.wikipedia.org/wiki/JSDoc) to document a function: usage, parameters, returned value.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
     Ad esempio:
     ```js

@@ -1,6 +1,10 @@
 # Hello, world!
 
+<<<<<<< HEAD
 Il seguente tutorial tratta del core (nucleo) JavaScript, che è indipendente dalla piattaforma. Inoltre, più avanti, imparerai Node.js e altre piattaforme che ne fanno utilizzo.
+=======
+This part of the tutorial is about core JavaScript, the language itself.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 Abbiamo bisogno di un ambiente di lavoro per eseguire i nostri script, e il fatto che questo libro sia online, rende il browser un ottima scelta. Cercheremo di mantenere al minimo l'utilizzo dei comandi specifici per browser (come `alert`), cosi non dovrai perdere la testa se deciderai di spostarti in altri ambienti come Node.JS. In ogni caso, i dettagli browser vengono spiegati in dettaglio nella [prossima parte](/ui) del tutorial.
 
@@ -45,7 +49,12 @@ Il tag `<script>` ha un paio di attributi che vengono utilizzati raramente, ma �
 
  L'attributo `type`: <code>&lt;script <u>type</u>=...&gt;</code>
 
+<<<<<<< HEAD
  : Il vecchio standard HTML4 richiedeva che ogni script avesse un `type` (tipo). Solitamente era `type="text/javascript"`. Ora non è più richiesto. Infatti, i nuobi standard hanno completamente cambiato il significato di questo attributo. Adesso viene utilizzato per i moduli JavaScript. Questo è un argomento avanzato e ne parleremo più avanti in un'altra parte del tutorial.
+=======
+The `type` attribute: <code>&lt;script <u>type</u>=...&gt;</code>
+: The old HTML standard, HTML4, required a script to have a `type`. Usually it was `type="text/javascript"`. It's not required anymore. Also, the modern HTML standard totally changed the meaning of this attribute. Now, it can be used for JavaScript modules. But that's an advanced topic; we'll talk about modules in another part of the tutorial.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
  L'attributo `language`: <code>&lt;script <u>language</u>=...&gt;</code>
   : Questo attributo intendeva mostrare il linguaggio dello script. Questo attributo ormai non ha più signigicato, poichè JavaScript è il linguaggio di default. Non è necessario utilizzarlo.
@@ -71,9 +80,13 @@ Il file dello script viene integrato nel codice HTML tramtie l'attributo `src`:
 <script src="/path/to/script.js"></script>
 ```
 
+<<<<<<< HEAD
 Questo `/path/to/script.js` è il percorso assoluto al file che contiene lo script (dalla root del sito).
 
 E' anche possibile fornire un percorso relativo a partire dalla pagina corrente. Per esempio `src="script.js"` significa che il file `"script.js"` si trova nella cartella corrente.
+=======
+Here, `/path/to/script.js` is an absolute path to the script from the site root. One can also provide a relative path from the current page. For instance, `src="script.js"` would mean a file `"script.js"` in the current folder.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 Possiamo anche fornire un URL. Per esempio:
 

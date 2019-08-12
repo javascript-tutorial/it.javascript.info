@@ -18,6 +18,7 @@ Ma alcuni test manuali non sono sempre perfetti.
 
 Ad esempio, stiamo creando una funzione `f`. Scriviamo del codice, lo testiamo con: `f(1)` e funziona, ma con `f(2)` non funziona. Sistemiamo il codice e ora `f(2)` funziona. Il test sembra completo? Invece ci siamo dimenticati di ri-testare `f(1)`. Questo infatti potrebbe contenere un errore.
 
+<<<<<<< HEAD
 Questo è un errore tipico. Quando sviluppiamo qualcosa, cerchiamo di tenere a mente molti possibili casi di utilizzo. Ma è difficile aspettarsi che un programmatore controlli a mano il risultato dopo ogni cambiamento. Diventa quindi facile sistemare una bug e crearne uno di nuovo.
 
 **Test automatici significa che i test vengono scritti separati, e sono complementari al codice. Possono essere facilmente eseguiti ed utilizzati per controllare i principali casi di utilizzo.**
@@ -25,10 +26,21 @@ Questo è un errore tipico. Quando sviluppiamo qualcosa, cerchiamo di tenere a m
 ## Behavior Driven Development (BDD)
 
 Utilizziamo una tecnica chiamata [Behavior Driven Development](http://en.wikipedia.org/wiki/Behavior-driven_development) o, in breve, BDD. Questo approccio viene utilizzato in moltissimi progetti. BDD non offre solo testing, ha molte altre funzionalità.
+=======
+**Automated testing means that tests are written separately, in addition to the code. They run our functions in various ways and compare results with the expected.**
+
+## Behavior Driven Development (BDD)
+
+Let's start with a technique named [Behavior Driven Development](http://en.wikipedia.org/wiki/Behavior-driven_development) or, in short, BDD.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 **BDD contiene tre cose in una: test, documentazione ed esempi.**
 
+<<<<<<< HEAD
 Abbiamo parlato abbastanza. Vediamo degli esempi.
+=======
+To understand BDD, we'll examine a practical case of development.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 ## Sviluppo di "pow": le specifiche
 
@@ -38,7 +50,11 @@ Questo è solo un esempio: infatti l'operatore `**` svolge quest'azione, ma conc
 
 Prima di scrivere il codice di `pow`, possiamo immaginare cosa vogliamo che la funzione faccia e descriverlo.
 
+<<<<<<< HEAD
 Questa descrizione viene chiamata *specifica* o, in breve, spec, ed appare cosi:
+=======
+Such description is called a *specification* or, in short, a spec, and contains descriptions of use cases together with tests for them, like this:
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 ```js
 describe("pow", function() {
@@ -53,15 +69,27 @@ describe("pow", function() {
 Una spec ha tre principali blocchi:
 
 `describe("title", function() { ... })`
+<<<<<<< HEAD
 : Viene descritta la funzionalità. Utilizzata per raggruppare le "attività" -- i blocchi `it`. Nel nostro caso descriviamo la funzione `pow`.
+=======
+: What functionality we're describing. In our case we're describing the function `pow`. Used to group "workers" -- the `it` blocks.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 `it("title", function() { ... })`
 : Nel titolo di `it` descriviamo il particolare caso d'uso *leggibili per gli umani*, come secondo argomento una funzione che la testa.
 
 `assert.equal(value1, value2)`
+<<<<<<< HEAD
 : Il codice all'interno del blocco `it`, se l'implementazione è corretta, dovrebbe eseguire senza errori.
 
     Le funzioni `assert.*` vengono utilizzate per controllare che `pow` funzioni come dovrebbe. Proprio qui ne utilizziamo una -- `assert.equal`, che confronta gli argomenti e ritorna un errore se questi non sono uguali. Qui verifichiamo che il risultato di `pow(2, 3)` sia uguale `8`.
+=======
+: The code inside `it` block, if the implementation is correct, should execute without errors.
+
+    Functions `assert.*` are used to check whether `pow` works as expected. Right here we're using one of them -- `assert.equal`, it compares arguments and yields an error if they are not equal. Here it checks that the result of `pow(2, 3)` equals `8`. There are other types of comparisons and checks, that we'll add later.
+
+The specification can be executed, and it will run the test specified in `it` block. We'll see that later.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
     Ci sono molti altri tipi di confronto e controllo che vederemo più avanti.
 
@@ -79,7 +107,11 @@ Il flusso di sviluppo solitamente segue i passi:
 
 Quindi la fase di sviluppo è *iterativa*. Scriviamo la specifica, la implementiamo, ci accertiamo che passi i test, ci assicuriamo che faccia ciò che deve. Al termine di questa procedura avremmo un implementazione già testata e funzionante.
 
+<<<<<<< HEAD
 Nel nostro caso, il primo step è completo: abbiamo un specifica iniziale di `pow`. Quindi ora passiamo all'implementazione. Come prima cosa facciamo l'esecuzione "zero" con le specifiche scritte, per essere sicuri che tutto funzioni (ovviamente dovrebbero tutte fallire).
+=======
+The first step is already complete: we have an initial spec for `pow`. Now, before making the implementaton, let's use few JavaScript libraries to run the tests, just to see that they are working (they will all fail).
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 ## La spec in azione
 
@@ -334,11 +366,18 @@ Il risultato con il nuovo test sarà:
 
 I nuovi test aggiunti falliranno, perché la nostra implementazione non li supporta ancora. Cosi è come funziona BDD: prima si scrivono test fallaci, e successivamente si lavora sull'implementazione.
 
+<<<<<<< HEAD
 ```smart header="Altre asserzioni"
 
 Metto in evidenza l'asserzione `assert.isNaN`: che effettua controlli di tipo `NaN`.
 
 In Chai sono presenti molte altre asserzioni, ad esempio:
+=======
+```smart header="Other assertions"
+Please note the assertion `assert.isNaN`: it checks for `NaN`.
+
+There are other assertions in [Chai](http://chaijs.com) as well, for instance:
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 - `assert.equal(value1, value2)` -- controlla l'uguaglianza  `value1 == value2`.
 - `assert.strictEqual(value1, value2)` -- verifica l'uguaglianza stretta `value1 === value2`.
@@ -383,7 +422,13 @@ Le spec vengono utilizzate in tre modi:
 2. **Docs** -- il titolo di `describe` e `it` specificano cosa la funzione faccia.
 3. **Examples** -- i test sono dei veri e propri esempi su come la funzione si comporti e come può essere utilizzata.
 
+<<<<<<< HEAD
 Con le spec, possiamo migliorare, cambiare e anche riscrivere il codice da zero in totale sicurezza ed essere sicuri che tutto continui a funzionare come dovrebbe.
+=======
+1. As **Tests** - they guarantee that the code works correctly.
+2. As **Docs** -- the titles of `describe` and `it` tell what the function does.
+3. As **Examples** -- the tests are actually working examples showing how a function can be used.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 Questo è particolarmente importante specie nei grandi progetti, quando le funzioni vengono utilizzate più volte in posti diversi. Quando cambiamo una di queste funzioni, non c'è un modo pratico per controllare che queste continuino a funzionare ovunque.
 

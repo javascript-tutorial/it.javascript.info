@@ -125,7 +125,11 @@ switch (a) {
     break;
 
 *!*
+<<<<<<< HEAD
   case 3:                    // (*) raggruppiamo due casi
+=======
+  case 3: // (*) grouped two cases
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
   case 5:
     alert('Wrong!');
     alert("Why don't you take a math class?");

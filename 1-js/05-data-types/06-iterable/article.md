@@ -3,7 +3,13 @@
 
 Gli oggetti *iterabili* sono una generalizzazione degli array. Questo concetto consente a qualsiasi oggetto di essere utilizzato in un ciclo `for..of`.
 
+<<<<<<< HEAD
 Ovviamente, gli array sono oggetti iterabili. Ma ci sono molti altri oggetti integrati, che sono altrettanto iterabili. Ad esempio, anche le stringhe sono iterabili. Come vedremo a breve, molti operatori si appoggiano a questo.
+=======
+Of course, Arrays are iterable. But there are many other built-in objects, that are iterable as well. For instance, strings are also iterable.
+
+If an object isn't technically an array, but represents a collection (list, set) of something, then `for..of` is a great syntax to loop over it, so let's see how to make it work.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 Se un oggetto rappresenta una collezione (lista, insieme) di qualcosa, allora `for..of` è un ottimo modo per eseguire un ciclo, quindi ora vedremo come farlo funzionare correttamente.
 
@@ -27,12 +33,21 @@ let range = {
 
 Per rendere iterabile `range` (e poter utilizzare correttamente `for..of`) abbiamo bisogno di aggiunger un metodo chiamato `Symbol.iterator` (uno speciale simbolo integrato).
 
+<<<<<<< HEAD
 1. Quando `for..of` inizia, prova a chiamare questo metodo (o ritorna un errore se non lo trova). Il metodo deve ritornare un *iteratore* -- un oggetto con il metodo `next`.
 2. La possibilità di avanzare di `for..of` funziona *solamente con l'oggetto ritornato*.
 3. Quando `for..of` vuole il prossimo valore, chiama `next()` su quell'oggetto.
 4. Il risultato di `next()` deve avere la forma `{done: Boolean, value: any}`, dove `done=true` significa che l'iterazione è completa, altrimenti `value` deve contenere il nuovo valore.
 
 Qui l'implementazione completa per `range`:
+=======
+1. When `for..of` starts, it calls that method once (or errors if not found). The method must return an *iterator* -- an object with the method `next`.
+2. Onward, `for..of` works *only with that returned object*.
+3. When `for..of` wants the next value, it calls `next()` on that object.
+4. The result of `next()` must have the form `{done: Boolean, value: any}`, where `done=true`  means that the iteration is finished, otherwise `value` is the next value.
+
+Here's the full implementation for `range` with remarks:
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 ```js run
 let range = {
@@ -67,10 +82,17 @@ for (let num of range) {
 }
 ```
 
+<<<<<<< HEAD
 Da notare la caratteristica fondamentale degli oggetti iterabili: un importante separazione di concetti:
 
 - Il `range` stesso non possiede un metodo `next()`.
 - Invece, un altro oggetti, chiamato "iteratore" viene creato dalla chiamata `range[Symbol.iterator]()`, e gestisce l'intera iterazione.
+=======
+Please note the core feature of iterables: separation of concerns.
+
+- The `range` itself does not have the `next()` method.
+- Instead, another object, a so-called "iterator" is created by the call to `range[Symbol.iterator]()`, and its `next()` generates values for the iteration.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 Quindi, l'oggetto iteratore è separato da quello su cui itera.
 
@@ -139,9 +161,13 @@ for (let char of str) {
 
 ## Chiamare un iteratore esplicitamente
 
+<<<<<<< HEAD
 Normalmente, il funzionamento degli iteratori è nascosto al codice esterno. C'è un ciclo `for..of` , che funziona, e questo è tutto ciò che serve sapere.
 
 Ma per capire tutto al meglio vediamo come creare esplicitamente un iteratore.
+=======
+For deeper understanding let's see how to use an iterator explicitly.
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 Proveremo ad iterare su una stringa allo stesso modo di un ciclo `for..of`, ma con una chiamata diretta. Questo codice crea un iteratore per stringhe e lo richiama "manualmente":
 
@@ -280,8 +306,13 @@ let str = '𝒳😂𩷶';
 
 alert( slice(str, 1, 3) ); // 😂𩷶
 
+<<<<<<< HEAD
 // il metodo nativo non supporta le coppie surrogate
 alert( str.slice(1, 3) ); // spazzatura (due pezzi da coppie surrogate differenti)
+=======
+// the native method does not support surrogate pairs
+alert( str.slice(1, 3) ); // garbage (two pieces from different surrogate pairs)
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 ```
 
 

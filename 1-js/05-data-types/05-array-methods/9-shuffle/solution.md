@@ -45,7 +45,11 @@ for (let key in count) {
 }
 ```
 
+<<<<<<< HEAD
 Un esempio di risultato possibile (per V8, Luglio 2017):
+=======
+An example result (depends on JS engine):
+>>>>>>> 5cb9760abb8499bf1e99042d866c3c1db8cd61ca
 
 ```js
 123: 250706
