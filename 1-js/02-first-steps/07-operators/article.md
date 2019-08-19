@@ -93,9 +93,13 @@ alert( +"" );   // 0
 
 Si ottiene lo stesso risultato di `Number(...)`, ma in un modo più veloce.
 
+<<<<<<< HEAD
 La necessità di convertire stringhe in numeri si presenta molto spesso. Ad esempio, se stiamo prelevando un valore da un campo HTML, questo solitamente sarà di tipo stringa.
 
 Come procedere in caso volessimo sommare questi valori?
+=======
+The need to convert strings to numbers arises very often. For example, if we are getting values from HTML form fields, they are usually strings. What if we want to sum them?
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 La somma binaria li concatena come stringhe:
 
@@ -251,14 +255,22 @@ Quindi, c'è un operatore speciale per questo:
 
     ```js run no-beautify
     let counter = 2;
+<<<<<<< HEAD
     counter++;      // funziona alla stessa maniera di counter = counter + 1, ma in maniera più breve
+=======
+    counter++;        // works the same as counter = counter + 1, but is shorter
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
     alert( counter ); // 3
     ```
 - **Decremento** `--` decrementa la variabile di 1:
 
     ```js run no-beautify
     let counter = 2;
+<<<<<<< HEAD
     counter--;      // funziona in maniera equivalente a counter = counter - 1, ma è più breve da scrivere
+=======
+    counter--;        // works the same as counter = counter - 1, but is shorter
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
     alert( counter ); // 1
     ```
 

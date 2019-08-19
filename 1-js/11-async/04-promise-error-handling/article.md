@@ -1,11 +1,17 @@
 
 # Gestione degli errori con le promise
 
+<<<<<<< HEAD
 Le azioni asincrione a volte possono fallire: in caso di errore la promise corrispondente viene respinta (rejected). Per esempio, `fetch` fallisce se il server remoto non è disponibile. Possiamo usare `.catch` per gestire gli errori (rejections).
 
 IL concatenemanto delle Promise è ottimo sotto questo aspetto. Quando una promise viene rifiutata (rejects), il controllo passa al gestore del rifiuto (rejection handler) più vicino nella catena. Questo è molto conveniente.
 
 Per esempio, nel codice sotto l'URL è errato (no such server) e `.catch` gestisce l'errore:
+=======
+Promise chains are great at error handling. When a promise rejects, the control jumps to the closest rejection handler. That's very convenient in practice.
+
+For instance, in the code below the URL to `fetch` is wrong (no such site) and `.catch` handles the error:
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 ```js run
 *!*
@@ -15,6 +21,7 @@ fetch('https://no-such-server.blabla') // viene respinta (rejects)
   .catch(err => alert(err)) // TypeError: failed to fetch (il testo può variare)
 ```
 
+<<<<<<< HEAD
 Oppure, forse, è tutto a posto con il server, ma la risposta non è JSON valido:
 
 ```js run
@@ -26,6 +33,11 @@ fetch('/') // fetch funziona bene adesso, il server risponde con successo
 ```
 
 Il modo più facile di catturare (catch) è di mettere `.catch` alla fine della catena:
+=======
+As you can see, the `.catch` doesn't have to be immediate. It may appear after one or maybe several `.then`.
+
+Or, maybe, everything is all right with the site, but the response is not valid JSON. The easiest way to catch all errors is to append `.catch` to the end of chain:
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 ```js run
 fetch('/article/promise-chaining/user.json')
@@ -48,7 +60,11 @@ fetch('/article/promise-chaining/user.json')
 */!*
 ```
 
+<<<<<<< HEAD
 Normalmente, `.catch` non viene eseguito, perchè non ci sono errori. Ma se una qualsiasi delle promise sopra viene respinta (un errore di rete o JSON invalido o qualunque cosa), allora l'errore verrebbe catturato.
+=======
+Normally, such `.catch` doesn't trigger at all. But if any of the promises above rejects (a network problem or invalid json or whatever), then it would catch it.
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 ## Try..catch implicito
 
@@ -74,9 +90,15 @@ new Promise((resolve, reject) => {
 }).catch(alert); // Error: Whoops!
 ```
 
+<<<<<<< HEAD
 Il "`try..catch` invisibile" intorno all'esecutore (executor) cattura (catches) automaticamente l'errore e lo tratta come un rigettamento (rejection).
 
 Questo accade non solo nell'esecutore (executor), ma anche nei suoi gestori (handlers). Se lanciamo (`throw`) dentro un gestore (handler)`.then`, questo significa una promise respinta (rejected), così il controllo salta al gestore (handler)  degli errori più vicino.
+=======
+The "invisible `try..catch`" around the executor automatically catches the error and turns it into rejected promise.
+
+This happens not only in the executor function, but in its handlers as well. If we `throw` inside a `.then` handler, that means a rejected promise, so the control jumps to the nearest error handler.
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 Ecco un esempio:
 
@@ -106,7 +128,11 @@ Il `.catch` finale non solo cattura (catches) i rigettamenti (rejections) espici
 
 ## Rethrowing
 
+<<<<<<< HEAD
 Come abbiamo già notato, `.catch` si comporta come `try..catch`. Possiamo avere tutti i gestori (handler) `.then` che vogliamo, e poi usare un solo `.catch` alla fine per gestire tutti gli errori al loro interno.
+=======
+As we already noticed, `.catch` at the end of the chain is similar to `try..catch`. We may have as many `.then` handlers as we want, and then use a single `.catch` at the end to handle errors in all of them.
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 In un normale `try..catch` possiamo analizzare l'errore e magari rilanciarlo (rethrow) se non può essere gestito. È possibile fare lo stesso con le promise.
 
@@ -150,7 +176,11 @@ new Promise((resolve, reject) => {
   }
 
 }).then(function() {
+<<<<<<< HEAD
   /* non viene mai eseguito */
+=======
+  /* doesn't run here */
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 }).catch(error => { // (**)
 
   alert(`Si è verificato un errore sconosciuto: ${error}`);
@@ -159,6 +189,7 @@ new Promise((resolve, reject) => {
 });
 ```
 
+<<<<<<< HEAD
 Poi l'esecuzione passa dal primo `.catch` `(*)` al prossimo `(**)` giù per la catena.
 
 Nella sezione sotto vedremo un pratico esempio di risollevamento (rethrowing).
@@ -248,12 +279,19 @@ demoGithubUser();
 Notare che: `.catch` cattura tutti gli errori, ma "sa come gestire" solo `HttpError 404`. In questo caso particolare  significa che non esiste l'utente, e `.catch` in questo caso riprova semplicemente.
 
 Per altri errori, non ha idea di cosa possa andare stoto. Magari un errore di programmazione o altro. Quindi semplicemente lo risoleva nella linea `(*)`.
+=======
+The execution jumps from the first `.catch` `(*)` to the next one `(**)` down the chain.
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 ## Rigetti non gestiti (unhandled rejections)
 
+<<<<<<< HEAD
 Cosa accade se un errore non è gestito? Per esempio, dopo il risollevamento `(*)` nell'esempio sopra.
 
 Oppure possiamo semplicemente dimenticarci di aggiungere un gestore (handler) dell'errore alla fine della catena, come qui:
+=======
+What happens when an error is not handled? For instance, we forgot to append `.catch` to the end of the chain, like here:
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 ```js untrusted run refresh
 new Promise(function() {
@@ -264,6 +302,7 @@ new Promise(function() {
   }); // senza .catch alla fine!
 ```
 
+<<<<<<< HEAD
 Nel caso di un errore, lo stato della promise diventa "rejected", e l'esecuzione dovrebbe saltare al gestore del rigetto (rejection handler). Ma negli esempi sopra non c'è questo gestore (handler). Quindi l'errore porta ad un "blocco".
 
 In pratica, proprio come con un normale errore non gestito, significa che qualcosa è andato terribilmente storto.
@@ -271,6 +310,15 @@ In pratica, proprio come con un normale errore non gestito, significa che qualco
 Cosa accade quando viene sollevato un errore e non viene gestito da `try..catch`? Lo script muore. Lo stesso accade con una promise rigettata che non viene gestita.
 
 La maggior parte dei motori JavaScript tracciano queste situazioni e generano un errore globale in questo caso. Possiamo vederlo nella console.
+=======
+In case of an error, the promise becomes rejected, and the execution should jump to the closest rejection handler. But there is none. So the error gets "stuck". There's no code to handle it.
+
+In practice, just like with regular unhandled errors in code, it means that something has terribly gone wrong.
+
+What happens when a regular error occurs and is not caught by `try..catch`? The script dies with a message in console. Similar thing happens with unhandled promise rejections.
+
+JavaScript engine tracks such rejections and generates a global error in that case. You can see it in the console if you run the example above.
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 Nel browser possiamo catturare (catch) questi errori usando `unhandledrejection`:
 
@@ -294,11 +342,16 @@ Se un errore si verifica, e non c'è nessun `.catch`, il gestore (handler) `unha
 
 Solitamente questi errori sono irrecuperabili, quindi la cosa migliore da fare è informare l'utente del problema e probabilmente riportare l'incidente al server.
 
+<<<<<<< HEAD
 In ambienti esterni al browser come Node.js ci sono altri modi simili di tracciare gli errori non gestiti.
 
+=======
+In non-browser environments like Node.js there are other ways to track unhandled errors.
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 ## Riepilogo
 
+<<<<<<< HEAD
 - `.catch` gestisce i rigetti (rejections) delle promise di tutti i tipi: che sia una chiamata `reject()`, o un errore sollevato in un gestore (handler).
 - Dovremmo mettere `.catch` esattamente nei posti in cui  vogliamo gestire gli errori sapendo come gestirli. Il gestore (handler) dovrebbe analizzare gli errori (Le classi di errori ci sono di aiuto) e ri-sollevare (rethrow) quelli sconosciuti.
 - È normale non usare `.catch` se non sappiamo come gestire gli errori (tutti gli errori sono irrecuperabili).
@@ -343,3 +396,9 @@ Qui nella linea `(1)` indichiamo il caricamento oscurando il documento. Il metod
 Quando la promise è ferma (settled), che sia un fetch con successo o un errore, `finally` viene lanciato nella linea `(2)`  ferma l'indicatore.
 
 C'è un piccolo trucco per i browser `(*)` nel ritornare una promise con timeout zero da `finally`. Questo perché alcuni browser (come Chrome) hanno bisogno "di un po' di tempo" fuori dai gestori (handlers) per diegnare cambiamenti al documento. Questo assicura che l'indicazione è visivamente ferma prima di andare avanti nella catena.
+=======
+- `.catch` handles errors in promises of all kinds: be it a `reject()` call, or an error thrown in a handler.
+- We should place `.catch` exactly in places where we want to handle errors and know how to handle them. The handler should analyze errors (custom error classes help) and rethrow unknown ones (maybe they are programming mistakes).
+- It's ok not to use `.catch` at all, if there's no way to recover from an error.
+- In any case we should have the `unhandledrejection` event handler (for browsers, and analogs for other environments), to track unhandled errors and inform the user (and probably our server) about the them, so that our app never "just dies".
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923

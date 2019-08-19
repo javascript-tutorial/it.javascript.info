@@ -252,9 +252,13 @@ Non è sufficiente prelevare e rimuovere l'elemento con l'indice `0`. Gli altri 
 
 L'operazione di `shift` deve seguire 3 passi:
 
+<<<<<<< HEAD
 1. Rimuovere l'elemento con indice `0`.
 2. Spostare tutti gli elementi a sinistra, rinumerare gli indici da `1` a `0`, da `2` a `1` e cosi via.
 3. Aggiornare la propreità `length`.
+=======
+![](array-shift.svg)
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 ![](array-shift.svg)
 
@@ -394,7 +398,11 @@ let matrix = [
   [7, 8, 9]
 ];
 
+<<<<<<< HEAD
 alert( matrix[1][1] ); // l'elemento centrale
+=======
+alert( matrix[1][1] ); // 5, the central element
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 ```
 
 ## toString

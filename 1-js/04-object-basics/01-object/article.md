@@ -8,7 +8,11 @@ In maniera differente, gli oggetti vengono utilizzati per raccogliere vari tipi 
 Un oggetto può essere creato con le parentesi `{…}` con una lista opzionale di *proprietà*. Una proprietà è una coppia "chiave: valore", dove la `key` è una stringa (chiamata anche "nome della proprietà"), il `value` può contenere qualsiasi cosa.
 
 
+<<<<<<< HEAD
 Possiamo immaginare un oggetto come un archivio con dei documenti firmati. Ogni dato viene scritto nel documento utilizzandone la chiave (il nome). E' facile trovare un file conoscendone il nome oppure aggiungere di nuovi/rimuovere quelli vecchi.
+=======
+![](object.svg)
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 ![](object.svg)
 
@@ -50,7 +54,11 @@ Noi possiamo aggiungere, rimuovere e leggere file in qualsiasi momento.
 I valori delle proprietà sono accessibili utilizzando la notazione puntata:
 
 ```js
+<<<<<<< HEAD
 // ottiene i campi dell'oggetto:
+=======
+// get property values of the object:
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 alert( user.name ); // John
 alert( user.age ); // 30
 ```
@@ -82,6 +90,10 @@ let user = {
 ```
 
 ![](object-user-props.svg)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 L'ultima proprietà in lista può terminare con una virgola:
 ```js
@@ -103,7 +115,6 @@ user.likes birds = true
 Questo perché il punto richiede che la chiave sia un identificatore valido. Un identificatore non deve avere spazi (oltre a seguire le altre limitazioni già studiate).
 
 Esiste una "notazione con parentesi quadre", per aggirare questo vincolo:
-
 
 ```js run
 let user = {};
@@ -129,7 +140,11 @@ let key = "likes birds";
 user[key] = true;
 ```
 
+<<<<<<< HEAD
 Qui la variabile `key` può essere calcolata a run-time o dipendere dall'input dell'utente. Successivamente possiamo utilizzarla per accedere alla proprietà. Questa caratteristica ci fornisce una grande flessibilità. La notazione puntata non può essere utilizzata in questo modo.
+=======
+Here, the variable `key` may be calculated at run-time or depend on the user input. And then we use it to access the property. That gives us a great deal of flexibility.
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 Ad esempio:
 
@@ -145,6 +160,17 @@ let key = prompt("What do you want to know about the user?", "name");
 alert( user[key] ); // John (se si inserisce "name")
 ```
 
+The dot notation cannot be used in a similar way:
+
+```js run
+let user = {
+  name: "John",
+  age: 30
+};
+
+let key = "name";
+alert( user.key ) // undefined
+```
 
 ### Proprietà calcolate
 
@@ -220,10 +246,18 @@ Come possiamo veder dal codice, l'assegnazione alla primitiva `5` viene ignorata
 
 Questa può diventare una situazione vulnerabile se abbiamo intenzione di memorizzare una coppia chiave-valore in un oggetto, consentendo al visitatore di specificare al chiave.
 
+<<<<<<< HEAD
 In questo caso il visitatore potrebbe scegliere "__proto__" come chiave, e l'assegnazione verrebbe rovinata (come abbiamo visto sopra).
 
 C'è un modo per trattare `__proto__` come una prorietà, lo vederemo più avanti, prima abbiamo bisogno di conoscere meglio gli oggetti.
 C'è un ulteriore struttura dati [Map](info:map-set-weakmap-weakset), che apprenderemo nel capitolo <info:map-set-weakmap-weakset>, che supporta chiavi arbitrarie.
+=======
+In that case the visitor may choose `__proto__` as the key, and the assignment logic will be ruined (as shown above).
+
+There is a way to make objects treat `__proto__` as a regular property, which we'll cover later, but first we need to know more about objects.
+
+There's also another data structure [Map](info:map-set), that we'll learn in the chapter <info:map-set>, which supports arbitrary keys.
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 ````
 
 
@@ -307,8 +341,13 @@ let key = "age";
 alert( *!*key*/!* in user ); // true, prende il nome da key e controlla l'esistenza della proprietà
 ```
 
+<<<<<<< HEAD
 ````smart header="Utilizzare \"in\" con le proprietà che contengono `undefined`"
 Solitamente, il confronto stretto con `"=== undefined"` funziona correttamente. Ma c'è un particolare caso in cui questo fallisce, ma `"in"` funziona correttamente.
+=======
+````smart header="Using \"in\" for properties that store `undefined`"
+Usually, the strict comparison `"=== undefined"` check the property existance just fine. But there's a special case when it fails, but `"in"` works correctly.
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 Questo accade quando una proprietà esiste, ma contiene `undefined`:
 
@@ -328,8 +367,12 @@ Nel codice sopra, la proprietà `obj.test` tecnicamente esiste. Quindi l'operato
 Situazioni come questa accadono raramente, perché solitamente non si assegna `undefined`. Si usa più comunemente `null` per valori "sconosciuti" o "vuoti". Quindi l'operatore `in` è più un ospite esoterico nel codice.
 ````
 
+<<<<<<< HEAD
 
 ## Il ciclo "for..in" 
+=======
+## The "for..in" loop
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 Per attraversare tutte le chiavi di un oggetto, esiste una speciale forma di ciclo: `for..in`. Questo è completamente diverso da `for(;;)`.
 
@@ -517,7 +560,11 @@ L'uguaglianza `==` e l'uguaglianza stretta `===` funzionano allo stesso modo.
 
 **Due oggetti sono uguali solamente se sono lo stesso oggetto.**
 
+<<<<<<< HEAD
 Ad esempio, due variabili che si riferiscono allo stesso oggetto, sono uguali:
+=======
+For instance, if two variables reference the same object, they are equal:
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 ```js run
 let a = {};
@@ -556,7 +603,11 @@ user.age = 25; // (*)
 alert(user.age); // 25
 ```
 
+<<<<<<< HEAD
 Si potrebbe pensare che la riga `(*)` causi un errore, ma non è cosi, funziona correttamente. Questo perchè `const` fissa il valore di `user` stesso. Significa che `user` memorizzerà lo stesso oggetto per tutto il tempo. La riga `(*)` modifica il *contenuto* dell'oggetto, non riassegna la variabile `user`.
+=======
+It might seem that the line `(*)` would cause an error, but no, there's totally no problem. That's because `const` fixes only value of `user` itself. And here `user` stores the reference to the same object all the time. The line `(*)` goes *inside* the object, it doesn't reassign `user`.
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 Il `const` darebbe un errore se provassimo a impostare `user` a qualcos altro, ad esempio:
 

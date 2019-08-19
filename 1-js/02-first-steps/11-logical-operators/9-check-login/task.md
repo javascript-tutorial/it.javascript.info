@@ -6,13 +6,23 @@ importance: 3
 
 Scrivi il codice che richiede un login tramite `prompt`.
 
+<<<<<<< HEAD
 Se l'utente digita `"Admin"`, allora si richiede una password tramite `prompt`, se l'input è una stringa vuota o `key:Esc` -- mostra "Canceled.", se invece è un'altra stringa -- allora mostra "I don't know you".
+=======
+If the visitor enters `"Admin"`, then `prompt` for a password, if the input is an empty line or `key:Esc` -- show "Canceled", if it's another string -- then show "I don't know you".
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 La passoword viene controllata con le seguenti regole:
 
+<<<<<<< HEAD
 - Se è uguale a "TheMaster", allora mostra "Welcome!",
 - Un'altra stringa -- mostra "Wrong password",
 - Per una stringa vuota o `key:Esc`, mostra "Canceled."
+=======
+- If it equals "TheMaster", then show "Welcome!",
+- Another string -- show "Wrong password",
+- For an empty string or cancelled input, show "Canceled"
+>>>>>>> 852ee189170d9022f67ab6d387aeae76810b5923
 
 Lo schema:
 
