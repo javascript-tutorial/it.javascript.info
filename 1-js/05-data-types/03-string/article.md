@@ -50,9 +50,13 @@ Gli apici singoli e doppi sono nati insieme al linguaggio, quando non era stato 
 Le backticks ci consentono anche di specificare un "template di funzione" prima della backtick di apertura. La sintassi è: <code>func&#96;string&#96;</code>. La funzione `func` viene chiamata automaticamente, gli viene passata la "string", può essere cosi trattata dalla funzione. Potete approfondire leggendo la [documentazione](mdn:/JavaScript/Reference/Template_literals#Tagged_template_literals). Questo viene chiamata "funzione template". Con questa caratteristica diventa più facile raccogliere stringhe da passare a funzioni, ma è raramente utilizzata.
 
 
+<<<<<<< HEAD
 ## Caratteri speciali
 
 E' comunque possibile creare stringhe multilinea con singoli apici utilizzando il "carattere nuova riga", cioè `\n`, che significa appunto nuova riga:
+=======
+It is still possible to create multiline strings with single and double quotes by using a so-called "newline character", written as `\n`, which denotes a line break:
+>>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
 
 ```js run
 let guestList = "Guests:\n * John\n * Pete\n * Mary";
@@ -74,6 +78,7 @@ Ci sono altri caratteri "speciali" meno comuni. Qui una lista:
 
 | Carattere | Descrizione |
 |-----------|-------------|
+<<<<<<< HEAD
 |`\n`|Nuova linea|
 |`\r`|Ritorno a capo: non utilizzato da solo. I file di testo Windows utilizzano una combinazione di due caratteri `\n\r` per rappresentare il termine della riga. |
 |`\'`, `\"`|Apici|
@@ -83,6 +88,17 @@ Ci sono altri caratteri "speciali" meno comuni. Qui una lista:
 |`\xXX`|Carattere Unicode rappresentato dal codice esadecimale `XX`, esempio `'\x7A'` equivale a `'z'`.|
 |`\uXXXX`|Simbolo unicode rappresentato da codice esadecimale `XXXX` in  codifica UTF-16, ad esempio `\u00A9` -- equivale a `©`. |
 |`\u{X…XXXXXX}` (da 1 a 6 caratteri esadecimali)| Un simbolo Unicode in codifica UTF-32. Alcuni caratteri vengono codificati da due simboli unicode, ovvero 4 byte. |
+=======
+|`\n`|New line|
+|`\r`|Carriage return: not used alone. Windows text files use a combination of two characters `\r\n` to represent a line break. |
+|`\'`, `\"`|Quotes|
+|`\\`|Backslash|
+|`\t`|Tab|
+|`\b`, `\f`, `\v`| Backspace, Form Feed, Vertical Tab -- kept for compatibility, not used nowadays. |
+|`\xXX`|Unicode character with the given hexadecimal unicode `XX`, e.g. `'\x7A'` is the same as `'z'`.|
+|`\uXXXX`|A unicode symbol with the hex code `XXXX` in UTF-16 encoding, for instance `\u00A9` -- is a unicode for the copyright symbol `©`. It must be exactly 4 hex digits. |
+|`\u{X…XXXXXX}` (1 to 6 hex characters)|A unicode symbol with the given UTF-32 encoding. Some rare characters are encoded with two unicode symbols, taking 4 bytes. This way we can insert long codes. |
+>>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
 
 Esempi di unicode:
 
@@ -309,7 +325,13 @@ Uno dei trucchi più utilizzati è l'operatore di [NOT bit a bit](https://develo
 
 Per gli interi in 32bit la chiamata `~n` ha lo stesso risultato di `-(n+1)` (a causa del formato IEEE-754).
 
+<<<<<<< HEAD
 Ad esempio:
+=======
+In practice, that means a simple thing: for 32-bit integers `~n` equals `-(n+1)`.
+
+For instance:
+>>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
 
 ```js run
 alert( ~2 ); // -3, lo stesso di -(2+1)
@@ -334,7 +356,15 @@ if (~str.indexOf("Widget")) {
 }
 ```
 
+<<<<<<< HEAD
 Solitamente è sconsigliato utilizzare caratteristiche del linguaggio per azioni che possono risultare poco ovvie, ma questo particolare trucco è ampiamente utilizzato, quindi è giusto conoscerlo.
+=======
+It is usually not recommended to use language features in a non-obvious way, but this particular trick is widely used in old code, so we should understand it.
+
+Just remember: `if (~str.indexOf(...))` reads as "if found".
+
+To be precise though, as big numbers are truncated to 32 bits by `~` operator, there exist other numbers that give `0`, the smallest is `~4294967295=0`. That makes such check is correct only if a string is not that long.
+>>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
 
 Ricordatevi solo che: `if (~str.indexOf(...))` si legge come "se trovi".
 ````
@@ -354,8 +384,13 @@ alert( "Hello".includes("Bye") ); // false
 Il secondo argomento opzionale di `str.includes` è la posizioni da cui iniziare a cercare:
 
 ```js run
+<<<<<<< HEAD
 alert( "Midget".includes("id") ); // true
 alert( "Midget".includes("id", 3) ); // false, dalla posizione 3 non c'è "id"
+=======
+alert( "Widget".includes("id") ); // true
+alert( "Widget".includes("id", 3) ); // false, from position 3 there is no "id"
+>>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
 ```
 
 I metodi [str.startsWith](mdn:js/String/startsWith) e [str.endsWith](mdn:js/String/endsWith) fanno esattamente ciò che dicono i loro nomi:
@@ -510,9 +545,13 @@ alert( str );
 // ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜ
 ```
 
+<<<<<<< HEAD
 Visto? Le lettere maiuscole vengono prima, poi ci sono un po di caratteri speciali e successivamente le lettere minuscole.
 
 Ora è molto più ovvio il motivo per cui `a > Z` risulta vero.
+=======
+See? Capital characters go first, then a few special ones, then lowercase characters, and `Ö` near the end of the output.
+>>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
 
 I caratteri vengono confrontati utilizzando il loro codice numerico. Un codice maggiore significa che il carattere è maggiore. Il codice di `a` (97) è maggiore del codice di `Z` (90).
 
@@ -530,11 +569,19 @@ Fortunatamente, tutti i browser moderni (IE10 + richiede una libreria esterna [I
 
 Questo fornisce uno speciale metodo per confrontare stringhe in lingue diverse, seguendo delle regole.
 
+<<<<<<< HEAD
 La chiamata [str.localeCompare(str2)](mdn:js/String/localeCompare):
 
 - Ritorna `1` se `str` è maggiore di `str2` seguendo le regole della lingua.
 - Ritorna `-1` se `str` è minore di `str2`.
 - Ritorna `0` se sono uguali.
+=======
+The call [str.localeCompare(str2)](mdn:js/String/localeCompare) returns an integer indicating whether `str` is less, equal or greater than `str2` according to the language rules:
+
+- Returns a negative number if `str` is less than `str2`.
+- Returns a positive number if `str` is greater than `str2`.
+- Returns `0` if they are equivalent.
+>>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
 
 Ad esempio:
 
@@ -623,10 +670,17 @@ Questo consente una grande flessibilità, ma crea anche un potenziale problema: 
 Ad esempio:
 
 ```js run
+<<<<<<< HEAD
 alert( 'S\u0307\u0323' ); // Ṩ, S + punto sopra + punto sotto
 alert( 'S\u0323\u0307' ); // Ṩ, S + punto sotto + punto sopra
+=======
+let s1 = 'S\u0307\u0323'; // Ṩ, S + dot above + dot below
+let s2 = 'S\u0323\u0307'; // Ṩ, S + dot below + dot above
+>>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
 
-alert( 'S\u0307\u0323' == 'S\u0323\u0307' ); // false, different characters (?!)
+alert( `s1: ${s1}, s2: ${s2}` );
+
+alert( s1 == s2 ); // false though the characters look identical (?!)
 ```
 
 Per risolvere questo, esiste un algoritmo di "normalizzazione unicode" che porta ogni stringa alla forma "normale".

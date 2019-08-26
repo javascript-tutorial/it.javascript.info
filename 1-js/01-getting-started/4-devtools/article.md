@@ -51,11 +51,19 @@ Apri le Impostazioni e vai sul pannello "Avanzate". In basso troverai un'opzione
 
 Adesso tramite `key:Cmd+Opt+C` puoi attivare/disattivare la console. Inoltre noterai che un nuovo menu "Sviluppo" è apparso. Contiene molti comandi e opzioni.
 
+<<<<<<< HEAD
 ## Input multi-riga
 
 Solitamente, quando inseriamo una riga di codice nella console, e premiamo `key:Enter`, questa viene eseguita.
 
 Per poter inserire più righe di codice, è necessario premere `key:Shift+Enter`.
+=======
+```smart header="Multi-line input"
+Usually, when we put a line of code into the console, and then press `key:Enter`, it executes.
+
+To insert multiple lines, press `key:Shift+Enter`. This way one can enter long fragments of JavaScript code.
+```
+>>>>>>> 8c30654f694fe8682f5631809980be931ee4ed72
 
 ## Riepilogo
 
