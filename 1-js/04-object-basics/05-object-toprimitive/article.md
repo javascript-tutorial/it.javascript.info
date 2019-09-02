@@ -15,9 +15,13 @@ Nel capitolo <info:type-conversions> abbiamo visto le regole per quelle di tipo 
 
 Possiamo gestire la conversione numerica o a stringa, utilizzando dei metodi speciali dell'oggetto.
 
+<<<<<<< HEAD
 L'algoritmo di conversione si chiama `ToPrimitive` ([specification](https://tc39.github.io/ecma262/#sec-toprimitive)). In base al contesto, la conversione viene definita "hint" ("suggerimento").
 
 Ci sono tre varianti:
+=======
+There are three variants of type conversion, so-called "hints", described in the [specification](https://tc39.github.io/ecma262/#sec-toprimitive):
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 `"string"`
 : Un operazione di conversione oggetto a stringa, avviene quando un operazione si apetta una stringa, come `alert`:
@@ -66,11 +70,19 @@ Notate -- ci sono solo tre hint. Semplice. Non esiste alcuna conversione al tipo
 
 **Per eseguire la conversione JavaScript tenta di chiamare tre metodi dell'oggetto:**
 
+<<<<<<< HEAD
 1. Chiama `obj[Symbol.toPrimitive](hint)` se il metodo esiste,
 2. Altrimenti se "hint" è di tipo `"string"`
     - prova `obj.toString()` e `obj.valueOf()`, sempre se esistono.
 3. Altrimenti se "hint" è di tipo `"number"` o `"default"`
     - prova `obj.valueOf()` and `obj.toString()`, sempre se esistono.
+=======
+1. Call `obj[Symbol.toPrimitive](hint)` - the method with the symbolic key `Symbol.toPrimitive` (system symbol), if such method exists,
+2. Otherwise if hint is `"string"`
+    - try `obj.toString()` and `obj.valueOf()`, whatever exists.
+3. Otherwise if hint is `"number"` or `"default"`
+    - try `obj.valueOf()` and `obj.toString()`, whatever exists.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ## Symbol.toPrimitive
 
@@ -78,9 +90,15 @@ Iniziamo dal primo metodo. C'è un symbol integrato denominato `Symbol.toPrimiti
 
 ```js
 obj[Symbol.toPrimitive] = function(hint) {
+<<<<<<< HEAD
   // ritorna un valore primitivo
   // hint = uno fra "string", "number", "default"
 }
+=======
+  // must return a primitive value
+  // hint = one of "string", "number", "default"
+};
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 ```
 
 Ad esempio, qui `user` lo implementa:
@@ -138,7 +156,13 @@ alert(+user); // valueOf -> 1000
 alert(user + 500); // valueOf -> 1500
 ```
 
+<<<<<<< HEAD
 Spesso vogliamo un unico blocco che "catturi tutte" le conversioni a primitive. In questo caso possiamo implementare solamente `toString`:
+=======
+As we can see, the behavior is the same as the previous example with `Symbol.toPrimitive`.
+
+Often we want a single "catch-all" place to handle all primitive conversions. In this case, we can implement `toString` only, like this:
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ```js run
 let user = {
@@ -171,10 +195,15 @@ Invece, `Symbol.toPrimitive` *deve* ritornare un tipo primitivo, altrimenti ci s
 
 ## Ulteriori operazioni
 
+<<<<<<< HEAD
 Un operazione che richiede una conversione ottiene quella primitiva, e continua a lavorarci, applicando ulteriori conversioni se necessario.
+=======
+An operation that initiated the conversion gets the primitive, and then continues to work with it, applying further conversions if necessary.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Ad esempio:
 
+<<<<<<< HEAD
 - Operazioni matematiche (ad eccezioni per la somma binaria) eseguono una conversione `ToNumber`:
 
     ```js run
@@ -192,34 +221,62 @@ Ad esempio:
     Esempio con string:
     ```js run
     let obj = {
+=======
+- Mathematical operations, except binary plus, convert the primitive to a number:
+
+    ```js run
+    let obj = {
+      // toString handles all conversions in the absence of other methods
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
       toString() {
         return "2";
       }
     };
 
+<<<<<<< HEAD
     alert(obj + 2); // 22 (ToPrimitive ha ritornato string => concatenazione)
     ```
 
     Esempio numerico:
+=======
+    alert(obj * 2); // 4, object converted to primitive "2", then multiplication made it a number
+    ```
+
+- Binary plus will concatenate strings in the same situation:
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
     ```js run
     let obj = {
       toString() {
-        return true;
+        return "2";
       }
     };
 
+<<<<<<< HEAD
     alert(obj + 2); // 3 (ToPrimitive ha ritornato boolean, no string => ToNumber)
     ```
 
 ## Riepilogo
 
 La conversione oggetto-a-primitiva viene chiamata automaticamente da molte funzioni integrate e operatori che si aspettano valori primitivi.
+=======
+    alert(obj + 2); // 22 (conversion to primitive returned a string => concatenation)
+    ```
+
+## Summary
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Ce ne sono tre tipi (hint):
 - `"string"` (per `alert` e altre conversioni al tipo string)
 - `"number"` (per operazioni matematiche)
 - `"default"` (alcuni operatori)
 
+<<<<<<< HEAD
+=======
+There are 3 types (hints) of it:
+- `"string"` (for `alert` and other operations that need a string)
+- `"number"` (for maths)
+- `"default"` (few operators)
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Le specifiche descrivono esplicitamente quali operatori utilizzano quali hint. Ci sono veramente pochi operatori che "non sanno quali utilizzare" e quindi scelgono quello di `"default"`. Solitamente per gli oggetti integrati l'hint `"default"` si comporta nello stesso modo di quello di tipo `"number"`, quindi nella pratica questi ultimi due sono spesso uniti.
 

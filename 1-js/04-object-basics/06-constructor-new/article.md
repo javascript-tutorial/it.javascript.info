@@ -149,10 +149,17 @@ function BigUser() {
 
   this.name = "John";
 
+<<<<<<< HEAD
   return { name: "Godzilla" };  // <-- ritorna un oggetto
 }
 
 alert( new BigUser().name );  // Godzilla, preso l'oggetto ^^
+=======
+  return { name: "Godzilla" };  // <-- returns this object
+}
+
+alert( new BigUser().name );  // Godzilla, got that object
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 ```
 
 Qui invece abbiamo un esempio con un `return` vuoto (potremmo anche ritornare un qualsiasi valore di tipo primitivo):
@@ -162,10 +169,14 @@ function SmallUser() {
 
   this.name = "John";
 
+<<<<<<< HEAD
   return; // al termine dell'esecuzione, ritorna this
 
   // ...
 
+=======
+  return; // <-- returns this
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 }
 
 alert( new SmallUser().name );  // John
@@ -216,7 +227,13 @@ john = {
 */
 ```
 
+<<<<<<< HEAD
 ## Riepilogo
+=======
+To create complex objects, there's a more advanced syntax, [classes](info:classes), that we'll cover later.
+
+## Summary
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 - Le funzioni di costruzione, o meglio, i costruttori, solo delle normali funzioni, che seguono però una regola di accordo comune che prevede di denominarle con la prima lettera maiuscola.
 - Un costruttore dovrebbe essere chiamato solamente utilizzando `new`. Questo tipo di chiamata implica la creazione di un oggetto vuoto `this`, che verrà popolato entro la fine della funzione.

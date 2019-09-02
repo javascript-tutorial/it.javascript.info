@@ -70,7 +70,11 @@ L'oggetto Lexical Environment consiste di due parti:
 1. *Environment Record* -- un oggetto che contiene tutte le variabili locali e le relative proprietà (e alcune altre informazioni come il valore di  `this`).
 2. Un riferimento al *outer lexical environment* (lexical environment esterno).
 
+<<<<<<< HEAD
 **Quindi, una "variabile" è solamente una proprietà di questo speciale oggetto, l'`Environment Record`. "Per ottenere o modificare una variabile" si traduce in "per ottenere o modificare una variabile del Lexical Environment".**
+=======
+**A "variable" is just a property of the special internal object, `Environment Record`. "To get or change a variable" means "to get or change a property of that object".**
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Ad esempio, in questo semplice codice, esiste un solo Lexical Environment:
 
@@ -80,7 +84,11 @@ Questo viene anche chiamato global Lexical Environment (Lexical Environment glob
 
 Nella figura sopra, il rettangolo significa Environment Record, mentre la freccia indica il riferimento esterno. Il global Lexical Environment non possiede riferimenti esterni, quindi questo punta a `null`.
 
+<<<<<<< HEAD
 Qui vediamo una figura più grande sul funzionamento di `let`:
+=======
+And that's how it changes when a variable is defined and assigned:
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ![lexical environment](lexical-environment-global-2.svg)
 
@@ -109,11 +117,27 @@ Il codice sotto dimostra che il Lexical Environment inizialmente non è vuoto. C
 ![lexical environment](lexical-environment-global-3.svg)
 
 
+<<<<<<< HEAD
 ### Lexical Environment interno ed esterno
+=======
+![lexical environment](lexical-environment-global-3.svg)
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Durante la sua esecuzione, `say()` utilizza una variabile esterna, quindi proviamo ad analizzare più in dettaglio cosa sta succedendo.
 
+<<<<<<< HEAD
 Inizialmente, quando una funzione viene eseguita, viene creato un nuovo Lexical Environment per la funzione. Questa è una regola generale valida per tutte le funzioni. Questo Lexical Environment viene utilizzato per memorizzare le variabili locali e i parametri.
+=======
+### Inner and outer Lexical Environment
+
+Now let's go on and explore what happens when a function accesses an outer variable.
+
+During the call, `say()` uses the outer variable `phrase`, let's look at the details of what's going on.
+
+When a function runs, a new Lexical Environment is created automatically to store local variables and parameters of the call.
+
+For instance, for `say("John")`, it looks like this (the execution is at the line, labelled with an arrow):
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 <!--
     ```js
@@ -126,20 +150,38 @@ Inizialmente, quando una funzione viene eseguita, viene creato un nuovo Lexical 
     say("John"); // Hello, John
     ```-->
 
+<<<<<<< HEAD
 In questa figura vediamo il contenuto del Lexical Environments quando il flusso d'esecuzione si trova all0interno di `say("John")`, nella riga etichettata con la freccia:
+=======
+![lexical environment](lexical-environment-simple.svg)
+
+So, during the function call we have two Lexical Environments: the inner one (for the function call) and the outer one (global):
+
+- The inner Lexical Environment corresponds to the current execution of `say`.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ![lexical environment](lexical-environment-simple.svg)
  
 Durante la chiamata di funzione abbiamo due Lexical Environments: quello interno (relativo alla funzione) e quello esterno (globale):
 
+<<<<<<< HEAD
 - Il Lexical Environment interno che corrisponde all'esecuzione di `say`. Che possiede una sola variabile: `name`, che è l'unico argomento della funzione. Abbiamo invocato `say("John")`, quindi il valore di name `name` è `"John"`.
 - Il Lexical Environment esterno è quello globale.
 
 Il Lexical Environment interno ha un riferimento a quello esterno, memorizzato su `outer`.
+=======
+    It has `phrase` variable and the function itself.
+
+The inner Lexical Environment has a reference to the `outer` one.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 **Quando il codice vuole accedere ad una variabile -- come prima cosa la si cerca nel Lexical Environment interno, successivamente in quello esterno, poi in quello ancora più esterno e cosi via fino a quello più esterno.**
 
+<<<<<<< HEAD
  Se una variabile non viene trovata, si ha un errore in strict mode. Senza `use strict`, viene creata una variabile globale, per consentire la retro-compatibilità.
+=======
+If a variable is not found anywhere, that's an error in strict mode (without `use strict`, an assignment to a non-existing variable, like `user = "John"` creates a new global variable `user`, that's for backwards compatibility).
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Vediamo come procede la ricerca nel nostro esempio:
 
@@ -150,9 +192,15 @@ Vediamo come procede la ricerca nel nostro esempio:
 
 Ora possiamo dare una risposta alla prima domanda che ci siamo posti a inizio capitolo.
 
+<<<<<<< HEAD
 **Una funzione preleva le variabili esterne per come sono al momento; utilizza quindi il valore più recente.**
 
 Abbiamo descritto il meccanismo. Sappiamo che i vecchi valori di una variabile non sono salvati da nessuna parte. Quindi quando una funzione li richiede, riceve necessariamente il valore corrente, localmente oppure dal Lexical Environment esterno.
+=======
+**A function gets outer variables as they are now, it uses the most recent values.**
+
+Old variable values are not saved anywhere. When a function wants a variable, it takes the current value from its own Lexical Environment or the outer one.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Quindi la risposta alla prima domanda è `Pete`:
 
@@ -184,8 +232,13 @@ Da notare che un viene creato un nuovo Lexical Environment ad ogni esecuzione di
 Se una funzione viene chiamata più volte, allora ogni invocazione avrà il suo personale Lexical Environment, con variabili locali e parametri specifici per quell'esecuzione.
 ```
 
+<<<<<<< HEAD
 ```smart header="Lexical Environment è un oggetto definito dalla specifica"
 Il "Lexical Environment" è un oggetto definito sulle specifiche. Non possiamo prenderlo e manipolarlo direttamente. Il motore JavaScript potrebbe ottimizzarlo, scartando variabili inutilizzate per sfruttare al meglio la memoria e ottimizzare le prestazioni, ma il comportamento rimane quello descritto.
+=======
+```smart header="Lexical Environment is a specification object"
+"Lexical Environment" is a specification object: it only exists "theoretically" in the [language specification](https://tc39.es/ecma262/#sec-lexical-environments) to describe how things work. We can't get this object in our code and manipulate it directly. JavaScript engines also may optimize it, discard variables that are unused to save memory and perform other internal tricks, as long as the visible behavior remains as described.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 ```
 
 
@@ -299,11 +352,19 @@ alert( counter2() ); // 0 (independent)
 ```
 
 
+<<<<<<< HEAD
 Dovrebbe esservi abbastanza chiara la situazione delle variabili esterne. In alcune situazioni più complesse potrebbe essere necessaria un'analisi più profonda. Quindi andiamo più in profondità.
+=======
+Hopefully, the situation with outer variables is clear now. For most situations such understanding is enough. There are few details in the specification that we omitted for brevity. So in the next section we cover even more details.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ## Environment nel dettaglio
 
+<<<<<<< HEAD
 Ora che avete una maggiore conoscenza delle closure, possiamo scendere più in profondità.
+=======
+Here's what's going on in the `makeCounter` example step-by-step, follow it to make sure that you understand how it works in detail.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Qui analizziamo cosa succede nell'esempio `makeCounter` passo per passo, seguitelo attentamente per essere certi di comprenderne il funzionamento. Da notare un ulteriore proprietà `[[Environment]]` di cui non abbiamo ancora parlato.
 
@@ -313,21 +374,37 @@ Qui analizziamo cosa succede nell'esempio `makeCounter` passo per passo, seguite
 
     Inizialmente si ha solamente la funzione `makeCounter`, perché è una dichiarazione di funzione. Non ha ancora eseguito.
 
+<<<<<<< HEAD
     Tutte le funzioni "alla nascita" ricevono una proprietà nascosta `[[Environment]]` con un riferimento al Lexical Environment corrispondente. Non lo avevamo spiegato finora, ma questo è il meccanismo con cui viene collegata la funzione al rispettivo Lexical Environment.
+=======
+    **All functions "on birth" receive a hidden property `[[Environment]]` with a reference to the Lexical Environment of their creation.**
+
+    We didn't talk about it yet, that's how the function knows where it was made.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
     Qui, `makeCounter` viene creata nel Lexical Environment globale, quindi `[[Environment]]` contiene un riferimento a questo.
 
     In altre parole, una funzione viene marchiata con un riferimento al Lexical Environment di nascita. Inoltre `[[Environment]]` è una proprietà nascosta della funzione che mantiene questo riferimento.
 
+<<<<<<< HEAD
 2. Il codice prosegue nell'esecuzione, viene dichiarata una nuova variabile globale `counter` con valore `makeCounter()`. Nell'immagine vediamo il momento in cui l'esecuzione si trova nella prima riga di `makeCounter()`:
+=======
+2. The code runs on, the new global variable `counter` is declared and gets the result of `makeCounter()` call. Here's a snapshot of the moment when the execution is on the first line inside `makeCounter()`:
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
     ![](lexenv-nested-makecounter-2.svg)
 
     Quando viene invocata `makeCounter()`, viene creato un Lexical Environment, che dovrà memorizzare le variabili e gli argomenti.
 
+<<<<<<< HEAD
     Come tutti i Lexical Environment, memorizza due cose:
     1. Un Environment Record con le variabili locali. Nel nostro caso `count` è l'unica variabile locale (che apparirà nel momento in cui verrà eseguita la riga `let count`).
     2. Un riferimento al Lexical Environment esterno, che si trova su `[[Environment]]`. Nel nostro caso `[[Environment]]` di `makeCounter` contiene un riferimento al Lexical Environment globale.
+=======
+    As all Lexical Environments, it stores two things:
+    1. An Environment Record with local variables. In our case `count` is the only local variable (appearing when the line with `let count` is executed).
+    2. The outer lexical reference, which is set to the value of `[[Environment]]` of the function. Here `[[Environment]]` of `makeCounter` references the global Lexical Environment.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
     Quindi, ora abbiamo due Lexical Environment: il primo è quello globale, il secondo è relativo alla chiamata di `makeCounter`, con un riferimento esterno a quello globale.
 
@@ -347,6 +424,7 @@ Qui analizziamo cosa succede nell'esempio `makeCounter` passo per passo, seguite
 
     La funzione risultante possiede una sola riga di codice: `return count++`, che verrà eseguita solamente quando verrà invocata.
 
+<<<<<<< HEAD
 5. Quando viene invocata `counter()`, viene creato un Lexical Environment "vuoto". Non si hanno variabili locali. Solamente la proprietà `[[Environment]]` di `counter` viene utilizzata come riferimento esterno, quindi questa funzione ha accesso alle variabili di `makeCounter()` presenti al momento della creazione:
 
     ![](lexenv-nested-makecounter-5.svg)
@@ -354,6 +432,13 @@ Qui analizziamo cosa succede nell'esempio `makeCounter` passo per passo, seguite
     Ora se proviamo ad accedere ad una variabile, questa verrà prima cercata nel Lexical Environment locale (vuoto), successivamente si andrà a controllare il Lexical Environment esterno, quello relativo a `makeCounter()`, infine si guarderà quello globale.
 
     Mentre è alla ricerca di `count`, trova una corrispondenza nelle variabili di `makeCounter`, nel Lexical Environment esterno.
+=======
+5. When `counter()` is called, a new Lexical Environment is created for the call. It's empty, as `counter` has no local variables by itself. But the `[[Environment]]` of `counter` is used as the `outer` reference for it, that provides access to the variables of the former `makeCounter()` call where it was created:
+
+    ![](lexenv-nested-makecounter-5.svg)
+
+    Now when the call looks for `count` variable, it first searches its own Lexical Environment (empty), then the Lexical Environment of the outer `makeCounter()` call, where finds it.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
     Prestate attenzione a come funziona il gestore della memoria in questa situazione. Sebbene la chiama a `makeCounter()` si sia conclusa diverso tempo fa, il suo Lexical Environment è stato mantenuto in memoria, poiché una funzione annidata ne possiede un riferimento nella proprietà `[[Environment]]`.
 
@@ -362,14 +447,21 @@ Qui analizziamo cosa succede nell'esempio `makeCounter` passo per passo, seguite
 6. La chiamata a `counter()` non ritorna solamente il valore di `count`, ma provvede anche ad incrementarlo. Da notare che la modifica viene eseguita "sul posto". Il valore di `count` viene modificato esattamente nell'environment in cui è stato trovato.
 
     ![](lexenv-nested-makecounter-6.svg)
+<<<<<<< HEAD
 
     Quindi ritorniamo al passaggio precedente con un solo cambiamento -- il nuovo valore di `count`. Le chiamate successive faranno esattamente lo stesso.
+=======
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 7. La successiva invocazione a `counter()` fa la stessa cosa.
 
 La risposta alla seconda domanda ormai dovrebbe essere ovvia.
 
+<<<<<<< HEAD
 La funzione `work()` nel codice sopra utilizza `name` nel posto in cui la trova, seguendo i riferimenti al lexical environment esterno:
+=======
+The `work()` function in the code below gets `name` from the place of its origin through the outer lexical environment reference:
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ![](lexenv-nested-work.svg)
 
@@ -418,7 +510,13 @@ Ad esempio, quando `if` termina, la chiamata `alert` sotto non potrebbe accedere
 
 ## For, while
 
+<<<<<<< HEAD
 Per un ciclo, ogni iterazione possiede un Lexical Environment separato. Se una variabile viene dichiarata in un ciclo `for`, allora questa è locale solamente a quel Lexical Environment:
+=======
+### For, while
+
+For a loop, every iteration has a separate Lexical Environment. If a variable is declared in `for(let ...)`, then it's also in there:
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ```js run
 for (let i = 0; i < 10; i++) {
@@ -429,7 +527,11 @@ for (let i = 0; i < 10; i++) {
 alert(i); // Error, no such variable
 ```
 
+<<<<<<< HEAD
 In realtà c'è un eccezione, poichè `let i` è visibilmente all'esterno di `{...}`. In realtà ogni esecuzione del ciclo ha il suo Lexical Environment personale, in cui è contenuta anche la variabile `i`.
+=======
+Please note: `let i` is visually outside of `{...}`. The `for` construct is special here: each iteration of the loop has its own Lexical Environment with the current `i` in it.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Al termine del ciclo, `i` non sarà più visibile.
 
@@ -521,7 +623,11 @@ Ci sono anche altri modi per far capire a JavaScript che intendiamo utilizzare u
 }();
 ```
 
+<<<<<<< HEAD
 In tutti i casi sopra noi dichiariamo un espressione di funzione e la invochiamo immediatamente.
+=======
+In all the above cases we declare a Function Expression and run it immediately. Let's note again: nowadays there's no reason to write such code.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ## Garbage collection
 
@@ -538,7 +644,11 @@ Gli oggetti Lexical Environment di cui abbiamo parlato fino ad ora sono soggetti
     f();
     ```
 
+<<<<<<< HEAD
     Qui i due valori sono tecnicamente le proprietà dell'oggetto Lexical Environment. Al termine di `f()` il Lexical Environment diventa irraggiungibile, quindi viene rimosso dalla memoria.
+=======
+...But if there's a nested function that is still reachable after the end of `f`, then it has `[[Environment]]` property that references the outer lexical environment, so it's also reachable and alive:
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 - ...Ma se contiene una funzione annidata che risulta essere ancora raggiungibile al termine di `f`, allora il riferimento `[[Environment]]` mantiene il Lexical Environment esterno ancora in memoria:
 
@@ -553,8 +663,12 @@ Gli oggetti Lexical Environment di cui abbiamo parlato fino ad ora sono soggetti
     */!*
     }
 
+<<<<<<< HEAD
     let g = f(); // g is reachable, and keeps the outer lexical environment in memory
     ```
+=======
+Please note that if `f()` is called many times, and resulting functions are saved, then all corresponding Lexical Environment objects will also be retained in memory. All 3 of them in the code below:
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 - Da notare che se `f()` viene invocata più volte, e vengono memorizzate delle funzioni, allora anche i corrispondenti Lexical Environment vengono mantenuti in memoria. E' il caso dell'esempio qui sotto:
 
@@ -562,8 +676,15 @@ Gli oggetti Lexical Environment di cui abbiamo parlato fino ad ora sono soggetti
     function f() {
       let value = Math.random();
 
+<<<<<<< HEAD
       return function() { alert(value); };
     }
+=======
+// 3 functions in array, every one of them links to Lexical Environment
+// from the corresponding f() run
+let arr = [f(), f(), f()];
+```
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
     // 3 functions in array, every one of them links to Lexical Environment
     // from the corresponding f() run
@@ -592,7 +713,11 @@ Gli oggetti Lexical Environment di cui abbiamo parlato fino ad ora sono soggetti
 
 Come abbiamo visto, in teoria fino a che una funzione rimane viva, anche tutte le variabili esterne vengono mantenute in memoria.
 
+<<<<<<< HEAD
 Ma nella pratica, i motori JavaScript cercano di ottimizzare questa situazione. Monitorano l'utilizzo delle variabili, e se si rendono conto che una variabile esterna non verrà mai utilizzata, allora la rimuovono.
+=======
+But in practice, JavaScript engines try to optimize that. They analyze variable usage and if it's obvious from the code that an outer variable is not used -- it is removed.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 **Un importante effetto collaterale in V8 (Chrome, Opera) è che queste variabili non sono disponibili durante il debugging.**
 
@@ -605,7 +730,7 @@ function f() {
   let value = Math.random();
 
   function g() {
-    debugger; // in console: type alert( value ); No such variable!
+    debugger; // in console: type alert(value); No such variable!
   }
 
   return g;
@@ -626,7 +751,7 @@ function f() {
   let value = "the closest value";
 
   function g() {
-    debugger; // in console: type alert( value ); Surprise!
+    debugger; // in console: type alert(value); Surprise!
   }
 
   return g;

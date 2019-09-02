@@ -11,4 +11,3 @@ Se l'utente digita "ECMAScript", ritorna "Right!", altrimenti-- ritorna: "Didn't
 ![](ifelse_task2.svg)
 
 [demo src="ifelse_task2"]
-

@@ -53,7 +53,11 @@ Per abilitare completamente tutte le caratteristiche del moderno JavaScript, dov
 ...
 ```
 
+<<<<<<< HEAD
 La direttiva deve essere posta all'inizio di ogni script o all'inizio di una funzione.
+=======
+The directive must be at the top of a script or at the beginning of a function body.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Senza `"use strict"`, tutto continuerebbe a funzionare, ma alcune caratteristiche si comporterebbero in vecchio-stile, per retrocompatibilità. Generalmente si preferisce la modalità con i comportamenti moderni.
 
@@ -142,6 +146,7 @@ Aritmetici
 Assegnazione
 : Ci sono le assegnazioni semplici: `a = b` e quelle combinate `a *= 2`.
 
+<<<<<<< HEAD
 Bit a Bit
 : Gli operatori bit a bit funzionano con gli interi a livello di bit: guarda la [documentazione](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) se ne avrai bisogno.
 
@@ -150,6 +155,16 @@ Ternari
 
 Operatori logici
 : AND logico `&&` e OR `||` eseguono delle valutazioni locali e ritornano un valore quando si fermano. La negazione logica NOT `!` converte il valore a tipo booleano e ne ritorna l'inverso.
+=======
+Bitwise
+: Bitwise operators work with 32-bit integers at the lowest, bit-level: see the [docs](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) when they are needed.
+
+Conditional
+: The only operator with three parameters: `cond ? resultA : resultB`. If `cond` is truthy, returns `resultA`, otherwise `resultB`.
+
+Logical operators
+: Logical AND `&&` and OR `||` perform short-circuit evaluation and then return the value where it stopped (not necessary `true`/`false`). Logical NOT `!` converts the operand to boolean type and returns the inverse value.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Confronto
 : Confronto di uguaglianza `==` valori di tipi diversi vengono convertiti in numeri (ad eccezione di `null` e `undefined` che si eguagliano tra di loro e con nient'altro), quindi questi sono uguali:
@@ -245,12 +260,16 @@ Abbiamo studiato tre modi per creare funzioni in JavaScript:
       let result = a + b;
 
       return result;
-    }
+    };
     ```
 
+<<<<<<< HEAD
     Le espressioni di funzione possono avere un nome, come `sum = function name(a, b)`, questo `name` è visibile solamente all'interno della funzione.
 
 3. Funzione freccia:
+=======
+3. Arrow functions:
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
     ```js
     // espressione dalla parte destra
@@ -274,6 +293,7 @@ Abbiamo studiato tre modi per creare funzioni in JavaScript:
 - I parametri possono avere valori di default: `function sum(a = 1, b = 2) {...}`.
 - Le funzioni ritornano sempre qualcosa. Se non c'è nessuna istruzione `return`, allora il risultato `undefined`.
 
+<<<<<<< HEAD
 
 | Dichiarazione di Funzione | Espressione di Funzione |
 |----------------------|---------------------|
@@ -281,6 +301,9 @@ Abbiamo studiato tre modi per creare funzioni in JavaScript:
 |   - | può avere un nome, visibile solamente all'interno della funzione |
 
 Per più informazioni: vedi <info:function-basics>, <info:function-expressions-arrows>.
+=======
+Details: see <info:function-basics>, <info:function-expressions-arrows>.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ## C'è di più
 

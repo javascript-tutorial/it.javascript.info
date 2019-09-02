@@ -1,22 +1,40 @@
 
 # Oggetto globale
 
+<<<<<<< HEAD
 L'oggetto globale fornisce variabili e funzioni che sono accessibili in qualsiasi punto. Principalmente quelle integrate dal linguaggio o fornite dall'ambiente.
+=======
+The global object provides variables and functions that are available anywhere. By default, those that are built into the language or the environment.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 In un browser l'ambiente si chiama `window`, per Node.js viene detto `global`, negli altri ambienti si usano diversi termini.
 
+<<<<<<< HEAD
 Recentemente, è stato aggiunto al linguaggio `globalThis`, come nome standart per l'oggetto globale, il quale dovrebbe essere supportato da tutti gli ambienti. In alcuni browser, ad esempio Edge, `globalThis` non è ancora supportato.
+=======
+Recently, `globalThis` was added to the language, as a standardized name for a global object, that should be supported across all environments. In some browsers, namely non-Chromium Edge, `globalThis` is not yet supported, but can be easily polyfilled.
+
+We'll use `window` here, assuming that our environment is a browser. If your script may run in other environments, it's better to use `globalThis` instead.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Tutte le proprietà dell'oggetto globale possono essere raggiunte direttamente:
 
 ```js run
 alert("Hello");
+<<<<<<< HEAD
 
 // la stessa cosa
 window.alert("Hello");
 ```
 
 In un browserm le variabili globalo dichiarate con `var` diventano proprietà dell'oggetto globale:
+=======
+// is the same as
+window.alert("Hello");
+```
+
+In a browser, global functions and variables declared with `var` (not `let/const`!) become the property of the global object:
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ```js run untrusted refresh
 var gVar = 5;
@@ -24,9 +42,15 @@ var gVar = 5;
 alert(window.gVar); // 5 (diventa una proprietà dell'oggetto globale)
 ```
 
+<<<<<<< HEAD
 Non affidatevi a questo! Questo comportamento esiste solamente per retrocompatibilità. Gli script moderni utilizzano i moduli JavaScript, che si comportano in maniera differente. Li studieremo più avanti nel capitolo [](info:modules).
 
 Inoltre, la dichiarazione di variabili in stile moderno, tramite `let` e `const` non hanno questo tipo di comportamento:
+=======
+Please don't rely on that! This behavior exists for compatibility reasons. Modern scripts use [JavaScript modules](info:modules) where such thing doesn't happen.
+
+If we used `let` instead, such thing wouldn't happen:
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ```js run untrusted refresh
 let gLet = 5;
@@ -52,7 +76,11 @@ alert(currentUser.name);  // John
 alert(window.currentUser.name); // John
 ```
 
+<<<<<<< HEAD
 Detto ciò, l'utilizzo di variabili globali è da evitare. Dovrebbero esserci sempre il minor numero di varibili globali possibili. Il design del codice in cui una funzione richiede un `input` e ritorna un `output` risulta essere molto più chiaro, e molto meno propenso ad errori.
+=======
+That said, using global variables is generally discouraged. There should be as few global variables as possible. The code design where a function gets "input" variables and produces certain "outcome" is clearer, less prone to errors and easier to test than if it uses outer or global variables.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ## Utilizzo di polyfill
 

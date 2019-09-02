@@ -25,6 +25,7 @@ loadScript('/my/script.js');
 
 La funzione è chiamata "asincronamente", perché l'azione (il caricamento dello script) non finirà adesso ma in seguito.
 
+<<<<<<< HEAD
 La chiamata alla funzione da inizio al caricamento dello script, poi l'esecuzione continua. Mentre lo script sta caricando, il codice sotto potrebbe finire l'esecuzione, e se il caricamento richiede tempo, anche altri script potrebbero venire eseguiti nel frattempo.
 
 ```js
@@ -34,6 +35,18 @@ loadScript('/my/script.js');
 ```
 
 Ora diciamo che vogliamo eseguire il nuovo script quando carica. Probabilmente dichiarerà nuove funzioni, quindi vorremmo eseguirle.
+=======
+If there's a code below `loadScript(…)`, it doesn't wait until the loading finishes.
+
+```js
+loadScript('/my/script.js');
+// the code below loadScript
+// doesn't wait for the script loading to finish
+// ...
+```
+
+We'd like to use the new script as soon as it loads. It declares new functions, and we want to run them.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Ma se lo facciamo immediatamente dopo la chiamata `loadScript(…)` non funzionerebbe:
 
@@ -45,9 +58,13 @@ newFunction(); // nessuna funzione!
 */!*
 ```
 
+<<<<<<< HEAD
 Naturalmente, con buona probabilità il browser non ha avuto tempo di caricare lo script.
 Quindi la chiamata immediata alla nuova funzione fallirà. Allo stato attuale la funzione `loadScript` non prevede un modo di tracciare l'avvenuto caricamento.
 Lo script carica e poi viene eseguito, questo è quanto. Ma vorremmo sapere quando accade in modo da utilizzare nuove funzioni e variabili da quello script.
+=======
+Naturally, the browser probably didn't have time to load the script. As of now, the `loadScript` function doesn't provide a way to track the load completion. The script loads and eventually runs, that's all. But we'd like to know when it happens, to use new functions and variables from that script.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Aggiungiamo una funzione `callback` come secondo argomento a `loadScript` che dovrebbe essere eseguito una volta che lo script è stato caricato. 
 
@@ -224,6 +241,33 @@ Mano a mano che le chiamate diventano più annidate, il codice diventa più prof
 
 Questo viene chiamato "callback hell" o "pyramid of doom."
 
+<<<<<<< HEAD
+=======
+<!--
+loadScript('1.js', function(error, script) {
+  if (error) {
+    handleError(error);
+  } else {
+    // ...
+    loadScript('2.js', function(error, script) {
+      if (error) {
+        handleError(error);
+      } else {
+        // ...
+        loadScript('3.js', function(error, script) {
+          if (error) {
+            handleError(error);
+          } else {
+            // ...
+          }
+        });
+      }
+    })
+  }
+});
+-->
+
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 ![](callback-hell.svg)
 
 La "piramide" di chiamate annidate cresce verso destra per ogni azione asincrona. Presto la situazione sarà fuori controllo.

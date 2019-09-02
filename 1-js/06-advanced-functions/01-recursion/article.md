@@ -96,7 +96,11 @@ function pow(x, n) {
 
 Il massimo numero di chiamate annidate (inclusa la prima) viene chiamato *profondità di ricorsione*. Nel nostro caso, sarà esattamente `n`.
 
+<<<<<<< HEAD
 La massima profondità di ricorsione viene limitata dal motore JavaScript. Possiamo farne all'incirca 10000, alcuni motori ne consentono un numero maggiore, ma 100000 probabilmente è al di fuori del limite di qualsiasi motore. Ci sono delle ottimizzazioni automatiche ("ottimizzazione della chiamate in coda"), ma nono sono ancora supportate da tutti e funzionano solo in casi semplici.
+=======
+The maximal recursion depth is limited by JavaScript engine. We can rely on it being 10000, some engines allow more, but 100000 is probably out of limit for the majority of them. There are automatic optimizations that help alleviate this ("tail calls optimizations"), but they are not yet supported everywhere and work only in simple cases.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Questo fattore limita le possibili applicazioni della ricorsione, che rimangono comunque molte. Ci sono molte attività che possono essere semplificati tramite la ricorsione, rendendo i programmi più mantenibili.
 
@@ -324,18 +328,31 @@ In altre parole, un'azienda ha dei dipartimenti.
 
 Ora ipotizziamo di volere una funzione per ottenere la somma di tutti i salari. Come possiamo farlo?
 
+<<<<<<< HEAD
 Un approccio iterativo potrebbe non essere cosi semplice, poiché la struttura stessa non è semplice. La prima idea potrebbe essere quella di utilizzare un ciclo `for` su `company` con un sotto-ciclo annidato sul primo livello annidato dei dipartimenti. Ma ora abbiamo bisogno di ulteriori sotto-cicli annidati per poter iterare su un livello ulteriormente inferiore di staff, come ad esempio `sites`. ...E poi un ulteriore sotto-ciclo per il successivo livello di annidamento che potrebbe potenzialmente apparire in futuro. Potrebbero però esserci ulteriori livelli di annidamento, quindi inserire una serie di cicli annidati darebbe come risultato un pessimo codice.
+=======
+An iterative approach is not easy, because the structure is not simple. The first idea may be to make a `for` loop over `company` with nested subloop over 1st level departments. But then we need more nested subloops to iterate over the staff in 2nd level departments like `sites`... And then another subloop inside those for 3rd level departments that might appear in the future? If we put 3-4 nested subloops in the code to traverse a single object, it becomes rather ugly.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Proviamo con la ricorsione.
 
 Come possiamo vedere, quando la nostra funzione richiede la somma dei salari di un dipartimento, ci sono due casi possibili:
 
+<<<<<<< HEAD
 1. Siamo in caso "semplice" in cui il dipartimento contiene solamente *array di persone* -- allora possiamo semplicemente sommare i salari con un ciclo.
 2. Siao nel caso *un oggetto con `N` sotto-dipartimenti* -- allora possiamo eseguire `N` chiamate ricorsive per ottenere la somma dei vari sotto-dipartimenti e combinarle per ottenere il risultato finale.
 
 Il caso base è (1), è banale.
 
 Il passo ricorsivo è (2). Un problema complesso può essere diviso in sotto-problemi composti da dipartimenti. Questi potrebbero essere ulteriormente divisi, ma prima o poi ci troveremo nel caso base (1).
+=======
+1. Either it's a "simple" department with an *array* of people -- then we can sum the salaries in a simple loop.
+2. Or it's *an object* with `N` subdepartments -- then we can make `N` recursive calls to get the sum for each of the subdeps and combine the results.
+
+The 1st case is the base of recursion, the trivial case, when we get an array.
+
+The 2nd case when we get an object is the recursive step. A complex task is split into subtasks for smaller departments. They may in turn split again, but sooner or later the split will finish at (1).
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 L'algoritmo probabilmente è più intuibile leggendone il codice:
 

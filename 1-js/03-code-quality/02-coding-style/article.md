@@ -26,7 +26,7 @@ let n = prompt("n?", "");
 
 if (n < 0) {
   alert(`Power ${n} is not supported,
-    please enter an integer number, greater than 0`);
+    please enter a non-negative integer number`);
 } else {
   alert( pow(x, n) );
 }
@@ -56,21 +56,27 @@ Un caso limite è un costrutto con una singola linea. Dovremmo comunque usare le
 
 Qui ci sono un paio di varianti, cosi potete giudicare voi stessi:
 
-<!--
-```js no-beautify
-if (n < 0) {alert(`Power ${n} is not supported`);}
+1. 😠 Beginners sometimes do that. Bad! Curly braces are not needed:
+    ```js
+    if (n < 0) *!*{*/!*alert(`Power ${n} is not supported`);*!*}*/!*
+    ```
+2. 😠 Split to a separate line without braces. Never do that, easy to make an error when adding new lines:
+    ```js
+    if (n < 0)
+      alert(`Power ${n} is not supported`);
+    ```
+3. 😏 One line without braces - acceptable, if it's short:
+    ```js
+    if (n < 0) alert(`Power ${n} is not supported`);
+    ```
+4. 😃 The best variant:
+    ```js
+    if (n < 0) {
+      alert(`Power ${n} is not supported`);
+    }
+    ```
 
-if (n < 0) alert(`Power ${n} is not supported`);
-
-if (n < 0)
-  alert(`Power ${n} is not supported`);
-
-if (n < 0) {
-  alert(`Power ${n} is not supported`);
-}
-```
--->
-![](figure-bracket-style.png)
+For a very brief code, one line is allowed, e.g. `if (cond) return null`. But a code block (the last variant) is usually more readable.
 
 In sintesi:
 - Per codici molto brevi, una sola riga è accettabile. Ad esempio:  `if (cond) return null`.
@@ -88,9 +94,15 @@ Ci sono due tipi di indentazione:
 
 - **Indentazione orizzontale: 2 o 4 spazi.**
 
+<<<<<<< HEAD
     Un indentazione orizzontale è realizzata usando 2 o 4 spazi oppure il tasto "Tab". Quale scegliere è una guerra che dura da anni. Ad oggi gli spazi sono i più comuni.
 
     Un vantaggio degli spazi contro i tabs è che gli spazi permettono configurazioni più flessibili.
+=======
+    A horizontal indentation is made using either 2 or 4 spaces or the horizontal tab symbol (key `key:Tab`). Which one to choose is an old holy war. Spaces are more common nowadays.
+
+    One advantage of spaces over tabs is that spaces allow more flexible configurations of indents than the tab symbol.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
     Ad esempio, possiamo allineare gli argomenti con l'apertura della parentesi, come qui:
 
@@ -135,7 +147,11 @@ Quando diventerete più maturi come programmatori, potreste scegliere lo stile s
 
 Nel codice vanno evitati elevati liveeli di annidamento.
 
+<<<<<<< HEAD
 Qualche volta torna utile la direttiva ["continue"](info:while-for#continue) per evitare annidamenti extra.
+=======
+For example, in the loop, it's sometimes a good idea to use the [`continue`](info:while-for#continue) directive to avoid extra nesting.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Ad esempio, invece che aggiungere un `if`:
 
@@ -253,7 +269,11 @@ Questo perché quando leggiamo il codice vogliamo prima di tutto sapere *cosa fa
 
 ## Guida di stile
 
+<<<<<<< HEAD
 Una guida di stile contiene  regole generali riguardo a "come scrivere" il codice, ad esempio quali apici utilizzare, di quanti spazi indentare, quando andare a capo, etc. Molti altri dettagli.
+=======
+A style guide contains general rules about "how to write" code, e.g. which quotes to use, how many spaces to indent, the maximal line length, etc. A lot of minor things.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Quando tutti i membri del team utilizzano lo stesso stile tende ad essere uniforme.
 

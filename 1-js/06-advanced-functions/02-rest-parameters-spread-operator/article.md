@@ -8,7 +8,11 @@ Ad esempio:
 - `Object.assign(dest, src1, ..., srcN)` -- copia le proprietà da `src1..N` in `dest`.
 - ...e molto altro.
 
+<<<<<<< HEAD
 In questo capitolo impareremo come farlo. Ma soprattutto, impareremo come utilizzare al meglio questo tipo di funzioni.
+=======
+In this chapter we'll learn how to do the same. And also, how to pass arrays to such functions as parameters.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ## Parametri resto `...`
 
@@ -25,7 +29,11 @@ alert( sum(1, 2, 3, 4, 5) );
 
 In questo caso non ci saranno errori dovuti "all'eccesso" di argomenti. Ma ovviamente il risultato terrò conto solamente dei primi due.
 
+<<<<<<< HEAD
 I parametri restanti possono essere menzionati nella definizione di una funzione con i tre punti `...`. Che significano letteralmente "raccogli gli altri parametri in un array".
+=======
+The rest of the parameters can be included in the function definition by using three dots `...` followed by the name of the array that will contain them. The dots literally mean "gather the remaining parameters into an array".
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Ad esempio, per raccogliere tutti gli argomenti in un array `args`:
 
@@ -96,9 +104,13 @@ showName("Julius", "Caesar");
 showName("Ilya");
 ```
 
+<<<<<<< HEAD
 Agli inizi, i parametri resto non esistevano nel linguaggio, e si utilizzava `arguments` per ottenere tutti gli argomenti di una funzione.
 
 Questa funzionalità ovviamente è ancora presente, possiamo quindi utilizzarla.
+=======
+In old times, rest parameters did not exist in the language, and using `arguments` was the only way to get all arguments of the function. And it still works, we can find it in the old code.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Il lato negativo è che `arguments` è un oggetto simil-array iterabile, non è un array puro. Non supporta quindi i metodi dedicati agli array, come ad esempio `arguments.map(...)`.
 
@@ -119,9 +131,14 @@ function f() {
 
 f(1); // 1
 ```
+
+<<<<<<< HEAD
+In sostanza, le funzioni freccia non hanno un proprio `this`. Ora sappiamo anche che non possiedono nemmeno l'oggetto `arguments`.
+=======
+As we remember, arrow functions don't have their own `this`. Now we know they don't have the special `arguments` object either.
 ````
 
-In sostanza, le funzioni freccia non hanno un proprio `this`. Ora sappiamo anche che non possiedono nemmeno l'oggetto `arguments`.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ## Operatore di espansione [#spread-operator]
 

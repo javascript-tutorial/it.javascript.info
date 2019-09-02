@@ -17,7 +17,11 @@ while (condition) {
 }
 ```
 
+<<<<<<< HEAD
 Fino a che la `condition` è `true`, il `code` dal corpo del ciclo viene eseguito.
+=======
+While the `condition` is truthy, the `code` from the loop body is executed.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Ad esempio, il ciclo qui sotto stampa `i` fino a che `i < 3`:
 
@@ -84,7 +88,11 @@ Questa tipo di sintassi viene usata molto raramente ad eccezione dei casi in cui
 
 ## Il ciclo "for" 
 
+<<<<<<< HEAD
 Il ciclo `for` è spesso il più utilizzato.
+=======
+The `for` loop is more complex, but it's also the most commonly used loop.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 La sua forma è del tipo:
 
@@ -106,10 +114,20 @@ Esaminiamo l'istruzione `for` parte per parte:
 
 | Parte |          |                                                                            |
 |-------|----------|----------------------------------------------------------------------------|
+<<<<<<< HEAD
 | begin | `i = 0`    | Viene eseguito una volta all'entrata nel ciclo.                          |
 | condition | `i < 3`| Viene controllata prima di ogni iterazione del ciclo, se fallisce il ciclo si interrompe.|
 | step| `i++`      | Viene eseguito prima del corpo ad ogni iterazione, ma dopo il controllo della condizione.|
 | body | `alert(i)`| Viene eseguito fino a che vale la condizione.
+=======
+| begin | `i = 0`    | Executes once upon entering the loop.                                      |
+| condition | `i < 3`| Checked before every loop iteration. If false, the loop stops.              |
+| body | `alert(i)`| Runs again and again while the condition is truthy.                         |
+| step| `i++`      | Executes after the body on each iteration. |
+
+The general loop algorithm works like this:
+
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 ```
 Eseguiamo begin
 → (if condition → run body and run step)
@@ -118,7 +136,13 @@ Eseguiamo begin
 → ...
 ```
 
+<<<<<<< HEAD
 Se i cicli vi sono nuovi, allora forse vi sarà d'aiuto tornare indietro agli esempi e provare a riprodurli passo-passo su un foglio di carta.
+=======
+That is, `begin` executes once, and then it iterates: after each `condition` test, `body` and `step` are executed.
+
+If you are new to loops, it could help to go back to the example and reproduce how it runs step-by-step on a piece of paper.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Questo è quello che succede esattamente nel nostro codice:
 
@@ -286,8 +310,12 @@ if (i > 5) {
 (i > 5) ? alert(i) : *!*continue*/!*; // continue non è consentito qui
 ```
 
+<<<<<<< HEAD
 ...Questo smetterà di funzionare. Codice scritto cosi vi darà un errore di sintassi:
 
+=======
+...it stops working: there's a syntax error.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Questa è solo un'altra ragione per cui non utilizzare l'operatore ternario `?` piuttosto che `if`.
 ````
@@ -296,7 +324,11 @@ Questa è solo un'altra ragione per cui non utilizzare l'operatore ternario `?` 
 
 Qualche volta abbiamo bisogno di uscire da una serie di cicli annidati in un colpo solo.
 
+<<<<<<< HEAD
 Ad esempio, nel codice sotto cicliamo su `i` e `j` eseguendo prompt sulle coordinate `(i, j)` da `(0,0)` a `(3,3)`:
+=======
+For example, in the code below we loop over `i` and `j`, prompting for the coordinates `(i, j)` from `(0,0)` to `(2,2)`:
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 ```js run no-beautify
 for (let i = 0; i < 3; i++) {
@@ -305,8 +337,12 @@ for (let i = 0; i < 3; i++) {
 
     let input = prompt(`Value at coords (${i},${j})`, '');
 
+<<<<<<< HEAD
     // come potremmo fare per uscire di qui e proseguire verso Done (sotto)?
 
+=======
+    // what if we want to exit from here to Done (below)?
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
   }
 }
 
@@ -357,12 +393,21 @@ for (let i = 0; i < 3; i++) { ... }
 
 Anche la direttiva `continue` può essere utilizzata con un'etichetta. In questo caso l'esecuzione salta alla prossima iterazione del ciclo con quell'etichetta.
 
+<<<<<<< HEAD
 ````warn header="Label non equivalgono a \"goto\""
 Le Label non permettono di saltare in un punto arbitrario del codice.
+=======
+````warn header="Labels do not allow to \"jump\" anywhere"
+Labels do not allow us to jump into an arbitrary place in the code.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Ad esempio, non è possibile fare:
 ```js
+<<<<<<< HEAD
 break label;  // salta a label? No.
+=======
+break label; // doesn't jumps to the label below
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 label: for (...)
 ```

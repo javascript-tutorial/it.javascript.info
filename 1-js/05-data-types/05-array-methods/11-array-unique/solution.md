@@ -36,4 +36,8 @@ Quindi se `arr.length` è `10000` avremmo qualcosa come `10000*10000` = 100 mili
 
 Quindi la soluzione funziona bene solo con array di piccola taglia.
 
+<<<<<<< HEAD
 Più avanti nel capitolo <info:map-set-weakmap-weakset> vedremo come ottimizare questo metodo.
+=======
+Further in the chapter <info:map-set> we'll see how to optimize it.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927

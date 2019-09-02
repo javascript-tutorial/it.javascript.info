@@ -10,7 +10,7 @@ Ci sono anche casi in cui è necessario convertire esplicitamente i valori per p
 In questo capitolo non parleremo ancora di oggetti. Ci dedicheremo ai tipi primitivi. Successivamente, dopo aver capito gli oggetti, capire come funziona la conversione di oggetti, nel capitolo <info:object-toprimitive>.
 ```
 
-## ToString
+## To String
 
 La conversione in stringa è utile quando abbiamo bisogno del formato stringa di un valore.
 
@@ -30,7 +30,7 @@ alert(typeof value); // string
 
 La conversione in stringa è quella più ovvia. Il valore `false` diventa la stringa `"false"`, mentre `null` diventa `"null"` etc.
 
-## ToNumber
+## To Number
 
 La conversione numerica viene applicata automaticamente nelle funzioni ed espressioni matematiche.
 
@@ -94,7 +94,7 @@ alert( '1' + 2 ); // '12' (string to the left)
 Questo accade solo quando almeno uno degli argomenti è di tipo stringa. Altrimenti, i valori vengono convertiti in numeri
 ````
 
-## ToBoolean
+## To Boolean
 
 La conversione booleana è quella più semplice.
 
@@ -129,9 +129,15 @@ alert( Boolean(" ") ); // spazi, valgono true (qualsiasi stringa non buota viene
 
 I tre tipi di conversioni più utilizzati sono: a *string*, a *number* e a *boolean*.
 
+<<<<<<< HEAD
 **`ToString`** -- Avviene quando stampiamo qualcosa a schermo, può essere richiamato con `String(value)`. La conversione a stringa è solitamente ovvia per i valore primitivi.
 
 **`ToNumber`** -- Utilizzata nelle operazioni matematiche, può essere richiamata esplicitamente con `Number(value)`.
+=======
+**`To String`** -- Occurs when we output something. Can be performed with `String(value)`. The conversion to string is usually obvious for primitive values.
+
+**`To Number`** -- Occurs in math operations. Can be performed with `Number(value)`.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 La conversione segue le seguenti regole:
 
@@ -142,7 +148,11 @@ La conversione segue le seguenti regole:
 |<code>true&nbsp;/&nbsp;false</code> | `1 / 0` |
 | `string` | La stringa viene letta per "com'è", gli spazi bianchi agli estremi vengono ignorati. Una stringa vuota diventa `0`. Un errore restituisce `NaN`. |
 
+<<<<<<< HEAD
 **`ToBoolean`** -- Avviene nelle operazioni logiche, può anche essere richiamato esplicitamente con `Boolean(value)`.
+=======
+**`To Boolean`** -- Occurs in logical operations. Can be performed with `Boolean(value)`.
+>>>>>>> c4d1987ebc470b30c234dbde6fac6e77b7509927
 
 Segue le regole:
 
