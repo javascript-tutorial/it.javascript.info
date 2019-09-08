@@ -218,6 +218,7 @@ Per i symbol globali, non esiste solo `Symbol.for(key)` per accedere ad un symbo
 Ad esempio:
 
 ```js run
+// get symbol by name
 let sym = Symbol.for("name");
 let sym2 = Symbol.for("id");
 
@@ -228,12 +229,18 @@ alert( Symbol.keyFor(sym2) ); // id
 
 La funzione `Symbol.keyFor` internamente utilizza il registro globale dei symbol per cercare la chiave del symbol. Quindi non avrà alcun effetto per symbol non globali. Se gli viene passato un symbol non globale, non sarà in grado di trovarlo e ritornerà `undefined`.
 
+Questo significa che ogni symbol possiede una proprietà `description`.
+
 Ad esempio:
 
 ```js run
-alert( Symbol.keyFor(Symbol.for("name")) ); // name, è un symbol globale
+let globalSymbol = Symbol.for("name");
+let localSymbol = Symbol("name");
 
-alert( Symbol.keyFor(Symbol("name2")) ); // undefined, l'argomento non è un symbol globale
+alert( Symbol.keyFor(globalSymbol) ); // name, global symbol
+alert( Symbol.keyFor(localSymbol) ); // undefined, non global
+
+alert( localSymbol.description ); // name
 ```
 
 ## Sistemi per symbol

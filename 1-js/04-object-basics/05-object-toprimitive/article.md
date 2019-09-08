@@ -175,7 +175,7 @@ Un operazione che richiede una conversione ottiene quella primitiva, e continua 
 
 Ad esempio:
 
-- Operazioni matematiche (ad eccezioni per la somma binaria) eseguono una conversione `ToNumber`:
+- Operazioni matematiche (eccezione per la somma binaria) eseguono una conversione numerica:
 
     ```js run
     let obj = {
@@ -200,20 +200,7 @@ Ad esempio:
     alert(obj + 2); // 22 (ToPrimitive ha ritornato string => concatenazione)
     ```
 
-    Esempio numerico:
-    ```js run
-    let obj = {
-      toString() {
-        return true;
-      }
-    };
-
-    alert(obj + 2); // 3 (ToPrimitive ha ritornato boolean, no string => ToNumber)
-    ```
-
 ## Riepilogo
-
-La conversione oggetto-a-primitiva viene chiamata automaticamente da molte funzioni integrate e operatori che si aspettano valori primitivi.
 
 Ce ne sono tre tipi (hint):
 - `"string"` (per `alert` e altre conversioni al tipo string)

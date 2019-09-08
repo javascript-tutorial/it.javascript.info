@@ -1,6 +1,6 @@
 # Hello, world!
 
-Il seguente tutorial tratta del core (nucleo) JavaScript, che è indipendente dalla piattaforma. Inoltre, più avanti, imparerai Node.js e altre piattaforme che ne fanno utilizzo.
+Il seguente tutorial tratta del core (nucleo) JavaScript, che è indipendente dalla piattaforma.
 
 Abbiamo bisogno di un ambiente di lavoro per eseguire i nostri script, e il fatto che questo libro sia online, rende il browser un ottima scelta. Cercheremo di mantenere al minimo l'utilizzo dei comandi specifici per browser (come `alert`), cosi non dovrai perdere la testa se deciderai di spostarti in altri ambienti come Node.JS. In ogni caso, i dettagli browser vengono spiegati in dettaglio nella [prossima parte](/ui) del tutorial.
 
@@ -45,12 +45,6 @@ Il tag `<script>` ha un paio di attributi che vengono utilizzati raramente, ma �
 
  L'attributo `type`: <code>&lt;script <u>type</u>=...&gt;</code>
 
- : Il vecchio standard HTML4 richiedeva che ogni script avesse un `type` (tipo). Solitamente era `type="text/javascript"`. Ora non è più richiesto. Infatti, i nuobi standard hanno completamente cambiato il significato di questo attributo. Adesso viene utilizzato per i moduli JavaScript. Questo è un argomento avanzato e ne parleremo più avanti in un'altra parte del tutorial.
-
- L'attributo `language`: <code>&lt;script <u>language</u>=...&gt;</code>
-  : Questo attributo intendeva mostrare il linguaggio dello script. Questo attributo ormai non ha più signigicato, poichè JavaScript è il linguaggio di default. Non è necessario utilizzarlo.
-
-Commenti prima e dopo lo script.
 : Nei più vecchi libri, è possibile trovare un commento all'interno dell'elemento `<script>`, come segue:
 
     ```html no-beautify

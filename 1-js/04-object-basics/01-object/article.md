@@ -104,7 +104,6 @@ Questo perché il punto richiede che la chiave sia un identificatore valido. Un 
 
 Esiste una "notazione con parentesi quadre", per aggirare questo vincolo:
 
-
 ```js run
 let user = {};
 
@@ -145,6 +144,17 @@ let key = prompt("What do you want to know about the user?", "name");
 alert( user[key] ); // John (se si inserisce "name")
 ```
 
+The dot notation cannot be used in a similar way:
+
+```js run
+let user = {
+  name: "John",
+  age: 30
+};
+
+let key = "name";
+user.key // undefined
+```
 
 ### Proprietà calcolate
 
@@ -223,7 +233,7 @@ Questa può diventare una situazione vulnerabile se abbiamo intenzione di memori
 In questo caso il visitatore potrebbe scegliere "__proto__" come chiave, e l'assegnazione verrebbe rovinata (come abbiamo visto sopra).
 
 C'è un modo per trattare `__proto__` come una prorietà, lo vederemo più avanti, prima abbiamo bisogno di conoscere meglio gli oggetti.
-C'è un ulteriore struttura dati [Map](info:map-set-weakmap-weakset), che apprenderemo nel capitolo <info:map-set-weakmap-weakset>, che supporta chiavi arbitrarie.
+C'è un ulteriore struttura dati [Map](info:map-set), che apprenderemo nel capitolo <info:map-set>, che supporta chiavi arbitrarie.
 ````
 
 

@@ -320,7 +320,7 @@ I browser moderni e JavaScript minimizzano ed ottimizzano il codice abbastanza b
 
 Possiamo dichiarare variabili per memorizzare dati. Possono essere dichiarate con `var`,`let` o `const`.
 
-- `let` -- è una dichiarazione delle variabili più moderna. Il codice deve essere in modalità strict per utilizzare `let` in Chrome (V8).
+- `let` -- è una dichiarazione delle variabili più moderna.
 - `var` -- è una dichiarazione delle variabili più vecchia-scuola. Normalmente non si dovrebbe utilizzare, spiegheremo le sottili differenze da `let` nel capitolo <info:var>, giusto per esserne a conoscenza.
 - `const` -- è simile a `let`, ma non consente di cambiare il valore della variabile.
 
