@@ -70,7 +70,7 @@ pow(x, n) =
 
 Possiamo anche dire che `pow` *chiama ricorsivamente se stessa* finché non vale `n == 1`.
 
-![recursive diagram of pow](recursion-pow.png)
+![recursive diagram of pow](recursion-pow.svg)
 
 
 Ad esempio, per calcolare `pow(2, 4)` la variante ricorsiva esegue:
@@ -371,7 +371,7 @@ Il codice è più breve e facile da capire. Questo è il potere della ricorsione
 
 Vediamo un diagramma delle chiamate:
 
-![recursive salaries](recursive-salaries.png)
+![recursive salaries](recursive-salaries.svg)
 
 Possiamo vedere il principio di base: per un oggetto `{...}` vengono effettuate le sotto-chiamate, mentre un array `[...]` fornisce direttamente un risultato.
 
@@ -442,7 +442,7 @@ let list = {
 
 La rappresentazione grafica della linked list:
 
-![linked list](linked-list.png)
+![linked list](linked-list.svg)
 
 Un codice alternativo per la creazione:
 
@@ -462,7 +462,7 @@ let secondList = list.next.next;
 list.next.next = null;
 ```
 
-![linked list split](linked-list-split.png)
+![linked list split](linked-list-split.svg)
 
 Per ricomporre la lista:
 
@@ -486,7 +486,7 @@ list = { value: "new item", next: list };
 */!*
 ```
 
-![linked list](linked-list-0.png)
+![linked list](linked-list-0.svg)
 
 Per rimuovere un elemento al centro, modifichiamo il campo `next` di quello precedente:
 
@@ -494,7 +494,7 @@ Per rimuovere un elemento al centro, modifichiamo il campo `next` di quello prec
 list.next = list.next.next;
 ```
 
-![linked list](linked-list-remove-1.png)
+![linked list](linked-list-remove-1.svg)
 
 Abbiamo modificato `list.next` da `1` a `2`. Il valore `1` è ora escluso dalla lista. Se non è stato memorizzato in nessun'altra parte del codice, questo verrà automaticamente rimosso dalla memoria.
 

@@ -16,7 +16,7 @@ La passoword viene controllata con le seguenti regole:
 
 Lo schema:
 
-![](ifelse_task.png)
+![](ifelse_task.svg)
 
 Utilizzate blocchi `if` annidati. Tenete a mente anche la leggibilità del codice.
 

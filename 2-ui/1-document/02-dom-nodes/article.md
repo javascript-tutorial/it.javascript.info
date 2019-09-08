@@ -9,6 +9,7 @@ libs:
 La struttura portante di un documento HTML è rappresentata dai tags
 <!-- The backbone of an HTML document are tags. -->
 
+<<<<<<< HEAD
 Secondo il Document Object Model (DOM), ogni tag HTML è un oggetto. I tags annidati vengono chiamati "figli" del tag che li racchiude.
 <!-- According to Document Object Model (DOM), every HTML-tag is an object. Nested tags are called "children" of the enclosing one. -->
 
@@ -17,11 +18,32 @@ Il testo contenuto nel tag è anch'esso un'oggetto.
 
 Tutti questi oggetti sono accessibili usando JavaScript
 <!-- All these objects are accessible using JavaScript. -->
+=======
+According to Document Object Model (DOM), every HTML-tag is an object. Nested tags are  "children" of the enclosing one. The text inside a tag it is an object as well.
+
+All these objects are accessible using JavaScript, we can use them to modify the page.
+
+For example, `document.body` is the object representing `<body>` tag.
+
+Running this code will make the `<body>` red for 3 seconds:
+
+```js run
+document.body.style.background = 'red'; // make the background red
+
+setTimeout(() => document.body.style.background = '', 3000); // return back
+```
+
+That was just a glimpse of DOM power. Soon we'll learn more ways to manipulate DOM, but first we need to know about its structure.
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 ## Un esempio di DOM
 
+<<<<<<< HEAD
 Per esempio, analizziamo il DOM di questo documento:
 <!-- For instance, let's explore the DOM for this document: -->
+=======
+Let's start with the following simple docment:
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 ```html run no-beautify
 <!DOCTYPE HTML>
@@ -49,7 +71,13 @@ drawHtmlTree(node1, 'div.domtree', 690, 320);
 Nella figura qui sopra è possibile cliccare sui nodi e i rispettivi figli si apriranno/chiuderanno.
 ```
 
+<<<<<<< HEAD
 I tag sono chiamati *nodi elemento* (o semplicemente elementi). I tag annidati diventano figli dei tag che li contengono. Come risultato abbiamo un albero di elementi: `<html>` è alla radice, abbiamo poi `<head>` e `<body>` che sono i suoi figli, etc.
+=======
+Every tree node is an object.
+
+Tags are *element nodes* (or just elements), they form the tree structure: `<html>` is at the root, then `<head>` and `<body>` are its children, etc.
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 Il testo all'interno degli elementi forma dei *nodi testuali*, etichettati come `#text`. Un nodo di testo contiene solo una stringa. Potrebbe non avere figli ed è sempre una foglia dell'albero.
 
@@ -60,7 +88,11 @@ Fai caso ai caratteri speciali nei nodi di testo:
 - il ritorno a capo: `↵` (conosciuto in JavaScript come `\n`)
 - lo spazio: `␣`
 
+<<<<<<< HEAD
 Spazi e ritorni a capo sono caratteri assolutamente validi, costituiscono nodi testuali e diventano parte del DOM. Ad esempio, nel caso precedente, il tag `<head>` contiene alcuni spazi prima del `<title>`, e quel testo diventa un nodo `#text` (contiene un ritorno a capo e alcuni spazi).
+=======
+Spaces and newlines -- are totally valid characters, like letters and digits. They form text nodes and become a part of the DOM. So, for instance, in the example above the `<head>` tag contains some spaces before `<title>`, and that text becomes a `#text` node (it contains a newline and some spaces only).
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 Esistono solo due particolari eccezioni:
 1. Spazi e ritorni a capo prima del tag `<head>` sono ignorati per ragioni storiche.
@@ -83,6 +115,7 @@ let node2 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,
 drawHtmlTree(node2, 'div.domtree', 690, 210);
 </script>
 
+<<<<<<< HEAD
 ```smart header="Gli spazi presenti ai bordi e tra i nodi testuali vuoti sono solitamente nascosti"
 Gli strumenti del Browser (ne tratteremo a breve) che lavorano con il DOM non mostrano spazi all'inizio e alla fine del testo e dei nodi testuali vuoti tra più tags.
 <!-- Browser tools (to be covered soon) that work with DOM usually do not show spaces at the start/end of the text and empty text nodes (line-breaks) between tags. -->
@@ -97,6 +130,17 @@ Nelle prossime immmagini del DOM ometteremo gli spazi quando irrilevanti.
 ## Autocorrezione
 
 Se il browser riscontra HTML malformato, lo corregge automaticamente in fase di creazione del DOM.
+=======
+```smart header="Spaces at string start/end and space-only text nodes are usually hidden in tools"
+Browser tools (to be covered soon) that work with DOM usually do not show spaces at the start/end of the text and empty text nodes (line-breaks) between tags.
+
+Developer tools save screen space this way.
+
+On further DOM pictures we'll sometimes omit them when they are irrelevant. Such spaces usually do not affect how the document is displayed.
+```
+
+## Autocorrection
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 Ad esempio, il tag di livello più alto è sempre `<html>`. Anche se esso non è presente nel documento esisterà nel DOM, perché il browser lo creerà. Lo stesso vale per il `<body>`.
 
@@ -112,7 +156,11 @@ drawHtmlTree(node3, 'div.domtree', 690, 150);
 
 In fase di generazione del DOM, i browser processeranno automaticamente gli errori chiudendo i tags e via procedendo.
 
+<<<<<<< HEAD
 Il seguente documento senza tag di chiusura:
+=======
+Such document with unclosed tags:
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 ```html no-beautify
 <p>Hello
@@ -153,7 +201,13 @@ Visto? Il `<tbody>` è apparso dal nulla. Per evitare sorprese, dovresti ricorda
 
 ## Altre tipologie di nodo
 
+<<<<<<< HEAD
 Aggiungiamo ulteriori tags e commenti alla pagina:
+=======
+There are some other node types besides elements and text nodes.
+
+For example, comments:
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 ```html
 <!DOCTYPE HTML>
@@ -179,7 +233,11 @@ let node6 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,
 drawHtmlTree(node6, 'div.domtree', 690, 500);
 </script>
 
+<<<<<<< HEAD
 Vediamo ora un nuovo tipo di nodo -- *nodo commento*, etichettato come `#comment`.
+=======
+We can see here a new tree node type -- *comment node*, labeled as `#comment`, between two text nodes.
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 Potremmo chiederci -- perché il commento viene aggiunto al DOM? Non incide sul risultato grafico finale. Esiste in realtà una regola -- che se qualcosa è nell'HTML, allora deve essere presente anche nell'alberatura del DOM.
 
@@ -200,9 +258,13 @@ In teoria esistono [12 tipologie di nodo](https://dom.spec.whatwg.org/#node), ma
 
 Per vedere la struttura del DOM in real-time, prova [Live DOM Viewer](http://software.hixie.ch/utilities/js/live-dom-viewer/). Inizia a scrivere e vedrai istantaneamente le modifiche aggiunte al DOM.
 
+<<<<<<< HEAD
 ## Nel browser inspector
 
 Un altro modo per esplorare il DOM è usare gli "Strumenti per sviluppatori" del browser. Strumenti che usamo quando sviluppiamo.
+=======
+Another way to explore the DOM is to use the browser developer tools. Actually, that's what we use when developing.
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 Per procedere in questo modo, apri la pagina web [elks.html](elks.html), apri "Strumenti per sviluppatori" e spostati sulla scheda "Elements".
 
@@ -230,10 +292,19 @@ Il miglior modo per studiare è curiosare tra le varie schede e opzioni. La magg
 
 ## Interazione con la console
 
+<<<<<<< HEAD
 Mano a mano che si procede con l'esplorazione del DOM è anche possibile giocare con un po' di JavaScript. Ad esempio: scegli un nodo ed esegui del codice per modificarlo e vederne il risultato. Alcune dritte per spostarsi tra la scheda "Elements" e la console:
 
 - Seleziona il primo `<li>` nella scheda Elements.
 - Premi il tasto `key:Esc` -- si aprirà la console proprio sotto la scheda Elements.
+=======
+As we work the DOM, we also may want to apply JavaScript to it. Like: get a node and run some code to modify it, to see the result. Here are few tips to travel between the Elements tab and the console.
+
+For the start:
+
+1. Select the first `<li>` in the Elements tab.
+2. Press `key:Esc` -- it will open console right below the Elements tab.
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 Ora l'ultimo elemento selezionato è disponibile come `$0`, quello precedente come `$1` etc.
 
@@ -241,9 +312,17 @@ Ora possiamo eseguire dei comandi. `$0.style.background = 'red'` colora di rosso
 
 ![](domconsole0.png)
 
+<<<<<<< HEAD
 Al contrario, se ci troviamo nella console a abbiamo una variabile che referenzia un nodo del DOM, possiamo usare il comando `inspect(node)` per mostrarlo nel pannello Elements.
 
 Oppure possiamo semplicemente mostrarlo nella console, come fatto qui sotto per `document.body`:
+=======
+That's how to get a node from Elements in Console.
+
+There's also a road back. If there's a variable referencing a DOM node, then we can use the command `inspect(node)` in Console to see it in the Elements pane.
+
+Or we can just output DOM-node in the console and explore "at-place", like `document.body` below:
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 ![](domconsole1.png)
 

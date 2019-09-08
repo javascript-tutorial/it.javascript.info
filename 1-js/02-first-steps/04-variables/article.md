@@ -98,7 +98,7 @@ Possiamo comprendere meglio il concetto di "variabile" se la immaginiamo come un
 
 Per esempio, la variabile `message` può essere immaginata come una scatola con etichetta `"message"` con il valore `"Hello!"` al suo interno:
 
-![](variable.png)
+![](variable.svg)
 
 Possiamo inserire qualsiasi valore all'interno della scatola.
 
@@ -115,7 +115,7 @@ alert(message);
 ```
 
 Quando il valore viene cambiato, il dato vecchio viene rimosso dalla variabile:
-![](variable-change.png)
+![](variable-change.svg)
 
 Possiamo anche dichiarare due variabili e copiare i dati da un all'altra.
 
@@ -320,7 +320,7 @@ I browser moderni e JavaScript minimizzano ed ottimizzano il codice abbastanza b
 
 Possiamo dichiarare variabili per memorizzare dati. Possono essere dichiarate con `var`,`let` o `const`.
 
-- `let` -- è una dichiarazione delle variabili più moderna. Il codice deve essere in modalità strict per utilizzare `let` in Chrome (V8).
+- `let` -- è una dichiarazione delle variabili più moderna.
 - `var` -- è una dichiarazione delle variabili più vecchia-scuola. Normalmente non si dovrebbe utilizzare, spiegheremo le sottili differenze da `let` nel capitolo <info:var>, giusto per esserne a conoscenza.
 - `const` -- è simile a `let`, ma non consente di cambiare il valore della variabile.
 

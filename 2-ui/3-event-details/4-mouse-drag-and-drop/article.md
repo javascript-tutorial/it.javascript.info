@@ -107,7 +107,7 @@ It would be better if we keep the initial shift of the element relative to the p
 
 For instance, if we start dragging by the edge of the ball, then the cursor should remain over the edge while dragging.
 
-![](ball_shift.png)
+![](ball_shift.svg)
 
 1. When a visitor presses the button (`mousedown`) -- we can remember the distance from the cursor to the left-upper corner of the ball in variables `shiftX/shiftY`. We should keep that distance while dragging.
 
@@ -294,4 +294,4 @@ We can lay a lot on this foundation.
 - We can use event delegation for `mousedown/up`. A large-area event handler that checks  `event.target` can manage Drag'n'Drop for hundreds of elements.
 - And so on.
 
-There are frameworks that build architecture over it: `DragZone`, `Droppable`, `Draggable` and other classes. Most of them do the similar stuff to described above, so it should be easy to understand them now. Or roll our own, because you already know how to handle the process, and it may be more flexible than to adapt something else.
+There are frameworks that build architecture over it: `DragZone`, `Droppable`, `Draggable` and other classes. Most of them do the similar stuff to described above, so it should be easy to understand them now. Or roll our own, as you can see that's easy enough to do, sometimes easier than adapting a third-part solution.

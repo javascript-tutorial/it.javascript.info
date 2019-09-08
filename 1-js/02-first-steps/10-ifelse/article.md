@@ -6,7 +6,7 @@ Per questo c'è l'istruzione `if` e anche l'operatore condizionale di valutazion
 
 ## L'istruzione "if" 
 
-L'istruzione `if` richiede una condizione, la valuta, e se il risultato è `true`, esegue il codice.
+L'istruzione `if(...)` richiede una condizione, la valuta, e se il risultato è `true`, esegue il codice.
 
 Ad esempio:
 

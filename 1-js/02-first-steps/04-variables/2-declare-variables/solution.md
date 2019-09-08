@@ -1,4 +1,4 @@
-Punto primo, la variabile con il nome del nostro pianeta.
+## Variabile del nostro pianeta
 
 Questo è semplice:
 
@@ -8,11 +8,7 @@ let ourPlanetName = "Earth";
 
 Nota che avremmo anche potuto usare un nome più corto, come `planet`, ma potrebbe non essere ovvio a cosa si rifrisce. E' una buona cosa essere un pò più descrittivi. Almeno finche le variabili nonDiventanoTroppoLunghe.
 
-Punto secondo, il nome del visitatore corrente:
-
-```js
 let currentUserName = "John";
-```
 
 Di nuovo, potremmo accorciare il nome con `userName`, se fossimo sicuri che quell'utente sia quello corrente.
 

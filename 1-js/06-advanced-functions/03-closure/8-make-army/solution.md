@@ -83,7 +83,7 @@ Ora funziona correttamente, perché ogni volta che viene eseguito il blocco di c
 
 Quindi, il valore di `i` ora si trova più "vicino". Non più nel lexical environment di `makeArmy()`, ma in quello del corrispondente ciclo. Uno `shooter` preleva il valore esattamente da dove è stato creato.
 
-![](lexenv-makearmy.png)
+![](lexenv-makearmy.svg)
 
 Qui abbiamo riscritto `while` in `for`.
 

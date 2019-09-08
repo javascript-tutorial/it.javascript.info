@@ -76,7 +76,7 @@ Degli esempi di queste restrizioni possono essere:
     Questa limitazione è sempre dovuta alla sicurezza dell'utente. Una pagina proveniente da `http://anysite.com` che è stata aperta da un utente, non deve essere in grado di accedere ad un altra Scheda del browser con l'URL `http://gmail.com` (per esempio) e rubare le informazioni.
 - JavaScript può facilmente comunicare con il server da cui la pagina proviene. Ma la sua abilità di ricevere dati da altri siti/domini è limitata. Sebbene sia possibile, richiede delle richieste esplicite(passate tramite HTTP headers) dall'indirizzo remoto. Ancora una volta, queste sono limitazioni dovute alla sicurezza.
 
-![](limitations.png)
+![](limitations.svg)
 
 Queste limitazioni non esistono se JavaScript viene eseguito fuori dal browser, ad esempio in un server. I browser moderni permettono l'installazione di plugin ed estensioni che consentono di aumentare i permessi.
 

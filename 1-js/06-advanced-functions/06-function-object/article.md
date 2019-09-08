@@ -29,7 +29,7 @@ Inoltre l'assegnazione della proprietà `name` è intelligente. Funziona anche s
 ```js run
 let sayHi = function() {
   alert("Hi");
-}
+};
 
 alert(sayHi.name); // sayHi (funziona!)
 ```

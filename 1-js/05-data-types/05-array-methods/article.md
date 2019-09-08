@@ -129,14 +129,11 @@ Funziona come `str.slice`, ma crea dei sotto-array piuttosto che sotto-stringhe.
 Ad esempio:
 
 ```js run
-let str = "test";
 let arr = ["t", "e", "s", "t"];
 
-alert( str.slice(1, 3) ); // es
-alert( arr.slice(1, 3) ); // e,s
+alert( arr.slice(1, 3) ); // e,s (copy from 1 to 3)
 
-alert( str.slice(-2) ); // st
-alert( arr.slice(-2) ); // s,t
+alert( arr.slice(-2) ); // s,t (copy from -2 till the end)
 ```
 
 ### concat
@@ -153,7 +150,7 @@ Accetta un numero arbitrario di argomenti -- sia array che valori.
 
 Il risultato è un nuovo array contenente gli elementi di `arr`, seguiti da `arg1`, `arg2` etc.
 
-Se un argomento è un array o possiede una proprietà `Symbol.isConcatSpreadable`, tutti i suoi elementi vengono copiati. Altrimenti viene copiato solamente l'argomento stesso.
+Se un argomento `argN` è un array, tutti i suoi elementi vengono copiati. Altrimenti viene copiato solamente l'argomento stesso.
 
 Un esempio:
 
@@ -391,9 +388,9 @@ Per utilizzare un ordinamento arbitrario, dobbiamo fornire una funzione con due 
 La funzione dovrebbe essere simile a questa:
 ```js
 function compare(a, b) {
-  if (a > b) return 1;
-  if (a == b) return 0;
-  if (a < b) return -1;
+  if (a > b) return 1; // if the first value is greater than the second
+  if (a == b) return 0; // if values are equal
+  if (a < b) return -1; // if the first value is less than the second
 }
 ```
 
@@ -514,7 +511,7 @@ Ad esempio:
 ```js run
 let arr = ['Bilbo', 'Gandalf', 'Nazgul'];
 
-let str = arr.join(';');
+let str = arr.join(';'); // glue the array into a string using ;
 
 alert( str ); // Bilbo;Gandalf;Nazgul
 ```
@@ -531,18 +528,21 @@ La sintassi è:
 ```js
 let value = arr.reduce(function(previousValue, item, index, array) {
   // ...
-}, initial);
+}, [initial]);
 ```
 
-La funzione viene applicata agli elementi. Potrete notare che fra gli argomenti ce ne sono alcuni di familiari, a partire dal secondo:
+La funzione viene applicata ad ogni elemento dell'array uno dopo l'altro, passando il risultato alla chiamata successiva.
 
-- `item` -- è l'elemento corrente.
-- `index` -- è la sua posizione.
-- `arr` -- è l'array.
+Argomenti:
 
-Finora, è uguale a `forEach/map`. Ma c'è un ulteriore argomento:
+- `previousValue` -- è il risultato della precedente chiamata, uguale ad `initial` per la prima chiamata (se `initial` viene fornito=.
+- `item` -- è l'attuale elemento dell'array.
+- `index` -- la sua posizione.
+- `array` -- l'array.
 
-- `previousValue` -- è il risultato della precedente chiamata, `initial` per la prima chiamata.
+Quando la funzione è stata applicata, il risultato viene passato alla chiamata successiva.
+
+Sembra complicato, ma non lo è se pensate al primo argomento come un "accumulatore" che memorizza il risultato delle precedenti esecuzioni. E alla fine diventa il risultato di `reduce`.
 
 Il modo più semplice per spiegarlo è tramite esempi.
 
@@ -566,7 +566,7 @@ Proviamo a vedere nel dettaglio cosa succede.
 
 Il flusso di calcolo:
 
-![](reduce.png)
+![](reduce.svg)
 
 O nella forma tabellare, in cui ogni riga rappresenta una chiamata di funzione:
 
