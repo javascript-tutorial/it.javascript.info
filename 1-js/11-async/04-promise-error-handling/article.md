@@ -1,5 +1,5 @@
 
-# Error handling with promises
+# Gestione degli errori con le promise
 
 <<<<<<< HEAD
 Le azioni asincrione a volte possono fallire: in caso di errore la promise corrispondente viene respinta (rejected). Per esempio, `fetch` fallisce se il server remoto non è disponibile. Possiamo usare `.catch` per gestire gli errori (rejections).
@@ -283,7 +283,7 @@ Per altri errori, non ha idea di cosa possa andare stoto. Magari un errore di pr
 The execution jumps from the first `.catch` `(*)` to the next one `(**)` down the chain.
 >>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
-## Respingimenti non gestiti (unhandled rejections)
+## Rigetti non gestiti (unhandled rejections)
 
 <<<<<<< HEAD
 Cosa accade se un errore non è gestito? Per esempio, dopo il risollevamento `(*)` nell'esempio sopra.
@@ -303,7 +303,11 @@ new Promise(function() {
 ```
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Nel caso di un errore, lo stato della promise diventa "rejected", e l'esecuzione dovrebbe saltare al gestore del respingimento (rejection handler). Ma negli esempi sopra non c'è questo gestore (handler). Quindi l'errore porta ad un "blocco".
+=======
+Nel caso di un errore, lo stato della promise diventa "rejected", e l'esecuzione dovrebbe saltare al gestore del rigetto (rejection handler). Ma negli esempi sopra non c'è questo gestore (handler). Quindi l'errore porta ad un "blocco".
+>>>>>>> 1ba77efa60a593cee219b2187aba7015ce99a173
 
 In pratica, proprio come con un normale errore non gestito, significa che qualcosa è andato terribilmente storto.
 
@@ -352,7 +356,11 @@ In non-browser environments like Node.js there are other ways to track unhandled
 ## Riepilogo
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 - `.catch` gestisce i respingimenti (rejections) delle promise di tutti i tipi: che sia una chiamata `reject()`, o un errore sollevato in un gestore (handler).
+=======
+- `.catch` gestisce i rigetti (rejections) delle promise di tutti i tipi: che sia una chiamata `reject()`, o un errore sollevato in un gestore (handler).
+>>>>>>> 1ba77efa60a593cee219b2187aba7015ce99a173
 - Dovremmo mettere `.catch` esattamente nei posti in cui  vogliamo gestire gli errori sapendo come gestirli. Il gestore (handler) dovrebbe analizzare gli errori (Le classi di errori ci sono di aiuto) e ri-sollevare (rethrow) quelli sconosciuti.
 - È normale non usare `.catch` se non sappiamo come gestire gli errori (tutti gli errori sono irrecuperabili).
 - In ogni caso dovremmo avere i gestore (handler) dell'evento `unhandledrejection` (per il browser e quelli analoghi per gli altri ambienti), per tracciare gli errori non gestiti ed informarne l'utente (e probabilmente il nostro server), così che non accada mai che la nostra app "muoia e basta".

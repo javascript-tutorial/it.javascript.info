@@ -81,6 +81,10 @@ In the example below the inner `<div>` has `<main>` as `offsetParent` and `offse
 ```
 
 ![](metric-offset-parent.svg)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ba77efa60a593cee219b2187aba7015ce99a173
 
 There are several occasions when `offsetParent` is `null`:
 
@@ -151,8 +155,11 @@ These properties provide the size of the area inside the element borders.
 They include the content width together with paddings, but without the scrollbar:
 
 ![](metric-client-width-height.svg)
+<<<<<<< HEAD
 
 On the picture above let's first consider `clientHeight`.
+=======
+>>>>>>> 1ba77efa60a593cee219b2187aba7015ce99a173
 
 There's no horizontal scrollbar, so it's exactly the sum of what's inside the borders: CSS-height `200px` plus top and bottom paddings (`2 * 20px`) total `240px`.
 

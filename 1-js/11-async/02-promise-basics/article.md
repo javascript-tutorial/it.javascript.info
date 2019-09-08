@@ -45,7 +45,11 @@ Quando l'esecutore finisce il lavoro (job), dovrebbe chiamare una delle funzioni
 =======
 The function passed to `new Promise` is called the *executor*. When the promise is created, it runs automatically. It contains the producing code, that should eventually produce a result. In terms of the analogy above: the executor is the "singer".
 
+<<<<<<< HEAD
 Its arguments `resolve` and `reject` are callbacks provided by JavaScript itself. Our code is only inside executor.
+=======
+![](promise-resolve-reject.svg)
+>>>>>>> 1ba77efa60a593cee219b2187aba7015ce99a173
 
 When the executor obtains the result, be it soon or late - doesn't matter, it should call one of these callbacks:
 

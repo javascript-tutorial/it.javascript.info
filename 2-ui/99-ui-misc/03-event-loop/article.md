@@ -303,6 +303,13 @@ Here's an example with "counting progress bar", similar to the one shown previou
 
 ## Summary
 
+<<<<<<< HEAD
+=======
+The richer event loop picture may look like this:
+
+![](eventLoop-full.svg)
+
+>>>>>>> 1ba77efa60a593cee219b2187aba7015ce99a173
 The more detailed algorithm of the event loop (though still simplified compare to the [specification](https://html.spec.whatwg.org/multipage/webappapis.html#event-loop-processing-model)):
 
 1. Dequeue and run the oldest task from the *macrotask* queue (e.g. "script").

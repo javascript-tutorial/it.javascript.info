@@ -1,5 +1,5 @@
 
-# Promises chaining
+# Concatenamento di promise (promise chaining)
 
 Ritorniamo al problema di cui abbiamo parlato in <info:callbacks>: abbiamo una sequenza di task asincroni da essere completati uno dopo l'altro. Per esempio caricare script. Cosa possiamo fare per programmarla bene?
 
