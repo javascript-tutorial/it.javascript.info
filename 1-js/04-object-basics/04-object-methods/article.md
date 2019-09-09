@@ -98,7 +98,11 @@ E' molto comune che un metodo abbia necessità di accedere alle informazioni mem
 
 Ad esempio, il codice dentro `user.sayHi()` potrebbe aver bisogno del nome dell'`user`.
 
+<<<<<<< HEAD
 **Per accedere all'oggetto, un metodo può utilizzare la parola chiave `this`.**
+=======
+**To access the object, a method can use `this` keyword.**
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 Il valore di `this` è l'oggetto "prima del punto", quello che ha eseguito la chiamata del metodo.
 
@@ -167,9 +171,15 @@ Se scriviamo `this.name` piuttosto di `user.name` all'interno di `alert`, il cod
 
 ## "this" non ha limiti
 
+<<<<<<< HEAD
 In JavaScript, la parola chiave "this" si comporta diversamente da molti altri linguaggi di programmazione. Primo, può essere utilizzata in ogni funzione.
 
 Non c'è alcun errore di sintassi in un codice come questo:
+=======
+In JavaScript, keyword `this` behaves unlike most other programming languages. It can be used in any function.
+
+There's no syntax error in the following example:
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 ```js
 function sayHi() {
@@ -220,12 +230,21 @@ In questo caso `this`  è `undefined` in modalità strict. Se tentiamo di accede
 
 Se non è attiva la modalità strict (quindi se ci dimentichiamo `use strict`) il valor di `this` in questo sarà *l'oggetto globale* (`window` in un browser, lo studieremo più avanti nel capitolo [](info:global-object)). Questo strano comportamento ha delle motivazioni storiche, che `"use strict"` risolve.
 
+<<<<<<< HEAD
 Va detto che solitamente una chiamata a funzione che utilizza `this` senza un oggetto non è comune, nella maggior part dei casi è un errore di programmazione. Se una funzione utilizza `this`, ha senso che venga invocata nel contesto di un oggetto.
+=======
+Usually such call is a programming error. If there's `this` inside a function, it expects to be called in an object context.
+````
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 ```smart header="Le conseguenze della libertà di `this`"
 Se avete utilizzato altri linguaggi di programmazione, probabilmente la vostra idea è di un "`this` limitato", quando viene definito un metodo in un oggetto questo avrà sempre in `this` il riferimento all'oggetto.
 
+<<<<<<< HEAD
 In JavaScript `this` è "libero", il suo valore viene prelevato durante l'esecuzione e non dipende da dove il metodo è stato definito, ma piuttosto dall'oggetto "prima del punto".
+=======
+In JavaScript `this` is "free", its value is evaluated at call-time and does not depend on where the method was declared, but rather on what object is "before the dot".
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 Il concetto di valutare `this` durante l'esecuzione ha i suoi pregi e difetti. Da una parte una funzione può essere riutilizzata per oggetti diversi. Questa grande flessibilità può essere fonte di molti errori.
 

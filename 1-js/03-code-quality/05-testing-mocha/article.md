@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Test automatici con mocha
+=======
+# Automated testing with Mocha
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 Il test automatico sarà utilizzato per molte attività.
 

@@ -177,10 +177,14 @@ new Promise((resolve, reject) => {
 
 }).then(function() {
 <<<<<<< HEAD
+<<<<<<< HEAD
   /* non viene mai eseguito */
 =======
   /* doesn't runs here */
 >>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
+=======
+  /* doesn't run here */
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 }).catch(error => { // (**)
 
   alert(`Si è verificato un errore sconosciuto: ${error}`);
@@ -317,7 +321,7 @@ La maggior parte dei motori JavaScript tracciano queste situazioni e generano un
 =======
 In case of an error, the promise becomes rejected, and the execution should jump to the closest rejection handler. But there is none. So the error gets "stuck". There's no code to handle it.
 
-In practice, just like with a regular unhandled errors in code, it means that something has terribly gone wrong.
+In practice, just like with regular unhandled errors in code, it means that something has terribly gone wrong.
 
 What happens when a regular error occurs and is not caught by `try..catch`? The script dies with a message in console. Similar thing happens with unhandled promise rejections.
 

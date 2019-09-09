@@ -160,8 +160,13 @@ Conditional
 : The only operator with three parameters: `cond ? resultA : resultB`. If `cond` is truthy, returns `resultA`, otherwise `resultB`.
 >>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
+<<<<<<< HEAD
 Operatori logici
 : AND logico `&&` e OR `||` eseguono delle valutazioni locali e ritornano un valore quando si fermano. La negazione logica NOT `!` converte il valore a tipo booleano e ne ritorna l'inverso.
+=======
+Logical operators
+: Logical AND `&&` and OR `||` perform short-circuit evaluation and then return the value where it stopped (not necessary `true`/`false`). Logical NOT `!` converts the operand to boolean type and returns the inverse value.
+>>>>>>> 3dd8ca09c1a7ed7a7b04eefc69898559902478e1
 
 Confronto
 : Confronto di uguaglianza `==` valori di tipi diversi vengono convertiti in numeri (ad eccezione di `null` e `undefined` che si eguagliano tra di loro e con nient'altro), quindi questi sono uguali:

@@ -21,6 +21,7 @@ true + false
 "  -9  " - 5
 null + 1
 undefined + 1
+" \t \n" - 2
 ```
 
 Pensaci bene, scrivi le risposte su un foglio e poi compara le tue risposte con le soluzioni.
