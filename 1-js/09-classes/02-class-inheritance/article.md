@@ -16,7 +16,7 @@ class Animal {
   }
   stop() {
     this.speed = 0;
-    alert(`${this.name} stopped.`);
+    alert(`${this.name} stands still.`);
   }
 }
 
@@ -62,7 +62,7 @@ class Animal {
   }
   stop() {
     this.speed = 0;
-    alert(`${this.name} stopped.`);
+    alert(`${this.name} stands still.`);
   }
 }
 
@@ -153,7 +153,7 @@ class Animal {
 
   stop() {
     this.speed = 0;
-    alert(`${this.name} stopped.`);
+    alert(`${this.name} stands still.`);
   }
 
 }
@@ -174,7 +174,7 @@ class Rabbit extends Animal {
 let rabbit = new Rabbit("White Rabbit");
 
 rabbit.run(5); // White Rabbit runs with speed 5.
-rabbit.stop(); // White Rabbit stopped. White rabbit hides!
+rabbit.stop(); // White Rabbit stands still. White rabbit hides!
 ```
 
 Ora `Rabbit` contiene il metodo `stop`, che richiama al suo interno il metodo `super.stop()`.
@@ -467,6 +467,7 @@ let animal = {
   }
 };
 
+// rabbit inherits from animal
 let rabbit = {
   __proto__: animal,
   sayHi() {
@@ -480,6 +481,7 @@ let plant = {
   }
 };
 
+// tree inherits from plant
 let tree = {
   __proto__: plant,
 *!*

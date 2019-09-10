@@ -119,7 +119,6 @@ function f() {
 
 f(1); // 1
 ```
-````
 
 In sostanza, le funzioni freccia non hanno un proprio `this`. Ora sappiamo anche che non possiedono nemmeno l'oggetto `arguments`.
 

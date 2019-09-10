@@ -68,7 +68,9 @@ Quello che succede nel dettaglio è:
 Avremmo anche potuto utilizzare un espressione di funzione per dichiarare `sayHi`, nella prima riga:
 
 ```js
-let sayHi = function() { ... };
+let sayHi = function() {
+  alert( "Hello" );
+};
 
 let func = sayHi;
 // ...
@@ -134,7 +136,7 @@ ask("Do you agree?", showOk, showCancel);
 
 Prima abbiamo visto come riscrivere le funzioni in maniera più breve, da notare che nel browser (e in alcuni casi anche lato server) queste funzioni risultano molto popolari. La principale differenza tra un implementazione realistica e gli esempi sopra è solo che le funzioni reali utilizzano modalità più complesse per interagire con l'utente, non un semplice `confirm`. In ambiente browser, queste funzioni spesso mostrano delle interrogazioni molto carine. Ma questo è un altro discorso.
 
-**Gli argomenti della `ask` sono chiamati *funzioni di richiamo* o semplicemente *callbacks*.**
+**Gli argomenti `showOk` e `showCancel` della `ask` sono chiamati *funzioni di richiamo* o semplicemente *callbacks*.**
 
 L'idea è che passiamo una funzione e ci aspettiamo di "richiamarla" più tardi se necessario. Nel nostro caso `showOk` diventa la callback per la risposta "yes", e `showCancel` per la risposta "no".
 
@@ -291,7 +293,7 @@ if (age < 18) {
 
 } else {
 
-  function welcome() {     //  per age = 16, "welcome" non verrà mai creata
+  function welcome() {     
     alert("Greetings!");
   }
 }

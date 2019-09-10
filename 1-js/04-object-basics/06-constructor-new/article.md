@@ -216,6 +216,8 @@ john = {
 */
 ```
 
+Per creare oggetti più complessi, esiste una sintassi più avanzata, [classes](info:classes), che copriremo più avanti.
+
 ## Riepilogo
 
 - Le funzioni di costruzione, o meglio, i costruttori, solo delle normali funzioni, che seguono però una regola di accordo comune che prevede di denominarle con la prima lettera maiuscola.

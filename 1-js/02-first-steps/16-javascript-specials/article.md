@@ -53,7 +53,11 @@ Per abilitare completamente tutte le caratteristiche del moderno JavaScript, dov
 ...
 ```
 
+<<<<<<< HEAD
 La direttiva deve essere posta all'inizio di ogni script o all'inizio di una funzione.
+=======
+The directive must be at the top of a script or at the beginning of a function body.
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 Senza `"use strict"`, tutto continuerebbe a funzionare, ma alcune caratteristiche si comporterebbero in vecchio-stile, per retrocompatibilità. Generalmente si preferisce la modalità con i comportamenti moderni.
 
@@ -142,11 +146,19 @@ Aritmetici
 Assegnazione
 : Ci sono le assegnazioni semplici: `a = b` e quelle combinate `a *= 2`.
 
+<<<<<<< HEAD
 Bit a Bit
 : Gli operatori bit a bit funzionano con gli interi a livello di bit: guarda la [documentazione](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) se ne avrai bisogno.
 
 Ternari
 : C'è un solo operatore con tre parametri: `cond ? resultA : resultB`. Se `cond` è vera, ritorna `resultA`, altrimenti `resultB`.
+=======
+Bitwise
+: Bitwise operators work with 32-bit integers at the lowest, bit-level: see the [docs](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) when they are needed.
+
+Conditional
+: The only operator with three parameters: `cond ? resultA : resultB`. If `cond` is truthy, returns `resultA`, otherwise `resultB`.
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 Operatori logici
 : AND logico `&&` e OR `||` eseguono delle valutazioni locali e ritornano un valore quando si fermano. La negazione logica NOT `!` converte il valore a tipo booleano e ne ritorna l'inverso.
@@ -245,12 +257,16 @@ Abbiamo studiato tre modi per creare funzioni in JavaScript:
       let result = a + b;
 
       return result;
-    }
+    };
     ```
 
+<<<<<<< HEAD
     Le espressioni di funzione possono avere un nome, come `sum = function name(a, b)`, questo `name` è visibile solamente all'interno della funzione.
 
 3. Funzione freccia:
+=======
+3. Arrow functions:
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
     ```js
     // espressione dalla parte destra
@@ -274,6 +290,7 @@ Abbiamo studiato tre modi per creare funzioni in JavaScript:
 - I parametri possono avere valori di default: `function sum(a = 1, b = 2) {...}`.
 - Le funzioni ritornano sempre qualcosa. Se non c'è nessuna istruzione `return`, allora il risultato `undefined`.
 
+<<<<<<< HEAD
 
 | Dichiarazione di Funzione | Espressione di Funzione |
 |----------------------|---------------------|
@@ -281,6 +298,9 @@ Abbiamo studiato tre modi per creare funzioni in JavaScript:
 |   - | può avere un nome, visibile solamente all'interno della funzione |
 
 Per più informazioni: vedi <info:function-basics>, <info:function-expressions-arrows>.
+=======
+Details: see <info:function-basics>, <info:function-expressions-arrows>.
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 ## C'è di più
 

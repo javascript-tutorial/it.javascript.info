@@ -22,7 +22,11 @@ function showMessage() {
 
 La parola chiave `function` va posta all'inizio, viene seguirà dal *nome della funzione*, poi c'è una lista di *parametri* racchiusi tra le parentesi (in questo esempio la lista è vuota) e infine il codice della funzione, chiamato anche "corpo della funzione", racchiuso tra le parentesi graffe.
 
-![](function_basics.png)
+```js
+function name(parameters) {
+  ...body...
+}
+```
 
 La nostra nuova funzione può essere richiamata tramite il suo nome: `showMessage()`.
 

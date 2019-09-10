@@ -118,6 +118,8 @@ Eseguiamo begin
 → ...
 ```
 
+Quindi, `begin` viene eseguito una volta sola, dopo inizia il processo di iterazione: dopo ogni test della `condition`, vengono eseguiti `body` e `step`.
+
 Se i cicli vi sono nuovi, allora forse vi sarà d'aiuto tornare indietro agli esempi e provare a riprodurli passo-passo su un foglio di carta.
 
 Questo è quello che succede esattamente nel nostro codice:
@@ -362,7 +364,7 @@ Le Label non permettono di saltare in un punto arbitrario del codice.
 
 Ad esempio, non è possibile fare:
 ```js
-break label;  // salta a label? No.
+break label;  // non salta all'etichetta sotto
 
 label: for (...)
 ```

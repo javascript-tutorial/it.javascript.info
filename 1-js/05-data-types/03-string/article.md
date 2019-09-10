@@ -623,11 +623,8 @@ Questo consente una grande flessibilità, ma crea anche un potenziale problema: 
 Ad esempio:
 
 ```js run
-alert( 'S\u0307\u0323' ); // Ṩ, S + punto sopra + punto sotto
-alert( 'S\u0323\u0307' ); // Ṩ, S + punto sotto + punto sopra
 
-alert( 'S\u0307\u0323' == 'S\u0323\u0307' ); // false, different characters (?!)
-```
+alert( s1 == s2 ); // false though the characters look identical (?!)
 
 Per risolvere questo, esiste un algoritmo di "normalizzazione unicode" che porta ogni stringa alla forma "normale".
 

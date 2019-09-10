@@ -43,7 +43,11 @@ function printList(list) {
 }
 ```
 
+<<<<<<< HEAD
 ...Ma potrebbe portare ad errori. In futuro potremmo voler estendere una funzione, fare qualcos altro con la lista. Se modifichiamo `list`, perderemmo questa capacità.
+=======
+...But that would be unwise. In the future we may need to extend a function, do something else with the list. If we change `list`, then we lose such ability.
+>>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 Parlando della scelta dei nomi delle variabili, `list` è la lista stessa. Il primo elemento. E dovrebbe rimanere tale. 
 

@@ -125,7 +125,7 @@ switch (a) {
     break;
 
 *!*
-  case 3:                    // (*) raggruppiamo due casi
+  case 3: // (*) raggruppiamo due casi
   case 5:
     alert('Wrong!');
     alert("Why don't you take a math class?");
