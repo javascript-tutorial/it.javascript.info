@@ -516,7 +516,11 @@ Nel prossimo esempio, viene utilizzata una sintassi errata (non-method syntax) p
 
 ```js run
 let animal = {
+<<<<<<< HEAD
   eat: function() { // dovrebbe corrispondere a eat(){...}
+=======
+  eat: function() { // intentially writing like this instead of eat() {...
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
     // ...
   }
 };

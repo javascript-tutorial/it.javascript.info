@@ -241,6 +241,30 @@ Mano a mano che le chiamate diventano più annidate, il codice diventa più prof
 
 Questo viene chiamato "callback hell" o "pyramid of doom."
 
+<!--
+loadScript('1.js', function(error, script) {
+  if (error) {
+    handleError(error);
+  } else {
+    // ...
+    loadScript('2.js', function(error, script) {
+      if (error) {
+        handleError(error);
+      } else {
+        // ...
+        loadScript('3.js', function(error, script) {
+          if (error) {
+            handleError(error);
+          } else {
+            // ...
+          }
+        });
+      }
+    })
+  }
+});
+-->
+
 ![](callback-hell.svg)
 
 La "piramide" di chiamate annidate cresce verso destra per ogni azione asincrona. Presto la situazione sarà fuori controllo.

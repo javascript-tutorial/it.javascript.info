@@ -27,7 +27,11 @@ alert(user.name); // Jack
 alert(user.isAdmin); // false
 ```
 
+<<<<<<< HEAD
 Quando una funzione viene eseguita con `new User(...)`, segue questi passaggi:
+=======
+When a function is executed with `new`, it does the following steps:
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 
 1. Un nuovo oggetto vuoto viene creato ed assegnato a `this`.
 2. Viene eseguito il corpo della funzione. Solitamente questo modifica `this`, aggiungendo nuove proprietà.
@@ -51,7 +55,11 @@ function User(name) {
 }
 ```
 
+<<<<<<< HEAD
 Quindi il risultato di `new User("Jack")` è lo stesso oggetto di:
+=======
+So `let user = new User("Jack")` gives the same result as:
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 
 ```js
 let user = {
@@ -149,10 +157,17 @@ function BigUser() {
 
   this.name = "John";
 
+<<<<<<< HEAD
   return { name: "Godzilla" };  // <-- ritorna un oggetto
 }
 
 alert( new BigUser().name );  // Godzilla, preso l'oggetto ^^
+=======
+  return { name: "Godzilla" };  // <-- returns this object
+}
+
+alert( new BigUser().name );  // Godzilla, got that object
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 ```
 
 Qui invece abbiamo un esempio con un `return` vuoto (potremmo anche ritornare un qualsiasi valore di tipo primitivo):
@@ -162,10 +177,14 @@ function SmallUser() {
 
   this.name = "John";
 
+<<<<<<< HEAD
   return; // al termine dell'esecuzione, ritorna this
 
   // ...
 
+=======
+  return; // <-- returns this
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 }
 
 alert( new SmallUser().name );  // John

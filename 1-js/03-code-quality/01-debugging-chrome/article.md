@@ -3,6 +3,7 @@
 Prima di scrivere codice più complesso, dovremmo parlare di debugging.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Tutti i moderni browser e anche molto altri ambienti di sviluppo supportano il "debugging" -- una speciale interfaccia negli strumenti da sviluppatore che rende la ricerca e la correzioni degli errori molto più facile.
 
 Noi useremo Chrome, poiché è probabilmente il più ricco di caratteristiche sotto questo aspetto.
@@ -10,6 +11,9 @@ Noi useremo Chrome, poiché è probabilmente il più ricco di caratteristiche so
 ## Il pannello "sources" 
 =======
 [Debugging](https://en.wikipedia.org/wiki/Debugging) is the process of finding and fixing errors within a script. All modern browsers and most other environments support debugging tools -- a special UI in developer tools that enable debugging much easier. It also allows to trace the code step by step to see what exactly is going on.
+=======
+[Debugging](https://en.wikipedia.org/wiki/Debugging) is the process of finding and fixing errors within a script. All modern browsers and most other environments support debugging tools -- a special UI in developer tools that makes debugging much easier. It also allows to trace the code step by step to see what exactly is going on.
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 
 We'll be using Chrome here, because it has enough features, most other browsers have a similar process`.
 

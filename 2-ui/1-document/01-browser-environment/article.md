@@ -120,11 +120,23 @@ if (confirm("Go to Wikipedia?")) {
 
 Le funzioni `alert/confirm/prompt` fanno anch'esse parte del BOM: non sono direttamente correlate con il documento, ma rappresentano dei semplici metodi del browser per interagire con l'utente.
 
+<<<<<<< HEAD
 ```smart header="Specifiche HTML"
 Il BOM fa parte della [specifica HTML](https://html.spec.whatwg.org).
 
 Sì, avete capito bene. La specifica HTML presente al link <https://html.spec.whatwg.org> non è solo per il "linguaggio HTML" (tags, attributi), ma copre anche una miriade di oggetti, metodi ed estensioni del DOM relative ai browser. Questa è la definizione di "HTML a grandi linee".
 ```
+=======
+```smart header="Specifications"
+BOM is the part of the general [HTML specification](https://html.spec.whatwg.org).
+
+Yes, you heard that right. The HTML spec at <https://html.spec.whatwg.org> is not only about the "HTML language" (tags, attributes), but also covers a bunch of objects, methods and browser-specific DOM extensions. That's "HTML in broad terms". Also, some parts have additional specs listed at <https://spec.whatwg.org>.
+```
+
+## Summary
+
+Talking about standards, we have:
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 
 ## Riepilogo
 

@@ -52,7 +52,11 @@ La soluzione sembra un po' strana:
 
 Gli "oggetti contenitore" sono diversi per ogni primitiva e sono chiamati: `String`, `Number`, `Boolean` e `Symbol`. Questi forniscono diversi insiemi di metodi.
 
+<<<<<<< HEAD
 Ad esempio, esiste un metodo [str.toUpperCase()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) che ritorna la stringa con la prima lettera maiuscola.
+=======
+For instance, there exists a string method [str.toUpperCase()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) that returns a capitalized `str`.
+>>>>>>> 646989dd470395510e1006c220e05e85a06eb78a
 
 Funziona in questo modo:
 
