@@ -2,15 +2,6 @@
 
 Immagina di essere un cantante famoso, ed i fan ti chiedono giorno e notte del tuo nuovo singolo.
 
-<<<<<<< HEAD
-Per ottenere un po' di sollievo, gli prometti di inviarglielo una volta pubblicato. Dai ai tuoi fan una lista a cui si possono abbonare per gli aggiornamenti. Inserendo i propri indirizzi email, tutti gli abbonati riceveranno simultaneamente la canzone non appena disponibile. E anche se qualcosa andasse veramente male, ad esempio, se la pubblicazione della canzone fosse cancellata, ne riceveranno comunque notifica.
-=======
-To get some relief, you promise to send it to them when it's published. You give your fans a list. They can fill in their email addresses, so that when the song becomes available, all subscribed parties instantly receive it. And even if something goes very wrong, say, fire in the studio, so that you can't publish the song, they will still be notified.
->>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
-
-Tutti sono felici, tu perchè le persone non ti staranno più con il fiato sul collo, e i fan, perchè non perderanno il singolo.
-
-Questa è un'analogia, nella vita reale, di cose con cui abbiamo a che fare spesso nella programmazione:
 
 1. Un "codice produttore" (producing code) che fa qualcosa e che richiede tempo. Per esempio, il codice che carica uno script remoto. Questo è un "cantante".
 2. Un "codice consumatore" (consuming code) che vuole il risultato del "codice produttore" una volta che è pronto. Molte funzioni possono aver bisogno di questo risultato. Queste sono i "fan".

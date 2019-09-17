@@ -94,15 +94,9 @@ Ci sono due tipi di indentazione:
 
 - **Indentazione orizzontale: 2 o 4 spazi.**
 
-<<<<<<< HEAD
     Un indentazione orizzontale è realizzata usando 2 o 4 spazi oppure il tasto "Tab". Quale scegliere è una guerra che dura da anni. Ad oggi gli spazi sono i più comuni.
 
     Un vantaggio degli spazi contro i tabs è che gli spazi permettono configurazioni più flessibili.
-=======
-    A horizontal indentation is made using either 2 or 4 spaces or the horizontal tab symbol (key `key:Tab`). Which one to choose is an old holy war. Spaces are more common nowadays.
-
-    One advantage of spaces over tabs is that spaces allow more flexible configurations of indents than the tab symbol.
->>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
     Ad esempio, possiamo allineare gli argomenti con l'apertura della parentesi, come qui:
 
@@ -147,11 +141,7 @@ Quando diventerete più maturi come programmatori, potreste scegliere lo stile s
 
 Nel codice vanno evitati elevati liveeli di annidamento.
 
-<<<<<<< HEAD
 Qualche volta torna utile la direttiva ["continue"](info:while-for#continue) per evitare annidamenti extra.
-=======
-For example, in the loop, it's sometimes a good idea to use the [`continue`](info:while-for#continue) directive to avoid extra nesting.
->>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 Ad esempio, invece che aggiungere un `if`:
 
@@ -269,11 +259,7 @@ Questo perché quando leggiamo il codice vogliamo prima di tutto sapere *cosa fa
 
 ## Guida di stile
 
-<<<<<<< HEAD
 Una guida di stile contiene  regole generali riguardo a "come scrivere" il codice, ad esempio quali apici utilizzare, di quanti spazi indentare, quando andare a capo, etc. Molti altri dettagli.
-=======
-A style guide contains general rules about "how to write" code, e.g. which quotes to use, how many spaces to indent, the maximal line length, etc. A lot of minor things.
->>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728
 
 Quando tutti i membri del team utilizzano lo stesso stile tende ad essere uniforme.
 
