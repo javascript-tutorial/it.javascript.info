@@ -12,7 +12,11 @@ Una variabile [variable](https://en.wikipedia.org/wiki/Variable_(computer_scienc
 
 Per creare una variabile in JavaScript, dobbiamo utilizzare la parola chiave `let`.
 
+<<<<<<< HEAD
 L'istruzione sotto crea(in altre parole: *dichiara* o *definisce*) una variabile identificata dal nome "messaggio":
+=======
+The statement below creates (in other words: *declares*) a variable with the name "message":
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 ```js
 let message;
@@ -286,7 +290,11 @@ In altre parole, i nomi delle costanti in maiuscolo vengono utilizzati con varia
 
 Parlando di variabili, c'è un'altra cosa estremamente importante.
 
+<<<<<<< HEAD
 Per favore, utilizzate i nomi delle variabili con sensibilità. Prendetevi del tempo per pensare se necessario.
+=======
+A variable name should have a clean, obvious meaning, describing the data that it stores.
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 Dare i giusti nomi alle variabili è una delle abilità più importanti (e difficili) nella programmazione. 
 Una rapida occhiata ai nomi delle variabili può rivelare se il codice è stato scritto da un beginner o da uno sviluppatore esperto.

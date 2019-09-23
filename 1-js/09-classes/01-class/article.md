@@ -228,7 +228,13 @@ new User().sayHi(); // Hello
 
 ## Getters/setters e altre scorciatoie
 
+<<<<<<< HEAD
 Così come negli oggetti letterali (literal objects), le classi possono includere getters/setters, generatori, proprietà eccetera.
+=======
+## Getters/setters, other shorthands
+
+Just like literal objects, classes may include getters/setters, computed properties etc.
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 L'esempio seguente implementa `user.name` attraverso `get/set`:
 
@@ -294,9 +300,13 @@ class User {
 new User().sayHi();
 ```
 
+<<<<<<< HEAD
 Per creare un metodo generatore è sufficiente aggiungere `*` prima del nome della funzione.
 
 ## Proprietà di una classe
+=======
+## Class properties
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 ```warn header="I vecchi browser potrebbero non supportarle"
 Le proprietà di una classe dichiarata in questo modo sono una novità del linguaggio.

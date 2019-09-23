@@ -327,8 +327,13 @@ Ora funzione, perché il nome `"func"` è locale alla funzione. Non viene prelev
 
 Il codice esterno continuerà ad utilizzare la variabile `sayHi` o `welcome`. E `func` servirà da "nome interno" della funzione.
 
+<<<<<<< HEAD
 ```smart header="Tutto questo non vale per la dichiarazione di funzione"
 La caratteristica del "nome interno" è disponibile solamente per le espressioni di funzione, non per le dichiarazioni di funzione. Per le dichiarazioni di funzione, non c'è alcun modo per aggiungere un ulteriore "nome interno".
+=======
+```smart header="There's no such thing for Function Declaration"
+The "internal name" feature described here is only available for Function Expressions, not for Function Declarations. For Function Declarations, there is no syntax for adding an "internal" name.
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 Talvolta, nel caso in cui avessimo bisogno di un nome interno, potrebbe essere sensato riscrivere la dichiarazione di funzione come espressione di funzione.
 ```
@@ -346,6 +351,11 @@ Se una funzione viene dichiarata come espressione di funzione (non nel principal
 
 Inoltre, una funzione può possedere diverse proprietà aggiuntive. Molte librerie JavaScript fanno largo utilizzo di questa caratteristica.
 
+<<<<<<< HEAD
 Queste creano una funzione "principale" e ci attaccano molte altre funzioni di "supporto". Ad esempio la libreria [jquery](https://jquery.com) definisce una funzione chiamata `$`. La libreria [lodash](https://lodash.com) definisce una funzione `_`. E ci aggiunge `_.clone`, `_.keyBy` e altre proprietà (vedi la [documentazione](https://lodash.com/docs). In realtà, lo fanno anche per diminuire la sporcizia nello spazio globale, in questo modo una libreria fornisce una sola variabile globale. Questo riduce la probabilità di conflitti tra nomi.
+=======
+They create a "main" function and attach many other "helper" functions to it. For instance, the [jQuery](https://jquery.com) library creates a function named `$`. The [lodash](https://lodash.com) library creates a function `_`, and then adds `_.clone`, `_.keyBy` and other properties to it (see the [docs](https://lodash.com/docs) when you want learn more about them). Actually, they do it to lessen their pollution of the global space, so that a single library gives only one global variable. That reduces the possibility of naming conflicts.
+
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 Quindi una funzione, oltre ad essere utile, può fornire un insieme di altre funzionalità grazie alle proprietà.

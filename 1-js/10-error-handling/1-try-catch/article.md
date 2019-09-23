@@ -1,6 +1,6 @@
 # Error handling, "try..catch"
 
-No matter how great we are at programming, sometimes our scripts have errors. They may occur because of our mistakes, an unexpected user input, an erroneous server response and for a thousand of other reasons.
+No matter how great we are at programming, sometimes our scripts have errors. They may occur because of our mistakes, an unexpected user input, an erroneous server response and for a thousand other reasons.
 
 Usually, a script "dies" (immediately stops) in case of an error, printing it to console.
 
@@ -298,7 +298,7 @@ try {
 *!*
   alert(e.name); // SyntaxError
 */!*
-  alert(e.message); // Unexpected token o in JSON at position 0
+  alert(e.message); // Unexpected token o in JSON at position 2
 }
 ```
 

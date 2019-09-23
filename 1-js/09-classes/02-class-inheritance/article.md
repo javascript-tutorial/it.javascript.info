@@ -257,7 +257,11 @@ La risposta breve è: i costruttori delle classi figlie devono richiamare `super
 ...Ma perchè? Cosa sta succedendo?
 In effetti, questa richiesta sembra un po' strana.
 
+<<<<<<< HEAD
 Ovviamente una spiegazione c'è. Addentriamoci nei dettagli, così da capire cosa effettivamente succede.
+=======
+Of course, there's an explanation. Let's get into details, so you'll really understand what's going on.
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
 
 In JavaScript vi è una netta distinzione tra il "metodo costruttore di una classe figlia" e tutte le altre. In una classe figlia, il costruttore viene etichettato con una proprietà interna speciale: `[[ConstructorKind]]:"derived"`.
 
@@ -516,7 +520,11 @@ Nel prossimo esempio, viene utilizzata una sintassi errata (non-method syntax) p
 
 ```js run
 let animal = {
+<<<<<<< HEAD
   eat: function() { // dovrebbe corrispondere a eat(){...}
+=======
+  eat: function() { // intentially writing like this instead of eat() {...
+>>>>>>> 4d654318ccb6d37d6cefc9b859cf111ff3c96b27
     // ...
   }
 };
