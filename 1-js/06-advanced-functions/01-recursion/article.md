@@ -96,7 +96,11 @@ function pow(x, n) {
 
 Il massimo numero di chiamate annidate (inclusa la prima) viene chiamato *profondità di ricorsione*. Nel nostro caso, sarà esattamente `n`.
 
+<<<<<<< HEAD
 La massima profondità di ricorsione viene limitata dal motore JavaScript. Possiamo farne all'incirca 10000, alcuni motori ne consentono un numero maggiore, ma 100000 probabilmente è al di fuori del limite di qualsiasi motore. Ci sono delle ottimizzazioni automatiche ("ottimizzazione della chiamate in coda"), ma nono sono ancora supportate da tutti e funzionano solo in casi semplici.
+=======
+The maximal recursion depth is limited by JavaScript engine. We can rely on it being 10000, some engines allow more, but 100000 is probably out of limit for the majority of them. There are automatic optimizations that help alleviate this ("tail calls optimizations"), but they are not yet supported everywhere and work only in simple cases.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 Questo fattore limita le possibili applicazioni della ricorsione, che rimangono comunque molte. Ci sono molte attività che possono essere semplificati tramite la ricorsione, rendendo i programmi più mantenibili.
 
@@ -335,7 +339,11 @@ Come possiamo vedere, quando la nostra funzione richiede la somma dei salari di 
 
 Il caso base è (1), è banale.
 
+<<<<<<< HEAD
 Il passo ricorsivo è (2). Un problema complesso può essere diviso in sotto-problemi composti da dipartimenti. Questi potrebbero essere ulteriormente divisi, ma prima o poi ci troveremo nel caso base (1).
+=======
+The 2nd case when we get an object is the recursive step. A complex task is split into subtasks for smaller departments. They may in turn split again, but sooner or later the split will finish at (1).
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 L'algoritmo probabilmente è più intuibile leggendone il codice:
 

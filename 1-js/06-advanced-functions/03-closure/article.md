@@ -303,7 +303,11 @@ Dovrebbe esservi abbastanza chiara la situazione delle variabili esterne. In alc
 
 ## Environment nel dettaglio
 
+<<<<<<< HEAD
 Ora che avete una maggiore conoscenza delle closure, possiamo scendere più in profondità.
+=======
+Here's what's going on in the `makeCounter` example step-by-step, follow it to make sure that you understand how it works in detail.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 Qui analizziamo cosa succede nell'esempio `makeCounter` passo per passo, seguitelo attentamente per essere certi di comprenderne il funzionamento. Da notare un ulteriore proprietà `[[Environment]]` di cui non abbiamo ancora parlato.
 

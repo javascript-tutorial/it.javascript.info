@@ -257,9 +257,15 @@ La risposta breve è: i costruttori delle classi figlie devono richiamare `super
 ...Ma perchè? Cosa sta succedendo?
 In effetti, questa richiesta sembra un po' strana.
 
+<<<<<<< HEAD
 Ovviamente una spiegazione c'è. Addentriamoci nei dettagli, così da capire cosa effettivamente succede.
 
 In JavaScript vi è una netta distinzione tra il "metodo costruttore di una classe figlia" e tutte le altre. In una classe figlia, il costruttore viene etichettato con una proprietà interna speciale: `[[ConstructorKind]]:"derived"`.
+=======
+Of course, there's an explanation. Let's get into details, so you'll really understand what's going on.
+
+In JavaScript, there's a distinction between a "constructor function of an inheriting class" and all others. In an inheriting class, the corresponding constructor function is labeled with a special internal property `[[ConstructorKind]]:"derived"`.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 La differenza è:
 
@@ -304,7 +310,11 @@ alert(rabbit.earLength); // 10
 
 Andiamo più a fondo all'interno di `super`.
 
+<<<<<<< HEAD
 In primis, da quel che abbiamo imparato finora, è impossibile che `super` funzioni!
+=======
+Let's get a little deeper under the hood of `super`. We'll see some interesting things along the way.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 Beh, proviamo a chiederci, come può funzionare? Quando un metodo viene eseguito, il suo oggetto di appartenenza viene indicato con `this`. Se richiamiamo `super.method()`, dunque, esso dovrà recuperare il metodo dal prototipo dell'oggetto corrente. 
 
@@ -516,7 +526,11 @@ Nel prossimo esempio, viene utilizzata una sintassi errata (non-method syntax) p
 
 ```js run
 let animal = {
+<<<<<<< HEAD
   eat: function() { // dovrebbe corrispondere a eat(){...}
+=======
+  eat: function() { // intentially writing like this instead of eat() {...
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
     // ...
   }
 };

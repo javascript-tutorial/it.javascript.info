@@ -228,7 +228,13 @@ new User().sayHi(); // Hello
 
 ## Getters/setters e altre scorciatoie
 
+<<<<<<< HEAD
 Così come negli oggetti letterali (literal objects), le classi possono includere getters/setters, generatori, proprietà eccetera.
+=======
+## Getters/setters, other shorthands
+
+Just like literal objects, classes may include getters/setters, computed properties etc.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 L'esempio seguente implementa `user.name` attraverso `get/set`:
 
@@ -294,9 +300,13 @@ class User {
 new User().sayHi();
 ```
 
+<<<<<<< HEAD
 Per creare un metodo generatore è sufficiente aggiungere `*` prima del nome della funzione.
 
 ## Proprietà di una classe
+=======
+## Class properties
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 ```warn header="I vecchi browser potrebbero non supportarle"
 Le proprietà di una classe dichiarata in questo modo sono una novità del linguaggio.
@@ -316,7 +326,11 @@ class User {
 new User().sayHi();
 ```
 
+<<<<<<< HEAD
 Le proprietà non vengono inserite all'interno di `User.prototype`, ma vengono create separatamente attraverso `new`, cosicché non vengano condivise tra oggetti creati dalla stessa classe.
+=======
+The property `name` is not placed into `User.prototype`. Instead, it is created by `new` before calling the constructor, it's a property of the object itself.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 ## Riassunto
 

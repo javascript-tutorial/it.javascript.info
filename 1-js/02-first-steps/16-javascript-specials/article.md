@@ -148,8 +148,13 @@ Bit a Bit
 Ternari
 : C'è un solo operatore con tre parametri: `cond ? resultA : resultB`. Se `cond` è vera, ritorna `resultA`, altrimenti `resultB`.
 
+<<<<<<< HEAD
 Operatori logici
 : AND logico `&&` e OR `||` eseguono delle valutazioni locali e ritornano un valore quando si fermano. La negazione logica NOT `!` converte il valore a tipo booleano e ne ritorna l'inverso.
+=======
+Logical operators
+: Logical AND `&&` and OR `||` perform short-circuit evaluation and then return the value where it stopped (not necessary `true`/`false`). Logical NOT `!` converts the operand to boolean type and returns the inverse value.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 Confronto
 : Confronto di uguaglianza `==` valori di tipi diversi vengono convertiti in numeri (ad eccezione di `null` e `undefined` che si eguagliano tra di loro e con nient'altro), quindi questi sono uguali:

@@ -40,7 +40,11 @@ Da notare che l'ultima riga di codice non esegue la funzione, perchè non ci son
 
 In JavaScript, una funzione è un valore, quindi possiamo trattarla come un valore. Il codice sopra ne mostra la sua rappresentazione in stringa, cioè il codice contenuto dentro la funzione.
 
+<<<<<<< HEAD
 E' chiaramente un valore speciale, poichè possiamo richiamarla con `sayHi()`.
+=======
+Surely, a function is a special value, in the sense that we can call it like `sayHi()`.
+>>>>>>> 0e4f5e425aff4a9767546f75b378ad4a2a2493ea
 
 Ma rimane comunque un valore. Quindi possiamo trattarlo come un qualsiasi altro valore.
 
