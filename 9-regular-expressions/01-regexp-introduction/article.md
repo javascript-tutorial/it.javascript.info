@@ -57,7 +57,7 @@ Da qui in avanti, lo schema di colori è il seguente:
 
 
 Quando usiamo la sintassi `new RegExp`?
-Usualmente usiamo la sintassi più breve `/.../`. Ma non supporta inserimenti di variabli con `${...}`.
+Usualmente usiamo la sintassi più breve `/.../`. Ma non supporta inserimenti di variabili con `${...}`.
 
 Tuttavia, `new RegExp` permette di costruire dinamicamente una sequenza da una stringa, quindi è più flessibile.
 
