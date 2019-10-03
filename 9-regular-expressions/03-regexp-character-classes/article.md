@@ -1,14 +1,14 @@
-# Character classes
+# Classi di caratteri
 
-Consider a practical task -- we have a phone number `"+7(903)-123-45-67"`, and we need to turn it into pure numbers: `79035419441`.
+Consideriamo un compito pratico -- disponiamo di un numero di telefono in questo formato `"+7(903)-123-45-67"`, e abbiamo bisogno di cambiarlo in numeri semplici: `79035419441`.
 
-To do so, we can find and remove anything that's not a number. Character classes can help with that.
+Per far ciò, possiamo trovare e rimuovere tutto ciò che non è un numero. Le classi di caratteri possono aiutarci a farlo.
 
-A character class is a special notation that matches any symbol from a certain set.
+Una classe di caratteri è una notazione speciale con la quale si ottengono corrispondenze per ogni simbolo che appartiene a un certo set.
 
-For the start, let's explore a "digit" class. It's written as `\d`. We put it in the pattern, that means "any single digit".
+Per iniziare, esploriamo la classe "cifre". È indicata con `\d`. La inseriamo nel pattern, e significa "ogni singolo numero".
 
-For instance, the let's find the first digit in the phone number:
+Per esempio, troviamo la prima cifra del numero di telefono:
 
 ```js run
 let str = "+7(903)-123-45-67";
@@ -18,92 +18,92 @@ let reg = /\d/;
 alert( str.match(reg) ); // 7
 ```
 
-Without the flag `g`, the regular expression only looks for the first match, that is the first digit `\d`.
+Cercando senza la flag `g`, l'espressione regolare cerca solo la prima corrispondenza, che è la prima cifra `\d`.
 
-Let's add the `g` flag to find all digits:
+Aggiungiamo la flag `g` per trovare tutte le cifre:
 
 ```js run
 let str = "+7(903)-123-45-67";
 
 let reg = /\d/g;
 
-alert( str.match(reg) ); // array of matches: 7,9,0,3,1,2,3,4,5,6,7
+alert( str.match(reg) ); // array di corrispondenze: 7,9,0,3,1,2,3,4,5,6,7
 
 alert( str.match(reg).join('') ); // 79035419441
 ```
 
-That was a character class for digits. There are other character classes as well.
+Questa era la classe di caratteri per le cifre. Ci sono anche altre classi di caratteri.
 
-Most used are:
+Le più usate sono:
 
-`\d` ("d" is from "digit")
-: A digit: a character from `0` to `9`.
+`\d` ("d" è l'iniziale di "digit", cioè cifra)
+: Una cifra: un carattere da `0` a `9`.
 
-`\s` ("s" is from "space")
-: A space symbol: that includes spaces, tabs, newlines.
+`\s` ("s" è l'iniziale di "space", spazio)
+: Un simbolo di spazio: include spazi, tab, andate a capo.
 
-`\w` ("w" is from "word")
-: A "wordly" character: either a letter of English alphabet or a digit or an underscore. Non-Latin letters (like cyrillic or hindi) do not belong to `\w`.
+`\w` ("w" è l'iniziale di "word", parola)
+: Un carattere "per formare parole": può essere una lettera dell'alfabeto Inglese o una cifra o un underscore `_` . Lettere non latine (che appartengono ad esempio al cirillico o all'hindi) non fanno parte di `\w`.
 
-For instance, `pattern:\d\s\w` means a "digit" followed by a "space character" followed by a "wordly character", like `"1 a"`.
+Ad esempio, `pattern:\d\s\w` vuol dire una "cifra" seguita da un "carattere di spazio" seguita da "un carattere per formare parole", come `"1 a"`.
 
-**A regexp may contain both regular symbols and character classes.**
+**Una regexp potrebbe contenere sia simboli regolari sia classi di caratteri.**
 
-For instance, `pattern:CSS\d` matches a string `match:CSS` with a digit after it:
+Per esempio, `pattern:CSS\d` cerca corrispondenze per la stringa `match:CSS` seguita da una cifra:
 
 ```js run
-let str = "CSS4 is cool";
+let str = "CSS4 è cool";
 let reg = /CSS\d/
 
 alert( str.match(reg) ); // CSS4
 ```
 
-Also we can use many character classes:
+Possiamo anche usare più classi di caratteri:
 
 ```js run
 alert( "I love HTML5!".match(/\s\w\w\w\w\d/) ); // ' HTML5'
 ```
 
-The match (each character class corresponds to one result character):
+La corrispondenza (a ogni classe di caratteri  corrisponde un carattere risultante):
 
 ![](love-html5-classes.svg)
 
-## Word boundary: \b
+## Confine di parola: \b
 
-A word boundary `pattern:\b` -- is a special character class.
+Un confine di parola (word boundary) `pattern:\b` è una particolare classe di caratteri.
 
-It does not denote a character, but rather a boundary between characters.
+Non denota un carattere, ma piuttosto un confine tra caratteri.
 
-For instance, `pattern:\bJava\b` matches `match:Java` in the string `subject:Hello, Java!`, but not in the script `subject:Hello, JavaScript!`.
+Ad esempio, `pattern:\bJava\b` trova `match:Java` nella stringa `subject:Hello, Java!`, ma non nella stringa `subject:Hello, JavaScript!`.
 
 ```js run
 alert( "Hello, Java!".match(/\bJava\b/) ); // Java
 alert( "Hello, JavaScript!".match(/\bJava\b/) ); // null
 ```
 
-The boundary has "zero width" in a sense that usually a character class means a character in the result (like a wordly character or a digit), but not in this case.
+Il confine ha "larghezza zero" nel senso che solitamente utilizzare una classe di caratteri significa ottenere un carattere nel risultato (come una lettera o un numero), ma non in questo caso.
 
-The boundary is a test.
+Il boundary è un test.
 
-When regular expression engine is doing the search, it's moving along the string in an attempt to find the match. At each string position it tries to find the pattern.
+Quando il motore delle espressioni regolari sta effettuando la ricerca, si sposta sulla stringa nel tentativo di trovare una corrispondenza. In ogni posizione della stringa esso prova a trovare il pattern.
 
-When the pattern contains `pattern:\b`, it tests that the position in string is a word boundary, that is one of three variants:
+Quando il pattern contiene `pattern:\b`, testa che la posizione nella stringa sia un "confine di parola", cioè si verifica una di queste tre condizioni:
 
-- Immediately before is `\w`, and immediately after -- not `\w`, or vise versa.
-- At string start, and the first string character is `\w`.
-- At string end, and the last string character is `\w`.
+- Tra due caratteri della stringa, dove uno è un carattere appartenente a una parola `\w` e l'altro non lo è.
+- All'inizio della stringa, se il primo carattere della stringa è un carattere appartenente a una parola `\w`.
+- Alla fine della stringa, se l'ultimo carattere della stringa è un carattere appartenente a una parola `\w`.
 
-For instance, in the string `subject:Hello, Java!` the following positions match `\b`:
+Per esempio, nella stringa `subject:Hello, Java!` le seguenti posizioni corrispondono a `\b`:
 
 ![](hello-java-boundaries.svg)
 
-So it matches `pattern:\bHello\b`, because:
+Quindi trova `pattern:\bHello\b`, perchè:
 
-1. At the beginning of the string the first `\b` test matches.
-2. Then the word `Hello` matches.
-3. Then `\b` matches, as we're between `o` and a space.
+1. All'inizio della stringa il primo test `\b` ha corrispondenza positiva.
+2. Successivamente la parola `Hello` corrisponde.
+3. Infine `\b` corrisponde, dato che siamo tra `o` e uno spazio.
 
-Pattern `pattern:\bJava\b` also matches. But not `pattern:\bHell\b` (because there's no word boundary after `l`) and not `Java!\b` (because the exclamation sign is not a wordly character, so there's no word boundary after it).
+Anche il pattern `pattern:\bJava\b` corrisponde, ma non `pattern:\bHell\b` (perché non c'è il confine di parola dopo `l`) e non `Java!\b` (perché il punto esclamativo non è un carattere appartenente a una parola `\w`, quindi non c'è il confine di parola dopo di lui).
 
 
 ```js run
@@ -113,44 +113,44 @@ alert( "Hello, Java!".match(/\bHell\b/) );  // null (no match)
 alert( "Hello, Java!".match(/\bJava!\b/) ); // null (no match)
 ```
 
-Once again let's note that `pattern:\b` makes the searching engine to test for the boundary, so that `pattern:Java\b` finds `match:Java` only when followed by a word boundary, but it does not add a letter to the result.
+Ancora una volta teniamo conto del fatto che  `pattern:\b` fa cercare corrispondenze per il confine di parola al motore, affinché `pattern:Java\b` trovi `match:Java` soltanto quando seguito da un confine di parola.
 
-Usually we use `\b` to find standalone English words. So that if we want `"Java"` language then `pattern:\bJava\b` finds exactly a standalone word and ignores it when it's a part of another word, e.g. it won't match `match:Java` in `subject:JavaScript`.
+Solitamente usiamo `\b` per trovare singole parole. Quindi se noi vogliamo che il risultato sia il linguaggio `"Java"`, allora `pattern:\bJava\b` troverà corrispondenze per quella esatta parola isolata, e le ignorerà se facente parte di un'altra parola, quindi ad esempio non troverà corrispondenze per `match:Java` in `subject:JavaScript`.
 
-Another example: a regexp `pattern:\b\d\d\b` looks for standalone two-digit numbers. In other words, it requires that before and after `pattern:\d\d` must be a symbol different from `\w` (or beginning/end of the string).
+Un altro esempio: una regexp `pattern:\b\d\d\b` cerca numeri isolati composti da due cifre. In altre parole, richiede che prima e dopo del pattern  `pattern:\d\d` vi sia un simbolo diverso da `\w` (all'inizio o alla fine della stringa).
 
 ```js run
 alert( "1 23 456 78".match(/\b\d\d\b/g) ); // 23,78
 ```
 
-```warn header="Word boundary doesn't work for non-Latin alphabets"
-The word boundary check `\b` tests for a boundary between `\w` and something else. But `\w` means an English letter (or a digit or an underscore), so the test won't work for other characters (like cyrillic or hieroglyphs).
+```warn header="Il confine di parola non funziona con alfabeti non Latini"
+Il controllo per il confine di parola `\b` verifica la presenza di un confine tra `\w` e qualcos'altro. Ma `\w` può essere una lettera (o numero o underscore), quindi il test non funzionerà per altri caratteri (come il Cirillico o i Geroglifici).
 
-Later we'll come by Unicode character classes that allow to solve the similar task for different languages.
+In un secondo momento raggiungeremo le classi di caratteri Unicode che permettono di risolvere task simili per lingue diverse.
 ```
 
 
-## Inverse classes
+## Classi inverse
 
-For every character class there exists an "inverse class", denoted with the same letter, but uppercased.
+Per ogni classe di caratteri ne esiste una "classe inversa", indicata con la stessa lettera, ma maiuscola.
 
-The "reverse" means that it matches all other characters, for instance:
+L'"inversa" vuol dire che trova corrispondenza per tutti gli altri caratteri, ad esempio:
 
 `\D`
-: Non-digit: any character except `\d`, for instance a letter.
+: Non una cifra: qualsiasi carattere eccetto `\d`, ad esempio una lettera.
 
 `\S`
-: Non-space: any character except `\s`, for instance a letter.
+: Non uno spazio: qualsiasi carattere eccetto `\s`, ad esempio una lettera.
 
 `\W`
-: Non-wordly character: anything but `\w`.
+: Un carattere che non appartenga a una parola: tutto tranne `\w`.
 
 `\B`
-: Non-boundary: a test reverse to `\b`.
+: Non-boundary: un test inverso a quello del confine di parola `\b`.
 
-In the beginning of the chapter we saw how to get all digits from the phone `subject:+7(903)-123-45-67`.
+All'inizio del capitolo abbiamo visto come ottenere tutte le cifre che compongono il numero  `subject:+7(903)-123-45-67`.
 
-One way was to match all digits and join them:
+Un modo era trovare tutte le singole cifre e poi unirle:
 
 ```js run
 let str = "+7(903)-123-45-67";
@@ -158,7 +158,7 @@ let str = "+7(903)-123-45-67";
 alert( str.match(/\d/g).join('') ); // 79031234567
 ```
 
-An alternative, shorter way is to find non-digits `\D` and remove them from the string:
+Un modo alternativo e più breve è quello di trovare tutti i caratteri che non sono numerici `\D` e rimuoverli dalla stringa:
 
 
 ```js run
@@ -167,103 +167,103 @@ let str = "+7(903)-123-45-67";
 alert( str.replace(/\D/g, "") ); // 79031234567
 ```
 
-## Spaces are regular characters
+## Gli spazi sono caratteri regolari
 
-Usually we pay little attention to spaces. For us strings `subject:1-5` and `subject:1 - 5` are nearly identical.
+Di solito prestiamo poca attenzione agli spazi. Per noi le stringhe `subject:1-5` e `subject:1 - 5` sono quasi identiche.
 
-But if a regexp doesn't take spaces into account, it may fail to work.
+Ma se una regexp non tiene conto degli spazi, potrebbe non funzionare.
 
-Let's try to find digits separated by a dash:
-
-```js run
-alert( "1 - 5".match(/\d-\d/) ); // null, no match!
-```
-
-Here we fix it by adding spaces into the regexp `pattern:\d - \d`:
+Proviamo a trovare cifre separate da un trattino:
 
 ```js run
-alert( "1 - 5".match(/\d - \d/) ); // 1 - 5, now it works
+alert( "1 - 5".match(/\d-\d/) ); // null, nessuna corrispondenza!
 ```
 
-**A space is a character. Equal in importance with any other character.**
-
-Of course, spaces in a regexp are needed only if we look for them. Extra spaces (just like any other extra characters) may prevent a match:
+Qui sistemiamo le cose aggiungendo gli spazi nella regexp `pattern:\d - \d`:
 
 ```js run
-alert( "1-5".match(/\d - \d/) ); // null, because the string 1-5 has no spaces
+alert( "1 - 5".match(/\d - \d/) ); // 1 - 5, ora funziona
 ```
 
-In other words, in a regular expression all characters matter, spaces too.
+**Uno spazio è un carattere. Ha la stessa importanza di ogni altro carattere.**
 
-## A dot is any character
+Ovviamente, gli spazi in una regexp sono necessari solo se li stiamo cercando. Spazi extra (così come qualsiasi altro carattere in eccesso) possono impedire di trovare una corrispondenza:
 
-The dot `"."` is a special character class that matches "any character except a newline".
+```js run
+alert( "1-5".match(/\d - \d/) ); // null, perchè la stringa 1-5 non ha spazi
+```
 
-For instance:
+In altre parole, in una espressione regolare tutti i caratteri hanno importanza, compresi gli spazi.
+
+## Un punto rappresenta qualsiasi carattere
+
+Il punto `"."` è una speciale classe di caratteri che trova corrispondenze per "qualsiasi carattere eccetto un'andata a capo".
+
+Per esempio:
 
 ```js run
 alert( "Z".match(/./) ); // Z
 ```
 
-Or in the middle of a regexp:
+Oppure nel mezzo di una regexp:
 
 ```js run
 let reg = /CS.4/;
 
 alert( "CSS4".match(reg) ); // CSS4
 alert( "CS-4".match(reg) ); // CS-4
-alert( "CS 4".match(reg) ); // CS 4 (space is also a character)
+alert( "CS 4".match(reg) ); // CS 4 (anche lo spazio è un carattere)
 ```
 
-Please note that the dot means "any character", but not the "absense of a character". There must be a character to match it:
+Va notato che il punto rappresenta "qualunque carattere" ma non "l'assenza di un carattere". Deve esserci un carattere affinché una corrispondenza venga trovata:
 
 ```js run
-alert( "CS4".match(/CS.4/) ); // null, no match because there's no character for the dot
+alert( "CS4".match(/CS.4/) ); // null, nessuna corrispondenza perché non c'è carattere tra S e 4
 ```
 
-### The dotall "s" flag
+### La flag dotall "s"
 
-Usually a dot doesn't match a newline character.
+Di solito un punto non corrisponde a un carattere di andata a capo.
 
-For instance, `pattern:A.B` matches `match:A`, and then `match:B` with any character between them, except a newline.
+Per esempio, `pattern:A.B` trova `match:A`, e successivamente `match:B` con qualsiasi carattere si trovi tra di loro, eccetto un'andata a capo.
 
-This doesn't match:
+Questo non corrisponde:
 
 ```js run
-alert( "A\nB".match(/A.B/) ); // null (no match)
+alert( "A\nB".match(/A.B/) ); // null (nessuna corrispondenza)
 
-// a space character would match, or a letter, but not \n
+// un carattere di spazio corrisponderebbe, o una lettera, ma non \n
 ```
 
-Sometimes it's inconvenient, we really want "any character", newline included.
+A volte ciò è un inconveniente, perché magari stiamo cercando letteralmente "qualunque carattere", andata a capo inclusa.
 
-That's what `s` flag does. If a regexp has it, then the dot `"."` match literally any character:
+Questo è ciò che fa la flag `s`. Se una regexp ce l'ha, allora il punto `"."` corrisponderà letteralmente a qualunque carattere:
 
 ```js run
-alert( "A\nB".match(/A.B/s) ); // A\nB (match!)
+alert( "A\nB".match(/A.B/s) ); // A\nB (corrispondenza!)
 ```
 
-## Summary
+## Riepilogo
 
-There exist following character classes:
+Esistono le seguenti classi di caratteri:
 
-- `pattern:\d` -- digits.
-- `pattern:\D` -- non-digits.
-- `pattern:\s` -- space symbols, tabs, newlines.
-- `pattern:\S` -- all but `pattern:\s`.
-- `pattern:\w` -- English letters, digits, underscore `'_'`.
-- `pattern:\W` -- all but `pattern:\w`.
-- `pattern:.` -- any character if with the regexp `'s'` flag, otherwise any except a newline.
+- `pattern:\d` -- cifre.
+- `pattern:\D` -- non cifre.
+- `pattern:\s` -- simboli di spazio, tab, andate a capo.
+- `pattern:\S` -- tutto tranne `pattern:\s`.
+- `pattern:\w` -- lettere, numeri, underscore `'_'`.
+- `pattern:\W` -- tutto tranne `pattern:\w`.
+- `pattern:.` -- qualsiasi carattere se abbiamo la flag `'s'`, altrimenti qualsiasi carattere eccetto un'andata a capo.
 
-...But that's not all!
+...Ma non è tutto!
 
-The Unicode encoding, used by JavaScript for strings, provides many properties for characters, like: which language the letter belongs to (if a letter) it is it a punctuation sign, etc.
+La codifica Unicode, usata da JavaScript per le stringhe, fornisce molte proprietà per i caratteri, come: a quale linguaggio appartiene la lettera (se è una lettera), se è un simbolo d'interpunzione, ecc.
 
-Modern JavaScript allows to use these properties in regexps to look for characters, for instance:
+L'attuale JavaScript consente di usare queste proprietà nelle regexp per cercare i caratteri, ad esempio:
 
-- A cyrillic letter is: `pattern:\p{Script=Cyrillic}` or `pattern:\p{sc=Cyrillic}`.
-- A dash (be it a small hyphen `-` or a long dash `—`): `pattern:\p{Dash_Punctuation}` or `pattern:\p{pd}`.
-- A currency symbol, such as `$`, `€` or another: `pattern:\p{Currency_Symbol}` or `pattern:\p{sc}`.
-- ...And much more. Unicode has a lot of character categories that we can select from.
+- Una lettera cirillica è: `pattern:\p{Script=Cyrillic}` o `pattern:\p{sc=Cyrillic}`.
+- Un trattino (che sia più corto `-` o più lungo `—`): `pattern:\p{Dash_Punctuation}` o `pattern:\p{pd}`.
+- Un simbolo di una valuta, come `$`, `€` o un altro: `pattern:\p{Currency_Symbol}` o `pattern:\p{sc}`.
+- ...E molto di più. Unicode ha molte categorie di caratteri tra cui possiamo scegliere.
 
-These patterns require `'u'` regexp flag to work. More about that in the chapter [](info:regexp-unicode).
+Questi pattern necessitano della flag `'u'` per funzionare. Maggiori dettagli nel capitolo [](info:regexp-unicode).
