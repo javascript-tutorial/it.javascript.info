@@ -1,8 +1,8 @@
-# Find the time
+# Trova l'orario
 
-The time has a format: `hours:minutes`. Both hours and minutes has two digits, like `09:00`.
+L'orario ha il formato: `ore:minuti`. Sia ore sia minuti sono formati da due cifre, come `09:00`.
 
-Make a regexp to find time in the string: `subject:Breakfast at 09:00 in the room 123:456.`
+Crea una regexp per trovare l'orario nella stringa: `subject:Colazione alle 09:00 nella stanza 123:456.`
 
-P.S. In this task there's no need to check time correctness yet, so `25:99` can also be a valid result.
-P.P.S. The regexp shouldn't match `123:456`.
+P.S. In questo esercizio non c'è ancora bisogno di controllare la correttezza dell'orario, quindi `25:99` è considerato un risultato valido.
+P.P.S. La regexp non dovrebbe restituire `123:456`.
