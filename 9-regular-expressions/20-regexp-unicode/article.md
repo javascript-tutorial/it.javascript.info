@@ -1,17 +1,17 @@
 
 # Unicode: flag "u"
 
-The unicode flag `/.../u` enables the correct support of surrogate pairs.
+La flag unicode `/.../u` abilita il corretto supporto delle coppie surrogate.
 
-Surrogate pairs are explained in the chapter <info:string>.
+Le coppie surrogate sono spiegate nel capitolo <info:string>.
 
-Let's briefly review them here. In short, normally characters are encoded with 2 bytes. That gives us 65536 characters maximum. But there are more characters in the world.
+Rivediamole brevemente qui. In poche parole, i caratteri normali sono codificati con 2 byte. Questo ci dà un massimo di 65536 caratteri. Ma ci sono più caratteri nel mondo.
 
-So certain rare characters are encoded with 4 bytes, like `𝒳` (mathematical X) or `😄` (a smile).
+Quindi alcuni caratteri più rari sono codificati con 4 byte, come `𝒳` (la X matematica) o `😄` (uno smile).
 
-Here are the unicode values to compare:
+Qui vi sono i valori unicode da comparare:
 
-| Character  | Unicode | Bytes  |
+| Carattere  | Unicode | Byte  |
 |------------|---------|--------|
 | `a` | 0x0061 |  2 |
 | `≈` | 0x2248 |  2 |
@@ -19,36 +19,36 @@ Here are the unicode values to compare:
 |`𝒴`| 0x1d4b4 | 4 |
 |`😄`| 0x1f604 | 4 |
 
-So characters like `a` and `≈` occupy 2 bytes, and those rare ones take 4.
+Dunque caratteri come `a` e `≈` occupano 2 bytes, e quelli rari ne occupano 4.
 
-The unicode is made in such a way that the 4-byte characters only have a meaning as a whole.
+Unicode è stato fatto in modo tale che i caratteri a 4 byte abbiano un significato solo considerando l'intero insieme.
 
-In the past JavaScript did not know about that, and many string methods still have problems. For instance, `length` thinks that here are two characters:
+In precedenza JavaScript non ne sapeva nulla, e molti metodi delle stringhe ancora presentano problemi. Per esempio, `length` pensa che qui ci siano due caratteri:
 
 ```js run
 alert('😄'.length); // 2
 alert('𝒳'.length); // 2
 ```
 
-...But we can see that there's only one, right? The point is that `length` treats 4 bytes as two 2-byte characters. That's incorrect, because they must be considered only together (so-called "surrogate pair").
+...Ma possiamo vedere che ce n'è solo uno, giusto? Il punto è che `length` tratta i caratteri a 4 byte come due caratteri a 2-byte. Questo non è corretto, perché devono essere considerati solo insieme (per cui chiamati "coppie surrogate").
 
-Normally, regular expressions also treat "long characters" as two 2-byte ones.
+Usualmente, anche le espressioni regolari trattano questi "caratteri lunghi" come due caratteri a 2-byte.
 
-That leads to odd results, for instance let's try to find `pattern:[𝒳𝒴]` in the string `subject:𝒳`:
+Questo porta a strani risultati, ad esempio proviamo a cercare `pattern:[𝒳𝒴]` nella stringa `subject:𝒳`:
 
 ```js run
-alert( '𝒳'.match(/[𝒳𝒴]/) ); // odd result (wrong match actually, "half-character")
+alert( '𝒳'.match(/[𝒳𝒴]/) ); // risultato strano (in realtà è una corrispondenza errata, "mezzo carattere")
 ```
 
-The result is wrong, because by default the regexp engine does not understand surrogate pairs.
+Il risultato è errato, perché di default il motore delle regexp non comprende le coppie surrogate.
 
-So, it thinks that `[𝒳𝒴]` are not two, but four characters:
-1. the left half of `𝒳` `(1)`,
-2. the right half of `𝒳` `(2)`,
-3. the left half of `𝒴` `(3)`,
-4. the right half of `𝒴` `(4)`.
+Dunque, pensa che `[𝒳𝒴]` non siano due, ma quattro caratteri:
+1. la metà sinistra di `𝒳` `(1)`,
+2. la metà destra di `𝒳` `(2)`,
+3. la metà sinistra di `𝒴` `(3)`,
+4. la metà destra di `𝒴` `(4)`.
 
-We can list them like this:
+Li possiamo elencare così:
 
 ```js run
 for(let i=0; i<'𝒳𝒴'.length; i++) {
@@ -56,33 +56,33 @@ for(let i=0; i<'𝒳𝒴'.length; i++) {
 };
 ```
 
-So it finds only the "left half" of `𝒳`.
+Quindi trova solo la "metà sinistra" di `𝒳`.
 
-In other words, the search works like `'12'.match(/[1234]/)`: only `1` is returned.
+In altre parole, la ricerca funziona come `'12'.match(/[1234]/)`: solo `1` viene restituito.
 
-## The "u" flag
+## La flag "u"
 
-The `/.../u` flag fixes that.
+La flag `/.../u` risolve questo problema.
 
-It enables surrogate pairs in the regexp engine, so the result is correct:
+Essa abilita le coppie surrogate nel motore delle regexp, in modo tale che il risultato sia:
 
 ```js run
 alert( '𝒳'.match(/[𝒳𝒴]/u) ); // 𝒳
 ```
 
-Let's see one more example.
+Vediamo un altro esempio.
 
-If we forget the `u` flag and occasionally use surrogate pairs, then we can get an error:
+Se dimentichiamo la flag `u` e occasionalmente usiamo le coppie surrogate, possiamo incorrere in errori:
 
 ```js run
-'𝒳'.match(/[𝒳-𝒴]/); // SyntaxError: invalid range in character class
+'𝒳'.match(/[𝒳-𝒴]/); // SyntaxError: intervallo non valido nella classe di caratteri
 ```
 
-Normally, regexps understand `[a-z]` as a "range of characters with codes between codes of `a` and `z`.
+Di solito, le regexp interpretano `[a-z]` come un "intervallo di caratteri con codici tra `a` e `z`.
 
-But without `u` flag, surrogate pairs are assumed to be a "pair of independent characters", so `[𝒳-𝒴]` is like `[<55349><56499>-<55349><56500>]` (replaced each surrogate pair with code points). Now we can clearly see that the range `56499-55349` is unacceptable, as the left range border must be less than the right one.
+Ma senza la flag `u`, le coppie surrogate vengono interpretate come "coppie di caratteri indipendenti", quindi `[𝒳-𝒴]` è come `[<55349><56499>-<55349><56500>]` (sostituito a ogni coppia surrogata il codice corrispondente). Ora possiamo vedere con più chiarezza che l'intervallo `56499-55349` non è accettabile, dato che il valore a sinistra dell'intervallo deve essere inferiore rispetto a quello a destra.
 
-Using the `u` flag makes it work right:
+Usando la flag `u` tutto funziona di nuovo:
 
 ```js run
 alert( '𝒴'.match(/[𝒳-𝒵]/u) ); // 𝒴
