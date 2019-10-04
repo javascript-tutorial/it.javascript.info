@@ -1,81 +1,81 @@
 
-# Unicode character properties \p
+# Proprietà dei caratteri Unicode \p
 
-[Unicode](https://en.wikipedia.org/wiki/Unicode), the encoding format used by JavaScript strings, has a lot of properties for different characters (or, technically, code points). They describe which "categories" character belongs to, and a variety of technical details.
+[Unicode](https://en.wikipedia.org/wiki/Unicode), il formato di codifica usato dalle stringhe di JavaScript, ha molte proprietà per diversi caratteri. Esse descrivono a quali "categorie" appartiene il carattere, e una varietà di dettagli tecnici.
 
-In regular expressions these can be set by `\p{…}`. And there must be flag `'u'`.
+Nelle espressioni regolari queste possono essere impostate con `\p{…}`. E deve esserci la flag `'u'`.
 
-For instance, `\p{Letter}` denotes a letter in any of language. We can also use `\p{L}`, as `L` is an alias of `Letter`, there are shorter aliases for almost every property.
+Per esempio, `\p{Letter}` indica una lettera in qualsiasi lingua. Possiamo anche usare `\p{L}`, o `L` al posto di `Letter`, ci sono alias più corti quasi per tutte le proprietà.
 
-Here's the main tree of properties:
+Qui c'è l'albero principale delle proprietà:
 
-- Letter `L`:
-  - lowercase `Ll`, modifier `Lm`, titlecase `Lt`, uppercase `Lu`, other `Lo`
-- Number `N`:
-  - decimal digit `Nd`, letter number `Nl`, other `No`
-- Punctuation `P`:
-  - connector `Pc`, dash `Pd`, initial quote `Pi`, final quote `Pf`, open `Ps`, close `Pe`, other `Po`
-- Mark `M` (accents etc):
-  - spacing combining `Mc`, enclosing `Me`, non-spacing `Mn`
-- Symbol `S`:
-  - currency `Sc`, modifier `Sk`, math `Sm`, other `So`
-- Separator `Z`:
-  - line `Zl`, paragraph `Zp`, space `Zs`
-- Other `C`:
-  - control `Cc`, format `Cf`, not assigned `Cn`, private use `Co`, surrogate `Cs`
+- Lettera `L`:
+  - minuscolo `Ll`, modificatore `Lm`, titolo `Lt`, maiuscolo `Lu`, altro `Lo`
+- Numero `N`:
+  - cifra decimale `Nd`, numero letterale `Nl`, altro `No`
+- Punteggiatura `P`:
+  - connettore `Pc`, trattino `Pd`, apri virgolette `Pi`, chiudi virgolette `Pf`, apri `Ps`, chiudi `Pe`, altro `Po`
+- Mark `M` (accenti ecc.):
+  - combinazione di spazi `Mc`, simboli di enclosing `Me`, caratteri non-spacing `Mn`
+- Simbolo `S`:
+  - valuta `Sc`, modificatore `Sk`, matematico `Sm`, altro `So`
+- Separatore `Z`:
+  - linea `Zl`, paragrafo `Zp`, spazio `Zs`
+- Altro `C`:
+  - controllo `Cc`, formato `Cf`, non assegnato `Cn`, uso privato `Co`, surrogato `Cs`
 
-```smart header="More information"
-Interested to see which characters belong to a property? There's a tool at <http://cldr.unicode.org/unicode-utilities/list-unicodeset> for that.
+```smart header="Maggiori informazioni"
+Ti interessa scoprire quali caratteri appartengono a una proprietà? C'è uno strumento in <http://cldr.unicode.org/unicode-utilities/list-unicodeset> che serve a questo.
 
-You could also explore properties at [Character Property Index](http://unicode.org/cldr/utility/properties.jsp).
+Potresti anche esplorare le proprietà in [Character Property Index](http://unicode.org/cldr/utility/properties.jsp).
 
-For the full Unicode Character Database in text format (along with all properties), see <https://www.unicode.org/Public/UCD/latest/ucd/>.
+Per il Database completo dei Caratteri Unicode in formato testuale (insieme a tutte le proprietà), vedi <https://www.unicode.org/Public/UCD/latest/ucd/>.
 ```
 
-There are also other derived categories, like:
-- `Alphabetic` (`Alpha`), includes Letters `L`, plus letter numbers `Nl` (e.g. roman numbers Ⅻ), plus some other symbols `Other_Alphabetic` (`OAltpa`).
-- `Hex_Digit` includes hexadecimal digits: `0-9`, `a-f`.
-- ...Unicode is a big beast, it includes a lot of properties.
+Ci sono anche altre categorie derivate, come:
+- `Alphabetic` (`Alpha`), include Lettere `L`, più numeri letterali `Nl` (es. i numeri romani Ⅻ), più qualche altro simbolo `Other_Alphabetic` (`OAltpa`).
+- `Hex_Digit` include i numeri esadecimali: `0-9`, `a-f`.
+- ...Unicode è un sistema complesso, include moltissime proprietà.
 
-For instance, let's look for a 6-digit hex number:
+Per esempio, cerchiamo un numero esadecimale a 6 cifre:
 
 ```js run
-let reg = /\p{Hex_Digit}{6}/u; // flag 'u' is required
+let reg = /\p{Hex_Digit}{6}/u; // è richiesta la flag 'u'
 
 alert("color: #123ABC".match(reg)); // 123ABC
 ```
 
-There are also properties with a value. For instance, Unicode "Script" (a writing system) can be Cyrillic, Greek, Arabic, Han (Chinese) etc, the [list is long]("https://en.wikipedia.org/wiki/Script_(Unicode)").
+Ci sono anche proprietà con un valore. Ad esempio, Unicode "Script" (un sistema di scrittura) può essere Cirillico, Greco, Arabo, Han (Cinese) ecc, la [lista è lunga]("https://en.wikipedia.org/wiki/Script_(Unicode)").
 
-To search for characters in certain scripts ("alphabets"), we should supply `Script=<value>`, e.g. to search for cyrillic letters: `\p{sc=Cyrillic}`, for Chinese glyphs: `\p{sc=Han}`, etc:
+Per cercare caratteri in certi script ("alfabeti"), dovremmo fornire `Script=<value>`, ad esempio per cercare lettere in Cirillico: `\p{sc=Cyrillic}`, per glifi Cinesi: `\p{sc=Han}`, ecc:
 
 ```js run
-let regexp = /\p{sc=Han}+/gu; // get chinese words
+let regexp = /\p{sc=Han}+/gu; // ottieni parole cinesi
 
 let str = `Hello Привет 你好 123_456`;
 
 alert( str.match(regexp) ); // 你好
 ```
 
-## Building multi-language \w
+## Costruire un multi linguaggio \w
 
-The pattern `pattern:\w` means "wordly characters", but doesn't work for languages that use non-Latin alphabets, such as Cyrillic and others. It's just a shorthand for `[a-zA-Z0-9_]`, so `pattern:\w+` won't find any Chinese words etc.
+Il pattern `pattern:\w` vuol dire "caratteri per formare parole", ma non funziona per lingue che usano alfabeti non Latini, come il Cirillico e altri. È solo un'abbreviazione per `[a-zA-Z0-9_]`, quindi `pattern:\w+` non troverà nessuna parola Cinese ecc.
 
-Let's make a "universal" regexp, that looks for wordly characters in any language. That's easy to do using Unicode properties:
+Creiamo una regexp "universale", che cerca "caratteri letterari" in qualsiasi lingua. È semplice da fare utilizzando le proprietà di Unicode:
 
 ```js
 /[\p{Alphabetic}\p{Mark}\p{Decimal_Number}\p{Connector_Punctuation}\p{Join_Control}]/u
 ```
 
-Let's decipher. Just as `pattern:\w` is the same as `pattern:[a-zA-Z0-9_]`, we're making a set of our own, that includes:
+Decifriamolo. Proprio come `pattern:\w` è lo stesso di `pattern:[a-zA-Z0-9_]`, stiamo creando un nostro set personalizzato, che include:
 
-- `Alphabetic` for letters,
-- `Mark` for accents, as in Unicode accents may be represented by separate code points,
-- `Decimal_Number` for numbers,
-- `Connector_Punctuation` for the `'_'` character and alike,
-- `Join_Control` -– two special code points with hex codes `200c` and `200d`, used in ligatures e.g. in arabic.
+- `Alphabetic` per le lettere,
+- `Mark` per accenti, dato che in Unicode gli accenti potrebbero essere rappresentati con codici separati,
+- `Decimal_Number` per i numeri,
+- `Connector_Punctuation` per il carattere `'_'`  e simili,
+- `Join_Control` -– due codici speciali con codice esadecimale `200c` e `200d`, usati ad esempio in Arabo.
 
-Or, if we replace long names with aliases (a list of aliases [here](https://www.unicode.org/Public/UCD/latest/ucd/PropertyValueAliases.txt)):
+O, se sostituiamo nomi lunghi con degli alias (una lista di alias [qui](https://www.unicode.org/Public/UCD/latest/ucd/PropertyValueAliases.txt)):
 
 ```js run
 let regexp = /([\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]+)/gu;
