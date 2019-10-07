@@ -357,7 +357,13 @@ Il problema è che JavaScript tratta `{...}` come un blocco di codice. Questo bl
 }
 ```
 
+<<<<<<< HEAD
 Per informare JavaScript che non ci troviamo in un blocco di codice, possiamo raggruppare l'intera assegnazione tra parentesi `(...)`:
+=======
+So here JavaScript assumes that we have a code block, that's why there's an error. We want destructuring instead.
+
+To show JavaScript that it's not a code block, we can wrap the expression in parentheses `(...)`:
+>>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
 
 ```js run
 let title, width, height;
@@ -402,9 +408,13 @@ alert(item1);  // Cake
 alert(item2);  // Donut
 ```
 
+<<<<<<< HEAD
 L'intero oggetto `options` ad eccezione di `extra` il quale non viene menzionato, viene assegnato alle corrispondenti variabili.
 
 Note that `size` and `items` itself is not destructured.
+=======
+All properties of `options` object except `extra` that is absent in the left part, are assigned to corresponding variables:
+>>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
 
 ![](destructuring-complex.svg)
 
@@ -435,7 +445,7 @@ Nella vita reale, il problema è ricordarsi l'ordine degli argomenti. Solitament
 Come qui?
 
 ```js
-// undefined where detauls values are fine
+// undefined where default values are fine
 showMenu("My Menu", undefined, undefined, ["Item1", "Item2"])
 ```
 

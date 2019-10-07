@@ -2,7 +2,11 @@
 
 Prima di scrivere codice più complesso, dovremmo parlare di debugging.
 
+<<<<<<< HEAD
 [Debugging](https://en.wikipedia.org/wiki/Debugging) è il processo che prevede di trovare e sistemare gli errori all'interno di uno script. Tutti i browser moderni e molti altri ambienti forniscono strumenti per il debugging -- degli speciali strumenti che rendono il debugging un operazione più semplice. Consentono anche di seguire l'esecuzione del codice passo per passo, per capire esattamente cosa sta accadendo..
+=======
+[Debugging](https://en.wikipedia.org/wiki/Debugging) is the process of finding and fixing errors within a script. All modern browsers and most other environments support debugging tools -- a special UI in developer tools that makes debugging much easier. It also allows to trace the code step by step to see what exactly is going on.
+>>>>>>> 71ff8f81b05e2438a3c56507888e06c528a71182
 
 Noi useremo Chrome, poiché è probabilmente il più ricco di caratteristiche sotto questo aspetto.
 
