@@ -1,71 +1,71 @@
 
-# Modules, introduction
+# Moduli, introduzione
 
-As our application grows bigger, we want to split it into multiple files, so called "modules". A module usually contains a class or a library of functions.
+Quando la nostra applicazione cresce di dimensione, vogliamo dividerla in diversi file, chiamati "moduli"(modules). Un modulo solitamente contiene una classe o una libreria di funzioni.
 
-For a long time, JavaScript existed without a language-level module syntax. That wasn't a problem, because initially scripts were small and simple, so there was no need.
+Per molto tempo JavaScript è esistito senza una vera sintassi per i moduli nel linguaggio. Questo non era un problema, dato che inizialmente gli script erano piccoli e semplici, e quindi non ce n'era esigenza.
 
-But eventually scripts became more and more complex, so the community invented a variety of ways to organize code into modules, special libraries to load modules on demand.
+Ma gli script man mano diventarono più grandi e complessi, di conseguenza la comunità inventò vari sistemi per organizzare il codice in moduli, come librerie speciali che gestivano il caricamento di moduli su richiesta.
 
-For instance:
+Per esempio:
 
-- [AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition) -- one of the most ancient module systems, initially implemented by the library [require.js](http://requirejs.org/).
-- [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1) -- the module system created for Node.js server.
-- [UMD](https://github.com/umdjs/umd) -- one more module system, suggested as a universal one, compatible with AMD and CommonJS.
+- [AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition) -- uno dei più vecchi sistemi per la gestione di moduli, inizialmente implementato dalla libreria [require.js](http://requirejs.org/).
+- [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1) -- il sistema per la gestione di moduli creato per node.js server.
+- [UMD](https://github.com/umdjs/umd) -- un'altro sistema di gestione di moduli, che è stato suggerito come metodo universale, compativile sia con AMD sia con CommonJS.
 
-Now all these slowly become a part of history, but we still can find them in old scripts.
+Ormai tutti questi sistemi vengono lentamente abbandonati, anche se ancora possono essere trovati in vecchi script.
 
-The language-level module system appeared in the standard in 2015, gradually evolved since then, and is now supported by all major browsers and in Node.js. So we'll study it from now on.
+Il sistema per la gestione dei moduli nel linguaggio è stato standardizzato nel 2015, e si è gradualmente evoluto da quel momento in poi. Ora è supportato da tutti i browser principali e all'interno di node.js, da adesso in poi sarà questo il sistema che studieremo.
 
-## What is a module?
+## Che cos'è un modulo?
 
-A module is just a file. One script is one module.
+Un modulo è semplicemente un file. Uno script è un modulo.
 
-Modules can load each other and use special directives `export` and `import` to interchange functionality, call functions of one module from another one:
+I moduli possono caricarsi a vicenda e utilizzare speciali direttive `export` e `import` per scambiarsi funzionalità, chiamando le funzioni da un modulo all'altro:
 
-- `export` keyword labels variables and functions that should be accessible from outside the current module.
-- `import` allows to import functionality from other modules.
+- `export` contrassegna variabili e funzioni che devono essere accessibili dall'esterno del modulo.
+- `import` permette d'importare funzionalità da altri moduli.
 
-For instance, if we have a file `sayHi.js` exporting a function:
+Ad esempio, se abbiamo un file `sayHi.js` possiamo rendere utilizzabile all'esterno la funzione(esportarla) in questo modo:
 
 ```js
 // 📁 sayHi.js
 export function sayHi(user) {
-  alert(`Hello, ${user}!`);
+  alert(`Ciao, ${user}!`);
 }
 ```
 
-...Then another file may import and use it:
+...Successivamente un'altro file può importarla e usarla in questo modo:
 
 ```js
 // 📁 main.js
 import {sayHi} from './sayHi.js';
 
 alert(sayHi); // function...
-sayHi('John'); // Hello, John!
+sayHi('John'); // Ciao, John!
 ```
 
-The `import` directive loads the module by path `./sayHi.js` relative the current file and assigns exported function `sayHi` to the corresponding variable.
+La direttiva `import` carica il modulo presente al percorso `./sayHi.js`, relativamente al file corrente, e assegna la funzione esportata `sayHi` alla variabile corrispondente.
 
-Let's run the example in-browser.
+Ora proviamo ad utilizzare l'esempio all'interno del browser.
 
-As modules support special keywords and features, we must tell the browser that a script should be treated as module, by using the attribute `<script type="module">`.
+Dato che i moduli utilizzano parole chiavi e funzionalità speciali, dobbiamo comunicare al browser che lo script deve essere trattato come un modulo, utilizzando l'attributo `<script type="module">`.
 
-Like this:
+In questo modo:
 
 [codetabs src="say" height="140" current="index.html"]
 
-The browser automatically fetches and evaluates the imported module (and its imports if needed), and then runs the script.
+Il browser recupera ed elabora automaticamente il modulo importato (e i suoi import se necessario), e infine esegue lo script.
 
-## Core module features
+## Funzionalità principali dei moduli
 
-What's different in modules, compared to "regular" scripts?
+Cosa c'è di diverso nei moduli rispetto ai "normali" script?
 
-There are core features, valid both for browser and server-side JavaScript.
+Ci sono delle funzionalità aggiunte, valide sia per codice JavaScript all'interno dei browser sia per quello eseguito lato server.
 
-### Always "use strict"
+### Hanno sempre "use strict"
 
-Modules always `use strict`, by default. E.g. assigning to an undeclared variable will give an error.
+I moduli utilizzano sempre `use strict`, automaticamente. Ad esempio assegnare un valore ad una variabile non dichiarata genera un'errore.
 
 ```html run
 <script type="module">
@@ -73,67 +73,67 @@ Modules always `use strict`, by default. E.g. assigning to an undeclared variabl
 </script>
 ```
 
-### Module-level scope
+### Visibilità delle variabili (scope) all'interno dei moduli
 
-Each module has its own top-level scope. In other words, top-level variables and functions from a module are not seen in other scripts.
+Ogni modulo ha la propria visibilità delle variabili di massimo livello. In altre parole le variabili dichiarate a livello maggiore all'interno di un modulo non sono visibili negli altri script.
 
-In the example below, two scripts are imported, and `hello.js` tries to use `user` variable declared in `user.js`, and fails:
+Nell'esempio seguente, due script sono stati importati, `hello.js` prova ad utilizzare la variabile `user` dichiarata in `user.js`, ma fallisce:
 
 [codetabs src="scopes" height="140" current="index.html"]
 
-Modules are expected to `export` what they want to be accessible from outside and `import` what they need.
+I moduli devono esportare con `export` quello che vogliono rendere accessibile all'esterno e devono importare con `import` quello di cui hanno bisogno.
 
-So we should import `user.js` into `hello.js` and get the required functionality from it instead of relying on global variables.
+Quindi dobbiamo importare `user.js` all'interno di `hello.js`e prendere la funzionalità che ci servono da esso senza basarci sulle variabili globali.
 
-That's the correct variant:
+Questa è la versione corretta:
 
 [codetabs src="scopes-working" height="140" current="hello.js"]
 
-In the browser, independent top-level scope also exists for each `<script type="module">`:
+All'interno del browser esiste uno scope di livello massimo all'interno di ogni `<script type="module">`:
 
 ```html run
 <script type="module">
-  // The variable is only visible in this module script
+  // Le variabili saranno visibili sono all'interno di questo modulo
   let user = "John";
 </script>
 
 <script type="module">
   *!*
-  alert(user); // Error: user is not defined
+  alert(user); // Errore: la variabile user non è definita
   */!*
 </script>
 ```
 
-If we really need to make a window-level global variable, we can explicitly assign it to `window` and access as `window.user`. But that's an exception requiring a good reason.
+Se abbiamo realmente la necessità di dichiarare una variabile globale all'interno del browser possiamo assegnarla a `window` e accederci attraverso `window.user`. Questa è un'eccezione che dovrebbe essere usata solo se ci sono delle buone ragioni.
 
-### A module code is evaluated only the first time when imported
+### Un modulo viene eseguito solo la prima volta che viene importato
 
-If the same module is imported into multiple other places, its code is executed only the first time, then exports are given to all importers.
+Se uno stesso modulo verrà importato varie volte in più posti, il suo codice verrà eseguito solo la prima volta, successivamente le variabili e le funzioni esportate saranno assegnate a tutti i moduli che lo importano.
 
-That has important consequences. Let's see that on examples.
+Questo ha delle conseguenze importanti. Vediamo degli esempi.
 
-First, if executing a module code brings side-effects, like showing a message, then importing it multiple times will trigger it only once -- the first time:
+Prima di tutto, se eseguire un modulo ha altri effetti, come far apparire un messaggio, importare quel modulo più volte lo farà apparire solamente una volta, la prima:
 
 ```js
 // 📁 alert.js
-alert("Module is evaluated!");
+alert("Il modulo è stato eseguito!");
 ```
 
 ```js
-// Import the same module from different files
+// Importiamo lo stesso modulo in file diversi
 
 // 📁 1.js
-import `./alert.js`; // Module is evaluated!
+import `./alert.js`; // Il modulo è stato eseguito!
 
 // 📁 2.js
-import `./alert.js`; // (shows nothing)
+import `./alert.js`; // (non appare nulla)
 ```
 
-In practice, top-level module code is mostly used for initialization, creation of internal data structures, and if we want something to be reusable -- export it.
+Il pratica, il codice a livello maggiore di un modulo viene principalmente usato per inizializzarlo, creare la struttura dei dati interni e, se vogliamo qualcosa di riutilizzabile, esportarlo con `export`.
 
-Now, a more advanced example.
+Vediamo adesso un esempio più complesso.
 
-Let's say, a module exports an object:
+Prendiamo in considerazione un modulo che exporta un oggetto:
 
 ```js
 // 📁 admin.js
@@ -142,9 +142,9 @@ export let admin = {
 };
 ```
 
-If this module is imported from multiple files, the module is only evaluated the first time, `admin` object is created, and then passed to all further importers.
+Nel momento che questo modulo viene importato in più file viene comunque eseguito una sola volta, l'oggetto `admin` viene creato e poi passato a tutti i moduli che lo hanno importato.
 
-All importers get exactly the one and only `admin` object:
+Tutti quindi ottengono esattamente lo stesso oggetto `admin`:
 
 ```js
 // 📁 1.js
@@ -156,27 +156,27 @@ import {admin} from './admin.js';
 alert(admin.name); // Pete
 
 *!*
-// Both 1.js and 2.js imported the same object
-// Changes made in 1.js are visible in 2.js
+// Entrambi 1.js e 2.js ottengono lo stesso ogetto
+// I cambiamenti fatti in 1.js sono visibili in 2.js
 */!*
 ```
 
-So, let's reiterate -- the module is executed only once. Exports are generated, and then they are shared between importers, so if something changes the `admin` object, other modules will see that.
+Facendo un punto della situazione, il modulo viene eseguito una sola volta. Tutto quello esportato con `export` viene generato, e successivamente viene condiviso con tutti quelli che lo hanno importato, di conseguenza ogni cambiamento fatto sull'oggetto `admin` verrà visto anche dagli altri moduli.
 
-Such behavior allows to *configure* modules on first import. We can setup its properties once, and then in further imports it's ready.
+Questo comportamento ci permette di *configurare* i moduli quando vengono importati la prima volta. Possiamo configurare le proprietà una volta, e saranno pronte per tutti gli altri import successivi.
 
-For instance, `admin.js` module may provide certain functionality, but expect the credentials to come into the `admin` object from outside:
+Per fare un esempio, il modulo `admin.js` può fornire alcune funzionalità ma si aspetta di ricevere le credenziali all'interno dell'oggetto `admin` dall'esterno:
 
 ```js
 // 📁 admin.js
 export let admin = { };
 
 export function sayHi() {
-  alert(`Ready to serve, ${admin.name}!`);
+  alert(`Sono pronto, ${admin.name}!`);
 }
 ```
 
-In `init.js`, the first script of our app, we set `admin.name`. Then everyone will see it, including calls made from inside `admin.js` itself:
+All'interno di `init.js`, il primo script della nostra app, impostiamo `admin.name`. In questo modo sarà visibile a tutti, comprese le chiamate fatte all'interno di `admin.js` stesso:
 
 ```js
 // 📁 init.js
@@ -184,7 +184,7 @@ import {admin} from './admin.js';
 admin.name = "Pete";
 ```
 
-Another module can also see `admin.name`:
+Un'altro modulo può comunque vedere `admin.name`:
 
 ```js
 // 📁 other.js
@@ -192,28 +192,28 @@ import {admin, sayHi} from './admin.js';
 
 alert(admin.name); // *!*Pete*/!*
 
-sayHi(); // Ready to serve, *!*Pete*/!*!
+sayHi(); // Sono pronto, *!*Pete*/!*!
 ```
 
 ### import.meta
 
-The object `import.meta` contains the information about the current module.
+L'oggetto `import.meta` contiene le informazioni riguardanti il modulo corrente.
 
-Its content depends on the environment. In the browser, it contains the url of the script, or a current webpage url if inside HTML:
+Il suo contenuto dipende dall'ambiente di esecuzione. Nel browser, contiene l'URL dello script o dell'attuale pagina web se inserito all'interno dell'HTML
 
 ```html run height=0
 <script type="module">
-  alert(import.meta.url); // script url (url of the html page for an inline script)
+  alert(import.meta.url); // script url (l'url della pagina html per gli script in linea)
 </script>
 ```
 
-### In a module, "this" is undefined
+### All'interno di un modulo, "this" non è definito (undefined)
 
-That's kind of a minor feature, but for completeness we should mention it.
+Questa è una funzionalità minore, ma per completezza dobbiamo menzionarla.
 
-In a module, top-level `this` is undefined.
+In un modulo, Il `this` di livello maggiore non è definito (undefined).
 
-Compare it to non-module scripts, where `this` is a global object:
+Facciamo il confronto con uno script che non è un modulo, dove `this` è un oggetto globale.
 
 ```html run height=0
 <script>
@@ -225,66 +225,66 @@ Compare it to non-module scripts, where `this` is a global object:
 </script>
 ```
 
-## Browser-specific features
+## Funzionalità specifiche nel browser
 
-There are also several browser-specific differences of scripts with `type="module"` compared to regular ones.
+Ci sono diverse funzionalità specifiche dei moduli utilizzati all'interno del browser con `type="module"`.
 
-You may want skip this section for now if you're reading for the first time, or if you don't use JavaScript in a browser.
+Potresti voler saltare questa sezione se stai leggedo per la prima volta , oppure se non hai intenzione di usare JavaScript all'interno del browser.
 
-### Module scripts are deferred
+### I moduli sono caricati in modo differito
 
-Module scripts are *always* deferred, same effect as `defer` attribute (described in the chapter [](info:script-async-defer)), for both external and inline scripts.
+I moduli vengono *sempre* reputati script differiti, stesso effetto dell'attributo `defer` (descritto nel capitolo [](info:script-async-defer)) sia per gli script esterni che per quelli interni.
 
-In other words:
-- downloading of external module scripts `<script type="module" src="...">` doesn't block HTML processing, they load in parallel with other resources.
-- module scripts wait until the HTML document is fully ready (even if they are tiny and load faster than HTML), and then run.
-- relative order of scripts is maintained: scripts that go first in the document, execute first.
+In altre parole:
+- Il download di un modulo esterno `<script type="module" src="...">` non blocca l'elaborazione dell'HTML, vengono caricati in parallelo insieme alle altre risorse.
+- I moduli attendono fino al momento in cui l'HTML è pronto (anche se sono molto piccoli e possono essere elaborati più velocemente dell'HTML), e poi vengono eseguiti.
+- L'ordine relativo degli script viene mantenuto: gli script che appaiono prima nel documento vengono eseguiti per primi.
 
-As a side-effect, module scripts always "see" the fully loaded HTML-page, including HTML elements below them.
+Come conseguenza, i moduli "vedono" sempre la pagina HTML completamente caricata, inclusi gli elementi sotto di essi.
 
-For instance:
+Ad esempio:
 
 ```html run
 <script type="module">
 *!*
-  alert(typeof button); // object: the script can 'see' the button below
+  alert(typeof button); // Object: lo script può 'vedere' il bottone sottostante
 */!*
-  // as modules are deferred, the script runs after the whole page is loaded
+  // dato che il modulo viene caricato in modo differito, viene eseguito solo dopo che l'intera pagina è stata caricata
 </script>
 
-Compare to regular script below:
+Confrontiamo lo script normale:
 
 <script>
 *!*
-  alert(typeof button); // Error: button is undefined, the script can't see elements below
+  alert(typeof button); // Error: button is undefined, lo scripr non riesce a vedere il bottone
 */!*
-  // regular scripts run immediately, before the rest of the page is processed
+  // Gli script normali vengono eseguiti immediatamente, prima che il resto della pagina venga processata
 </script>
 
 <button id="button">Button</button>
 ```
 
-Please note: the second script actually works before the first! So we'll see `undefined` first, and then `object`.
+Da notare: il secondo script viene eseguito per primo! Infatti vedremo prima `undefined`, e dopo `object`.
 
-That's because modules are deferred, so way wait for the document to be processed. The regular scripts runs immediately, so we saw its output first.
+Questo accade proprio perché i moduli sono differiti, e quindi attendono che tutto il documento venga processato, al contrario, gli script normali vengono eseguiti immediatamente e di conseguenza vediamo l'output del secondo script per primo.
 
-When using modules, we should be aware that HTML-page shows up as it loads, and JavaScript modules run after that, so the user may see the page before the JavaScript application is ready. Some functionality may not work yet. We should put "loading indicators", or otherwise ensure that the visitor won't be confused by that.
+Quando utilizziamo i moduli, dobbiamo porre attenzione al fatto che la pagina HTML appare mentre viene caricata, e i moduli JavaScript vengono eseguiti successivamente al caricamento, di conseguenza l'utente potrebbe vedere la pagina *prima* che l'applicazione JavaScript sia pronta. Alcune funzionalità potrebbero in questo modo non funzionare immediatamente. Per questo motivo è opportuno inserire degli indicatori di caricamento, o comunque assicurarci che i visitatori non vengano confusi da questi possibili comportamenti.
 
-### Async works on inline scripts
+### Async funziona sui moduli scritti inline
 
-For non-module scripts, `async` attribute only works on external scripts. Async scripts run immediately when ready, independently of other scripts or the HTML document.
+Per gli script normali l'attributo `async` funziona solamente sugli script esterni, Gli script caricati in modo asincrono (Async) vengono eseguiti immediatamente e indipendentemente dagli altri script e del documento HTML.
 
-For module scripts, it works on any scripts.
+Per i moduli `async` può essere utilizzato sempre.
 
-For example, the script below has `async`, so it doesn't wait for anyone.
+Ad esempio, lo script seguente è dichiarato asincrono, e quindi non aspetta nulla e viene eseguito.
 
-It performs the import (fetches `./analytics.js`) and runs when ready, even if HTML document is not finished yet, or if other scripts are still pending.
+Esegue l'import (recupera `./analytics.js`) e procede quando è pronto, anche se il documento HTML non è completo, o se gli altri script sono ancora in attesa.
 
-That's good for functionality that doesn't depend on anything, like counters, ads, document-level event listeners.
+Questo comportamento è ottimo per le funzionalità che non dipendono da nulla, come contatori, pubblicità e altro.
 
 ```html
-<!-- all dependencies are fetched (analytics.js), and the script runs -->
-<!-- doesn't wait for the document or other <script> tags -->
+<!-- tutte le dipendenze vengono recuperate (analytics.js),e lo script viene eseguito -->
+<!-- non aspetta che il documento o altri <script> tag siano pronti -->
 <script *!*async*/!* type="module">
   import {counter} from './analytics.js';
 
@@ -292,95 +292,95 @@ That's good for functionality that doesn't depend on anything, like counters, ad
 </script>
 ```
 
-### External scripts
+### Script esterni
 
-External scripts that have `type="module"` are different in two aspects:
+Gli script esterni che vengono segnalati come moduli, `type="module"`, sono diversi sotto due aspetti:
 
-1. External scripts with same `src` run only once:
+1. Più script esterni con lo stesso `src` vengono eseguiti solo una volta:
     ```html
-    <!-- the script my.js is fetched and executed only once -->
+    <!-- lo script my.js viene recuperato ed eseguito solo una volta -->
     <script type="module" src="my.js"></script>
     <script type="module" src="my.js"></script>
     ```
 
-2. External scripts that are fetched from another origin (e.g. another site) require [CORS](mdn:Web/HTTP/CORS) headers, as described in the chapter <info:fetch-crossorigin>. In other words, if a module script is fetched from another origin, the remote server must supply a header `Access-Control-Allow-Origin` allowing the fetch.
+2. Gli script esterni che vengono recuperati da origini diverse (ad esempio un sito diverso) hanno bisogno delle intestazioni [CORS](mdn:Web/HTTP/CORS), come descritto nel capitolo <info:fetch-crossorigin>. In altre parole, se un modulo viene recuperato da un'altra fonte il server remoto deve fornire un header (intestazione) `Access-Control-Allow-Origin` dandoci il "permesso" di recuperare lo script.
     ```html
-    <!-- another-site.com must supply Access-Control-Allow-Origin -->
-    <!-- otherwise, the script won't execute -->
+    <!-- another-site.com deve fornire Access-Control-Allow-Origin -->
+    <!-- altrimenti lo script non verrà eseguito -->
     <script type="module" src="*!*http://another-site.com/their.js*/!*"></script>
     ```
 
-    That ensures better security by default.
+    Questo meccanismo permette di avere una maggiore sicurezza.
 
-### No "bare" modules allowed
+### Non è possibile usare moduli "bare"
 
-In the browser, `import` must get either a relative or absolute URL. Modules without any path are called "bare" modules. Such modules are not allowed in `import`.
+All'interno del browser, `import` accetta percorsi URL relativi o assoluti. Moduli senza nessun percorso specificato vengono chiamati moduli "bare". Questi moduli non vengono accettati da `import` all'interno del browser.
 
-For instance, this `import` is invalid:
+Ad esempio, questo `import` non è valido:
 ```js
-import {sayHi} from 'sayHi'; // Error, "bare" module
-// the module must have a path, e.g. './sayHi.js' or wherever the module is
+import {sayHi} from 'sayHi'; // Errore, modulo "bare"
+// Il modulo deve avere un percorso, es. './sayHi.js' od ovunque si trovi il modulo
 ```
 
-Certain environments, like Node.js or bundle tools allow bare modules, without any path, as they have own ways for finding modules and hooks to fine-tune them. But browsers do not support bare modules yet.
+Alcuni ambienti, come Node.js o tools per creare bundle accettano moduli bare, senza nessun percorso (path), dato che hanno metodologie per trovare e collegare i moduli. Al contrario i browser ancora non supportano i moduli bare.
 
-### Compatibility, "nomodule"
+### Compatibilità, "nomodule"
 
-Old browsers do not understand `type="module"`. Scripts of the unknown type are just ignored. For them, it's possible to provide a fallback using `nomodule` attribute:
+I vecchi browser non comprendono l'attributo `type="module"`. Gli script di una tipologia non conosciuta vengono semplicemente ignorati. Proprio per questo è possibile prevedere uno script di riserva usando l'attributo `nomodule`:
 
 ```html run
 <script type="module">
-  alert("Runs in modern browsers");
+  alert("Viene eseguito nei browser moderni");
 </script>
 
 <script nomodule>
-  alert("Modern browsers know both type=module and nomodule, so skip this")
-  alert("Old browsers ignore script with unknown type=module, but execute this.");
+  alert("I browser moderni conoscono sia type=module sia nomodule, quindi ignorano questo script")
+  alert("I browser più vecchi ignorano i tipi di script che non conoscono come type=module, ma eseguono questo");
 </script>
 ```
 
-## Build tools
+## Strumenti per il building
 
-In real-life, browser modules are rarely used in their "raw" form. Usually, we bundle them together with a special tool such as [Webpack](https://webpack.js.org/) and deploy to the production server.
+Nella realtà, i moduli vengono raramente usati all'interno del browser in modo diretto. Normalmente, vengono uniti insieme con tool specifici come [Webpack](https://webpack.js.org/) e portati nel server di produzione.
 
-One of the benefits of using bundlers -- they give more control over how modules are resolved, allowing bare modules and much more, like CSS/HTML modules.
+Uno dei benefici di usare i "bundlers" -- ci permettono più controllo su come i moduli vengono gestiti, ad esempio permettendoci di usare moduli "bare" e moduli CSS/HTML.
 
-Build tools do the following:
+I tool per il building si comportano nel modo seguente:
 
-1. Take a "main" module, the one intended to be put in `<script type="module">` in HTML.
-2. Analyze its dependencies: imports and then imports of imports etc.
-3. Build a single file with all modules (or multiple files, that's tunable), replacing native `import` calls with bundler functions, so that it works. "Special" module types like HTML/CSS modules are also supported.
-4. In the process, other transforms and optimizations may be applied:
-    - Unreachable code removed.
-    - Unused exports removed ("tree-shaking").
-    - Development-specific statements like `console` and `debugger` removed.
-    - Modern, bleeding-edge JavaScript syntax may be transformed to older one with similar functionality using [Babel](https://babeljs.io/).
-    - The resulting file is minified (spaces removed, variables replaced with shorter named etc).
+1. Prendono un modulo "principale", quello che era inteso per essere inserito in `<script type="module">`.
+2. Analizza tutte le sue dipendenze: che moduli importa, cosa viene importato dai metodi importati etc...
+3. Costruisce un singolo file con tutti i moduli (o più file, può essere impostato), sostituendo le chiamate `import` con funzioni del bundler. In questo modo può supportare anche moduli "speciali" come quelli CSS/HTML.
+4. Durante il processo altre trasformazioni e ottimizzazioni possono essere eseguite:
+    - Parti di codice che non possono essere raggiunte vengono eliminate.
+    - `export` non utilizzati vengono rimossi ("tree-shaking").
+    - Parti di codice tipicamente utilizzati durante lo sviluppo come `console` e `debugger` rimosse.
+    - Le sintassi più moderne di JavaScript vengono sostituite con funzionalità equivalenti più vecchie e compatibili usando [Babel](https://babeljs.io/).
+    - Il file risultante viene ridotto al minimo (minified), gli spazi superflui rimossi, i nomi delle variabili sostituiti con nomi corti etc..
 
-If we use bundle tools, then as scripts are bundled together into a single file (or few files), `import/export` statements inside those scripts are replaced by special bundler functions. So the resulting "bundled" script does not contain any `import/export`, it doesn't require `type="module"`, and we can put it into a regular script:
+Quindi se usiamo questa tipologia di strumenti, allora gli script vengono raggruppati in un singolo script (o pochi file), `import/export` sostituiti con speciali funzioni in modo che lo script finale non contenga più nessun `import/export`, non richiede l'uso di `type="module"` e può essere utilizzato come un normale script:
 
 ```html
-<!-- Assuming we got bundle.js from a tool like Webpack -->
+<!-- Assumendo che abbiamo ottenuto bundle.js da un tool come Webpack -->
 <script src="bundle.js"></script>
 ```
 
-That said, native modules are also usable. So we won't be using Webpack here: you can configure it later.
+Appurato questo, moduli in modo nativo possono comunque essere usati. Non useremo tools come Webpack qui: se necessario potrai configurarlo successivamente.
 
-## Summary
+## Riepilogo
 
-To summarize, the core concepts are:
+Per ricapitolare, i concetti principali sono:
 
-1. A module is a file. To make `import/export` work, browsers need `<script type="module">`. Modules have several differences:
-    - Deferred by default.
-    - Async works on inline scripts.
-    - To load external scripts from another origin (domain/protocol/port), CORS headers are needed.
-    - Duplicate external scripts are ignored.
-2. Modules have their own, local top-level scope and interchange functionality via `import/export`.
-3. Modules always `use strict`.
-4. Module code is executed only once. Exports are created once and shared between importers.
+1. Un modulo è un file. Per far funzionare `import/export`, il browser ha bisogno di `<script type="module">`. I moduli hanno alcune differenze:
+    - Vengono eseguiti in modo differito automaticamente
+    - Async funziona sui moduli in linea
+    - Per caricare moduli esterni provenienti da un'origine diversa (un altro dominio/protocollo/porta), sono necessarie le intestazioni CORS.
+    - I moduli esterni duplicati vengono ignorati (un modulo esterno viene eseguito solo la prima volta che viene importato)
+2. I moduli hanno il loro livello di visibilità delle variabili (scope) e si scambiano funzionalità attraverso `import/export`.
+3. I moduli utilizzano sempre `use strict` automaticamente.
+4. Il codice di un modulo viene eseguito solamente una volta. Le esportazioni (`export`) vengono create un'unica volta e condivise con tutti i moduli che le importano.
 
-When we use modules, each module implements the functionality and exports it. Then we use `import` to directly import it where it's needed. Browser loads and evaluates the scripts automatically.
+Quando utilizziamo i moduli, ogni modulo implementa una certa funzionalità e la esporta. Successivamente utilizziamo `import` per importare quella funzionalità e utilizzarla dove è necessario. I browser caricano es eseguono lo script automaticamente.
 
-In production, people often use bundlers such as [Webpack](https://webpack.js.org) to bundle modules together for performance and other reasons.
+In produzione, di solito si tende a usare tool detti "bundlers" come [Webpack](https://webpack.js.org) per unire insieme tutti i mosuli per maggiori prestazioni, compatibilità e altro.
 
-In the next chapter we'll see more examples of modules, and how things can be exported/imported.
+Nel prossimo capitolo vedremo più esempi di moduli, e come le cose possono essere importate ed esportate.
