@@ -1,6 +1,6 @@
 
-The empty string is the only match: it starts and immediately finishes.
+L'unica corrispondenza si ha con la stringa vuota: inizia e poi finisce immediatamente.
 
-The task once again demonstrates that anchors are not characters, but tests.
+Questo task dimostra ancora che gli ancoraggi non rappresentano caratteri, bensì test.
 
-The string is empty `""`. The engine first matches the `pattern:^` (input start), yes it's there, and then immediately the end `pattern:$`, it's here too. So there's a match.
+La stringa è vuota `""`. Il motore prima fa cerca corrispondenze per `pattern:^` (inizio input), ed è presente, e subito dopo cerca la fine `pattern:$`, e c'è anch'essa. Quindi c'è corrispondenza.

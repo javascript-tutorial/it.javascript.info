@@ -1,10 +1,10 @@
-# String start ^ and finish $
+# Inizio stringa ^ e fine $
 
-The caret `pattern:'^'` and dollar `pattern:'$'` characters have special meaning in a regexp. They are called "anchors".
+L'accento circonflesso  `pattern:'^'` e il simbolo del dollaro `pattern:'$'` sono caratteri che hanno un significato speciale nelle regexp. Vengono chiamati "ancoraggi" (anchor).
 
-The caret `pattern:^` matches at the beginning of the text, and the dollar `pattern:$` -- in the end.
+Il simbolo `pattern:^` trova corrispondenza all'inizio del testo, e il dollaro `pattern:$` la trova alla fine del testo.
 
-For instance, let's test if the text starts with `Mary`:
+Per esempio, vediamo se il testo inizia con `Mary`:
 
 ```js run
 let str1 = "Mary had a little lamb, it's fleece was white as snow";
@@ -14,13 +14,13 @@ alert( /^Mary/.test(str1) ); // true
 alert( /^Mary/.test(str2) ); // false
 ```
 
-The pattern `pattern:^Mary` means: "the string start and then Mary".
+Il pattern `pattern:^Mary` vuol dire: "la stringa inizia e subito dopo c'è Mary".
 
-Now let's test whether the text ends with an email.
+Ora verifichiamo se il testo finisce con una email.
 
-To match an email, we can use a regexp `pattern:[-.\w]+@([\w-]+\.)+[\w-]{2,20}`.
+Per trovare corrispondenza con un'email, possiamo usare la regexp `pattern:[-.\w]+@([\w-]+\.)+[\w-]{2,20}`.
 
-To test whether the string ends with the email, let's add `pattern:$` to the pattern:
+Per testare se la stringa finisca con una email, aggiungiamo `pattern:$` al pattern:
 
 ```js run
 let reg = /[-.\w]+@([\w-]+\.)+[\w-]{2,20}$/g;
@@ -32,11 +32,11 @@ alert( reg.test(str1) ); // true
 alert( reg.test(str2) ); // false
 ```
 
-We can use both anchors together to check whether the string exactly follows the pattern. That's often used for validation.
+Possiamo utilizzare entrambi gli ancoraggi insieme per controllare che la stringa segua uno specifico pattern. È un metodo usato spesso per la validazione.
 
-For instance we want to check that `str` is exactly a color in the form `#` plus 6 hex digits. The pattern for the color is `pattern:#[0-9a-f]{6}`.
+Per esempio vogliamo controllare che  `str` sia esattamente un colore nella forma `#` più 6 esadecimali. Il pattern per il colore è `pattern:#[0-9a-f]{6}`.
 
-To check that the *whole string* exactly matches it, we add `pattern:^...$`:
+Per verificare che l'*intera stringa* vi corrisponda in modo esatto, aggiungiamo `pattern:^...$`:
 
 ```js run
 let str = "#abcdef";
@@ -44,12 +44,12 @@ let str = "#abcdef";
 alert( /^#[0-9a-f]{6}$/i.test(str) ); // true
 ```
 
-The regexp engine looks for the text start, then the color, and then immediately the text end. Just what we need.
+Il motore delle regexp cerca l'inizio del testo, successivamente il colore, e infine cerca immediatamente la fine del testo. Proprio ciò di cui abbiamo bisogno.
 
-```smart header="Anchors have zero length"
-Anchors just like `\b` are tests. They have zero-width.
+```smart header="Gli ancoraggi hanno lunghezza zero"
+Gli ancoraggi, proprio come `\b`, sono test. Hanno larghezza zero.
 
-In other words, they do not match a character, but rather force the regexp engine to check the condition (text start/end).
+In altre parole, non cercano corrispondenze per un carattere, piuttosto forzano il motore delle regexp a cercare la condizione specifica (inizio/fine del testo).
 ```
 
-The behavior of anchors changes if there's a flag `pattern:m` (multiline mode). We'll explore it in the next chapter.
+Il comportamento degli ancoraggi cambia se c'è la flag `pattern:m` (modalità multi linea). L'approfondiremo meglio nel prossimo capitolo.
