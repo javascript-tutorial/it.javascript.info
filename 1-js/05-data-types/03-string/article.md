@@ -47,7 +47,11 @@ let guestList = "Guests: // Error: Unexpected token ILLEGAL
 
 Gli apici singoli e doppi sono nati insieme al linguaggio, quando non era stato ancora messo in conto la possibilità di stringhe multilinea. Le backticks sono apparse più tardi, per questo risultano più versatili.
 
+<<<<<<< HEAD
 Le backticks ci consentono anche di specificare un "template di funzione" prima della backtick di apertura. La sintassi è: <code>func&#96;string&#96;</code>. La funzione `func` viene chiamata automaticamente, gli viene passata la "string", può essere cosi trattata dalla funzione. Potete approfondire leggendo la [documentazione](mdn:/JavaScript/Reference/Template_literals#Tagged_template_literals). Questo viene chiamata "funzione template". Con questa caratteristica diventa più facile raccogliere stringhe da passare a funzioni, ma è raramente utilizzata.
+=======
+Backticks also allow us to specify a "template function" before the first backtick. The syntax is: <code>func&#96;string&#96;</code>. The function `func` is called automatically, receives the string and embedded expressions and can process them. This is called "tagged templates". This feature makes it easier to implement custom templating, but is rarely used in practice. You can read more about it in the [manual](mdn:/JavaScript/Reference/Template_literals#Tagged_templates). 
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 
 ## Caratteri speciali
@@ -354,8 +358,13 @@ alert( "Hello".includes("Bye") ); // false
 Il secondo argomento opzionale di `str.includes` è la posizioni da cui iniziare a cercare:
 
 ```js run
+<<<<<<< HEAD
 alert( "Midget".includes("id") ); // true
 alert( "Midget".includes("id", 3) ); // false, dalla posizione 3 non c'è "id"
+=======
+alert( "Widget".includes("id") ); // true
+alert( "Widget".includes("id", 3) ); // false, from position 3 there is no "id"
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 ```
 
 I metodi [str.startsWith](mdn:js/String/startsWith) e [str.endsWith](mdn:js/String/endsWith) fanno esattamente ciò che dicono i loro nomi:

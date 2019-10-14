@@ -303,7 +303,11 @@ Dovrebbe esservi abbastanza chiara la situazione delle variabili esterne. In alc
 
 ## Environment nel dettaglio
 
+<<<<<<< HEAD
 Ora che avete una maggiore conoscenza delle closure, possiamo scendere più in profondità.
+=======
+Here's what's going on in the `makeCounter` example step-by-step, follow it to make sure that you understand how it works in detail.
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 Qui analizziamo cosa succede nell'esempio `makeCounter` passo per passo, seguitelo attentamente per essere certi di comprenderne il funzionamento. Da notare un ulteriore proprietà `[[Environment]]` di cui non abbiamo ancora parlato.
 
@@ -352,9 +356,13 @@ Qui analizziamo cosa succede nell'esempio `makeCounter` passo per passo, seguite
 
     ![](lexenv-nested-makecounter-5.svg)
 
+<<<<<<< HEAD
     Ora se proviamo ad accedere ad una variabile, questa verrà prima cercata nel Lexical Environment locale (vuoto), successivamente si andrà a controllare il Lexical Environment esterno, quello relativo a `makeCounter()`, infine si guarderà quello globale.
 
     Mentre è alla ricerca di `count`, trova una corrispondenza nelle variabili di `makeCounter`, nel Lexical Environment esterno.
+=======
+    Now when the call looks for `count` variable, it first searches its own Lexical Environment (empty), then the Lexical Environment of the outer `makeCounter()` call, where it finds it.
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
     Prestate attenzione a come funziona il gestore della memoria in questa situazione. Sebbene la chiama a `makeCounter()` si sia conclusa diverso tempo fa, il suo Lexical Environment è stato mantenuto in memoria, poiché una funzione annidata ne possiede un riferimento nella proprietà `[[Environment]]`.
 

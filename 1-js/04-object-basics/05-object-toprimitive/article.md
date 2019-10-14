@@ -197,7 +197,11 @@ Ad esempio:
       }
     };
 
+<<<<<<< HEAD
     alert(obj + 2); // 22 (ToPrimitive ha ritornato string => concatenazione)
+=======
+    alert(obj + 2); // 22 (conversion to primitive returned a string => concatenation)
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
     ```
 
 ## Riepilogo

@@ -119,12 +119,16 @@ Il metodo [arr.slice](mdn:js/Array/slice) risulta più semplice di `arr.splice`.
 La sintassi è:
 
 ```js
-arr.slice(start, end)
+arr.slice([start], [end])
 ```
 
 Ritorna un nuovo array contente tutti gli elementi a partire da `"start"` fino ad `"end"` (`"end"` esclusa). Sia `start` che `end` possono essere negativi, in tal caso si inizierà a contare dalla coda dell'array.
 
+<<<<<<< HEAD
 Funziona come `str.slice`, ma crea dei sotto-array piuttosto che sotto-stringhe.
+=======
+It's similar to a string method `str.slice`, but instead of substrings it makes subarrays.
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 Ad esempio:
 
@@ -135,6 +139,8 @@ alert( arr.slice(1, 3) ); // e,s (copy from 1 to 3)
 
 alert( arr.slice(-2) ); // s,t (copy from -2 till the end)
 ```
+
+We can also call it without arguments: `arr.slice()` creates a copy of `arr`. That's often used to obtain a copy for further transformations that should not affect the original array.
 
 ### concat
 
@@ -157,6 +163,7 @@ Un esempio:
 ```js run
 let arr = [1, 2];
 
+<<<<<<< HEAD
 // unisce arr con [3,4]
 alert( arr.concat([3, 4])); // 1,2,3,4
 
@@ -168,6 +175,19 @@ alert( arr.concat([3, 4], 5, 6)); // 1,2,3,4,5,6
 ```
 
 Normalmente copia gli elementi da array (li "spreme"). Gli altri oggetti, anche se assomigliano molto ad un array, vengono aggiunti per come sono:
+=======
+// create an array from: arr and [3,4]
+alert( arr.concat([3, 4]) ); // 1,2,3,4
+
+// create an array from: arr and [3,4] and [5,6]
+alert( arr.concat([3, 4], [5, 6]) ); // 1,2,3,4,5,6
+
+// create an array from: arr and [3,4], then add values 5 and 6
+alert( arr.concat([3, 4], 5, 6) ); // 1,2,3,4,5,6
+```
+
+Normally, it only copies elements from arrays. Other objects, even if they look like arrays, are added as a whole:
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 ```js run
 let arr = [1, 2];
@@ -178,10 +198,13 @@ let arrayLike = {
 };
 
 alert( arr.concat(arrayLike) ); // 1,2,[object Object]
-//[1, 2, arrayLike]
 ```
 
+<<<<<<< HEAD
 ...Invece se un oggetto simile ad un array possiede la proprietà `Symbol.isConcatSpreadable`, allora vengono copiati anche i suoi elementi:
+=======
+...But if an array-like object has a special `Symbol.isConcatSpreadable` property, then it's treated as an array by `concat`: its elements are added instead:
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 ```js run
 let arr = [1, 2];
@@ -651,31 +674,50 @@ arr.map(func, thisArg);
 
 Il valore del parametro `thisArg` diventa `this` per `func`.
 
+<<<<<<< HEAD
 Ad esempio, qui utilizziamo il metodo di un oggetto come filtro e `thisArg` ci risulta utile:
+=======
+For example, here we use a method of `army` object as a filter, and `thisArg` passes the context:
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 ```js run
-let user = {
-  age: 18,
-  younger(otherUser) {
-    return otherUser.age < this.age;
+let army = {
+  minAge: 18,
+  maxAge: 27,
+  canJoin(user) {
+    return user.age >= this.minAge && user.age < this.maxAge;
   }
 };
 
 let users = [
-  {age: 12},
   {age: 16},
-  {age: 32}
+  {age: 20},
+  {age: 23},
+  {age: 30}
 ];
 
 *!*
+<<<<<<< HEAD
 // trova tutti gli users più giovani di user
 let youngerUsers = users.filter(user.younger, user);
+=======
+// find users, for who army.canJoin returns true
+let soldiers = users.filter(army.canJoin, army);
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 */!*
 
-alert(youngerUsers.length); // 2
+alert(soldiers.length); // 2
+alert(soldiers[0].age); // 20
+alert(soldiers[1].age); // 23
 ```
 
+<<<<<<< HEAD
 Nella chiamata sopra, utilizziamo `user.younger` come filtro e forniamo `user` come contesto. Se non avessimo fornito il contesto, `users.filter(user.younger)` avrebbe chiamato `user.younger` come funzione a se stante, con `this=undefined`. Che avrebbe provocato un errore.
+=======
+If in the example above we used `users.filter(army.canJoin)`, then `army.canJoin` would be called as a standalone function, with `this=undefined`, thus leading to an instant error.
+
+A call to `users.filter(army.canJoin, army)` can be replaced with `users.filter(user => army.canJoin(user))`, that does the same. The former is used more often, as it's a bit easier to understand for most people.
+>>>>>>> a0bfa924a17cad8e7fee213904b27dbf57c2dbac
 
 ## Riepilogo
 
