@@ -1,4 +1,4 @@
-# The Modern JavaScript Tutorial in Italian
+# The Modern JavaScript Tutorial in italiano
 
 In questa repository viene pubblicata la traduzione italiana di [https://javascript.info](https://javascript.info).
 
@@ -47,7 +47,7 @@ document.querySelector('.hello').innerHTML = text;
 
 ```js
 // Esempio
-const text = 'Hola mundo';
+const text = 'Ciao mondo';
 document.querySelector('.hello').innerHTML = text;
 ```
 
@@ -56,9 +56,9 @@ document.querySelector('.hello').innerHTML = text;
 ```js
 // Esempio
 const testo = 'Ciao mondo';
-// ".hello" is a class
-// DO NOT TRANSLATE
-document.querySelector('.hola').innerHTML = text;
+// ".hello" è una classe
+// NON TRADURLO
+document.querySelector('.ciao').innerHTML = text;
 ```
 
 ### Link esterni
