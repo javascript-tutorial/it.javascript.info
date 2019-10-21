@@ -1,8 +1,18 @@
 # Ereditarietà delle classi
 
+<<<<<<< HEAD
 Immaginiamo di avere due classi.
+=======
+# Class inheritance
 
-`Animal`:
+Class inheritance is a way for one class to extend another class.
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
+
+So we can create new functionality on top of the existing.
+
+## The "extends" keyword
+
+Let's say with have class `Animal`:
 
 ```js
 class Animal {
@@ -23,6 +33,7 @@ class Animal {
 let animal = new Animal("My animal");
 ```
 
+<<<<<<< HEAD
 ![rabbit-animal-indipendent-animal](rabbit-animal-independent-animal.svg)
 
 ...E `Rabbit`:
@@ -49,24 +60,25 @@ Ora invece vorremmo che `Rabbit` estendesse `Animal`. In altre parole, i conigli
 Per ereditare da un'altra classe è necessario scrivere `"extends"` e la classe padre prima delle parentesi graffe `{..}`.
 
 Qui `Rabbit` eredita da `Animal`:
+=======
+Here's how we can represent `animal` object and `Animal` class graphically:
 
-```js run
-class Animal {
-  constructor(name) {
-    this.speed = 0;
-    this.name = name;
-  }
-  run(speed) {
-    this.speed += speed;
-    alert(`${this.name} runs with speed ${this.speed}.`);
-  }
-  stop() {
-    this.speed = 0;
-    alert(`${this.name} stands still.`);
-  }
-}
+![](rabbit-animal-independent-animal.svg)
 
+...And we would like to create another `class Rabbit`.
+
+As rabbits are animals, `Rabbit` class should be based on `Animal`, have access to animal methods, so that rabbits can do what "generic" animals can do.
+
+The syntax to extend another class is: `class Child extends Parent`.
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
+
+Let's create `class Rabbit` that inherits from `Animal`:
+
+<<<<<<< HEAD
 // Eredita da Animal specificando "extends Animal"
+=======
+```js
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
 *!*
 class Rabbit extends Animal {
 */!*
@@ -81,15 +93,30 @@ rabbit.run(5); // White Rabbit runs with speed 5.
 rabbit.hide(); // White Rabbit hides!
 ```
 
+<<<<<<< HEAD
 Ora il codice di `Rabbit` è diventato un po' più corto, dato che utilizza il costruttore di `Animal`, e può anche correre (usare il metodo `run`) come gli animali (animals).
 
 Internamente, `extends` aggiunge da `Rabbit.prototype` un riferimento `[[Prototype]]` a `Animal.prototype`:
+=======
+Object of `Rabbit` class have access to both `Rabbit` methods, such as `rabbit.hide()`, and also to `Animal` methods, such as `rabbit.run()`.
+
+Internally, `extends` keyword works using the good old prototype mechanics. It sets `Rabbit.prototype.[[Prototype]]` to `Animal.prototype`. So, if a method is not found in `Rabbit.prototype`, JavaScript takes it from `Animal.prototype`.
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
 
 ![animal-rabbit-extends](animal-rabbit-extends.svg)
 
+<<<<<<< HEAD
 Dunque, se un elemento non viene trovato all'interno di `Rabbit.prototype`, JavaScript lo cerca in `Animal.prototype`.
 
 Come già detto nel capitolo <info:native-prototypes>, JavaScript usa la stessa ereditarietà del prototipo per gli oggetti base (build-in objects). Per esempio `Date.prototype.[[Prototype]]` corrisponde a `Object.prototype`, quindi le date possono usufruire dei metodi di un oggetto generico.
+=======
+For instance, to find `rabbit.run` method, the engine checks (bottom-up on the picture):
+1. The `rabbit` object (has no `run`).
+2. Its prototype, that is `Rabbit.prototype` (has `hide`, but not `run`).
+3. Its prototype, that is (due to `extends`) `Animal.prototype`, that finally has the `run` method.
+
+As we can recall from the chapter <info:native-prototypes>, JavaScript itself uses prototypal inheritance for build-in objects. E.g. `Date.prototype.[[Prototype]]` is `Object.prototype`. That's why dates have access to generic object methods.
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
 
 ````smart header="Qualsiasi espressione è ammessa dopo `extend`"
 Usare la parola chiave `class` permette di specificare non solo una classe, ma anche un'espressione dopo la parola `extends`.
@@ -117,19 +144,34 @@ Questa particolarità può tornare utile nella programmazione avanzata, quando a
 
 ## Sovrascrivere un metodo
 
+<<<<<<< HEAD
 Proseguiamo ora e vediamo come sovrascrivere un metodo. Al momento, `Rabbit` eredita il metodo `stop` dalla classe `Animal`, il quale imposta `this.speed` a `0`.
 
 Se specifichiamo il nostro metodo `stop` in `Rabbit`, esso verrà scelto al posto del metodo ereditato dal padre:
+=======
+Now let's move forward and override a method. By default, all methods that are not specified in `class Rabbit` are taken directly "as is" from `class Animal`.
+
+But if we specify our own method in `Rabbit`, such as `stop()` then it will be used instead:
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
 
 ```js
 class Rabbit extends Animal {
   stop() {
+<<<<<<< HEAD
     // ...questo verrà utilizzato per rabbit.stop()
+=======
+    // ...now this will be used for rabbit.stop()
+    // instead of stop() from class Animal
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
   }
 }
 ```
 
+<<<<<<< HEAD
 ...Normalmente però non vogliamo rimpiazzare completamente il metodo ereditato, ma piuttosto costruire su esso, modificarlo leggermente o estendere le sue funzionalità. Nel nostro metodo compiamo delle azioni, ma ad un certo punto richiamiamo il metodo ereditato.
+=======
+Usually we don't want to totally replace a parent method, but rather to build on top of it to tweak or extend its functionality. We do something in our method, but call the parent method before/after it or in the process.
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
 
 Le classi forniscono la parola chiave `"super"` per questo scopo.
 
@@ -257,9 +299,15 @@ La risposta breve è: i costruttori delle classi figlie devono richiamare `super
 ...Ma perchè? Cosa sta succedendo?
 In effetti, questa richiesta sembra un po' strana.
 
+<<<<<<< HEAD
 Ovviamente una spiegazione c'è. Addentriamoci nei dettagli, così da capire cosa effettivamente succede.
 
 In JavaScript vi è una netta distinzione tra il "metodo costruttore di una classe figlia" e tutte le altre. In una classe figlia, il costruttore viene etichettato con una proprietà interna speciale: `[[ConstructorKind]]:"derived"`.
+=======
+Of course, there's an explanation. Let's get into details, so you'll really understand what's going on.
+
+In JavaScript, there's a distinction between a "constructor function of an inheriting class" and all others. In an inheriting class, the corresponding constructor function is labeled with a special internal property `[[ConstructorKind]]:"derived"`.
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
 
 La differenza è:
 
@@ -304,7 +352,11 @@ alert(rabbit.earLength); // 10
 
 Andiamo più a fondo all'interno di `super`.
 
+<<<<<<< HEAD
 In primis, da quel che abbiamo imparato finora, è impossibile che `super` funzioni!
+=======
+Let's get a little deeper under the hood of `super`. We'll see some interesting things along the way.
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
 
 Beh, proviamo a chiederci, come può funzionare? Quando un metodo viene eseguito, il suo oggetto di appartenenza viene indicato con `this`. Se richiamiamo `super.method()`, dunque, esso dovrà recuperare il metodo dal prototipo dell'oggetto corrente. 
 
@@ -516,7 +568,11 @@ Nel prossimo esempio, viene utilizzata una sintassi errata (non-method syntax) p
 
 ```js run
 let animal = {
+<<<<<<< HEAD
   eat: function() { // dovrebbe corrispondere a eat(){...}
+=======
+  eat: function() { // intentially writing like this instead of eat() {...
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
     // ...
   }
 };

@@ -106,10 +106,20 @@ Esaminiamo l'istruzione `for` parte per parte:
 
 | Parte |          |                                                                            |
 |-------|----------|----------------------------------------------------------------------------|
+<<<<<<< HEAD
 | begin | `i = 0`    | Viene eseguito una volta all'entrata nel ciclo.                          |
 | condition | `i < 3`| Viene controllata prima di ogni iterazione del ciclo, se fallisce il ciclo si interrompe.|
 | step| `i++`      | Viene eseguito prima del corpo ad ogni iterazione, ma dopo il controllo della condizione.|
 | body | `alert(i)`| Viene eseguito fino a che vale la condizione.
+=======
+| begin | `i = 0`    | Executes once upon entering the loop.                                      |
+| condition | `i < 3`| Checked before every loop iteration. If false, the loop stops.              |
+| body | `alert(i)`| Runs again and again while the condition is truthy.                         |
+| step| `i++`      | Executes after the body on each iteration. |
+
+The general loop algorithm works like this:
+
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
 ```
 Eseguiamo begin
 → (if condition → run body and run step)
@@ -298,7 +308,11 @@ Questa è solo un'altra ragione per cui non utilizzare l'operatore ternario `?` 
 
 Qualche volta abbiamo bisogno di uscire da una serie di cicli annidati in un colpo solo.
 
+<<<<<<< HEAD
 Ad esempio, nel codice sotto cicliamo su `i` e `j` eseguendo prompt sulle coordinate `(i, j)` da `(0,0)` a `(3,3)`:
+=======
+For example, in the code below we loop over `i` and `j`, prompting for the coordinates `(i, j)` from `(0,0)` to `(2,2)`:
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
 
 ```js run no-beautify
 for (let i = 0; i < 3; i++) {
@@ -307,8 +321,12 @@ for (let i = 0; i < 3; i++) {
 
     let input = prompt(`Value at coords (${i},${j})`, '');
 
+<<<<<<< HEAD
     // come potremmo fare per uscire di qui e proseguire verso Done (sotto)?
 
+=======
+    // what if we want to exit from here to Done (below)?
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
   }
 }
 

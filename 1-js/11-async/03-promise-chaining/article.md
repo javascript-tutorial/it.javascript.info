@@ -220,7 +220,11 @@ new Promise(resolve => resolve(1))
 
 JavaScript controlla l'oggetto ritornato dall'handler `.then` nella linea `(*)`: Se ha un metodo chiamabile chiamato `then`, quindi chiama quel metodo passandogli come argomenti le funzioni native `resolve`, `reject` (in modo simile all'esecutore) ed aspetta fino a quando una delle due viene chiamata. Nell'esempio sopra `resolve(2)` è chiamata dopo un secondo `(**)`. Poi il risultato viene passato giù nella catena.
 
+<<<<<<< HEAD
 Questa feature permette di integrare oggetti custom con le catene di promise senza dover estendere `Promise`.
+=======
+This feature allows us to integrate custom objects with promise chains without having to inherit from `Promise`.
+>>>>>>> 30e3fa723721909ee25115562e676db2452cf8d1
 ````
 
 
