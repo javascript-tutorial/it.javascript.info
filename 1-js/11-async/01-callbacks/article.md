@@ -2,9 +2,25 @@
 
 # Introduzione: callbacks
 
+<<<<<<< HEAD
 Molte azioni in JavaScript sono *asincrone*
 
 Per esempio, guardiamo la funzione `loadScript(src)`:
+=======
+```warn header="We use browser methods here"
+To demonstrate the use of callbacks, promises and other abstract concepts, we'll be using some browser methods; specifically, loading scripts and performing simple document manipulations.
+
+If you're not familiar with these methods, and their usage in the examples is confusing, or if you would just like to understand them better, you may want to read a few chapters from the [next part](/document) of the tutorial.
+```
+
+Many actions in JavaScript are *asynchronous*. In other words, we initiate them now, but they finish later.
+
+For instance, we can schedule such actions using `setTimeout`.
+
+There are other real-world examples of asynchronous actions, e.g. loading scripts and modules (we'll cover them in later chapters).
+
+Take a look at the function `loadScript(src)`, that loads a script with the given `src`:
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 ```js
 function loadScript(src) {
@@ -14,6 +30,7 @@ function loadScript(src) {
 }
 ```
 
+<<<<<<< HEAD
 Lo scopo della funzione è quello di caricare un nuovo script. Quando aggiunge il tag `<script src="…">` al documento, il browser lo caricherà ed eseguirà.
 
 Possiamo usare la funzione in questo modo:
@@ -26,6 +43,20 @@ loadScript('/my/script.js');
 La funzione è chiamata "asincronamente", perché l'azione (il caricamento dello script) non finirà adesso ma in seguito.
 
 La chiamata alla funzione da inizio al caricamento dello script, poi l'esecuzione continua. Mentre lo script sta caricando, il codice sotto potrebbe finire l'esecuzione, e se il caricamento richiede tempo, anche altri script potrebbero venire eseguiti nel frattempo.
+=======
+It appends to the document the new, dynamically created, tag `<script src="…">`, the browser loads and executes it.
+
+We can use this function like this:
+
+```js
+// load and execute the script at the given path
+loadScript('/my/script.js');
+```
+
+The script is executed "asynchronously", as it starts loading starts now, but runs later, when the function has already finished.
+
+If there's a code below `loadScript(…)`, it doesn't wait until the script loading finishes.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 ```js
 loadScript('/my/script.js');
@@ -33,7 +64,11 @@ loadScript('/my/script.js');
 // ...
 ```
 
+<<<<<<< HEAD
 Ora diciamo che vogliamo eseguire il nuovo script quando carica. Probabilmente dichiarerà nuove funzioni, quindi vorremmo eseguirle.
+=======
+Let's say we need to use the new script as soon as it loads. It declares new functions, and we want to run them.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Ma se lo facciamo immediatamente dopo la chiamata `loadScript(…)` non funzionerebbe:
 
@@ -223,6 +258,30 @@ Nel codice sopra:
 Mano a mano che le chiamate diventano più annidate, il codice diventa più profondo e via via più complicato da gestire, specialmente se abbiamo codice reale invece di `...`, che può includere più cicli, condizioni e così via.
 
 Questo viene chiamato "callback hell" o "pyramid of doom."
+
+<!--
+loadScript('1.js', function(error, script) {
+  if (error) {
+    handleError(error);
+  } else {
+    // ...
+    loadScript('2.js', function(error, script) {
+      if (error) {
+        handleError(error);
+      } else {
+        // ...
+        loadScript('3.js', function(error, script) {
+          if (error) {
+            handleError(error);
+          } else {
+            // ...
+          }
+        });
+      }
+    })
+  }
+});
+-->
 
 ![](callback-hell.svg)
 

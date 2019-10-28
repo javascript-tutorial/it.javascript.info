@@ -60,8 +60,13 @@ user.sayHi = sayHi;
 user.sayHi(); // Hello!
 ```
 
+<<<<<<< HEAD
 ```smart header="Programmazione orientata agli oggetti"
 Quando scriviamo codice utilizzando gli oggetti per rappresentare le entità, questa viene definita [programmazione orientata agli oggetti](https://en.wikipedia.org/wiki/Object-oriented_programming), in breve: "OOP".
+=======
+```smart header="Object-oriented programming"
+When we write our code using objects to represent entities, that's called [object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming), in short: "OOP".
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 OOP è una grande cosa, un ambito di interesse con i propri studi. Come scegliere le giuste entità? Come organizzare le interazioni tra loro? Questa è l'architettura di un codice, e ci sono molti libri importanti che trattano questo argomento, come "Design Patterns: Elements of Reusable Object-Oriented Software" di E.Gamma, R.Helm, R.Johnson, J.Vissides oppure "Object-Oriented Analysis and Design with Applications" di G.Booch, e molti altri.
 ```
@@ -167,9 +172,15 @@ Se scriviamo `this.name` piuttosto di `user.name` all'interno di `alert`, il cod
 
 ## "this" non ha limiti
 
+<<<<<<< HEAD
 In JavaScript, la parola chiave "this" si comporta diversamente da molti altri linguaggi di programmazione. Primo, può essere utilizzata in ogni funzione.
 
 Non c'è alcun errore di sintassi in un codice come questo:
+=======
+In JavaScript, keyword `this` behaves unlike most other programming languages. It can be used in any function.
+
+There's no syntax error in the following example:
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 ```js
 function sayHi() {
@@ -220,16 +231,29 @@ In questo caso `this`  è `undefined` in modalità strict. Se tentiamo di accede
 
 Se non è attiva la modalità strict (quindi se ci dimentichiamo `use strict`) il valor di `this` in questo sarà *l'oggetto globale* (`window` in un browser, lo studieremo più avanti nel capitolo [](info:global-object)). Questo strano comportamento ha delle motivazioni storiche, che `"use strict"` risolve.
 
+<<<<<<< HEAD
 Va detto che solitamente una chiamata a funzione che utilizza `this` senza un oggetto non è comune, nella maggior part dei casi è un errore di programmazione. Se una funzione utilizza `this`, ha senso che venga invocata nel contesto di un oggetto.
+=======
+Usually such call is a programming error. If there's `this` inside a function, it expects to be called in an object context.
+````
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 ```smart header="Le conseguenze della libertà di `this`"
 Se avete utilizzato altri linguaggi di programmazione, probabilmente la vostra idea è di un "`this` limitato", quando viene definito un metodo in un oggetto questo avrà sempre in `this` il riferimento all'oggetto.
 
+<<<<<<< HEAD
 In JavaScript `this` è "libero", il suo valore viene prelevato durante l'esecuzione e non dipende da dove il metodo è stato definito, ma piuttosto dall'oggetto "prima del punto".
 
 Il concetto di valutare `this` durante l'esecuzione ha i suoi pregi e difetti. Da una parte una funzione può essere riutilizzata per oggetti diversi. Questa grande flessibilità può essere fonte di molti errori.
 
 In questa guida non vogliamo giudicare le scelte di design effettuate. Ci concentriamo su come le cose funzionano, come trarre benefici ed evitare errori.
+=======
+In JavaScript `this` is "free", its value is evaluated at call-time and does not depend on where the method was declared, but rather on what object is "before the dot".
+
+The concept of run-time evaluated `this` has both pluses and minuses. On the one hand, a function can be reused for different objects. On the other hand, the greater flexibility creates more possibilities for mistakes.
+
+Here our position is not to judge whether this language design decision is good or bad. We'll understand how to work with it, how to get benefits and avoid problems.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 ```
 
 ## Le parti interne: il tipo riferimento

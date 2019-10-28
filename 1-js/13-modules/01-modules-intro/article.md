@@ -266,7 +266,11 @@ Confrontiamo lo script normale:
 
 Da notare: il secondo script viene eseguito per primo! Infatti vedremo prima `undefined`, e dopo `object`.
 
+<<<<<<< HEAD
 Questo accade proprio perché i moduli sono differiti, e quindi attendono che tutto il documento venga processato, al contrario, gli script normali vengono eseguiti immediatamente e di conseguenza vediamo l'output del secondo script per primo.
+=======
+That's because modules are deferred, so we wait for the document to be processed. The regular scripts runs immediately, so we saw its output first.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Quando utilizziamo i moduli, dobbiamo porre attenzione al fatto che la pagina HTML appare mentre viene caricata, e i moduli JavaScript vengono eseguiti successivamente al caricamento, di conseguenza l'utente potrebbe vedere la pagina *prima* che l'applicazione JavaScript sia pronta. Alcune funzionalità potrebbero in questo modo non funzionare immediatamente. Per questo motivo è opportuno inserire degli indicatori di caricamento, o comunque assicurarci che i visitatori non vengano confusi da questi possibili comportamenti.
 
@@ -347,6 +351,7 @@ Uno dei benefici di usare i "bundlers" -- ci permettono più controllo su come i
 
 I tool per il building si comportano nel modo seguente:
 
+<<<<<<< HEAD
 1. Prendono un modulo "principale", quello che era inteso per essere inserito in `<script type="module">`.
 2. Analizza tutte le sue dipendenze: che moduli importa, cosa viene importato dai metodi importati etc...
 3. Costruisce un singolo file con tutti i moduli (o più file, può essere impostato), sostituendo le chiamate `import` con funzioni del bundler. In questo modo può supportare anche moduli "speciali" come quelli CSS/HTML.
@@ -356,6 +361,17 @@ I tool per il building si comportano nel modo seguente:
     - Parti di codice tipicamente utilizzati durante lo sviluppo come `console` e `debugger` rimosse.
     - Le sintassi più moderne di JavaScript vengono sostituite con funzionalità equivalenti più vecchie e compatibili usando [Babel](https://babeljs.io/).
     - Il file risultante viene ridotto al minimo (minified), gli spazi superflui rimossi, i nomi delle variabili sostituiti con nomi corti etc..
+=======
+1. Take a "main" module, the one intended to be put in `<script type="module">` in HTML.
+2. Analyze its dependencies: imports and then imports of imports etc.
+3. Build a single file with all modules (or multiple files, that's tunable), replacing native `import` calls with bundler functions, so that it works. "Special" module types like HTML/CSS modules are also supported.
+4. In the process, other transforms and optimizations may be applied:
+    - Unreachable code removed.
+    - Unused exports removed ("tree-shaking").
+    - Development-specific statements like `console` and `debugger` removed.
+    - Modern, bleeding-edge JavaScript syntax may be transformed to older one with similar functionality using [Babel](https://babeljs.io/).
+    - The resulting file is minified (spaces removed, variables replaced with shorter names, etc).
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 Quindi se usiamo questa tipologia di strumenti, allora gli script vengono raggruppati in un singolo script (o pochi file), `import/export` sostituiti con speciali funzioni in modo che lo script finale non contenga più nessun `import/export`, non richiede l'uso di `type="module"` e può essere utilizzato come un normale script:
 

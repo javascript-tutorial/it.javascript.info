@@ -153,7 +153,11 @@ Qui la seconda promise viene respinta (rejects) in due secondi. Questo porta al 
 ```warn header="In caso di errore, le altre promise vengono ignorate"
 Se una promise è respinta (rejects), `Promise.all` è immediatamente respinto, dimenticando completamente delle altre nella lista. I loro risultati sono ignorati.
 
+<<<<<<< HEAD
 Per esempio, se ci sono molte chiamate `fetch` , come nell'esempio sopra, ed una di esse fallisce, le altre continueranno ad essere eseguite, ma `Promise.all` le ignorerà. Probabilmente poi si fermeranno (settle), ma il loro risultato sarà ignorato.
+=======
+For example, if there are multiple `fetch` calls, like in the example above, and one fails, other ones will still continue to execute, but `Promise.all` won't watch them anymore. They will probably settle, but the result will be ignored.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 `Promise.all` non fa niente per cancellarle, perché nelle promise non esiste il concetto di "cancellazione". In [un'altro capitolo](fetch-abort) copriremo `AbortController` il cui scopo è aiutarci ocn questo, but ma non è una pare delle API Promise.
 ```

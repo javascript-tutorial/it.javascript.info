@@ -150,7 +150,11 @@ new Promise((resolve, reject) => {
   }
 
 }).then(function() {
+<<<<<<< HEAD
   /* non viene mai eseguito */
+=======
+  /* doesn't run here */
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 }).catch(error => { // (**)
 
   alert(`Si è verificato un errore sconosciuto: ${error}`);
@@ -265,7 +269,11 @@ new Promise(function() {
 ```
 
 
+<<<<<<< HEAD
 Nel caso di un errore, lo stato della promise diventa "rejected", e l'esecuzione dovrebbe saltare al gestore del respingimento (rejection handler). Ma negli esempi sopra non c'è questo gestore (handler). Quindi l'errore porta ad un "blocco".
+=======
+In practice, just like with regular unhandled errors in code, it means that something has terribly gone wrong.
+>>>>>>> 70ca842bef2390bc26d13dea2b856838aa890fe0
 
 In pratica, proprio come con un normale errore non gestito, significa che qualcosa è andato terribilmente storto.
 

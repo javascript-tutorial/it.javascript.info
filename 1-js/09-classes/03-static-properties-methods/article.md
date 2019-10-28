@@ -90,7 +90,7 @@ class Article {
 
 let article = Article.createTodays();
 
-alert( article.title ); // Todays digest
+alert( article.title ); // Today's digest
 ```
 
 Now every time we need to create a today's digest, we can call `Article.createTodays()`. Once again, that's not a method of an article, but a method of the whole class.
@@ -169,7 +169,7 @@ rabbits.sort(Rabbit.compare);
 rabbits[0].run(); // Black Rabbit runs with speed 5.
 ```
 
-Now when we can call `Rabbit.compare`, the inherited `Animal.compare` will be called.
+Now when we call `Rabbit.compare`, the inherited `Animal.compare` will be called.
 
 How does it work? Again, using prototypes. As you might have already guessed, `extends` gives `Rabbit` the `[[Prototype]]` reference to `Animal`.
 
@@ -180,7 +180,7 @@ How does it work? Again, using prototypes. As you might have already guessed, `e
 1. `Rabbit` function prototypally inherits from `Animal` function.
 2. `Rabbit.prototype` prototypally inherits from `Animal.prototype`.
 
-As the result, inheritance works both for regular and static methods.
+As a result, inheritance works both for regular and static methods.
 
 Here, let's check that by code:
 
@@ -192,12 +192,12 @@ class Rabbit extends Animal {}
 alert(Rabbit.__proto__ === Animal); // true
 
 // for regular methods
-alert(Rabbit.prototype.__proto__ === Animal.prototype);
+alert(Rabbit.prototype.__proto__ === Animal.prototype); // true
 ```
 
 ## Summary
 
-Static methods are used for the functionality that belongs to the class "as a whole", doesn't relate to a concrete class instance.
+Static methods are used for the functionality that belongs to the class "as a whole". It doesn't relate to a concrete class instance.
 
 For example, a method for comparison `Article.compare(article1, article2)` or a factory method `Article.createTodays()`.
 
