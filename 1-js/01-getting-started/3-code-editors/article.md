@@ -31,7 +31,15 @@ La principale differenza tra gli editor semplici e un IDE è che gli IDE lavoran
 
 Nella pratica, gli editor semplici possono avere molti plugin tra cui sintassi a livello directory e l'autocompletamento, quindi non ci sono delle differenze ben definite tra un editor semplice e un IDE.
 
+<<<<<<< HEAD
 Meritano attenzione le seguenti opzioni:
+=======
+- [Atom](https://atom.io/) (cross-platform, free).
+- [Visual Studio Code](https://code.visualstudio.com/) (cross-platform, free).
+- [Sublime Text](http://www.sublimetext.com) (cross-platform, shareware).
+- [Notepad++](https://notepad-plus-plus.org/) (Windows, free).
+- [Vim](http://www.vim.org/) and [Emacs](https://www.gnu.org/software/emacs/) are also cool if you know how to use them.
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 - [Atom](https://atom.io/) (multi-piattaforma, gratuito).
 - [Sublime Text](http://www.sublimetext.com) (multi-piattaforma, con prova gratuita).

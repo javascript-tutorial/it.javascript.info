@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Test automatici con mocha
+=======
+# Automated testing with Mocha
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 Il test automatico sarà utilizzato per molte attività.
 
@@ -79,7 +83,11 @@ Il flusso di sviluppo solitamente segue i passi:
 
 Quindi la fase di sviluppo è *iterativa*. Scriviamo la specifica, la implementiamo, ci accertiamo che passi i test, ci assicuriamo che faccia ciò che deve. Al termine di questa procedura avremmo un implementazione già testata e funzionante.
 
+<<<<<<< HEAD
 Nel nostro caso, il primo step è completo: abbiamo un specifica iniziale di `pow`. Quindi ora passiamo all'implementazione. Come prima cosa facciamo l'esecuzione "zero" con le specifiche scritte, per essere sicuri che tutto funzioni (ovviamente dovrebbero tutte fallire).
+=======
+The first step is already complete: we have an initial spec for `pow`. Now, before making the implementation, let's use few JavaScript libraries to run the tests, just to see that they are working (they will all fail).
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 ## La spec in azione
 

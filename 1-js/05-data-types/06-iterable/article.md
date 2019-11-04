@@ -143,7 +143,11 @@ Normalmente, il funzionamento degli iteratori è nascosto al codice esterno. C'�
 
 Ma per capire tutto al meglio vediamo come creare esplicitamente un iteratore.
 
+<<<<<<< HEAD
 Proveremo ad iterare su una stringa allo stesso modo di un ciclo `for..of`, ma con una chiamata diretta. Questo codice crea un iteratore per stringhe e lo richiama "manualmente":
+=======
+We'll iterate over a string in exactly the same way as `for..of`, but with direct calls. This code creates a string iterator and gets values from it "manually":
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 ```js run
 let str = "Hello";
@@ -151,7 +155,9 @@ let str = "Hello";
 // fa la stessa cosa di
 // for (let char of str) alert(char);
 
+*!*
 let iterator = str[Symbol.iterator]();
+*/!*
 
 while (true) {
   let result = iterator.next();
@@ -267,7 +273,11 @@ for (let char of str) {
 alert(chars);
 ```
 
+<<<<<<< HEAD
 ...Ma è più breve.    
+=======
+...But it is shorter.    
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 Possiamo anche eseguire uno `slice` consapevolmente:
 

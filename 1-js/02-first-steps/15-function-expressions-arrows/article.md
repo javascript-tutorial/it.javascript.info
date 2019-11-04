@@ -40,7 +40,11 @@ Da notare che l'ultima riga di codice non esegue la funzione, perchè non ci son
 
 In JavaScript, una funzione è un valore, quindi possiamo trattarla come un valore. Il codice sopra ne mostra la sua rappresentazione in stringa, cioè il codice contenuto dentro la funzione.
 
+<<<<<<< HEAD
 E' chiaramente un valore speciale, poichè possiamo richiamarla con `sayHi()`.
+=======
+Surely, a function is a special value, in the sense that we can call it like `sayHi()`.
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 Ma rimane comunque un valore. Quindi possiamo trattarlo come un qualsiasi altro valore.
 
@@ -354,7 +358,11 @@ welcome(); // ora funziona
 ```smart header="Quando conviene scegliere un dichiarazione di funzione vs espressione di funzione?"
 Come regola fondamentale, quando abbiamo la necessita di dichiarare una funzione, la prima opzione da considerare è la dichiarazione di funzione. Fornisce maggiore libertà sul come organizzare il codice, poichè possiamo utilizzare quella funzione anche prima della sua dichiarazione.
 
+<<<<<<< HEAD
 Risulta anche più facile vedere `function f(…) {…}` nel codice, piuttosto che `let f = function(…) {…}`. La dichiarazione di funzione è più facile da "notare".
+=======
+That's also better for readability, as it's easier to look up `function f(…) {…}` in the code than `let f = function(…) {…};`. Function Declarations are more "eye-catching".
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 ...Ma se per qualche ragione la dichiarazione di funzione non si applica bene al caso in questione (abbiamo visto degli esempi sopra), allora l'espressione di funzione può essere utilizzata.
 ```

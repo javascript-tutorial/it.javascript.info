@@ -26,7 +26,11 @@ Prima di procedere, cerchiamo di capire la terminologia.
     alert( y - x ); // 2, la sottrazione binaria sottrae i valori
     ```
 
+<<<<<<< HEAD
     Formalmente, stiamo parlando di due operatori diversi: la negazione unaria (un singolo operando, inverte il segno) e la sottrazione binaria (due operandi, si esegue la sottrazione).
+=======
+    Formally, in the examples above we have two different operators that share the same symbol: the negation operator, a unary operator that reverses the sign, and the subtraction operator, a binary operator that subtracts one number from another.
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 ##  Concatenazione di stringhe, operatore binario +
 

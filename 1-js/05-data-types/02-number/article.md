@@ -429,7 +429,13 @@ Per diversi sistemi numerici:
 
 Per convertire a numeri valori del tipo `12pt` e `100px`:
 
+<<<<<<< HEAD
 - Usate `parseInt/parseFloat` per una conversione "leggera", che legge numeri da una stringa e ritorna il valore che è riuscito a leggere prima dell'errore. 
+=======
+- Can write numbers directly in hex (`0x`), octal (`0o`) and binary (`0b`) systems
+- `parseInt(str, base)` parses the string `str` into an integer in numeral system with given `base`, `2 ≤ base ≤ 36`.
+- `num.toString(base)` converts a number to a string in the numeral system with the given `base`.
+>>>>>>> ec21af8aef6930388c06ee4cd8f8f6769f9d305b
 
 Per i numeri con la virgola:
 
