@@ -150,7 +150,11 @@ new Promise((resolve, reject) => {
   }
 
 }).then(function() {
+<<<<<<< HEAD
   /* non viene mai eseguito */
+=======
+  /* doesn't run here */
+>>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
 }).catch(error => { // (**)
 
   alert(`Si è verificato un errore sconosciuto: ${error}`);
@@ -265,11 +269,19 @@ new Promise(function() {
 ```
 
 
+<<<<<<< HEAD
 Nel caso di un errore, lo stato della promise diventa "rejected", e l'esecuzione dovrebbe saltare al gestore del respingimento (rejection handler). Ma negli esempi sopra non c'è questo gestore (handler). Quindi l'errore porta ad un "blocco".
 
 In pratica, proprio come con un normale errore non gestito, significa che qualcosa è andato terribilmente storto.
 
 Cosa accade quando viene sollevato un errore e non viene gestito da `try..catch`? Lo script muore. Lo stesso accade con una promise rigettata che non viene gestita.
+=======
+In practice, just like with regular unhandled errors in code, it means that something has gone terribly wrong.
+
+What happens when a regular error occurs and is not caught by `try..catch`? The script dies with a message in the console. A similar thing happens with unhandled promise rejections.
+
+The JavaScript engine tracks such rejections and generates a global error in that case. You can see it in the console if you run the example above.
+>>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
 
 La maggior parte dei motori JavaScript tracciano queste situazioni e generano un errore globale in questo caso. Possiamo vederlo nella console.
 
@@ -344,4 +356,11 @@ Qui nella linea `(1)` indichiamo il caricamento oscurando il documento. Il metod
 
 Quando la promise è ferma (settled), che sia un fetch con successo o un errore, `finally` viene lanciato nella linea `(2)`  ferma l'indicatore.
 
+<<<<<<< HEAD
 C'è un piccolo trucco per i browser `(*)` nel ritornare una promise con timeout zero da `finally`. Questo perché alcuni browser (come Chrome) hanno bisogno "di un po' di tempo" fuori dai gestori (handlers) per diegnare cambiamenti al documento. Questo assicura che l'indicazione è visivamente ferma prima di andare avanti nella catena.
+=======
+- `.catch` handles errors in promises of all kinds: be it a `reject()` call, or an error thrown in a handler.
+- We should place `.catch` exactly in places where we want to handle errors and know how to handle them. The handler should analyze errors (custom error classes help) and rethrow unknown ones (maybe they are programming mistakes).
+- It's ok not to use `.catch` at all, if there's no way to recover from an error.
+- In any case we should have the `unhandledrejection` event handler (for browsers, and analogs for other environments) to track unhandled errors and inform the user (and probably our server) about them, so that our app never "just dies".
+>>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd

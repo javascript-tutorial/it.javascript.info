@@ -25,7 +25,11 @@ alert( sum(1, 2, 3, 4, 5) );
 
 In questo caso non ci saranno errori dovuti "all'eccesso" di argomenti. Ma ovviamente il risultato terrò conto solamente dei primi due.
 
+<<<<<<< HEAD
 I parametri restanti possono essere menzionati nella definizione di una funzione con i tre punti `...`. Che significano letteralmente "raccogli gli altri parametri in un array".
+=======
+The rest of the parameters can be included in the function definition by using three dots `...` followed by the name of the array that will contain them. The dots literally mean "gather the remaining parameters into an array".
+>>>>>>> 2b5ac971c1bd8abe7b17cdcf724afd84799b6cbd
 
 Ad esempio, per raccogliere tutti gli argomenti in un array `args`:
 
