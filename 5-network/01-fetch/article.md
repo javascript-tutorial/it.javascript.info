@@ -1,85 +1,85 @@
 
 # Fetch
 
-JavaScript can send network requests to the server and load new information whenever is needed.
+JavaScript può inviare richieste di rete al server e caricare nuove informazioni ogni volta che è necessario.
 
-For example, we can use a network request to:
+Per esempio, possiamo usare le richieste di rete per:
 
-- Submit an order,
-- Load user information,
-- Receive latest updates from the server,
-- ...etc.
+- Inviare un ordine,
+- Caricare informazioni di un utente,
+- Ricevere gli ultimi aggiornamenti del server,
+- etc...
 
-...And all of that without reloading the page!
+...e tutto senza alcun ricaricamento della pagina!
 
-There's an umbrella term "AJAX" (abbreviated <b>A</b>synchronous <b>J</b>avaScript <b>A</b>nd <b>X</b>ML) for network requests from JavaScript. We don't have to use XML though: the term comes from old times, that's that word is there. You may have heard that term already.
+Ti sarà capitato di ascoltare o leggere il termine "AJAX" (acronimo di <b>A</b>synchronous <b>J</b>avaScript <b>A</b>nd <b>X</b>ML) che è comunemente utilizzato per accomunare (sotto un'unica effige) le richieste di rete in JavaScript. Non è però necessario usare XML: il termine proviene da un retaggio del passato ed è per questo che fa parte dell'abbreviazione.
 
-There are multiple ways to send a network request and get information from the server.
+Ci sono molti modi per inviare richieste di rete per richiedere informazioni dal server.
 
-The `fetch()` method is modern and versatile, so we'll start with it. It's not supported by old browsers (can be polyfilled), but very well supported among the new ones.
+Il metodo `fetch()` è tra tutti il più moderno e versatile, e per questo inizieremo ad analizzare proprio questo. Questo metodo non è supportato dai browser più datati (ma è possibile risolvere con dei polyfills), ma lo è ampiamente tra quelli recenti.
 
-The basic syntax is:
+La sintassi base è:
 
 ```js
 let promise = fetch(url, [options])
 ```
 
-- **`url`** -- the URL to access.
-- **`options`** -- optional parameters: method, headers etc.
+- **`url`** -- l'URL da raggiungere.
+- **`options`** -- parametri opzionali: metodi, headers etc.
 
-The browser starts the request right away and returns a promise that the calling code should use to get the result.
+Il browser avvia immediatamente la richiesta, il cui risultato sarà utilizzato e gestito per mezzo di una promise.
 
-Getting a response is usually a two-stage process.
+Ottenere una risposta è comunemente un processo che si svolge in due fasi.
 
-**First, the `promise` resolves with an object of the built-in [Response](https://fetch.spec.whatwg.org/#response-class) class as soon as the server responds with headers.**
+**Prima fase: la `promise` viene risolta con un oggetto (object) di classe built-in [Response](https://fetch.spec.whatwg.org/#response-class) non appena il server risponde con gli headers.**
 
-At this stage we can check HTTP status, to see whether it is successful or not, check headers, but don't have the body yet.
+In questa fase possiamo controllare lo status HTTP, per vedere se la richiesta ha avuto successo o meno, controllare le intestazioni, ma non abbiamo ancora il body.
 
-The promise rejects if the `fetch` was unable to make HTTP-request, e.g. network problems, or there's no such site. Abnormal HTTP-statuses, such as 404 or 500 do not cause an error.
+La promise viene rigettata se il `fetch` non è stato in grado di effettuare una richiesta HTTP, ad esempio per problemi di rete o se non è stato in grado di raggiungere il sito. Gli  status HTTP come 404 o 500 non causano invece errori.
 
-We can see HTTP-status in response properties:
+Possiamo valutare gli status HTTP dalle proprietà:
 
-- **`status`** -- HTTP status code, e.g. 200.
-- **`ok`** -- boolean, `true` if the HTTP status code is 200-299.
+- **`status`** -- HTTP status code, ad esempio 200.
+- **`ok`** -- boolean, `true` se l'HTTP status code è 200-299.
 
-For example:
+Per esempio:
 
 ```js
 let response = await fetch(url);
 
-if (response.ok) { // if HTTP-status is 200-299
-  // get the response body (the method explained below)
+if (response.ok) { // se l'HTTP-status è 200-299
+  // ricevi il body della risposta (il metodo sarà spiegato di seguito)
   let json = await response.json();
 } else {
   alert("HTTP-Error: " + response.status);
 }
 ```
 
-**Second, to get the response body, we need to use an additional method call.**
+**Seconda fase: per prelevare il body della risposta, abbiamo bisogno di un ulteriore metodo.**
 
-`Response` provides multiple promise-based methods to access the body in various formats:
+`Response` fornisce molteplici metodi promise-based per accedere al body in svariati formati:
 
-- **`response.text()`** -- read the response and return as text,
-- **`response.json()`** -- parse the response as JSON,
-- **`response.formData()`** -- return the response as `FormData` object (explained in the [next chapter](info:formdata)),
-- **`response.blob()`** -- return the response as [Blob](info:blob) (binary data with type),
-- **`response.arrayBuffer()`** -- return the response as [ArrayBuffer](info:arraybuffer-binary-arrays) (low-level representaion of binary data),
-- additionally, `response.body` is a [ReadableStream](https://streams.spec.whatwg.org/#rs-class) object, it allows to read the body chunk-by-chunk, we'll see an example later.
+- **`response.text()`** -- legge il la risposta e ritorna un testo,
+- **`response.json()`** -- interpreta e ritorna la risposta come un JSON,
+- **`response.formData()`** -- ritorna la risposta come un oggetto (object) `FormData` (spiegato nel [prossimo capitolo](info:formdata)),
+- **`response.blob()`** -- ritorna la risposta come [Blob](info:blob) (binary data con type),
+- **`response.arrayBuffer()`** -- ritorna la risposta come [ArrayBuffer](info:arraybuffer-binary-arrays) (rappresentazione low-level di binary data),
+- inoltre, `response.body` è un oggetto (object) [ReadableStream](https://streams.spec.whatwg.org/#rs-class), che consente di leggere il body "pezzo per pezzo" (chunk-by-chunk), come vedremo dopo in un esempio.
 
-For instance, let's get a JSON-object with latest commits from GitHub:
+Ad esempio, otteniamo un oggetto (object) JSON con gli ultimi commit da GitHub:
 
 ```js run async
 let url = 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits';
 let response = await fetch(url);
 
 *!*
-let commits = await response.json(); // read response body and parse as JSON
+let commits = await response.json(); // legge il body della risposta e lo interpreta come JSON
 */!*
 
 alert(commits[0].author.login);
 ```
 
-Or, the same without `await`, using pure promises syntax:
+O facciamo lo stesso senza `await`, utilizzando la sintassi canonica delle promises:
 
 ```js run
 fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
@@ -87,71 +87,70 @@ fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commi
   .then(commits => alert(commits[0].author.login));
 ```
 
-To get the reponse text, `await response.text()` instead of `.json()`:
+Per ottenere il testo della risposta, `await response.text()` invece del `.json()`:
 
 ```js run async
 let response = await fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits');
 
-let text = await response.text(); // read response body as text
+let text = await response.text(); // legge il body della risposta come testo
 
 alert(text.slice(0, 80) + '...');
 ```
 
-As a show-case for reading in binary format, let's fetch and show a logo image of ["fetch" specification](https://fetch.spec.whatwg.org) (see chapter [Blob](info:blob) for details about operations on `Blob`):
+Come caso d'uso per la lettura del binary format, richiediamo e mostriamo l'immagine del logo delle [specifiche "fetch"](https://fetch.spec.whatwg.org) (vedi il capitolo [Blob](info:blob) per i dettagli sulle possibilità offerte dai `Blob`):
 
 ```js async run
 let response = await fetch('/article/fetch/logo-fetch.svg');
 
 *!*
-let blob = await response.blob(); // download as Blob object
+let blob = await response.blob(); // download del Blob object
 */!*
 
-// create <img> for it
+// crea un tag <img>
 let img = document.createElement('img');
 img.style = 'position:fixed;top:10px;left:10px;width:100px';
 document.body.append(img);
 
-// show it
+// mostra il logo
 img.src = URL.createObjectURL(blob);
 
-setTimeout(() => { // hide after three seconds
+setTimeout(() => { // nascondi dopo tre secondi
   img.remove();
   URL.revokeObjectURL(img.src);
 }, 3000);
 ```
 
 ````warn
-We can choose only one body-reading method.
+Possiamo solo scegliere un metodo di lettura del body.
 
-If we've already got the response with `response.text()`, then `response.json()` won't work, as the body content has already been processed.
+Se per esempio abbiamo già prelevato il response con `response.text()`, successivamente `response.json()` non funzionerà, dato che il body sarà stato già processato.
 
 ```js
-let text = await response.text(); // response body consumed
-let parsed = await response.json(); // fails (already consumed)
+let text = await response.text(); // elaborazione del response body
+let parsed = await response.json(); // fallisce (già elaborato)
 ````
 
-## Response headers
+## Headers della risposta (o response headers)
 
-The response headers are available in a Map-like headers object in `response.headers`.
+Le response headers sono disponibili nell'oggetto (object) Map-like `response.headers`.
 
-It's not exactly a Map, but it has similar methods to get individual headers by name or iterate over them:
+In realtà non è esattamente un oggetto (object) Map, ma ha metodi molto simili per ottenere le singole header per nome o iterare tra tutte le headers:
 
 ```js run async
 let response = await fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits');
 
-// get one header
+// ricevo un header
 alert(response.headers.get('Content-Type')); // application/json; charset=utf-8
 
-// iterate over all headers
+// itero tra tutte le headers
 for (let [key, value] of response.headers) {
   alert(`${key} = ${value}`);
 }
 ```
 
-## Request headers
+## Headers della richiesta (o request headers)
 
-To set a request header in `fetch`, we can use the `headers` option. It has an object with outgoing headers, like this:
-
+Per settare un header della request in `fetch`, possiamo usare la chiave `headers` dell'oggetto (object) passato come parametro delle opzioni, come ad esempio:
 ```js
 let response = fetch(protectedUrl, {
   headers: {
@@ -160,7 +159,7 @@ let response = fetch(protectedUrl, {
 });
 ```
 
-...But there's a list of [forbidden HTTP headers](https://fetch.spec.whatwg.org/#forbidden-header-name) that we can't set:
+...ci sono però una serie di [HTTP headers proibiti](https://fetch.spec.whatwg.org/#forbidden-header-name), che non siamo autorizzati a settare:
 
 - `Accept-Charset`, `Accept-Encoding`
 - `Access-Control-Request-Headers`
@@ -183,22 +182,22 @@ let response = fetch(protectedUrl, {
 - `Proxy-*`
 - `Sec-*`
 
-These headers ensure proper and safe HTTP, so they are controlled exclusively by the browser.
+Queste headers sono  controllate esclusivamente dal browser perchè aiutano a garantire una comunicazione HTTP corretta e sicura.
 
-## POST requests
+## Richieste POST (o POST requests)
 
-To make a `POST` request, or a request with another method, we need to use `fetch` options:
+Per eseguire una richiesta `POST` o una richiesta con un altro metodo, possiamo usare le opzioni di `fetch`:
 
-- **`method`** -- HTTP-method, e.g. `POST`,
-- **`body`** -- the request body, one of:
-  - a string (e.g. JSON-encoded),
-  - `FormData` object, to submit the data as `form/multipart`,
-  - `Blob`/`BufferSource` to send binary data,
-  - [URLSearchParams](info:url), to submit the data in `x-www-form-urlencoded` encoding, rarely used.
+- **`method`** -- metodo HTTP, es. `POST`,
+- **`body`** -- il body della richiesta, scegliendo tra:
+  - una stringa (string) (es. JSON-encoded),
+  - oggetto (object) `FormData`, per inviare i dati come `form/multipart`,
+  - `Blob`/`BufferSource` per inviare binary data,
+  - [URLSearchParams](info:url), per inviare i dati in `x-www-form-urlencoded` encoding, anche se raramente utilizzato.
 
-The JSON format is used most of the time.
+Il formato più comunemente utilizzato è il JSON.
 
-For example, this code submits `user` object as JSON:
+Per esempio, il codice seguente invia l'oggetto (object) `user` come JSON:
 
 ```js run async
 let user = {
@@ -220,21 +219,21 @@ let result = await response.json();
 alert(result.message);
 ```
 
-Please note, if the request `body` is a string, then `Content-Type` header is set to `text/plain;charset=UTF-8` by default.
+Nota che, se il `body` della richiesta è una stringa (string), la `Content-Type` header è settata di default a `text/plain;charset=UTF-8`.
 
-But, as we're going to send JSON, we use `headers` option to send `application/json` instead, the correct `Content-Type` for JSON-encoded data.
+Se stiamo invece inviando un JSON, usiamo `application/json` come `Content-Type` corretto per i dati nelle opzioni `headers`.
 
-## Sending an image
+## Inviare un'immagine
 
-We can also submit binary data with `fetch` using `Blob` or `BufferSource` objects.
+Possiamo anche inviare binary data con `fetch` usando oggetti `Blob` o `BufferSource`.
 
-In this example, there's a `<canvas>` where we can draw by moving a mouse over it. A click on the "submit" button sends the image to server:
+In questo esempio, c'è un `<canvas>` sul quale possiamo disegnare spostarci sopra con il mouse. Al clic sul bottone "Invia" invieremo l'immagine al server:
 
 ```html run autorun height="90"
 <body style="margin:0">
   <canvas id="canvasElem" width="100" height="80" style="border:1px solid"></canvas>
 
-  <input type="button" value="Submit" onclick="submit()">
+  <input type="button" value="Invia" onclick="submit()">
 
   <script>
     canvasElem.onmousemove = function(e) {
@@ -250,7 +249,7 @@ In this example, there's a `<canvas>` where we can draw by moving a mouse over i
         body: blob
       });
 
-      // the server responds with confirmation and the image size
+      // il server risponde con la conferma e la dimensione dell'immagine
       let result = await response.json();
       alert(result.message);
     }
@@ -259,9 +258,9 @@ In this example, there's a `<canvas>` where we can draw by moving a mouse over i
 </body>
 ```
 
-Please note, here we don't set `Content-Type` header manually, because a `Blob` object has a built-in type (here `image/png`, as generated by `toBlob`). For `Blob` objects that type becomes the value of `Content-Type`.
+Nota che in questa occasione, invece, non impostiamo manualmente l'header `Content-Type`, perché un oggetto (object)` Blob` ha un tipo incorporato (in questo caso `image/png`,  generato da `toBlob`). Per gli oggetti `Blob`, il tipo generato diventa il valore di` Content-Type`.
 
-The `submit()` function can be rewritten without `async/await` like this:
+La funzione `submit()` può essere riscritta senza `async/await` come ad esempio:
 
 ```js
 function submit() {
@@ -276,38 +275,38 @@ function submit() {
 }
 ```
 
-## Summary
+## Riepilogo
 
-A typical fetch request consists of two `await` calls:
+Una tipica richiesta fetch consiste in 2 chiamate `await`:
 
 ```js
-let response = await fetch(url, options); // resolves with response headers
-let result = await response.json(); // read body as json
+let response = await fetch(url, options); // ritorna le response headers
+let result = await response.json(); // legge il body come JSON
 ```
 
-Or, without `await`:
+O la versione senza `await`:
 
 ```js
 fetch(url, options)
   .then(response => response.json())
-  .then(result => /* process result */)
+  .then(result => /* processa qui il result */)
 ```
 
-Response properties:
-- `response.status` -- HTTP code of the response,
-- `response.ok` -- `true` is the status is 200-299.
-- `response.headers` -- Map-like object with HTTP headers.
+Propietà del response:
+- `response.status` -- codice HTTP della risposta,
+- `response.ok` -- `true` se lo status è 200-299.
+- `response.headers` -- oggetto (object) Map-like con le HTTP headers.
 
-Methods to get response body:
-- **`response.text()`** -- return the response as text,
-- **`response.json()`** -- parse the response as JSON object,
-- **`response.formData()`** -- return the response as `FormData` object (form/multipart encoding, see the next chapter),
-- **`response.blob()`** -- return the response as [Blob](info:blob) (binary data with type),
-- **`response.arrayBuffer()`** -- return the response as [ArrayBuffer](info:arraybuffer-binary-arrays) (low-level binary data),
+Metodi per ricevere il response body:
+- **`response.text()`** -- ritorna la risposta come testo,
+- **`response.json()`** -- ritorna ed interpreta la risposta come oggetto (object) JSON,
+- **`response.formData()`** -- ritorna la risposta come oggetto (object) `FormData` (per il form/multipart encoding, vedi il prossimo capitolo),
+- **`response.blob()`** -- ritorna la risposta come oggetto (object) [Blob](info:blob) (binary data con type),
+- **`response.arrayBuffer()`** -- ritorna la risposta come oggetto (object) [ArrayBuffer](info:arraybuffer-binary-arrays) (low-level binary data),
 
-Fetch options so far:
-- `method` -- HTTP-method,
-- `headers` -- an object with request headers (not any header is allowed),
-- `body` -- the data to send (request body) as `string`, `FormData`, `BufferSource`, `Blob` or `UrlSearchParams` object.
+Altre opzioni di fetch:
+- `method` -- metodo HTTP,
+- `headers` -- un oggetto (object) con le headers della richiesta (non tutte le headers sono concesse),
+- `body` -- i dati da inviare (request body) come `string` o come oggetti `FormData`, `BufferSource`, `Blob`, `UrlSearchParams`.
 
-In the next chapters we'll see more options and use cases of `fetch`.
+Nei prossimi capitoli vedremo ulteriori opzioni e casi d'uso di `fetch`.

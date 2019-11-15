@@ -1,9 +1,9 @@
 
-To fetch a user we need: `fetch('https://api.github.com/users/USERNAME')`.
+Per eseguire il fetch di un utente usa: `fetch('https://api.github.com/users/USERNAME')`.
 
-If the response has status `200`, call `.json()` to read the JS object.
+Se lo status del response è `200`, chiama `.json()` per leggere l'oggetto (object) JS.
 
-Otherwise, if a `fetch` fails, or the response has non-200 status, we just return `null` in the resulting arrray.
+Altrimenti, se il `fetch` dovesse fallire, o lo status della risposta non è 200, ritorna `null` nell'array dei risultati.
 
 So here's the code:
 
@@ -33,8 +33,8 @@ async function getUsers(names) {
 }
 ```
 
-Please note: `.then` call is attached directly to `fetch`, so that when we have the response, it doesn't wait for other fetches, but starts to read `.json()` immediately.
+Nota che: la chiamata `.then` è agganciata direttamente al `fetch`, cosi che quando riceveremo una risposta, non ci sarà attesa per le altre fetches ma inizierà immediatamente la lettura di `.json()`.
 
-If we used `await Promise.all(names.map(name => fetch(...)))`, and call `.json()` on the results, then it would wait for all fetches to respond. By adding `.json()` directly to each `fetch`, we ensure that individual fetches start reading data as JSON without waiting for each other.
+Se invece usassimo `await Promise.all(names.map(name => fetch(...)))` e chiamassimo `.json()` sui risultati, dovremmo attendere che tutte le fetches rispondano. Aggiungendo direttamente `.json()` ad ogni `fetch` invece ci assicureremo che ogni singolo fetch inizi la lettura dei dati come JSON senza attendere le altre.
 
-That's an example of how low-level Promise API can still be useful even if we mainly use `async/await`.
+Questo è un esempio di come l'API low-level Promise possa ancora essere utile anche se usiamo principalmente `async/await`.
