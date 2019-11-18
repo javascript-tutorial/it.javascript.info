@@ -284,6 +284,7 @@ La prima chiamata è speciale. Viene effettuata utilizzando uno speciale "oggett
 
 L'idea è quella di fornire più potenza possibile a `replacer`: deve avere la possibilità di rimpiazzare/saltare l'oggetto per interno, se necessario.
 
+<<<<<<< HEAD
 ## Formattazione: spacer
 
 Il terzo argomento di `JSON.stringify(value, replacer, spaces)` è il numero di spazi da utilizzare per una corretta formattazione.
@@ -291,6 +292,15 @@ Il terzo argomento di `JSON.stringify(value, replacer, spaces)` è il numero di 
 Tutti gli oggetti serializzati fino ad ora non possedevano un indentazione o spazi extra. Ci può andare bene se dobbiamo semplicemente inviare l'oggetto. L'argomento `spacer` viene utilizzato solo con scopo di abbellimento.
 
 In questo caso `spacer = 2` dice a JavaScript di mostrare gli oggetti annidati in diverse righe, con un indentazione di 2 spazi all'interno dell'oggetto:
+=======
+## Formatting: space
+
+The third argument of `JSON.stringify(value, replacer, space)` is the number of spaces to use for pretty formatting.
+
+Previously, all stringified objects had no indents and extra spaces. That's fine if we want to send an object over a network. The `space` argument is used exclusively for a nice output.
+
+Here `space = 2` tells JavaScript to show nested objects on multiple lines, with indentation of 2 spaces inside an object:
+>>>>>>> e515f80a9f076115a6e3fef8a30cd73e6db20054
 
 ```js run
 let user = {
@@ -326,7 +336,11 @@ alert(JSON.stringify(user, null, 2));
 */
 ```
 
+<<<<<<< HEAD
 Il parametro `spaces` viene utilizzato unicamente per procedure di logging o per abbellire l'output.
+=======
+The `space` parameter is used solely for logging and nice-output purposes.
+>>>>>>> e515f80a9f076115a6e3fef8a30cd73e6db20054
 
 ## Modificare "toJSON"
 
@@ -391,7 +405,11 @@ alert( JSON.stringify(meetup) );
 */
 ```
 
+<<<<<<< HEAD
 Come possiamo vedere, `toJSON` viene utilizzato sia per le chiamate dirette a `JSON.stringify(room)`, sia per gli oggetti annidati.
+=======
+As we can see, `toJSON` is used both for the direct call `JSON.stringify(room)` and when `room` is nested in another encoded object.
+>>>>>>> e515f80a9f076115a6e3fef8a30cd73e6db20054
 
 
 ## JSON.parse
@@ -423,9 +441,9 @@ alert( numbers[1] ); // 1
 Nel caso di oggetti annidati:
 
 ```js run
-let user = '{ "name": "John", "age": 35, "isAdmin": false, "friends": [0,1,2,3] }';
+let userData = '{ "name": "John", "age": 35, "isAdmin": false, "friends": [0,1,2,3] }';
 
-user = JSON.parse(user);
+let user = JSON.parse(userData);
 
 alert( user.friends[1] ); // 1
 ```

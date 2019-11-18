@@ -201,7 +201,11 @@ Strano! Quale può essere il risultato se non `0.3`?
 alert( 0.1 + 0.2 ); // 0.30000000000000004
 ```
 
+<<<<<<< HEAD
 Ouch! Ci possono essere molte conseguenze dovute ad un errato confronto. Immaginate di progettare un sito di e-shop in cui i visitatori aggiungono al carrello articoli da `$0.10` e `$0.20`. Poi come prezzo totale viene mostrato `$0.30000000000000004`. Questo risultato lascerebbe sorpreso chiunque.
+=======
+Ouch! There are more consequences than an incorrect comparison here. Imagine you're making an e-shopping site and the visitor puts `$0.10` and `$0.20` goods into their cart. The order total will be `$0.30000000000000004`. That would surprise anyone.
+>>>>>>> e515f80a9f076115a6e3fef8a30cd73e6db20054
 
 Ma perché accade questo?
 
@@ -429,7 +433,13 @@ Per diversi sistemi numerici:
 
 Per convertire a numeri valori del tipo `12pt` e `100px`:
 
+<<<<<<< HEAD
 - Usate `parseInt/parseFloat` per una conversione "leggera", che legge numeri da una stringa e ritorna il valore che è riuscito a leggere prima dell'errore. 
+=======
+- Can write numbers directly in hex (`0x`), octal (`0o`) and binary (`0b`) systems
+- `parseInt(str, base)` parses the string `str` into an integer in numeral system with given `base`, `2 ≤ base ≤ 36`.
+- `num.toString(base)` converts a number to a string in the numeral system with the given `base`.
+>>>>>>> e515f80a9f076115a6e3fef8a30cd73e6db20054
 
 Per i numeri con la virgola:
 
