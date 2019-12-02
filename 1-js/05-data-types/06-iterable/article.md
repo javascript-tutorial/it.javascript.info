@@ -143,7 +143,11 @@ Normalmente, il funzionamento degli iteratori è nascosto al codice esterno. C'�
 
 Ma per capire tutto al meglio vediamo come creare esplicitamente un iteratore.
 
+<<<<<<< HEAD
 Proveremo ad iterare su una stringa allo stesso modo di un ciclo `for..of`, ma con una chiamata diretta. Questo codice crea un iteratore per stringhe e lo richiama "manualmente":
+=======
+We'll iterate over a string in exactly the same way as `for..of`, but with direct calls. This code creates a string iterator and gets values from it "manually":
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 
 ```js run
 let str = "Hello";
@@ -151,7 +155,9 @@ let str = "Hello";
 // fa la stessa cosa di
 // for (let char of str) alert(char);
 
+*!*
 let iterator = str[Symbol.iterator]();
+*/!*
 
 while (true) {
   let result = iterator.next();
@@ -211,7 +217,11 @@ let arr = Array.from(arrayLike); // (*)
 alert(arr.pop()); // World (il metodo funziona)
 ```
 
+<<<<<<< HEAD
 `Array.from` alla riga `(*)` prende l'oggetto, esamina se questo è un iterabile o un array-like, successivamente crea un nuova array e copia al suo interno tutti gli elementi.
+=======
+`Array.from` at the line `(*)` takes the object, examines it for being an iterable or array-like, then makes a new array and copies all items to it.
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 
 Si comporta allo stesso modo con un oggetto iterabile:
 
@@ -267,7 +277,11 @@ for (let char of str) {
 alert(chars);
 ```
 
+<<<<<<< HEAD
 ...Ma è più breve.    
+=======
+...But it is shorter.    
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 
 Possiamo anche eseguire uno `slice` consapevolmente:
 

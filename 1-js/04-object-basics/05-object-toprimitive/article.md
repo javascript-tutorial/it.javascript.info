@@ -48,21 +48,43 @@ Ci sono tre varianti:
 `"default"`
 : Utilizzata in casi rari quando l'operatore "non è sicuro" del tipo necessario.
 
+<<<<<<< HEAD
     Ad esempio, la somma binaria `+` può essere utilizzata sia con le stringhe (per concatenarle) sia con i numeri (per eseguire la somma), quindi sia la conversione a stringa che quella a tipo numerico potrebbero andare bene. Oppure quando un oggetto viene confrontato usando `==` con una stringa, un numero o un symbol.
 
     ```js
     // somma binaria
     let total = car1 + car2;
+=======
+    For instance, binary plus `+` can work both with strings (concatenates them) and numbers (adds them), so both strings and numbers would do. So if the a binary plus gets an object as an argument, it uses the `"default"` hint to convert it.
 
-    // obj == string/number/symbol
+    Also, if an object is compared using `==` with a string, number or a symbol, it's also unclear which conversion should be done, so the `"default"` hint is used.
+
+    ```js
+    // binary plus uses the "default" hint
+    let total = obj1 + obj2;
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
+
+    // obj == number uses the "default" hint
     if (user == 1) { ... };
     ```
 
+<<<<<<< HEAD
     L'operatore maggiore/minore `<>` può funzionare sia con stringhe che con numeri. Ad oggi, per motivi storici, si suppone la conversione a "numero" e non quella di "default".
 
     Nella pratica, tutti gli oggetti integrati (tranne oggetti `Date`, che studieremo più avanti) implementano la conversione `"default"` nello stesso modo di quella `"number"`. Noi dovremmo quindi fare lo stesso.
 
 Notate -- ci sono solo tre hint. Semplice. Non esiste alcuna conversione al tipo "boolean" (tutti gli oggetti sono `true` nei contesti booleani). Se trattiamo `"default"` e `"number"` allo stesso modo, come la maggior parte degli oggetti integrati, ci sono solo due conversioni.
+=======
+    The greater and less comparison operators, such as `<` `>`, can work with both strings and numbers too. Still, they use the `"number"` hint, not `"default"`. That's for historical reasons.
+
+    In practice though, we don't need to remember these peculiar details, because all built-in objects except for one case (`Date` object, we'll learn it later) implement `"default"` conversion the same way as `"number"`. And we can do the same.
+
+```smart header="No `\"boolean\"` hint"
+Please note -- there are only three hints. It's that simple.
+
+There is no "boolean" hint (all objects are `true` in boolean context) or anything else. And if we treat `"default"` and `"number"` the same, like most built-ins do, then there are only two conversions.
+```
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 
 **Per eseguire la conversione JavaScript tenta di chiamare tre metodi dell'oggetto:**
 
@@ -114,7 +136,33 @@ Se non è presente `Symbol.toPrimitive` allora JavaScript prova a richiamare que
 - `toString -> valueOf` per hint di tipo "string".
 - `valueOf -> toString` altrimenti.
 
+<<<<<<< HEAD
 Ad esempio, qui `user` fa la stessa cosa vista sopra, utilizzando una combinazione di `toString` e `valueOf`:
+=======
+These methods must return a primitive value. If `toString` or `valueOf` returns an object, then it's ignored (same as if there were no method).
+
+By default, a plain object has following `toString` and `valueOf` methods:
+
+- The `toString` method returns a string `"[object Object]"`.
+- The `valueOf` method returns the object itself.
+
+Here's the demo:
+
+```js run
+let user = {name: "John"};
+
+alert(user); // [object Object]
+alert(user.valueOf() === user); // true
+```
+
+So if we try to use an object as a string, like in an `alert` or so, then by default we see `[object Object]`.
+
+And the default `valueOf` is mentioned here only for the sake of completeness, to avoid any confusion. As you can see, it returns the object itself, and so is ignored. Don't ask me why, that's for historical reasons. So we can assume it doesn't exist.
+
+Let's implement these methods.
+
+For instance, here `user` does the same as above using a combination of `toString` and `valueOf` instead of `Symbol.toPrimitive`:
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 
 ```js run
 let user = {
@@ -159,7 +207,11 @@ In assenza di `Symbol.toPrimitive` e `valueOf`, `toString` gestirà tutte le con
 
 Una cosa importante da sapere riguardo tutte le conversioni primitive è che non devono necessariamente ritornare il tipo "hint" (suggerito).
 
+<<<<<<< HEAD
 Non c'è alcun controllo per verificare che `toString()` ritorni esattamente una stringa, o che il metodo `Symbol.toPrimitive` ritorni un numero per un "hint" di tipo "number".
+=======
+There is no control whether `toString` returns exactly a string, or whether `Symbol.toPrimitive` method returns a number for a hint `"number"`.
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 
 L'unico obbligo: questi metodi devono ritornare un tipo primitivo, non un oggetto.
 
@@ -169,12 +221,23 @@ Per ragioni storiche, se `toString` o `valueOf` ritornasse un oggetto, non ci sa
 Invece, `Symbol.toPrimitive` *deve* ritornare un tipo primitivo, altrimenti ci sarebbe un errore.
 ```
 
+<<<<<<< HEAD
 ## Ulteriori operazioni
 
 Un operazione che richiede una conversione ottiene quella primitiva, e continua a lavorarci, applicando ulteriori conversioni se necessario.
+=======
+## Further conversions
+
+As we know already, many operators and functions perform type conversions, e.g. multiplication `*` converts operands to numbers.
+
+If we pass an object as an argument, then there are two stages:
+1. The object is converted to a primitive (using the rules described above).
+2. If the resulting primitive isn't of the right type, it's converted.
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 
 Ad esempio:
 
+<<<<<<< HEAD
 - Operazioni matematiche (eccezione per la somma binaria) eseguono una conversione numerica:
 
     ```js run
@@ -199,6 +262,33 @@ Ad esempio:
 
     alert(obj + 2); // 22 (ToPrimitive ha ritornato string => concatenazione)
     ```
+=======
+```js run
+let obj = {
+  // toString handles all conversions in the absence of other methods
+  toString() {
+    return "2";
+  }
+};
+
+alert(obj * 2); // 4, object converted to primitive "2", then multiplication made it a number
+```
+
+1. The multiplication `obj * 2` first converts the object to primitive (that's a string `"2"`).
+2. Then `"2" * 2` becomes `2 * 2` (the string is converted to number).
+
+Binary plus will concatenate strings in the same situation, as it gladly accepts a string:
+
+```js run
+let obj = {
+  toString() {
+    return "2";
+  }
+};
+
+alert(obj + 2); // 22 ("2" + 2), conversion to primitive returned a string => concatenation
+```
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 
 ## Riepilogo
 

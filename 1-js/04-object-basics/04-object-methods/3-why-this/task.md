@@ -4,7 +4,11 @@ importance: 3
 
 # Spiegate il valore di "this"
 
+<<<<<<< HEAD
 Nel codice sotto vogliamo chiamare il metodo `user.go()`  volte di fila.
+=======
+In the code below we intend to call `obj.go()` method 4 times in a row.
+>>>>>>> 47d186598add3a0ea759615596a12e277ce8fb5a
 
 Ma le chiamate `(1)` e `(2)` funzionano diversamente da `(3)` e `(4)`. Perché?
 
