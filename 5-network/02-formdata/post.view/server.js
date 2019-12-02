@@ -18,7 +18,7 @@ router.post('/image-form', async (ctx) => {
   let files = [];
   const { fields } = await busboy(ctx.req, {
     onFile(fieldname, file, filename, encoding, mimetype) {
-      // read all file stream to continue
+      // leggi tutto il file stream prima di continuare
       let length = 0;
       file.on('data', function(data) {
         length += data.length;
@@ -34,7 +34,7 @@ router.post('/image-form', async (ctx) => {
   });
 
   ctx.body = {
-    message: `Image saved, firstName: ${fields.firstName}, Image size:${files[0].length}, fileName: ${files[0].filename}`
+    message: `Immagine salvata, Nome: ${fields.firstName}, Dimensione Immagine:${files[0].length}, Nome File: ${files[0].filename}`
   };
 });
 
@@ -44,7 +44,7 @@ router.post('/user-avatar', async (ctx) => {
   let files = [];
   const { fields } = await busboy(ctx.req, {
     onFile(fieldname, file, filename, encoding, mimetype) {
-      // read all file stream to continue
+      // leggi tutto il file stream prima di continuare
       let length = 0;
       file.on('data', function(data) {
         length += data.length;
@@ -61,7 +61,7 @@ router.post('/user-avatar', async (ctx) => {
   });
 
   ctx.body = {
-    message: `User with picture, firstName: ${fields.firstName}, picture size:${files[0].length}`
+    message: `Utente con foto, Nome: ${fields.firstName}, Dimensione Foto:${files[0].length}`
   };
 });
 

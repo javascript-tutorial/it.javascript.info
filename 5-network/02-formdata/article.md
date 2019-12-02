@@ -1,26 +1,26 @@
 
 # FormData
 
-This chapter is about sending HTML forms: with or without files, with additional fields and so on.
+Questo capitolo spiega l'invio di HTML forms: con o senza files, con campi aggiuntivi e così via.
 
-[FormData](https://xhr.spec.whatwg.org/#interface-formdata) objects can help with that. As you might have guessed, it's the object to represent HTML form data.
+Gli oggetti [FormData](https://xhr.spec.whatwg.org/#interface-formdata) possono aiutarci per questo scopo. Come potrai immaginare, è un oggetto che rappresenta i dati di un form HTML.
 
-The constructor is:
+Il costruttore è:
 ```js
 let formData = new FormData([form]);
 ```
 
-If HTML `form` element is provided, it automatically captures its fields.
+Se l'elemento HTML `form` è presente, esso catturerà automaticamente tutti i relativi campi.
 
-The special thing about `FormData` is that network methods, such as `fetch`, can accept a `FormData` object as a body. It's encoded and sent out with `Content-Type: form/multipart`.
+La cosa interessante è che i metodi per le richieste di rete, come ad esempio `fetch`, possono accettare gli oggetti `FormData` come body della richiesta. Essi sono codificati ed inviati come `Content-Type: form/multipart`. 
 
-From the server point of view, that looks like a usual form submission.
+Dal punto di vista del server, quindi risultano essere dei comuni invii di form.
 
-## Sending a simple form
+## Inviare un semplice form
 
-Let's send a simple form first.
+Inviamo, per prima cosa, un semplice form.
 
-As you can see, that's almost one-liner:
+Come puoi vedere, è sufficiente una singola riga:
 
 ```html run autorun
 <form id="formElem">
@@ -47,48 +47,48 @@ As you can see, that's almost one-liner:
 </script>
 ```
 
-In this example, the server code is not presented, as it's beyound our scope. The server accepts the POST request and replies "User saved".
+In questo esempio, non è indicato il codice server-side, dato che va oltre il nostro scopo. In questo caso, il server accetta la richiesta POST e risponde con "Utente salvato".
 
-## FormData Methods
+## Metodi dell'oggetto FormData
 
-We can modify fields in `FormData` with methods:
+Possiamo modificare i campi in `FormData` con i seguenti metodi:
 
-- `formData.append(name, value)` - add a form field with the given `name` and `value`,
-- `formData.append(name, blob, fileName)` - add a field as if it were `<input type="file">`, the third argument `fileName` sets file name (not form field name), as it it were a name of the file in user's filesystem,
-- `formData.delete(name)` - remove the field with the given `name`,
-- `formData.get(name)` - get the value of the field with the given `name`,
-- `formData.has(name)` - if there exists a field with the given `name`, returns `true`, otherwise `false`
+- `formData.append(name, value)` - aggiunge un campo del form fornendo `name` e `value`,
+- `formData.append(name, blob, fileName)` - aggiunge un campo come se fosse `<input type="file">`, il terzo argomento `fileName` imposta il nome del file (non il nome del campo), che corrisponderebbe al nome del file nel filesystem dell'utente,
+- `formData.delete(name)` - rimuove il campo fornendo il relativo `name`,
+- `formData.get(name)` - recupera il valore di un campo fornendo il relativo `name`,
+- `formData.has(name)` - se esiste il campo con il relativo `name` ritorna `true`, altrimenti `false`
 
-A form is technically allowed to have many fields with the same `name`, so multiple calls to `append` add more same-named fields.
+Un form è tecnicamente autorizzato ad avere più campi con lo stesso attributo `name`, di conseguenza più chiamate al metodo `append` aggiungeranno più campi con lo stesso `name`.
 
-There's also method `set`, with the same syntax as `append`. The difference is that `.set` removes all fields with the given `name`, and then appends a new field. So it makes sure there's only field with such `name`, the rest is just like `append`:
+C'è anche il metodo `set` che ha la stessa sintassi di `append`. La differenza è che `set` rimuove tutti i campi con il relativo `name` e successivamente crea un nuovo campo. Così facendo si può essere sicuri che ci sarà un solo campo con l'attributo `name` indicato. Per il resto è esattamente come il metodo `append`:
 
 - `formData.set(name, value)`,
 - `formData.set(name, blob, fileName)`.
 
-Also we can iterate over formData fields using `for..of` loop:
+È anche possibile iterare attraverso i campi di formData usando un ciclo `for..of`:
 
 ```js run
 let formData = new FormData();
 formData.append('key1', 'value1');
 formData.append('key2', 'value2');
 
-// List key/value pairs
+// Lista di coppia chiave/valore
 for(let [name, value] of formData) {
   alert(`${name} = ${value}`); // key1=value1, then key2=value2
 }
 ```
 
-## Sending a form with a file
+## Inviare un form con un file
 
-The form is always sent as `Content-Type: form/multipart`, this encoding allows to send files. So, `<input type="file">` fields are sent also, similar to a usual form submission.
+Il form è sempre inviato come `Content-Type: form/multipart`, che è la codifica che consente l'invio di files. Così, i campi `<input type="file">` verranno inviati in modo simile all'invio di un normale form.
 
-Here's an example with such form:
+Ecco un esempio con un form di questo tipo:
 
 ```html run autorun
 <form id="formElem">
   <input type="text" name="firstName" value="John">
-  Picture: <input type="file" name="picture" accept="image/*">
+  Foto: <input type="file" name="picture" accept="image/*">
   <input type="submit">
 </form>
 
@@ -110,15 +110,15 @@ Here's an example with such form:
 </script>
 ```
 
-## Sending a form with Blob data
+## Inviare un form con Blob data
 
-As we've seen in the chapter <info:fetch>, it's easy to send dynamically generated binary data e.g. an image, as `Blob`. We can supply it directly as `fetch` parameter `body`.
+Come visto nel capitolo <info:fetch>, è semplice inviare dati binari generati dinamicamente come `Blob`, ad esempio l'invio di un'immagine. Possiamo difatti fornirlo direttamente come parametro `body` di `fetch`.
 
-In practice though, it's often convenient to send an image not separately, but as a part of the form, with additional fields, such as "name" and other metadata.
+Tuttavia è spesso conveniente non inviare l'immagine separatamente, bensì come parte del form, utilizzando dei campi aggiuntivi come ad esempio "name" o altro.
 
-Also, servers are usually more suited to accept multipart-encoded forms, rather than raw binary data.
+Inoltre, i server sono in genere più adatti ad accettare moduli con codifica multipart, piuttosto che dati binari non elaborati.
 
-This example submits an image from `<canvas>`, along with some other fields, as a form, using `FormData`:
+Questo esempio invia un form utilizzando un immagine da `<canvas>`, insieme ad alcuni altri campi usando `FormData`:
 
 ```html run autorun height="90"
 <body style="margin:0">
@@ -154,36 +154,36 @@ This example submits an image from `<canvas>`, along with some other fields, as 
 </body>
 ```
 
-Please note how the image `Blob` is added:
+Nota attentamente come l'immagine `blob` viene aggiunta al form:
 
 ```js
 formData.append("image", imageBlob, "image.png");
 ```
 
-That's same as if there were `<input type="file" name="image">` in the form, and the visitor submitted a file named `"image.png"` (3rd argument) with the data `imageBlob` (2nd argument) from their filesystem.
+È come se nel form ci fosse `<input type="file" name="image">` e che gli utenti inviassero un file, prendendolo dal proprio filesystem, con nome `"image.png"` (il terzo argomento) e con `imageBlob` come dati (il secondo argomento).
 
-The server reads form data and the file, as if it were a regular form submission.
+Il server leggerà i dati del form ed il file, come se si trattasse di un normale invio.
 
-## Summary
+## Riepilogo
 
-[FormData](https://xhr.spec.whatwg.org/#interface-formdata) objects are used to capture HTML form and submit it using `fetch` or another network method.
+Gli oggetti [FormData](https://xhr.spec.whatwg.org/#interface-formdata) sono usati per catturrare i campi dei form HTML ed inviarli usando `fetch` o altri metodi per le richieste di rete.
 
-We can either create `new FormData(form)` from an HTML form, or create a object without a form at all, and then append fields with methods:
+Possiamo creare `new FormData(form)` da un form HTML esistente, o creare direttamente un oggetto senza un relativo form, aggiungendo quindi i campi con i metodi:
 
 - `formData.append(name, value)`
 - `formData.append(name, blob, fileName)`
 - `formData.set(name, value)`
 - `formData.set(name, blob, fileName)`
 
-Let's note two peculiarities here:
+Nota due peculiarità:
 
-1. The `set` method removes fields with the same name, `append` doesn't. That's the only difference between them.
-2. To send a file, 3-argument syntax is needed, the last argument is a file name, that normally is taken from user filesystem for `<input type="file">`.
+1. Il metodo `set` rimuoverà i campi con lo stesso nome, mentre il `append` non lo farà. Questa è l'unica differenza tra i due metodi.
+2. Per inviare un file è necessario utilizzare una sintassi con tre argomenti, il cui ultimo è il nome del file, che normalmente l'utente preleverebbe dal proprio filesystem per mezzo di un `<input type="file">`.
 
-Other methods are:
+Alcuni altri metodi sono:
 
 - `formData.delete(name)`
 - `formData.get(name)`
 - `formData.has(name)`
 
-That's it!
+Questo è tutto!
