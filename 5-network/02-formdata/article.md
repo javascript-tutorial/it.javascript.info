@@ -53,15 +53,27 @@ In questo esempio, non è indicato il codice server-side, dato che va oltre il n
 
 Possiamo modificare i campi in `FormData` con i seguenti metodi:
 
+<<<<<<< HEAD
 - `formData.append(name, value)` - aggiunge un campo del form fornendo `name` e `value`,
 - `formData.append(name, blob, fileName)` - aggiunge un campo come se fosse `<input type="file">`, il terzo argomento `fileName` imposta il nome del file (non il nome del campo), che corrisponderebbe al nome del file nel filesystem dell'utente,
 - `formData.delete(name)` - rimuove il campo fornendo il relativo `name`,
 - `formData.get(name)` - recupera il valore di un campo fornendo il relativo `name`,
 - `formData.has(name)` - se esiste il campo con il relativo `name` ritorna `true`, altrimenti `false`
+=======
+- `formData.append(name, value)` - add a form field with the given `name` and `value`,
+- `formData.append(name, blob, fileName)` - add a field as if it were `<input type="file">`, the third argument `fileName` sets file name (not form field name), as it were a name of the file in user's filesystem,
+- `formData.delete(name)` - remove the field with the given `name`,
+- `formData.get(name)` - get the value of the field with the given `name`,
+- `formData.has(name)` - if there exists a field with the given `name`, returns `true`, otherwise `false`
+>>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
 
 Un form è tecnicamente autorizzato ad avere più campi con lo stesso attributo `name`, di conseguenza più chiamate al metodo `append` aggiungeranno più campi con lo stesso `name`.
 
+<<<<<<< HEAD
 C'è anche il metodo `set` che ha la stessa sintassi di `append`. La differenza è che `set` rimuove tutti i campi con il relativo `name` e successivamente crea un nuovo campo. Così facendo si può essere sicuri che ci sarà un solo campo con l'attributo `name` indicato. Per il resto è esattamente come il metodo `append`:
+=======
+There's also method `set`, with the same syntax as `append`. The difference is that `.set` removes all fields with the given `name`, and then appends a new field. So it makes sure there's only one field with such `name`, the rest is just like `append`:
+>>>>>>> 5b195795da511709faf79a4d35f9c5623b6dbdbd
 
 - `formData.set(name, value)`,
 - `formData.set(name, blob, fileName)`.
