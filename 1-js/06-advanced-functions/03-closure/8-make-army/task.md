@@ -31,5 +31,9 @@ army[5](); // and number 5 also outputs 10...
 // ... all shooters show 10 instead of their 0, 1, 2, 3...
 ```
 
+<<<<<<< HEAD
 Perché tutti gli eserciti possiedono lo stesso numero di militari? Modificate il codice in modo tale che funzioni correttamente.
+=======
+Why do all of the shooters show the same value? Fix the code so that they work as intended.
+>>>>>>> 524d59884650be539544c34f71d821432b7280fd
 
