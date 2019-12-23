@@ -174,7 +174,12 @@ I buoni commenti ci consentono di mantenere bene il codice, di poterci tornare d
 
 **Commenti da evitare:**
 
+<<<<<<< HEAD
 - Quelli che dicono "come il codice funziona" e "cosa fa".
 - Inseriteli solo se risulta impossibile rendere il codice semplice ed auto-descrittivo.
+=======
+- That tell "how code works" and "what it does".
+- Put them in only if it's impossible to make the code so simple and self-descriptive that it doesn't require them.
+>>>>>>> e92bb83e995dfea982dcdc5065036646bfca13f0
 
 I commenti vengono utilizzati anche da strumenti che generano documentazione, come JSDoc3: li leggono e generano documenti HTML (o in altri formati).
