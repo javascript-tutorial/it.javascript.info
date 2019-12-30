@@ -53,7 +53,11 @@ Il tag `<script>` ha un paio di attributi che vengono utilizzati raramente, ma �
     //--></script>
     ```
 
+<<<<<<< HEAD
     Questo trucco non viene più utilizzato nel moderno JavaScript. I commenti venivano utilizzati per nascondere il codice JavaScript dai vecchi browser che non conoscevano il tag `<script>`.I browser rilasciati negli utlimi 15 anni non hanno questo problema, questo tipo di strategia può aiutarti a riconsocere i vecchi codici.
+=======
+    This trick isn't used in modern JavaScript. These comments hide JavaScript code from old browsers that didn't know how to process the `<script>` tag. Since browsers released in the last 15 years don't have this issue, this kind of comment can help you identify really old code.
+>>>>>>> 28ed5a3f7df9e015cf81c126423c76c9408d7117
 
 ## Script esterni
 
