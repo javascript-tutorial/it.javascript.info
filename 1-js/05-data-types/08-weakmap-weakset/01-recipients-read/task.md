@@ -16,7 +16,11 @@ let messages = [
 
 Il vostro codice vi può accedere, ma i messaggi sono gestiti dal codice di qualcun altro. Vengono aggiunti nuovi messaggi, quelli vecchi vengono rimossi, e voi non avete modo di sapere quando ciò accade.
 
+<<<<<<< HEAD
 Ora, quale struttura dati potresti utilizzare per memorizzare quali messaggi "sono stati letti"? La struttura deve calzare bene al problema, e rispondere alla domanda  "è stato letto?".
+=======
+Now, which data structure could you use to store information about whether the message "has been read"? The structure must be well-suited to give the answer "was it read?" for the given message object.
+>>>>>>> 14e4e9f96bcc2bddc507f409eb4716ced897f91a
 
 P.S. Quando un messaggio viene rimosso da `messages`, dovrebbe essere rimosso anche dalla vostra struttura.
 
