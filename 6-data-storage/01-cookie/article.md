@@ -7,7 +7,13 @@ I Cookies vengono solitamente impostati dal web-server utilizzando l'HTTTp-heade
 il browser li aggiunge automaticamente a (quasi) ogni richiesta dello stesso dominio che sta utilizzando `Cookie` HTTP-header.
 
 
+<<<<<<< HEAD
 Uno degli usi più comune è l'autenticazione:
+=======
+1. Upon sign in, the server uses `Set-Cookie` HTTP-header in the response to set a cookie with a unique "session identifier".
+2. Next time when the request is set to the same domain, the browser sends the cookie over the net using `Cookie` HTTP-header.
+3. So the server knows who made the request.
+>>>>>>> a4a84083a7656f2b25de8b766b2457d3aae17874
 
 1 In seguito al log-in, il server usa l'HTTP-header `Set-Cookie` nella risposta per impostare un cookie che abbia un unico
 "identificatio di sessione".
@@ -212,7 +218,11 @@ Per comprendere il funzionamento e quando è vantaggioso, analizziamo un attacco
 
 Immagina di effettuare il log in nel sito `bank.com`. In questo caso hai un cookie di autenticazione da quel sito. Il tuo browsert lo invia a `bank.com`a ogni richiesta, affinchè ti riconosca e esegua tutte le operazioni finanziari personali.
 
+<<<<<<< HEAD
 Ora, mentre stai navigando sul web su un altra finestra, occasionalmente potresti imbatterti nel sito `evil.com`. Questo sito ha un codice JavaScript che invia un form `<form action="https://bank.com/pay">` al sito `bank.com` con campi che iniziano una transazione verso l'account dell'hacker.
+=======
+Now, while browsing the web in another window, you accidentally come to another site `evil.com`. That site has JavaScript code that submits a form `<form action="https://bank.com/pay">` to `bank.com` with fields that initiate a transaction to the hacker's account.
+>>>>>>> a4a84083a7656f2b25de8b766b2457d3aae17874
 
 
 Il browser invia i cookies ogni volta che visiti il sito `bank.com`, anche se la richiesta proviene da `evil.com`. In questo modo, la banca pensa che sia tu a effettuare i pagamenti.
@@ -340,7 +350,7 @@ function setCookie(name, value, options = {}) {
     ...options
   };
 
-  if (options.expires.toUTCString) {
+  if (options.expires && options.expires.toUTCString) {
     options.expires = options.expires.toUTCString();
   }
 

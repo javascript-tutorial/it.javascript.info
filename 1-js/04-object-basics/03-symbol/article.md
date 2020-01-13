@@ -3,11 +3,19 @@
 
 Secondo le specifiche, una proprietà di un oggetto può essere sia di tipo stringa che di tipo symbol("simbolo"). Non sono quindi accettati, numeri, valori booleani, solamente stringhe e symbol.
 
+<<<<<<< HEAD
 Finora abbiamo visto solo stringhe. Ora proviamo a vedere i vantaggi forniti dal tipo symbol.
+=======
+Till now we've been using only strings. Now let's see the benefits that symbols can give us.
+>>>>>>> a4a84083a7656f2b25de8b766b2457d3aae17874
 
 ## Symbol
 
+<<<<<<< HEAD
 Il valore "Symbol" rappresenta un identificatore unico.
+=======
+A "symbol" represents a unique identifier.
+>>>>>>> a4a84083a7656f2b25de8b766b2457d3aae17874
 
 Un valore di questo tipo può essere creato `Symbol()`:
 
@@ -49,7 +57,22 @@ let id = Symbol("id");
 alert(id); // TypeError: Cannot convert a Symbol value to a string
 */!*
 ```
+<<<<<<< HEAD
 Se vogliamo veramente mostrare un symbol, dobbiamo utilizzare `.toString()`:
+=======
+
+That's a "language guard" against messing up, because strings and symbols are fundamentally different and should not accidentally convert one into another.
+
+If we really want to show a symbol, we need to explicitly call `.toString()` on it, like here:
+```js run
+let id = Symbol("id");
+*!*
+alert(id.toString()); // Symbol(id), now it works
+*/!*
+```
+
+Or get `symbol.description` property to show the description only:
+>>>>>>> a4a84083a7656f2b25de8b766b2457d3aae17874
 ```js run
 let id = Symbol("id");
 *!*
@@ -62,21 +85,42 @@ Questo blocco è un "controllo di linguaggio" contro gli errori accidentali, per
 
 ## Proprietà "nascoste"
 
+<<<<<<< HEAD
 Symbol ci consente di creare delle proprietà "nascoste" dentro un oggetto, quindi nessun'altra parte del codice potrà accedervi o modificarle.
 
 Ad esempio, se vogliamo memorizzare un "identificativo" per l'oggetto `user`, possiamo utilizzare symbol:
+=======
+Symbols allow us to create "hidden" properties of an object, that no other part of code can accidentally access or overwrite.
+
+For instance, if we're working with `user` objects, that belong to a third-party code. We'd like to add identifiers to them.
+
+Let's use a symbol key for it:
+>>>>>>> a4a84083a7656f2b25de8b766b2457d3aae17874
 
 ```js run
-let user = { name: "John" };
+let user = { // belongs to another code
+  name: "John"
+};
+
 let id = Symbol("id");
 
+<<<<<<< HEAD
 user[id] = "ID Value";
 alert( user[id] ); // possiamo accedere ai dati utilizzando il symbol come chiave
+=======
+user[id] = 1;
+
+alert( user[id] ); // we can access the data using the symbol as the key
+>>>>>>> a4a84083a7656f2b25de8b766b2457d3aae17874
 ```
 
 Qual'è il beneficio di utilizzare `Symbol("id")` piuttosto che `"id"`?
 
+<<<<<<< HEAD
 Cerchiamo di andare più in profondità per capirlo.
+=======
+As `user` objects belongs to another code, and that code also works with them, we shouldn't just add any fields to it. That's unsafe. But a symbol cannot be accessed accidentally, the third-party code probably won't even see it, so it's probably all right to do.
+>>>>>>> a4a84083a7656f2b25de8b766b2457d3aae17874
 
 Immaginiamo che un altro script voglia avere una sua proprietà "id" dentro `user`. Questo potrebbe essere il caso di due librerie, quindi i due script sono ignari l'uno dell'altro.
 
@@ -96,6 +140,7 @@ Invece se proviamo ad utilizzare una stringa `"id"` piuttosto del symbol, *otter
 ```js run
 let user = { name: "John" };
 
+<<<<<<< HEAD
 // il nostro script utilizza la proprietà "id"
 user.id = "ID Value";
 
@@ -103,6 +148,15 @@ user.id = "ID Value";
 
 user.id = "Their id value"
 // boom! sovrascritto! non intendeva danneggiare il codice del collega, ma lo ha fatto!
+=======
+// Our script uses "id" property
+user.id = "Our id value";
+
+// ...Another script also wants "id" for its purposes...
+
+user.id = "Their id value"
+// Boom! overwritten by another script!
+>>>>>>> a4a84083a7656f2b25de8b766b2457d3aae17874
 ```
 
 ### Symbol negli oggetti letterali
@@ -117,7 +171,11 @@ let id = Symbol("id");
 let user = {
   name: "John",
 *!*
+<<<<<<< HEAD
   [id]: 123 // non basta "id: 123"
+=======
+  [id]: 123 // not "id: 123"
+>>>>>>> a4a84083a7656f2b25de8b766b2457d3aae17874
 */!*
 };
 ```
@@ -269,8 +327,13 @@ I symbol sono sempre differenti, anche se hanno lo stesso nome. Se abbiamo bisog
 
 I symbol hanno due principali ambiti d'uso:
 
+<<<<<<< HEAD
 1. "Nascondere" le proprietà di un oggetto.
     Se vogliamo aggiungere una proprietà in un oggetto che "appartiene" ad un altro script (o libreria), possiamo creare un symbol ed utilizzarlo come chiave della proprietà. Una proprietà di tipo symbol non sarà disponibile in un `for..in`, quindi non sarà mai resa visibile. Non sarà nemmeno accessibile direttamente poiché uno script diverso non potrà avere i nostri symbol.
+=======
+1. "Hidden" object properties.
+    If we want to add a property into an object that "belongs" to another script or a library, we can create a symbol and use it as a property key. A symbolic property does not appear in `for..in`, so it won't be accidentally processed together with other properties. Also it won't be accessed directly, because another script does not have our symbol. So the property will be protected from accidental use or overwrite.
+>>>>>>> a4a84083a7656f2b25de8b766b2457d3aae17874
 
     Possiamo quindi "nascondere" una proprietà di un oggetto se ne abbiamo al necessità, senza che nessun altro possa vederlo, usando proprità di tipo symbol.
 
