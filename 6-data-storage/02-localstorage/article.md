@@ -1,54 +1,52 @@
 # LocalStorage, sessionStorage
 
-Web storage objects `localStorage` and `sessionStorage` allow to save key/value pairs in the browser.
+Gli oggetti web storage `localStorage` e `sessionStorage` permetto di salvare le coppie key/value nel browser.Ciò che è interessante è che i dati sopravvivono al ricaricamento della pagina (per `sessionStorage`) e anche in seguito a un restart del browser (for `localStorage`). Vedremo come.
 
-What's interesting about them is that the data survives a page refresh (for `sessionStorage`) and even a full browser restart (for `localStorage`). We'll see that very soon.
+Abbiamo già i cookies. Perchè usiamo altri oggetti?
 
-We already have cookies. Why additional objects?
+- Rispetto ai cookies, gli oggetti web storage non vengono inviati al server con ogni richiesta. Per questo motivo, possiamo archiviarne molti di più. La maggior parte dei browser permette almeno 2 megabytes di dati (o più) e possiedono impostazioni per configurare questa scelta.
+- Inoltre, il server non può manipolare la memorizzazione degli oggetti tramite HTTP headers. Tutto viene fatto in JavaScript.
+- l'archiviazione è legata alla sorgete (origin) (domain/protocol/port triplet). Questo perchè, protocolli differenti o subdomini deducono diverse archiviazioni a oggetti e non possono accedere ai dati tra di loro.
 
-- Unlike cookies, web storage objects are not sent to server with each request. Because of that, we can store much more. Most browsers allow at least 2 megabytes of data (or more) and have settings to configure that.
-- Also unlike cookies, the server can't manipulate storage objects via HTTP headers. Everything's done in JavaScript.
-- The storage is bound to the origin (domain/protocol/port triplet). That is, different protocols or subdomains infer different storage objects, they can't access data from each other.
+Le due archiviazioni a oggetti propongono stessi metodi e propietà:
 
-Both storage objects provide same methods and properties:
+- `setItem(key, value)` -- archivia la coppia key/value.
+- `getItem(key)` -- ottiene il valore dalla key.
+- `removeItem(key)` -- rimuove la key con il suo value.
+- `clear()` -- cancella tutto.
+- `key(index)` -- ottieni la key in una posizione data.
+- `length` -- il numero di oggetti archiviati.
 
-- `setItem(key, value)` -- store key/value pair.
-- `getItem(key)` -- get the value by key.
-- `removeItem(key)` -- remove the key with its value.
-- `clear()` -- delete everything.
-- `key(index)` -- get the key on a given position.
-- `length` -- the number of stored items.
+Come potete vedere, è simile alla collezione `Map` (`setItem/getItem/removeItem`), mantiene comunque l'ordine degli elementi e permette il loro accesso tramite indice con `key(index)`.
 
-As you can see, it's like a `Map` colection (`setItem/getItem/removeItem`), but also keeps elements order and allows to access by index with `key(index)`.
-
-Let's see how it works.
+Vediamo come funziona.
 
 ## localStorage demo
 
-The main features of `localStorage` are:
+Le funzioni principali di `localStorage` sono:
 
-- Shared between all tabs and windows from the same origin.
-- The data does not expire. It remains after the browser restart and even OS reboot.
+- Condivisione tra le tabs e finestre provenienti dalla stessa origine.
+- I dati non scadono. Rimangono in seguito a un riavvio del browser o dell'intero sistema operativo.
 
-For instance, if you run this code...
+Per esempio, se usiamo questo codice...
 
 ```js run
 localStorage.setItem('test', 1);
 ```
 
-...And close/open the browser or just open the same page in a different window, then you can get it like this:
+...E chiudiamo/apriamo il browser o semplicemente apriamo la stessa pagina in una finestra diversa, possiamo ottenere il risultato atteso in questo modo:
 
 ```js run
 alert( localStorage.getItem('test') ); // 1
 ```
 
-We only have to be on the same origin (domain/port/protocol), the url path can be different.
+Dobbiamo solo essere nello stesso punto di partenza (domain/port/protocol), l'url di destinazione può essere differente.
 
-The `localStorage` is shared between all windows with the same origin, so if we set the data in one window, the change becomes visible in another one.
+Il `localStorage` è condiviso tra tutte le finestre con la stessa provenienza, quindi se impostiamo i dati in una finestra, il cambiamento diventa visibile in un altra scheda.
 
 ## Object-like access
 
-We can also use a plain object way of getting/setting keys, like this:
+Possiamo usare un plain object per getting/setting le keys, in questo modo:
 
 ```js run
 // set key
@@ -61,23 +59,23 @@ alert( localStorage.test ); // 2
 delete localStorage.test;
 ```
 
-That's allowed for historical reasons, and mostly works, but generally not recommended, because:
+Questo è permetto per ragioni storiche, e principalmente funziona , ma generalmente non è raccomandato, perchè:
 
-1. If the key is user-generated, it can be anything, like `length` or `toString`, or another built-in method of `localStorage`. In that case `getItem/setItem` work fine, while object-like access fails:
+1. Se la key è generata dall utente, può essere qualsiasi cosa,, come `length` o `toString`, o un altro built-in method of `localStorage`. In questo caso `getItem/setItem` funziona normalmente, mentre l'accesso object-like fallisce:
     ```js run
     let key = 'length';
     localStorage[key] = 5; // Error, can't assign length
     ```
 
-2. There's a `storage` event, it triggers when we modify the data. That event does not happen for object-like access. We'll see that later in this chapter.
+2. C'è un evento `storage`, che si attiva quando modifichiamo dati. Questo evento non accade per accessi object-like. Vedremo più avanti nel capitolo.
 
-## Looping over keys
+## Looping sulle keys
 
-As we've seen, the methods provide get/set/remove functionality. But how to get all saved values or keys?
+Come abbiamo visto, i metodi forniscono funzionalità get/set/remove. Ma come otteniamo tutti i valori o keys salvate?
 
-Unfortunately, storage objects are not iterable.
+Sfortunatamente, gli objects archiviati non sono iterabili.
 
-One way is to loop over them as over an array:
+Una soluzione sarebbe quella di eseguire un loop su di loro come una matrice:
 
 ```js run
 for(let i=0; i<localStorage.length; i++) {
@@ -86,29 +84,29 @@ for(let i=0; i<localStorage.length; i++) {
 }
 ```
 
-Another way is to use `for key in localStorage` loop, just as we do with regular objects.
+Un altro modo è quello di usare un loop `for key in localStorage` , come facciamo con oggetti regolari.
 
-It iterates over keys, but also outputs few built-in fields that we don't need:
+L'iterazione avverrà sulle keys, ma anche sugli outputs di campi associati ad alcune funzioni built-in di cui non abbbiamo bisogno:
 
 ```js run
-// bad try
+// cattivo esempio
 for(let key in localStorage) {
-  alert(key); // shows getItem, setItem and other built-in stuff
+  alert(key); // mostra getItem, setItem e altre funzioni built-in
 }
 ```
 
-...So we need either to filter fields from the prototype with `hasOwnProperty` check:
+... dunque dobbiamo filtrare i camp dal prototipo con il controllo `hasOwnProperty`:
 
 ```js run
 for(let key in localStorage) {
   if (!localStorage.hasOwnProperty(key)) {
-    continue; // skip keys like "setItem", "getItem" etc
+    continue; // salta keys come "setItem", "getItem" etc
   }
   alert(`${key}: ${localStorage.getItem(key)}`);
 }
 ```
 
-...Or just get the "own" keys with `Object.keys` and then loop over them if needed:
+...oppure ottieni le keys "proprie" con `Object.keys` e esegui il loop su di loro se necessario:
 
 ```js run
 let keys = Object.keys(localStorage);
@@ -117,91 +115,91 @@ for(let key of keys) {
 }
 ```
 
-The latter works, because `Object.keys` only returns the keys that belong to the object, ignoring the prototype.
+Un lavoro extra, poichè `Object.keys` restituisce solo le keys che appartengono all oggetto, ignorando il prototipo.
 
 
 ## Strings only
 
-Please note that both key and value must be strings.
+Notare che sia key che i value devono essere stringhe.
 
-If were any other type, like a number, or an object, it gets converted to string automatically:
+Se ci fosse un altro tipo di dato,come un numero, o un object, verrebbe automaticamente convertito a stringa :
 
 ```js run
 sessionStorage.user = {name: "John"};
 alert(sessionStorage.user); // [object Object]
 ```
 
-We can use `JSON` to store objects though:
+Possiamo usare `JSON` per archiviare objects:
 
 ```js run
 sessionStorage.user = JSON.stringify({name: "John"});
 
-// sometime later
+// subito dopo
 let user = JSON.parse( sessionStorage.user );
 alert( user.name ); // John
 ```
 
-Also it is possible to stringify the whole storage object, e.g. for debugging purposes:
+inoltre è possibile convertire a stringa l'intero archivio di object, per esempio per motivi di debugging:
 
 ```js run
-// added formatting options to JSON.stringify to make the object look nicer
+// aggiunte leopzioni di formattazione a JSON.stringify per rendere object migliore
 alert( JSON.stringify(localStorage, null, 2) );
 ```
 
 
 ## sessionStorage
+ <
+L'object `sessionStorage` è usato molto meno spesso del `localStorage`.
 
-The `sessionStorage` object is used much less often than `localStorage`.
+Proprietà e metodi sono gli stessi, ma è più limitato:
 
-Properties and methods are the same, but it's much more limited:
+- La `sessionStorage` esiste solo all'intero della tab del browser corrente.
+- Un altra tab con la stessa pagina avrà un archiviazione differente.
+  -Viene comunque condivisa tra iframes nella stessa tab (assumendo che la loro provenienza sia la stessa).
+- I dati sopravvivono al refresh della pagina, ma non alla chiusura/apertura della tab.
 
-- The `sessionStorage` exists only within the current browser tab.
-  - Another tab with the same page will have a different storage.
-  - But it is shared between iframes in the same tab (assuming they come from the same origin).
-- The data survives page refresh, but not closing/opening the tab.
+Vediamo come si comporta.
 
-Let's see that in action.
-
-Run this code...
+Usa questo codice...
 
 ```js run
 sessionStorage.setItem('test', 1);
 ```
 
-...Then refresh the page. Now you can still get the data:
+...Poi ricarica la pagina. ora puoi comunque ottenere i dati:
 
 ```js run
 alert( sessionStorage.getItem('test') ); // after refresh: 1
 ```
 
-...But if you open the same page in another tab, and try again there, the code above returns `null`, meaning "nothing found".
+...Ma se apri la stessa pagina inun altra tab, e provi di nuovo, dal codice otterrai  `null`, Significa "non è stato trovato nulla".
 
-That's exactly because `sessionStorage` is bound not only to the origin, but also to the browser tab. For that reason, `sessionStorage` is used sparingly.
+Questo perchè `sessionStorage` è legato non solo all'origine, ma anche alla tab del browser. Per questo motivo, `sessionStorage` è usato sporadicamente.
 
 ## Storage event
 
-When the data gets updated in `localStorage` or `sessionStorage`, [storage](https://www.w3.org/TR/webstorage/#the-storage-event) event triggers, with properties:
+Quando i dati vengono aggiornati in `localStorage` o `sessionStorage`, [storage](https://www.w3.org/TR/webstorage/#the-storage-event)un evento si attiva, con le seguenti propietà:
 
-- `key` – the key that was changed (`null` if `.clear()` is called).
-- `oldValue` – the old value (`null` if the key is newly added).
-- `newValue` – the new value (`null` if the key is removed).
-- `url` – the url of the document where the update happened.
-- `storageArea` – either `localStorage` or `sessionStorage` object where the update happened.
+- `key` –La key che è stata cambiata (`null` if `.clear()` is called).
+- `oldValue` – Il vecchio vallue (`null` if the key is newly added).
+- `newValue` – il nuovo value (`null` if the key is removed).
+- `url` – L'url del documento in cui è avvenuto l'aggiornamento.
+- `storageArea` – o `localStorage` o `sessionStorage` object in cui è avvenuto l'aggiornamento.
 
-The important thing is: the event triggers on all `window` objects where the storage is accessible, except the one that caused it.
+La cosa importante è: l'evento si attiva in tutti gli objects `window` dove l'archivio è accessibile, ad eccezzione per quello in cui è stato causato.
 
-Let's elaborate.
+Elaboriamo.
 
-Imagine, you have two windows with the same site in each. So `localStorage` is shared between them.
+Immaginate di avere due finestre aperte con lo stesso sito all'interno.Quindi `localStorage` è condiviso tra le due.
 
 ```online
-You might want to open this page in two browser windows to test the code below.
+dovresti aprire questa pagina in due browser per testare il seguente codice.
 ```
 
-If both windows are listening for `window.onstorage`, then each one will react on updates that happened in the other one.
+Se entrambe le finestre sono connesse a `window.onstorage`, allora reagiranno agli aggiornamenti che accadono in una delle due.
 
 ```js run
-// triggers on updates made to the same storage from other documents
+// attiva un aggiornamento fatto dallo stesso archivio degli altri documenti
 window.onstorage = event => {
   if (event.key != 'now') return;
   alert(event.key + ':' + event.newValue + " at " + event.url);
@@ -210,40 +208,37 @@ window.onstorage = event => {
 localStorage.setItem('now', Date.now());
 ```
 
-Please note that the event also contains: `event.url` -- the url of the document where the data was updated.
+Notare che l'evento contiene: `event.url` -- l'url del documento in cui i dati sono stati aggiornati.
+Inoltre, `event.storageArea` contiene lo storage object -- l'evento è lo stesso per entrambi `sessionStorage` e `localStorage`, quindi `event.storageArea` si rivolge a quello che è stato motificato. Potremmo anche impostare qualcosa all'interno, per "rispondere" al cambiamento.**That allows different windows from the same origin to exchange messages.**
 
-Also, `event.storageArea` contains the storage object -- the event is the same for both `sessionStorage` and `localStorage`, so `event.storageArea` references the one that was modified. We may even want to set something back in it, to "respond" to a change.
-
-**That allows different windows from the same origin to exchange messages.**
-
-Modern browsers also support [Broadcast channel API](https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API), the special API for same-origin inter-window communication, it's more full featured, but less supported. There are libraries that polyfill that API, based on `localStorage`, that make it available everywhere.
+I Browser moderni supportano [Broadcast channel API](https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API),  API speciale per comunicazione inter-finestra provenienti dalla stessa sorgente, possiede molte più funzione ma è meno supportata.Esistono librerie che sostituiscono quella API,basate su `localStorage`, che lo rendono disponibile ovunque.
 
 ## Summary
 
-Web storage objects `localStorage` and `sessionStorage` allow to store key/value in the browser.
-- Both `key` and `value` must be strings.
-- The limit is 2mb+, depends on the browser.
-- They do not expire.
-- The data is bound to the origin (domain/port/protocol).
+Web storage objects `localStorage` e `sessionStorage` permettono di archiviare key/value nel browser.
+- Sia `key` e `value` devono essere stringhe.
+- Il limite è 2mb+, dipende dal browser.
+- Non scadono.
+- I dati sono legati alla sorgente (domain/port/protocol).
 
 | `localStorage` | `sessionStorage` |
 |----------------|------------------|
-| Shared between all tabs and windows with the same origin | Visible within a browser tab, including iframes from the same origin |
-| Survives browser restart | Survives page refresh (but not tab close) |
+| Condivise tra tutte le tabs e finestre provenienti dalla stessa sorgente| Visibile all'interno di una tab del browser, incluso iframes della stessa origine |
+| sopravvivono al riavvio del browser | sopravvivono al refresh della pagina (ma non alla chiusura della tab) |
 
 API:
 
-- `setItem(key, value)` -- store key/value pair.
-- `getItem(key)` -- get the value by key.
-- `removeItem(key)` -- remove the key with its value.
-- `clear()` -- delete everything.
-- `key(index)` -- get the key number `index`.
-- `length` -- the number of stored items.
-- Use `Object.keys` to get all keys.
-- We access keys as object properties, in that case `storage` event isn't triggered.
+- `setItem(key, value)` -- archivia coppia key/value .
+- `getItem(key)` -- ottieni il valore dalla chiave.
+- `removeItem(key)` -- rimuovi la chiave con il suo valore.
+- `clear()` -- cancella tutto.
+- `key(index)` -- ottieni il numero della key `index`.
+- `length` -- il numero di oggetti archiviati.
+- Use `Object.keys` ottieni tutte le chiavi.
+- accediamo alle keys come propietà degli object, in questo caso un evento `storage` non viene attivato.
 
 Storage event:
 
-- Triggers on `setItem`, `removeItem`, `clear` calls.
-- Contains all the data about the operation (`key/oldValue/newValue`), the document `url` and the storage object `storageArea`.
-- Triggers on all `window` objects that have access to the storage except the one that generated it (within a tab for `sessionStorage`, globally for `localStorage`).
+- attivato su chiamata di `setItem`, `removeItem`, `clear` .
+- COntiene tutti i data riguardo l'operazione (`key/oldValue/newValue`), il documento `url` e lo storage object `storageArea`.
+- Attivato su tutti gli oggetti `window` che hanno accesso all'archivio eccetto quello da cui è stato generato (all'intenro di una tab per `sessionStorage`, globalmente per `localStorage`).
