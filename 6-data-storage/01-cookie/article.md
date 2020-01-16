@@ -3,16 +3,16 @@
 Cookies sono piccole stringhe di dati, immagazzinate direttamente nel browser. Sono parte del protocollo HTTP,
 definito dalla specifica RFC 6265 (https://tools.ietf.org/html/rfc6265)
 
-I Cookies vengono solitamente impostati dal web-server utilizzando l'HTTTp-header `Set-Cookie`. In seguito
+I Cookies vengono solitamente impostati dal web-server utilizzando l'HTTTP-header `Set-Cookie`. In seguito
 il browser li aggiunge automaticamente a (quasi) ogni richiesta dello stesso dominio che sta utilizzando `Cookie` HTTP-header.
 
 
 Uno degli usi più comune è l'autenticazione:
 
-1 In seguito al log-in, il server usa l'HTTP-header `Set-Cookie` nella risposta per impostare un cookie che abbia un unico
-"identificatio di sessione".
+1 In seguito al log-in, il server usa l'HTTP-header `Set-Cookie` in risposta all'impostazione del cookie che abbia un unico
+"identificativo di sessione".
 
-2 La prossima volta quando la richiesta viene impostata nello stesso dominio, il browser lo invia  [da rivedere, non chiaro in inglese]
+2 La prossima volta quando la richiesta viene impostata nello stesso dominio, il browser invia il Cookie attraverso la rete
 usando l'HTTP-header `Cookie`.
 
 3 Così il server sa chi ha fatto la richiesta.
@@ -44,10 +44,7 @@ Il valore di `document.cookie` consiste nelle coppie `name=value`, delimitate da
 per trovare un cookie particolare, possiamo dividere document.cookie con `; `, e in seguito, trovare il nome corretto.
 Possiamo usare una regolare espressione o delle funzioni di matrice.
 
-Lasciamo il compito in questione al lettore come esercizio.
-
-We leave it as an exercise for the reader. Inoltre, alla fine del capitolo, troverai delle funzioni 
-che ti aiuteranno a manipolare i cookies.
+Lasciamo il compito in questione al lettore come esercizio.Inoltre, alla fine del capitolo, troverai delle funzioni che ti aiuteranno a manipolare i cookies.
 
 ## Scrivere nel document.cookie
 
@@ -55,7 +52,7 @@ Possiamo scrivere nel `document.cookie`. Ma non è una proprietà dei dati, è u
 Un assegnazione a quest'ultimo è trattato in modo particolare.
 
 
-**Un operazione di scritture nel `document.cookie` aggiorna solo i cookies menzionati all interno, ma non affligge altri cookies.
+**Un operazione di scritture nel `document.cookie` aggiorna solo i cookies menzionati all interno del documento stesso, ma non affligge altri cookies.
 **
 
 Per esempio, questo comando imposta un cookie con il nome `user` e il valore `John`:
@@ -104,7 +101,7 @@ document.cookie = "user=John; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT"
 
 Riguardo l'url con il prefisso di destinazione, il cookie sarà accessibile per le pagine sotto quella destinazione. Deve essere assoluto. Per default, è la cartella di destinazione corrente.
 
-Se un cookie è impostato come `path=/admin`, è visibiline nelle pagine `/admin` e `/admin/qualcosa`, ma non in `/home` o `/adminpage`.
+Se un cookie è impostato come `path=/admin`, è visibile nelle pagine `/admin` e `/admin/qualcosa`, ma non in `/home` o `/adminpage`.
 
 Solitamente, dovremmo impostare `path` nella cartella principale: `path=/` affinche il cookie sia accessibile da tutte le pagine del sito.
 
@@ -193,7 +190,7 @@ Il cookie dovrà essere trasferito soltanto tramite HTTPS.
 
 Questo accade poichè i cookies sono dominio.dipendenti, non distinguono i vari protocolli.
 
-Con questa opzione, se un cookie è impostato su `https://site.com`, non apparirà quando lo steso sito viene visitato da HTTP, come `http://site.com`.
+Con questa opzione, se un cookie è impostato su `https://site.com`, non apparirà quando lo stesso sito viene visitato da HTTP, come `http://site.com`.
 Cosi facendo, se un cookie ha contenuto sensibile che non dovrebbe mai essere inviato tramite  protocollo HTTP non criptato, allora [da rivedere] è la cosa giusta da fare.
 
 ```js
@@ -247,15 +244,15 @@ Questa protezione è affidabile. Solo le operazioni che provengono da `bank.com`
 
 Però è presente un piccolo inconveniente.
 
-Quando un utente segue un link leggitimo per `bank.com`, ad esempio nei nostri appunti, saranno sorpresi nel vedere che `bank.com` non li riconoscerà. Questo accade poichè i cookies `samesite=strict` non sono inviati in quel caso.
+Quando un utente segue un link leggitimo per `bank.com`, ad esempio nei nostri appunti, sarà sorpreso nel vedere che `bank.com` non li riconoscerà. Questo accade poichè i cookies `samesite=strict` non sono inviati in quel caso.
 
-Possiamo risolvere il problema usando due cookies: uno per 'riconoscimento generale', uno con l'unisco scopo di inviare 'Ciao john', l'altro per le operazioni di cambiamento dati con `samesite=strict`.
-In seguito, una persona proveniente dall'esterno del sito vedrà il messaggio di benvenuto, ma affinchè il secondo cookie venga inviato i pagamenti dovranno essere inizializzati dal sito della banca.
+Possiamo risolvere il problema usando due cookies: uno per 'riconoscimento generale', uno con l'unico scopo di inviare 'Ciao john', l'altro per le operazioni di cambiamento dati con `samesite=strict`.
+In seguito, una persona proveniente dall'esterno del sito vedrà il messaggio di benvenuto, ma affinchè il secondo cookie venga inviato, i pagamenti dovranno essere inizializzati dal sito della banca.
 
 
 - **`samesite=lax`**
 
-Permette Un approccio più flessibile ma che allo stesso tempo protegge da XSRF e non mina l'esperienza dell utente.
+Permette Un approccio più flessibile ma allo stesso tempo protegge da XSRF e non mina l'esperienza dell utente.
 
 Lax mode, come `strict`, proibisce al browser di inviare cookies quando provengono da siti externi, ma aggiunge un eccezzione.
 
@@ -387,7 +384,7 @@ Un cookie viene chiamato 'di terze parti' se è piazzato da un dominio diverso d
 
 Per esempio:
 1. una pagina `site.com` carica un banner proveniente da un altro sito: `<img src="https://ads.com/banner.png">`.
-2. insieme al banner, il server remote di `ads.com` potrebbe impostare `Set-Cookie` [da rivedere] con un cokie simile `id=1234`. Questo cookie proviene dal dominio  `ads.com`, e sarà visibile solo su `ads.com`:
+2. insieme al banner, il server remote di `ads.com` potrebbe impostare un header `Set-Cookie` con un cookie simile a questo: `id=1234`. Questo cookie proviene dal dominio  `ads.com`, e sarà visibile solo su `ads.com`:
 
     ![](cookie-third-party.svg)
 
@@ -433,14 +430,11 @@ I siti internet generalmente hanno due varianti per seguire il GDPR. Dovresti av
 
 1. Se un sito vuole impsotare cookies di tracciamento solo per utenti verificati.
 
-Per fare questo, il documento di registrazione dovrebbe avere una casella con scritto 'accetta le nostre direttive di privacy' (che descrivono come i cookies sono usati), e l'utente dovrà spuntare
-la casella affinchè il sito sia libero di impostare i cookies di autenticazione.
+Per fare questo, il documento di registrazione dovrebbe avere una casella con scritto 'accetta le nostre direttive di privacy' (che descrivono come i cookies sono usati), e l'utente dovrà spuntare la casella affinchè il sito sia libero di impostare i cookies di autenticazione.
 
 2. Se un sito vuole impostare cookies di tracciamento per chiunque.
 
-Per fare ciò legalmente, un sito mostra uno 'splash screen', per i nuovi visitatori e richiede loro di accettare i cookies. In seguito il sito può impostarli 
-e permette alle persone di vederne il contenuto. Questo potrebbe essere disturbante per i nuovi visitatori. A nessuno piace vedere una finestra must-click' anzichè il contenuto. Ma il GDPR richiede un
-contratto esplicito.
+Per fare ciò legalmente, un sito mostra uno 'splash screen', per i nuovi visitatori e richiede loro di accettare i cookies. In seguito il sito può impostarli e permette alle persone di vederne il contenuto. Questo potrebbe essere disturbante per i nuovi visitatori. A nessuno piace vedere una finestra must-click' anzichè il contenuto. Ma il GDPR richiede un contratto esplicito.
 
 GDPR non riguarda solo i cookies, ma anche altri problemi legati alla privacy, ma questo va al di fuori di questa guida.
 
