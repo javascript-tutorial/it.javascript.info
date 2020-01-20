@@ -153,11 +153,19 @@ L'algoritmo basico utilizzato dal garbage collector viene chiamato "mark-and-swe
 
 Vengono seguiti questi step per eseguire un processo di "garbage collection":
 
+<<<<<<< HEAD
 - Il garbage collector "marchia" (ricorda) le radici.
 - Successivamente visita e "marchia" tutti i riferimenti contenuti.
 - Successivamente visita gli oggetti marcati e marca i vari riferimenti. Tutti gli oggetti visitati vengono ricordati, cosi da non ricontrollarli nuovamente in futuro.
 - ...E cosi via fino ad aver controllato tutti i riferimenti (raggiungibili dalle radici).
 - Tutti gli oggetti tranne quelli marcati vengono rimossi.
+=======
+- The garbage collector takes roots and "marks" (remembers) them.
+- Then it visits and "marks" all references from them.
+- Then it visits marked objects and marks *their* references. All visited objects are remembered, so as not to visit the same object twice in the future.
+- ...And so on until every reachable (from the roots) references are visited.
+- All objects except marked ones are removed.
+>>>>>>> db3b3f8e7a08c153ad8fa0ae50633cdf95fa8912
 
 Ad esempio, rende la struttura del nostro oggetto del tipo:
 
@@ -181,9 +189,15 @@ Ora gli oggetti che non sono stati visitati vengono considerati irraggiungibili 
 
 ![](garbage-collection-5.svg)
 
+<<<<<<< HEAD
 Questo è il concetto che sta dietro il funzionamento del Garbage collector.
 
 JavaScript applica diverse ottimizzazioni per renderlo più rapido.
+=======
+We can also imagine the process as spilling a huge bucket of paint from the roots, that flows through all references and marks all reachable objects. The unmarked ones are then removed.
+
+That's the concept of how garbage collection works. JavaScript engines apply many optimizations to make it run faster and not affect the execution.
+>>>>>>> db3b3f8e7a08c153ad8fa0ae50633cdf95fa8912
 
 Alcune delle ottimizzazioni:
 
@@ -191,7 +205,11 @@ Alcune delle ottimizzazioni:
 - **Raggruppamento incrementale** -- se ci sono molti oggetti, e ci mettessimo a controllare interi gruppi per marcarli, si perderebbe molto tempo, questo ritardo diventerebbe visibile durante l'esecuzione. Quindi i motori JavaScript tentano di dividere il processo in diverse parti. Questi pezzi vengono controllati uno per uno, separatamente. E' richiesto l'utilizzo di un registro per tenere traccia dei cambiamenti, in cambio avremmo tanti piccoli ritardi piuttosto che uno singolo ma enorme.
 - **Raggruppamento per inattività** -- il garbage collector cerca di eseguire i suoi processi solo nei momenti in cui la CPU è inattiva, per ridurre al minimo possibile i ritardi durante l'esecuzione.
 
+<<<<<<< HEAD
 Ci sono altre ottimizzazioni per ottimizzare i processi del Garbage collector. Anche se mi piacerebbe poterli spiegare in dettaglio, sono costretto a fermarmi, poiché le varia ottimizzazioni dipendono dai motori che vengono utilizzati. Inoltre, i motori cambiano, si aggiornano e diventano sempre più "avanzati". Quindi se siete realmente interessati, vi lascio qualche link sotto.
+=======
+There exist other optimizations and flavours of garbage collection algorithms. As much as I'd like to describe them here, I have to hold off, because different engines implement different tweaks and techniques. And, what's even more important, things change as engines develop, so studying deeper "in advance", without a real need is probably not worth that. Unless, of course, it is a matter of pure interest, then there will be some links for you below.
+>>>>>>> db3b3f8e7a08c153ad8fa0ae50633cdf95fa8912
 
 ## Riepilogo
 
