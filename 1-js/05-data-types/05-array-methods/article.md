@@ -36,7 +36,11 @@ Non è sorprendente, perché `delete obj.key` rimuove un valore dalla `key`. Que
 
 Quindi, sono stati sviluppati dei metodi dedicati.
 
+<<<<<<< HEAD
 Il metodo [arr.splice(str)](mdn:js/Array/splice) è un coltellino svizzero per array. Può fare qualsiasi cosa: aggiungere e rimuovere elementi ovunque.
+=======
+The [arr.splice(start)](mdn:js/Array/splice) method is a swiss army knife for arrays. It can do everything: insert, remove and replace elements.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 La sintassi è:
 
@@ -119,12 +123,16 @@ Il metodo [arr.slice](mdn:js/Array/slice) risulta più semplice di `arr.splice`.
 La sintassi è:
 
 ```js
-arr.slice(start, end)
+arr.slice([start], [end])
 ```
 
 Ritorna un nuovo array contente tutti gli elementi a partire da `"start"` fino ad `"end"` (`"end"` esclusa). Sia `start` che `end` possono essere negativi, in tal caso si inizierà a contare dalla coda dell'array.
 
+<<<<<<< HEAD
 Funziona come `str.slice`, ma crea dei sotto-array piuttosto che sotto-stringhe.
+=======
+It's similar to a string method `str.slice`, but instead of substrings it makes subarrays.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 Ad esempio:
 
@@ -135,6 +143,8 @@ alert( arr.slice(1, 3) ); // e,s (copy from 1 to 3)
 
 alert( arr.slice(-2) ); // s,t (copy from -2 till the end)
 ```
+
+We can also call it without arguments: `arr.slice()` creates a copy of `arr`. That's often used to obtain a copy for further transformations that should not affect the original array.
 
 ### concat
 
@@ -157,6 +167,7 @@ Un esempio:
 ```js run
 let arr = [1, 2];
 
+<<<<<<< HEAD
 // unisce arr con [3,4]
 alert( arr.concat([3, 4])); // 1,2,3,4
 
@@ -168,6 +179,19 @@ alert( arr.concat([3, 4], 5, 6)); // 1,2,3,4,5,6
 ```
 
 Normalmente copia gli elementi da array (li "spreme"). Gli altri oggetti, anche se assomigliano molto ad un array, vengono aggiunti per come sono:
+=======
+// create an array from: arr and [3,4]
+alert( arr.concat([3, 4]) ); // 1,2,3,4
+
+// create an array from: arr and [3,4] and [5,6]
+alert( arr.concat([3, 4], [5, 6]) ); // 1,2,3,4,5,6
+
+// create an array from: arr and [3,4], then add values 5 and 6
+alert( arr.concat([3, 4], 5, 6) ); // 1,2,3,4,5,6
+```
+
+Normally, it only copies elements from arrays. Other objects, even if they look like arrays, are added as a whole:
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 ```js run
 let arr = [1, 2];
@@ -178,10 +202,13 @@ let arrayLike = {
 };
 
 alert( arr.concat(arrayLike) ); // 1,2,[object Object]
-//[1, 2, arrayLike]
 ```
 
+<<<<<<< HEAD
 ...Invece se un oggetto simile ad un array possiede la proprietà `Symbol.isConcatSpreadable`, allora vengono copiati anche i suoi elementi:
+=======
+...But if an array-like object has a special `Symbol.isConcatSpreadable` property, then it's treated as an array by `concat`: its elements are added instead:
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 ```js run
 let arr = [1, 2];
@@ -267,7 +294,11 @@ alert( arr.includes(NaN) );// true (corretto)
 
 Immaginiamo di avere un array di oggetti. Come possiamo trovare un oggetto con delle specifiche condizioni?
 
+<<<<<<< HEAD
 In questi casi si utilizza il metodo [arr.find](mdn:js/Array/find).
+=======
+Here the [arr.find(fn)](mdn:js/Array/find) method comes in handy.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 La sintassi è:
 ```js
@@ -381,7 +412,11 @@ L'ordine degli elementi è diventato `1, 15, 2`. Errato. Ma perché?
 
 **Gli elementi di default vengono ordinati come stringhe.**
 
+<<<<<<< HEAD
 Letteralmente, tutti gli elementi vengono convertiti in stringhe e confrontati. Quindi, viene applicato l'algoritmo di ordinamento lessicografico, quindi `"2" > "15"`.
+=======
+Literally, all elements are converted to strings for comparisons. For strings, lexicographic ordering is applied and indeed `"2" > "15"`.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 Per utilizzare un ordinamento arbitrario, dobbiamo fornire una funzione con due argomenti come argomento di `arr.sort()`.
 
@@ -428,9 +463,14 @@ In ogni caso, se mai volessimo conoscere quali elementi vengono comparati -- nul
 
 L'algoritmo potrebbe confrontare un elemento più volte durante il processo, anche se tenta di fare il minor numero di confronti possibili.
 
+<<<<<<< HEAD
 
 ````smart header="Una funzione di confronto può tornare qualsiasi numero"
 In realtà, ad una funzione di confronto è solamente richiesto di ritornare un numero positivo per dire "maggiore" ed uno negativo per dire "minore".
+=======
+````smart header="A comparison function may return any number"
+Actually, a comparison function is only required to return a positive number to say "greater" and a negative number to say "less".
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 Questo consente di scrivere funzioni più brevi:
 
@@ -443,14 +483,35 @@ alert(arr);  // *!*1, 2, 15*/!*
 ```
 ````
 
+<<<<<<< HEAD
 ````smart header="Le funzioni freccia sono migliori"
 Ricordate le [funzioni freccia](info:function-expressions-arrows#arrow-functions)? Possiamo utilizzarle per un miglior ordinamento:
+=======
+````smart header="Arrow functions for the best"
+Remember [arrow functions](info:arrow-functions-basics)? We can use them here for neater sorting:
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 ```js
 arr.sort( (a, b) => a - b );
 ```
 
 Questa funziona esattamente come le altre versioni viste sopra, anche se risulta essere più breve.
+````
+
+````smart header="Use `localeCompare` for strings"
+Remember [strings](info:string#correct-comparisons) comparison algorithm? It compares letters by their codes by default.
+
+For many alphabets, it's better to use `str.localeCompare` method to correctly sort letters, such as `Ö`.
+
+For example, let's sort a few countries in German:
+
+```js run
+let countries = ['Österreich', 'Andorra', 'Vietnam'];
+
+alert( countries.sort( (a, b) => a > b ? 1 : -1) ); // Andorra, Vietnam, Österreich (wrong)
+
+alert( countries.sort( (a, b) => a.localeCompare(b) ) ); // Andorra,Österreich,Vietnam (correct!)
+```
 ````
 
 ### reverse
@@ -526,7 +587,7 @@ I metodi [arr.reduce](mdn:js/Array/reduce) e [arr.reduceRight](mdn:js/Array/redu
 La sintassi è:
 
 ```js
-let value = arr.reduce(function(previousValue, item, index, array) {
+let value = arr.reduce(function(accumulator, item, index, array) {
   // ...
 }, [initial]);
 ```
@@ -535,14 +596,27 @@ La funzione viene applicata ad ogni elemento dell'array uno dopo l'altro, passan
 
 Argomenti:
 
+<<<<<<< HEAD
 - `previousValue` -- è il risultato della precedente chiamata, uguale ad `initial` per la prima chiamata (se `initial` viene fornito=.
 - `item` -- è l'attuale elemento dell'array.
 - `index` -- la sua posizione.
 - `array` -- l'array.
+=======
+- `accumulator` -- is the result of the previous function call, equals `initial` the first time (if `initial` is provided).
+- `item` -- is the current array item.
+- `index` -- is its position.
+- `array` -- is the array.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 Quando la funzione è stata applicata, il risultato viene passato alla chiamata successiva.
 
+<<<<<<< HEAD
 Sembra complicato, ma non lo è se pensate al primo argomento come un "accumulatore" che memorizza il risultato delle precedenti esecuzioni. E alla fine diventa il risultato di `reduce`.
+=======
+So, the first argument is essentially the accumulator that stores the combined result of all previous executions. And at the end it becomes the result of `reduce`.
+
+Sounds complicated?
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 Il modo più semplice per spiegarlo è tramite esempi.
 
@@ -570,7 +644,7 @@ Il flusso di calcolo:
 
 O nella forma tabellare, in cui ogni riga rappresenta una chiamata di funzione:
 
-|   |`sum`|`current`|`result`|
+|   |`sum`|`current`|result|
 |---|-----|---------|---------|
 |prima chiamata|`0`|`1`|`1`|
 |seconda chiamata|`1`|`2`|`3`|
@@ -608,8 +682,12 @@ let arr = [];
 arr.reduce((sum, current) => sum + current);
 ```
 
+<<<<<<< HEAD
 
 Quindi è fortemente consigliato di specificare sempre un valore iniziale.
+=======
+So it's advised to always specify the initial value.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 Il metodo [arr.reduceRight](mdn:js/Array/reduceRight) fa esattamente la stessa cosa, ma da destra verso sinistra.
 
@@ -651,31 +729,50 @@ arr.map(func, thisArg);
 
 Il valore del parametro `thisArg` diventa `this` per `func`.
 
+<<<<<<< HEAD
 Ad esempio, qui utilizziamo il metodo di un oggetto come filtro e `thisArg` ci risulta utile:
+=======
+For example, here we use a method of `army` object as a filter, and `thisArg` passes the context:
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 ```js run
-let user = {
-  age: 18,
-  younger(otherUser) {
-    return otherUser.age < this.age;
+let army = {
+  minAge: 18,
+  maxAge: 27,
+  canJoin(user) {
+    return user.age >= this.minAge && user.age < this.maxAge;
   }
 };
 
 let users = [
-  {age: 12},
   {age: 16},
-  {age: 32}
+  {age: 20},
+  {age: 23},
+  {age: 30}
 ];
 
 *!*
+<<<<<<< HEAD
 // trova tutti gli users più giovani di user
 let youngerUsers = users.filter(user.younger, user);
+=======
+// find users, for who army.canJoin returns true
+let soldiers = users.filter(army.canJoin, army);
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 */!*
 
-alert(youngerUsers.length); // 2
+alert(soldiers.length); // 2
+alert(soldiers[0].age); // 20
+alert(soldiers[1].age); // 23
 ```
 
+<<<<<<< HEAD
 Nella chiamata sopra, utilizziamo `user.younger` come filtro e forniamo `user` come contesto. Se non avessimo fornito il contesto, `users.filter(user.younger)` avrebbe chiamato `user.younger` come funzione a se stante, con `this=undefined`. Che avrebbe provocato un errore.
+=======
+If in the example above we used `users.filter(army.canJoin)`, then `army.canJoin` would be called as a standalone function, with `this=undefined`, thus leading to an instant error.
+
+A call to `users.filter(army.canJoin, army)` can be replaced with `users.filter(user => army.canJoin(user))`, that does the same. The former is used more often, as it's a bit easier to understand for most people.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 ## Riepilogo
 

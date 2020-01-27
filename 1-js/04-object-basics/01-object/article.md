@@ -153,7 +153,7 @@ let user = {
 };
 
 let key = "name";
-user.key // undefined
+alert( user.key ) // undefined
 ```
 
 ### Proprietà calcolate
@@ -317,8 +317,13 @@ let key = "age";
 alert( *!*key*/!* in user ); // true, prende il nome da key e controlla l'esistenza della proprietà
 ```
 
+<<<<<<< HEAD
 ````smart header="Utilizzare \"in\" con le proprietà che contengono `undefined`"
 Solitamente, il confronto stretto con `"=== undefined"` funziona correttamente. Ma c'è un particolare caso in cui questo fallisce, ma `"in"` funziona correttamente.
+=======
+````smart header="Using \"in\" for properties that store `undefined`"
+Usually, the strict comparison `"=== undefined"` check the property existence just fine. But there's a special case when it fails, but `"in"` works correctly.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 Questo accade quando una proprietà esiste, ma contiene `undefined`:
 
@@ -710,6 +715,10 @@ Per risolvere, dovremmo utilizzare il ciclo di clonazione per esaminare ogni val
 
 Esiste un algoritmo standard per le copie profonde, che gestisce i casi sopra e quelli ancora più complessi, si chiama [Structured cloning algorithm](http://w3c.github.io/html/infrastructure.html#safe-passing-of-structured-data). E' inutile reinventare la ruota, conviene quindi utilizzare l'implemetazione fornita dalla libreria JavaScript [lodash](https://lodash.com), il metodo si chiama [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
 
+<<<<<<< HEAD
+=======
+There's a standard algorithm for deep cloning that handles the case above and more complex cases, called the [Structured cloning algorithm](https://html.spec.whatwg.org/multipage/structured-data.html#safe-passing-of-structured-data). In order not to reinvent the wheel, we can use a working implementation of it from the JavaScript library [lodash](https://lodash.com), the method is called [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 
 ## Riepilogo

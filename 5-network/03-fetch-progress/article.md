@@ -107,6 +107,10 @@ Spieghiamo il tutto passo-passo:
     let blob = new Blob(chunks);
     ```
 
+<<<<<<< HEAD
 Alla fine avremo il risultato (che sia una stringa o un blob, a seconda di ciò che ci serve) ed il tracking dei progressi di *download*.
+=======
+At the end we have the result (as a string or a blob, whatever is convenient), and progress-tracking in the process.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 Nota ancora una volta che non è possibile tracciare progressi di *upload* (non c'è modo con `fetch`), ma solo i progressi di *download*.

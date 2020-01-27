@@ -43,7 +43,11 @@ Solo i commenti possono apparire prima di `"use strict"`.
 ```warn header="Non c'e nessun modo per annullare `use strict`"
 Non esiste nessuna direttiva `"no use strict"` o simile, che possa riportare lo script alla vecchia modalità.
 
+<<<<<<< HEAD
 Una volta abilitata la modalità strict, non c'e ritorno.
+=======
+Once we enter strict mode, there's no going back.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 ```
 
 ## Browser console

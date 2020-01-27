@@ -2,9 +2,15 @@
 
 Prima di scrivere codice più complesso, dovremmo parlare di debugging.
 
+<<<<<<< HEAD
 [Debugging](https://en.wikipedia.org/wiki/Debugging) è il processo che prevede di trovare e sistemare gli errori all'interno di uno script. Tutti i browser moderni e molti altri ambienti forniscono strumenti per il debugging -- degli speciali strumenti che rendono il debugging un operazione più semplice. Consentono anche di seguire l'esecuzione del codice passo per passo, per capire esattamente cosa sta accadendo..
 
 Noi useremo Chrome, poiché è probabilmente il più ricco di caratteristiche sotto questo aspetto.
+=======
+[Debugging](https://en.wikipedia.org/wiki/Debugging) is the process of finding and fixing errors within a script. All modern browsers and most other environments support debugging tools -- a special UI in developer tools that makes debugging much easier. It also allows to trace the code step by step to see what exactly is going on.
+
+We'll be using Chrome here, because it has enough features, most other browsers have a similar process.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 ## Il pannello "sources" 
 
@@ -18,12 +24,17 @@ Questo è quello che dovreste vedere se è la prima volta che lo aprite:
 
 ![](chrome-open-sources.svg)
 
+<<<<<<< HEAD
 Il bottone <span class="devtools" style="background-position:-168px -76px"></span> apre la barra laterale con i file.
+=======
+The toggler button <span class="devtools" style="background-position:-172px -98px"></span> opens the tab with files.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 Clicchiamoci sopra e selezioniamo `hello.js` dalla vista ad albero. Questo è quello che dovrebbe apparire:
 
 ![](chrome-tabs.svg)
 
+<<<<<<< HEAD
 Possiamo vedere tre zone:
 
 1. La **zona Risorse** con la lista degli HTML, JavaScript, CSS e altri file, incluse le immagini che sono collegate alla pagina. Potrebbero apparire anche le estensioni di Chrome.
@@ -31,6 +42,15 @@ Possiamo vedere tre zone:
 3. La **zona Informazione e controllo** utile per il debugging, la esplerermo meglio.
 
 Ora puoi cliccare nuovamente lo stesso bottone <span class="devtools" style="background-position:-200px -76px"></span> per nascondere la lista risorse e dare più spazio al codice.
+=======
+The Sources panel has 3 parts:
+
+1. The **File Navigator** pane lists HTML, JavaScript, CSS and other files, including images that are attached to the page. Chrome extensions may appear here too.
+2. The **Code Editor** pane shows the source code.
+3. The **JavaScript Debugging** pane is for debugging, we'll explore it soon.
+
+Now you could click the same toggler <span class="devtools" style="background-position:-172px -122px"></span> again to hide the resources list and give the code some space.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 ## Console
 
@@ -118,10 +138,17 @@ Ora aprite i menu a cascata (quelli con la freccetta accanto al nome). Vi consen
 
 Ora è il momento di *tracciare* lo script.
 
+<<<<<<< HEAD
 Ci sono dei bottoni appositi nella parte superiore del pannello di destra. Proviamo ad attivarli.
 
 <span class="devtools" style="background-position:-7px -76px"></span> -- continua l'esecuzione, tasto `key:F8`.
 : Riprende l'esecuzione. Se non ci sono ulteriori breakpoint l'esecuzione continua e il debugger non avrà più il controllo.
+=======
+There are buttons for it at the top of the right panel. Let's engage them.
+<!-- https://github.com/ChromeDevTools/devtools-frontend/blob/master/front_end/Images/src/largeIcons.svg -->
+<span class="devtools" style="background-position:-146px -168px"></span> -- "Resume": continue the execution, hotkey `key:F8`.
+: Resumes the execution. If there are no additional breakpoints, then the execution just continues and the debugger loses control.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
     Questo e quello che vedremo dopo aver cliccato:
 
@@ -129,6 +156,7 @@ Ci sono dei bottoni appositi nella parte superiore del pannello di destra. Provi
 
     L'esecuzione è ripartita, ha incontrato un altro breakpoint dentro `say()` e si è fermato nuovamente. Diamo un'occhiata al "Call stack" sulla destra. E' stato incrementato con un ulteriore chiamata. Ora siamo all'interno di `say()`.
 
+<<<<<<< HEAD
 <span class="devtools" style="background-position:-137px -76px"></span> -- fa un singolo step (esegue il comando successivo), ma non *entra nella funzione*, tasto `key:F10`.
 : Se lo clicchiamo ora, verrà mostrato `alert`. La cosa importante è che `alert` potrebbe essere una funzione qualsiasi, l'esecuzione farebbe "uno step oltre" comunque, saltando l'interno della funzione.
 
@@ -143,6 +171,35 @@ Ci sono dei bottoni appositi nella parte superiore del pannello di destra. Provi
 
 <span class="devtools" style="background-position:-264px -4px"></span> -- attiva/disattiva la pausa automatica in caso di errori.
 : Quando attiva, e il pannello degli strumenti svilupattore è aperto, un errore nello script metterà automaticamente in pausa l'esecuzione. Cosi potremmo analizzare le variabili per capire cosa è andato storto. Quindi se il nostro script si blocca con un errore, possiamo aprire il debugger, attivare questa opzione e ricaricare la pagina per veder dove si blocca lo script e capirne il motivo.
+=======
+<span class="devtools" style="background-position:-200px -190px"></span> -- "Step": run the next command, hotkey `key:F9`.
+: Run the next statement. If we click it now, `alert` will be shown.
+
+    Clicking this again and again will step through all script statements one by one.
+
+<span class="devtools" style="background-position:-62px -192px"></span> -- "Step over": run the next command, but *don't go into a function*, hotkey `key:F10`.
+: Similar to the previous the "Step" command, but behaves differently if the next statement is a function call. That is: not a built-in, like `alert`, but a function of our own.
+
+    The "Step" command goes into it and pauses the execution at its first line, while "Step over" executes the nested function call invisibly, skipping the function internals.
+
+    The execution is then paused immediately after that function.
+
+    That's good if we're not interested to see what happens inside the function call.
+
+<span class="devtools" style="background-position:-4px -194px"></span> -- "Step into", hotkey `key:F11`.
+: That's similar to "Step", but behaves differently in case of asynchronous function calls. If you're only starting to learn JavaScript, then you can ignore the difference, as we don't have asynchronous calls yet.
+
+    For the future, just note that "Step" command ignores async actions, such as `setTimeout` (scheduled function call), that execute later. The "Step into" goes into their code, waiting for them if necessary. See [DevTools manual](https://developers.google.com/web/updates/2018/01/devtools#async) for more details.
+
+<span class="devtools" style="background-position:-32px -194px"></span> -- "Step out": continue the execution till the end of the current function, hotkey `key:Shift+F11`.
+: Continue the execution and stop it at the very last line of the current function. That's handy when we accidentally entered a nested call using <span class="devtools" style="background-position:-200px -190px"></span>, but it does not interest us, and we want to continue to its end as soon as possible.
+
+<span class="devtools" style="background-position:-61px -74px"></span> -- enable/disable all breakpoints.
+: That button does not move the execution. Just a mass on/off for breakpoints.
+
+<span class="devtools" style="background-position:-90px -146px"></span> -- enable/disable automatic pause in case of an error.
+: When enabled, and the developer tools is open, a script error automatically pauses the execution. Then we can analyze variables to see what went wrong. So if our script dies with an error, we can open debugger, enable this option and reload the page to see where it dies and what's the context at that moment.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 ```smart header="Continua fino a qui"
 Premendo tasto destro su una riga di codice si aprirà un menu con una bellissima opzione denominata  "Continua fino a qui".
@@ -169,10 +226,17 @@ Se abbiamo abbastanza log nel nostro codice, possiamo vedere cosa sta accadendo 
 
 ## Riepilogo
 
+<<<<<<< HEAD
 Come abbiamo visto, ci sono tre diversi modi di metter in pausa uno script:
 1. Un breakpoint.
 2. L'istruzione `debugger`.
 3. Un errore (solo se gli strumenti sviluppatore sono aperti ed è attivo il bottone <span class="devtools" style="background-position:-264px -4px"></span>)
+=======
+As we can see, there are three main ways to pause a script:
+1. A breakpoint.
+2. The `debugger` statements.
+3. An error (if dev tools are open and the button <span class="devtools" style="background-position:-90px -146px"></span> is "on").
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 Cosi possiamo esaminare le variabili e capire cosa è andato male durante l'esecuzione.
 

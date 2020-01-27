@@ -49,7 +49,11 @@ La direttiva `import` carica il modulo presente al percorso `./sayHi.js`, relati
 
 Ora proviamo ad utilizzare l'esempio all'interno del browser.
 
+<<<<<<< HEAD
 Dato che i moduli utilizzano parole chiavi e funzionalità speciali, dobbiamo comunicare al browser che lo script deve essere trattato come un modulo, utilizzando l'attributo `<script type="module">`.
+=======
+As modules support special keywords and features, we must tell the browser that a script should be treated as a module, by using the attribute `<script type="module">`.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 In questo modo:
 
@@ -165,7 +169,11 @@ Facendo un punto della situazione, il modulo viene eseguito una sola volta. Tutt
 
 Questo comportamento ci permette di *configurare* i moduli quando vengono importati la prima volta. Possiamo configurare le proprietà una volta, e saranno pronte per tutti gli altri import successivi.
 
+<<<<<<< HEAD
 Per fare un esempio, il modulo `admin.js` può fornire alcune funzionalità ma si aspetta di ricevere le credenziali all'interno dell'oggetto `admin` dall'esterno:
+=======
+For instance, the `admin.js` module may provide certain functionality, but expect the credentials to come into the `admin` object from outside:
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 ```js
 // 📁 admin.js
@@ -235,10 +243,17 @@ Potresti voler saltare questa sezione se stai leggedo per la prima volta , oppur
 
 I moduli vengono *sempre* reputati script differiti, stesso effetto dell'attributo `defer` (descritto nel capitolo [](info:script-async-defer)) sia per gli script esterni che per quelli interni.
 
+<<<<<<< HEAD
 In altre parole:
 - Il download di un modulo esterno `<script type="module" src="...">` non blocca l'elaborazione dell'HTML, vengono caricati in parallelo insieme alle altre risorse.
 - I moduli attendono fino al momento in cui l'HTML è pronto (anche se sono molto piccoli e possono essere elaborati più velocemente dell'HTML), e poi vengono eseguiti.
 - L'ordine relativo degli script viene mantenuto: gli script che appaiono prima nel documento vengono eseguiti per primi.
+=======
+In other words:
+- downloading external module scripts `<script type="module" src="...">` doesn't block HTML processing, they load in parallel with other resources.
+- module scripts wait until the HTML document is fully ready (even if they are tiny and load faster than HTML), and then run.
+- relative order of scripts is maintained: scripts that go first in the document, execute first.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 Come conseguenza, i moduli "vedono" sempre la pagina HTML completamente caricata, inclusi gli elementi sotto di essi.
 
@@ -264,9 +279,15 @@ Confrontiamo lo script normale:
 <button id="button">Button</button>
 ```
 
+<<<<<<< HEAD
 Da notare: il secondo script viene eseguito per primo! Infatti vedremo prima `undefined`, e dopo `object`.
 
 Questo accade proprio perché i moduli sono differiti, e quindi attendono che tutto il documento venga processato, al contrario, gli script normali vengono eseguiti immediatamente e di conseguenza vediamo l'output del secondo script per primo.
+=======
+Please note: the second script actually runs before the first! So we'll see `undefined` first, and then `object`.
+
+That's because modules are deferred, so we wait for the document to be processed. The regular script runs immediately, so we see its output first.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 Quando utilizziamo i moduli, dobbiamo porre attenzione al fatto che la pagina HTML appare mentre viene caricata, e i moduli JavaScript vengono eseguiti successivamente al caricamento, di conseguenza l'utente potrebbe vedere la pagina *prima* che l'applicazione JavaScript sia pronta. Alcune funzionalità potrebbero in questo modo non funzionare immediatamente. Per questo motivo è opportuno inserire degli indicatori di caricamento, o comunque assicurarci che i visitatori non vengano confusi da questi possibili comportamenti.
 
@@ -274,11 +295,19 @@ Quando utilizziamo i moduli, dobbiamo porre attenzione al fatto che la pagina HT
 
 Per gli script normali l'attributo `async` funziona solamente sugli script esterni, Gli script caricati in modo asincrono (Async) vengono eseguiti immediatamente e indipendentemente dagli altri script e del documento HTML.
 
+<<<<<<< HEAD
 Per i moduli `async` può essere utilizzato sempre.
 
 Ad esempio, lo script seguente è dichiarato asincrono, e quindi non aspetta nulla e viene eseguito.
 
 Esegue l'import (recupera `./analytics.js`) e procede quando è pronto, anche se il documento HTML non è completo, o se gli altri script sono ancora in attesa.
+=======
+For module scripts, it works on inline scripts as well.
+
+For example, the inline script below has `async`, so it doesn't wait for anything.
+
+It performs the import (fetches `./analytics.js`) and runs when ready, even if the HTML document is not finished yet, or if other scripts are still pending.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 Questo comportamento è ottimo per le funzionalità che non dipendono da nulla, come contatori, pubblicità e altro.
 
@@ -296,7 +325,11 @@ Questo comportamento è ottimo per le funzionalità che non dipendono da nulla, 
 
 Gli script esterni che vengono segnalati come moduli, `type="module"`, sono diversi sotto due aspetti:
 
+<<<<<<< HEAD
 1. Più script esterni con lo stesso `src` vengono eseguiti solo una volta:
+=======
+1. External scripts with the same `src` run only once:
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
     ```html
     <!-- lo script my.js viene recuperato ed eseguito solo una volta -->
     <script type="module" src="my.js"></script>
@@ -322,11 +355,19 @@ import {sayHi} from 'sayHi'; // Errore, modulo "bare"
 // Il modulo deve avere un percorso, es. './sayHi.js' od ovunque si trovi il modulo
 ```
 
+<<<<<<< HEAD
 Alcuni ambienti, come Node.js o tools per creare bundle accettano moduli bare, senza nessun percorso (path), dato che hanno metodologie per trovare e collegare i moduli. Al contrario i browser ancora non supportano i moduli bare.
+=======
+Certain environments, like Node.js or bundle tools allow bare modules, without any path, as they have their own ways for finding modules and hooks to fine-tune them. But browsers do not support bare modules yet.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 ### Compatibilità, "nomodule"
 
+<<<<<<< HEAD
 I vecchi browser non comprendono l'attributo `type="module"`. Gli script di una tipologia non conosciuta vengono semplicemente ignorati. Proprio per questo è possibile prevedere uno script di riserva usando l'attributo `nomodule`:
+=======
+Old browsers do not understand `type="module"`. Scripts of an unknown type are just ignored. For them, it's possible to provide a fallback using the `nomodule` attribute:
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 ```html run
 <script type="module">
@@ -347,6 +388,7 @@ Uno dei benefici di usare i "bundlers" -- ci permettono più controllo su come i
 
 I tool per il building si comportano nel modo seguente:
 
+<<<<<<< HEAD
 1. Prendono un modulo "principale", quello che era inteso per essere inserito in `<script type="module">`.
 2. Analizza tutte le sue dipendenze: che moduli importa, cosa viene importato dai metodi importati etc...
 3. Costruisce un singolo file con tutti i moduli (o più file, può essere impostato), sostituendo le chiamate `import` con funzioni del bundler. In questo modo può supportare anche moduli "speciali" come quelli CSS/HTML.
@@ -356,6 +398,17 @@ I tool per il building si comportano nel modo seguente:
     - Parti di codice tipicamente utilizzati durante lo sviluppo come `console` e `debugger` rimosse.
     - Le sintassi più moderne di JavaScript vengono sostituite con funzionalità equivalenti più vecchie e compatibili usando [Babel](https://babeljs.io/).
     - Il file risultante viene ridotto al minimo (minified), gli spazi superflui rimossi, i nomi delle variabili sostituiti con nomi corti etc..
+=======
+1. Take a "main" module, the one intended to be put in `<script type="module">` in HTML.
+2. Analyze its dependencies: imports and then imports of imports etc.
+3. Build a single file with all modules (or multiple files, that's tunable), replacing native `import` calls with bundler functions, so that it works. "Special" module types like HTML/CSS modules are also supported.
+4. In the process, other transformations and optimizations may be applied:
+    - Unreachable code removed.
+    - Unused exports removed ("tree-shaking").
+    - Development-specific statements like `console` and `debugger` removed.
+    - Modern, bleeding-edge JavaScript syntax may be transformed to older one with similar functionality using [Babel](https://babeljs.io/).
+    - The resulting file is minified (spaces removed, variables replaced with shorter names, etc).
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 Quindi se usiamo questa tipologia di strumenti, allora gli script vengono raggruppati in un singolo script (o pochi file), `import/export` sostituiti con speciali funzioni in modo che lo script finale non contenga più nessun `import/export`, non richiede l'uso di `type="module"` e può essere utilizzato come un normale script:
 
@@ -379,7 +432,11 @@ Per ricapitolare, i concetti principali sono:
 3. I moduli utilizzano sempre `use strict` automaticamente.
 4. Il codice di un modulo viene eseguito solamente una volta. Le esportazioni (`export`) vengono create un'unica volta e condivise con tutti i moduli che le importano.
 
+<<<<<<< HEAD
 Quando utilizziamo i moduli, ogni modulo implementa una certa funzionalità e la esporta. Successivamente utilizziamo `import` per importare quella funzionalità e utilizzarla dove è necessario. I browser caricano es eseguono lo script automaticamente.
+=======
+When we use modules, each module implements the functionality and exports it. Then we use `import` to directly import it where it's needed. The browser loads and evaluates the scripts automatically.
+>>>>>>> ff042a03191dfad1268219ae78758193a5803b38
 
 In produzione, di solito si tende a usare tool detti "bundlers" come [Webpack](https://webpack.js.org) per unire insieme tutti i mosuli per maggiori prestazioni, compatibilità e altro.
 
