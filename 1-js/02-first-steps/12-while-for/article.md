@@ -106,10 +106,20 @@ Esaminiamo l'istruzione `for` parte per parte:
 
 | Parte |          |                                                                            |
 |-------|----------|----------------------------------------------------------------------------|
+<<<<<<< HEAD
 | begin | `i = 0`    | Viene eseguito una volta all'entrata nel ciclo.                          |
 | condition | `i < 3`| Viene controllata prima di ogni iterazione del ciclo, se fallisce il ciclo si interrompe.|
 | step| `i++`      | Viene eseguito prima del corpo ad ogni iterazione, ma dopo il controllo della condizione.|
 | body | `alert(i)`| Viene eseguito fino a che vale la condizione.
+=======
+| begin | `i = 0`    | Executes once upon entering the loop.                                      |
+| condition | `i < 3`| Checked before every loop iteration. If false, the loop stops.              |
+| body | `alert(i)`| Runs again and again while the condition is truthy.                         |
+| step| `i++`      | Executes after the body on each iteration. |
+
+The general loop algorithm works like this:
+
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 ```
 Eseguiamo begin
 → (if condition → run body and run step)
@@ -209,7 +219,7 @@ Ma è possibile forzare l'uscita in qualsiasi momento. C'è una speciale diretti
 
 Ad esempio, il ciclo sotto chiede all'utente una serie di numeri, ma "termina" quando nessun numero viene inserito: 
 
-```js
+```js run
 let sum = 0;
 
 while (true) {
@@ -253,7 +263,7 @@ Per i valori pari di `i`, la direttiva `continue` interrompe l'esecuzione del co
 ````smart header="La direttiva `continue` aiuta a diminuire i livelli di nidificazione"
 Un ciclo che mostra i valori dispari potrebbe essere:
 
-```js
+```js run
 for (let i = 0; i < 10; i++) {
 
   if (i % 2) {
@@ -265,7 +275,11 @@ for (let i = 0; i < 10; i++) {
 
 Dal punto di vista tecnico è identico all'esempio sopra. Ovviamente possiamo raccogliere il codice in un blocco `if` piuttosto di usare `continue`.
 
+<<<<<<< HEAD
 Ma come effetto collaterale abbiamo aggiunto un livello di annidamento ulteriore (la chiamata `alert` all'interno delle parentesi graffe). Se il codice dentro `if` è più lungo di un paio di righe, si rischia di perdere in leggibilità.
+=======
+But as a side-effect, this created one more level of nesting (the `alert` call inside the curly braces). If the code inside of `if` is longer than a few lines, that may decrease the overall readability.
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 ````
 
 ````warn header="Vietato `break/continue` alla desta di '?'"
@@ -298,7 +312,11 @@ Questa è solo un'altra ragione per cui non utilizzare l'operatore ternario `?` 
 
 Qualche volta abbiamo bisogno di uscire da una serie di cicli annidati in un colpo solo.
 
+<<<<<<< HEAD
 Ad esempio, nel codice sotto cicliamo su `i` e `j` eseguendo prompt sulle coordinate `(i, j)` da `(0,0)` a `(3,3)`:
+=======
+For example, in the code below we loop over `i` and `j`, prompting for the coordinates `(i, j)` from `(0,0)` to `(2,2)`:
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 ```js run no-beautify
 for (let i = 0; i < 3; i++) {
@@ -307,8 +325,12 @@ for (let i = 0; i < 3; i++) {
 
     let input = prompt(`Value at coords (${i},${j})`, '');
 
+<<<<<<< HEAD
     // come potremmo fare per uscire di qui e proseguire verso Done (sotto)?
 
+=======
+    // what if we want to exit from here to Done (below)?
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
   }
 }
 

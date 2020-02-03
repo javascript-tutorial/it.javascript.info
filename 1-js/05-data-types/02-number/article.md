@@ -1,8 +1,18 @@
 # Numeri
 
+<<<<<<< HEAD
 Tutti i numeri in JavaScript sono memorizzati in formato 64-bit [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), conosciuto anche come "doppia precisione".
 
 Cerchiamo di ricapitolare ed espandere tutto ciò che già conosciamo.
+=======
+In modern JavaScript, there are two types of numbers:
+
+1. Regular numbers in JavaScript are stored in 64-bit format [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), also known as "double precision floating point numbers". These are numbers that we're using most of the time, and we'll talk about them in this chapter.
+
+2. BigInt numbers, to represent integers of arbitrary length. They are sometimes needed, because a regular number can't exceed <code>2<sup>53</sup></code> or be less than <code>-2<sup>53</sup></code>. As bigints are used in few special areas, we devote them a special chapter <info:bigint>.
+
+So here we'll talk about regular numbers. Let's expand our knowledge of them.
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 ## Diversi modi di scrivere un numero
 
@@ -29,14 +39,22 @@ In altre parole, `"e"` moltiplica il numero `1` seguito dal numero di zeri dati.
 1.23e6 = 1.23 * 1000000
 ```
 
+<<<<<<< HEAD
 
 Ora proviamo a scrivere qualcosa di molto piccolo. Ad esempio, 1 microsecondo (un milionesimo di secondo): 
+=======
+Now let's write something very small. Say, 1 microsecond (one millionth of a second):
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 ```js
 let ms = 0.000001;
 ```
 
+<<<<<<< HEAD
 Come prima, l'utilizzo di `"e"` può aiutare. Se volessimo evitare di scrivere esplicitamente tutti gli "0", potremmo scrivere:
+=======
+Just like before, using `"e"` can help. If we'd like to avoid writing the zeroes explicitly, we could say the same as:
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 ```js
 let ms = 1e-6; // sei zeri alla sinistra di 1
@@ -201,7 +219,11 @@ Strano! Quale può essere il risultato se non `0.3`?
 alert( 0.1 + 0.2 ); // 0.30000000000000004
 ```
 
+<<<<<<< HEAD
 Ouch! Ci possono essere molte conseguenze dovute ad un errato confronto. Immaginate di progettare un sito di e-shop in cui i visitatori aggiungono al carrello articoli da `$0.10` e `$0.20`. Poi come prezzo totale viene mostrato `$0.30000000000000004`. Questo risultato lascerebbe sorpreso chiunque.
+=======
+Ouch! There are more consequences than an incorrect comparison here. Imagine you're making an e-shopping site and the visitor puts `$0.10` and `$0.20` goods into their cart. The order total will be `$0.30000000000000004`. That would surprise anyone.
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 Ma perché accade questo?
 
@@ -277,14 +299,22 @@ JavaScript non mostra errori in questi casi. Semplicemente fa del suo meglio per
 ```smart header="Due zeri"
 Un'altra conseguenza divertente della rappresentazione interna è l'esistenza di due zeri: `0` e `-0`.
 
+<<<<<<< HEAD
 Questo perché il segno viene rappresentato con un solo bit, in questo modo ogni numero può essere positivo o negativo, lo stesso vale per lo zero.
+=======
+That's because a sign is represented by a single bit, so it can be set or not set for any number including a zero.
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 Nella maggior parte dei casi questa differenza è impercettibile, poiché gli operatori sono studiati per trattarli allo stesso modo.
 ```
 
+<<<<<<< HEAD
 
 
 ## Test: isFinite e isNaN
+=======
+## Tests: isFinite and isNaN
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 Ricordate questi due valori numerici speciali?
 
@@ -421,15 +451,28 @@ Per scrivere numeri molto grandi:
 - Accodate una `"e"` con il numero di zeri. Come: `123e6` che vale `123` con 6 zeri.
 - Un numero negativo dopo `"e"` divide il numero dato per 1 seguito dal numero di zeri dati. Per numeri tipo "un milionesimo".
 
+<<<<<<< HEAD
 Per diversi sistemi numerici:
 
 - Potete scrivere direttamente in esadecimale (`0x`), ottale (`0o`) e binario (`0b`) 
 - `parseInt(str, base)` analizza un numero intero con un qualsiasi sistema numerico con base: `2 ≤ base ≤ 36`.
 - `num.toString(base)` converte un numero ad una stringa utilizzando il sistema numerico fornito in `base`.
+=======
+To write numbers with many zeroes:
+
+- Append `"e"` with the zeroes count to the number. Like: `123e6` is the same as `123` with 6 zeroes `123000000`.
+- A negative number after `"e"` causes the number to be divided by 1 with given zeroes. E.g. `123e-6` means `0.000123` (`123` millionths).
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 Per convertire a numeri valori del tipo `12pt` e `100px`:
 
+<<<<<<< HEAD
 - Usate `parseInt/parseFloat` per una conversione "leggera", che legge numeri da una stringa e ritorna il valore che è riuscito a leggere prima dell'errore. 
+=======
+- Can write numbers directly in hex (`0x`), octal (`0o`) and binary (`0b`) systems
+- `parseInt(str, base)` parses the string `str` into an integer in numeral system with given `base`, `2 ≤ base ≤ 36`.
+- `num.toString(base)` converts a number to a string in the numeral system with the given `base`.
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 Per i numeri con la virgola:
 

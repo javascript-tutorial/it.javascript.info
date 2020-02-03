@@ -11,7 +11,11 @@ let user = {
 (user.go)() // error!
 ```
 
+<<<<<<< HEAD
 La maggior parte dei browser non vi darà informazioni necessarie per capire cosa è andato storto.
+=======
+The error message in most browsers does not give us much of a clue about what went wrong.
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 **L'errore viene causato dalla mancanza di un punto e virgola dopo `user = {...}`.**
 

@@ -30,10 +30,19 @@ Il look esatto degli strumenti di sviluppo dipenderà dalla tua versione di Chro
 - Qui possiamo notare il messaggio in d'errore in rosso. In questo caso, lo script contiene un comando "lalala" non riconosciuto.
 - Sulla destra, c'e un link alla sorgente `bug.html:12` con il numero della linea in cui si è verificato l'errore.
 
+<<<<<<< HEAD
 Sotto il messaggio d'errore, c'e un simbolo blu `>`. Questo indica la "riga di comando" dove noi possiamo digitare dei comandi JavaScript. Premendo `key:Enter` si eseguono (`key:Shift+Enter` per inserire comandi multi-linea).
+=======
+Below the error message, there is a blue `>` symbol. It marks a "command line" where we can type JavaScript commands. Press `key:Enter` to run them.
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 Adesso possiamo visualizzare gli errori, ed è già abbastanza come inizio. Ritorneremo sugli strumenti di sviluppo più avanti e analizzeremo il debugging più in profondità nel capitolo <info:debugging-chrome>.
 
+```smart header="Multi-line input"
+Usually, when we put a line of code into the console, and then press `key:Enter`, it executes.
+
+To insert multiple lines, press `key:Shift+Enter`. This way one can enter long fragments of JavaScript code.
+```
 
 ## Firefox, Edge, and others
 
@@ -51,6 +60,7 @@ Apri le Impostazioni e vai sul pannello "Avanzate". In basso troverai un'opzione
 
 Adesso tramite `key:Cmd+Opt+C` puoi attivare/disattivare la console. Inoltre noterai che un nuovo menu "Sviluppo" è apparso. Contiene molti comandi e opzioni.
 
+<<<<<<< HEAD
 ```smart header="Input multi riga"
 
 Solitamente, quando inseriamo una riga di codice nella console, e premiamo `key:Enter`, questa viene eseguita.
@@ -59,6 +69,9 @@ Per poter inserire più righe di codice, è necessario premere `key:Shift+Enter`
 ```
 
 ## Riepilogo
+=======
+## Summary
+>>>>>>> d10b50ae7f67d91606a751926cb06aa06f10c1b4
 
 - Gli strumenti di sviluppo ci consentono di trovare gli errori, eseguire comandi, esaminare variabili e molto altro.
 - Possono essere aperti con `key:F12` per la maggior parte dei browser in Windows. Chrome su Mac `key:Cmd+Opt+J`, Safari: `key:Cmd+Opt+C` (avendolo precedentemente abilitato).
