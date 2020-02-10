@@ -12,11 +12,19 @@ Per esempio, possiamo usare le richieste di rete per:
 
 ...e tutto senza alcun ricaricamento della pagina!
 
+<<<<<<< HEAD
 Ti sarà capitato di ascoltare o leggere il termine "AJAX" (acronimo di <b>A</b>synchronous <b>J</b>avaScript <b>A</b>nd <b>X</b>ML) che è comunemente utilizzato per accomunare (sotto un'unica effige) le richieste di rete in JavaScript. Non è però necessario usare XML: il termine proviene da un retaggio del passato ed è per questo che fa parte dell'abbreviazione.
+=======
+There's an umbrella term "AJAX" (abbreviated <b>A</b>synchronous <b>J</b>avaScript <b>A</b>nd <b>X</b>ML) for network requests from JavaScript. We don't have to use XML though: the term comes from old times, that's why that word is there. You may have heard that term already.
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 Ci sono molti modi per inviare richieste di rete per richiedere informazioni dal server.
 
+<<<<<<< HEAD
 Il metodo `fetch()` è tra tutti il più moderno e versatile, e per questo inizieremo ad analizzare proprio questo. Questo metodo non è supportato dai browser più datati (ma è possibile risolvere con dei polyfills), ma lo è ampiamente tra quelli recenti.
+=======
+The `fetch()` method is modern and versatile, so we'll start with it. It's not supported by old browsers (can be polyfilled), but very well supported among the modern ones.
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 La sintassi base è:
 
@@ -27,11 +35,21 @@ let promise = fetch(url, [options])
 - **`url`** -- l'URL da raggiungere.
 - **`options`** -- parametri opzionali: metodi, headers etc.
 
+<<<<<<< HEAD
 Il browser avvia immediatamente la richiesta, il cui risultato sarà utilizzato e gestito per mezzo di una promise.
+=======
+Without `options`, that is a simple GET request, downloading the contents of the `url`.
+
+The browser starts the request right away and returns a promise that the calling code should use to get the result.
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 Ottenere una risposta è comunemente un processo che si svolge in due fasi.
 
+<<<<<<< HEAD
 **Prima fase: la `promise` viene risolta con un oggetto (object) di classe built-in [Response](https://fetch.spec.whatwg.org/#response-class) non appena il server risponde con gli headers.**
+=======
+**First, the `promise`, returned by `fetch`, resolves with an object of the built-in [Response](https://fetch.spec.whatwg.org/#response-class) class as soon as the server responds with headers.**
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 In questa fase possiamo controllare lo status HTTP, per vedere se la richiesta ha avuto successo o meno, controllare le intestazioni, ma non abbiamo ancora il body.
 
@@ -87,7 +105,11 @@ fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commi
   .then(commits => alert(commits[0].author.login));
 ```
 
+<<<<<<< HEAD
 Per ottenere il testo della risposta, `await response.text()` invece del `.json()`:
+=======
+To get the response text, `await response.text()` instead of `.json()`:
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 ```js run async
 let response = await fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits');

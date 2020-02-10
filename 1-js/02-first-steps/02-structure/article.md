@@ -92,7 +92,11 @@ Anche se dovrebbero essere due istruzioni separate, non una singola. Questo tipo
 
 E' consigliato quindi, di mettere il punto e virgola fra ogni istruzione, anche se vengono scritte in righe diverse. Questa regola è largamente adottata dalla community. Ripetiamolo nuovamente -- *è possibile* evitare di scrivere il punto e virgola la maggior parte delle volte. Ma è più sicuro -- specialmente per un novizio -- inserirle al termine di ogni istruzione.
 
+<<<<<<< HEAD
 ## Commenti
+=======
+## Comments [#code-comments]
+>>>>>>> 10c7807f49122f475f7cda5d07a324247091c080
 
 Con il passare del tempo, i programmi sono diventati sempre più complessi. E' diventato necessario aggiungere *commenti* che descrivessero i comportamenti del codice e il perchè.
 
