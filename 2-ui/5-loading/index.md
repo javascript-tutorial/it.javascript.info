@@ -1,2 +1,2 @@
 
-# Document and resource loading
+# Document e caricamento delle risorse
