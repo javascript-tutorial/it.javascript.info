@@ -11,7 +11,11 @@ Se un oggetto rappresenta una collezione (lista, insieme) di qualcosa, allora `f
 
 Possiamo spiegare semplicemente il funzionamento degli oggetti iterabili costruendone uno nostro.
 
+<<<<<<< HEAD
 Ad esempio, abbiamo un oggetto, che non è un array, ma sembra essere adatto ad un `for..of`.
+=======
+For instance, we have an object that is not an array, but looks suitable for `for..of`.
+>>>>>>> 405150f1f286db19a3c1ed913fa3e905fcefbe46
 
 Come un oggetto `range` che rappresenta un intervallo numerico:
 
@@ -143,7 +147,11 @@ Normalmente, il funzionamento degli iteratori è nascosto al codice esterno. C'�
 
 Ma per capire tutto al meglio vediamo come creare esplicitamente un iteratore.
 
+<<<<<<< HEAD
 Proveremo ad iterare su una stringa allo stesso modo di un ciclo `for..of`, ma con una chiamata diretta. Questo codice crea un iteratore per stringhe e lo richiama "manualmente":
+=======
+We'll iterate over a string in exactly the same way as `for..of`, but with direct calls. This code creates a string iterator and gets values from it "manually":
+>>>>>>> 405150f1f286db19a3c1ed913fa3e905fcefbe46
 
 ```js run
 let str = "Hello";
@@ -151,7 +159,9 @@ let str = "Hello";
 // fa la stessa cosa di
 // for (let char of str) alert(char);
 
+*!*
 let iterator = str[Symbol.iterator]();
+*/!*
 
 while (true) {
   let result = iterator.next();
@@ -211,7 +221,11 @@ let arr = Array.from(arrayLike); // (*)
 alert(arr.pop()); // World (il metodo funziona)
 ```
 
+<<<<<<< HEAD
 `Array.from` alla riga `(*)` prende l'oggetto, esamina se questo è un iterabile o un array-like, successivamente crea un nuova array e copia al suo interno tutti gli elementi.
+=======
+`Array.from` at the line `(*)` takes the object, examines it for being an iterable or array-like, then makes a new array and copies all items to it.
+>>>>>>> 405150f1f286db19a3c1ed913fa3e905fcefbe46
 
 Si comporta allo stesso modo con un oggetto iterabile:
 
@@ -267,7 +281,11 @@ for (let char of str) {
 alert(chars);
 ```
 
+<<<<<<< HEAD
 ...Ma è più breve.    
+=======
+...But it is shorter.    
+>>>>>>> 405150f1f286db19a3c1ed913fa3e905fcefbe46
 
 Possiamo anche eseguire uno `slice` consapevolmente:
 
@@ -289,12 +307,21 @@ alert( str.slice(1, 3) ); // spazzatura (due pezzi da coppie surrogate different
 
 Gli oggetti che possono essere utilizzati in `for..of` vengono detti *iterabili*.
 
+<<<<<<< HEAD
 - Tecnicamente, gli oggetti iterabili devono implementare un metodo chiamato `Symbol.iterator`.
     - Il risultato di `obj[Symbol.iterator]` viene chiamato un *iteratore*. Che si occupa di gestire l'intero processo di iterazione.
     - Un iteratore deve avere un metodo denominato `next()` che ritorna un oggetto `{done: Boolean, value: any}`, qui `done:true` indica la fine dell'iterazione, altrimenti `value` contiene il prossimo valore.
 - Il metodo `Symbol.iterator` viene invocato automaticamente da `for..of`, ma possiamo anche farlo noi direttamente.
 - Gli oggetti iterabili integrati come le stringhe o gli array, implementano `Symbol.iterator`.
 - L'iterato che opera con le stringhe è a conoscenza dell'esistenza delle coppie surrogate.
+=======
+- Technically, iterables must implement the method named `Symbol.iterator`.
+    - The result of `obj[Symbol.iterator]` is called an *iterator*. It handles the further iteration process.
+    - An iterator must have the method named `next()` that returns an object `{done: Boolean, value: any}`, here `done:true` denotes the end of the iteration process, otherwise the `value` is the next value.
+- The `Symbol.iterator` method is called automatically by `for..of`, but we also can do it directly.
+- Built-in iterables like strings or arrays, also implement `Symbol.iterator`.
+- String iterator knows about surrogate pairs.
+>>>>>>> 405150f1f286db19a3c1ed913fa3e905fcefbe46
 
 
 Gli oggetti che hanno indici e la proprietà `length` vengono definity *array-like*. Questo tipo di oggetti possono anche possedere altri metodi e proprietà, ma non possiedono gli stessi metodi integrati dagli array.

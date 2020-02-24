@@ -26,7 +26,7 @@ For instance, here all exports are valid:
 ```
 
 ````smart header="No semicolons after export class/function"
-Please note that `export` before a class or a function does not make it a [function expression](info:function-expressions-arrows). It's still a function declaration, albeit exported.
+Please note that `export` before a class or a function does not make it a [function expression](info:function-expressions). It's still a function declaration, albeit exported.
 
 Most JavaScript style guides don't recommend semicolons after function and class declarations.
 
@@ -151,18 +151,18 @@ say.*!*hi*/!*('John'); // Hello, John!
 say.*!*bye*/!*('John'); // Bye, John!
 ```
 
-## export default
+## Export default
 
 In practice, there are mainly two kinds of modules.
 
-1. Module that contains a library, pack of functions, like `say.js` above.
-2. Module that declares a single entity, e.g. a module `user.js` exports only `class User`.
+1. Modules that contain a library, pack of functions, like `say.js` above.
+2. Modules that declare a single entity, e.g. a module `user.js` exports only `class User`.
 
 Mostly, the second approach is preferred, so that every "thing" resides in its own module.
 
-Naturally, that requires a lot of files, as everything wants its own module, but that's not a problem at all. Actually, code navigation becomes easier, if files are well-named and structured into folders.
+Naturally, that requires a lot of files, as everything wants its own module, but that's not a problem at all. Actually, code navigation becomes easier if files are well-named and structured into folders.
 
-Modules provide special `export default` ("the default export") syntax to make "one thing per module" way look better.
+Modules provide special `export default` ("the default export") syntax to make the "one thing per module" way look better.
 
 Put `export default` before the entity to export:
 
@@ -275,7 +275,7 @@ let User = user.default; // the default export
 new User('John');
 ```
 
-### A word agains default exports
+### A word against default exports
 
 Named exports are explicit. They exactly name what they import, so we have that information from them, that's a good thing.
 
@@ -291,7 +291,7 @@ import {User} from './user.js';
 ```js
 import User from './user.js'; // works
 import MyUser from './user.js'; // works too
-// could be import Anything..., and it'll be work
+// could be import Anything... and it'll still work
 ```
 
 So team members may use different names to import the same thing, and that's not good.
@@ -305,7 +305,7 @@ import func from '/path/to/func.js';
 ...
 ```
 
-Still, some teams consider it a serous drawback of default exports. So they prefer to always use named exports. Even if only a single thing is exported, it's still exported under a name, without `default`.
+Still, some teams consider it a serious drawback of default exports. So they prefer to always use named exports. Even if only a single thing is exported, it's still exported under a name, without `default`.
 
 That also makes re-export (see below) a little bit easier.
 
@@ -319,7 +319,7 @@ export {sayHi} from './say.js'; // re-export sayHi
 export {default as User} from './user.js'; // re-export default
 ```
 
-Why that may be needed? Let's see a practical use case.
+Why would that be needed? Let's see a practical use case.
 
 Imagine, we're writing a "package": a folder with a lot of modules, with some of the functionality exported outside (tools like NPM allow to publish and distribute such packages), and many modules are just "helpers", for the internal use in other package modules.
 
@@ -389,9 +389,9 @@ export default class User {
 
 1. `export User from './user.js'` won't work. What can go wrong?... But that's a syntax error!
 
-    To re-export the default export, we should write `export {default as User}`, as in the example above.    
+    To re-export the default export, we have to write `export {default as User}`, as in the example above.    
 
-2. `export * from './user.js'` re-exports only named exports, ignores the default one.
+2. `export * from './user.js'` re-exports only named exports, but ignores the default one.
 
     If we'd like to re-export both named and the default export, then two statements are needed:
     ```js
@@ -399,7 +399,7 @@ export default class User {
     export {default} from './user.js'; // to re-export the default export
     ```
 
-Such oddities of re-exporting the default export is one of the reasons, why some developers don't like them.
+Such oddities of re-exporting the default export are one of the reasons why some developers don't like them.
 
 ## Summary
 
@@ -439,7 +439,7 @@ sayHi();
 import {sayHi} from './say.js'; // import at the end of the file
 ```
 
-In practice imports are usually at the start of the file, but that's only for better convenience.
+In practice imports are usually at the start of the file, but that's only for more convenience.
 
 **Please note that import/export statements don't work if inside `{...}`.**
 
