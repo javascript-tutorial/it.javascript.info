@@ -3,7 +3,7 @@
 
 Sotto puoi trovare l'esempio "rethrow" dal capitolo <info:promise-chaining>. Riscriverlo usando `async/await` invece di `.then/catch`.
 
-E sbarazzarsi della ricorsione a favore di un ciclo in `demoGithubUser`: con `async/await` diventa facile da fare.
+Sbarazzarsi della ricorsione a favore di un ciclo in `demoGithubUser`: con `async/await` diventa facile da fare.
 
 ```js run
 class HttpError extends Error {
