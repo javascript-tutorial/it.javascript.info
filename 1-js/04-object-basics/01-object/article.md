@@ -1,7 +1,11 @@
 
 # Oggetti
 
+<<<<<<< HEAD
 Come abbiamo appreso nel capitolo <info:types>, ci sono sette tipi di dato in JavaScript. Sei di questi vengono chiamati "primitivi", poiché i loro valori possono essere di un solo tipo (che può essere una stringa, un numero, etc...).
+=======
+As we know from the chapter <info:types>, there are eight data types in JavaScript. Seven of them are called "primitive", because their values contain only a single thing (be it a string or a number or whatever).
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 In maniera differente, gli oggetti vengono utilizzati per raccogliere vari tipi di dati ed entità più complesse. In JavaScript, gli oggetti coprono quasi ogni aspetto del linguaggio. Quindi dobbiamo capirli bene prima di procedere.
 
@@ -102,7 +106,15 @@ user.likes birds = true
 ```
 Questo perché il punto richiede che la chiave sia un identificatore valido. Un identificatore non deve avere spazi (oltre a seguire le altre limitazioni già studiate).
 
+<<<<<<< HEAD
 Esiste una "notazione con parentesi quadre", per aggirare questo vincolo:
+=======
+JavaScript doesn't understand that. It thinks that we address `user.likes`, and then gives a syntax error when comes across unexpected `birds`.
+
+The dot requires the key to be a valid variable identifier. That implies: contains no spaces, doesn't start with a digit and doesn't include special characters (`$` и `_` are allowed).
+
+There's an alternative "square bracket notation" that works with any string:
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 ```js run
 let user = {};
@@ -153,7 +165,7 @@ let user = {
 };
 
 let key = "name";
-user.key // undefined
+alert( user.key ) // undefined
 ```
 
 ### Proprietà calcolate
@@ -202,6 +214,7 @@ Le parentesi quadre sono molto più potenti della notazione puntata. Ci permetto
 
 Quindi la maggior parte delle volte, quando il nome della proprietà è conosciuto, la notazione puntata viene preferita. Se invece necessitiamo di qualcosa di più complesso, possiamo utilizzare le parentesi quadre.
 
+<<<<<<< HEAD
 
 
 ````smart header="Le parole riservate sono consentite come nomi di proprietà"
@@ -238,6 +251,9 @@ C'è un ulteriore struttura dati [Map](info:map-set), che apprenderemo nel capit
 
 
 ## Abbreviazione per il valore di una proprietà
+=======
+## Property value shorthand
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 Nella pratica spesso usiamo delle variabili esistenti come valori per i nomi delle proprietà.
 
@@ -280,7 +296,67 @@ let user = {
 };
 ```
 
+<<<<<<< HEAD
 ## Controllo di esistenza
+=======
+## Property names limitations
+
+Property names (keys) must be either strings or symbols (a special type for identifiers, to be covered later).
+
+Other types are automatically converted to strings.
+
+For instance, a number `0` becomes a string `"0"` when used as a property key:
+
+```js run
+let obj = {
+  0: "test" // same as "0": "test"
+};
+
+// both alerts access the same property (the number 0 is converted to string "0")
+alert( obj["0"] ); // test
+alert( obj[0] ); // test (same property)
+```
+
+**Reserved words are allowed as property names.**
+
+As we already know, a variable cannot have a name equal to one of language-reserved words like "for", "let", "return" etc.
+
+But for an object property, there's no such restriction. Any name is fine:
+
+```js run
+let obj = {
+  for: 1,
+  let: 2,
+  return: 3
+};
+
+alert( obj.for + obj.let + obj.return );  // 6
+```
+
+We can use any string as a key, but there's a special property named `__proto__` that gets special treatment for historical reasons.
+
+For instance, we can't set it to a non-object value:
+
+```js run
+let obj = {};
+obj.__proto__ = 5; // assign a number
+alert(obj.__proto__); // [object Object] - the value is an object, didn't work as intended
+```
+
+As we see from the code, the assignment to a primitive `5` is ignored.
+
+The nature of `__proto__` will be revealed in detail later in the chapter [](info:prototype-inheritance).
+
+As for now, it's important to know that such behavior of `__proto__` can become a source of bugs and even vulnerabilities if we intend to store user-provided keys in an object.
+
+The problem is that a visitor may choose `__proto__` as the key, and the assignment logic will be ruined (as shown above).
+
+There are two workarounds for the problem:
+1. Modify the object's behavior to treat `__proto__` as a regular property. We'll learn how to do it in the chapter [](info:prototype-methods).
+2. Using [Map](info:map-set) data structure which supports arbitrary keys. We'll learn it in the chapter <info:map-set>.
+
+## Property existence test, "in" operator
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 Un importante caratteristica degli oggetti è che è possibile accedere qualsiasi proprietà. Non ci sarà alcun errore se la proprietà non esiste! L'accesso ad una variabile non esistente ritornerà `undefined`. Questa caratteristica fornisce un metodo comodo per verificare se una proprietà esiste -- prelevandola e confrontandola con undefined:
 
@@ -317,8 +393,13 @@ let key = "age";
 alert( *!*key*/!* in user ); // true, prende il nome da key e controlla l'esistenza della proprietà
 ```
 
+<<<<<<< HEAD
 ````smart header="Utilizzare \"in\" con le proprietà che contengono `undefined`"
 Solitamente, il confronto stretto con `"=== undefined"` funziona correttamente. Ma c'è un particolare caso in cui questo fallisce, ma `"in"` funziona correttamente.
+=======
+````smart header="Using \"in\" for properties that store `undefined`"
+Usually, the strict comparison `"=== undefined"` check the property existence just fine. But there's a special case when it fails, but `"in"` works correctly.
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 Questo accade quando una proprietà esiste, ma contiene `undefined`:
 
@@ -710,6 +791,10 @@ Per risolvere, dovremmo utilizzare il ciclo di clonazione per esaminare ogni val
 
 Esiste un algoritmo standard per le copie profonde, che gestisce i casi sopra e quelli ancora più complessi, si chiama [Structured cloning algorithm](http://w3c.github.io/html/infrastructure.html#safe-passing-of-structured-data). E' inutile reinventare la ruota, conviene quindi utilizzare l'implemetazione fornita dalla libreria JavaScript [lodash](https://lodash.com), il metodo si chiama [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
 
+<<<<<<< HEAD
+=======
+There's a standard algorithm for deep cloning that handles the case above and more complex cases, called the [Structured cloning algorithm](https://html.spec.whatwg.org/multipage/structured-data.html#safe-passing-of-structured-data). In order not to reinvent the wheel, we can use a working implementation of it from the JavaScript library [lodash](https://lodash.com), the method is called [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 
 ## Riepilogo

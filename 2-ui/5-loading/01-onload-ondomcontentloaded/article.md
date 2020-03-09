@@ -49,7 +49,11 @@ Nell'esempio l'handler dell'evento `DOMContentLoaded` si aziona quando il docume
 
 Ma non aspetta che l'immagine si carichi. Quindi `alert` mostra zero come dimensione.
 
+<<<<<<< HEAD
 Ad una prima occhiata l'evento `DOMContentLoaded` è molto semplice. L'albero del DOM è pronto -- questo è l'evento. Ci sono alcune peculiarità però.
+=======
+At first sight, the `DOMContentLoaded` event is very simple. The DOM tree is ready -- here's the event. There are few peculiarities though.
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 ### DOMContentLoaded e gli script
 
@@ -73,10 +77,17 @@ Quindi l'evento DOMContentLoaded avviene sicuramente dopo questi script:
 
 Nell'esempio sopra, prima vediamo "Libreria caricata...", e poi "DOM pronto!" (tutti gli script sono stati eseguiti).
 
+<<<<<<< HEAD
 ```warn header="Script che non bloccano DOMContentLoaded"
 Ci sono 2 eccezioni per questa regola:
 1. Gli script con l'attributo `async`, che vedremo successivamente (info:script-async-defer), non bloccano `DOMContentLoaded`.
 2. Gli script generati dinamicamente con `document.createElement('script')` e poi aggiunti alla pagina non bloccano questo evento.
+=======
+```warn header="Scripts that don't block DOMContentLoaded"
+There are two exceptions from this rule:
+1. Scripts with the `async` attribute, that we'll cover [a bit later](info:script-async-defer), don't block `DOMContentLoaded`.
+2. Scripts that are generated dynamically with `document.createElement('script')` and then added to the webpage also don't block this event.
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 ```
 
 ### DOMContentLoaded e stili
@@ -93,7 +104,11 @@ Ma c'è una trappola. Se abbiamo uno script dopo uno stile quello script deve as
 </script>
 ```
 
+<<<<<<< HEAD
 La ragione è che lo script potrebbe voler ottenere le coordinate e altre proprietà dipendenti dallo stile degli elementi, come nell'esempio sopra. Di conseguenza lo script deve aspettare che gli stili siano caricati.
+=======
+The reason for this is that the script may want to get coordinates and other style-dependent properties of elements, like in the example above. Naturally, it has to wait for styles to load.
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 Quindi `DOMContentLoaded` aspetta il caricamento degli script e inoltre anche quello degli stili.
 
@@ -172,7 +187,11 @@ window.onbeforeunload = function() {
 };
 ```
 
+<<<<<<< HEAD
 Per ragioni storiche, anche tornare una stringa non vuota conta come cancellazione dell'evento. Poco tempo fa i browser lo mostravano come un messaggio ma come dicono le [specifiche moderne](https://html.spec.whatwg.org/#unloading-documents), non dovrebbero.
+=======
+For historical reasons, returning a non-empty string also counts as canceling the event. Some time ago browsers used to show it as a message, but as the [modern specification](https://html.spec.whatwg.org/#unloading-documents) says, they shouldn't.
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 Here's an example:
 
@@ -216,7 +235,11 @@ if (document.readyState == 'loading') {
 }
 ```
 
+<<<<<<< HEAD
 C'è anche l'evento `readystatechange` che scatta quando lo stato cambia, quindi possiamo stampare tutti questi stati in questo modo:
+=======
+There's also the `readystatechange` event that triggers when the state changes, so we can print all these states like this:
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 ```js run
 // stato corrente
@@ -271,6 +294,7 @@ I numeri tra le parentesi quadre indicano il tempo approssimativo di quando l'ev
 
 Eventi di caricamento della pagina:
 
+<<<<<<< HEAD
 - l'evento `DOMContentLoaded` scatta sul `document` quando il DOM è pronto. Possiamo quindi utilizzare Javascript sugli elementi della pagina in questa fase.
   - Script come `<script>...</script>` o `<script src="..."></script>` bloccano DOMContentLoaded poichè il browser aspetta che finiscano di caricarsi per eseguirlo.
   - Immagini e altre risorse potrebbero prolungare ulteriormente il caricamento.
@@ -281,3 +305,15 @@ Eventi di caricamento della pagina:
   - `loading` -- il document si sta caricando.
   - `interactive` -- il document è parsato, si verifica quasi allo stesso tempo di `DOMContentLoaded`, ma prima di esso.
   - `complete` --il document e tutte le risorse sono caricate, si verifica quasi allo stesso tempo di `window.onload`, ma prima di esso.
+=======
+- The `DOMContentLoaded` event triggers on `document` when the DOM is ready. We can apply JavaScript to elements at this stage.
+  - Script such as `<script>...</script>` or `<script src="..."></script>` block DOMContentLoaded, the browser waits for them to execute.
+  - Images and other resources may also still continue loading.
+- The `load` event on `window` triggers when the page and all resources are loaded. We rarely use it, because there's usually no need to wait for so long.
+- The `beforeunload` event on `window` triggers when the user wants to leave the page. If we cancel the event, browser asks whether the user really wants to leave (e.g we have unsaved changes).
+- `The unload` event on `window` triggers when the user is finally leaving, in the handler we can only do simple things that do not involve delays or asking a user. Because of that limitation, it's rarely used. We can send out a network request with `navigator.sendBeacon`.
+- `document.readyState` is the current state of the document, changes can be tracked in the `readystatechange` event:
+  - `loading` -- the document is loading.
+  - `interactive` -- the document is parsed, happens at about the same time as `DOMContentLoaded`, but before it.
+  - `complete` -- the document and resources are loaded, happens at about the same time as `window.onload`, but before it.
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a

@@ -19,7 +19,13 @@ Le due archiviazioni a oggetti propongono stessi metodi e propietà:
 
 Come potete vedere, è simile alla collezione `Map` (`setItem/getItem/removeItem`), mantiene comunque l'ordine degli elementi e permette il loro accesso tramite indice con `key(index)`.
 
+<<<<<<< HEAD
 Vediamo come funziona.
+=======
+As you can see, it's like a `Map` collection (`setItem/getItem/removeItem`), but also allows to access by index with `key(index)`.
+
+Let's see how it works.
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 ## localStorage demo
 

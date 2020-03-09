@@ -26,7 +26,11 @@ Prima di procedere, cerchiamo di capire la terminologia.
     alert( y - x ); // 2, la sottrazione binaria sottrae i valori
     ```
 
+<<<<<<< HEAD
     Formalmente, stiamo parlando di due operatori diversi: la negazione unaria (un singolo operando, inverte il segno) e la sottrazione binaria (due operandi, si esegue la sottrazione).
+=======
+    Formally, in the examples above we have two different operators that share the same symbol: the negation operator, a unary operator that reverses the sign, and the subtraction operator, a binary operator that subtracts one number from another.
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 ##  Concatenazione di stringhe, operatore binario +
 
@@ -140,17 +144,21 @@ Un estratto della [tabella delle precedenze](https://developer.mozilla.org/en/Ja
 | Precedence | Name | Sign |
 |------------|------|------|
 | ... | ... | ... |
-| 16 | unary plus | `+` |
-| 16 | unary negation | `-` |
-| 14 | multiplication | `*` |
-| 14 | division | `/` |
+| 17 | unary plus | `+` |
+| 17 | unary negation | `-` |
+| 15 | multiplication | `*` |
+| 15 | division | `/` |
 | 13 | addition | `+` |
 | 13 | subtraction | `-` |
 | ... | ... | ... |
 | 3 | assignment | `=` |
 | ... | ... | ... |
 
+<<<<<<< HEAD
 Come possiamo vedere, la "somma unaria"(unary plus) ha una priorità di `16`, che è maggiore di `13` dell'addizione(somma binaria). Questo è il motivo per cui l'espressione `"+apples + +oranges"` esegue prima la somma unaria, e successivamente l'addizione.
+=======
+As we can see, the "unary plus" has a priority of `17` which is higher than the `13` of "addition" (binary plus). That's why, in the expression `"+apples + +oranges"`, unary pluses work before the addition.
+>>>>>>> fcfef6a07842ed56144e04a80c3a24de049a952a
 
 ## Assegnazione
 
