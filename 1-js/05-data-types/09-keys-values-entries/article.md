@@ -11,7 +11,11 @@ Vengono supportati da:
 
 - `Map`
 - `Set`
+<<<<<<< HEAD
 - `Array` (ad eccezione `arr.values()`)
+=======
+- `Array`
+>>>>>>> 162280b6d238ce32bbd8ff7a3f7992be82c2311a
 
 Anche gli oggetti supportano dei metodi simili, ma la loro sintassi è leggermente differente.
 
@@ -99,5 +103,9 @@ let doublePrices = Object.fromEntries(
 alert(doublePrices.meat); // 8
 ```   
 
+<<<<<<< HEAD
 Ad un primo sguardo potrebbere risultare complesso, ma diventa molto più familiare dopo un paio di utilizzi.
 
+=======
+It may look difficult from the first sight, but becomes easy to understand after you use it once or twice. We can make powerful chains of transforms this way. 
+>>>>>>> 162280b6d238ce32bbd8ff7a3f7992be82c2311a
