@@ -1,6 +1,10 @@
 # Conversione di tipi
 
+<<<<<<< HEAD
  Nella maggior parte dei casi, operatori e funzioni convertono automaticamente il valore nel tipo corretto.
+=======
+Most of the time, operators and functions automatically convert the values given to them to the right type.
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
 
 Ad esempio, `alert` converte automaticamente un valore qualsiasi in una stringa, per poterla mostrare. Le operazioni matematica convertono i valori in numeri.
 
@@ -10,7 +14,7 @@ Ci sono anche casi in cui è necessario convertire esplicitamente i valori per p
 In questo capitolo non parleremo ancora di oggetti. Ci dedicheremo ai tipi primitivi. Successivamente, dopo aver capito gli oggetti, capire come funziona la conversione di oggetti, nel capitolo <info:object-toprimitive>.
 ```
 
-## ToString
+## String Conversion
 
 La conversione in stringa è utile quando abbiamo bisogno del formato stringa di un valore.
 
@@ -30,7 +34,7 @@ alert(typeof value); // string
 
 La conversione in stringa è quella più ovvia. Il valore `false` diventa la stringa `"false"`, mentre `null` diventa `"null"` etc.
 
-## ToNumber
+## Numeric Conversion
 
 La conversione numerica viene applicata automaticamente nelle funzioni ed espressioni matematiche.
 
@@ -81,6 +85,7 @@ alert( Number(false) );       // 0
 
 Nota che `null` e `undefined` si comportano diversamente: `null` diventa zero, mentre `undefined` diventa `NaN`.
 
+<<<<<<< HEAD
 ````smart header="L'addizione '+' concatena le stringhe"
 Quasi tutte le operazioni matematiche convertono valori in numeri. Con un importante eccezione per l'addizione `+`. Se uno degli operandi è una stringa, allora anche gli altri vengono convertiti in stringhe.
 
@@ -95,6 +100,11 @@ Questo accade solo quando almeno uno degli argomenti è di tipo stringa. Altrime
 ````
 
 ## ToBoolean
+=======
+Most mathematical operators also perform such conversion, we'll see that in the next chapter.
+
+## Boolean Conversion
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
 
 La conversione booleana è quella più semplice.
 
@@ -124,14 +134,24 @@ alert( Boolean(" ") ); // spazi, valgono true (qualsiasi stringa non buota viene
 ```
 ````
 
+<<<<<<< HEAD
 
 ## Riepilogo
+=======
+## Summary
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
 
 I tre tipi di conversioni più utilizzati sono: a *string*, a *number* e a *boolean*.
 
+<<<<<<< HEAD
 **`ToString`** -- Avviene quando stampiamo qualcosa a schermo, può essere richiamato con `String(value)`. La conversione a stringa è solitamente ovvia per i valore primitivi.
 
 **`ToNumber`** -- Utilizzata nelle operazioni matematiche, può essere richiamata esplicitamente con `Number(value)`.
+=======
+**`String Conversion`** -- Occurs when we output something. Can be performed with `String(value)`. The conversion to string is usually obvious for primitive values.
+
+**`Numeric Conversion`** -- Occurs in math operations. Can be performed with `Number(value)`.
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
 
 La conversione segue le seguenti regole:
 
@@ -142,7 +162,11 @@ La conversione segue le seguenti regole:
 |<code>true&nbsp;/&nbsp;false</code> | `1 / 0` |
 | `string` | La stringa viene letta per "com'è", gli spazi bianchi agli estremi vengono ignorati. Una stringa vuota diventa `0`. Un errore restituisce `NaN`. |
 
+<<<<<<< HEAD
 **`ToBoolean`** -- Avviene nelle operazioni logiche, può anche essere richiamato esplicitamente con `Boolean(value)`.
+=======
+**`Boolean Conversion`** -- Occurs in logical operations. Can be performed with `Boolean(value)`.
+>>>>>>> 62299ed853674c4fd1427cd310516d5535bce648
 
 Segue le regole:
 
