@@ -69,7 +69,11 @@ Dunque, cos'è esattamente una `class`? A differenza di ciò che si potrebbe pen
 
 Vediamo quindi cos'è effettivamente una classe. Questo ci aiuterà a comprendere aspetti più complessi.
 
+<<<<<<< HEAD
 In JavaScript, una classe è una specie di funzione.
+=======
+In JavaScript, a class is a kind of function.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 Osserva:
 
@@ -90,7 +94,11 @@ Il costrutto `class User {...}` dunque:
 1. Crea una funzione chiamata `User`, che diventa il risultato della dichiarazione della classe. Le istruzioni della funzione provengono dal metodo `constructor` (considerato vuoto se non presente);
 2. Salva tutti i metodi (come `sayHi`) all'interno di `User.prototype`.
 
+<<<<<<< HEAD
 Quando richiameremo da un oggetto un metodo, questo verrà preso dal prototipo (prototype), come descritto nel capitolo <info:function-prototype>. Dunque un oggetto `new User` ha accesso ai metodi della classe.
+=======
+After `new User` object is created, when we call its method, it's taken from the prototype, just as described in the chapter <info:function-prototype>. So the object has access to class methods.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 Possiamo rappresentare il risultato della dichiarazione di `class User` come:
 
@@ -117,9 +125,15 @@ alert(User.prototype.sayHi); // alert(this.name);
 alert(Object.getOwnPropertyNames(User.prototype)); // constructor, sayHi
 ```
 
+<<<<<<< HEAD
 ## Non solo una semplificazione (syntax sugar)
 
 Talvolta si pensa che `class` in JavaScript sia solo "syntax sugar" (una sintassi creata per semplificare la lettura, ma che non apporta nulla di nuovo), dato che potremmo potremmo dichiarare la stessa cosa senza utilizzare la parola chiave `class`:
+=======
+## Not just a syntactic sugar
+
+Sometimes people say that `class` is a "syntactic sugar" (syntax that is designed to make things easier to read, but doesn't introduce anything new), because we could actually declare the same without `class` keyword at all:
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 ```js run
 // la classe User usando solo funzioni
@@ -141,13 +155,23 @@ let user = new User("John");
 user.sayHi();
 ```
 
+<<<<<<< HEAD
 Il risultato di questo codice è circa lo stesso. È quindi logico pensare che `class` sia solo una semplificazione sintattica (syntax sugar).
 
 Ci sono però delle importanti differenze.
+=======
+The result of this definition is about the same. So, there are indeed reasons why `class` can be considered a syntactic sugar to define a constructor together with its prototype methods.
+
+Still, there are important differences.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 1. Una funzione creata attraverso `class` viene etichettata dalla proprietà interna `[[FunctionKind]]:"classConstructor"`.
 
+<<<<<<< HEAD
     A differenza di una normale funzione, il costruttore di una classe può essere richiamato solo attraverso la parola chiave `new`:
+=======
+    And unlike a regular function, a class constructor must be called with `new`:
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
     ```js run
         class User {
@@ -178,7 +202,11 @@ Ci sono però delle importanti differenze.
 
 ## L'espressione class
 
+<<<<<<< HEAD
 Come le funzioni, le classi possono essere definite all'interno di un'altra espressione, passata come parametro, essere ritornata (returned), assegnata (assigned) ecc.
+=======
+Just like functions, classes can be defined inside another expression, passed around, returned, assigned, etc.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 Qui c'è un piccolo esempio:
 
@@ -228,7 +256,13 @@ new User().sayHi(); // Hello
 
 ## Getters/setters e altre scorciatoie
 
+<<<<<<< HEAD
 Così come negli oggetti letterali (literal objects), le classi possono includere getters/setters, generatori, proprietà eccetera.
+=======
+## Getters/setters, other shorthands
+
+Just like literal objects, classes may include getters/setters, computed properties etc.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 L'esempio seguente implementa `user.name` attraverso `get/set`:
 
@@ -261,7 +295,11 @@ class User {
 let user = new User("John");
 alert(user.name); // John
 
+<<<<<<< HEAD
 user = new User(""); // Nome troppo corto.
+=======
+user = new User(""); // Name is too short.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 ```
 
 La dichiarazione della classe crea i getter e i setter all'interno di `User.prototype`:
@@ -279,7 +317,11 @@ Object.defineProperties(User.prototype, {
 });
 ```
 
+<<<<<<< HEAD
 A seguire un esempio con le proprietà:
+=======
+Here's an example with a computed property name in brackets `[...]`:
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 ```js run
 function f() { return "sayHi"; }
@@ -294,6 +336,7 @@ class User {
 new User().sayHi();
 ```
 
+<<<<<<< HEAD
 Per creare un metodo generatore è sufficiente aggiungere `*` prima del nome della funzione.
 
 ## Proprietà di una classe
@@ -303,6 +346,19 @@ Le proprietà di una classe dichiarata in questo modo sono una novità del lingu
 ```
 
 Negli esempi riportati sopra, la classe `User` conteneva solo dei metodi. Aggiungiamo una proprietà:
+=======
+## Class fields
+
+```warn header="Old browsers may need a polyfill"
+Class fields are a recent addition to the language.
+```
+
+Previously, classes only had methods.
+
+"Class fields" is a syntax that allows to add any properties.
+
+For instance, let's add `name` property to `class User`:
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 ```js run
 class User {
@@ -314,9 +370,95 @@ class User {
 }
 
 new User().sayHi();
+
+alert(User.prototype.sayHi); // placed in User.prototype
+alert(User.prototype.name); // undefined, not placed in User.prototype
 ```
 
+<<<<<<< HEAD
 Le proprietà non vengono inserite all'interno di `User.prototype`, ma vengono create separatamente attraverso `new`, cosicché non vengano condivise tra oggetti creati dalla stessa classe.
+=======
+The important thing about class fields is that they are set on individual objects, not `User.prototype`.
+
+Technically, they are processed after the constructor has done it's job.
+
+### Making bound methods with class fields
+
+As demonstrated in the chapter <info:bind> functions in JavaScript have a dynamic `this`. It depends on the context of the call.
+
+So if an object method is passed around and called in another context, `this` won't be a reference to its object any more.
+
+For instance, this code will show `undefined`:
+
+```js run
+class Button {
+  constructor(value) {
+    this.value = value;
+  }
+
+  click() {
+    alert(this.value);
+  }
+}
+
+let button = new Button("hello");
+
+*!*
+setTimeout(button.click, 1000); // undefined
+*/!*
+```
+
+The problem is called "losing `this`".
+
+There are two approaches to fixing it, as discussed in the chapter <info:bind>:
+
+1. Pass a wrapper-function, such as `setTimeout(() => button.click(), 1000)`.
+2. Bind the method to object, e.g. in the constructor:
+
+```js run
+class Button {
+  constructor(value) {
+    this.value = value;
+*!*
+    this.click = this.click.bind(this);
+*/!*
+  }
+
+  click() {
+    alert(this.value);
+  }
+}
+
+let button = new Button("hello");
+
+*!*
+setTimeout(button.click, 1000); // hello
+*/!*
+```
+
+Class fields provide a more elegant syntax for the latter solution:
+
+```js run
+class Button {
+  constructor(value) {
+    this.value = value;
+  }
+*!*
+  click = () => {
+    alert(this.value);
+  }
+*/!*
+}
+
+let button = new Button("hello");
+
+setTimeout(button.click, 1000); // hello
+```
+
+The class field `click = () => {...}` creates an independent function on each `Button` object, with `this` bound to the object. Then we can pass `button.click` around anywhere, and it will be called with the right `this`.
+
+That's especially useful in browser environment, when we need to setup a method as an event listener.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 ## Riassunto
 
@@ -340,6 +482,10 @@ class MyClass {
 }
 ```
 
+<<<<<<< HEAD
 `MyClass` è tecnicamente una funzione (che corrisponde a `constructor`), mentre i metodi vengono scritti in `MyClass.prototype`.
+=======
+`MyClass` is technically a function (the one that we provide as `constructor`), while methods, getters and setters are written to `MyClass.prototype`.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 Nei prossimi capitoli impareremo altri dettagli riguardo alle classi, come l'ereditarietà.

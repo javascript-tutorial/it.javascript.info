@@ -117,7 +117,7 @@ Diverse varianti di `case` che condividono lo stesso codice possono essere raggr
 Ad esempio, se vogliamo eseguire lo stesso codice per `case 3` e `case 5`:
 
 ```js run no-beautify
-let a = 2 + 2;
+let a = 3;
 
 switch (a) {
   case 4:

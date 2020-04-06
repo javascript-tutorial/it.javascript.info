@@ -3,7 +3,11 @@ Vediamo la spiegazione.
 
 1. Questa è una normale chiamata ad un metodo dell'oggetto.
 
+<<<<<<< HEAD
 2. Stessa cosa, le parentesi non cambiano l'ordine delle operazioni, il punto viene eseguito per primo in ogni caso.
+=======
+2. The same, parentheses do not change the order of operations here, the dot is first anyway.
+>>>>>>> c89ddc5d92195e08e2c32e30526fdb755fec4622
 
 3. Qui abbiamo una chiamata più complessa `(expression).method()`. La chiamata viene interpretata come fosse divisa in due righe:
 
