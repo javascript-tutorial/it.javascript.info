@@ -2,12 +2,12 @@ importance: 5
 
 ---
 
-# Output every second
+# Output ogni secondo
 
-Write a function `printNumbers(from, to)` that outputs a number every second, starting from `from` and ending with `to`.
+Scrivi una funzione `stampaNumeri(da, a)` che produca un numero ogni secondo, partendo da `da` e finendo con `a`.
 
-Make two variants of the solution.
+Crea due varianti della soluzione.
 
-1. Using `setInterval`.
-2. Using recursive `setTimeout`.
+1. Usando `setInterval`.
+2. Usando `setTimeout` ricorsivo.
 

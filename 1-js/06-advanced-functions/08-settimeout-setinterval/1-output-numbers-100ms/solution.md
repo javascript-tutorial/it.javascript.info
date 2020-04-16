@@ -1,64 +1,64 @@
 
-Using `setInterval`:
+Usando `setInterval`:
 
 ```js run
-function printNumbers(from, to) {
-  let current = from;
+function stampaNumeri(da, a) {
+  let attuale = da;
 
   let timerId = setInterval(function() {
-    alert(current);
-    if (current == to) {
+    alert(attuale);
+    if (attuale == a) {
       clearInterval(timerId);
     }
-    current++;
+    attuale++;
   }, 1000);
 }
 
-// usage:
-printNumbers(5, 10);
+// utilizzo:
+stampaNumeri(5, 10);
 ```
 
-Using recursive `setTimeout`:
+Usando `setTimeout` ricorsivo:
 
 
 ```js run
-function printNumbers(from, to) {
-  let current = from;
+function stampaNumeri(da, a) {
+  let attuale = da;
 
-  setTimeout(function go() {
-    alert(current);
-    if (current < to) {
-      setTimeout(go, 1000);
+  setTimeout(function vai() {
+    alert(attuale);
+    if (attuale < a) {
+      setTimeout(vai, 1000);
     }
-    current++;
+    attuale++;
   }, 1000);
 }
 
-// usage:
-printNumbers(5, 10);
+// utilizzo:
+stampaNumeri(5, 10);
 ```
 
-Note that in both solutions, there is an initial delay before the first output. The function is called after `1000ms` the first time.
+Nota che in entrambe le soluzioni c'è un ritardo iniziale prima del primo output. La funzione viene eseguita la prima volta dopo `1000ms`.
 
-If we also want the function to run immediately, then we can add an additional call on a separate line, like this:
+Se vogliamo che la funzione venga eseguita subito, possiamo aggiugere una chiamata addizionale su di una linea separata, come questa:
 
 ```js run
-function printNumbers(from, to) {
-  let current = from;
+function stampaNumeri(da, a) {
+  let attuale = da;
 
-  function go() {
-    alert(current);
-    if (current == to) {
+  function vai() {
+    alert(attule);
+    if (attuale == a) {
       clearInterval(timerId);
     }
-    current++;
+    attuale++;
   }
 
 *!*
-  go();
+  vai();
 */!*
-  let timerId = setInterval(go, 1000);
+  let timerId = setInterval(vai, 1000);
 }
 
-printNumbers(5, 10);
+stampaNumeri(5, 10);
 ```
