@@ -12,7 +12,11 @@ Una variabile [variable](https://en.wikipedia.org/wiki/Variable_(computer_scienc
 
 Per creare una variabile in JavaScript, dobbiamo utilizzare la parola chiave `let`.
 
+<<<<<<< HEAD
 L'istruzione sotto crea(in altre parole: *dichiara* o *definisce*) una variabile identificata dal nome "messaggio":
+=======
+The statement below creates (in other words: *declares*) a variable with the name "message":
+>>>>>>> cd2c7ce3c8f033e6f7861ed1b126552e41ba3e31
 
 ```js
 let message;
@@ -236,7 +240,11 @@ Per dichiarare una variabile costante (immutabile), dobbiamo utilizzare `const` 
 const myBirthday = '18.04.1982';
 ```
 
+<<<<<<< HEAD
 Le variabili dichiarate con `const` vengono chiamate "costanti". Non possono cambiare valore. Se tentassimo di farlo verrebbe sollevato un errore:
+=======
+Variables declared using `const` are called "constants". They cannot be reassigned. An attempt to do so would cause an error:
+>>>>>>> cd2c7ce3c8f033e6f7861ed1b126552e41ba3e31
 
 ```js run
 const myBirthday = '18.04.1982';
@@ -286,7 +294,11 @@ In altre parole, i nomi delle costanti in maiuscolo vengono utilizzati con varia
 
 Parlando di variabili, c'è un'altra cosa estremamente importante.
 
+<<<<<<< HEAD
 Per favore, utilizzate i nomi delle variabili con sensibilità. Prendetevi del tempo per pensare se necessario.
+=======
+A variable name should have a clean, obvious meaning, describing the data that it stores.
+>>>>>>> cd2c7ce3c8f033e6f7861ed1b126552e41ba3e31
 
 Dare i giusti nomi alle variabili è una delle abilità più importanti (e difficili) nella programmazione. 
 Una rapida occhiata ai nomi delle variabili può rivelare se il codice è stato scritto da un beginner o da uno sviluppatore esperto.
