@@ -120,7 +120,30 @@ for (let [key, value] of user) {
 }
 ```
 ````
+<<<<<<< HEAD
 ### Il resto '...'
+=======
+
+```smart header="Swap variables trick"
+A well-known trick for swapping values of two variables:
+
+```js run
+let guest = "Jane";
+let admin = "Pete";
+
+// Swap values: make guest=Pete, admin=Jane
+[guest, admin] = [admin, guest];
+
+alert(`${guest} ${admin}`); // Pete Jane (successfully swapped!)
+```
+
+Here we create a temporary array of two variables and immediately destructure it in swapped order.
+
+We can swap more than two variables this way.
+
+
+### The rest '...'
+>>>>>>> b52aa942a8e9b75ba8a65124c22593171e273bb6
 
 Se invece vogliamo destrutturare tutto, non solamente il primo elemento, ma raccogliere anche quello che segue -- passiamo un ulteriore parametro nella forma `"..."`:
 
@@ -186,7 +209,7 @@ L'assegnamento di destrutturazione funziona allo stesso modo con gli oggetti.
 La sintassi è:
 
 ```js
-let {var1, var2} = {var1:…, var2…}
+let {var1, var2} = {var1:…, var2:…}
 ```
 
 Abbiamo un oggetto alla destra dell'assegnazione, che vogliamo dividere in variabili. Nel lato sinistro abbiamo un "pattern" di proprietà corrispondenti. In questo semplice caso, abbiamo una lista di variabili raggruppate tra parentesi `{...}`.
@@ -357,7 +380,13 @@ Il problema è che JavaScript tratta `{...}` come un blocco di codice. Questo bl
 }
 ```
 
+<<<<<<< HEAD
 Per informare JavaScript che non ci troviamo in un blocco di codice, possiamo raggruppare l'intera assegnazione tra parentesi `(...)`:
+=======
+So here JavaScript assumes that we have a code block, that's why there's an error. We want destructuring instead.
+
+To show JavaScript that it's not a code block, we can wrap the expression in parentheses `(...)`:
+>>>>>>> b52aa942a8e9b75ba8a65124c22593171e273bb6
 
 ```js run
 let title, width, height;
@@ -402,9 +431,13 @@ alert(item1);  // Cake
 alert(item2);  // Donut
 ```
 
+<<<<<<< HEAD
 L'intero oggetto `options` ad eccezione di `extra` il quale non viene menzionato, viene assegnato alle corrispondenti variabili.
 
 Note that `size` and `items` itself is not destructured.
+=======
+All properties of `options` object except `extra` that is absent in the left part, are assigned to corresponding variables:
+>>>>>>> b52aa942a8e9b75ba8a65124c22593171e273bb6
 
 ![](destructuring-complex.svg)
 
@@ -435,7 +468,7 @@ Nella vita reale, il problema è ricordarsi l'ordine degli argomenti. Solitament
 Come qui?
 
 ```js
-// undefined where detauls values are fine
+// undefined where default values are fine
 showMenu("My Menu", undefined, undefined, ["Item1", "Item2"])
 ```
 

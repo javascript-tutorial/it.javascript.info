@@ -31,6 +31,12 @@ Il compito consiste in due parti.
     alert( result ); // 8
     ```
 
+<<<<<<< HEAD
 - Non è richiesta la gestione delle parentesi o di operazioni complesse.
 - I numeri e l'operatore sono separati esattamente da un singolo carattere spaziatore.
 - Se ne hai voglia potresti provare ad aggiungere un minimo di gestione degli errori.
+=======
+- No parentheses or complex expressions in this task.
+- The numbers and the operator are delimited with exactly one space.
+- There may be error handling if you'd like to add it.
+>>>>>>> b52aa942a8e9b75ba8a65124c22593171e273bb6
