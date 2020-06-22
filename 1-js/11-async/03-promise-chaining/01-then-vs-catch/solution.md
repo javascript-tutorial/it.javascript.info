@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 La risposta breve è: **no, non sono uguali**:
+=======
+The short answer is: **no, they are not equal**:
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
 
 La differenza è che se un errore accade in `f1`, allora è gestito da`.catch` qui:
 
@@ -17,4 +21,8 @@ promise
 
 Questo perché un errore è passato giù nella catena, e nel secondo pezzo di codice non c'è una catena sotto`f1`.
 
+<<<<<<< HEAD
 In altre parole, `.then` passa i risultati/errori al prossimo `.then/catch`. Così nel primo esempio, c'è un `catch` sotto, e nel secondo -- non c'è, così l'errore non è gestito.
+=======
+In other words, `.then` passes results/errors to the next `.then/catch`. So in the first example, there's a `catch` below, and in the second one there isn't, so the error is unhandled.
+>>>>>>> e4e6a50b5762dd5dc4c0f0c58f870c64be39dcfa
