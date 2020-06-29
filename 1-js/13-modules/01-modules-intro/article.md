@@ -1,13 +1,21 @@
 
 # Moduli, introduzione
 
+<<<<<<< HEAD
 Quando la nostra applicazione cresce di dimensione, vogliamo dividerla in diversi file, chiamati "moduli"(modules). Un modulo solitamente contiene una classe o una libreria di funzioni.
+=======
+As our application grows bigger, we want to split it into multiple files, so called "modules". A module may contain a class or a library of functions for a specific purpose.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 Per molto tempo JavaScript è esistito senza una vera sintassi per i moduli nel linguaggio. Questo non era un problema, dato che inizialmente gli script erano piccoli e semplici, e quindi non ce n'era esigenza.
 
 Ma gli script man mano diventarono più grandi e complessi, di conseguenza la comunità inventò vari sistemi per organizzare il codice in moduli, come librerie speciali che gestivano il caricamento di moduli su richiesta.
 
+<<<<<<< HEAD
 Per esempio:
+=======
+To name some (for historical reasons):
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 - [AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition) -- uno dei più vecchi sistemi per la gestione di moduli, inizialmente implementato dalla libreria [require.js](http://requirejs.org/).
 - [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1) -- il sistema per la gestione di moduli creato per node.js server.
@@ -15,16 +23,29 @@ Per esempio:
 
 Ormai tutti questi sistemi vengono lentamente abbandonati, anche se ancora possono essere trovati in vecchi script.
 
+<<<<<<< HEAD
 Il sistema per la gestione dei moduli nel linguaggio è stato standardizzato nel 2015, e si è gradualmente evoluto da quel momento in poi. Ora è supportato da tutti i browser principali e all'interno di node.js, da adesso in poi sarà questo il sistema che studieremo.
+=======
+The language-level module system appeared in the standard in 2015, gradually evolved since then, and is now supported by all major browsers and in Node.js. So we'll study the modern JavaScript modules from now on.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 ## Che cos'è un modulo?
 
+<<<<<<< HEAD
 Un modulo è semplicemente un file. Uno script è un modulo.
+=======
+A module is just a file. One script is one module. As simple as that.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 I moduli possono caricarsi a vicenda e utilizzare speciali direttive `export` e `import` per scambiarsi funzionalità, chiamando le funzioni da un modulo all'altro:
 
+<<<<<<< HEAD
 - `export` contrassegna variabili e funzioni che devono essere accessibili dall'esterno del modulo.
 - `import` permette d'importare funzionalità da altri moduli.
+=======
+- `export` keyword labels variables and functions that should be accessible from outside the current module.
+- `import` allows the import of functionality from other modules.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 Ad esempio, se abbiamo un file `sayHi.js` possiamo rendere utilizzabile all'esterno la funzione(esportarla) in questo modo:
 
@@ -45,11 +66,19 @@ alert(sayHi); // function...
 sayHi('John'); // Ciao, John!
 ```
 
+<<<<<<< HEAD
 La direttiva `import` carica il modulo presente al percorso `./sayHi.js`, relativamente al file corrente, e assegna la funzione esportata `sayHi` alla variabile corrispondente.
+=======
+The `import` directive loads the module by path `./sayHi.js` relative to the current file, and assigns exported function `sayHi` to the corresponding variable.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 Ora proviamo ad utilizzare l'esempio all'interno del browser.
 
+<<<<<<< HEAD
 Dato che i moduli utilizzano parole chiavi e funzionalità speciali, dobbiamo comunicare al browser che lo script deve essere trattato come un modulo, utilizzando l'attributo `<script type="module">`.
+=======
+As modules support special keywords and features, we must tell the browser that a script should be treated as a module, by using the attribute `<script type="module">`.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 In questo modo:
 
@@ -57,7 +86,15 @@ In questo modo:
 
 Il browser recupera ed elabora automaticamente il modulo importato (e i suoi import se necessario), e infine esegue lo script.
 
+<<<<<<< HEAD
 ## Funzionalità principali dei moduli
+=======
+```warn header="Modules work only via HTTP(s), not in local files"
+If you try to open a web-page locally, via `file://` protocol, you'll find that `import/export` directives don't work. Use a local web-server, such as [static-server](https://www.npmjs.com/package/static-server#getting-started) or use the "live server" capability of your editor, such as VS Code [Live Server Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) to test modules.
+```
+
+## Core module features
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 Cosa c'è di diverso nei moduli rispetto ai "normali" script?
 
@@ -85,7 +122,11 @@ I moduli devono esportare con `export` quello che vogliono rendere accessibile a
 
 Quindi dobbiamo importare `user.js` all'interno di `hello.js`e prendere la funzionalità che ci servono da esso senza basarci sulle variabili globali.
 
+<<<<<<< HEAD
 Questa è la versione corretta:
+=======
+This is the correct variant:
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 [codetabs src="scopes-working" height="140" current="hello.js"]
 
@@ -110,7 +151,11 @@ Se abbiamo realmente la necessità di dichiarare una variabile globale all'inter
 
 Se uno stesso modulo verrà importato varie volte in più posti, il suo codice verrà eseguito solo la prima volta, successivamente le variabili e le funzioni esportate saranno assegnate a tutti i moduli che lo importano.
 
+<<<<<<< HEAD
 Questo ha delle conseguenze importanti. Vediamo degli esempi.
+=======
+That has important consequences. Let's look at them using examples:
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 Prima di tutto, se eseguire un modulo ha altri effetti, come far apparire un messaggio, importare quel modulo più volte lo farà apparire solamente una volta, la prima:
 
@@ -163,9 +208,15 @@ alert(admin.name); // Pete
 
 Facendo un punto della situazione, il modulo viene eseguito una sola volta. Tutto quello esportato con `export` viene generato, e successivamente viene condiviso con tutti quelli che lo hanno importato, di conseguenza ogni cambiamento fatto sull'oggetto `admin` verrà visto anche dagli altri moduli.
 
+<<<<<<< HEAD
 Questo comportamento ci permette di *configurare* i moduli quando vengono importati la prima volta. Possiamo configurare le proprietà una volta, e saranno pronte per tutti gli altri import successivi.
 
 Per fare un esempio, il modulo `admin.js` può fornire alcune funzionalità ma si aspetta di ricevere le credenziali all'interno dell'oggetto `admin` dall'esterno:
+=======
+Such behavior allows us to *configure* modules on first import. We can setup its properties once, and then in further imports it's ready.
+
+For instance, the `admin.js` module may provide certain functionality, but expect the credentials to come into the `admin` object from outside:
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 ```js
 // 📁 admin.js
@@ -235,10 +286,17 @@ Potresti voler saltare questa sezione se stai leggedo per la prima volta , oppur
 
 I moduli vengono *sempre* reputati script differiti, stesso effetto dell'attributo `defer` (descritto nel capitolo [](info:script-async-defer)) sia per gli script esterni che per quelli interni.
 
+<<<<<<< HEAD
 In altre parole:
 - Il download di un modulo esterno `<script type="module" src="...">` non blocca l'elaborazione dell'HTML, vengono caricati in parallelo insieme alle altre risorse.
 - I moduli attendono fino al momento in cui l'HTML è pronto (anche se sono molto piccoli e possono essere elaborati più velocemente dell'HTML), e poi vengono eseguiti.
 - L'ordine relativo degli script viene mantenuto: gli script che appaiono prima nel documento vengono eseguiti per primi.
+=======
+In other words:
+- downloading external module scripts `<script type="module" src="...">` doesn't block HTML processing, they load in parallel with other resources.
+- module scripts wait until the HTML document is fully ready (even if they are tiny and load faster than HTML), and then run.
+- relative order of scripts is maintained: scripts that go first in the document, execute first.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 Come conseguenza, i moduli "vedono" sempre la pagina HTML completamente caricata, inclusi gli elementi sotto di essi.
 
@@ -264,14 +322,23 @@ Confrontiamo lo script normale:
 <button id="button">Button</button>
 ```
 
+<<<<<<< HEAD
 Da notare: il secondo script viene eseguito per primo! Infatti vedremo prima `undefined`, e dopo `object`.
 
 Questo accade proprio perché i moduli sono differiti, e quindi attendono che tutto il documento venga processato, al contrario, gli script normali vengono eseguiti immediatamente e di conseguenza vediamo l'output del secondo script per primo.
 
 Quando utilizziamo i moduli, dobbiamo porre attenzione al fatto che la pagina HTML appare mentre viene caricata, e i moduli JavaScript vengono eseguiti successivamente al caricamento, di conseguenza l'utente potrebbe vedere la pagina *prima* che l'applicazione JavaScript sia pronta. Alcune funzionalità potrebbero in questo modo non funzionare immediatamente. Per questo motivo è opportuno inserire degli indicatori di caricamento, o comunque assicurarci che i visitatori non vengano confusi da questi possibili comportamenti.
+=======
+Please note: the second script actually runs before the first! So we'll see `undefined` first, and then `object`.
+
+That's because modules are deferred, so we wait for the document to be processed. The regular script runs immediately, so we see its output first.
+
+When using modules, we should be aware that the HTML page shows up as it loads, and JavaScript modules run after that, so the user may see the page before the JavaScript application is ready. Some functionality may not work yet. We should put "loading indicators", or otherwise ensure that the visitor won't be confused by that.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 ### Async funziona sui moduli scritti inline
 
+<<<<<<< HEAD
 Per gli script normali l'attributo `async` funziona solamente sugli script esterni, Gli script caricati in modo asincrono (Async) vengono eseguiti immediatamente e indipendentemente dagli altri script e del documento HTML.
 
 Per i moduli `async` può essere utilizzato sempre.
@@ -279,6 +346,15 @@ Per i moduli `async` può essere utilizzato sempre.
 Ad esempio, lo script seguente è dichiarato asincrono, e quindi non aspetta nulla e viene eseguito.
 
 Esegue l'import (recupera `./analytics.js`) e procede quando è pronto, anche se il documento HTML non è completo, o se gli altri script sono ancora in attesa.
+=======
+For non-module scripts, the `async` attribute only works on external scripts. Async scripts run immediately when ready, independently of other scripts or the HTML document.
+
+For module scripts, it works on inline scripts as well.
+
+For example, the inline script below has `async`, so it doesn't wait for anything.
+
+It performs the import (fetches `./analytics.js`) and runs when ready, even if the HTML document is not finished yet, or if other scripts are still pending.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 Questo comportamento è ottimo per le funzionalità che non dipendono da nulla, come contatori, pubblicità e altro.
 
@@ -296,7 +372,11 @@ Questo comportamento è ottimo per le funzionalità che non dipendono da nulla, 
 
 Gli script esterni che vengono segnalati come moduli, `type="module"`, sono diversi sotto due aspetti:
 
+<<<<<<< HEAD
 1. Più script esterni con lo stesso `src` vengono eseguiti solo una volta:
+=======
+1. External scripts with the same `src` run only once:
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
     ```html
     <!-- lo script my.js viene recuperato ed eseguito solo una volta -->
     <script type="module" src="my.js"></script>
@@ -322,11 +402,19 @@ import {sayHi} from 'sayHi'; // Errore, modulo "bare"
 // Il modulo deve avere un percorso, es. './sayHi.js' od ovunque si trovi il modulo
 ```
 
+<<<<<<< HEAD
 Alcuni ambienti, come Node.js o tools per creare bundle accettano moduli bare, senza nessun percorso (path), dato che hanno metodologie per trovare e collegare i moduli. Al contrario i browser ancora non supportano i moduli bare.
+=======
+Certain environments, like Node.js or bundle tools allow bare modules, without any path, as they have their own ways for finding modules and hooks to fine-tune them. But browsers do not support bare modules yet.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 ### Compatibilità, "nomodule"
 
+<<<<<<< HEAD
 I vecchi browser non comprendono l'attributo `type="module"`. Gli script di una tipologia non conosciuta vengono semplicemente ignorati. Proprio per questo è possibile prevedere uno script di riserva usando l'attributo `nomodule`:
+=======
+Old browsers do not understand `type="module"`. Scripts of an unknown type are just ignored. For them, it's possible to provide a fallback using the `nomodule` attribute:
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 ```html run
 <script type="module">
@@ -347,6 +435,7 @@ Uno dei benefici di usare i "bundlers" -- ci permettono più controllo su come i
 
 I tool per il building si comportano nel modo seguente:
 
+<<<<<<< HEAD
 1. Prendono un modulo "principale", quello che era inteso per essere inserito in `<script type="module">`.
 2. Analizza tutte le sue dipendenze: che moduli importa, cosa viene importato dai metodi importati etc...
 3. Costruisce un singolo file con tutti i moduli (o più file, può essere impostato), sostituendo le chiamate `import` con funzioni del bundler. In questo modo può supportare anche moduli "speciali" come quelli CSS/HTML.
@@ -356,6 +445,17 @@ I tool per il building si comportano nel modo seguente:
     - Parti di codice tipicamente utilizzati durante lo sviluppo come `console` e `debugger` rimosse.
     - Le sintassi più moderne di JavaScript vengono sostituite con funzionalità equivalenti più vecchie e compatibili usando [Babel](https://babeljs.io/).
     - Il file risultante viene ridotto al minimo (minified), gli spazi superflui rimossi, i nomi delle variabili sostituiti con nomi corti etc..
+=======
+1. Take a "main" module, the one intended to be put in `<script type="module">` in HTML.
+2. Analyze its dependencies: imports and then imports of imports etc.
+3. Build a single file with all modules (or multiple files, that's tunable), replacing native `import` calls with bundler functions, so that it works. "Special" module types like HTML/CSS modules are also supported.
+4. In the process, other transformations and optimizations may be applied:
+    - Unreachable code removed.
+    - Unused exports removed ("tree-shaking").
+    - Development-specific statements like `console` and `debugger` removed.
+    - Modern, bleeding-edge JavaScript syntax may be transformed to older one with similar functionality using [Babel](https://babeljs.io/).
+    - The resulting file is minified (spaces removed, variables replaced with shorter names, etc).
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 Quindi se usiamo questa tipologia di strumenti, allora gli script vengono raggruppati in un singolo script (o pochi file), `import/export` sostituiti con speciali funzioni in modo che lo script finale non contenga più nessun `import/export`, non richiede l'uso di `type="module"` e può essere utilizzato come un normale script:
 
@@ -379,7 +479,11 @@ Per ricapitolare, i concetti principali sono:
 3. I moduli utilizzano sempre `use strict` automaticamente.
 4. Il codice di un modulo viene eseguito solamente una volta. Le esportazioni (`export`) vengono create un'unica volta e condivise con tutti i moduli che le importano.
 
+<<<<<<< HEAD
 Quando utilizziamo i moduli, ogni modulo implementa una certa funzionalità e la esporta. Successivamente utilizziamo `import` per importare quella funzionalità e utilizzarla dove è necessario. I browser caricano es eseguono lo script automaticamente.
+=======
+When we use modules, each module implements the functionality and exports it. Then we use `import` to directly import it where it's needed. The browser loads and evaluates the scripts automatically.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 In produzione, di solito si tende a usare tool detti "bundlers" come [Webpack](https://webpack.js.org) per unire insieme tutti i mosuli per maggiori prestazioni, compatibilità e altro.
 

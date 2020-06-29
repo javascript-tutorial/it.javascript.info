@@ -125,6 +125,7 @@ Descrivere l'architettura
 Documentare l'utilizzo di una funzione
 : Esiste una particolare sintassi [JSDoc](http://en.wikipedia.org/wiki/JSDoc) per documentare le funzioni: utilizzo, parametri, valori di ritorno.
 
+<<<<<<< HEAD
     Ad esempio:
     ```js
     /**
@@ -144,6 +145,27 @@ Documentare l'utilizzo di una funzione
     In ogni caso, molti editor come [WebStorm](https://www.jetbrains.com/webstorm/) li comprendono e possono quindi utilizzarli per autocomplete e alcune verifiche automatiche del codice.
 
     Ci sono anche tool come [JSDoc 3](https://github.com/jsdoc3/jsdoc) che possono generare documentazione in HTML a partire dai commenti. Puoi scoprire di più riguardo JSDoc su <http://usejsdoc.org/>.
+=======
+For instance:
+```js
+/**
+ * Returns x raised to the n-th power.
+ *
+ * @param {number} x The number to raise.
+ * @param {number} n The power, must be a natural number.
+ * @return {number} x raised to the n-th power.
+ */
+function pow(x, n) {
+  ...
+}
+```
+
+Such comments allow us to understand the purpose of the function and use it the right way without looking in its code.
+
+By the way, many editors like [WebStorm](https://www.jetbrains.com/webstorm/) can understand them as well and use them to provide autocomplete and some automatic code-checking.
+
+Also, there are tools like [JSDoc 3](https://github.com/jsdoc3/jsdoc) that can generate HTML-documentation from the comments. You can read more information about JSDoc at <http://usejsdoc.org/>.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 Perché l'azione viene risolta in quel modo?
 : Quello che viene scritto è fondamentale. Ma quello che *non* viene scritto potrebbe esserlo anche di più per capire cosa sta succedendo. Perché l'azione viene portata a termine in quel modo? Il codice non fornisce risposte.
@@ -174,7 +196,12 @@ I buoni commenti ci consentono di mantenere bene il codice, di poterci tornare d
 
 **Commenti da evitare:**
 
+<<<<<<< HEAD
 - Quelli che dicono "come il codice funziona" e "cosa fa".
 - Inseriteli solo se risulta impossibile rendere il codice semplice ed auto-descrittivo.
+=======
+- That tell "how code works" and "what it does".
+- Put them in only if it's impossible to make the code so simple and self-descriptive that it doesn't require them.
+>>>>>>> 340ce4342100f36bb3c4e42dbe9ffa647d8716c8
 
 I commenti vengono utilizzati anche da strumenti che generano documentazione, come JSDoc3: li leggono e generano documenti HTML (o in altri formati).
