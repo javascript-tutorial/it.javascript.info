@@ -10,15 +10,19 @@ Il compito è: trovate il sotto-array contiguo di `arr` con la massima somma deg
 
 Scrivete la funzione `getMaxSubSum(arr)` che ritorna quella somma.
 
+<<<<<<< HEAD
 Ad esempio: 
+=======
+For instance:
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
 
 ```js
-getMaxSubSum([-1, *!*2, 3*/!*, -9]) = 5 (the sum of highlighted items)
-getMaxSubSum([*!*2, -1, 2, 3*/!*, -9]) = 6
-getMaxSubSum([-1, 2, 3, -9, *!*11*/!*]) = 11
-getMaxSubSum([-2, -1, *!*1, 2*/!*]) = 3
-getMaxSubSum([*!*100*/!*, -9, 2, -3, 5]) = 100
-getMaxSubSum([*!*1, 2, 3*/!*]) = 6 (take all)
+getMaxSubSum([-1, *!*2, 3*/!*, -9]) == 5 (the sum of highlighted items)
+getMaxSubSum([*!*2, -1, 2, 3*/!*, -9]) == 6
+getMaxSubSum([-1, 2, 3, -9, *!*11*/!*]) == 11
+getMaxSubSum([-2, -1, *!*1, 2*/!*]) == 3
+getMaxSubSum([*!*100*/!*, -9, 2, -3, 5]) == 100
+getMaxSubSum([*!*1, 2, 3*/!*]) == 6 (take all)
 ```
 
 Se tutti gli elementi sono negativi, significa che non prendiamo nulla (il sotto-array vuoto), quindi la somma è zero:

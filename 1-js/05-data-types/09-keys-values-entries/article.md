@@ -11,7 +11,11 @@ Vengono supportati da:
 
 - `Map`
 - `Set`
+<<<<<<< HEAD
 - `Array` (ad eccezione `arr.values()`)
+=======
+- `Array`
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
 
 Anche gli oggetti supportano dei metodi simili, ma la loro sintassi è leggermente differente.
 
@@ -74,7 +78,11 @@ Solitamente questo è un vantaggio. Ma se volessimo ottenere anche le chiavi di 
 
 Per gli oggetti mancano molti metodi che sono invece presenti per gli array, ad esempio `map`, `filter` e molti altri.
 
+<<<<<<< HEAD
 Se volessimo comunque applicarli, allora possiamo utilizzare `Object.entries` seguito da `Object.fromEntries`:
+=======
+If we'd like to apply them, then we can use `Object.entries` followed by `Object.fromEntries`:
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
 
 1. Applichiamo `Object.entries(obj)` per ottenere un array di coppie chiave/valore da `obj`.
 2. Applichiamo il metodo, esempio `map`.
@@ -99,5 +107,9 @@ let doublePrices = Object.fromEntries(
 alert(doublePrices.meat); // 8
 ```   
 
+<<<<<<< HEAD
 Ad un primo sguardo potrebbere risultare complesso, ma diventa molto più familiare dopo un paio di utilizzi.
 
+=======
+It may look difficult from the first sight, but becomes easy to understand after you use it once or twice. We can make powerful chains of transforms this way. 
+>>>>>>> 445bda39806050acd96f87166a7c97533a0c67e9
