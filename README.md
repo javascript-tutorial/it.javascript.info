@@ -25,7 +25,7 @@ Se volete tradurre un articolo vi chiedo di seguire questi semplici passi:
 - Leggete tra gli [issue](https://github.com/javascript-tutorial/it.javascript.info/issues) quello denominato "Translate Progress".
 - Scegliete l'articolo che desiderate tradurre e mettete la spunta.
 - Create un issue per informare il gestore della repository sull'articolo scelto.
-- Procedete con il fork della repository, traducete e infine infine inviate una PR (Pull Request).
+- Procedete con il fork della repository, traducete ed infine inviate una PR (Pull Request).
 
 Il vostro nome apparirà nella pagina "About project" quando la traduzione verrà pubblicata.
 
