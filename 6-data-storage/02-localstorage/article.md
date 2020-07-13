@@ -19,7 +19,13 @@ Le due archiviazioni a oggetti propongono stessi metodi e propietà:
 
 Come potete vedere, è simile alla collezione `Map` (`setItem/getItem/removeItem`), mantiene comunque l'ordine degli elementi e permette il loro accesso tramite indice con `key(index)`.
 
+<<<<<<< HEAD
 Vediamo come funziona.
+=======
+As you can see, it's like a `Map` collection (`setItem/getItem/removeItem`), but also allows access by index with `key(index)`.
+
+Let's see how it works.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ## localStorage demo
 
@@ -199,8 +205,13 @@ dovresti aprire questa pagina in due browser per testare il seguente codice.
 Se entrambe le finestre sono connesse a `window.onstorage`, allora reagiranno agli aggiornamenti che accadono in una delle due.
 
 ```js run
+<<<<<<< HEAD
 // attiva un aggiornamento fatto dallo stesso archivio degli altri documenti
 window.onstorage = event => {
+=======
+// triggers on updates made to the same storage from other documents
+window.onstorage = event => { // same as window.addEventListener('storage', () => {
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
   if (event.key != 'now') return;
   alert(event.key + ':' + event.newValue + " at " + event.url);
 };

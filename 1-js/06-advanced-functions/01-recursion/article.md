@@ -96,7 +96,11 @@ function pow(x, n) {
 
 Il massimo numero di chiamate annidate (inclusa la prima) viene chiamato *profondità di ricorsione*. Nel nostro caso, sarà esattamente `n`.
 
+<<<<<<< HEAD
 La massima profondità di ricorsione viene limitata dal motore JavaScript. Possiamo farne all'incirca 10000, alcuni motori ne consentono un numero maggiore, ma 100000 probabilmente è al di fuori del limite di qualsiasi motore. Ci sono delle ottimizzazioni automatiche ("ottimizzazione della chiamate in coda"), ma nono sono ancora supportate da tutti e funzionano solo in casi semplici.
+=======
+The maximal recursion depth is limited by JavaScript engine. We can rely on it being 10000, some engines allow more, but 100000 is probably out of limit for the majority of them. There are automatic optimizations that help alleviate this ("tail calls optimizations"), but they are not yet supported everywhere and work only in simple cases.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Questo fattore limita le possibili applicazioni della ricorsione, che rimangono comunque molte. Ci sono molte attività che possono essere semplificati tramite la ricorsione, rendendo i programmi più mantenibili.
 
@@ -183,7 +187,17 @@ Questo è il contesto d'esecuzione quando entriamo nella sotto-chiamata `pow(2, 
 
 Il nuovo contesto d'esecuzione è in cima (in grassetto), e quelli precedenti sono sotto.
 
+<<<<<<< HEAD
 Quando abbiamo terminato la sotto-chiamata -- è facile ripristinare il precedente contesto, poiché questo tiene traccia del punto d'arresto e delle variabili al momento dell'interruzione. 
+=======
+When we finish the subcall -- it is easy to resume the previous context, because it keeps both variables and the exact place of the code where it stopped.
+
+```smart
+Here in the picture we use the word "line", as our example there's only one subcall in line, but generally a single line of code may contain multiple subcalls, like `pow(…) + pow(…) + somethingElse(…)`.
+
+So it would be more precise to say that the execution resumes "immediately after the subcall".
+```
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ### pow(2, 1)
 
@@ -294,7 +308,7 @@ let company = {
     salary: 1000
   }, {
     name: 'Alice',
-    salary: 600
+    salary: 1600
   }],
 
   development: {
@@ -335,14 +349,18 @@ Come possiamo vedere, quando la nostra funzione richiede la somma dei salari di 
 
 Il caso base è (1), è banale.
 
+<<<<<<< HEAD
 Il passo ricorsivo è (2). Un problema complesso può essere diviso in sotto-problemi composti da dipartimenti. Questi potrebbero essere ulteriormente divisi, ma prima o poi ci troveremo nel caso base (1).
+=======
+The 2nd case when we get an object is the recursive step. A complex task is split into subtasks for smaller departments. They may in turn split again, but sooner or later the split will finish at (1).
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 L'algoritmo probabilmente è più intuibile leggendone il codice:
 
 
 ```js run
 let company = { // the same object, compressed for brevity
-  sales: [{name: 'John', salary: 1000}, {name: 'Alice', salary: 600 }],
+  sales: [{name: 'John', salary: 1000}, {name: 'Alice', salary: 1600 }],
   development: {
     sites: [{name: 'Peter', salary: 2000}, {name: 'Alex', salary: 1800 }],
     internals: [{name: 'Jack', salary: 1300}]
@@ -364,7 +382,7 @@ function sumSalaries(department) {
 }
 */!*
 
-alert(sumSalaries(company)); // 6700
+alert(sumSalaries(company)); // 7700
 ```
 
 Il codice è più breve e facile da capire. Questo è il potere della ricorsione. Questa funzione continuerebbe a funzionare con qualsiasi livello di sotto-dipartimento.
@@ -451,9 +469,14 @@ let list = { value: 1 };
 list.next = { value: 2 };
 list.next.next = { value: 3 };
 list.next.next.next = { value: 4 };
+list.next.next.next.next = null;
 ```
 
+<<<<<<< HEAD
 Qui possiamo vedere ancora più chiaramente che ci sono più oggetti, ognuno possiede gli attributi `value` e `next` che fa riferimento al vicino. La variabile `list` contiene il primo elemento della lista, segue il puntatore `next` tramite cui possiamo accedere a qualsiasi elemento.
+=======
+Here we can even more clearly see that there are multiple objects, each one has the `value` and `next` pointing to the neighbour. The `list` variable is the first object in the chain, so following `next` pointers from it we can reach any element.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 La lista può essere divisa in più parti e ricomposta più avanti:
 

@@ -1,7 +1,11 @@
 
 # Fetch
 
+<<<<<<< HEAD
 JavaScript può inviare richieste di rete al server e caricare nuove informazioni ogni volta che è necessario.
+=======
+JavaScript can send network requests to the server and load new information whenever it's needed.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Per esempio, possiamo usare le richieste di rete per:
 
@@ -12,11 +16,19 @@ Per esempio, possiamo usare le richieste di rete per:
 
 ...e tutto senza alcun ricaricamento della pagina!
 
+<<<<<<< HEAD
 Ti sarà capitato di ascoltare o leggere il termine "AJAX" (acronimo di <b>A</b>synchronous <b>J</b>avaScript <b>A</b>nd <b>X</b>ML) che è comunemente utilizzato per accomunare (sotto un'unica effige) le richieste di rete in JavaScript. Non è però necessario usare XML: il termine proviene da un retaggio del passato ed è per questo che fa parte dell'abbreviazione.
+=======
+There's an umbrella term "AJAX" (abbreviated <b>A</b>synchronous <b>J</b>avaScript <b>A</b>nd <b>X</b>ML) for network requests from JavaScript. We don't have to use XML though: the term comes from old times, that's why that word is there. You may have heard that term already.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Ci sono molti modi per inviare richieste di rete per richiedere informazioni dal server.
 
+<<<<<<< HEAD
 Il metodo `fetch()` è tra tutti il più moderno e versatile, e per questo inizieremo ad analizzare proprio questo. Questo metodo non è supportato dai browser più datati (ma è possibile risolvere con dei polyfills), ma lo è ampiamente tra quelli recenti.
+=======
+The `fetch()` method is modern and versatile, so we'll start with it. It's not supported by old browsers (can be polyfilled), but very well supported among the modern ones.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 La sintassi base è:
 
@@ -27,11 +39,21 @@ let promise = fetch(url, [options])
 - **`url`** -- l'URL da raggiungere.
 - **`options`** -- parametri opzionali: metodi, headers etc.
 
+<<<<<<< HEAD
 Il browser avvia immediatamente la richiesta, il cui risultato sarà utilizzato e gestito per mezzo di una promise.
+=======
+Without `options`, that is a simple GET request, downloading the contents of the `url`.
+
+The browser starts the request right away and returns a promise that the calling code should use to get the result.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Ottenere una risposta è comunemente un processo che si svolge in due fasi.
 
+<<<<<<< HEAD
 **Prima fase: la `promise` viene risolta con un oggetto (object) di classe built-in [Response](https://fetch.spec.whatwg.org/#response-class) non appena il server risponde con gli headers.**
+=======
+**First, the `promise`, returned by `fetch`, resolves with an object of the built-in [Response](https://fetch.spec.whatwg.org/#response-class) class as soon as the server responds with headers.**
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 In questa fase possiamo controllare lo status HTTP, per vedere se la richiesta ha avuto successo o meno, controllare le intestazioni, ma non abbiamo ancora il body.
 
@@ -59,12 +81,21 @@ if (response.ok) { // se l'HTTP-status è 200-299
 
 `Response` fornisce molteplici metodi promise-based per accedere al body in svariati formati:
 
+<<<<<<< HEAD
 - **`response.text()`** -- legge il la risposta e ritorna un testo,
 - **`response.json()`** -- interpreta e ritorna la risposta come un JSON,
 - **`response.formData()`** -- ritorna la risposta come un oggetto (object) `FormData` (spiegato nel [prossimo capitolo](info:formdata)),
 - **`response.blob()`** -- ritorna la risposta come [Blob](info:blob) (binary data con type),
 - **`response.arrayBuffer()`** -- ritorna la risposta come [ArrayBuffer](info:arraybuffer-binary-arrays) (rappresentazione low-level di binary data),
 - inoltre, `response.body` è un oggetto (object) [ReadableStream](https://streams.spec.whatwg.org/#rs-class), che consente di leggere il body "pezzo per pezzo" (chunk-by-chunk), come vedremo dopo in un esempio.
+=======
+- **`response.text()`** -- read the response and return as text,
+- **`response.json()`** -- parse the response as JSON,
+- **`response.formData()`** -- return the response as `FormData` object (explained in the [next chapter](info:formdata)),
+- **`response.blob()`** -- return the response as [Blob](info:blob) (binary data with type),
+- **`response.arrayBuffer()`** -- return the response as [ArrayBuffer](info:arraybuffer-binary-arrays) (low-level representaion of binary data),
+- additionally, `response.body` is a [ReadableStream](https://streams.spec.whatwg.org/#rs-class) object, it allows you to read the body chunk-by-chunk, we'll see an example later.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Ad esempio, otteniamo un oggetto (object) JSON con gli ultimi commit da GitHub:
 
@@ -87,7 +118,11 @@ fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commi
   .then(commits => alert(commits[0].author.login));
 ```
 
+<<<<<<< HEAD
 Per ottenere il testo della risposta, `await response.text()` invece del `.json()`:
+=======
+To get the response text, `await response.text()` instead of `.json()`:
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ```js run async
 let response = await fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits');
@@ -126,8 +161,14 @@ Possiamo solo scegliere un metodo di lettura del body.
 Se per esempio abbiamo già prelevato il response con `response.text()`, successivamente `response.json()` non funzionerà, dato che il body sarà stato già processato.
 
 ```js
+<<<<<<< HEAD
 let text = await response.text(); // elaborazione del response body
 let parsed = await response.json(); // fallisce (già elaborato)
+=======
+let text = await response.text(); // response body consumed
+let parsed = await response.json(); // fails (already consumed)
+```
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 ````
 
 ## Headers della risposta (o response headers)
@@ -227,7 +268,11 @@ Se stiamo invece inviando un JSON, usiamo `application/json` come `Content-Type`
 
 Possiamo anche inviare binary data con `fetch` usando oggetti `Blob` o `BufferSource`.
 
+<<<<<<< HEAD
 In questo esempio, c'è un `<canvas>` sul quale possiamo disegnare spostarci sopra con il mouse. Al clic sul bottone "Invia" invieremo l'immagine al server:
+=======
+In this example, there's a `<canvas>` where we can draw by moving a mouse over it. A click on the "submit" button sends the image to the server:
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ```html run autorun height="90"
 <body style="margin:0">

@@ -89,29 +89,46 @@ In altra parole, una catena di OR `"||"` ritorna il primo valore vero, se invece
 Ad esempio:
 
 ```js run
+<<<<<<< HEAD
 alert( 1 || 0 ); // 1 (1 è vero)
 alert( true || 'no matter what' ); // (true è vero)
 
 alert( null || 1 ); // 1 (1 è il primo valore true)
 alert( null || 0 || 1 ); // 1 (il primo valore true)
 alert( undefined || null || 0 ); // 0 (tutti falsi, ritorna l'ultimo valore)
+=======
+alert( 1 || 0 ); // 1 (1 is truthy)
+
+alert( null || 1 ); // 1 (1 is the first truthy value)
+alert( null || 0 || 1 ); // 1 (the first truthy value)
+
+alert( undefined || null || 0 ); // 0 (all falsy, returns the last value)
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 ```
 
 Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR booleano".boolean-only OR".
 
 1. **Prelevare il primo valore vero da una lista di variabili o espressioni.**
 
+<<<<<<< HEAD
     Immaginiamo di avere diverse variabili, che possono contenere sia dati che `null/undefined`. Come potremmo fare per trovare la prima che contione dati?
 
     Possiamo utilizzare OR `||` per questo:
+=======
+    For instance, we have `firstName`, `lastName` and `nickName` variables, all optional.
+
+    Let's use OR `||` to choose the one that has the data and show it (or `anonymous` if nothing set):
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
     ```js run
-    let currentUser = null;
-    let defaultUser = "John";
+    let firstName = "";
+    let lastName = "";
+    let nickName = "SuperCoder";
 
     *!*
-    let name = currentUser || defaultUser || "unnamed";
+    alert( firstName || lastName || nickName || "Anonymous"); // SuperCoder
     */!*
+<<<<<<< HEAD
 
     alert( name ); // seleziona "John" – il primo valore true
     ```
@@ -124,30 +141,45 @@ Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR 
     Questo si vede chiaramente quando il secondo argomento causerebbe side-effect. Come l'assegnazione di una variabile.
 
     Se proviamo ad eseguire l'esempio che segue, `x` non verrà assegnata:
+=======
+    ```
 
-    ```js run no-beautify
-    let x;
+    If all variables were falsy, `Anonymous` would show up.
 
-    *!*true*/!* || (x = 1);
+2. **Short-circuit evaluation.**
 
+    Another feature of OR `||` operator is the so-called "short-circuit" evaluation.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
+
+    It means that `||` processes its arguments until the first truthy value is reached, and then the value is returned immediately, without even touching the other argument.
+
+    That importance of this feature becomes obvious if an operand isn't just a value, but an expression with a side effect, such as a variable assignment or a function call.
+
+<<<<<<< HEAD
     alert(x); // undefined, perché (x = 1) non viene valutato
     ```
 
     Se invece il primo argomento è `false`, allora `||` prosegue e valuta il secondo, in questo caso l'assegnazione funziona:
+=======
+    In the example below, only the second message is printed:
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
     ```js run no-beautify
-    let x;
-
-    *!*false*/!* || (x = 1);
-
-    alert(x); // 1
+    *!*true*/!* || alert("not printed");
+    *!*false*/!* || alert("printed");
     ```
 
+<<<<<<< HEAD
     Un assegnazione è un caso semplice. Potrebbero essere coinvolti altri tipi di side-effect.
 
     Quello che abbiamo visto, è un "modo breve di fare `if`". Il primo operando viene convertito a booleano e solo se è falso viene eseguito il secondo.
 
     La maggior parte delle volte è meglio utilizzare un " `if` "regolare", per mantenere il codice leggibile, in alcuni casi però può risultare utile.
+=======
+    In the first line, the OR `||` operator stops the evaluation immediately upon seeing `true`, so the `alert` isn't run.
+
+    Sometimes, people use this feature to execute commands only if the condition on the left part is falsy.
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ## && (AND)
 
@@ -236,7 +268,12 @@ La precedenza dell'operatore AND`&&` è maggiore di quella dell'OR `||`.
 Quindi il codice `a && b || c && d` esegue in maniera analoga all'espressione: `(a && b) || (c && d)`.
 ````
 
+<<<<<<< HEAD
 Proprio come l'OR, anche AND `&&` può qualche volta rimpiazzare `if`.
+=======
+````warn header="Don't replace `if` with || or &&"
+Sometimes, people use the AND `&&` operator as a "shorter to write `if`".
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 Ad esempio:
 
@@ -253,14 +290,18 @@ Quindi sostanzialmente è analogo a:
 ```js run
 let x = 1;
 
-if (x > 0) {
-  alert( 'Greater than zero!' );
-}
+if (x > 0) alert( 'Greater than zero!' );
 ```
 
+<<<<<<< HEAD
 La variante con `&&` sembra essere più corta. Ma l'istruzione `if` è più ovvia e tende ad essere più leggibile.
 
 Quindi è consigliato usare ogni costrutto solo per i suoi scopi. Usate un `if` se volete imporre una condizione. Utilizzate invece `&&` se volete un AND.
+=======
+Although, the variant with `&&` appears shorter, `if` is more obvious and tends to be a little bit more readable. So we recommend using every construct for its purpose: use `if` if we want if and use `&&` if we want AND.
+````
+
+>>>>>>> c3a11c85e54153ebb137b5541b1d1f751c804439
 
 ## ! (NOT)
 
