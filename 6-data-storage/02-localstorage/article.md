@@ -19,7 +19,13 @@ Le due archiviazioni a oggetti propongono stessi metodi e propietà:
 
 Come potete vedere, è simile alla collezione `Map` (`setItem/getItem/removeItem`), mantiene comunque l'ordine degli elementi e permette il loro accesso tramite indice con `key(index)`.
 
+<<<<<<< HEAD
 Vediamo come funziona.
+=======
+As you can see, it's like a `Map` collection (`setItem/getItem/removeItem`), but also allows access by index with `key(index)`.
+
+Let's see how it works.
+>>>>>>> ae1171069c2e50b932d030264545e126138d5bdc
 
 ## localStorage demo
 
@@ -199,8 +205,13 @@ dovresti aprire questa pagina in due browser per testare il seguente codice.
 Se entrambe le finestre sono connesse a `window.onstorage`, allora reagiranno agli aggiornamenti che accadono in una delle due.
 
 ```js run
+<<<<<<< HEAD
 // attiva un aggiornamento fatto dallo stesso archivio degli altri documenti
 window.onstorage = event => {
+=======
+// triggers on updates made to the same storage from other documents
+window.onstorage = event => { // same as window.addEventListener('storage', () => {
+>>>>>>> ae1171069c2e50b932d030264545e126138d5bdc
   if (event.key != 'now') return;
   alert(event.key + ':' + event.newValue + " at " + event.url);
 };
@@ -215,11 +226,19 @@ I Browser moderni supportano [Broadcast channel API](https://developer.mozilla.o
 
 ## Summary
 
+<<<<<<< HEAD
 Web storage objects `localStorage` e `sessionStorage` permettono di archiviare key/value nel browser.
 - Sia `key` e `value` devono essere stringhe.
 - Il limite è 2mb+, dipende dal browser.
 - Non scadono.
 - I dati sono legati alla sorgente (domain/port/protocol).
+=======
+Web storage objects `localStorage` and `sessionStorage` allow to store key/value in the browser.
+- Both `key` and `value` must be strings.
+- The limit is 5mb+, depends on the browser.
+- They do not expire.
+- The data is bound to the origin (domain/port/protocol).
+>>>>>>> ae1171069c2e50b932d030264545e126138d5bdc
 
 | `localStorage` | `sessionStorage` |
 |----------------|------------------|
