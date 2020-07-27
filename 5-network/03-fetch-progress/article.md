@@ -5,7 +5,11 @@ Il metodo `fetch` consente di tracciare i progressi in fase di *download*.
 
 Nota bene: allo stato attuale non c'è modo per il metodo `fetch` di tracciare i progressi in fase di *upload*. Per questo scopo, consulta il capitolo [XMLHttpRequest](info:xmlhttprequest), di cui ci occuperemo più tardi.
 
+<<<<<<< HEAD
 Per tracciare i progressi in fase di download, possiamo usare la proprietà `response.body`. Essa è un `ReadableStream` -- uno speciale oggetto che fornisce un body *chunk-by-chunk*. I Readable streams sono descritti nelle specifiche [Streams API](https://streams.spec.whatwg.org/#rs-class).
+=======
+To track download progress, we can use `response.body` property. It's `ReadableStream` -- a special object that provides body chunk-by-chunk, as it comes. Readable streams are described in the [Streams API](https://streams.spec.whatwg.org/#rs-class) specification.
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 A differenza di `response.text()`, `response.json()` ed altri metodi, `response.body` dà il pieno controllo sul processo di lettura e possiamo quindi valutare quanto viene scaricato in qualsiasi momento.
 
@@ -107,6 +111,10 @@ Spieghiamo il tutto passo-passo:
     let blob = new Blob(chunks);
     ```
 
+<<<<<<< HEAD
 Alla fine avremo il risultato (che sia una stringa o un blob, a seconda di ciò che ci serve) ed il tracking dei progressi di *download*.
+=======
+At the end we have the result (as a string or a blob, whatever is convenient), and progress-tracking in the process.
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 Nota ancora una volta che non è possibile tracciare progressi di *upload* (non c'è modo con `fetch`), ma solo i progressi di *download*.

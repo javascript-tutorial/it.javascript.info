@@ -4,8 +4,13 @@ Potremmo decidere di non eseguire subito una funzione, ma dopo un certo lasso di
 
 Ci sono due metodi per farlo:
 
+<<<<<<< HEAD
 - `setTimeout` permette di eseguire una volta la funzione dopo l'intervallo prescelto.
 - `setInterval` permette di eseguire regolarmente la funzione lasciando scorrere l'intervallo di tempo prescelto tra una chiamata e l'altra.
+=======
+- `setTimeout` allows us to run a function once after the interval of time.
+- `setInterval` allows us to run a function repeatedly, starting after the interval of time, then repeating continuously at that interval.
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 Questi metodi non fanno parte delle specifiche di JavaScript. Ma la maggior parte degli ambienti hanno un pianificatore interno e forniscono questi metodi. In particolare, sono supportati in tutti i browser e in Node.js.
 
@@ -61,7 +66,11 @@ Quindi funzionerà anche così:
 setTimeout("alert('Ciao')", 1000);
 ```
 
+<<<<<<< HEAD
 Ma l'utilizzo delle stringhe (string) è sconsigliato, usiamo piuttosto una funzione come questa:
+=======
+But using strings is not recommended, use arrow functions instead of them, like this:
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 ```js run no-beautify
 setTimeout(() => alert('Ciao'), 1000);
@@ -132,11 +141,19 @@ Nella maggior parte dei browser, inclusi Chrome e Firefox, il timer interno cont
 Quindi, se eseguiamo il codice qui sopra e non chiudiamo la finestra dell'`alert` per qualche istante, l'`alert` successivo verrà mostrato immediatamente e l'intervallo tra i due avvisi sarà più breve di 2 secondi.
 ```
 
+<<<<<<< HEAD
 ## setTimeout ricorsivo
+=======
+## Nested setTimeout
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 Ci sono due modi per eseguire qualcosa regolarmente.
 
+<<<<<<< HEAD
 Uno è `setInterval`. L'altro è un `setTimeout` ricorsivo, come questo:
+=======
+One is `setInterval`. The other one is a nested `setTimeout`, like this:
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 ```js
 /** invece di:
@@ -153,7 +170,11 @@ let timerId = setTimeout(function tic() {
 
 Il `setTimeout` qui sopra pianifica la prossima chiamata subito alla fine di quella attuale `(*)`.
 
+<<<<<<< HEAD
 Il `setTimeout` ricorsivo è un metodo più flessibile di `setInterval`. In tal modo la chiamata successiva può essere pianificata in modo diverso, a seconda del risultato di quella attuale.
+=======
+The nested `setTimeout` is a more flexible method than `setInterval`. This way the next call may be scheduled differently, depending on the results of the current one.
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 Per esempio, dobbiamo scrivere un servizio che mandi ogni 5 secondi una richiesta al server chiedendo dati, ma, in caso il server sia sovraccarico, dovrebbe aumentare l'intervallo di 10, 20, 40 secondi...
 
@@ -177,17 +198,22 @@ let timerId = setTimeout(function richiesta() {
 
 Inoltre, se le funzioni che stiamo pianificando sono avide di CPU, possiamo misurare il tempo richiesto dall'esecuzione e pianificare la chiamata successiva prima o dopo.
 
+<<<<<<< HEAD
 **Il `setTimeout` ricorsivo permette di impostare un ritardo tra le esecuzioni in modo più preciso di `setInterval`.**
+=======
+**Nested `setTimeout` allows to set the delay between the executions more precisely than `setInterval`.**
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 Paragoniamo due frammenti di codice. Il primo usa `setInterval`:
 
 ```js
 let i = 1;
 setInterval(function() {
-  func(i);
+  func(i++);
 }, 100);
 ```
 
+<<<<<<< HEAD
 Il secondo usa il `setTimeout` ricorsivo:
 
 ```js
@@ -199,6 +225,19 @@ setTimeout(function avvia() {
 ```
 
 Per `setInterval` la pianificazione interna eseguirà `func(i)` ogni 100ms:
+=======
+The second one uses nested `setTimeout`:
+
+```js
+let i = 1;
+setTimeout(function run() {
+  func(i++);
+  setTimeout(run, 100);
+}, 100);
+```
+
+For `setInterval` the internal scheduler will run `func(i++)` every 100ms:
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 ![](setinterval-interval.svg)
 
@@ -214,11 +253,19 @@ In tal caso la macchina attende che `func` sia completa, poi verifica la pianifi
 
 In casi limite, se la funzione viene eseguita sempre dopo gli ms di `ritardo`, le chiamate avverranno senza alcuna pausa.
 
+<<<<<<< HEAD
 Qui c'è l'immagine per il `setTimeout` ricorsivo:
 
 ![](settimeout-interval.svg)
 
 **Il `setTimeout` ricorsivo garantisce il ritardo fissato (qui 100ms).**
+=======
+And here is the picture for the nested `setTimeout`:
+
+![](settimeout-interval.svg)
+
+**The nested `setTimeout` guarantees the fixed delay (here 100ms).**
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 Questo perché una nuova chiamata è pianificata solo alla fine della precedente.
 
@@ -239,9 +286,15 @@ C'è un effetto collaterale. Una funzione si riferisce all'ambiente lessicale es
 
 C'è un caso speciale: `setTimeout(func, 0)` o semplicemente `setTimeout(func)`.
 
+<<<<<<< HEAD
 In questo caso l'esecuzione della `func` viene pianificata quanto prima possibile, ma la pianificazione la esegue solo dopo che il codice corrente è completo.
 
 Quindi la funzione viene pianificata per avviarsi "subito dopo" il codice corrente.
+=======
+This schedules the execution of `func` as soon as possible. But the scheduler will invoke it only after the currently executing script is complete.
+
+So the function is scheduled to run "right after" the current script.
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 Per esempio, questo produce "Ciao" quindi, immediatamente, "Mondo":
 
@@ -251,7 +304,11 @@ setTimeout(() => alert("Mondo"));
 alert("Ciao");
 ```
 
+<<<<<<< HEAD
 La prima linea "mette in calendario" la chiamata dopo 0ms, ma la pianificazione "verifica il calendario" solo dopo che il codice corrente è completo, quindi `"Ciao"` viene per primo, seguito da `"Mondo"`.
+=======
+The first line "puts the call into calendar after 0ms". But the scheduler will only "check the calendar" after the current script is complete, so `"Hello"` is first, and `"World"` -- after it.
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 Ci sono anche casi di utilizzo avanzato relativi ai browser del timeout zero-delay, li discuteremo nel capitolo <info:event-loop>.
 
@@ -286,11 +343,19 @@ Per JavaScript lato server, questo limite non esiste e ci sono altri metodi per 
 
 ## Riepilogo
 
+<<<<<<< HEAD
 - I metodi `setInterval(func, ritardo, ...arg)` e `setTimeout(func, ritardo, ...arg)` consentono di avviare la `func` regolarmente/una volta dopo `ritardo` millisecondi.
 - Per disattivare l'esecuzione, dovremo chiamare `clearInterval/clearTimeout` con il valore restituito da `setInterval/setTimeout`.
 - La chiamata nidificata di `setTimeout` è un'alternativa più flessibile a `setInterval`, permettendo di impostare in modo più preciso l'intervallo di tempo *tra*  le esecuzioni.
 - Zero-delay si pianifica con `setTimeout(func, 0)` (lo stesso di `setTimeout(func)`) ed è usato per pianificare la chiamata "quanto prima possibile, ma dopo che il codice corrente è completo".
 - Il browser limita il ritardo minimo per cinque o più chiamate nidificate di `setTimeout` o `setInterval` (dopo la 5a chiamata) a 4ms. Ciò accade per ragioni storiche.
+=======
+- Methods `setTimeout(func, delay, ...args)` and `setInterval(func, delay, ...args)` allow us to run the `func` once/regularly after `delay` milliseconds.
+- To cancel the execution, we should call `clearTimeout/clearInterval` with the value returned by `setTimeout/setInterval`.
+- Nested `setTimeout` calls are a more flexible alternative to `setInterval`, allowing us to set the time *between* executions more precisely.
+- Zero delay scheduling with `setTimeout(func, 0)` (the same as `setTimeout(func)`) is used to schedule the call "as soon as possible, but after the current script is complete".
+- The browser limits the minimal delay for five or more nested call of `setTimeout` or for `setInterval` (after 5th call) to 4ms. That's for historical reasons.
+>>>>>>> b0464bb32c8efc2a98952e05f363f61eca1a99a2
 
 Da notare che tutti i metodi di pianificazione non *garantiscono* un ritardo preciso.
 
