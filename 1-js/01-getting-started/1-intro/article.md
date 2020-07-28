@@ -1,6 +1,6 @@
 # Introduzione a JavaScript
 
-Vediamo cosa rende JavaScript cosi speciale, cosa è possibile ottenere tramite il suo utilizzo e tutte le tecnologie che possono essere applicate per renderlo adatto ad ogni necessità.
+Vediamo cosa rende JavaScript così speciale, cosa è possibile ottenere tramite il suo utilizzo e tutte le tecnologie che possono essere applicate per renderlo adatto ad ogni necessità.
 
 ## Cos'è JavaScript?
 
@@ -39,12 +39,12 @@ Il funzionamento di questi motori è complicato, ma i concetti alla base sono se
 2. Successivamente convertono ("compilano") lo script in linguaggio macchina.
 3. Infine il codice macchina viene eseguito, molto rapidamente.
 
-Il motore applica ottimizzazioni ad ogni passo del processo. Anche durate l'esecuzione dello script già compilato, il motore analizza il flusso dati e applica ottimizzazioni al codice macchina. Nonostante tutto lo script risulta molto veloce.
+Il motore applica ottimizzazioni ad ogni passo del processo. Anche durante l'esecuzione dello script già compilato, il motore analizza il flusso dati e applica ottimizzazioni al codice macchina. Nonostante tutto lo script risulta molto veloce.
 ```
 
 ## Cosa può fare JavaScript a livello browser?
 
-Il JavaScript ad giorno d'oggi è un linguaggio di programmazione "sicuro". Non consente alcun accesso a basso livello alla memoria o alla CPU, questo perchè è stato creato con lo scopo di funzionare nei browser, che non richiedono questo tipo di privilegi.
+Il JavaScript al giorno d'oggi è un linguaggio di programmazione "sicuro". Non consente alcun accesso a basso livello alla memoria o alla CPU, questo perchè è stato creato con lo scopo di funzionare nei browser, che non richiedono questo tipo di privilegi.
 
 Le capacità di JavaScript dipendono molto dall'ambiente in cui lo si esegue. Ad esempio, [Node.js](https://wikipedia.org/wiki/Node.js) supporta funzioni che consentono a JavaScript di scrivere/leggere file, eseguire richieste web, etc.
 
@@ -86,7 +86,7 @@ Ci sono almeno *tre* cose che rendono grande JavaScript:
 
 ```compare
 + Completa integrazione con HTML/CSS.
-+ Operazioni seSupporatomplici vengono eseguite semplicemente.
++ Operazioni semplici vengono eseguite semplicemente.
 + Supportato dai maggiori browser ed è attivo di default.
 ```
 JavaScript è l'unica tecnologia in ambiente browser che combina queste tre caratteristiche.
