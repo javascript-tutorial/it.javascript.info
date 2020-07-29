@@ -1,14 +1,14 @@
-importance: 5
+Importanza: 5
 
 ---
 
-#  How to find an ellipsis "..." ?
+#  Come trovare i puntini di sospensione "..." ?
 
-Create a regexp to find ellipsis: 3 (or more?) dots in a row.
+Si crei un'espressione regolare che individui i puntini di sospensione: 3 (o più) punti in fila
 
-Check it:
+Prova:
 
 ```js
-let reg = /your regexp/g;
-alert( "Hello!... How goes?.....".match(reg) ); // ..., .....
+let reg = /la tua regex/g;
+alert( "Ciao!... come va?.....".match(reg) ); // ..., .....
 ```
