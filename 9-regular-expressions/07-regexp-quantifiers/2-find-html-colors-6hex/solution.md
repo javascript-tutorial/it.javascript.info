@@ -1,10 +1,10 @@
-We need to look for `#` followed by 6 hexadecimal characters.
+Dobbiamo cercare il carattere `#` seguito da 6 cifre esadecimalis.
 
-A hexadecimal character can be described as `pattern:[0-9a-fA-F]`. Or if we use the `i` flag, then just  `pattern:[0-9a-f]`.
+Possiamo descrivere una cifra esadecimale con il `pattern:[0-9a-fA-F]`, oppure, usando il flag `i` possiamo usare `pattern:[0-9a-f]`.
 
-Then we can look for 6 of them using the quantifier `pattern:{6}`.
+Dunque si cerchino 6 pattern usando il quantificatore `pattern:{6}`.
 
-As a result, we have the regexp: `pattern:/#[a-f0-9]{6}/gi`.
+Il risultato sarà l'espressione regolare: `pattern:/#[a-f0-9]{6}/gi`.
 
 ```js run
 let reg = /#[a-f0-9]{6}/gi;
@@ -14,18 +14,18 @@ let str = "color:#121212; background-color:#AA00ef bad-colors:f#fddee #fd2"
 alert( str.match(reg) );  // #121212,#AA00ef
 ```
 
-The problem is that it finds the color in longer sequences:
+Il problema è che così si trova il colore anche in sequenze più lunghe di 6 caratteri:
 
 ```js run
 alert( "#12345678".match( /#[a-f0-9]{6}/gi ) ) // #12345678
 ```
 
-To fix that, we can add `pattern:\b` to the end:
+Per sisolvere tale problema si può aggiungere `pattern:\b` in coda all'espressione:
 
 ```js run
-// color
+// Un valore corrispondente colore
 alert( "#123456".match( /#[a-f0-9]{6}\b/gi ) ); // #123456
 
-// not a color
+// Un valore non corrispondente a un colore
 alert( "#12345678".match( /#[a-f0-9]{6}\b/gi ) ); // null
 ```
