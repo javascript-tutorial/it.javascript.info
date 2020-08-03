@@ -1,8 +1,14 @@
 # Ricevi utenti da GitHub con Fetch
 
+<<<<<<< HEAD
 Crea la funzione async `getUsers(names)` che riceve un array di GitHub logins ed esegue il fetch degli utenti da GitHub. Infine ritorna l'array degli utenti stessi.
 
 Usa l'url di GitHub per le informazioni degli utenti, indicando l'utente al posto del segnaposto `USERNAME`: `https://api.github.com/users/USERNAME`.
+=======
+Create an async function `getUsers(names)`, that gets an array of GitHub logins, fetches the users from GitHub and returns an array of GitHub users.
+
+The GitHub url with user information for the given `USERNAME` is: `https://api.github.com/users/USERNAME`.
+>>>>>>> cdf382de4cf3ed39ca70cb7df60c4c4886f2d22e
 
 C'è un esempio di test nella sandbox.
 

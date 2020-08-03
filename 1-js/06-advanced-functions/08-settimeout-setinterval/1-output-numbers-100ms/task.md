@@ -8,6 +8,11 @@ Scrivi una funzione `stampaNumeri(da, a)` che produca un numero ogni secondo, pa
 
 Crea due varianti della soluzione.
 
+<<<<<<< HEAD
 1. Usando `setInterval`.
 2. Usando `setTimeout` ricorsivo.
 
+=======
+1. Using `setInterval`.
+2. Using nested `setTimeout`.
+>>>>>>> cdf382de4cf3ed39ca70cb7df60c4c4886f2d22e
