@@ -1,75 +1,73 @@
-# Multiline mode, flag "m"
+# Modo multilinea, flag "m"
+Il modo multilinea si abilita col flag `pattern:/.../m`.
 
-The multiline mode is enabled by the flag `pattern:/.../m`.
+Esso modifica il comportamento dei soli `pattern:^` e `pattern:$`.
 
-It only affects the behavior of `pattern:^` and `pattern:$`.
+In modalità multilinea essi non trovano corrispondenza solo con l'inizio e la fine della stringa ma anche con gli inizi e fine di linea.
 
-In the multiline mode they match not only at the beginning and end of the string, but also at start/end of line.
+## Inizio linea ^
 
-## Line start ^
-
-In the example below the text has multiple lines. The pattern `pattern:/^\d+/gm` takes a number from the beginning of each one:
+Nell'esempio sotto riportato il testo è distribuito su più linee. Il pattern `pattern:/^\d+/gm` prende un numero dall'inizio di ogni riga:
 
 ```js run
-let str = `1st place: Winnie
-2nd place: Piglet
-33rd place: Eeyore`;
+let str = `1o posto: Winnie
+2o posto: Piglet
+33o posto: Eeyore`;
 
 *!*
 alert( str.match(/^\d+/gm) ); // 1, 2, 33
 */!*
 ```
 
-The regexp engine moves along the text and looks for a line start `pattern:^`, when finds -- continues to match the rest of the pattern `pattern:\d+`.
-
-Without the flag  `pattern:/.../m` only the first number is matched:
+Il motore di regex si sposta sul testo alla ricerca di un inizio riga `pattern:^`, quando lo trova -- continua a trovare la corrispondenza col resto del pattern `pattern:\d+`.
+Mentre senza il flag  `pattern:/.../m` troverebbe corrispondenza solo col primo numero:
 
 ```js run
-let str = `1st place: Winnie
-2nd place: Piglet
-33rd place: Eeyore`;
+let str = `1o posto: Winnie
+2o posto: Piglet
+33o posto: Eeyore`;
 
 *!*
 alert( str.match(/^\d+/g) ); // 1
 */!*
 ```
 
-That's because by default a caret `pattern:^` only matches at the beginning of the text, and in the multiline mode -- at the start of any line.
+Questo accade perchè di base il comportamento del caret `pattern:^` trova corrispondenza solo con l'inizio del testo, mentre in modo multilinea trova -- con l'inizio di ogni riga.
 
-## Line end $
+## Fine linea $
 
-The dollar sign `pattern:$` behaves similarly.
+Il simbolo di dollaro `pattern:$` si comporta in modo simile.
 
-The regular expression `pattern:\w+$` finds the last word in every line
+L'espressione regolare `pattern:\w+$` trova l'ultima parola in ogni stringa.
 
 ```js run
-let str = `1st place: Winnie
-2nd place: Piglet
-33rd place: Eeyore`;
+let str = `1o posto: Winnie
+2o posto: Piglet
+33o posto: Eeyore`;
 
 alert( str.match(/\w+$/gim) ); // Winnie,Piglet,Eeyore
 ```
 
-Without the `pattern:/.../m` flag the dollar `pattern:$` would only match the end of the whole string, so only the very last word would be found.
+Senza il flag `pattern:/.../m` il dollaro `pattern:$` troverebbe corrispondenza solo con la fine dell'intera stringa, dunque risulterebbe solo l'ultima parola dell'intero testo.
 
-## Anchors ^$ versus \n
+## Ancore ^$ rispetto \n (a-capo)
 
-To find a newline, we can use not only `pattern:^` and `pattern:$`, but also the newline character `\n`.
+Per trovare un fine linea è possibile usare non solo `pattern:^` e `pattern:$`, ma anche il carattere a-capo `\n`.
 
-The first difference is that unlike anchors, the character `\n` "consumes" the newline character and adds it to the result.
+La prima differenza è che, contrariamente alle ancore, il carattere `\n` "consuma" il carattere a-capo aggiungendolo al risultato.
 
-For instance, here we use it instead of `pattern:$`:
+Ad esempio qui lo usiamo al posto di `pattern:$`:
 
 ```js run
-let str = `1st place: Winnie
-2nd place: Piglet
-33rd place: Eeyore`;
-
+let str = `1o posto: Winnie
+2o posto: Piglet
+33o posto: Eeyore`;
 alert( str.match(/\w+\n/gim) ); // Winnie\n,Piglet\n
 ```
 
-Here every match is a word plus a newline character.
+Qui ogni corrispondenza è una parola più il carattere a-capo.
 
-And one more difference -- the newline `\n` does not match at the string end. That's why `Eeyore` is not found in the example above.
+Un'altra differenza -- l' a-capo `\n` non trova corrispondenza a fine stringa. Questo è il motivo per cui `Eeyore` non è trovato nell'esempio sopra.
 
-So, anchors are usually better, they are closer to what we want to get.
+Pertanto le ancore sono migliori: sono più vicine a ciò che si vuole estrarre.
+
