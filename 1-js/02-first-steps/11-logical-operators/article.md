@@ -34,7 +34,7 @@ Se un operando non è booleano, allora viene convertito in booleano per essere v
 Ad esempio, il numero `1` viene visto come `true`, il numero `0` -- come `false`:
 
 ```js run
-if (1 || 0) { // fun<iona proprio come ( true || false )
+if (1 || 0) { // funziona proprio come ( true || false )
   alert( 'truthy!' );
 }
 ```
@@ -119,7 +119,7 @@ Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR 
     Se entrambe `currentUser` e `defaultUser` sono false allora il risultato sarà `"unnamed"`.
 2. **Valutazione a Corto-Circuito.**
 
-    Gli operandi non possono essere solo valori, ma anche espressioni arbitrarie. OR valuta ed esegue i test da sinistra a destra. La valutazione si ferma quando un viene trovato un valore vero, questo viene poi ritornato. Il processo è chiamata "valutazione a corto-circuito", perchè cerca di terminare il prima possibile partendo da sinistra verso destra.
+    Gli operandi, oltre che valori, possono essere anche espressioni arbitrarie. OR valuta ed esegue i test da sinistra a destra. La valutazione si ferma al primo risultato vero, questo viene poi ritornato. Il processo è chiamato "valutazione a corto-circuito", perchè cerca di terminare il prima possibile partendo da sinistra verso destra.
 
     Questo si vede chiaramente quando il secondo argomento causerebbe side-effect. Come l'assegnazione di una variabile.
 
@@ -143,7 +143,7 @@ Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR 
     alert(x); // 1
     ```
 
-    Un assegnazione è un caso semplice. Potrebbero essere coinvolti altri tipi di side-effect.
+    Un'assegnazione è un caso semplice. Potrebbero essere coinvolti altri tipi di side-effect.
 
     Quello che abbiamo visto, è un "modo breve di fare `if`". Il primo operando viene convertito a booleano e solo se è falso viene eseguito il secondo.
 
@@ -177,7 +177,7 @@ if (hour == 12 && minute == 30) {
 }
 ```
 
-Proprio come per OR, qualsiasi valore è consentito come operando per AND:
+Proprio come per OR, anche per AND è consentito qualsiasi valore come operando:
 
 ```js run
 if (1 && 0) { // valutato come true && false
@@ -231,7 +231,7 @@ alert( 1 && 2 && 3 ); // 3, l'ultimo
 ```
 
 ````smart header="Precedenza di AND `&&` è maggiore dell'OR `||`"
-La precedenza dell'operatore AND`&&` è maggiore di quella dell'OR `||`.
+La precedenza dell'operatore AND `&&` è maggiore di quella dell'OR `||`.
 
 Quindi il codice `a && b || c && d` esegue in maniera analoga all'espressione: `(a && b) || (c && d)`.
 ````
@@ -246,7 +246,7 @@ let x = 1;
 (x > 0) && alert( 'Greater than zero!' );
 ```
 
-Le azione nella parte destra di `&&` vengono eseguite solamente se la valutazione non si ferma prima. Cioè: solo se `(x > 0)` è vera.
+Le azioni nella parte destra di `&&` vengono eseguite solamente se la valutazione non si ferma prima. Cioè: solo se `(x > 0)` è vera.
 
 Quindi sostanzialmente è analogo a:
 
