@@ -41,7 +41,11 @@ Insegnategli che la brevità è sempre la cosa migliore. Iniziatelo al percorso 
 Il Dao si nasconde nel silenzio. Solo il Dao è completo.
 ```
 
+<<<<<<< HEAD
 Un altro metodo per programmare velocemente è utilizzare nomi di variabili a singola carattere ovunque. Come `a`, `b` o `c`.
+=======
+Another way to code shorter is to use single-letter variable names everywhere. Like `a`, `b` or `c`.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 Una variabile molto breve sparirà nel codice come un vero ninja scompare nella foresta. Nessuno sarà in grado di ritrovarla, nemmeno utilizzando il tasto "cerca". E se qualcuno mai riuscirà a trovarla non "decifrerà" ma il vero significato di `a` o `b`.
 

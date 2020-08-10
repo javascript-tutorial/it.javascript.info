@@ -83,10 +83,12 @@ let user = {
 
 setTimeout(() => user.sayHi(), 1000);
 
-// ...within 1 second
-user = { sayHi() { alert("Another user in setTimeout!"); } };
+// ...the value of user changes within 1 second
+user = {
+  sayHi() { alert("Another user in setTimeout!"); }
+};
 
-// Another user in setTimeout?!?
+// Another user in setTimeout!
 ```
 
 The next solution guarantees that such thing won't happen.
@@ -98,7 +100,7 @@ Functions provide a built-in method [bind](mdn:js/Function/bind) that allows to 
 The basic syntax is:
 
 ```js
-// more complex syntax will be little later
+// more complex syntax will come a little later
 let boundFunc = func.bind(context);
 ```
 
@@ -159,9 +161,16 @@ let user = {
 let sayHi = user.sayHi.bind(user); // (*)
 */!*
 
+// can run it without an object
 sayHi(); // Hello, John!
 
 setTimeout(sayHi, 1000); // Hello, John!
+
+// even if the value of user changes within 1 second
+// sayHi uses the pre-bound value which is reference to the old user object
+user = {
+  sayHi() { alert("Another user in setTimeout!"); }
+};
 ```
 
 In the line `(*)` we take the method `user.sayHi` and bind it to `user`. The `sayHi` is a "bound" function, that can be called alone or passed to `setTimeout` -- doesn't matter, the context will be right.
@@ -193,7 +202,7 @@ for (let key in user) {
 }
 ```
 
-JavaScript libraries also provide functions for convenient mass binding , e.g. [_.bindAll(obj)](http://lodash.com/docs#bindAll) in lodash.
+JavaScript libraries also provide functions for convenient mass binding , e.g. [_.bindAll(object, methodNames)](http://lodash.com/docs#bindAll) in lodash.
 ````
 
 ## Partial functions
@@ -258,7 +267,7 @@ alert( triple(5) ); // = mul(3, 5) = 15
 
 Why do we usually make a partial function?
 
-The benefit is that we can create an independent function with a readable name (`double`, `triple`). We can use it and not provide first argument of every time as it's fixed with `bind`.
+The benefit is that we can create an independent function with a readable name (`double`, `triple`). We can use it and not provide the first argument every time as it's fixed with `bind`.
 
 In other cases, partial application is useful when we have a very generic function and want a less universal variant of it for convenience.
 
@@ -270,7 +279,7 @@ What if we'd like to fix some arguments, but not the context `this`? For example
 
 The native `bind` does not allow that. We can't just omit the context and jump to arguments.
 
-Fortunately, a helper function `partial` for binding only arguments can be easily implemented.
+Fortunately, a function `partial` for binding only arguments can be easily implemented.
 
 Like this:
 
@@ -304,7 +313,7 @@ The result of `partial(func[, arg1, arg2...])` call is a wrapper `(*)` that call
 - Then gives it `...argsBound` -- arguments from the `partial` call (`"10:00"`)
 - Then gives it `...args` -- arguments given to the wrapper (`"Hello"`)
 
-So easy to do it with the spread operator, right?
+So easy to do it with the spread syntax, right?
 
 Also there's a ready [_.partial](https://lodash.com/docs#partial) implementation from lodash library.
 

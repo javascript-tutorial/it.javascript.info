@@ -7,7 +7,13 @@ I Cookies vengono solitamente impostati dal web-server utilizzando l'HTTTP-heade
 il browser li aggiunge automaticamente a (quasi) ogni richiesta dello stesso dominio che sta utilizzando `Cookie` HTTP-header.
 
 
+<<<<<<< HEAD
 Uno degli usi più comune è l'autenticazione:
+=======
+1. Upon sign in, the server uses `Set-Cookie` HTTP-header in the response to set a cookie with a unique "session identifier".
+2. Next time when the request is set to the same domain, the browser sends the cookie over the net using `Cookie` HTTP-header.
+3. So the server knows who made the request.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 1 In seguito al log-in, il server usa l'HTTP-header `Set-Cookie` in risposta all'impostazione del cookie che abbia un unico
 "identificativo di sessione".
@@ -178,7 +184,7 @@ document.cookie = "user=John; max-age=3600";
 
 // cancella cookie (lascialo scadere in questo istante)
 document.cookie = "user=John; max-age=0";
-```  
+```
 
 ## secure
 
@@ -211,6 +217,10 @@ Immagina di effettuare il log in nel sito `bank.com`. In questo caso hai un cook
 
 Ora, mentre stai navigando sul web su un altra finestra, occasionalmente potresti imbatterti nel sito `evil.com`. Questo sito ha un codice JavaScript che invia un form `<form action="https://bank.com/pay">` al sito `bank.com` con campi che iniziano una transazione verso l'account dell'hacker.
 
+<<<<<<< HEAD
+=======
+Now, while browsing the web in another window, you accidentally come to another site `evil.com`. That site has JavaScript code that submits a form `<form action="https://bank.com/pay">` to `bank.com` with fields that initiate a transaction to the hacker's account.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 Il browser invia i cookies ogni volta che visiti il sito `bank.com`, anche se la richiesta proviene da `evil.com`. In questo modo, la banca pensa che sia tu a effettuare i pagamenti.
 
@@ -271,7 +281,11 @@ Quindi, ciò che `samesite=lax` fa è semplicemente garantire alla più comune o
 
 Ma qualsiasi cosa più complicata, come una richiesta network da un altro sito o una richiesta di modulo, perde i cookie.
 
+<<<<<<< HEAD
 Se questo sta bene a te, aggiungere `samesite=lax` probabilmente non incrinerà l'esperienza utente e, allo stesso tempo, aggiungerà protezione.
+=======
+But anything more complicated, like a network request from another site or a form submission loses cookies.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 Nel complesso, `samesite` è un ottima opzione ma ha degli svantaggi:
 
@@ -337,7 +351,7 @@ function setCookie(name, value, options = {}) {
     ...options
   };
 
-  if (options.expires.toUTCString) {
+  if (options.expires instanceof Date) {
     options.expires = options.expires.toUTCString();
   }
 

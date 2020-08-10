@@ -92,7 +92,11 @@ Anche se dovrebbero essere due istruzioni separate, non una singola. Questo tipo
 
 E' consigliato quindi, di mettere il punto e virgola fra ogni istruzione, anche se vengono scritte in righe diverse. Questa regola è largamente adottata dalla community. Ripetiamolo nuovamente -- *è possibile* evitare di scrivere il punto e virgola la maggior parte delle volte. Ma è più sicuro -- specialmente per un novizio -- inserirle al termine di ogni istruzione.
 
+<<<<<<< HEAD
 ## Commenti
+=======
+## Comments [#code-comments]
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 Con il passare del tempo, i programmi sono diventati sempre più complessi. E' diventato necessario aggiungere *commenti* che descrivessero i comportamenti del codice e il perchè.
 
@@ -132,8 +136,13 @@ alert('Hello');
 alert('World');
 ```
 
+<<<<<<< HEAD
 ```smart header="Usa le scorciatoie da tastiera!"
 In molti editor una linea di codice può essere commentata con la combinazione da tastiera dei tasti `key:Ctrl+/` e una combinazione simile a `key:Ctrl+Shift+/` -- per i commenti multilinea (selezionate prima una parte di codice e poi utilizzate la combinazione di tasti). Su Mac dovrebbe funzionare la combinazione `key:Cmd` al posto di `key:Ctrl`.
+=======
+```smart header="Use hotkeys!"
+In most editors, a line of code can be commented out by pressing the `key:Ctrl+/` hotkey for a single-line comment and something like `key:Ctrl+Shift+/` -- for multiline comments (select a piece of code and press the hotkey). For Mac, try `key:Cmd` instead of `key:Ctrl` and `key:Option` instead of `key:Shift`.
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 ```
 
 ````warn header="I commenti annidati non sono supportati!"

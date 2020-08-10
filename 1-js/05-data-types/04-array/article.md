@@ -123,7 +123,11 @@ Per gli stack, l'ultimo elemento inserito viene prelevato per primo, questo comp
 
 Gli array in JavaScript possono implementare sia una queue che uno stack. C'è la possibilità di aggiungere/rimuovere elementi sia in cima che in coda.
 
+<<<<<<< HEAD
 In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/wiki/Double-ended_queue).
+=======
+In computer science the data structure that allows this, is called [deque](https://en.wikipedia.org/wiki/Double-ended_queue).
+>>>>>>> fbf443e414097e5a3a41dd1273ef9a4a3230e72c
 
 **Metodi che operano sulla coda di un array:**
 
@@ -156,7 +160,7 @@ In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/
 `shift`
 : Estrae il primo elemento dell'array e lo ritorna:
 
-    ```js
+    ```js run
     let fruits = ["Apple", "Orange", "Pear"];
 
     alert( fruits.shift() ); // rimuove Apple e lo ritorna con alert
@@ -167,7 +171,7 @@ In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/
 `unshift`
 : Aggiunge l'elemento in testa dell'array:
 
-    ```js
+    ```js run
     let fruits = ["Orange", "Pear"];
 
     fruits.unshift('Apple');
