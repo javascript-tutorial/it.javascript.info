@@ -5,7 +5,11 @@ L'oggetto globale fornisce variabili e funzioni che sono accessibili in qualsias
 
 In un browser l'ambiente si chiama `window`, per Node.js viene detto `global`, negli altri ambienti si usano diversi termini.
 
+<<<<<<< HEAD
 Recentemente, è stato aggiunto al linguaggio `globalThis`, come nome standart per l'oggetto globale, il quale dovrebbe essere supportato da tutti gli ambienti. In alcuni browser, ad esempio Edge, `globalThis` non è ancora supportato.
+=======
+Recently, `globalThis` was added to the language, as a standardized name for a global object, that should be supported across all environments. In some browsers, namely non-Chromium Edge, `globalThis` is not yet supported, but can be easily polyfilled.
+>>>>>>> fe571b36ed9e225f29239e82947005b08d74ac05
 
 Tutte le proprietà dell'oggetto globale possono essere raggiunte direttamente:
 

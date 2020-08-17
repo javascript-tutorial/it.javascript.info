@@ -1,6 +1,10 @@
 # Caricamento delle risorse: onload e onerror
 
+<<<<<<< HEAD
 Il browser permette di tracciare il caricamente di risorse esterne -- script, iframe, immagini e così via.
+=======
+The browser allows us to track the loading of external resources -- scripts, iframes, pictures and so on.
+>>>>>>> fe571b36ed9e225f29239e82947005b08d74ac05
 
 Esistono 2 eventi per tracciare il caricamento:
 
@@ -49,11 +53,19 @@ script.onload = function() {
 
 Quindi nell'evento `onload` possiamo utilizzare le variabili dello script, eseguire funzioni, ecc.
 
+<<<<<<< HEAD
 ...E cosa accade se il caricamento fallisce? Per esempio, quello script non esiste sul server (errore 404) o il server è fuori servizio (non disponibile).
 
 ### script.onerror
 
 Gli errori che si verificano durante il caricamento dello script possono essere tracciati tramite l'evento `error`.
+=======
+...And what if the loading failed? For instance, there's no such script (error 404) or the server is down (unavailable).
+
+### script.onerror
+
+Errors that occur during the loading of the script can be tracked in an `error` event.
+>>>>>>> fe571b36ed9e225f29239e82947005b08d74ac05
 
 Per esempio, proviamo a richiedere uno script che non esiste:
 
@@ -69,12 +81,20 @@ script.onerror = function() {
 */!*
 ```
 
+<<<<<<< HEAD
 Notate bene che in questo punto non possiamo ottenere i dettagli dell'errore HTTP. Non sappiamo se è un errore 404 o 500 o qualcos'altro.
+=======
+Please note that we can't get HTTP error details here. We don't know if it was an error 404 or 500 or something else. Just that the loading failed.
+>>>>>>> fe571b36ed9e225f29239e82947005b08d74ac05
 
 ```warn
 Gli eventi `onload`/`onerror` tracciano solo il caricamento stesso.
 
+<<<<<<< HEAD
 Gli errori durante il processamento e l'esecuzione sono fuori dall'ambito di questi eventi. Per tracciare gli errori dello script si può utilizzare l'handler globale `window.onerror`.
+=======
+Errors that may occur during script processing and execution are out of scope for these events. That is: if a script loaded successfully, then `onload` triggers, even if it has programming errors in it. To track script errors, one can use `window.onerror` global handler.
+>>>>>>> fe571b36ed9e225f29239e82947005b08d74ac05
 ```
 
 ## Altre risorse
@@ -98,8 +118,13 @@ img.onerror = function() {
 
 Ci sono alcune note però:
 
+<<<<<<< HEAD
 - La maggior parte delle risorse inizia a caricarsi quando vengono aggiunte al document, ma `<img>` è un'eccezione. Inizia a caricarsi quando ottiene un src `(*)`.
 - Per gli `<iframe>`, l'evento `iframe.onload` si aziona quando il caricamento dell'iframe è terminato, sia in caso di successo che in caso di errore. 
+=======
+- Most resources start loading when they are added to the document. But `<img>` is an exception. It starts loading when it gets a src `(*)`.
+- For `<iframe>`, the `iframe.onload` event triggers when the iframe loading finished, both for successful load and in case of an error.
+>>>>>>> fe571b36ed9e225f29239e82947005b08d74ac05
 
 Questo avviene per ragioni storiche.
 
@@ -107,7 +132,11 @@ Questo avviene per ragioni storiche.
 
 C'è una regola: gli script di un sito non possono accedere ai contenuti di un altro sito. Quindi, per esempio, uno script di  `https://facebook.com` non può leggere la casella di posta dell'utente di `https://gmail.com`.
 
+<<<<<<< HEAD
 Per essere più precisi, un'origine (tripletta dominio/porta/protocollo) non può accedere al contenuto di un'altra. Quindi se abbiamo un sottodominio, o anche solo un'altra porta, questo sarà un'origine differente e quindi non hanno accesso l'uno con l'altro.
+=======
+Or, to be more precise, one origin (domain/port/protocol triplet) can't access the content from another one. So even if we have a subdomain, or just another port, these are different origins with no access to each other.
+>>>>>>> fe571b36ed9e225f29239e82947005b08d74ac05
 
 Questa regola interessa anche le risorse di altri domini.
 
@@ -155,24 +184,45 @@ Script error.
 , 0:0
 ```
 
+<<<<<<< HEAD
 I dettagli potrebbero dipendere dal browser, ma l'idea è la stessa: qualunque informazione interno dello script, incluso lo stack trace dell'errore, è nascosta. Esattamente, perche lo script è di un altro dominio.
+=======
+Details may vary depending on the browser, but the idea is the same: any information about the internals of a script, including error stack traces, is hidden. Exactly because it's from another domain.
+>>>>>>> fe571b36ed9e225f29239e82947005b08d74ac05
 
 Perchè abbiamo bisogno dei dettagli di errore?
 
+<<<<<<< HEAD
 Ci sono molti servizi (e possiamo anche sviluppare il nostro) che stanno in ascolto sugli errori globali, utilizzando `window.onerror`, salvano gli errori e forniscono un interfaccia per accedere ed analizzarli. Fantastico, possiamo vedere i veri errori, scaturiti dai nostri utenti. Ma se uno script è caricato da un altro dominio non avremo nessuna informazioni sull'errore, come abbiamo appena visto.
+=======
+There are many services (and we can build our own) that listen for global errors using `window.onerror`, save errors and provide an interface to access and analyze them. That's great, as we can see real errors, triggered by our users. But if a script comes from another origin, then there's not much information about errors in it, as we've just seen.
+>>>>>>> fe571b36ed9e225f29239e82947005b08d74ac05
 
 Una policy cross-origin (CORS) simile viene applicata anche per altri tipi di risorse. 
 
+<<<<<<< HEAD
 **Per consentire l'accesso cross-origin il tag `<script>` deve avere l'attributo `crossorigin` e il server remoto deve fornire degli header speciali.**
+=======
+**To allow cross-origin access, the `<script>` tag needs to have the `crossorigin` attribute, plus the remote server must provide special headers.**
+>>>>>>> fe571b36ed9e225f29239e82947005b08d74ac05
 
 Ci sono tre livelli di accesso cross-origin:
 
+<<<<<<< HEAD
 1. **Attributo `crossorigin` non presente** -- accesso vietato.
 2. **`crossorigin="anonymous"`** -- accesso consentito se il server risponde con l'header `Access-Control-Allow-Origin` con il valore `*` o il nome della nostra origin (dominio). Il browser non manda dati e cookie sull'autenticazione al server remoto.
 3. **`crossorigin="use-credentials"`** -- accesso consentito se il server manda indietro l'header `Access-Control-Allow-Origin` con la nostra origine (dominio) e `Access-Control-Allow-Credentials: true`. Il browser manda i dati e i cookie sull'autenticazione al server remoto.
 
 ```smart
 Può approfondire l'accesso cross-origin nel capitolo <info:fetch-crossorigin>. Descrive il metodo `fetch` per le richieste di rete, ma la policy è esattamente la stessa.
+=======
+1. **No `crossorigin` attribute** -- access prohibited.
+2. **`crossorigin="anonymous"`** -- access allowed if the server responds with the header `Access-Control-Allow-Origin` with `*` or our origin. Browser does not send authorization information and cookies to remote server.
+3. **`crossorigin="use-credentials"`** -- access allowed if the server sends back the header `Access-Control-Allow-Origin` with our origin and `Access-Control-Allow-Credentials: true`. Browser sends authorization information and cookies to remote server.
+
+```smart
+You can read more about cross-origin access in the chapter <info:fetch-crossorigin>. It describes the `fetch` method for network requests, but the policy is exactly the same.
+>>>>>>> fe571b36ed9e225f29239e82947005b08d74ac05
 
 Ad esempio i "cookies" sono un argomento fuori dal nostro attuale ambito, ma puoi leggere informazioni a proposito nel capitolo <info:cookie>.
 ```
@@ -181,7 +231,11 @@ Nel nostro caso non avevamo nessun attributo crossorigin, quindi l'accesso era v
 
 Possiamo scegliere tra `"anonymous"` (non vengono mandati cookie, è necessario un header lato server) e `"use-credentials"` (manda i cookie, sono necessari 2 header lato server).
 
+<<<<<<< HEAD
 Se non ci interessano i cookie allora `"anonymous"` è la scelta giusta:
+=======
+If we don't care about cookies, then `"anonymous"` is the way to go:
+>>>>>>> fe571b36ed9e225f29239e82947005b08d74ac05
 
 ```html run height=0
 <script>
@@ -192,7 +246,11 @@ window.onerror = function(message, url, line, col, errorObj) {
 <script *!*crossorigin="anonymous"*/!* src="https://cors.javascript.info/article/onload-onerror/crossorigin/error.js"></script>
 ```
 
+<<<<<<< HEAD
 Ora, supponendo che il server fornisca l'header `Access-Control-Allow-Origin`, riusciamo ad avere il report completo dell'errore.
+=======
+Now, assuming that the server provides an `Access-Control-Allow-Origin` header, everything's fine. We have the full error report.
+>>>>>>> fe571b36ed9e225f29239e82947005b08d74ac05
 
 ## Riepilogo
 
