@@ -1,1 +1,242 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="514" height="411" viewBox="0 0 514 411"><defs><style>@import url(https://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic%7CPT+Mono);@font-face{font-family:&apos;PT Mono&apos;;font-weight:700;font-style:normal;src:local(&apos;PT MonoBold&apos;),url(/font/PTMonoBold.woff2) format(&apos;woff2&apos;),url(/font/PTMonoBold.woff) format(&apos;woff&apos;),url(/font/PTMonoBold.ttf) format(&apos;truetype&apos;)}</style></defs><g id="combined" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1"><g id="try-catch-flow.svg"><g id="Rectangle-1-+-Корень" transform="translate(207 4)"><rect id="Rectangle-1" width="78" height="28" x="1" y="1" fill="#FFF9EB" stroke="#E8C48E" stroke-width="2" rx="14"/><text id="Begin" fill="#8A704D" font-family="OpenSans-Regular, Open Sans" font-size="14" font-weight="normal"><tspan x="21" y="20">Begin</tspan></text></g><path id="Line" fill="#EE6B47" fill-rule="nonzero" d="M246 57.05V34h3v23.05h8l-9.5 19-9.5-19h8z"/><path id="Line-Copy" fill="#EE6B47" fill-rule="nonzero" d="M396 320.05V297h3v23.05h8l-9.5 19-9.5-19h8z"/><path id="Path-1218" fill="#EE6B47" fill-rule="nonzero" d="M96.5 219.5v-88h62v3h-59v85h8l-9.5 19-9.5-19h8z"/><path id="Path-1218-Copy" fill="#EE6B47" fill-rule="nonzero" d="M397.5 219.5v-85h-82v-3h85v88h8l-9.5 19-9.5-19h8z"/><g id="Rectangle-354-+-Каково-“официальное”" fill="#FFF9EB" stroke="#E8C48E" stroke-width="2" transform="translate(154 81)"><path id="Rectangle-354" d="M2.06 52l91.55 50.856L185.161 52 93.611 1.144 2.058 52z"/></g><g id="Rectangle-356-+-Отмена" transform="translate(59 177)"><path id="Rectangle-356" fill="#FFF" d="M0 2h60v20H0z"/><text id="No-Errors" fill="#8A704D" font-family="OpenSans-Regular, Open Sans" font-size="14" font-weight="normal"><tspan x="7.5" y="15">No Errors</tspan></text></g><g id="Rectangle-356-Copy-+-“Админ”" transform="translate(303 176)"><path id="Rectangle-356-Copy" fill="#FFF" d="M65 2h60v20H65z"/><text id="An-error-occured-in" fill="#8A704D" font-family="OpenSans-Regular, Open Sans" font-size="14" font-weight="normal"><tspan x=".932" y="15">An error occured in the code</tspan></text></g><rect id="Rectangle-1-Copy-2" width="214" height="49" x="292" y="349" fill="#FFF9EB" stroke="#E8C48E" stroke-width="2" rx="24.5"/><rect id="Rectangle-1" width="195" height="49" x="1" y="244" fill="#FFF9EB" stroke="#E8C48E" stroke-width="2" rx="24.5"/><rect id="Rectangle-1-Copy" width="216" height="49" x="290" y="244" fill="#FFF9EB" stroke="#E8C48E" stroke-width="2" rx="24.5"/><text id="Ignore-catch-block" fill="#8A704D" font-family="OpenSans-Regular, Open Sans" font-size="14" font-weight="normal"><tspan x="39" y="272">Ignore catch block</tspan></text><text id="Ignore-the-rest-of-t" fill="#8A704D" font-family="OpenSans-Regular, Open Sans" font-size="14" font-weight="normal"><tspan x="332" y="272">Ignore the rest of try</tspan></text><text id="Execute-catch-block" fill="#8A704D" font-family="OpenSans-Regular, Open Sans" font-size="14" font-weight="normal"><tspan x="333" y="379">Execute catch block</tspan></text><text id="try-{-}" fill="#8A704D" font-family="PTMono-Regular, PT Mono" font-size="14" font-weight="normal"><tspan x="218" y="117">try {</tspan>    <tspan x="218" y="157">}</tspan></text><text id="//-code..." fill="#8A704D" font-family="PTMono-Regular, PT Mono" font-size="14" font-weight="normal"><tspan x="232" y="138">// code...</tspan></text></g></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="try-catch-flow.svg"
+   id="svg50"
+   version="1.1"
+   viewBox="0 0 514 411"
+   height="411"
+   width="514">
+  <metadata
+     id="metadata54">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:current-layer="try-catch-flow.svg"
+     inkscape:window-maximized="1"
+     inkscape:window-y="27"
+     inkscape:window-x="0"
+     inkscape:cy="297.09075"
+     inkscape:cx="257"
+     inkscape:zoom="2.0827251"
+     showgrid="false"
+     id="namedview52"
+     inkscape:window-height="1016"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">@import url(https://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic%7CPT+Mono);@font-face{font-family:'PT Mono';font-weight:700;font-style:normal;src:local('PT MonoBold'),url(/font/PTMonoBold.woff2) format('woff2'),url(/font/PTMonoBold.woff) format('woff'),url(/font/PTMonoBold.ttf) format('truetype')}</style>
+  </defs>
+  <g
+     id="try-catch-flow.svg"
+     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1">
+    <g
+       id="Rectangle-1-+-Корень"
+       transform="translate(207,4)">
+      <rect
+         id="Rectangle-1"
+         width="78"
+         height="28"
+         x="1"
+         y="1"
+         fill="#fff9eb"
+         stroke="#e8c48e"
+         stroke-width="2"
+         rx="14" />
+      <text
+         id="Begin"
+         fill="#8a704d"
+         font-family="OpenSans-Regular, 'Open Sans'"
+         font-size="14px"
+         font-weight="normal"><tspan
+           x="21"
+           y="20"
+           id="tspan7">Inizio</tspan></text>
+    </g>
+    <path
+       id="Line"
+       fill="#ee6b47"
+       fill-rule="nonzero"
+       d="M 246,57.05 V 34 h 3 v 23.05 h 8 l -9.5,19 -9.5,-19 z" />
+    <path
+       id="Line-Copy"
+       fill="#ee6b47"
+       fill-rule="nonzero"
+       d="M 396,320.05 V 297 h 3 v 23.05 h 8 l -9.5,19 -9.5,-19 z" />
+    <path
+       id="Path-1218"
+       fill="#ee6b47"
+       fill-rule="nonzero"
+       d="m 96.5,219.5 v -88 h 62 v 3 h -59 v 85 h 8 l -9.5,19 -9.5,-19 z" />
+    <path
+       id="Path-1218-Copy"
+       fill="#ee6b47"
+       fill-rule="nonzero"
+       d="m 397.5,219.5 v -85 h -82 v -3 h 85 v 88 h 8 l -9.5,19 -9.5,-19 z" />
+    <g
+       id="Rectangle-354-+-Каково-“официальное”"
+       fill="#fff9eb"
+       stroke="#e8c48e"
+       stroke-width="2"
+       transform="translate(154,81)">
+      <path
+         id="Rectangle-354"
+         d="M 2.06,52 93.61,102.856 185.161,52 93.611,1.144 2.058,52 Z" />
+    </g>
+    <g
+       id="Rectangle-356-+-Отмена"
+       transform="translate(59,177)">
+      <g
+         transform="translate(-16)"
+         id="g102">
+        <path
+           d="M 0,0.00573904 H 110.55782 V 22 H 0 Z"
+           fill="#ffffff"
+           id="Rectangle-356"
+           style="stroke-width:1.42351" />
+        <text
+           font-weight="normal"
+           font-size="14px"
+           font-family="OpenSans-Regular, 'Open Sans'"
+           fill="#8a704d"
+           id="No-Errors"><tspan
+             id="tspan18"
+             y="15"
+             x="7.5">Nessun Errore</tspan></text>
+      </g>
+    </g>
+    <g
+       id="Rectangle-356-Copy-+-“Админ”"
+       transform="translate(303,176)">
+      <g
+         transform="translate(6)"
+         id="g92">
+        <g
+           id="g97">
+          <path
+             style="stroke-width:1.75199"
+             id="Rectangle-356-Copy"
+             fill="#ffffff"
+             d="M 6.4901601,-0.02787126 H 173.70587 V 22 H 6.4901601 Z" />
+          <text
+             x="12"
+             id="An-error-occured-in"
+             fill="#8a704d"
+             font-family="OpenSans-Regular, 'Open Sans'"
+             font-size="14px"
+             font-weight="normal"><tspan
+               x="12.932"
+               y="15"
+               id="tspan23">Si è verificato un errore</tspan></text>
+        </g>
+      </g>
+    </g>
+    <rect
+       id="Rectangle-1-Copy-2"
+       width="214"
+       height="49"
+       x="292"
+       y="349"
+       fill="#fff9eb"
+       stroke="#e8c48e"
+       stroke-width="2"
+       rx="24.5" />
+    <rect
+       id="rect28"
+       width="195"
+       height="49"
+       x="1"
+       y="244"
+       fill="#fff9eb"
+       stroke="#e8c48e"
+       stroke-width="2"
+       rx="24.5" />
+    <rect
+       id="Rectangle-1-Copy"
+       width="216"
+       height="49"
+       x="290"
+       y="244"
+       fill="#fff9eb"
+       stroke="#e8c48e"
+       stroke-width="2"
+       rx="24.5" />
+    <text
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;font-family:OpenSans-Regular, 'Open Sans';-inkscape-font-specification:'OpenSans-Regular, Open Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#8a704d"
+       y="272.1774"
+       x="16.832867"
+       id="Ignore-catch-block"
+       fill="#8a704d"
+       font-family="OpenSans-Regular, 'Open Sans'"
+       font-size="14px"
+       font-weight="normal"><tspan
+         y="272.1774"
+         x="16.832867"
+         id="tspan134"
+         sodipodi:role="line">Ignora il codice del catch</tspan></text>
+    <text
+       id="Ignore-the-rest-of-t"
+       fill="#8a704d"
+       font-family="OpenSans-Regular, 'Open Sans'"
+       font-size="14px"
+       font-weight="normal"><tspan
+         x="332"
+         y="272"
+         id="tspan34">Ignora il resto del try</tspan></text>
+    <text
+       y="-3.8646827"
+       x="-15.702436"
+       id="Execute-catch-block"
+       fill="#8a704d"
+       font-family="OpenSans-Regular, 'Open Sans'"
+       font-size="14px"
+       font-weight="normal"><tspan
+         x="317.29755"
+         y="375.13531"
+         id="tspan37">Esegui il codice del catch</tspan></text>
+    <text
+       id="try-{-}"
+       fill="#8a704d"
+       font-family="PTMono-Regular, 'PT Mono'"
+       font-size="14px"
+       font-weight="normal"><tspan
+         x="218"
+         y="117"
+         id="tspan40">try {</tspan><tspan
+         x="218"
+         y="157"
+         id="tspan42">}</tspan></text>
+    <text
+       id="//-code..."
+       fill="#8a704d"
+       font-family="PTMono-Regular, 'PT Mono'"
+       font-size="14px"
+       font-weight="normal"><tspan
+         x="232"
+         y="138"
+         id="tspan45">// codice...</tspan></text>
+  </g>
+</svg>
