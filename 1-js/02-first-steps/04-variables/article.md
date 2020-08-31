@@ -12,7 +12,11 @@ Una variabile [variable](https://en.wikipedia.org/wiki/Variable_(computer_scienc
 
 Per creare una variabile in JavaScript, dobbiamo utilizzare la parola chiave `let`.
 
+<<<<<<< HEAD
 L'istruzione sotto crea(in altre parole: *dichiara* o *definisce*) una variabile identificata dal nome "messaggio":
+=======
+The statement below creates (in other words: *declares*) a variable with the name "message":
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 ```js
 let message;
@@ -80,8 +84,13 @@ let user = 'John'
 
 Tecnicamente, tutte queste varianti fanno la stessa cosa. Quindi è una questione di gusto personale ed estetico.
 
+<<<<<<< HEAD
 ````smart header="`var` piuttosto che `let`"
 Nei vecchi script potresti trovare: `var` piuttosto che `let`:
+=======
+````smart header="`var` instead of `let`"
+In older scripts, you may also find another keyword: `var` instead of `let`:
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 ```js
 *!*var*/!* message = 'Hello';
@@ -134,8 +143,27 @@ alert(hello); // Hello world!
 alert(message); // Hello world!
 ```
 
+<<<<<<< HEAD
 ```smart header="Linguaggi funzionali"
 Può essere interessante sapere che esistono anche linguaggi di programmazione [funzionale](https://en.wikipedia.org/wiki/Functional_programming) che vietano di cambiare il valore di una variabile. Per esempio, [Scala](http://www.scala-lang.org/) o [Erlang](http://www.erlang.org/).
+=======
+````warn header="Declaring twice triggers an error"
+A variable should be declared only once.
+
+A repeated declaration of the same variable is an error:
+
+```js run
+let message = "This";
+
+// repeated 'let' leads to an error
+let message = "That"; // SyntaxError: 'message' has already been declared
+```
+So, we should declare a variable once and then refer to it without `let`.
+````
+
+```smart header="Functional languages"
+It's interesting to note that there exist [functional](https://en.wikipedia.org/wiki/Functional_programming) programming languages, like [Scala](http://www.scala-lang.org/) or [Erlang](http://www.erlang.org/) that forbid changing variable values.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 In questo tipo di linguaggi, una volta che il valore viene memorizzato "dentro la scatola", ci rimane per sempre. Se abbiamo bisogno di memorizzare qualcos altro, il linguaggio ci forza a creare una nuova scatola (dichiarare una nuova variabile). Non possiamo quindi riutilizzare quelle vecchie.
 
@@ -189,7 +217,11 @@ let имя = '...';
 let 我 = '...';
 ```
 
+<<<<<<< HEAD
 Tecnicamente, non ci sono errori, questo tipo di nomi sono permessi, ma la tradizione internazionale è di utilizzare l'alfabeto inglese per il nome delle variabili. Anche se stiamo scrivendo un piccolo script, potrebbe infatti avere una lunga vita. Persone di altre nazionalità potrebbero aver bisogno di leggerlo.
+=======
+Technically, there is no error here. Such names are allowed, but there is an international convention to use English in variable names. Even if we're writing a small script, it may have a long life ahead. People from other countries may need to read it some time.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 ````
 
 ````warn header="Nomi riservati"
@@ -236,7 +268,11 @@ Per dichiarare una variabile costante (immutabile), dobbiamo utilizzare `const` 
 const myBirthday = '18.04.1982';
 ```
 
+<<<<<<< HEAD
 Le variabili dichiarate con `const` vengono chiamate "costanti". Non possono cambiare valore. Se tentassimo di farlo verrebbe sollevato un errore:
+=======
+Variables declared using `const` are called "constants". They cannot be reassigned. An attempt to do so would cause an error:
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 ```js run
 const myBirthday = '18.04.1982';
@@ -286,7 +322,11 @@ In altre parole, i nomi delle costanti in maiuscolo vengono utilizzati con varia
 
 Parlando di variabili, c'è un'altra cosa estremamente importante.
 
+<<<<<<< HEAD
 Per favore, utilizzate i nomi delle variabili con sensibilità. Prendetevi del tempo per pensare se necessario.
+=======
+A variable name should have a clean, obvious meaning, describing the data that it stores.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 Dare i giusti nomi alle variabili è una delle abilità più importanti (e difficili) nella programmazione. 
 Una rapida occhiata ai nomi delle variabili può rivelare se il codice è stato scritto da un beginner o da uno sviluppatore esperto.

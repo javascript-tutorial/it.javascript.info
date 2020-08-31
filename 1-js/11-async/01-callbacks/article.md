@@ -2,18 +2,39 @@
 
 # Introduzione: callbacks
 
+<<<<<<< HEAD
 Molte azioni in JavaScript sono *asincrone*
 
 Per esempio, guardiamo la funzione `loadScript(src)`:
+=======
+```warn header="We use browser methods in examples here"
+To demonstrate the use of callbacks, promises and other abstract concepts, we'll be using some browser methods: specifically, loading scripts and performing simple document manipulations.
+
+If you're not familiar with these methods, and their usage in the examples is confusing, you may want to read a few chapters from the [next part](/document) of the tutorial.
+
+Although, we'll try to make things clear anyway. There won't be anything really complex browser-wise.
+```
+
+Many functions are provided by JavaScript host environments that allow you to schedule *asynchronous* actions. In other words, actions that we initiate now, but they finish later.
+
+For instance, one such function is the `setTimeout` function.
+
+There are other real-world examples of asynchronous actions, e.g. loading scripts and modules (we'll cover them in later chapters).
+
+Take a look at the function `loadScript(src)`, that loads a script with the given `src`:
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 ```js
 function loadScript(src) {
+  // creates a <script> tag and append it to the page
+  // this causes the script with given src to start loading and run when complete
   let script = document.createElement('script');
   script.src = src;
   document.head.append(script);
 }
 ```
 
+<<<<<<< HEAD
 Lo scopo della funzione è quello di caricare un nuovo script. Quando aggiunge il tag `<script src="…">` al documento, il browser lo caricherà ed eseguirà.
 
 Possiamo usare la funzione in questo modo:
@@ -26,6 +47,20 @@ loadScript('/my/script.js');
 La funzione è chiamata "asincronamente", perché l'azione (il caricamento dello script) non finirà adesso ma in seguito.
 
 La chiamata alla funzione da inizio al caricamento dello script, poi l'esecuzione continua. Mentre lo script sta caricando, il codice sotto potrebbe finire l'esecuzione, e se il caricamento richiede tempo, anche altri script potrebbero venire eseguiti nel frattempo.
+=======
+It appends to the document the new, dynamically created, tag `<script src="…">` with given `src`. The browser automatically starts loading it and executes when complete.
+
+We can use this function like this:
+
+```js
+// load and execute the script at the given path
+loadScript('/my/script.js');
+```
+
+The script is executed "asynchronously", as it starts loading now, but runs later, when the function has already finished.
+
+If there's any code below `loadScript(…)`, it doesn't wait until the script loading finishes.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 ```js
 loadScript('/my/script.js');
@@ -33,7 +68,11 @@ loadScript('/my/script.js');
 // ...
 ```
 
+<<<<<<< HEAD
 Ora diciamo che vogliamo eseguire il nuovo script quando carica. Probabilmente dichiarerà nuove funzioni, quindi vorremmo eseguirle.
+=======
+Let's say we need to use the new script as soon as it loads. It declares new functions, and we want to run them.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 Ma se lo facciamo immediatamente dopo la chiamata `loadScript(…)` non funzionerebbe:
 
@@ -88,15 +127,24 @@ function loadScript(src, callback) {
 
 *!*
 loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', script => {
+<<<<<<< HEAD
   alert(`Cool, the ${script.src} is loaded`);
   alert( _ ); // funzione dichiatata nello script caricato
+=======
+  alert(`Cool, the script ${script.src} is loaded`);
+  alert( _ ); // function declared in the loaded script
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 });
 */!*
 ```
 
 Questo è lo stile di programmazione asincrona "callback-based". Una funzione che fa qualcosa asincronamente dovrebbe prevedere un argomento `callback` in cui mettiamo la funzione da eseguire al completamento dell'operazione asincrona.
 
+<<<<<<< HEAD
 In questo esempio lo abbiamo fatto in `loadScript` ma, ovviamente, è un approccio generale.
+=======
+Here we did it in `loadScript`, but of course it's a general approach.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 ## Callback dentro callback
 
@@ -146,7 +194,7 @@ Negli esempi precedenti non abbiamo considerato gli errori. Cosa accade se il ca
 
 Ecco una versione migliorata di `loadScript` che traccia gli errori di caricamento:
 
-```js run
+```js
 function loadScript(src, callback) {
   let script = document.createElement('script');
   script.src = src;
@@ -220,9 +268,37 @@ Nel codice sopra:
 2. Carichiamo `2.js`, poi se non ci sono errori.
 3. Carichiamo `3.js`, poi se non ci sono errori -- facciamo qualcos'altro `(*)`.
 
+<<<<<<< HEAD
 Mano a mano che le chiamate diventano più annidate, il codice diventa più profondo e via via più complicato da gestire, specialmente se abbiamo codice reale invece di `...`, che può includere più cicli, condizioni e così via.
+=======
+As calls become more nested, the code becomes deeper and increasingly more difficult to manage, especially if we have real code instead of `...` that may include more loops, conditional statements and so on.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 Questo viene chiamato "callback hell" o "pyramid of doom."
+
+<!--
+loadScript('1.js', function(error, script) {
+  if (error) {
+    handleError(error);
+  } else {
+    // ...
+    loadScript('2.js', function(error, script) {
+      if (error) {
+        handleError(error);
+      } else {
+        // ...
+        loadScript('3.js', function(error, script) {
+          if (error) {
+            handleError(error);
+          } else {
+            // ...
+          }
+        });
+      }
+    })
+  }
+});
+-->
 
 ![](callback-hell.svg)
 
@@ -266,7 +342,11 @@ Visto? Fa la stessa cosa, e non ci sono annidamenti profondi perché abbiamo res
 
 Funziona ma il codice sembra un foglio di lavoro diviso. È difficile da leggere e probabilmente hai notato che bisogna saltare con lo sguardo tra i vari pezzi quando lo si legge. Non è conveniente, in particolare se il lettore non è familiare con il codice e non sa dove saltare con lo sguardo.
 
+<<<<<<< HEAD
 Inoltre, le funzioni chiamate `step*` sono tutte usate una sola volta, sono create solo per evitare la "pyramid of doom." Nessuno le riutilizzerà al di fuori della catena di azioni. Quindi abbiamo un po' di inquinamento del namespace.
+=======
+Also, the functions named `step*` are all of single use, they are created only to avoid the "pyramid of doom." No one is going to reuse them outside of the action chain. So there's a bit of namespace cluttering here.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 Ci piacerebbe avere qualcosa di meglio.
 

@@ -58,9 +58,8 @@ From an outside code, the wrapped `slow` function still does the same. It just g
 To summarize, there are several benefits of using a separate `cachingDecorator` instead of altering the code of `slow` itself:
 
 - The `cachingDecorator` is reusable. We can apply it to another function.
-- The caching logic is separate, it did not increase the complexity of `slow` itself (if there were any).
+- The caching logic is separate, it did not increase the complexity of `slow` itself (if there was any).
 - We can combine multiple decorators if needed (other decorators will follow).
-
 
 ## Using "func.call" for the context
 
@@ -76,7 +75,7 @@ let worker = {
   },
 
   slow(x) {
-    // actually, there can be a scary CPU-heavy task here  
+    // scary CPU-heavy task here  
     alert("Called with " + x);
     return x * this.someMethod(); // (*)
   }
@@ -150,8 +149,8 @@ let user = { name: "John" };
 let admin = { name: "Admin" };
 
 // use call to pass different objects as "this"
-sayHi.call( user ); // this = John
-sayHi.call( admin ); // this = Admin
+sayHi.call( user ); // John
+sayHi.call( admin ); // Admin
 ```
 
 And here we use `call` to call `say` with the given context and phrase:
@@ -168,9 +167,7 @@ let user = { name: "John" };
 say.call( user, "Hello" ); // John: Hello
 ```
 
-
 In our case, we can use `call` in the wrapper to pass the context to the original function:
-
 
 ```js run
 let worker = {
@@ -212,7 +209,7 @@ To make it all clear, let's see more deeply how `this` is passed along:
 2. So when `worker.slow(2)` is executed, the wrapper gets `2` as an argument and `this=worker` (it's the object before dot).
 3. Inside the wrapper, assuming the result is not yet cached, `func.call(this, x)` passes the current `this` (`=worker`) and the current argument (`=2`) to the original method.
 
-## Going multi-argument with "func.apply"
+## Going multi-argument
 
 Now let's make `cachingDecorator` even more universal. Till now it was working only with single-argument functions.
 
@@ -239,7 +236,7 @@ There are many solutions possible:
 
 For many practical applications, the 3rd variant is good enough, so we'll stick to it.
 
-Also we need to replace `func.call(this, x)` with `func.call(this, ...arguments)`, to pass all arguments to the wrapped function call, not just the first one.
+Also we need to pass not just `x`, but all arguments in `func.call`. Let's recall that in a `function()` we can get a pseudo-array of its arguments as `arguments`, so `func.call(this, x)` should be replaced with `func.call(this, ...arguments)`.
 
 Here's a more powerful `cachingDecorator`:
 
@@ -280,12 +277,14 @@ alert( worker.slow(3, 5) ); // works
 alert( "Again " + worker.slow(3, 5) ); // same (cached)
 ```
 
-Now it works with any number of arguments.
+Now it works with any number of arguments (though the hash function would also need to be adjusted to allow any number of arguments. An interesting way to handle this will be covered below).
 
 There are two changes:
 
 - In the line `(*)` it calls `hash` to create a single key from `arguments`. Here we use a simple "joining" function that turns arguments `(3, 5)` into the key `"3,5"`. More complex cases may require other hashing functions.
 - Then `(**)` uses `func.call(this, ...arguments)` to pass both the context and all arguments the wrapper got (not just the first one) to the original function.
+
+## func.apply
 
 Instead of `func.call(this, ...arguments)` we could use `func.apply(this, arguments)`.
 
@@ -302,18 +301,18 @@ The only syntax difference between `call` and `apply` is that `call` expects a l
 So these two calls are almost equivalent:
 
 ```js
-func.call(context, ...args); // pass an array as list with spread operator
-func.apply(context, args);   // is same as using apply
+func.call(context, ...args); // pass an array as list with spread syntax
+func.apply(context, args);   // is same as using call
 ```
 
-There's only a minor difference:
+There's only a subtle difference:
 
-- The spread operator `...` allows to pass *iterable* `args` as the list to `call`.
+- The spread syntax `...` allows to pass *iterable* `args` as the list to `call`.
 - The `apply` accepts only *array-like* `args`.
 
-So, these calls complement each other. Where we expect an iterable, `call` works, where we expect an array-like, `apply` works.
+So, where we expect an iterable, `call` works, and where we expect an array-like, `apply` works.
 
-And for objects that are both iterable and array-like, like a real array, we technically could use any of them, but `apply` will probably be faster, because most JavaScript engines internally optimize it better.
+And for objects that are both iterable and array-like, like a real array, we can use any of them, but `apply` will probably be faster, because most JavaScript engines internally optimize it better.
 
 Passing all arguments along with the context to another function is called *call forwarding*.
 
@@ -347,7 +346,7 @@ function hash(args) {
 }
 ```
 
-...Unfortunately, that won't work. Because we are calling `hash(arguments)` and `arguments` object is both iterable and array-like, but not a real array.
+...Unfortunately, that won't work. Because we are calling `hash(arguments)`, and `arguments` object is both iterable and array-like, but not a real array.
 
 So calling `join` on it would fail, as we can see below:
 
@@ -375,7 +374,7 @@ hash(1, 2);
 
 The trick is called *method borrowing*.
 
-We take (borrow) a join method from a regular array `[].join`. And use `[].join.call` to run it in the context of `arguments`.
+We take (borrow) a join method from a regular array (`[].join`) and use `[].join.call` to run it in the context of `arguments`.
 
 Why does it work?
 
@@ -393,11 +392,19 @@ Taken from the specification almost "as-is":
 
 So, technically it takes `this` and joins `this[0]`, `this[1]` ...etc together. It's intentionally written in a way that allows any array-like `this` (not a coincidence, many methods follow this practice). That's why it also works with `this=arguments`.
 
+## Decorators and function properties
+
+It is generally safe to replace a function or a method with a decorated one, except for one little thing. If the original function had properties on it, like `func.calledCount` or whatever, then the decorated one will not provide them. Because that is a wrapper. So one needs to be careful if one uses them.
+
+E.g. in the example above if `slow` function had any properties on it, then `cachingDecorator(slow)` is a wrapper without them.
+
+Some decorators may provide their own properties. E.g. a decorator may count how many times a function was invoked and how much time it took, and expose this information via wrapper properties.
+
+There exists a way to create decorators that keep access to function properties, but this requires using a special `Proxy` object to wrap a function. We'll discuss it later in the article <info:proxy#proxy-apply>.
+
 ## Summary
 
 *Decorator* is a wrapper around a function that alters its behavior. The main job is still carried out by the function.
-
-It is generally safe to replace a function or a method with a decorated one, except for one little thing. If the original function had properties on it, like `func.calledCount` or whatever, then the decorated one will not provide them. Because that is a wrapper. So one needs to be careful if one uses them. Some decorators provide their own properties.
 
 Decorators can be seen as "features" or "aspects" that can be added to a function. We can add one or add many. And all this without changing its code!
 

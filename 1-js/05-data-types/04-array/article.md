@@ -123,7 +123,11 @@ Per gli stack, l'ultimo elemento inserito viene prelevato per primo, questo comp
 
 Gli array in JavaScript possono implementare sia una queue che uno stack. C'è la possibilità di aggiungere/rimuovere elementi sia in cima che in coda.
 
+<<<<<<< HEAD
 In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/wiki/Double-ended_queue).
+=======
+In computer science the data structure that allows this, is called [deque](https://en.wikipedia.org/wiki/Double-ended_queue).
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 **Metodi che operano sulla coda di un array:**
 
@@ -156,7 +160,7 @@ In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/
 `shift`
 : Estrae il primo elemento dell'array e lo ritorna:
 
-    ```js
+    ```js run
     let fruits = ["Apple", "Orange", "Pear"];
 
     alert( fruits.shift() ); // rimuove Apple e lo ritorna con alert
@@ -167,7 +171,7 @@ In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/
 `unshift`
 : Aggiunge l'elemento in testa dell'array:
 
-    ```js
+    ```js run
     let fruits = ["Orange", "Pear"];
 
     fruits.unshift('Apple');
@@ -194,7 +198,11 @@ Equivale a `obj[key]`, dove `arr` è l'oggetto, mentre i numeri vengono utilizza
 
 Inoltre estendono gli oggetti fornendo speciali metodi per operare ordinatamente su collezioni di dati, e contengono la proprietà `length`. Ma internamente rimane sempre un oggetto.
 
+<<<<<<< HEAD
 Ricordate, ci sono solo 7 tipi di base in JavaScript. Gli array sono oggetti e si comportano come tali. 
+=======
+Remember, there are only eight basic data types in JavaScript (see the [Data types](https://javascript.info/types) chapter for more info). Array is an object and thus behaves like an object.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 Ad esempio, vengono copiati per riferimento:
 

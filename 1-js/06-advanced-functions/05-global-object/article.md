@@ -5,7 +5,11 @@ L'oggetto globale fornisce variabili e funzioni che sono accessibili in qualsias
 
 In un browser l'ambiente si chiama `window`, per Node.js viene detto `global`, negli altri ambienti si usano diversi termini.
 
+<<<<<<< HEAD
 Recentemente, è stato aggiunto al linguaggio `globalThis`, come nome standart per l'oggetto globale, il quale dovrebbe essere supportato da tutti gli ambienti. In alcuni browser, ad esempio Edge, `globalThis` non è ancora supportato.
+=======
+Recently, `globalThis` was added to the language, as a standardized name for a global object, that should be supported across all environments. It's supported in all major  browsers.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
 
 Tutte le proprietà dell'oggetto globale possono essere raggiunte direttamente:
 
@@ -84,4 +88,11 @@ if (!window.Promise) {
 - Dovremmo memorizzare valori nell'oggetto globale solamente se questi hanno realmente uno scopo globale.
 - In ambiente browser, senza l'utilizzo dei [moduli](info:modules), una variabile globale dichiarata tramite `var` diventa una proprietà dell'oggetto globale.
 
+<<<<<<< HEAD
     Per rendere il codice più semplice da interpretare e aggiornare, dovremmo accedere all'oggetto globale come `window.x`.
+=======
+    ...But more often is referred by "old-school" environment-specific names, such as `window` (browser) and `global` (Node.js).
+- We should store values in the global object only if they're truly global for our project. And keep their number at minimum.
+- In-browser, unless we're using [modules](info:modules), global functions and variables declared with `var` become a property of the global object.
+- To make our code future-proof and easier to understand, we should access properties of the global object directly, as `window.x`.
+>>>>>>> f830bc5d9454d85829e011d914f215eb5896579a
