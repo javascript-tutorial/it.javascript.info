@@ -4,7 +4,11 @@ Vediamo cosa rende JavaScript così speciale, cosa è possibile ottenere tramite
 
 ## Cos'è JavaScript?
 
+<<<<<<< HEAD
 *JavaScript* è stato creato con lo scopo di *"dare vita alle pagine web"*.
+=======
+*JavaScript* was initially created to "make web pages alive".
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 I programmi che sfruttano questo linguaggio vengono chiamati *script*. Possono essere scritti direttamente nel documento HTML ed eseguiti in automatico al caricamento della pagina.
 
@@ -12,8 +16,13 @@ Gli script vengono scritti ed eseguiti come testo semplice. Infatti non richiedo
 
 In questo aspetto, JavaScript è molto differente da un altro linguaggio chiamato [Java](https://en.wikipedia.org/wiki/Java_(programming_language)).
 
+<<<<<<< HEAD
 ```smart header="Perchè <u>Java</u>Script?"
 In origine JavaScript aveva un altro nome: "Live Script". In quel periodo Java era molto popolare, per questo si è pensato che identificare questo linguaggio come il suo "fratello minore" di Java potesse aiutare.
+=======
+```smart header="Why is it called <u>Java</u>Script?"
+When JavaScript was created, it initially had another name: "LiveScript". But Java was very popular at that time, so it was decided that positioning a new language as a "younger brother" of Java would help.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 Evolvendosi, JavaScript è diventato un linguaggio completamente indipendente, con delle specifiche personali chiamate [ECMAScript](http://en.wikipedia.org/wiki/ECMAScript), e adesso non ha quasi nulla in comune con Java.
 ```
@@ -35,11 +44,15 @@ I nomi citati sopra possono essere utili da ricordare, poichè si possono trovar
 Il funzionamento di questi motori è complicato, ma i concetti alla base sono semplici.
 
 
+<<<<<<< HEAD
 1. I motori (integrati nei browser) leggono ("analizzano") lo script.
 2. Successivamente convertono ("compilano") lo script in linguaggio macchina.
 3. Infine il codice macchina viene eseguito, molto rapidamente.
 
 Il motore applica ottimizzazioni ad ogni passo del processo. Anche durante l'esecuzione dello script già compilato, il motore analizza il flusso dati e applica ottimizzazioni al codice macchina. Nonostante tutto lo script risulta molto veloce.
+=======
+The engine applies optimizations at each step of the process. It even watches the compiled script as it runs, analyzes the data that flows through it, and further optimizes the machine code based on that knowledge.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 ```
 
 ## Cosa può fare JavaScript a livello browser?
@@ -64,7 +77,11 @@ Le possibilità di JavaScript nel browser sono limitate per la sicurezza dell'ut
 
 Degli esempi di queste restrizioni possono essere:
 
+<<<<<<< HEAD
 - JavaScript in una pagina web non può leggere o scrivere in qualsiasi file nell'hard disk, ne copiare o eseguire programmi. Non ha accesso diretto alle funzioni di sistema.
+=======
+- JavaScript on a webpage may not read/write arbitrary files on the hard disk, copy them or execute programs. It has no direct access to OS functions.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
     I moderni browser gli consentono di lavorare con i file, sempre con un accesso limitato e comunque solo se il comando proviene da utente, come il "dropping" di un file nella finestra del browser, o con la selezione  tramite il tag `<input>`.
 
@@ -109,10 +126,18 @@ Gli strumenti moderni rendono la conversione molto veloce e pulita, consentendo 
 
 Esempi di alcuni linguaggi:
 
+<<<<<<< HEAD
 - [CoffeeScript](http://coffeescript.org/) è un linguaggio con sintassi "leggera" per JavaScript, introduce una sintassi più breve, consente di scirvere codice più pulito e preciso. Amato dagli sviluppatori provenienti da Ruby.
 - [TypeScript](http://www.typescriptlang.org/) si occupa di aggiungere "tipizzazione dei dati", per semplificare lo sviluppo e supportare sistemi più complessi. E' stato sviluppato da Microsoft.
 - [Flow](http://flow.org/) anche'esso aggiunge la tipizzazione dei dati, ma in un modo differente. Sviluppato da Facebook.
 - [Dart](https://www.dartlang.org/) è un linguaggio autonomo che possiede il suo motore che esegue in ambienti esterni al browser (come mobile apps). E' stato introdotto da Google come alternativa a JavaScript, ma attualmente, i browser richiedono la conversione in JavaScript, proprio come i precedenti.
+=======
+- [CoffeeScript](http://coffeescript.org/) is a "syntactic sugar" for JavaScript. It introduces shorter syntax, allowing us to write clearer and more precise code. Usually, Ruby devs like it.
+- [TypeScript](http://www.typescriptlang.org/) is concentrated on adding "strict data typing" to simplify the development and support of complex systems. It is developed by Microsoft.
+- [Flow](http://flow.org/) also adds data typing, but in a different way. Developed by Facebook.
+- [Dart](https://www.dartlang.org/) is a standalone language that has its own engine that runs in non-browser environments (like mobile apps), but also can be transpiled to JavaScript. Developed by Google.
+- [Brython](https://brython.info/) is a Python transpiler to JavaScript that allow to write application in pure Python without JavaScript.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 Ce ne sono molti altri. Ovviamente se utilizziamo uno di questi linguaggi, dovremmo almeno conoscere JavaScript, per comprendere cosa stiamo facendo.
 

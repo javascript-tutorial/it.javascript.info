@@ -7,7 +7,13 @@ I Cookies vengono solitamente impostati dal web-server utilizzando l'HTTTP-heade
 il browser li aggiunge automaticamente a (quasi) ogni richiesta dello stesso dominio che sta utilizzando `Cookie` HTTP-header.
 
 
+<<<<<<< HEAD
 Uno degli usi più comune è l'autenticazione:
+=======
+1. Upon sign in, the server uses `Set-Cookie` HTTP-header in the response to set a cookie with a unique "session identifier".
+2. Next time when the request is set to the same domain, the browser sends the cookie over the net using `Cookie` HTTP-header.
+3. So the server knows who made the request.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 1 In seguito al log-in, il server usa l'HTTP-header `Set-Cookie` in risposta all'impostazione del cookie che abbia un unico
 "identificativo di sessione".
@@ -80,10 +86,16 @@ alert(document.cookie); // ...; my%20name=John%20Smith
 
 
 ```warn header="Limitations"
+<<<<<<< HEAD
  Ci sono alcune limitazioni:
 -La coppia `name=value`, in seguito a 'encodeURIComponent', non dovrebbe essere più grande di 4kb. Cosi non manterremo
  nulla di troppo grande in un cookie.
 - Il numero totale di cookies per dominio è limitato a circa 20+, ma il limite esatto dipende dal browser.
+=======
+There are few limitations:
+- The `name=value` pair, after `encodeURIComponent`, should not exceed 4KB. So we can't store anything huge in a cookie.
+- The total number of cookies per domain is limited to around 20+, the exact limit depends on a browser.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 ```
 
 I Cookies hanno diverse opzioni, molte di queste sono importanti e dovrebbero essere impostate.
@@ -178,7 +190,7 @@ document.cookie = "user=John; max-age=3600";
 
 // cancella cookie (lascialo scadere in questo istante)
 document.cookie = "user=John; max-age=0";
-```  
+```
 
 ## secure
 
@@ -211,6 +223,10 @@ Immagina di effettuare il log in nel sito `bank.com`. In questo caso hai un cook
 
 Ora, mentre stai navigando sul web su un altra finestra, occasionalmente potresti imbatterti nel sito `evil.com`. Questo sito ha un codice JavaScript che invia un form `<form action="https://bank.com/pay">` al sito `bank.com` con campi che iniziano una transazione verso l'account dell'hacker.
 
+<<<<<<< HEAD
+=======
+Now, while browsing the web in another window, you accidentally come to another site `evil.com`. That site has JavaScript code that submits a form `<form action="https://bank.com/pay">` to `bank.com` with fields that initiate a transaction to the hacker's account.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 Il browser invia i cookies ogni volta che visiti il sito `bank.com`, anche se la richiesta proviene da `evil.com`. In questo modo, la banca pensa che sia tu a effettuare i pagamenti.
 
@@ -271,7 +287,11 @@ Quindi, ciò che `samesite=lax` fa è semplicemente garantire alla più comune o
 
 Ma qualsiasi cosa più complicata, come una richiesta network da un altro sito o una richiesta di modulo, perde i cookie.
 
+<<<<<<< HEAD
 Se questo sta bene a te, aggiungere `samesite=lax` probabilmente non incrinerà l'esperienza utente e, allo stesso tempo, aggiungerà protezione.
+=======
+But anything more complicated, like a network request from another site or a form submission loses cookies.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 Nel complesso, `samesite` è un ottima opzione ma ha degli svantaggi:
 
@@ -337,7 +357,7 @@ function setCookie(name, value, options = {}) {
     ...options
   };
 
-  if (options.expires.toUTCString) {
+  if (options.expires instanceof Date) {
     options.expires = options.expires.toUTCString();
   }
 
@@ -441,10 +461,17 @@ GDPR non riguarda solo i cookies, ma anche altri problemi legati alla privacy, m
 
 ## Summary
 
+<<<<<<< HEAD
 `document.cookie` provvede accesso ai cookies
 - scrive operazioni di modifica solo nei cookies menzionati al suo interno.
 - name/value devono essere codificati.
 - un cookie fino a 4kb, 20+cookies per sito(dipende dal browser).
+=======
+`document.cookie` provides access to cookies
+- write operations modify only cookies mentioned in it.
+- name/value must be encoded.
+- one cookie up to 4KB, 20+ cookies per site (depends on a browser).
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 Opzioni del cookie:
 - `path=/`, il percorso di default, rende il cookie visibile solo all'interno di quel percorso.

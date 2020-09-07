@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Test automatici con mocha
+=======
+# Automated testing with Mocha
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 Il test automatico sarà utilizzato per molte attività.
 
@@ -79,7 +83,11 @@ Il flusso di sviluppo solitamente segue i passi:
 
 Quindi la fase di sviluppo è *iterativa*. Scriviamo la specifica, la implementiamo, ci accertiamo che passi i test, ci assicuriamo che faccia ciò che deve. Al termine di questa procedura avremmo un implementazione già testata e funzionante.
 
+<<<<<<< HEAD
 Nel nostro caso, il primo step è completo: abbiamo un specifica iniziale di `pow`. Quindi ora passiamo all'implementazione. Come prima cosa facciamo l'esecuzione "zero" con le specifiche scritte, per essere sicuri che tutto funzioni (ovviamente dovrebbero tutte fallire).
+=======
+The first step is already complete: we have an initial spec for `pow`. Now, before making the implementation, let's use few JavaScript libraries to run the tests, just to see that they are working (they will all fail).
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 ## La spec in azione
 
@@ -159,8 +167,8 @@ Possiamo selezionare uno dei due metodi per organizzare i test:
         assert.equal(pow(2, 3), 8);
       });
 
-      it("3 raised to power 3 is 27", function() {
-        assert.equal(pow(3, 3), 27);
+      it("3 raised to power 4 is 81", function() {
+        assert.equal(pow(3, 4), 81);
       });
 
     });
@@ -182,7 +190,11 @@ Il risultato:
 
 [iframe height=250 src="pow-2" edit border="1"]
 
+<<<<<<< HEAD
 Proprio come ci aspettavamo, il secondo test è fallito. Ovvio, la nostra funzione ritorna sempre `8`, mentre l'`assert` si aspetta `27`.
+=======
+As we could expect, the second test failed. Sure, our function always returns `8`, while the `assert` expects `81`.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 ## Migliorare l'implementazione
 

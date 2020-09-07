@@ -6,7 +6,12 @@ Possiedono dei metodi per fare ciò. Molto presto li studieremo, prima dobbiamo 
 
 Vediamo quali sono i punti chiave che distinguono i tipi primitivi dagli oggetti.
 
+<<<<<<< HEAD
 Un primitivo
+=======
+- Is a value of a primitive type.
+- There are 7 primitive types: `string`, `number`, `bigint`, `boolean`, `symbol`, `null` and `undefined`.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 - E' un valore di tipo primitivo.
 - Ci sono 6 tipi primitivi: `string`, `number`, `boolean`, `symbol`, `null` e `undefined`.
@@ -52,7 +57,11 @@ La soluzione sembra un po' strana:
 
 Gli "oggetti contenitore" sono diversi per ogni primitiva e sono chiamati: `String`, `Number`, `Boolean` e `Symbol`. Questi forniscono diversi insiemi di metodi.
 
+<<<<<<< HEAD
 Ad esempio, esiste un metodo [str.toUpperCase()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) che ritorna la stringa con la prima lettera maiuscola.
+=======
+For instance, there exists a string method [str.toUpperCase()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) that returns a capitalized `str`.
+>>>>>>> 58f6599df71b8d50417bb0a52b1ebdc995614017
 
 Funziona in questo modo:
 
