@@ -12,7 +12,11 @@ let formData = new FormData([form]);
 
 Se l'elemento HTML `form` è presente, esso catturerà automaticamente tutti i relativi campi.
 
+<<<<<<< HEAD
 La cosa interessante è che i metodi per le richieste di rete, come ad esempio `fetch`, possono accettare gli oggetti `FormData` come body della richiesta. Essi sono codificati ed inviati come `Content-Type: form/multipart`. 
+=======
+The special thing about `FormData` is that network methods, such as `fetch`, can accept a `FormData` object as a body. It's encoded and sent out with `Content-Type: multipart/form-data`.
+>>>>>>> ff152b126ec70a9de919bfdc1913215539d37187
 
 Dal punto di vista del server, quindi risultano essere dei comuni invii di form.
 
@@ -53,15 +57,27 @@ In questo esempio, non è indicato il codice server-side, dato che va oltre il n
 
 Possiamo modificare i campi in `FormData` con i seguenti metodi:
 
+<<<<<<< HEAD
 - `formData.append(name, value)` - aggiunge un campo del form fornendo `name` e `value`,
 - `formData.append(name, blob, fileName)` - aggiunge un campo come se fosse `<input type="file">`, il terzo argomento `fileName` imposta il nome del file (non il nome del campo), che corrisponderebbe al nome del file nel filesystem dell'utente,
 - `formData.delete(name)` - rimuove il campo fornendo il relativo `name`,
 - `formData.get(name)` - recupera il valore di un campo fornendo il relativo `name`,
 - `formData.has(name)` - se esiste il campo con il relativo `name` ritorna `true`, altrimenti `false`
+=======
+- `formData.append(name, value)` - add a form field with the given `name` and `value`,
+- `formData.append(name, blob, fileName)` - add a field as if it were `<input type="file">`, the third argument `fileName` sets file name (not form field name), as it were a name of the file in user's filesystem,
+- `formData.delete(name)` - remove the field with the given `name`,
+- `formData.get(name)` - get the value of the field with the given `name`,
+- `formData.has(name)` - if there exists a field with the given `name`, returns `true`, otherwise `false`
+>>>>>>> ff152b126ec70a9de919bfdc1913215539d37187
 
 Un form è tecnicamente autorizzato ad avere più campi con lo stesso attributo `name`, di conseguenza più chiamate al metodo `append` aggiungeranno più campi con lo stesso `name`.
 
+<<<<<<< HEAD
 C'è anche il metodo `set` che ha la stessa sintassi di `append`. La differenza è che `set` rimuove tutti i campi con il relativo `name` e successivamente crea un nuovo campo. Così facendo si può essere sicuri che ci sarà un solo campo con l'attributo `name` indicato. Per il resto è esattamente come il metodo `append`:
+=======
+There's also method `set`, with the same syntax as `append`. The difference is that `.set` removes all fields with the given `name`, and then appends a new field. So it makes sure there's only one field with such `name`, the rest is just like `append`:
+>>>>>>> ff152b126ec70a9de919bfdc1913215539d37187
 
 - `formData.set(name, value)`,
 - `formData.set(name, blob, fileName)`.
@@ -81,7 +97,11 @@ for(let [name, value] of formData) {
 
 ## Inviare un form con un file
 
+<<<<<<< HEAD
 Il form è sempre inviato come `Content-Type: form/multipart`, che è la codifica che consente l'invio di files. Così, i campi `<input type="file">` verranno inviati in modo simile all'invio di un normale form.
+=======
+The form is always sent as `Content-Type: multipart/form-data`, this encoding allows to send files. So, `<input type="file">` fields are sent also, similar to a usual form submission.
+>>>>>>> ff152b126ec70a9de919bfdc1913215539d37187
 
 Ecco un esempio con un form di questo tipo:
 

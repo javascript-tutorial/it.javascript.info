@@ -26,7 +26,7 @@ let n = prompt("n?", "");
 
 if (n < 0) {
   alert(`Power ${n} is not supported,
-    please enter an integer number, greater than 0`);
+    please enter a non-negative integer number`);
 } else {
   alert( pow(x, n) );
 }
@@ -84,7 +84,31 @@ In sintesi:
 
 ### Lunghezza della riga
 
+<<<<<<< HEAD
 Nessuno ama leggere lunghe righe orizzontali di codice. Una buona norma è dividere le righe più lunghe in qualcosa di più breve.
+=======
+For example:
+```js
+// backtick quotes ` allow to split the string into multiple lines
+let str = `
+  ECMA International's TC39 is a group of JavaScript developers,
+  implementers, academics, and more, collaborating with the community
+  to maintain and evolve the definition of JavaScript.
+`;
+```
+
+And, for `if` statements:
+
+```js
+if (
+  id === 123 &&
+  moonPhase === 'Waning Gibbous' &&
+  zodiacSign === 'Libra'
+) {
+  letTheSorceryBegin();
+}
+```
+>>>>>>> ff152b126ec70a9de919bfdc1913215539d37187
 
 La lunghezza massima dovrebbe essere accordata a livello di team. Solitamente tra gli 80-120 caratteri.
 
@@ -267,7 +291,7 @@ Certamente, un team può utilizzare il proprio stile guida. Molte volte non serv
 
 Alcune delle scelte più popolari:
 
-- [Google JavaScript Style Guide](https://google.github.io/styleguide/javascriptguide.xml)
+- [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
 - [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 - [Idiomatic.JS](https://github.com/rwaldron/idiomatic.js)
 - [StandardJS](https://standardjs.com/)

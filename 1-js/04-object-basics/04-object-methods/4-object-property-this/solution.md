@@ -7,7 +7,7 @@ function makeUser() {
     name: "John",
     ref: this
   };
-};
+}
 
 let user = makeUser();
 
@@ -22,7 +22,22 @@ E gli oggetti letterali non hanno alcun effetto su `this`. Il valore di `this` Ã
 
 Quindi `ref: this` prende il `this` della funzione.
 
+<<<<<<< HEAD
 Qui abbiamo il caso opposto:
+=======
+We can rewrite the function and return the same `this` with `undefined` value: 
+
+```js run
+function makeUser(){
+  return this; // this time there's no object literal
+}
+
+alert( makeUser().name ); // Error: Cannot read property 'name' of undefined
+```
+As you can see the result of `alert( makeUser().name )` is the same as the result of `alert( user.ref.name )` from the previous example.
+
+Here's the opposite case:
+>>>>>>> ff152b126ec70a9de919bfdc1913215539d37187
 
 ```js run
 function makeUser() {
@@ -34,7 +49,7 @@ function makeUser() {
     }
 */!*
   };
-};
+}
 
 let user = makeUser();
 

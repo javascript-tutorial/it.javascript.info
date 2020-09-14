@@ -1,8 +1,13 @@
 # Codice ninja
 
 
+<<<<<<< HEAD
 ```quote author="Confucio"
 Imparare senza pensare è lavoro sprecata; pensare senza imparare è pericoloso.
+=======
+```quote author="Confucius (Analects)"
+Learning without thought is labor lost; thought without learning is perilous.
+>>>>>>> ff152b126ec70a9de919bfdc1913215539d37187
 ```
 I programmatori ninja in passato hanno usato queste tecniche per formare le menti dei manutentori del codice.
 
@@ -41,7 +46,11 @@ Insegnategli che la brevità è sempre la cosa migliore. Iniziatelo al percorso 
 Il Dao si nasconde nel silenzio. Solo il Dao è completo.
 ```
 
+<<<<<<< HEAD
 Un altro metodo per programmare velocemente è utilizzare nomi di variabili a singola carattere ovunque. Come `a`, `b` o `c`.
+=======
+Another way to code shorter is to use single-letter variable names everywhere. Like `a`, `b` or `c`.
+>>>>>>> ff152b126ec70a9de919bfdc1913215539d37187
 
 Una variabile molto breve sparirà nel codice come un vero ninja scompare nella foresta. Nessuno sarà in grado di ritrovarla, nemmeno utilizzando il tasto "cerca". E se qualcuno mai riuscirà a trovarla non "decifrerà" ma il vero significato di `a` o `b`.
 
@@ -102,8 +111,13 @@ Una rapida lettura di un codice del genere diventerà impossibile. E quando ci s
 
 ## Sinonimi intelligenti
 
+<<<<<<< HEAD
 ```quote author="Confucio"
 La cosa più difficile al mondo è trovare un gatto nero in una stanza buia, specialmente se il gatto non c'è.
+=======
+```quote author="Laozi (Tao Te Ching)"
+The Tao that can be told is not the eternal Tao. The name that can be named is not the eternal name.
+>>>>>>> ff152b126ec70a9de919bfdc1913215539d37187
 ```
 
 Utilizzare nomi *simili* per la *stessa* cosa rende la vita più interessante e mostra al pubblico la tua creatività.
