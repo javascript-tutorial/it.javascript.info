@@ -250,7 +250,7 @@ let mutationRecords = observer.takeRecords();
 
 Gli observer utilizzano internamente dei riferimenti deboli ai nodi. Si tratta di questo: se un nodo viene rimosso dal DOM, diventando quindi irraggiungibile, allora diventa eliggibile per la garbage collection, e un observer certamente non lo previene.
 
-## Riassumendo  
+## Riepilogo  
 
 I `MutationObserver` possono reagire alle variazioni nel DOM: attributi, elementi aggiunti/rimossi, contenuto testuale.
 
