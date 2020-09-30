@@ -1,4 +1,4 @@
-# Arrow functions, the basics
+# Funzioni freccia, le basi
 
 Esiste un modo più conciso per creare funzioni in javascript spesso  migliore delle espressioni di funzione.
 
