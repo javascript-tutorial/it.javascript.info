@@ -24,5 +24,10 @@ Come puoi vedere sia `Referer` che `Origin` sono presenti.
 
 Le domande sono:
 
+<<<<<<< HEAD
 1. Perché `Origin` è necessaria se `Referer` possiede la stessa informazione?
 2. È possibile che non ci sia `Referer` o `Origin`, oppure ciò sarebbe scorretto?
+=======
+1. Why `Origin` is needed, if `Referer` has even more information?
+2. Is it possible that there's no `Referer` or `Origin`, or is it incorrect?
+>>>>>>> 181cc781ab6c55fe8c43887a0c060db7f93fb0ca
