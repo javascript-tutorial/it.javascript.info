@@ -1,36 +1,35 @@
 
 # Event loop: microtasks e macrotasks
 
-Il flusso di esecuzione di Javascript, cos&igrave; come quello di Node.js, è basato su un *event loop*.
+Il flusso di esecuzione di Javascript ed anche di Node.js, sono basati sull' *event loop*.
 
-Comprendere come un event loop lavora è importante per le ottimizzazioni, e a volte per creare delle architetture migliori.
+Comprendere come un event loop lavora &egrave; importante per le ottimizzazioni, ed a volte, anche per creare delle architetture migliori.
 
-In questo capitolo, affronteremo i dettagli teorici su come funzionano, quindi, vedremo alcune applicazioni pratiche.
+In questo capitolo affronteremo i dettagli teorici su come funziona, dopodich&egrave; prenderemo in esame alcune applicazioni pratiche.
 
 ## Event Loop
 
-Il concetto di *event loop* è molto semplice. Esiste un loop infinito nel quale il motore di Javascript rimane in attesa di un task (operazione) da eseguire, lo esegue, dopodich&egrave; si rimette in rimane in sleep (inattivo, dormiente, ma pronto per essere eseguito) per altri tasks.
+Il concetto di *event loop* &egrave; molto semplice. Esiste un loop infinito nel quale il motore di Javascript rimane in attesa di un task (operazione) da eseguire, lo esegue, dopodich&egrave; si rimette in attesa per altri tasks. (in sleep, inattivo o dormiente, ma pronto per essere di nuovo richiamato). 
 
-Questo, l'algoritmo generico del motore:
-
+Questo, &egrave; a grandi linee, l'algoritmo del motore:
 1. Fino a quando ci sono task:
     - eseguili, cominciando da quello meno recente.
 2. Rimani in attesa fino a quando non c'&egrave; un altro task da eseguire, quindi vai al passo 1.
 
-Questa è una esposizione di quello che vediamo quando navighiamo una pagina. Il motore di Javascript non fa nulla per la maggiorparte del tempo, va in esecuzione quando si attiva uno script/handler/evento.
+Questa &egrave; una esposizione di quello che vediamo quando navighiamo una pagina. Il motore di Javascript non fa nulla per la maggior parte del tempo, e va in esecuzione quando si attiva uno script/handler/evento.
 
 Esempio di tasks:
 
 - Quando uno script esterno `<script src="...">` viene caricato (load), il task è quello di eseguirlo.
-- Quando un utente sposta il puntatore del mouse, il task è quello di fare il dispatch dell'evento `mousemove` ed eseguirne eventuali handlers (gestori).
+- Quando un utente sposta il puntatore del mouse, il task &egrave; quello di fare il dispatch dell'evento `mousemove` ed eseguirne eventuali handlers (gestori).
 - Quando è scaduto il tempo per `setTimeout` già schedulato, il task è quello di eseguirne la callback.
 - ...e cos&igrave; via.
 
 I task vengono impostati -- il motore li gestisce -- quindi rimane in attesa per altri tasks (nel frattempo rimane in sleep, consumando risorse della CPU prossime allo zero).
 
-Potrebbe succedere che mentre il motore è occupato arrivi un task, in questo caso, questo viene messo in coda.
+Però potrebbe succedere che mentre il motore è occupato, arrivi un task, in questo caso, questo viene messo in coda.
 
-I task formano una coda, la cosiddetta "macrotask queue" (termine di v8, il motore di Javascript di Chrome e di Node.js):
+I task formano una coda, la cosiddetta "macrotask queue" (termine mutuato V8, il motore Javascript di Chrome e di Node.js):
 
 ![](eventLoop.svg)
 
@@ -54,13 +53,13 @@ Poniamo il caso che abbiamo un task affamato di CPU.
 Per esempio, la syntax-highlighting (usata per colorare ed evidenziare gli esempi del codice in questa pagina) è abbastanza pesante per la CPU.
 Per evidenziare il codice, compie delle analisi, crea molti elementi colorati, e li aggiunge al documento -- un testo di grosse dimensioni può impiegare molto tempo.
 
-While the engine is busy with syntax highlighting, it can't do other DOM-related stuff, process user events, etc. It may even cause the browser to "hiccup" or even "hang" for a bit, which is unacceptable.
+Mentre il motore &egrave; occupato con l'evidenziatura, non pu&ograve; fare le altre cose relative al DOM, processare gli eventi dell'utente, etc. pu&ograve; persino causare "singhiozzamenti" al pc o addirittura "inchiodarlo", la qual cosa &egrave; inaccettabile.
 
-We can evade problems by splitting the big task into pieces. Highlight first 100 lines, then schedule `setTimeout` (with zero-delay) another 100 lines, and so on.
+Possiamo quindi tirarci fuori da questo tipo di problemi, spezzettando i task grossi in piccoli pezzi. Evidenzia le prime 100 righe, quindi schedula un `setTimeout` (con zero-delay) con altre 100 righe, e così via.
 
-To demonstrate the approach, for the sake of simplicity, instead of syntax-highlighting let's take a function that counts from `1` to `1000000000`.
+Per dimostrare questo tipo di approccio, per amore della semplicità, invece di evidenziare una sintassi, prendiamo una funzione che conti i numeri da `1` a `1000000000`
 
-If you run the code below, the engine will "hang" for some time. For server-side JS that's clearly noticeable, and if you are running it in-browser, then try to click other buttons on the page -- you'll see that no other events get handled until the counting finishes.
+Se esegui il codice sotto, il motore si inchioder&agrave; per qualche istante. Per il JS server-side (lato server) questo è chiaramente visibile, e se lo stai eseguendo nella finestra del browser, prova a cliccare gli altri pulsanti -- potrei notare che non verrà gestito nessun altro evento fino a quando il conto non sarà terminato.
 
 ```js run
 let i = 0;
@@ -68,21 +67,20 @@ let i = 0;
 let start = Date.now();
 
 function count() {
-
-  // do a heavy job
+  // fa un lavoro pesante!
   for (let j = 0; j < 1e9; j++) {
     i++;
   }
-
-  alert("Done in " + (Date.now() - start) + 'ms');
+  alert(`Completato in ${(Date.now() - start)} millisecondi`);
 }
 
 count();
 ```
 
-The browser may even show "the script takes too long" warning.
+Il browser potrebbe anche mostrare l'avviso "lo script sta impiegando troppo tempo" the script takes too long".
 
-Let's split the job using nested `setTimeout`:
+
+Dividiamo l'operazione usando un `setTimeout` annidato:
 
 ```js run
 let i = 0;
@@ -90,34 +88,31 @@ let i = 0;
 let start = Date.now();
 
 function count() {
-
-  // do a piece of the heavy job (*)
+  // fai una parte del lavoro pesante (*)
   do {
     i++;
   } while (i % 1e6 != 0);
 
   if (i == 1e9) {
-    alert("Done in " + (Date.now() - start) + 'ms');
+    alert(`Completato in ${(Date.now() - start)} ms`);
   } else {
-    setTimeout(count); // schedule the new call (**)
+    setTimeout(count); //schedula la nuova chiamata a count (**)
   }
-
 }
-
 count();
 ```
 
-Now the browser interface is fully functional during the "counting" process.
+Adesso l'interfaccia del browser &egrave; pienamente funzionante, anche durante il processo di "conteggio".
 
-A single run of `count` does a part of the job `(*)`, and then re-schedules itself `(**)` if needed:
+Una singola esecuzione di `count` fa una parte dell'operazione `(*)`, e rischedula se stessa `(**)` se necessario:
 
-1. First run counts: `i=1...1000000`.
-2. Second run counts: `i=1000001..2000000`.
-3. ...and so on.
+1. La prima esecuzione conta: `i=1...1000000`.
+2. La seconda esecuzione conta: `i=1000001..2000000`.
+3. ...e cos&igrave; via.
 
-Now, if a new side task (e.g. `onclick` event) appears while the engine is busy executing part 1, it gets queued and then executes when part 1 finished, before the next part. Periodic returns to event loop between `count` executions provide just enough "air" for the JavaScript engine to do something else, to react on other user actions.
+Ora, se arriva un nuovo task da eseguire mentre il motore &egrave; occupato ad eseguire il passo 1 (ad esempio un evento `onclick`), quest'ultimo viene messo in coda e viene eseguito subito dopo il completamento del passo 1, e subito prima del passo successivo. Questi periodici "ritorni" all'event loop tra una esecuzione di  `count` e l'altra, fornisce abbastanza "aria" al motore Javascript per occuparsi di qualcos'altro, ad esempio per reagire alle azioni degli utenti.
 
-The notable thing is that both variants -- with and without splitting the job by `setTimeout` -- are comparable in speed. There's no much difference in the overall counting time.
+La cosa ragguardevole è che entrambe le varianti -- con e senza la divsione del lavoro di `setTimeout` -- sono comparabili in termini di tempo. Complessivamente, non esiste molta differenza nel tempo di conteggio.
 
 To make them closer, let's make an improvement.
 
@@ -125,11 +120,8 @@ We'll move the scheduling in the beginning of the `count()`:
 
 ```js run
 let i = 0;
-
 let start = Date.now();
-
 function count() {
-
   // move the scheduling at the beginning
   if (i < 1e9 - 1e6) {
     setTimeout(count); // schedule the new call
