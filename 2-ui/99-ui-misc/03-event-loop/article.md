@@ -67,7 +67,7 @@ let i = 0;
 let start = Date.now();
 
 function count() {
-  // fa un lavoro pesante!
+  //fa un lavoro pesante!
   for (let j = 0; j < 1e9; j++) {
     i++;
   }
@@ -80,7 +80,8 @@ count();
 Il browser potrebbe anche mostrare l'avviso "lo script sta impiegando troppo tempo" the script takes too long".
 
 
-Dividiamo l'operazione usando un `setTimeout` annidato:
+
+Ora, dividiamo l'operazione usando un `setTimeout` annidato:
 
 ```js run
 let i = 0;
@@ -88,7 +89,7 @@ let i = 0;
 let start = Date.now();
 
 function count() {
-  // fai una parte del lavoro pesante (*)
+  //fai una parte del lavoro pesante (*)
   do {
     i++;
   } while (i % 1e6 != 0);
@@ -96,7 +97,7 @@ function count() {
   if (i == 1e9) {
     alert(`Completato in ${(Date.now() - start)} ms`);
   } else {
-    setTimeout(count); //schedula la nuova chiamata a count (**)
+    setTimeout(count);//schedula la nuova chiamata a count (**)
   }
 }
 count();
@@ -114,17 +115,18 @@ Ora, se arriva un nuovo task da eseguire mentre il motore &egrave; occupato ad e
 
 La cosa ragguardevole è che entrambe le varianti -- con e senza la divsione del lavoro di `setTimeout` -- sono comparabili in termini di tempo. Complessivamente, non esiste molta differenza nel tempo di conteggio.
 
-To make them closer, let's make an improvement.
+Per renderli un po' pi&ugrave; facciamo un miglioramento.
 
-We'll move the scheduling in the beginning of the `count()`:
+Posizioneremo la schedualzione all'inizio del `count()`:
+
 
 ```js run
 let i = 0;
 let start = Date.now();
 function count() {
-  // move the scheduling at the beginning
+  //posizioniamo la schedulazione all'inizio
   if (i < 1e9 - 1e6) {
-    setTimeout(count); // schedule the new call
+    setTimeout(count);//scheduliamo la chiamata successiva
   }
 
   do {
@@ -132,34 +134,31 @@ function count() {
   } while (i % 1e6 != 0);
 
   if (i == 1e9) {
-    alert("Done in " + (Date.now() - start) + 'ms');
+    alert(`Completato in ${(Date.now() - start)} ms`);
   }
-
 }
-
 count();
 ```
 
-Now when we start to `count()` and see that we'll need to `count()` more, we schedule that immediately, before doing the job.
+Adesso quando cominciamo con `count()` e vediamo che abbiamo bisogno di richiamarlo più `count()`, lo scheduliamo subito, prima di fare il lavoro.
 
-If you run it, it's easy to notice that it takes significantly less time.
+Se lo esegui, &egrave; facile notare che impiega meno tempo in modo significativo.
 
-Why?  
 
-That's simple: as you remember, there's the in-browser minimal delay of 4ms for many nested `setTimeout` calls. Even if we set `0`, it's `4ms` (or a bit more). So the earlier we schedule it - the faster it runs.
+Perch&egrave;?  
 
-Finally, we've split a CPU-hungry task into parts - now it doesn't block the user interface. And its overall execution time isn't much longer.
+Semplice: come ben sai, c'&egrave; un ritardo minimo di 4ms all'interno del browser per molte chiamate annidate di `setTimeout`. Anche se noi lo settiamo `0`, sar&agrave; di `4ms`  (o qualcosa in pi&ugrave). Quindi, prima lo scheduliamo, più veloce sar&agrave; l'esecuzione. 
+Alla fine, abbiamo diviso un task affamato di CPU in porzioni - e adesso non bloccher&agrave; l'interfaccia utente. E il suo tempo di esecuzione complessivo non &egrave; tanto pi&ugrave; lungo.
 
-## Use case 2: progress indication
+## Caso d'uso 2: Indicazione dei progressi di una operazione
 
-Another benefit of splitting heavy tasks for browser scripts is that we can show progress indication.
+Un altro beneficio di dividere task pesanti per gli script del browser è che possiamo mostrare i progressi di completamento.
 
-Usually the browser renders after the currently running code is complete. Doesn't matter if the task takes a long time. Changes to DOM are painted only after the task is finished.
+Solitamente il browser renderizza dopo che il codice in esecuzine viene completato. Non importa se il task impiega tanto tempo. Le modifice al DOM vengono mostrate solo dopo che il task è terminato.
 
-From one hand, that's great, because our function may create many elements, add them one-by-one to the document and change their styles -- the visitor won't see any "intermediate", unfinished state. An important thing, right?
+Da una parte, questo &egrave; grandioso, perch&egrave; la nostra fuznione pu&ograve; molti elementi, aggiungerli uno alla volta al documento e cambiarne gli stili -- il visitatore non vorrebbe mai vedere uno stadio "intermedio", incompleto. Una cosa importante, giusto?
 
-Here's the demo, the changes to `i` won't show up until the function finishes, so we'll see only the last value:
-
+Qui c'&egrave; la demo, i cambiamenti a `i` non verrano mostrati fino a quando la funzione nno termina, cos&igrave; vedremo solamente l'ultimo valore:
 
 ```html run
 <div id="progress"></div>
@@ -177,11 +176,11 @@ Here's the demo, the changes to `i` won't show up until the function finishes, s
 </script>
 ```
 
-...But we also may want to show something during the task, e.g. a progress bar.
+...Per&ograve; potremmo volere mostrare qualcosa durante il task, ad esempio una barra di progresso.
 
-If we split the heavy task into pieces using `setTimeout`, then changes are painted out in-between them.
+Se noi dividiamo il task pesante in pezzi usando `setTimeout`, allora tra essi, verranno mostrate le variazioni.
 
-This looks prettier:
+Questo sembra più carino:
 
 ```html run
 <div id="progress"></div>
@@ -191,7 +190,7 @@ This looks prettier:
 
   function count() {
 
-    // do a piece of the heavy job (*)
+    // fai un pezzo di lavoro pesante (*)
     do {
       i++;
       progress.innerHTML = i;
@@ -207,7 +206,8 @@ This looks prettier:
 </script>
 ```
 
-Now the `<div>` shows increasing values of `i`, a kind of a progress bar.
+Adesso il `<div>` mostra via via, valori crescenti di `i`, una sorta di barra di caricamento.
+
 
 
 ## Use case 3: doing something after the event
