@@ -210,11 +210,11 @@ Adesso il `<div>` mostra via via, valori crescenti di `i`, una sorta di barra di
 
 
 
-## Use case 3: doing something after the event
+## Caso d'uso 3: fare qualcosa dopo l'evento
 
-In an event handler we may decide to postpone some actions until the event bubbled up and was handled on all levels. We can do that by wrapping the code in zero delay `setTimeout`.
+In un gestore di evento noi potremmo decidere di postporre alcune azioni, fino a che l'evento non risalga i vari livelli di stack (bubbling up) e non venga gestito su tutti questi livelli. Possiamo fare questo, avvolgendo (wrapping) il codice all'interno di `setTimeout` a latenza zero.
 
-In the chapter <info:dispatch-events> we saw an example: custom event `menu-open` is dispatched in `setTimeout`, so that it happens after the "click" event is fully handled.
+Nel capitolo In the chapter <info:dispatch-events> we saw an example: custom event `menu-open` is dispatched in `setTimeout`, so that it happens after the "click" event is fully handled.
 
 ```js
 menu.onclick = function() {
