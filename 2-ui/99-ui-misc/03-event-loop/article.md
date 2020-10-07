@@ -1,56 +1,58 @@
 
-# Event loop: microtasks and macrotasks
+# Event loop: microtasks e macrotasks
 
-Browser JavaScript execution flow, as well as in Node.js, is based on an *event loop*.
+Il flusso di esecuzione di Javascript, cos&igrave; come quello di Node.js, è basato su un *event loop*.
 
-Understanding how event loop works is important for optimizations, and sometimes for the right architecture.
+Comprendere come un event loop lavora è importante per le ottimizzazioni, e a volte per creare delle architetture migliori.
 
-In this chapter we first cover theoretical details about how things work, and then see practical applications of that knowledge.
+In questo capitolo, affronteremo i dettagli teorici su come funzionano, quindi, vedremo alcune applicazioni pratiche.
 
 ## Event Loop
 
-The concept of *event loop* is very simple. There's an endless loop, when JavaScript engine waits for tasks, executes them and then sleeps waiting for more tasks.
+Il concetto di *event loop* è molto semplice. Esiste un loop infinito nel quale il motore di Javascript rimane in attesa di un task (operazione) da eseguire, lo esegue, dopodich&egrave; si rimette in rimane in sleep (inattivo, dormiente, ma pronto per essere eseguito) per altri tasks.
 
-The general algorithm of the engine:
+Questo, l'algoritmo generico del motore:
 
-1. While there are tasks:
-    - execute them, starting with the oldest task.
-2. Sleep until a task appears, then go to 1.
+1. Fino a quando ci sono task:
+    - eseguili, cominciando da quello meno recente.
+2. Rimani in attesa fino a quando non c'&egrave; un altro task da eseguire, quindi vai al passo 1.
 
-That's a formalization for what we see when browsing a page. JavaScript engine does nothing most of the time, only runs if a script/handler/event activates.
+Questa è una esposizione di quello che vediamo quando navighiamo una pagina. Il motore di Javascript non fa nulla per la maggiorparte del tempo, va in esecuzione quando si attiva uno script/handler/evento.
 
-Examples of tasks:
+Esempio di tasks:
 
-- When an external script `<script src="...">` loads, the task is to execute it.
-- When a user moves their mouse, the task is to dispatch `mousemove` event and execute handlers.
-- When the time is due for a scheduled `setTimeout`, the task is to run its callback.
-- ...and so on.
+- Quando uno script esterno `<script src="...">` viene caricato (load), il task è quello di eseguirlo.
+- Quando un utente sposta il puntatore del mouse, il task è quello di fare il dispatch dell'evento `mousemove` ed eseguirne eventuali handlers (gestori).
+- Quando è scaduto il tempo per `setTimeout` già schedulato, il task è quello di eseguirne la callback.
+- ...e cos&igrave; via.
 
-Tasks are set -- the engine handles them -- then waits for more tasks (while sleeping and consuming close to zero CPU).
+I task vengono impostati -- il motore li gestisce -- quindi rimane in attesa per altri tasks (nel frattempo rimane in sleep, consumando risorse della CPU prossime allo zero).
 
-It may happen that a task comes while the engine is busy, then it's enqueued.
+Potrebbe succedere che mentre il motore è occupato arrivi un task, in questo caso, questo viene messo in coda.
 
-The tasks form a queue, so-called "macrotask queue" (v8 term):
+I task formano una coda, la cosiddetta "macrotask queue" (termine di v8, il motore di Javascript di Chrome e di Node.js):
 
 ![](eventLoop.svg)
 
-For instance, while the engine is busy executing a `script`, a user may move their mouse causing `mousemove`, and `setTimeout` may be due and so on, these tasks form a queue, as illustrated on the picture above.
+Ad esempio, se mentre il motore è occupato nell'esecuzione di uno `script`, l'utente muove il mouse generando un `mousemove`, e magari nello stesso istante è scaduto il tempo di un `setTimeout`, questi task formano una queue (una coda di esecuzione) come illustrato nella figura di sopra.
 
-Tasks from the queue are processed on "first come – first served" basis. When the engine browser is done with the `script`, it handles `mousemove` event, then `setTimeout` handler, and so on.
+I task dalla coda vengono processati sulla base del "first come – first served", cioè secondo l'ordine che il primo arrivato sarà il primo ad essere servito (FIFO). 
+Quando il motere del browser avrà terminato con lo `script`, gestirà l'evento `mousemove`, quindi si occuper&agrave; del gestore del `setTimeout` (la callback), e cos&igrave;
 
-So far, quite simple, right?
+Fino a qui abbastanza semplice, giusto?
 
-Two more details:
-1. Rendering never happens while the engine executes a task. Doesn't matter if the task takes a long time. Changes to DOM are painted only after the task is complete.
-2. If a task takes too long, the browser can't do other tasks, process user events, so after a time it raises an alert like "Page Unresponsive" suggesting to kill the task with the whole page. That happens when there are a lot of complex calculations or a programming error leading to infinite loop.
+Ancora due dettagli:
+1. Il rendering non avviene mai quando il motore sta eseguendo un task. Non importa se questo impiega molto tempo. I cambiamenti al DOM vengono renderizzati (ridisegnati sul browser) solo dopo che il task viene completato.
+2. Se un task impiega troppo tempo, il browsere non puiò eseguire altri taskm, processare eventi utente, e così dopo un certo periodo di tempo viene scaturito un alert di "Pagina bloccata"(Page Unresponsive) che ci suggerisce di terminare il task con l'intera pagina. Questo succede in concomitanza di una serie di calcoli complessi, o degli errori di programmazione che portano ad un loop infinito.
 
-That was a theory. Now let's see how we can apply that knowledge.
+Questa era la teoria. Adesso vediamo come applicare questi concetti.
 
-## Use-case 1: splitting CPU-hungry tasks
+## Caso d'uso 1: Spezzettamento di task affamati di CPU (processi intensivi)
 
-Let's say we have a CPU-hungry task.
+Poniamo il caso che abbiamo un task affamato di CPU.
 
-For example, syntax-highlighting (used to colorize code examples on this page) is quite CPU-heavy. To highlight the code, it performs the analysis, creates many colored elements, adds them to the document -- for a big text that takes a lot of time.
+Per esempio, la syntax-highlighting (usata per colorare ed evidenziare gli esempi del codice in questa pagina) è abbastanza pesante per la CPU.
+Per evidenziare il codice, compie delle analisi, crea molti elementi colorati, e li aggiunge al documento -- un testo di grosse dimensioni può impiegare molto tempo.
 
 While the engine is busy with syntax highlighting, it can't do other DOM-related stuff, process user events, etc. It may even cause the browser to "hiccup" or even "hang" for a bit, which is unacceptable.
 
