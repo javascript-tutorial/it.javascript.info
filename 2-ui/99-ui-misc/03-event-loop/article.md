@@ -1,7 +1,7 @@
 
 # Event loop: microtasks e macrotasks
 
-Il flusso di esecuzione di Javascript ed anche di Node.js, sono basati sull' *event loop*.
+Il flusso di esecuzione di Javascript, cos&igrave come quello di Node.js, sono basati sull' *event loop*.
 
 Comprendere come un event loop lavora &egrave; importante per le ottimizzazioni, ed a volte, anche per creare delle architetture migliori.
 
@@ -206,41 +206,43 @@ Questo sembra più carino:
 </script>
 ```
 
-Adesso il `<div>` mostra via via, valori crescenti di `i`, una sorta di barra di caricamento.
-
+Adesso il `<div>` mostra via via, valori crescenti di `i`,come se fosse una sorta di barra di caricamento.
 
 
 ## Caso d'uso 3: fare qualcosa dopo l'evento
 
-In un gestore di evento noi potremmo decidere di postporre alcune azioni, fino a che l'evento non risalga i vari livelli di stack (bubbling up) e non venga gestito su tutti questi livelli. Possiamo fare questo, avvolgendo (wrapping) il codice all'interno di `setTimeout` a latenza zero.
+In un gestore di evento, potremmo decidere di postporre alcune azioni, fino a che l'evento non risalga i vari livelli di stack (bubbling up) e non venga gestito su tutti questi livelli.
+Possiamo farlo, avvolgendo (wrapping) il codice all'interno dei `setTimeout` a ritardo zero.
 
-Nel capitolo In the chapter <info:dispatch-events> we saw an example: custom event `menu-open` is dispatched in `setTimeout`, so that it happens after the "click" event is fully handled.
+Nel capitolo <info:dispatch-events> abbiamo visto un esempio: dell'evento custom  `menu-open`, viene fatto il dispatch dentro `setTimeout`, cos&igrave; che esso viene richiamato dopo che l'evento click è stto del tutto gestito.
+
 
 ```js
 menu.onclick = function() {
   // ...
 
-  // create a custom event with the clicked menu item data
+  //crea un evento custom con l'elemento dati cliccato sul menu'
   let customEvent = new CustomEvent("menu-open", {
     bubbles: true
   });
 
-  // dispatch the custom event asynchronously
+  //dispatch dell'evento custom in maniera asincrona
   setTimeout(() => menu.dispatchEvent(customEvent));
 };
 ```
 
-## Macrotasks and Microtasks
+## Macrotasks e Microtasks
 
-Along with *macrotasks*, described in this chapter, there exist *microtasks*, mentioned in the chapter <info:microtask-queue>.
 
-Microtasks come solely from our code. They are usually created by promises: an execution of `.then/catch/finally` handler becomes a microtask. Microtasks are used "under the cover" of `await` as well, as it's another form of promise handling.
+insieme ai *macrotasks*, descritti in questo capitolo, esistono i *microtasks*, menzionati nel capitolo <info:microtask-queue>.
 
-There's also a special function `queueMicrotask(func)` that queues `func` for execution in the microtask queue.
+Microtasks provengono esclusivamente dal nostro codice. Solitamente vengono creati dalle promises: una esecuzione di un gestore `.then/catch/finally` diventa un  microtask. I microtasks vengono usati anche "sotto copertura" dagli `await`, dato che anche questi sono solo un'altra forma di gestione delle promise.
 
-**Immediately after every *macrotask*, the engine executes all tasks from *microtask* queue, prior to running any other macrotasks or rendering or anything else.**
+C'&egrave; anche una funzione speciale `queueMicrotask(func)` che accoda `func`per l'esecuzione nella coda dei microtask.
 
-For instance, take a look:
+**Immediatamente dopo ogni *macrotask*, il motore esegue tutti i task dalla coda  *microtask* queue, prima di ricominciare a eseguire ogni altro macrotask o renderizzare o qualunque altra cosa.**
+
+Per esempio, guardate questo:
 
 ```js run
 setTimeout(() => alert("timeout"));
@@ -251,23 +253,24 @@ Promise.resolve()
 alert("code");
 ```
 
-What's going to be the order here?
+Che sta succedendo all'ordine qui?
 
-1. `code` shows first, because it's a regular synchronous call.
-2. `promise` shows second, because `.then` passes through the microtask queue, and runs after the current code.
-3. `timeout` shows last, because it's a macrotask.
+1. `code` viene mostrato prima, dato che è &egrave; un chiamata regolare e sincrona.
+2. `promise` viene mostrato per secondo, perch&egrave; `.then` passa attraverso la coda di microtask, e viene eseguito dopo il codice corrente.
+3. `timeout` viene mostrato come ultimo perch&egrave; è anhe questo un microtask.
 
-The richer event loop picture looks like this:
+L'immagine pi&ugrave; esausitva di un event loop &egrave; è questa:
 
 ![](eventLoop-full.svg)
 
-**All microtasks are completed before any other event handling or rendering or any other macrotask takes place.**
+**Tutti i microtasks vengono completati prima di ogni altra gestione degli eventi o rendering o qualunque altro macrotask che prende parte nell'esecuzione**
 
-That's important, as it guarantees that the application environment is basically the same (no mouse coordinate changes, no new network data, etc) between microtasks.
+Questo &egrave; importante perch&egrave; garantisce che l'ambiente applicativo rimanga intatto (nessuna modifica alle coordinate del puntatore del mouse, nessun dato dalle reti, etc) tra i microtasks.
 
-If we'd like to execute a function asynchronously (after the current code), but before changes are rendered or new events handled, we can schedule it with `queueMicrotask`.
+Se volessimo eseguire una funzione in maniera asincrona (dopo il codice in esecuzione), ma prima che avvengano cambiamenti nella finestra del browser, o nuvi eventi vengano gestiti, potremmo schedularla con `queueMicrotask`.
 
-Here's an example with "counting progress bar", similar to the one shown previously, but `queueMicrotask` is used instead of `setTimeout`. You can see that it renders at the very end. Just like the synchronous code:
+Questo qui un esempio con la "conteggio barra di progresso", del tutto simi a quella precedente, ma vengono usati `queueMicrotask` invece di `setTimeout`.
+Come puoi vedere che renderizza alla fine. Esattamente come se fosse del codice sincrono:
 
 ```html run
 <div id="progress"></div>
@@ -276,62 +279,58 @@ Here's an example with "counting progress bar", similar to the one shown previou
   let i = 0;
 
   function count() {
-
-    // do a piece of the heavy job (*)
+    //faccio un pezzetto di lavoro pesante (*)
     do {
       i++;
       progress.innerHTML = i;
     } while (i % 1e3 != 0);
 
     if (i < 1e6) {
-  *!*
-      queueMicrotask(count);
-  */!*
+      queueMicrotask(count);  
     }
-
   }
 
   count();
 </script>
 ```
 
-## Summary
+## Conclusioni
 
-The richer event loop picture may look like this:
+L'immagine pi&ugrave; esausitva di un event loop &egrave; questa:
 
 ![](eventLoop-full.svg)
 
-The more detailed algorithm of the event loop (though still simplified compare to the [specification](https://html.spec.whatwg.org/multipage/webappapis.html#event-loop-processing-model)):
+Il più dettagliato algoritmo dell'event loop (sebbene ancora semplicistico rispetto alla [specification](https://html.spec.whatwg.org/multipage/webappapis.html#event-loop-processing-model)):
 
-1. Dequeue and run the oldest task from the *macrotask* queue (e.g. "script").
-2. Execute all *microtasks*:
-    - While the microtask queue is not empty:
-        - Dequeue and run the oldest microtask.
-3. Render changes if any.
-4. If the macrotask queue is empty, wait till a macrotask appears.
-5. Go to step 1.
+1. Rimuovi dalla coda ed esegui, il più vecchio task dalla coda dei *macrotask*  (ad esempio "script").
+2. Eseguit tutti i *microtasks*:
+    - Se la cosa dei microtask non è vuota:
+        - Rimuovi dalla coda ed esegui il più vecchio dei microtask.
+3. Renderizza le modifiche se ve ne sono.
+4. Se la coda dei macrotask è vuota, vai in sleep fino al prossimo  macrotask.
+5. Vai al passo 1.
 
-To schedule a new *macrotask*:
+Per schedulare un nuovo *macrotask*:
 - Use zero delayed `setTimeout(f)`.
 
-That may be used to split a big calculation-heavy task into pieces, for the browser to be able to react on user events and show progress between them.
+Questo potrebbe essere usato per divitere task di calcolopesante in pezzi, di modo che tra questi, il browser possa eseguire altre operazioni.
 
-Also, used in event handlers to schedule an action after the event is fully handled (bubbling done).
+Inoltre, vengono usati nei gestori degli eventi per schedulre una azione dopo che l'evento è stato del tutto gestito (bubbling completato)
 
-To schedule a new *microtask*
-- Use `queueMicrotask(f)`.
-- Also promise handlers go through the microtask queue.
+Per schedulare un nuovo *microtask*
+- Usa `queueMicrotask(f)`.
+- Anche i gestori promise passando attraverso la coda dei microtask.
 
-There's no UI or network event handling between microtasks: they run immediately one after another.
+Non ci sono gestori UI o di networking tra i microtask: vengono eseguiti immediatamente uno dopo l'altro
 
-So one may want to `queueMicrotask` to execute a function asynchronously, but within the environment state.
+Quindi uno potrebbe volere che la coda `queueMicrotask` eseguisse una funzione in maniera asincrona, ma manntenendo il contesto dell'ambiente.
 
 ```smart header="Web Workers"
-For long heavy calculations that shouldn't block the event loop, we can use [Web Workers](https://html.spec.whatwg.org/multipage/workers.html).
+Per lunghi calcoli pesanti che non possono bloccare l'event loop, possiamo usare i [Web Workers](https://html.spec.whatwg.org/multipage/workers.html).
 
-That's a way to run code in another, parallel thread.
+Che è un modo per eseguire del codice in un altro thread parallelo.
 
-Web Workers can exchange messages with the main process, but they have their own variables, and their own event loop.
+I Web Workers possono scambiarsi messaggi con il processo principale, ma hanno le loro variabili ed i loro event loop.
 
-Web Workers do not have access to DOM, so they are useful, mainly, for calculations, to use multiplle CPU cores simultaneously.
+I Web Workers non hanno accesso al DOM, quindi sono adatti principalmente per i calcoli, per usare contemporaneamente più cores CPU.
 ```
