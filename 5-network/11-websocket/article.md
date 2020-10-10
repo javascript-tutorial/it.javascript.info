@@ -14,44 +14,43 @@ let socket = new WebSocket("ws://javascript.info");
 C'è anche il protocollo criptat `wss://`, utilizzato per i websockets HTTPS
 
 
-```smart header="Sceggli sempre wss://"
+```smart header="Scegli sempre `wss://`"
 Il procotollo `wss://` non solo è criptato, ma è anche più affidabile.
 
 Questo perchè i dati del `ws://` non sono criptati, visibili per qualunque intermediario. Server proxy molto vecchi, che non riconoscono l'implementazione WebSocket, potrebbero notare i suoi headers strani e chiudere la connessione.
 
 Invece, `wss://` &egrave; una connessione over TLS  (lo stesso di HTTPS che è HTTP over TLS), TLS cripta il dato invio e lo decripta in ricezione. Così i dati passano attraverso i proxy in maniera criptata e non potendone vedere il contenuto lo lasciano passare.
 ```
+Appena creato il socket, dovremmo rimanere in ascolto su di esso per gli eventi. Ce ne sono 4:
+- **`open`** -- connessione stabilita (established connection),
+- **`message`** -- dati ricevuti (data received),
+- **`error`** -- errore websocket (websocket error),
+- **`close`** -- connessione chiusa (connection closed).
 
-Once the socket is created, we should listen to events on it. There are totally 4 events:
-- **`open`** -- connection established,
-- **`message`** -- data received,
-- **`error`** -- websocket error,
-- **`close`** -- connection closed.
+...E nel caso volessimo inviare qualcosa al server, allora abbiamo il metodo `socket.send(data)` che si occupa di questo.
 
-...And if we'd like to send something, then `socket.send(data)` will do that.
-
-Here's an example:
+Un esempio:
 
 ```js run
 let socket = new WebSocket("wss://javascript.info/article/websocket/demo/hello");
 
 socket.onopen = function(e) {
-  alert("[open] Connection established");
-  alert("Sending to server");
-  socket.send("My name is John");
+  alert("[open] Connessione stabilita");
+  alert("Invio al server");
+  socket.send("Il mio nome è John");
 };
 
 socket.onmessage = function(event) {
-  alert(`[message] Data received from server: ${event.data}`);
+  alert(`[message] Ricezione dati dal server: ${event.data}`);
 };
 
 socket.onclose = function(event) {
   if (event.wasClean) {  
-    alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+    alert(`[close] Connessione chiusa con successo, code=${event.code} reason=${event.reason}`);
   } else {
-    // e.g. server process killed or network down
-    // event.code is usually 1006 in this case
-    alert('[close] Connection died');
+    // e.g. processo del server teminato o connessione già
+    // in questo caso event.code solitamente è 1006
+    alert('[close] Connection morta.');
   }
 };
 
@@ -60,9 +59,9 @@ socket.onerror = function(error) {
 };
 ```
 
-For demo purposes, there's a small server [server.js](demo/server.js) written in Node.js, for the example above, running. It responds with "Hello from server, John", then waits 5 seconds and closes the connection.
+A scopo dimostrativo, c'è un piccolo server funzionante [server.js](demo/server.js) scritto in Node.js, per l'esempio qui sopra. Risponde con "Hello from server, John" quindi attende 5 secondi e chude la connessione.
 
-So you'll see events `open` -> `message` -> `close`.
+Quindi vedrai gli eventi `open` -> `message` -> `close`.
 
 That's actually it, we can talk WebSocket already. Quite simple, isn't it?
 
