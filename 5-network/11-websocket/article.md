@@ -21,6 +21,7 @@ Questo perchè i dati del `ws://` non sono criptati, visibili per qualunque inte
 
 Invece, `wss://` &egrave; una connessione over TLS  (lo stesso di HTTPS che è HTTP over TLS), TLS cripta il dato invio e lo decripta in ricezione. Così i dati passano attraverso i proxy in maniera criptata e non potendone vedere il contenuto lo lasciano passare.
 ```
+
 Appena creato il socket, dovremmo rimanere in ascolto su di esso per gli eventi. Ce ne sono 4:
 - **`open`** -- connessione stabilita (established connection),
 - **`message`** -- dati ricevuti (data received),
@@ -59,7 +60,7 @@ socket.onerror = function(error) {
 };
 ```
 
-A scopo dimostrativo, c'è un piccolo server funzionante [server.js](demo/server.js) scritto in Node.js, per l'esempio qui sopra. Risponde con "Hello from server, John" quindi attende 5 secondi e chude la connessione.
+A scopo dimostrativo, c'è un piccolo server funzionante [server.js](demo/server.js) scritto in Node.js, per l'esempio qui sopra. Risponde con "Hello from server, John" quindi attende 5 secondi e chiude la connessione.
 
 Quindi vedrai gli eventi `open` -> `message` -> `close`.
 
