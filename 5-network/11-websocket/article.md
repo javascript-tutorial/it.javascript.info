@@ -14,7 +14,7 @@ let socket = new WebSocket("ws://javascript.info");
 C'è anche il protocollo criptat `wss://`, utilizzato per i websockets HTTPS
 
 
-```smart header="Sceggli sempre `wss://`"
+```smart header="Sceggli sempre wss://"
 Il procotollo `wss://` non solo è criptato, ma è anche più affidabile.
 
 Questo perchè i dati del `ws://` non sono criptati, visibili per qualunque intermediario. Server proxy molto vecchi, che non riconoscono l'implementazione WebSocket, potrebbero notare i suoi headers strani e chiudere la connessione.
