@@ -1,25 +1,25 @@
 # WebSocket
 
-The `WebSocket` protocol, described in the specification [RFC 6455](http://tools.ietf.org/html/rfc6455) provides a way to exchange data between browser and server via a persistent connection. The data can be passed in both directions as "packets", without breaking the connection and additional HTTP-requests.
+Il protocollo `WebSocket`, descritto nelle specifiche [RFC 6455](http://tools.ietf.org/html/rfc6455) fornisce una mezzo di scambio dati tra server e browser utilizzando una connessione persistente. I dati vengono passati in entrambe le direzioni come "pacchetti" (packets), senza la necessit&agrave; di interrompere la connessione e senza la necessità di creare nuovi headers-HTTP per le richieste.
 
-WebSocket is especially great for services that require continuous data exchange, e.g. online games, real-time trading systems and so on.
+I WebSocket sono particolarmente adatti per servizi che richiedono scambi continui di dati, come ad esempio giochi online, sistemi di trading in real-time e cos&igrave; via.
 
-## A simple example
+## Un semplice esempio
 
-To open a websocket connection, we need to create `new WebSocket` using the special protocol `ws` in the url:
+Per aprire una connessione websocket, dobbiamo creare un `new WebSocket` utilizzando nell'url il protocollo speciale `ws`:
 
 ```js
-let socket = new WebSocket("*!*ws*/!*://javascript.info");
+let socket = new WebSocket("ws://javascript.info");
 ```
+C'è anche il protocollo criptat `wss://`, utilizzato per i websockets HTTPS
 
-There's also encrypted `wss://` protocol. It's like HTTPS for websockets.
 
-```smart header="Always prefer `wss://`"
-The `wss://` protocol not only encrypted, but also more reliable.
+```smart header="Sceggli sempre `wss://`"
+Il procotollo `wss://` non solo è criptato, ma è anche più affidabile.
 
-That's because `ws://` data is not encrypted, visible for any intermediary. Old proxy servers do not know about WebSocket, they may see "strange" headers and abort the connection.
+Questo perchè i dati del `ws://` non sono criptati, visibili per qualunque intermediario. Server proxy molto vecchi, che non riconoscono l'implementazione WebSocket, potrebbero notare i suoi headers strani e chiudere la connessione.
 
-On the other hand, `wss://` is WebSocket over TLS, (same as HTTPS is HTTP over TLS), the transport security layer encrypts the data at sender and decrypts at the receiver. So data packets are passed encrypted through proxies. They can't see what's inside and let them through.
+Invece, `wss://` &egrave; una connessione over TLS  (lo stesso di HTTPS che è HTTP over TLS), TLS cripta il dato invio e lo decripta in ricezione. Così i dati passano attraverso i proxy in maniera criptata e non potendone vedere il contenuto lo lasciano passare.
 ```
 
 Once the socket is created, we should listen to events on it. There are totally 4 events:
