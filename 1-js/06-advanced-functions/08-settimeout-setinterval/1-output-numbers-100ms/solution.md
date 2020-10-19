@@ -18,7 +18,11 @@ function stampaNumeri(da, a) {
 stampaNumeri(5, 10);
 ```
 
+<<<<<<< HEAD
 Usando `setTimeout` ricorsivo:
+=======
+Using nested `setTimeout`:
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 
 ```js run

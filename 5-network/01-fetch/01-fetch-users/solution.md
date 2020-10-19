@@ -3,7 +3,11 @@ Per eseguire il fetch di un utente usa: `fetch('https://api.github.com/users/USE
 
 Se lo status del response è `200`, chiama `.json()` per leggere l'oggetto (object) JS.
 
+<<<<<<< HEAD
 Altrimenti, se il `fetch` dovesse fallire, o lo status della risposta non è 200, ritorna `null` nell'array dei risultati.
+=======
+Otherwise, if a `fetch` fails, or the response has non-200 status, we just return `null` in the resulting array.
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 So here's the code:
 

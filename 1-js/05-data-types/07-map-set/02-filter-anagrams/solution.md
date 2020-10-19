@@ -36,7 +36,7 @@ L'ordinamento delle lettere è fatto dalla concatenazione di chiamate alla riga 
 Per convenzione le dividiamo in più linee:
 
 ```js
-let sorted = arr[i] // PAN
+let sorted = word // PAN
   .toLowerCase() // pan
   .split('') // ['p','a','n']
   .sort() // ['a','n','p']

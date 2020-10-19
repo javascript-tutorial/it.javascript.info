@@ -26,7 +26,13 @@ alert( usersMapped[0].fullName ); // John Smith
 ```
 Da notare che nella funzione a freccia abbiamo bisogno di utilizzare un ulteriore parentesi. 
 
+<<<<<<< HEAD
 Non possiamo scrivere semplicemente:
+=======
+Please note that in the arrow functions we need to use additional brackets. 
+
+We can't write like this:
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 ```js
 let usersMapped = users.map(user => *!*{*/!*
   fullName: `${user.name} ${user.surname}`,

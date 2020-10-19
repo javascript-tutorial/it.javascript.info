@@ -27,7 +27,11 @@ alert(user.name); // Jack
 alert(user.isAdmin); // false
 ```
 
+<<<<<<< HEAD
 Quando una funzione viene eseguita con `new User(...)`, segue questi passaggi:
+=======
+When a function is executed with `new`, it does the following steps:
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 1. Un nuovo oggetto vuoto viene creato ed assegnato a `this`.
 2. Viene eseguito il corpo della funzione. Solitamente questo modifica `this`, aggiungendo nuove proprietà.
@@ -51,7 +55,11 @@ function User(name) {
 }
 ```
 
+<<<<<<< HEAD
 Quindi il risultato di `new User("Jack")` è lo stesso oggetto di:
+=======
+So `let user = new User("Jack")` gives the same result as:
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 ```js
 let user = {
@@ -135,7 +143,12 @@ Non è un ottima cosa utilizzare la doppia sintassi ovunque, perché omettendo `
 
 Solitamente, i costruttori non hanno l'istruzione `return`. Il loro compito è di eseguire tutto ciò che è necessario a creare l'oggetto lavorando su `this`, quest'ultimo sarà il risultato.
 
+<<<<<<< HEAD
 Se decidiamo di inserire un istruzione di `return`, vanno seguite delle semplici regole:
+=======
+- If `return` is called with an object, then the object is returned instead of `this`.
+- If `return` is called with a primitive, it's ignored.
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 - Se `return` viene invocato con un oggetto, questo verrà ritornato al posto di `this`.
 - Se `return` viene invocato con un tipo primitivo, verrà ignorato.
@@ -149,10 +162,17 @@ function BigUser() {
 
   this.name = "John";
 
+<<<<<<< HEAD
   return { name: "Godzilla" };  // <-- ritorna un oggetto
 }
 
 alert( new BigUser().name );  // Godzilla, preso l'oggetto ^^
+=======
+  return { name: "Godzilla" };  // <-- returns this object
+}
+
+alert( new BigUser().name );  // Godzilla, got that object
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 ```
 
 Qui invece abbiamo un esempio con un `return` vuoto (potremmo anche ritornare un qualsiasi valore di tipo primitivo):
@@ -162,10 +182,14 @@ function SmallUser() {
 
   this.name = "John";
 
+<<<<<<< HEAD
   return; // al termine dell'esecuzione, ritorna this
 
   // ...
 
+=======
+  return; // <-- returns this
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 }
 
 alert( new SmallUser().name );  // John

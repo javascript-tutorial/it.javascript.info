@@ -1,6 +1,10 @@
 # The Modern JavaScript Tutorial in italiano
 
+<<<<<<< HEAD
 In questa repository viene pubblicata la traduzione italiana di [https://javascript.info](https://javascript.info).
+=======
+This repository hosts the English content of the Modern JavaScript Tutorial, published in [https://javascript.info](https://javascript.info).
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 Ci piacerebbe rendere questo tutorial disponibile in molte lingue. Aiutaci a tradurlo.
 
@@ -29,7 +33,13 @@ Se volete tradurre un articolo vi chiedo di seguire questi semplici passi:
 
 Il vostro nome apparirà nella pagina "About project" quando la traduzione verrà pubblicata.
 
+<<<<<<< HEAD
 ### Esempi ed Esercizi
+=======
+  - `index.md` stands for a chapter
+  - `article.md` stands for an article
+  - `task.md` stands for a task (solution must be provided in `solution.md` file as well)
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 - I commenti possono essere tradotti
 - Le variabili, classi o identificatori non devono essere assolutamente tradotte

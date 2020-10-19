@@ -47,7 +47,11 @@ let guestList = "Guests: // Error: Unexpected token ILLEGAL
 
 Gli apici singoli e doppi sono nati insieme al linguaggio, quando non era stato ancora messo in conto la possibilità di stringhe multilinea. Le backticks sono apparse più tardi, per questo risultano più versatili.
 
+<<<<<<< HEAD
 Le backticks ci consentono anche di specificare un "template di funzione" prima della backtick di apertura. La sintassi è: <code>func&#96;string&#96;</code>. La funzione `func` viene chiamata automaticamente, gli viene passata la "string", può essere cosi trattata dalla funzione. Potete approfondire leggendo la [documentazione](mdn:/JavaScript/Reference/Template_literals#Tagged_template_literals). Questo viene chiamata "funzione template". Con questa caratteristica diventa più facile raccogliere stringhe da passare a funzioni, ma è raramente utilizzata.
+=======
+Backticks also allow us to specify a "template function" before the first backtick. The syntax is: <code>func&#96;string&#96;</code>. The function `func` is called automatically, receives the string and embedded expressions and can process them. This is called "tagged templates". This feature makes it easier to implement custom templating, but is rarely used in practice. You can read more about it in the [manual](mdn:/JavaScript/Reference/Template_literals#Tagged_templates). 
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 
 ## Caratteri speciali
@@ -104,7 +108,11 @@ alert( 'I*!*\'*/!*m the Walrus!' ); // *!*I'm*/!* the Walrus!
 
 Avete visto che abbiamo inserito un backslash `\'` prima dell'apice interno, altrimenti questo avrebbe indicato la fine della stringa.
 
+<<<<<<< HEAD
 Ovviamente, questo è valido per un apice uguale a quello utilizzato in apertura. Quindi, possiamo optare per una soluzione più elegante, ad esempio i doppi apici o i backticks:
+=======
+Of course, only the quotes that are the same as the enclosing ones need to be escaped. So, as a more elegant solution, we could switch to double quotes or backticks instead:
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 ```js run
 alert( `I'm the Walrus!` ); // I'm the Walrus!
@@ -304,8 +312,14 @@ if (str.indexOf("Widget") != -1) {
 }
 ```
 
+<<<<<<< HEAD
 ````smart header=Il trucco del NOT bit a bit"
 Uno dei trucchi più utilizzati è l'operatore di [NOT bit a bit](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Bitwise_NOT) `~`. Questo converte il numero ad un intero in 32bit (rimuovendo la parte decimale se presente) e successivamente inverte tutti i bit.
+=======
+#### The bitwise NOT trick
+
+One of the old tricks used here is the [bitwise NOT](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_NOT) `~` operator. It converts the number to a 32-bit integer (removes the decimal part if exists) and then reverses all bits in its binary representation.
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 Per gli interi in 32bit la chiamata `~n` ha lo stesso risultato di `-(n+1)` (a causa del formato IEEE-754).
 
@@ -336,8 +350,16 @@ if (~str.indexOf("Widget")) {
 
 Solitamente è sconsigliato utilizzare caratteristiche del linguaggio per azioni che possono risultare poco ovvie, ma questo particolare trucco è ampiamente utilizzato, quindi è giusto conoscerlo.
 
+<<<<<<< HEAD
 Ricordatevi solo che: `if (~str.indexOf(...))` si legge come "se trovi".
 ````
+=======
+Just remember: `if (~str.indexOf(...))` reads as "if found".
+
+To be precise though, as big numbers are truncated to 32 bits by `~` operator, there exist other numbers that give `0`, the smallest is `~4294967295=0`. That makes such check correct only if a string is not that long.
+
+Right now we can see this trick only in the old code, as modern JavaScript provides `.includes` method (see below).
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 ### includes, startsWith, endsWith
 
@@ -354,8 +376,13 @@ alert( "Hello".includes("Bye") ); // false
 Il secondo argomento opzionale di `str.includes` è la posizioni da cui iniziare a cercare:
 
 ```js run
+<<<<<<< HEAD
 alert( "Midget".includes("id") ); // true
 alert( "Midget".includes("id", 3) ); // false, dalla posizione 3 non c'è "id"
+=======
+alert( "Widget".includes("id") ); // true
+alert( "Widget".includes("id", 3) ); // false, from position 3 there is no "id"
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 ```
 
 I metodi [str.startsWith](mdn:js/String/startsWith) e [str.endsWith](mdn:js/String/endsWith) fanno esattamente ciò che dicono i loro nomi:
@@ -384,7 +411,11 @@ Ci sono 3 metodi in JavaScript per estrarre una sotto-stringa: `substring`, `sub
 
     ```js run
     let str = "st*!*ringify*/!*";
+<<<<<<< HEAD
     alert( str.slice(2) ); // ringify, dalla seconda posizione fino alla fine
+=======
+    alert( str.slice(2) ); // 'ringify', from the 2nd position till the end
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
     ```
 
     Sono possibili anche valori negativi per `start/end`. Questo significa che la posizione verrà contata a partire dalla fine della stringa:
@@ -392,8 +423,13 @@ Ci sono 3 metodi in JavaScript per estrarre una sotto-stringa: `substring`, `sub
     ```js run
     let str = "strin*!*gif*/!*y";
 
+<<<<<<< HEAD
     // incomincia dalla 4 posizione a partire da destra, e si termina alla prima a partire da destra
     alert( str.slice(-4, -1) ); // gif
+=======
+    // start at the 4th position from the right, end at the 1st from the right
+    alert( str.slice(-4, -1) ); // 'gif'
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
     ```
 
 `str.substring(start [, end])`
@@ -425,14 +461,22 @@ Ci sono 3 metodi in JavaScript per estrarre una sotto-stringa: `substring`, `sub
 
     ```js run
     let str = "st*!*ring*/!*ify";
+<<<<<<< HEAD
     alert( str.substr(2, 4) ); // ring, dalla seconda posizione prende 4 caratteri
+=======
+    alert( str.substr(2, 4) ); // 'ring', from the 2nd position get 4 characters
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
     ```
 
     Il primo argomento può anche essere negativo come con slice:
 
     ```js run
     let str = "strin*!*gi*/!*fy";
+<<<<<<< HEAD
     alert( str.substr(-4, 2) ); // gi, dalla quarta posizione prende 4 caratteri
+=======
+    alert( str.substr(-4, 2) ); // 'gi', from the 4th position get 2 characters
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
     ```
 
 Ricapitoliamo questi metodi per evitare confusione:
@@ -526,7 +570,11 @@ Il "giusto" algoritmo per confrontare stringhe è più complesso di come possa s
 
 Quindi il browser deve sapere quale lingua utilizzare nel confronto.
 
+<<<<<<< HEAD
 Fortunatamente, tutti i browser moderni (IE10 + richiede una libreria esterna [Intl.JS](https://github.com/andyearnshaw/Intl.js/)) supportano lo standard internazionale  [ECMA 402](http://www.ecma-international.org/ecma-402/1.0/ECMA-402.pdf).
+=======
+Luckily, all modern browsers (IE10- requires the additional library [Intl.js](https://github.com/andyearnshaw/Intl.js/)) support the internationalization standard [ECMA-402](http://www.ecma-international.org/ecma-402/1.0/ECMA-402.pdf).
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 Questo fornisce uno speciale metodo per confrontare stringhe in lingue diverse, seguendo delle regole.
 

@@ -19,7 +19,13 @@ Le due archiviazioni a oggetti propongono stessi metodi e propietà:
 
 Come potete vedere, è simile alla collezione `Map` (`setItem/getItem/removeItem`), mantiene comunque l'ordine degli elementi e permette il loro accesso tramite indice con `key(index)`.
 
+<<<<<<< HEAD
 Vediamo come funziona.
+=======
+As you can see, it's like a `Map` collection (`setItem/getItem/removeItem`), but also allows access by index with `key(index)`.
+
+Let's see how it works.
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 ## localStorage demo
 
@@ -199,8 +205,13 @@ dovresti aprire questa pagina in due browser per testare il seguente codice.
 Se entrambe le finestre sono connesse a `window.onstorage`, allora reagiranno agli aggiornamenti che accadono in una delle due.
 
 ```js run
+<<<<<<< HEAD
 // attiva un aggiornamento fatto dallo stesso archivio degli altri documenti
 window.onstorage = event => {
+=======
+// triggers on updates made to the same storage from other documents
+window.onstorage = event => { // same as window.addEventListener('storage', () => {
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
   if (event.key != 'now') return;
   alert(event.key + ':' + event.newValue + " at " + event.url);
 };
@@ -211,6 +222,7 @@ localStorage.setItem('now', Date.now());
 Notare che l'evento contiene: `event.url` -- l'url del documento in cui i dati sono stati aggiornati.
 Inoltre, `event.storageArea` contiene lo storage object -- l'evento è lo stesso per entrambi `sessionStorage` e `localStorage`, quindi `event.storageArea` si rivolge a quello che è stato motificato. Potremmo anche impostare qualcosa all'interno, per "rispondere" al cambiamento.**That allows different windows from the same origin to exchange messages.**
 
+<<<<<<< HEAD
 I Browser moderni supportano [Broadcast channel API](https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API),  API speciale per comunicazione inter-finestra provenienti dalla stessa sorgente, possiede molte più funzione ma è meno supportata.Esistono librerie che sostituiscono quella API,basate su `localStorage`, che lo rendono disponibile ovunque.
 
 ## Summary
@@ -220,6 +232,17 @@ Web storage objects `localStorage` e `sessionStorage` permettono di archiviare k
 - Il limite è 2mb+, dipende dal browser.
 - Non scadono.
 - I dati sono legati alla sorgente (domain/port/protocol).
+=======
+Modern browsers also support [Broadcast channel API](mdn:/api/Broadcast_Channel_API), the special API for same-origin inter-window communication, it's more full featured, but less supported. There are libraries that polyfill that API, based on `localStorage`, that make it available everywhere.
+
+## Summary
+
+Web storage objects `localStorage` and `sessionStorage` allow to store key/value in the browser.
+- Both `key` and `value` must be strings.
+- The limit is 5mb+, depends on the browser.
+- They do not expire.
+- The data is bound to the origin (domain/port/protocol).
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 | `localStorage` | `sessionStorage` |
 |----------------|------------------|

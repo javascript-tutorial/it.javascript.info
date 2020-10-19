@@ -41,7 +41,17 @@ alert( map.size ); // 3
 
 Come abbiamo potuto osservare, a differenza degli oggetti, le chiavi non vengono convertite a stringa. Sono quindi ammesse chiavi di qualunque tipo.
 
+<<<<<<< HEAD
 **Map può utilizzare anche oggetti come chive.**
+=======
+```smart header="`map[key]` isn't the right way to use a `Map`"
+Although `map[key]` also works, e.g. we can set `map[key] = 2`, this is treating `map` as a plain JavaScript object, so it implies all corresponding limitations (no object keys and so on).
+
+So we should use `map` methods: `set`, `get` and so on.
+```
+
+**Map can also use objects as keys.**
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 Ad esempio:
 
@@ -191,7 +201,11 @@ let prices = Object.fromEntries([
 alert(prices.orange); // 2
 ```
 
+<<<<<<< HEAD
 Possiamo utilizzare il metodo `Object.fromEntries` per ottenere un oggetto partendo da una `Map`.
+=======
+We can use `Object.fromEntries` to get a plain object from `Map`.
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 Ad esempio memorizziamo i dati in una `Map`, ma abbiamo bisogno di passarli ad un codice di terze parti che si aspetta un oggetto.
 
@@ -213,7 +227,11 @@ let obj = Object.fromEntries(map.entries()); // costruisce un oggetto (*)
 alert(obj.orange); // 2
 ```
 
+<<<<<<< HEAD
 Una chiamata a `map.entries()` ritorna un array di coppie chiave/valore, esattamente nel formato richiesto da `Object.fromEntries`.
+=======
+A call to `map.entries()` returns an iterable of key/value pairs, exactly in the right format for `Object.fromEntries`.
+>>>>>>> d6e88647b42992f204f57401160ebae92b358c0d
 
 Possiamo rendere la rica `(*)` ancora più corta:
 ```js
