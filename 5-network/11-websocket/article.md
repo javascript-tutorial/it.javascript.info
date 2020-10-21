@@ -1,6 +1,6 @@
 # WebSocket
 
-Il protocollo `WebSocket`, descritto nelle specifiche [RFC 6455](http://tools.ietf.org/html/rfc6455) fornisce una mezzo di scambio dati tra server e browser utilizzando una connessione persistente. I dati vengono passati in entrambe le direzioni come "pacchetti" (packets), senza la necessit&agrave; di interrompere la connessione e senza la necessità di creare nuovi headers-HTTP per le richieste.
+Il protocollo `WebSocket`, descritto nelle specifiche [RFC 6455](http://tools.ietf.org/html/rfc6455) fornisce un mezzo di scambio dati tra server e browser utilizzando una connessione persistente. I dati vengono passati in entrambe le direzioni come "pacchetti" (packets), senza la necessit&agrave; di interrompere la connessione e senza la necessità di creare nuovi headers-HTTP per le richieste.
 
 I WebSocket sono particolarmente adatti per servizi che richiedono scambi continui di dati, come ad esempio giochi online, sistemi di trading in real-time e cos&igrave; via.
 
@@ -64,19 +64,22 @@ A scopo dimostrativo, c'è un piccolo server funzionante [server.js](demo/server
 
 Quindi vedrai gli eventi `open` -> `message` -> `close`.
 
-That's actually it, we can talk WebSocket already. Quite simple, isn't it?
+Questo è tutto, possiamo già parlare di WebSocket. Abbastanza semplice, no?
 
-Now let's talk more in-depth.
+Adesso approfondiamo un po'.
 
-## Opening a websocket
 
-When `new WebSocket(url)` is created, it starts connecting immediately.
+## Aprire un WebSocket
 
-During the connection the browser (using headers) asks the server: "Do you support Websocket?" And if the server replies "yes", then the talk continues in WebSocket protocol, which is not HTTP at all.
+
+Non  appena viene istanziato `new WebSocket(url)`, questo tenta immediatamente una connessione.
+
+Dureante la connessione, il browser (utilizzando degli headers appositi) chiede al server: "Supporti i WebSocket?" e se il server risponde di "si", allora la conversazione continua con il protocollo WebSocket, che non è per nulla HTTP.
 
 ![](websocket-handshake.svg)
 
-Here's an example of browser headers for request made by `new WebSocket("wss://javascript.info/chat")`.
+Questo è un esempio di headers impostati dal browser per la richiesta di `new WebSocket("wss://javascript.info/chat")`.
+
 
 ```
 GET /chat
@@ -88,16 +91,16 @@ Sec-WebSocket-Key: Iv8io/9s+lYFgZWcXczP8Q==
 Sec-WebSocket-Version: 13
 ```
 
-- `Origin` -- the origin of the client page, e.g. `https://javascript.info`. WebSocket objects are cross-origin by nature. There are no special headers or other limitations. Old servers are unable to handle WebSocket anyway, so there are no compabitility issues. But `Origin` header is important, as it allows the server to decide whether or not to talk WebSocket with this website.
-- `Connection: Upgrade` -- signals that the client would like to change the protocol.
-- `Upgrade: websocket` -- the requested protocol is "websocket".
-- `Sec-WebSocket-Key` -- a random browser-generated key for security.
-- `Sec-WebSocket-Version` -- WebSocket protocol version, 13 is the current one.
+- `Origin` -- l'origine della pagina del client, ad esempio:  `https://javascript.info`. Gli oggetti WebSocket sono per loro natura cross-origin. Non vi sono headers particolari o altre limitazioni. Server di vecchia data non gestiscono i WebSocket in nessun modo, quindi non ci sono problemi di compatibilità. Ma l'header `Origin` è importante, dal momento che permette al server di decidere se parlare o meno con quel sito.
+- `Connection: Upgrade` -- indica che il client vuole cambiare protocollo  di comunicazione.
+- `Upgrade: websocket` -- il protocollo richiesto è "websocket".
+- `Sec-WebSocket-Key` -- una chiave generata randomicamente dal browser per sicurezza.
+- `Sec-WebSocket-Version` -- versione di protocollo del WebSocket, 13 è quella corrente.
 
-```smart header="WebSocket handshake can't be emulated"
-We can't use `XMLHttpRequest` or `fetch` to make this kind of HTTP-request, because JavaScript is not allowed to set these headers.
+```smart header="L'handsnake del WebSocket non può essere emulato."
+Non è possibile utilizzare  `XMLHttpRequest` oppure `fetch` per fare questo tipo di richieste HTTP, dal momento che a JavaScript non è peremessa la creazione di questi headers.
 ```
-
+Se il server acconsente allo switch in WebSocket, dovrebbe rispondere con un codice 101:
 If the server agrees to switch to WebSocket, it should send code 101 response:
 
 ```
@@ -107,29 +110,30 @@ Connection: Upgrade
 Sec-WebSocket-Accept: hsBlbuDTkk24srzEOTBUlZAlC2g=
 ```
 
-Here `Sec-WebSocket-Accept` is `Sec-WebSocket-Key`, recoded using a special algorithm. The browser uses it to make sure that the response corresponds to the request.
+Qui `Sec-WebSocket-Accept` è `Sec-WebSocket-Key` ricodificato usando un algoritmo speciale. Il browser lo usa per assicurarsi che la risposta sia corrispondente alla richiesta.
 
-Afterwards, the data is transfered using WebSocket protocol, we'll see its structure ("frames") soon. And that's not HTTP at all.
+In seguito, i dati vengono trasferiti usando il protocollo WebSocket, presto ne vedremo vedremo la struttura ("frames"). E questo non ha niente a che vedere con HTTP.
 
-### Extensions and subprotocols
+### Estensioni e subprotocolli
 
-There may be additional headers `Sec-WebSocket-Extensions` and `Sec-WebSocket-Protocol` that describe extensions and subprotocols.
+Ci possono essere gli headers aggiuntivi `Sec-WebSocket-Extensions` e `Sec-WebSocket-Protocol` i quali descrivo etensioni e subprotocolli.
 
-For instance:
+Ad esempio:
 
-- `Sec-WebSocket-Extensions: deflate-frame` means that the browser supports data compression. An extension is something related to transferring the data, functionality that extends WebSocket protocol. The header `Sec-WebSocket-Extensions` is sent automatically by the browser, with the list of all extenions it supports.
+- `Sec-WebSocket-Extensions: deflate-frame` significa che il browser supporta la compressione dei dati. Una estensione è un qualcosa di collegato al trasferimento dei dati, delle una funzionalità che estende il protocollo WebSocket. L'header `Sec-WebSocket-Extensions`, invece, viene inviato in automatico dal browser, con la lista di tutte le estensioni che può supportare.
 
-- `Sec-WebSocket-Protocol: soap, wamp` means that we'd like to transfer not just any data, but the data in [SOAP](http://en.wikipedia.org/wiki/SOAP) or WAMP ("The WebSocket Application Messaging Protocol") protocols. WebSocket subprotocols are registered in the [IANA catalogue](http://www.iana.org/assignments/websocket/websocket.xml).
+- `Sec-WebSocket-Protocol: soap, wamp` significa che non vogliamo trasferire qualunque tipo di dato, ma solamente dati con protocollo [SOAP](http://en.wikipedia.org/wiki/SOAP) oppure WAMP ("The WebSocket Application Messaging Protocol"). I subprotocolli dei WebSocket sono registrati nel [catalogo IANA ](http://www.iana.org/assignments/websocket/websocket.xml).
 
-    This optional header is set by us, to tell the server which subprotocols our code supports, using the second (optional) parameter of `new WebSocket`. That's the array of subprotocols, e.g. if we'd like to use SOAP or WAMP:
+
+    Questi headers aggiuntivi vengono settati da noi, per dire al server quali sottoprotocolli supporta il nostro codice, utilizzando il secondo parametro (opzionale) di `new WebSocket`. Questo sarebbe l'array dei subprotocolli se, ad esempio, volessimo usare  SOAP o WAMP:
 
     ```js
     let socket = new WebSocket("wss://javascript.info/chat", ["soap", "wamp"]);
     ```
 
-The server should respond with a list of protocols and extensions that it agrees to use.
+Il server potrebbe rispondere con una lista di protocolli ed estensioni che acconsente di usare.
 
-For example, the request:
+Per esempio, la richiesta:
 
 ```
 GET /chat
@@ -145,7 +149,7 @@ Sec-WebSocket-Protocol: soap, wamp
 */!*
 ```
 
-Response:
+Risposta:
 
 ```
 101 Switching Protocols
@@ -157,10 +161,9 @@ Sec-WebSocket-Extensions: deflate-frame
 Sec-WebSocket-Protocol: soap
 */!*
 ```
+Qui il server risponde che supporta l'estensione "deflate-frame", e solamente SOAP tra i subprotocolli richiesti.
 
-Here the server responds that it supports the extension "deflate-frame", and only SOAP of the requested subprotocols.
-
-## Data transfer
+## Trasferimento dati
 
 WebSocket communication consists of "frames" -- data fragments, that can be sent from either side, and can be of several kinds:
 
