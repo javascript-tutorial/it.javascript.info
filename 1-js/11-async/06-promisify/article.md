@@ -55,7 +55,7 @@ function promisify(f) {
     return new Promise((resolve, reject) => {
       function callback(err, result) { // la nostra callback f
         if (err) {
-          return reject(err);
+          reject(err);
         } else {
           resolve(result);
         }
@@ -86,7 +86,7 @@ function promisify(f, manyArgs = false) {
     return new Promise((resolve, reject) => {
       function *!*callback(err, ...results*/!*) { // la nostra callback custom per f
         if (err) {
-          return reject(err);
+          reject(err);
         } else {
           // risolve con tutti i risultati della callback se manyArgs è specificato
           *!*resolve(manyArgs ? results : results[0]);*/!*

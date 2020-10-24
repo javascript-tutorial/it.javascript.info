@@ -20,8 +20,4 @@ Ora, quale struttura dati potresti utilizzare per memorizzare quali messaggi "so
 
 P.S. Quando un messaggio viene rimosso da `messages`, dovrebbe essere rimosso anche dalla vostra struttura.
 
-<<<<<<< HEAD:1-js/05-data-types/07-map-set-weakmap-weakset/04-recipients-read/task.md
 P.P.S. Non dovremmo modificare l'oggetto messagge. Poichè se viene gestito dal codice di qualcun altro, aggiungere nuove proprietà potrebbe avere conseguenze disastrose.
-=======
-P.P.S. We shouldn't modify message objects, add our properties to them. As they are managed by someone else's code, that may lead to bad consequences.
->>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728:1-js/05-data-types/08-weakmap-weakset/01-recipients-read/task.md

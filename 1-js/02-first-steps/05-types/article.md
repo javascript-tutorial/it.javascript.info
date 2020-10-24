@@ -1,5 +1,9 @@
 # Tipi di dato
 
+Un valore in JavaScript ha sempre un tipo specifico. Ad esempio, string o number.
+
+Ci sono otto tipi di base in JavaScript. In questo articolo, vedremo i loro aspetti generali, nei prossimi capitoli parleremo di ognuno di essi in dettaglio.
+
 Una variabile in JavaScript può contenere qualsiasi dato. Una variabile può essere di tipo stringa in un istante e successivamente ricevere un valore numerico:
 
 ```js
@@ -10,9 +14,7 @@ message = 123456;
 
 I linguaggi di programmazione che lo consentono sono detti "dinamicamente tipati", questo significa che ci sono tipi di dato, ma le variabili non sono legate ad un tipo.
 
-Ci sono sette tipi di dato in JavaScript. Qui ne studiamo le basi, nel prossimo capitolo lo entreremo nei dettagli.
-
-## Tipo Numerico
+## Number
 
 ```js
 let n = 123;
@@ -62,14 +64,38 @@ I numeri con valore speciale appartengono formalmente al tipo "numerico". Ovviam
 
 Vedremo di più su come lavorare con i numeri nel capitolo <info:number>.
 
-## Tipo Stringa
+## BigInt
+
+In JavaScript, il tipo "number" non può rappresentare valori interni più grandi di <code>(2<sup>53</sup>-1)</code> (che equivale a `9007199254740991`), o minori di <code>-(2<sup>53</sup>-1)</code>. Questa è una limitazione tecnica dovuta alla loro rappresentazione interna.
+
+Per la maggior parte degli scopi, questo intervallo è sufficiente, ma in alcuni casi potremmo aver bisogno di numeri molto grandi, ad esempio per la crittografia o timestamp con precisione al microsecondo.
+
+Il tipo `BigInt` è stato aggiunto di recente al linguaggio, e consente di rappresentare numeri interi di lunghezza arbitraria.
+
+Un valore di tipo `BigInt` viene creato aggiungendo `n` alla fine del numero:
+
+```js
+// la "n" alla fine del numero indica che è un BigInt
+const bigInt = 1234567890123456789012345678901234567890n;
+```
+
+Poichè i `BigInt` sono utilizzati raramente, non li analizzeremo in questo articolo, ma li vedremo più in dettaglio nel capitolo dedicato <info:bigint>.
+
+
+```smart header="Problemi di compatibilità"
+Attualmente, `BigInt` sono supportati da Firefox/Chrome/Edge/Safari, ma non da IE.
+```
+
+Potete sempre verificare [la tabella di compatibilità di *MDN* BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt#Browser_compatibility) per sapere quali versioni dei browser li supportano.
+
+## String
 
 Una stringa in JavaScript deve essere tra apici.
 
 ```js
 let str = "Hello";
 let str2 = 'Single quotes are ok too';
-let phrase = `can embed ${str}`;
+let phrase = `can embed another ${str}`;
 ```
 
 In JavaScript, ci sono 3 tipi di apici. 
@@ -155,19 +181,20 @@ Il significato di `undefined` è che "il valore non è assegnato".
 Se una variabile viene dichiarata, ma non assegnata, il suo valore è esattamente `undefined`:
 
 ```js run
-let x;
+let age;
 
-alert(x); // mostra "undefined"
+alert(age); // mostra "undefined"
 ```
 
 Tecnicamente, è possibile assegnare `undefined` a qualsiasi variabile:
 
 ```js run
-let x = 123;
+let age = 100;
 
-x = undefined;
+// change the value to undefined
+age = undefined;
 
-alert(x); // "undefined"
+alert(age); // "undefined"
 ```
 
 ...Ma non è comunque consigliabile farlo. Normalmente, si utilizza `null` per descrivere un valore "vuoto" o "sconosciuto" della variabile, e `undefined` viene utilizzato solo per i controlli, per verificare se la variabile è stata assegnata.
@@ -197,6 +224,8 @@ Una chiamata a `typeof x` ritorna una stringa con il nome del tipo:
 typeof undefined // "undefined"
 
 typeof 0 // "number"
+
+typeof 10n // "bigint"
 
 typeof true // "boolean"
 
@@ -228,6 +257,7 @@ Le ultime tre linee potrebbero richiedere una spiegazione ulteriore:
 Ci sono 7 tipi base in JavaScript.
 
 - `number` per numeri di qualsiasi tipo: interi o in virgola mobile.
+- `bigint` viene utilizzato per definire interi di lunghezza arbitraria.
 - `string` per stringhe. Una stringa può contenere uno o più caratteri, non esiste nessun tipo `character`.
 - `boolean` per `true`/`false`.
 - `null` per valori sconosciuti -- un valore a parte che contiene solo il valore `null`.

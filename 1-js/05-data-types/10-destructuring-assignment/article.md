@@ -120,7 +120,26 @@ for (let [key, value] of user) {
 }
 ```
 ````
-### Il resto '...'
+
+```smart header="Il trucco dello scambio di varibili"
+Un metodo molto conosciuto per lo scambio dei valori di due variabili:
+
+```js run
+let guest = "Jane";
+let admin = "Pete";
+
+// Scambio dei valori: rende guest=Pete, admin=Jane
+[guest, admin] = [admin, guest];
+
+alert(`${guest} ${admin}`); // Pete Jane (scambiati con successo!)
+```
+
+Qui creiamo un array temporaneo di due varibili e lo destrutturiamo immediatamente invertendo l'ordine delle variabili.
+
+In questo modo possiamo invertire l'ordine di più di due variabili.
+
+
+### L'operatore resto '...'
 
 Se invece vogliamo destrutturare tutto, non solamente il primo elemento, ma raccogliere anche quello che segue -- passiamo un ulteriore parametro nella forma `"..."`:
 
@@ -186,7 +205,7 @@ L'assegnamento di destrutturazione funziona allo stesso modo con gli oggetti.
 La sintassi è:
 
 ```js
-let {var1, var2} = {var1:…, var2…}
+let {var1, var2} = {var1:…, var2:…}
 ```
 
 Abbiamo un oggetto alla destra dell'assegnazione, che vogliamo dividere in variabili. Nel lato sinistro abbiamo un "pattern" di proprietà corrispondenti. In questo semplice caso, abbiamo una lista di variabili raggruppate tra parentesi `{...}`.
@@ -435,7 +454,7 @@ Nella vita reale, il problema è ricordarsi l'ordine degli argomenti. Solitament
 Come qui?
 
 ```js
-// undefined where detauls values are fine
+// undefined where default values are fine
 showMenu("My Menu", undefined, undefined, ["Item1", "Item2"])
 ```
 

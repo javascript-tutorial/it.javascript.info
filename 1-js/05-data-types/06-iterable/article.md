@@ -151,7 +151,9 @@ let str = "Hello";
 // fa la stessa cosa di
 // for (let char of str) alert(char);
 
+*!*
 let iterator = str[Symbol.iterator]();
+*/!*
 
 while (true) {
   let result = iterator.next();
