@@ -9,7 +9,7 @@ Vediamo quali sono i punti chiave che distinguono i tipi primitivi dagli oggetti
 Un primitivo
 
 - E' un valore di tipo primitivo.
-- Ci sono 6 tipi primitivi: `string`, `number`, `boolean`, `symbol`, `null` e `undefined`.
+- Ci sono 6 tipi primitivi: `string`, `number`, `bigint`, `boolean`, `symbol`, `null` e `undefined`.
 
 Un oggetto
 

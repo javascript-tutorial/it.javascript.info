@@ -1,4 +1,4 @@
-# Test automatici con mocha
+# Test automatici con Mocha
 
 Il test automatico sarà utilizzato per molte attività.
 
@@ -159,8 +159,8 @@ Possiamo selezionare uno dei due metodi per organizzare i test:
         assert.equal(pow(2, 3), 8);
       });
 
-      it("3 raised to power 3 is 27", function() {
-        assert.equal(pow(3, 3), 27);
+      it("3 raised to power 4 is 81", function() {
+        assert.equal(pow(3, 4), 81);
       });
 
     });
@@ -182,7 +182,7 @@ Il risultato:
 
 [iframe height=250 src="pow-2" edit border="1"]
 
-Proprio come ci aspettavamo, il secondo test è fallito. Ovvio, la nostra funzione ritorna sempre `8`, mentre l'`assert` si aspetta `27`.
+Proprio come ci aspettavamo, il secondo test è fallito. Ovvio, la nostra funzione ritorna sempre `8`, mentre l'`assert` si aspetta `81`.
 
 ## Migliorare l'implementazione
 

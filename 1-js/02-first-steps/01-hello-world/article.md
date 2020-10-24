@@ -72,7 +72,7 @@ E' anche possibile fornire un percorso relativo a partire dalla pagina corrente.
 Possiamo anche fornire un URL. Per esempio:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
 ```
 
 Per integrare più script, utilzzate più volte il tag:

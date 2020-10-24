@@ -355,17 +355,31 @@ Ovviamente, tutto è possibile! I programmatori commettono errori. Anche nelle u
 
 Nel nostro caso, `try..catch` è pensato per intercettare errori per "dati non corretti". Ma per sua natura, `catch` prende *tutti* gli errori in `try`. Qui intercetta un errore inaspettato, tuttavia visualizza ugualmente il messaggio `"JSON Error"`. Questo è sbagliato e rende il debug del codice più difficoltoso.
 
-Fortunatamente, possiamo individuare quale errore si è verificato, direttamente dalla proprietà `name`:
+Per evitare questi problemi, possiamo utiliizare la tecnica di "rethrowing". La regola è molto semplice:
+
+**Catch dovrebbe processore solamente gli errori che riconosce e "rilanciare" (rethrow) tutti gli altri.**
+
+La tecnica "rethrowing" può essere spiegata più in dettaglio come:
+
+1. Catch intercetta tutti gli errori.
+2. Nel blocco `catch(err) {...}` analizziamo l'oggetto errore (Object Error) `err`.
+2. Se non sappiamo come gestirlo, allora ne usciermo con `throw err`.
+
+Usually, we can check the error type using the `instanceof` operator:
 
 ```js run
 try {
   user = { /*...*/ };
-} catch(e) {
+} catch(err) {
 *!*
-  alert(e.name); // "ReferenceError" per aver tentato di accedere a una variabile non definita
+  if (err instanceof ReferenceError) {
 */!*
+    alert('ReferenceError'); // "ReferenceError" for accessing an undefined variable
+  }
 }
 ```
+
+Possiamo ottenere il nome della classe di errore dalla proprietà `err.name`. Tutti gli errori nativi la possiedono. Un'altra opzione può esser quella di leggere `err.constructor.name`.
 
 La regola è semplice:
 
@@ -398,7 +412,7 @@ try {
 } catch(e) {
 
 *!*
-  if (e.name == "SyntaxError") {
+  if (e instanceof SyntaxError) {
     alert( "JSON Error: " + e.message );
   } else {
     throw e; // rethrow (*)
@@ -425,7 +439,7 @@ function readData() {
 */!*
   } catch (e) {
     // ...
-    if (e.name != 'SyntaxError') {
+    if (!(e instanceof SyntaxError)) {
 *!*
       throw e; // rethrow (non so come gsetirlo)
 */!*

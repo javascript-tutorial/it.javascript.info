@@ -90,10 +90,10 @@ Ad esempio:
 
 ```js run
 alert( 1 || 0 ); // 1 (1 è vero)
-alert( true || 'no matter what' ); // (true è vero)
 
 alert( null || 1 ); // 1 (1 è il primo valore true)
 alert( null || 0 || 1 ); // 1 (il primo valore true)
+
 alert( undefined || null || 0 ); // 0 (tutti falsi, ritorna l'ultimo valore)
 ```
 
@@ -101,22 +101,22 @@ Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR 
 
 1. **Prelevare il primo valore vero da una lista di variabili o espressioni.**
 
-    Immaginiamo di avere diverse variabili, che possono contenere sia dati che `null/undefined`. Come potremmo fare per trovare la prima che contione dati?
+    Immaginiamo di avere diverse variabili, `firstName`, `lastName` e `nickName`, tutti opzionali (possono quindi essere undefined o avere valori falsi).
 
-    Possiamo utilizzare OR `||` per questo:
+    Possiamo utilizzare OR `||` per selezionare quello che contiene il valore e mostrarlo (oppure mostrare `"Anonymous"` se nessun valore è settato):
 
     ```js run
-    let currentUser = null;
-    let defaultUser = "John";
+    let firstName = "";
+    let lastName = "";
+    let nickName = "SuperCoder";
 
     *!*
-    let name = currentUser || defaultUser || "unnamed";
+    alert( firstName || lastName || nickName || "Anonymous"); // SuperCoder
     */!*
-
-    alert( name ); // seleziona "John" – il primo valore true
     ```
 
-    Se entrambe `currentUser` e `defaultUser` sono false allora il risultato sarà `"unnamed"`.
+    Se tutte le variabili sono false, verrà mostrato `"Anonymous"`.
+
 2. **Valutazione a Corto-Circuito.**
 
     Gli operandi, oltre che valori, possono essere anche espressioni arbitrarie. OR valuta ed esegue i test da sinistra a destra. La valutazione si ferma al primo risultato vero, questo viene poi ritornato. Il processo è chiamato "valutazione a corto-circuito", perchè cerca di terminare il prima possibile partendo da sinistra verso destra.
@@ -125,22 +125,14 @@ Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR 
 
     Se proviamo ad eseguire l'esempio che segue, `x` non verrà assegnata:
 
-    ```js run no-beautify
-    let x;
-
-    *!*true*/!* || (x = 1);
-
     alert(x); // undefined, perché (x = 1) non viene valutato
     ```
 
     Se invece il primo argomento è `false`, allora `||` prosegue e valuta il secondo, in questo caso l'assegnazione funziona:
 
     ```js run no-beautify
-    let x;
-
-    *!*false*/!* || (x = 1);
-
-    alert(x); // 1
+    *!*true*/!* || alert("not printed");
+    *!*false*/!* || alert("printed");
     ```
 
     Un'assegnazione è un caso semplice. Potrebbero essere coinvolti altri tipi di side-effect.
@@ -236,6 +228,8 @@ La precedenza dell'operatore AND `&&` è maggiore di quella dell'OR `||`.
 Quindi il codice `a && b || c && d` esegue in maniera analoga all'espressione: `(a && b) || (c && d)`.
 ````
 
+````warn header="Non rimpiazzate `if` con `||` o `&&`"
+Talvolta, le persone utilizzano l'operatore AND `&&` come una "scorcatoia" dell'espressione `if`".
 Proprio come l'OR, anche AND `&&` può qualche volta rimpiazzare `if`.
 
 Ad esempio:
@@ -253,9 +247,7 @@ Quindi sostanzialmente è analogo a:
 ```js run
 let x = 1;
 
-if (x > 0) {
-  alert( 'Greater than zero!' );
-}
+if (x > 0) alert( 'Greater than zero!' );
 ```
 
 La variante con `&&` sembra essere più corta. Ma l'istruzione `if` è più ovvia e tende ad essere più leggibile.

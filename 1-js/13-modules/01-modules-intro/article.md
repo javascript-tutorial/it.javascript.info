@@ -57,6 +57,10 @@ In questo modo:
 
 Il browser recupera ed elabora automaticamente il modulo importato (e i suoi import se necessario), e infine esegue lo script.
 
+```warn header="Modules work only via HTTP(s), not in local files"
+Se provate ad aprire una pagina web in locale, tramite il protocollo `file://`, scoprirete che le direttive `import/export` non funzionano. Per questo vanno utilizzati dei web-server localum come [static-server](https://www.npmjs.com/package/static-server#getting-started) oppure utilizzando la funzionalità "live server" dell'editor di codice, come quello di VS Code [Live Server Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) per testare i moduli.
+```
+
 ## Funzionalità principali dei moduli
 
 Cosa c'è di diverso nei moduli rispetto ai "normali" script?

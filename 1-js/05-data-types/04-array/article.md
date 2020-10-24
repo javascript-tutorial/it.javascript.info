@@ -156,7 +156,7 @@ In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/
 `shift`
 : Estrae il primo elemento dell'array e lo ritorna:
 
-    ```js
+    ```js run
     let fruits = ["Apple", "Orange", "Pear"];
 
     alert( fruits.shift() ); // rimuove Apple e lo ritorna con alert
@@ -167,7 +167,7 @@ In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/
 `unshift`
 : Aggiunge l'elemento in testa dell'array:
 
-    ```js
+    ```js run
     let fruits = ["Orange", "Pear"];
 
     fruits.unshift('Apple');
@@ -429,6 +429,53 @@ alert( "1" + 1 ); // "11"
 alert( "1,2" + 1 ); // "1,21"
 ```
 
+## Non confrontate gli array con ==
+
+Gli array in JavaScript, a differenza di altri linguaggi di programmazione, non dovrebbero essere confrontati con l'operatore `==`.
+
+Questo operatore non offre alcun tipo di trattamento speciale per gli array, li considera come un oggetto.
+
+Ricordando velocemente le regole:
+
+- Due oggetti sono uguali con `==` solamente se fanno riferimento allo stesso oggetto.
+- Se uno dei due argomenti forniti all'operatore `==` è un oggetto, e l'atlro è un tipo primitivo, allora l'oggetto viene convertito in primitivo, come spiegato nel capitolo <info:object-toprimitive>.
+- ...Con l'eccezione di `null` e `undefined` che sono uguali solamente tra di loro.
+
+Il confronto stretto, con l'operatore `===` è ancora più semplice, poichè non converte i tipi. 
+
+Quindi, se confrontiamo array con `==`, non saranno mai equivalenti, a meno chè non confrontiamo due variabili che fanno riferimento allo stesso array.
+
+Ad esempio:
+```js run
+alert( [] == [] ); // false
+alert( [0] == [0] ); // false
+```
+
+Questi array sono tecnicamente oggetti differenti. Quindi non si equivalgono, L'operatore `==` non effettua il confronto elemento per elemento.
+
+Anche il confronto con tipi primitivi potrebbe dare risultati strani:
+
+```js run
+alert( 0 == [] ); // true
+
+alert('0' == [] ); // false
+```
+
+Qui, in entrambi i casi, stiamo confrontando un tipo primitivo con un array. Quindi l'array `[]` viene convertito in tipo primitivo per effettuare il confronto e diventa una stringa vuota `''`. 
+
+Successivamente il processo di confronto procede come descritto nel capitolo <info:type-conversions>:
+
+```js run
+// dopo averlo convertio, l'array [] equivale a ''
+alert( 0 == '' ); // true, poichè '' viene convertito nel numero 0
+
+alert('0' == '' ); // false, nessuna conversione di tipo, sono stringhe differenti
+```
+
+Quindi, come possiamo confrontare gli array?
+
+Molto semplice: non utilizzando l'operatore`==`. Invece, vanno confrontati con un ciclo che confronta ogni elemento dei due array, oppure utilizzando uno dei metodi di iterazione che vedremo nel prossimo capitolo.
+
 ## Riepilogo
 
 Gli array sono uno speciale tipo di oggetto, studiati per immagazzinare e gestire collezioni ordinate di dati.
@@ -457,3 +504,8 @@ Possiamo utilizzare un array come deque con le seguenti operazioni:
 
 Ritorneremo sugli array e studieremo più metodi per aggiungere, rimuovere, estrarre ed ordinare elementi nel capitolo <info:array-methods>.
 
+Per confrontare gli array, non utilizzate l'opertore  `==` (lo stesso vale per `>`, `<` e gli altri), poichè non riservano alcun trattamento speciale per gli array. Li trattano come degli oggetti comuni, e solitamente non è quello che vogliamo.
+
+Piuttosto si possono utilizzare i cicli come `for..of` per confrontare ogni elemento dei due array.
+
+Continueremo con lo studio degli array e di altri metodi per aggiungere, rimuovere, estrarre elementi ed ordinarli, nel prossimo capitolo <info:array-methods>.

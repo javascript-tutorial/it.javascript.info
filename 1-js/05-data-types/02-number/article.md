@@ -1,8 +1,12 @@
 # Numeri
 
-Tutti i numeri in JavaScript sono memorizzati in formato 64-bit [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), conosciuto anche come "doppia precisione".
+Nella versione moderna di JavaScript ci sono due differenti tipi di numeri:
 
-Cerchiamo di ricapitolare ed espandere tutto ciò che già conosciamo.
+1. I numeri regolari, che vengono memorizzati nel formato a 64 bit [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), conosciuti anche come "numeri in virgola mobile con doppia precisione". Questi sono i numeri che utilizziamo la maggior parte del tempo, e sono quelli di cui parleremo in questo capitolo.
+
+2. I BigInt, che vengono utilizzati per rappresentare numeri interi di lunghezza arbitraria. Talvolta possono tornare utili, poichè i numeri regolari non possono exxedere <code>2<sup>53</sup></code> od essere inferiori di <code>-2<sup>53</sup></code>. Poichè i BigInt vengono utilizzati in alcune aree speciali, gli abbiamo dedicato un capitolo <info:bigint>.
+
+Quindi in questo capitolo parleremo dei numeri regolari.
 
 ## Diversi modi di scrivere un numero
 
@@ -28,7 +32,6 @@ In altre parole, `"e"` moltiplica il numero `1` seguito dal numero di zeri dati.
 1e3 = 1 * 1000
 1.23e6 = 1.23 * 1000000
 ```
-
 
 Ora proviamo a scrivere qualcosa di molto piccolo. Ad esempio, 1 microsecondo (un milionesimo di secondo): 
 
@@ -282,8 +285,6 @@ Questo perché il segno viene rappresentato con un solo bit, in questo modo ogni
 Nella maggior parte dei casi questa differenza è impercettibile, poiché gli operatori sono studiati per trattarli allo stesso modo.
 ```
 
-
-
 ## Test: isFinite e isNaN
 
 Ricordate questi due valori numerici speciali?
@@ -423,13 +424,11 @@ Per scrivere numeri molto grandi:
 
 Per diversi sistemi numerici:
 
+Per convertire a numeri valori del tipo `12pt` e `100px`:
+
 - Potete scrivere direttamente in esadecimale (`0x`), ottale (`0o`) e binario (`0b`) 
 - `parseInt(str, base)` analizza un numero intero con un qualsiasi sistema numerico con base: `2 ≤ base ≤ 36`.
 - `num.toString(base)` converte un numero ad una stringa utilizzando il sistema numerico fornito in `base`.
-
-Per convertire a numeri valori del tipo `12pt` e `100px`:
-
-- Usate `parseInt/parseFloat` per una conversione "leggera", che legge numeri da una stringa e ritorna il valore che è riuscito a leggere prima dell'errore. 
 
 Per i numeri con la virgola:
 
