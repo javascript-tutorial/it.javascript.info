@@ -2,12 +2,26 @@
 
 # Introduzione: callbacks
 
-Molte azioni in JavaScript sono *asincrone*
+```warn header="Utilizeremo i metodi browser in questi esempi"
+Per dimostrare l'utilizzo di callbacks, promise ed altri concetti astratti, utilizzeremo alcuni metodi del browser: nello specifico, caricamento di script e sempliici manipolazioni del documento.
 
-Per esempio, guardiamo la funzione `loadScript(src)`:
+Se questi metodi non vi sono familiari, e il loro utilizzo negli esempi vi risulta di difficile comprensione, potreste voler leggere un paio di capitolo della [prossima parte](/document) del tutorial.
+
+Anche se, povreremo a mantenere le spiegazioni più chiare possibili. Non ci sarà nulla di realmente complesso dal punto di vista del browser.
+```
+
+Molte funzioni vengono fornite da ambienti JavaScript che permettono di schedulare azioni *asincrone*. In altre parole, azioni che iniziano ora, ma finiranno in un secondo momento.
+
+Ad esempio, una di queste funzioni è `setTimeout`.
+
+Ci sono altri esempi molto utili, e.g caricamento di script e moduli (che studieremo nei successivi capitoli).
+
+Diamo un'occhiata alla funzione `loadScript(src)`, che carica uno script dal percorso `src`:
 
 ```js
 function loadScript(src) {
+  // creates a <script> tag and append it to the page
+  // this causes the script with given src to start loading and run when complete
   let script = document.createElement('script');
   script.src = src;
   document.head.append(script);
@@ -25,7 +39,7 @@ loadScript('/my/script.js');
 
 La funzione è chiamata "asincronamente", perché l'azione (il caricamento dello script) non finirà adesso ma in seguito.
 
-La chiamata alla funzione da inizio al caricamento dello script, poi l'esecuzione continua. Mentre lo script sta caricando, il codice sotto potrebbe finire l'esecuzione, e se il caricamento richiede tempo, anche altri script potrebbero venire eseguiti nel frattempo.
+Se c'è del codice sotto `loadScript(…)`, non dovrà attender fino al caricamento dello script.
 
 ```js
 loadScript('/my/script.js');
@@ -146,7 +160,7 @@ Negli esempi precedenti non abbiamo considerato gli errori. Cosa accade se il ca
 
 Ecco una versione migliorata di `loadScript` che traccia gli errori di caricamento:
 
-```js run
+```js
 function loadScript(src, callback) {
   let script = document.createElement('script');
   script.src = src;
@@ -223,6 +237,30 @@ Nel codice sopra:
 Mano a mano che le chiamate diventano più annidate, il codice diventa più profondo e via via più complicato da gestire, specialmente se abbiamo codice reale invece di `...`, che può includere più cicli, condizioni e così via.
 
 Questo viene chiamato "callback hell" o "pyramid of doom."
+
+<!--
+loadScript('1.js', function(error, script) {
+  if (error) {
+    handleError(error);
+  } else {
+    // ...
+    loadScript('2.js', function(error, script) {
+      if (error) {
+        handleError(error);
+      } else {
+        // ...
+        loadScript('3.js', function(error, script) {
+          if (error) {
+            handleError(error);
+          } else {
+            // ...
+          }
+        });
+      }
+    })
+  }
+});
+-->
 
 ![](callback-hell.svg)
 

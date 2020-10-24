@@ -4,7 +4,7 @@ La scelta più logica è un `WeakSet`:
 Let's store read messages in `WeakSet`:
 >>>>>>> 9bfc8cfa9c055bdcbc8f40471fc52e011687a728:1-js/05-data-types/08-weakmap-weakset/01-recipients-read/solution.md
 
-```js
+```js run
 let messages = [
   {text: "Hello", from: "John"},
   {text: "How goes?", from: "John"},

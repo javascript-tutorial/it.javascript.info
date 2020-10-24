@@ -11,7 +11,7 @@ Vengono supportati da:
 
 - `Map`
 - `Set`
-- `Array` (ad eccezione `arr.values()`)
+- `Array`
 
 Anche gli oggetti supportano dei metodi simili, ma la loro sintassi è leggermente differente.
 

@@ -5,11 +5,11 @@ Questo libro è un *tutorial*. L'obiettivo è quello di aiutarti ad apprender il
 
 ## Specifiche
 
-**La specifica ECMA-262** contiene informazioni più dettagliate, approfondite e formalizzate riguardo JavaScript. E' la definizione stessa del linguaggio.
+[La specifica ECMA-262](https://www.ecma-international.org/publications/standards/Ecma-262.htm) contiene informazioni più dettagliate, approfondite e formalizzate riguardo JavaScript. E' la definizione stessa del linguaggio.
 
 Iniziare a studiare dalla formalizzazione può risultare difficile all'inizio. Quindi se avete bisogno di una sorgente affidabile e formale riguardo i dettagli del linguaggio, la specifica è il posto in cui cercare. Ma non è una risorsa comoda da consultare per i problemi di tutti i giorni.
 
-E' possibile trovare l'ultima bozza a <https://tc39.es/ecma262/>.
+Ogni anno viene rilasciata una nuova specifica. Fra questi rilasci, è possibile trovare l'ultima bozza a <https://tc39.es/ecma262/>.
 
 Per leggere delle più recenti caratteristiche, incluse quelle considerate "quasi standard" (definite "stage 3"), potete consultare <https://github.com/tc39/proposals>.
 
