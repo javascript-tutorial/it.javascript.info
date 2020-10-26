@@ -344,7 +344,11 @@ Qui abbiamo visto le proprietà:
 
 Se una funzione viene dichiarata come espressione di funzione (non nel principale flusso di codice), e possiede un nome, questa viene definita una Named Function Expression. Il nome può essere utilizzato internamente per auto-riferimenti, per chiamate ricorsive e altri contesti simili.
 
+<<<<<<< HEAD
 Inoltre, una funzione può possedere diverse proprietà aggiuntive. Molte librerie JavaScript fanno largo utilizzo di questa caratteristica.
+=======
+They create a "main" function and attach many other "helper" functions to it. For instance, the [jQuery](https://jquery.com) library creates a function named `$`. The [lodash](https://lodash.com) library creates a function `_`, and then adds `_.clone`, `_.keyBy` and other properties to it (see the [docs](https://lodash.com/docs) when you want to learn more about them). Actually, they do it to lessen their pollution of the global space, so that a single library gives only one global variable. That reduces the possibility of naming conflicts.
+>>>>>>> 2d5be7b7307b0a4a85e872d229e0cebd2d8563b5
 
 Queste creano una funzione "principale" e ci attaccano molte altre funzioni di "supporto". Ad esempio la libreria [jquery](https://jquery.com) definisce una funzione chiamata `$`. La libreria [lodash](https://lodash.com) definisce una funzione `_`. E ci aggiunge `_.clone`, `_.keyBy` e altre proprietà (vedi la [documentazione](https://lodash.com/docs). In realtà, lo fanno anche per diminuire la sporcizia nello spazio globale, in questo modo una libreria fornisce una sola variabile globale. Questo riduce la probabilità di conflitti tra nomi.
 
