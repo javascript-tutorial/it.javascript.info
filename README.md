@@ -1,10 +1,6 @@
 # The Modern JavaScript Tutorial in italiano
 
-<<<<<<< HEAD
 In questa repository viene pubblicata la traduzione italiana di [https://javascript.info](https://javascript.info).
-=======
-This repository hosts the English content of the Modern JavaScript Tutorial, published in [https://javascript.info](https://javascript.info).
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 Ci piacerebbe rendere questo tutorial disponibile in molte lingue. Aiutaci a tradurlo.
 
