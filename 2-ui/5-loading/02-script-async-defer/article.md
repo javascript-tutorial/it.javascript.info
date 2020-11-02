@@ -127,7 +127,7 @@ Ma le specifiche indicano che gli script devono essere eseguito secondo l'ordine
 =======
 Browsers scan the page for scripts and download them in parallel, to improve performance. So in the example above both scripts download in parallel. The `small.js` probably finishes first.
 
-...But the `defer` atribute, besides telling the browser "not to block", ensures that the relative order is kept. So even though `small.js` loads first, it still waits and runs after `long.js` executes.
+...But the `defer` attribute, besides telling the browser "not to block", ensures that the relative order is kept. So even though `small.js` loads first, it still waits and runs after `long.js` executes.
 
 That may be important for cases when we need to load a JavaScript library and then a script that depends on it.
 >>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
