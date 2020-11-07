@@ -1,9 +1,8 @@
 # I generatori
 
-Le funzioni ritornano normalmente un solo valore (a volte non ritornano null).
+Le funzioni ritornano normalmente un solo valore (a volte non ritornano nulla).
 
-I generatori possono ritornare ("yield") valori multipli, uno dopo l'altro, ogni volta che vengono invocati. Sono, di fatto, lo strumento ideale se usati
-con gli [iterables](info:iterable), dal momento che ci consentono di creare flussi di dati con facilità.
+I generatori possono ritornare ("yield") valori multipli, uno dopo l'altro, ogni volta che vengono invocati. Sono, di fatto, lo strumento ideale da utilizzare con gli [iteratori](info:iterable), dal momento che ci consentono di creare flussi di dati con facilità.
 
 ## Le funzioni generatrici
 
@@ -19,9 +18,9 @@ function* generateSequence() {
 }
 ```
 
-Generator functions behave differently from regular ones. When such function is called, it doesn't run its code. Instead it returns a special object, called "generator object", to manage the execution.
+Le funzioni generatrici si comportano diversamente rispetto alle normali funzioni. Quando una generatrice viene invocata, di fatto, il codice al suo interno non viene eseguito, ma ritorna uno speciale oggetto, chiamato "oggetto generatore", che ne consente di gestire l'esecuzione.
 
-Here, take a look:
+Dai un'occhiata qua:
 
 ```js run
 function* generateSequence() {
@@ -30,25 +29,25 @@ function* generateSequence() {
   return 3;
 }
 
-// "generator function" creates "generator object"
+// "la funzione generatrice" crea un "oggetto generatore"
 let generator = generateSequence();
 *!*
 alert(generator); // [object Generator]
 */!*
 ```
 
-The function code execution hasn't started yet:
+L'esecuzione del codice della funzione non è ancora iniziata:
 
 ![](generateSequence-1.svg)
 
-The main method of a generator is `next()`. When called, it runs the execution till the nearest `yield <value>` statement (`value` can be omitted, then it's `undefined`). Then the function execution pauses, and the yielded `value` is returned to the outer code.
+Il metodo principale di un oggetto generatore è `next()`. Quando invocato, esegue le istruzioni in esso contenute fino alla prossima istruzione `yield <valore>` (`valore` può essere omesso, in tal caso sarà `undefined`). A questo punto l'esecuzione si arresta e il `valore` viene "ceduto" al codice esterno.
 
-The result of `next()` is always an object with two properties:
+Il risultato dell'esecuzione di `next()` è sempre un oggetto con due proprietà:
 
-- `value`: the yielded value.
-- `done`: `true` if the function code has finished, otherwise `false`.
+- `value`: il valore che viene "ceduto".
+- `done`: `true`, se il codice della funzione è stato eseguito completamente, altrimenti, `false`.
 
-For instance, here we create the generator and get its first yielded value:
+Ad esempio, qui andiamo a creare un generatore e otteniamo il primo valore "ceduto":
 
 ```js run
 function* generateSequence() {
