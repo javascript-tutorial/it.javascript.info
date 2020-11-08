@@ -48,10 +48,7 @@ document.body.style.background = "red";
 setTimeout(() => document.body.style.background = "", 1000);
 ```
 
-In questo caso abbiamo usato `document.body.style`, ma c'è molto di più. Proprietà e metodi sono descritti all'interno delle specifiche. Due sono i gruppi che hanno contribuito al loro sviluppo:
-
-1. [W3C](https://en.wikipedia.org/wiki/World_Wide_Web_Consortium) -- la documentazione disponibile su <https://www.w3.org/TR/dom>.
-2. [WhatWG](https://en.wikipedia.org/wiki/WHATWG), pubblicato su <https://dom.spec.whatwg.org>.
+In questo caso abbiamo usato `document.body.style`, ma c'è molto di più. Proprietà e metodi sono descritti all'interno della specifica  [DOM Living Standard](https://dom.spec.whatwg.org).
 
 Come normalmente accade, i due gruppi non sono sempre d'accordo, questo fa sì che esistano due tipi di standard. Fortunatamente le differenze non sono mai così distanti tra loro e si riesce a unirle sotto un'unica voce. La documentazione reperibile ai link indicati è al 99% simile. Le differenze sono talmente minime da non accorgersene nemmeno.
 

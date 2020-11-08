@@ -13,9 +13,9 @@ let socket = new WebSocket("ws://javascript.info");
 ```
 C'&egrave; anche il protocollo criptato `wss://`, utilizzato per i websockets HTTPS
 
-
 ```smart header="Scegli sempre `wss://`"
 Il procotollo `wss://` non solo &egrave; criptato, ma &egrave; anche pi&ugrave; affidabile.
+
 
 Questo perch&egrave; i dati del `ws://` non sono criptati, visibili per qualunque intermediario. Server proxy molto vecchi, che non riconoscono l'implementazione WebSocket, potrebbero notare i suoi headers, per così dire, "strani" e decidere di interrompre la connessione.
 
@@ -125,6 +125,7 @@ Ad esempio:
 
     Questi headers aggiuntivi vengono settati da noi, per dire al server quali sottoprotocolli supporta il nostro codice, utilizzando il secondo parametro (opzionale) di `new WebSocket`. Questo sarebbe l'array dei subprotocolli se, ad esempio, volessimo usare  SOAP o WAMP:
 
+
     ```js
     let socket = new WebSocket("wss://javascript.info/chat", ["soap", "wamp"]);
     ```
@@ -180,8 +181,9 @@ Questo &egrave; settato dalla propriet&agrave; `socket.bufferType`, di default &
 
 [Blob](info:blob) &egrave; un oggetto bianrio di alto livello, si integra direttamente con `<a>`, `<img>` e altri tag, cos&igrave; &egrave; un default puro. Ma per processamenti binari, per accedere ai singoli data bytes, possiamo cambiarlo in`"arraybuffer"`:
 
+
 ```js
-socket.bufferType = "arraybuffer";
+socket.binaryType = "arraybuffer";
 socket.onmessage = (event) => {
   // event.data is either a string (if text) or arraybuffer (if binary)
 };

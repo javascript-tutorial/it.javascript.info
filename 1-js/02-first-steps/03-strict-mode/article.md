@@ -72,7 +72,6 @@ Nel caso in cui non funzioni, la miglior strada da seguire è quella di assicura
 })()
 
 
-
 ## Utilizzare sempre "use strict"
 
 Le differenze tra `"use strict"` contro la modalità di "default" non è ancora stata spiegata.

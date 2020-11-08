@@ -18,7 +18,7 @@ Questo è quello che dovreste vedere se è la prima volta che lo aprite:
 
 ![](chrome-open-sources.svg)
 
-Il bottone <span class="devtools" style="background-position:-168px -76px"></span> apre la barra laterale con i file.
+Il bottone <span class="devtools" style="background-position:-172px -98px"></span> apre la barra laterale con i file.
 
 Clicchiamoci sopra e selezioniamo `hello.js` dalla vista ad albero. Questo è quello che dovrebbe apparire:
 
@@ -119,8 +119,8 @@ Ora aprite i menu a cascata (quelli con la freccetta accanto al nome). Vi consen
 Ora è il momento di *tracciare* lo script.
 
 Ci sono dei bottoni appositi nella parte superiore del pannello di destra. Proviamo ad attivarli.
-
-<span class="devtools" style="background-position:-7px -76px"></span> -- continua l'esecuzione, tasto `key:F8`.
+<!-- https://github.com/ChromeDevTools/devtools-frontend/blob/master/front_end/Images/src/largeIcons.svg -->
+<span class="devtools" style="background-position:-146px -168px"></span> -- continua l'esecuzione, tasto `key:F8`.
 : Riprende l'esecuzione. Se non ci sono ulteriori breakpoint l'esecuzione continua e il debugger non avrà più il controllo.
 
     Questo e quello che vedremo dopo aver cliccato:

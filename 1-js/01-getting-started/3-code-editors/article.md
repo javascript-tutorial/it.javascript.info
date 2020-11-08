@@ -34,6 +34,7 @@ Nella pratica, gli editor semplici possono avere molti plugin tra cui sintassi a
 Meritano attenzione le seguenti opzioni:
 
 - [Atom](https://atom.io/) (multi-piattaforma, gratuito).
+- [Visual Studio Code](https://code.visualstudio.com/) (multi-piattaforma, gratuito).
 - [Sublime Text](http://www.sublimetext.com) (multi-piattaforma, con prova gratuita).
 - [Notepad++](https://notepad-plus-plus.org/) (Windows, gratuito).
 - [Vim](http://www.vim.org/) e [Emacs](https://www.gnu.org/software/emacs/) sono particolarmente carini se si sanno utilizzare.

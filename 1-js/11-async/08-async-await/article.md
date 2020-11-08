@@ -133,15 +133,13 @@ let user = await response.json();
 
 Possiamo "avvolgerlo" wrap in una funzione async anonima, come qui:
 
-```js run
+```js
 (async () => {
   let response = await fetch('/article/promise-chaining/user.json');
   let user = await response.json();
   ...
 })();
 ```
-
-
 ````
 ````smart header="`await` accetta i \"thenables\""
 Come `promise.then`, `await` permette di usare gli oggetti "thenable" (quelli con un metodo `then` chiamabile). L' idea è che un oggetto di terze parti possa non essere una promise, ma essere promise-compatibile: se supporta `.then`, è abbastanza per usarlo con `await`.
@@ -291,7 +289,7 @@ In caso di errore, si propaga come di solito: dalla promise fallita a `Promise.a
 
 ````
 
-## Riassunto
+## Riepilogo
 
 La parola chiave `async` prima di una funzione ha due effetti:
 

@@ -304,7 +304,7 @@ if (str.indexOf("Widget") != -1) {
 }
 ```
 
-````smart header=Il trucco del NOT bit a bit"
+#### Il trucco del NOT bit a bit
 Uno dei trucchi più utilizzati è l'operatore di [NOT bit a bit](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Bitwise_NOT) `~`. Questo converte il numero ad un intero in 32bit (rimuovendo la parte decimale se presente) e successivamente inverte tutti i bit.
 
 Per gli interi in 32bit la chiamata `~n` ha lo stesso risultato di `-(n+1)` (a causa del formato IEEE-754).
@@ -337,7 +337,10 @@ if (~str.indexOf("Widget")) {
 Solitamente è sconsigliato utilizzare caratteristiche del linguaggio per azioni che possono risultare poco ovvie, ma questo particolare trucco è ampiamente utilizzato, quindi è giusto conoscerlo.
 
 Ricordatevi solo che: `if (~str.indexOf(...))` si legge come "se trovi".
-````
+
+Per essere precisi, numeri molto grandi vengono troncati a 32bit dall'operatore `~`, esistono altri numeri che potrebbero dare `0`, il più piccolo è `~4294967295=0`. Questo fa si che questo tipo di controlli siano corretti solamente se una stringa non è troppo lunga.
+
+Attualmente questo trucco lo troviamo solamente nei codici vecchi, poichè JavaScript moderno fornisce un metodo dedicato, `.includes`(vedi sotto).
 
 ### includes, startsWith, endsWith
 
@@ -526,7 +529,7 @@ Il "giusto" algoritmo per confrontare stringhe è più complesso di come possa s
 
 Quindi il browser deve sapere quale lingua utilizzare nel confronto.
 
-Fortunatamente, tutti i browser moderni (IE10 + richiede una libreria esterna [Intl.JS](https://github.com/andyearnshaw/Intl.js/)) supportano lo standard internazionale  [ECMA 402](http://www.ecma-international.org/ecma-402/1.0/ECMA-402.pdf).
+Fortunatamente, tutti i browser moderni (IE10 + richiede una libreria esterna [Intl.js](https://github.com/andyearnshaw/Intl.js/)) supportano lo standard internazionale  [ECMA-402](http://www.ecma-international.org/ecma-402/1.0/ECMA-402.pdf).
 
 Questo fornisce uno speciale metodo per confrontare stringhe in lingue diverse, seguendo delle regole.
 
