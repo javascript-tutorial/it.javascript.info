@@ -7,30 +7,41 @@ libs:
 # Alberatura DOM
 
 La struttura portante di un documento HTML è rappresentata dai tags
-<!-- The backbone of an HTML document are tags. -->
 
 Secondo il Document Object Model (DOM), ogni tag HTML è un oggetto. I tags annidati vengono chiamati "figli" del tag che li racchiude.
-<!-- According to Document Object Model (DOM), every HTML-tag is an object. Nested tags are called "children" of the enclosing one. -->
-
-Il testo contenuto nel tag è anch'esso un'oggetto.
-<!-- The text inside a tag it is an object as well. -->
 
 Tutti questi oggetti sono accessibili usando JavaScript
-<!-- All these objects are accessible using JavaScript. -->
+
+Ad esempio, `document.body` è l'oggetto che rappresenta il tag `<body>`.
 
 ## Un esempio di DOM
 
-Per esempio, analizziamo il DOM di questo documento:
-<!-- For instance, let's explore the DOM for this document: -->
+```js run
+document.body.style.background = 'red'; // rende il background rosso
+
+setTimeout(() => document.body.style.background = '', 3000); // ritorna back
+```
+
+Qui abbiamo utilizzato `style.background` per cambaire il color del background di `document.body`, ma ci sono molte altre proprietà, come:
+
+- `innerHTML` -- il contenut HTML del nodo.
+- `offsetWidth` -- la larghezza del nodo (in pixel)
+- ...e molto altro.
+
+Presto apprenderemo diversi modi di manipolare il DOM, ma prima abbiamo bisogno di comprendere la sua struttura.
+
+## Un esempio di DOM
+
+Iniziamo con un esempio molto semplice di un documento:
 
 ```html run no-beautify
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>About elks</title>
+  <title>About elk</title>
 </head>
 <body>
-  The truth about elks.
+  The truth about elk.
 </body>
 </html>
 ```
@@ -40,7 +51,7 @@ Il DOM rappresenta l'HTML sotto forma di alberatura di tag. Questo è come appar
 <div class="domtree"></div>
 
 <script>
-let node1 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n    "},{"name":"TITLE","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"About elks"}]},{"name":"#text","nodeType":3,"content":"\n  "}]},{"name":"#text","nodeType":3,"content":"\n  "},{"name":"BODY","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n  The truth about elks."}]}]}
+let node1 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n    "},{"name":"TITLE","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"About elk"}]},{"name":"#text","nodeType":3,"content":"\n  "}]},{"name":"#text","nodeType":3,"content":"\n  "},{"name":"BODY","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n  The truth about elk."}]}]}
 
 drawHtmlTree(node1, 'div.domtree', 690, 320);
 </script>
@@ -72,13 +83,13 @@ Ecco un esempio in cui non esistono nodi testuali contenenti spazi:
 
 ```html no-beautify
 <!DOCTYPE HTML>
-<html><head><title>About elks</title></head><body>The truth about elks.</body></html>
+<html><head><title>About elk</title></head><body>The truth about elk.</body></html>
 ```
 
 <div class="domtree"></div>
 
 <script>
-let node2 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[{"name":"TITLE","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"About elks"}]}]},{"name":"BODY","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"The truth about elks."}]}]}
+let node2 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[{"name":"TITLE","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"About elk"}]}]},{"name":"BODY","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"The truth about elk."}]}]}
 
 drawHtmlTree(node2, 'div.domtree', 690, 210);
 </script>
@@ -159,7 +170,7 @@ Aggiungiamo ulteriori tags e commenti alla pagina:
 <!DOCTYPE HTML>
 <html>
 <body>
-  The truth about elks.
+  The truth about elk.
   <ol>
     <li>An elk is a smart</li>
 *!*
@@ -174,7 +185,7 @@ Aggiungiamo ulteriori tags e commenti alla pagina:
 <div class="domtree"></div>
 
 <script>
-let node6 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[]},{"name":"BODY","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n  The truth about elks.\n    "},{"name":"OL","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n      "},{"name":"LI","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"An elk is a smart"}]},{"name":"#text","nodeType":3,"content":"\n      "},{"name":"#comment","nodeType":8,"content":"comment"},{"name":"#text","nodeType":3,"content":"\n      "},{"name":"LI","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"...and cunning animal!"}]},{"name":"#text","nodeType":3,"content":"\n    "}]},{"name":"#text","nodeType":3,"content":"\n  \n"}]}]};
+let node6 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[]},{"name":"BODY","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n  The truth about elk.\n    "},{"name":"OL","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n      "},{"name":"LI","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"An elk is a smart"}]},{"name":"#text","nodeType":3,"content":"\n      "},{"name":"#comment","nodeType":8,"content":"comment"},{"name":"#text","nodeType":3,"content":"\n      "},{"name":"LI","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"...and cunning animal!"}]},{"name":"#text","nodeType":3,"content":"\n    "}]},{"name":"#text","nodeType":3,"content":"\n  \n"}]}]};
 
 drawHtmlTree(node6, 'div.domtree', 690, 500);
 </script>
@@ -196,11 +207,12 @@ In teoria esistono [12 tipologie di nodo](https://dom.spec.whatwg.org/#node), ma
 3. nodi testuali -- contengono testo.
 4. commenti -- qualche volta possiamo aggiungere informazioni, non verranno mostrate, ma JS potrà leggerle dal DOM.
 
-## Guarda tu stesso
+1. `document` -- il "punto di ingresso" del DOM.
+2. nodi elemento -- HTML-tags, i blocchi che compongono l'albero.
+3. nodi testuali -- contengono testo.
+4. commenti -- spesso possono essere inserite informazioni che non verranno mostrate, però JavaScript è in grado di leggerle dal DOM.
 
 Per vedere la struttura del DOM in real-time, prova [Live DOM Viewer](http://software.hixie.ch/utilities/js/live-dom-viewer/). Inizia a scrivere e vedrai istantaneamente le modifiche aggiunte al DOM.
-
-## Nel browser inspector
 
 Un altro modo per esplorare il DOM è usare gli "Strumenti per sviluppatori" del browser. Strumenti che usamo quando sviluppiamo.
 
@@ -208,7 +220,7 @@ Per procedere in questo modo, apri la pagina web [elks.html](elks.html), apri "S
 
 Dovrebbe apparire così:
 
-![](elks.png)
+![](elk.svg)
 
 Puoi vedere il DOM, clicca sugli elementi e controlla i loro dettagli.
 
@@ -218,7 +230,7 @@ Cliccando sul bottone <span class="devtools" style="background-position:-328px -
 
 Un altro metodo sarebbe quello di premere con il tasto destro su uno specifico elemento della pagina e cliccare poi su "Ispeziona" dal menù contestuale.
 
-![](inspect.png)
+![](inspect.svg)
 
 Nella parte destra degli strumenti per sviluppatori troviamo le seguenti schede:
 - **Styles** -- possiamo vedere i CSS applicati all'elemento corrente, regola per regola, incluse quelle native (in grigio). Quasi tutto può essere modificato direttamente, incluse le dimensioni/margini/padding del box sottostante.
@@ -239,19 +251,19 @@ Ora l'ultimo elemento selezionato è disponibile come `$0`, quello precedente co
 
 Ora possiamo eseguire dei comandi. `$0.style.background = 'red'` colora di rosso lo sfondo dell'elemento selezionato della lista, in questo modo:
 
-![](domconsole0.png)
+![](domconsole0.svg)
 
 Al contrario, se ci troviamo nella console a abbiamo una variabile che referenzia un nodo del DOM, possiamo usare il comando `inspect(node)` per mostrarlo nel pannello Elements.
 
 Oppure possiamo semplicemente mostrarlo nella console, come fatto qui sotto per `document.body`:
 
-![](domconsole1.png)
+![](domconsole1.svg)
 
 Questo è ovviamente a scopo di debug. Dal prossimo capitolo accederemo e modificheremo il DOM utilizzando JavaScript.
 
 Gli strumenti per sviluppatori disponibili nel browser rappresentano un grosso aiuto nello sviluppo: possiamo navigare il DOM, sperimentare e vedere cosa non funziona.
 
-## Riassunto
+## Riepilogo
 
 Un documento HTML/XML è rappresentato nel browser come un'alberatura DOM.
 

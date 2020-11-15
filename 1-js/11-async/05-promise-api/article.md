@@ -75,7 +75,7 @@ La sintassi è:
 let promise = Promise.all([...promises...]);
 ```
 
-Accetta un array di promise (tecnicamente si può usare qualsiasi iterabile, ma solitamente si usa un array) e ritorna una nuova promise.
+`Promise.all` accetta un array di promise (tecnicamente si può usare qualsiasi iterabile, ma solitamente si usa un array) e ritorna una nuova promise.
 
 La nuova promise risolve (resolves) quando tutte le promise elencate sono ferme (settled) ed ha un array dei loro risultati (?).
 
@@ -239,10 +239,10 @@ Se il broser non supporta `Promise.allSettled`, è facile usare un polyfill:
 if(!Promise.allSettled) {
   Promise.allSettled = function(promises) {
     return Promise.all(promises.map(p => Promise.resolve(p).then(value => ({
-      state: 'fulfilled',
+      status: 'fulfilled',
       value
     }), reason => ({
-      state: 'rejected',
+      status: 'rejected',
       reason
     }))));
   };
@@ -277,7 +277,61 @@ Promise.race([
 
 Così, il primo risultato/errore diventa il risultato di tutto `Promise.race`. Quando la prima promise ferma (settled) "vince la gara" (wins the race), tutti i risultati/errori successivi sono ignorati.
 
-## Riassunto
+
+## Promise.resolve/reject
+
+I metodi `Promise.resolve` e `Promise.reject` vengono utilizzati raramente nel codice moderno, poichè la sintassi `async/await` (che studieremo [più avanti](info:async-await)) li rende obsoleti.
+
+Li studiamo per completezza e per quelli che non possono utilizzare `async/await` per qualche ragione.
+
+### Promise.resolve
+
+`Promise.resolve(value)` risolve una Promise con il risultato `value`.
+
+Come nell'esempio:
+
+```js
+let promise = new Promise(resolve => resolve(value));
+```
+
+Il metodo viene utilizzato per compatibilità, qunado ci si aspetta che una funzione ritorni una promise.
+
+Ad esempio, la funzione `loadCached` sotto, analizza un URL e ne memorrizza (sulla cache) il suo contenuto. Per le future chiamate allo stesso URL verrà immediatamente ritornato il contenuto dalla cache, ma utilzzando `Promise.resolve` per renderlo una promise, in questo modo il valore ritornato sarà sempre una promise:
+
+```js
+let cache = new Map();
+
+function loadCached(url) {
+  if (cache.has(url)) {
+*!*
+    return Promise.resolve(cache.get(url)); // (*)
+*/!*
+  }
+
+  return fetch(url)
+    .then(response => response.text())
+    .then(text => {
+      cache.set(url,text);
+      return text;
+    });
+}
+```
+
+Possiamo scrivere `loadCached(url).then(…)`, perchè ci viene garantito che la funzione ritorni una promise. Possiamo sempre utilizzare `.then` dopo `loadCached`. Questo è lo scopo di `Promise.resolve` nella riga `(*)`.
+
+### Promise.reject
+
+`Promise.reject(error)` rifiuta una promise con `error`.
+
+Come nell'esempio:
+
+```js
+let promise = new Promise((resolve, reject) => reject(error));
+```
+
+Nella pratica, questo metodo non viene quasi mai utilizzato.
+
+## Riepilogo
 
 There are 5 static methods of `Promise` class:
 

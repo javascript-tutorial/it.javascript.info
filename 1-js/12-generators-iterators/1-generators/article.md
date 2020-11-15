@@ -92,7 +92,7 @@ alert(JSON.stringify(three)); // {value: 3, *!*done: true*/!*}
 
 A questo punto il generatore ha terminato. Possiamo vederlo dal risultato finale `done:true` e `value:3`.
 
-Effettuare nuove chiamare a `generator.next()` non avrebbe pi&ugrave; senso. Se lo facciamo, otterremmo sempre lo stesso oggetto: `{done: true}`.
+Effettuare nuove chiamate a `generator.next()` non avrebbe pi&ugrave; senso. Se lo facciamo, otterremmo sempre lo stesso oggetto: `{done: true}`.
 
 ```smart header="`function* f(…)`or`function *f(…)`?"
 Entrambe le sintassi sono corrette.

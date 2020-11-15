@@ -67,7 +67,7 @@ alert(user.sayBye.name); // sayBye
 
 Non sta accadendo nulla di magico. Anche se ci sono dei casi in cui non c'è alcun modo di ricavare il nome dal contesto. In questi casi, la proprietà `name` sarà vuota, come nell'esempio:
 
-```js
+```js run
 // funzione creata all'interno dell'array
 let arr = [function() {}];
 

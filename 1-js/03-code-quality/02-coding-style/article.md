@@ -26,7 +26,7 @@ let n = prompt("n?", "");
 
 if (n < 0) {
   alert(`Power ${n} is not supported,
-    please enter an integer number, greater than 0`);
+    please enter a non-negative integer number`);
 } else {
   alert( pow(x, n) );
 }
@@ -267,7 +267,7 @@ Certamente, un team può utilizzare il proprio stile guida. Molte volte non serv
 
 Alcune delle scelte più popolari:
 
-- [Google JavaScript Style Guide](https://google.github.io/styleguide/javascriptguide.xml)
+- [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
 - [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 - [Idiomatic.JS](https://github.com/rwaldron/idiomatic.js)
 - [StandardJS](https://standardjs.com/)

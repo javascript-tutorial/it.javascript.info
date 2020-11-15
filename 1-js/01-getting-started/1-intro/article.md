@@ -4,7 +4,7 @@ Vediamo cosa rende JavaScript così speciale, cosa è possibile ottenere tramite
 
 ## Cos'è JavaScript?
 
-*JavaScript* è stato creato con lo scopo di *"dare vita alle pagine web"*.
+*JavaScript* è stato creato con lo scopo di "dare vita alle pagine web".
 
 I programmi che sfruttano questo linguaggio vengono chiamati *script*. Possono essere scritti direttamente nel documento HTML ed eseguiti in automatico al caricamento della pagina.
 
@@ -12,8 +12,8 @@ Gli script vengono scritti ed eseguiti come testo semplice. Infatti non richiedo
 
 In questo aspetto, JavaScript è molto differente da un altro linguaggio chiamato [Java](https://en.wikipedia.org/wiki/Java_(programming_language)).
 
-```smart header="Perchè <u>Java</u>Script?"
-In origine JavaScript aveva un altro nome: "Live Script". In quel periodo Java era molto popolare, per questo si è pensato che identificare questo linguaggio come il "fratello minore" di Java potesse aiutare nella sua diffusione.
+```smart header="Perchè si chiama <u>Java</u>Script?"
+In origine JavaScript aveva un altro nome: "LiveScript". In quel periodo Java era molto popolare, per questo si è pensato che identificare questo linguaggio come il "fratello minore" di Java potesse aiutare nella sua diffusione.
 
 Evolvendosi, JavaScript è diventato un linguaggio completamente indipendente, con delle specifiche personali chiamate [ECMAScript](http://en.wikipedia.org/wiki/ECMAScript), e adesso non ha quasi nulla in comune con Java.
 ```
@@ -26,7 +26,7 @@ Esistono altri motori JavaScript, tra cui:
 
 - [V8](https://en.wikipedia.org/wiki/V8_(JavaScript_engine)) -- per Chrome e Opera.
 - [SpiderMonkey](https://en.wikipedia.org/wiki/SpiderMonkey) -- per Firefox.
-- ...Ci sono altri codenames come "Trident" e "Chakra" compatibili cond diverse versioni di IE, "ChakraCore" specifico per Microsoft Edge, "Nitro" e "SquirrelFish" per Safari, etc.
+- ...Ci sono altri codenames come "Chakra" per IE, "ChakraCore" specifico per Microsoft Edge, "Nitro" e "SquirrelFish" per Safari, etc.
 
 I nomi citati sopra possono essere utili da ricordare, poichè si possono trovare spesso in articoli che trattano di sviluppo web. Anche noi li useremo. Ad esempio, se "una caratteristica X è supportata da V8", probabilmente funzioneranno senza problemi in Chrome e Opera.
 
@@ -64,7 +64,7 @@ Le possibilità di JavaScript nel browser sono limitate per la sicurezza dell'ut
 
 Degli esempi di queste restrizioni possono essere:
 
-- JavaScript in una pagina web non può leggere o scrivere in qualsiasi file nell'hard disk, ne copiare o eseguire programmi. Non ha accesso diretto alle funzioni di sistema.
+- JavaScript in una pagina web non può leggere o scrivere in qualsiasi file nell'hard disk, ne copiare o eseguire programmi. Non ha accesso diretto alle funzioni di sistema operativo.
 
     I moderni browser gli consentono di lavorare con i file, sempre con un accesso limitato e comunque solo se il comando proviene da utente, come il "dropping" di un file nella finestra del browser, o con la selezione  tramite il tag `<input>`.
 

@@ -34,6 +34,11 @@ Sotto il messaggio d'errore, c'e un simbolo blu `>`. Questo indica la "riga di c
 
 Adesso possiamo visualizzare gli errori, ed è già abbastanza come inizio. Ritorneremo sugli strumenti di sviluppo più avanti e analizzeremo il debugging più in profondità nel capitolo <info:debugging-chrome>.
 
+```smart header="Multi-line input"
+Usually, when we put a line of code into the console, and then press `key:Enter`, it executes.
+
+To insert multiple lines, press `key:Shift+Enter`. This way one can enter long fragments of JavaScript code.
+```
 
 ## Firefox, Edge, and others
 
