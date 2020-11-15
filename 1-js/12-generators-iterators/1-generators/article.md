@@ -1,9 +1,8 @@
 # I generatori
 
-Le funzioni ritornano normalmente un solo valore (a volte non ritornano null).
+Le funzioni ritornano normalmente un solo valore (a volte non ritornano nulla).
 
-I generatori possono ritornare ("yield") valori multipli, uno dopo l'altro, ogni volta che vengono invocati. Sono, di fatto, lo strumento ideale se usati
-con gli [iterables](info:iterable), dal momento che ci consentono di creare flussi di dati con facilità.
+I generatori possono ritornare ("yield") valori multipli, uno dopo l'altro, ogni volta che vengono invocati. Sono, di fatto, lo strumento ideale da utilizzare con gli [iteratori](info:iterable), dal momento che ci consentono di creare flussi di dati con facilità.
 
 ## Le funzioni generatrici
 
@@ -19,9 +18,9 @@ function* generateSequence() {
 }
 ```
 
-Generator functions behave differently from regular ones. When such function is called, it doesn't run its code. Instead it returns a special object, called "generator object", to manage the execution.
+Le funzioni generatrici si comportano diversamente rispetto alle normali funzioni. Quando una generatrice viene invocata, di fatto, il codice al suo interno non viene eseguito, ma ritorna uno speciale oggetto, chiamato "oggetto generatore", che ne consente di gestire l'esecuzione.
 
-Here, take a look:
+Dai un'occhiata qua:
 
 ```js run
 function* generateSequence() {
@@ -30,25 +29,25 @@ function* generateSequence() {
   return 3;
 }
 
-// "generator function" creates "generator object"
+// "la funzione generatrice" crea un "oggetto generatore"
 let generator = generateSequence();
 *!*
 alert(generator); // [object Generator]
 */!*
 ```
 
-The function code execution hasn't started yet:
+L'esecuzione del codice della funzione non &egrave; ancora iniziata:
 
 ![](generateSequence-1.svg)
 
-The main method of a generator is `next()`. When called, it runs the execution till the nearest `yield <value>` statement (`value` can be omitted, then it's `undefined`). Then the function execution pauses, and the yielded `value` is returned to the outer code.
+Il metodo principale di un oggetto generatore &egrave; `next()`. Quando invocato, esegue le istruzioni in esso contenute fino alla prossima istruzione `yield <valore>` (`valore` pu&ograve; essere omesso, in tal caso sarà `undefined`). A questo punto l'esecuzione si arresta e il `valore` viene "ceduto" al codice esterno.
 
-The result of `next()` is always an object with two properties:
+Il risultato dell'esecuzione di `next()` &egrave; sempre un oggetto con due propriet&agrave;:
 
-- `value`: the yielded value.
-- `done`: `true` if the function code has finished, otherwise `false`.
+- `value`: il valore che viene "ceduto".
+- `done`: `true`, se il codice della funzione &egrave; stato eseguito completamente, altrimenti, `false`.
 
-For instance, here we create the generator and get its first yielded value:
+Ad esempio, qui andiamo a creare un generatore e otteniamo il primo valore "ceduto":
 
 ```js run
 function* generateSequence() {
@@ -66,11 +65,12 @@ let one = generator.next();
 alert(JSON.stringify(one)); // {value: 1, done: false}
 ```
 
-As of now, we got the first value only, and the function execution is on the second line:
+A questo punto, abbiamo ottenuto solo il primo valore e l'esecuzione della funzione ha raggiunto la seconda riga:
 
 ![](generateSequence-2.svg)
 
 Let's call `generator.next()` again. It resumes the code execution and returns the next `yield`:
+Invochiamo ancora `generator.next()`. L'esecuzione del codice riprender&agrave; da dove si era fermata, fino a restituire il valore del prossimo `yield`:
 
 ```js
 let two = generator.next();
@@ -80,7 +80,7 @@ alert(JSON.stringify(two)); // {value: 2, done: false}
 
 ![](generateSequence-3.svg)
 
-And, if we call it the third time, then the execution reaches `return` statement that finishes the function:
+Per finire, invocandolo nuovamente (`generator.next()`), si raggiunger&agrave; l'istruzione `return` che terminer&agrave; la funzione:
 
 ```js
 let three = generator.next();
@@ -90,22 +90,22 @@ alert(JSON.stringify(three)); // {value: 3, *!*done: true*/!*}
 
 ![](generateSequence-4.svg)
 
-Now the generator is done. We should see it from `done:true` and process `value:3` as the final result.
+A questo punto il generatore ha terminato. Possiamo vederlo dal risultato finale `done:true` e `value:3`.
 
-New calls `generator.next()` don't make sense any more. If we do them, they return the same object: `{done: true}`.
+Effettuare nuove chiamare a `generator.next()` non avrebbe pi&ugrave; senso. Se lo facciamo, otterremmo sempre lo stesso oggetto: `{done: true}`.
 
 ```smart header="`function* f(…)`or`function *f(…)`?"
-Both syntaxes are correct.
+Entrambe le sintassi sono corrette.
 
-But usually the first syntax is preferred, as the star `*` denotes that it's a generator function, it describes the kind, not the name, so it should stick with the `function` keyword.
+La prima, tuttavia, &egrave; la pi&ugrave; utilizzata, dal momento che &egrave; l'asterisco `*` a indicare che la funzione &egrave; una generatrice, non il nome. Per questo motivo ha pi&ugrave; senso accoppiare l'asterisco con la parola chiave `function`.
 
 ````
 
-## Generators are iterable
+## I generatori sono iteratori
 
-As you probably already guessed looking at the `next()` method, generators are [iterable](info:iterable).
+Come probabilmente avrai intuito dalla presenza del metodo `next()`, i generatori sono [iterabli](info:iterable).
 
-We can get loop over values by `for..of`:
+Possiamo eseguire cicli sui valori ritornati utilizzando `for..of`:
 
 ```js run
 function* generateSequence() {
@@ -121,11 +121,11 @@ for(let value of generator) {
 }
 ````
 
-Looks a lot nicer than calling `.next().value`, right?
+Non trovi che sia molto pi&ugrave; leggibile di `.next().value`?
 
-...But please note: the example above shows `1`, then `2`, and that's all. It doesn't show `3`!
+...Nota bene: l'esempio precedente produrr&agrave; come risultato `1` e `2`, nulla pi&ugrave;. Il `3` non verr&agrave; preso in considerazione!
 
-It's because `for..of` iteration ignores the last `value`, when `done: true`. So, if we want all results to be shown by `for..of`, we must return them with `yield`:
+La spiegazione di questo comportamento sta nel fatto che `for..of` ignora l'ultimo `value` non appena la propriet&agrave; &egrave; `done: true`. Per questo motivo, se vogliamo che tutti i valori siano mostrati da `for..of`, dobbiamo ritornarli tramite `yield`:
 
 ```js run
 function* generateSequence() {
@@ -139,11 +139,11 @@ function* generateSequence() {
 let generator = generateSequence();
 
 for(let value of generator) {
-  alert(value); // 1, then 2, then 3
+  alert(value); // 1, poi 2, poi 3
 }
 ```
 
-As generators are iterable, we can call all related functionality, e.g. the spread operator `...`:
+Dal momento che i generatori sono iteratori, possiamo usufruire di tutte le funzionalit&agrave; che ne derivano, per esempio lo "spread operator".
 
 ```js run
 function* generateSequence() {
@@ -157,30 +157,30 @@ let sequence = [0, ...generateSequence()];
 alert(sequence); // 0, 1, 2, 3
 ```
 
-In the code above, `...generateSequence()` turns the iterable generator object into array of items (read more about the spread operator in the chapter [](info:rest-parameters-spread-operator#spread-operator))
+Nell'esempio precedente `...generateSequence()` converte l'oggetto generatore iteratore in un array di elementi (puoi approfondire l'argomento relativo allo spread operator nel capitolo [](info:rest-parameters-spread-operator#spread-operator))
 
-## Using generators for iterables
+## Usare i generatori con gli iteratori
 
-Some time ago, in the chapter [](info:iterable) we created an iterable `range` object that returns values `from..to`.
+Tempo fa, nel capitolo [](info:iterable) abbiamo creato un oggetto iteratore `range` che ritorna valori `from..to` (da..a).
 
-Here, let's remember the code:
+Ecco l'esempio, per rinfrescarci la memoria:
 
 ```js run
 let range = {
   from: 1,
   to: 5,
 
-  // for..of range calls this method once in the very beginning
+  // for..of invoca questo metodo solo all'inizio
   [Symbol.iterator]() {
-    // ...it returns the iterator object:
-    // onward, for..of works only with that object, asking it for next values
+    // ...ritorna l'oggetto iteratore:
+    // da qui in poi, for..of utilizzer&agrave; solo quell'oggetto per ottenere i valori successivi
     return {
       current: this.from,
       last: this.to,
 
-      // next() is called on each iteration by the for..of loop
+      // next() viene invocata ad ogni iterazione fino alla fine del ciclo for..of
       next() {
-        // it should return the value as an object {done:.., value :...}
+        // dovrebbe ritornare il valore sotto forma di un oggett {done:..., value:...}
         if (this.current <= this.last) {
           return { done: false, value: this.current++ };
         } else {
@@ -191,13 +191,13 @@ let range = {
   },
 };
 
-// iteration over range returns numbers from range.from to range.to
+// l'iterazione su range ritorna i numeri compresi tra range.from e range.to
 alert([...range]); // 1,2,3,4,5
 ```
 
-We can use a generator function for iteration by providing it as `Symbol.iterator`.
+Possiamo usare una funzione generatrice come iteratore assegnandola a `Symbol.iterator`.
 
-Here's the same `range`, but much more compact:
+Ecco qui lo stesso `range`, ma in una forma pi&ugrave; compatta:
 
 ```js run
 let range = {
@@ -205,7 +205,7 @@ let range = {
   to: 5,
 
   *[Symbol.iterator]() {
-    // a shorthand for [Symbol.iterator]: function*()
+    // forma abbreviata di [Symbol.iterator]: function*()
     for (let value = this.from; value <= this.to; value++) {
       yield value;
     }
@@ -215,26 +215,26 @@ let range = {
 alert([...range]); // 1,2,3,4,5
 ```
 
-That works, because `range[Symbol.iterator]()` now returns a generator, and generator methods are exactly what `for..of` expects:
+Il funzionamento &egrave; invariato dal momento che `range[Symbol.iterator]()` ora ritorna un generatore che &egrave; esattamente quello che `for..of` si aspetta:
 
-- it has `.next()` method
-- that returns values in the form `{value: ..., done: true/false}`
+- ha un metodo `.next()`
+- il quale ritorna valori nella forma `{value: ..., done: true/false}`
 
-That's not a coincidence, of course. Generators were added to JavaScript language with iterators in mind, to implement them easier.
+Questa non &egrave; una coincidenza, ovviamente. I generatori sono stati aggiunti al linguaggio JavaScript tenendo a mente gli iteratori, per implementarli pi&ugrave; facilmente.
 
-The variant with a generator is much more concise than the original iterable code of `range`, and keeps the same functionality.
+La variante con i generatori &egrave; molto pi&ugrave; concisa del codice originale di `range` ma mantiene le funzionalit&agrave; invariate.
 
-```smart header="Generators may generate values forever"
-In the examples above we generated finite sequences, but we can also make a generator that yields values forever. For instance, an unending sequence of pseudo-random numbers.
+```smart header="I generatori potrebbero generare valori per sempre"
+Negli esempi precedenti abbiamo generato sequenze finite ma possiamo anche creare generatori che restituiscono valori infinitamente. Per esempio, una sequenza infinita di numeri pseudo-casuali.
 
-That surely would require a `break` (or `return`) in `for..of` over such generator, otherwise the loop would repeat forever and hang.
+Ci&ograve; richiederebbe sicuramente un `break` (o un `return`) nel `for..of` che utilizziamo per iterare su tale generatore, altrimenti il ciclo si ripeterebbe all'infinito bloccando l'esecuzione dell'applicazione.
 ```
 
-## Generator composition
+## Composizione di generatori
 
-Generator composition is a special feature of generators that allows to transparently "embed" generators in each other.
+La composizione dei generatori &egrave; una caratteristica particolare dei generatori che consente di "innestarli" l'uno nell'altro, in modo trasparente.
 
-For instance, we have a function that generates a sequence of numbers:
+Per esempio, data una funzione che genera una sequenza di numeri:
 
 ```js
 function* generateSequence(start, end) {
@@ -242,19 +242,19 @@ function* generateSequence(start, end) {
 }
 ```
 
-Now we'd like to reuse it for generation of a more complex sequence:
+Vogliamo usarla per generare una sequenza pi&ugrave; complessa:
 
-- first, digits `0..9` (with character codes 48..57),
-- followed by alphabet letters `a..z` (character codes 65..90)
-- followed by uppercased letters `A..Z` (character codes 97..122)
+- per prime le cifre `0..9` (con i codici carattere 48..57),
+- seguite dalle lettere dell'alfabeto `a..z` (codici carattere 65..90)
+- seguite dalle lettere maiuscole `A..Z` (codici carattere 97..122)
 
-We can use this sequence e.g. to create passwords by selecting characters from it (could add syntax characters as well), but let's generate it first.
+Possiamo usare questa sequenza, ad esempio, per creare password selezionandone i caratteri (potremmo anche aggiungere caratteri sintattici), ma generiamo la sequenza per ora.
 
-In a regular function, to combine results from multiple other functions, we call them, store the results, and then join at the end.
+In una normale funzione, per combinare i risultati di pi&ugrave; funzioni, dapprima invochiamo le funzioni, ne memorizziamo i risultati e, infine, li combiniamo.
 
-For generators, there's a special `yield*` syntax to "embed" (compose) one generator into another.
+Usando i generatori, c'&egrave; una sintassi speciale di `yield*` per "innestare" (comporre) un generatore all'interno di un altro.
 
-The composed generator:
+Il generatore composto:
 
 ```js run
 function* generateSequence(start, end) {
@@ -285,9 +285,9 @@ for(let code of generatePasswordCodes()) {
 alert(str); // 0..9A..Za..z
 ```
 
-The `yield*` directive _delegates_ the execution to another generator. This term means that `yield* gen` iterates over the generator `gen` and transparently forwards its yields outside. As if the values were yielded by the outer generator.
+La direttiva `yield*` _delega_ l'esecuzione a un altro generatore. Con il termine _delega_ si intende che `yield* gen` itera sui valori del generatore `gen` e, in modo trasparente, inoltra i valori che restituisce verso l'esterno. Come se i valori fossero restituiti dal generatore pi&ugrave; esterno.
 
-The result is the same as if we inlined the code from nested generators:
+Il risultato &egrave; lo stesso che otterremmo mettendo in sequenza il codice dei generatori annidati:
 
 ```js run
 function* generateSequence(start, end) {
@@ -318,22 +318,22 @@ for(let code of generateAlphaNum()) {
 alert(str); // 0..9A..Za..z
 ```
 
-A generator composition is a natural way to insert a flow of one generator into another. It doesn't use extra memory to store intermediate results.
+La composizione dei generatori &egrave; un modo naturale di immettere il flusso di un generatore all'interno di un altro. Non viene utilizzata memoria aggiuntiva per memorizzare i valori intermedi.
 
-## "yield" is a two-way road
+## "yield" &egrave; una via a doppio senso
 
-Till this moment, generators were similar to iterable objects, with a special syntax to generate values. But in fact they are much more powerful and flexible.
+Finora i generatori sono assimilati agli iteratori, con una sintassi speciale per generare valori ma, di fatto, sono molto pi&ugrave; potenti e flessibili.
 
-That's because `yield` is a two-way road: it not only returns the result outside, but also can pass the value inside the generator.
+Questo perch&eacute; `yield` &egrave; una via a doppio senso: non solo ritorna il risultato verso l'esterno ma provvede anche a passare il valore all'interno del generatore.
 
-To do so, we should call `generator.next(arg)`, with an argument. That argument becomes the result of `yield`.
+Per fare questo, dovremmo invocare `generator.next(arg)` con un argomento. Tale argomento diventer&agrave; il risultato di `yield`.
 
-Let's see an example:
+Vediamo un esempio:
 
 ```js run
 function* gen() {
 *!*
-  // Pass a question to the outer code and wait for an answer
+  // Passa una domanda al codice esterno e attende una risposta
   let result = yield "2 + 2 = ?"; // (*)
 */!*
 
@@ -342,29 +342,29 @@ function* gen() {
 
 let generator = gen();
 
-let question = generator.next().value; // <-- yield returns the value
+let question = generator.next().value; // <-- yield ritorna il valore
 
-generator.next(4); // --> pass the result into the generator
+generator.next(4); // --> pass il risultato al generatore
 ```
 
 ![](genYield2.svg)
 
-1. The first call `generator.next()` is always without an argument. It starts the execution and returns the result of the first `yield "2+2=?"`. At this point the generator pauses the execution (still on that line).
-2. Then, as shown at the picture above, the result of `yield` gets into the `question` variable in the calling code.
-3. On `generator.next(4)`, the generator resumes, and `4` gets in as the result: `let result = 4`.
+1. La prima invocazione di `generator.next()` &egrave; sempre senza argomento. Inizia l'esecuzione e ritorna il risultato della prima `yield "2+2=?"`. A questo punto il generatore si arresta (si ferma su quella riga).
+2. Di seguito, come mostrato nella figura sopra, il risultato di `yield` va dentro alla variabile `question` nel codice all'esterno.
+3. Quando eseguiamo `generator.next(4)`, il generatore riprende l'esecuzione e `4` finisce nel risultato: `let result = 4`.
 
-Please note, the outer code does not have to immediately call`next(4)`. It may take time. That's not a problem: the generator will wait.
+Si noti che il codice all'esterno non deve per forza invocare `next(4)` immediatamente. Potrebbe impiegare del tempo, ma questo non &egrave; un problema: il generatore attender&agrave;.
 
-For instance:
+Per esempio:
 
 ```js
-// resume the generator after some time
+// ripristina il generatore dopo un certo lasso di tempo
 setTimeout(() => generator.next(4), 1000);
 ```
 
-As we can see, unlike regular functions, a generator and the calling code can exchange results by passing values in `next/yield`.
+Come possiamo vedere, a differenza delle normali funzioni, un generatore e il codice che lo invoca possono scambiarsi risultati passando valori a `next/yield`.
 
-To make things more obvious, here's another example, with more calls:
+Per rendere il tutto ancora pi&ugrave; evidente, ecco un altro esempio, con pi&ugrave; chiamate:
 
 ```js run
 function* gen() {
@@ -386,27 +386,27 @@ alert(generator.next(4).value); // "3 * 3 = ?"
 alert(generator.next(9).done); // true
 ```
 
-The execution picture:
+Illustrazione dell'esecuzione:
 
 ![](genYield2-2.svg)
 
-1. The first `.next()` starts the execution... It reaches the first `yield`.
-2. The result is returned to the outer code.
-3. The second `.next(4)` passes `4` back to the generator as the result of the first `yield`, and resumes the execution.
-4. ...It reaches the second `yield`, that becomes the result of the generator call.
-5. The third `next(9)` passes `9` into the generator as the result of the second `yield` and resumes the execution that reaches the end of the function, so `done: true`.
+1. La prima `.next()` inizia l'esecuzione... raggiunge la prima `yield`.
+2. Il risultato viene ritornato al codice esterno.
+3. La seconda `.next(4)` passa `4` al generatore come risultato della prima `yield` e riprende l'esecuzione.
+4. ...la seconda `yield` viene raggiunta e diventa il risultato della chiamata al generatore.
+5. La terza `next(9)` passa `9` nel generatore come risultato della seconda `yield` e riprende l'esecuzione che raggiunge la fine della funzione, dunque, `done: true`.
 
-It's like a "ping-pong" game. Each `next(value)` (excluding the first one) passes a value into the generator, that becomes the result of the current `yield`, and then gets back the result of the next `yield`.
+&Egrave; un po' come una partita a "ping-pong". Ogni `next(value)` (escluso il primo), passa un valore al generatore. Questo valore diventa il risultato della `yield` corrente per poi ritornare il risultato della `yield` successiva.
 
 ## generator.throw
 
-As we observed in the examples above, the outer code may pass a value into the generator, as the result of `yield`.
+Come abbiamo visto negli esempi precedenti, il codice esterno pu&ograve; passare un valore all'interno del generatore, come risultato della `yield`.
 
-...But it can also initiate (throw) an error there. That's natural, as an error is a kind of result.
+...ma pu&ograve; anche passargli (throw) un errore. Ci&ograve; &egrave; naturale, dal momento che un errore &egrave; comunque un risultato.
 
-To pass an error into a `yield`, we should call `generator.throw(err)`. In that case, the `err` is thrown in the line with that `yield`.
+Per passare un errore all'interno di una `yield`, dovremmo invocare `generator.throw(err)`. In questo caso, tale `err` risulta generato dalla riga contenente tale `yield`.
 
-For instance, here the yield of `"2 + 2 = ?"` leads to an error:
+Nel prossimo esempio, la yield di `"2 + 2 = ?"` genera un errore:
 
 ```js run
 function* gen() {
@@ -428,15 +428,15 @@ generator.throw(new Error("The answer is not found in my database")); // (2)
 */!*
 ```
 
-The error, thrown into the generator at the line `(2)` leads to an exception in the line `(1)` with `yield`. In the example above, `try..catch` catches it and shows.
+L'errore, lanciato all'interno del generatore alla riga `(2)` genera un'eccezione alla riga `(1)` in corrispondenza della `yield`. Nell'esempio precedente `try..catch` gestisce l'errore e lo mostra.
 
-If we don't catch it, then just like any exception, it "falls out" the generator into the calling code.
+Se non gestiamo l'errore, come accadrebbe con qualsiasi eccezione, quest'ultima andrebbe a causare un errore nel codice esterno.
 
-The current line of the calling code is the line with `generator.throw`, labelled as `(2)`. So we can catch it here, like this:
+La riga corrente del codice esterno &egrave; quella che contiene `generator.throw`, identificata da `(2)`. Possiamo, pertanto, gestire l'eccezione qui, come nell'esempio:
 
 ```js run
 function* generate() {
-  let result = yield "2 + 2 = ?"; // Error in this line
+  let result = yield "2 + 2 = ?"; // Errore in questa riga
 }
 
 let generator = generate();
@@ -447,21 +447,21 @@ let question = generator.next().value;
 try {
   generator.throw(new Error("The answer is not found in my database"));
 } catch(e) {
-  alert(e); // shows the error
+  alert(e); // mostra l'errore
 }
 */!*
 ```
 
-If we don't catch the error there, then, as usual, it falls through to the outer calling code (if any) and, if uncaught, kills the script.
+Se non gestiamo l'errore qui, come al solito, questo risalir&agrave; fino al codice pi&ugrave; esterno, se esistente, altrimenti far&agrave; fallire lo script.
 
-## Summary
+## Sommario
 
-- Generators are created by generator functions `function* f(…) {…}`.
-- Inside generators (only) there exists a `yield` operator.
-- The outer code and the generator may exchange results via `next/yield` calls.
+- I generatori vengono creati tramite funzioni generatrici `function* f(…) {…}`.
+- Solo nei generatori pu&ograve; esistere un operatore `yield`.
+- Il codice esterno e il generatore possono interscambiare risultato tramite chiamate a `next/yield`.
 
-In modern JavaScript, generators are rarely used. But sometimes they come in handy, because the ability of a function to exchange data with the calling code during the execution is quite unique. And, surely, they are great for making iterable objects.
+Nel JavaScript moderno, i generatori vengono usati raramente ma a volte possono essere utili, dal momento che la loro capacit&agrave; di interscambiare dati con il codice all'esterno è alquanto unica. Sicuramente, sono un ottimo modo per creare degli iteratori.
 
-Also, in the next chapter we'll learn async generators, which are used to read streams of asynchronously generated data (e.g paginated fetches over a network) in `for await ... of` loop.
+Nel prossimo capitolo impareremo a usare i generatori asincroni, utilizzati per leggere flussi di dati generati in modo asincrono (per esempio, dati paginati ottenuti dalla rete) nei cicli `for await ... of`.
 
-In web-programming we often work with streamed data, so that's another very important use case.
+Questo &egrave; un caso d'uso molto importante, dal momento che nella programmazione web ci troviamo spesso a manipolare flussi di dati.
