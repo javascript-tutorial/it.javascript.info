@@ -173,7 +173,7 @@ let analyticsData = { /* oggetto con i dati raccolti */ };
 
 window.addEventListener("unload", function() {
   navigator.sendBeacon("/analytics", JSON.stringify(analyticsData));
-};
+});
 ```
 
 - La richiesta è effettuata come POST.

@@ -260,7 +260,11 @@ Confrontiamo lo script normale:
 
 <script>
 *!*
+<<<<<<< HEAD
   alert(typeof button); // Error: button is undefined, lo scripr non riesce a vedere il bottone
+=======
+  alert(typeof button); // button is undefined, the script can't see elements below
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 */!*
   // Gli script normali vengono eseguiti immediatamente, prima che il resto della pagina venga processata
 </script>

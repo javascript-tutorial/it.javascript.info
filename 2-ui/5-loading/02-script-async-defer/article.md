@@ -51,10 +51,14 @@ Fortunatamente, ci sono 2 attributi del tag `<script>` che risolvono il problema
 ## defer
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 L'attributo `defer` dice al browser che che deve continuare nel caricamento della pagina e caricare lo script "in background", per poi eseguire lo script quando è caricato.
 =======
 The `defer` attribute tells the browser not to wait for the script. Instead, the browser will continue to process the HTML, build DOM. The script loads "in the background", and then runs when the DOM is fully built. 
 >>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+=======
+The `defer` attribute tells the browser not to wait for the script. Instead, the browser will continue to process the HTML, build DOM. The script loads "in the background", and then runs when the DOM is fully built.
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 Di seguito lo stesso esempio di sopra, ma con `defer`:
 
@@ -127,7 +131,7 @@ Ma le specifiche indicano che gli script devono essere eseguito secondo l'ordine
 =======
 Browsers scan the page for scripts and download them in parallel, to improve performance. So in the example above both scripts download in parallel. The `small.js` probably finishes first.
 
-...But the `defer` atribute, besides telling the browser "not to block", ensures that the relative order is kept. So even though `small.js` loads first, it still waits and runs after `long.js` executes.
+...But the `defer` attribute, besides telling the browser "not to block", ensures that the relative order is kept. So even though `small.js` loads first, it still waits and runs after `long.js` executes.
 
 That may be important for cases when we need to load a JavaScript library and then a script that depends on it.
 >>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
@@ -151,14 +155,14 @@ The `async` attribute is somewhat like `defer`. It also makes the script non-blo
 
 The `async` attribute means that a script is completely independent:
 
-- The browser doesn't block on `async` scripts (like `defer`). 
-- Other scripts don't wait for `async` scripts, and `async` scripts don't wait for them. 
+- The browser doesn't block on `async` scripts (like `defer`).
+- Other scripts don't wait for `async` scripts, and `async` scripts don't wait for them.
 - `DOMContentLoaded` and async scripts don't wait for each other:
     - `DOMContentLoaded` may happen both before an async script (if an async script finishes loading after the page is complete)
     - ...or after an async script (if an async script is short or was in HTTP-cache)
 >>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
-In other words, `async` scripts load in the background and run when ready. The DOM and other scripts don't wait for them, and they don't wait for anything. A fully independent script that runs when loaded. As simple, at it can get, right? 
+In other words, `async` scripts load in the background and run when ready. The DOM and other scripts don't wait for them, and they don't wait for anything. A fully independent script that runs when loaded. As simple, at it can get, right?
 
 <<<<<<< HEAD
 Quindi, se abbiamo parecchi script `async`, potrebbero essere eseguiti in qualunque ordine. Qualunque di essi viene caricato prima -- viene eseguito prima:

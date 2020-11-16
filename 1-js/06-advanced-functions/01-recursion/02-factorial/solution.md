@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 Per definizione, il fattoriale `n!` può essere riscritto come `n * (n-1)!`.
+=======
+By definition, a factorial `n!` can be written as `n * (n-1)!`.
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 In altre parole, il risultato di `factorial(n)` può essere calcolato come `n` moltiplicato per il risultato di `factorial(n-1)`. E la chiamata per `n-1` decresce ricorsivamente, fino a `1`.
 

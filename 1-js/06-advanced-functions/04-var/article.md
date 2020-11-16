@@ -70,7 +70,11 @@ function sayHi() {
 }
 
 sayHi();
+<<<<<<< HEAD
 alert(phrase); // Errore: phrase non è definito (Provate a controllare la console)
+=======
+alert(phrase); // Error: phrase is not defined
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 ```
 
 Come possiamo vedere, `var` passa attraverso `if`, `for` o altri blocchi di codice. Questo accade perché molto tempo fa i blocchi JavaScript non possedevano un Lexical Environments. E `var` ne è un ricordo.
@@ -267,8 +271,13 @@ In tutti gli esempi illustrati stiamo dichiarando un'espressione di funzione inv
 
 Ci sono due principali differenze tra `var` e `let/const`:
 
+<<<<<<< HEAD
 1. `var` non hanno uno scope locale al blocco, sono infatti visibili a livello di funzione.
 2. La dichiarazione di `var` viene processata all'inizio della funzione.
+=======
+1. `var` variables have no block scope, their visibility is scoped to current function, or global, if declared outside function.
+2. `var` declarations are processed at function start (script start for globals).
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 C'è un ulteriore differenza di minore importanza legata all'oggetto globale, che andremo ad analizzare nel prossimo capitolo.
 

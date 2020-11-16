@@ -5,7 +5,11 @@ L'oggetto globale fornisce variabili e funzioni che sono accessibili in qualsias
 
 In un browser l'ambiente si chiama `window`, per Node.js viene detto `global`, negli altri ambienti si usano diversi termini.
 
+<<<<<<< HEAD
 Recentemente, è stato aggiunto al linguaggio `globalThis`, come nome standart per l'oggetto globale, il quale dovrebbe essere supportato da tutti gli ambienti. In alcuni browser, ad esempio Edge, `globalThis` non è ancora supportato.
+=======
+Recently, `globalThis` was added to the language, as a standardized name for a global object, that should be supported across all environments. It's supported in all major browsers.
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 Tutte le proprietà dell'oggetto globale possono essere raggiunte direttamente:
 
@@ -24,7 +28,13 @@ var gVar = 5;
 alert(window.gVar); // 5 (diventa una proprietà dell'oggetto globale)
 ```
 
+<<<<<<< HEAD
 Non affidatevi a questo! Questo comportamento esiste solamente per retrocompatibilità. Gli script moderni utilizzano i moduli JavaScript, che si comportano in maniera differente. Li studieremo più avanti nel capitolo [](info:modules).
+=======
+The same effect have function declarations (statements with `function` keyword in the main code flow, not function expressions).
+
+Please don't rely on that! This behavior exists for compatibility reasons. Modern scripts use [JavaScript modules](info:modules) where such thing doesn't happen.
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 Inoltre, la dichiarazione di variabili in stile moderno, tramite `let` e `const` non hanno questo tipo di comportamento:
 

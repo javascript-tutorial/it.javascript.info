@@ -132,7 +132,11 @@ Che possiamo abbozzare:
   </li>
 </ul>
 
+<<<<<<< HEAD
 Quello è ciò che accade quando la funzione inizia ad eseguire. La condizione `n == 1` è false, quindi il flusso continua nel secondo ramo della condizione `if`:
+=======
+That's when the function starts to execute. The condition `n == 1` is falsy, so the flow continues into the second branch of `if`:
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 ```js run
 function pow(x, n) {
@@ -183,7 +187,15 @@ Questo è il contesto d'esecuzione quando entriamo nella sotto-chiamata `pow(2, 
 
 Il nuovo contesto d'esecuzione è in cima (in grassetto), e quelli precedenti sono sotto.
 
+<<<<<<< HEAD
 Quando abbiamo terminato la sotto-chiamata -- è facile ripristinare il precedente contesto, poiché questo tiene traccia del punto d'arresto e delle variabili al momento dell'interruzione. 
+=======
+```smart
+Here in the picture we use the word "line", as in our example there's only one subcall in line, but generally a single line of code may contain multiple subcalls, like `pow(…) + pow(…) + somethingElse(…)`.
+
+So it would be more precise to say that the execution resumes "immediately after the subcall".
+```
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 ### pow(2, 1)
 

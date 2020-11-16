@@ -739,7 +739,11 @@ I metodi elencati sono quelli utilizzati più spesso, sono in grado di coprire i
 
   La funzione `fn` viene invocata su ogni elemento dell'array in maniera simile a `map`. Se qualcuno/tutti i risultati sono `true`, ritorna `true`, altrimenti `false`.
   
+<<<<<<< HEAD
   Quesi metodi si comportano quasi come gli operatori `||` e `&&`: se `fn` ritorna un valore vero, `arr.some()` ritorna immediatamete  `true` e conclude l'iterazione; se `fn` ritorna un valore falso, `arr.every()` ritorna immediatamente `false` e smette di iterare.
+=======
+  These methods behave sort of like `||` and `&&` operators: if `fn` returns a truthy value, `arr.some()` immediately returns `true` and stops iterating over the rest items; if `fn`  returns a falsy value, `arr.every()` immediately returns `false` and stops iterating over the rest items as well.
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
   Possiamo utilizzare `every` per confrontare gli array:
   ```js run

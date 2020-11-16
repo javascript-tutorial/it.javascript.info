@@ -23,7 +23,11 @@ Semplicemente una valore "raggiungibile" deve essere accessibile o utilizzabile.
 
 2. Qualsiasi altro valore viene considerato raggiungibile se è possibile ottenerlo per riferimento o per catena di riferimenti.
 
+<<<<<<< HEAD
     Ad esempio, se c'è un oggetto in una variabile locale, e l'oggetto ha una proprietà che si riferisce ad un altro oggetto, quest'ultimo viene considerato raggiungibile. E anche tutti i suoi riferimenti lo saranno. Seguiranno esempi più dettagliati.
+=======
+    For instance, if there's an object in a global variable, and that object has a property referencing another object, *that* object is considered reachable. And those that it references are also reachable. Detailed examples to follow.
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 C'è un processo che lavora in background nel motore JavaScript, chiamato [garbage collector](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)). Monitora gli oggetti e rimuove quelli che sono diventati irraggiungibili.
 

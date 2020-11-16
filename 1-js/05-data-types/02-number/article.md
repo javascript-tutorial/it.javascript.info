@@ -412,10 +412,14 @@ Un paio di esempi:
     alert( Math.pow(2, 10) ); // 2 alla 10 = 1024
     ```
 
+<<<<<<< HEAD
 Ci sono molte altre funzioni e costanti nell'oggetto `Math`, incluse quelle trigonometriche, che potete trovare nella [documentazione dell'oggetto Math](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math).
 
 ``````
 ## Riepilogo
+=======
+There are more functions and constants in `Math` object, including trigonometry, which you can find in the [docs for the Math object](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math).
+>>>>>>> 99e59ba611ab11319ef9d0d66734b0bea2c3f058
 
 Per scrivere numeri molto grandi:
 
