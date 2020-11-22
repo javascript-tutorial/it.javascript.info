@@ -73,7 +73,7 @@ Adesso approfondiamo un po'.
 
 Non appena viene istanziato `new WebSocket(url)`, il websocket tenta immediatamente di stabilire una connessione.
 
-Dureante la connessione, il browser (utilizzando degli headers appositi) chiede al server: "Supporti i WebSocket?" e se il server risponde "Si", allora la conversazione continua con il protocollo WebSocket, che non &egrave; per nulla HTTP.
+Durante la connessione, il browser (utilizzando degli headers appositi) chiede al server: "Supporti i WebSocket?" e se il server risponde "Si", allora la conversazione continua con il protocollo WebSocket, che non &egrave; per nulla HTTP.
 
 ![](websocket-handshake.svg)
 
@@ -97,7 +97,7 @@ Sec-WebSocket-Version: 13
 - `Sec-WebSocket-Version` -- versione di protocollo del WebSocket, 13 &egrave; quella corrente.
 
 ```smart header="L'handsnake del WebSocket non pu&ograve; essere emulato."
-Non &egrave; possibile utilizzare  `XMLHttpRequest` oppure `fetch` per fare questo tipo di richieste HTTP, dal momento che a JavaScript non &egrave; peremessa la creazione di questi headers.
+Non &egrave; possibile utilizzare  `XMLHttpRequest` oppure `fetch` per fare questo tipo di richieste HTTP, dal momento che a JavaScript non &egrave; premessa la creazione di questi headers.
 ```
 Se il server acconsente allo switch in WebSocket, dovrebbe rispondere con un codice 101:
 
@@ -110,11 +110,11 @@ Sec-WebSocket-Accept: hsBlbuDTkk24srzEOTBUlZAlC2g=
 
 Qui `Sec-WebSocket-Accept` &egrave; `Sec-WebSocket-Key` ricodificato usando un algoritmo speciale. Il browser lo usa per assicurarsi che la risposta sia corrispondente alla richiesta.
 
-In seguito, i dati vengono trasferiti usando il protocollo WebSocket, presto ne vedremo vedremo la struttura ("frames"). E questo non ha niente a che vedere con HTTP.
+In seguito, i dati vengono trasferiti usando il protocollo WebSocket, presto ne vedremo la struttura ("frames"). E questo non ha niente a che vedere con HTTP.
 
 ### Estensioni e subprotocolli
 
-Ci possono essere gli headers aggiuntivi `Sec-WebSocket-Extensions` e `Sec-WebSocket-Protocol` i quali descrivo etensioni e subprotocolli.
+Ci possono essere gli headers aggiuntivi `Sec-WebSocket-Extensions` e `Sec-WebSocket-Protocol` i quali descrivo estensioni e subprotocolli.
 
 Ad esempio:
 
@@ -179,7 +179,7 @@ Una chiamata `socket.send(body)` permette che il `body` possa essere sia in form
 
 Questo &egrave; settato dalla propriet&agrave; `socket.bufferType`, di default &egrave; `"blob"`, cos&igrave; i dati binari arrivano come oggetti `Blob`.
 
-[Blob](info:blob) &egrave; un oggetto bianrio di alto livello, si integra direttamente con `<a>`, `<img>` e altri tag, cos&igrave; &egrave; un default puro. Ma per processamenti binari, per accedere ai singoli data bytes, possiamo cambiarlo in`"arraybuffer"`:
+[Blob](info:blob) &egrave; un oggetto binario di alto livello, si integra direttamente con `<a>`, `<img>` e altri tag, cos&igrave; &egrave; un default puro. Ma per operazioni binarie, per accedere ai singoli data bytes, possiamo cambiarlo in`"arraybuffer"`:
 
 
 ```js
@@ -192,7 +192,7 @@ socket.onmessage = (event) => {
 ## Rate limiting
 
 Immagina che la nostra app abbia tantissimi dati da inviare. Ma che l'utente abbia una connessione molto lenta, magari internet su rete mobile e fuori citt&agrave;.
-Potremmo chiamare `socket.send(data)` in continuazione. Per&ograve; i dati verrano bufferizzati (immagazzinati) in memoria ed invaiti solo quando una connessione abbastanza veloce lo permetter&agrave;.
+Potremmo chiamare `socket.send(data)` in continuazione. Per&ograve; i dati verranno bufferizzati (immagazzinati) in memoria ed inviati solo quando una connessione abbastanza veloce lo permetter&agrave;.
 
 La propriet&agrave; `socket.bufferedAmount` immagazzina i dati che sono bufferizzati in un dato momento, in attesa di inviarli tramite la rete.
 
@@ -211,7 +211,7 @@ setInterval(() => {
 
 ## Chiusura della connessione
 
-Normalmente, quando una delle parti desidera chiudere una connessione (sia il borwser che il server hanno ognuno gli stessi diritti), inviano un "connection close frame", un frame di chiusura connessione con un codice numerico e una descrizione testuale della motivazione.
+Normalmente, quando una delle parti desidera chiudere una connessione (sia il browser che il server hanno ognuno gli stessi diritti), inviano un "connection close frame", un frame di chiusura connessione con un codice numerico e una descrizione testuale della motivazione.
 
 Il metodo per farlo &egrave;:
 ```js
@@ -219,7 +219,7 @@ socket.close([code], [reason]);
 ```
 
 - `code` &egrave; un codice specifico del WebSocket (opzionale)
-- `reason` &egrave; una stringa che descrive la motivazione della chiusrua (opzionale)
+- `reason` &egrave; una stringa che descrive la motivazione della chiusura (opzionale)
 
 Le altre parti ottengono il codice e la motivazione all'interno dell'handler `close`, ad esempio:
 
@@ -241,7 +241,7 @@ I valori pi&ugrave; comuni sono:
 
 Esistono altri codice come:
 
-- `1001` -- la parte non risulta raggiungbile, ad esempio, il server si sta spegnendo o il browser ha chiuso la pagina,
+- `1001` -- la parte non risulta raggiungibile, ad esempio, il server si sta spegnendo o il browser ha chiuso la pagina,
 - `1009` -- il messaggio &egrave; troppo grande per essere processato,
 - `1011` -- errore non previsto nel server,
 - ...e cos&igrave; via.
@@ -288,7 +288,7 @@ HTML: abbiamo bisogno di un tag `<form>` per inviare i messaggi e di un tag `<di
 ```
 
 Da JavaScript vogliamo tre cose:
-1. Aprire la connesione.
+1. Aprire la connessione.
 2. Gestire il form con l'invio -- `socket.send(message)` per il messaggio.
 3. Gestire il messaggio in arrivo -- accodarlo all'elemento `div#messages`.
 
@@ -330,7 +330,7 @@ const clients = new Set();
 
 http.createServer((req, res) => {
   // qui gestiamo solamente le connessioni websocket
-  // in progetti veri dovremmo avere ache fare con altro codice per gestire richeiste che non non-websocket
+  // in progetti veri dovremmo avere anche fare con altro codice per gestire richieste che non non-websocket
   wss.handleUpgrade(req, req.socket, Buffer.alloc(0), onSocketConnect);
 });
 
@@ -358,7 +358,7 @@ Ecco l'esempio funzionante:
 
 Puoi anche scaricarlo (pulsante in alto a destra nell'iframe) ed eseguirlo localmente. Solamente non dimenticare di installare [Node.js](https://nodejs.org/en/) e di fare partire `npm install ws` prima di avviarlo.
 
-## Conclusioni
+## Riepilogo
 
 WebSocket sono una maniera moderna di avere connessioni persistenti browser-server.
 
@@ -378,8 +378,8 @@ Eventi:
 - `error`,
 - `close`.
 
-I WebSocket di per s&egrave; non includono la riconnesione, l'autenticazione e molti altri meccanismi di alto livello. Per quello, ci sono una infinit&agrave; di librerie, ma &egrave; anche possibile implementare queste funzionalit&agrave; manualmente.
+I WebSocket di per s&egrave; non includono la riconnessione, l'autenticazione e molti altri meccanismi di alto livello. Per quello, ci sono una infinit&agrave; di librerie, ma &egrave; anche possibile implementare queste funzionalit&agrave; manualmente.
 
-A volte, per integrare i WebSocket in progetti gi&agrave; esistenti,la gente esegue un WebSocket server in parallelo con il server HTTP principale, e condividono un unico database. Le richieste ai WebSocket usano `wss://ws.site.com`, un sottodominio (subdoman) che conduce al server WebSocket, mentre `https://site.com` va al server HTTP principale.
+A volte, per integrare i WebSocket in progetti gi&agrave; esistenti,la gente esegue un WebSocket server in parallelo con il server HTTP principale, e condividono un unico database. Le richieste ai WebSocket usano `wss://ws.site.com`, un sottodominio (subdomain) che conduce al server WebSocket, mentre `https://site.com` va al server HTTP principale.
 
 Sicuramente, sono possibili altre modalit&agrave; di integrazione.
