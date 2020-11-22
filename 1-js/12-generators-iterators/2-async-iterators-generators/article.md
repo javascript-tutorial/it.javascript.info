@@ -119,7 +119,7 @@ Ecco una semplice tabella di riepilogo:
 | Il valore ritornato da `next()` &egrave;        | qualsiasi valore  | `Promise`              |
 | ciclo da utilizzare                             | `for..of`         | `for await..of`        |
 
-````warn header="Lo spread operator `...` non funziona in modo asincrono"
+````warn header="Lo spread operator '...' non funziona in modo asincrono"
 Le funzionalit&agrave; offerte dai comuni iteratori (sincroni) non sono disponibili per gli iteratori asincroni.
 
 Per esempio, lo spread operator non pu&agrave; essere utilizzato:
@@ -136,7 +136,7 @@ Questo &egrave; prevedibile, dal momento che lo spread operator ha bisogno di `S
 
 Come gi&agrave; sappiamo, JavaScript supporta anche i cosiddetti generatori, che sono anche iteratori.
 
-Ricordiamo l'esempio del generatore di una sequenza di numeri da `start` a `end`, nel capitolo [](info:generators):
+Ricordiamo l'esempio del generatore di una sequenza di numeri da `start` a `end`, nel capitolo [generatori](info:generators):
 
 ```js run
 function* generateSequence(start, end) {
@@ -145,7 +145,7 @@ function* generateSequence(start, end) {
   }
 }
 
-for(let value of generateSequence(1, 5)) {
+for (let value of generateSequence(1, 5)) {
   alert(value); // 1, poi 2, poi 3, poi 4, poi 5
 }
 ```
@@ -218,14 +218,15 @@ let range = {
   from: 1,
   to: 5,
 
-  *[Symbol.iterator]() { // sintassi compatta di [Symbol.iterator]: function*()
-    for(let value = this.from; value <= this.to; value++) {
+  *[Symbol.iterator]() {
+    // sintassi compatta di [Symbol.iterator]: function*()
+    for (let value = this.from; value <= this.to; value++) {
       yield value;
     }
-  }
+  },
 };
 
-for(let value of range) {
+for (let value of range) {
   alert(value); // 1, poi 2, poi 3, poi 4, poi 5
 }
 ```
@@ -278,7 +279,7 @@ E' un modello molto comune, non solo per gli utenti, ma per qualsiasi cosa. Ad e
 Ci piacerebbe, tuttavia, avere una API pi&ugrave; semplice: un oggetto iteratore per le commit, che ci consenta di elencarle nel seguente modo:
 
 ```js
-let repo = 'javascript-tutorial/en.javascript.info'; // repository GitHub dal quale ottenere le commit
+let repo = "javascript-tutorial/en.javascript.info"; // repository GitHub dal quale ottenere le commit
 
 for await (let commit of fetchCommits(repo)) {
   // process commit
@@ -294,19 +295,21 @@ async function* fetchCommits(repo) {
   let url = `https://api.github.com/repos/${repo}/commits`;
 
   while (url) {
-    const response = await fetch(url, { // (1)
-      headers: {'User-Agent': 'Our script'}, // github richiede un header user-agent
+    const response = await fetch(url, {
+      // (1)
+      headers: { "User-Agent": "Our script" }, // github richiede un header user-agent
     });
 
     const body = await response.json(); // (2) la risposta &egrave; un JSON (array di commit)
 
     // (3) la URL della pagina successiva &egrave; negli header, dunque dobbiamo estrarla
-    let nextPage = response.headers.get('Link').match(/<(.*?)>; rel="next"/);
+    let nextPage = response.headers.get("Link").match(/<(.*?)>; rel="next"/);
     nextPage = nextPage && nextPage[1];
 
     url = nextPage;
 
-    for(let commit of body) { // (4) restituisce (yield) le commit una ad una fino alla fine della pagina
+    for (let commit of body) {
+      // (4) restituisce (yield) le commit una ad una fino alla fine della pagina
       yield commit;
     }
   }
@@ -322,18 +325,18 @@ Un esempio di utilizzo (visualizza gli autori delle commit nella console):
 
 ```js run
 (async () => {
-
   let count = 0;
 
-  for await (const commit of fetchCommits('javascript-tutorial/en.javascript.info')) {
-
+  for await (const commit of fetchCommits(
+    "javascript-tutorial/en.javascript.info"
+  )) {
     console.log(commit.author.login);
 
-    if (++count == 100) { // let's stop at 100 commits
+    if (++count == 100) {
+      // let's stop at 100 commits
       break;
     }
   }
-
 })();
 ```
 
@@ -347,21 +350,24 @@ Quando i dati ci arrivano in modo asincrono, con dei ritardi, possiamo usare ite
 
 Differenze sintattiche tra iteratori sincroni e asincroni:
 
-|                                     | Iteratori         | Iteratori asincroni    |
-|-------------------------------------|-------------------|------------------------|
-| Metodo che ci fornisce l'iteratore  | `Symbol.iterator` | `Symbol.asyncIterator` |
-| valore ritornato da `next()`        | qualsiasi valore  | `Promise`              |
+|                                    | Iteratori         | Iteratori asincroni    |
+| ---------------------------------- | ----------------- | ---------------------- |
+| Metodo che ci fornisce l'iteratore | `Symbol.iterator` | `Symbol.asyncIterator` |
+| valore ritornato da `next()`       | qualsiasi valore  | `Promise`              |
 
 Differenze sintattiche tra generatori asincroni e sincroni:
 
-|                                | Generators                    | Async generators                                               |
-|--------------------------------|-------------------------------|----------------------------------------------------------------|
-| Dichiarazione                  | `function*`                   | `async function*`                                              |
-| `generator.next()` ritorna...  | `{value:…, done: true/false}` | `Promise` che risolve ritornando `{value:…, done: true/false}` |
+|                               | Generators                    | Async generators                                               |
+| ----------------------------- | ----------------------------- | -------------------------------------------------------------- |
+| Dichiarazione                 | `function*`                   | `async function*`                                              |
+| `generator.next()` ritorna... | `{value:…, done: true/false}` | `Promise` che risolve ritornando `{value:…, done: true/false}` |
 
 Nello sviluppo web incontriamo spesso flussi di dati che vengono ritornati "in gruppi". Per esempio, il download o l'upload di file grandi.
 
 Possiamo usare i generatori asincroni per processare questo tipo di dati but vale anche la pena di menzionare che c'&egrave; un'altra API, chiamata Streams, che ci fornisce delle interfacce speciali per gestire questi flussi di dati, per trasformarli e passarli ad altri flussi per ulteriori manipolazioni (ad esempio scaricare dati da qualche sorgente e poi immediatamente inviarli da qualche parte).
 
 Le Streams API non fanno parte del linguaggio JavaScript standard.
-````
+
+```
+
+```
