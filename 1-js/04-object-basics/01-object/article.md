@@ -87,30 +87,6 @@ let user = {
 ```
 Questa viene chiamata virgola di "trailing" ("trascinamento") o "hanging" ("sospensione"). Rende più facile l'aggiunzione/rimozione/spostamento delle proprietà, poiché tutte le righe risultano essere uguali.
 
-````smart header="Gli oggetti const possono essere modificati"
-Da notare: un oggetto dichiarato come `const` *può* essere modificato.
-
-Ad esempio:
-
-```js run
-const user = {
-  name: "John"
-};
-
-*!*
-user.name = "Pete"; // (*)
-*/!*
-
-alert(user.name); // Pete
-```
-
-Potrebbe sembrare che la riga `(*)` causi un errore, ma non è cosi. Il `const` blocca il valore di `user`, ma non il suo contenuto.
-
-Il `const` darà un errore solo se proviamo a riassegnare `user=...`.
-
-C'è un altro modo per rendere costanti tutte le proprietà di un oggetto, andremo ad analizzarlo nel capitolo <info:property-descriptors>.
-````
-
 ## Parentesi quadre
 
 Per le proprietà con nomi "multi-parola", l'accesso con notazione puntata non funziona:

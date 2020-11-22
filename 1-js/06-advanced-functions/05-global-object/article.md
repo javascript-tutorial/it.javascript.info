@@ -24,7 +24,7 @@ var gVar = 5;
 alert(window.gVar); // 5 (diventa una proprietà dell'oggetto globale)
 ```
 
-Non affidatevi a questo! Questo comportamento esiste solamente per retrocompatibilità. Gli script moderni utilizzano i moduli JavaScript, che si comportano in maniera differente. Li studieremo più avanti nel capitolo [](info:modules).
+Non affidatevi a questo! Questo comportamento esiste solamente per retrocompatibilità. Gli script moderni utilizzano i moduli JavaScript, che si comportano in maniera differente. Li studieremo più avanti nel capitolo [moduli JavaScript](info:modules).
 
 Inoltre, la dichiarazione di variabili in stile moderno, tramite `let` e `const` non hanno questo tipo di comportamento:
 

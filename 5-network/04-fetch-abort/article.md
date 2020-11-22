@@ -1,7 +1,6 @@
 
 # Fetch: Abort
 
-<<<<<<< HEAD
 È noto che `fetch` ritorna una prime. JavaScript comunemente non ha però il concetto di "interruzione" di una promise. Come possiamo fare quindi ad interrompere una chiamata `fetch`?
 
 C'è uno speciale operatore built-in per questo scopo: `AbortController`, il quale può essere usato per interromepere `fetch` ed anche altri tasks asincroni.
@@ -9,95 +8,53 @@ C'è uno speciale operatore built-in per questo scopo: `AbortController`, il qua
 L'utilizzo è molto semplice:
 
 - Step 1: Creare un controller:
-=======
-As we know, `fetch` returns a promise. And JavaScript generally has no concept of "aborting" a promise. So how can we cancel an ongoing `fetch`? E.g. if the user actions on our site indicate that the `fetch` isn't needed any more.
-
-There's a special built-in object for such purposes: `AbortController`. It can be used to abort not only `fetch`, but other asynchronous tasks as well.
-
-The usage is very straightforward:
-
-## The AbortController object
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 Create a controller:
 
-<<<<<<< HEAD
-    Un controller è un oggetto estremamente semplice.
-
-    - Possiede solo il metodo `abort()` e la proprietà `signal`.
-    - Quando `abort()` è chiamato:
-        - l'evento `abort` si attiva su `controller.signal`
-        - la proprietà `controller.signal.aborted` diventa `true`.
-
-    Per valutare le chiamate del metodo `abort()` è necessario impostare un listener su `controller.signal`.
-
-    Un esempio (per ora senza `fetch`):
-=======
 ```js
 let controller = new AbortController();
 ```
 
-A controller is an extremely simple object.
+Un controller è un oggetto estremamente semplice.
 
-- It has a single method `abort()`,
-- And a single property `signal` that allows to set event liseners on it.
+- Possiede un solo metodo `abort()`,
+- Ed un'unica properietà `signal` che permette di impostare dei controllori di evento (event listeneres).
 
-When `abort()` is called:
-- `controller.signal` emits the `"abort"` event.
-- `controller.signal.aborted` property becomes `true`.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+Quando viene invocato il metodo `abort()`:
+- `controller.signal` emette l'evento `"abort"`.
+- la prorietà `controller.signal.aborted` diventa `true`.
 
 Generally, we have two parties in the process: 
 1. The one that performs an cancelable operation, it sets a listener on `controller.signal`.
 2. The one one that cancels: it calls `controller.abort()` when needed.
 
-<<<<<<< HEAD
-    // si scatenerà quando controller.abort() sarà chiamato
-    signal.addEventListener('abort', () => alert("abort!"));
-=======
-Here's the full example (without `fetch` yet):
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+Qui vediamo un esempio completo (ancora senza `fetch`):
 
 ```js run
 let controller = new AbortController();
 let signal = controller.signal;
 
-// The party that performs a cancelable operation 
-// gets "signal" object
-// and sets the listener to trigger when controller.abort() is called
+// La parte che esegue un'operazione annullabile
+// ottiene l'oggetto "signal"
+// ed imposta il controllore di eventi di attivarsi quando viene invocato controller.abort()
 signal.addEventListener('abort', () => alert("abort!"));
 
-// The other party, that cancels (at any point later):
+// L'altra parte, che cancella (in un qualsiasi punto più avanti):
 controller.abort(); // abort!
 
-<<<<<<< HEAD
-- Step 2: passa la proprietà `signal` nelle opzioni `fetch`:
-=======
-// The event triggers and signal.aborted becomes true
+// L'evento si innesca e il segnale di aborted diventa true
 alert(signal.aborted); // true
 ```
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
-As we can see, `AbortController` is just a means to pass `abort` events when `abort()` is called on it.
+Come possiamo vedere, `AbortController` è pensato solamente per passare gli eventi `abort` quando viene invocato il metodo `abort()`.
 
-<<<<<<< HEAD
-    Il metodo `fetch` sa come lavorare con `AbortController` ed ascolta l'`abort` grazie a `signal`.
+Potremmo implementare lo stesso tipo controllo di eventi nel nostro codice, anche senza l'oggetto `AbortController`.
 
-- Step 3: per interrompere, esegui `controller.abort()`:
-=======
-We could implement same kind of event listening in our code on our own, without `AbortController` object at all.
+Ma ciò che dà valore è che `fetch` è ottimizzato per lavorare con l'oggetto `AbortController`, poichè è integrato. 
 
-But what's valuable is that `fetch` knows how to work with `AbortController` object, it's integrated with it. 
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+## Utilizzo con fetch
 
-## Using with fetch
-
-<<<<<<< HEAD
-    Abbiamo completato: `fetch` ottiene l'evento da `signal` ed interrompe la richiesta.
-
-Quando una fetch viene interrotta, la sua promise viene respinta con un errore `AbortError` e quindi dovremmo gestirlo, magari per mezzo di `try...catch`:
-=======
-To become able to cancel `fetch`, pass the `signal` property of an `AbortController` as a `fetch` option:
+Per poter essere in grado di cacellare `fetch`, passiamo la proprietà `signal` di un `AbortController` come opzione di `fetch`:
 
 ```js
 let controller = new AbortController();
@@ -106,20 +63,19 @@ fetch(url, {
 });
 ```
 
-The `fetch` method knows how to work with `AbortController`. It will listen to `abort` events on `signal`.
+Il metodo `fetch` è in grado di lavorare con `AbortController`. Starà in attesa dell'event `abort` su `signal`.
 
-Now, to to abort, call `controller.abort()`:
+Ora, per abortire la richiesta, invochiamo `controller.abort()`:
 
 ```js
 controller.abort();
 ```
 
-We're done: `fetch` gets the event from `signal` and aborts the request.
+Abbiamo finito: `fetch` riceve l'event da `signal` ed interrompe la richiesta.
 
-When a fetch is aborted, its promise rejects with an error `AbortError`, so we should handle it, e.g. in `try..catch`.
+Quando un fetch viene interrotto, la promise viene rifiutata con un errore `AbortError`, quindi dovremmo prevedere una sua gestione, e.g. all'interno di un `try..catch`.
 
-Here's the full example with `fetch` aborted after 1 second:
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+Qui vediamo l'esempio completo con `fetch`, che viene interrotto dopo 1 secondo:
 
 ```js run async
 // interrompi in 1 secondo
@@ -139,25 +95,18 @@ try {
 }
 ```
 
-<<<<<<< HEAD
-**`AbortController` è scalabile e può cancellare fetches multipli in una volta.**
+## AbortController è scalabile
 
-For instance, here we fetch many `urls` in parallel, and the controller aborts them all:
+`AbortController` è scalabile e può cancellare fetches multipli in una volta.
+
 Ad esempio, qui valutiamo molti `url` in parallelo e il controller li interrompe tutti:
-=======
-## AbortController is scalable
-
-`AbortController` is scalable, it allows to cancel multiple fetches at once.
-
-Here's a sketch of code that fetches many `urls` in parallel, and uses a single controller to abort them all:
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 ```js
 let urls = [...]; // un elenco di urls di cui fare il fetch in parallelo
 
 let controller = new AbortController();
 
-// an array of fetch promises
+// un array di fetch promises
 let fetchJobs = urls.map(url => fetch(url, {
   signal: controller.signal
 }));
@@ -168,15 +117,9 @@ let results = await Promise.all(fetchJobs);
 // saranno interrotte tutte le fetches
 ```
 
-<<<<<<< HEAD
 Se abbiamo dei jobs asincroni, oltre a `fetch`, possiamo usare un singolo` AbortController` per fermarli insieme alle fetches.
 
 Dobbiamo solo ascoltare il suo evento `abort`:
-=======
-If we have our own asynchronous tasks, different from `fetch`, we can use a single `AbortController` to stop those, together with fetches.
-
-We just need to listen to its `abort` event in our tasks:
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 ```js
 let urls = [...];
@@ -198,12 +141,8 @@ let results = await Promise.all([...fetchJobs, ourJob]);
 // saranno interrotte tutte le fetches e ourJob
 ```
 
-<<<<<<< HEAD
-Quindi `AbortController` non è solo per` fetch`. È un oggetto universale per interrompere attività asincrone e `fetch` ha un'integrazione specifica con esso.
-=======
-## Summary
+## Riepilogo
 
-- `AbortController` is a simple object that generates `abort` event on it's `signal` property when `abort()` method is called (and also sets `signal.aborted` to `true`).
-- `fetch` integrates with it: we pass `signal` property as the option, and then `fetch` listens to it, so it becomes possible to abort the `fetch`.
-- We can use `AbortController` in our code. The "call `abort()`" -> "listen to `abort` event" interaction is simple and universal. We can use it even without `fetch`.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+- `AbortController` è un semplice oggetto che genera eventi di `abort` sulla proprietà `signal` quando viene invocato il metodo `abort()` (ed imposta anche `signal.aborted` a `true`).
+- `fetch` si integra con esso: se passiamp la proprietà `signal` come opzione, `fetch` è in grado di controllarla, quindi sarà possibile interrompere l'operazione di `fetch`.
+- Possiamo utilizzare `AbortController` nel nostro codice. La chiamata `abort()`" -> "ascolterà l'evento `abort`". Possiamo utilizzarla anche senza `fetch`.
