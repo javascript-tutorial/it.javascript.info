@@ -1,36 +1,35 @@
+# Iteratori e generatori asincroni
 
-# Async iterators and generators
+Gli iteratori asincroni consentono di iterare su dati che arrivano in modo asincrono, a richiesta. Per esempio, quando eseguiamo una serie di download parziali dalla rete. I generatori asincroni ci consentono di semplificare questo processo.
 
-Asynchronous iterators allow to iterate over data that comes asynchronously, on-demand. For instance, when we download something chunk-by-chunk over a network. Asynchronous generators make it even more convenient.
+Vediamo prima un semplice esempio per prendere confidenza con la sintassi, dopodiché analizzeremo un caso d'uso reale.
 
-Let's see a simple example first, to grasp the syntax, and then review a real-life use case.
+## Iteratori asincroni
 
-## Async iterators
+Gli iteratori asincroni sono simili ai comuni iteratori, con alcune differenze sintattiche.
 
-Asynchronous iterators are similar to regular iterators, with a few syntactic differences.
-
-"Regular" iterable object, as described in the chapter <info:iterable>, look like this:
+Gli oggetti iteratori "comuni", come abbiamo detto nel capitolo <info:iterable>, si presentano in questo modo:
 
 ```js run
 let range = {
   from: 1,
   to: 5,
 
-  // for..of calls this method once in the very beginning
+  // for..of invoca questo metodo una sola volta all'inizio dell'esecuzione
 *!*
   [Symbol.iterator]() {
 */!*
-    // ...it returns the iterator object:
-    // onward, for await..of works only with that object,
-    // asking it for next values using next()
+    // ...ritorna l'oggetto iteratore:
+    // dopodich&eacute;, for..of interagisce solo con questo oggetto,
+    // chiedendogli i valori successivi tramite il metodo next()
     return {
       current: this.from,
       last: this.to,
 
-      // next() is called on each iteration by the for..of loop
+      // next() viene invocato ad ogni iterazione dal ciclo for..of
 *!*
       next() { // (2)
-        // it should return the value as an object {done:.., value :...}
+        // dovrebbe ritornare il valore come un oggetto {done:.., value:..}
 */!*
         if (this.current <= this.last) {
           return { done: false, value: this.current++ };
@@ -43,43 +42,44 @@ let range = {
 };
 
 for(let value of range) {
-  alert(value); // 1 then 2, then 3, then 4, then 5
+  alert(value); // 1 poi 2, poi 3, poi 4, poi 5
 }
 ```
 
-If necessary, please refer to the [chapter about iterables](info:iterable) for details about regular iterators.
+Se necessario, rileggersi il [capitolo sugli iteratori](info:iterable) per avere maggiori dettagli circa gli iteratori comuni.
 
-To make the object iterable asynchronously:
-1. We need to use `Symbol.asyncIterator` instead of `Symbol.iterator`.
-2. `next()` should return a promise.
-3. To iterate over such an object, we should use `for await (let item of iterable)` loop.
+Per rendere l'oggetto iteratore asincrono:
 
-Let's make an iterable `range` object, like the one before, but now it will return values asynchronously, one per second:
+1. Dobbiamo usare `Symbol.asyncIterator` anzich&eacute; `Symbol.iterator`.
+2. `next()` dovrebbe ritornare una promise.
+3. Per iterare sui valori di tale oggetto, dobbiamo usare un ciclo del tipo: `for await (let item of iterable)`.
+
+Rendiamo l'oggetto `range` iterabile, come nell'esempio precedente ma, questa volta, ritorner&agrave; i valori in modo asincrono, uno ogni secondo:
 
 ```js run
 let range = {
   from: 1,
   to: 5,
 
-  // for await..of calls this method once in the very beginning
+  // for await..of invoca questo metodo una sola volta all'inizio dell'esecuzione
 *!*
   [Symbol.asyncIterator]() { // (1)
 */!*
-    // ...it returns the iterator object:
-    // onward, for await..of works only with that object,
-    // asking it for next values using next()
+    // ...ritorna l'oggetto iteratore:
+    // dopodich&egrave;, for await..of interagisce solo con questo oggetto,
+    // chiedendogli i valori successivi tramite il metodo next()
     return {
       current: this.from,
       last: this.to,
 
-      // next() is called on each iteration by the for..of loop
+      // next() viene invocato ad ogni iterazione dal ciclo for await..of
 *!*
       async next() { // (2)
-        // it should return the value as an object {done:.., value :...}
-        // (automatically wrapped into a promise by async)
+        // dovrebbe ritornare il valore come un oggetto {done:.., value:..}
+        // (automaticamente racchiuso in una promise dal momento che siamo un metodo 'async')
 */!*
 
-        // can use await inside, do async stuff:
+        // possiamo utilizzare await all'interno per eseguire codice asincrono:
         await new Promise(resolve => setTimeout(resolve, 1000)); // (3)
 
         if (this.current <= this.last) {
@@ -103,38 +103,40 @@ let range = {
 })()
 ```
 
-As we can see, the structure is similar to regular iterators:
+Possiamo notare che la struttura &egrave; simile a quella dei comuni iteratori:
 
-1. To make an object asynchronously iterable, it must have a method `Symbol.asyncIterator` `(1)`.
-2. This method must return the object with `next()` method returning a promise `(2)`.
-3. The `next()` method doesn't have to be `async`, it may be a regular method returning a promise, but `async` allows to use `await`, so that's convenient. Here we just delay for a second `(3)`.
-4. To iterate, we use `for await(let value of range)` `(4)`, namely add "await" after "for". It calls `range[Symbol.asyncIterator]()` once, and then its `next()` for values.
+1. Per rendere un oggetto iterabile in modo asincrono, esso deve contenere un metodo `Symbol.asyncIterator` `(1)`.
+2. Questo metodo deve ritornare un oggetto contenente il metodo `next()`, che ritorna a sua volta una promise `(2)`.
+3. Il metodo `next()` non deve necessariamente essere `async`; pu&ograve; essere un metodo normale che ritorna una promise, anche se `async` ci
+   consentirebbe di utilizzare `await`, che pu&ograve; tornarci utile. Nell'esempio, abbiamo utilizzato un ritardo di un secondo `(3)`.
+4. Per iterare dobbiamo utilizzare il ciclo `for await(let value of range)` `(4)`, si tratta di aggiungere "await" dopo il "for". Questo ciclo invoca il metodo `range[Symbol.asyncIterator]()` una sola volta, dopodich&eacute; il metodo invocher&agrave; `next()` per ottenere i valori.
 
-Here's a small cheatsheet:
+Ecco una semplice tabella di riepilogo:
 
-|       | Iterators | Async iterators |
-|-------|-----------|-----------------|
-| Object method to provide iterator | `Symbol.iterator` | `Symbol.asyncIterator` |
-| `next()` return value is              | any value         | `Promise`  |
-| to loop, use                          | `for..of`         | `for await..of` |
+|                                                 | Iteratori         | Iteratori asincroni    |
+| ----------------------------------------------- | ----------------- | ---------------------- |
+| Metodo dell'oggetto che restituisce l'iteratore | `Symbol.iterator` | `Symbol.asyncIterator` |
+| Il valore ritornato da `next()` &egrave;        | qualsiasi valore  | `Promise`              |
+| ciclo da utilizzare                             | `for..of`         | `for await..of`        |
 
+````warn header="Lo spread operator `...` non funziona in modo asincrono"
+Le funzionalit&agrave; offerte dai comuni iteratori (sincroni) non sono disponibili per gli iteratori asincroni.
 
-````warn header="The spread operator `...` doesn't work asynchronously"
-Features that require regular, synchronous iterators, don't work with asynchronous ones.
+Per esempio, lo spread operator non pu&agrave; essere utilizzato:
 
-For instance, a spread operator won't work:
 ```js
-alert( [...range] ); // Error, no Symbol.iterator
+alert([...range]); // Errore, non c'&agrave; Symbol.iterator
 ```
 
-That's natural, as it expects to find `Symbol.iterator`, same as `for..of` without `await`. Not `Symbol.asyncIterator`.
+Questo &egrave; prevedibile, dal momento che lo spread operator ha bisogno di `Symbol.iterator` anzich&eacute; `Symbol.asyncIterator`. Lo stesso vale per `for..of` (senza `await`).
+
 ````
 
-## Async generators
+## Generatori asincroni
 
-As we already know, JavaScript also supports generators, and they are iterable.
+Come gi&agrave; sappiamo, JavaScript supporta anche i cosiddetti generatori, che sono anche iteratori.
 
-Let's recall a sequence generator from the chapter [](info:generators). It generates a sequence of values from `start` to `end`:
+Ricordiamo l'esempio del generatore di una sequenza di numeri da `start` a `end`, nel capitolo [](info:generators):
 
 ```js run
 function* generateSequence(start, end) {
@@ -144,15 +146,15 @@ function* generateSequence(start, end) {
 }
 
 for(let value of generateSequence(1, 5)) {
-  alert(value); // 1, then 2, then 3, then 4, then 5
+  alert(value); // 1, poi 2, poi 3, poi 4, poi 5
 }
 ```
 
-In regular generators we can't use `await`. All values must come synchronously: there's no place for delay in `for..of`, it's a synchronous construct.
+Nei normali generatori non possiamo usare `await`. Tutti i valori devono essere ritornati in modo sincrono: non c'&egrave; modo di ritornare valori "futuri" utilizzando il ciclo `for..of`, dal momento che si tratta di un costrutto di tipo sincrono.
 
-But what if we need to use `await` in the generator body? To perform network requests, for instance.
+Cosa fare se avessimo bisogno di usare `await` all'interno di un generatore? Per eseguire, ad esempio, una richiesta dalla rete?
 
-No problem, just prepend it with `async`, like this:
+Non c'&egrave; problema, sar&agrave; sufficiente anteporre la parola chiave `async`, come nell'esempio seguente:
 
 ```js run
 *!*async*/!* function* generateSequence(start, end) {
@@ -173,27 +175,27 @@ No problem, just prepend it with `async`, like this:
 
   let generator = generateSequence(1, 5);
   for *!*await*/!* (let value of generator) {
-    alert(value); // 1, then 2, then 3, then 4, then 5
+    alert(value); // 1, poi 2, poi 3, poi 4, poi 5
   }
 
 })();
 ```
 
-Now we have the async generator, iterable with `for await...of`.
+In questo modo abbiamo ottenuto il generatore asincrono, che possiamo usare nelle iterazioni con il ciclo `for await..of`.
 
-It's indeed very simple. We add the `async` keyword, and the generator now can use `await` inside of it, rely on promises and other async functions.
+E' molto semplice. Aggiungiamo la parola chiave `async` ed ecco che il generatore pu&ograve; utilizzare `await` al suo interno e trarre vantaggio delle promise, cos&igrave; come di tutte le altre funzioni asincrone.
 
-Technically, another the difference of an async generator is that its `generator.next()` method is now asynchronous also, it returns promises.
+Tecnicamente, un'altra importante caratteristica dei generatori asincroni &egrave; che anche il relativo metodo `generator.next()` diventa asincrono, ritornando delle promise.
 
-In a regular generator we'd use `result = generator.next()` to get values. In an async generator, we should add `await`, like this:
+Con un generatore normale utilizzeremmo `result = generator.next()` per ottenere i valori ritornati. Con i generatori asincroni dobbiamo, invece, aggiungere `await`, come nell'esempio:
 
 ```js
 result = await generator.next(); // result = {value: ..., done: true/false}
 ```
 
-## Async iterables
+## Iteratori asincroni
 
-As we already know, to make an object iterable, we should add `Symbol.iterator` to it.
+Come gi&agrave; sappiamo, per rendere un semplice oggetto un oggetto iteratore, dobbiamo aggiungere il metodo `Symbol.iterator`:
 
 ```js
 let range = {
@@ -201,13 +203,14 @@ let range = {
   to: 5,
 *!*
   [Symbol.iterator]() {
-    return <object with next to make range iterable>
+    return <oggetto che abbia un metodo next() per trasformare l'oggetto in un iteratore>
   }
 */!*
 }
 ```
 
 A common practice for `Symbol.iterator` is to return a generator, rather than a plain object with `next` as in the example before.
+Un approccio comune &egrave; quello di far ritornare a `Symbol.iterator` un generatore anzich&eacute; un normale oggetto con il metodo `next`, come nell'esempio precedente.
 
 Let's recall an example from the chapter [](info:generators):
 
@@ -242,7 +245,7 @@ let range = {
 */!*
     for(let value = this.from; value <= this.to; value++) {
 
-      // make a pause between values, wait for something  
+      // make a pause between values, wait for something
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       yield value;
@@ -361,4 +364,5 @@ In web-development we often meet streams of data, when it flows chunk-by-chunk. 
 
 We can use async generators to process such data, but it's also worth to mention that there's also another API called Streams, that provides special interfaces to work with such streams, to transform the data and to pass it from one stream to another (e.g. download from one place and immediately send elsewhere).
 
-Streams API is not a part of JavaScript language standard. 
+Streams API is not a part of JavaScript language standard.
+````
