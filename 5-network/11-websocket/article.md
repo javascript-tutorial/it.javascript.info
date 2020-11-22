@@ -19,7 +19,7 @@ Il procotollo `wss://` non solo &egrave; criptato, ma &egrave; anche pi&ugrave; 
 
 Questo perch&egrave; i dati del `ws://` non sono criptati, visibili per qualunque intermediario. Server proxy molto vecchi, che non riconoscono l'implementazione WebSocket, potrebbero notare i suoi headers, per così dire, "strani" e decidere di interrompre la connessione.
 
-Invece, `wss://` &egrave; una connessione over TLS  (lo stesso di HTTPS che &egrave; HTTP over TLS), TLS cripta il dato invio e lo decripta in ricezione. Cos&igrave; i dati passano attraverso i proxy in maniera criptata e non potendone vedere il contenuto lo lasciano passare.
+Invece, `wss://` &egrave; una connessione over TLS  (lo stesso di HTTPS che &egrave; HTTP over TLS), TLS cripta il dato prima di inviarlo e lo decripta in ricezione. Cos&igrave; i dati passano attraverso i proxy in maniera criptata e non potendone vedere il contenuto lo lasciano passare.
 ```
 
 Appena creato il socket, dovremmo rimanere in ascolto su di esso per gli eventi. Ce ne sono 4:
@@ -60,7 +60,7 @@ socket.onerror = function(error) {
 };
 ```
 
-A scopo dimostrativo, c'&egrave; un piccolo server funzionante [server.js](demo/server.js) scritto in Node.js, per l'esempio qui sopra. Risponde con "Hello from server, John" quindi attende 5 secondi e chiude la connessione.
+A scopo dimostrativo, c'&egrave; un piccolo server funzionante [server.js](demo/server.js) scritto in Node.js, per l'esempio qui sopra. Risponde con "Hello from server, John", attende 5 secondi e poi chiude la connessione.
 
 Quindi vedrai gli eventi `open` -> `message` -> `close`.
 
