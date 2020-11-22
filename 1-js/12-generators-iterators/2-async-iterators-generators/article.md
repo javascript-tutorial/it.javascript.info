@@ -209,17 +209,16 @@ let range = {
 }
 ```
 
-A common practice for `Symbol.iterator` is to return a generator, rather than a plain object with `next` as in the example before.
 Un approccio comune &egrave; quello di far ritornare a `Symbol.iterator` un generatore anzich&eacute; un normale oggetto con il metodo `next`, come nell'esempio precedente.
 
-Let's recall an example from the chapter [](info:generators):
+Ricordiamo di seguito un esempio dal capitolo [](info:generators):
 
 ```js run
 let range = {
   from: 1,
   to: 5,
 
-  *[Symbol.iterator]() { // a shorthand for [Symbol.iterator]: function*()
+  *[Symbol.iterator]() { // sintassi compatta di [Symbol.iterator]: function*()
     for(let value = this.from; value <= this.to; value++) {
       yield value;
     }
@@ -227,13 +226,13 @@ let range = {
 };
 
 for(let value of range) {
-  alert(value); // 1, then 2, then 3, then 4, then 5
+  alert(value); // 1, poi 2, poi 3, poi 4, poi 5
 }
 ```
 
-Here a custom object `range` is iterable, and the generator `*[Symbol.iterator]` implements the logic for listing values.
+In questo esempio l'oggetto `range` &egrave; un iteratore e il generatore `*[Symbol.iterator]` implementa la logica per elencare i valori.
 
-If we'd like to add async actions into the generator, then we should replace `Symbol.iterator` with async `Symbol.asyncIterator`:
+Se volessimo aggiungere delle funzionalit&agrave; asincrone al generatore, dovremmo sostituire `Symbol.iterator` con async `Symbol.asyncIterator`:
 
 ```js run
 let range = {
@@ -241,11 +240,11 @@ let range = {
   to: 5,
 
 *!*
-  async *[Symbol.asyncIterator]() { // same as [Symbol.asyncIterator]: async function*()
+  async *[Symbol.asyncIterator]() { // come per [Symbol.asyncIterator]: async function*()
 */!*
     for(let value = this.from; value <= this.to; value++) {
 
-      // make a pause between values, wait for something
+      // mettiamo una pausa tra i volori ritornati, aspettando un secondo
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       yield value;
@@ -256,39 +255,39 @@ let range = {
 (async () => {
 
   for *!*await*/!* (let value of range) {
-    alert(value); // 1, then 2, then 3, then 4, then 5
+    alert(value); // 1, poi 2, poi 3, poi 4, poi 5
   }
 
 })();
 ```
 
-Now values come with a delay of 1 second between them.
+Adesso i valori verranno ritornati con un ritardo di 1 secondo tra l'uno e l'altro.
 
-## Real-life example
+## Esempio reale
 
-So far we've seen simple examples, to gain basic understanding. Now let's review a real-life use case.
+Finora abbiamo visto esempi molto semplici, tanto per prendere confidenza. Vediamo ora un esempio di caso d'uso reale.
 
-There are many online services that deliver paginated data. For instance, when we need a list of users, a request returns a pre-defined count (e.g. 100 users) - "one page", and provides an URL to the next page.
+Ci sono molti servizi online che restituiscono dati paginati. Per esempio, quando abbiamo bisogno di una lista di utenti, una richiesta ritorna un numero predefinito di risultati (ad esempio 100 utenti) - "una pagina", e ci ritorna anche una URL per ottenere la pagina successiva.
 
-The pattern is very common, it's not about users, but just about anything. For instance, GitHub allows to retrieve commits in the same, paginated fashion:
+E' un modello molto comune, non solo per gli utenti, ma per qualsiasi cosa. Ad esempio, GitHub consente di ottenere la lista di commit allo stesso modo, tramite la paginazione:
 
-- We should make a request to URL in the form `https://api.github.com/repos/<repo>/commits`.
-- It responds with a JSON of 30 commits, and also provides a link to the next page in the `Link` header.
-- Then we can use that link for the next request, to get more commits, and so on.
+- Eseguiamo una richiesta alla URL nella forma `https://api.github.com/repos/<repo>/commits`.
+- Il server risponde con un JSON di 30 commit e ci ritorna anche un link alla pagina successiva nell'header `Link`.
+- Dopodich&eacute; possiamo usare tale link per la richiesta successiva, ottenendo le commit successive e cos&igrave; via.
 
-But we'd like to have is a simpler API: an iterable object with commits, so that we could go over them like this:
+Ci piacerebbe, tuttavia, avere una API pi&ugrave; semplice: un oggetto iteratore per le commit, che ci consenta di elencarle nel seguente modo:
 
 ```js
-let repo = 'javascript-tutorial/en.javascript.info'; // GitHub repository to get commits from
+let repo = 'javascript-tutorial/en.javascript.info'; // repository GitHub dal quale ottenere le commit
 
 for await (let commit of fetchCommits(repo)) {
   // process commit
 }
 ```
 
-We'd like a call, like `fetchCommits(repo)` to get commits for us, making requests whenever needed. And let it care about all pagination stuff, for us it'll be a simple `for await..of`.
+Ci piacerebbe un'invocazione, come ad esempio `fetchCommits(repo)` per ottenere le commit, che esegua richieste ogni volta che ne abbiamo bisogno e senza preoccuparci della logica di paginazione. Ad esempio, una soluzione semplice del tipo `for await..of`.
 
-With async generators that's pretty easy to implement:
+Grazie ai generatori asincroni diventa piuttosto semplice da implementare:
 
 ```js
 async function* fetchCommits(repo) {
@@ -296,30 +295,30 @@ async function* fetchCommits(repo) {
 
   while (url) {
     const response = await fetch(url, { // (1)
-      headers: {'User-Agent': 'Our script'}, // github requires user-agent header
+      headers: {'User-Agent': 'Our script'}, // github richiede un header user-agent
     });
 
-    const body = await response.json(); // (2) response is JSON (array of commits)
+    const body = await response.json(); // (2) la risposta &egrave; un JSON (array di commit)
 
-    // (3) the URL of the next page is in the headers, extract it
+    // (3) la URL della pagina successiva &egrave; negli header, dunque dobbiamo estrarla
     let nextPage = response.headers.get('Link').match(/<(.*?)>; rel="next"/);
     nextPage = nextPage && nextPage[1];
 
     url = nextPage;
 
-    for(let commit of body) { // (4) yield commits one by one, until the page ends
+    for(let commit of body) { // (4) restituisce (yield) le commit una ad una fino alla fine della pagina
       yield commit;
     }
   }
 }
 ```
 
-1. We use the browser [fetch](info:fetch) method to download from a remote URL. It allows to supply authorization and other headers if needed, here GitHub requires `User-Agent`.
-2. The fetch result is parsed as JSON, that's again a `fetch`-specific method.
-3. We should get the next page URL from the `Link` header of the response. It has a special format, so we use a regexp for that. The next page URL may look like `https://api.github.com/repositories/93253246/commits?page=2`, it's generated by GitHub itself.
-4. Then we yield all commits received, and when they finish -- the next `while(url)` iteration will trigger, making one more request.
+1. Utilizziamo il metodo [fetch](info:fetch) del browser per ottenere i dati dalla URL remota. Questo ci consente di fornire al server le autorizzazioni e le intestazioni (header) richieste. Ad esempio GitHub richiede `User-Agent`:
+2. Il risultato di fetch viene interpretato come un JSON, altra caratteristica del metodo `fetch`.
+3. Dovremmo, quindi, ottenere la URL alla pagina successiva dal header `Link` della risposta. Siccome ha un formato particolare, utilizziamo un'espressione regolare. La URL della pagina successiva potrebbe essere simile a `https://api.github.com/repositories/93253246/commits?page=2` e viene generata dallo stesso GitHub.
+4. Infine, ritorniamo tutte le commit ricevute tramite `yield` e, una volta terminate, la successiva iterazione `while(url)` verr&agrave; invocata, eseguendo un'ulteriore richiesta.
 
-An example of use (shows commit authors in console):
+Un esempio di utilizzo (visualizza gli autori delle commit nella console):
 
 ```js run
 (async () => {
@@ -338,31 +337,31 @@ An example of use (shows commit authors in console):
 })();
 ```
 
-That's just what we wanted. The internal mechanics of paginated requests is invisible from the outside. For us it's just an async generator that returns commits.
+Questo &egrave; esattamente quello che volevamo. I meccanismi interni delle richieste paginate sono invisibili dall'esterno. Per noi non &egrave; altro che un generatore asincrono che ritorna delle commit.
 
-## Summary
+## Sommario
 
-Regular iterators and generators work fine with the data that doesn't take time to generate.
+I normali iteratori e generatori funzionano bene con dati che non richiedono tempo per essere generati.
 
-When we expect the data to come asynchronously, with delays, their async counterparts can be used, and `for await..of` instead of `for..of`.
+Quando i dati ci arrivano in modo asincrono, con dei ritardi, possiamo usare iteratori e generatori asincroni, tramite il ciclo `for await..of` anzich&eacute; `for..of`.
 
-Syntax differences between async and regular iterators:
+Differenze sintattiche tra iteratori sincroni e asincroni:
 
-|       | Iterators | Async iterators |
-|-------|-----------|-----------------|
-| Object method to provide iterator | `Symbol.iterator` | `Symbol.asyncIterator` |
-| `next()` return value is              | any value         | `Promise`  |
+|                                     | Iteratori         | Iteratori asincroni    |
+|-------------------------------------|-------------------|------------------------|
+| Metodo che ci fornisce l'iteratore  | `Symbol.iterator` | `Symbol.asyncIterator` |
+| valore ritornato da `next()`        | qualsiasi valore  | `Promise`              |
 
-Syntax differences between async and regular generators:
+Differenze sintattiche tra generatori asincroni e sincroni:
 
-|       | Generators | Async generators |
-|-------|-----------|-----------------|
-| Declaration | `function*` | `async function*` |
-| `generator.next()` returns              | `{value:…, done: true/false}`         | `Promise` that resolves to `{value:…, done: true/false}`  |
+|                                | Generators                    | Async generators                                               |
+|--------------------------------|-------------------------------|----------------------------------------------------------------|
+| Dichiarazione                  | `function*`                   | `async function*`                                              |
+| `generator.next()` ritorna...  | `{value:…, done: true/false}` | `Promise` che risolve ritornando `{value:…, done: true/false}` |
 
-In web-development we often meet streams of data, when it flows chunk-by-chunk. For instance, downloading or uploading a big file.
+Nello sviluppo web incontriamo spesso flussi di dati che vengono ritornati "in gruppi". Per esempio, il download o l'upload di file grandi.
 
-We can use async generators to process such data, but it's also worth to mention that there's also another API called Streams, that provides special interfaces to work with such streams, to transform the data and to pass it from one stream to another (e.g. download from one place and immediately send elsewhere).
+Possiamo usare i generatori asincroni per processare questo tipo di dati but vale anche la pena di menzionare che c'&egrave; un'altra API, chiamata Streams, che ci fornisce delle interfacce speciali per gestire questi flussi di dati, per trasformarli e passarli ad altri flussi per ulteriori manipolazioni (ad esempio scaricare dati da qualche sorgente e poi immediatamente inviarli da qualche parte).
 
-Streams API is not a part of JavaScript language standard.
+Le Streams API non fanno parte del linguaggio JavaScript standard.
 ````
