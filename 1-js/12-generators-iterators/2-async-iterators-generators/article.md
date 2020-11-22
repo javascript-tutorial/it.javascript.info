@@ -8,7 +8,7 @@ Vediamo prima un semplice esempio per prendere confidenza con la sintassi, dopod
 
 Gli iteratori asincroni sono simili ai comuni iteratori, con alcune differenze sintattiche.
 
-Gli oggetti iteratori "comuni", come abbiamo detto nel capitolo [](info:iterable), si presentano in questo modo:
+Gli oggetti iteratori "comuni", come abbiamo detto nel capitolo [iteratori](info:iterable), si presentano in questo modo:
 
 ```js run
 let range = {
