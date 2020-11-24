@@ -58,7 +58,7 @@ alert(firstName ?? lastName ?? nickName ?? "Anonymous"); // Supercoder
 */!*
 ```
 
-## Comparison with ||
+## Confronti con ||
 
 L'operatore OR `||` può essere usato nello stesso modo dell'operatore `??`, come descritto nel [capitolo precedente](info:logical-operators#or-finds-the-first-truthy-value).
 
@@ -103,7 +103,7 @@ alert(height ?? 100); // 0
 
 Se un'altezza pari a zero è un valore accettabile, allora questo non dovrebbe essere rimpiazzato con il valore di default, quindi `??` fa la cosa giusta.
 
-## Precedence
+## Precedenza
 
 La precedenza dell'operatore `??` è piuttosto bassa: `5` nella [MDN table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table). Quindi `??` è valutato prima di `=` e `?`, ma dopo la maggior parte degli altri operatori, come `+`, `*`.
 
@@ -129,7 +129,7 @@ let area = height ?? 100 * width ?? 50;
 let area = height ?? (100 * width) ?? 50;
 ```
 
-### Using ?? with && or ||
+### Usare ?? con && o ||
 
 Per motivi di sicurezza, JavaScript proibisce l'utilizzo di `??` insieme agli operatori `&&` e `||`, a meno che la precedenza non sia esplicitamente specificata tramite l'utilizzo delle parentesi.
 
@@ -151,7 +151,7 @@ let x = (1 && 2) ?? 3; // Works
 alert(x); // 2
 ```
 
-## Summary
+## Sommario
 
 - Il nullish coalescing operator `??` fornisce una scorciatoia per la scelta del primo valore "definito" da una lista di valori.
 
