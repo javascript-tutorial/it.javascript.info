@@ -153,7 +153,7 @@ alert(x); // 2
 
 ## Summary
 
-- Il nullish coalescing operator `??` fornisce una breve strada per la scelta del primo valore "definito" da una lista di valori.
+- Il nullish coalescing operator `??` fornisce una scorciatoia per la scelta del primo valore "definito" da una lista di valori.
 
     È usato per assegnare valori di default alle variabili:
 
