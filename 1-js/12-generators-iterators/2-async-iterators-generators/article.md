@@ -342,7 +342,7 @@ Un esempio di utilizzo (visualizza gli autori delle commit nella console):
 
 Questo &egrave; esattamente quello che volevamo. I meccanismi interni delle richieste paginate sono invisibili dall'esterno. Per noi non &egrave; altro che un generatore asincrono che ritorna delle commit.
 
-## Sommario
+## Riepilogo
 
 I normali iteratori e generatori funzionano bene con dati che non richiedono tempo per essere generati.
 
