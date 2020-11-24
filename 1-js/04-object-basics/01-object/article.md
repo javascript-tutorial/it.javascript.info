@@ -1,11 +1,6 @@
 
 # Oggetti
 
-Come abbiamo appreso nel capitolo <info:types>, ci sono sette tipi di dato in JavaScript. Sei di questi vengono chiamati "primitivi", poiché i loro valori possono essere di un solo tipo (che può essere una stringa, un numero, etc...).
-
-In maniera differente, gli oggetti vengono utilizzati per raccogliere vari tipi di dati ed entità più complesse. In JavaScript, gli oggetti coprono quasi ogni aspetto del linguaggio. Quindi dobbiamo capirli bene prima di procedere.
-
-Un oggetto può essere creato con le parentesi `{…}` con una lista opzionale di *proprietà*. Una proprietà è una coppia "chiave: valore", dove la `key` è una stringa (chiamata anche "nome della proprietà"), il `value` può contenere qualsiasi cosa.
 
 
 Possiamo immaginare un oggetto come un archivio con dei documenti firmati. Ogni dato viene scritto nel documento utilizzandone la chiave (il nome). E' facile trovare un file conoscendone il nome oppure aggiungere di nuovi/rimuovere quelli vecchi.
@@ -153,7 +148,7 @@ let user = {
 };
 
 let key = "name";
-user.key // undefined
+alert( user.key ) // undefined
 ```
 
 ### Proprietà calcolate
@@ -280,6 +275,52 @@ let user = {
 };
 ```
 
+
+## Property names limitations
+
+Come abbiamo già appreso, una variabile non può avere il nome uguale ad una parola chiave del riservata al linguaggio come "for", "let", "return" etc.
+
+Ma per le proprietà degli oggetti, non ci sono restrizioni:
+
+```js run
+// queste variabili sono tutte corrette
+let obj = {
+  for: 1,
+  let: 2,
+  return: 3
+};
+
+alert( obj.for + obj.let + obj.return );  // 6
+```
+
+In breve, non ci sono limitazioni nei nomi delle proprietà. Possono essere sia di tipo string che symbols (un tipo speciale, che andremo ad analizzare più avanti).
+
+Nomi di proprietà con altri tipi, vengono autoamaticamente convertiti a string.
+
+Ad esempio, un numero `0` diventa una stringa `"0"` quando viene utilizzata come chiave di una prorietà:
+
+```js run
+let obj = {
+  0: "test" // equivale a "0": "test"
+};
+
+// entrambi gli alert accedono alla stessa proprietà (il nuemero 0 viene convertito nella stringa "0")
+alert( obj["0"] ); // test
+alert( obj[0] ); // test (stessa proprietà)
+```
+
+Esiste una piccola falla per la proprietà `__proto__`. Non possiamo impostarla ad un valore diverso dal tipo oggetto:
+
+```js run
+let obj = {};
+obj.__proto__ = 5; // assegnamo un numero
+alert(obj.__proto__); // [object Object] - il valore è un oggetto, non ha funzionato come ci si aspettava
+```
+
+Come possiamo osservare dal codice, l'assegazione del numero intero `5` è stata ignorata.
+
+Studieremo più nel dettaglio `__proto__` nel [capitolo](info:prototype-inheritance), e vedremo come [sistemare](info:prototype-methods) questo comportamento.
+
 ## Controllo di esistenza
 
 Un importante caratteristica degli oggetti è che è possibile accedere qualsiasi proprietà. Non ci sarà alcun errore se la proprietà non esiste! L'accesso ad una variabile non esistente ritornerà `undefined`. Questa caratteristica fornisce un metodo comodo per verificare se una proprietà esiste -- prelevandola e confrontandola con undefined:
@@ -373,7 +414,7 @@ Da notare che tutti i costrutti "for" ci consentono di dichiarare delle variabil
 Inoltre possiamo utilizzare qualsiasi altr variabile al posto di `key`. Ad esempio `"for(let prop in obj)"` è molto utilizzato.
 
 
-### Ordine degli oggetti
+### Ordinato come un oggetto
 
 Gli oggetti sono ordinati? In altre parole, se cicliamo un oggetto, otterremo le sue proprietà nello stesso ordine in cui le abbiamo aggiunte? 
 
@@ -456,265 +497,7 @@ for (let code in codes) {
 
 Ora funziona come previsto.
 
-## Copia per riferimento
-
-Una delle fondamentali differenze tra un oggetto e un tipo primitivo è che gli oggetti vengono memorizzati e copiati "per riferimento".
-
-I valori primtivi: stringhe, numberi, booleani -- vengono assegnati/copiati "per valore".
-
-Ad esempio:
-
-```js
-let message = "Hello!";
-let phrase = message;
-```
-
-Comre risultato avremmo due variabili indipendenti, ognua delle quali memorizza la stringa `"Hello!"`.
-
-![](variable-copy-value.svg)
-
-Gli oggetti non si comportano cosi.
-
-**La variabile non memorizza l'oggetto stesso, ma il suo "indirizzo in memoria", in altre parole "un suo riferimento".** 
-
-Qui vediamo l'esempio con gli oggetti:
-
-```js
-let user = {
-  name: "John"
-};
-```
-
-![](variable-contains-reference.svg)
-
-L'oggetto viene memorizzato da qualche parte in memoria. E la variabile `user` ha un "riferimento" del suo indirizzo.
-
-**Quando viene copiato una variabile di tipo oggetto -- viene in realtà copiato il riferimento, l'oggetto non viene quindi duplicato.**
-
-Se immaginiamo un oggetto com un archivio, allora la variabile possiamo pensarla come la chiave. Copiare una variabile duplica la chiave, non l'archivio nella sua interezza.
-
-Ad esempio:
-
-```js no-beautify
-let user = { name: "John" };
-
-let admin = user; // copia il riferiemento
-```
-
-Ora abbiamo due variabili, entrambe con un riferimento allo stesso oggetto:
-
-![](variable-copy-reference.svg)
-
-Possiamo usare qualsiasi variabile per accedere all'archivio e modificarne il suo contenuto:
-
-```js run
-let user = { name: 'John' };
-
-let admin = user;
-
-*!*
-admin.name = 'Pete'; // modificato dal riferimento "admin" 
-*/!*
-
-alert(*!*user.name*/!*); // 'Pete', changes are seen from the "user" reference
-```
-
-L'esempio sopra dimostra che esiste solo una copia dell'oggetto. Abbiamo un archivio con due chiavi ed utilizziamo una di queste per accedervi (`admin`). Più avanti utilizziamo l'altra chiave (`user`) per vedere i cambiamenti.
-
-### Confronto per riferimento
-
-L'uguaglianza `==` e l'uguaglianza stretta `===` funzionano allo stesso modo.
-
-**Due oggetti sono uguali solamente se sono lo stesso oggetto.**
-
-Ad esempio, due variabili che si riferiscono allo stesso oggetto, sono uguali:
-
-```js run
-let a = {};
-let b = a; // copia il riferimento
-
-alert( a == b ); // true, entrambe le variabili fanno riferimento allo stesso oggetto
-alert( a === b ); // true
-```
-
-Qui invece vediamo due oggetti che non sono uguali, nonostante siano entrambi vuoti:
-
-```js run
-let a = {};
-let b = {}; // due oggetti indipendenti
-
-alert( a == b ); // false
-```
-
-Per i confronti del tipo `obj1 > obj2` o per un confronto con un tipo primitivo `obj == 5`, gli oggetti vengono convertiti in primitive. Presto vedremo come funziona questa conversione, ma nella pratica, questo tipo di confronto è veramente raro solitamente è un errore di programmazione.
-
-### Oggetti costanti
-
-Un oggetto dichiarato `const` *può* cambiare.
-
-Ad esempio:
-
-```js run
-const user = {
-  name: "John"
-};
-
-*!*
-user.age = 25; // (*)
-*/!*
-
-alert(user.age); // 25
-```
-
-Si potrebbe pensare che la riga `(*)` causi un errore, ma non è cosi, funziona correttamente. Questo perchè `const` fissa il valore di `user` stesso. Significa che `user` memorizzerà lo stesso oggetto per tutto il tempo. La riga `(*)` modifica il *contenuto* dell'oggetto, non riassegna la variabile `user`.
-
-Il `const` darebbe un errore se provassimo a impostare `user` a qualcos altro, ad esempio:
-
-```js run
-const user = {
-  name: "John"
-};
-
-*!*
-// Errore (non è possibili riassegnare user)
-*/!*
-user = {
-  name: "Pete"
-};
-```
-
-...Ma come potremmo fare se volessimo rendere constati le proprietà di un oggetto? Quindi l'istruzione `user.age = 25` dovrebbe dare errore. Questo è ovviamente possibile. Lo studieremo nel capitolo <info:property-descriptors>.
-
-## Clonazione e fusione, Object.assign
-
-Quindi, la copia di un oggetto crea un ulteriore riferimento allo stesso oggetto.
-
-Ma come potremmo fare se volessimo ottenere un duplicato dell'oggetto? Creare una copia indipendete, un clone?
-
-Anche questo è possibile, è leggermente più complesso, poichè non c'è un metodo integrato in JavaScript. In realtà, ce raramente bisogno di clonare un oggetto. Nella maggior parte dei casi la copia per riferimento è più che sufficiente.
-
-Ma se avessimo realmente la necessità di creare un clone, dovremmo creare un nuovo oggetto e replicare l'intera struttura di quello da copiare, iterando le proprietà e copiandole una per una a livello di primitiva.
-
-Come nell'esempio:
-
-```js run
-let user = {
-  name: "John",
-  age: 30
-};
-
-*!*
-let clone = {}; // un nuovo oggetto vuoto
-
-// copiamoci tutte le proprietà di user
-for (let key in user) {
-  clone[key] = user[key];
-}
-*/!*
-
-// ora clone è una copia indipendente
-clone.name = "Pete"; // cambiamo i suoi dati 
-
-alert( user.name ); // nell'oggetto originale rimane ancora John
-```
-
-Possiamo anche utilizzare il metodo [Object.assign](mdn:js/Object/assign).
-
-La sintassi è:
-
-```js
-Object.assign(dest, [src1, src2, src3...])
-```
-
-- Gli argomenti `dest`, e `src1, ..., srcN` (possono essere anche di più se necessario) sono oggetti.
-- Copia le proprietà di tutti gli oggetti `src1, ..., srcN` in `dest`. In altre parole, tutte le proprietà degli argomenti (a partire dal secondo) verranno copiate nel primo. Verrà poi ritornato `dest`.
-
-Ad esempio, possiamo utilizzare questo metodo per unire diversi oggetti in uno:
-```js
-let user = { name: "John" };
-
-let permissions1 = { canView: true };
-let permissions2 = { canEdit: true };
-
-*!*
-// copia tutte le proprietà da permissions1 e permissions2 in user
-Object.assign(user, permissions1, permissions2);
-*/!*
-
-// ora user = { name: "John", canView: true, canEdit: true }
-```
-
-Se l'oggetto destinazione (`user`) possiede già un elemento con lo stesso nome, questo verrà sovrascritto:
-
-```js
-let user = { name: "John" };
-
-// sovrascriviamo name, add isAdmin
-Object.assign(user, { name: "Pete", isAdmin: true });
-
-// ora user = { name: "Pete", isAdmin: true }
-```
-
-Possiamo anche utilizzare `Object.assign` per una semplice clonazione:
-
-```js
-let user = {
-  name: "John",
-  age: 30
-};
-
-*!*
-let clone = Object.assign({}, user);
-*/!*
-```
-
-Questo copierà tutte le proprietà di `user` in un oggetto vuoto e lo ritornerà. In realtà e la stessa cosa di un ciclo, ma è più breve.
-
-Finora abbiamo assunto che tutte le proprietà di `user` fossero primitive. Ma le proprietà possono essere riferimenti ad altri oggetti. Come dovremmo comportarci con queste?
-
-Come qui sotto:
-```js run
-let user = {
-  name: "John",
-  sizes: {
-    height: 182,
-    width: 50
-  }
-};
-
-alert( user.sizes.height ); // 182
-```
-
-Ora non è più sufficiente copiare `clone.sizes = user.sizes`, perché `user.sizes` è un oggetto, verrebbe quindi copiato per riferimento. Quindi `clone` e `user` condividerano `sizes`:
-
-Come possiamo vedere:
-```js run
-let user = {
-  name: "John",
-  sizes: {
-    height: 182,
-    width: 50
-  }
-};
-
-let clone = Object.assign({}, user);
-
-alert( user.sizes === clone.sizes ); // true, stesso oggetto
-
-// user e clone condividono sizes
-user.sizes.width++;       // cambia una proprietà in un punto
-alert(clone.sizes.width); // 51, ed è possibile vedere il riusltato anche nel clone
-```
-
-Per risolvere, dovremmo utilizzare il ciclo di clonazione per esaminare ogni valore di `user[key]`, e se troviamo oggetti, dovremmo replicare la struttura anche di questi. Questa viene definita "copia profonda".
-
-Esiste un algoritmo standard per le copie profonde, che gestisce i casi sopra e quelli ancora più complessi, si chiama [Structured cloning algorithm](http://w3c.github.io/html/infrastructure.html#safe-passing-of-structured-data). E' inutile reinventare la ruota, conviene quindi utilizzare l'implemetazione fornita dalla libreria JavaScript [lodash](https://lodash.com), il metodo si chiama [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
-
-
-
 ## Riepilogo
-
-Gli oggetti sono degli array associativi con delle speciali caratteristiche.
 
 Possono memorizzare proprietà (coppie di chiave-valore) in cui:
 - Il nome della proprietà (chiave) deve essere composta da una o più stringhe o simboli (solitamente stringhe).
@@ -731,11 +514,7 @@ Operatori specifici:
 
 Gli oggetti vengono assegnati e copiati per riferimento. In altre parole, la variabile non memorizza il "valore dell'oggetto", ma puittosto un "riferimento" (indirizzo di memoria). Quindi copiando questa variabile o passandola come argomento ad una funzione, fornirà un riferimento all'oggetto e non una copia. Tutte le operazioni effettuate su un oggetto copiato per riferimento (come aggiungere/rimuovere proprietà) vengono effettuate sullo stesso oggetto.
 
-Per fare una "copia" (un clone) possiamo utilizzare `Object.assign` oppure [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
-
 Quello che abbiamo studiato in questo capitolo viene chiamato "oggetto semplice", o solo `Object`.
-
-Ci sono altri oggetti in JavaScript:
 
 - `Array` per memorizzare dati ordinati,
 - `Date` per memorizzare informazioni riguardo date e orari,

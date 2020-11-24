@@ -167,6 +167,7 @@ Ci sono però delle importanti differenze.
 
         alert(User); // class User { ... }
     ```
+    There are other differences, we'll see them soon.
 
 2. I metodi delle classi non sono     numerabili. La definizione di una classe imposta il flag `enumerable` a `false` per tutti i metodi all'interno di `"prototype"`.
 
@@ -216,7 +217,7 @@ function makeClass(phrase) {
   return class {
     sayHi() {
       alert(phrase);
-    };
+    }
   };
 }
 
@@ -266,18 +267,7 @@ user = new User(""); // Nome troppo corto.
 
 La dichiarazione della classe crea i getter e i setter all'interno di `User.prototype`:
 
-```js
-Object.defineProperties(User.prototype, {
-  name: {
-    get() {
-      return this._name
-    },
-    set(name) {
-      // ...
-    }
-  }
-});
-```
+## Computed names [...]
 
 A seguire un esempio con le proprietà:
 
@@ -313,12 +303,96 @@ class User {
   }
 }
 
-new User().sayHi();
+new User().sayHi(); // Hello, John!
 ```
 
-Le proprietà non vengono inserite all'interno di `User.prototype`, ma vengono create separatamente attraverso `new`, cosicché non vengano condivise tra oggetti creati dalla stessa classe.
+Quindi scriviamo semplicemente "<property name> = <value>" nella dichiarazione.
 
-## Riassunto
+La differenza importante dei campi di una classe è che vengono impostati sull'oggetto individuale e non su `User.prototype`:
+
+```js run
+class User {
+*!*
+  name = "John";
+*/!*
+}
+
+let user = new User();
+alert(user.name); // John
+alert(User.prototype.name); // undefined
+```
+
+Possiamo anche assegnare valori utilizzando espressioni più complesse e chiamate a funzioni:
+
+```js run
+class User {
+*!*
+  name = prompt("Name, please?", "John");
+*/!*
+}
+
+let user = new User();
+alert(user.name); // John
+```
+
+
+### Creazione di metodi vincolati a campi di classe
+
+As demonstrated in the chapter <info:bind> functions in JavaScript have a dynamic `this`. It depends on the context of the call.
+
+So if an object method is passed around and called in another context, `this` won't be a reference to its object any more.
+
+For instance, this code will show `undefined`:
+
+```js run
+class Button {
+  constructor(value) {
+    this.value = value;
+  }
+
+  click() {
+    alert(this.value);
+  }
+}
+
+let button = new Button("hello");
+
+*!*
+setTimeout(button.click, 1000); // undefined
+*/!*
+```
+
+Il problema viene chiamato "perdita del `this`".
+
+Ci sono due differenti approcci per affrontare questo problema, come discusso nel capitolo <info:bind>:
+
+1. Passare una funzione contenitore, come `setTimeout(() => button.click(), 1000)`.
+2. Associare il metodo all'oggetto, e.g. nel costruttore.
+
+I campi di una classe fornicono un'altra sintassi molto più elegante:
+
+```js run
+class Button {
+  constructor(value) {
+    this.value = value;
+  }
+*!*
+  click = () => {
+    alert(this.value);
+  }
+*/!*
+}
+
+let button = new Button("hello");
+
+setTimeout(button.click, 1000); // hello
+```
+
+Il campo della classe `click = () => {...}` viene creato per ogni oggetto, abbiamo quindi una funzione diversa per ogni `Button`, con il riferimento `this` che punta all'oggetto. Possiamo passare `button.click` ovunque, e il valore di `this` sarà sempre quello corretto.
+
+Questo è particolarmente utile in ambiente browser, per gli event listeners (ascoltatori di eventi).
+
+## Riepilog
 
 Il seguente esempio riporta la sintassi base di una classe:
 

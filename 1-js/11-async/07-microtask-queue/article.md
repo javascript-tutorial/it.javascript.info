@@ -103,7 +103,7 @@ Ma ora sappiamo che `unhandledrejection` è generato quando la coda dei microtas
 
 Nell'esempio sopra, anche il `.catch` aggiunto da `setTimeout` viene innescato, ma dopo, quando `unhandledrejection` è già avvenuto, quindi questo non cambia niente.
 
-## Riassunto
+## Riepilogo
 
 La gestione delle promise è sempre asincrona, dato che tutte le azioni delle promise passano attraverso la coda "promise jobs", anche chiamata "microtask queue" (termine di v8).
 

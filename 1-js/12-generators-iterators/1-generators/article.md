@@ -69,7 +69,6 @@ A questo punto, abbiamo ottenuto solo il primo valore e l'esecuzione della funzi
 
 ![](generateSequence-2.svg)
 
-Let's call `generator.next()` again. It resumes the code execution and returns the next `yield`:
 Invochiamo ancora `generator.next()`. L'esecuzione del codice riprender&agrave; da dove si era fermata, fino a restituire il valore del prossimo `yield`:
 
 ```js
@@ -92,7 +91,7 @@ alert(JSON.stringify(three)); // {value: 3, *!*done: true*/!*}
 
 A questo punto il generatore ha terminato. Possiamo vederlo dal risultato finale `done:true` e `value:3`.
 
-Effettuare nuove chiamare a `generator.next()` non avrebbe pi&ugrave; senso. Se lo facciamo, otterremmo sempre lo stesso oggetto: `{done: true}`.
+Effettuare nuove chiamate a `generator.next()` non avrebbe pi&ugrave; senso. Se lo facciamo, otterremmo sempre lo stesso oggetto: `{done: true}`.
 
 ```smart header="`function* f(…)`or`function *f(…)`?"
 Entrambe le sintassi sono corrette.
@@ -103,7 +102,7 @@ La prima, tuttavia, &egrave; la pi&ugrave; utilizzata, dal momento che &egrave; 
 
 ## I generatori sono iteratori
 
-Come probabilmente avrai intuito dalla presenza del metodo `next()`, i generatori sono [iterabli](info:iterable).
+Come probabilmente avrai intuito dalla presenza del metodo `next()`, i generatori sono [iterabili](info:iterable).
 
 Possiamo eseguire cicli sui valori ritornati utilizzando `for..of`:
 
@@ -454,7 +453,7 @@ try {
 
 Se non gestiamo l'errore qui, come al solito, questo risalir&agrave; fino al codice pi&ugrave; esterno, se esistente, altrimenti far&agrave; fallire lo script.
 
-## Sommario
+## Riepilogo
 
 - I generatori vengono creati tramite funzioni generatrici `function* f(…) {…}`.
 - Solo nei generatori pu&ograve; esistere un operatore `yield`.

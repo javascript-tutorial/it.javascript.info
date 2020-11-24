@@ -294,7 +294,7 @@ let company = {
     salary: 1000
   }, {
     name: 'Alice',
-    salary: 600
+    salary: 1600
   }],
 
   development: {
@@ -342,7 +342,7 @@ L'algoritmo probabilmente è più intuibile leggendone il codice:
 
 ```js run
 let company = { // the same object, compressed for brevity
-  sales: [{name: 'John', salary: 1000}, {name: 'Alice', salary: 600 }],
+  sales: [{name: 'John', salary: 1000}, {name: 'Alice', salary: 1600 }],
   development: {
     sites: [{name: 'Peter', salary: 2000}, {name: 'Alex', salary: 1800 }],
     internals: [{name: 'Jack', salary: 1300}]
@@ -364,7 +364,7 @@ function sumSalaries(department) {
 }
 */!*
 
-alert(sumSalaries(company)); // 6700
+alert(sumSalaries(company)); // 7700
 ```
 
 Il codice è più breve e facile da capire. Questo è il potere della ricorsione. Questa funzione continuerebbe a funzionare con qualsiasi livello di sotto-dipartimento.
@@ -451,6 +451,7 @@ let list = { value: 1 };
 list.next = { value: 2 };
 list.next.next = { value: 3 };
 list.next.next.next = { value: 4 };
+list.next.next.next.next = null;
 ```
 
 Qui possiamo vedere ancora più chiaramente che ci sono più oggetti, ognuno possiede gli attributi `value` e `next` che fa riferimento al vicino. La variabile `list` contiene il primo elemento della lista, segue il puntatore `next` tramite cui possiamo accedere a qualsiasi elemento.

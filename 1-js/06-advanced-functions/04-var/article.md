@@ -1,33 +1,30 @@
 
 # Il vecchio "var"
 
+```smart header="Questo articolo è utile per la comprensione dei vecchi script"
+Le informazioni contenute in questo articolo sono utili per la comprensione dei vecchi script.
+
+Non è il modo corretto di scrive il codice oggi.
+```
+
 Nei primi capitoli in cui abbiamo parlato di [variabili](info:variables), abbiamo menzionato tre diversi tipi di dichiarazione:
 
 1. `let`
 2. `const`
 3. `var`
 
-`let` e `const` si comportano esattamente allo stesso modo in termini di Lexical Environments.
-
-Invece `var` è totalmente diverso, poiché deriva dalle prime versioni del linguaggio. Generalmente negli script più recenti non viene utilizzato, ma appare ancora in quelli più vecchi.
-
-Se non avete intenzione di avere a che fare con gli script più vecchi, potete saltare questo capitolo o studiarlo in futuro, ma molto probabilmente prima o poi vi ci imbatterete.
-
-A prima vista, `var` si comporta in maniera analoga a `let`. Ad esempio:
+La dichiarazione `var` è molto simile a `let`.La maggior parte delle volte possiamo sostituire `let` con `var` o vice-versa, e lo script continuerebbe a funzionare senza problemi:
 
 ```js run
-function sayHi() {
-  var phrase = "Hello"; // variabile locale, "var" piuttosto di "let"
-
-  alert(phrase); // Hello
-}
-
-sayHi();
-
-alert(phrase); // Errore, phrase non è definito
+var message = "Hi";
+alert(message); // Hi
 ```
 
-...Abbiamo trovato una differenza.
+But internally `var` is a very different beast, that originates from very old times. It's generally not used in modern scripts, but still lurks in the old ones.
+
+If you don't plan on meeting such scripts you may even skip this chapter or postpone it.
+
+E' però importate capire le differenze durante la migrazione dei vecchi script da `var` a `let`, per evitare errori.
 
 ## "var" non ha uno scope di blocco
 
@@ -51,11 +48,13 @@ La stessa cosa accade con i cicli: `var` non può essere locale ad un blocco/cic
 
 ```js
 for (var i = 0; i < 10; i++) {
+  var one = 1;
   // ...
 }
 
 *!*
 alert(i); // 10, "i" è visibile anche dopo il ciclo, è una variabile globale
+alert(one); // 1, "one" è visibile anche dopo il ciclo, è una variabile globale
 */!*
 ```
 
@@ -76,7 +75,27 @@ alert(phrase); // Errore: phrase non è definito (Provate a controllare la conso
 
 Come possiamo vedere, `var` passa attraverso `if`, `for` o altri blocchi di codice. Questo accade perché molto tempo fa i blocchi JavaScript non possedevano un Lexical Environments. E `var` ne è un ricordo.
 
-## "var" viene processata all'inizio della funzione
+## "var" tollera dichiarazioni multiple
+
+Se proviamo a ri-dichiarare la stessa variabile con `let` nello stesso scope, avremmo un errore:
+
+```js run
+let user;
+let user; // SyntaxError: 'user' has already been declared
+```
+
+Con `var`, possiamo ri-dichiarare una variabile quante volte vogliamo. Se proviamo ad utilizzare `var` con una variabile già dichiarata, verrà semplicemente ignoratp:
+
+```js run
+var user = "Pete";
+
+var user = "John"; // qui "var" non fa nulla (già dichiarata)
+// ...non emetterà nessun errore
+
+alert(user); // John
+```
+
+## Le variabili "var" possono essere dichiarate dopo il loro utilizzo
 
 Le dichiarazioni con `var` vengono processata quando la funzione inizia (o lo script, nel caso delle variabili globali).
 
@@ -175,6 +194,74 @@ sayHi();
 Il fatto che la dichiarazione di `var` venga processata all'inizio della funzione, ci consente di farne riferimento in qualsiasi punto. Ma la variabile rimane `undefined` fino all'assegnazione.
 
 In entrambi gli esempi sopra `alert` esegue senza errori, poiché la variabile `phrase` esiste. Il suo valore però non gli è ancora stato assegnato, quindi viene mostrato `undefined`.
+
+## IIFE
+
+In passato, poichè esisteva solo `var`, che non consentiva di definire variabili con visibilità a livello di blocco, i programmatori hanno inventato un modo per emulare questa situazione. Quello che facevano fu chiamato "immediately-invoked function expressions" (espressioni di funzioni invocate immediatamente,abbraviato come IIFE).
+
+E' qualcosa che dovremmo evitare oggi, ma è possibile trovare questo trucco nei vecchi script.
+
+Una IIFE viene scritta in questo modo:
+
+```js run
+(function() {
+
+  var message = "Hello";
+
+  alert(message); // Hello
+
+})();
+```
+
+Qui, un'espressione di funzione viene creata ed immediatamente chiamata. Quindi il codice esegue nel modo giusto, e possiede le sue variabili private.
+
+L'espressione di funzione è avvolta dalle parentesi `(function {...})`, poichè quando JavaScript incontra `"function"` nel flusso principale del codice, lo interpreta come l'inizio di una dichiarazione di funzione. Ma una dichiarazione di funzione deve avere un nome, quindi questo tipo di codice daebbe un errore:
+
+```js run
+// Proviamo a dichiarare ed invocare immediatamente una funzione
+function() { // <-- Error: La dichiarazione di funzione richiede un nome
+
+  var message = "Hello";
+
+  alert(message); // Hello
+
+}();
+```
+
+Anche se dovessimo pensare di aggiungere un nome, questo codice non funzionerebbe, poiché JavaScript non consente di invocare immediatamente le funzioni dichiarate:
+
+```js run
+// errore di sintassi a causa delle parentesi ()
+function go() {
+
+}(); // <-- non è possibile invocare una dichiarazione di funzione immediatamente
+```
+
+Quindi, le parentesi intorno alla funzione sono un trucco per mostrare a JavaScript che la funzone viene creata in un altro contesto, e quindi è un'espressione di funzione: la quale non richiede nome e può essere invocata immediatamente.
+
+Esistono altri modi oltrea alle parentesi per dire a JavaScript che intendiamo definire un'espressione di funzione:
+
+```js run
+// Altri modi per creare una IIFE
+
+(function() {
+  alert("Parentheses around the function");
+}*!*)*/!*();
+
+(function() {
+  alert("Parentheses around the whole thing");
+}()*!*)*/!*;
+
+*!*!*/!*function() {
+  alert("Bitwise NOT operator starts the expression");
+}();
+
+*!*+*/!*function() {
+  alert("Unary plus starts the expression");
+}();
+```
+
+In tutti gli esempi illustrati stiamo dichiarando un'espressione di funzione invocandola immediatamente. Lasciatemelo ripetere: al giorno d'oggi non c'è alcun motivo di scrivere codice del genere.
 
 ## Riepilogo
 

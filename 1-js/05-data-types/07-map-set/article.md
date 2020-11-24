@@ -41,7 +41,13 @@ alert( map.size ); // 3
 
 Come abbiamo potuto osservare, a differenza degli oggetti, le chiavi non vengono convertite a stringa. Sono quindi ammesse chiavi di qualunque tipo.
 
-**Map può utilizzare anche oggetti come chive.**
+```smart header="`map[key]` non è il modo corretto di utilizzare una `Map`"
+Anche se `map[key]` funziona, ad esempio possiamo impostare `map[key] = 2`, equivale a trattare una `map` come un oggetto semplice, con tutte le limitazioni correlate agli oggetti.
+
+Quindi dovremmo utilizzare i metodi dedicati a `map`: `set`, `get` e gli altri.
+```
+
+**Map può utilizzare anche oggetti come chiave.**
 
 Ad esempio:
 

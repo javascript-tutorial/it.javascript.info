@@ -9,7 +9,7 @@ Per poter visualizzare gli errori e ricevere altre informazioni utili riguardo g
 Molto spesso gli sviluppatori tendono ad utilizzare Chrome o Firefox poichè questi browser forniscono i migliori strumenti per lo sviluppo. Anche gli altri browser contengono gli strumenti per lo sviluppo, talvolta con caratteristiche speciali, ma più che altro giocano ad "avvicinarsi" a Chrome e Firefox.
 Quindi molte perone hanno un browser "preferito" e utilizzano gli altri solo quando un problema è specifico di quel browser.
 
-Gli strumenti da sviluppatore sono potenti; hanno molte caratteristiche. Prima di tutto, dobbiamo capire come ottenerli, come cercare errori e come eseguire comandi JavaScript.
+Gli strumenti da sviluppatore sono molto potenti; possiedono molte caratteristiche. Prima di tutto, dobbiamo capire come accedervi, come cercare errori e come eseguire comandi JavaScript.
 
 ## Google Chrome
 
@@ -34,6 +34,11 @@ Sotto il messaggio d'errore, c'e un simbolo blu `>`. Questo indica la "riga di c
 
 Adesso possiamo visualizzare gli errori, ed è già abbastanza come inizio. Ritorneremo sugli strumenti di sviluppo più avanti e analizzeremo il debugging più in profondità nel capitolo <info:debugging-chrome>.
 
+```smart header="Multi-line input"
+Usually, when we put a line of code into the console, and then press `key:Enter`, it executes.
+
+To insert multiple lines, press `key:Shift+Enter`. This way one can enter long fragments of JavaScript code.
+```
 
 ## Firefox, Edge, and others
 

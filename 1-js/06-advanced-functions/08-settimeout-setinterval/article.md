@@ -132,7 +132,7 @@ Nella maggior parte dei browser, inclusi Chrome e Firefox, il timer interno cont
 Quindi, se eseguiamo il codice qui sopra e non chiudiamo la finestra dell'`alert` per qualche istante, l'`alert` successivo verrà mostrato immediatamente e l'intervallo tra i due avvisi sarà più breve di 2 secondi.
 ```
 
-## setTimeout ricorsivo
+## setTimeout annidati
 
 Ci sono due modi per eseguire qualcosa regolarmente.
 
@@ -184,7 +184,7 @@ Paragoniamo due frammenti di codice. Il primo usa `setInterval`:
 ```js
 let i = 1;
 setInterval(function() {
-  func(i);
+  func(i++);
 }, 100);
 ```
 
@@ -193,12 +193,12 @@ Il secondo usa il `setTimeout` ricorsivo:
 ```js
 let i = 1;
 setTimeout(function avvia() {
-  func(i);
+  func(i++);
   setTimeout(avvia, 100);
 }, 100);
 ```
 
-Per `setInterval` la pianificazione interna eseguirà `func(i)` ogni 100ms:
+Per `setInterval` la pianificazione interna eseguirà `func(i++)` ogni 100ms:
 
 ![](setinterval-interval.svg)
 

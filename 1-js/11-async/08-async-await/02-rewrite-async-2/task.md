@@ -1,7 +1,7 @@
 
 # Riscrivere "rethrow"  con async/await
 
-Sotto puoi trovare l'esempio "rethrow" dal capitolo <info:promise-chaining>. Riscriverlo usando `async/await` invece di `.then/catch`.
+Sotto puoi trovare l'esempio "rethrow". Riscriverlo usando `async/await` invece di `.then/catch`.
 
 Sbarazzarsi della ricorsione a favore di un ciclo in `demoGithubUser`: con `async/await` diventa facile da fare.
 
@@ -22,7 +22,7 @@ function loadJson(url) {
       } else {
         throw new HttpError(response);
       }
-    })
+    });
 }
 
 // Ask for a user name until github returns a valid user

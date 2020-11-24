@@ -1,10 +1,12 @@
 # Iteratori e generatori asincroni
 
+
 Gli iteratori asincroni consentono di iterare su dati che arrivano in modo asincrono, a richiesta. Per esempio, quando eseguiamo una serie di download parziali dalla rete. I generatori asincroni ci consentono di semplificare questo processo.
 
 Vediamo prima un semplice esempio per prendere confidenza con la sintassi, dopodiché analizzeremo un caso d'uso reale.
 
 ## Iteratori asincroni
+
 
 Gli iteratori asincroni sono simili ai comuni iteratori, con alcune differenze sintattiche.
 
@@ -16,12 +18,15 @@ let range = {
   to: 5,
 
   // for..of invoca questo metodo una sola volta all'inizio dell'esecuzione
+
 *!*
-  [Symbol.iterator]() {
+  [Symbol.iterator]() { // called once, in the beginning of for..of
 */!*
+
     // ...ritorna l'oggetto iteratore:
     // dopodich&eacute;, for..of interagisce solo con questo oggetto,
     // chiedendogli i valori successivi tramite il metodo next()
+
     return {
       current: this.from,
       last: this.to,
@@ -46,6 +51,7 @@ for(let value of range) {
 }
 ```
 
+
 Se necessario, rileggersi il [capitolo sugli iteratori](info:iterable) per avere maggiori dettagli circa gli iteratori comuni.
 
 Per rendere l'oggetto iteratore asincrono:
@@ -68,6 +74,7 @@ let range = {
     // ...ritorna l'oggetto iteratore:
     // dopodich&egrave;, for await..of interagisce solo con questo oggetto,
     // chiedendogli i valori successivi tramite il metodo next()
+
     return {
       current: this.from,
       last: this.to,
@@ -80,7 +87,9 @@ let range = {
 */!*
 
         // possiamo utilizzare await all'interno per eseguire codice asincrono:
+
         await new Promise(resolve => setTimeout(resolve, 1000)); // (3)
+*/!*
 
         if (this.current <= this.last) {
           return { done: false, value: this.current++ };
@@ -105,6 +114,7 @@ let range = {
 
 Possiamo notare che la struttura &egrave; simile a quella dei comuni iteratori:
 
+
 1. Per rendere un oggetto iterabile in modo asincrono, esso deve contenere un metodo `Symbol.asyncIterator` `(1)`.
 2. Questo metodo deve ritornare un oggetto contenente il metodo `next()`, che ritorna a sua volta una promise `(2)`.
 3. Il metodo `next()` non deve necessariamente essere `async`; pu&ograve; essere un metodo normale che ritorna una promise, anche se `async` ci
@@ -118,6 +128,7 @@ Ecco una semplice tabella di riepilogo:
 | Metodo dell'oggetto che restituisce l'iteratore | `Symbol.iterator` | `Symbol.asyncIterator` |
 | Il valore ritornato da `next()` &egrave;        | qualsiasi valore  | `Promise`              |
 | ciclo da utilizzare                             | `for..of`         | `for await..of`        |
+
 
 ````warn header="Lo spread operator '...' non funziona in modo asincrono"
 Le funzionalit&agrave; offerte dai comuni iteratori (sincroni) non sono disponibili per gli iteratori asincroni.
@@ -162,7 +173,7 @@ Non c'&egrave; problema, sar&agrave; sufficiente anteporre la parola chiave `asy
   for (let i = start; i <= end; i++) {
 
 *!*
-    // yay, can use await!
+    // Wow, can use await!
     await new Promise(resolve => setTimeout(resolve, 1000));
 */!*
 
@@ -192,6 +203,8 @@ Con un generatore normale utilizzeremmo `result = generator.next()` per ottenere
 ```js
 result = await generator.next(); // result = {value: ..., done: true/false}
 ```
+That's why async generators work with `for await...of`.
+````
 
 ## Iteratori asincroni
 
@@ -240,6 +253,7 @@ let range = {
   from: 1,
   to: 5,
 
+  // this line is same as [Symbol.asyncIterator]: async function*() {
 *!*
   async *[Symbol.asyncIterator]() { // come per [Symbol.asyncIterator]: async function*()
 */!*
@@ -281,7 +295,8 @@ Ci piacerebbe, tuttavia, avere una API pi&ugrave; semplice: un oggetto iteratore
 ```js
 let repo = "javascript-tutorial/en.javascript.info"; // repository GitHub dal quale ottenere le commit
 
-for await (let commit of fetchCommits(repo)) {
+```js
+for await (let commit of fetchCommits("username/repository")) {
   // process commit
 }
 ```
@@ -357,6 +372,7 @@ Differenze sintattiche tra iteratori sincroni e asincroni:
 
 Differenze sintattiche tra generatori asincroni e sincroni:
 
+
 |                               | Generators                    | Async generators                                               |
 | ----------------------------- | ----------------------------- | -------------------------------------------------------------- |
 | Dichiarazione                 | `function*`                   | `async function*`                                              |
@@ -367,7 +383,3 @@ Nello sviluppo web incontriamo spesso flussi di dati che vengono ritornati "in g
 Possiamo usare i generatori asincroni per processare questo tipo di dati but vale anche la pena di menzionare che c'&egrave; un'altra API, chiamata Streams, che ci fornisce delle interfacce speciali per gestire questi flussi di dati, per trasformarli e passarli ad altri flussi per ulteriori manipolazioni (ad esempio scaricare dati da qualche sorgente e poi immediatamente inviarli da qualche parte).
 
 Le Streams API non fanno parte del linguaggio JavaScript standard.
-
-```
-
-```

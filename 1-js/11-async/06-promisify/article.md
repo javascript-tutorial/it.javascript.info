@@ -25,15 +25,16 @@ function loadScript(src, callback) {
 
 Trasformiamolo in una promise. La nuova funzione `loadScriptPromise(src)` farà lo stesso, ma accetta solo `src` (senza callback) e ritorna una promise.
 
+Here it is:
 ```js
 let loadScriptPromise = function(src) {
   return new Promise((resolve, reject) => {
     loadScript(src, (err, script) => {
-      if (err) reject(err)
+      if (err) reject(err);
       else resolve(script);
     });
-  })
-}
+  });
+};
 
 // uso:
 // loadScriptPromise('path/script.js').then(...)
@@ -55,7 +56,7 @@ function promisify(f) {
     return new Promise((resolve, reject) => {
       function callback(err, result) { // la nostra callback f
         if (err) {
-          return reject(err);
+          reject(err);
         } else {
           resolve(result);
         }
@@ -66,7 +67,7 @@ function promisify(f) {
       f.call(this, ...args); // chiama la funzione originale
     });
   };
-};
+}
 
 // uso:
 let loadScriptPromise = promisify(loadScript);
@@ -86,7 +87,7 @@ function promisify(f, manyArgs = false) {
     return new Promise((resolve, reject) => {
       function *!*callback(err, ...results*/!*) { // la nostra callback custom per f
         if (err) {
-          return reject(err);
+          reject(err);
         } else {
           // risolve con tutti i risultati della callback se manyArgs è specificato
           *!*resolve(manyArgs ? results : results[0]);*/!*
@@ -98,11 +99,11 @@ function promisify(f, manyArgs = false) {
       f.call(this, ...args);
     });
   };
-};
+}
 
 // usage:
 f = promisify(f, true);
-f(...).then(arrayOfResults => ..., err => ...)
+f(...).then(arrayOfResults => ..., err => ...);
 ```
 
 In alcuni casi, `err` può essere del tutto assente: `callback(result)`, o c'è qualcosa di particolare nel formato della callback, allora possiamo trasformare in promise (promisify)  queste funzioni senza usare un helper, manualmente.

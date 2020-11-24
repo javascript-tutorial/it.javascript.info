@@ -85,7 +85,7 @@ I fogli di stile esterni non influenza il DOM, quindi `DOMContentLoaded` non asp
 
 Ma c'è una trappola. Se abbiamo uno script dopo uno stile quello script deve aspettare affinche il foglio di stile è caricato.
 
-```html
+```html run
 <link type="text/css" rel="stylesheet" href="style.css">
 <script>
   // lo script non viene eseguito finche il foglio di stile non è caricato
@@ -114,7 +114,7 @@ L'esempio sotto mostra correttamente le dimensioni dell'immagine, perchè `windo
 
 ```html run height=200 refresh
 <script>
-  window.onload = function() {
+  window.onload = function() { // same as window.addEventListener('load', (event) => {
     alert('Page loaded');
 
     // l'immagine è già caricata in questo momento
@@ -144,7 +144,7 @@ let analyticsData = { /* oggetto con i dati raccolti */ };
 
 window.addEventListener("unload", function() {
   navigator.sendBeacon("/analytics", JSON.stringify(analyticsData));
-};
+});
 ```
 
 - La richiesta è effettuata come POST.
