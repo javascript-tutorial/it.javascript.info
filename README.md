@@ -1,98 +1,136 @@
 # The Modern JavaScript Tutorial in italiano
 
-In questa repository viene pubblicata la traduzione italiana di [https://javascript.info](https://javascript.info).
+Benvenuti a tutti i nuovi contributors! 👋
 
-Ci piacerebbe rendere questo tutorial disponibile in molte lingue. Aiutaci a tradurlo.
+In questa repository viene puubblica la traduzione italiana del tutorial [javascript.info](https://javascript.info).
 
-Guarda il link <https://github.com/javascript-tutorial/translate> per maggiori dettagli.
+Ci piacrebbe ricevere il tuo contributo nella traduzione e/o revisione degli articoli. 
 
-Ci piacerebbe anche ricevere la vostra collaborazione nel tutorial.
+Se hai idee da proporre o suggerimenti, allora fai riferimento al [repository inglese](https://github.com/javascript-tutorial/en.javascript.info).
 
-Hai trovato un errore? Manca un argomento? Createlo voi, e inviate un PR 👏
+Prima di iniziare ti segnalo che esiste anche un **[Canale Discord](https://discord.gg/Dj9P3jCt6K)** in cui potrai con gli altri contributors di quello che riguarda la traduzione e revisione degli articoli. O anche ricevere delle indicazioni su come inziare!
 
-**Puoi modificare i file con un qualsiasi editor di testo.** Il tutorial sfrutta il formato "markdown", molto facile da utilizzare. Potete anche testare in tempo reale le modifiche, utilizzando il server locale presente a questo link <https://github.com/javascript-tutorial/server>.  
+Se hai deciso di contribuire inanzitutto ti ringrazio per il supporto, e ti chiedo di leggere fino alla fine questo documento, in modo da velocizzare le revisioni e ridurre gli errori!
 
-E' disponibile una lista di chi ha contribuito: <https://javascript.info/about#contributors>.
+## Indice
+  - [Note importanti](#importante)
+  - [Come contribuire](#come-contribuire)
+  - [Consigli per la traduzione](#consigli-per-la-traduzione)
 
-Un file inizia con `# Title Header`, e il testo è in formato Markdown, che può esserre modificato con un semplice editor di testo. 
+## Importante
 
-Eventuali risorse aggiuntive ed esempi utili per un articolo o esercizio, risiedono nella stessa cartella.
+- Quando effettui le traduzioni lavora **sempre** in un branch dedicato, in questo modo manteniamo il branch `master` il più pulito possibile. Continua a leggerer per maggiori informazioni.
+
+- Quando effettui le traduzioni fai sempre riferimento al [repository inglese](https://github.com/javascript-tutorial/en.javascript.info). Il tutorial è in costante aggiornameto, quindi gli articoli presenti in questo repository potrebbero non essere aggiornati all'ultima versione.
+
+## Come contribuire
+
+### 1. Visita la pagina con l'elenco degli articoli: [it.javascript.info](https://github.com/javascript-tutorial/it.javascript.info/issues/1)
+
+  Scorri la lista e scegli un articolo non ancora assegnato o tradotto. E' possibile riconsocere gli articoli già assegnati poichè riportano il nome del contributor:
+
+  ```
+    [ ] Generators (@mean2me)  // articolo già assegnato
+    [X] Generators (@mean2me)  // articolo già tradotto
+  ```
+
+### 2. Notifica l'articolo scelto
+
+  Prima di cominciare la traduzione ricordati di lasciare un commento con indicato il nome dell'articolo che desideri tradurre, in questo modo evitiamo che un articolo venga tradotto da più persone.
+
+### 3. Esegui un fork del repository
+
+  Ora puoi iniziare con la traduzione! Per iniziare, devi eseguire un `fork` del repository!
+
+### 4. Crea un branch dedicato
+
+  Una volta eseguito il `fork` ti chiedo di creare un branch separato su cui lavorare alla traduzione, in questo modo teniamo il ramo `master` pulito.
+  Il nome del branch creato deve seguire il formato seguente:
+
+  ```
+    article/NomeArticolo
+  ```
+
+### 5. Traduzione
+
+  **Importante**
+  Per lavorare alla traduzione ti chiedo di prendere come riferimento l'articolo inglse, che puoi trovare al [seguente repository](https://github.com/javascript-tutorial/en.javascript.info).
+  Il tutorial è in costante aggiornamento, quindi la versione inglese presente nel repository italiano potrebbe non essere aggioranta all'ultima versione!
+
+  Se l'articolo contine esercizi, è necessaria anche la loro traduzione.
+
+### 6. Inoltra la traduzione
+
+  Una volta completata la traduzione è quasi fatta, rimangono ancora un paio di cose da fare:
+
+  1. Effettua un rapido controllo ortografico. Puoi farlo utilizzando un qualsiasi tool online gratuito, ad esempio [Language Tool](https://languagetool.org/).
+
+  2. Inoltra un `Pull Request` al branch `master` del repository.
+
+  3. (Opzionale) Notifica il completamento della traduzione tramite il **[Canale Discord](https://discord.gg/Dj9P3jCt6K)** in modo da rendere più rapide le revisioni.
+
+### 7. Tieni monitorata la PR
+
+  Tieni monitorata la Pull Request in caso ti venga richiesto di apportare delle modifiche.
+  A questo punto, in attesa di approvazione, puoi prendere in carico la traduzione di un altro articolo.
+
+
+# Grazie per la collaborazione 😍
 
 ## Consigli per la traduzione
+Lascio un elenco rapido da consultare durante la traduzione per mantenere la guida più conforme possibile.
 
-Se volete tradurre un articolo vi chiedo di seguire questi semplici passi:
+Cosa tradurre:
+  - Tradurre l'articolo nella sua interezza, compresi i task e le solution
+  - Tradurre anche i commenti negli esempi all'interno degli articoli
 
-- Leggete tra gli [issue](https://github.com/javascript-tutorial/it.javascript.info/issues) quello denominato "Translate Progress".
-- Scegliete l'articolo che desiderate tradurre e mettete la spunta.
-- Create un issue per informare il gestore della repository sull'articolo scelto.
-- Procedete con il fork della repository, traducete ed infine inviate una PR (Pull Request).
+Cosa **non** tradurre:
+  - Non è necessario tradurre gli esempi, è sufficiente la traduzione dei commenti. Quindi il contenuto delgi alert, nomi delle funzioni/classi deve rimanere in lingua inglese.
 
-Il vostro nome apparirà nella pagina "About project" quando la traduzione verrà pubblicata.
+  ```
+    function sayHello() {
+      alert("Hello, World!") // show the text 'Hello, World!'
+    }
+  ```
 
-<<<<<<< HEAD
-### Esempi ed Esercizi
-=======
-  - `index.md` stands for a chapter
-  - `article.md` stands for an article
-  - `task.md` stands for a task (solution must be provided in `solution.md` file as well)
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+  verrà tradotto come segue:
 
-- I commenti possono essere tradotti
-- Le variabili, classi o identificatori non devono essere assolutamente tradotte
-- Assicuratevi che il codice funzioni dopo averlo tradotto
+  ```
+    function sayHello() {
+      alert("Hello, World!") // mostra il testo 'Hello, World!'
+    }
+  ```
 
-Esempio:
+  - Non è necessario tradurre le immagini utilizzate durante le spiegazioni
 
-```js
-// Example
-const text = "Hello, world";
-document.querySelector('.hello').innerHTML = text;
-```
+Alcuni termini ricorrenti:
+  - Nomi dei tipi vanno mantenuti in inglese:
 
-✅ GIUSTO (traduzione commento):
+      **Date is a JavaScript data type.**
 
-```js
-// Esempio
-const text = 'Ciao mondo';
-document.querySelector('.hello').innerHTML = text;
-```
+      Verrà tradotto come:
+      
+        ✅ Date è un tipo di dato in JavaScript.
 
-❌ SBAGLIATO (traduzione classi):
+        ❌ Data è un tipo di dato in JavaScript.
+  
+  - **Summary**, il termine che trovere a fine di ogni articolo va tradotto come **Riepilogo**
 
-```js
-// Esempio
-const testo = 'Ciao mondo';
-// ".hello" è una classe
-// NON TRADURLO
-document.querySelector('.ciao').innerHTML = text;
-```
+### FAQ
 
-### Link esterni
+  <details>
+    <summary>In quale formato sono scritti gli articoli?</summary>
 
-Se trovate dei link esterni verso Wikipedia, esempio `https://en.wikipedia.org/wiki/JavaScript`, ed esiste la versione italiana, accertatevi che questa sia di qualità prima di cambiare il link.
+    Il tutorial segue lo standard testuale "Markdonw", è molto semplice da utilizzare. In ogni caso non vi è richiesto di mettere mano al formato, è sufficiente la traduzione del testo.
+  </details>
 
-Esempio:
+  <details>
+    <summary>Cosa posso utilizzare per tradurre gli articoli?</summary>
 
-```md
-[JavaScript](https://en.wikipedia.org/wiki/JavaScript) is a programming language.
-```
+    Puoi tradurre gli articoli utilizzando il tool con cui ti tovi più comodo. Puoi farlo direttamente con l'editor di testo intergato di GitHub se ti trovi più a tuo agio.
 
-✅ OK (en -> it):
-
-```md
-[JavaScript](https://it.wikipedia.org/wiki/JavaScript) è un linguaggio di programmazione.
-```
-
-Per i link verso MDN, che sono tradotti solo parzialmente, conviene utilizzare quelli originali.
-
-Se un articolo linkato non possiede una versione italiana, allora mantenete quello originale.
-
-### Glossario dei termini
-
-Alcuni termini utilizzati spesso:
-
-- 'Summary' viene tradotto con 'Riepilogo'
-- Il nome dei tipi come: 'primitives', 'string', 'object' viene tradotto ('primitivi', 'stringhe', 'oggetto') mantenendo tra parentesi la versione in lingua originale
+    L'importante è rispettare le linee guida fornite sopra!
+  </details>
 
 ---
 ♥  
