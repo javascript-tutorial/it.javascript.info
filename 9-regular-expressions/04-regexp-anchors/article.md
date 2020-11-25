@@ -1,52 +1,55 @@
-# Anchors: string start ^ and end $
+# Inizio stringa ^ e fine $
 
-The caret `pattern:^` and dollar `pattern:$` characters have special meaning in a regexp. They are called "anchors".
+L'accento circonflesso  `pattern:'^'` e il simbolo del dollaro `pattern:'$'` sono caratteri che hanno un significato speciale nelle regexp. Vengono chiamati "ancoraggi" (anchor).
 
-The caret `pattern:^` matches at the beginning of the text, and the dollar `pattern:$` -- at the end.
+Il simbolo `pattern:^` trova corrispondenza all'inizio del testo, e il dollaro `pattern:$` la trova alla fine del testo.
 
-For instance, let's test if the text starts with `Mary`:
+Per esempio, vediamo se il testo inizia con `Mary`:
 
 ```js run
-let str1 = "Mary had a little lamb";
+let str1 = "Mary had a little lamb, it's fleece was white as snow";
+let str2 = 'Everywhere Mary went, the lamp was sure to go';
+
 alert( /^Mary/.test(str1) ); // true
+alert( /^Mary/.test(str2) ); // false
 ```
 
-The pattern `pattern:^Mary` means: "string start and then Mary".
+Il pattern `pattern:^Mary` vuol dire: "la stringa inizia e subito dopo c'è Mary".
 
-Similar to this, we can test if the string ends with `snow` using `pattern:snow$`:
+Ora verifichiamo se il testo finisce con una email.
+
+Per trovare corrispondenza con un'email, possiamo usare la regexp `pattern:[-.\w]+@([\w-]+\.)+[\w-]{2,20}`.
+
+Per testare se la stringa finisca con una email, aggiungiamo `pattern:$` al pattern:
 
 ```js run
-let str1 = "it's fleece was white as snow";
-alert( /snow$/.test(str1) ); // true
+let reg = /[-.\w]+@([\w-]+\.)+[\w-]{2,20}$/g;
+
+let str1 = 'My email is mail@site.com';
+let str2 = 'Everywhere Mary went, the lamp was sure to go';
+
+alert( reg.test(str1) ); // true
+alert( reg.test(str2) ); // false
 ```
 
-In these particular cases we could use string methods `startsWith/endsWith` instead. Regular expressions should be used for more complex tests.
+Possiamo utilizzare entrambi gli ancoraggi insieme per controllare che la stringa segua uno specifico pattern. È un metodo usato spesso per la validazione.
 
-## Testing for a full match
+Per esempio vogliamo controllare che  `str` sia esattamente un colore nella forma `#` più 6 esadecimali. Il pattern per il colore è `pattern:#[0-9a-f]{6}`.
 
-Both anchors together `pattern:^...$` are often used to test whether or not a string fully matches the pattern. For instance, to check if the user input is in the right format.
-
-Let's check whether or not a string is a time in `12:34` format. That is: two digits, then a colon, and then another two digits.
-
-In regular expressions language that's `pattern:\d\d:\d\d`:
+Per verificare che l'*intera stringa* vi corrisponda in modo esatto, aggiungiamo `pattern:^...$`:
 
 ```js run
-let goodInput = "12:34";
-let badInput = "12:345";
+let str = "#abcdef";
 
-let regexp = /^\d\d:\d\d$/;
-alert( regexp.test(goodInput) ); // true
-alert( regexp.test(badInput) ); // false
+alert( /^#[0-9a-f]{6}$/i.test(str) ); // true
 ```
 
-Here the match for `pattern:\d\d:\d\d` must start exactly after the beginning of the text `pattern:^`, and the end `pattern:$` must immediately follow.
+Il motore delle regexp cerca l'inizio del testo, successivamente il colore, e infine cerca immediatamente la fine del testo. Proprio ciò di cui abbiamo bisogno.
 
-The whole string must be exactly in this format. If there's any deviation or an extra character, the result is `false`.
+```smart header="Gli ancoraggi hanno lunghezza zero"
+Gli ancoraggi, proprio come `\b`, sono test. Hanno larghezza zero.
 
-Anchors behave differently if flag `pattern:m` is present. We'll see that in the next article.
-
-```smart header="Anchors have \"zero width\""
-Anchors `pattern:^` and `pattern:$` are tests. They have zero width.
-
-In other words, they do not match a character, but rather force the regexp engine to check the condition (text start/end).
+In altre parole, non cercano corrispondenze per un carattere, piuttosto forzano il motore delle regexp a cercare la condizione specifica (inizio/fine del testo).
 ```
+
+Il comportamento degli ancoraggi cambia se c'è la flag `pattern:m` (modalità multi linea). L'approfondiremo meglio nel prossimo capitolo.
