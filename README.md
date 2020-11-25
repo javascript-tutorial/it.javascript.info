@@ -2,15 +2,15 @@
 
 Benvenuti a tutti i nuovi contributors! 👋
 
-In questa repository viene puubblica la traduzione italiana del tutorial [javascript.info](https://javascript.info).
+In questa repository viene pubblicata la traduzione italiana del tutorial [javascript.info](https://javascript.info).
 
-Ci piacrebbe ricevere il tuo contributo nella traduzione e/o revisione degli articoli. 
+Ci piacerebbe ricevere il tuo contributo nella traduzione e/o revisione degli articoli. 
 
 Se hai idee da proporre o suggerimenti, allora fai riferimento al [repository inglese](https://github.com/javascript-tutorial/en.javascript.info).
 
-Prima di iniziare ti segnalo che esiste anche un **[Canale Discord](https://discord.gg/Dj9P3jCt6K)** in cui potrai con gli altri contributors di quello che riguarda la traduzione e revisione degli articoli. O anche ricevere delle indicazioni su come inziare!
+Prima di iniziare ti segnalo che esiste anche un **[Canale Discord](https://discord.gg/Dj9P3jCt6K)** in cui potrai parlare con gli altri contributors di quello che riguarda la traduzione e revisione degli articoli. O anche ricevere delle indicazioni su come iniziare!
 
-Se hai deciso di contribuire inanzitutto ti ringrazio per il supporto, e ti chiedo di leggere fino alla fine questo documento, in modo da velocizzare le revisioni e ridurre gli errori!
+Se hai deciso di contribuire innanzitutto ti ringrazio per il supporto, e ti chiedo di leggere fino alla fine questo documento, in modo da velocizzare le revisioni e ridurre gli errori!
 
 ## Indice
   - [Note importanti](#importante)
@@ -19,15 +19,15 @@ Se hai deciso di contribuire inanzitutto ti ringrazio per il supporto, e ti chie
 
 ## Importante
 
-- Quando effettui le traduzioni lavora **sempre** in un branch dedicato, in questo modo manteniamo il branch `master` il più pulito possibile. Continua a leggerer per maggiori informazioni.
+- Quando effettui le traduzioni lavora **sempre** in un branch dedicato, in questo modo manteniamo il branch `master` il più pulito possibile. Continua a leggere per maggiori informazioni.
 
-- Quando effettui le traduzioni fai sempre riferimento al [repository inglese](https://github.com/javascript-tutorial/en.javascript.info). Il tutorial è in costante aggiornameto, quindi gli articoli presenti in questo repository potrebbero non essere aggiornati all'ultima versione.
+- Quando effettui le traduzioni fai sempre riferimento al [repository inglese](https://github.com/javascript-tutorial/en.javascript.info). Il tutorial è in costante aggiornamento, quindi gli articoli presenti in questo repository potrebbero non essere aggiornati all'ultima versione.
 
 ## Come contribuire
 
 ### 1. Visita la pagina con l'elenco degli articoli: [it.javascript.info](https://github.com/javascript-tutorial/it.javascript.info/issues/1)
 
-  Scorri la lista e scegli un articolo non ancora assegnato o tradotto. E' possibile riconsocere gli articoli già assegnati poichè riportano il nome del contributor:
+  Scorri la lista e scegli un articolo non ancora assegnato o tradotto. E' possibile riconoscere gli articoli già assegnati poiché riportano il nome del contributor:
 
   ```
     [ ] Generators (@mean2me)  // articolo già assegnato
@@ -54,10 +54,10 @@ Se hai deciso di contribuire inanzitutto ti ringrazio per il supporto, e ti chie
 ### 5. Traduzione
 
   **Importante**
-  Per lavorare alla traduzione ti chiedo di prendere come riferimento l'articolo inglse, che puoi trovare al [seguente repository](https://github.com/javascript-tutorial/en.javascript.info).
-  Il tutorial è in costante aggiornamento, quindi la versione inglese presente nel repository italiano potrebbe non essere aggioranta all'ultima versione!
+  Per lavorare alla traduzione ti chiedo di prendere come riferimento l'articolo inglese, che puoi trovare al [seguente repository](https://github.com/javascript-tutorial/en.javascript.info).
+  Il tutorial è in costante aggiornamento, quindi la versione inglese presente nel repository italiano potrebbe non essere aggiornata all'ultima versione!
 
-  Se l'articolo contine esercizi, è necessaria anche la loro traduzione.
+  Se l'articolo contiene esercizi, è necessaria anche la loro traduzione.
 
 ### 6. Inoltra la traduzione
 
@@ -85,7 +85,7 @@ Cosa tradurre:
   - Tradurre anche i commenti negli esempi all'interno degli articoli
 
 Cosa **non** tradurre:
-  - Non è necessario tradurre gli esempi, è sufficiente la traduzione dei commenti. Quindi il contenuto delgi alert, nomi delle funzioni/classi deve rimanere in lingua inglese.
+  - Non è necessario tradurre gli esempi, è sufficiente la traduzione dei commenti. Quindi il contenuto degli alert, console.log, nomi delle funzioni/classi deve rimanere in lingua inglese.
 
   ```
     function sayHello() {
@@ -114,7 +114,7 @@ Alcuni termini ricorrenti:
 
         ❌ Data è un tipo di dato in JavaScript.
   
-  - **Summary**, il termine che trovere a fine di ogni articolo va tradotto come **Riepilogo**
+  - **Summary**, il termine che troverete a fine di ogni articolo va tradotto come **Riepilogo**
 
 ### FAQ
 
