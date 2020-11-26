@@ -101,13 +101,13 @@ La sintassi di JavaScript non soddisfa le necessità di tutti. Alcune persone ne
 
 Questo è prevedibile, poiché i progetti e i requisiti sono diversi di persona in persona.
 
-Quindi recentemente un'elevata quantità di nuovi linguaggi è apparsa, che vengono *convertiti* in JavaScript prima di essere eseguiti nel browser.
+Recentemente, per questo motivo, sono nati molti nuovi linguaggi che vengono *convertiti* in JavaScript, prima di essere eseguiti nel browser.
 
 Gli strumenti moderni rendono la conversione molto veloce e pulita, consentendo agli sviluppatori di programmare in un altro linguaggio e di auto-convertirlo "sotto il cofano".
 
 Esempi di alcuni linguaggi:
 
-- [CoffeeScript](http://coffeescript.org/) è un linguaggio con sintassi "leggera" per JavaScript, introduce una sintassi più breve, consente di scrivere codice più pulito e preciso. Amato dagli sviluppatori provenienti da Ruby.
+- [CoffeeScript](http://coffeescript.org/) è un linguaggio che introduce una sintassi semplificata che consente di scrivere codice più leggibile. Amato dagli sviluppatori provenienti da Ruby.
 - [TypeScript](http://www.typescriptlang.org/) si occupa di aggiungere la "tipizzazione", per semplificare lo sviluppo e supportare sistemi più complessi. E' stato sviluppato da Microsoft.
 - [Flow](http://flow.org/) anche'esso aggiunge la tipizzazione dei dati, ma in un modo differente. Sviluppato da Facebook.
 - [Dart](https://www.dartlang.org/) è un linguaggio autonomo che possiede il suo motore che esegue in ambienti esterni al browser (come mobile apps). E' stato introdotto da Google come alternativa a JavaScript, ma attualmente, i browser richiedono la conversione in JavaScript, proprio come i precedenti.
