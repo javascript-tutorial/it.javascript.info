@@ -1,16 +1,16 @@
 # Struttura del codice
 
-La prima cosa da studiare riguarda la struttura del codice.
+La prima cosa che studieremo riguarda la struttura del codice.
 
 ## Istruzioni
 
-Le istruzioni sono dei costrutti sintattici e comandi che eseguono azioni.
+Le istruzioni sono dei costrutti sintattici e comandi che permettono di eseguire azioni.
 
 Abbiamo già visto un'istruzione `alert('Hello, world!')`, che mostra il messaggio "Hello world!".
 
-All'interno del codice possiamo avere tutte le istruzioni che desideriamo. Una seconda istruzione può essere separata tramite il punto e virgola.
+All'interno del codice possiamo avere tutte le istruzioni che desideriamo. Le istruzioni possono essere separate da un punto e virgola.
 
-Ad esempio, qui dividiamo il messaggio in due:
+Ad esempio, qui dividiamo il messaggio in due alert:
 
 ```js run no-beautify
 alert('Hello'); alert('World');
@@ -33,7 +33,7 @@ alert('Hello')
 alert('World')
 ```
 
-Qui JavaScript interpreta la fine della riga come un punto e virgola "implicito". Viene anche chiamato [automatic semicolon insertion](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion).
+In questo caso, JavaScript interpreta la fine della riga come un punto e virgola "implicito". Viene anche chiamata [inserimento automatico del punto e virgola](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion).
 
 **In molti casi la nuova riga viene interpretata come un punto e virgola implicito. Ma "in molti casi" non significa "sempre"!**
 
@@ -45,9 +45,9 @@ alert(3 +
 + 2);
 ```
 
-Il codice stampa `6` perchè JavaScript non inserisce un punto e virgola qui. E' abbastanza ovvio che se la riga finisce con un `"+"`, allora è un "espressione incompleta", quindi il punto e virgola non è richiesto. Quindi in questo caso tutto funziona come dovrebbe.
+Il codice stampa `6` perché, in questo caso, JavaScript non inserisce un punto e virgola. E' abbastanza ovvio che se la riga finisce con un `"+"`, allora è un "espressione incompleta", quindi il punto e virgola non verrà inserito. Per questo, nell'esempio sopra, tutto funziona come dovrebbe.
 
-**Ma ci sono casi in cui JavaScript "fallisce"  But there are situations where JavaScript "fails" nell'interpretare un punto e virgola.**
+**Ma ci sono casi in cui JavaScript "fallisce" nell'interpretare un punto e virgola, dove invece sarebbe necessario.**
 
 Gli errori di questo tipo sono molto difficili da trovare e sistemare.
 
@@ -58,7 +58,7 @@ Se sei curioso di vedere un esempio concreto di questo tipo di errore, dai un oc
 [1, 2].forEach(alert)
 ```
 
-Non c'e bisogno di pensare al significato delle parentesi `[]` e al `forEach`. Li studieremo più avanti, per ora è sufficiente sapere il risultato: che mostrerà `1` e poi `2`.
+Non c'e bisogno di pensare al significato delle parentesi `[]` e al `forEach`. Li studieremo più avanti, per ora è sufficiente sapere il risultato: mostrerà `1` e poi `2`.
 
 Adesso andiamo ad aggiungere un `alert` prima del codice e *non* concludiamo la riga con il punto e virgola:
 
@@ -70,7 +70,7 @@ alert("There will be an error")
 
 Adesso se lo eseguiamo, solo il primo `alert` viene mostrato, poi avremmo un errore!
 
-Ma tutto si risolve se aggiungiamo un punto e virgola dopo `alert`:
+Ma tutto si risolve aggiungendo un punto e virgola dopo `alert`:
 ```js run
 alert("All fine now");
 
@@ -79,40 +79,40 @@ alert("All fine now");
 
 Adesso avremmo il messaggio "All fine now", successivamente `1` seguito da `2`.
 
-L'errore nel non aver messo il punto e virgola è avvenuto perchè JavaScript non inserisce automaticamente un punto e virgola prima delle parentesi quadre `[...]`.
+L'errore nel non aver messo il punto e virgola è avvenuto perché JavaScript non inserisce automaticamente un punto e virgola prima delle parentesi quadre `[...]`.
 
-Quindi, poichè il punto e virgola non viene auto-inserito, il codice del precedente esempio viene trattato come un istruzione singola. Quindi il motore JavaScript lo vede cosi:
+Quindi, poiché il punto e virgola non viene auto-inserito, il codice del precedente esempio viene trattato come un istruzione singola. Infatti il motore JavaScript lo vede cosi:
 
 ```js run no-beautify
 alert("There will be an error")[1, 2].forEach(alert)
 ```
 
-Anche se dovrebbero essere due istruzioni separate, non una singola. Questo tipo di unione, in questo caso è errata, quindi produce un errore. Ci sono altre situazioni in cui si verifica questo tipo di errore.
+Anche se se in realtà sono due istruzioni separate, non una singola. Questo tipo di interpretazione, in questo caso è errata. Ci possono essere altre situazioni in cui si verifica questo tipo di errore.
 ````
 
-E' consigliato quindi, di mettere il punto e virgola fra ogni istruzione, anche se vengono scritte in righe diverse. Questa regola è largamente adottata dalla community. Ripetiamolo nuovamente -- *è possibile* evitare di scrivere il punto e virgola la maggior parte delle volte. Ma è più sicuro -- specialmente per un novizio -- inserirle al termine di ogni istruzione.
+E' consigliato quindi, di inserire il punto e virgola fra ogni istruzione, anche se vengono scritte in righe diverse. Questa è una regola largamente adottata dalla community. Ripetiamolo nuovamente -- *è possibile* omettere il punto e virgola la maggior parte delle volte. Ma è più sicuro -- specialmente per un novizio -- inserirlo al termine di ogni istruzione.
 
 ## Commenti
 
-Con il passare del tempo, i programmi sono diventati sempre più complessi. E' diventato necessario aggiungere *commenti* che descrivessero i comportamenti del codice e il perchè.
+Con il passare del tempo, i programmi sono diventati sempre più complessi. Ed è diventato necessario aggiungere *commenti* per poter descrivere i comportamenti del codice.
 
-I commenti possono essere messi in qualsiasi punto dello script. Infatti non hanno alcun effetto sull'esecuzione del codice, poichè il motore JavaScript semplicemente li ignora.
+I commenti possono essere messi in qualsiasi punto dello script. Infatti non hanno alcun effetto sull'esecuzione del codice, poiché il motore JavaScript semplicemente li ignora.
 
-**I commenti su una singola linea incominciano con due caratteri di slash `//`.**
+**I commenti su una singola linea si inseriscono con due caratteri di slash `//`.**
 
-Il resto della linea è il commento. Può occupare un intera linea oppure seguire l'istruzione.
+Il resto della linea è il commento. Può occupare un intera linea oppure essere posta in seguito ad un'istruzione.
 
-Come segue:
+Vediamo un esempio:
 ```js run
-// Questo commento occupa una riga a parte
+// Questo commento occupa un'intera riga
 alert('Hello');
 
-alert('World'); // Questo commento segue l'istruzione
+alert('World'); // Questo commento segue un istruzione
 ```
 
 **I commenti multilinea incominciano con un singolo carattere di slahs ed un asterisco <code>/&#42;</code> e finiscono con un asterisco ed un carattere di slash <code>&#42;/</code>.**
 
-Come segue:
+Come nell'esempio:
 
 ```js run
 /* Un esempio con due messaggi.
@@ -124,7 +124,7 @@ alert('World');
 
 Il contenuto dei commenti viene ignorato, quindi se inseriamo codice al suo interno <code>/&#42; ... &#42;/</code> non verrà eseguito.
 
-Qualche volta diventa utile per bloccare temporaneamente qualche porzione di codice:
+Qualche volta può essere utile per bloccare temporaneamente qualche porzione di codice:
 ```js run
 /* Commentiamo il codice
 alert('Hello');
@@ -139,7 +139,7 @@ In molti editor una linea di codice può essere commentata con la combinazione d
 ````warn header="I commenti annidati non sono supportati!"
 Non si possono inserire `/*...*/` all'interno di altri `/*...*/`.
 
-Questo codice si bloccherebbe con un errore:
+Questo codice genererebbe un errore:
 
 ```js run no-beautify
 /*
