@@ -46,7 +46,11 @@ Come possiamo vedere, delega tutto il lavoro alla `loadScript` originale, passan
 
 Dato che abbiamo bisogno di trasformare in (promisify) molte funzione, ha senso usare un helper.
 
+<<<<<<< HEAD
 Questo è molto semplice -- `promisify(f)` sotto prende una funzione da trasformare in promise `f` e ritorna una funzione wrapper.
+=======
+In practice we may need to promisify more than one function, so it makes sense to use a helper.
+>>>>>>> e1a3f634a47c119cf1ec7420c49fc0fc7172c0b5
 
 Quel wrapper fa la stessa cosa del codice sopra: ritorna una promise e passa la chiamata alla `f` originale, tracciando il risultato in una sua callback:
 

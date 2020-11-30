@@ -149,7 +149,7 @@ The `async` attribute means that a script is completely independent:
     - ...or after an async script (if an async script is short or was in HTTP-cache)
 >>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
-In other words, `async` scripts load in the background and run when ready. The DOM and other scripts don't wait for them, and they don't wait for anything. A fully independent script that runs when loaded. As simple, at it can get, right?
+In other words, `async` scripts load in the background and run when ready. The DOM and other scripts don't wait for them, and they don't wait for anything. A fully independent script that runs when loaded. As simple, as it can get, right?
 
 <<<<<<< HEAD
 Quindi, se abbiamo parecchi script `async`, potrebbero essere eseguiti in qualunque ordine. Qualunque di essi viene caricato prima -- viene eseguito prima:

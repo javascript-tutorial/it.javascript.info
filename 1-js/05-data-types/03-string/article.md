@@ -232,7 +232,11 @@ alert( str.indexOf('widget') ); // -1, non trovato, la ricerca è case-sensitive
 alert( str.indexOf("id") ); // 1, "id" è stato trovato alla posizione di indice 1 
 ```
 
+<<<<<<< HEAD
 Il secondo parametro opzionale ci consente di cercare a partire dalla posizione fornita.
+=======
+The optional second parameter allows us to start searching from a given position.
+>>>>>>> e1a3f634a47c119cf1ec7420c49fc0fc7172c0b5
 
 Ad esempio, la prima occorrenza di `"id"` è alla posizione `1`. Per trovare la successiva occorrenza, dovremmo iniziare a cercare dalla posizione `2`:
 
