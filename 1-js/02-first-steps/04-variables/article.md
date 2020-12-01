@@ -8,7 +8,7 @@ Le variabili vengono utilizzate per memorizzare informazioni.
 
 ## Variabile
 
-Una [variabile](https://en.wikipedia.org/wiki/Variable_(computer_science)) è uno "spazio di memoria con nome" utilizzato per salvare dati. Possiamo usare le variabile per memorizzare informazioni extra, visitatori e altri dati.
+Una [variabile](https://en.wikipedia.org/wiki/Variable_(computer_science)) è uno "spazio di memoria con nome" utilizzato per salvare dati. Possiamo usare le variabili per memorizzare informazioni extra, visitatori e altri dati.
 
 Per creare una variabile in JavaScript, dobbiamo utilizzare la parola chiave `let`.
 
@@ -70,7 +70,7 @@ let user = 'John',
   message = 'Hello';
 ```
 
-...O anche con la virgola a su nuova riga:
+...O anche con la virgola su nuova riga:
 
 ```js no-beautify
 let user = 'John'
@@ -94,7 +94,7 @@ Ci sono delle sottili differenze tra `let` e `var`, ma per ora non hanno importa
 
 ## Un'analogia con il mondo reale
 
-Possiamo comprendere meglio il concetto di "variabile" se la immaginiamo come una scatola per dati, con appiccicata un etichetta univoca.
+Possiamo comprendere meglio il concetto di "variabile" se la immaginiamo come una scatola per dati, con appiccicata un'etichetta univoca.
 
 Per esempio, la variabile `message` può essere immaginata come una scatola con etichetta `"message"` con il valore `"Hello!"` al suo interno:
 
@@ -153,7 +153,7 @@ Può essere interessante sapere che esistono anche linguaggi di programmazione [
 
 In questo tipo di linguaggi, una volta che il valore viene memorizzato "dentro la scatola", ci rimane per sempre. Se abbiamo bisogno di memorizzare qualcos altro, il linguaggio ci forza a creare una nuova scatola (dichiarare una nuova variabile). Non possiamo quindi riutilizzare quelle vecchie.
 
-Anche se potrebbero sembrare un pò strano a prima vista, questi linguaggi sono veramente capaci di sviluppare grandi cose. Inoltre, ci sono certe situazioni come calcoli paralleli in cui questi limiti portano dei benefici. Studiare un linguaggio di questo tipo (anche se non abbiamo intenzione di utilizzarlo a breve) è consigliato per allargare le proprie conoscenze.
+Anche se potrebbero sembrare un po' strano a prima vista, questi linguaggi sono veramente capaci di sviluppare grandi cose. Inoltre, ci sono certe situazioni come calcoli paralleli in cui questi limiti portano dei benefici. Studiare un linguaggio di questo tipo (anche se non abbiamo intenzione di utilizzarlo a breve) è consigliato per allargare le proprie conoscenze.
 ```
 
 ## Nomi delle variabili [#variable-naming]
@@ -328,7 +328,7 @@ Il risultato che si ottiene, è che le variabili sono come delle scatole in cui 
 
 Questo genere di programmatori risparmiano qualche bit nella dichiarazione delle variabili ma perdono dieci volte il tempo risparmiato per fare debugging del codice.
 
-Una variabile in più va bene, non sono il diavolo.
+Una variabile in più non è necessariamente un male.
 
 I browser moderni e JavaScript minimizzano ed ottimizzano il codice abbastanza bene, quindi non ci saranno problemi di performance. Usare variabili differenti, per valori differenti può addirittura aiutare il motore JavaScript nell'ottimizzazione.
 ```
