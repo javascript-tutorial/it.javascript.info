@@ -1,5 +1,5 @@
 
-L'accento grave integra espressioni all'interno delle stringhe `${...}`.
+L'accento grave viene utilizzato per integrare espressioni all'interno delle stringhe `${...}`.
 
 ```js run
 let name = "Ilya";
