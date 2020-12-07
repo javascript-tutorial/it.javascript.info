@@ -117,4 +117,10 @@ Alla fine avremo il risultato (che sia una stringa o un blob, a seconda di ciò 
 At the end we have the result (as a string or a blob, whatever is convenient), and progress-tracking in the process.
 >>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
+<<<<<<< HEAD
 Nota ancora una volta che non è possibile tracciare progressi di *upload* (non c'è modo con `fetch`), ma solo i progressi di *download*.
+=======
+Once again, please note, that's not for *upload* progress (no way now with `fetch`), only for *download* progress.
+
+Also, if the size is unknown, we should check `receivedLength` in the loop and break it once it reaches a certain limit. So that the `chunks` won't overflow the memory. 
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b

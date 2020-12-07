@@ -48,12 +48,22 @@ Dunque, pensa che `[𝒳𝒴]` non siano due, ma quattro caratteri:
 3. la metà sinistra di `𝒴` `(3)`,
 4. la metà destra di `𝒴` `(4)`.
 
+<<<<<<< HEAD
 Li possiamo elencare così:
 
 ```js run
 for(let i=0; i<'𝒳𝒴'.length; i++) {
   alert('𝒳𝒴'.charCodeAt(i)); // 55349, 56499, 55349, 56500
 };
+=======
+In the example below three kinds of letters will be found: English, Georgian and Korean.
+
+```js run
+let str = "A ბ ㄱ";
+
+alert( str.match(/\p{L}/gu) ); // A,ბ,ㄱ
+alert( str.match(/\p{L}/g) ); // null (no matches, \p doesn't work without the flag "u")
+>>>>>>> c56e6a57ac3497aab77128c5bfca13513980709b
 ```
 
 Quindi trova solo la "metà sinistra" di `𝒳`.
