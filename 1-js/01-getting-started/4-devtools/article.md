@@ -2,14 +2,14 @@
 
 Il codice è incline a contenere errori. E' molto probabile che tu commetta errori... Di cosa sto parlando? *Sicuramente* commetterai errori, sempre che tu sia umano, e non un [robot](https://it.wikipedia.org/wiki/Bender_(personaggio)).
 
-In un browser però, l'utente non può vedere gli errori. Quindi se qualcosa non funziona nello script, non saremo in grado di capire quale sia il problema e sistemarlo.
+In un browser però, di default l'utente non può vedere gli errori. Quindi, se qualcosa non funziona nello script, non saremo in grado di capire quale sia il problema e sistemarlo.
 
-Per poter visualizzare gli errori e ricevere altre informazioni utili riguardo gli script, i browser integrano degli "strumenti di sviluppo".
+Per poter visualizzare gli errori e ricevere altre informazioni utili riguardo gli script, i browser integrano degli "strumenti di sviluppo", in inglese "developer tools" o più semplicemente "DevTools".
 
-Molto spesso gli sviluppatori tendono ad utilizzare Chrome o Firefox poichè questi browser forniscono i migliori strumenti per lo sviluppo. Anche gli altri browser contengono gli strumenti per lo sviluppo, talvolta con caratteristiche speciali, ma più che altro giocano ad "avvicinarsi" a Chrome e Firefox.
-Quindi molte perone hanno un browser "preferito" e utilizzano gli altri solo quando un problema è specifico di quel browser.
+Molti sviluppatori preferiscono utilizzare Chrome o Firefox poiché questi browser incorporano i migliori strumenti per lo sviluppo. Anche gli altri browser hanno gli strumenti per lo sviluppo, talvolta con caratteristiche speciali, ma più che altro inseguono le caratteristiche di Chrome e Firefox.
+In genere gli sviluppatori hanno un browser "preferito" e utilizzano gli altri solo quando un problema è specifico di quel browser.
 
-Gli strumenti da sviluppatore sono molto potenti; possiedono molte caratteristiche. Prima di tutto, dobbiamo capire come accedervi, come cercare errori e come eseguire comandi JavaScript.
+Gli strumenti per lo sviluppo sono molto potenti e possiedono molte funzionalità. Per iniziare, dobbiamo capire come accedervi, come individuare gli errori e come eseguire comandi JavaScript.
 
 ## Google Chrome
 
@@ -17,34 +17,35 @@ Apri la pagina [bug.html](bug.html).
 
 C'è un errore nel codice JavaScript. E' nascosto agli occhi di un normale utente, quindi dobbiamo aprire gli strumenti di sviluppo per trovarlo.
 
-Premi `key:F12`, se sei su Mac utilizza `key:Cmd+Opt+J`.
+Premi `key:F12`, oppure, se sei su Mac, utilizza `key:Cmd+Opt+J`.
 
 Gli strumenti di sviluppo, di default, si apriranno nella scheda Console.
 
-Assomiglierà a qualcosa simile a questo:
+Assomiglierà a qualcosa di simile a questo:
 
 ![chrome](chrome.png)
 
-Il look esatto degli strumenti di sviluppo dipenderà dalla tua versione di Chrome. Cambia di tanto in tanto, ma dovrebbe essere molto simile.
+Il look esatto degli strumenti di sviluppo dipenderà dalla tua versione di Chrome. Nel tempo potrebbe cambiare un po', ma dovrebbe essere comunque molto simile.
 
-- Qui possiamo notare il messaggio in d'errore in rosso. In questo caso, lo script contiene un comando "lalala" non riconosciuto.
-- Sulla destra, c'e un link alla sorgente `bug.html:12` con il numero della linea in cui si è verificato l'errore.
+- Qui possiamo notare il messaggio d'errore in rosso. In questo caso, lo script contiene il comando "lalala" non riconosciuto.
+- Sulla destra, c'e il link cliccabile della sorgente `bug.html:12` con il numero della linea in cui si è verificato l'errore.
 
-Sotto il messaggio d'errore, c'e un simbolo blu `>`. Questo indica la "riga di comando" dove noi possiamo digitare dei comandi JavaScript. Premendo `key:Enter` si eseguono (`key:Shift+Enter` per inserire comandi multi-linea).
+Sotto il messaggio d'errore, c'e il simbolo blu `>`. Questo indica la "riga di comando" in cui possiamo digitare dei comandi JavaScript. Premendo `key:Enter` il comando viene (`key:Shift+Enter` per inserire comandi multi-linea).
 
-Adesso possiamo visualizzare gli errori, ed è già abbastanza come inizio. Ritorneremo sugli strumenti di sviluppo più avanti e analizzeremo il debugging più in profondità nel capitolo <info:debugging-chrome>.
+Ora possiamo vedere gli errori, e questo è sufficiente per iniziare. Ritorneremo sugli strumenti di sviluppo più avanti e analizzeremo il debugging più in profondità nel capitolo <info:debugging-chrome>.
 
-```smart header="Multi-line input"
-Usually, when we put a line of code into the console, and then press `key:Enter`, it executes.
+```smart header="Input multi-riga"
+Di solito, quando inseriamo una riga di codice nella console e premiamo il tasto `key:Enter`, questa viene eseguita.
 
-To insert multiple lines, press `key:Shift+Enter`. This way one can enter long fragments of JavaScript code.
+Per inserire più righe premi `key:Shift+Enter`, in questo modo puoi inserire lunghe porzioni di codice Javascript.
+
 ```
 
 ## Firefox, Edge, and others
 
 Molti altri browser utilizzano `key:F12` per aprire gli strumenti di sviluppo.
 
-Lo stile è comunque molto simile. Quando avrai imparato come utilizzare uno di questi strumenti (puoi iniziare con quelli di Chrome), potrai facilmente passare agli altri.
+Anche l'aspetto è molto simile. Quando avrai imparato come utilizzare uno di questi strumenti (puoi iniziare con quelli di Chrome), potrai facilmente utilizzare anche gli altri.
 
 ## Safari
 
@@ -54,18 +55,11 @@ Apri le Impostazioni e vai sul pannello "Avanzate". In basso troverai un'opzione
 
 ![safari](safari.png)
 
-Adesso tramite `key:Cmd+Opt+C` puoi attivare/disattivare la console. Inoltre noterai che un nuovo menu "Sviluppo" è apparso. Contiene molti comandi e opzioni.
-
-```smart header="Input multi riga"
-
-Solitamente, quando inseriamo una riga di codice nella console, e premiamo `key:Enter`, questa viene eseguita.
-
-Per poter inserire più righe di codice, è necessario premere `key:Shift+Enter`.
-```
+Adesso tramite `key:Cmd+Opt+C` puoi attivare e disattivare la console. Inoltre noterai che un nuovo menu "Sviluppo" è apparso. Esso  contiene molti comandi e opzioni.
 
 ## Riepilogo
 
-- Gli strumenti di sviluppo ci consentono di trovare gli errori, eseguire comandi, esaminare variabili e molto altro.
-- Possono essere aperti con `key:F12` per la maggior parte dei browser in Windows. Chrome su Mac `key:Cmd+Opt+J`, Safari: `key:Cmd+Opt+C` (avendolo precedentemente abilitato).
+- Gli strumenti di sviluppo (Developer Tools o DevTools) ci consentono di individuare gli errori, eseguire comandi, esaminare variabili e molto altro.
+- Possono essere attivati con `key:F12` nella maggior parte dei browser in Windows e Linux. Chrome su Mac `key:Cmd+Opt+J`, Safari: `key:Cmd+Opt+C` (avendolo precedentemente abilitato).
 
-Adesso abbiamo l'ambiente di sviluppo pronto. Nella prossima sezione inizieremo ad analizzare JavaScript.
+Ora in nostro ambiente di sviluppo è pronto. Nella prossima sezione inizieremo ad analizzare JavaScript.
