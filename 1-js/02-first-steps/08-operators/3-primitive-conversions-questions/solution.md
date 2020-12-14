@@ -18,9 +18,9 @@ undefined + 1 = NaN // (6)
 ```
 
 1. L'addizione con una stringa `"" + 1` converte `1` a stringa: `"" + 1 = "1"`, applichiamo la stessa regola a `"1" + 0`.
-2. La sottrazione `-` (come molte altre operazioni matematiche) funziona solamente con i numeri, mentre una stringa vuota come: `""` viene convertita a `0`.
+2. La sottrazione `-` (come molte altre operazioni matematiche) funziona solamente con i numeri, quindi una stringa vuota come: `""` viene convertita in `0`.
 3. La somma con una stringa appende in coda alla stringa il numero `5`.
-4. La sottrazione converte sempre ad un numero, quindi `"  -9  "` diventa `-9` (gli spazi vuoti vengono ignorati).
+4. La sottrazione converte sempre in numero, quindi `"  -9  "` diventa `-9` (gli spazi vuoti vengono ignorati).
 5. `null` diventa `0` dopo la conversione numerica.
 6. `undefined` diventa `NaN` dopo la conversione numerica.
-7. Gli spazi venogno rimossi dall'inizio e dalla fine di una stringa quando questa viene convertita ad numero. In questo caso l'intera stringa è composta da spazi, come `\t`, `\n` e spaziature tra di loro. Quindi allo stesso modo di una stringa vuota, diventa `0`.
+7. Gli spazi all'inizio e alla fine di una stringa vengono rimossi quando questa viene convertita ad numero. In questo caso l'intera stringa è composta da spazi, come `\t`, `\n` ed uno "spazio" normale tra di essi. Quindi allo stesso modo di una stringa vuota, diventa `0`.

@@ -4,7 +4,7 @@ importance: 5
 
 # Type conversions
 
-Qual'e il risultato di questa espressione?
+Qual'è il risultato di questa espressione?
 
 ```js no-beautify
 "" + 1 + 0
