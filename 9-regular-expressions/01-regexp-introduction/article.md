@@ -53,7 +53,7 @@ In both cases `regexp` becomes an instance of the built-in `RegExp` class.
 
 The main difference between these two syntaxes is that pattern using slashes `/.../` does not allow for expressions to be inserted (like string template literals with `${...}`). They are fully static.
 
-Slashes are used when we know the regular expression at the code writing time -- and that's the most common situation. While `new RegExp`, is more often used when we need to create a regexp "on the fly" from a dynamically generated string. For instance:
+Slashes are used when we know the regular expression at the code writing time -- and that's the most common situation. While `new RegExp` is more often used when we need to create a regexp "on the fly" from a dynamically generated string. For instance:
 
 ```js
 let tag = prompt("What tag do you want to find?", "h2");
@@ -95,7 +95,7 @@ Questo vale solo per il momento. Presto creeremo espressioni regolari più compl
 : Enables "dotall" mode, that allows a dot `pattern:.` to match newline character `\n` (covered in the chapter <info:regexp-character-classes>).
 
 `pattern:u`
-: Enables full unicode support. The flag enables correct processing of surrogate pairs. More about that in the chapter <info:regexp-unicode>.
+: Enables full Unicode support. The flag enables correct processing of surrogate pairs. More about that in the chapter <info:regexp-unicode>.
 
 `pattern:y`
 : "Sticky" mode: searching at the exact position in the text  (covered in the chapter <info:regexp-sticky>)

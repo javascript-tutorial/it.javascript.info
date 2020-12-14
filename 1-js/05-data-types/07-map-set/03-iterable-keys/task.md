@@ -4,7 +4,11 @@ importance: 5
 
 # Chiavi iterabili
 
+<<<<<<< HEAD
 Vogliamo avere un rray di `map.keys()` e poterci lavorare.
+=======
+We'd like to get an array of `map.keys()` in a variable and then apply array-specific methods to it, e.g. `.push`.
+>>>>>>> 23e85b3c33762347e26276ed869e491e959dd557
 
 Ma c'è un problema:
 

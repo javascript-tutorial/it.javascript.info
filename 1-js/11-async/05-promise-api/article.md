@@ -277,6 +277,43 @@ Promise.race([
 Così, il primo risultato/errore diventa il risultato di tutto `Promise.race`. Quando la prima promise ferma (settled) "vince la gara" (wins the race), tutti i risultati/errori successivi sono ignorati.
 
 
+## Promise.any
+
+Similar to `Promise.race`, but waits only for the first fulfilled promise and gets its result. If all of the given promises are rejected, then the returned promise is rejected with [`AggregateError`](mdn:js/AggregateError) - a special error object that stores all promise errors in its `errors` property.
+
+The syntax is:
+
+```js
+let promise = Promise.any(iterable);
+```
+
+For instance, here the result will be `1`:
+
+```js run
+Promise.any([
+  new Promise((resolve, reject) => setTimeout(() => reject(new Error("Whoops!")), 1000)),
+  new Promise((resolve, reject) => setTimeout(() => resolve(1), 2000)),
+  new Promise((resolve, reject) => setTimeout(() => resolve(3), 3000))
+]).then(alert); // 1
+```
+
+The first promise here was fastest, but it was rejected, so the second promise became the result. After the first fulfilled promise "wins the race", all further results are ignored.
+
+Here's an example when all promises fail:
+
+```js run
+Promise.any([
+  new Promise((resolve, reject) => setTimeout(() => reject(new Error("Ouch!")), 1000)),
+  new Promise((resolve, reject) => setTimeout(() => reject(new Error("Error!")), 2000))
+]).catch(error => {
+  console.log(error.constructor.name); // AggregateError
+  console.log(error.errors[0]); // Error: Ouch!
+  console.log(error.errors[1]); // Error: Error
+});
+```
+
+As you can see, error objects for failed promises are available in the `errors` property of the `AggregateError` object.
+
 ## Promise.resolve/reject
 
 I metodi `Promise.resolve` e `Promise.reject` vengono utilizzati raramente nel codice moderno, poichè la sintassi `async/await` (che studieremo [più avanti](info:async-await)) li rende obsoleti.
@@ -334,6 +371,7 @@ Nella pratica, questo metodo non viene quasi mai utilizzato.
 
 There are 5 static methods of `Promise` class:
 
+<<<<<<< HEAD
 1. `Promise.resolve(value)` -- crea una promise risolta (resolved) con il valore dato.
 2. `Promise.reject(error)` -- crea una promise respinta (rejected) con il valore dato.
 3. `Promise.all(promises)` -- aspetta che tutte le promise siano risolte e ritorna  array un array dei loro risultati. Se una qualsiasi delle promise date viene respinta, allora diventa l'errore di `Promise.all`, e tutti gli altri risutlati sono ignorati.
@@ -341,5 +379,15 @@ There are 5 static methods of `Promise` class:
     - `state`: `'fulfilled'` or `'rejected'`
     - `value` (se risolta ((fulfilled) o `reason` (se respinta (rejected)).
 5. `Promise.race(promises)` -- aspetta che la prima promise sia ferma (settle), ed il suo risultato/errore diventa il risultato.
+=======
+1. `Promise.all(promises)` -- waits for all promises to resolve and returns an array of their results. If any of the given promises rejects, it becomes the error of `Promise.all`, and all other results are ignored.
+2. `Promise.allSettled(promises)` (recently added method) -- waits for all promises to settle and returns their results as an array of objects with:
+    - `status`: `"fulfilled"` or `"rejected"`
+    - `value` (if fulfilled) or `reason` (if rejected).
+3. `Promise.race(promises)` -- waits for the first promise to settle, and its result/error becomes the outcome.
+4. `Promise.any(promises)` -- waits for the first promise to fulfill, and its result becomes the outcome. If all of the given promises are rejected, [`AggregateError`](mdn:js/AggregateError) becomes the error of `Promise.any`.
+5. `Promise.resolve(value)` -- makes a resolved promise with the given value.
+6. `Promise.reject(error)` -- makes a rejected promise with the given error.
+>>>>>>> 23e85b3c33762347e26276ed869e491e959dd557
 
 Di questi cinque, `Promise.all/allSettled` sono i più comuni in pratica.

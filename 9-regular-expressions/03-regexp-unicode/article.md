@@ -3,6 +3,7 @@
 
 La flag unicode `/.../u` abilita il corretto supporto delle coppie surrogate.
 
+<<<<<<< HEAD
 Le coppie surrogate sono spiegate nel capitolo <info:string>.
 
 Rivediamole brevemente qui. In poche parole, i caratteri normali sono codificati con 2 byte. Questo ci dà un massimo di 65536 caratteri. Ma ci sono più caratteri nel mondo.
@@ -12,6 +13,11 @@ Quindi alcuni caratteri più rari sono codificati con 4 byte, come `𝒳` (la X 
 Qui vi sono i valori unicode da comparare:
 
 | Carattere  | Unicode | Byte  |
+=======
+Here are the Unicode values of some characters:
+
+| Character  | Unicode | Bytes count in Unicode  |
+>>>>>>> 23e85b3c33762347e26276ed869e491e959dd557
 |------------|---------|--------|
 | `a` | 0x0061 |  2 |
 | `≈` | 0x2248 |  2 |
@@ -42,6 +48,7 @@ alert( '𝒳'.match(/[𝒳𝒴]/) ); // risultato strano (in realtà è una corr
 
 Il risultato è errato, perché di default il motore delle regexp non comprende le coppie surrogate.
 
+<<<<<<< HEAD
 Dunque, pensa che `[𝒳𝒴]` non siano due, ma quattro caratteri:
 1. la metà sinistra di `𝒳` `(1)`,
 2. la metà destra di `𝒳` `(2)`,
@@ -54,6 +61,17 @@ Li possiamo elencare così:
 for(let i=0; i<'𝒳𝒴'.length; i++) {
   alert('𝒳𝒴'.charCodeAt(i)); // 55349, 56499, 55349, 56500
 };
+=======
+For instance, `\p{Letter}` denotes a letter in any language. We can also use `\p{L}`, as `L` is an alias of `Letter`. There are shorter aliases for almost every property.
+
+In the example below three kinds of letters will be found: English, Georgian and Korean.
+
+```js run
+let str = "A ბ ㄱ";
+
+alert( str.match(/\p{L}/gu) ); // A,ბ,ㄱ
+alert( str.match(/\p{L}/g) ); // null (no matches, \p doesn't work without the flag "u")
+>>>>>>> 23e85b3c33762347e26276ed869e491e959dd557
 ```
 
 Quindi trova solo la "metà sinistra" di `𝒳`.
@@ -64,7 +82,13 @@ In altre parole, la ricerca funziona come `'12'.match(/[1234]/)`: solo `1` viene
 
 La flag `/.../u` risolve questo problema.
 
+<<<<<<< HEAD
 Essa abilita le coppie surrogate nel motore delle regexp, in modo tale che il risultato sia:
+=======
+There's a Unicode property `Script` (a writing system), that may have a value: `Cyrillic`, `Greek`, `Arabic`, `Han` (Chinese) and so on, [here's the full list](https://en.wikipedia.org/wiki/Script_(Unicode)).
+
+To look for characters in a given writing system we should use `pattern:Script=<value>`, e.g. for Cyrillic letters: `pattern:\p{sc=Cyrillic}`, for Chinese hieroglyphs: `pattern:\p{sc=Han}`, and so on:
+>>>>>>> 23e85b3c33762347e26276ed869e491e959dd557
 
 ```js run
 alert( '𝒳'.match(/[𝒳𝒴]/u) ); // 𝒳
@@ -72,7 +96,13 @@ alert( '𝒳'.match(/[𝒳𝒴]/u) ); // 𝒳
 
 Vediamo un altro esempio.
 
+<<<<<<< HEAD
 Se dimentichiamo la flag `u` e occasionalmente usiamo le coppie surrogate, possiamo incorrere in errori:
+=======
+Characters that denote a currency, such as `$`, `€`, `¥`, have Unicode property  `pattern:\p{Currency_Symbol}`, the short alias: `pattern:\p{Sc}`.
+
+Let's use it to look for prices in the format "currency, followed by a digit":
+>>>>>>> 23e85b3c33762347e26276ed869e491e959dd557
 
 ```js run
 '𝒳'.match(/[𝒳-𝒴]/); // SyntaxError: intervallo non valido nella classe di caratteri
