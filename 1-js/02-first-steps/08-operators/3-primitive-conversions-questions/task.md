@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Type conversions
+# Conversioni di tipo
 
 Qual'è il risultato di questa espressione?
 
