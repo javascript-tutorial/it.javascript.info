@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Fix the addition
+# Sistema l'addizione
 
 Questo codice chiede all'utente di inserire due numeri, quindi ne mostra la somma.
 
