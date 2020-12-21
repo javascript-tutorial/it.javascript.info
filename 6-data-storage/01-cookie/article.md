@@ -11,7 +11,7 @@ il browser li aggiunge automaticamente a (quasi) ogni richiesta dello stesso dom
 Uno degli usi più comune è l'autenticazione:
 =======
 1. Upon sign in, the server uses `Set-Cookie` HTTP-header in the response to set a cookie with a unique "session identifier".
-2. Next time when the request is set to the same domain, the browser sends the cookie over the net using `Cookie` HTTP-header.
+2. Next time when the request is sent to the same domain, the browser sends the cookie over the net using `Cookie` HTTP-header.
 3. So the server knows who made the request.
 >>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
@@ -123,7 +123,11 @@ Solitamente, dovremmo impostare `path` nella cartella principale: `path=/` affin
 
 Un dominio in cui il cookie è accessibile. In realtà, ci sono delle limitazioni. Non possiamo impostare nessun dominio.
 
+<<<<<<< HEAD
 Di default, un cookie è accessibile solo nel dominio in cui è stato impostato. Cosi se il cookie è stato impostato da `site.com`, non lo otterremo su `other.com`
+=======
+By default, a cookie is accessible only at the domain that set it. So, if the cookie was set by `site.com`, we won't get it at `other.com`.
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
 ...Inoltre, non otterremo il cookie nel subdominio`forum.site.com`!
 
@@ -452,7 +456,11 @@ I siti internet generalmente hanno due varianti per seguire il GDPR. Dovresti av
 
 Per fare questo, il documento di registrazione dovrebbe avere una casella con scritto 'accetta le nostre direttive di privacy' (che descrivono come i cookies sono usati), e l'utente dovrà spuntare la casella affinchè il sito sia libero di impostare i cookies di autenticazione.
 
+<<<<<<< HEAD
 2. Se un sito vuole impostare cookies di tracciamento per chiunque.
+=======
+    To do so legally, a website shows a modal "splash screen" for newcomers, and requires them to agree for cookies. Then the website can set them and let people see the content. That can be disturbing for new visitors though. No one likes to see "must-click" modal splash screens instead of the content. But GDPR requires an explicit agreement.
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
 Per fare ciò legalmente, un sito mostra uno 'splash screen', per i nuovi visitatori e richiede loro di accettare i cookies. In seguito il sito può impostarli e permette alle persone di vederne il contenuto. Questo potrebbe essere disturbante per i nuovi visitatori. A nessuno piace vedere una finestra must-click' anzichè il contenuto. Ma il GDPR richiede un contratto esplicito.
 

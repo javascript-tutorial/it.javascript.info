@@ -390,10 +390,17 @@ Il metodo [Date.parse(str)](mdn:js/Date/parse) può leggere una data da una stri
 
 Il formato della stringa dovrebbe essere: `YYYY-MM-DDTHH:mm:ss.sssZ`, dove:
 
+<<<<<<< HEAD
 - `YYYY-MM-DD` -- è la data: year-month-day.
 - Il carattere `"T"` viene utilizzato come delimitatore.
 - `HH:mm:ss.sss` -- è l'orario: hours, minutes, seconds e milliseconds.
 - Un parte opzionale `'Z'` che indica la zona oraria nel formato `+-hh:mm`. La singola lettera `Z` rappresenta UTC+0.
+=======
+- `YYYY-MM-DD` -- is the date: year-month-day.
+- The character `"T"` is used as the delimiter.
+- `HH:mm:ss.sss` -- is the time: hours, minutes, seconds and milliseconds.
+- The optional `'Z'` part denotes the time zone in the format `+-hh:mm`. A single letter `Z` would mean UTC+0.
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
 Sono disponibili anche varianti più brevi, come `YYYY-MM-DD` o `YYYY-MM` o anche `YYYY`.
 
@@ -432,7 +439,7 @@ Inoltre, talvolta potremmo aver bisogno di misurazioni più precise. JavaScript 
 alert(`Loading started ${performance.now()}ms ago`);
 // Something like: "Loading started 34731.26000000001ms ago"
 // .26 is microseconds (260 microseconds)
-// more than 3 digits after the decimal point are precision errors, but only the first 3 are correct
+// more than 3 digits after the decimal point are precision errors, only the first 3 are correct
 ```
 
 Node.js possiede un modulo `microtime` e altri metodi. Tecnicamente, la maggior parte degli ambienti forniscono un modo per gestire precisioni più elevate, questo non è pero previsto dall'oggetto `Date`.

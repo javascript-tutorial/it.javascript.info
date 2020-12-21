@@ -210,8 +210,12 @@ Se entrambe le finestre sono connesse a `window.onstorage`, allora reagiranno ag
 window.onstorage = event => {
 =======
 // triggers on updates made to the same storage from other documents
+<<<<<<< HEAD
 window.onstorage = event => { // same as window.addEventListener('storage', () => {
 >>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+=======
+window.onstorage = event => { // same as window.addEventListener('storage', event => {
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
   if (event.key != 'now') return;
   alert(event.key + ':' + event.newValue + " at " + event.url);
 };

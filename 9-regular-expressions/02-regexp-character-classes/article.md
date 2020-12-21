@@ -8,7 +8,11 @@ Una classe di caratteri è una notazione speciale con la quale si ottengono corr
 
 Per iniziare, esploriamo la classe "cifre". È indicata con `\d`. La inseriamo nel pattern, e significa "ogni singolo numero".
 
+<<<<<<< HEAD
 Per esempio, troviamo la prima cifra del numero di telefono:
+=======
+For instance, let's find the first digit in the phone number:
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
 ```js run
 let str = "+7(903)-123-45-67";
@@ -210,12 +214,19 @@ Oppure nel mezzo di una regexp:
 ```js run
 let reg = /CS.4/;
 
+<<<<<<< HEAD
 alert( "CSS4".match(reg) ); // CSS4
 alert( "CS-4".match(reg) ); // CS-4
 alert( "CS 4".match(reg) ); // CS 4 (anche lo spazio è un carattere)
 ```
 
 Va notato che il punto rappresenta "qualunque carattere" ma non "l'assenza di un carattere". Deve esserci un carattere affinché una corrispondenza venga trovata:
+=======
+````warn header="Not supported in IE"
+The `pattern:s` flag is not supported in IE.
+
+Luckily, there's an alternative, that works everywhere. We can use a regexp like `pattern:[\s\S]` to match "any character" (this pattern will be covered in the article <info:regexp-character-sets-and-ranges>).
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
 ```js run
 alert( "CS4".match(/CS.4/) ); // null, nessuna corrispondenza perché non c'è carattere tra S e 4
@@ -243,7 +254,13 @@ Questo è ciò che fa la flag `s`. Se una regexp ce l'ha, allora il punto `"."` 
 alert( "A\nB".match(/A.B/s) ); // A\nB (corrispondenza!)
 ```
 
+<<<<<<< HEAD
 ## Riepilogo
+=======
+**A space is a character. Equal in importance with any other character.**
+
+We can't add or remove spaces from a regular expression and expect it to work the same.
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
 Esistono le seguenti classi di caratteri:
 
@@ -261,9 +278,13 @@ La codifica Unicode, usata da JavaScript per le stringhe, fornisce molte proprie
 
 L'attuale JavaScript consente di usare queste proprietà nelle regexp per cercare i caratteri, ad esempio:
 
+<<<<<<< HEAD
 - Una lettera cirillica è: `pattern:\p{Script=Cyrillic}` o `pattern:\p{sc=Cyrillic}`.
 - Un trattino (che sia più corto `-` o più lungo `—`): `pattern:\p{Dash_Punctuation}` o `pattern:\p{pd}`.
 - Un simbolo di una valuta, come `$`, `€` o un altro: `pattern:\p{Currency_Symbol}` o `pattern:\p{sc}`.
 - ...E molto di più. Unicode ha molte categorie di caratteri tra cui possiamo scegliere.
+=======
+Unicode encoding, used by JavaScript for strings, provides many properties for characters, like: which language the letter belongs to (if it's a letter), is it a punctuation sign, etc.
+>>>>>>> fc3f811c03ca97ff8304271bb2b918413bed720f
 
 Questi pattern necessitano della flag `'u'` per funzionare. Maggiori dettagli nel capitolo [](info:regexp-unicode).
