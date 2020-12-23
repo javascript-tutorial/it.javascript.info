@@ -6,35 +6,34 @@ libs:
 
 # Selection and Range
 
-In this chapter we'll cover selection in the document, as well as selection in form fields, such as `<input>`.
+In questo articolo copriremo la selezione nel documento, così come la selezione nei campi di testo, come gli `<input>`.
+Javascript può trattare la selezione attuale, selezionare/deselezionare interamnte o parzialmente, rimuovere la parte selezionata dal documento, racchiuderla in un tag e così via. 
 
-JavaScript can get the existing selection, select/deselect both as a whole or partially, remove the selected part from the document, wrap it into a tag, and so on.
 
-You can get ready to use recipes at the end, in "Summary" section. But you'll get much more if you read the whole chapter. The underlying `Range` and `Selection` objects are easy to grasp, and then you'll need no recipes to make them do what you want.
+Puoi già utilizzare gli script già pronti nel "Riepilogo". Ma otterrai molte più informazioni leggendo tutto il capitolo. Gli oggetti sottostanti `Range` e `Selection` sono facili da afferrare, e potrai quindi farne ciò che vuoi senza dover utilizzare script già pronti. 
 
 ## Range
+I concetto base della selezione è  [Range](https://dom.spec.whatwg.org/#ranges): banalmente, un paio di "punti di confine": inizione e fine del range.
+Ogni punto è rappresentato come un nodo DOM genitore con il relativo offset dal suo inizio. Se il nodo genitore è un nodo di tipo elemento, allora l'offset è il numero del figlio, per un nodo di tipo testo è invece la posiziona nel testo.
 
-The basic concept of selection is [Range](https://dom.spec.whatwg.org/#ranges): basically, a pair of "boundary points": range start and range end.
+Un esempio a seguire:
 
-Each point represented as a parent DOM node with the relative offset from its start. If the parent node is an element node, then the offset is a child number, for a text node it's the position in the text. Examples to follow.
+Selezioniamo qualcosa.
 
-Let's select something.
-
-First, we can create a range (the constructor has no parameters):
+Prima, possiamo creare un range (il costruttore non ha parametri):
 
 ```js
 let range = new Range();
 ```
+Quindi possiamo impostare i confini della nostra selezione usando  `range.setStart(node, offset)` e `range.setEnd(node, offset)`.
 
-Then we can set the selection boundaries using `range.setStart(node, offset)` and `range.setEnd(node, offset)`.
-
-For example, consider this fragment of HTML:
+Ad esempio, considera questo frammento di HTML:
 
 ```html
 <p id="p">Example: <i>italic</i> and <b>bold</b></p>
 ```
 
-Here's its DOM structure, note that here text nodes are important for us:
+Qui la sua struttura DOM, notare che qui i nodi tetuali rivestonon un ruolo importante per noi:
 
 <div class="select-p-domtree"></div>
 
@@ -72,7 +71,7 @@ let selectPDomtree = {
 drawHtmlTree(selectPDomtree, 'div.select-p-domtree', 690, 320);
 </script>
 
-Let's select `"Example: <i>italic</i>"`. That's two first children of `<p>` (counting text nodes):
+Selezioniamo `"Example: <i>italic</i>"`. Questi sono i primi due figli di `<p>` (contando i nodi testuali)
 
 ![](range-example-p-0-1.svg)
 
@@ -87,18 +86,18 @@ Let's select `"Example: <i>italic</i>"`. That's two first children of `<p>` (cou
   range.setEnd(p, 2);
 */!*
 
-  // toString of a range returns its content as text (without tags)
+  // toString di un range ritorna sempre il suo contenuto come testo (senza i tags)
   alert(range); // Example: italic
 
-  // apply this range for document selection (explained later)
+  //applica questo range per la selezione del documento (spiegato successivamente)
   document.getSelection().addRange(range);
 </script>
 ```
 
-- `range.setStart(p, 0)` -- sets the start at the 0th child of `<p>` (that's the text node `"Example: "`).
-- `range.setEnd(p, 2)` -- spans the range up to (but not including) 2nd child of `<p>` (that's the text node `" and "`, but as the end is not included, so the last selected node is `<i>`).
+- `range.setStart(p, 0)` -- setta l'inizio al figlio #0 di `<p>` (questo è il nodo testuale `"Example: "`).
+- `range.setEnd(p, 2)` -- allarga il range fino al figlio #2 di `<p>` (escluso)  (Questo è il nodo testuale `" and "`, ma in qualità di fine non viene incluso, così l'ultimo nodo selezionato è `<i>`).
 
-Here's a more flexible test stand where you try more variants:
+Qui un testo più flessibile dove puoi provare più varianti:
 
 ```html run autorun
 <p id="p">Example: <i>italic</i> and <b>bold</b></p>
