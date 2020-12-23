@@ -153,7 +153,7 @@ Dobbiamo creare un range che:
 </script>
 ```
 
-The range object has following properties:
+L'oggetto range ha le seguenti proprietà:
 
 ![](range-example-p-2-b-3-range.svg)
 
@@ -170,13 +170,13 @@ The range object has following properties:
 
 Ci sono una serie di metodi comodi per manipolare i range.
 
-Set range start:
+Imposta l'inizio del range:
 
-- `setStart(node, offset)` set start at: position `offset` in `node`
-- `setStartBefore(node)` set start at: right before `node`
-- `setStartAfter(node)` set start at: right after `node`
+- `setStart(node, offset)` imposta l'inzio su: posiziona `offset` nel `node`
+- `setStartBefore(node)` imposta l'inizio su: destra prima di `node`
+- `setStartAfter(node)` imposta l'inizio su: destra prima di `node`
 
-Set range end (similar methods):
+Imposta la fine del range (metodi simili):
 
 - `setEnd(node, offset)` set end at: position `offset` in `node`
 - `setEndBefore(node)` set end at: right before `node`
