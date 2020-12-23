@@ -95,7 +95,7 @@ Selezioniamo `"Example: <i>italic</i>"`. Questi sono i primi due figli di `<p>` 
 ```
 
 - `range.setStart(p, 0)` -- setta l'inizio al figlio #0 di `<p>` (questo è il nodo testuale `"Example: "`).
-- `range.setEnd(p, 2)` -- allarga il range fino al figlio #2 di `<p>` (escluso)  (Questo è il nodo testuale `" and "`, ma in qualità di fine non viene incluso, così l'ultimo nodo selezionato è `<i>`).
+- `range.setEnd(p, 2)` -- allarga il range fino al figlio #2 di `<p>` (escluso)  (Questo è il nodo testuale `" and "`, ma essendo la fine non viene incluso, così l'ultimo nodo selezionato è `<i>`).
 
 Qui un testo più flessibile dove puoi provare più varianti:
 
@@ -103,7 +103,7 @@ Qui un testo più flessibile dove puoi provare più varianti:
 <p id="p">Example: <i>italic</i> and <b>bold</b></p>
 
 From <input id="start" type="number" value=1> – To <input id="end" type="number" value=4>
-<button id="button">Click to select</button>
+<button id="button">Clicca per selezionare</button>
 <script>
   button.onclick = () => {
   *!*
@@ -113,30 +113,29 @@ From <input id="start" type="number" value=1> – To <input id="end" type="numbe
     range.setEnd(p, end.value);
   */!*
 
-    // apply the selection, explained later
+    //Applica la selezione, spiegato dopo
     document.getSelection().removeAllRanges();
     document.getSelection().addRange(range);
   };
 </script>
 ```
-
-E.g. selecting from `1` to `4` gives range `<i>italic</i> and <b>bold</b>`.
+Ad esempio, selezionando da `1` a `4` restituisce il range `<i>italic</i> and <b>bold</b>`.
 
 ![](range-example-p-1-3.svg)
 
-We don't have to use the same node in `setStart` and `setEnd`. A range may span across many unrelated nodes. It's only important that the end is after the start.
+We don't have to use the same node in `setStart` and `setEnd`. Un range può spaziare attraverso un serie di nodi non correlati. L'unica sola cosa che importa è che il punto finale sia dopo il punto iniziale.
 
-### Selecting parts of text nodes
+### Selezionare porzioni di nodi testuali
 
-Let's select the text partially, like this:
+Selzioniamo parzialmente il test, in questa maniera:
 
 ![](range-example-p-2-b-3.svg)
 
-That's also possible, we just need to set the start and the end as a relative offset in text nodes.
+Possiamo fare anche questo, abbiamo solo bisogni di impostare l'inizio e la fine come offset relativo nei nodi testuali.
 
-We need to create a range, that:
-- starts from position 2 in `<p>` first child (taking all but two first letters of "Ex<b>ample:</b> ")
-- ends at the position 3 in `<b>` first child (taking first three letters of "<b>bol</b>d", but no more):
+Dobbiamo creare un range che:
+- cominci dalla posizione 2 in `<p>` primo figlio (prendendo tutto tranne le prime due lettere di "Ex<b>ample:</b> ")
+- finisca alla posizione 3 in `<b>` primo figlio (prendendo le prime tre lettere di "<b>bol</b>d", e nient'altro):
 
 ```html run
 <p id="p">Example: <i>italic</i> and <b>bold</b></p>
@@ -149,7 +148,7 @@ We need to create a range, that:
 
   alert(range); // ample: italic and bol
 
-  // use this range for selection (explained later)
+  // usa questo range per la selezione (spiegato dopo)
   window.getSelection().addRange(range);
 </script>
 ```
@@ -158,18 +157,18 @@ The range object has following properties:
 
 ![](range-example-p-2-b-3-range.svg)
 
-- `startContainer`, `startOffset` -- node and offset of the start,
-  - in the example above: first text node inside `<p>` and `2`.
-- `endContainer`, `endOffset` -- node and offset of the end,
-  - in the example above: first text node inside `<b>` and `3`.
-- `collapsed` -- boolean, `true` if the range starts and ends on the same point (so there's no content inside the range),
-  - in the example above: `false`
-- `commonAncestorContainer` -- the nearest common ancestor of all nodes within the range,
-  - in the example above: `<p>`
+- `startContainer`, `startOffset` -- nodo e offset dell'inizio,
+  - nell'esempio sopra: primo nodo testuale dentro `<p>` e `2`.
+- `endContainer`, `endOffset` -- nodo e offset della fine,
+  - nell'esempio sopra: primo nodo testuale dentro `<b>` e `3`.
+- `collapsed` -- booleano, `true` se il range comincia e finisce nello stesso punto (quindi non c'è contenuto nel range),
+  - nell'esempio sopra: `false`
+- `commonAncestorContainer` -- il più vicino genitore tra tutti inodi all'interno del range,
+  - nell'esempio sopra: `<p>`
 
-## Range methods
+## Metodi range
 
-There are many convenience methods to manipulate ranges.
+Ci sono una serie di metodi comodi per manipolare i range.
 
 Set range start:
 
