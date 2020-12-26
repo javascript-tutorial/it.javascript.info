@@ -4,7 +4,7 @@ importance: 5
 
 # Confronti
 
-Qual'è il risultato di queste espressioni?
+Quale sarà il risultato di queste espressioni?
 
 ```js no-beautify
 5 > 4
