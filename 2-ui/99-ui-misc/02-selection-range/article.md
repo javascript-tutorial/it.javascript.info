@@ -6,15 +6,15 @@ libs:
 
 # Selection and Range
 
-In questo articolo copriremo la selezione nel documento, e la selezione nei campi di testo, come gli `<input>`.
-Javascript può trattare la selezione attuale, selezionare/deselezionare interamente o parzialmente, rimuovere la parte selezionata dal documento, racchiuderla in un tag e così via. 
+In questo articolo affronteremoe la selezione nel documento, e la selezione nei campi di testo, come gli `<input>`.
+Javascript può gestire la selezione attuale, selezionare/deselezionare interamente o parzialmente, rimuovere la parte selezionata dal documento, racchiuderla in un tag e così via. 
 
 
-Puoi già utilizzare gli script già pronti nel "Riepilogo". Ma otterrai molte più informazioni leggendo tutto il capitolo. Gli oggetti sottostanti `Range` e `Selection` sono facili da afferrare, e potrai quindi farne ciò che vuoi senza dover utilizzare script già pronti. 
+Puoi già utilizzare gli script già pronti nel "Riepilogo". Ma otterrai molte più informazioni leggendo tutto il capitolo. Gli oggetti sottostanti `Range` e `Selection` sono di facile comprensione, e potrai quindi farne ciò che vuoi senza dover utilizzare script già pronti. 
 
 ## Range
-I concetto base della selezione è [Range](https://dom.spec.whatwg.org/#ranges): banalmente, un paio di "punti di confine": inizio e fine del range.
-Ogni punto è rappresentato come un nodo DOM genitore con il relativo offset dal suo inizio. Se il nodo genitore è un nodo di tipo elemento, allora l'offset è il numero del figlio, per un nodo di tipo testo è invece la posizione nel testo.
+I concetto base della selezione è il [Range](https://dom.spec.whatwg.org/#ranges): banalmente, un paio di "punti di confine": inizio e fine del range.
+Ogni punto è rappresentato come un nodo DOM genitore ed il relativo offset dal suo inizio. Se il nodo genitore è un nodo di tipo elemento, allora l'offset è il numero della posizione del nodo figlio, invece, nel caso di un nodo testuale è la posizione nel testo.
 
 Qui di seguito un esempio:
 
@@ -33,7 +33,7 @@ Ad esempio, considera questo frammento di HTML:
 <p id="p">Example: <i>italic</i> and <b>bold</b></p>
 ```
 
-Questa qui è la sua struttura DOM, e è possibile notare che in questo esempio i nodi testuali per noi rivestono un ruolo importante:
+Questa qui è la sua struttura DOM, e come si può notare i nodi testuali rivestono per i nostri scopi un ruolo importante:
 
 <div class="select-p-domtree"></div>
 
@@ -97,7 +97,7 @@ Selezioniamo `"Example: <i>italic</i>"`. Questi sono i primi due figli di `<p>` 
 - `range.setStart(p, 0)` -- setta l'inizio sul figlio #0 di `<p>` (questo è il nodo testuale `"Example: "`).
 - `range.setEnd(p, 2)` -- estende il range fino al figlio #2 di `<p>` (escluso)  (Questo è il nodo testuale `" and "`, ma essendo la fine non viene incluso, così l'ultimo nodo selezionato è `<i>`).
 
-Qui un testo più flessibile all'nterno del quale si possono provare più varianti:
+Qui un testo più flessibile all'interno del quale si possono provare più varianti:
 
 ```html run autorun
 <p id="p">Example: <i>italic</i> and <b>bold</b></p>
@@ -123,12 +123,11 @@ Ad esempio, selezionando da `1` a `4` restituisce il range `<i>italic</i> and <b
 
 ![](range-example-p-1-3.svg)
 
-Non dobbiamo usare lo stesso nodo in `setStart` e `setEnd`. Un range può spaziare attraverso un serie di nodi non necessariamente correlati. La sola cosa che importa è che la fine sia dopo l'inizio.
+Non dobbiamo usare lo stesso nodo in `setStart` e `setEnd`. Un range può spaziare attraverso un serie di nodi non necessariamente correlati. La sola cosa che importa è che la fine sia effettivamente dopo l'inizio.
 
 ### Selezionare porzioni di nodi testuali
 
 Selezioniamo parzialmente il testo, in questa maniera:
-
 ![](range-example-p-2-b-3.svg)
 
 Possiamo fare anche questo, abbiamo solo bisogno di impostare l'inizio e la fine come offset relativo nei nodi testuali.
