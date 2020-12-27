@@ -130,7 +130,7 @@ Non dobbiamo usare lo stesso nodo in `setStart` e `setEnd`. Un range può spazia
 Selezioniamo parzialmente il testo, in questa maniera:
 ![](range-example-p-2-b-3.svg)
 
-Possiamo fare anche questo, abbiamo solo bisogno di impostare l'inizio e la fine come offset relativo nei nodi testuali.
+Possiamo fare anche questo genere di operazione, abbiamo solo bisogno di impostare l'inizio e la fine come offset relativo nei nodi testuali.
 
 Dobbiamo creare un range che:
 - cominci dalla posizione 2 in `<p>` primo figlio (prendendo tutto tranne le prime due lettere di "Ex<b>ample:</b> ")
@@ -152,8 +152,8 @@ Dobbiamo creare un range che:
 </script>
 ```
 
-L'oggetto Range ha le seguenti proprietà:
 
+L'oggetto Range ha le seguenti proprietà:
 ![](range-example-p-2-b-3-range.svg)
 
 - `startContainer`, `startOffset` -- nodo e offset dell'inizio,
@@ -165,7 +165,7 @@ L'oggetto Range ha le seguenti proprietà:
 - `commonAncestorContainer` -- il più vicino genitore tra tutti i nodi all'interno del range,
   - nell'esempio sopra: `<p>`
 
-## Metodi range
+## Metodi di Range
 
 Ci sono una serie di metodi comodi per manipolare i range.
 
@@ -192,7 +192,7 @@ Altri:
 Per manipolare il contenuto attraverso il range:
 
 - `deleteContents()` -- rimuove il contenuto del range dal documento
-- `extractContents()` -- rimuove il contenuto del range dal documento e lo restitisce come [DocumentFragment](info:modifying-document#document-fragment)
+- `extractContents()` -- rimuove il contenuto del range dal documento e lo restituisce come [DocumentFragment](info:modifying-document#document-fragment)
 - `cloneContents()` -- clona un contenuto del range e lo ritorna come [DocumentFragment](info:modifying-document#document-fragment)
 - `insertNode(node)` -- inserisce `node` nel documento all'inizio del range
 - `surroundContents(node)` -- avvolge `node` attorno ad un contenuto range. Per questa azione, il range deve contenere i tag di apertura e chiusura per tutti gli elementi dentro di esso: non possono esserci range del tipo `<i>abc`.
@@ -256,24 +256,23 @@ Click buttons to run methods on the selection, "resetExample" to reset it.
 </script>
 ```
 
-Ci sono anche metodi per confrontare i range, ma vengono usati raramente. Nel caso ne avessi bisogno puoi fare riferimento a [spec](https://dom.spec.whatwg.org/#interface-range) o su [MDN manual](mdn:/api/Range).
+Ci sono anche metodi per confrontare i range, ma vengono usati raramente. Nel caso ne avessi bisogno puoi fare riferimento alle [specifiche](https://dom.spec.whatwg.org/#interface-range) o sul [manuale MDN](mdn:/api/Range).
 
 
 ## Selection
 
-`Range` è un oggetto generico per la gestione i range di selezione. Possiamo creare questi oggetti, passarli in giro -- da soli non selezionano nulla visivamente.
+`Range` è un oggetto generico per la gestione dei range di selezione. Possiamo creare questi oggetti, passarli in giro -- ma da soli non selezionano nulla a livello visivo.
 
 La selezione del documento è rappresentata da un oggetto `Selection`, che si può ottenere come `window.getSelection()` o tramite `document.getSelection()`.
 
-
 Una selezione può includere zero o più range. Almeno così dice la [Specifica della API Selection](https://www.w3.org/TR/selection-api/).
-In pratica tuttavia, solamente Firefox permette di selezionare range multipli nel documento attraverso la combinazione di tasti `key:Ctrl+click` (`key:Cmd+click` su  Mac).
+In pratica, tuttavia, solamente Firefox permette di selezionare range multipli nel documento, attraverso la combinazione di tasti `key:Ctrl+click` (`key:Cmd+click` su Mac).
 
 Qui potete vedere uno screenshot di una selezione con 3 range, fatta su Firefox:
 
 ![](selection-firefox.svg)
 
-Gli altri browser supportano al massimo 1 range. Come possiamo vedere, alcuni dei metodi di  `Selection` implicano che possono esserci molti range, ma di nuovo, i tutti i browser eccetti Firefox, ce ne possono essere un massimo di 1.
+Gli altri browser supportano al massimo 1 range. Come possiamo vedere, alcuni dei metodi di `Selection` implicano che possono esserci molti range, ma di nuovo, i tutti i browser eccetti Firefox, ce ne possono essere un massimo di 1.
 
 ## Proprietà di Selection
 
