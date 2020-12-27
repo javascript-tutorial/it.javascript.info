@@ -6,7 +6,7 @@ libs:
 
 # Selection and Range
 
-In questo articolo affronteremoe la selezione nel documento, e la selezione nei campi di testo, come gli `<input>`.
+In questo articolo affronteremo la selezione nel documento, e la selezione nei campi di testo, come gli `<input>`.
 Javascript pu&ograve; gestire la selezione attuale, selezionare/deselezionare interamente o parzialmente, rimuovere la parte selezionata dal documento, racchiuderla in un tag e cos&igrave; via. 
 
 
