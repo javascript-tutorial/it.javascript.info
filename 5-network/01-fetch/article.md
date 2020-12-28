@@ -40,9 +40,13 @@ let promise = fetch(url, [options])
 - **`options`** -- parametri opzionali: metodi, headers etc.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Il browser avvia immediatamente la richiesta, il cui risultato sarà utilizzato e gestito per mezzo di una promise.
 =======
 Without `options`, that is a simple GET request, downloading the contents of the `url`.
+=======
+Without `options`, this is a simple GET request, downloading the contents of the `url`.
+>>>>>>> 13da056653754765b50aa5a9f706f84a4a0d6293
 
 The browser starts the request right away and returns a promise that the calling code should use to get the result.
 >>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
