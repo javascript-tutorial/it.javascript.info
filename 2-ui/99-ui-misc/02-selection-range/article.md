@@ -449,7 +449,7 @@ Vediamo questi metodi in azione.
 
 ### Esempio: tenere traccia della selezione
 
-Qquesto codice usa l'evento `onselect` per tenere traccia della selezione:
+Questo codice usa l'evento `onselect` per tenere traccia della selezione:
 
 ```html run autorun
 <textarea id="area" style="width:80%;height:60px">
@@ -475,7 +475,7 @@ Nota bene:
 
 Possiamo modificare `selectionStart` e `selectionEnd`, che impostano la selezione.
 
-Un importante caso limite &egrave; quando `selectionStart` and `selectionEnd` sono uguali. Questo non &egrave; esattamente la poszione del cursore. Oppure, riformulando, quando non c'&egrave; nulla di selezionato, la selezione &egrave; collassata nella posizione del cursore.
+Un importante caso limite &egrave; quando `selectionStart` and `selectionEnd` sono uguali. Questo non &egrave; esattamente la posizione del cursore. Oppure, riformulando, quando non c'&egrave; nulla di selezionato, la selezione &egrave; collassata nella posizione del cursore.
 
 Cos&igrave;, impostando `selectionStart` e `selectionEnd` allo stesso valore, muoviamo il cursore.
 
@@ -500,7 +500,7 @@ Focus on me, the cursor will be at position 10.
 
 ### Esempio: modifica della selezione
 
-Per modificare il contenuto della selezione, possiamo usare il metodo `input.setRangeText()`. Di sicuro, possiamo leggere `selectionStart/End` e, conoscendo la selzione, cambiare la corrispondente sottostringa di `value`, ma `setRangeText` &egrave; molto pi&ugrave; potente e spesso pi&ugrave; coveniente.
+Per modificare il contenuto della selezione, possiamo usare il metodo `input.setRangeText()`. Di sicuro, possiamo leggere `selectionStart/End` e, conoscendo la selezione, possiamo cambiare la corrispondente sottostringa di `value`, ma `setRangeText` &egrave; molto pi&ugrave; potente e spesso pi&ugrave; conveniente.
 
 Questo &egrave; un metodo inqualche maniera complesso. Nella sua forma pi&ugrave; semplice con un solo argomento sostituisce il range selezionato dall'utente e rimuove la selezione.
 
@@ -639,4 +639,4 @@ I codici pronti pi&ugrave; usati sono probabilmente:
     selection.addRange(range);
     ```
 
-E finalmente, in relazione al cursore. La poszione del cursore negli elementi editabili, come `<textarea>` &egrave; sempre all'inizio o alla fine della selezione. Possiamo usarla per ottenere la posizione corrente del cursore o per mouvere il cursore impostando `elem.selectionStart` e `elem.selectionEnd`.
+E finalmente, in relazione al cursore. La posizione del cursore negli elementi editabili, come `<textarea>` &egrave; sempre all'inizio o alla fine della selezione. Possiamo usarla per ottenere la posizione corrente del cursore o per mouvere il cursore impostando `elem.selectionStart` e `elem.selectionEnd`.
