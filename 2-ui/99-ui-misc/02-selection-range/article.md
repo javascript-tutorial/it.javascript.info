@@ -187,7 +187,7 @@ Altri:
 - `selectNode(node)` Imposta un range per selezionare l'intero `nodo`
 - `selectNodeContents(node)` Imposta un range per selezionare l'intero contenuto del `nodo`
 - `collapse(toStart)` se `toStart=true` imposta end=start, altrimenti imposta start=end, collassando cos&igrave; il range.
-- `cloneRange()` crea un nuovo rage con lo stesso inizio/fine
+- `cloneRange()` crea un nuovo range con lo stesso inizio/fine
 
 Per manipolare il contenuto attraverso il range:
 
@@ -272,7 +272,7 @@ Qui potete vedere uno screenshot di una selezione con 3 range, fatta su Firefox:
 
 ![](selection-firefox.svg)
 
-Gli altri browser supportano al massimo 1 range. Come possiamo vedere, alcuni dei metodi di `Selection` implicano che possono esserci molti range, ma di nuovo, i tutti i browser eccetti Firefox, ce ne possono essere un massimo di 1.
+Gli altri browser supportano al massimo 1 range. Come possiamo vedere, alcuni dei metodi di `Selection` implicano che possono esserci molti range, ma di nuovo, in tutti i browser, eccetto Firefox, ce ne possono essere un massimo di 1.
 
 ## Propriet&agrave; di Selection
 
@@ -288,7 +288,7 @@ Le principali propriet&agrave; di selection sono:
 - `rangeCount` -- conto dei range nella selezione, massimo `1` per tutti i browser, eccetto Firefox.
 
 ````smart header="La fine della selezione pu&ograve; stare nel documento prima dell'inizio"
-Ci sono tanti modi per selezionare il contenuto, dipende dallo user agent: mouse, hotkeys, tap sullo schermo, etc.
+Esistono tanti modi per selezionare il contenuto, dipende dallo user agent: mouse, hotkeys, tap sullo schermo, etc.
 
 Alcuni di essi, come il mouse, permette che la selezione stessa possa essere creata nelle due direzioni: "da sinistra a destra" e da "destra a sinistra".
 
