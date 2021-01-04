@@ -171,7 +171,7 @@ Ci sono una serie di metodi comodi per manipolare i range.
 
 Imposta l'inizio del range:
 
-- `setStart(node, offset)` imposta l'inzio su: posizione `offset` nel `node`
+- `setStart(node, offset)` imposta l'inizio su: posizione `offset` nel `node`
 - `setStartBefore(node)` imposta l'inizio su: destra prima di `node`
 - `setStartAfter(node)` imposta l'inizio su: destra dopo `node`
 
@@ -272,7 +272,7 @@ Qui potete vedere uno screenshot di una selezione con 3 range, fatta su Firefox:
 
 ![](selection-firefox.svg)
 
-Gli altri browser supportano al massimo 1 range. Come possiamo vedere, alcuni dei metodi di `Selection` implicano che possono esserci molti range, ma di nuovo, in tutti i browser, eccetto Firefox, ce ne possono essere un massimo di 1.
+Gli altri browser supportano al massimo 1 range. Come possiamo vedere, alcuni dei metodi di `Selection` implicano che possono esserci molti range ma di nuovo, tutti i browser eccetto Firefox, ne possono avere massimo 1.
 
 ## Propriet&agrave; di Selection
 
@@ -369,7 +369,7 @@ As text: <span id="astext"></span>
 I metodi di selezione per aggiungere/rimuovere i range:
 
 - `getRangeAt(i)` -- ottiene il range numero i, partendo da '0'. In tutti i browser, tranne Firefox, viene usato solo `0`.
-- `addRange(range)` -- aggiunge `range` alla selezione. Tutti i browser, eccetto Firefox ingnorano la chiamata,se la selezione ha gi&agrave; un range associato.
+- `addRange(range)` -- aggiunge `range` alla selezione. Tutti i browser, eccetto Firefox, ignorano la chiamata, se la selezione ha gi&agrave; un range associato.
 - `removeRange(range)` -- Rimuove `range` dalla selezione.
 - `removeAllRanges()` -- Rimuove tutti i range.
 - `empty()` -- alias per `removeAllRanges`.
@@ -413,17 +413,17 @@ Stessa cosa utilizzando per&ograve; i range:
 ```
 
 ```smart header="Per selezionare, prima rimuovere la selezione esistente."
-Nel caso in cui ci fosse gi&agrave; una selezione, prima rimuoverla tramite `removeAllRanges()`. Quindi aggiungere i range. Altrimenti, tutti i browser, eccetto Firefox, ignorerano i nuovi range.
+Nel caso in cui ci fosse gi&agrave; una selezione, prima rimuoverla tramite `removeAllRanges()`. Quindi aggiungere i range. Altrimenti, tutti i browser eccetto Firefox, ignorerano i nuovi range.
 
 L'eccezione a questa regola sono i metodi di selezione, che sostituiscono la selezione esistente, come `setBaseAndExtent`.
 ```
 
 ## Selezione nei controlli form
 
-Gli elementi dei form, come `input` e `textarea` forniscono [API speciali per la selezione](https://html.spec.whatwg.org/#textFieldSelection), senza l'ausilio di `Selection` o `Range` objects. Dato che un valore di input &egrave; testo puro, e non HTML, ci&ograve; non &egrave; necessario per questo tipo di oggetti, dato che &egrave; tutto semplificato.
+Gli elementi dei form, come `input` e `textarea` forniscono [API speciali per la selezione](https://html.spec.whatwg.org/#textFieldSelection), senza l'ausilio di `Selection` o `Range` objects. Dato che un valore di input &egrave; testo puro, e non HTML, non si rende necessario usarli per questo tipo di oggetti, dato che &egrave; tutto semplificato.
 
 Propret&agrave;:
-- `input.selectionStart` -- posizione dell'inzio della selezione (scrivibile),
+- `input.selectionStart` -- posizione dell'inizio della selezione (scrivibile),
 - `input.selectionEnd` -- posizione della fine  della selezione (scrivibile),
 - `input.selectionDirection` -- direzione della selezione, un valore tra: "forward", "backward" o "none" (se, ad esempio, selezuonato attraverso un doppio click del mouse),
 
@@ -436,20 +436,20 @@ Metodi:
 - `input.setSelectionRange(start, end, [direction])` -- cambia la selezione per andare dalla poisizione `start` fino a `end`, nella data direzione (opzionale).
 - `input.setRangeText(replacement, [start], [end], [selectionMode])` -- sostituisce un range di testo con il nuovo testo.
 
-    Se forniti, gli argomenti opzionali `start` ed `end`, impostano l'inzio e la fine del range, altrimenti viene usata la selezione dell'utente.
+    Se forniti, gli argomenti opzionali `start` ed `end`, impostano l'inizio e la fine del range, altrimenti viene usata la selezione dell'utente.
 
-   L'ultimo arigomento, `selectionMode`, determina come la selezione verr&agrave; impostata dopo che il testo verr&agrave; rimpiazzato. Ivalori possibili sono:
+   L'ultimo argomento, `selectionMode`, determina come la selezione verr&agrave; impostata dopo che il testo verr&agrave; rimpiazzato. I valori possibili sono:
 
-    - `"select"` -- il nuovo testo inseirito verr&agrave; selezionato.
+    - `"select"` -- il nuovo testo inserito, verr&agrave; selezionato.
     - `"start"` -- il range di selezione collasser&agrave; subito prima del testo inserito (il cursore verr&agrave; posizionato subito prima di esso).
     - `"end"` -- il range di selezione collassa subito prima del testo inserito (il curosre verr&agrave; posizionato alla sua destra).
     - `"preserve"` -- tenta di preservare la selezione. Questo &egrave; il comportamendo predefinito.
 
-Vediamo quiesti metodi in azione.
+Vediamo questi metodi in azione.
 
 ### Esempio: tenere traccia della selezione
 
-Per esempio, questo codice usa l'evento `onselect` per tenere traccia della selezione:
+Qquesto codice usa l'evento `onselect` per tenere traccia della selezione:
 
 ```html run autorun
 <textarea id="area" style="width:80%;height:60px">
