@@ -1,6 +1,6 @@
 # Server Sent Events
 
-La specifica [Server-Sent Events](https://html.spec.whatwg.org/multipage/comms.html#the-eventsource-interface) descrive una classe built-in `EventSource`, che mantiene la connesione con il server e permette di ricevere eventi da esso.
+La specifica [Server-Sent Events](https://html.spec.whatwg.org/multipage/comms.html#the-eventsource-interface) descrive una classe built-in `EventSource`, che mantiene la connessione con il server e permette di ricevere eventi da esso.
 
 In modo simile ai `WebSocket`, la connessione &egrave; persistente.
 
@@ -8,9 +8,9 @@ Ci sono per&ograve; delle differenze sostanziali:
 
 | `WebSocket` | `EventSource` |
 |-------------|---------------|
-| Bi-directional: both client and server can exchange messages | One-directional: only server sends data |
-| Binary and text data | Only text |
-| WebSocket protocol | Regular HTTP |
+| Bidirezionale: sia il client che il server possono scambiare messaggi | Unidirezionale: solamente il server può inviare messaggi |
+| Dati binari e testuali | Solo testuali |
+| Protocollo WebSocket | HTTP standard |
 
 `EventSource` &egrave; un modo meno potente di comunicare con il server rispetto ai `WebSocket`.
 
@@ -18,7 +18,7 @@ Perch&egrave; dovremmo usarli?
 
 La ragione principale: &egrave; semplice da usare. In molte applicazioni, la potenza dei `WebSocket` &egrave; anche troppa.
 
-Abbiamo necessit&agrave; di rivcevere un data stream da un server: forse messaggi di chat o prezzi dei mercati. Quusto &egrave; ci&ograve; per cui `EventSource` &egrave; fatto. Supporta anche l'uto riconessione, qualcosa che dobbiamo invece implementare manualmente nei `WebSocket`. Oltretutto, &egrave; un normalissimo HTTP, e non un nuovo protocollo. 
+Se abbiamo necessit&agrave; di ricevere un flusso di dati da un server: che siano messaggi di chat o variazioni di prezzo dei mercati. Allora &egrave; ci&ograve; per cui `EventSource` &egrave; fatto. Supporta anche l'auto riconessione, la qualcosa dovremmo invece implementare manualmente nei `WebSocket`. Oltretutto, &egrave; un normalissimo HTTP, e non un nuovo protocollo. 
 
 ## Ottenere i messaggi
 
@@ -26,7 +26,7 @@ Per cominciare a ricevere messaggi, dobbiamo solamente creare un `new EventSourc
 
 Il browser si connetter&agrave; all'url e terr&agrave; la connessione aperta, in attesa di eventi.
 
-Il server dovrebbe rispondere con status 200 e l'header `Content-Type: text/event-stream`, quindi, tenere aperta la connessione e scrivere i messaggi all'interno di esso in un formato speciale come questo:
+Il server dovrebbe rispondere con status 200 ed header `Content-Type: text/event-stream`, dopodich&egrave; mantenere aperta la connessione e scrivere i messaggi all'interno di esso in un formato speciale del tipo:
 
 ```
 data: Message 1
@@ -39,7 +39,7 @@ data: of two lines
 
 - Un messaggio di testo che va dopo `data:`, lo spazio dopo la virgola &egrave; opzionale.
 - I messaggi sono delimitati con un doppio line break `\n\n`.
-- Per inviare un line break `\n`, possiamo inviare immediatamente un altro `data:` (il terzo messaggio poco pi&ugrave; sopra).
+- Per inviare un line break `\n`, possiamo inviare immediatamente un altro `data:` (il terzo messaggio nell'esempio qui sopra).
 
 In pratica, i messaggi complessi sono solitamente inviati tramite oggetti codificati in JSO. I Line-breaks sono codificati come `\n` tra essi, e in questo modo i messaggi `data:` multiriga non sono necessari
 
@@ -90,7 +90,7 @@ In fase di creazione, `new EventSource` si connette al server, e se la connessio
 
 Ci&ograve; &egrave; molto conveniente, dal momento che non ci dobbiamo curare della cosa.
 
-C'&egrave; un piccolo ritardo tra le riconessioni, pochi secondi di default.
+C'&egrave; un piccolo ritardo tra le riconnessioni, pochi secondi di default.
 
 Il server pu&ograve; impostare il ritardo raccomandato usando `retry:` nella risposta (in millisecondi)
 
@@ -137,8 +137,8 @@ Quando viene ricevuto un messaggio con `id:`, il browser:
 - Imposta la propriet&agrave; `eventSource.lastEventId` su quel valore.
 - In fase di riconnessione invia l'header `Last-Event-ID` con quell'`id`, in modo da permettere al server di reinviare i messaggi successivi.
 
-```smart header="Put `id:` after `data:`"
-Nota bene: l'`id` viene aggiunto sotto il messaggio `data` dal server, per assicurarsi che `lastEventId` venga aggiornato solamente dopo che il messaggio sia stato ricevuto.
+```smart header="Inserisci `id:` dopo `data:`"
+Nota bene: l'`id` viene aggiunto dopo il messaggio `data` dal server, per assicurarsi che `lastEventId` venga aggiornato solamente dopo che il messaggio sia stato ricevuto.
 ```
 
 ## Stato della conessione: readyState
@@ -146,12 +146,12 @@ Nota bene: l'`id` viene aggiunto sotto il messaggio `data` dal server, per assic
 L'oggetto `EventSource` possiede la propriet&agrave; `readyState`, che assume uno tra questi tre valori:
 
 ```js no-beautify
-EventSource.CONNECTING = 0; // cnnessione o riconnessione
+EventSource.CONNECTING = 0; // connessione o riconnessione
 EventSource.OPEN = 1;       // connesso
 EventSource.CLOSED = 2;     // connessione chiusa
 ```
 
-Quando viene creato un oggetto, o la connessione &egrave; assente, &egrave; sempre `EventSource.CONNECTING` (equivale a `0`).
+Quando viene creato un oggetto, o se la connessione &egrave; assente, viene valorizzato sempre a `EventSource.CONNECTING` (equivale a `0`).
 
 Possiamo interrogare questa propriet&agrave; per sapere lo stato di `EventSource`.
 
@@ -222,7 +222,7 @@ La sintassi &egrave;:
 let source = new EventSource(url, [credentials]);
 ```
 
-Il secondo argomento ha solo una opzione possibile: `{ withCredentials: true }`, il quale permette di inviare credenziali cross-origin.
+Il secondo argomento consta di una sola opzione possibile: `{ withCredentials: true }`, la quale permette di inviare credenziali cross-origin.
 
 Complessivamente la sicurezza del cross-origin &egrave; la stessa di `fetch` e altri metodi di rete.
 
@@ -248,7 +248,7 @@ Complessivamente la sicurezza del cross-origin &egrave; la stessa di `fetch` e a
 : La connessione &egrave; stabilita.
 
 `error`
-: In caseo di error, inclusi sia la connessione persa (si riconnetter&agrave; automaticamente), e errori fatali. Possiamo controllare `readyState` per vedere se &egrave; stata tentata la riconnessione.
+: In caso di errori, includendo sia la connessione persa (si riconnetter&agrave; automaticamente), che errori fatali. Possiamo controllare `readyState` per vedere se &egrave; stata tentata la riconnessione.
 
 Il server pu&ograve; impostare un evento custom dentro `event:`. Questi eventi andrebbero gestiti usando `addEventListener`, e non `on<event>`.
 
