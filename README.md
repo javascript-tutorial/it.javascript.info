@@ -17,7 +17,11 @@ Se hai deciso di contribuire innanzitutto ti ringrazio per il supporto, e ti chi
   - [Come contribuire](#come-contribuire)
   - [Consigli per la traduzione](#consigli-per-la-traduzione)
 
+<<<<<<< HEAD
 ## Importante
+=======
+**You can edit the text in any editor.** The tutorial uses enhanced "markdown" format, easy to grasp. And if you want to see how it looks on-site, there's a server to run the tutorial locally at <https://github.com/javascript-tutorial/server>.
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 - Quando effettui le traduzioni lavora **sempre** in un branch dedicato, in questo modo manteniamo il branch `master` il più pulito possibile. Continua a leggere per maggiori informazioni.
 
@@ -132,7 +136,7 @@ Alcuni termini ricorrenti:
     L'importante è rispettare le linee guida fornite sopra!
   </details>
 
----
+---  
 ♥  
 Ilya Kantor @iliakan
 

@@ -23,7 +23,11 @@ Perché quindi il `.then` viene eseguito dopo? Cosa succede?
 
 ## Coda dei Microtask (Microtasks Queue)
 
+<<<<<<< HEAD
 I task asincroni hanno bisogno di una gestione appropriata. Per questo motivo, lo standard specifica una coda interna `PromiseJobs`, più spesso riferita come "coda dei microtask" (microtask queue) (termine di v8).
+=======
+Asynchronous tasks need proper management. For that, the ECMA standard specifies an internal queue `PromiseJobs`, more often referred to as the "microtask queue" (V8 term).
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 Come detto nella [specifica](https://tc39.github.io/ecma262/#sec-jobs-and-job-queues):
 
@@ -103,7 +107,11 @@ Ma ora sappiamo che `unhandledrejection` è generato quando la coda dei microtas
 
 Nell'esempio sopra, anche il `.catch` aggiunto da `setTimeout` viene innescato, ma dopo, quando `unhandledrejection` è già avvenuto, quindi questo non cambia niente.
 
+<<<<<<< HEAD
 ## Riepilogo
+=======
+Promise handling is always asynchronous, as all promise actions pass through the internal "promise jobs" queue, also called "microtask queue" (V8 term).
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 La gestione delle promise è sempre asincrona, dato che tutte le azioni delle promise passano attraverso la coda "promise jobs", anche chiamata "microtask queue" (termine di v8).
 

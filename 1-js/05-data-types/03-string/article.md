@@ -47,7 +47,11 @@ let guestList = "Guests: // Error: Unexpected token ILLEGAL
 
 Gli apici singoli e doppi sono nati insieme al linguaggio, quando non era stato ancora messo in conto la possibilità di stringhe multilinea. Le backticks sono apparse più tardi, per questo risultano più versatili.
 
+<<<<<<< HEAD
 Le backticks ci consentono anche di specificare un "template di funzione" prima della backtick di apertura. La sintassi è: <code>func&#96;string&#96;</code>. La funzione `func` viene chiamata automaticamente, gli viene passata la "string", può essere cosi trattata dalla funzione. Potete approfondire leggendo la [documentazione](mdn:/JavaScript/Reference/Template_literals#Tagged_template_literals). Questo viene chiamata "funzione template". Con questa caratteristica diventa più facile raccogliere stringhe da passare a funzioni, ma è raramente utilizzata.
+=======
+Backticks also allow us to specify a "template function" before the first backtick. The syntax is: <code>func&#96;string&#96;</code>. The function `func` is called automatically, receives the string and embedded expressions and can process them. This is called "tagged templates". This feature makes it easier to implement custom templating, but is rarely used in practice. You can read more about it in the [manual](mdn:/JavaScript/Reference/Template_literals#Tagged_templates).
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 
 ## Caratteri speciali
@@ -79,6 +83,7 @@ Ci sono altri caratteri "speciali" meno comuni. Qui una lista:
 |`\'`, `\"`|Apici|
 |`\\`|Backslash|
 |`\t`|Tab|
+<<<<<<< HEAD
 |`\b`, `\f`,`\v` | Backspace, Form Feed, Vertical Tab -- mantenuti per retrocompatibilità, oggi non sono utilizzati. |
 |`\xXX`|Carattere Unicode rappresentato dal codice esadecimale `XX`, esempio `'\x7A'` equivale a `'z'`.|
 |`\uXXXX`|Simbolo unicode rappresentato da codice esadecimale `XXXX` in  codifica UTF-16, ad esempio `\u00A9` -- equivale a `©`. |
@@ -90,6 +95,19 @@ Esempi di unicode:
 alert( "\u00A9" ); // ©
 alert( "\u{20331}" ); // 佫, un raro geroglifico cinese (long unicode)
 alert( "\u{1F60D}" ); // 😍, un simbolo di faccia sorridente (long unicode)
+=======
+|`\b`, `\f`, `\v`| Backspace, Form Feed, Vertical Tab -- kept for compatibility, not used nowadays. |
+|`\xXX`|Unicode character with the given hexadecimal Unicode `XX`, e.g. `'\x7A'` is the same as `'z'`.|
+|`\uXXXX`|A Unicode symbol with the hex code `XXXX` in UTF-16 encoding, for instance `\u00A9` -- is a Unicode for the copyright symbol `©`. It must be exactly 4 hex digits. |
+|`\u{X…XXXXXX}` (1 to 6 hex characters)|A Unicode symbol with the given UTF-32 encoding. Some rare characters are encoded with two Unicode symbols, taking 4 bytes. This way we can insert long codes. |
+
+Examples with Unicode:
+
+```js run
+alert( "\u00A9" ); // ©
+alert( "\u{20331}" ); // 佫, a rare Chinese hieroglyph (long Unicode)
+alert( "\u{1F60D}" ); // 😍, a smiling face symbol (another long Unicode)
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 ```
 
 Tutti i caratteri speciali iniziano con un backslash `\`. Che viene anche chiamato "carattere di escape".
@@ -232,7 +250,11 @@ alert( str.indexOf('widget') ); // -1, non trovato, la ricerca è case-sensitive
 alert( str.indexOf("id") ); // 1, "id" è stato trovato alla posizione di indice 1 
 ```
 
+<<<<<<< HEAD
 Il secondo parametro opzionale ci consente di cercare a partire dalla posizione fornita.
+=======
+The optional second parameter allows us to start searching from a given position.
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 Ad esempio, la prima occorrenza di `"id"` è alla posizione `1`. Per trovare la successiva occorrenza, dovremmo iniziare a cercare dalla posizione `2`:
 
@@ -493,7 +515,11 @@ Tutte le stringhe vengono codificate utilizzando [UTF-16](https://en.wikipedia.o
     alert( String.fromCodePoint(90) ); // Z
     ```
 
+<<<<<<< HEAD
     Possiamo anche aggiungere caratteri unicode tramite il loro codice utilizzando `\u` seguito dal codice esadecimale:
+=======
+    We can also add Unicode characters by their codes using `\u` followed by the hex code:
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
     ```js run
     // 90 è 5a nel istema esadecimale
@@ -603,7 +629,11 @@ In molti lingue ci sono lettere composte da un carattere di base completato da u
 
 Ad esempio, la lettera `a` può essere il carattere di base per: `àáâäãåā`. Molti dei caratteri "composti" hanno una loro rappresentazione nella tabella UTF-16. Però non tutte, poiché le combinazioni possibili sono veramente molte.
 
+<<<<<<< HEAD
 Per supportare composizioni arbitrarie, UTF-16 ci consente di utilizzare diversi caratteri unicode. Un carattere di base ed uno o più "simboli" con cui "decorare" il carattere di base.
+=======
+To support arbitrary compositions, UTF-16 allows us to use several Unicode characters: the base character followed by one or many "mark" characters that "decorate" it.
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 Ad esempio, se abbiamo `S` con uno speciale "punto sopra" (codice `\u0307`), viene mostrato Ṡ.
 
@@ -621,7 +651,11 @@ Ad esempio:
 alert( 'S\u0307\u0323' ); // Ṩ
 ```
 
+<<<<<<< HEAD
 Questo consente una grande flessibilità, ma crea anche un potenziale problema: due caratteri potrebbero sembrare uguali, ma differire per la loro composizione di codici unicode.
+=======
+This provides great flexibility, but also an interesting problem: two characters may visually look the same, but be represented with different Unicode compositions.
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 Ad esempio:
 
@@ -629,7 +663,11 @@ Ad esempio:
 
 alert( s1 == s2 ); // false though the characters look identical (?!)
 
+<<<<<<< HEAD
 Per risolvere questo, esiste un algoritmo di "normalizzazione unicode" che porta ogni stringa alla forma "normale".
+=======
+To solve this, there exists a "Unicode normalization" algorithm that brings each string to the single "normal" form.
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 Questo algoritmo viene implementato da [str.normalize()](mdn:js/String/normalize).
 
@@ -652,6 +690,7 @@ Se volete apprendere di più riguardo la normalizzazione e le sue varianti -- ve
 
 ## Riepilogo
 
+<<<<<<< HEAD
 - Ci sono 3 tipi di apici. Le backticks consentono stringhe multi-linea ed espressioni integrate.
 - Le stringhe in JavaScript vengono codificate usando UTF-16.
 - Possiamo utilizzare caratteri speciali come `\n` ed inserire lettere tramite il codice unicode `\u...`.
@@ -660,6 +699,16 @@ Se volete apprendere di più riguardo la normalizzazione e le sue varianti -- ve
 - Per cambiare il timbro delle lettere di una stringa si utilizza: `toLowerCase/toUpperCase`.
 - Per cercare una sotto-stringa, usate: `indexOf`, o `includes/startsWith/endsWith` for simple checks.
 - Per confrontar stringhe seguendo le regole della lingua, usate: `localeCompare`, altrimenti verranno comparate in base al codice del singolo carattere.
+=======
+- There are 3 types of quotes. Backticks allow a string to span multiple lines and embed expressions `${…}`.
+- Strings in JavaScript are encoded using UTF-16.
+- We can use special characters like `\n` and insert letters by their Unicode using `\u...`.
+- To get a character, use: `[]`.
+- To get a substring, use: `slice` or `substring`.
+- To lowercase/uppercase a string, use: `toLowerCase/toUpperCase`.
+- To look for a substring, use: `indexOf`, or `includes/startsWith/endsWith` for simple checks.
+- To compare strings according to the language, use: `localeCompare`, otherwise they are compared by character codes.
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 Ci sono molti altri metodi utili per operare con le stringhe:
 

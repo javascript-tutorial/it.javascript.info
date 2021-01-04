@@ -44,7 +44,23 @@ alert(test); // vero, la variabile vive dopo if
 
 Se avessimo utilizzato `let test` nella seconda riga, allora non sarebbe stata visibile ad `alert`. Ma `var` ignora i blocchi di codice, quindi `test` risulta essere globale.
 
+<<<<<<< HEAD
 La stessa cosa accade con i cicli: `var` non può essere locale ad un blocco/ciclo:
+=======
+If we used `let test` instead of `var test`, then the variable would only be visible inside `if`:
+
+```js run
+if (true) {
+  let test = true; // use "let"
+}
+
+*!*
+alert(test); // ReferenceError: test is not defined
+*/!*
+```
+
+The same thing for loops: `var` cannot be block- or loop-local:
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 ```js
 for (var i = 0; i < 10; i++) {
@@ -70,7 +86,11 @@ function sayHi() {
 }
 
 sayHi();
+<<<<<<< HEAD
 alert(phrase); // Errore: phrase non è definito (Provate a controllare la console)
+=======
+alert(phrase); // ReferenceError: phrase is not defined
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 ```
 
 Come possiamo vedere, `var` passa attraverso `if`, `for` o altri blocchi di codice. Questo accade perché molto tempo fa i blocchi JavaScript non possedevano un Lexical Environments. E `var` ne è un ricordo.
@@ -218,8 +238,13 @@ Qui, un'espressione di funzione viene creata ed immediatamente chiamata. Quindi 
 L'espressione di funzione è avvolta dalle parentesi `(function {...})`, poichè quando JavaScript incontra `"function"` nel flusso principale del codice, lo interpreta come l'inizio di una dichiarazione di funzione. Ma una dichiarazione di funzione deve avere un nome, quindi questo tipo di codice daebbe un errore:
 
 ```js run
+<<<<<<< HEAD
 // Proviamo a dichiarare ed invocare immediatamente una funzione
 function() { // <-- Error: La dichiarazione di funzione richiede un nome
+=======
+// Tries to declare and immediately call a function
+function() { // <-- SyntaxError: Function statements require a function name
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
   var message = "Hello";
 

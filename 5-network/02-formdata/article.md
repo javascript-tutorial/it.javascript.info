@@ -51,7 +51,11 @@ Come puoi vedere, è sufficiente una singola riga:
 </script>
 ```
 
+<<<<<<< HEAD
 In questo esempio, non è indicato il codice server-side, dato che va oltre il nostro scopo. In questo caso, il server accetta la richiesta POST e risponde con "Utente salvato".
+=======
+In this example, the server code is not presented, as it's beyond our scope. The server accepts the POST request and replies "User saved".
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 ## Metodi dell'oggetto FormData
 
@@ -91,7 +95,7 @@ formData.append('key2', 'value2');
 
 // Lista di coppia chiave/valore
 for(let [name, value] of formData) {
-  alert(`${name} = ${value}`); // key1=value1, then key2=value2
+  alert(`${name} = ${value}`); // key1 = value1, then key2 = value2
 }
 ```
 

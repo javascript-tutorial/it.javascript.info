@@ -1,10 +1,17 @@
 
 # Map e Set
 
+<<<<<<< HEAD
 Ora che abbiamo appreso le nozioni di base riguardo le seguenti strutture dati:
 
 - Oggetti, per la memorizzazione di collezioni identificate da chiave.
 - Array, per la memorizzazione di collezioni ordinate.
+=======
+Till now, we've learned about the following complex data structures:
+
+- Objects are used for storing keyed collections.
+- Arrays are used for storing ordered collections.
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 Queste non sono però sufficienti nella vita reale. Per esistono ulteriori strutture dati come `Map` e `Set`.
 
@@ -41,8 +48,13 @@ alert( map.size ); // 3
 
 Come abbiamo potuto osservare, a differenza degli oggetti, le chiavi non vengono convertite a stringa. Sono quindi ammesse chiavi di qualunque tipo.
 
+<<<<<<< HEAD
 ```smart header="`map[key]` non è il modo corretto di utilizzare una `Map`"
 Anche se `map[key]` funziona, ad esempio possiamo impostare `map[key] = 2`, equivale a trattare una `map` come un oggetto semplice, con tutte le limitazioni correlate agli oggetti.
+=======
+```smart header="`map[key]` isn't the right way to use a `Map`"
+Although `map[key]` also works, e.g. we can set `map[key] = 2`, this is treating `map` as a plain JavaScript object, so it implies all corresponding limitations (only string/symbol keys and so on).
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 Quindi dovremmo utilizzare i metodi dedicati a `map`: `set`, `get` e gli altri.
 ```
@@ -63,15 +75,21 @@ visitsCountMap.set(john, 123);
 alert( visitsCountMap.get(john) ); // 123
 ```
 
+<<<<<<< HEAD
 Il fatto di poter utilizzare oggetti come chiave è una delle caratteristiche più importanti fornite dalla struttura dati `Map`. Per chiavi di tipo string, un normale `Object` può andare bene, ma non vale lo stesso per chiavi di tipo oggetto.
+=======
+Using objects as keys is one of the most notable and important `Map` features. The same does not count for `Object`. String as a key in `Object` is fine, but we can't use another `Object` as a key in `Object`.
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 Proviamo:
 
 ```js run
 let john = { name: "John" };
+let ben = { name: "Ben" };
 
 let visitsCountObj = {}; // proviamo ad utilizzare un oggetto
 
+<<<<<<< HEAD
 visitsCountObj[john] = 123; // proviamo ad utilizzare l'oggetto jhon come chiave
 
 *!*
@@ -81,6 +99,18 @@ alert( visitsCountObj["[object Object]"] ); // 123
 ```
 
 Dal momento che `visitsCountObj` è un oggetto, converte tutte le chiavi, come `john` a stringhe, quindi ottenamo la chiave `"[object Object]"`. Senza dubbio non ciò che ci aspettavamo.
+=======
+visitsCountObj[ben] = 234; // try to use ben object as the key
+visitsCountObj[john] = 123; // try to use john object as the key, ben object will get replaced
+
+*!*
+// That's what got written!
+alert( visitsCountObj["[object Object]"] ); // 123 
+*/!*
+```
+
+As `visitsCountObj` is an object, it converts all `Object` keys, such as `john` and `ben` above, to same string `"[object Object]"`. Definitely not what we want.
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 ```smart header="How `Map` confronta le chiavi"
 Per verificare l'equivalenza delle chiavi, `Map`utilizza l'algoritmo [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero). E' quasi la stessa cosa dell'uguaglianza stretta `===`, con la differenza che `NaN` viene considerato uguale a `NaN`. Quindi anche `NaN` può essere utilizzato come chiave.
@@ -302,6 +332,7 @@ Sono supportati anche i metodi di iterazione offerti da `Map`:
 
 Metodi e proprietà:
 
+<<<<<<< HEAD
 - `new Map([iterable])` -- crea la mappa, accetta un oggetto iterabile (opzionale, e.g. array) di coppie `[key,value]` per l'inizializzazione.
 - `map.set(key, value)` -- memorizza il valore con la chiave fornita.
 - `map.get(key)` -- ritorna il valore associata alla chiave, `undefined` se la `key` non è presente nella `Map`.
@@ -309,6 +340,15 @@ Metodi e proprietà:
 - `map.delete(key)` -- rimuove il valore associato alla chiave.
 - `map.clear()` -- rimuove ogni elemento dalla mappa.
 - `map.size` -- ritorna il numero di elementi contenuti nella map.
+=======
+- `new Map([iterable])` -- creates the map, with optional `iterable` (e.g. array) of `[key,value]` pairs for initialization.
+- `map.set(key, value)` -- stores the value by the key, returns the map itself.
+- `map.get(key)` -- returns the value by the key, `undefined` if `key` doesn't exist in map.
+- `map.has(key)` -- returns `true` if the `key` exists, `false` otherwise.
+- `map.delete(key)` -- removes the value by the key, returns `true` if `key` existed at the moment of the call, otherwise `false`.
+- `map.clear()` -- removes everything from the map.
+- `map.size` -- returns the current element count.
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 Le differenze da un `Object` standard:
 

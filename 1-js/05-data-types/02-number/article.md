@@ -389,7 +389,11 @@ JavaScript ha un oggetto integrato [Math](https://developer.mozilla.org/en/docs/
 Un paio di esempi:
 
 `Math.random()`
+<<<<<<< HEAD
 : Ritorna un numero casuale tra 0 e 1 (1 escluso)
+=======
+: Returns a random number from 0 to 1 (not including 1).
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
     ```js run
     alert( Math.random() ); // 0.1234567894322
@@ -406,7 +410,11 @@ Un paio di esempi:
     ```
 
 `Math.pow(n, power)`
+<<<<<<< HEAD
 : Ritorna `n` elevato alla `power`
+=======
+: Returns `n` raised to the given power.
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
     ```js run
     alert( Math.pow(2, 10) ); // 2 alla 10 = 1024

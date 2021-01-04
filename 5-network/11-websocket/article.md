@@ -122,6 +122,10 @@ Ad esempio:
 
 - `Sec-WebSocket-Protocol: soap, wamp` significa che non vogliamo trasferire qualunque tipo di dato, ma solamente dati con protocollo [SOAP](http://en.wikipedia.org/wiki/SOAP) oppure WAMP ("The WebSocket Application Messaging Protocol"). I subprotocolli dei WebSocket sono registrati nel [catalogo IANA ](http://www.iana.org/assignments/websocket/websocket.xml).
 
+<<<<<<< HEAD
+=======
+- `Sec-WebSocket-Extensions: deflate-frame` means that the browser supports data compression. An extension is something related to transferring the data, functionality that extends WebSocket protocol. The header `Sec-WebSocket-Extensions` is sent automatically by the browser, with the list of all extensions it supports.
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
     Questi headers aggiuntivi vengono settati da noi, per dire al server quali sottoprotocolli supporta il nostro codice, utilizzando il secondo parametro (opzionale) di `new WebSocket`. Questo sarebbe l'array dei subprotocolli se, ad esempio, volessimo usare  SOAP o WAMP:
 
@@ -194,7 +198,11 @@ socket.onmessage = (event) => {
 Immagina che la nostra app abbia tantissimi dati da inviare. Ma che l'utente abbia una connessione molto lenta, magari internet su rete mobile e fuori citt&agrave;.
 Potremmo chiamare `socket.send(data)` in continuazione. Per&ograve; i dati verranno bufferizzati (immagazzinati) in memoria ed inviati solo quando una connessione abbastanza veloce lo permetter&agrave;.
 
+<<<<<<< HEAD
 La propriet&agrave; `socket.bufferedAmount` immagazzina i dati che sono bufferizzati in un dato momento, in attesa di inviarli tramite la rete.
+=======
+The `socket.bufferedAmount` property stores how many bytes remain buffered at this moment, waiting to be sent over the network.
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 Possiamo esaminarlo per vedere se il socket &egrave; attualmente disponibile per la trasmissione.
 
@@ -236,8 +244,15 @@ socket.onclose = event => {
 ```
 I valori pi&ugrave; comuni sono:
 
+<<<<<<< HEAD
 - `1000` -- predefinito, chiusura normale (usato se non viene fornito alcun `code`),
 - `1006` -- non c'&egrave; modo di settare questo codice manualmente, indica che la connessione &egrave; stata persa (frame di chiusura non presente).
+=======
+Most common code values:
+
+- `1000` -- the default, normal closure (used if no `code` supplied),
+- `1006` -- no way to set such code manually, indicates that the connection was lost (no close frame).
+>>>>>>> 039716de8a96f49b5fccd7aed5effff2e719dfe5
 
 Esistono altri codice come:
 
