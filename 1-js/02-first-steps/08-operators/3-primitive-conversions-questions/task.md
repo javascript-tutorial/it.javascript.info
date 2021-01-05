@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Type conversions
+# Conversioni di tipo
 
-Qual'e il risultato di questa espressione?
+Qual'è il risultato di questa espressione?
 
 ```js no-beautify
 "" + 1 + 0

@@ -1,6 +1,6 @@
-The reason is that prompt returns user input as a string.
+La ragione è che il `prompt` ritorna delle stringhe .
 
-So variables have values `"1"` and `"2"` respectively.
+Quindi le variabili hanno valori `"1"` e `"2"` rispettivamente.
 
 ```js run
 let a = "1"; // prompt("First number?", 1);
@@ -9,9 +9,9 @@ let b = "2"; // prompt("Second number?", 2);
 alert(a + b); // 12
 ```
 
-What we should do is to convert strings to numbers before `+`. For example, using `Number()` or prepending them with `+`.
+Quello che dovremmo fare è convertire le stringhe in numeri prima che vengano sommate. Questo può essere fatto facendole precedere da `+` o usando `Number()`
 
-For example, right before `prompt`:
+Per esempio, appena prima di `prompt`:
 
 ```js run
 let a = +prompt("First number?", 1);
@@ -20,7 +20,7 @@ let b = +prompt("Second number?", 2);
 alert(a + b); // 3
 ```
 
-Or in the `alert`:
+Oppure in `alert`:
 
 ```js run
 let a = prompt("First number?", 1);
@@ -29,4 +29,4 @@ let b = prompt("Second number?", 2);
 alert(+a + +b); // 3
 ```
 
-Using both unary and binary `+` in the latest code. Looks funny, doesn't it?
+Usando `+` sia in modalità unaria che binaria. Sembra divertente vero?
