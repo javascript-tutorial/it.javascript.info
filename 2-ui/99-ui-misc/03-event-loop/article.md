@@ -3,89 +3,63 @@
 
 Sia il flusso di esecuzione di Javascript, che quello di Node.js, sono basati sull' *event loop*.
 
-Comprendere come funziona un event loop &egrave; importante sia per una questione di ottimizzazione dell'esecuzione del codice, ma a volte, anche per creare delle architetture software migliori.
+Comprendere come funziona un event loop è importante sia per una questione di ottimizzazione dell'esecuzione del codice, ma a volte, anche per creare delle architetture software migliori.
 
-In questo capitolo affronteremo i dettagli teorici sul funzionanento, dopodich&egrave; prenderemo in esame alcune applicazioni pratiche.
+In questo capitolo affronteremo i dettagli teorici sul funzionamento, dopodiché prenderemo in esame alcune applicazioni pratiche.
 
 ## Event Loop
 
-<<<<<<< HEAD
-Il concetto di *event loop* &egrave; molto semplice. Esiste un loop infinito, nel quale il motore di Javascript rimane in attesa di un task (compito o operazione da eseguire), lo esegue, quindi si mette in attesa per altri tasks (rimane in sleep, inattivo o dormiente, ma pronto per essere di nuovo richiamato). 
-=======
-The *event loop* concept is very simple. There's an endless loop, where the JavaScript engine waits for tasks, executes them and then sleeps, waiting for more tasks.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+Il concetto di *event loop* è molto semplice. Esiste un loop infinito, nel quale il motore di Javascript rimane in attesa di un task (compito o operazione da eseguire), lo esegue, quindi si mette in attesa per altri tasks (rimane in sleep, inattivo o dormiente, ma pronto per essere di nuovo richiamato). 
 
-A grandi linee, l'algoritmo del motore &egrave; cos&igrave;:
+A grandi linee, l'algoritmo del motore è così:
 1. Fino a quando ci sono task:
     - eseguili, cominciando da quello meno recente.
-2. Rimani in attesa fino a quando non c'&egrave; un altro task da eseguire, quindi vai al passo 1.
+2. Rimani in attesa fino a quando non c'è un altro task da eseguire, quindi vai al passo 1.
 
-Questa &egrave; una trasposizione di quello che vediamo mentre navighiamo in una pagina web. Il motore di Javascript non fa nulla per la maggior parte del tempo, e va in esecuzione quando si attiva uno script/handler/evento.
+Questa è una trasposizione di quello che vediamo mentre navighiamo in una pagina web. Il motore di Javascript non fa nulla per la maggior parte del tempo, e va in esecuzione quando si attiva uno script/handler/evento.
 
-<<<<<<< HEAD
 Esempio di tasks:
-=======
-That's a formalization for what we see when browsing a page. The JavaScript engine does nothing most of the time, it only runs if a script/handler/event activates.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
-- Quando viene caricato uno script esterno `<script src="...">` (load), il task &egrave; quello di eseguirlo.
-- Quando un utente sposta il puntatore del mouse, il task &egrave; quello di lanciare il dispatch dell'evento `mousemove` ed eseguirne eventuali handlers (gestori).
-- Quando &egrave; scaduto il tempo per `setTimeout` gi&agrave; schedulato, il task &egrave; quello di eseguirne la callback.
-- ...e cos&igrave; via.
+- Quando viene caricato uno script esterno `<script src="...">` (load), il task è quello di eseguirlo.
+- Quando un utente sposta il puntatore del mouse, il task è quello di lanciare il dispatch dell'evento `mousemove` ed eseguirne eventuali handlers (gestori).
+- Quando è scaduto il tempo per `setTimeout` già schedulato, il task è quello di eseguirne la callback.
+- ...e così via.
 
 I task vengono impostati -- il motore li gestisce -- quindi rimane in attesa per altri tasks (nel frattempo rimane in sleep, consumando risorse CPU prossime allo zero).
 
-Per&ograve; potrebbe succedere che mentre il motore &egrave; occupato, arrivi un task, in questo caso, questo viene messo in coda.
+Però potrebbe succedere che mentre il motore è occupato, arrivi un task, in questo caso, questo viene messo in coda.
 
 I task formano una coda, la cosiddetta "macrotask queue" (termine mutuato da V8, il motore Javascript di Chrome e di Node.js):
 
 ![](eventLoop.svg)
 
-Ad esempio se, mentre il motore &egrave; occupato nell'esecuzione di uno `script`, l'utente muove il mouse generando un `mousemove`, e magari nello stesso istante &egrave; scaduto il tempo di un `setTimeout`, questi task formano una queue (una coda di esecuzione) come illustrato nella figura appena sopra.
+Ad esempio se, mentre il motore è occupato nell'esecuzione di uno `script`, l'utente muove il mouse generando un `mousemove`, e magari nello stesso istante è scaduto il tempo di un `setTimeout`, questi task formano una queue (una coda di esecuzione) come illustrato nella figura appena sopra.
 
-I tasks dalla coda vengono processati sulla base del "first come – first served", cio&egrave; secondo l'ordine per cui il primo arrivato sar&agrave; il primo ad essere servito (FIFO). 
-Quando il motoere del browser avr&agrave; terminato con lo `script`, gestir&agrave; l'evento `mousemove`, quindi si occuper&agrave; del gestore del `setTimeout` (la callback), e via dicendo.
+I tasks dalla coda vengono processati sulla base del "first come – first served", cioè secondo l'ordine per cui il primo arrivato sarà il primo ad essere servito (FIFO). 
+Quando il motore del browser avrà terminato con lo `script`, gestirà l'evento `mousemove`, quindi si occuperà del gestore del `setTimeout` (la callback), e via dicendo.
 
 Fino a qui abbastanza semplice, giusto?
 
-<<<<<<< HEAD
 Ancora due dettagli:
 1. Il rendering non avviene mai quando il motore sta eseguendo un task. Non importa se questo impiega molto tempo. I cambiamenti al DOM vengono renderizzati (ridisegnati sul browser) solo dopo che il task viene completato.
-2. Se un task impiega troppo tempo, il browser non pui&ograve; eseguire altri tasks, processare altri eventi utente, e cos&igrave; dopo un certo periodo di tempo viene scaturito un alert di "Pagina bloccata" (Page Unresponsive) che ci suggerisce di terminare il task e l'intera pagina. Questo succede in concomitanza di una serie di calcoli complessi, o in seguito ad errori di programmazione che portano loop infiniti.
+2. Se un task impiega troppo tempo, il browser non può eseguire altri tasks, processare altri eventi utente, e così dopo un certo periodo di tempo viene scaturito un alert di "Pagina bloccata" (Page Unresponsive) che ci suggerisce di terminare il task e l'intera pagina. Questo succede in concomitanza di una serie di calcoli complessi, o in seguito ad errori di programmazione che portano loop infiniti.
 
 Ok, questa era la teoria, ma vediamo come mettere in pratica questi concetti.
-=======
-Two more details:
-1. Rendering never happens while the engine executes a task. It doesn't matter if the task takes a long time. Changes to the DOM are painted only after the task is complete.
-2. If a task takes too long, the browser can't do other tasks, such as processing user events. So after a time, it raises an alert like "Page Unresponsive", suggesting killing the task with the whole page. That happens when there are a lot of complex calculations or a programming error leading to an infinite loop.
-
-That was the theory. Now let's see how we can apply that knowledge.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 ## Caso d'uso 1: Spezzettamento di task affamati di CPU (processi intensivi)
 
 Poniamo il caso che abbiamo un task affamato di CPU (CPU-hungry process).
 
-<<<<<<< HEAD
-Per esempio, la syntax-highlighting (usata per colorare ed evidenziare gli esempi del codice in questa pagina) &egrave; abbastanza pesante per la CPU.
-Per evidenziare il codice, compie delle analisi, crea molti elementi colorati, e li aggiunge al documento -- un testo di grosse dimensioni pu&ograve; impiegare molto tempo.
-=======
-For example, syntax-highlighting (used to colorize code examples on this page) is quite CPU-heavy. To highlight the code, it performs the analysis, creates many colored elements, adds them to the document -- for a large amount of text that takes a lot of time.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+Per esempio, la syntax-highlighting (usata per colorare ed evidenziare gli esempi del codice in questa pagina) è abbastanza pesante per la CPU.
+Per evidenziare il codice, compie delle analisi, crea molti elementi colorati, e li aggiunge al documento -- un testo di grosse dimensioni può impiegare molto tempo.
 
-Mentre il motore &egrave; occupato con l'evidenziatura, non pu&ograve; fare altre cose relative al DOM, processare gli eventi dell'utente, etc. pu&ograve;, pu&ograve;  persino causare "singhiozzamenti" al pc o addirittura "inchiodarlo", la qual cosa &egrave; inaccettabile.
+Mentre il motore è occupato con l'evidenziazione, non può fare altre cose relative al DOM, processare gli eventi dell'utente, etc. può  persino causare rallentamenti al pc o addirittura bloccarlo, la qual cosa è inaccettabile.
 
-<<<<<<< HEAD
-Possiamo quindi tirarci fuori da questo tipo di problemi, spezzettando i task grossi in piccoli pezzi da eseguire. Evidenzia le prime 100 righe, quindi schedula un `setTimeout` (con zero-delay) con altre 100 righe, e cos&igrave; via fino alla fine.
+Possiamo quindi tirarci fuori da questo tipo di problemi, spezzettando i task grossi in piccoli pezzi da eseguire. Evidenzia le prime 100 righe, quindi schedula un `setTimeout` (con zero-delay) con altre 100 righe, e così via fino alla fine.
 
-Per dimostrare questo tipo di approccio, e per amore della semplicit&agrave;, anzich&egrave; evidenziare una sintassi, prendiamo una funzione che conti i numeri da `1` a `1000000000`
-=======
-We can avoid problems by splitting the big task into pieces. Highlight first 100 lines, then schedule `setTimeout` (with zero-delay) for the next 100 lines, and so on.
+Per dimostrare questo tipo di approccio, e per amore della semplicità, anziché evidenziare una sintassi, prendiamo una funzione che conti i numeri da `1` a `1000000000`
 
-To demonstrate this approach, for the sake of simplicity, instead of text-highlighting, let's take a function that counts from `1` to `1000000000`.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
-
-Se esegui il codice sotto, il motore si inchioder&agrave; per qualche istante. Per il JS server-side (lato server) questo &egrave; chiaramente visibile, ma se lo stai eseguendo nella finestra del browser, provando a cliccare gli altri pulsanti -- potrai notare che non verr&agrave; gestito nessun altro evento fino a quando il conteggio dei numeri non sar&agrave; terminato.
+Se esegui il codice sotto, il motore si inchioderà per qualche istante. Per il JS server-side (lato server) questo è chiaramente visibile, ma se lo stai eseguendo nella finestra del browser, provando a cliccare gli altri pulsanti -- potrai notare che non verrà gestito nessun altro evento fino a quando il conteggio dei numeri non sarà terminato.
 
 ```js run
 let i = 0;
@@ -103,16 +77,10 @@ function count() {
 count();
 ```
 
-<<<<<<< HEAD
 Il browser potrebbe anche mostrare l'avviso "lo script sta impiegando troppo tempo" the script takes too long".
 
 
 Ora invece, dividiamo l'operazione con l'ausilio di un `setTimeout` annidato:
-=======
-The browser may even show a "the script takes too long" warning.
-
-Let's split the job using nested `setTimeout` calls:
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 ```js run
 let i = 0;
@@ -134,43 +102,24 @@ function count() {
 count();
 ```
 
-Adesso l'interfaccia del browser &egrave; pienamente funzionante, anche durante il processo di "conteggio".
+Adesso l'interfaccia del browser è pienamente funzionante, anche durante il processo di "conteggio".
 
 Una singola esecuzione di `count` fa una parte dell'operazione `(*)`, e rischedula se stessa `(**)` se necessario:
 
 1. La prima esecuzione conta: `i=1...1000000`.
 2. La seconda esecuzione conta: `i=1000001..2000000`.
-3. ...e cos&igrave; via.
+3. ...e così via.
 
-Ora, se arriva un nuovo task da eseguire mentre il motore &egrave; occupato ad eseguire il passo 1, poniamo il caso ad esempio che venga sollevato un evento `onclick`, quest'ultimo viene messo in coda ed eseguito subito dopo il completamento del passo 1, ma subito prima del passo successivo. Questi periodici "ritorni" all'event loop tra una esecuzione di `count` e l'altra, fornisce abbastanza "respiro" al motore Javascript per occuparsi di qualcos'altro, ad esempio per reagire alle azioni degli utenti.
+Ora, se arriva un nuovo task da eseguire mentre il motore è occupato ad eseguire il passo 1, poniamo il caso ad esempio che venga sollevato un evento `onclick`, quest'ultimo viene messo in coda ed eseguito subito dopo il completamento del passo 1, ma subito prima del passo successivo. Questi periodici "ritorni" all'event loop tra una esecuzione di `count` e l'altra, fornisce abbastanza "respiro" al motore Javascript per occuparsi di qualcos'altro, ad esempio per reagire alle azioni degli utenti.
 
-<<<<<<< HEAD
-La cosa ragguardevole &egrave; che entrambe le varianti -- con e senza la divsione del lavoro di `setTimeout` -- sono comparabili in termini di tempo. Complessivamente, non esiste molta differenza nel tempo di conteggio.
 
-Per renderli un po' pi&ugrave; più comparabili, facciamo un miglioramento.
-=======
-Now, if a new side task (e.g. `onclick` event) appears while the engine is busy executing part 1, it gets queued and then executes when part 1 finished, before the next part. Periodic returns to the event loop between `count` executions provide just enough "air" for the JavaScript engine to do something else, to react to other user actions.
-
-The notable thing is that both variants -- with and without splitting the job by `setTimeout` -- are comparable in speed. There's not much difference in the overall counting time.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
-
-Posizioniamo la schedulazione all'inizio del `count()`:
-
-<<<<<<< HEAD
-=======
-We'll move the scheduling to the beginning of the `count()`:
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+Per renderli un po' più più comparabili, facciamo un miglioramento.
 
 ```js run
 let i = 0;
 let start = Date.now();
 function count() {
-<<<<<<< HEAD
   //posizioniamo la schedulazione all'inizio
-=======
-
-  // move the scheduling to the beginning
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
   if (i < 1e9 - 1e6) {
     setTimeout(count);//scheduliamo la chiamata successiva
   }
@@ -186,32 +135,26 @@ function count() {
 count();
 ```
 
-Adesso, quando cominciamo con `count()` e vediamo che abbiamo bisogno di richiamarlo pi&ugrave; `count()`, lo scheduliamo subito prima di fare il lavoro.
+Adesso, quando cominciamo con `count()` e vediamo che abbiamo bisogno di richiamarlo più `count()`, lo scheduliamo subito prima di fare il lavoro.
 
-Se lo esegui, &egrave; facile notare che impiega significativamente meno tempo.
+Se lo esegui, è facile notare che impiega significativamente meno tempo.
 
 
-Perch&egrave;?  
+Perché?  
 
-Semplice: come saprai, c'&egrave; un ritardo minimo di 4ms all'interno del browser per tantissime chiamate annidate di `setTimeout`. Anche se noi lo abbiamo impostato a `0`, sar&agrave; di `4ms` (o qualcosa in pi&ugrave). Quindi, prima lo scheduliamo, pi&ugrave; veloce sar&agrave; l'esecuzione. 
-Alla fine, abbiamo diviso un task affamato di CPU in porzioni - che adesso non bloccher&agrave; pi&ugrave; l'interfaccia utente. Inoltre, il suo tempo di esecuzione complessivo non &egrave; tanto pi&ugrave; lungo.
+Semplice: come saprai, c'è un ritardo minimo di 4ms all'interno del browser per tantissime chiamate annidate di `setTimeout`. Anche se noi lo abbiamo impostato a `0`, sarà di `4ms` (o qualcosa in pi&ugrave). Quindi, prima lo scheduliamo, più veloce sarà l'esecuzione. 
+Alla fine, abbiamo diviso un task affamato di CPU in porzioni - che adesso non bloccherà più l'interfaccia utente. Inoltre, il suo tempo di esecuzione complessivo non è tanto più lungo.
 
 
 ## Caso d'uso 2: Indicazione dei progressi di una operazione
 
-<<<<<<< HEAD
-Un altro beneficio nel dividere task pesanti per gli script del browser &egrave; che possiamo mostrare i progressi di completamento.
+Un altro beneficio nel dividere task pesanti per gli script del browser è che possiamo mostrare i progressi di completamento.
 
-Solitamente il browser renderizza dopo che il codice in esecuzine viene completato. Non importa se il task impiega tanto tempo. Le modifice al DOM vengono mostrate solo dopo che il task &egrave; terminato.
-=======
-As mentioned earlier, changes to DOM are painted only after the currently running task is completed, irrespective of how long it takes.
+Solitamente il browser renderizza dopo che il codice in esecuzione viene completato. Non importa se il task impiega tanto tempo. Le modifiche al DOM vengono mostrate solo dopo che il task è terminato.
 
-On one hand, that's great, because our function may create many elements, add them one-by-one to the document and change their styles -- the visitor won't see any "intermediate", unfinished state. An important thing, right?
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+Da una parte, questo è grandioso, perché la nostra funzione può creare molti elementi, aggiungerli uno alla volta al documento e cambiarne gli stili -- il visitatore, d'altra parte, non vorrebbe mai vedere uno stadio "intermedio" ed incompleto. Una cosa importante, giusto?
 
-Da una parte, questo &egrave; grandioso, perch&egrave; la nostra funzione pu&ograve; creare molti elementi, aggiungerli uno alla volta al documento e cambiarne gli stili -- il visitatore, d'altra parte, non vorrebbe mai vedere uno stadio "intermedio" ed incompleto. Una cosa importante, giusto?
-
-Con l'esempio qui sotto abbiamo una dimostrazione, le modifiche all'elemento che rappresenta i valori di `i` non verrano mostrati fino a quando la funzione non termina, cos&igrave; vedremo solamente il valore definitivo:
+Con l'esempio qui sotto abbiamo una dimostrazione, le modifiche all'elemento che rappresenta i valori di `i` non verranno mostrati fino a quando la funzione non termina, così vedremo solamente il valore definitivo:
 
 ```html run
 <div id="progress"></div>
@@ -233,7 +176,7 @@ Con l'esempio qui sotto abbiamo una dimostrazione, le modifiche all'elemento che
 
 Se andiamo a dividere il task pesante in pezzi usando `setTimeout`, allora tra ognuno di essi, verranno mostrate delle variazioni.
 
-Questo sembra pi&ugrave; carino:
+Questo sembra più carino:
 
 ```html run
 <div id="progress"></div>
@@ -267,7 +210,7 @@ Adesso il `<div>` mostra valori sempre crescenti di `i`, come se fosse una sorta
 In un gestore di evento, potremmo decidere di postporre alcune azioni, fino a che l'evento non risalga i vari livelli dello stack (bubbling up) e non venga gestito su tutti questi livelli.
 Possiamo farlo, avvolgendo (wrapping) il codice all'interno di istruzioni `setTimeout` a ritardo zero.
 
-Nel capitolo <info:dispatch-events> abbiamo visto un esempio: dell'evento custom  `menu-open`, viene fatto il dispatch dentro `setTimeout`, cos&igrave; che esso viene richiamato dopo che l'evento click &egrave; stato del tutto gestito.
+Nel capitolo <info:dispatch-events> abbiamo visto un esempio: dell'evento custom  `menu-open`, viene fatto il dispatch dentro `setTimeout`, così che esso viene richiamato dopo che l'evento click è stato del tutto gestito.
 
 
 ```js
@@ -284,17 +227,13 @@ menu.onclick = function() {
 ```
 
 
-<<<<<<< HEAD
 ## Macrotasks e Microtasks
 
 Insieme ai *macrotasks*, descritti in questo capitolo, esistono i *microtasks*, menzionati nel capitolo <info:microtask-queue>.
-=======
-Along with *macrotasks*, described in this chapter, there are *microtasks*, mentioned in the chapter <info:microtask-queue>.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 I microtasks provengono esclusivamente dal nostro codice. Solitamente vengono creati dalle promises: una esecuzione di un gestore `.then/catch/finally` diventa un  microtask. I microtasks vengono usati anche "sotto copertura" dagli `await`, dato che anche questi non sono altro che un'altra forma di gestione di promises.
 
-C'&egrave; anche una funzione speciale `queueMicrotask(func)` che accoda `func` per l'esecuzione nella coda dei microtask.
+C'è anche una funzione speciale `queueMicrotask(func)` che accoda `func` per l'esecuzione nella coda dei microtask.
 
 **Immediatamente dopo ogni *macrotask*, il motore esegue tutti i task dalla coda *microtask*, prima di ricominciare a eseguire ogni altro macrotask o renderizzare o qualunque altra cosa.**
 
@@ -309,31 +248,23 @@ Promise.resolve()
 alert("code");
 ```
 
-Cosa succeder&agrave; all'ordine delle operazioni in questo script?
+Cosa succederà all'ordine delle operazioni in questo script?
 
-1. `code` viene mostrato per primo, dato che &egrave; un chiamata regolare e sincrona.
-2. `promise` viene mostrato per secondo, perch&egrave; `.then` passa attraverso la coda di microtask, e viene eseguito dopo il codice corrente.
-3. `timeout` viene mostrato come ultimo perch&egrave; &egrave; anhe questo un microtask.
+1. `code` viene mostrato per primo, dato che è un chiamata regolare e sincrona.
+2. `promise` viene mostrato per secondo, perché `.then` passa attraverso la coda di microtask, e viene eseguito dopo il codice corrente.
+3. `timeout` viene mostrato come ultimo perché è anche questo un microtask.
 
-<<<<<<< HEAD
-L'immagine pi&ugrave; esausitva di un event loop &egrave; questa:
+L'immagine più esaustiva di un event loop è questa:
 
 ![](eventLoop-full.svg)
 
 **Tutti i microtasks vengono completati prima di ogni altra gestione degli eventi o rendering o qualunque altro macrotask che prende parte nell'esecuzione**
-=======
-The richer event loop picture looks like this (order is from top to bottom, that is: the script first, then microtasks, rendering and so on):
 
-![](eventLoop-full.svg)
-
-All microtasks are completed before any other event handling or rendering or any other macrotask takes place.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
-
-Questo &egrave; importante perch&egrave; garantisce che l'ambiente applicativo rimanga intatto (nessuna modifica alle coordinate del puntatore del mouse, nessun dato dalle reti, etc) tra i vari microtasks.
+Questo è importante perché garantisce che l'ambiente applicativo rimanga intatto (nessuna modifica alle coordinate del puntatore del mouse, nessun dato dalle reti, etc) tra i vari microtasks.
 
 Se volessimo eseguire una funzione in maniera asincrona (dopo il codice in esecuzione), ma prima che avvengano cambiamenti nella finestra del browser, o che nuovi eventi vengano gestiti, potremmo schedularla con `queueMicrotask`.
 
-Questo qui &egrave; un esempio della funzion "conteggio barra di progresso", del tutto simile alla precedente, ma vengono usati `queueMicrotask` invece di `setTimeout`.
+Questo qui è un esempio della funzione "conteggio barra di progresso", del tutto simile alla precedente, ma vengono usati `queueMicrotask` invece di `setTimeout`.
 Come puoi notare, renderizza il valore del conteggio alla fine. Esattamente come se fosse del codice sincrono:
 
 ```html run
@@ -360,40 +291,32 @@ Come puoi notare, renderizza il valore del conteggio alla fine. Esattamente come
 
 ## Conclusioni
 
-L'immagine pi&ugrave; esausitva di un event loop &egrave; questa:
+L'immagine più esaustiva di un event loop è questa:
 
 ![](eventLoop-full.svg)
 
-<<<<<<< HEAD
-Questo &egrave; il pi&ugrave; dettagliato algoritmo dell'event loop: (sebbene ancora semplicistico rispetto alla [specification](https://html.spec.whatwg.org/multipage/webappapis.html#event-loop-processing-model)):
-=======
-A more detailed event loop algorithm (though still simplified compared to the [specification](https://html.spec.whatwg.org/multipage/webappapis.html#event-loop-processing-model)):
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+Questo è il più dettagliato algoritmo dell'event loop: (sebbene ancora semplicistico rispetto alla [specification](https://html.spec.whatwg.org/multipage/webappapis.html#event-loop-processing-model)):
 
 1. Rimuovi dalla coda ed esegui il task meno recente dalla coda dei *macrotask*  (ad esempio "script").
 2. Esegui tutti i *microtasks*:
-    - Se la cosa dei microtask non &egrave; vuota:
+    - Se la cosa dei microtask non è vuota:
         - Rimuovi dalla coda ed esegui il meno recente dei microtask.
 3. Renderizza le modifiche se ve ne sono.
-4. Se la coda dei macrotask &egrave; vuota, vai in sleep fino al prossimo  macrotask.
+4. Se la coda dei macrotask è vuota, vai in sleep fino al prossimo  macrotask.
 5. Vai al passo 1.
 
 Per schedulare un nuovo *macrotask*:
 - Usa un `setTimeout(f)` ritardo zero.
 
-<<<<<<< HEAD
-Questo potrebbe essere usato per divitere task di calcolo pesante in pezzi più piccoli, di modo che nello spazio tra questi, il browser possa eseguire altre operazioni.
-=======
-That may be used to split a big calculation-heavy task into pieces, for the browser to be able to react to user events and show progress between them.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+Questo potrebbe essere usato per dividere task di calcolo pesante in pezzi più piccoli, di modo che nello spazio tra questi, il browser possa eseguire altre operazioni.
 
-Inoltre, vengono usati nei gestori degli eventi per schedulre una azione dopo che l'evento &egrave; stato del tutto gestito (bubbling completato)
+Inoltre, vengono usati nei gestori degli eventi per pianificare una azione dopo che l'evento è stato del tutto gestito (bubbling completato)
 
 Per schedulare un nuovo *microtask*
 - Usa `queueMicrotask(f)`.
 - Anche i gestori promise passando attraverso la coda dei microtask.
 
-Non ci possono essere gestioni di UI o di networking tra i microtask, perchè i microtasks vengono eseguiti immediatamente uno dopo l'altro.
+Non ci possono essere gestioni di UI o di networking tra i microtask, perché i microtasks vengono eseguiti immediatamente uno dopo l'altro.
 
 Ma cosa succederebbe se uno  volesse che la coda `queueMicrotask` eseguisse una funzione in maniera asincrona, mantenendo però il contesto dell'ambiente.
 
@@ -404,9 +327,5 @@ I Web Workers sono un modo per eseguire del codice in un altro thread parallelo.
 
 I Web Workers possono scambiare messaggi con il processo principale, ma hanno le loro variabili ed i loro event loop.
 
-<<<<<<< HEAD
-I Web Workers non hanno accesso al DOM, quindi sono adatti principalmente per i calcoli, per usare contemporaneamente pi&ugrave; cores della CPU.
-=======
 Web Workers do not have access to DOM, so they are useful, mainly, for calculations, to use multiple CPU cores simultaneously.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 ```

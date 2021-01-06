@@ -7,13 +7,7 @@ I Cookies vengono solitamente impostati dal web-server utilizzando l'HTTTP-heade
 il browser li aggiunge automaticamente a (quasi) ogni richiesta dello stesso dominio che sta utilizzando `Cookie` HTTP-header.
 
 
-<<<<<<< HEAD
 Uno degli usi più comune è l'autenticazione:
-=======
-1. Upon sign in, the server uses `Set-Cookie` HTTP-header in the response to set a cookie with a unique "session identifier".
-2. Next time when the request is set to the same domain, the browser sends the cookie over the net using `Cookie` HTTP-header.
-3. So the server knows who made the request.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 1 In seguito al log-in, il server usa l'HTTP-header `Set-Cookie` in risposta all'impostazione del cookie che abbia un unico
 "identificativo di sessione".
@@ -23,7 +17,7 @@ usando l'HTTP-header `Cookie`.
 
 3 Così il server sa chi ha fatto la richiesta.
 
-Possiamo accedere ai cookies dal browser, utilizzando la propietà document.cookie.
+Possiamo accedere ai cookies dal browser, utilizzando la proprietà document.cookie.
 
 Esistono tanti altri trucchi riguardo i cookies e le loro opzioni. In questo capitolo andremo ad analizzarli nel dettaglio.
 
@@ -67,10 +61,10 @@ Per esempio, questo comando imposta un cookie con il nome `user` e il valore `Jo
 document.cookie = "user=John"; // aggiorna solo il cookie chiamato 'user'
 alert(document.cookie); //  mostra tutti i cookies
 ```
-Se fate partire il programma, probabilmente vedrete diversi cookies. Questo perchè l'operazione `document.cookie=` 
-non sovrascrive tutti i cookies. Imposta solo il cookie mezionato ovvero `user`.
+Se fate partire il programma, probabilmente vedrete diversi cookies. Questo perché l'operazione `document.cookie=` 
+non sovrascrive tutti i cookies. Imposta solo il cookie menzionato ovvero `user`.
 
-Tencicamente, il nome e il valore possono avere qualsiasi carattere, per mantenere la formattazione valida dovrebbero essere
+Tecnicamente, il nome e il valore possono avere qualsiasi carattere, per mantenere la formattazione valida dovrebbero essere
 giustificati utilizzando la funzione interna `encodeURIComponent`:
 
 ```js run
@@ -86,16 +80,10 @@ alert(document.cookie); // ...; my%20name=John%20Smith
 
 
 ```warn header="Limitations"
-<<<<<<< HEAD
  Ci sono alcune limitazioni:
 -La coppia `name=value`, in seguito a 'encodeURIComponent', non dovrebbe essere più grande di 4kb. Cosi non manterremo
  nulla di troppo grande in un cookie.
 - Il numero totale di cookies per dominio è limitato a circa 20+, ma il limite esatto dipende dal browser.
-=======
-There are few limitations:
-- The `name=value` pair, after `encodeURIComponent`, should not exceed 4KB. So we can't store anything huge in a cookie.
-- The total number of cookies per domain is limited to around 20+, the exact limit depends on a browser.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 ```
 
 I Cookies hanno diverse opzioni, molte di queste sono importanti e dovrebbero essere impostate.
@@ -115,7 +103,7 @@ Riguardo l'url con il prefisso di destinazione, il cookie sarà accessibile per 
 
 Se un cookie è impostato come `path=/admin`, è visibile nelle pagine `/admin` e `/admin/qualcosa`, ma non in `/home` o `/adminpage`.
 
-Solitamente, dovremmo impostare `path` nella cartella principale: `path=/` affinche il cookie sia accessibile da tutte le pagine del sito.
+Solitamente, dovremmo impostare `path` nella cartella principale: `path=/` affinché il cookie sia accessibile da tutte le pagine del sito.
 
 ## dominio
 
@@ -125,7 +113,7 @@ Un dominio in cui il cookie è accessibile. In realtà, ci sono delle limitazion
 
 Di default, un cookie è accessibile solo nel dominio in cui è stato impostato. Cosi se il cookie è stato impostato da `site.com`, non lo otterremo su `other.com`
 
-...Inoltre, non otterremo il cookie nel subdominio`forum.site.com`!
+...Inoltre, non otterremo il cookie nel sottodominio `forum.site.com`!
 
 ```js
 // at site.com
@@ -139,11 +127,11 @@ alert(document.cookie); // no user
 
 è una restrizione per motivi di sicurezza, per consentirci di immagazzinare dati sensibili nei cookies che dovrebbero essere disponibili solo in un sito.
 
-...Ma se vogliamo concedere a subdomini come `forum.site.com` di ottenere un cookie, questo è possibile. Mentre impostiamo un cookie su `site.com`, dovremmo espressamente selezionare l'opzione `domain` nella cartella principale del dominio: `domain=site.com`:
+...Ma se vogliamo concedere a sottodomini come `forum.site.com` di ottenere un cookie, questo è possibile. Mentre impostiamo un cookie su `site.com`, dovremmo espressamente selezionare l'opzione `domain` nella cartella principale del dominio: `domain=site.com`:
 
 ```js
 // at site.com
-// rende il cookie accessibile su ogni subdominio *.site.com:
+// rende il cookie accessibile su ogni sottodominio *.site.com:
 document.cookie = "user=John; domain=site.com"
 
 // dopo
@@ -152,7 +140,7 @@ document.cookie = "user=John; domain=site.com"
 alert(document.cookie); // possiede un cookie user=John
 ```
 
-Per ragioni storiche, `domain=.site.com` (un punto prima di `site.com`) funziona nello stesso modo, gararntendo accesso al cookie dal subdominio. Questa è una vecchia notazione, dovrebbe essere utilizzata se dobbiamo supportare vecchi browsers.
+Per ragioni storiche, `domain=.site.com` (un punto prima di `site.com`) funziona nello stesso modo, garantendo accesso al cookie dal sottodominio. Questa è una vecchia notazione, dovrebbe essere utilizzata se dobbiamo supportare vecchi browsers.
 
 
 RIcapitolando, l'opzione `domain`ci consente di rendere un cookie accessibile ai subdomini.
@@ -161,13 +149,13 @@ RIcapitolando, l'opzione `domain`ci consente di rendere un cookie accessibile ai
 
 Di default, se un cookie non ha una di queste opzioni, sparisce quando il browser viene chiuso. Questo tipo di cookie vengono chiamati 'cookie di sessione'.
 
-Affinchè il cookie sopravviva una volta che il browser è stato chiuso, possiamo impostare le opzioni `expires` or `max-age`.
+Affinché il cookie sopravviva una volta che il browser è stato chiuso, possiamo impostare le opzioni `expires` or `max-age`.
 
 - **`expires=Tue, 19 Jan 2038 03:14:07 GMT`**
 
 La data di scadenza del cookie, quando il browser lo cancellerà automaticamente.
 
-La data dovra essere esattamente in questo formato, nel fuso orario GMT. Possiamo usare `date.toUTCString` per ottenerla. Per esempio, possiamo impostare il cookie affinchè scada in un giorno:
+La data dovrà essere esattamente in questo formato, nel fuso orario GMT. Possiamo usare `date.toUTCString` per ottenerla. Per esempio, possiamo impostare il cookie affinché scada in un giorno:
 
 ```js
 // +1 giorno da ora
@@ -200,7 +188,7 @@ Il cookie dovrà essere trasferito soltanto tramite HTTPS.
 
 **Per default, se impostiamo un cookie su `http://site.com`, allora apparirà su `https://site.com` e viceversa.**
 
-Questo accade poichè i cookies sono dominio.dipendenti, non distinguono i vari protocolli.
+Questo accade poiché i cookies sono dominio.dipendenti, non distinguono i vari protocolli.
 
 Con questa opzione, se un cookie è impostato su `https://site.com`, non apparirà quando lo stesso sito viene visitato da HTTP, come `http://site.com`.
 Cosi facendo, se un cookie ha contenuto sensibile che non dovrebbe mai essere inviato tramite  protocollo HTTP non criptato, allora [da rivedere] è la cosa giusta da fare.
@@ -213,20 +201,16 @@ document.cookie = "user=John; secure";
 
 ## samesite
 
-Un altro atributo di sicurezza è `samesite`. Progettato per proteggere da attacchi XSRF (cross-site request forgery).
+Un altro attributo di sicurezza è `samesite`. Progettato per proteggere da attacchi XSRF (cross-site request forgery).
 
 Per comprendere il funzionamento e quando è vantaggioso, analizziamo un attacco XSRF.
 
 ### XSRF attack
 
-Immagina di effettuare il log in nel sito `bank.com`. In questo caso hai un cookie di autenticazione da quel sito. Il tuo browsert lo invia a `bank.com`a ogni richiesta, affinchè ti riconosca e esegua tutte le operazioni finanziari personali.
+Immagina di effettuare il log in nel sito `bank.com`. In questo caso hai un cookie di autenticazione da quel sito. Il tuo browser lo invia a `bank.com`a ogni richiesta, affinché ti riconosca e esegua tutte le operazioni finanziari personali.
 
 Ora, mentre stai navigando sul web su un altra finestra, occasionalmente potresti imbatterti nel sito `evil.com`. Questo sito ha un codice JavaScript che invia un form `<form action="https://bank.com/pay">` al sito `bank.com` con campi che iniziano una transazione verso l'account dell'hacker.
 
-<<<<<<< HEAD
-=======
-Now, while browsing the web in another window, you accidentally come to another site `evil.com`. That site has JavaScript code that submits a form `<form action="https://bank.com/pay">` to `bank.com` with fields that initiate a transaction to the hacker's account.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 Il browser invia i cookies ogni volta che visiti il sito `bank.com`, anche se la richiesta proviene da `evil.com`. In questo modo, la banca pensa che sia tu a effettuare i pagamenti.
 
@@ -234,7 +218,7 @@ Il browser invia i cookies ogni volta che visiti il sito `bank.com`, anche se la
 
 Questo processo è chiamato attacco "Cross-site Request Forgery" (in breve, XSRF).
 
-Le banke sono protette da questo tipo di assalto. Tutte le richieste generate da `bank.com` hanno un campo speciale, chiamato "XSRF token di protezione", che una pagina maligna non può generare o estrarre da una pagina remota (precisamente,  il form può essere inviato da quella pagina, ma non può ricevere indietro i dati).
+Le banche sono protette da questo tipo di assalto. Tutte le richieste generate da `bank.com` hanno un campo speciale, chiamato "XSRF token di protezione", che una pagina maligna non può generare o estrarre da una pagina remota (precisamente,  il form può essere inviato da quella pagina, ma non può ricevere indietro i dati).
 Inoltre il sito `bank.com` controlla questo token in ogni richiesta che riceve.
 
 
@@ -253,24 +237,24 @@ Un cookie con  `samesite=strict` non viene mai inviato se l'utente proviene dall
 
 In altre parole, quando un utente segue un link da una mail o invia una richiesta da `evil.com`, o effettua qualsiasi operazione che origini da un altro dominio, il cookie non viene inviato.
 
-Se I cookies di autenticazione possiedono l'opzione  `samesite`, allora l'attacco XSRF non ha speranze di successo, poichè l'invio da `evil.com` arriverà senza cookies. Cosi  `bank.com` non riconoscerà l'utente e non procederà con il pagamento.
+Se I cookies di autenticazione possiedono l'opzione  `samesite`, allora l'attacco XSRF non ha speranze di successo, poiché l'invio da `evil.com` arriverà senza cookies. Cosi  `bank.com` non riconoscerà l'utente e non procederà con il pagamento.
 
 Questa protezione è affidabile. Solo le operazioni che provengono da `bank.com` invieranno il cookie `samesite`, ad esempio una richiesta proveniente da una pagina all interno di `bank.com`
 
 
 Però è presente un piccolo inconveniente.
 
-Quando un utente segue un link leggitimo per `bank.com`, ad esempio nei nostri appunti, sarà sorpreso nel vedere che `bank.com` non li riconoscerà. Questo accade poichè i cookies `samesite=strict` non sono inviati in quel caso.
+Quando un utente segue un link legittimo per `bank.com`, ad esempio nei nostri appunti, sarà sorpreso nel vedere che `bank.com` non li riconoscerà. Questo accade poiché i cookies `samesite=strict` non sono inviati in quel caso.
 
 Possiamo risolvere il problema usando due cookies: uno per 'riconoscimento generale', uno con l'unico scopo di inviare 'Ciao john', l'altro per le operazioni di cambiamento dati con `samesite=strict`.
-In seguito, una persona proveniente dall'esterno del sito vedrà il messaggio di benvenuto, ma affinchè il secondo cookie venga inviato, i pagamenti dovranno essere inizializzati dal sito della banca.
+In seguito, una persona proveniente dall'esterno del sito vedrà il messaggio di benvenuto, ma affinché il secondo cookie venga inviato, i pagamenti dovranno essere inizializzati dal sito della banca.
 
 
 - **`samesite=lax`**
 
 Permette Un approccio più flessibile ma allo stesso tempo protegge da XSRF e non mina l'esperienza dell utente.
 
-Lax mode, come `strict`, proibisce al browser di inviare cookies quando provengono da siti externi, ma aggiunge un eccezzione.
+Lax mode, come `strict`, proibisce al browser di inviare cookies quando provengono da siti esterni, ma aggiunge un eccezione.
 
 Un cookie `samesite=lax` è inviato se entrambi queste condizioni sono vere:
 
@@ -279,7 +263,7 @@ Un cookie `samesite=lax` è inviato se entrambi queste condizioni sono vere:
     La lista completa di metodi HTTP si trova nelle specifiche: [RFC7231 specification](https://tools.ietf.org/html/rfc7231). The full list of safe HTTP methods is in the [RFC7231 specification](https://tools.ietf.org/html/rfc7231). Basically, these are the methods that should be used for reading, but not writing the data. They must not perform any data-changing operations. Following a link is always GET, the safe method.
 
 
-2 L'operazione performa navigazione top-level (cambia l'URL nella barra di indirizzo del browser).
+2 L'operazione esegue navigazione top-level (cambia l'URL nella barra di indirizzo del browser).
 
     Questo solitamente è vero, ma se la navigazione viene effettuata in un `<iframe>`, allora non è top-level. Inoltre metodi JavaScript per richieste dal network non eseguono nessuna navigazione, dunque non sono applicabili.
 
@@ -287,11 +271,7 @@ Quindi, ciò che `samesite=lax` fa è semplicemente garantire alla più comune o
 
 Ma qualsiasi cosa più complicata, come una richiesta network da un altro sito o una richiesta di modulo, perde i cookie.
 
-<<<<<<< HEAD
 Se questo sta bene a te, aggiungere `samesite=lax` probabilmente non incrinerà l'esperienza utente e, allo stesso tempo, aggiungerà protezione.
-=======
-But anything more complicated, like a network request from another site or a form submission loses cookies.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 Nel complesso, `samesite` è un ottima opzione ma ha degli svantaggi:
 
@@ -299,7 +279,7 @@ Nel complesso, `samesite` è un ottima opzione ma ha degli svantaggi:
 
 **Dunque se dipendiamo solamente da samesite per fornire protezione, i vecchi browser saranno vulnerabili.**
 
-Possiamo comunque utilizzare `samesite` insieme con altre misure di protezione, come xsrf tokens, per aggiungere un altro livello di difesa e, in futuro, quando i vecchi  browser verranno dismessi, probabimente potremo utilizzare i token xsrf.
+Possiamo comunque utilizzare `samesite` insieme con altre misure di protezione, come xsrf tokens, per aggiungere un altro livello di difesa e, in futuro, quando i vecchi  browser verranno dismessi, probabilmente potremo utilizzare i token xsrf.
 
 ## httpOnly
 
@@ -310,7 +290,7 @@ Il web-server usa l'header `Set-Cookie` per impostare un cookie e potrebbe impos
 Questa opzione proibisce qualsiasi accesso a JavaScript per quel cookie. Non possiamo vederlo ne manipolarlo utilizzando `document.cookie`.
 
 Questo viene utilizzato come misura cautelare (precauzione), per proteggere da alcuni attacchi in cui un hacker inietta il proprio codice JavaScript nella pagina e aspetta che un utente visiti quella pagina. 
-Questo non dovrebbe essere possibile in ogni caso, poichè un hacker non dovrebbe essere in grado di iniettare il proprio codice all'interno del nostro sito, ma potrebbero esserci dei bug che gli permetterebbero questa azione.
+Questo non dovrebbe essere possibile in ogni caso, poiché un hacker non dovrebbe essere in grado di iniettare il proprio codice all'interno del nostro sito, ma potrebbero esserci dei bug che gli permetterebbero questa azione.
 
 
 Normalmente, se una cosa del genere accadesse, e un utente visita un sito con il codice JavaScript dell'hacker, in quel caso il codice viene eseguito e ottiene accesso a `document.cookie` con i cookies dell'utente contenenti informazioni di autenticazione. Questo è un male.
@@ -374,7 +354,7 @@ function setCookie(name, value, options = {}) {
   document.cookie = updatedCookie;
 }
 
-// Exempio:
+// Esempio:
 setCookie('user', 'John', {secure: true, 'max-age': 3600});
 ```
 
@@ -438,7 +418,7 @@ Se uno script imposta un cookie, allora indipendentemente da dove provenga lo sc
 
 Questo topic non è associato a JavaScript, ma è qualcosa da tenere a mente mentre si impostano i cookies.
 
-Esiste una legislazione in Europa chiamata GDPR, che rinforza il gruppo di regole dei siti internet per rispettare la privacy dell'utent. E una di queste regole richiede un permesso esplicito per tracciare i cookies di un utente.
+Esiste una legislazione in Europa chiamata GDPR, che rinforza il gruppo di regole dei siti internet per rispettare la privacy dell'utente. E una di queste regole richiede un permesso esplicito per tracciare i cookies di un utente.
 
 Notare che questo consenso riguarda solo cookies tracciamento/identificazione/autorizzazione
 
@@ -448,34 +428,27 @@ Dunque, se impostiamo un cookie che salva solo alcune informazioni, ma non tracc
 Se impostiamo un cookie con una sessione di autenticazione o un id di tracciamento, allora dobbiamo richiedere autorizzazione all'utente.
 I siti internet generalmente hanno due varianti per seguire il GDPR. Dovresti averle già incontrate navigando nel web:
 
-1. Se un sito vuole impsotare cookies di tracciamento solo per utenti verificati.
+1. Se un sito vuole impostare cookies di tracciamento solo per utenti verificati.
 
-Per fare questo, il documento di registrazione dovrebbe avere una casella con scritto 'accetta le nostre direttive di privacy' (che descrivono come i cookies sono usati), e l'utente dovrà spuntare la casella affinchè il sito sia libero di impostare i cookies di autenticazione.
+Per fare questo, il documento di registrazione dovrebbe avere una casella con scritto 'accetta le nostre direttive di privacy' (che descrivono come i cookies sono usati), e l'utente dovrà spuntare la casella affinché il sito sia libero di impostare i cookies di autenticazione.
 
 2. Se un sito vuole impostare cookies di tracciamento per chiunque.
 
-Per fare ciò legalmente, un sito mostra uno 'splash screen', per i nuovi visitatori e richiede loro di accettare i cookies. In seguito il sito può impostarli e permette alle persone di vederne il contenuto. Questo potrebbe essere disturbante per i nuovi visitatori. A nessuno piace vedere una finestra must-click' anzichè il contenuto. Ma il GDPR richiede un contratto esplicito.
+Per fare ciò legalmente, un sito mostra uno 'splash screen', per i nuovi visitatori e richiede loro di accettare i cookies. In seguito il sito può impostarli e permette alle persone di vederne il contenuto. Questo potrebbe essere disturbante per i nuovi visitatori. A nessuno piace vedere una finestra must-click' anziché il contenuto. Ma il GDPR richiede un contratto esplicito.
 
 GDPR non riguarda solo i cookies, ma anche altri problemi legati alla privacy, ma questo va al di fuori di questa guida.
 
 
 ## Summary
 
-<<<<<<< HEAD
 `document.cookie` provvede accesso ai cookies
 - scrive operazioni di modifica solo nei cookies menzionati al suo interno.
 - name/value devono essere codificati.
 - un cookie fino a 4kb, 20+cookies per sito(dipende dal browser).
-=======
-`document.cookie` provides access to cookies
-- write operations modify only cookies mentioned in it.
-- name/value must be encoded.
-- one cookie up to 4KB, 20+ cookies per site (depends on a browser).
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 Opzioni del cookie:
 - `path=/`, il percorso di default, rende il cookie visibile solo all'interno di quel percorso.
-- `domain=site.com`, di default un cookie è visibile solo nel domino corrente. se esplicito nel dominio, rende il cookie visibile nei subdomini.
+- `domain=site.com`, di default un cookie è visibile solo nel domino corrente. se esplicito nel dominio, rende il cookie visibile nei sottodomini.
 .
 - `expires` or `max-age` imposta la scadenza del cookie, senza questa informazioni, il cookie viene cancellato quando il browser viene chiuso.
 - `secure` rende un cookie HTTPS-only
@@ -483,4 +456,4 @@ Opzioni del cookie:
 
 Additionally:
 - Cookies di terze parti potrebbero essere bloccati dal browser, esempio Safari è impostato in questo modo di default.
-- Quando si imposta un cookie di tracciamento per cittadini Europei, il GDPR impine di richeidere il permesso all'utente.
+- Quando si imposta un cookie di tracciamento per cittadini Europei, il GDPR impone di richiedere il permesso all'utente.
