@@ -102,11 +102,11 @@ In JavaScript, ci sono 3 tipi di apici.
 
 1. Apici doppi: `"Hello"`.
 2. Apice singolo: `'Hello'`.
-3. Accento grave: <code>&#96;Hello&#96;</code>.
+3. Backtick: <code>&#96;Hello&#96;</code>.
 
 Gli apici doppi e singoli sono apici "semplici". In JavaScript li tratta allo stesso modo.
 
-L'accento grave (backticks) sono degli apici utilizzati per definire stringhe con "funzionalità estese". Ci consentono di integrare variabili ed espressioni in una stringa racchiudendola in `${…}`, per esempio:
+Il backtick è un tipo di apice utilizzato per definire stringhe con "funzionalità estese". Ci consente di integrare variabili ed espressioni in una stringa racchiudendola tra `${…}`, per esempio:
 
 ```js run
 let name = "John";
@@ -120,7 +120,7 @@ alert( `the result is *!*${1 + 2}*/!*` ); // il risultato è 3
 
 L'espressione all'interno di `${…}` viene valutata ed il risultato diventa parte della stringa. Possiamo metterci qualsiasi cosa: una variabile come `name` oppure un espressione aritmetica come `1 + 2` o qualcosa di più complesso.
 
-Nota che questo è possibile sono tramite l'accento grave. Gli altri apici non lo consentono!
+Nota che questo è possibile sono tramite l'uso del backtick. Gli altri apici non lo consentono!
 ```js run
 alert( "the result is ${1 + 2}" ); // il risultato è ${1 + 2} (le virgolette non fanno nulla)
 ```
@@ -250,7 +250,7 @@ Le ultime tre linee potrebbero richiedere una spiegazione ulteriore:
 
 1. `Math` è un oggetto integrato che fornisce operazioni matematiche avanzate. Lo studieremo nel capitolo <info:number>. Qui ha il semplice scopo di rappresentare un oggetto.
 2. Il risultato di `typeof null` è `"object"`. Questo è un errore del linguaggio, ufficialmente riconosciuto e mantenuto per retro-compatibilità. Ovviamente, `null` non è un oggetto. E' un valore speciale che fa da tipo a se stesso. Quindi, nuovamente, questo è un errore del linguaggio.
-3. Il risultato di `typeof alert` è `"function"`, perché `alert` è una funzione del linguaggio. Studieremo le funzioni nel prossimo capitolo, e vedremo che non c'e nessun tipo "funzione" nel linguaggio. Le funzioni appartengono al tipo oggetto. Ma `typeof` le tratta differentemente. Formalmente, è errato, ma molto utile nella pratica.
+3. Il risultato di `typeof alert` è `"function"`, poiché `alert` è una funzione del linguaggio. Studieremo le funzioni nel prossimo capitolo, e vedremo che non c'e nessun tipo "funzione" nel linguaggio. Le funzioni appartengono al tipo oggetto. Ma `typeof` le tratta differentemente. Formalmente, è errato, ma molto utile nella pratica.
 
 ## Riepilogo
 
