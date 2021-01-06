@@ -5,15 +5,11 @@ Si crei un'espressione regolare per trovare i colori HTML in notazione `#ABCDEF`
 Un esempio di uso:
 
 ```js
-<<<<<<< HEAD:9-regular-expressions/07-regexp-quantifiers/2-find-html-colors-6hex/task.md
 let reg = /...la tua regexp.../
-=======
-let regexp = /...your regexp.../
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864:9-regular-expressions/09-regexp-quantifiers/2-find-html-colors-6hex/task.md
 
 let str = "color:#121212; background-color:#AA00ef bad-colors:f#fddee #fd2 #12345678";
 
 alert( str.match(regexp) )  // #121212,#AA00ef
 ```
 
-P.S. In questo esercizio non è richiesto di intercettare i colori espressi anche in altri formati come: `#123` o `rgb(1,2,3)` ecc.
+P.S. In questo esercizio non ï¿½ richiesto di intercettare i colori espressi anche in altri formati come: `#123` o `rgb(1,2,3)` ecc.

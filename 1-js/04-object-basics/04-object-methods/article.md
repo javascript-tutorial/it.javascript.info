@@ -32,19 +32,11 @@ user.sayHi = function() {
 user.sayHi(); // Hello!
 ```
 
-<<<<<<< HEAD
 Qui abbiamo appena utilizzato un espressione di funzione per creare una funzione ed assegnarla alla proprietà `user.sayHi` dell'oggetto.
 
 Successivamente possiamo chiamarla. Ora l'utente potrà parlare!
 
 Una funzione che è una proprietà di un oggetto si chiama *metodo*.
-=======
-Here we've just used a Function Expression to create a function and assign it to the property `user.sayHi` of the object.
-
-Then we can call it as `user.sayHi()`. The user can now speak!
-
-A function that is a property of an object is called its *method*.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 Quindi, nell'esempio abbiamo un metodo `sayHi` per l'oggetto `user`.
 
@@ -56,7 +48,7 @@ let user = {
 };
 
 *!*
-// prima la dichiaramo
+// prima la dichiariamo
 function sayHi() {
   alert("Hello!");
 };
@@ -68,17 +60,10 @@ user.sayHi = sayHi;
 user.sayHi(); // Hello!
 ```
 
-<<<<<<< HEAD
 ```smart header="Programmazione orientata agli oggetti"
 Quando scriviamo codice utilizzando gli oggetti per rappresentare le entità, questa viene definita [programmazione orientata agli oggetti](https://en.wikipedia.org/wiki/Object-oriented_programming), in breve: "OOP".
 
 OOP è una grande cosa, un ambito di interesse con i propri studi. Come scegliere le giuste entità? Come organizzare le interazioni tra loro? Questa è l'architettura di un codice, e ci sono molti libri importanti che trattano questo argomento, come "Design Patterns: Elements of Reusable Object-Oriented Software" di E.Gamma, R.Helm, R.Johnson, J.Vissides oppure "Object-Oriented Analysis and Design with Applications" di G.Booch, e molti altri.
-=======
-```smart header="Object-oriented programming"
-When we write our code using objects to represent entities, that's called [object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming), in short: "OOP".
-
-OOP is a big thing, an interesting science of its own. How to choose the right entities? How to organize the interaction between them? That's architecture, and there are great books on that topic, like "Design Patterns: Elements of Reusable Object-Oriented Software" by E. Gamma, R. Helm, R. Johnson, J. Vissides or "Object-Oriented Analysis and Design with Applications" by G. Booch, and more.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 ```
 ### La forma breve dei metodi
 
@@ -175,28 +160,18 @@ let user = {
 let admin = user;
 user = null; // sovrascriviamo per rendere tutto più ovvio
 
-<<<<<<< HEAD
-admin.sayHi(); // Whoops! all'interno di sayHi(), viene utilizzato il vecchio name! Errore!
-=======
 *!*
-admin.sayHi(); // TypeError: Cannot read property 'name' of null
+admin.sayHi(); // Errore: non possiamo leggere la proprietà 'name' di null
 */!*
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 ```
 
 Se scriviamo `this.name` piuttosto di `user.name` all'interno di `alert`, il codice funzionerà.
 
 ## "this" non ha limiti
 
-<<<<<<< HEAD
-In JavaScript, la parola chiave "this" si comporta diversamente da molti altri linguaggi di programmazione. Primo, può essere utilizzata in ogni funzione.
+In JavaScript, la parola chiave "this" si comporta diversamente da molti altri linguaggi di programmazione. Essa può essere usata in qualsiasi funzione, anche se non si tratta di un metodo di un oggetto.
 
 Non c'è alcun errore di sintassi in un codice come questo:
-=======
-In JavaScript, keyword `this` behaves unlike most other programming languages. It can be used in any function, even if it's not a method of an object.
-
-There's no syntax error in the following example:
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 ```js
 function sayHi() {
@@ -247,127 +222,20 @@ In questo caso `this`  è `undefined` in modalità strict. Se tentiamo di accede
 
 Se non è attiva la modalità strict (quindi se ci dimentichiamo `use strict`) il valor di `this` in questo sarà *l'oggetto globale* (`window` in un browser, lo studieremo più avanti nel capitolo [](info:global-object)). Questo strano comportamento ha delle motivazioni storiche, che `"use strict"` risolve.
 
-<<<<<<< HEAD
-Va detto che solitamente una chiamata a funzione che utilizza `this` senza un oggetto non è comune, nella maggior part dei casi è un errore di programmazione. Se una funzione utilizza `this`, ha senso che venga invocata nel contesto di un oggetto.
-=======
-Usually such call is a programming error. If there's `this` inside a function, it expects to be called in an object context.
+Solitamente questo tipo di chiamate rappresenta un errore di programmazione. Se c'è un `this` all'interno di una funzione, ci si aspetta che sia chiamato nel contesto di un oggetto.
 ````
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 ```smart header="Le conseguenze della libertà di `this`"
 Se avete utilizzato altri linguaggi di programmazione, probabilmente la vostra idea è di un "`this` limitato", quando viene definito un metodo in un oggetto questo avrà sempre in `this` il riferimento all'oggetto.
 
-<<<<<<< HEAD
 In JavaScript `this` è "libero", il suo valore viene prelevato durante l'esecuzione e non dipende da dove il metodo è stato definito, ma piuttosto dall'oggetto "prima del punto".
 
-Il concetto di valutare `this` durante l'esecuzione ha i suoi pregi e difetti. Da una parte una funzione può essere riutilizzata per oggetti diversi. Questa grande flessibilità può essere fonte di molti errori.
+Il concetto di valutare `this` durante l'esecuzione ha i suoi pregi e difetti. Da una parte una funzione può essere riutilizzata per oggetti diversi, dall'altra questa grande flessibilità può essere fonte di molti errori.
 
-In questa guida non vogliamo giudicare le scelte di design effettuate. Ci concentriamo su come le cose funzionano, come trarre benefici ed evitare errori.
-```
-
-## Le parti interne: il tipo riferimento
-
-```warn header="Caratteristiche del linguaggio più profonde"
-Questa sezione coprirà un argomento avanzato, per poter capire meglio alcuni casi limite.
-
-Se volete potete saltare questa sezione o posticiparne la lettura.
-```
-
-Una chiamata complessa può perde `this`, ad esmpio:
-
-```js run
-let user = {
-  name: "John",
-  hi() { alert(this.name); },
-  bye() { alert("Bye"); }
-};
-
-user.hi(); // John (la chiamata semplice funzione)
-
-*!*
-// ora proviamo a chiamare user.hi o user.bye in base a name
-(user.name == "John" ? user.hi : user.bye)(); // Errore!
-*/!*
-```
-
-Nell'ultima riga c'è un operatore ternario che deve decidere tra `user.hi` o `user.bye`. In questo caso `user.hi`.
-
-Il metodo viene immediatamente chiamato con le parentesi `()`. Ma non funziona correttamente!
-
-Abbiamo visto che la chiamata ritorna un errore, questo è dovuto al fatto che il valore di `"this"` all'interno della chiamata diventa `undefined`.
-
-Questo funziona (oggetto punto metodo):
-```js
-user.hi();
-```
-
-Questo non funziona (valutazione del metodo):
-```js
-(user.name == "John" ? user.hi : user.bye)(); // Errore!
-```
-
-Perché? Se voglia capire perché accade questo, dobbiamo capire come funziona la chiamata `obj.method()`.
-
-Guardandola da più vicino, possiamo notare due operazioni in `obj.method()`:
-
-1. Prima, il punto `'.'` ritorna la proprietà `obj.method`.
-2. Poi la parentesi `()` la esegue.
-
-Quindi, come vengono passate le informazioni riguardo `this` dalla prima alla seconda parte?
-
-Se poniamo queste operazioni in due righe separate, allora `this` verrà certamente perso:
-
-```js run
-let user = {
-  name: "John",
-  hi() { alert(this.name); }
-}
-
-*!*
-// preleviamo la funzione e la invochiamo successivamente
-let hi = user.hi;
-hi(); // Errore, perhcé this è undefined
-*/!*
-```
-
-Qui `hi = user.hi` mette la funzione nella variabile, e nella riga successiva viene chiamata da sola, non c'è nessun `this`.
-
-**Per rendere funzionante `user.hi()`, JavaScript usa un trucco -- il punto `'.'` non ritorna una funzione, ma un speciale valore di [tipo riferimento](https://tc39.github.io/ecma262/#sec-reference-specification-type).**
-
-Il tipo riferimento è un "tipo specifico". Noi non possiamo utilizzarlo esplicitamente, viene usato internamente dal linguaggio.
-
-Il valore del tipo riferimento è una combinazione di tre valori `(base, name, strict)`, dove:
-
-- `base` è l'oggetto.
-- `name` è la proprietà.
-- `strict` è vero se `use strict` è attivo.
-
-Il risultato dell'accesso ad un proprietà `user.hi` non è una funzione, ma un valore di tipo riferimento. Per `user.hi` con la modalità strict attiva:
-
-```js
-// Reference Type value
-(user, "hi", true)
-```
-
-Quando le parentesi `()` vengono chiamate sul tipo riferimento, queste ricevono le informazioni riguardo l'oggetto e i suoi metodi, e possono settare il  `this` (`=user` in questo caso).
-
-Qualsiasi operazione come l'assegnazione `hi = user.hi` scartano il tipo riferimento, prendono il valore di `user.hi` (una funzione) e lo ritornano per l'assegnazione. Quindi qualsiasi operazione ulteriore sul tipo riferimento perde il `this`.
-
-Quindi il valore `this` viene passato solamente chiamando la funzione direttamente usando la notazione puntata `obj.method()` o le parentesi quadre `obj['method']()`    (vanno bene entrambe). Più avanti in questa guida, studieremo vari modi per risolvere il problema come [func.bind()](/bind#solution-2-bind).
-
-## Le funzioni freccia non hanno "this"
-
-Le funzioni freccia sono speciali: non hanno un proprio `this`. Se proviamo a riferirci a `this` all'interno di una funzione di questo tipo, verrà preso dal contesto esterno.
-=======
-In JavaScript `this` is "free", its value is evaluated at call-time and does not depend on where the method was declared, but rather on what object is "before the dot".
-
-The concept of run-time evaluated `this` has both pluses and minuses. On the one hand, a function can be reused for different objects. On the other hand, the greater flexibility creates more possibilities for mistakes.
-
-Here our position is not to judge whether this language design decision is good or bad. We'll understand how to work with it, how to get benefits and avoid problems.
+La nostra posizione non è di giudicare se questa caratteristica del linguaggio sia buona o cattiva, ma si tratta di capire come lavorare con essa sfruttandone i benefici ed evitando i problemi.
 ```
 
 ## Arrow functions have no "this"
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 Ad esempio, qui `arrow()` usa `this` preso dal metodo esterno `user.sayHi()`:
 
