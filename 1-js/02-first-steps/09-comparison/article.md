@@ -5,9 +5,9 @@ Molti operatori di confronto già li conosciamo dalla matematica:
 - Maggiore/minore: <code>a &gt; b</code>, <code>a &lt; b</code>.
 - Maggiore/minore o uguale: <code>a &gt;= b</code>, <code>a &lt;= b</code>.
 - Uguaglianza: `a == b` (da notare che il doppio simbolo `=` indica un test di uguaglianza, mentre il simbolo unico `a = b` rappresenta un' assegnazione).
-- Non uguale. In matematica la notazione è <code>&ne;</code>, mentre in JavaScript viene scritto come <code>a != b</code>.
+- Disuguaglianza. In matematica la notazione è <code>&ne;</code>, mentre in JavaScript viene scritto come <code>a != b</code>.
 
-In questo articolo impareremo più approfonditamente i vari tipi di confronto, come vengono gestiti in javascript, incluse alcune importanti peculiarità
+In questo articolo impareremo più approfonditamente i vari tipi di confronto, come vengono gestiti in JavaScript, incluse alcune importanti peculiarità
 
 ## Il risultato è booleano
 
@@ -64,7 +64,7 @@ Mentre il secondo confronto tra `"Glow"` e `"Glee"` richiede più passi poiché 
 ```smart header="Non un vero e proprio dizionario, ma un ordine Unicode"
 L'algoritmo di confronto esaminato sopra è molto simile a quello utilizzato nei dizionari cartacei o nelle agende telefoniche, ma non è esattamente lo stesso.
 
-Ad esempio, le lettere maiuscole contano. La lettera maiuscola `"A"` non è uguale alla stessa minuscola `"a"`. Qual'è la più grande? La maggiore è  quella minuscola. Come mai? Perché le lettere minuscole hanno un indice maggiore nella tabella di encoding utilizzata JavaScript (Unicode). Ritorneremo nei dettagli specifici e alle conseguenze nel capitolo <info:string>.
+Ad esempio, le lettere maiuscole e minuscole contano. La lettera maiuscola `"A"` non è uguale alla lettera minuscola `"a"`. Qual'è la più grande? La maggiore è  quella minuscola. Come mai? Perché le lettere minuscole hanno un indice maggiore nella tabella di encoding utilizzata JavaScript (Unicode). Ritorneremo nei dettagli specifici e alle conseguenze nel capitolo <info:string>.
 ```
 
 ## Confronti tra tipi diversi
