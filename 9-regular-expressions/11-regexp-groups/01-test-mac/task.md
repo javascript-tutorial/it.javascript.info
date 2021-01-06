@@ -10,7 +10,7 @@ Uso:
 ```js
 let reg = /la tua regexp/;
 
-alert( regexp.test('01:32:54:67:89:AB') ); // true
+alert( reg.test('01:32:54:67:89:AB') ); // true
 
 alert( reg.test('0132546789AB') ); // false (non ci sono i due punti)
 

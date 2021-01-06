@@ -9,7 +9,7 @@ The optional chaining `?.` is a safe way to access nested object properties, eve
 
 If you've just started to read the tutorial and learn JavaScript, maybe the problem hasn't touched you yet, but it's quite common.
 
-As an example, let's say we have `user` objects that hold the information about our users. 
+As an example, let's say we have `user` objects that hold the information about our users.
 
 Most of our users have addresses in `user.address` property, with the street `user.address.street`, but some did not provide them.
 
@@ -21,7 +21,7 @@ let user = {}; // a user without "address" property
 alert(user.address.street); // Error!
 ```
 
-That's the expected result. JavaScript works like this. As `user.address` is `undefined`, an attempt to get `user.address.street` fails with an error. 
+That's the expected result. JavaScript works like this. As `user.address` is `undefined`, an attempt to get `user.address.street` fails with an error.
 
 In many practical cases we'd prefer to get `undefined` instead of an error here (meaning "no street").
 
@@ -56,7 +56,7 @@ let user = {}; // user has no address
 alert(user.address ? user.address.street ? user.address.street.name : null : null);
 ```
 
-That's just awful, one may even have problems understanding such code. 
+That's just awful, one may even have problems understanding such code.
 
 Don't even care to, as there's a better way to write it, using the `&&` operator:
 
@@ -219,4 +219,4 @@ As we can see, all of them are straightforward and simple to use. The `?.` check
 
 A chain of `?.` allows to safely access nested properties.
 
-Still, we should apply `?.` carefully, only where it's acceptable that the left part doesn't to exist. So that it won't hide programming errors from us, if they occur.
+Still, we should apply `?.` carefully, only where it's acceptable that the left part doesn't exist. So that it won't hide programming errors from us, if they occur.

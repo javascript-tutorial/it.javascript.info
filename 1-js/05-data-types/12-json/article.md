@@ -21,7 +21,7 @@ let user = {
 alert(user); // {name: "John", age: 30}
 ```
 
-...Ma nel processo di sviluppo, potrebbero essere aggiunte/eliminate/rinominate nuove proprietà. Aggiornare costantemente la funzione `toString` non è una buona soluzione. Potremmo provare a ciclare sulle proprietà dell'oggetto, ma cosa succede se l'oggetto contiene oggetti annidati? Dovremmo implementare anche questa conversione. E se dovessimo inviare l'oggetto in rete, dovremmo anche fornire il codice per poterlo "leggere".
+...Ma nel processo di sviluppo, potrebbero essere aggiunte/eliminate/rinominate nuove proprietà. Aggiornare costantemente la funzione `toString` non è una buona soluzione. Potremmo provare a iterare sulle proprietà dell'oggetto, ma cosa succede se l'oggetto contiene oggetti annidati? Dovremmo implementare anche questa conversione. E se dovessimo inviare l'oggetto in rete, dovremmo anche fornire il codice per poterlo "leggere".
 
 Fortunatamente, non c'è bisogno di scrivere del codice per gestire questa situazione.
 
@@ -245,7 +245,7 @@ Fortunatamente, possiamo utilizzare una funzione come `replacer`, piuttosto che 
 
 La funzione verrà invocata per ogni coppia `(key, value)` e dovrebbe ritornare il valore sostitutivo, che verrà utilizzato al posto di quello originale.
 
-Nel nostro caso, possiamo ritornare `value` (il valore stesso della proprietà) in tutti i casi, ad eccezione di `occupiedBy`. Per poter ingorare `occupiedBy`, il codice sotto ritorna `undefined`:
+Nel nostro caso, possiamo ritornare `value` (il valore stesso della proprietà) in tutti i casi, ad eccezione di `occupiedBy`. Per poter ignorare `occupiedBy`, il codice sotto ritorna `undefined`:
 
 ```js run
 let room = {
@@ -275,6 +275,7 @@ name:         John
 name:         Alice
 place:        [object Object]
 number:       23
+occupiedBy: [object Object]
 */
 ```
 

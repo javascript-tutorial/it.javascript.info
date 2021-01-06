@@ -22,9 +22,9 @@ document.body.style.background = 'red'; // rende il background rosso
 setTimeout(() => document.body.style.background = '', 3000); // ritorna back
 ```
 
-Qui abbiamo utilizzato `style.background` per cambaire il color del background di `document.body`, ma ci sono molte altre proprietà, come:
+Qui abbiamo utilizzato `style.background` per cambiare il color del background di `document.body`, ma ci sono molte altre proprietà, come:
 
-- `innerHTML` -- il contenut HTML del nodo.
+- `innerHTML` -- il o HTML del nodo.
 - `offsetWidth` -- la larghezza del nodo (in pixel)
 - ...e molto altro.
 
@@ -51,7 +51,7 @@ Il DOM rappresenta l'HTML sotto forma di alberatura di tag. Questo è come appar
 <div class="domtree"></div>
 
 <script>
-let node1 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n    "},{"name":"TITLE","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"About elk"}]},{"name":"#text","nodeType":3,"content":"\n  "}]},{"name":"#text","nodeType":3,"content":"\n  "},{"name":"BODY","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n  The truth about elk."}]}]}
+let node1 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n  "},{"name":"TITLE","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"About elk"}]},{"name":"#text","nodeType":3,"content":"\n"}]},{"name":"#text","nodeType":3,"content":"\n"},{"name":"BODY","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n  The truth about elk.\n\n\n"}]}]}
 
 drawHtmlTree(node1, 'div.domtree', 690, 320);
 </script>
@@ -101,7 +101,7 @@ Gli strumenti del Browser (ne tratteremo a breve) che lavorano con il DOM non mo
 Questo succede perché essi sono solo dedicati ad abbellire l'HTML e non incidono su come questo viene mostrato (nella maggior parte dei casi).
 <!-- That's because they are mainly used to decorate HTML, and do not affect how it is shown (in most cases). -->
 
-Nelle prossime immmagini del DOM ometteremo gli spazi quando irrilevanti.
+Nelle prossime immagini del DOM ometteremo gli spazi quando irrilevanti.
 <!-- On further DOM pictures we'll sometimes omit them where they are irrelevant, to keep things short. -->
 ```
 
@@ -143,7 +143,7 @@ drawHtmlTree(node4, 'div.domtree', 690, 360);
 </script>
 
 ````warn header="Le tabelle hanno sempre il `<tbody>`"
-Un interessante "caso speciale" è quello delle tabelle. Secondo le specifiche DOM le tabelle devono avere il tag `<tbody>`, ma nell'HTML può (ufficialmente) essere omesso. In questo caso il browser creerà il tag nel DOM automaticamente.
+Un interessante "caso speciale" è quello delle tabelle. Secondo le specifiche DOM le tabelle devono avere il tag `<tbody>`, ma nell'HTML può (ufficialmente) essere omesso. In questo caso il browser creerà il tag `<tbody>` nel DOM automaticamente.
 
 Per il seguente HTML:
 
@@ -185,7 +185,7 @@ Aggiungiamo ulteriori tags e commenti alla pagina:
 <div class="domtree"></div>
 
 <script>
-let node6 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[]},{"name":"BODY","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n  The truth about elk.\n    "},{"name":"OL","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n      "},{"name":"LI","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"An elk is a smart"}]},{"name":"#text","nodeType":3,"content":"\n      "},{"name":"#comment","nodeType":8,"content":"comment"},{"name":"#text","nodeType":3,"content":"\n      "},{"name":"LI","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"...and cunning animal!"}]},{"name":"#text","nodeType":3,"content":"\n    "}]},{"name":"#text","nodeType":3,"content":"\n  \n"}]}]};
+let node6 = {"name":"HTML","nodeType":1,"children":[{"name":"HEAD","nodeType":1,"children":[]},{"name":"BODY","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n  The truth about elk.\n  "},{"name":"OL","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"\n    "},{"name":"LI","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"An elk is a smart"}]},{"name":"#text","nodeType":3,"content":"\n    "},{"name":"#comment","nodeType":8,"content":"comment"},{"name":"#text","nodeType":3,"content":"\n    "},{"name":"LI","nodeType":1,"children":[{"name":"#text","nodeType":3,"content":"...and cunning animal!"}]},{"name":"#text","nodeType":3,"content":"\n  "}]},{"name":"#text","nodeType":3,"content":"\n\n\n"}]}]};
 
 drawHtmlTree(node6, 'div.domtree', 690, 500);
 </script>
@@ -214,7 +214,7 @@ In teoria esistono [12 tipologie di nodo](https://dom.spec.whatwg.org/#node), ma
 
 Per vedere la struttura del DOM in real-time, prova [Live DOM Viewer](http://software.hixie.ch/utilities/js/live-dom-viewer/). Inizia a scrivere e vedrai istantaneamente le modifiche aggiunte al DOM.
 
-Un altro modo per esplorare il DOM è usare gli "Strumenti per sviluppatori" del browser. Strumenti che usamo quando sviluppiamo.
+Un altro modo per esplorare il DOM è usare gli "Strumenti per sviluppatori" del browser. Strumenti che usiamo quando sviluppiamo.
 
 Per procedere in questo modo, apri la pagina web [elks.html](elks.html), apri "Strumenti per sviluppatori" e spostati sulla scheda "Elements".
 
@@ -267,11 +267,11 @@ Gli strumenti per sviluppatori disponibili nel browser rappresentano un grosso a
 
 Un documento HTML/XML è rappresentato nel browser come un'alberatura DOM.
 
-- I tags diventanto nodi elemento e formano la struttura.
+- I tags diventano nodi elemento e formano la struttura.
 - Il testo diventa nodo testuale.
 - ...etc, qualunque cosa presente nell'HTML ha il suo corrispettivo nel DOM, anche i commenti.
 
-È possibile utlizzare gli strumenti per sviluppatori per ispezionare il DOM e modificarlo manualmente.
+È possibile utilizzare gli strumenti per sviluppatori per ispezionare il DOM e modificarlo manualmente.
 
 Con questo terminiamo i concetti base, le azioni più usate e più importanti con cui iniziare. Al sito <https://developers.google.com/web/tools/chrome-devtools> è disponibile una vasta documentazione riguardo i Chrome Developer Tools. Il miglior modo per imparare questi strumenti è cliccare in giro, sperimentare e leggere: la maggior parte delle opzioni sono autoesplicative. Più avanti, una volta appresi i concetti generali, leggi la documentazione e prosegui con il resto.
 

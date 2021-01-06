@@ -1,6 +1,6 @@
 # La soluzione più lenta
 
-Possiamo calcoalre tutte le somme possibili.
+Possiamo calcolare tutte le somme possibili.
 
 La via più semplice è di prendere ogni elemento e calcolare la somma di tutti i sotto-array possibili.
 
@@ -33,7 +33,7 @@ Ad esempio, per `[-1, 2, 3, -9, 11]`:
 11
 ```
 
-Il codice è un ciclo annidato: il ciclo esterno cicla tutti gli elementi dell'array, quello interno esegue le somme a partire dall'elemento corrente.
+Il codice è un ciclo annidato: il ciclo esterno processa tutti gli elementi dell'array, quello interno esegue le somme a partire dall'elemento corrente.
 
 ```js run
 function getMaxSubSum(arr) {
@@ -63,7 +63,7 @@ Per grandi array (1000, 10000 o più elementi) questi algoritmi possono portare 
 
 # Soluzione performante
 
-Iniziamo ad esaminare l'array mantenendo la somma parizale degli elementi nella variabile `s`. Se `s` diventa negativa, allora assegniamo `s=0`. La somma di tutte queste `s` sarà la risposta.
+Iniziamo ad esaminare l'array mantenendo la somma parziale degli elementi nella variabile `s`. Se `s` diventa negativa, allora assegniamo `s=0`. La somma di tutte queste `s` sarà la risposta.
 
 Se la risposta vi sembra troppo vaga, date un'occhiata al codice:
 

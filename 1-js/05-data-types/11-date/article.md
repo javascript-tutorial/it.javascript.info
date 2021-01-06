@@ -31,7 +31,7 @@ Per creare un nuovo oggetto `Date`, chiamiamo `new Date()` con uno dei seguenti 
 
     Il numero di millisecondi passati da questa data vengono detti *timestamp*.
 
-    E' un modo semplice di rappresentare una data. Possiamo sempre creare una data a partire da un timestamp utilizando `new Date(timestamp)`, o possiamo convertire un oggetto `Date` esistente utilizzando il metodo `date.getTime()` (che studieremo sotto).
+    E' un modo semplice di rappresentare una data. Possiamo sempre creare una data a partire da un timestamp utilizzando `new Date(timestamp)`, o possiamo convertire un oggetto `Date` esistente utilizzando il metodo `date.getTime()` (che studieremo sotto).
 
     Dates before 01.01.1970 have negative timestamps, e.g.:
     ```js run
@@ -106,7 +106,7 @@ In più potremmo anche prelevare il giorno della settimana:
 
 **Tutti i metodi sopra ritornano componenti relative all'orario locale.**
 
-Esistono anche le controparti UTC, che ritornano giorno, mese, anno e moltp altro per la zona temporale UTC+0: [getUTCFullYear()](mdn:js/Date/getUTCFullYear), [getUTCMonth()](mdn:js/Date/getUTCMonth), [getUTCDay()](mdn:js/Date/getUTCDay). E' sufficiente inserire `"UTC"` appena dopo `"get"`.
+Esistono anche le controparti UTC, che ritornano giorno, mese, anno e molto altro per la zona temporale UTC+0: [getUTCFullYear()](mdn:js/Date/getUTCFullYear), [getUTCMonth()](mdn:js/Date/getUTCMonth), [getUTCDay()](mdn:js/Date/getUTCDay). E' sufficiente inserire `"UTC"` appena dopo `"get"`.
 
 Se il vostro orario locale è scostato dal UTC, allora il codice sotto potrebbe mostrare orari differenti:
 
@@ -390,10 +390,10 @@ Il metodo [Date.parse(str)](mdn:js/Date/parse) può leggere una data da una stri
 
 Il formato della stringa dovrebbe essere: `YYYY-MM-DDTHH:mm:ss.sssZ`, dove:
 
-- `YYYY-MM-DD` -- è la data: year-month-day.
+- `YYYY-MM-DD` -- è la data: ano-mese-giorno.
 - Il carattere `"T"` viene utilizzato come delimitatore.
-- `HH:mm:ss.sss` -- è l'orario: hours, minutes, seconds e milliseconds.
-- Un parte opzionale `'Z'` che indica la zona oraria nel formato `+-hh:mm`. La singola lettera `Z` rappresenta UTC+0.
+- `HH:mm:ss.sss` -- è l'orario: ore, minuti, secondi e millisecondi.
+- La parte opzionale `'Z'` indica il fuso orario nel formato `+-hh:mm`. La singola lettera `Z` rappresenta UTC+0.
 
 Sono disponibili anche varianti più brevi, come `YYYY-MM-DD` o `YYYY-MM` o anche `YYYY`.
 
@@ -432,7 +432,7 @@ Inoltre, talvolta potremmo aver bisogno di misurazioni più precise. JavaScript 
 alert(`Loading started ${performance.now()}ms ago`);
 // Something like: "Loading started 34731.26000000001ms ago"
 // .26 is microseconds (260 microseconds)
-// more than 3 digits after the decimal point are precision errors, but only the first 3 are correct
+// more than 3 digits after the decimal point are precision errors, only the first 3 are correct
 ```
 
 Node.js possiede un modulo `microtime` e altri metodi. Tecnicamente, la maggior parte degli ambienti forniscono un modo per gestire precisioni più elevate, questo non è pero previsto dall'oggetto `Date`.

@@ -1,7 +1,7 @@
 
 # Map e Set
 
-Ora che abbiamo appreso le nozioni di base riguardo le seguenti strutture dati:
+Finora abbiamo appreso le nozioni di base riguardo le seguenti strutture dati:
 
 - Oggetti, per la memorizzazione di collezioni identificate da chiave.
 - Array, per la memorizzazione di collezioni ordinate.
@@ -10,7 +10,7 @@ Queste non sono però sufficienti nella vita reale. Per esistono ulteriori strut
 
 ## Map
 
-[Map](mdn:js/Map) è una collezione di dati identificati da chiavi, prorpio come un `Object` (Oggetto). La principale differenza è che `Map` accetta chiavi di qualsiasi tipo.
+[Map](mdn:js/Map) è una collezione di dati identificati da chiavi, proprio come un `Object` (Oggetto). La principale differenza è che `Map` accetta chiavi di qualsiasi tipo.
 
 I metodi e le proprietà sono:
 
@@ -69,10 +69,10 @@ Proviamo:
 
 ```js run
 let john = { name: "John" };
+let ben = { name: "Ben" };
 
-let visitsCountObj = {}; // proviamo ad utilizzare un oggetto
-
-visitsCountObj[john] = 123; // proviamo ad utilizzare l'oggetto jhon come chiave
+visitsCountObj[ben] = 234; // proviamo ad utilizzare l'oggetto ben come chiave
+visitsCountObj[john] = 123; // proviamo ad utilizzare l'oggetto jhon come chiave, l'oggetto ben verrà sostituito
 
 *!*
 //  Questo è quello che otteniamo!
@@ -80,7 +80,7 @@ alert( visitsCountObj["[object Object]"] ); // 123
 */!*
 ```
 
-Dal momento che `visitsCountObj` è un oggetto, converte tutte le chiavi, come `john` a stringhe, quindi ottenamo la chiave `"[object Object]"`. Senza dubbio non ciò che ci aspettavamo.
+Dal momento che `visitsCountObj` è un oggetto, converte tutte le chiavi, come `john` e `ben` a stringhe, quindi otteniamo la chiave `"[object Object]"`. Senza dubbio non ciò che ci aspettavamo.
 
 ```smart header="How `Map` confronta le chiavi"
 Per verificare l'equivalenza delle chiavi, `Map`utilizza l'algoritmo [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero). E' quasi la stessa cosa dell'uguaglianza stretta `===`, con la differenza che `NaN` viene considerato uguale a `NaN`. Quindi anche `NaN` può essere utilizzato come chiave.
@@ -115,7 +115,7 @@ let recipeMap = new Map([
   ['onion',    50]
 ]);
 
-// itera sulle chaivi (vegetables)
+// itera sulle chiavi (vegetables)
 for (let vegetable of recipeMap.keys()) {
   alert(vegetable); // cucumber, tomatoes, onion
 }
@@ -176,7 +176,7 @@ let map = new Map(Object.entries(obj));
 alert( map.get('name') ); // John
 ```
 
-In questo esempio, `Object.entries` ritorna un array di coppue chiave/valore: `[ ["name","John"], ["age", 30] ]`. Che è quello di cui `Map` ha bisogno.
+In questo esempio, `Object.entries` ritorna un array di coppie chiave/valore: `[ ["name","John"], ["age", 30] ]`. Che è quello di cui `Map` ha bisogno.
 
 
 ## Object.fromEntries: Object da Map
@@ -269,7 +269,7 @@ for (let user of set) {
 }
 ```
 
-L'alternativa a `Set` potrebbe essere un array di visitatori, aggiungendo del codice per verificare ongi inserimento ed evitare i duplicati, utilizzando [arr.find](mdn:js/Array/find). Ma le performance sarebbero di molto peggiori, perchè questo metodo attraversa tutto l'array per verificare ogni elemento. `Set` è ottimizzato internamente per controllo di unicità.
+L'alternativa a `Set` potrebbe essere un array di visitatori, aggiungendo del codice per verificare ogni inserimento ed evitare i duplicati, utilizzando [arr.find](mdn:js/Array/find). Ma le performance sarebbero di molto peggiori, perché questo metodo attraversa tutto l'array per verificare ogni elemento. `Set` è ottimizzato internamente per controllo di unicità.
 
 ## Iterare un Set
 

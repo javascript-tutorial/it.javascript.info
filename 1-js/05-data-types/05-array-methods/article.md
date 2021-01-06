@@ -105,7 +105,7 @@ let arr = [1, 2, 5];
 
 // dall'indice -1 (un passo dalla fine)
 // cancella 0 elementi,
-// poi inserice 3 e 4
+// poi inserisce 3 e 4
 arr.splice(-1, 0, 3, 4);
 
 alert( arr ); // 1,2,3,4,5
@@ -274,7 +274,7 @@ La sintassi è:
 ```js
 let result = arr.find(function(item, index, array) {
   // se viene ritornato true, viene ritornato l'elemento e l'iterazione si ferma
-  // altrimenti ritorna undeined
+  // altrimenti ritorna undefined
 });
 ```
 
@@ -316,7 +316,7 @@ La sintassi è pressoché la stessa di `find`, ma ritorna un array contenente tu
 
 ```js
 let results = arr.filter(function(item, index, array) {
-  // se viene messo un item true su results e l'iteazione continua
+  // se viene messo un item true su results e l'iterazione continua
   // ritorna un array vuoto per uno scenario falso
 });
 ```
@@ -739,7 +739,7 @@ I metodi elencati sono quelli utilizzati più spesso, sono in grado di coprire i
 
   La funzione `fn` viene invocata su ogni elemento dell'array in maniera simile a `map`. Se qualcuno/tutti i risultati sono `true`, ritorna `true`, altrimenti `false`.
   
-  Quesi metodi si comportano quasi come gli operatori `||` e `&&`: se `fn` ritorna un valore vero, `arr.some()` ritorna immediatamete  `true` e conclude l'iterazione; se `fn` ritorna un valore falso, `arr.every()` ritorna immediatamente `false` e smette di iterare.
+  Questi metodi si comportano quasi come gli operatori `||` e `&&`: se `fn` ritorna un valore vero, `arr.some()` ritorna immediatamente  `true` e conclude l'iterazione; se `fn` ritorna un valore falso, `arr.every()` ritorna immediatamente `false` e smette di iterare.
 
   Possiamo utilizzare `every` per confrontare gli array:
   ```js run

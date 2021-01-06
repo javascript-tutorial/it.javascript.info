@@ -25,7 +25,7 @@ let range = {
 // for(let num of range) ... num=1,2,3,4,5
 ```
 
-Per rendere iterabile `range` (e poter utilizzare correttamente `for..of`) abbiamo bisogno di aggiunger un metodo chiamato `Symbol.iterator` (uno speciale simbolo integrato).
+Per rendere iterabile l'oggetto `range` (e poter quindi utilizzare correttamente `for..of`) abbiamo bisogno di aggiungere un metodo chiamato `Symbol.iterator` (uno speciale simbolo integrato).
 
 1. Quando `for..of` inizia, prova a chiamare questo metodo (o ritorna un errore se non lo trova). Il metodo deve ritornare un *iteratore* -- un oggetto con il metodo `next`.
 2. La possibilità di avanzare di `for..of` funziona *solamente con l'oggetto ritornato*.
@@ -119,7 +119,7 @@ Ovviamente, il ciclo `for..of` diventerebbe infinito. Possiamo comunque fermarlo
 
 Gli array e le stringhe sono gli oggetti su cui si utilizzano di più gli iteratori.
 
-Per una stringa, `for..of` cicla sui caratteri:
+Per una stringa, `for..of` itera sui caratteri:
 
 ```js run
 for (let char of "test") {
@@ -141,7 +141,7 @@ for (let char of str) {
 
 Normalmente, il funzionamento degli iteratori è nascosto al codice esterno. C'è un ciclo `for..of` , che funziona, e questo è tutto ciò che serve sapere.
 
-Ma per capire tutto al meglio vediamo come creare esplicitamente un iteratore.
+Ma per capire approfonditamente, vediamo come creare esplicitamente un iteratore.
 
 Proveremo ad iterare su una stringa allo stesso modo di un ciclo `for..of`, ma con una chiamata diretta. Questo codice crea un iteratore per stringhe e lo richiama "manualmente":
 
@@ -192,7 +192,7 @@ for (let item of arrayLike) {}
 */!*
 ```
 
-Cos'hanno in comune? Entrambi, sia gli array-like che gli oggetti iterabili, solitamente *non sono array*, non hanno metodi come `push`, `pop` etc. Questo potrebbe essere scomodo se lavoriamo con uno di questi oggetti trattandoli come fossero un array.
+Cosa hanno in comune? Entrambi, sia gli array-like che gli oggetti iterabili, solitamente *non sono array*, non hanno metodi come `push`, `pop` etc. Questo potrebbe essere scomodo se lavoriamo con uno di questi oggetti trattandoli come fossero un array.
 
 ## Array.from
 
@@ -292,14 +292,14 @@ alert( str.slice(1, 3) ); // spazzatura (due pezzi da coppie surrogate different
 Gli oggetti che possono essere utilizzati in `for..of` vengono detti *iterabili*.
 
 - Tecnicamente, gli oggetti iterabili devono implementare un metodo chiamato `Symbol.iterator`.
-    - Il risultato di `obj[Symbol.iterator]` viene chiamato un *iteratore*. Che si occupa di gestire l'intero processo di iterazione.
+    - Il risultato di `obj[Symbol.iterator]` viene chiamato un *iteratore*. Esso si occupa di gestire l'intero processo di iterazione.
     - Un iteratore deve avere un metodo denominato `next()` che ritorna un oggetto `{done: Boolean, value: any}`, qui `done:true` indica la fine dell'iterazione, altrimenti `value` contiene il prossimo valore.
 - Il metodo `Symbol.iterator` viene invocato automaticamente da `for..of`, ma possiamo anche farlo noi direttamente.
 - Gli oggetti iterabili integrati come le stringhe o gli array, implementano `Symbol.iterator`.
 - L'iterato che opera con le stringhe è a conoscenza dell'esistenza delle coppie surrogate.
 
 
-Gli oggetti che hanno indici e la proprietà `length` vengono definity *array-like*. Questo tipo di oggetti possono anche possedere altri metodi e proprietà, ma non possiedono gli stessi metodi integrati dagli array.
+Gli oggetti che hanno indici e la proprietà `length` vengono definiti *array-like*. Questo tipo di oggetti possono anche possedere altri metodi e proprietà, ma non possiedono gli stessi metodi integrati dagli array.
 
 Se guardassimo dentro la specifica -- vedremmo che la maggior parte dei metodi integrati assumono di operare con oggetti iterabili o array-like piuttosto che con "veri" array, poiché con questi si riesce ad operare in maniera più astratta.
 

@@ -19,17 +19,11 @@ regexp = /pattern/gmi; // con le flag g,m e i (da approfondire a breve)
 
 Gli slash `"/"` comunicano a JavaScript che stiamo creando una espressione regolare. Hanno lo stesso ruolo delle virgolette per le stringhe.
 
+Gli slash `"/"` vengono usati quando conosciamo l'espressione regolare e possiamo includerla staticamente nel codice, questa è la situazione più comune. Invece `new RegExp` viene usato quando dobbiamo creare un'espressione regolare al volo partendo da una stringa generata dinamicamente.
+
 ## Uso
 
 Per cercare in una stringa, possiamo usare il metodo [search](mdn:js/String/search).
-
-Qui un esempio:
-
-```js run
-let str = "I love Javascript!"; // cercherà qui
-
-let regexp = new RegExp(`<${tag}>`); // same as /<h2>/ if answered "h2" in the prompt above
-```
 
 Il metodo `str.search` cerca la sequenza `pattern:/love/` e restituisce la sua posizione all'interno della stringa. Come si può immaginare, il pattern `pattern:/love/` è la sequenza più semplice possibile. Quel che fa è la semplice ricerca di una sottostringa.
 
@@ -46,7 +40,14 @@ let str = "I love JavaScript!"; // cercherà qui
 
 Quindi se cerchiamo la sequenza `pattern:/love/` avremo lo stesso risultato che otteniamo cercando `"love"`.
 
-Questo vale solo per il momento. Presto creeremo espressioni regolari più complesse e con maggiore potere di ricerca.
+`pattern:s`
+: Enables "dotall" mode, that allows a dot `pattern:.` to match newline character `\n` (covered in the chapter <info:regexp-character-classes>).
+
+`pattern:u`
+: Enables full Unicode support. The flag enables correct processing of surrogate pairs. More about that in the chapter <info:regexp-unicode>.
+
+`pattern:y`
+: "Sticky" mode: searching at the exact position in the text  (covered in the chapter <info:regexp-sticky>)
 
 ```smart header="Colors"
 Da qui in avanti, lo schema di colori è il seguente:

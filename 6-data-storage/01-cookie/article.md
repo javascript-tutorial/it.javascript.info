@@ -9,13 +9,11 @@ il browser li aggiunge automaticamente a (quasi) ogni richiesta dello stesso dom
 
 Uno degli usi più comune è l'autenticazione:
 
-1 In seguito al log-in, il server usa l'HTTP-header `Set-Cookie` in risposta all'impostazione del cookie che abbia un unico
+1. In seguito al log-in, il server usa l'HTTP-header `Set-Cookie` in risposta all'impostazione del cookie che abbia un unico
 "identificativo di sessione".
-
-2 La prossima volta quando la richiesta viene impostata nello stesso dominio, il browser invia il Cookie attraverso la rete
+2. La prossima volta quando la richiesta viene impostata nello stesso dominio, il browser invia il Cookie attraverso la rete
 usando l'HTTP-header `Cookie`.
-
-3 Così il server sa chi ha fatto la richiesta.
+3. Così il server sa chi ha fatto la richiesta.
 
 Possiamo accedere ai cookies dal browser, utilizzando la proprietà document.cookie.
 
@@ -168,21 +166,12 @@ Se impostiamo `expires` a una data nel passato, il cookie viene cancellato.
 
 -  **`max-age=3600`**
 
-Un alternativa a `expires` è quella di specificare la scadenza del cookie in secondi dal momento in cui viene impostato.
 
 Se zero o negativa, il cookie viene cancellato:
 
 ```js
 // cookie verrà cancellato +1 ora da ora.
 document.cookie = "user=John; max-age=3600";
-
-// cancella cookie (lascialo scadere in questo istante)
-document.cookie = "user=John; max-age=0";
-```
-
-## secure
-
-- **`secure`**
 
 Il cookie dovrà essere trasferito soltanto tramite HTTPS.
 
@@ -269,15 +258,9 @@ Un cookie `samesite=lax` è inviato se entrambi queste condizioni sono vere:
 
 Quindi, ciò che `samesite=lax` fa è semplicemente garantire alla più comune operazione 'vai al  sito URL' di avere cookies. Esempio aprire un sito internet da un link all interno di appunti soddisfa queste condizioni.
 
-Ma qualsiasi cosa più complicata, come una richiesta network da un altro sito o una richiesta di modulo, perde i cookie.
 
 Se questo sta bene a te, aggiungere `samesite=lax` probabilmente non incrinerà l'esperienza utente e, allo stesso tempo, aggiungerà protezione.
 
-Nel complesso, `samesite` è un ottima opzione ma ha degli svantaggi:
-
-- `samesite` viene ignorato (non supportato) da browser vecchi, dal 2017 circa.
-
-**Dunque se dipendiamo solamente da samesite per fornire protezione, i vecchi browser saranno vulnerabili.**
 
 Possiamo comunque utilizzare `samesite` insieme con altre misure di protezione, come xsrf tokens, per aggiungere un altro livello di difesa e, in futuro, quando i vecchi  browser verranno dismessi, probabilmente potremo utilizzare i token xsrf.
 
