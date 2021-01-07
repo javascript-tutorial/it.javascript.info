@@ -1,8 +1,8 @@
 # Interazioni: alert, prompt, confirm
 
-Questa parte del tutorial ha l'intenzione di coprire JavaScript cosi per "com'è", senza i ritocchi specifici di ogni ambiente.
+Questa parte del tutorial ha l'intenzione di coprire JavaScript cosi per "com'è", senza le caratteristiche specifiche di ogni ambiente.
 
-Ma continueremo comunque ad utilizzare un browser come ambiente di test. Quindi dovremmo conoscere almeno un paio di funzioni dell'interfaccia utente. In questo capitolo prenderemo familiarità con le funzioni browser `alert`, `prompt` e `confirm`.
+Ma continueremo comunque ad utilizzare il browser come ambiente di test. Per farlo, abbiamo bisogno di conoscere un paio di funzioni utili per l'interazione con l'interfaccia utente. In questo capitolo prenderemo familiarità con le funzioni browser `alert`, `prompt` e `confirm`.
 
 ## alert
 
@@ -12,7 +12,7 @@ Sintassi:
 alert(message);
 ```
 
-Questo mostra un messaggio e mette in pausa l'esecuzione dello script finchè l'utente non preme il pulsante "OK".
+Questo mostra un messaggio e mette in pausa l'esecuzione dello script finché l'utente non preme il pulsante "OK".
 
 Ad esempio:
 
@@ -30,7 +30,7 @@ La funzione `prompt` accetta due argomenti:
 result = prompt(title, [default]);
 ```
 
-Questo mostrerà una modal window con un messaggio testuale, un campo di input per l'utente ed il bottone OK/CANCEL.
+Questo mostrerà una modal window con un messaggio testuale, un campo di input ed il bottone OK/CANCEL.
 
 `title`
 : Il testo da mostrare all'utente.
@@ -42,7 +42,7 @@ Questo mostrerà una modal window con un messaggio testuale, un campo di input p
 Le parentesi quadre intorno a `default` indicano che il parametro è opzionale, non richiesto.
 ```
 
-L'utente potrà scrivere nel campo input del prompt e successivamente premere OK. O in alternativa possono cancellare l'input premendo su CANCEL o la combinazione di tasti `key:Esc`.
+L'utente potrà scrivere nel campo input del prompt e successivamente premere OK. O in alternativa potrà cancellare l'input premendo su CANCEL o la combinazione di tasti `key:Esc`.
 
 La chiamata ad un `prompt` ritorna il testo del campo input o `null` se è stato premuto cancel.
 
@@ -54,8 +54,8 @@ let age = prompt('How old are you?', 100);
 alert(`You are ${age} years old!`); // Tu hai 100 anni!
 ```
 
-````warn header="IE: inserisce sempre un valore `default`"
-Il secondo parametro è opzionale. Ma se non inseriamo niente, Internet Explorer inserirà il testo `"undefined"` nel prompt.
+````warn header="IE: inserisce sempre un valore di `default`"
+Il secondo parametro è opzionale. Ma se non inseriamo nulla, Internet Explorer inserirà il testo `"undefined"` nel prompt.
 
 Provate ad eseguire il seguente codice su Internet Explorer:
 
@@ -92,17 +92,22 @@ alert( isBoss ); // true se viene premuto OK
 
 ## Riepilogo
 
-Abbiamo osservato 3 funzioni specifiche dei browser per interagire con l'utente:
+Abbiamo studiato 3 funzioni specifiche dei browser per interagire con l'utente:
 
 `alert`
 : mostra un messaggio.
 
 `prompt`
-Tutti questi metodi sono dei modal window: quindi interrompono l'esecuzione dello script e non consentono all'utente di interagire con il resto della pagina finchè il messaggio non viene rimosso.
+: mostra un messaggio che richiede all'utente di inserire un input. Ritorna il testo inserito, o  in alternativa, se viene premuto Cancel o il tasto `key:Esc`, ritorna `null`.
+
+`confirm`
+: mostra un messaggio e attende che l'utente prema "OK" o "Cancel". Ritora `true` nel caso in cui venga premuto "OK", `false` altrimenti.
+
+Tutti questi metodi sono dei modal window: quindi interrompono l'esecuzione dello script e non consentono all'utente di interagire con il resto della pagina finché la modal non viene chiusa.
 
 Ci sono due limitazioni che sono condivise da tutti i metodi visti sopra:
 
 1. La posizione esatta della modal window viene decisa dal browser. Solitamente sta al centro.
 2. Anche la grafica della modal window dipende dal browser. Non possiamo modificarla.
 
-Questo è il prezzo da pagare per la semplicità. Ci sono altri modi di mostrare finestre carine, ricche di informazioni e interazioni con l'utente, ma se non ci interessa fare grandi cose, questi metodi possono essere utili.
+Questo è il prezzo da pagare per la semplicità. Ci sono altri modi per mostrare finestre di tipo modal, con più informazioni e maggiori possibilità di interazione con l'utente, ma se non ci interessa fare grandi cose, questi metodi possono essere utili.
