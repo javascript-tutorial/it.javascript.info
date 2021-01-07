@@ -54,7 +54,7 @@ Se hai deciso di contribuire innanzitutto ti ringrazio per il supporto, e ti chi
 
 ### 5. Traduzione
 
-  **Puoi lavorare con qualsiasi editor di testo.** Il tutorial è scritto utilizzando una versione migliorata del linguaggio markdown, facile da utilizzare. Se vuoi avere una preview del tuo lavoro di traduzione, puoi installare localmente questo [server] (https://github.com/javascript-tutorial/server).
+  **Puoi lavorare con qualsiasi editor di testo.** Il tutorial è scritto utilizzando una versione migliorata del linguaggio markdown, facile da utilizzare. Se vuoi avere una preview del tuo lavoro di traduzione, puoi installare localmente questo [server](https://github.com/javascript-tutorial/server).
   
   **Importante**
   Per lavorare alla traduzione ti chiedo di prendere come riferimento l'articolo inglese, che puoi trovare al [seguente repository](https://github.com/javascript-tutorial/en.javascript.info).
