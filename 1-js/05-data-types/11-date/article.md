@@ -390,7 +390,7 @@ Il metodo [Date.parse(str)](mdn:js/Date/parse) può leggere una data da una stri
 
 Il formato della stringa dovrebbe essere: `YYYY-MM-DDTHH:mm:ss.sssZ`, dove:
 
-- `YYYY-MM-DD` -- è la data: ano-mese-giorno.
+- `YYYY-MM-DD` -- è la data: anno-mese-giorno.
 - Il carattere `"T"` viene utilizzato come delimitatore.
 - `HH:mm:ss.sss` -- è l'orario: ore, minuti, secondi e millisecondi.
 - La parte opzionale `'Z'` indica il fuso orario nel formato `+-hh:mm`. La singola lettera `Z` rappresenta UTC+0.

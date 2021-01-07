@@ -59,7 +59,7 @@ Esattamente come:
 let promise = new Promise((resolve, reject) => reject(error));
 ```
 
-La compriamo per poiché, poiché è usata raramente in codice reale.
+la copriamo per completezza, poiché viene usata raramente nel codice reale.
 
 ## Promise.all
 

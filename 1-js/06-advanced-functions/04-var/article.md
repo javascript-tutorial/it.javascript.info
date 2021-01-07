@@ -94,7 +94,7 @@ let user;
 let user; // SyntaxError: 'user' has already been declared
 ```
 
-Con `var`, possiamo ri-dichiarare una variabile quante volte vogliamo. Se proviamo ad utilizzare `var` con una variabile già dichiarata, verrà semplicemente ignorato:
+Con `var`, possiamo ri-dichiarare una variabile quante volte vogliamo. Se proviamo ad utilizzare `var` con una variabile già dichiarata, esso verrà semplicemente ignorato e la variabile verrà normalmente riassegnata:
 
 ```js run
 var user = "Pete";

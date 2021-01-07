@@ -24,9 +24,9 @@ Quando viene invocato il metodo `abort()`:
 - `controller.signal` emette l'evento `"abort"`.
 - la proprietà `controller.signal.aborted` diventa `true`.
 
-Generally, we have two parties in the process: 
-1. The one that performs a cancelable operation, it sets a listener on `controller.signal`.
-2. The one that cancels: it calls `controller.abort()` when needed.
+Generalmente il processo si suddivide in due parti: 
+1. quella che esegue l'operazione annullabile, imposta il listener su `controller.signal`.
+2. quella che annulla: essa chiama `controller.abort()` quando necessario.
 
 Qui vediamo un esempio completo (ancora senza `fetch`):
 

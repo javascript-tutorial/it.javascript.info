@@ -22,9 +22,9 @@ document.body.style.background = 'red'; // rende il background rosso
 setTimeout(() => document.body.style.background = '', 3000); // ritorna back
 ```
 
-Qui abbiamo utilizzato `style.background` per cambiare il color del background di `document.body`, ma ci sono molte altre proprietà, come:
+Qui abbiamo utilizzato `style.background` per cambiare il colore del background di `document.body`, ma ci sono molte altre proprietà, come:
 
-- `innerHTML` -- il o HTML del nodo.
+- `innerHTML` -- il contenuto HTML del nodo.
 - `offsetWidth` -- la larghezza del nodo (in pixel)
 - ...e molto altro.
 

@@ -46,7 +46,7 @@ I moderni 'bundler' utilizzati per 'assemblare' progetti, come [webpack](http://
 
 Nuove caratteristiche di un linguaggio possono riguardare, oltre alla sintassi, operatori e costrutti, anche funzioni integrate.
 
-Ad esempio, `Math.trunc(n)` è una funziona che "taglia" la parte decimale di un numero, es. `Math.trunc(1.23) = 1`.
+Ad esempio, `Math.trunc(n)` è una funziona che "tronca" la parte decimale di un numero, es. `Math.trunc(1.23) = 1`.
 
 In alcuni (vecchissimi) motori JavaScript, non esiste `Math.trunc`, quindi il codice non funzionerebbe.
 
