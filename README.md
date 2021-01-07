@@ -36,7 +36,8 @@ Se hai deciso di contribuire innanzitutto ti ringrazio per il supporto, e ti chi
 
 ### 2. Notifica l'articolo scelto
 
-  Prima di cominciare la traduzione ricordati di lasciare un commento con indicato il nome dell'articolo che desideri tradurre, in questo modo evitiamo che un articolo venga tradotto da più persone.
+  Prima di cominciare la traduzione è importante lasciare un commento all'interno della issue [Italian Translation Progress](https://github.com/javascript-tutorial/it.javascript.info/issues/1)
+  Il commento deve contenere solo il titolo dell'articolo che volete tradurre, in questo modo l'articolo vi viene assegnato e si evita che un articolo venga tradotto da più persone.
 
 ### 3. Esegui un fork del repository
 
@@ -53,6 +54,8 @@ Se hai deciso di contribuire innanzitutto ti ringrazio per il supporto, e ti chi
 
 ### 5. Traduzione
 
+  **Puoi lavorare con qualsiasi editor di testo.** Il tutorial è scritto utilizzando una versione migliorata del linguaggio markdown, facile da utilizzare. Se vuoi avere una preview del tuo lavoro di traduzione, puoi installare localmente questo [server] (https://github.com/javascript-tutorial/server).
+  
   **Importante**
   Per lavorare alla traduzione ti chiedo di prendere come riferimento l'articolo inglese, che puoi trovare al [seguente repository](https://github.com/javascript-tutorial/en.javascript.info).
   Il tutorial è in costante aggiornamento, quindi la versione inglese presente nel repository italiano potrebbe non essere aggiornata all'ultima versione!
@@ -102,6 +105,8 @@ Cosa **non** tradurre:
   ```
 
   - Non è necessario tradurre le immagini utilizzate durante le spiegazioni
+  
+  - All'interno dei files degli esercizi `task.md` la voce iniziale `importance:` non va tradotta
 
 Alcuni termini ricorrenti:
   - Nomi dei tipi vanno mantenuti in inglese:
@@ -127,12 +132,12 @@ Alcuni termini ricorrenti:
   <details>
     <summary>Cosa posso utilizzare per tradurre gli articoli?</summary>
 
-    Puoi tradurre gli articoli utilizzando il tool con cui ti tovi più comodo. Puoi farlo direttamente con l'editor di testo intergato di GitHub se ti trovi più a tuo agio.
+    Puoi tradurre gli articoli utilizzando il tool con cui ti trovi più comodo. Puoi farlo direttamente con l'editor di testo integrato di GitHub se ti trovi più a tuo agio.
 
     L'importante è rispettare le linee guida fornite sopra!
   </details>
 
----
+---  
 ♥  
 Ilya Kantor @iliakan
 

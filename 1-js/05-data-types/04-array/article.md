@@ -1,6 +1,6 @@
 # Array
 
-Gli oggetti consentono la meorizzazione di una collezzione di valori con chiave.
+Gli oggetti consentono la memorizzazione di una collezione di valori con chiave.
 
 Molto spesso abbiamo bisogno di una *collezione ordinata*, dove abbiamo un primo, un secondo, un terzo elemento e cosi via. Ad esempio, abbiamo bisogno di memorizzare una lista di cose: utenti, beni, elementi HTML etc.
 
@@ -10,7 +10,7 @@ Esistono delle speciali strutture dati chiamate `Array`, che consentono la memor
 
 ## Dichiarazione
 
-Ci sono due differenti sintatti per la creazioni di un array vuoto:
+Ci sono due differenti sintassi per la creazioni di un array vuoto:
 
 ```js
 let arr = new Array();
@@ -102,11 +102,11 @@ Una [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) (coda) è 
 
 ![](queue.svg)
 
-Gli array supportano entrambre le operazioni.
+Gli array supportano entrambe le operazioni.
 
-Nella pratica non è strano incontrare questo "tipo" di array. Ad esempiom una coda di messaggi che devono essere mostrati a schermo.
+Nella pratica non è strano incontrare questo "tipo" di array. Ad esempio una coda di messaggi che devono essere mostrati a schermo.
 
-Esiste un altro caso d'uso degli array -- la struttrura dati chiamata [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)). 
+Esiste un altro caso d'uso degli array -- la struttura dati chiamata [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)). 
 
 Questa supporta due operazioni:
 
@@ -254,7 +254,7 @@ L'operazione di `shift` deve seguire 3 passi:
 
 1. Rimuovere l'elemento con indice `0`.
 2. Spostare tutti gli elementi a sinistra, rinumerare gli indici da `1` a `0`, da `2` a `1` e cosi via.
-3. Aggiornare la propreità `length`.
+3. Aggiornare la proprietà `length`.
 
 ![](array-shift.svg)
 
@@ -327,7 +327,7 @@ Generalmente, non dovremmo utilizzare `for..in` per array.
 
 ## Una parola riguardo "length"
 
-La prorietà `length` si aggiorna automaticamente ad ogni modifica. Volendo essere precisi non ne rappresenta la lunghezza, ma l'indirizzo più grande più uno.
+La proprietà `length` si aggiorna automaticamente ad ogni modifica. Volendo essere precisi non ne rappresenta la lunghezza, ma l'indirizzo più grande più uno.
 
 Ad esempio, un singolo elemento con un indirizzo molto alto fornisce una grande lunghezza:
 
@@ -351,7 +351,7 @@ arr.length = 2; // tronca a 2 elementi
 alert( arr ); // [1, 2]
 
 arr.length = 5; // ritorna alla lunghezza precedente
-alert( arr[3] ); // undefined: i valori non vegono ritornati
+alert( arr[3] ); // undefined: i valori non vengono ritornati
 ```
 
 Quindi il modo più semplice per ripulire un array è: `arr.length = 0;`.
@@ -438,10 +438,10 @@ Questo operatore non offre alcun tipo di trattamento speciale per gli array, li 
 Ricordando velocemente le regole:
 
 - Due oggetti sono uguali con `==` solamente se fanno riferimento allo stesso oggetto.
-- Se uno dei due argomenti forniti all'operatore `==` è un oggetto, e l'atlro è un tipo primitivo, allora l'oggetto viene convertito in primitivo, come spiegato nel capitolo <info:object-toprimitive>.
+- Se uno dei due argomenti forniti all'operatore `==` è un oggetto, e l'altro è un tipo primitivo, allora l'oggetto viene convertito in primitivo, come spiegato nel capitolo <info:object-toprimitive>.
 - ...Con l'eccezione di `null` e `undefined` che sono uguali solamente tra di loro.
 
-Il confronto stretto, con l'operatore `===` è ancora più semplice, poichè non converte i tipi. 
+Il confronto stretto, con l'operatore `===` è ancora più semplice, poiché non converte i tipi. 
 
 Quindi, se confrontiamo array con `==`, non saranno mai equivalenti, a meno chè non confrontiamo due variabili che fanno riferimento allo stesso array.
 
@@ -466,8 +466,8 @@ Qui, in entrambi i casi, stiamo confrontando un tipo primitivo con un array. Qui
 Successivamente il processo di confronto procede come descritto nel capitolo <info:type-conversions>:
 
 ```js run
-// dopo averlo convertio, l'array [] equivale a ''
-alert( 0 == '' ); // true, poichè '' viene convertito nel numero 0
+// dopo averlo convertito, l'array [] equivale a ''
+alert( 0 == '' ); // true, poiché '' viene convertito nel numero 0
 
 alert('0' == '' ); // false, nessuna conversione di tipo, sono stringhe differenti
 ```
@@ -483,7 +483,7 @@ Gli array sono uno speciale tipo di oggetto, studiati per immagazzinare e gestir
 - La dichiarazione:
 
     ```js
-    // parentesi quadrea (usuale)
+    // parentesi quadre (usuale)
     let arr = [item1, item2...];
 
     // new Array (eccezionalmente raro)
@@ -504,7 +504,7 @@ Possiamo utilizzare un array come deque con le seguenti operazioni:
 
 Ritorneremo sugli array e studieremo più metodi per aggiungere, rimuovere, estrarre ed ordinare elementi nel capitolo <info:array-methods>.
 
-Per confrontare gli array, non utilizzate l'opertore  `==` (lo stesso vale per `>`, `<` e gli altri), poichè non riservano alcun trattamento speciale per gli array. Li trattano come degli oggetti comuni, e solitamente non è quello che vogliamo.
+Per confrontare gli array, non utilizzate l'operatore  `==` (lo stesso vale per `>`, `<` e gli altri), poiché non riservano alcun trattamento speciale per gli array. Li trattano come degli oggetti comuni, e solitamente non è quello che vogliamo.
 
 Piuttosto si possono utilizzare i cicli come `for..of` per confrontare ogni elemento dei due array.
 

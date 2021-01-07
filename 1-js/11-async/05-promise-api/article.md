@@ -18,7 +18,7 @@ Esattamente come:
 let promise = new Promise(resolve => resolve(value));
 ```
 
-Il metodo è usato quando abbiamo già un valore ma lo vogliamo avre inglobato (wrapped) dentro una promise.
+Il metodo è usato quando abbiamo già un valore ma lo vogliamo avere inglobato (wrapped) dentro una promise.
 
 Per esempio, la funzione `loadCached` chiama l'`url` e ricorda il risultato, così che le chiamate future allo stesso URL lo ritorneranno immediatamente:
 
@@ -59,7 +59,7 @@ Esattamente come:
 let promise = new Promise((resolve, reject) => reject(error));
 ```
 
-La compriamo per poiché, poichè è usata raramente in codice reale.
+la copriamo per completezza, poiché viene usata raramente nel codice reale.
 
 ## Promise.all
 
@@ -155,7 +155,7 @@ Se una promise è respinta (rejects), `Promise.all` è immediatamente respinto, 
 
 Per esempio, se ci sono molte chiamate `fetch` , come nell'esempio sopra, ed una di esse fallisce, le altre continueranno ad essere eseguite, ma `Promise.all` le ignorerà. Probabilmente poi si fermeranno (settle), ma il loro risultato sarà ignorato.
 
-`Promise.all` non fa niente per cancellarle, perché nelle promise non esiste il concetto di "cancellazione". In [un'altro capitolo](fetch-abort) copriremo `AbortController` il cui scopo è aiutarci ocn questo, but ma non è una pare delle API Promise.
+`Promise.all` non fa niente per cancellarle, perché nelle promise non esiste il concetto di "cancellazione". In [un altro capitolo](fetch-abort) copriremo `AbortController` il cui scopo è aiutarci ocn questo, but ma non è una pare delle API Promise.
 ```
 
 ````smart header="`Promise.all(...)` accetta oggetti non-promise in un `iterable`"
@@ -233,7 +233,7 @@ Così, per ogni promise otteniamo il suo stato e `valore/ragione`.
 
 ### Polyfill
 
-Se il broser non supporta `Promise.allSettled`, è facile usare un polyfill:
+Se il browser non supporta `Promise.allSettled`, è facile usare un polyfill:
 
 ```js
 if (!Promise.allSettled) {
@@ -277,9 +277,46 @@ Promise.race([
 Così, il primo risultato/errore diventa il risultato di tutto `Promise.race`. Quando la prima promise ferma (settled) "vince la gara" (wins the race), tutti i risultati/errori successivi sono ignorati.
 
 
+## Promise.any
+
+Similar to `Promise.race`, but waits only for the first fulfilled promise and gets its result. If all of the given promises are rejected, then the returned promise is rejected with [`AggregateError`](mdn:js/AggregateError) - a special error object that stores all promise errors in its `errors` property.
+
+The syntax is:
+
+```js
+let promise = Promise.any(iterable);
+```
+
+For instance, here the result will be `1`:
+
+```js run
+Promise.any([
+  new Promise((resolve, reject) => setTimeout(() => reject(new Error("Whoops!")), 1000)),
+  new Promise((resolve, reject) => setTimeout(() => resolve(1), 2000)),
+  new Promise((resolve, reject) => setTimeout(() => resolve(3), 3000))
+]).then(alert); // 1
+```
+
+The first promise here was fastest, but it was rejected, so the second promise became the result. After the first fulfilled promise "wins the race", all further results are ignored.
+
+Here's an example when all promises fail:
+
+```js run
+Promise.any([
+  new Promise((resolve, reject) => setTimeout(() => reject(new Error("Ouch!")), 1000)),
+  new Promise((resolve, reject) => setTimeout(() => reject(new Error("Error!")), 2000))
+]).catch(error => {
+  console.log(error.constructor.name); // AggregateError
+  console.log(error.errors[0]); // Error: Ouch!
+  console.log(error.errors[1]); // Error: Error
+});
+```
+
+As you can see, error objects for failed promises are available in the `errors` property of the `AggregateError` object.
+
 ## Promise.resolve/reject
 
-I metodi `Promise.resolve` e `Promise.reject` vengono utilizzati raramente nel codice moderno, poichè la sintassi `async/await` (che studieremo [più avanti](info:async-await)) li rende obsoleti.
+I metodi `Promise.resolve` e `Promise.reject` vengono utilizzati raramente nel codice moderno, poiché la sintassi `async/await` (che studieremo [più avanti](info:async-await)) li rende obsoleti.
 
 Li studiamo per completezza e per quelli che non possono utilizzare `async/await` per qualche ragione.
 
@@ -293,9 +330,9 @@ Come nell'esempio:
 let promise = new Promise(resolve => resolve(value));
 ```
 
-Il metodo viene utilizzato per compatibilità, qunado ci si aspetta che una funzione ritorni una promise.
+Il metodo viene utilizzato per compatibilità, quando ci si aspetta che una funzione ritorni una promise.
 
-Ad esempio, la funzione `loadCached` sotto, analizza un URL e ne memorrizza (sulla cache) il suo contenuto. Per le future chiamate allo stesso URL verrà immediatamente ritornato il contenuto dalla cache, ma utilzzando `Promise.resolve` per renderlo una promise, in questo modo il valore ritornato sarà sempre una promise:
+Ad esempio, la funzione `loadCached` sotto, analizza un URL e ne memorizza (sulla cache) il suo contenuto. Per le future chiamate allo stesso URL verrà immediatamente ritornato il contenuto dalla cache, ma utilizzando `Promise.resolve` per renderlo una promise, in questo modo il valore ritornato sarà sempre una promise:
 
 ```js
 let cache = new Map();
@@ -316,7 +353,7 @@ function loadCached(url) {
 }
 ```
 
-Possiamo scrivere `loadCached(url).then(…)`, perchè ci viene garantito che la funzione ritorni una promise. Possiamo sempre utilizzare `.then` dopo `loadCached`. Questo è lo scopo di `Promise.resolve` nella riga `(*)`.
+Possiamo scrivere `loadCached(url).then(…)`, perché ci viene garantito che la funzione ritorni una promise. Possiamo sempre utilizzare `.then` dopo `loadCached`. Questo è lo scopo di `Promise.resolve` nella riga `(*)`.
 
 ### Promise.reject
 
@@ -332,14 +369,15 @@ Nella pratica, questo metodo non viene quasi mai utilizzato.
 
 ## Riepilogo
 
-There are 5 static methods of `Promise` class:
+There are 6 static methods of `Promise` class:
 
-1. `Promise.resolve(value)` -- crea una promise risolta (resolved) con il valore dato.
-2. `Promise.reject(error)` -- crea una promise respinta (rejected) con il valore dato.
-3. `Promise.all(promises)` -- aspetta che tutte le promise siano risolte e ritorna  array un array dei loro risultati. Se una qualsiasi delle promise date viene respinta, allora diventa l'errore di `Promise.all`, e tutti gli altri risutlati sono ignorati.
-4. `Promise.allSettled(promises)` (un nuovo metodo) -- aspetta che tutte le promises vengano risolte o respinte  e ritornia un array dei loro risultati come oggetti con questa forma:
+1. `Promise.all(promises)` -- aspetta che tutte le promise siano risolte e ritorna  array un array dei loro risultati. Se una qualsiasi delle promise date viene respinta, allora diventa l'errore di `Promise.all`, e tutti gli altri risultati sono ignorati.
+2. `Promise.allSettled(promises)` (un nuovo metodo) -- aspetta che tutte le promises vengano risolte o respinte  e ritorna un array dei loro risultati come oggetti con questa forma:
     - `state`: `'fulfilled'` or `'rejected'`
     - `value` (se risolta ((fulfilled) o `reason` (se respinta (rejected)).
-5. `Promise.race(promises)` -- aspetta che la prima promise sia ferma (settle), ed il suo risultato/errore diventa il risultato.
+3. `Promise.race(promises)` -- aspetta che la prima promise sia ferma (settle), ed il suo risultato/errore diventa il risultato.
+4. `Promise.any(promises)` (metodo aggiunto di recente) -- aspetta che la prima promise venga risolta e restituisca il risultato. Se tutte le promises vengono respinte,[`AggregateError`](mdn:js/AggregateError) diventa l'errore di `Promise.any`.
+5. `Promise.resolve(value)` -- crea una promise risolta (resolved) con il valore dato.
+6. `Promise.reject(error)` -- crea una promise respinta (rejected) con il valore dato.
 
-Di questi cinque, `Promise.all/allSettled` sono i più comuni in pratica.
+Di tutti questi, il più comunemente utilizzato è `Promise.all`.

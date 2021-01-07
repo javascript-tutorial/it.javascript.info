@@ -2,13 +2,13 @@
 
 Gli oggetti web storage `localStorage` e `sessionStorage` permetto di salvare le coppie key/value nel browser.Ciò che è interessante è che i dati sopravvivono al ricaricamento della pagina (per `sessionStorage`) e anche in seguito a un restart del browser (for `localStorage`). Vedremo come.
 
-Abbiamo già i cookies. Perchè usiamo altri oggetti?
+Abbiamo già i cookies. Perché usiamo altri oggetti?
 
 - Rispetto ai cookies, gli oggetti web storage non vengono inviati al server con ogni richiesta. Per questo motivo, possiamo archiviarne molti di più. La maggior parte dei browser permette almeno 2 megabytes di dati (o più) e possiedono impostazioni per configurare questa scelta.
 - Inoltre, il server non può manipolare la memorizzazione degli oggetti tramite HTTP headers. Tutto viene fatto in JavaScript.
-- l'archiviazione è legata alla sorgete (origin) (domain/protocol/port triplet). Questo perchè, protocolli differenti o subdomini deducono diverse archiviazioni a oggetti e non possono accedere ai dati tra di loro.
+- l'archiviazione è legata alla sorgete (origin) (domain/protocol/port triplet). Questo perché, protocolli differenti o sottodomini deducono diverse archiviazioni a oggetti e non possono accedere ai dati tra di loro.
 
-Le due archiviazioni a oggetti propongono stessi metodi e propietà:
+Le due archiviazioni a oggetti propongono stessi metodi e proprietà:
 
 - `setItem(key, value)` -- archivia la coppia key/value.
 - `getItem(key)` -- ottiene il valore dalla key.
@@ -59,9 +59,9 @@ alert( localStorage.test ); // 2
 delete localStorage.test;
 ```
 
-Questo è permetto per ragioni storiche, e principalmente funziona , ma generalmente non è raccomandato, perchè:
+Questo è permetto per ragioni storiche, e principalmente funziona , ma generalmente non è raccomandato, perché:
 
-1. Se la key è generata dall utente, può essere qualsiasi cosa,, come `length` o `toString`, o un altro built-in method of `localStorage`. In questo caso `getItem/setItem` funziona normalmente, mentre l'accesso object-like fallisce:
+1. Se la key è generata dall'utente, può essere qualsiasi cosa,, come `length` o `toString`, o un altro built-in method of `localStorage`. In questo caso `getItem/setItem` funziona normalmente, mentre l'accesso object-like fallisce:
     ```js run
     let key = 'length';
     localStorage[key] = 5; // Error, can't assign length
@@ -148,8 +148,8 @@ alert( JSON.stringify(localStorage, null, 2) );
 
 
 ## sessionStorage
- <
-L'object `sessionStorage` è usato molto meno spesso del `localStorage`.
+
+L'oggetto `sessionStorage` è usato molto meno spesso del `localStorage`.
 
 Proprietà e metodi sono gli stessi, ma è più limitato:
 
@@ -200,7 +200,7 @@ Se entrambe le finestre sono connesse a `window.onstorage`, allora reagiranno ag
 
 ```js run
 // attiva un aggiornamento fatto dallo stesso archivio degli altri documenti
-window.onstorage = event => {
+window.onstorage = event => { // identico a window.addEventListener('storage', event => {
   if (event.key != 'now') return;
   alert(event.key + ':' + event.newValue + " at " + event.url);
 };

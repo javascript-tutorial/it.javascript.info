@@ -27,10 +27,9 @@ let promise = fetch(url, [options])
 - **`url`** -- l'URL da raggiungere.
 - **`options`** -- parametri opzionali: metodi, headers etc.
 
-Il browser avvia immediatamente la richiesta, il cui risultato sarà utilizzato e gestito per mezzo di una promise.
+Senza `options`, questa è una semplice richiesta GET che scarica il contenuto di `url`.
 
 Ottenere una risposta è comunemente un processo che si svolge in due fasi.
-
 
 Possiamo valutare gli status HTTP dalle proprietà:
 

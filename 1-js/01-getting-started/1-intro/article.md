@@ -112,6 +112,7 @@ Esempi di alcuni linguaggi:
 - [Flow](http://flow.org/) anche'esso aggiunge la tipizzazione dei dati, ma in un modo differente. Sviluppato da Facebook.
 - [Dart](https://www.dartlang.org/) è un linguaggio autonomo che possiede il suo motore che esegue in ambienti esterni al browser (come mobile apps). E' stato introdotto da Google come alternativa a JavaScript, ma attualmente, i browser richiedono la conversione in JavaScript, proprio come i precedenti.
 - [Brython](https://brython.info/) è un traduttore, che codice scritto in Python in codice JavaScript, consente quindi di scrivere applicazioni in Python senza utilizzare JavaScript.
+- [Kotlin](https://kotlinlang.org/docs/reference/js-overview.html) è un moderno, conciso e sicuro linguaggio di programmazione mirato ai browsers o a Node.
 
 Ce ne sono molti altri. Ovviamente se utilizziamo uno di questi linguaggi, dovremmo almeno conoscere JavaScript, per comprendere cosa stiamo facendo.
 

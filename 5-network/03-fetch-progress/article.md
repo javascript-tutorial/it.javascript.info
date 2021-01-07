@@ -110,3 +110,5 @@ Spieghiamo il tutto passo-passo:
 Alla fine avremo il risultato (che sia una stringa o un blob, a seconda di ciò che ci serve) ed il tracking dei progressi di *download*.
 
 Nota ancora una volta che non è possibile tracciare progressi di *upload* (non c'è modo con `fetch`), ma solo i progressi di *download*.
+
+Inoltre, se la dimensione è sconosciuta, dovremmo controllare `receiveLength` nel ciclo e interromperla una volta raggiunto un certo limite. In modo che i `blocchi` non saturino nella memoria.

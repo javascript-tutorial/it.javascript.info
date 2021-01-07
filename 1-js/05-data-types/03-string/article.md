@@ -47,7 +47,7 @@ let guestList = "Guests: // Error: Unexpected token ILLEGAL
 
 Gli apici singoli e doppi sono nati insieme al linguaggio, quando non era stato ancora messo in conto la possibilità di stringhe multilinea. Le backticks sono apparse più tardi, per questo risultano più versatili.
 
-Le backticks ci consentono anche di specificare un "template di funzione" prima della backtick di apertura. La sintassi è: <code>func&#96;string&#96;</code>. La funzione `func` viene chiamata automaticamente, gli viene passata la "string", può essere cosi trattata dalla funzione. Potete approfondire leggendo la [documentazione](mdn:/JavaScript/Reference/Template_literals#Tagged_template_literals). Questo viene chiamata "funzione template". Con questa caratteristica diventa più facile raccogliere stringhe da passare a funzioni, ma è raramente utilizzata.
+Le backticks ci consentono anche di specificare un "template di funzione" prima della backtick di apertura. La sintassi è: <code>func&#96;string&#96;</code>. La funzione `func` viene chiamata automaticamente, gli viene passata la "string", può essere cosi trattata dalla funzione. Potete approfondire leggendo la [documentazione](mdn:/JavaScript/Reference/Template_literals#Tagged_templates). Questo viene chiamata "funzione template". Con questa caratteristica diventa più facile raccogliere stringhe da passare a funzioni, ma è raramente utilizzata.
 
 
 ## Caratteri speciali
@@ -637,7 +637,7 @@ Questo algoritmo viene implementato da [str.normalize()](mdn:js/String/normalize
 alert( "S\u0307\u0323".normalize() == "S\u0323\u0307".normalize() ); // true
 ```
 
-E' divertente notare che nella nostra situzione `normalize()` trasforma una sequenza di 3 caratteri in una che ne contiene solo uno: `\u1e68` (S con due punti).
+E' divertente notare che nella nostra situazione `normalize()` trasforma una sequenza di 3 caratteri in una che ne contiene solo uno: `\u1e68` (S con due punti).
 
 ```js run
 alert( "S\u0307\u0323".normalize().length ); // 1
@@ -658,8 +658,8 @@ Se volete apprendere di più riguardo la normalizzazione e le sue varianti -- ve
 - Per ottenere un carattere, si utilizza: `[]`.
 - Per ottenere una sotto-stringa, si utilizza: `slice` o `substring`.
 - Per cambiare il timbro delle lettere di una stringa si utilizza: `toLowerCase/toUpperCase`.
-- Per cercare una sotto-stringa, usate: `indexOf`, o `includes/startsWith/endsWith` for simple checks.
-- Per confrontar stringhe seguendo le regole della lingua, usate: `localeCompare`, altrimenti verranno comparate in base al codice del singolo carattere.
+- Per cercare una sotto-stringa, usate: `indexOf`, o `includes/startsWith/endsWith` per controlli semplici.
+- Per confrontare stringhe seguendo le regole della lingua, usate: `localeCompare`, altrimenti verranno comparate in base al codice del singolo carattere.
 
 Ci sono molti altri metodi utili per operare con le stringhe:
 

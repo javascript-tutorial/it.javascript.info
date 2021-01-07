@@ -3,15 +3,9 @@
 
 La flag unicode `/.../u` abilita il corretto supporto delle coppie surrogate.
 
-Le coppie surrogate sono spiegate nel capitolo <info:string>.
-
-Rivediamole brevemente qui. In poche parole, i caratteri normali sono codificati con 2 byte. Questo ci dà un massimo di 65536 caratteri. Ma ci sono più caratteri nel mondo.
-
-Quindi alcuni caratteri più rari sono codificati con 4 byte, come `𝒳` (la X matematica) o `😄` (uno smile).
-
 Qui vi sono i valori unicode da comparare:
 
-| Carattere  | Unicode | Byte  |
+| Carattere  | Unicode | Bytes  |
 |------------|---------|--------|
 | `a` | 0x0061 |  2 |
 | `≈` | 0x2248 |  2 |

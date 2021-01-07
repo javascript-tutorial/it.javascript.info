@@ -4,7 +4,7 @@ Nella versione moderna di JavaScript ci sono due differenti tipi di numeri:
 
 1. I numeri regolari, che vengono memorizzati nel formato a 64 bit [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), conosciuti anche come "numeri in virgola mobile con doppia precisione". Questi sono i numeri che utilizziamo la maggior parte del tempo, e sono quelli di cui parleremo in questo capitolo.
 
-2. I BigInt, che vengono utilizzati per rappresentare numeri interi di lunghezza arbitraria. Talvolta possono tornare utili, poichè i numeri regolari non possono exxedere <code>2<sup>53</sup></code> od essere inferiori di <code>-2<sup>53</sup></code>. Poichè i BigInt vengono utilizzati in alcune aree speciali, gli abbiamo dedicato un capitolo <info:bigint>.
+2. I BigInt, che vengono utilizzati per rappresentare numeri interi di lunghezza arbitraria. Talvolta possono tornare utili, poiché i numeri regolari non possono eccedere <code>2<sup>53</sup></code> od essere inferiori di <code>-2<sup>53</sup></code>. Poiché i BigInt vengono utilizzati in alcune aree speciali, gli abbiamo dedicato un capitolo <info:bigint>.
 
 Quindi in questo capitolo parleremo dei numeri regolari.
 
@@ -105,7 +105,7 @@ Altri casi di uso comune sono:
     ```
 
 ```warn header="Due punti per chiamare un metodo"
-Da notare che i due punti in `123456..toString(36)` non sono un errore. Se vogliamo chiamare un metodo direttamente da un numero, come `toString` nell'esempio sopra, abbiamo bisogno di inseire due punti `..`.
+Da notare che i due punti in `123456..toString(36)` non sono un errore. Se vogliamo chiamare un metodo direttamente da un numero, come `toString` nell'esempio sopra, abbiamo bisogno di inserire due punti `..`.
 
 Se inseriamo un solo punto: `123456.toString(36)`, otterremo un errore, perché la sintassi JavaScript implica una parte decimale a seguire del primo punto. Se invece inseriamo un ulteriore punto, allora JavaScript capirà che la parte decimale è vuota e procederà nel chiamare il metodo.
 
@@ -260,7 +260,7 @@ alert( (0.28 * 100 + 0.14 * 100) / 100); // 0.4200000000000001
 
 3. Se abbiamo a che fare con dei prezzi, la miglior soluzione rimane quella di memorizzare tutti i prezzi in centesimi, evitando quindi di utilizzare i numeri con virgola. Ma cosa succede se proviamo ad applicare uno sconto del 30%? Nella pratica, evadere completamente questo problema è difficile, in alcuni casi possono tornare utili entrambe le soluzioni viste sopra.
 
-Quindi, l'approccio moltiplicazipne/divisione riduce gli errori, ma non li elimina completamente.
+Quindi, l'approccio moltiplicazione/divisione riduce gli errori, ma non li elimina completamente.
 
 Talvolta possiamo evitare le frazioni. Ad esempio se abbiamo a che fare con un negozio, allora possiamo memorizzare i prezzi in centesimi piuttosto che in dollari.  
 

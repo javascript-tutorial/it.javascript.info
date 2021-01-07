@@ -97,7 +97,7 @@ Dopo un po', arrivarono nei browser i metodi JavaScript per le richieste di netw
 
 Inizialmente le cross-origin requests erano proibite. Ma dopo lunghe discussioni, le cross-origin requests furono consentite, ma qualsiasi funzionalità richiede una esplicità autorizzazione dal serve, indicate per mezzo di speciali headers.
 
-## Simple requests
+## Safe requests
 
 Ci sono due tipi di cross-origin requests:
 
@@ -123,17 +123,17 @@ Quindi, anche un server molto vecchio dovrebbe essere in grado di accettare una 
 
 Differentemente, requests con headers non-standard o ad esempio con metodo `DELETE` non possono essere create in questo modo. Per molto tempo JavaScript non è stato in grado di fare tali request. Quindi un server più vecchio può presumere che questo tipo di richieste provengono solo da fonti privilegiate, "perché una pagina web non sarebbe in grado di inviarle".
 
-Quando proviamo a fare una non-simple request, il browser invia una speciale request "preflight" che chiede al server -- accetti questo tipo di richieste cross-origin, o no?
+Quando proviamo a fare una unsafe request, il browser invia una speciale request "preflight" che chiede al server -- accetti questo tipo di richieste cross-origin, o no?
 
-E, a meno che il server non confermi esplicitamente con degli headers, la non-simple request non sarà inviata.
+E, a meno che il server non confermi esplicitamente con degli headers, la unsafe request non sarà inviata.
 
 Andiamo ad analizzare i dettagli.
 
 ## CORS per le simple requests
 
-Se una request è cross-origin, il browser aggiunge sempre una header `Origin` ad essa.
+Se una request è cross-origin, il browser aggiunge sempre un header `Origin` ad essa.
 
-Per esempio, se richiediamo `https://anywhere.com/request` da `https://javascript.info/page`, le headers dovrebbero essere:
+Per esempio, se richiediamo `https://anywhere.com/request` da `https://javascript.info/page`, gli headers dovrebbero essere:
 
 ```http
 GET /request
@@ -165,7 +165,7 @@ Access-Control-Allow-Origin: https://javascript.info
 
 ## Response headers
 
-Per le cross-origin request, di default JavaScript può solo accedere alle così dette "simple" response headers:
+Per le cross-origin request, di default JavaScript può solo accedere alle così dette "safe" response headers:
 
 - `Cache-Control`
 - `Content-Language`
@@ -182,7 +182,7 @@ Nota che nella lista non è contemplata l'header `Content-Length`!
 Questa header contiene la dimensione completa del response. Così, se dovessimo scaricare qualcosa e desidereremmo tracciare la percentuale di progresso, sarebbe necessario un permesso addizionale per accedere a questo header (come potrai vedere sotto).
 ```
 
-Per garantire l'accesso a JavaScript ad ogni altro response header, il server deve inviare l'header `Access-Control-Expose-Headers`. Esso contiene una lista separata da virgole dei nomi delle non-simple header alle quali è possibile accedere.
+Per garantire l'accesso a JavaScript ad ogni altro response header, il server deve inviare l'header `Access-Control-Expose-Headers`. Esso contiene una lista separata da virgole dei nomi degli unsafe headers ai quali è possibile accedere.
 
 Per esempio:
 
@@ -197,20 +197,20 @@ Access-Control-Expose-Headers: Content-Length,API-Key
 */!*
 ```
 
-Con l'header `Access-Control-Expose-Headers`, lo script è autorizzato a leggere le headers `Content-Length` e `API-Key` della response.
+Con l'header `Access-Control-Expose-Headers`, lo script è autorizzato a leggere gli headers `Content-Length` e `API-Key` della response.
 
-## "Non-simple" requests
+## "Unsafe" requests
 
 Noi possiamo usare ogni HTTP-method: non solo `GET/POST`, ma anche `PATCH`, `DELETE` e gli altri.
 
 Fino a qualche tempo fa nessuno avrebbe potuto supporre che una pagina web fosse in grado di fare tali richieste. Quindi potrebbe esistere qualche webservices che tratta un metodo non-standard come: "Non è un browser!". 
 
-Così, per evitare fraintendimenti, ogni "non-simple" request -- che tempo fa non sarebbero stati possibili, il browser non esegue direttamente queste request. Prima invia una richiesta, chiamata "preflight", per richiedere il permesso.
+Così, per evitare fraintendimenti, per ogni "unsafe" request -- che tempo fa non sarebbero stata possibile, il browser non esegue direttamente queste request. Prima invia una richiesta, chiamata "preflight", per richiedere il permesso.
 
 Una preflight request usa il method `OPTIONS`, nessun body e due headers:
 
-- `Access-Control-Request-Method` che indica il method della non-simple request.
-- `Access-Control-Request-Headers` che contiene una lista, separata da virgole, delle non-simple HTTP-headers della request.
+- `Access-Control-Request-Method` che indica il method della unsafe request.
+- `Access-Control-Request-Headers` che contiene una lista, separata da virgole, degli unsafe HTTP-headers della request.
 
 Se il server accetta di servire la request, invia una risposta con un body vuoto, uno status 200 e le headers:
 
@@ -239,7 +239,6 @@ Ci sono tre ragioni per le quali la request non è di tipo simple (uno solo sare
 
 ### Step 1 (preflight request)
 
-Prior to sending such request, the browser, on its own, sends a preflight request that looks like this:
 Prima di inviare tale request, il browser, da solo, invia una  preflight request come questa:
 
 ```http
@@ -265,7 +264,9 @@ Il server dovrebbe rispondere con uno status 200 e le headers:
 
 Ciò consentirà le comunicazioni future, altrimenti verrà generato un errore.
 
-Se il server prevede altri metodi e headers, ha senso consentirli in anticipo aggiungendo all'elenco:
+Se il server prevede altri metodi e headers, ha senso consentirli in anticipo aggiungendo all'elenco.
+
+Ad esempio, questa risposta permette anche `PUT`, `DELETE` e headers addizionali:
 
 ```http
 200 OK
@@ -313,7 +314,7 @@ JavaScript riceverà soltanto la response alla request principale o un errore in
 
 Una cross-origin request per impostazione predefinita non fornisce credenziali (cookie o autenticazione HTTP).
 
-That's uncommon for HTTP-requests. Usually, a request to `http://site.com` is accompanied by all cookies from that domain. But cross-origin requests made by JavaScript methods are an exception.
+That's uncommon for HTTP-requests. Usually, a request to `http://site.com` is accompanied by all cookies from that domain. Cross-origin requests made by JavaScript methods on the other hand are an exception.
 
 Questo è insolito per le HTTP-request. Di solito, una request a `http://site.com` è accompagnata da tutti i cookie di quel dominio. Ma le cross-origin requests fatte con metodi JavaScript sono un'eccezione.
 
