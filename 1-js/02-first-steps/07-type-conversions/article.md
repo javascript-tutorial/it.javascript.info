@@ -1,22 +1,22 @@
 # Conversione di tipi
 
- Nella maggior parte dei casi, operatori e funzioni convertono automaticamente il valore nel tipo corretto.
+Nella maggior parte dei casi, operatori e funzioni convertono automaticamente il valore nel tipo corretto.
 
-Ad esempio, `alert` converte automaticamente un valore qualsiasi in una stringa, per poterla mostrare. Le operazioni matematica convertono i valori in numeri.
+Ad esempio, `alert` converte automaticamente un valore qualsiasi in una stringa, per poterla mostrare. Le operazioni matematiche convertono i valori in numeri.
 
-Ci sono anche casi in cui è necessario convertire esplicitamente i valori per poter non provocare errori.
+Ci sono invece casi in cui è necessario convertire esplicitamente i valori per poter evitare errori.
 
 ```smart header="Non parliamo ancora di oggetti"
-In questo capitolo non parleremo ancora di oggetti. Ci dedicheremo ai tipi primitivi. Successivamente, dopo aver capito gli oggetti, capire come funziona la conversione di oggetti, nel capitolo <info:object-toprimitive>.
+In questo capitolo non parleremo ancora di oggetti. Ci dedicheremo ai tipi primitivi. Successivamente, dopo aver studiato gli oggetti, approfondiremo la conversione di oggetti, nel capitolo <info:object-toprimitive>.
 ```
 
-## String Conversion
+## Conversione di stringhe
 
-La conversione in stringa è utile quando abbiamo bisogno del formato stringa di un valore.
+La conversione a `String` è utile quando abbiamo bisogno del formato stringa di un valore.
 
 Ad esempio, `alert(value)` effettua questa conversione per mostrare il valore.
 
-Possiamo anche utilizzare la funzione `String(value)`, per ottenere un risultato simile:
+Possiamo anche utilizzare la funzione `String(value)`, per ottenere lo stesso risultato:
 
 ```js run
 let value = true;
@@ -28,18 +28,18 @@ alert(typeof value); // string
 */!*
 ```
 
-La conversione in stringa è quella più ovvia. Il valore `false` diventa la stringa `"false"`, mentre `null` diventa `"null"` etc.
+La conversione in stringa è quella più semplice. Il valore `false` diventa la stringa `"false"`, mentre `null` diventa `"null"` etc.
 
-## Numeric Conversion
+## Conversione numerica
 
-La conversione numerica viene applicata automaticamente nelle funzioni ed espressioni matematiche.
+La conversione a `Number` viene applicata automaticamente nelle funzioni ed espressioni matematiche.
 
 Ad esempio, quando la divisione `/` viene applicata ad un tipo non numerico:
 
 ```js run
-alert( "6" / "2" ); // 3, strings are converted to numbers
+alert( "6" / "2" ); // 3, le stringhe sono state converite a numeri
 ```
-funzine
+
 Possiamo utilizzare la funzione `Number(value)` per convertire esplicitamente un valore `value`:
 
 ```js run
@@ -68,7 +68,7 @@ Le regole di conversione numerica:
 |`undefined`|`NaN`|
 |`null`|`0`|
 |<code>true&nbsp;e&nbsp;false</code> | `1` e `0` |
-| `string` | Gli spazi bianchi dall'inizio e dalla fine vengono rimossi. Poi, se il resto della stringa è vuota, il risultato è `0`. Altrimenti, il numero viene "letto" dalla stringa. Un errore restituirà `NaN`. |
+| `string` | Gli spazi bianchi all'inizio e alla fine vengono rimossi. Se la stringa rimanente è vuota, il risultato sarà `0`. Altrimenti, il numero viene "letto" dalla stringa. Un errore restituirà `NaN`. |
 
 Esempi:
 
@@ -87,8 +87,8 @@ Quasi tutte le operazioni matematiche convertono valori in numeri. Con un import
 E successivamente li concatena (unisce):
 
 ```js run
-alert( 1 + '2' ); // '12' (string to the right)
-alert( '1' + 2 ); // '12' (string to the left)
+alert( 1 + '2' ); // '12' (stringa a destra)
+alert( '1' + 2 ); // '12' (stringa a sinistra)
 ```
 
 Questo accade solo quando almeno uno degli argomenti è di tipo stringa. Altrimenti, i valori vengono convertiti in numeri
@@ -96,9 +96,9 @@ Questo accade solo quando almeno uno degli argomenti è di tipo stringa. Altrime
 
 ## Boolean Conversion
 
-La conversione booleana è quella più semplice.
+La conversione a `Boolean` è quella più semplice.
 
-Questa si verifica con le operazioni logiche (più avanti incontreremo i testi di condizione ed altri tipi di operazione logiche), ma può anche essere richiamato manualmente con la funzione `Boolean(value)`.
+Questa si verifica con le operazioni logiche (più avanti incontreremo i test di condizione ed altri tipi di operazione logiche), ma può anche essere richiamato manualmente con la funzione `Boolean(value)`.
 
 Le regole di conversione:
 
@@ -120,7 +120,7 @@ Alcun linguaggi (come il PHP) trattano `"0"` come `false`. Diversamente in JavaS
 
 ```js run
 alert( Boolean("0") ); // true
-alert( Boolean(" ") ); // spazi, valgono true (qualsiasi stringa non buota viene interpretata come true)
+alert( Boolean(" ") ); // spazi vuoti, valgono true (qualsiasi stringa non vuota viene interpretata come true)
 ```
 ````
 
@@ -154,7 +154,7 @@ Segue le regole:
 
 La maggior parte di queste regole sono facili da capire e memorizzare. Gli errori più comuni che commettono le persone sono:
 
-- `undefined` vale `NaN` come un numero, non `0`.
+- `undefined` convertito a `Number` vale `NaN`, non `0`.
 - `"0"` e le stringhe che contengono solamente spazi `"   "` vengono interpretate come true.
 
 Qui non abbiamo coperto gli oggetti, ci ritorneremo più avanti nel capitolo <info:object-toprimitive> che è dedicato esclusivamente agli oggetti, dopo che avremmo imparato più cose basilari su JavaScript.
