@@ -1,10 +1,7 @@
 # Ereditarietà delle classi
 
-# Class inheritance
-
-Class inheritance is a way for one class to extend another class.
-
-Quindi possiamo aggiungere una nuova funzionalità ad altre già esistenti.
+L'ereditarietà è una caratteristica che permette ad una classe di estendere 
+le proprietà di altre classi.
 
 ## La parola chiave "extends" 
 
