@@ -180,7 +180,7 @@ try {
 
 La nuova classe `PropertyRequiredError` è facile da usare: dobbiamo solamente fornire il nome della proprietà: `new PropertyRequiredError(property)`. Il messaggio `message` è generato dal construttore.
 
-Poniamo particolare attenzione al fatto che `this.name` nel construttore `PropertyRequiredError` è di nuovo assegnato manualmente. Questa cosa potrebbe risultare un po noiosa -- assegnare `this.name = <class name>` in ogni errore personalizzato. Possiamo evitarlo creando la nostra classe "basic error" che assegna `this.name = this.constructor.name`. E poi ereditare tutti i nostri errori personalizzati da esso.
+Poniamo particolare attenzione al fatto che `this.name` nel construttore `PropertyRequiredError` è di nuovo assegnato manualmente. Questa cosa potrebbe risultare un po' noiosa -- assegnare `this.name = <class name>` in ogni errore personalizzato. Possiamo evitarlo creando la nostra classe "basic error" che assegna `this.name = this.constructor.name`, quindi ereditare da questa  tutti i nostri errori personalizzati.
 
 Quindi chiamiamola `MyError`.
 
@@ -217,7 +217,7 @@ Lo scopo della funzione `readUser` nel codice precedente è di "leggere i dati d
 
 Il codice che richiama `readUser` dovrebbe gestire questi errori. Per ora utilizziamo diversi `if` nel blocco `catch`, che verificano la classe, ne gestiscono gli errori e rilanciano quelli sconosciuti.
 
-Lo schema è tipo così:
+Lo schema è simile al seguente:
 
 ```js
 try {
@@ -247,9 +247,9 @@ La tecnica che andiamo qui a descrivere è chiamata "wrapping exceptions".
 2. La funzione `readUser` catturerà gli errori di lettura che avvengono al suo interno, come `ValidationError` e `SyntaxError`, e genererà un `ReadError`.
 3. L'oggetto `ReadError` terrà i riferimenti all'errore originale nella sua proprietà `cause`.
 
-Quindi il codice che richiama `readUser` dovrà solamente controllare se si verifica un `ReadError`, e non ogni tipo di errore nella lettura dei dati. E se abbiamo la necessità di approfondire riguardo un errore, lo potremo fare controllando la proprietà `cause`.
+Quindi il codice che richiama `readUser` dovrà solamente controllare se si verifica un `ReadError`, e non ogni tipo di errore nella lettura dei dati. E se abbiamo la necessità di approfondire i dettagli dell'errore, lo potremo fare controllando la proprietà `cause`.
 
-Questo il codice che definisce `ReadError` e la dimostrazione di come usarlo in `readUser` e nel `try..catch`:
+Questo è il codice che definisce `ReadError` e la dimostrazione di come usarlo in `readUser` e nel `try..catch`:
 
 ```js run
 class ReadError extends Error {
