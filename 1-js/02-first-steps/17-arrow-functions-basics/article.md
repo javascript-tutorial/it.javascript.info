@@ -78,7 +78,7 @@ Esse sono molto comode per semplici azioni su una riga, se siamo troppo pigri pe
 
 Gli esempi precedenti hanno preso argomenti alla sinistra di "=>" e con essi hanno valutato l'espressione a destra.
 
-A volte abbiamo bisogno di qualcosa di un po' più complesso, come espressioni o dichiarazioni multiple. Anche questo è possibile, ma dovremo racchiuderle tra parentesi graffe ed usare un
+A volte abbiamo bisogno di qualcosa di un po' più complesso, come espressioni o dichiarazioni multiple. Anche questo è possibile, ma dovremo racchiuderle tra parentesi graffe ed usare un normale return.
 non normale`return`.
 
 In questo modo:
