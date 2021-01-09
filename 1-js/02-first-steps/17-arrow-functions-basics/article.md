@@ -98,7 +98,7 @@ alert( sum(1, 2) ); // 3
 
 Qui abbiamo presentato le arrow functions in breve, ma questo non è tutto!
 
-Le Arrow functions possiedono altre interessanti caratteristiche.
+Le arrow functions possiedono altre interessanti caratteristiche.
 
 Per studiarle approfonditamente dobbiamo prima conoscere qualche altro aspetto di JavaScript, quindi torneremo alle arrow functions più avanti, nel capitolo <info: funzioni-freccia>.
 
