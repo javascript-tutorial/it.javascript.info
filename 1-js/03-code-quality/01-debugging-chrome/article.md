@@ -194,6 +194,6 @@ Cosi possiamo esaminare le variabili e capire cosa è andato male durante l'esec
 
 Ci sono veramente troppe opzioni negli strumenti da sviluppatore per coprirle qui. Il manuale completo è disponibile all'indirizzo <https://developers.google.com/web/tools/chrome-devtools>.
 
-Le informazioni fornite da questo capitolo sono sufficienti per iniziare a fare un po di debug, anche se più avanti, specialmente quando farete cose più avanzate, il link sopra potrà tornarvi utile.
+Le informazioni fornite da questo capitolo sono sufficienti per iniziare a fare un po' di debug, anche se più avanti, specialmente quando farete cose più avanzate, il link sopra potrà tornarvi utile.
 
 Ah, inoltre potete anche cliccare i vari bottoni negli strumenti da sviluppatore e vedere cosa succede. E' probabilmente il metodo più rapido per imparare. Non dimenticate che molte opzioni sono disponibili anche con il click del tasto destro!
