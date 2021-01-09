@@ -65,7 +65,7 @@ Poniamo attenzione: alla linea `(1)` richiamiamo il construtto genitore. JavaScr
 
 Il genitore imposta anche la proprietà `name` in `"Error"`, quindi nella linea `(2)` re-impostiamo il corretto valore.
 
-Quindi proviamo ad usarlo in `readUser(json)`:
+Proviamo ad usarlo in `readUser(json)`:
 
 ```js run
 class ValidationError extends Error {
