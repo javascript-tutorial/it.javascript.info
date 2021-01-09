@@ -21,12 +21,12 @@ Internamente, useremo `JSON.parse` che, se riceve un `json` malformato, lancia `
 
 La nostra funzione `readUser(json)` non solo leggerà il JSON, ma validerà i dati. Se non ci sono i campi richiesti, o il formato è errato, allora c'è un errore. E non è un `SyntaxError`, dato che è sintatticamente corretto, ma un altro tipo di errore. Lo chiameremo `ValidationError` e creeremo una classe per esso. Un errore di questo tipo dovrebbe contenere le informazioni riguardo il campo incriminato.
 
-La nostra classe `ValidationError` dovrebbe ereditare dalla classe incorporata `Error`.
+La nostra classe `ValidationError` dovrebbe ereditare dalla built-in class `Error`.
 
 Questa classe è incorporata, ma ecco il suo codice approssimativo per capire meglio come la andremo ad estendere:
 
 ```js
-// Il "pseudocodice" per la classe incorporata Error definita in JavaScript stesso
+// Il "pseudocodice" per la built-in class Error definita da JavaScript
 class Error {
   constructor(message) {
     this.message = message;
