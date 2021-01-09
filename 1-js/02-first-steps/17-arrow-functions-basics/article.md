@@ -110,4 +110,4 @@ Le arrow functions sono utili per azioni su una riga sola. Possono essere scritt
 
 1. Senza parentesi graffe: `(...args) => expression` -- la parte destra è un'espressione: la funzione la valuta e restituisce il risultato.
 2. Con parentesi graffe: `(...args) => { body }` -- le parentesi ci permettono di scrivere comandi multipli all'interno della funzione, ma abbiamo bisogno di dichiarare esplicitamente
-`return` affichè sia ritornato qualcosa.
+`return` affinché sia ritornato qualcosa.
