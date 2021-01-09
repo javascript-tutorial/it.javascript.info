@@ -110,4 +110,4 @@ Ci sono due limitazioni che sono condivise da tutti i metodi visti sopra:
 1. La posizione esatta della modal window viene decisa dal browser. Solitamente sta al centro.
 2. Anche la grafica della modal window dipende dal browser. Non possiamo modificarla.
 
-Questo è il prezzo da pagare per la semplicità. Ci sono altri modi per mostrare finestre di tipo modal, con più informazioni e maggiori possibilità di interazione con l'utente, ma se non ci interessa fare grandi cose, questi metodi possono essere utili.
+Questo è il prezzo da pagare per la semplicità. Ci sono altri modi per mostrare finestre di tipo modal più eleganti, con più informazioni o con maggiori possibilità di interazione con l'utente, ma se non ci interessa fare grandi cose, questi metodi possono essere utili.
