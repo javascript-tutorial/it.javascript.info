@@ -103,7 +103,7 @@ Ora aprite il menu a cascata (quello con la freccetta accanto al nome). Ti conse
 
 2. **`Call Stack` -- mostra la catena delle chiamate annidate.**
 
-    Attualmente il debugger si trova all'interno della chiamata `hello()`, chiamata da uno script interno a `index.html` (non ci sono funzioni qui, quindi viene definito "anonima").
+    Attualmente il debugger si trova all'interno della chiamata `hello()`, chiamata da uno script interno a `index.html` (non ci sono funzioni qui, quindi viene definita "anonima").
 
     Se premi su un elemento della pila, il debugger salterà al codice corrispondente, e potrai esaminare tutte le variabili.
 3. **`Scope` -- variabili correnti.**
