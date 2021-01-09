@@ -110,7 +110,7 @@ Il blocco `try..catch` nel codice qui sopra gestisce sia il nostro `ValidationEr
 
 Poniamo particolare attenzione a come usiamo `instanceof` per verificare errori specifici nella linea `(*)`.
 
-Noi potremmo anche verificare tramite `err.name`, tipo così:
+Potremmo anche verificare tramite `err.name`, nel seguente modo:
 
 ```js
 // ...
