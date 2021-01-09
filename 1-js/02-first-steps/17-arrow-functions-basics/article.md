@@ -107,7 +107,7 @@ Per ora possiamo già utilizzarle per azioni su una riga sola e per callbacks.
 
 ## Summary
 
-Le Arrow functions sono utili per azioni su una riga sola. Possono essere scritte in due modi:
+Le arrow functions sono utili per azioni su una riga sola. Possono essere scritte in due modi:
 
 1. Senza parentesi graffe: `(...args) => expression` -- la parte destra è un'espressione: la funzione la valuta e restituisce il risultato.
 2. Con parentesi graffe: `(...args) => { body }` -- le parentesi ci permettono di scrivere comandi multipli all'interno della funzione, ma abbiamo bisogno di dichiarare esplicitamente
