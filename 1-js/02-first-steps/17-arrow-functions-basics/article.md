@@ -70,7 +70,7 @@ let welcome = (age < 18) ?
 welcome();
 ```
 
-Le Arrow functions possono apparire poco familiari e leggibili all'inizio, ma ciò cambia rapidamente man mano che gli occhi si abitueranno alla struttura.
+Le arrow functions possono apparire poco familiari e leggibili all'inizio, ma ciò cambia rapidamente man mano che gli occhi si abitueranno alla struttura.
 
 Esse sono molto comode per semplici azioni su una riga, se siamo troppo pigri per scrivere più parole.
 
