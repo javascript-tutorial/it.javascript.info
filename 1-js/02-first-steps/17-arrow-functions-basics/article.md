@@ -56,7 +56,7 @@ Come puoi vedere `(a, b) => a + b` rappresenta una funzione che accetta due argo
     sayHi();
     ```
 
-Le Arrow functions possono essere usate allo stesso modo delle Function Expressions.
+Le arrow functions possono essere usate allo stesso modo delle Function Expressions.
 
 Ad esempio, per creare dinamicamente una funzione:
 
