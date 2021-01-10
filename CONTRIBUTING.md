@@ -26,6 +26,9 @@ Per prima cosa trova come puoi renderti utile al progetto:
   - **Correzione errori**: Se hai notato un errore nei testi già tradotti, comunicalo con una nuova issue. Ci occuperemo di correggerlo, o, se vorrai, ti spigheremo come potrai correggerlo tu stesso.
 
 Una volta che avrai scelto cosa fare ed i maintainers ti avranno assegnato l'articolo, puoi iniziare. Se hai già collaborato a qualche progetto opensource su GitHub non avrai difficoltà, se invece sei nuovo, abbiamo preparato una piccola [guida](#sei-nuovo-su-github?) che trovi più in basso.
+
+Se vuoi avere una preview dei file che stai editando, puoi usare una versione locale del server che si occupa della pubblicazione online del tutorial: [javascript.info server](https://github.com/javascript-tutorial/server). Sulla repository trovi le istruzioni per l'installazione ed il funzionamento. 
+
 Quando avrai terminato la traduzione, invia una pull request usando come titolo il titolo dell'articolo tradotto, quindi monitora la review nel caso ti venga chiesto di apportare qualche modifica o correzione.
 ## Sei nuovo su GitHub?
 
