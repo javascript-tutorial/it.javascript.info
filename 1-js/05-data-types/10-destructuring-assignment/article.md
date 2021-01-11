@@ -263,7 +263,6 @@ alert(width);  // 100
 alert(height); // 200
 ```
 
-<<<<<<< HEAD
 Le proprietà `options.title`, `options.width` e `options.height` vengono assegnate alle variabili corrispondenti.
 
 L'ordine non ha importanza. Questo codice funzionerebbe comunque:
@@ -367,7 +366,7 @@ let { title } = options;
 alert(title); // Menu
 ```
 
-### The rest pattern "..."
+### Il modelo rest "..."
 
 Cosa succede se l'oggetto possiede più proprietà delle variabili da noi fornite? Possiamo prendere solamente alcune ed assegnare tutto ciò che avanza da un'altra parte?
 
