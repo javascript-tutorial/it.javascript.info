@@ -135,7 +135,7 @@ Ci sono dei bottoni appositi nella parte superiore del pannello di destra. Provi
     Continuando a cliccare eseguiremo lo script un passo per volta.
 
 <span class="devtools" style="background-position:-62px -192px"></span> -- "Step over": esegue il prossimo comando, ma *non entra nella funzione*, hotkey `key:F10`.
-: Molto simile al comando "Step", ma si comporta diversamente nel caso in cui la prossima istruzione sia una chiamata a funzione. Cioè: non una funzione built-in come `alert`, ma una funzione definita da noi.
+: Molto simile al comando "Step", ma si comporta diversamente nel caso in cui l'istruzione successiva sia una chiamata a funzione. O meglio: non una funzione built-in come `alert`, ma una funzione definita da noi.
 
     Il comando "Step" entra nella funzione e mette in pausa l'esecuzione, mentre "Step over" esegue la chiamata a funzione, saltandone il contenuto.
 
