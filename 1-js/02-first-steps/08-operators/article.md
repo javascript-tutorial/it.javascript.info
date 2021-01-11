@@ -223,7 +223,11 @@ alert( x ); // 5
 
 Il fatto che il simbolo `=` sia un operatore e non un costrutto "magico" del linguaggio, ha delle interessanti implicazioni.
 
+<<<<<<< HEAD
 Molti operatori in Javascript restituiscono un valore. Questo è ovvio per `+` e `-`, ma è altrettanto vero per `=`.
+=======
+All operators in JavaScript return a value. That's obvious for `+` and `-`, but also true for `=`.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 La chiamata `x = value` scrive `value` in `x` *e quindi lo restituisce*.
 

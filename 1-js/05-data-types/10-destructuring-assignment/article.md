@@ -2,6 +2,7 @@
 
 Le due strutture dati più utilizzate in JavaScritp sono `Object` e `Array`.
 
+<<<<<<< HEAD
 Gli oggetti ci consentono di raccogliere molti pezzi di informazione in una singola entità, mentre gli array ci consentono di memorizzare collezioni ordinate. Possiamo quindi costruire un oggetto o un array e gestirlo come singola entità, oppure passarlo ad una funzione.
 
 *L'assegnamento di destrutturazione* è una speciale sintassi che ci consente di "spacchettare" oggetti o array in un insieme di variabili, che in molti casi possono risultare più comode. 
@@ -14,6 +15,24 @@ Un esempio di come un array viene destrutturato in variabili:
 ```js
 // abbiamo un array con nome e cognome
 let arr = ["Ilya", "Kantor"]
+=======
+- Objects allow us to create a single entity that stores data items by key. 
+- Arrays allow us to gather data items into an ordered list.
+
+Although, when we pass those to a function, it may need not an object/array as a whole. It may need individual pieces.
+
+*Destructuring assignment* is a special syntax that allows us to "unpack" arrays or objects into a bunch of variables, as sometimes that's more convenient. 
+
+Destructuring also works great with complex functions that have a lot of parameters, default values, and so on. Soon we'll see that.
+
+## Array destructuring
+
+Here's an example of how an array is destructured into variables:
+
+```js
+// we have an array with the name and surname
+let arr = ["John", "Smith"]
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 *!*
 // assegnamento di destrutturazione
@@ -22,20 +41,29 @@ let arr = ["Ilya", "Kantor"]
 let [firstName, surname] = arr;
 */!*
 
-alert(firstName); // Ilya
-alert(surname);  // Kantor
+alert(firstName); // John
+alert(surname);  // Smith
 ```
 
 Ora possiamo lavorare con le variabili piuttosto che con i membri dell'array.
 
 Risulta utile se combinata con `split` o altri metodi che ritorna un array:
 
-```js
-let [firstName, surname] = "Ilya Kantor".split(' ');
+```js run
+let [firstName, surname] = "John Smith".split(' ');
+alert(firstName); // John
+alert(surname);  // Smith
 ```
 
+<<<<<<< HEAD
 ````smart header="\"Destrutturazione\" non significa \"distruzione\"."
 Viene chiamato "assegnamento di destrutturazione", perché "destrutturizza" copiando gli elementi all'interno di variabili. Ma l'array stesso non viene modificato.
+=======
+As you can see, the syntax is simple. There are several peculiar details though. Let's see more examples, to better understand it.
+
+````smart header="\"Destructuring\" does not mean \"destructive\"."
+It's called "destructuring assignment," because it "destructurizes" by copying items into variables. But the array itself is not modified.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 E' solo un modo breve per scrivere:
 ```js
@@ -68,27 +96,38 @@ Nel codice sopra, il secondo elemento viene ignorato, il terzo viene assegnato a
 let [a, b, c] = "abc"; // ["a", "b", "c"]
 let [one, two, three] = new Set([1, 2, 3]);
 ```
-
+That works, because internally a destructuring assignment works by iterating over the right value. It's kind of syntax sugar for calling `for..of` over the value to the right of `=` and assigning the values.
 ````
 
 
+<<<<<<< HEAD
 ````smart header="Assegna a qualsiasi cosa ci sia dalla parte sinistra"
 
 Possiamo inserire qualsiasi cosa sia "assegnabile" alla sinistra.
+=======
+````smart header="Assign to anything at the left-side"
+We can use any "assignables" at the left side.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Ad esempio, la proprietà di un oggetto:
 ```js run
 let user = {};
-[user.name, user.surname] = "Ilya Kantor".split(' ');
+[user.name, user.surname] = "John Smith".split(' ');
 
-alert(user.name); // Ilya
+alert(user.name); // John
+alert(user.surname); // Smith
 ```
 
 ````
 
+<<<<<<< HEAD
 ````smart header="Cicla con .entries()"
 
 Nel capitolo precedente abbiamo visto il metodo [Object.entries(obj)](mdn:js/Object/entries).
+=======
+````smart header="Looping with .entries()"
+In the previous chapter we saw the [Object.entries(obj)](mdn:js/Object/entries) method.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Possiamo utilizzarlo con la destrutturazione per eseguire cicli su chaivi/valore di un oggetto:
 
@@ -106,7 +145,11 @@ for (let [key, value] of Object.entries(user)) {
 }
 ```
 
+<<<<<<< HEAD
 ...Lo stesso vale per map:
+=======
+The similar code for a `Map` is simpler, as it's iterable:
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ```js run
 let user = new Map();
@@ -114,6 +157,7 @@ user.set("name", "John");
 user.set("age", "30");
 
 *!*
+// Map iterates as [key, value] pairs, very convenient for destructuring
 for (let [key, value] of user) {
 */!*
   alert(`${key}:${value}`); // name:John, then age:30
@@ -121,47 +165,95 @@ for (let [key, value] of user) {
 ```
 ````
 
+<<<<<<< HEAD
 ```smart header="Il trucco dello scambio di varibili"
 Un metodo molto conosciuto per lo scambio dei valori di due variabili:
+=======
+````smart header="Swap variables trick"
+There's a well-known trick for swapping values of two variables using a destructuring assignment:
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ```js run
 let guest = "Jane";
 let admin = "Pete";
 
+<<<<<<< HEAD
 // Scambio dei valori: rende guest=Pete, admin=Jane
+=======
+// Let's swap the values: make guest=Pete, admin=Jane
+*!*
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 [guest, admin] = [admin, guest];
+*/!*
 
 alert(`${guest} ${admin}`); // Pete Jane (scambiati con successo!)
 ```
 
 Qui creiamo un array temporaneo di due varibili e lo destrutturiamo immediatamente invertendo l'ordine delle variabili.
 
+<<<<<<< HEAD
 In questo modo possiamo invertire l'ordine di più di due variabili.
 
+=======
+We can swap more than two variables this way.
+````
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ### L'operatore resto '...'
 
+<<<<<<< HEAD
 Se invece vogliamo destrutturare tutto, non solamente il primo elemento, ma raccogliere anche quello che segue -- passiamo un ulteriore parametro nella forma `"..."`:
+=======
+Usually, if the array is longer when the list at the left, the "extra" items are omitted.
+
+For example, here only two items are taken, and the rest is just ignored:
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
+
+```js run
+let [name1, name2] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
+
+alert(name1); // Julius
+alert(name2); // Caesar
+// Furher items aren't assigned anywhere
+```
+
+If we'd like also to gather all that follows -- we can add one more parameter that gets "the rest" using three dots `"..."`:
 
 ```js run
 let [name1, name2, *!*...rest*/!*] = ["Julius", "Caesar", *!*"Consul", "of the Roman Republic"*/!*];
 
-alert(name1); // Julius
-alert(name2); // Caesar
-
 *!*
+<<<<<<< HEAD
 // Da notare che il tipo di `rest` è Array.
+=======
+// rest is array of items, starting from the 3rd one
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 alert(rest[0]); // Consul
 alert(rest[1]); // of the Roman Republic
 alert(rest.length); // 2
 */!*
 ```
 
+<<<<<<< HEAD
 La variabile `rest` è un array dei valori dell'array rimanenti. Possiamo utilizzare qualsiasi altro nome di variabile al posto di `rest`, è sufficiente accertarsi di inserire i tre punti prima del nome.
+=======
+The value of `rest` is the array of the remaining array elements. 
+
+We can use any other variable name in place of `rest`, just make sure it has three dots before it and goes last in the destructuring assignment.
+
+```js run
+let [name1, name2, *!*...titles*/!*] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
+// now titles = ["Consul", "of the Roman Republic"]
+```
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ### Valori di default
 
+<<<<<<< HEAD
 Se ci sono meno valori nell'array delle variabili da assegnare, non ci sarà alcun errore. I valori assenti vengono considerati undefined:
+=======
+If the array is shorter than the list of variables at the left, there'll be no errors. Absent values are considered undefined:
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ```js run
 *!*
@@ -186,7 +278,11 @@ alert(surname); // Anonymous (valore di default)
 
 I valori di default possono essere anche espressioni complesse o anche delle chiamate a funzione. Verranno presi in considerazione solamente se non verrà fornito alcun valore.
 
+<<<<<<< HEAD
 Ad esempio, qui usiamo la funzione `prompt` come default. La chiamata avverrà solamente nel secondo caso:
+=======
+For instance, here we use the `prompt` function for two defaults:
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ```js run
 // viene eseguito solo il prompt per il cognome
@@ -196,7 +292,7 @@ alert(name);    // Julius (dall'array)
 alert(surname); // qualsiasi cosa provenga dal prompt
 ```
 
-
+Please note: the `prompt` will run only for the missing value (`surname`).
 
 ## Destrutturazione di oggetti
 
@@ -208,7 +304,11 @@ La sintassi è:
 let {var1, var2} = {var1:…, var2:…}
 ```
 
+<<<<<<< HEAD
 Abbiamo un oggetto alla destra dell'assegnazione, che vogliamo dividere in variabili. Nel lato sinistro abbiamo un "pattern" di proprietà corrispondenti. In questo semplice caso, abbiamo una lista di variabili raggruppate tra parentesi `{...}`.
+=======
+We should have an existing object at the right side, that we want to split into variables. The left side contains an object-like "pattern" for corresponding properties. In the simplest case, that's a list of variable names in `{...}`.
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 Ad esempio:
 
@@ -228,7 +328,13 @@ alert(width);  // 100
 alert(height); // 200
 ```
 
+<<<<<<< HEAD
 Le proprietà `options.title`, `options.width` e `options.height` vengono assegnate alle variabili corrispondenti. L'ordine non ha importanza. Questo codice funzionerebbe allo stesso modo:
+=======
+Properties `options.title`, `options.width` and `options.height` are assigned to the corresponding variables. 
+
+The order does not matter. This works too:
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ```js
 // cambiato l'ordine delle proprietà in let {...}
@@ -237,7 +343,11 @@ let {height, width, title} = { title: "Menu", height: 200, width: 100 }
 
 Il pattern alla sinistra potrebbe essere anche più complesso e specificare una mappatura tra proprietà e variabili.
 
+<<<<<<< HEAD
 Se volessimo assegnare una proprietà ad una variabile con un altro nome, ad esempio, la proprietà `options.width` vogliamo inserirla in una variabile chiamata `w`, allora possiamo specificarlo con i due punti:
+=======
+If we want to assign a property to a variable with another name, for instance, make `options.width` go into the variable named `w`, then we can set the variable name using a colon:
+>>>>>>> 468e3552884851fcef331fbdfd58096652964b5f
 
 ```js run
 let options = {
