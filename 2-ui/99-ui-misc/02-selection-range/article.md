@@ -132,7 +132,6 @@ Non dobbiamo necessariamente usare lo stesso nodo in `setStart` e `setEnd`. Un r
 
 ### Selezionare porzioni di nodi testuali
 
-Let's select the text partially, like this:
 
 ![](range-example-p-2-b-3.svg)
 
