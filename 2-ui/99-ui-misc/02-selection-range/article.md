@@ -13,7 +13,7 @@ Puoi trovare degli script già pronti per le azioni più comuni, alla fine del c
 
 ## Range
 
-Il concetto base della selezione è il [Range](https://dom.spec.whatwg.org/#ranges), che non sono altro che un paio di "punti limite": inizio e fine del range.
+Il concetto alla base della selezione è il [Range](https://dom.spec.whatwg.org/#ranges), il quale definisce una coppia di "punti limite": inizio e fine del range.
 
 Un oggetto `Range` viene creato senza parametri:
 
