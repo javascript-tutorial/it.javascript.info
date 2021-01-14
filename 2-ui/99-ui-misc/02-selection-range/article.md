@@ -193,7 +193,7 @@ Imposta la fine del range (metodi simili):
 
 Altri metodi:
 - `selectNode(node)` Imposta un range per selezionare l'intero `nodo`.
-- `selectNodeContents(node)` Imposta un range per selezionare l'intero contenuto del `nodo`
+- `selectNodeContents(node)` Imposta un range per selezionare l'intero contenuto del `nodo`.
 - `collapse(toStart)` se `toStart=true` imposta `end=start`, altrimenti imposta `start=end`, collassando così il range.
 - `cloneRange()` crea un nuovo range con lo stesso inizio e fine
 
