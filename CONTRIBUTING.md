@@ -23,7 +23,7 @@ Per prima cosa trova come puoi renderti utile al progetto:
 
   - **Revisionare un articolo già tradotto**: Alcuni articolo tradotti tempo fa hanno bisogno di essere rivisti, corretti o aggiornati. Vai alla issue [Revisione articoli passati](https://github.com/javascript-tutorial/it.javascript.info/issues/119), qui potrai scegliere dalla lista l'articolo che vuoi revisionare. Notifica la tua scelta con un messaggio nella issue ed i maintainers si occuperanno di assegnarti la traduzione. In questo caso è importante confrontare l'articolo con la controparte in inglese per controllare se ci sono state aggiunte o correzioni, ed eventualmente riportarle nella revisione. 
 
-  - **Correzione errori**: Se hai notato un errore nei testi già tradotti, comunicalo con una nuova issue. Ci occuperemo di correggerlo, o, se vorrai, ti spigheremo come potrai correggerlo tu stesso.
+  - **Correzione errori**: Se hai notato un errore nei testi già tradotti, comunicalo con una nuova issue. Ci occuperemo di correggerlo, o, se vorrai, ti spiegheremo come potrai correggerlo tu stesso.
 
 Una volta che avrai scelto cosa fare ed i maintainers ti avranno assegnato l'articolo, puoi iniziare. Se hai già collaborato a qualche progetto opensource su GitHub non avrai difficoltà, se invece sei nuovo, abbiamo preparato una piccola [guida](#sei-nuovo-su-github?) che trovi più in basso.
 
