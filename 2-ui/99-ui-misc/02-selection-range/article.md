@@ -192,7 +192,7 @@ Imposta la fine del range (metodi simili):
 **Come visto, `node` può essere sia un nodo testuale che un nodo elemento: per i nodi testuali `offset` salta un equivalente numero di caratteri, mentre per i nodi elemento salta altrettanti nodi figlio.**
 
 Altri metodi:
-- `selectNode(node)` Imposta un range per selezionare l'intero `nodo`
+- `selectNode(node)` Imposta un range per selezionare l'intero `nodo`.
 - `selectNodeContents(node)` Imposta un range per selezionare l'intero contenuto del `nodo`
 - `collapse(toStart)` se `toStart=true` imposta `end=start`, altrimenti imposta `start=end`, collassando così il range.
 - `cloneRange()` crea un nuovo range con lo stesso inizio e fine
