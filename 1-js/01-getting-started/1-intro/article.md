@@ -10,17 +10,17 @@ I programmi che sfruttano questo linguaggio vengono chiamati *script*. Possono e
 
 Gli script vengono scritti ed eseguiti come testo semplice. Per questo non richiedono alcuna fase di preparazione o compilazione per essere eseguiti.
 
-In questo aspetto, JavaScript è molto differente da un altro linguaggio chiamato [Java](https://en.wikipedia.org/wiki/Java_(programming_language)).
+Sotto questo aspetto, JavaScript è molto differente da un altro linguaggio chiamato [Java](https://en.wikipedia.org/wiki/Java_(programming_language)).
 
 ```smart header="Perché si chiama <u>Java</u>Script?"
-In origine JavaScript aveva un altro nome: "LiveScript". In quel periodo Java era molto popolare, per questo si è pensato che identificare questo linguaggio come il "fratello minore" di Java potesse aiutare nella sua diffusione.
+In origine JavaScript aveva un altro nome: "LiveScript". In quel periodo Java era molto popolare, per questo si è pensato che identificare Javascript come il "fratello minore" di Java potesse aiutare alla sua diffusione.
 
-Evolvendosi, JavaScript è diventato un linguaggio completamente indipendente, con delle specifiche personali chiamate [ECMAScript](http://en.wikipedia.org/wiki/ECMAScript), e adesso non ha quasi nulla in comune con Java.
+Evolvendosi, JavaScript è diventato un linguaggio completamente indipendente, con una specifica personale chiamata [ECMAScript](http://en.wikipedia.org/wiki/ECMAScript), e adesso non ha quasi nulla in comune con Java.
 ```
 
 Attualmente, JavaScript può essere eseguito non solo nei browser, ma anche nei server web e in altri ambienti che supportano il [motore JavaScript](https://en.wikipedia.org/wiki/JavaScript_engine) (JavaScript engine).
 
-Il browser ha un suo motore JavaScript integrato, chiamato "JavaScript Virtual Machine".
+Il browser ha un suo motore JavaScript integrato, chiamato alle volte "JavaScript Virtual Machine".
 
 Esistono altri motori JavaScript, tra cui:
 
@@ -36,8 +36,8 @@ Il funzionamento di questi motori è complicato, ma i concetti alla base sono se
 
 
 1. I motori (integrati nei browser) leggono ("analizzano") lo script.
-2. Successivamente convertono ("compilano") lo script in linguaggio macchina.
-3. Infine il codice macchina viene eseguito, molto rapidamente.
+2. Successivamente convertono ("compilano") lo script nel linguaggio della macchina.
+3. Infine il "codice macchina" viene eseguito, molto rapidamente.
 
 Il motore applica ottimizzazioni ad ogni passo del processo. Anche durante l'esecuzione dello script già compilato, analizza il flusso dati e applica ottimizzazioni al codice macchina. Nonostante tutto l'esecuzione dello script risulta essere molto veloce.
 ```
