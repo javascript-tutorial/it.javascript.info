@@ -2,7 +2,7 @@
 
 Il codice dovrebbe essere il più pulito e leggibile possibile.
 
-Questa è l'arte della programmazione -- programmare funzionalità complesse che siano allo stesso tempo correte e leggibili. Un corretto stile di programmazione aiuta molto in questo senso.
+La programmazione è come un arte -- dobbiamo essere in grado di programmare funzionalità complesse che siano allo stesso tempo correte e leggibili. Un corretto stile di programmazione aiuta molto in questo senso.
 
 ## Sintassi
 
@@ -42,7 +42,7 @@ Niente di quello che stiamo dicendo è scolpito sulla pietra. Sono solo delle pr
 
 ### Parentesi graffe
 
-In molti progetti JavaScript le parentesi graffe sono scritte con lo stile "Egiziano" con la parentesi aperta nella stessa linea della keyword -- non in una nuova linea. Dovrebbe comunque esserci spazio prima della parentesi aperta, come in questo esempio:
+In molti progetti JavaScript le parentesi graffe sono scritte seguendo lo stile "Egiziano" con la parentesi aperta nella stessa linea della keyword -- non in una nuova linea. Dovrebbe comunque esserci spazio prima della parentesi aperta, come in questo esempio:
 
 ```js
 if (condition) {
@@ -56,35 +56,53 @@ Un caso limite è un costrutto con una singola linea. Dovremmo comunque usare le
 
 Qui ci sono un paio di varianti, cosi potete giudicare voi stessi:
 
-1. 😠 Beginners sometimes do that. Bad! Curly braces are not needed:
+1. 😠 I principianti spesso fanno questo. Sbagliato! Le parentesi graffe nono sono richieste:
     ```js
     if (n < 0) *!*{*/!*alert(`Power ${n} is not supported`);*!*}*/!*
     ```
-2. 😠 Split to a separate line without braces. Never do that, easy to make an error when adding new lines:
+2. 😠 Inserire l'istruzione su nuova riga senza parentesi. Non dovreste mai farlo, poiché rende molto semplice commettere errori nel caso si volesse aggiungere un'altra istruzione:
     ```js
     if (n < 0)
       alert(`Power ${n} is not supported`);
     ```
-3. 😏 One line without braces - acceptable, if it's short:
+3. 😏 In una singola riga senza parantesi -- accettabile, se l'istruzione è semplice:
     ```js
     if (n < 0) alert(`Power ${n} is not supported`);
     ```
-4. 😃 The best variant:
+4. 😃 La variante migliore:
     ```js
     if (n < 0) {
       alert(`Power ${n} is not supported`);
     }
     ```
 
-For a very brief code, one line is allowed, e.g. `if (cond) return null`. But a code block (the last variant) is usually more readable.
-
-In sintesi:
-- Per codici molto brevi, una sola riga è accettabile. Ad esempio:  `if (cond) return null`.
-- Ma una singola riga per ogni istruzione è generalmente più facile da leggere.
+Per istruzioni molto brevi, è consentito scrivere in una sola riga, ad esempio `if (cond) return null`. Ma un blocco di codice risulta essere molto più leggibile.
 
 ### Lunghezza della riga
 
-Nessuno ama leggere lunghe righe orizzontali di codice. Una buona norma è dividere le righe più lunghe in qualcosa di più breve.
+Nessuno ama leggere lunghe righe orizzontali di codice. Una buona norma è quella di dividere le righe più lunghe in righe più brevi.
+
+Ad esempio:
+```js
+// i backtick consentono di dividere la stinga in più righe
+let str = `
+  ECMA International's TC39 is a group of JavaScript developers,
+  implementers, academics, and more, collaborating with the community
+  to maintain and evolve the definition of JavaScript.
+`;
+```
+
+Invece, per le istruzioni `if`:
+
+```js
+if (
+  id === 123 &&
+  moonPhase === 'Waning Gibbous' &&
+  zodiacSign === 'Libra'
+) {
+  letTheSorceryBegin();
+}
+```
 
 La lunghezza massima dovrebbe essere accordata a livello di team. Solitamente tra gli 80-120 caratteri.
 
@@ -98,7 +116,7 @@ Ci sono due tipi di indentazione:
 
     Un vantaggio degli spazi contro i tabs è che gli spazi permettono configurazioni più flessibili.
 
-    Ad esempio, possiamo allineare gli argomenti con l'apertura della parentesi, come qui:
+    Ad esempio, possiamo allineare gli argomenti con l'apertura della parentesi, come nell'esempio:
 
     ```js no-beautify
     show(parameters,
@@ -131,15 +149,15 @@ Ci sono due tipi di indentazione:
 
 ### Punto e virgola
 
-Un punto e virgola dovrebbe essere presente alla fine di ogni istruzione, anche se potrebbe essere evitata.
+Il punto e virgola dovrebbe essere presente alla fine di ogni istruzione, anche se non è obbligatorio.
 
-Esistono linguaggi in cui il punto e virgola sono realmente opzionali e possono essere evitati. In JavaScript, esistono casi in cui un "a capo" non viene interpretato come un punto e virgola, lasciando quindi il codice vulnerabile agli errori.
+Esistono linguaggi in cui il punto e virgola è realmente opzionale e può essere omesso. In JavaScript, esistono casi in cui un "a capo" non viene interpretato come un punto e virgola, lasciando quindi il codice vulnerabile agli errori.
 
-Quando diventerete più maturi come programmatori, potreste scegliere lo stile senza punto e virgola [StandardJS](https://standardjs.com/). Fino a quel momento la miglio scelta è di inserirla alla fine di ogni istruzione per evitare errori.
+Quando diventerete più maturi come programmatori, potreste scegliere lo stile senza punto e virgola [StandardJS](https://standardjs.com/). Fino a quel momento la scelta migliore è quella di inserirlo alla fine di ogni istruzione per evitare errori.
 
 ### Livelli di annidamento
 
-Nel codice vanno evitati elevati liveeli di annidamento.
+Nel codice vanno evitati elevati livelli di annidamento.
 
 Qualche volta torna utile la direttiva ["continue"](info:while-for#continue) per evitare annidamenti extra.
 
@@ -253,17 +271,17 @@ Se state scrivendo molte funzioni "ausiliarie", ci sono tre modi per organizzarl
     ```
 3. Mix: una funzione viene dichiarata nel punto in cui viene utilizzata la prima volta.
 
-Nella maggioranza dei casi si preferisce la seconda opzione.
+Nella maggior parte dei casi si preferisce la seconda opzione.
 
 Questo perché quando leggiamo il codice vogliamo prima di tutto sapere *cosa fa*. Mettendo prima il codice possiamo fornire queste informazioni. Successivamente, potrebbe non essere necessario leggere le funzioni, soprattutto se i loro nomi sono autodescrittivi.
 
-## Guida di stile
+## Style guide
 
-Una guida di stile contiene  regole generali riguardo a "come scrivere" il codice, ad esempio quali apici utilizzare, di quanti spazi indentare, quando andare a capo, etc. Molti altri dettagli.
+Una guide style contiene regole generali riguardo a "come scrivere" il codice, ad esempio quali apici utilizzare, di quanti spazi indentare, quando andare a capo, e molti altri dettagli.
 
-Quando tutti i membri del team utilizzano lo stesso stile tende ad essere uniforme.
+Quando tutti i membri del team utilizzano lo stesso stile, il codice tende ad essere più uniforme.
 
-Certamente, un team può utilizzare il proprio stile guida. Molte volte non serve. Ci sono molte opzioni tra cui scegliere, quindi scegliere tra una di queste generalmente è la scelta migliore.
+Certamente, un team può utilizzare il proprio stile guida. Ma spesso non è necessario definirne uno proprio. Ci sono molte opzioni tra cui scegliere, quindi scegliere tra una di queste generalmente è la scelta migliore.
 
 Alcune delle scelte più popolari:
 
@@ -275,7 +293,7 @@ Alcune delle scelte più popolari:
 
 Se sei un nuovo sviluppatore, inizia con i consigli di questo capitolo. Quando avrai appreso bene lo stile potrai cercare quello che più ti appartiene.
 
-## Pulitori automatizzati
+## Linter
 
 I linters sono strumenti che controllano automaticamente lo stile del codice e vi danno consigli su come sistemarlo.
 
@@ -287,16 +305,16 @@ Alcuni fra i linter più conosciuti:
 - [JSHint](http://www.jshint.com/) -- molte più opzioni di JSLint.
 - [ESLint](http://eslint.org/) -- il più recente.
 
-Tutti quelli elencati svolgono molto bene il lavoro. L'autore utilizza [ESLint](http://eslint.org/).
+Tutti quelli elencati svolgono molto bene il lavoro. L'autore della guida utilizza [ESLint](http://eslint.org/).
 
-Molti linter sono integrati negli editor più popolari: è sufficiente attivare il plugin e configurare lo stile.
+Molti linter sono integrati negli editor più popolari: è sufficiente attivare il plugin e configurare lo stile desiderato.
 
-Ad esempio, per ESLint dovreste seguire quanto segue:
+Ad esempio, per poter utilizzare ESLint è sufficiente:
 
 1. Installare [Node.js](https://nodejs.org/).
-2. Installare ESLint con il comando `npm install -g eslint` (npm è package installer di JavaScript).
+2. Installare ESLint con il comando `npm install -g eslint` (npm è un package manager di JavaScript).
 3. Create un file di configurazione e rinominatelo `.eslintrc` nella root del vostro progetto JavaScript (la cartella che contiene tutti i file).
-4. Installa/abilita il plugin per il tuo editor per integrare ESLint. La maggior parte degli editor ne ha uno.
+4. Installa/abilita il plugin per il tuo editor per integrare ESLint. La maggior parte degli editor ne possiede uno.
 
 Qui un esempio di di un file `.eslintrc`:
 
@@ -317,14 +335,14 @@ Qui un esempio di di un file `.eslintrc`:
 
 La direttiva `"extends"` indica che la configurazione è basata sulla lista dei setting "eslint:recommended". Dopodiché potremo specificare il nostro stile personale.
 
-E' anche possible scaricare un set di regole dal web ed estenderle a nostro piacimento. Vedi <http://eslint.org/docs/user-guide/getting-started> per maggiori dettagli riguardo l'installazione.
+E' anche possibile scaricare un set di regole dal web ed estenderle a nostro piacimento. Vedi <http://eslint.org/docs/user-guide/getting-started> per maggiori dettagli riguardo l'installazione.
 
 Molti IDE hanno dei linter integrati, che sono comodi ma non sono editabili come ESLint.
 
 ## Riepilogo
 
-Tutte le regole sintattiche descritte in questo capitolo (e nei riferimenti dei vari stili di programmazione) aiutano ad incrementare la leggibilità del codice, ma sono tutti contestabili.
+Tutte le regole sintattiche descritte in questo capitolo (e i riferimenti alle style guides) aiutano ad incrementare la leggibilità del codice, ma sono tutte contestabili.
 
-Quando stiamo pensando a come scrivere codice "migliore", la domanda dovrebbe essere "Cosa rende il codice più leggibile e facile da capire?" e "Cosa può aiutarmi ad evitare gli errori?". Queste sono le principali cose da tenere a mente quando stiamo cercando di scegliere uno stile guida.
+Quando stiamo pensando a come scrivere codice "migliore", la domanda dovrebbe essere "Cosa rende il codice più leggibile e facile da capire?" e "Cosa può aiutarmi ad evitare gli errori?". Queste sono le principali cose da tenere a mente quando stiamo cercando di scegliere una style guide.
 
-Leggere fra gli stili più popolari vi consentirà di tenervi aggiornati con le ultime idee riguardo gli stili di programmazione e le best practices.
+Conoscere gli stili più popolari vi consentirà di tenervi aggiornati con le ultime idee riguardo gli stili di programmazione e le best practices.
