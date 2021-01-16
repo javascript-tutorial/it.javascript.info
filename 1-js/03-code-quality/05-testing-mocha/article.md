@@ -32,7 +32,7 @@ Abbiamo parlato abbastanza. Vediamo degli esempi.
 
 ## Sviluppo di "pow": le specifiche
 
-Vogloamo creare una funzione `pow(x, n)` che calcola la potenza di `x` per un intero `n`. Assumiamo che `n≥0`.
+Vogliamo creare una funzione `pow(x, n)` che calcola la potenza di `x` per un intero `n`. Assumiamo che `n≥0`.
 
 Questo è solo un esempio: infatti l'operatore `**` svolge quest'azione, ma concentriamoci sul flusso di sviluppo, che potremmo poi applicare a funzioni più complesse.
 
@@ -56,7 +56,7 @@ Una spec ha tre principali blocchi:
 : Viene descritta la funzionalità. Utilizzata per raggruppare le "attività" -- i blocchi `it`. Nel nostro caso descriviamo la funzione `pow`.
 
 `it("title", function() { ... })`
-: Nel titolo di `it` descriviamo il particolare caso d'uso *leggibili per gli umani*, come secondo argomento una funzione che la testa.
+: Nel titolo di `it` descriviamo il particolare caso d'uso *leggibile per gli umani*, come secondo argomento una funzione che lo testa.
 
 `assert.equal(value1, value2)`
 : Il codice all'interno del blocco `it`, se l'implementazione è corretta, dovrebbe eseguire senza errori.
@@ -79,14 +79,14 @@ Il flusso di sviluppo solitamente segue i passi:
 
 Quindi la fase di sviluppo è *iterativa*. Scriviamo la specifica, la implementiamo, ci accertiamo che passi i test, ci assicuriamo che faccia ciò che deve. Al termine di questa procedura avremmo un implementazione già testata e funzionante.
 
-Nel nostro caso, il primo step è completo: abbiamo un specifica iniziale di `pow`. Quindi ora passiamo all'implementazione. Come prima cosa facciamo l'esecuzione "zero" con le specifiche scritte, per essere sicuri che tutto funzioni (ovviamente dovrebbero tutte fallire).
+Nel nostro caso, il primo step è completo: abbiamo un specifica iniziale di `pow`. Quindi ora passiamo all'implementazione. Come prima cosa facciamo l'esecuzione "zero" con le specifiche scritte, per essere sicuri che tutto funzioni (ovviamente i test dovrebbero fallire tutti).
 
 ## La spec in azione
 
 In questo guida utilizzeremo le seguenti librerie JavaScript per fare test:
 
 - [Mocha](http://mochajs.org/) -- un core framework: fornisce le maggiori funzioni di test come `describe` e `it` e le principali funzioni che eseguono i test.
-- [Chai](http://chaijs.com) -- una libreria con molte asserzioni. Ci consente di utilizzare molte asserzioni differenti, per ora ci servirà solo s`assert.equal`.
+- [Chai](http://chaijs.com) -- una libreria con molte asserzioni. Ci consente di utilizzare molte asserzioni differenti, per ora ci servirà solamente `assert.equal`.
 - [Sinon](http://sinonjs.org/) -- una libreria per il controllo oltre le funzioni, emula funzioni integrate e molto altro, la utilizzeremo più avanti.
 
 Queste librerie sono utili sia per per il test browser, sia per il test lato server. Qui considereremo la variante browser.
@@ -296,14 +296,14 @@ Testing finished – after all tests (after)
 
 [edit src="beforeafter" title="Open the example in the sandbox."]
 
-Solitamente, `beforeEach/afterEach` (`before/each`) vengono utilizzari per eseguire inizializzazioni, azzerare i contatori o fare qualcosa prima di iniziare il prossimo test.
+Solitamente, `beforeEach/afterEach` (`before/each`) vengono utilizzati per eseguire inizializzazioni, azzerare i contatori o fare qualcosa prima di iniziare il prossimo test.
 ````
 
 ## Estendere le spec
 
 La funzionalità di base di `pow` è completa. La prima iterazione di sviluppo è fatta. Dopo aver festeggiato e bevuto champagne -- andiamo avanti provando ad aggiungere funzionalità.
 
-Come abbiamo detto, la funzione `pow(x, n)` è stata sviluppate per funzionare con interi positivi `n`.
+Come abbiamo detto, la funzione `pow(x, n)` è stata sviluppata per funzionare con interi positivi `n`.
 
 Per indicare un errore matematico, JavaScript solitamente ritorna `NaN`. Facciamo lo stesso per valori non validi di `n`.
 
@@ -332,7 +332,7 @@ Il risultato con il nuovo test sarà:
 
 [iframe height=530 src="pow-nan" edit border="1"]
 
-I nuovi test aggiunti falliranno, perché la nostra implementazione non li supporta ancora. Cosi è come funziona BDD: prima si scrivono test fallaci, e successivamente si lavora sull'implementazione.
+I nuovi test aggiunti falliranno, perché la nostra implementazione non li supporta ancora. Cosi è come funziona BDD: prima si scrivono test in modo che falliscano, e successivamente si lavora sull'implementazione.
 
 ```smart header="Altre asserzioni"
 
@@ -390,7 +390,7 @@ Questo è particolarmente importante specie nei grandi progetti, quando le funzi
 Senza i test, le persone avrebbero due possibilità:
 
 1. Cambiare qualcosa, non importa cosa. E successivamente gli utenti dovrebbero fare un rapporto quando incontrano un bug. Non sempre possiamo permetterci di farlo.
-2. Essere impauriti dai cambiamenti, soprattutto se la punizione in caso di errori è severa. Un giorno queste funzioni diventeranno vecchie, e coperte di ragnatele, nessuno vorrebbe utilizzare, questa opzione non è quindi ottimale.
+2. Essere impauriti dai cambiamenti, soprattutto se la punizione in caso di errori è severa. Un giorno queste funzioni diventeranno vecchie, e coperte di ragnatele, nessuno vorrà più utilizzarle, questa opzione non è quindi ottimale.
 
 **Il codice testato automaticamente evita questi problemi!**
 
