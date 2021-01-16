@@ -151,9 +151,9 @@ Perché l'azione viene risolta in quel modo?
     Se ci sono diverse modalità di risolvere una determinata azione, perché si è scelta questa? Specialmente quando non risulta la scelta più ovvia.
 
     Senza dei commenti si potrebbero generare le seguenti situazioni:
-    1. Tu (o un tuo collega) apre il codice un po' di tempo dopo, lo guarda e pensa che il codice è "poco ottimale".
-    2. Voi stessi potreste pensare: "Quanto stupido sono stato qui, e quanto intelligente sono adesso", e riscriverla utilizzando la variante "più ovvia e corretta".
-    3. ...Lo stimolo di riscriverla sarebbe corretto. Ma quando l'avete scritta vi siete resi conto che la soluzione "più ovvia" era effettivamente peggiore. Andando a rileggerla potreste non ricordarvi neanche perché. Quindi dopo averla riscritta vi rendete conto che è meglio tornare indietro, avete sprecato tempo.
+    1. Tu (o un tuo collega) apri il codice un po' di tempo dopo, lo guardi e pensi che il codice è "poco ottimizzato".
+    2. Tu stesso potresti pensare: "Quanto stupido sono stato qui, e quanto intelligente sono adesso", e riscriverla utilizzando la variante "più ovvia e corretta".
+    3. ...Lo stimolo di riscriverla sarebbe forte. Ma quando l'hai scritta ti eri reso conto che la soluzione "più ovvia" era effettivamente peggiore. Andando a rileggerla potresti non ricordarti neanche perché. Quindi dopo averla riscritta ti rendi conto che è meglio tornare indietro, hai sprecato tempo.
 
     Commenti che spiegano la soluzione sono fondamentali. Vi aiutano a sviluppare mantenendo sempre la strada corretta.
 
