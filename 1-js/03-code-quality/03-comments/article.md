@@ -111,7 +111,7 @@ function addJuice(container) {
 }
 ```
 
-Ripeto nuovamente, le funzioni stesse dicono cosa andranno a fare. Inoltre la struttura del codice è migliore quando è spezzata. E' chiaro cosa ogni funzione faccia, cosa richiede e cosa eventualmente ritorna.
+Ripeto nuovamente, le funzioni stesse dovrebero dire cosa sta succedendo. Non dovrebbe esserci alcun bisogno di commenti. Inoltre anche l'architettura del codice è migliore quando è spezzata. Rende più chiaro lo scopo di ogni funzione.
 
 Nella pratica, non possiamo evitare del tutto i commenti "esplicativi". Ci sono algoritmi molto complessi. E ci sono vari "trucchi" con lo scopo di ottimizzare questo tipo di commenti. In linea di massima dovremmo però cercare di tenere il codice semplice ed auto-descrittivo.
 
