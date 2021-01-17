@@ -313,7 +313,7 @@ Ad esempio, per poter utilizzare ESLint è sufficiente:
 
 1. Installa [Node.js](https://nodejs.org/).
 2. Installa ESLint con il comando `npm install -g eslint` (npm è un package manager di JavaScript).
-3. Create un file di configurazione e rinominatelo `.eslintrc` nella root del vostro progetto JavaScript (la cartella che contiene tutti i file).
+3. Crea un file di configurazione e chiamalo `.eslintrc` nella root del tuo progetto JavaScript (la cartella che contiene tutti i file).
 4. Installa/abilita il plugin per il tuo editor per integrare ESLint. La maggior parte degli editor ne possiede uno.
 
 Qui un esempio di di un file `.eslintrc`:
