@@ -76,7 +76,7 @@ Qui ci sono un paio di varianti, cosi potete giudicare voi stessi:
     }
     ```
 
-Per istruzioni molto brevi, è consentito scrivere in una sola riga, ad esempio `if (cond) return null`. Ma un blocco di codice risulta essere molto più leggibile.
+Per istruzioni molto brevi, è consentito scrivere su una sola riga, ad esempio `if (cond) return null`. Ma un blocco di codice risulta essere molto più leggibile.
 
 ### Lunghezza della riga
 
@@ -277,11 +277,11 @@ Questo perché quando leggiamo il codice vogliamo prima di tutto sapere *cosa fa
 
 ## Style guide
 
-Una guide style contiene regole generali riguardo a "come scrivere" il codice, ad esempio quali apici utilizzare, di quanti spazi indentare, quando andare a capo, e molti altri dettagli.
+Una style guide contiene regole generali riguardo a "come scrivere" il codice, ad esempio quali apici utilizzare, di quanti spazi indentare, quando andare a capo, e molti altri dettagli.
 
-Quando tutti i membri del team utilizzano lo stesso stile, il codice tende ad essere più uniforme.
+Quando tutti i membri del team utilizzano la stessa guida, il codice tende ad essere più uniforme.
 
-Certamente, un team può utilizzare il proprio stile guida. Ma spesso non è necessario definirne uno proprio. Ci sono molte opzioni tra cui scegliere, quindi scegliere tra una di queste generalmente è la scelta migliore.
+Certamente un team può utilizzare la propria style guide, ma spesso non è necessario definirne una propria. Ce ne sono molte già pronte, scegliere una tra queste è generalmente la scelta migliore.
 
 Alcune delle scelte più popolari:
 
@@ -312,7 +312,7 @@ Molti linter sono integrati negli editor più popolari: è sufficiente attivare 
 Ad esempio, per poter utilizzare ESLint è sufficiente:
 
 1. Installare [Node.js](https://nodejs.org/).
-2. Installare ESLint con il comando `npm install -g eslint` (npm è un package manager di JavaScript).
+2. Installa ESLint con il comando `npm install -g eslint` (npm è un package manager di JavaScript).
 3. Create un file di configurazione e rinominatelo `.eslintrc` nella root del vostro progetto JavaScript (la cartella che contiene tutti i file).
 4. Installa/abilita il plugin per il tuo editor per integrare ESLint. La maggior parte degli editor ne possiede uno.
 
@@ -341,7 +341,7 @@ Molti IDE hanno dei linter integrati, che sono comodi ma non sono editabili come
 
 ## Riepilogo
 
-Tutte le regole sintattiche descritte in questo capitolo (e i riferimenti alle style guides) aiutano ad incrementare la leggibilità del codice, ma sono tutte contestabili.
+Tutte le regole sintattiche descritte in questo capitolo (e nei riferimenti delle style guides) aiutano ad incrementare la leggibilità del codice, ma sono tutte contestabili.
 
 Quando stiamo pensando a come scrivere codice "migliore", la domanda dovrebbe essere "Cosa rende il codice più leggibile e facile da capire?" e "Cosa può aiutarmi ad evitare gli errori?". Queste sono le principali cose da tenere a mente quando stiamo cercando di scegliere una style guide.
 
