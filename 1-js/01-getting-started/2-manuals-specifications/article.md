@@ -5,11 +5,11 @@ Questo libro è un *tutorial*. L'obiettivo è quello di aiutarti ad apprender il
 
 ## Specifiche
 
-[La specifica ECMA-262](https://www.ecma-international.org/publications/standards/Ecma-262.htm) contiene informazioni più dettagliate, approfondite e formalizzate riguardo JavaScript. E' la definizione stessa del linguaggio.
+[La specifica ECMA-262](https://www.ecma-international.org/publications/standards/Ecma-262.htm) contiene informazioni più dettagliate, approfondite e formalizzate riguardanti JavaScript. E' la definizione stessa del linguaggio.
 
-Iniziare a studiare dalla formalizzazione può risultare difficile all'inizio. Quindi se avete bisogno di una sorgente affidabile e formale riguardo i dettagli del linguaggio, la specifica è il posto in cui cercare. Ma non è una risorsa comoda da consultare per i problemi di tutti i giorni.
+Iniziare a studiare dalla specifica può risultare difficile. Se avete bisogno di una fonte affidabile e formale riguardante i dettagli del linguaggio, la specifica è il posto in cui cercare. Ma non è una risorsa comoda da consultare per i problemi di tutti i giorni.
 
-Ogni anno viene rilasciata una nuova specifica. Fra questi rilasci, è possibile trovare l'ultima bozza a <https://tc39.es/ecma262/>.
+Ogni anno viene rilasciata una nuova specifica. Di queste pubblicazioni, è possibile trovare l'ultima bozza a <https://tc39.es/ecma262/>.
 
 Per leggere delle più recenti caratteristiche, incluse quelle considerate "quasi standard" (definite "stage 3"), potete consultare <https://github.com/tc39/proposals>.
 
@@ -17,26 +17,25 @@ Inoltre, se state sviluppando in ambiente browser, ci sono ulteriori specifiche 
 
 ## Manuali
 
-- **MDN (Mozilla) JavaScript Reference** è un manuale con esempi ed altre informazioni utili. E' ottimo per avere informazioni dettagliate riguardo le funzioni e i metodi del linguaggio.
+- **MDN (Mozilla) JavaScript Reference** è il manuale principale, corredato di spiegazioni teoriche, esempi ed altre informazioni utili. E' ottimo per avere informazioni dettagliate riguardo le funzioni e altre caratteristiche del linguaggio.
 
-    Può essere consultato al link <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference>.
+    Può essere consultato a <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference>.
 
-    Anche se, è meglio eseguire una ricerca internet. E' sufficiente inserire il termine "MDN" nella stringa da ricercare, e.g. <https://google.com/search?q=MDN+parseInt> per ricercare la funzione `parseInt`.
+    Tuttavia, spesso è meglio fare una ricerca su internet. E' sufficiente cercare "MDN", seguito dal termine da ricercare, e.g. <https://google.com/search?q=MDN+parseInt> per ricercare la funzione `parseInt`, oppure frasi come "RegExp MSDN" o "RegExp MSDN jscript".
 
 
-- **MSDN** – Manuale Microsoft con molte informazioni, incluso JavaScript (a cui viene fatto riferimento con il termine JScript). Se si ha bisongo di ottenere qualche informazione specifica per Internet Explorer, meglio consultare la guida: <http://msdn.microsoft.com/>.
+- **MSDN** – Manuale Microsoft con molte informazioni, tra cui su JavaScript (a cui viene fatto riferimento con il termine JScript). Se si ha bisogno di ottenere qualche informazione specifica per Internet Explorer, meglio consultare la guida: <http://msdn.microsoft.com/>.
 
-    Possiamo anche effettuare una ricerca online con frasi come "RegExp MSDN" o "RegExp MSDN jscript".
 
 ## Tabelle di compatibilità
 
-JavaScript è un linguaggio in via di sviluppo, per questo nuove funzionalità vengono aggiunte regolarmente.
+JavaScript è un linguaggio che muta costantemente, con nuove funzionalità che vengono aggiunte regolarmente.
 
 Per verificare il loro supporto da parte dei browser, si possono consultare:
 
-- <http://caniuse.com> - per visualizzare tabelle di supporto per ogni caratteristica, ad esempio per visualizzare le funzioni di crittografia: <http://caniuse.com/#feat=cryptography>.
+- <http://caniuse.com> - per le tabelle di supporto di ogni caratteristica, ad esempio per visualizzare le funzioni di crittografia: <http://caniuse.com/#feat=cryptography>.
 - <https://kangax.github.io/compat-table> - una tabella con le caratteristiche del linguaggio e i motori che le supportano.
 
-Tutte le risorse elencate finora sono utili nella sviluppo di tutti i giorni, in quanto contengono ottime informazioni riguardo i dettagli del linguaggio, il loro support etc.
+Tutte le risorse elencate finora sono utili nello sviluppo di tutti i giorni, in quanto contengono ottime informazioni riguardo ai dettagli del linguaggio, il loro supporto ecc.
 
-Ti consiglio quindi di ricordartele (in alternativa puoi consultare questa pagina), nel caso dovessi avere bisogno di informazioni dettagliate riguardo qualche caratteristica particolare.
+Ti consiglio quindi di ricordartele (in alternativa puoi consultare questa pagina), nel caso dovessi avere bisogno di informazioni dettagliate riguardo a qualche caratteristica particolare.
