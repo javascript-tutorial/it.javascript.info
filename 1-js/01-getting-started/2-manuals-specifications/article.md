@@ -24,7 +24,10 @@ Inoltre, se state sviluppando in ambiente browser, ci sono ulteriori specifiche 
     Tuttavia, spesso è meglio fare una ricerca su internet. E' sufficiente cercare "MDN", seguito dal termine da ricercare, e.g. <https://google.com/search?q=MDN+parseInt> per ricercare la funzione `parseInt`, oppure frasi come "RegExp MSDN" o "RegExp MSDN jscript".
 
 
+    Può essere consultato al link <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference>.
+
 - **MSDN** – Manuale Microsoft con molte informazioni, tra cui su JavaScript (a cui viene fatto riferimento con il termine JScript). Se si ha bisogno di ottenere qualche informazione specifica per Internet Explorer, meglio consultare la guida: <http://msdn.microsoft.com/>.
+
 
 
 ## Tabelle di compatibilità

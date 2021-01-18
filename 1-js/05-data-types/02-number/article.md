@@ -16,6 +16,14 @@ Immaginiamo di dover scrivere 1 milione. La via più ovvia è:
 let billion = 1000000000;
 ```
 
+Possiamo anche usare il carattere underscore `_` come separatore:
+
+```js
+let billion = 1_000_000_000;
+```
+
+Qui il carattere `_` gioca il ruolo di "szucchero sintattico", cioè rende il numero più leggibile. Il motore JavaScript semplicemente ignorerà i caratteri `_` tra le cifre, quindi è come scrive il milione di poco sopra.
+
 Nella vita reale però cerchiamo di evitare di scrivere lunghe file di zeri per evitare errori. E anche perché siamo pigri. Solitamente scriviamo qualcosa del tipo `"1ml"` per un milione o `"7.3ml"` 7 milioni e 300mila. Lo stesso vale per i numeri più grandi.
 
 In JavaScript, possiamo abbreviare un numero inserendo la lettera `"e"` con il numero di zeri a seguire:
@@ -23,14 +31,15 @@ In JavaScript, possiamo abbreviare un numero inserendo la lettera `"e"` con il n
 ```js run
 let billion = 1e9;  // 1 miliardo, letteralmente: 1 e 9 zeri
 
-alert( 7.3e9 );  // 7.3 miliardo (7,300,000,000)
+alert( 7.3e9 );  // 7.3 miliardi (equivale a 7300000000 o 7_300_000_000)
 ```
 
 In altre parole, `"e"` moltiplica il numero `1` seguito dal numero di zeri dati.
 
+
 ```js
-1e3 = 1 * 1000
-1.23e6 = 1.23 * 1000000
+1e3 = 1 * 1000 // e3 means *1000
+1.23e6 = 1.23 * 1000000 // e6 means *1000000
 ```
 
 Ora proviamo a scrivere qualcosa di molto piccolo. Ad esempio, 1 microsecondo (un milionesimo di secondo): 
@@ -125,7 +134,8 @@ Ci sono diverse funzioni integrate per eseguire questa operazione:
 : Arrotonda per eccesso: `3.1` diventa `4`, e `-1.1` diventa `-1`.
 
 `Math.round`
-: Arrotonda all'intero più vicino: `3.1` diventa `3`, `3.6` diventa `4` e `-1.1` diventa `-1`.
+
+: Arrotonda all'intero più vicino: `3.1` diventa `3`, `3.6` diventa `4`, e `3.5` viene arrotondato anch'esso a `4`.
 
 `Math.trunc` (non supportato da Internet Explorer)
 : Rimuove tutto dopo la virgola decimale senza arrotondare: `3.1` diventa `3`, `-1.1` diventa `-1`.
