@@ -14,17 +14,10 @@ Semplicemente una valore "raggiungibile" deve essere accessibile o utilizzabile.
 
     Ad esempio:
 
-<<<<<<< HEAD
-    - Variabili locali e parametri correnti della funzione.
-    - Variabili o parametri di altre funzioni che fanno però parte della catena delle chiamate annidate.
+    - Funzioni in esecuzione, i loro parametri e le loro variabi locali.
+    - Funzioni che fanno parte della catena delle chiamate annidate, i loro parametri e le loro variabi locali.
     - Variabili globali.
-    - (ce ne sono altre)
-=======
-    - The currently executing function, its local variables and parameters.
-    - Other functions on the current chain of nested calls, their local variables and parameters.
-    - Global variables.
-    - (there are some other, internal ones as well)
->>>>>>> 3a0b3f4e31d4c4bbe90ed4c9c6e676a888ad8311
+    - (ce ne sono altri, anche interni)
 
     Questi valori sono detti *radici*.
 
