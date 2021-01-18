@@ -13,20 +13,32 @@ Ogni anno viene rilasciata una nuova specifica. Fra questi rilasci, è possibile
 
 Per leggere delle più recenti caratteristiche, incluse quelle considerate "quasi standard" (definite "stage 3"), potete consultare <https://github.com/tc39/proposals>.
 
+<<<<<<< HEAD
 Inoltre, se state sviluppando in ambiente browser, ci sono ulteriori specifiche che verranno analizzate nella [seconda parte](info:browser-environment) del tutorial.
+=======
+Also, if you're in developing for the browser, then there are other specifications covered in the [second part](info:browser-environment) of the tutorial.
+>>>>>>> 3a0b3f4e31d4c4bbe90ed4c9c6e676a888ad8311
 
 ## Manuali
 
+<<<<<<< HEAD
 - **MDN (Mozilla) JavaScript Reference** è un manuale con esempi ed altre informazioni utili. E' ottimo per avere informazioni dettagliate riguardo le funzioni e i metodi del linguaggio.
+=======
+- **MDN (Mozilla) JavaScript Reference** is the main manual with examples and other information. It's great to get in-depth information about individual language functions, methods etc.
+>>>>>>> 3a0b3f4e31d4c4bbe90ed4c9c6e676a888ad8311
 
     Può essere consultato al link <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference>.
 
+<<<<<<< HEAD
     Anche se, è meglio eseguire una ricerca internet. E' sufficiente inserire il termine "MDN" nella stringa da ricercare, e.g. <https://google.com/search?q=MDN+parseInt> per ricercare la funzione `parseInt`.
 
 
 - **MSDN** – Manuale Microsoft con molte informazioni, incluso JavaScript (a cui viene fatto riferimento con il termine JScript). Se si ha bisongo di ottenere qualche informazione specifica per Internet Explorer, meglio consultare la guida: <http://msdn.microsoft.com/>.
 
     Possiamo anche effettuare una ricerca online con frasi come "RegExp MSDN" o "RegExp MSDN jscript".
+=======
+Although, it's often best to use an internet search instead. Just use "MDN [term]" in the query, e.g. <https://google.com/search?q=MDN+parseInt> to search for `parseInt` function.
+>>>>>>> 3a0b3f4e31d4c4bbe90ed4c9c6e676a888ad8311
 
 ## Tabelle di compatibilità
 

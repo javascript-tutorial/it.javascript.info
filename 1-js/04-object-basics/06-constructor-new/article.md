@@ -91,7 +91,11 @@ La sintassi presentata in questa sessione viene utilizzata raramente, potete tra
 
 Dentro la funzione, possiamo controllare quando questa viene chiamata con `new` e quando senza, utilizzando una speciale proprietà `new.target`.
 
+<<<<<<< HEAD
 Questa risulta vuota per le chiamate normali, mentre contiene la funzione se viene chiamata con  `new`:
+=======
+It is undefined for regular calls and equals the function if called with `new`:
+>>>>>>> 3a0b3f4e31d4c4bbe90ed4c9c6e676a888ad8311
 
 ```js run
 function User() {

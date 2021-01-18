@@ -16,21 +16,42 @@ Immaginiamo di dover scrivere 1 milione. La via più ovvia è:
 let billion = 1000000000;
 ```
 
+<<<<<<< HEAD
 Nella vita reale però cerchiamo di evitare di scrivere lunghe file di zeri per evitare errori. E anche perché siamo pigri. Solitamente scriviamo qualcosa del tipo `"1ml"` per un milione o `"7.3ml"` 7 milioni e 300mila. Lo stesso vale per i numeri più grandi.
 
 In JavaScript, possiamo abbreviare un numero inserendo la lettera `"e"` con il numero di zeri a seguire:
+=======
+We also can use underscore `_` as the separator:
+
+```js
+let billion = 1_000_000_000;
+```
+
+Here the underscore `_` plays the role of the "syntactic sugar", it makes the number more readable. The JavaScript engine simply ignores `_` between digits, so it's exactly the same one billion as above.
+
+In real life though, we try to avoid writing long sequences of zeroes. We're too lazy for that. We'll try to write something like `"1bn"` for a billion or `"7.3bn"` for 7 billion 300 million. The same is true for most large numbers.
+
+In JavaScript, we can shorten a number by appending the letter `"e"` to it and specifying the zeroes count:
+>>>>>>> 3a0b3f4e31d4c4bbe90ed4c9c6e676a888ad8311
 
 ```js run
 let billion = 1e9;  // 1 miliardo, letteralmente: 1 e 9 zeri
 
+<<<<<<< HEAD
 alert( 7.3e9 );  // 7.3 miliardo (7,300,000,000)
 ```
 
 In altre parole, `"e"` moltiplica il numero `1` seguito dal numero di zeri dati.
+=======
+alert( 7.3e9 );  // 7.3 billions (same as 7300000000 or 7_300_000_000)
+```
+
+In other words, `e` multiplies the number by `1` with the given zeroes count.
+>>>>>>> 3a0b3f4e31d4c4bbe90ed4c9c6e676a888ad8311
 
 ```js
-1e3 = 1 * 1000
-1.23e6 = 1.23 * 1000000
+1e3 = 1 * 1000 // e3 means *1000
+1.23e6 = 1.23 * 1000000 // e6 means *1000000
 ```
 
 Ora proviamo a scrivere qualcosa di molto piccolo. Ad esempio, 1 microsecondo (un milionesimo di secondo): 
@@ -125,7 +146,11 @@ Ci sono diverse funzioni integrate per eseguire questa operazione:
 : Arrotonda per eccesso: `3.1` diventa `4`, e `-1.1` diventa `-1`.
 
 `Math.round`
+<<<<<<< HEAD
 : Arrotonda all'intero più vicino: `3.1` diventa `3`, `3.6` diventa `4` e `-1.1` diventa `-1`.
+=======
+: Rounds to the nearest integer: `3.1` becomes `3`, `3.6` becomes `4`, the middle case: `3.5` rounds up to `4` too.
+>>>>>>> 3a0b3f4e31d4c4bbe90ed4c9c6e676a888ad8311
 
 `Math.trunc` (non supportato da Internet Explorer)
 : Rimuove tutto dopo la virgola decimale senza arrotondare: `3.1` diventa `3`, `-1.1` diventa `-1`.
