@@ -166,11 +166,9 @@ let [name1, name2] = ["Julius", "Caesar", "Consul", "of the Roman Republic"];
 
 alert(name1); // Julius
 alert(name2); // Caesar
-<<<<<<< HEAD
+
 // Gli elementi successivi non vengono assegnati
-=======
-// Further items aren't assigned anywhere
->>>>>>> 3a0b3f4e31d4c4bbe90ed4c9c6e676a888ad8311
+
 ```
 
 Se vogliamo anche ottenere tutto ciò che segue, possiamo aggiungere un altro parametro che raccoglie "il resto" utilizzando tre punti `" ... "`:
