@@ -91,7 +91,8 @@ La sintassi presentata in questa sessione viene utilizzata raramente, potete tra
 
 Dentro la funzione, possiamo controllare quando questa viene chiamata con `new` e quando senza, utilizzando una speciale proprietà `new.target`.
 
-Questa risulta vuota per le chiamate normali, mentre contiene la funzione se viene chiamata con  `new`:
+Questa risulta 'undefined' per le chiamate normali, mentre contiene la funzione se viene chiamata con  `new`:
+
 
 ```js run
 function User() {

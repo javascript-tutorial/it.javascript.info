@@ -141,7 +141,7 @@ Possiamo "avvolgerlo" wrap in una funzione async anonima, come qui:
 })();
 ```
 
-P.S. The notable exception is V8 engine version 8.9+, where top-level await works in [modules](info:modules).
+P.S. New feature: starting from V8 engine version 8.9+, top-level await works in [modules](info:modules).
 ````
 ````smart header="`await` accetta i \"thenables\""
 Come `promise.then`, `await` permette di usare gli oggetti "thenable" (quelli con un metodo `then` chiamabile). L' idea è che un oggetto di terze parti possa non essere una promise, ma essere promise-compatibile: se supporta `.then`, è abbastanza per usarlo con `await`.
