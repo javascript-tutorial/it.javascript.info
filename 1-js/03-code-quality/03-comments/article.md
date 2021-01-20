@@ -1,6 +1,6 @@
 # Commenti
 
-Come abbiamo già appreso dal capitolo <info:structure>, i commenti possono essere di una singola-riga: ed iniziano con `//` oppure multilinea: `/* ... */`.
+Come abbiamo già appreso dal capitolo <info:structure>, i commenti possono essere di una singola riga: ed iniziano con `//` oppure multilinea: `/* ... */`.
 
 Normalmente li utilizziamo per descrivere come e perché funziona il codice.
 
@@ -20,11 +20,11 @@ code;
 
 Nel buon codice la quantità di commenti "esplicativi" dovrebbe essere minima. In realtà il codice dovrebbe essere facile da comprendere anche senza.
 
-C'è una bellissima regola a riguardo: "Se il codice è cosi poco chiaro da richiedere un commento, probabilmente dovrebbe essere riscritto".
+C'è una bellissima citazione a riguardo: "Se il codice è cosi poco chiaro da richiedere un commento, probabilmente dovrebbe essere riscritto".
 
 ### Ricetta: raccogliere in una funzione
 
-Qualche volta può essere un beneficio rimpiazzare un pezzo di codice in una funzione, come in questo esempio:
+Qualche volta può essere un beneficio rimpiazzare un pezzo di codice con una funzione, come in questo esempio:
 
 ```js
 function showPrimes(n) {
@@ -65,7 +65,7 @@ function isPrime(n) {
 }
 ```
 
-Ora possiamo capire il codice più facilmente. La funzione stessa diventa un commento. Questo tipo di codice viene definito *self-descriptive* (auto-descrittivo). 
+Ora possiamo capire il codice più facilmente. La funzione stessa diventa un commento. Questo tipo di codice viene definito *auto-descrittivo*. 
 
 ### Ricetta: creare funzioni
 
@@ -79,7 +79,7 @@ for(let i = 0; i < 10; i++) {
   add(drop, glass);
 }
 
-// qui aggiungiamo della spremuta (juice)
+// qui aggiungiamo della spremuta
 for(let t = 0; t < 3; t++) {
   let tomato = getTomato();
   examine(tomato);
@@ -111,16 +111,16 @@ function addJuice(container) {
 }
 ```
 
-Ripeto nuovamente, le funzioni stesse dicono cosa andranno a fare. Inoltre la struttura del codice è migliore quando è spezzata. E' chiaro cosa ogni funzione faccia, cosa richiede e cosa eventualmente ritorna.
+Ripeto nuovamente, le funzioni stesse dovrebero dire cosa sta succedendo. Non dovrebbe esserci alcun bisogno di commenti. Inoltre anche l'architettura del codice è migliore quando è spezzata. Rende più chiaro lo scopo di ogni funzione.
 
-Nella pratica, non possiamo evitare del tutto i commenti "esplicativi". Ci sono algoritmi molto complesso. E ci sono vari "trucchi" con lo scopo di ottimizzare questo tipo di commenti. In linea di massima dovremmo però cercar di tenere il codice semplice ed auto-descrittivo.
+Nella pratica, non possiamo evitare del tutto i commenti "esplicativi". Ci sono algoritmi molto complessi. E ci sono vari "trucchi" con lo scopo di ottimizzare questo tipo di commenti. In linea di massima dovremmo però cercare di tenere il codice semplice ed auto-descrittivo.
 
 ## Buoni commenti
 
 Quindi, solitamente i commenti esplicativi sono sbagliati. Quali sono allora i commenti giusti?
 
 Descrivere l'architettura
-: Fornire un visuale di alto livello dei componenti, come interagiscono, come si comporta il flusso d'esecuzione in certe situazioni... In breve -- gli "occhi d'aquila" del codice. C'è uno speciale linguaggio schematico [UML](http://wikipedia.org/wiki/Unified_Modeling_Language) per schematizzare ad alto livello. Assolutamente da conoscere.
+: Fornire un visuale di alto livello dei componenti, come interagiscono, come si comporta il flusso d'esecuzione in certe situazioni... In breve -- gli "occhi d'aquila" del codice. Esiste uno speciale linguaggio di schematizzazione, [UML](http://wikipedia.org/wiki/Unified_Modeling_Language) per per la descrizione dell'architettura ad alto livello. Da studiare assolutamente.
 
 Documentare l'utilizzo di una funzione
 : Esiste una particolare sintassi [JSDoc](http://en.wikipedia.org/wiki/JSDoc) per documentare le funzioni: utilizzo, parametri, valori di ritorno.
@@ -141,7 +141,7 @@ Documentare l'utilizzo di una funzione
 
     Questi commenti ci consentono di capire lo scopo della funzione e come utilizzarla correttamente senza guardarne il codice.
 
-    In ogni caso, molti editor come [WebStorm](https://www.jetbrains.com/webstorm/) li comprendono e possono quindi utilizzarli per autocomplete e alcune verifiche automatiche del codice.
+    I molti casi, gli editor come [WebStorm](https://www.jetbrains.com/webstorm/) sono in grado di comprenderli e possono quindi utilizzarli per autocompletamenti e alcune verifiche automatiche del codice.
 
     Ci sono anche tool come [JSDoc 3](https://github.com/jsdoc3/jsdoc) che possono generare documentazione in HTML a partire dai commenti. Puoi scoprire di più riguardo JSDoc su <http://usejsdoc.org/>.
 
@@ -151,20 +151,20 @@ Perché l'azione viene risolta in quel modo?
     Se ci sono diverse modalità di risolvere una determinata azione, perché si è scelta questa? Specialmente quando non risulta la scelta più ovvia.
 
     Senza dei commenti si potrebbero generare le seguenti situazioni:
-    1. Tu (o un tuo collega) apre il codice un pò di tempo dopo, lo guarda e pensa che il codice è "poco ottimale".
-    2. Voi stessi potreste pensare: "Quanto stupido sono stato qui, e quanto intelligente sono adesso", e riscriverla utilizzando "la più ovvia e corretta" variante.
-    3. ...Lo stimolo di riscriverla sarebbe corretto. Ma quando l'avete scritta vi siete resi conto che la soluzione "più ovvia" era effettivamente peggiore. Andando a rileggerla potreste non ricordarvi neanche perché. Quindi dopo averla riscritta vi rendete conto che è meglio tornare indietro, avete sprecato tempo.
+    1. Tu (o un tuo collega) apri il codice un po' di tempo dopo, lo guardi e pensi che il codice è "poco ottimizzato".
+    2. Tu stesso potresti pensare: "Quanto stupido sono stato qui, e quanto intelligente sono adesso", e riscriverla utilizzando la variante "più ovvia e corretta".
+    3. ...Lo stimolo di riscriverla sarebbe forte. Ma quando l'hai scritta ti eri reso conto che la soluzione "più ovvia" era effettivamente peggiore. Andando a rileggerla potresti non ricordarti neanche perché. Quindi dopo averla riscritta ti rendi conto che è meglio tornare indietro, hai sprecato tempo.
 
     Commenti che spiegano la soluzione sono fondamentali. Vi aiutano a sviluppare mantenendo sempre la strada corretta.
 
 Ci sono alcune piccolezze? Dove vengono utilizzate?
-: Se il codice contiene sottigliezze contro-intuitive, vale certamente la pena commentarle.
+: Se il codice contiene sottigliezze contro intuitive, vale certamente la pena commentarle.
 
 ## Riepilogo
 
-Un importante valore che possiede un bravo sviluppatore sono i commenti: la loro presenza o assenza.
+Un importante qualità che deve possedere un bravo sviluppatore, è quella di saper scrivere dei buoni commenti.
 
-I buoni commenti ci consentono di mantenere bene il codice, di poterci tornare dopo un pò di tempo e capire le scelte prese.
+I buoni commenti ci consentono di mantenere il codice in uno stato ottimale, e di poterci tornare dopo un po' di tempo e capire le scelte prese.
 
 **Commenti utili:**
 

@@ -14,10 +14,10 @@ Semplicemente una valore "raggiungibile" deve essere accessibile o utilizzabile.
 
     Ad esempio:
 
-    - Variabili locali e parametri correnti della funzione.
-    - Variabili o parametri di altre funzioni che fanno però parte della catena delle chiamate annidate.
+    - Funzioni in esecuzione, i loro parametri e le loro variabi locali.
+    - Funzioni che fanno parte della catena delle chiamate annidate, i loro parametri e le loro variabi locali.
     - Variabili globali.
-    - (ce ne sono altre)
+    - (ce ne sono altri, anche interni)
 
     Questi valori sono detti *radici*.
 
