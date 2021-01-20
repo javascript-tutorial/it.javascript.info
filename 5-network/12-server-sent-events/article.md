@@ -37,11 +37,11 @@ data: Message 3
 data: of two lines
 ```
 
-- Un messaggio di testo che va dopo `data:`, lo spazio dopo la virgola è opzionale.
+- Un messaggio di testo segue la stringa `data:`, lo spazio dopo la virgola è opzionale.
 - I messaggi sono delimitati con un doppio line break `\n\n`.
-- Per inviare un line break `\n`, possiamo inviare immediatamente un altro `data:` (il terzo messaggio nell'esempio qui sopra).
+- Per inviare un line break `\n`, possiamo inviare immediatamente un altro `data:` (il terzo messaggio nell'esempio precedente).
 
-In pratica, i messaggi complessi sono solitamente inviati tramite oggetti codificati in JSO. I Line-breaks sono codificati come `\n` tra essi, e in questo modo i messaggi `data:` multiriga non sono necessari
+In pratica, i messaggi complessi sono solitamente inviati tramite oggetti codificati in JSO. I Line-breaks sono codificati come `\n`, e in questo modo i messaggi `data:` multiriga non sono necessari
 
 Ad esempio:
 
@@ -143,7 +143,7 @@ Nota bene: l'`id` viene aggiunto dopo il messaggio `data` dal server, per assicu
 
 ## Stato della conessione: readyState
 
-L'oggetto `EventSource` possiede la proprietà `readyState`, che assume uno tra questi tre valori:
+L'oggetto `EventSource` possiede la proprietà `readyState`, che può assumere uno dei seguenti valori:
 
 ```js no-beautify
 EventSource.CONNECTING = 0; // connessione o riconnessione
@@ -248,9 +248,9 @@ Complessivamente la sicurezza del cross-origin è la stessa di `fetch` e altri m
 : La connessione è stabilita.
 
 `error`
-: In caso di errori, includendo sia la connessione persa (si riconnetterà automaticamente), che errori fatali. Possiamo controllare `readyState` per vedere se è stata tentata la riconnessione.
+: In caso di errori, inclusi la connessione persa (con riconnessione automatica) ed errori fatali. Possiamo controllare `readyState` per vedere se è stata tentata la riconnessione.
 
-Il server può impostare un evento custom dentro `event:`. Questi eventi andrebbero gestiti usando `addEventListener`, e non `on<event>`.
+Il server può impostare un evento personalizzato dentro `event:`. Questi eventi andrebbero gestiti usando `addEventListener`, e non `on<event>`.
 
 ### Formato della risposta del server
 
@@ -258,9 +258,9 @@ Il server invia messaggi, delimitati da `\n\n`.
 
 Un messaggio può avere i seguenti campi:
 
-- `data:` -- corpo del messaggio, una sequenza di `data` multipli viene intrpretata come un messaggio singolo, con `\n` tra la parti.
-- `id:` -- aggiorna il `lastEventId`, inviato dentro `Last-Event-ID` in fase di riconnnessione.
-- `retry:` -- raccomnda una ritardo nel tentativo di riconessione in millisecondi. Non c'è modo di impostarlo da JavaScript.
+- `data:` -- corpo del messaggio, una sequenza di `data` multipli viene interpretata come un messaggio singolo, con `\n` tra la parti.
+- `id:` -- aggiorna `lastEventId`, inviato dentro `Last-Event-ID` in fase di riconnessione.
+- `retry:` -- raccomanda una ritardo nel tentativo di riconessione in millisecondi. Non c'è modo di impostarlo da JavaScript.
 - `event:` -- event name, must precede `data:`.
 
 Un messaggio può includere uno o più campi in qualunque ordine, ma l'`id:` solitamente va per ultimo.
