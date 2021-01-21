@@ -1,8 +1,8 @@
 # Operatori logici
 
-In JavaScript ci sono tre operatori logici: `||` (OR), `&&` (AND), `!` (NOT).
+In JavaScript ci sono tre operatori logici: `||` (OR), `&&` (AND), e `!` (NOT).
 
-Nonostante si chiamino "logici", possono essere applicati a valori di qualsiasi tipo, non solo ai booleani. Il risultato stesso può essere di qualunque tipo.
+Nonostante si chiamino "logici", possono essere applicati a valori di qualsiasi tipo, non solo ai booleani. Il risultato può essere di qualunque tipo.
 
 Vediamoli nei dettagli.
 
@@ -16,7 +16,7 @@ result = a || b;
 
 Nella programmazione classica, l'OR logico è pensato per manipolare solo tipi booleani. Se almeno un argomento è `true`, allora il risultato sarà `true`, altrimenti sarà `false`.
 
-In JavaScript questo operatore è un pò più potente. Ma prima guardiamo come si comporta con valori booleani.
+In JavaScript questo operatore è un pò più potente. Ma prima vediamo come si comporta con i valori booleani.
 
 Ci sono quattro combinazioni logiche possibili:
 
@@ -29,9 +29,9 @@ alert( false || false ); // false
 
 Come possiamo vedere, il risultato è sempre `true` tranne nei casi in cui entrambi gli operandi sono `false`.
 
-Se un operando non è booleano, allora viene convertito in booleano per essere valutato.
+Se un operando non è booleano viene convertito per essere valutato.
 
-Ad esempio, il numero `1` viene visto come `true`, il numero `0` -- come `false`:
+Ad esempio, il numero `1` viene considerato come `true`, il numero `0` come `false`:
 
 ```js run
 if (1 || 0) { // funziona proprio come ( true || false )
@@ -68,9 +68,9 @@ if (hour < 10 || hour > 18 || isWeekend) {
 
 La logica descritta sopra è ovvia. Adesso proviamo ad addentrarci in qualche caratteristica "extra" di JavaScript.
 
-Si può estendere l'algoritmo come segue:
+Si può estendere l'algoritmo come segue.
 
-Dando molti valori tramite OR:
+Dati svariati operandi: 
 
 ```js
 result = value1 || value2 || value3;
@@ -79,12 +79,12 @@ result = value1 || value2 || value3;
 L'operatore OR `||` si comporta come segue:
 
 - Valuta gli operandi da sinistra a destra.
-- Ogni operando viene converito in booleano. Se il risultato è `true`, allora si ferma e ritorna il valore originale dell'operando.
+- Ogni operando viene convertito in booleano. Se il risultato è `true`, allora si ferma e ritorna il valore originale dell'operando.
 - Se tutti gli altri operandi sono stati valutati (ad esempio tutti erano `false`), ritorna l'ultimo operando.
 
-Un valore viene ritornato nella sua forma originale, non nella sua conversione booleana.
+**Un valore viene ritornato nella sua forma originale, non nella sua conversione booleana.
 
-In altra parole, una catena di OR `"||"` ritorna il primo valore vero, se invece non ce ne sono ritorna l'ultimo valore trovato.
+In altra parole, una catena di OR `"||"` ritorna il primo valore vero; se invece non ce ne sono ritorna l'ultimo valore trovato.
 
 Ad esempio:
 
@@ -97,13 +97,13 @@ alert( null || 0 || 1 ); // 1 (il primo valore true)
 alert( undefined || null || 0 ); // 0 (tutti falsi, ritorna l'ultimo valore)
 ```
 
-Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR booleano".boolean-only OR".
+Questo ci permette alcuni utilizzi interessanti rispetto al "puro e classico OR booleano"boolean-only OR".
 
 1. **Prelevare il primo valore vero da una lista di variabili o espressioni.**
 
-    Immaginiamo di avere diverse variabili, `firstName`, `lastName` e `nickName`, tutti opzionali (possono quindi essere undefined o avere valori falsi).
+    Immaginiamo di avere diverse variabili, `firstName`, `lastName` e `nickName`, tutte opzionali (possono quindi essere *undefined* o avere valori falsi).
 
-    Possiamo utilizzare OR `||` per selezionare quello che contiene il valore e mostrarlo (oppure mostrare `"Anonymous"` se nessun valore è settato):
+    Possiamo utilizzare OR `||` per selezionare quella che contiene un valore e mostrarlo (oppure mostrare `"Anonymous"` se nessua variabile è definita):
 
     ```js run
     let firstName = "";
@@ -119,9 +119,9 @@ Questo ci porta ad alcuni utilizzi interessanti rispetto al "puro e classico OR 
 
 2. **Valutazione a Corto-Circuito.**
 
-    Gli operandi, oltre che valori, possono essere anche espressioni arbitrarie. OR valuta ed esegue i test da sinistra a destra. La valutazione si ferma al primo risultato vero, questo viene poi ritornato. Il processo è chiamato "valutazione a corto-circuito", perchè cerca di terminare il prima possibile partendo da sinistra verso destra.
+    Gli operandi, oltre che valori, possono essere anche espressioni arbitrarie. OR valuta ed esegue i test da sinistra a destra. La valutazione si ferma al primo risultato vero, che viene ritornato. Il processo è chiamato "valutazione a corto-circuito" perchè cerca di concludersi il prima possibile (quando possibile), senza aver toccato l’operando successivo. 
 
-    Questo si vede chiaramente quando il secondo argomento causerebbe side-effect. Come l'assegnazione di una variabile.
+    Questo si nota chiaramente quando il secondo argomento causerebbe un *side-effect* come l'assegnazione di una variabile o una function call.
 
     Se proviamo ad eseguire l'esempio che segue, `x` non verrà assegnata:
 
