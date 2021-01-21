@@ -1,6 +1,6 @@
-# Object references and copying
+# Riferimenti agli oggetti e copia di oggetti
 
-One of the fundamental differences of objects versus primitives is that objects are stored and copied "by reference", whereas primitive values: strings, numbers, booleans, etc -- are always copied "as a whole value".
+Una delle differenze fondamentali degli oggetti rispetto alle primitive è che gli oggetti vengono memorizzati e copiati _per riferimento_, mentre i valori primitivi: stringhe, numeri, booleani, ecc. Vengono sempre copiati _come un valore intero_.
 
 That's easy to understand if we look a bit under the hood of what happens when we copy a value.
 
