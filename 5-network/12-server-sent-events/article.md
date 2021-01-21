@@ -248,7 +248,7 @@ Complessivamente la sicurezza del cross-origin è la stessa di `fetch` e altri m
 : La connessione è stabilita.
 
 `error`
-: In caso di errori, inclusi la connessione persa (con riconnessione automatica) ed errori fatali. Possiamo controllare `readyState` per vedere se è stata tentata la riconnessione.
+: In caso di errori, inclusi sia la connessione persa (con riconnessione automatica) che eventuali errori fatali. Possiamo controllare `readyState` per vedere se è stata tentata la riconnessione.
 
 Il server può impostare un evento personalizzato dentro `event:`. Questi eventi andrebbero gestiti usando `addEventListener`, e non `on<event>`.
 
