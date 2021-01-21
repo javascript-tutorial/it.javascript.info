@@ -2,7 +2,7 @@
 
 
 ```quote author="Confucio"
-Imparare senza pensare è lavoro sprecata; pensare senza imparare è pericoloso.
+Imparare senza pensare è lavoro sprecatao; pensare senza imparare è pericoloso.
 ```
 I programmatori ninja in passato hanno usato queste tecniche per formare le menti dei manutentori del codice.
 
@@ -41,9 +41,9 @@ Insegnategli che la brevità è sempre la cosa migliore. Iniziatelo al percorso 
 Il Dao si nasconde nel silenzio. Solo il Dao è completo.
 ```
 
-Un altro metodo per programmare velocemente è utilizzare nomi di variabili a singola carattere ovunque. Come `a`, `b` o `c`.
+Un altro metodo per programmare velocemente è utilizzare nomi di variabili a singolo carattere ovunque. Come `a`, `b` o `c`.
 
-Una variabile molto breve sparirà nel codice come un vero ninja scompare nella foresta. Nessuno sarà in grado di ritrovarla, nemmeno utilizzando il tasto "cerca". E se qualcuno mai riuscirà a trovarla non "decifrerà" ma il vero significato di `a` o `b`.
+Una variabile molto breve sparirà nel codice come un vero ninja scompare nella foresta. Nessuno sarà in grado di ritrovarla, nemmeno utilizzando il tasto "cerca". E se qualcuno mai riuscirà a trovarla non "decifrerà" mai il vero significato di `a` o `b`.
 
 ...C'è però un'eccezione. Un vero ninja non utilizzerà mai `i` come contatore in un ciclo `"for"`. Ovunque, ma non qui. Si guarderà intorno, ci sono moltissime lettere esotiche. Ad esempio `x` o `y`.
 
