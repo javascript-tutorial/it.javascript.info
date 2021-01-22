@@ -4,7 +4,7 @@ La risposta è: `1`, e poi `undefined`.
 alert( alert(1) && alert(2) );
 ```
 
-La chiamata `alert` ritorna `undefined` (mostra solo un messaggio, quindi non ha nessuna valore di ritorno significativo).
+La chiamata `alert` ritorna `undefined` (mostra solo un messaggio, quindi non ha nessuna valore significativo di ritorno).
 
-Per questo `&&` valuta l'operando di sinistra (che mostra `1`), e si ferma immediatamente, perchè `undefined` è un valore falso.  AND `&&` cerca un valore falso e lo ritorna.
+Per questo `&&`, valutato l'operando di sinistra (che mostra `1`), si ferma: `undefined` è un valore falso e `&&` lo ritorna immediatamente.
 
