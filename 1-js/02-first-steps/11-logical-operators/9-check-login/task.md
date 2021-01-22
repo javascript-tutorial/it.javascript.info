@@ -6,20 +6,20 @@ importance: 3
 
 Scrivi il codice che richiede un login tramite `prompt`.
 
-Se l'utente digita `"Admin"`, allora si richiede una password tramite `prompt`, se l'input è una stringa vuota o `key:Esc` -- mostra "Canceled.", se invece è un'altra stringa -- allora mostra "I don't know you".
+Se l'utente digita `"Admin"`, si richiede una password tramite `prompt`; se l'input è una stringa vuota o `key:Esc` -- mostra "Canceled."; se  è diversa da `"Admin"`, mostra "I don't know you".
 
-La passoword viene controllata con le seguenti regole:
+La passoword viene controllata secondo i seguenti criteri:
 
-- Se è uguale a "TheMaster", allora mostra "Welcome!",
-- Un'altra stringa -- mostra "Wrong password",
-- Per una stringa vuota o `key:Esc`, mostra "Canceled."
+- Se è uguale a "TheMaster", mostra "Welcome!",
+- Un stringa diversa da "TheMaster" -- mostra "Wrong password",
+- Una stringa vuota o `key:Esc` -- mostra "Canceled."
 
 Lo schema:
 
 ![](ifelse_task.svg)
 
-Utilizzate blocchi `if` annidati. Tenete a mente anche la leggibilità del codice.
+Utilizza blocchi `if` annidati e tieni a mente la leggibilità del codice.
 
-Suggerimento: passare un input vuoto tramite prompt ritorna una stringa vuota `''`. Premere `key:ESC` con prompt aperto ritorna `null`.
+Suggerimento: passare un input vuoto tramite prompt ritorna una stringa vuota `''`. Premere `key:ESC` metre il prompt è aperto ritorna `null`.
 
 [demo]
