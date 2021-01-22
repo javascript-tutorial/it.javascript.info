@@ -170,7 +170,7 @@ if (1 && 0) { // valutato come true && false
 
 ## AND "&& trova il primo valore falso
 
-Fornire più valori AND:
+Dati svariati operandi:
 
 ```js
 result = value1 && value2 && value3;
@@ -179,12 +179,12 @@ result = value1 && value2 && value3;
 L'operatore AND `&&` si comporta come segue:
 
 - Valuta gli operandi da sinistra a destra.
-- Ogni operando viene convertito in booleano. Se il risultato è `false`, si ferma e ritorna il valore originale dell'operando.
-- Se tutti gli operandi precedenti sono stati valutati (ad esempio nel caso siano tutti veri) , ritorna l'ultimo operando.
+- Ogni operando viene convertito a booleano. Se il risultato è `false`, si ferma e ritorna il valore originale dell'operando.
+- Se tutti gli operandi precedenti sono stati valutati e nessuno è `false`, ritorna l'ultimo operando.
 
-In altre parole, AND ritorna il primo valore falso se lo trova, altrimenti ritorna l'ultimo valore.
+In altre parole, AND ritorna il primo valore falso, altrimenti ritorna l'ultimo valore.
 
-Le regole sono molto simili a quelle dell'OR. La differenza è che AND ritorna il primo valore *falso* mentre OR ritorna il primo valore *VERO*.
+Le regole sono molto simili a quelle dell'OR. La differenza è che AND ritorna il primo valore *falso* mentre OR ritorna il primo valore *vero*.
 
 Esempi:
 
@@ -200,7 +200,7 @@ alert( null && 5 ); // null
 alert( 0 && "no matter what" ); // 0
 ```
 
-Possiamo anche passare diversi valori in una sola riga. Vediamo come viene ritornato il primo valore falso:
+Possiamo anche passare diversi valori in una sola riga. Nota come il primo valore falso viene ritornato non appena raggiunto:
 
 ```js run
 alert( 1 && 2 && null && 3 ); // null
@@ -215,7 +215,7 @@ alert( 1 && 2 && 3 ); // 3, l'ultimo
 ````smart header="Precedenza di AND `&&` è maggiore dell'OR `||`"
 La precedenza dell'operatore AND `&&` è maggiore di quella dell'OR `||`.
 
-Quindi il codice `a && b || c && d` esegue in maniera analoga all'espressione: `(a && b) || (c && d)`.
+Quindi il codice `a && b || c && d` è analogo all'espressione: `(a && b) || (c && d)`.
 ````
 
 ````warn header="Non rimpiazzate `if` con `||` o `&&`"
@@ -232,7 +232,7 @@ let x = 1;
 
 Le azioni nella parte destra di `&&` vengono eseguite solamente se la valutazione non si ferma prima. Cioè: solo se `(x > 0)` è vera.
 
-Quindi sostanzialmente è analogo a:
+Il codie sopra è sostanzialmente analogo a:
 
 ```js run
 let x = 1;
@@ -243,6 +243,7 @@ if (x > 0) alert( 'Greater than zero!' );
 La variante con `&&` sembra essere più corta. Ma l'istruzione `if` è più ovvia e tende ad essere più leggibile.
 
 Quindi è consigliato usare ogni costrutto solo per i suoi scopi. Usate un `if` se volete imporre una condizione. Utilizzate invece `&&` se volete un AND.
+````
 
 ## ! (NOT)
 
@@ -256,8 +257,8 @@ result = !value;
 
 L'operatore accetta un solo argomento e si comporta come segue:
 
-1. Converte l'operando al tipo booleano: `true/false`.
-2. Ritorna il valore inverso.
+1. Converte l'operando a booleano: `true/false`.
+2. Ritorna il valore **inverso.
 
 Ad esempio:
 
@@ -273,13 +274,13 @@ alert( !!"non-empty string" ); // true
 alert( !!null ); // false
 ```
 
-Quello che accade è che il primo NOT converte il tipo a booleano e ritorna il suo inverso, il secondo NOT lo inverte nuovamente. Alla fine abbiamo un valore di tipo booleano.
+Quello che accade è che il primo NOT converte l'operando a booleano e ritorna il suo inverso, e il secondo NOT lo *inverte nuovamente*. Il risultato è un valore di tipo booleano.
 
-C'è un modo molto più lungo per fare la stessa cosa -- una funzione del linguaggio `Boolean`:
+C'è un modo molto più lungo per fare la stessa cosa -- una funzione *built-in* di `Boolean`:
 
 ```js run
 alert( Boolean("non-empty string") ); // true
 alert( Boolean(null) ); // false
 ```
 
-La precedenza del NOT `!` è la più alta fra tutti gli operatori logici quindi viene sempre eseguita per prima, precede `&&`, `||`.
+La precedenza del NOT `!` è la più alta fra tutti gli operatori logici; viene sempre eseguita per prima e precede sia `&&` che `||`.
