@@ -168,7 +168,7 @@ if (1 && 0) { // valutato come true && false
 ```
 
 
-## AND "&& trova il primo valore falso
+## AND "&&" trova il primo valore falso
 
 Dati svariati operandi:
 
