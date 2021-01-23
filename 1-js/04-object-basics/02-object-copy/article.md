@@ -21,7 +21,7 @@ E' un risultato abbastanza ovvio, giusto?
 
 Gli oggetti non funzionano allo stesso modo.
 
-**Una variabile assegnata ad un oggetto non contiene l'oggetto in sè, ma il suo "indirizzo in memoria" -- in altre parole "un riferimento" all'oggetto.**
+**Una variabile assegnata ad un oggetto non contiene l'oggetto in sé, ma il suo "indirizzo in memoria" -- in altre parole "un riferimento" all'oggetto.**
 
 Diamo un'occhiata a un esempio di tale variabile:
 
