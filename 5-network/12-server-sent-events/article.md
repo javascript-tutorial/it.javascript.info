@@ -261,6 +261,6 @@ Un messaggio può avere i seguenti campi:
 - `data:` -- corpo del messaggio, una sequenza di `data` multipli viene interpretata come un messaggio singolo, con `\n` tra la parti.
 - `id:` -- aggiorna `lastEventId`, inviato dentro `Last-Event-ID` in fase di riconnessione.
 - `retry:` -- raccomanda una ritardo nel tentativo di riconessione in millisecondi. Non c'è modo di impostarlo da JavaScript.
-- `event:` -- event name, must precede `data:`.
+- `event:` -- il nome dell'evento, deve necessariamente precedere `data:`.
 
 Un messaggio può includere uno o più campi in qualunque ordine, ma l'`id:` solitamente va per ultimo.
