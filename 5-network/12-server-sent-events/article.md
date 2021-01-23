@@ -37,11 +37,11 @@ data: Message 3
 data: of two lines
 ```
 
-- Un messaggio di testo che va dopo `data:`, lo spazio dopo la virgola è opzionale.
+- Un messaggio di testo segue la stringa `data:`, lo spazio dopo la virgola è opzionale.
 - I messaggi sono delimitati con un doppio line break `\n\n`.
-- Per inviare un line break `\n`, possiamo inviare immediatamente un altro `data:` (il terzo messaggio nell'esempio qui sopra).
+- Per inviare un line break `\n`, possiamo inviare immediatamente un altro `data:` (il terzo messaggio nell'esempio precedente).
 
-In pratica, i messaggi complessi sono solitamente inviati tramite oggetti codificati in JSO. I Line-breaks sono codificati come `\n` tra essi, e in questo modo i messaggi `data:` multiriga non sono necessari
+In pratica, i messaggi complessi sono solitamente inviati tramite oggetti codificati in JSO. I Line-breaks sono codificati come `\n`, e in questo modo i messaggi `data:` multiriga non sono necessari
 
 Ad esempio:
 
@@ -114,7 +114,7 @@ eventSource.close();
 Inoltre, non avverrà alcuna riconnessione se la risposta ha un `Content-type` non valido o se il suo HTTP status è diverso da 301, 307, 200 o 204. In questi casi verrà emesso l'evento `"error"`, e il browser non si riconnetterà.
 
 ```smart
-Quando una connessione è finalemente chiusa, non ci sarà modo di "riaprirla". Se volessimo riconnetterci nuovamente, dovremmo ricreare un nuovo `EventSource`.
+Quando una connessione è finalmente chiusa, non ci sarà modo di "riaprirla". Se volessimo riconnetterci nuovamente, dovremmo ricreare un nuovo `EventSource`.
 ```
 
 ## Message id
@@ -143,7 +143,7 @@ Nota bene: l'`id` viene aggiunto dopo il messaggio `data` dal server, per assicu
 
 ## Stato della conessione: readyState
 
-L'oggetto `EventSource` possiede la proprietà `readyState`, che assume uno tra questi tre valori:
+L'oggetto `EventSource` possiede la proprietà `readyState`, che può assumere uno dei seguenti valori:
 
 ```js no-beautify
 EventSource.CONNECTING = 0; // connessione o riconnessione
@@ -161,7 +161,7 @@ Di base l'oggetto `EventSource` genera tre eventi:
 
 - `message` -- un messaggio ricevuto, disponibile come `event.data`.
 - `open` -- la connessione è aperta.
-- `error` -- la connessaione non può essere stabilita, ad esempio, il server ha risposto con lo status HTTP 500.
+- `error` -- la connessione non può essere stabilita, ad esempio, il server ha risposto con lo status HTTP 500.
 
 Il server può specificare un altro tipo di evento con `event: ...` all'inizio dell'evento.
 
@@ -248,9 +248,9 @@ Complessivamente la sicurezza del cross-origin è la stessa di `fetch` e altri m
 : La connessione è stabilita.
 
 `error`
-: In caso di errori, includendo sia la connessione persa (si riconnetterà automaticamente), che errori fatali. Possiamo controllare `readyState` per vedere se è stata tentata la riconnessione.
+: In caso di errori, inclusi sia la connessione persa (con riconnessione automatica) che eventuali errori fatali. Possiamo controllare `readyState` per vedere se è stata tentata la riconnessione.
 
-Il server può impostare un evento custom dentro `event:`. Questi eventi andrebbero gestiti usando `addEventListener`, e non `on<event>`.
+Il server può impostare un evento personalizzato dentro `event:`. Questi eventi andrebbero gestiti usando `addEventListener`, e non `on<event>`.
 
 ### Formato della risposta del server
 
@@ -258,9 +258,9 @@ Il server invia messaggi, delimitati da `\n\n`.
 
 Un messaggio può avere i seguenti campi:
 
-- `data:` -- corpo del messaggio, una sequenza di `data` multipli viene intrpretata come un messaggio singolo, con `\n` tra la parti.
-- `id:` -- aggiorna il `lastEventId`, inviato dentro `Last-Event-ID` in fase di riconnnessione.
-- `retry:` -- raccomnda una ritardo nel tentativo di riconessione in millisecondi. Non c'è modo di impostarlo da JavaScript.
-- `event:` -- event name, must precede `data:`.
+- `data:` -- corpo del messaggio, una sequenza di `data` multipli viene interpretata come un messaggio singolo, con `\n` tra la parti.
+- `id:` -- aggiorna `lastEventId`, inviato dentro `Last-Event-ID` in fase di riconnessione.
+- `retry:` -- raccomanda una ritardo nel tentativo di riconessione in millisecondi. Non c'è modo di impostarlo da JavaScript.
+- `event:` -- il nome dell'evento, deve necessariamente precedere `data:`.
 
 Un messaggio può includere uno o più campi in qualunque ordine, ma l'`id:` solitamente va per ultimo.
