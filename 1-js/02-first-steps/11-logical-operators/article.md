@@ -16,7 +16,7 @@ result = a || b;
 
 Nella programmazione classica, l'OR logico è utilizzato per manipolare solo tipi booleani. Se almeno un argomento è `true`, allora il risultato sarà `true`, altrimenti sarà `false`.
 
-In JavaScript questo operatore è un pò più potente. Ma prima vediamo come si comporta con i valori booleani.
+In JavaScript questo operatore è un po' più potente. Ma prima vediamo come si comporta con i valori booleani.
 
 Ci sono quattro combinazioni logiche possibili:
 
