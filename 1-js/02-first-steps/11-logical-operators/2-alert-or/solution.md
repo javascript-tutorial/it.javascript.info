@@ -4,7 +4,7 @@ La risposta: prima `1`, poi `2`.
 alert( alert(1) || 2 || alert(3) );
 ```
 
-La chiamata ad `alert` non ritorna alcun valore; dunque `undefined`.
+La chiamata ad `alert` non ritorna alcun valore; ossia `undefined`.
 
 1. Il primo OR `||` valuta l'operando sinistro `alert(1)`. Questo mostra il primo messaggio, `1`.
 2. La funzione `alert` ritorna `undefined`, quindi OR prosegue con il secondo operando, alla ricerca di un valore vero.
