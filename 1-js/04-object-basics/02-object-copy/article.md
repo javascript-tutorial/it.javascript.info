@@ -2,7 +2,7 @@
 
 Una delle maggiori differenze tra oggetti e primitivi è che gli oggetti vengono memorizzati e copiati "per riferimento", mentre i primitivi (stringhe, numeri, booleani, ecc...) vengono sempre copiati "per valore".
 
-Questa differenza è facile da comprendere se guardiamo cosa succede sotto al cofano quando copiamo un valore.
+Questa differenza è facile da comprendere se andiamo a guardare il comportamento del linguaggio quando copiamo un valore
 
 Partiamo con un primitivo, ad esempio una stringa.
 
