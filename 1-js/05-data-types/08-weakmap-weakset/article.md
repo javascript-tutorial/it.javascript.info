@@ -50,7 +50,7 @@ john = null; // sovrascriviamo il riferimento
 
 *!*
 // john viene memorizzato all'interno di map,
-// possiamo ottenerlo utilizzando map.keys()
+// possiamo estrarlo utilizzando map.keys()
 */!*
 ```
 
@@ -75,7 +75,7 @@ weakMap.set("test", "Whoops"); // Errore, perché "test" non è un oggetto
 */!*
 ```
 
-Ora, se utilizziamo un oggetto come chiave, e perdiamo tutti i riferimenti a quell'oggetto -- questo verrà rimosso dalla memoria (e dalla map) automaticamente.
+Ora, se utilizziamo un oggetto come chiave, e non ci sono altri riferimenti a quell'oggetto -- questo verrà rimosso dalla memoria (e dalla map) automaticamente.
 
 ```js
 let john = { name: "John" };
@@ -90,7 +90,7 @@ john = null; // sovrascriviamo il riferimento
 
 Confrontiamolo con l'esempio di `Map` visto sopra. Ora se `john` esiste solo come chiave della `WeakMap` -- verrà eliminato automaticamente dalla map (e anche dalla memoria).
 
-`WeakMap` non supportano gli iteratori e i metodi `keys()`, `values()`, `entries()`, quindi non c'è alcun modo di ottenere tutte le chiavi o valori tramite questi metodi.
+`WeakMap` non supporta gli iteratori e i metodi `keys()`, `values()`, `entries()`, quindi non c'è alcun modo di ottenere tutte le chiavi o valori tramite questi metodi.
 
 `WeakMap` possiede solamente i seguenti metodi:
 
@@ -120,7 +120,7 @@ weakMap.set(john, "secret documents");
 
 Proviamo a guardare un esempio.
 
-Possiamo pensare di avere del codice che tiene nota del conteggio delle visite per ogni utente. L'informazioni viene memorizzata in un map: l'utente è la chiave mentre il conteggio delle visite è il valore. Quando l'utente esce, vogliamo smettere di mantenere in memoria il conteggio delle visite.
+Immaginiamo di avere del codice che tiene nota del numero di visite per ogni utente. L'informazioni viene memorizzata in un map: l'utente è la chiave, mentre il conteggio delle visite è il valore. Quando l'utente esce, vogliamo smettere di mantenere in memoria il conteggio delle visite.
 
 Qui vediamo un esempio di conteggio utilizzando `Map`:
 
@@ -284,8 +284,8 @@ La maggior limitazione di `WeakMap` e `WeakSet` è l'assenza di iteratori, e la 
 
 `WeakSet` è una collezione simile a `Set`, che memorizza solamente oggetti, e li rimuove completamente una volta che diventano inaccessibili.
 
-I loro principali vantaggi sono che possiedono un riferimento debole agli oggetti, in questo modo possono essere facilmente ripuliti dal garbage collector.
+Il loro principale vantaggio è che possiedono un riferimento debole agli oggetti, in questo modo possono essere facilmente ripuliti dal garbage collector.
 
-Questi vantaggi però non consento l'utilizzo di `clear`, `size`, `keys`, `values`...
+Il lato negativo è di non poter utilizzare `clear`, `size`, `keys`, `values`...
 
-`WeakMap` e `WeakSet` vengono utilizzate come strutture dati "secondarie" in aggiunta a quelle "principali". Una volta che l'oggetto viene rimossa dalla struttura dati "principale", se l'unico riferimento rimasto è una chiave di `WeakMap` o `WeakSet`, allora verranno rimossi.
+`WeakMap` e `WeakSet` vengono utilizzati come strutture dati "secondarie" in aggiunta a quelle "principali". Una volta che l'oggetto viene rimosso dalla struttura dati "principale", se l'unico riferimento rimasto è una chiave di `WeakMap` o `WeakSet`, allora verrà rimosso.
