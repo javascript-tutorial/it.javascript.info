@@ -28,7 +28,7 @@ Ci sono tanto altri eventi più specifici, che verranno affrontati in dettaglio 
 
 ## Gestori di evento
 
-Per reagire agli eventi possiamo assegnare un *gestore* (handler), che non è che una funzione che viene eseguita contestualmente alla generazione di un evento.
+Per reagire agli eventi possiamo assegnare un *gestore* (handler), che non è altro che una funzione che viene eseguita contestualmente alla generazione di un evento.
 
 I gestori, quindi, sono un modo per eseguire codice JavaScript al verificarsi delle azioni dell'utente ed esistono vari modi per assegnare un evento. 
 
