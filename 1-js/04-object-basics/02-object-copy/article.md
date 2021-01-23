@@ -43,7 +43,7 @@ Quando eseguiamo azioni con l'oggetto, ad es. leggere una proprietà `user.name`
 
 Ecco perché è così importante.
 
-**Quando una variabile oggetto viene copiata, in realtà viene copiato il riferimento, ma l'oggetto in sè non viene duplicato.**
+**Quando una variabile oggetto viene copiata, in realtà viene copiato il riferimento, ma l'oggetto in sé non viene duplicato.**
 
 Esempio:
 
