@@ -82,7 +82,7 @@ L'operatore OR `||` si comporta come segue:
 - Ogni operando viene convertito a booleano. Se il risultato è `true`, il logical OR si ferma e ritorna il valore originale dell'operando.
 - Se tutti gli operandi sono stati valutati e nessuno è `true`, ritorna l'ultimo operando.
 
-**Un valore viene ritornato nella sua forma originale, non nella sua conversione booleana.
+Un valore viene ritornato nella sua forma originale, non nella sua conversione booleana.
 
 In altre parole, una catena di OR `"||"` ritorna il primo valore vero; se invece non ce ne sono ritorna l'ultimo valore.
 
