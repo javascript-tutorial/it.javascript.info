@@ -19,7 +19,7 @@ Ecco quindi una lista, degli eventi DOM più utili:
 - `focus` --  quando l'utente attiva il focus su un elemento, ad esempio su un `<input>`.
 
 **Eventi del Document:**
-- `DOMContentLoaded` -- quando l'HTML viene caricato e processato, e la struttura del DOM è stata completata.
+- `DOMContentLoaded` -- quando l'HTML viene caricato e processato, e la costruzione del DOM è stata completata.
 
 **Eventi dei CSS:**
 - `transitionend` -- quando termina un'animazione CSS (CSS-animation).
