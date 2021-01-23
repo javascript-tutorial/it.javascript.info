@@ -114,7 +114,7 @@ eventSource.close();
 Inoltre, non avverrà alcuna riconnessione se la risposta ha un `Content-type` non valido o se il suo HTTP status è diverso da 301, 307, 200 o 204. In questi casi verrà emesso l'evento `"error"`, e il browser non si riconnetterà.
 
 ```smart
-Quando una connessione è finalemente chiusa, non ci sarà modo di "riaprirla". Se volessimo riconnetterci nuovamente, dovremmo ricreare un nuovo `EventSource`.
+Quando una connessione è finalmente chiusa, non ci sarà modo di "riaprirla". Se volessimo riconnetterci nuovamente, dovremmo ricreare un nuovo `EventSource`.
 ```
 
 ## Message id
@@ -161,7 +161,7 @@ Di base l'oggetto `EventSource` genera tre eventi:
 
 - `message` -- un messaggio ricevuto, disponibile come `event.data`.
 - `open` -- la connessione è aperta.
-- `error` -- la connessaione non può essere stabilita, ad esempio, il server ha risposto con lo status HTTP 500.
+- `error` -- la connessione non può essere stabilita, ad esempio, il server ha risposto con lo status HTTP 500.
 
 Il server può specificare un altro tipo di evento con `event: ...` all'inizio dell'evento.
 
