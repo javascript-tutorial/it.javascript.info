@@ -32,7 +32,7 @@ john = null; // sovrascriviamo il riferimento
 *!*
 // john è memorizzato all'interno dell'array
 // quindi non verrà toccato dal garbage collector
-// possiamo ottenerlo tramite array[0]
+// possiamo estrarlo tramite array[0]
 */!*
 ```
 
