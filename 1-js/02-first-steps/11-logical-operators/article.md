@@ -276,7 +276,7 @@ alert( !!null ); // false
 
 Quello che accade è che il primo NOT converte l'operando a booleano e ritorna il suo inverso, e il secondo NOT lo *inverte nuovamente*. Il risultato è un valore di tipo booleano.
 
-C'è un modo molto più lungo per fare la stessa cosa -- una funzione *built-in* di `Boolean`:
+C'è un modo molto più lungo per fare la stessa cosa, usare la funzione `Boolean`, integrata in JavaScript:
 
 ```js run
 alert( Boolean("non-empty string") ); // true
