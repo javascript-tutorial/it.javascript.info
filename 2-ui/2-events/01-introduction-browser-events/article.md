@@ -34,7 +34,7 @@ I gestori, quindi, sono un modo per eseguire codice JavaScript al verificarsi de
 
 Partiamo dal più semplice.
 
-### Attributo HTML (HTML-attribute)
+### Attributo HTML
 
 Un gestore può essere impostato in HTML con un attributo chiamato `on<event>`.
 
