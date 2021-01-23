@@ -242,7 +242,7 @@ elem.addEventListener( "click" , () => alert('Grazie!'));
 elem.removeEventListener( "click", () => alert('Grazie!'));
 ```
 
-Il gestore non verrà rimosso, perchè `removeEventListener` prende come parametro un'altra funzione: è certamente con lo stesso codice, ma questo non ha alcuna rilevanza, dal momento che è un oggetto funzione differente (fanno riferimento a due differenti indirizzi di memoria N.d.T).
+Il gestore non verrà rimosso, perchè `removeEventListener` prende come parametro un'altra funzione: è certamente con lo stesso codice, ma questo non ha alcuna rilevanza, dal momento che è un oggetto funzione differente (fanno riferimento a due differenti indirizzi di memoria).
 
 La maniera corretta per farlo è questa:
 
