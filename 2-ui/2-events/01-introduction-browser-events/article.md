@@ -195,7 +195,7 @@ Assegnare un gestore a `elem.onclick`, e non a `elem.ONCLICK`, in quanto le prop
 
 Il problema principale della sopracitata maniera di assegnare i gestori è che non abbiamo modo di assegnare dei gestori multipli a un evento.
 
-Mettiamo il caso che una parte del nostro codice serva ad evidenziare un pulsante al click, e che un altro serva a mostrare un messaggio al medesimo click.
+Ipotizziamo che una parte del nostro codice serva ad evidenziare un pulsante al click, e che un altro serva a mostrare un messaggio al medesimo click.
 
 Per fare questo sarebbe bello poter assegnare due eventi distinti, ma sappiamo che ogni nuova proprietà DOM con lo stesso nome, sovrascriverà la precedente:
 
