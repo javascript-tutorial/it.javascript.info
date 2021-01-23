@@ -107,7 +107,7 @@ Come abbiamo detto, copiare una variabile oggetto crea un ulteriore riferimento 
 
 Quindi, come possiamo fare se abbiamo bisogno di duplicare un oggetto? Creare una copia indipendente, un clone?
 
-Anche questo è fattibile, ma con un po' di difficoltà visto Javascript non integra alcun metodo per farlo. In realtà non è un'operazione frequente, il più delle volte la copia pèr riferimento è adatta alla situazione.
+Anche questo è fattibile, ma con un po' di difficoltà visto che JavaScript non integra alcun metodo per farlo. In realtà non è un'operazione frequente, il più delle volte la copia per riferimento è adatta alla situazione.
 
 Ma se proprio ne abbiamo bisogno, allora dobbiamo creare un nuovo oggetto e replicare la struttura di quello esistente iterando le sue proprietà
 e copiandole a livello primitivo.
