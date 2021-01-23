@@ -80,6 +80,7 @@ Ad esempio, `elem.onclick`:
 */!*
 </script>
 ```
+
 Se il gestore viene assegnato usando un attributo HTML, il browser lo riconosce, crea una nuova funzione partendo dal contenuto dell'attributo e la scrive nella proprietà del DOM.
 
 In sostanza, questa modalità equivale alla precedente.
