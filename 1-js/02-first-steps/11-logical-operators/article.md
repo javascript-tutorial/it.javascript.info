@@ -29,7 +29,7 @@ alert( false || false ); // false
 
 Come possiamo vedere, il risultato è sempre `true`, tranne nei casi in cui entrambi gli operandi sono `false`.
 
-Se un operando non è di tipo booleano vi viene momentaneamente convertito per la valutazione.
+Se un operando non è di tipo booleano, allora viene momentaneamente convertito per la valutazione.
 
 Ad esempio, il numero `1` viene considerato come `true`, il numero `0` come `false`:
 
