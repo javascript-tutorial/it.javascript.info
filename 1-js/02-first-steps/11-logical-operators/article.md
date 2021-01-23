@@ -119,7 +119,7 @@ Questo ci permette alcuni utilizzi interessanti rispetto al "puro e classico OR 
 
 2. **Valutazione a Corto-Circuito.**
 
-    Gli operandi, oltre che valori, possono essere anche espressioni arbitrarie. L'operatore OR esegue la valutazione da sinistra a destra e si ferma al primo risultato vero, che viene ritornato. Il processo è chiamato "valutazione a corto-circuito" perchè cerca di concludersi il prima possibile (quando possibile), senza aver raggiunto l’operando successivo. 
+    Gli operandi, oltre che valori, possono essere anche espressioni arbitrarie. L'operatore OR esegue la valutazione da sinistra a destra e si ferma al primo risultato vero, il quale viene ritornato. Il processo è chiamato "valutazione a corto-circuito" perché cerca di concludersi il prima possibile, senza dover elaborare tutti gli operandi. 
 
     Il logical OR è particolarmente utile quando il secondo argomento causerebbe un *side-effect* come l'assegnazione di una variabile o la chiamata a una funzione.
     Nell'esempio che segue solo il secondo messaggio verrà mostrato. 
