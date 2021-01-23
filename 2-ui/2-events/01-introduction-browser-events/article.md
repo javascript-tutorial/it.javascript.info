@@ -43,6 +43,7 @@ Ad esempio, per assegnare un gestore al `click` di un `input`, possiamo usare `o
 ```html run
 <input value="Cliccami" *!*onclick="alert('Click!')"*/!* type="button">
 ```
+
 Al click del mouse, il codice dentro `onclick` verrà eseguito.
 
 Nota bene che dentro `onclick` useremo gli apici singoli, in quanto l'attributo stesso è già inserito all'interno di apici doppi. Se ci dimenticassimo che il codice stesse dentro l'attributo, ed usassimo gli apici doppi come in questo caso:  `onclick="alert("Click!")"`, il codice non funzionerebbe.
