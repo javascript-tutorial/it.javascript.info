@@ -2,7 +2,7 @@ importance: 3
 
 ---
 
-# Qual'è il risultato degli alert?
+# Qual è il risultato degli alert?
 
 Cosa mostrerà questo codice?
 
