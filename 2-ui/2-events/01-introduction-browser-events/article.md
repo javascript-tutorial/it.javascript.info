@@ -158,7 +158,7 @@ button.onclick = sayThanks;
 button.onclick = sayThanks();
 ```
 
-Se aggiungessimo le parentesi, allora `sayThanks()` diverrebbe una chiamata a funzione, di conseguenza il valore dell'assegnazione dell'ultima riga dell'esempio, sarebbe il risultato della chiamata, il quale, a sua volta, sarebbe `undefined` (dato che la funzione non restituisce nulla), che verrebbe assegnato ad `onclick`. Ovviamente così non potrebbe andare bene, ed inoltre non sarebbe nemmeno l'effetto voluto.
+Se aggiungessimo le parentesi, allora `sayThanks()` diverrebbe una chiamata a funzione. Di conseguenza il valore dell'assegnazione dell'ultima riga dell'esempio, sarebbe il risultato della chiamata, ossia `undefined` (dato che la funzione non restituisce nulla), e verrebbe assegnato ad `onclick`. Ovviamente così non potrebbe andare bene, ed inoltre non sarebbe nemmeno l'effetto voluto.
 
 ...D'altra parte, però, nel markup abbiamo bisogno delle parentesi:
 
