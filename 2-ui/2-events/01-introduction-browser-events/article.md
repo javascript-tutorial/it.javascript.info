@@ -338,7 +338,7 @@ Alcune proprietà dell'oggetto `event`:
 Esistono tante altre proprietà., molte delle quali dipendono dal tipo di evento: gli eventi della tastiera hanno un gruppo di proprietà, gli eventi del puntatore un altro ancora, e li studieremo più avanti quando andremo a vedere i vari eventi nel dettaglio.
 
 ````smart header="L'oggetto evento è disponibile anche nei gestori HTML"
-Se assegniamo un gestore dentro l'HTML, possiamo usare l'oggetto `evento`:
+Anche se assegniamo un gestore dentro l'HTML, possiamo usare l'oggetto `evento`:
 
 ```html autorun height=60
 <input type="button" onclick="*!*alert(event.type)*/!*" value="Event type">
