@@ -447,4 +447,4 @@ L'ultimo modo è il più flessibile, ma è anche il più lungo da scrivere. Alcu
 
 Non importa come assegni un gestore, in ogni caso il primo argomento passato sarà un oggetto evento, contenente i dettagli su ciò che è avvenuto.
 
-Nei prossimi capitoli, avremo modo di approfondire il tema degli eventi in generale ed le loro differenti tipologie.
+Nei prossimi capitoli, avremo modo di approfondire il tema degli eventi in generale e le loro differenti tipologie.
