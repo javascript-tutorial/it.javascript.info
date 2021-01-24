@@ -258,7 +258,7 @@ result = !value;
 L'operatore accetta un solo argomento e si comporta come segue:
 
 1. Converte l'operando a booleano: `true/false`.
-2. Ritorna il valore **inverso.
+2. Ritorna il valore inverso.
 
 Ad esempio:
 
