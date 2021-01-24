@@ -25,7 +25,7 @@ Questo è il risultato che ci si aspetta. JavaScript funziona in questo modo. Se
 
 Nella maggior parte dei casi, preferiremmo avere `undefined` piuttosto di un errore (con il significato "nessuna via").
 
-... Un altro esempio. Nello sviluppo web, possiamo ottenere un oggetto che corrisponde ad un elemento di una pagina web, utilizzando una chiamata ad un metodo speciale, come `document.querySelector('.elem')`, che ritorna `null` quando l'elemento non esite.
+... Un altro esempio. Il metodo `document.querySelector('.elem')` restituisce un oggetto che corrisponde ad un elemento della pagina web, che ritorna `null` quando l'elemento non esite.
 
 ```js run
 // document.querySelector('.elem') è null se non esiste l'elemento
