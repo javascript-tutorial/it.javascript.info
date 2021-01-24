@@ -261,6 +261,6 @@ Detto questo, se vogliamo veramente rendere invariabili le proprietà di un ogge
 
 Gli oggetti sono assegnati e copiati per riferimento. In altre parole una variabile non contiene il "valore oggetto" ma un "riferimento" (indirizzo in memoria) di quel valore. Quindi copiando tale variabile o passandola come argomento di una funzione si copia quel riferimento, non l'oggetto stesso.
 
-Tutte le operazione su un riferimento duplicato (come aggiungere o rimuovere proprietà) hanno effetto sul medesimo oggetto.
+Tutte le operazioni su un riferimento duplicato (come aggiungere o rimuovere proprietà) hanno effetto sul medesimo oggetto.
 
 Per creare una "vera copia" (clonare) effettuare una cosiddetta "shallow copy" (copia superficiale) con `Object.assign`(gli oggetti nidificati vengo copiati per riferimento), oppure un "deep cloning" (copia profonda) con funzioni tipo [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep).
