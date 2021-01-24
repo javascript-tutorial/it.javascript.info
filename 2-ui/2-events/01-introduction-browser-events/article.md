@@ -24,7 +24,7 @@ Ecco quindi una lista, degli eventi DOM più utili:
 **Eventi dei CSS:**
 - `transitionend` -- quando termina un'animazione CSS (CSS-animation).
 
-Ci sono tanto altri eventi più specifici, che verranno affrontati in dettaglio nei prossimi capitoli.
+Ci sono molti altri eventi più specifici, che verranno affrontati in dettaglio nei prossimi capitoli.
 
 ## Gestori di evento
 
