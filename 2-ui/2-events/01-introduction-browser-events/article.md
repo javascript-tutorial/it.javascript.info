@@ -1,4 +1,4 @@
-# Introduzione agli aventi del browser
+# Introduzione agli eventi del browser
 
 *Un evento* è un segnale che sta ad indicare che è avvenuto qualcosa. Tutti i nodi DOM generano questi segnali (anche se gli eventi non sono limitati al DOM).
 
@@ -24,11 +24,11 @@ Ecco quindi una lista, degli eventi DOM più utili:
 **Eventi dei CSS:**
 - `transitionend` -- quando termina un'animazione CSS (CSS-animation).
 
-Ci sono tanto altri eventi più specifici, che verranno affrontati in dettaglio nei prossimi capitoli.
+Ci sono molti altri eventi più specifici, che verranno affrontati in dettaglio nei prossimi capitoli.
 
 ## Gestori di evento
 
-Per reagire agli eventi possiamo assegnare un *gestore* (handler), che non è altro che una funzione che viene eseguita contestualmente alla generazione di un evento.
+Per reagire agli eventi possiamo assegnare un *gestore* (handler). Questo non è altro che una funzione che viene eseguita contestualmente alla generazione di un evento.
 
 I gestori, quindi, sono un modo per eseguire codice JavaScript al verificarsi delle azioni dell'utente ed esistono vari modi per assegnare un evento. 
 
@@ -158,7 +158,7 @@ button.onclick = sayThanks;
 button.onclick = sayThanks();
 ```
 
-Se aggiungessimo le parentesi, allora `sayThanks()` diverrebbe una chiamata a funzione, di conseguenza il valore dell'assegnazione dell'ultima riga dell'esempio, sarebbe il risultato della chiamata, il quale, a sua volta, sarebbe `undefined` (dato che la funzione non restituisce nulla), che verrebbe assegnato ad `onclick`. Ovviamente così non potrebbe andare bene, ed inoltre non sarebbe nemmeno l'effetto voluto.
+Se aggiungessimo le parentesi, allora `sayThanks()` diverrebbe una chiamata a funzione. Di conseguenza il valore dell'assegnazione dell'ultima riga dell'esempio, sarebbe il risultato della chiamata, ossia `undefined` (dato che la funzione non restituisce nulla), e verrebbe assegnato ad `onclick`. Ovviamente così non potrebbe andare bene, ed inoltre non sarebbe nemmeno l'effetto voluto.
 
 ...D'altra parte, però, nel markup abbiamo bisogno delle parentesi:
 
@@ -231,7 +231,7 @@ Per rimuovere l'evento, si usa `removeEventListener`:
 element.removeEventListener(event, handler, [options]);
 ```
 
-````warn header="La rimozione prevede la stessa identica funzione"
+````warn header="La rimozione richiede la stessa identica funzione"
 Per rimuovere un gestore dobbiamo passare come parametro, la stessa funzione che abbiamo usato per l'assegnazione.
 
 Il seguente codice non fa quello che ci aspetteremmo:
@@ -338,7 +338,7 @@ Alcune proprietà dell'oggetto `event`:
 Esistono tante altre proprietà., molte delle quali dipendono dal tipo di evento: gli eventi della tastiera hanno un gruppo di proprietà, gli eventi del puntatore un altro ancora, e li studieremo più avanti quando andremo a vedere i vari eventi nel dettaglio.
 
 ````smart header="L'oggetto evento è disponibile anche nei gestori HTML"
-Se assegniamo un gestore dentro l'HTML, possiamo usare l'oggetto `evento`:
+Anche se assegniamo un gestore dentro l'HTML, possiamo usare l'oggetto `evento`:
 
 ```html autorun height=60
 <input type="button" onclick="*!*alert(event.type)*/!*" value="Event type">
@@ -447,4 +447,4 @@ L'ultimo modo è il più flessibile, ma è anche il più lungo da scrivere. Alcu
 
 Non importa come assegni un gestore, in ogni caso il primo argomento passato sarà un oggetto evento, contenente i dettagli su ciò che è avvenuto.
 
-Nei prossimi capitoli, avremo modo di approfondire il tema degli eventi in generale ed le loro differenti tipologie.
+Nei prossimi capitoli, avremo modo di approfondire il tema degli eventi in generale e le loro differenti tipologie.
