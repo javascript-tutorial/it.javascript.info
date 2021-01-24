@@ -1,4 +1,4 @@
-# Introduzione agli aventi del browser
+# Introduzione agli eventi del browser
 
 *Un evento* è un segnale che sta ad indicare che è avvenuto qualcosa. Tutti i nodi DOM generano questi segnali (anche se gli eventi non sono limitati al DOM).
 
