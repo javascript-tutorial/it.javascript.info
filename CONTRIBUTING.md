@@ -53,7 +53,7 @@ Tutto il progetto è ospitato da GitHub. La seguente guida presuppone che tu con
   
   6. Una volta terminato il lavoro, è il momento di inviarlo tramite una `pull request` affinché venga approvato ed incluso nel progetto originale (`merge`). **Come titolo della PR inserisci il titolo dell'articolo che stai traducendo**, lo trovi nella issue [Italian Translation Progress](https://github.com/javascript-tutorial/it.javascript.info/issues/1).
 
-  7. Da questo momento il tuo articolo si troverà in fase di revisione (`review`) da parte dei maintainers, i quali potrebbero chiederti di correggere o migliorare qualche cosa. Tieni monitorata la tua pull request, così potrai interagire durante la fase di review e procedere speditamente verso l'approvazione. Nel caso in cui ti venga richiesto di apportare delle modifiche, una volta terminato lascia un commento nella PR con `/done`, in questo modo il bot segnalera il tuo articolo come "pronto alla revisione".
+  7. Da questo momento il tuo articolo si troverà in fase di revisione (`review`) da parte dei maintainers, i quali potrebbero chiederti di correggere o migliorare qualche cosa. Tieni monitorata la tua pull request, così potrai interagire durante la fase di review e procedere speditamente verso l'approvazione. Nel caso in cui ti venga richiesto di apportare delle modifiche, una volta terminato, lascia un commento nella PR con `/done`, in questo modo il bot segnalera il tuo articolo come "pronto alla revisione".
 
   8. Se tutto è andato per il verso giusto, il tuo lavoro verrà approvato ed incorporato nel progetto ... ora puoi festeggiare :tada: :tada: :tada:
 
