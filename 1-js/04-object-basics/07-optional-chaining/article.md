@@ -44,9 +44,9 @@ let user = {};
 alert(user.address ? user.address.street : undefined);
 ```
 
-Funziona, nessun errore... Ma è poco elegante. Come potete vedere , `"user.address"` appare due volte nel codice. Per proprietà molto più annidate, potrebbe diventare un problema, in quanto ci saranno molte più ripetizioni.
+Funziona, nessun errore... Ma è poco elegante. Come potete vedere , `"user.address"` appare due volte nel codice. Per proprietà molto più annidate, potrebbe diventare un problema, in quanto saranno necessarie molte più ripetizioni.
 
-Ad esempio, proviamo ad ottenere `user.address.street.name`.
+Ad esempio, proviamo a recuperare il valore di `user.address.street.name`.
 
 Dobbiamo verificare sia `user.address` che `user.address.street`:
 
@@ -58,7 +58,7 @@ alert(user.address ? user.address.street ? user.address.street.name : null : nul
 
 Questo è semplicemente terribile, un codice del genere potrebbe anche essere difficile da comprendere.
 
-Non ha importanza, c'è un modo migliore per riscriverlo, utilizzando l'operatore `&&`:
+Ci sarebbe un modo migliore per riscriverlo, utilizzando l'operatore `&&`:
 
 ```js run
 let user = {}; // l'utente non ha address
@@ -66,7 +66,7 @@ let user = {}; // l'utente non ha address
 alert( user.address && user.address.street && user.address.street.name ); // undefined (nessune errore)
 ```
 
-Concatenare con `&&` l'intero percorso verso la proprietà ci assicura che tutti i componenti esistano (in caso contrario, la valutazione si interrompe), ma non è comunque ideal.
+Concatenare con `&&` l'intero percorso verso la proprietà ci assicura che tutti i componenti esistano (in caso contrario, la valutazione si interrompe), ma non è comunque l'ideale.
 
 Come potete vedere, il nome della proprietà è ancora duplicato nel codice. Ad esempio, nel codice sopra, `user.address` è ripetuto tre volte.
 
@@ -74,7 +74,7 @@ Questo è il motivo per cui la concatenazione opzionale `?.`, è stata aggiunta 
 
 ## Concatenazione opzionale
 
-La concatenazione opzionale `?.` interrompe al valutazione se il valore prima di `?.` è `undefined` o `null`, e ritorna `undefined`.
+La concatenazione opzionale `?.` interrompe la valutazione se il valore prima di `?.` è `undefined` o `null`, e ritorna `undefined`.
 
 **D'ora in poi in questo articolo, per brevità, diremo che qualcosa "esiste" se non è ne `null` né `undefined`.**
 
@@ -103,18 +103,18 @@ alert( user?.address.street ); // undefined
 
 Da notare: la sintassi `?.` rende opzionale il valore che la precede, nulla di più.
 
-Ad esempio in `user?.address.street.name` il costrutto `?.` permette alla proprietà `user` di essere `null/undefined` in sicurezza (e ritornare `undefined` in questo caso), ma questo vale solamente per `user`. Le altre proprietà verranno accedute normalmente. Se vogliamo che anche altre proprietà siano opzionali, dobbiamo rimpiazzare `.` con `?.`.
+Ad esempio in `user?.address.street.name` il costrutto `?.` permette alla proprietà `user` di essere `null/undefined` in sicurezza (e ritornare `undefined` in questo caso), ma questo vale solamente per `user`. Si accederà alle altre proprietà normalmente. Se vogliamo che anche altre proprietà siano opzionali, dobbiamo rimpiazzare `.` con `?.`.
 
 ```warn header="Non abusate della concatenazione opzionale"
 Dovremmo utilizzare `?.` solamente quando va bene che una proprietà possa non esistere.
 
 Ad esempio, guardando la logica del nostro codice, l'oggetto `user` deve necessariamente esistere, mentre `address` è opzionale, quindi dovremmo scrivere `user.address?.street`, non `user?.address?.street`.
 
-Quindi, se `user` dovesse essere `undefined` per errore, otterremo un errore e potremmo sistemarlo. Altrimenti, gli errori di programmazione possono essere silenziati in modo non appropriati, rendendo il debug molto difficile.
+Quindi, se `user` dovesse essere `undefined` per errore, otterremo un errore e potremmo sistemarlo. Altrimenti, gli errori di programmazione potrebbero essere silenziati in modo non appropriato, rendendo il debug molto difficile.
 ```
 
 ````warn header="La variabile che precede `?.` deve essere dichiarata"
-Se non esiste alcuna variabile `user`, allora `user?.anything` lancerà un errore:
+Se non esiste alcuna variabile `user`, allora `user?.anything` provocherà un errore:
 
 ```js run
 // ReferenceError: user is not defined
@@ -125,9 +125,9 @@ La variabile deve essere dichiarata (ad esempio come `let/const/var user` o come
 
 ## Corto circuito
 
-Come detto in precedenza, il costrutto `?.` interrompe immediatamente (va in "corto circuito") la valutazione, se la proprietà a destra non esiste.
+Come detto in precedenza, il costrutto `?.` interrompe immediatamente (manda in "corto circuito") la valutazione, se la proprietà a destra non esiste.
 
-Quindi, nel caso ci siano ulteriori chiamate a funzione o side-effect, questi non avverranno.
+Quindi, nel caso ci siano ulteriori chiamate a funzione o side-effects, questi non verranno elaborati.
 
 Ad esempio:
 
@@ -166,11 +166,11 @@ userGuest.admin?.(); // niente (il metodo non esiste)
 */!*
 ```
 
-Qui, in entrambe le righe come prima cosa abbiamo utilizzato il punto (`user1.admin`) per ottenere la proprietà `admin`, poiché l'oggetto `user` deve necessariamente esistere, quindi l'accesso è sicuro.
+Qui, in entrambe le righe, come prima cosa abbiamo utilizzato il punto (`user1.admin`) per ottenere la proprietà `admin`, poiché l'oggetto `user` deve necessariamente esistere, quindi l'accesso è sicuro.
 
 Successivamente `?.()` controlla la parte sinistra: se la funzione `admin` esiste, allora viene eseguita (ciò che accade con `user1`). Altrimenti (con `user2`) la valutazione si interrompe senza errori.
 
-Anche la funzione `?.[]` funziona, se volessimo usare le parentesi `[]` per accedere alle proprietà, invece del punto `.`. In maniera simile ai casi precedenti, potremmo accedere con sicurezza ad una proprietà di un oggetto, che potrebbe non esistere.
+La sintassi `?.[]` funziona anche se volessimo usare le parentesi `[]` per accedere alle proprietà, invece del punto `.`. In maniera simile ai casi precedenti, potremmo accedere con sicurezza ad una proprietà di un oggetto, che potrebbe non esistere.
 
 ```js run
 let key = "firstName";
@@ -209,8 +209,8 @@ Non è cosi intelligente.
 
 La concatenazione opzionale `?.` possiede tre forme:
 
-1. `obj?.prop` -- ritorna `obj.prop` se `obj` esiste, altrimenti `undefined`.
-2. `obj?.[prop]` -- ritorna `obj[prop]` se `obj` esiste, altrimenti `undefined`.
+1. `obj?.prop` -- ritorna `obj.prop` se `obj` esiste, altrimenti ritorna `undefined`.
+2. `obj?.[prop]` -- ritorna `obj[prop]` se `obj` esiste, altrimenti ritorna `undefined`.
 3. `obj.method?.()` -- invoca `obj.method()` se `obj.method` esiste, altrimenti ritorna `undefined`.
 
 Come possiamo vedere, le tre forme sono semplici da utilizzare. Il costrutto `?.` verifica che la parte sinistra non sia `null/undefined` e permette alla valutazione di proseguire in caso contrario.
