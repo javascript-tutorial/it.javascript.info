@@ -2,10 +2,10 @@ importance: 5
 
 ---
 
-# Creare un menu scorrevole
+# Create a sliding menu
 
-Creare un menu che si apra e chiuda al click:
+Create a menu that opens/collapses on click:
 
 [iframe border=1 height=100 src="solution"]
 
-P.S.: HTML e CSS del codice della pagina andranno modificati.
+P.S. HTML/CSS of the source document is to be modified.

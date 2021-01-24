@@ -1,12 +1,11 @@
 
-Per prima cosa dobbiamo scegliere un metodo per posizionare la palla.
+First we need to choose a method of positioning the ball.
 
-Non possiamo usare `position:fixed` per questo, perché lo scorrimento della pagina sposterebbe la palla dal campo.
+We can't use `position:fixed` for it, because scrolling the page would move the ball from the field.
 
-Dobbiamo quindi usare `position:absolute` per la palla, e per rendere il posizionamento stabile, posizionare anche `field` stesso.
-(N.d.T.: Per `posizionare` intendiamo l'azione di impostare, per l'elemento, la proprietà CSS "position" in modo differente dal normale flusso della pagina ("static" se non diversamente specificato). 
+So we should use `position:absolute` and, to make the positioning really solid, make `field` itself positioned.
 
-In questo modo a palla verrà posizionata in relazione al campo:
+Then the ball will be positioned relatively to the field:
 
 ```css
 #field {
@@ -17,36 +16,36 @@ In questo modo a palla verrà posizionata in relazione al campo:
 
 #ball {
   position: absolute;
-  left: 0; /* relativo all'antenato più vicino (field) */
+  left: 0; /* relative to the closest positioned ancestor (field) */
   top: 0;
-  transition: 1s all; /* Una animazione CSS impostata su left/top fa volare la palla */
+  transition: 1s all; /* CSS animation for left/top makes the ball fly */
 }
 ```
 
-Il prossimo passo sarà quello di assegnare correttamente `ball.style.left/top`, le cui coordinate saranno relazionate alla dimensione del campo.
+Next we need to assign the correct `ball.style.left/top`. They contain field-relative coordinates now.
 
-Osserviamo la figura:
+Here's the picture:
 
 ![](move-ball-coords.svg)
 
-`event.clientX/clientY` sono le coordinate relative alla window (N.d.T. l'oggetto window) del click.
+We have `event.clientX/clientY` -- window-relative coordinates of the click.
 
-Per ottenere le coordinate `left` relative al campo, dobbiamo sottrarre il valore del limite sinistro del campo e la sua larghezza:
+To get field-relative `left` coordinate of the click, we can substract the field left edge and the border width:
 
 ```js
 let left = event.clientX - fieldCoords.left - field.clientLeft;
 ```
 
-Normalmente, `ball.style.left` significa "limite destro dell'elemento" (la palla). Ma se assegnassimo questo valore di `left`, sotto il puntatore si verrebbe a posizionare, appunto, il limite destro della palla, e non il suo centro.
+Normally, `ball.style.left` means the "left edge of the element" (the ball). So if we assign that `left`, then the ball edge, not center, would be under the mouse cursor.
 
-Dobbiamo quindi spostare la palla anche tenendo conto della metà della sua altezza e metà della sua larghezza per poterla centrare.
+We need to move the ball half-width left and half-height up to make it center.
 
-Quindi il `left` definitivo sarebbe:
+So the final `left` would be:
 
 ```js
 let left = event.clientX - fieldCoords.left - field.clientLeft - ball.offsetWidth/2;
 ```
 
-Le coordinate in verticale vengono calcolate usando la stessa logica. 
+The vertical coordinate is calculated using the same logic.
 
-Nota bene che larghezza e altezza della palla devono essere noti nel momento in cui accediamo a  `ball.offsetWidth`. Dovrebbe essere specificato nell'HTML o nel CSS.
+Please note that the ball width/height must be known at the time we access `ball.offsetWidth`. Should be specified in HTML or CSS.

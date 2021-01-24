@@ -2,20 +2,20 @@ importance: 5
 
 ---
 
-# Spostare la palle sul campo
+# Move the ball across the field
 
-Spostare la palla sul campo al click. Così:
+Move the ball across the field to a click. Like this:
 
 [iframe src="solution" height="260" link]
 
-Requisiti:
+Requirements:
 
-- Il centro della palla, al click, dovrà essere esattamente sotto il puntatore (possibilmente senza attraversare i bordi del campo).
-- Le animazioni CSS sono ben accette.
-- La palla non deve attraversare i confini del campo.
-- Allo scroll della pagina, lo script non si deve rompere.
+- The ball center should come exactly under the pointer on click (if possible without crossing the field edge).
+- CSS-animation is welcome.
+- The ball must not cross field boundaries.
+- When the page is scrolled, nothing should break.
 
-NOte:
+Notes:
 
-- Il codice dovrebbe funzionare anche con differenti tipi di palle e campi, senza essere legato a nessun valore prefissato.
-- Usa le proprietà `event.clientX/event.clientY` per le coordinate del click.
+- The code should also work with different ball and field sizes, not be bound to any fixed values.
+- Use properties `event.clientX/event.clientY` for click coordinates.

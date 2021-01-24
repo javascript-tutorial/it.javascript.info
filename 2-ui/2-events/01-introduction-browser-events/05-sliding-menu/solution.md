@@ -1,45 +1,47 @@
 
-# HTML e CSS
-Per prima cosa creiamo l'HTML ed il CSS.
+# HTML/CSS
+First let's create HTML/CSS.
 
-Un menù è un componente grafico indipendente nella pagina, quindi è bene inserirlo all'interno di un singolo elemento genitore del DOM.
+A menu is a standalone graphical component on the page, so it's better to put it into a single DOM element.
 
-Una lista di elementi del menù può essere rappresentata da una lista di `ul/li`.
+A list of menu items can be laid out as a list `ul/li`.
 
-Ecco la struttura d'esempio:
+Here's the example structure:
 
 ```html
 <div class="menu">
-  <span class="title">Dolciumi (cliccami)!</span>
+  <span class="title">Sweeties (click me)!</span>
   <ul>
-    <li>Torte</li>
-    <li>Ciambelle</li>
-    <li>Miele</li>
+    <li>Cake</li>
+    <li>Donut</li>
+    <li>Honey</li>
   </ul>
 </div>
 ```
 
-Usiamo `<span>` per il titolo, perché `<div>` avendo un `display:block` implicito, occuperebbe il 100% della larghezza disponibile.
+We use `<span>` for the title, because `<div>` has an implicit `display:block` on it, and it will occupy 100% of the horizontal width.
+
+Like this:
 
 ```html autorun height=50
-<div style="border: solid red 1px" onclick="alert(1)">Dolciumi (cliccami)!</div>
+<div style="border: solid red 1px" onclick="alert(1)">Sweeties (click me)!</div>
 ```
 
-Impostando un `onclick` su di esso, intercetterà i click alla destra del testo.
+So if we set `onclick` on it, then it will catch clicks to the right of the text.
 
-Dato che `<span>` ha un `display: inline` implicito, occupa esattamente lo spazio necessario per la visualizzazione del testo:
+As `<span>` has an implicit `display: inline`, it occupies exactly enough place to fit all the text:
 
 ```html autorun height=50
-<span style="border: solid red 1px" onclick="alert(1)">Dolciumi (cliccami)!</span>
+<span style="border: solid red 1px" onclick="alert(1)">Sweeties (click me)!</span>
 ```
 
-# Azionamento del menù
+# Toggling the menu
 
-L'azionamento del menù dovrebbe cambiare la direzione della freccia e mostrare/nascondere la lista degli elementi.
+Toggling the menu should change the arrow and show/hide the menu list.
 
-Tutte queste modifiche sonon gestite perfettamente dai CSS. In JavaScript dovremmo solamente etichettare lo stato corrente del menù aggiungendo/rimuovendo la classe `.open`.
+All these changes are perfectly handled by CSS. In JavaScript we should label the current state of the menu by adding/removing the class `.open`.
 
-Senza di essa, il menù risulterebbe chiuso:
+Without it, the menu will be closed:
 
 ```css
 .menu ul {
@@ -56,7 +58,7 @@ Senza di essa, il menù risulterebbe chiuso:
 }
 ```
 
-...invece con `.open`, la frecca si modifica e la lista si apre:
+...And with `.open` the arrow changes and the list shows up:
 
 ```css
 .menu.open .title::before {

@@ -1,8 +1,8 @@
-Risposta: `1` e `2`.
+The answer: `1` and `2`.
 
-Il primo gestore verrà innescato, perché non viene rimosso da `removeEventListener`. Per rimuovere il gestore dobbiamo passare esattamnte la stessa funzione che era stata assegnata. E nel codice viene pasata una nuova funzione, che è identica, ma è comunque una nuova funzione.
+The first handler triggers, because it's not removed by `removeEventListener`. To remove the handler we need to pass exactly the function that was assigned. And in the code a new function is passed, that looks the same, but is still another function.
 
-Per poter rimuovere un oggetto funzione, dobbiamo salvarci un suo riferimento:
+To remove a function object, we need to store a reference to it, like this:
 
 ```js
 function handler() {
@@ -13,4 +13,4 @@ button.addEventListener("click", handler);
 button.removeEventListener("click", handler);
 ```
 
-Il gestore `button.onclick` aggiunto ad `addEventListener` funziona perfettamente.
+The handler `button.onclick` works independently and in addition to `addEventListener`.
