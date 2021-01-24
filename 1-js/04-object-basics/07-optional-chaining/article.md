@@ -3,7 +3,7 @@
 
 [recent browser="new"]
 
-Il concatenamento opzionale, `?.`, è un modo sicuro di accedere alle proprietà annidate di un oggetto, anche nel caso in cui una proprietà intermedia non dovesse esistere.
+Il concatenamento opzionale (optional chaining), `?.`, è un modo sicuro di accedere alle proprietà annidate di un oggetto, anche nel caso in cui una proprietà intermedia non dovesse esistere.
 
 ## Il problema della "proprietà inesistente"
 
