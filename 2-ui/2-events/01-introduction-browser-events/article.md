@@ -231,7 +231,7 @@ Per rimuovere l'evento, si usa `removeEventListener`:
 element.removeEventListener(event, handler, [options]);
 ```
 
-````warn header="La rimozione prevede la stessa identica funzione"
+````warn header="La rimozione richiede la stessa identica funzione"
 Per rimuovere un gestore dobbiamo passare come parametro, la stessa funzione che abbiamo usato per l'assegnazione.
 
 Il seguente codice non fa quello che ci aspetteremmo:
