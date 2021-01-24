@@ -37,7 +37,7 @@ Ed ecco come viene effettivamente archiviata in memoria:
 
 L'oggetto è archiviato da qualche parte nella memoria (a destra nell'immagine), mentre la variabile `user` (a sinistra) contiene il "riferimento" ad esso.
 
-Potremmo immaginare la variabile oggetto `user`,  come un foglio di carta con scritto l'indirizzo dell'oggetto.
+Potremmo immaginare la "variabile oggetto" `user`,  come un foglio di carta con scritto l'indirizzo dell'oggetto.
 
 Quando eseguiamo azioni con l'oggetto, ad es. leggere una proprietà `user.name`, il motore JavaScript guarda cosa c'è a quell'indirizzo ed esegue l'operazione sull'oggetto reale.
 
@@ -103,7 +103,7 @@ Per confronti tra oggetti (Es. `obj1 > obj2`) o con primitivi (Es. `obj == 5`), 
 
 ## Clonazione e unione, Object.assign
 
-Come abbiamo detto, copiare una variabile oggetto crea un ulteriore riferimento allo stesso oggetto.
+Come abbiamo detto, copiare una "variabile oggetto" crea un ulteriore riferimento allo stesso oggetto.
 
 Quindi, come possiamo fare se abbiamo bisogno di duplicare un oggetto? Creare una copia indipendente, un clone?
 
