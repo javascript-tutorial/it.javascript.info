@@ -88,7 +88,7 @@ In sostanza, questa modalità equivale alla precedente.
 
 I due codici messi a confronto, infatti, lavorano alla stessa maniera:
 
-1. Only HTML:
+1. Solo HTML:
 
     ```html autorun height=50
     <input type="button" *!*onclick="alert('Click!')"*/!* value="Button">
