@@ -3,17 +3,17 @@ La risposta: il primo e il terzo verranno eseguiti.
 I dettagli:
 
 ```js run
-// Runs.
-// The result of -1 || 0 = -1, truthy
+// Viene eseguito
+// Il risultato di -1 || 0 = -1 è vero
 if (-1 || 0) alert( 'first' );
 
-// Doesn't run
-// -1 && 0 = 0, falsy
+// Non viene eseguito
+// -1 && 0 = 0, falso
 if (-1 && 0) alert( 'second' );
 
-// Executes
-// Operator && has a higher precedence than ||
-// so -1 && 1 executes first, giving us the chain:
+// Eseguito
+// L'operatore && ha la precedenza su ||,
+// quindi -1 && 1 vengono eseguiti per primi; la catena dentro `if` diventa:
 // null || -1 && 1  ->  null || 1  ->  1
 if (null || -1 && 1) alert( 'third' );
 ```
