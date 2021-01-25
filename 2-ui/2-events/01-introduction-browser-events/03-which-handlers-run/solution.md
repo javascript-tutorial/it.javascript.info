@@ -1,6 +1,6 @@
 Risposta: `1` e `2`.
 
-Il primo gestore verrà innescato, perché non viene rimosso da `removeEventListener`. Per rimuovere il gestore dobbiamo passare esattamnte la stessa funzione che era stata assegnata. E nel codice viene pasata una nuova funzione, che è identica, ma è comunque una nuova funzione.
+Il primo gestore verrà innescato, poiché non viene rimosso da `removeEventListener`. Per rimuovere il gestore dobbiamo passare esattamente la stessa funzione che era stata assegnata. E nel codice viene passata una nuova funzione, che è identica, ma è comunque una nuova funzione.
 
 Per poter rimuovere un oggetto funzione, dobbiamo salvarci un suo riferimento:
 
