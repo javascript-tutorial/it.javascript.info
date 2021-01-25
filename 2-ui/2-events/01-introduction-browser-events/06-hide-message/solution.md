@@ -1,5 +1,5 @@
 
-Per aggiungere un pulsante possiamo usare sia `position:absolute` (e quindi il suo contenitore dovrà avere `position:relative`) oppure `float:right`. `float:right` ha il vantaggio che il pulsante non si sovrapponga al testo, però `position:absolute` ci dà un po' più di libertà. La scelta è tua.
+Per aggiungere un pulsante possiamo usare sia `position:absolute` (e quindi il suo contenitore dovrà avere `position:relative`) oppure `float:right`. `float:right` ha il vantaggio di non fare sovrapporre il pulsante al testo,  `position:absolute` invece ci dà un po' più di libertà. La scelta è tua.
 
 Quindi per ogni contenitore il codice potrebbe essere come questo:
 ```js
