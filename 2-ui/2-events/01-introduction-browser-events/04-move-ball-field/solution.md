@@ -49,4 +49,4 @@ let left = event.clientX - fieldCoords.left - field.clientLeft - ball.offsetWidt
 
 Le coordinate in verticale vengono calcolate usando la stessa logica. 
 
-Nota bene che larghezza e altezza della palla devono essere noti nel momento in cui accediamo a  `ball.offsetWidth`. Dovrebbe essere specificato nell'HTML o nel CSS.
+Nota bene che larghezza e altezza della palla devono essere note nel momento in cui accediamo a  `ball.offsetWidth`. Dovrebbero essere specificate nell'HTML o nel CSS.
