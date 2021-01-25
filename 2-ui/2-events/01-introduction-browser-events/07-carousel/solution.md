@@ -6,7 +6,7 @@ Normalmente, sono strisce che si sviluppano tantissimo in larghezza, quindi crei
 
 Per rendere la lista visibile in orizzontale, dobbiamo applicare le proprietà CSS corrette per gli elementi `<li>`, come `display: inline-block`.
 
-Per `<img>` dovremmo anche aggiustare `display`, dato che per impostazione predefinita è `inline`. Ci sono spazi aggiuntivi riservati negli elementi `inline` per le "codine dei caratteri", e possiamo usare `display:block` per rimuoverle.
+Per `<img>` dovremmo anche sistemare `display`, dato che per impostazione predefinita è `inline`. Ci sono spazi aggiuntivi riservati negli elementi `inline` per le "codine dei caratteri", e possiamo usare `display:block` per rimuoverle.
 
 Per creare lo scorrimento possiamo spostare l'elemento `<ul>`. Ci sono varie maniere per farlo, ad esempio cambiando il `margin-left` oppure (prestazioni migliori) usare `transform: translateX()`:
 
