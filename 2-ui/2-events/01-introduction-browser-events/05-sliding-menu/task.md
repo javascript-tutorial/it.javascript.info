@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Creare un menu scorrevole
+# Creare un menù a scorrimento
 
 Creare un menu che si apra e chiuda al click:
 
