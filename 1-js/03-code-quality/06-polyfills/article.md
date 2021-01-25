@@ -11,11 +11,7 @@ Se si vuole rimanere aggiornati riguardo lo stato di supporto delle caratteristi
 
 Come programmatori, amiamo utilizzare le più recenti caratteristiche del linguaggio!
 
-<<<<<<< HEAD
 Ma come si può fare per farle funzionare sui vecchi motori JavaScript che non le comprendono ed interpretano?
-=======
-On the other hand, how to make our modern code work on older engines that don't understand recent features yet?
->>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
 
 Esistono due strumenti per questo:
 
