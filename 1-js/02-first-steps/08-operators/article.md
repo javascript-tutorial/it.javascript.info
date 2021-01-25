@@ -109,6 +109,7 @@ alert(2 + 2 + '1' ); // "41" non "221"
 
 Qui le operazioni vengo eseguite una di seguito all'altra, da sinistra verso destra. Il primo `+` somma i due numeri e restituisce `4`, quindi il successivo `+` concatena a quest'ultimo la stringa `1`, quindi sarebbe come fare `4 + '1' = 41`.
 
+
 ```js run
 alert('1' + 2 + 2 ); // "122" non "14"
 ```
