@@ -15,7 +15,7 @@ Requisiti:
 - La palla non deve attraversare i confini del campo.
 - Allo scroll della pagina, lo script non si deve rompere.
 
-NOte:
+Note:
 
 - Il codice dovrebbe funzionare anche con differenti tipi di palle e campi, senza essere legato a nessun valore prefissato.
 - Usa le proprietà `event.clientX/event.clientY` per le coordinate del click.
