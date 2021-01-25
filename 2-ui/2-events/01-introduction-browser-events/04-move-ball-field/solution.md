@@ -29,7 +29,7 @@ Osserviamo la figura:
 
 ![](move-ball-coords.svg)
 
-`event.clientX/clientY` sono le coordinate relative alla window (N.d.T. l'oggetto window) del click.
+`event.clientX/clientY` sono le coordinate del click relative alla window (N.d.T. l'oggetto window).
 
 Per ottenere le coordinate `left` relative al campo, dobbiamo sottrarre il valore del limite sinistro del campo e la sua larghezza:
 
