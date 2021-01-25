@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Hide self
+# Nascondere sé stesso
 
-Create a button that hides itself on click.
+Creare un pulsante che nasconde se stesso al click.
 
 ```online
-Like this:
-<input type="button" onclick="this.hidden=true" value="Click to hide">
+Come questo:
+<input type="button" onclick="this.hidden=true" value="Clicca per nascondere">
 ```

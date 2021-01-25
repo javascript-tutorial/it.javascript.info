@@ -1,17 +1,17 @@
-The images ribbon can be represented as `ul/li` list of images `<img>`.
+Una striscia di immagini può essere rappresentata con una lista `ul/li` di immagini `<img>`.
 
-Normally, such a ribbon is wide, but we put a fixed-size `<div>` around to "cut" it, so that only a part of the ribbon is visible:
+Normalmente, sono strisce che si sviluppano tantissimo in larghezza, quindi creiamo un `<div>` a larghezza fissa attorno ad esse per "tagliarle", di modo che sia visibile sola una parte di esse:
 
 ![](carousel1.svg)
 
-To make the list show horizontally we need to apply correct CSS properties for `<li>`, like `display: inline-block`.
+Per rendere la lista visibile in orizzontale, dobbiamo applicare le proprietà CSS corrette per gli elementi `<li>`, come `display: inline-block`.
 
-For `<img>` we should also adjust `display`, because by default it's `inline`. There's extra space reserved under `inline` elements for "letter tails", so we can use `display:block` to remove it.
+Per `<img>` dovremmo anche aggiustare `display`, dato che per impostazione predefinita è `inline`. Ci sono spazi aggiuntivi riservati negli elementi `inline` per le "codine dei caratteri", e possiamo usare `display:block` per rimuoverle.
 
-To do the scrolling, we can shift `<ul>`. There are many ways to do it, for instance by changing `margin-left` or (better performance) use `transform: translateX()`:
+Per creare lo scorrimento possiamo spostare l'elemento `<ul>`. Ci sono varie maniere per farlo, ad esempio cambiando il `margin-left` oppure (prestazioni migliori) usare `transform: translateX()`:
 
 ![](carousel2.svg)
 
-The outer `<div>` has a fixed width, so "extra" images are cut.
+Il `<div>` esterno avendo una larghezza fissa, fa sì che le immagini "in più" vengono tagliate.
 
-The whole carousel is a self-contained "graphical component" on the page, so we'd better wrap it into a single `<div class="carousel">` and style things inside it.
+Tutto il carosello è un "componente grafico" auto-contenuto nella pagina, quindi è bene avvolgerlo dentro un singolo `<div class="carousel">`, inserendo le stilizzazioni dentro quest'ultimo.
