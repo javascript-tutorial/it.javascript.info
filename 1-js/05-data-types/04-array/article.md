@@ -437,7 +437,7 @@ Questo operatore non offre alcun tipo di trattamento speciale per gli array, li 
 
 Ricordando velocemente le regole:
 
-- Due oggetti sono uguali `==` solamente se fanno riferimento allo stesso oggetto.
+- Due oggetti sono uguali con `==` solamente se fanno riferimento allo stesso oggetto.
 - Se uno dei due argomenti forniti all'operatore `==` è un oggetto, e l'altro è un tipo primitivo, allora l'oggetto viene convertito in primitivo, come spiegato nel capitolo <info:object-toprimitive>.
 - ...Con l'eccezione di `null` e `undefined` che sono uguali solamente tra di loro.
 
