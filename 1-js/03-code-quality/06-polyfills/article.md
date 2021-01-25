@@ -1,5 +1,5 @@
 
-# Polyfills and transpilers
+# Polyfills e transpilers
 
 Il linguaggio JavaScript si evolve costantemente. Nuove proposte per il linguaggio arrivano regolarmente, vengono analizzate, e successivamente se ritenute valide vengono aggiunte alla lista <https://tc39.github.io/ecma262/> fino a diventare delle [specifiche](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
 
@@ -7,9 +7,11 @@ I team che stanno dietro il motore di JavaScript hanno le loro personali idee ri
 
 Quindi per un motore di script è naturale implementare solo le cose che si trovano nello standard.
 
-Se si vuole rimanere aggiornati riguardo lo stato di supporto delle caratteristiche si può controllare la pagina <https://kangax.github.io/compat-table/es6/> (è molt grande, dovremmo studiare ancora molto).
+Se si vuole rimanere aggiornati riguardo lo stato di supporto delle caratteristiche si può controllare la pagina <https://kangax.github.io/compat-table/es6/> (è molto grande, dovremmo studiare ancora molto).
 
-Come programmatori, amiamo utilizzare le più recenti caratteristiche del linguaggio, ma come si può fare per farle funzionare sui vecchi motori Javascript che non le comprendono ed interpretano?
+Come programmatori, amiamo utilizzare le più recenti caratteristiche del linguaggio!
+
+Ma come si può fare per farle funzionare sui vecchi motori JavaScript che non le comprendono ed interpretano?
 
 Esistono due strumenti per questo:
 
@@ -20,7 +22,7 @@ In questo capitolo cercheremo di capire il loro funzionamento ed il loro ruolo n
 
 ## Transpilers
 
-Un [transpiler](https://en.wikipedia.org/wiki/Source-to-source_compiler) è un particolare software capace di analizzare il codice moderno e di riscriverlo utilizzando sintassi e costrutti meno recenti, facendo in modo che alla fine funzioni nello stesso modo.
+Un [transpiler](https://en.wikipedia.org/wiki/Source-to-source_compiler) è un particolare software capace di analizzare il codice moderno e di riscriverlo utilizzando sintassi e costrutti meno recenti, facendo in modo che il funzionamento sia simile.
 
 Es. JavaScript prima del 2020 non aveva "l'operatore di coalescenza nullo" `??`. Quindi, se un visitatore utilizza un vecchio browser, questo non potrebbe comprendere `height = height ?? 100`.
 
@@ -34,7 +36,7 @@ height = height ?? 100;
 height = (height !== undefined && height !== null) ? height : 100;
 ```
 
-Ora il codice riscritto è adatto anche ai vecchi motori JavaScript
+Ora il codice riscritto è adatto anche ai vecchi motori JavaScript.
 
 In genere lo sviluppatore fa girare il transpiler in locale sul proprio computer, quindi distribuisce sul server il codice riscritto.
 

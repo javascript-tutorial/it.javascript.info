@@ -8,9 +8,9 @@ Ci piacerebbe ricevere il tuo contributo nella traduzione e/o revisione degli ar
 
 Se hai idee da proporre o suggerimenti, allora fai riferimento al [repository inglese](https://github.com/javascript-tutorial/en.javascript.info).
 
-Prima di iniziare ti segnalo che esiste anche un **[Canale Discord](https://discord.gg/Dj9P3jCt6K)** in cui potrai parlare con gli altri contributors di quello che riguarda la traduzione e revisione degli articoli. O anche ricevere delle indicazioni su come iniziare!
+Prima di iniziare ti segnalo che esiste anche un **[Canale Discord](https://discord.gg/Dj9P3jCt6K)** in cui potrai parlare con gli altri contributors di quello che riguarda la traduzione e revisione degli articoli. O anche ricevere delle indicazioni su come iniziare! Non è assolutamente obbligatorio accedere al server per lavorare alle traduzioni, le informazioni necessarie sono tutte repereibili in questo repository.
 
-Se hai deciso di contribuire innanzitutto ti ringrazio per il supporto, e ti chiedo di leggere fino alla fine questo documento, in modo da velocizzare le revisioni e ridurre gli errori!
+Se hai deciso di contribuire innanzitutto ti ringrazio per il supporto, e ti chiedo di leggere fino alla fine questo documento, in modo da velocizzare le revisioni e ridurre gli errori, ci vorranno meno di 5 minuti!
 
 ## Indice
   - [Note importanti](#importante)
@@ -25,70 +25,19 @@ Se hai deciso di contribuire innanzitutto ti ringrazio per il supporto, e ti chi
 
 ## Come contribuire
 
-### 1. Visita la pagina con l'elenco degli articoli: [it.javascript.info](https://github.com/javascript-tutorial/it.javascript.info/issues/1)
-
-  Scorri la lista e scegli un articolo non ancora assegnato o tradotto. E' possibile riconoscere gli articoli già assegnati poiché riportano il nome del contributor:
-
-  ```
-    [ ] Generators (@mean2me)  // articolo già assegnato
-    [X] Generators (@mean2me)  // articolo già tradotto
-  ```
-
-### 2. Notifica l'articolo scelto
-
-  Prima di cominciare la traduzione è importante lasciare un commento all'interno della issue [Italian Translation Progress](https://github.com/javascript-tutorial/it.javascript.info/issues/1)
-  Il commento deve contenere solo il titolo dell'articolo che volete tradurre, in questo modo l'articolo vi viene assegnato e si evita che un articolo venga tradotto da più persone.
-
-### 3. Esegui un fork del repository
-
-  Ora puoi iniziare con la traduzione! Per iniziare, devi eseguire un `fork` del repository!
-
-### 4. Crea un branch dedicato
-
-  Una volta eseguito il `fork` ti chiedo di creare un branch separato su cui lavorare alla traduzione, in questo modo teniamo il ramo `master` pulito.
-  Il nome del branch creato deve seguire il formato seguente:
-
-  ```
-    article/NomeArticolo
-  ```
-
-### 5. Traduzione
-
-  **Puoi lavorare con qualsiasi editor di testo.** Il tutorial è scritto utilizzando una versione migliorata del linguaggio markdown, facile da utilizzare. Se vuoi avere una preview del tuo lavoro di traduzione, puoi installare localmente questo [server](https://github.com/javascript-tutorial/server).
-  
-  **Importante**
-  Per lavorare alla traduzione ti chiedo di prendere come riferimento l'articolo inglese, che puoi trovare al [seguente repository](https://github.com/javascript-tutorial/en.javascript.info).
-  Il tutorial è in costante aggiornamento, quindi la versione inglese presente nel repository italiano potrebbe non essere aggiornata all'ultima versione!
-
-  Se l'articolo contiene esercizi, è necessaria anche la loro traduzione.
-
-### 6. Inoltra la traduzione
-
-  Una volta completata la traduzione è quasi fatta, rimangono ancora un paio di cose da fare:
-
-  1. Effettua un rapido controllo ortografico. Puoi farlo utilizzando un qualsiasi tool online gratuito, ad esempio [Language Tool](https://languagetool.org/).
-
-  2. Inoltra un `Pull Request` al branch `master` del repository.
-
-  3. (Opzionale) Notifica il completamento della traduzione tramite il **[Canale Discord](https://discord.gg/Dj9P3jCt6K)** in modo da rendere più rapide le revisioni.
-
-### 7. Tieni monitorata la PR
-
-  Tieni monitorata la Pull Request in caso ti venga richiesto di apportare delle modifiche.
-  A questo punto, in attesa di approvazione, puoi prendere in carico la traduzione di un altro articolo.
-
-
-# Grazie per la collaborazione 😍
+Ti chiedo di leggere rapidamente anche il documento [CONTRIBUTING.MD](https://github.com/javascript-tutorial/it.javascript.info/blob/master/CONTRIBUTING.md), in cui potrai trovare tutte le informazioni sul modo migliore per collaborare al respository!
 
 ## Consigli per la traduzione
-Lascio un elenco rapido da consultare durante la traduzione per mantenere la guida più conforme possibile.
 
-Cosa tradurre:
-  - Tradurre l'articolo nella sua interezza, compresi i task e le solution
+Durante la traduzione tenete sempre sotto mano il [Glossario](https://github.com/javascript-tutorial/it.javascript.info/issues/167).
+Questo vi sarà utile in fase di traduzione nel caso in cu incontraste una parola che non sapete se o come tradurre. Esempio il termine `debugger` viene mantenuto tale anche in italiano, in quanto di uso comune nell'ambito dello sviluppo software. Nel caso in cui la parola non sia presente nel glossario, potete richiedere consiglio lasciando un commento.
+
+Altre cose utili da tenere a mente in fase di traduzione:
+  - Tradurre l'articolo nella sua interezza, compresi i task e le solutions
   - Tradurre anche i commenti negli esempi all'interno degli articoli
 
 Cosa **non** tradurre:
-  - Non è necessario tradurre gli esempi, è sufficiente la traduzione dei commenti. Quindi il contenuto degli alert, console.log, nomi delle funzioni/classi deve rimanere in lingua inglese.
+  - Non è necessario tradurre il codice degli esempi, è sufficiente la traduzione dei commenti. Quindi il contenuto degli alert, console.log, nomi delle funzioni/classi deve rimanere in lingua inglese.
 
   ```
     function sayHello() {
@@ -108,25 +57,12 @@ Cosa **non** tradurre:
   
   - All'interno dei files degli esercizi `task.md` la voce iniziale `importance:` non va tradotta
 
-Alcuni termini ricorrenti:
-  - Nomi dei tipi vanno mantenuti in inglese:
-
-      **Date is a JavaScript data type.**
-
-      Verrà tradotto come:
-      
-        ✅ Date è un tipo di dato in JavaScript.
-
-        ❌ Data è un tipo di dato in JavaScript.
-  
-  - **Summary**, il termine che troverete a fine di ogni articolo va tradotto come **Riepilogo**
-
 ### FAQ
 
   <details>
     <summary>In quale formato sono scritti gli articoli?</summary>
 
-    Il tutorial segue lo standard testuale "Markdonw", è molto semplice da utilizzare. In ogni caso non vi è richiesto di mettere mano al formato, è sufficiente la traduzione del testo.
+    Il tutorial segue lo standard testuale "Markdown", è molto semplice da utilizzare. In ogni caso non vi è richiesto di mettere mano al formato, è sufficiente la traduzione del testo.
   </details>
 
   <details>
@@ -136,6 +72,15 @@ Alcuni termini ricorrenti:
 
     L'importante è rispettare le linee guida fornite sopra!
   </details>
+
+  <details>
+    <summary>Posso tradurre un solo paragrafo?</summary>
+
+    No, l'articolo va tradotto nella sua interezza.
+  </details>
+
+---
+# Grazie per la collaborazione 😍
 
 ---  
 ♥  
