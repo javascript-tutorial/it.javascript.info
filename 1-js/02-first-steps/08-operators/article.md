@@ -107,7 +107,11 @@ Ora un esempio più complesso:
 alert(2 + 2 + '1' ); // "41" non "221"
 ```
 
+<<<<<<< HEAD
 Qui le operazioni vengo eseguite una di seguito all'altra, da sinistra verso destra. Il primo `+` somma i due numeri e restituisce `4`, quindi il successivo `+` concatena a quest'ultimo la stringa `1`, quindi sarebbe come fare `4 + '1' = 41`.
+=======
+Here, operators work one after another. The first `+` sums two numbers, so it returns `4`, then the next `+` adds the string `1` to it, so it's like `4 + '1' = '41'`.
+>>>>>>> 97ef86242f9f236b13152e1baf52a55c4db8728a
 
 ```js run
 alert('1' + 2 + 2 ); // "122" non "14"
