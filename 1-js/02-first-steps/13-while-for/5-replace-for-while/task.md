@@ -4,7 +4,7 @@ importance: 5
 
 # Sostituisci "for" con "while"
 
-Riscrivi il codice cambiando il ciclo `for` con `while` senza modificare il comportamento (l'output deve rimanere lo stesso).
+Riscrivi il ciclo `for` utilizzando la sintassi `while`, ma senza alterarne la funzionalità (l'output deve rimanere lo stesso).
 
 ```js run
 for (let i = 0; i < 3; i++) {
