@@ -10,4 +10,4 @@ Creare un "carosello", una raccolta di immagini che possono essere fatte scorrer
 
 Successivamente possiamo aggiungere più funzionalità: scorrimento infinito, caricamento dinamico etc.
 
-P.S. Per questo compito, la struttura HTML/CSS occupa il 90% di tutta la soluzione.
+P.S. Per questo compito, la struttura HTML/CSS rappresenta il 90% di tutta la soluzione.
