@@ -37,7 +37,7 @@ Dato che `<span>` ha un `display: inline` implicito, occupa esattamente lo spazi
 
 L'azionamento del menù dovrebbe cambiare la direzione della freccia e mostrare/nascondere la lista degli elementi.
 
-Tutte queste modifiche sonon gestite perfettamente dai CSS. In JavaScript dovremmo solamente etichettare lo stato corrente del menù aggiungendo/rimuovendo la classe `.open`.
+Tutte queste modifiche sono gestite perfettamente dai CSS. In JavaScript dovremmo solamente etichettare lo stato corrente del menù aggiungendo/rimuovendo la classe `.open`.
 
 Senza di essa, il menù risulterebbe chiuso:
 
