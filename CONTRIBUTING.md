@@ -38,13 +38,23 @@ Tutto il progetto è ospitato da GitHub. La seguente guida presuppone che tu con
 
   2. Fai un [`clone`](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository) del tuo fork `git clone url-del-fork-personale.git`. Bene ora hai la tua copia locale della repository sulla quale potrai iniziare a lavorare.
 
-  3. Dopo che ti verrà assegnato un articolo da tradurre/correggere/revisionare (vedi più avanti come), procedi creando in locale un nuovo `branch`. **E' importante lavorare sempre su un branch secondario, mai su quello principale (master o main)**. Per creare un nuovo branch puoi digitare il comando `git checkout -b nome-del-nuovo-branch`. Per convenzione, come nome del nuovo branch, usa il formato `article/nome-del-file-da-tradurre`.
+  3. Scegli un articolo da tradurre. Consulta la issue [it.javascript.info](https://github.com/javascript-tutorial/it.javascript.info/issues/1) per visualizzare la lista degli articoli, scegline uno che non sia già stato assegnato o tradotto.
+
+  ```
+    [ ] Generators (@mean2me)   // articolo già assegnato
+    [X] Generators (@mean2me)   // articolo già tradotto
+    [ ] Generators              // articolo disponibile
+  ```
+
+  4. Notifica l'articolo scelto. Per prenotare l'articolo da tradurre è importante lasciare un commento all'interno della issue [Italian Translation Progress](https://github.com/javascript-tutorial/it.javascript.info/issues/1) contenente *solo il titolo* dell'articolo che volete tradurre, in questo modo l'articolo vi verrà assegnato dal bot e si eviterà che uno stesso articolo venga tradotto da più persone. Una volta commentato con il titolo dell'articolo che volete tradurre, potete iniziare subito con la sua traduzione, non aspettate una risposta da parte dei maintainer.
+
+  5. Dopo che ti verrà assegnato un articolo da tradurre/correggere/revisionare, procedi creando in locale un nuovo `branch`. **E' importante lavorare sempre su un branch secondario, mai su quello principale (master o main)**. Per creare un nuovo branch puoi digitare il comando `git checkout -b nome-del-nuovo-branch`. Per convenzione, come nome del nuovo branch, usa il formato `article/nome-del-file-da-tradurre`.
   Prima di iniziare a modificare i files, assicurati sempre di trovarti nel branch di lavoro `git checkout nome-del-nuovo-branch`. Ora puoi iniziare a tradurre: lavora bene, con attenzione e dacci dentro :muscle:
   
-  4. Una volta terminato il lavoro, è il momento di inviarlo tramite una `pull request` affinché venga approvato ed incluso nel progetto originale (`merge`). **Come titolo della PR inserisci il titolo dell'articolo che stai traducendo**, lo trovi nella issue [Italian Translation Progress](https://github.com/javascript-tutorial/it.javascript.info/issues/1).
+  6. Una volta terminato il lavoro, è il momento di inviarlo tramite una `pull request` affinché venga approvato ed incluso nel progetto originale (`merge`). **Come titolo della PR inserisci il titolo dell'articolo che stai traducendo**, lo trovi nella issue [Italian Translation Progress](https://github.com/javascript-tutorial/it.javascript.info/issues/1).
 
-  5. Da questo momento il tuo articolo si troverà in fase di revisione (`review`) da parte dei maintainers, i quali potrebbero chiederti di correggere o migliorare qualche cosa. Tieni monitorata la tua pull request, così potrai interagire durante la fase di review e procedere speditamente verso l'approvazione.
+  7. Da questo momento il tuo articolo si troverà in fase di revisione (`review`) da parte dei maintainers, i quali potrebbero chiederti di correggere o migliorare qualche cosa. Tieni monitorata la tua pull request, così potrai interagire durante la fase di review e procedere speditamente verso l'approvazione. Nel caso in cui ti venga richiesto di apportare delle modifiche, una volta terminato, lascia un commento nella PR con `/done`, in questo modo il bot segnalera il tuo articolo come "pronto alla revisione".
 
-  6. Se tutto è andato per il verso giusto, il tuo lavoro verrà approvato ed incorporato nel progetto ... ora puoi festeggiare :tada: :tada: :tada:
+  8. Se tutto è andato per il verso giusto, il tuo lavoro verrà approvato ed incorporato nel progetto ... ora puoi festeggiare :tada: :tada: :tada:
 
-  7. Se hai intenzione di continuare a collaborare, ti sarà utile mantenere le tue repositories sincronizzate col lavoro di traduzione in corso. Per farlo ti consigliamo di aggiungere la repository originale come nuovo remote `git remote add upstream https://github.com/javascript-tutorial/it.javascript.info.git`, ed eseguire il comando `git pull upstream master && git push origin master` tutte le volte prima di iniziare un nuovo lavoro di traduzione o correzione.
+  9. Se hai intenzione di continuare a collaborare, ti sarà utile mantenere le tue repositories sincronizzate col lavoro di traduzione in corso. Per farlo ti consigliamo di aggiungere la repository originale come nuovo remote `git remote add upstream https://github.com/javascript-tutorial/it.javascript.info.git`, ed eseguire il comando `git pull upstream master && git push origin master` tutte le volte prima di iniziare un nuovo lavoro di traduzione o correzione.
