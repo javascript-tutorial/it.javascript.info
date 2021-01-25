@@ -4,7 +4,7 @@ importance: 3
 
 # Valore all'ultimo ciclo
 
-Qualè l'ultimo valore stampato da alert in questo codice? Perchè?
+Qual è l'ultimo valore mostrato da *alert* in questo codice? Perché?
 
 ```js
 let i = 3;
