@@ -32,7 +32,7 @@ QUi vediamo come rappresentare l'oggetto `animal` e la classe `Animal` graficame
 
 ...Potremmo voler creare un'altra `class Rabbit`.
 
-Poichè i conigli sono animali, la classe `Rabbit` dovrebbe essere basata su `Animal`, avendo accesso a tutti i metodi di `Animal`, in questo modo `Rabbit` può assumere tutti i comportamenti di base di un `Animal`.
+Poiché i conigli sono animali, la classe `Rabbit` dovrebbe essere basata su `Animal`, avendo accesso a tutti i metodi di `Animal`, in questo modo `Rabbit` può assumere tutti i comportamenti di base di un `Animal`.
 
 La sintassi utilizzate per estendere un'altra classe è: `class Child extends Parent`.
 
@@ -53,7 +53,7 @@ rabbit.run(5); // White Rabbit runs with speed 5.
 rabbit.hide(); // White Rabbit hides!
 ```
 
-Ora il codice di `Rabbit` è diventato un po' più corto, dato che utilizza il costruttore di `Animal`, e può anche correre (usare il metodo `run`) come gli animali (animals).
+L'oggetto della classe `Rabbit` ha accesso sia ai metodi di `Rabbit` (ad esempio `rabbit.hide()`) che a quelli di `Animal` (`rabbit.run()`).
 
 Internamente, `extends` aggiunge da `Rabbit.prototype` un riferimento `[[Prototype]]` a `Animal.prototype`:
 
@@ -64,7 +64,7 @@ Ad esempio, per trovare il metodo `rabbit.run`, il motore JavaScript controlla (
 2. Il suo prototype, che è `Rabbit.prototype` (possiede `hide`, ma non `run`).
 3. Il suo prototype, che è (a causa di `extends`) `Animal.prototype`, che possiede il metodo `run`.
 
-Come ricordiamo dal capitolo <info:native-prototypes>, JavaScript stesso usa l'ereditarietà per prototipi per gli oggetti integrati. E.g. `Date.prototype.[[Prototype]]` è `Object.prototype`. Questo è il motoivo per cui le date hanno accesso ai metodi generici di un oggetto.
+Come ricordiamo dal capitolo <info:native-prototypes>, JavaScript stesso usa l'ereditarietà per prototipi per gli oggetti integrati. E.g. `Date.prototype.[[Prototype]]` è `Object.prototype`. Questo è il motivo per cui le date hanno accesso ai metodi generici di un oggetto.
 
 ````smart header="Qualsiasi espressione è ammessa dopo `extend`"
 Usare la parola chiave `class` permette di specificare non solo una classe, ma anche un'espressione dopo la parola `extends`.
@@ -230,9 +230,9 @@ Ops! Abbiamo ricevuto un errore. Ora non possiamo creare conigli (rabbits). Cosa
 
 La risposta breve è:
 
-- **I costruttori nelle classi che ereditano devono chiamare `super(...)`, e bisongna farlo (!) prima di utilizzare `this`.**
+- **I costruttori nelle classi che ereditano devono chiamare `super(...)`, e bisogna farlo (!) prima di utilizzare `this`.**
 
-...Ma perchè? Cosa sta succedendo?
+...Ma perché? Cosa sta succedendo?
 In effetti, questa richiesta sembra un po' strana.
 
 Ovviamente una spiegazione c'è. Addentriamoci nei dettagli, così da capire cosa effettivamente succede.
@@ -284,14 +284,14 @@ alert(rabbit.earLength); // 10
 ```warn header="Nota avanzata"
 Questa nota assume che voi abbiate una certa esperienza con le classi, anche in altri linguaggi di programmazione.
 
-Fornisce una spiegazione più dettagliata del linguaggio e ne illustra il comportamente che potrebbe essere fonte di errori (anche se molto rari).
+Fornisce una spiegazione più dettagliata del linguaggio e ne illustra il comportamento che potrebbe essere fonte di errori (anche se molto rari).
 
 Se trovate questa sezione troppo difficile da capire, saltatela pure, continuate a leggere, e rileggetela in un secondo momento.
 ```
 
 In una sotto-classe possiamo estendere non solo i metodi, ma anche i campi di classe.
 
-Anche se, si verifica un comportamento strano quando proviamo ad accedere ad un campo sovrascritto nel costruttore padre, piuttosto differente da altri linguaggi di programmazzione.
+Anche se, si verifica un comportamento strano quando proviamo ad accedere ad un campo sovrascritto nel costruttore padre, piuttosto differente da altri linguaggi di programmazione.
 
 Consideriamo questi esempio:
 
@@ -318,7 +318,7 @@ Qui, la classe `Rabbit` estende `Animal` e sovrascrive il campo `name` con il su
 
 Non c'è alcun costruttore in `Rabbit`, quindi viene invocato quello di `Animal`.
 
-E' interessante notare che in entrambi i casi: `new Animal()` e `new Rabbit()`, l'istruzion di `alert` nella riga `(*)` mostra `animal`.
+E' interessante notare che in entrambi i casi: `new Animal()` e `new Rabbit()`, l'istruzione di `alert` nella riga `(*)` mostra `animal`.
 
 **In altre parole, il costruttore genitore utilizza sempre i suoi campi dati, non quelli sovrascritti.**
 
@@ -353,23 +353,23 @@ new Rabbit(); // rabbit
 
 Notiamo che l'output è differente.
 
-E questo è quello che ci aspetteremo. Quando il costrutore genitore viene invocato da una classe derivata, utilizzate i metodi sovrascritti.
+E questo è quello che ci aspetteremo. Quando il costruttore genitore viene invocato da una classe derivata, utilizzate i metodi sovrascritti.
 
 ...Ma per i campi dati non è cosi. Come già detto, il costruttore genitore utilizza sempre i suoi campi dati.
 
-Perchè c'è questa differenza?
+Perché c'è questa differenza?
 
-Il motivo sta nell'ordine di inizializzazione dei campi dati. I campi dati di una classe vengono inizializati:
+Il motivo sta nell'ordine di inizializzazione dei campi dati. I campi dati di una classe vengono inizializzati:
 - Prima del costruttore per la classe base,
 - Subito dopo `super()` per le classi derivate.
 
 Nel nostro caso, `Rabbit` è la classe derivata. Non c'è alcun `constructor()` al suo interno. Come detto precedentemente, questo equivale ad avere un costruttore vuoto con la sola chiamata a `super(...args)`.
 
-Quindi, `new Rabbit()` invoca `super()`, che esegue il costruttore genitore, e (per le regole che segue la classe derivata) solamente dopo vengono inizializzati i suoi campi dati. Al momento dell'esecuziono del costruttore genitore, non esiste alcun capo dato in `Rabbit`, questo è il motivo per cui vengono utilizzati i campi dati di `Animal`.
+Quindi, `new Rabbit()` invoca `super()`, che esegue il costruttore genitore, e (per le regole che segue la classe derivata) solamente dopo vengono inizializzati i suoi campi dati. Al momento dell'esecuzione del costruttore genitore, non esiste alcun capo dato in `Rabbit`, questo è il motivo per cui vengono utilizzati i campi dati di `Animal`.
 
 Abbiamo quindi una sottile differenza di trattamento tra i campi dati ed i metodi in JavaScript.
 
-Fortunatamente, questo comportamente si verifica solamente se un campo dati va a sovrascrivere quelli della classe genitore. Potrebber e essere difficile da capire come comportamente, per questo lo abbiamo speigato qui.
+Fortunatamente, questo comportamento si verifica solamente se un campo dati va a sovrascrivere quelli della classe genitore. Potrebbe essere difficile da capire come comportamento, per questo lo abbiamo spiegato qui.
 
 Se dovesse verificarsi questo problema, si possono utilizzare i metodi invece dei campi dati.
 
@@ -377,9 +377,9 @@ Se dovesse verificarsi questo problema, si possono utilizzare i metodi invece de
 ## Super: internamente, [[HomeObject]]
 
 ```warn header="Informazioni avanzate"
-Se state leggengo il tutorial per la prima volta - questa sezione può essere saltata.
+Se state leggendo il tutorial per la prima volta - questa sezione può essere saltata.
 
-Qui spiegeremo i meccanisci interni che stanno dietro l'ereditarietà e `super`.
+Qui spiegheremo i meccanismi interni che stanno dietro l'ereditarietà e `super`.
 ```
 
 Andiamo un pò più a fondo del metodo `super`. Scopriremo alcune cose interessanti a riguardo.
@@ -610,12 +610,12 @@ rabbit.eat();  // Errore nella chiamata a super (dato che [[HomeObject non esist
 ## Riepilogo
 
 1. Per estendere una classe: `class Child extends Parent`:
-    - Questo significa che `Child.prototype.__proto__` dventerà `Parent.prototype`, quindi i metodi vengono ereditati.
+    - Questo significa che `Child.prototype.__proto__` diventerà `Parent.prototype`, quindi i metodi vengono ereditati.
 2. Quando sovrascriviamo un costruttore:
     - Dobbiamo richiamare il costruttore del padre attraverso `super()` nel costruttore di `Child` prima di utilizzare `this`.
 3. Quando sovrascriviamo un metodo:
     - Possiamo usare `super.method()` in un metodo di `Child` per richiamare il metodo da `Parent`.
-4. Meccaniscmi interni:
+4. Meccanismi interni:
     - I metodi tengono traccia del loro oggetto o della loro classe nella proprietà `[[HomeObject]]`, così da poter utilizzare `super` per accedere ai metodi della classe padre.
     - Non è quindi sicuro copiare un metodo in un altro oggetto attraverso `super`.
 
