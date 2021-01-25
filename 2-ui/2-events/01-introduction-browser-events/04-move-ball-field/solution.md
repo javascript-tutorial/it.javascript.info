@@ -39,7 +39,7 @@ let left = event.clientX - fieldCoords.left - field.clientLeft;
 
 Normalmente, `ball.style.left` significa "limite destro dell'elemento" (la palla). Ma se assegnassimo questo valore di `left`, sotto il puntatore si verrebbe a posizionare, appunto, il limite destro della palla, e non il suo centro.
 
-Dobbiamo quindi spostare la palla anche tenendo conto della metà della sua altezza e metà della sua larghezza per poterla centrare.
+Per poter centrare la palla, dobbiamo spostarla tenendo conto della metà della sua altezza e metà della sua larghezza.
 
 Quindi il `left` definitivo sarebbe:
 
