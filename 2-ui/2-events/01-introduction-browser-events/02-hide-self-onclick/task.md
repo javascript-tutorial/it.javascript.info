@@ -4,7 +4,7 @@ importance: 5
 
 # Nascondere sé stesso
 
-Creare un pulsante che nasconde se stesso al click.
+Creare un pulsante che nasconde sé stesso al click.
 
 ```online
 Come questo:
