@@ -373,7 +373,7 @@ label: for (...)
 La chiamata a `break/continue` è possibile solo dall'interno di un ciclo, e l'etichetta deve essere da qualche parte **sopra** la chiamata.
 ````
 
-## Sommario
+## Riepilogo
 
 Abbiamo visto tre tipi di cicli:
 
