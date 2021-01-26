@@ -4,7 +4,7 @@ importance: 5
 
 # Creare un menù a scorrimento
 
-Creare un menu che si apra e chiuda al click:
+Create un menù che si apra e chiuda al click:
 
 [iframe border=1 height=100 src="solution"]
 
