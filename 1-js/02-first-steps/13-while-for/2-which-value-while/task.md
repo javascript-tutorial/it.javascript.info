@@ -2,11 +2,11 @@ importance: 4
 
 ---
 
-# Quali valori mostra il ciclo while?
+# Quali valori mostrerà il ciclo while?
 
-Per ogni iterazione del ciclo, scrivi quali valori vengono mostrati e poi confrontali alla soluzione.
+Per ogni iterazione del ciclo, scrivi quali valori verranno mostrati e poi confrontali con la soluzione.
 
-Entrambi i cicli mostrano gli stessi valori in `alert`, o no?
+Entrambi i cicli mostreranno gli stessi valori in `alert`, o no?
 
 1. La forma prefissa `++i`:
 

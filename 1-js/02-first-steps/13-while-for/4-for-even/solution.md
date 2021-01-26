@@ -8,4 +8,4 @@ for (let i = 2; i <= 10; i++) {
 }
 ```
 
-Utilizziamo l'operatore modulo `%` per ottenre il resto e controllare la parità.
+Utilizziamo l'operatore modulo `%` per controllare che un numero sia pari.
