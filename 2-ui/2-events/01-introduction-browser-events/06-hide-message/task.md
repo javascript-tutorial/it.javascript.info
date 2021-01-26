@@ -6,7 +6,7 @@ importance: 5
 
 Abbiamo una lista di messaggi.
 
-Tramite JavaScript aggiungere un pulsante di chiusura nell'angolo in alto a destra di ogni messaggio.
+Aggiungete tramite JavaScript un pulsante di chiusura nell'angolo in alto a destra di ogni messaggio.
 
 Il risultao dovrebbe essere simile a questo:
 
