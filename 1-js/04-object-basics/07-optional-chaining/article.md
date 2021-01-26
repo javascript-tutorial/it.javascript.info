@@ -7,7 +7,7 @@ Il concatenamento opzionale (optional chaining), `?.`, è un modo sicuro di acce
 
 ## Il problema della "proprietà inesistente"
 
-Se avete appena cominciato a leggere il tutorial e a imparare JavaScript, forse questo problema non lo avete ancora vissuto, ma è piuttosto comune.
+Se avete appena cominciato a leggere il tutorial e a imparare JavaScript, forse questo problema non lo avete ancora affrontato, ma è piuttosto comune.
 
 Ad esempio, ipotizziamo di avere un oggetto `user`, in cui sono memorizzate le informazioni relative ai nostri utenti.
 
