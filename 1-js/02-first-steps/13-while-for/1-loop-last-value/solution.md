@@ -8,7 +8,7 @@ while (i) {
 }
 ```
 
-Ogni iterazione del ciclo decrementa `i` di `1`. Il controllo `while(i)` interrompe il ciclo quando `i == 0`.
+Ogni iterazione del ciclo decrementa `i` di `1`. Il controllo `while(i)` interrompe il ciclo quando `i = 0`.
 
 Quindi, gli step del ciclo sono ("loop unrolled"):
 
