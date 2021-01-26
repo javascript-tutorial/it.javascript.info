@@ -16,7 +16,7 @@ result = a || b;
 
 Nella programmazione classica, l'OR logico è utilizzato per manipolare solo tipi booleani. Se almeno un argomento è `true`, allora il risultato sarà `true`, altrimenti sarà `false`.
 
-In JavaScript questo operatore è un pò più potente. Ma prima vediamo come si comporta con i valori booleani.
+In JavaScript questo operatore è un po' più potente. Ma prima vediamo come si comporta con i valori booleani.
 
 Ci sono quattro combinazioni logiche possibili:
 
@@ -29,7 +29,7 @@ alert( false || false ); // false
 
 Come possiamo vedere, il risultato è sempre `true`, tranne nei casi in cui entrambi gli operandi sono `false`.
 
-Se un operando non è di tipo booleano vi viene momentaneamente convertito per la valutazione.
+Se un operando non è di tipo booleano, allora viene momentaneamente convertito per la valutazione.
 
 Ad esempio, il numero `1` viene considerato come `true`, il numero `0` come `false`:
 
@@ -82,7 +82,7 @@ L'operatore OR `||` si comporta come segue:
 - Ogni operando viene convertito a booleano. Se il risultato è `true`, il logical OR si ferma e ritorna il valore originale dell'operando.
 - Se tutti gli operandi sono stati valutati e nessuno è `true`, ritorna l'ultimo operando.
 
-**Un valore viene ritornato nella sua forma originale, non nella sua conversione booleana.
+Un valore viene ritornato nella sua forma originale, non nella sua conversione booleana.
 
 In altre parole, una catena di OR `"||"` ritorna il primo valore vero; se invece non ce ne sono ritorna l'ultimo valore.
 
@@ -119,7 +119,7 @@ Questo ci permette alcuni utilizzi interessanti rispetto al "puro e classico OR 
 
 2. **Valutazione a Corto-Circuito.**
 
-    Gli operandi, oltre che valori, possono essere anche espressioni arbitrarie. L'operatore OR esegue la valutazione da sinistra a destra e si ferma al primo risultato vero, che viene ritornato. Il processo è chiamato "valutazione a corto-circuito" perchè cerca di concludersi il prima possibile (quando possibile), senza aver raggiunto l’operando successivo. 
+    Gli operandi, oltre che valori, possono essere anche espressioni arbitrarie. L'operatore OR esegue la valutazione da sinistra a destra e si ferma al primo risultato vero, il quale viene ritornato. Il processo è chiamato "valutazione a corto-circuito" perché cerca di concludersi il prima possibile, senza dover elaborare tutti gli operandi. 
 
     Il logical OR è particolarmente utile quando il secondo argomento causerebbe un *side-effect* come l'assegnazione di una variabile o la chiamata a una funzione.
     Nell'esempio che segue solo il secondo messaggio verrà mostrato. 
@@ -258,7 +258,7 @@ result = !value;
 L'operatore accetta un solo argomento e si comporta come segue:
 
 1. Converte l'operando a booleano: `true/false`.
-2. Ritorna il valore **inverso.
+2. Ritorna il valore inverso.
 
 Ad esempio:
 
@@ -276,7 +276,7 @@ alert( !!null ); // false
 
 Quello che accade è che il primo NOT converte l'operando a booleano e ritorna il suo inverso, e il secondo NOT lo *inverte nuovamente*. Il risultato è un valore di tipo booleano.
 
-C'è un modo molto più lungo per fare la stessa cosa -- una funzione *built-in* di `Boolean`:
+C'è un modo molto più lungo per fare la stessa cosa, usare la funzione `Boolean`, integrata in JavaScript:
 
 ```js run
 alert( Boolean("non-empty string") ); // true

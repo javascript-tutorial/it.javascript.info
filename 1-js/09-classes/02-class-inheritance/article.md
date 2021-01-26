@@ -53,7 +53,7 @@ rabbit.run(5); // White Rabbit runs with speed 5.
 rabbit.hide(); // White Rabbit hides!
 ```
 
-Ora il codice di `Rabbit` è diventato un po' più corto, dato che utilizza il costruttore di `Animal`, e può anche correre (usare il metodo `run`) come gli animali (animals).
+L'oggetto della classe `Rabbit` ha accesso sia ai metodi di `Rabbit` (ad esempio `rabbit.hide()`) che a quelli di `Animal` (`rabbit.run()`).
 
 Internamente, `extends` aggiunge da `Rabbit.prototype` un riferimento `[[Prototype]]` a `Animal.prototype`:
 

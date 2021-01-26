@@ -51,7 +51,6 @@ user.sayHi();
 ```
 
 Quando viene chiamato `new User("John")`:
-
 1. Viene creato un nuovo oggetto;
 2. Il metodo `constructor()` viene richiamato e assegna a `this.name` l'argomento dato.
 

@@ -36,7 +36,7 @@ Nell'oggetto `user`, ci sono due proprietà:
 1. La prima proprietà ha come nome `"name"` e valore `"John"`.
 2. La seconda come nome ha `"age"` e valore `30`.
 
-L'oggetto risultate `user` può essere visto come un archivio con due file etichettati con "name" ed "age".
+L'oggetto `user` risultante può essere visto come un archivio con due file etichettati con "name" ed "age".
 
 ![user object](object-user.svg)
 
