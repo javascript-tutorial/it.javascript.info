@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Spostare la palle sul campo
+# Sposta la palla sul campo
 
 Spostare la palla sul campo al click. Così:
 
