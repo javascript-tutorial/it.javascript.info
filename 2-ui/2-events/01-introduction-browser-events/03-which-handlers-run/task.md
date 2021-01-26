@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Quale gestore viene eseguito?
+# Quale gestore verrà eseguito?
 
 Nella variabile c'è un pulsante e non vi sono gestori assegnati.
 
