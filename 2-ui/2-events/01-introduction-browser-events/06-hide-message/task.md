@@ -8,6 +8,6 @@ Abbiamo una lista di messaggi.
 
 Aggiungete tramite JavaScript un pulsante di chiusura nell'angolo in alto a destra di ogni messaggio.
 
-Il risultao dovrebbe essere simile a questo:
+Il risultato dovrebbe essere simile a questo:
 
 [iframe src="solution" height=450]
