@@ -3,8 +3,7 @@ Per prima cosa dobbiamo scegliere un metodo per posizionare la palla.
 
 Non possiamo usare `position:fixed` per questo, perché lo scorrimento della pagina sposterebbe la palla dal campo.
 
-Dobbiamo quindi usare `position:absolute` per la palla, e per rendere il posizionamento stabile, posizionare anche `field` stesso.
-(N.d.T.: Per `posizionare` intendiamo l'azione di impostare, per l'elemento, la proprietà CSS "position" in modo differente dal normale flusso della pagina ("static" se non diversamente specificato). 
+Dobbiamo quindi usare `position:absolute` per la palla, e per rendere il posizionamento stabile, posizionare anche `field` stesso ("static" se non diversamente specificato). 
 
 In questo modo a palla verrà posizionata in relazione al campo:
 
