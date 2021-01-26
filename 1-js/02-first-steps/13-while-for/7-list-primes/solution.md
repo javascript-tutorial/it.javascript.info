@@ -1,4 +1,4 @@
-Ci sono diversi algoritmi per compiere questa attività.
+Ci sono diversi possibili algoritmi per il nostro scopo.
 
 Usiamo un ciclo annidato:
 
@@ -10,20 +10,20 @@ For each i in the interval {
 }
 ```
 
-Il codice usa un etichetta:
+Il codice usa un'etichetta:
 
 ```js run
 let n = 10;
 
 nextPrime:
-for (let i = 2; i <= n; i++) { // for each i...
+for (let i = 2; i <= n; i++) { // per ogni i...
 
-  for (let j = 2; j < i; j++) { // look for a divisor..
-    if (i % j == 0) continue nextPrime; // not a prime, go next i
+  for (let j = 2; j < i; j++) { // controlla i suoi divisori..
+    if (i % j == 0) continue nextPrime; // se è divisibile per uno di essi, non è un numero primo; passa a prossima iterazione
   }
 
-  alert( i ); // a prime
+  alert( i ); // un numero primo
 }
 ```
 
-Ci sono molti modi per ottimizzarlo. Ad esempio, potremmo controllare i divisori di `2` fino alla radice di `i`. In ogni caso, se vogliamo essere veramete efficenti su grandi intervalli, abbiamo bisogno di cambiare approcio ed affidarci ad algoritmi matematici più avanzati e complessi, come [Quadratic sieve](https://en.wikipedia.org/wiki/Quadratic_sieve), [General number field sieve](https://en.wikipedia.org/wiki/General_number_field_sieve) etc.
+Ci sono molti modi per ottimizzare questo algoritmo. Ad esempio, potremmo controllare i divisori di `2` fino alla radice di `i`. In ogni caso, se vogliamo essere veramete efficenti su grandi intervalli, abbiamo bisogno di cambiare approcio ed affidarci ad algoritmi matematici più avanzati e complessi, come [Quadratic sieve](https://en.wikipedia.org/wiki/Quadratic_sieve), [General number field sieve](https://en.wikipedia.org/wiki/General_number_field_sieve) etc.
