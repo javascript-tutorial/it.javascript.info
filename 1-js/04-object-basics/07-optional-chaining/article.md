@@ -25,14 +25,14 @@ Questo è il risultato che ci si aspetta. JavaScript funziona in questo modo. Se
 
 Nella maggior parte dei casi, preferiremmo avere `undefined` piuttosto di un errore (con il significato "nessuna via").
 
-... Un altro esempio. Il metodo `document.querySelector('.elem')` restituisce un oggetto che corrisponde ad un elemento della pagina web, che ritorna `null` quando l'elemento non esite.
+... Un altro esempio. Il metodo `document.querySelector('.elem')` ritorna un oggetto che corrisponde ad un elemento della pagina web, che ritorna `null` quando l'elemento non esite.
 
 ```js run
 // document.querySelector('.elem') è null se non esiste l'elemento
 let html = document.querySelector('.elem').innerHTML; // errore se è null
 ```
 
-Di nuovo, se un elemente non esiste, otterremo un errore nel tentativo di accedere a `.innerHTML` di `null`. In alcuni casi, in cui l'assenza di un elemento è normale, vorremo evitare l'errore e accettare come risultato che `html = null`.
+Di nuovo, se un elemente non esiste, otterremo un errore nel tentativo di accedere a `.innerHTML` di `null`. In alcuni casi, in cui l'assenza di un elemento è normale, vorremo evitare l'errore e accettare come risultato `html = null`.
 
 Come possiamo farlo?
 
@@ -56,7 +56,7 @@ let user = {}; // l'utente non ha address
 alert(user.address ? user.address.street ? user.address.street.name : null : null);
 ```
 
-Questo è semplicemente terribile, un codice del genere potrebbe anche essere difficile da comprendere.
+Questo è semplicemente terribile, un codice del genere potrebbe essere difficile da comprendere.
 
 Ci sarebbe un modo migliore per riscriverlo, utilizzando l'operatore `&&`:
 
@@ -70,7 +70,7 @@ Concatenare con `&&` l'intero percorso verso la proprietà ci assicura che tutti
 
 Come potete vedere, il nome della proprietà è ancora duplicato nel codice. Ad esempio, nel codice sopra, `user.address` è ripetuto tre volte.
 
-Questo è il motivo per cui la concatenazione opzionale `?.`, è stata aggiunta al linguaggio. Per risolvere questo problema una volta per tutte!
+Questo è il motivo per cui la concatenazione opzionale `?.` è stata aggiunta al linguaggio. Per risolvere questo problema una volta per tutte!
 
 ## Concatenazione opzionale
 
@@ -108,7 +108,7 @@ Ad esempio in `user?.address.street.name` il costrutto `?.` permette alla propri
 ```warn header="Non abusate della concatenazione opzionale"
 Dovremmo utilizzare `?.` solamente quando va bene che una proprietà possa non esistere.
 
-Ad esempio, guardando la logica del nostro codice, l'oggetto `user` deve necessariamente esistere, mentre `address` è opzionale, quindi dovremmo scrivere `user.address?.street`, non `user?.address?.street`.
+Ad esempio, considerando la logica del nostro codice, l'oggetto `user` deve necessariamente esistere, mentre `address` è opzionale, quindi dovremmo scrivere `user.address?.street`, non `user?.address?.street`.
 
 Quindi, se `user` dovesse essere `undefined` per errore, otterremo un errore e potremmo sistemarlo. Altrimenti, gli errori di programmazione potrebbero essere silenziati in modo non appropriato, rendendo il debug molto difficile.
 ```
@@ -125,7 +125,7 @@ La variabile deve essere dichiarata (ad esempio come `let/const/var user` o come
 
 ## Corto circuito
 
-Come detto in precedenza, il costrutto `?.` interrompe immediatamente (manda in "corto circuito") la valutazione, se la proprietà a destra non esiste.
+Come detto in precedenza, il costrutto `?.` interrompe immediatamente (manda in "corto circuito") la valutazione se la proprietà a destra non esiste.
 
 Quindi, nel caso ci siano ulteriori chiamate a funzione o side-effects, questi non verranno elaborati.
 
@@ -170,7 +170,7 @@ Qui, in entrambe le righe, come prima cosa abbiamo utilizzato il punto (`user1.a
 
 Successivamente `?.()` controlla la parte sinistra: se la funzione `admin` esiste, allora viene eseguita (ciò che accade con `user1`). Altrimenti (con `user2`) la valutazione si interrompe senza errori.
 
-La sintassi `?.[]` funziona anche se volessimo usare le parentesi `[]` per accedere alle proprietà, invece del punto `.`. In maniera simile ai casi precedenti, potremmo accedere con sicurezza ad una proprietà di un oggetto, che potrebbe non esistere.
+La sintassi `?.` funziona anche con le parentesi `[]` (invece del punto `.`). Come nei casi precedenti, possiamo accedere con sicurezza ad una proprietà di un oggetto che potrebbe non esistere.
 
 ```js run
 let key = "firstName";
@@ -192,7 +192,7 @@ delete user?.name; // cancella user.name se l'utente esiste
 ```
 
 ````warn header="Possiamo utilizzare `?.` per l'accesso e la rimozione sicura, ma non per la scrittura"
-La concatenazione opzionale `?.` non ha alcun significato alla sinistra di un assegnazione.
+La concatenazione opzionale `?.` non ha alcun significato alla sinistra di un'assegnazione.
 
 Ad esempio:
 ```js run
@@ -207,14 +207,14 @@ Non è cosi intelligente.
 
 ## Riepilogo
 
-La concatenazione opzionale `?.` possiede tre forme:
+La concatenazione opzionale `?.` ha tre forme:
 
 1. `obj?.prop` -- ritorna `obj.prop` se `obj` esiste, altrimenti ritorna `undefined`.
 2. `obj?.[prop]` -- ritorna `obj[prop]` se `obj` esiste, altrimenti ritorna `undefined`.
 3. `obj.method?.()` -- invoca `obj.method()` se `obj.method` esiste, altrimenti ritorna `undefined`.
 
-Come possiamo vedere, le tre forme sono semplici da utilizzare. Il costrutto `?.` verifica che la parte sinistra non sia `null/undefined` e permette alla valutazione di proseguire in caso contrario.
+Come possiamo vedere, le tre forme sono semplici da utilizzare. Il costrutto `?.` verifica che la parte sinistra non sia `null/undefined`; se non lo è, permette alla valutazione di proseguire, altrimenti interrompe immediatamente la valutazione.
 
-La concatenazione di `?.` permette di accedere in sicurezza alle proprietà annidate.
+La concatenazione di `?.` permette di accedere in sicurezza a proprietà annidate.
 
 In ogni caso, dovremmo applicare `?.` con prudenza, solamente nei casi in cui è accettabile che la parte sinistra possa non esistere. In questo modo evitiamo di nascondere errori di programmazione, nel caso ce ne siano.
