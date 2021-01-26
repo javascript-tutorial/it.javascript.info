@@ -4,7 +4,7 @@ importance: 5
 
 # Sposta la palla sul campo
 
-Spostare la palla sul campo al click. Così:
+Sposta la palla sul campo al click. Così:
 
 [iframe src="solution" height="260" link]
 
