@@ -19,7 +19,7 @@ Ecco la struttura d'esempio:
 </div>
 ```
 
-Usiamo `<span>` per il titolo, perché `<div>` avendo un `display:block` implicito, occuperebbe il 100% della larghezza disponibile.
+Usiamo `<span>` per il titolo perché `<div>`, avendo un `display:block` implicito, occuperebbe il 100% della larghezza disponibile.
 
 ```html autorun height=50
 <div style="border: solid red 1px" onclick="alert(1)">Dolciumi (cliccami)!</div>
