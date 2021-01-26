@@ -4,7 +4,7 @@ importance: 4
 
 # Carosello
 
-Creare un "carosello", una raccolta di immagini che possono essere fatte scorrere cliccando sulle frecce.
+Create un "carosello", una raccolta di immagini che possono essere fatte scorrere cliccando sulle frecce.
 
 [iframe height=200 src="solution"]
 
