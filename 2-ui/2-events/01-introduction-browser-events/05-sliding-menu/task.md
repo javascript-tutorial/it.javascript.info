@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Creare un menù a scorrimento
+# Create un menù a scorrimento
 
 Create un menù che si apra e chiuda al click:
 
