@@ -1,7 +1,7 @@
 
 # Attributi e descrittori di proprietà
 
-Come già sappiamo, gli oggetti possono memorizzare proprietà
+Come già sappiamo, gli oggetti possono memorizzare proprietà.
 
 Fino ad ora, per noi, una proprietà è sempre stata una coppia "chiave-valore". Ma in realtà, una proprietà è molto più potente e flessibile di cosi.
 
@@ -13,7 +13,7 @@ Le proprietà degli oggetti, oltre ad un **`valore`**, possiedono tre attributi 
 
 - **`writable`** -- se impostato a `true`, il valore può essere modificato, altrimenti è possibile accedervi in sola lettura.
 - **`enumerable`** -- se impostato a `true`, potrà apparire nei loop, altrimenti non verrà considerata.
-- **`configurable`** -- se impostato a `true`, la proprietà la proprietà può essere cancellata e questi attributi possono essere modificati.
+- **`configurable`** -- se impostato a `true`, la proprietà può essere cancellata e questi attributi possono essere modificati.
 
 Non li abbiamo mai visti fino ad ora, perché generalmente non vengono mostrati. Quando creiamo una proprietà in "modo ordinario", questi attributi vengono tutti impostati a `true`. Ma possiamo comunque modificarli in qualsiasi momento.
 
@@ -27,7 +27,7 @@ let descriptor = Object.getOwnPropertyDescriptor(obj, propertyName);
 ```
 
 `obj`
-: L'oggetto da cui volgiamo ottenere le informazioni.
+: L'oggetto da cui vogliamo ottenere le informazioni.
 
 `propertyName`
 : Il nome della proprietà.
