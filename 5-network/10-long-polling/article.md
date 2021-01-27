@@ -25,7 +25,7 @@ Inoltre è davvero semplice da implementare, e recapita i messaggi senza alcun r
 Flusso:
 
 1. Viene inviata una richiesta al server.
-2. Il server non chiude la connessione fino a che non ha un mesaaggio da inviare.
+2. Il server non chiude la connessione fino a che ha un messaggio da inviare.
 3. Quando compare un messaggio, il server risponde alla richiesta con quest'ultimo.
 4. Il browser invia immediatamente una nuova richiesta.
 
