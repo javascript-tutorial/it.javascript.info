@@ -40,7 +40,7 @@ alert(user ?? "Anonymous"); // John
 
 Possiamo anche usare una sequenza di `??` per selezionare, da una lista, il primo valore che non sia `null/undefined`.
 
-Per esempio, supponiamo di avere dei dati relativi ad un utente nelle variabili `firstName`, `lastName` o `nickName`. Tutte queste potrebbero essere non definite, se l'utente dovesse decidere di non inserirne i valori.
+Per esempio, supponiamo di avere i dati di un utente nelle variabili `firstName`, `lastName` o `nickName`. Tutte queste potrebbero essere non definite, se l'utente dovesse decidere di non inserirne i valori.
 
 Vorremmo visualizzare il nome dell'utente usando una di queste variabili, oppure mostrare "Anonymous" se nessuna di esse è definita.
 
