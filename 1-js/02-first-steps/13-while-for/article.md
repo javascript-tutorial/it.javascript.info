@@ -167,7 +167,7 @@ alert(i); // 3; la variabile `i` è accessibile (è stata dichiarata fuori dal c
 
 ### Parti opzionali
 
-Ogni parte del `for` è opzionale.
+Ogni parte del ciclo `for` è opzionale.
 
 Ad esempio, possiamo omettere `begin` se non abbiamo bisogno di una variabile per la nostra `condition`.
 

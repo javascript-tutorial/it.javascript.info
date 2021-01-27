@@ -1,6 +1,6 @@
 **Certo.**
 
-Qualunque stringa ad eccezione di quella vuota (`"0"` non è vuota) diventa `true` in un contesto logico.
+Qualunque stringa -ad eccezione di quella vuota (`"0"` non lo è)- diventa `true` in contesto booleano.
 
 Possiamo eseguirlo e controllare:
 
