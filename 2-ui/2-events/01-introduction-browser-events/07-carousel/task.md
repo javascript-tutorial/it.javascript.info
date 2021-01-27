@@ -2,12 +2,12 @@ importance: 4
 
 ---
 
-# Carousel
+# Carosello
 
-Create a "carousel" -- a ribbon of images that can be scrolled by clicking on arrows.
+Create un "carosello", una raccolta di immagini che possono essere fatte scorrere cliccando sulle frecce.
 
 [iframe height=200 src="solution"]
 
-Later we can add more features to it: infinite scrolling, dynamic loading etc.
+Successivamente possiamo aggiungere più funzionalità: scorrimento infinito, caricamento dinamico etc.
 
-P.S. For this task HTML/CSS structure is actually 90% of the solution.
+P.S. Per questo compito, la struttura HTML/CSS rappresenta il 90% di tutta la soluzione.
