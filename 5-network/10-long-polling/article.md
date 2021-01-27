@@ -65,7 +65,7 @@ async function subscribe() {
 subscribe();
 ```
 
-Come potete vedere, la funzione `subscribe` effettua un fetch, e rimane in attesa della risposta, e dopo averla gestita, richiama nuovamente sè stessa.
+Come potete vedere, la funzione `subscribe` effettua un fetch e rimane in attesa della risposta, e dopo averla gestita, richiama nuovamente sè stessa.
 
 ```warn header="Il server dovrebbe rimanere ok, anche con molte connessioni pendenti"
 L'architettura server deve essere idonea per lavorare con molte connessioni pendenti.
