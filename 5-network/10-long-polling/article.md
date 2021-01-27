@@ -76,7 +76,7 @@ Certe architetture server eseguono un processo per ogni connessione, con il risu
 
 I server scritti in Node.js solitamente non hanno questo tipo di problemi.
 
-Detto ciò, non è un problema di linguaggio di programmazione. La maggior parte dei linguaggi moderni, incluso PHP e Ruby, permettono di implementare il backend adatto. Assicuratevi solo che il vostro server lavori bene con tante connessioni simultanee. 
+Detto ciò, non è un problema di linguaggio di programmazione. La maggior parte dei linguaggi moderni, incluso PHP e Ruby, permettono di implementare un backend adatto. Assicuratevi solo che il vostro server lavori bene con tante connessioni simultanee. 
 ```
 
 ## Dimostrazione: una chat
