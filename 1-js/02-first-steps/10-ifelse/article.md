@@ -105,7 +105,7 @@ Ci possono essere molti blocchi `else if`. L'`else` finale è opzionale.
 
 ## Operatore condizionale '?'
 
-Qualche volta abbiamo bisogno di assegnare un valore ad una variabile in base ad una condizione.
+Qualche volta abbiamo bisogno di assegnare un valore ad una variabile in base ad una certa condizione.
 
 Ad esempio:
 
