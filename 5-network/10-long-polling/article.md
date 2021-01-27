@@ -67,7 +67,7 @@ subscribe();
 
 Come potete vedere, la funzione `subscribe` effettua un fetch e rimane in attesa della risposta, e dopo averla gestita, richiama nuovamente sè stessa.
 
-```warn header="Il server dovrebbe rimanere ok, anche con molte connessioni pendenti"
+```warn header="Il server dovrebbe continuare a funzionare bene, anche con molte connessioni pendenti"
 L'architettura server deve essere idonea per lavorare con molte connessioni pendenti.
 
 Certe architetture server eseguono un processo per ogni connessione, con il risultato di avere tanti processi per quante sono le connessioni, ed ognuno di questi consuma un bel po' di memoria. Quindi, troppe connessioni la consumeranno tutta.
