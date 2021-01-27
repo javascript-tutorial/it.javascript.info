@@ -93,6 +93,6 @@ Il long polling lavora ottimamente in situazioni in cui i messaggi sono rari.
 
 Se i messaggi diventano molto frequenti, il grafico dei messaggi richiesta-ricezione prima descritto, assumerà una forma simile a una sega.
 
-Ogni messaggio è una riciesta separata, fornita con intestazioni, overhead di autenticazione e cosi via.
+Ogni messaggio è una richiesta separata, fornita di intestazioni, overhead di autenticazione e cosi via.
 
 In questo caso, quindi, sono preferibili altri metodi, è il caso dei [Websocket](info:websocket) o dei [Server Sent Events](info:server-sent-events).
