@@ -2,11 +2,11 @@
 
 Qualche volta abbiamo bisogno di eseguire certe azioni solo nel caso valgano determinate condizioni.
 
-Per questo c'è l'istruzione `if` e anche l'operatore condizionale di valutazione a cui noi ci riferiremo con l'operatore "punto di domanda" `?` per semplicità.
+Per questo c'è l'istruzione `if` e l'operatore condizionale di valutazione a cui ci riferiremo, per semplicità, con "l'operatore punto di domanda" `?`.
 
 ## L'istruzione "if" 
 
-L'istruzione `if(...)` richiede una condizione, la valuta, e se il risultato è `true`, esegue il codice.
+L'istruzione `if(...)` valuta una condizione (racchiusa nelle parentesi); se il risultato è `true`, esegue il codice che segue `if`.
 
 Ad esempio:
 
@@ -20,7 +20,7 @@ if (year == 2015) alert( 'You are right!' );
 
 Nell'esempio sopra, la condizione è un semplice controllo di uguaglianza: `year == 2015`, ma potrebbe essere qualcosa di molto più complesso.
 
-Se dobbiamo eseguire più di un'istruzione, queste vanno raggruppate tramite le parentesi graffe:
+Se dobbiamo eseguire più di un'istruzione, queste vanno raggruppate tramite parentesi graffe:
 
 ```js
 if (year == 2015) {
@@ -29,18 +29,18 @@ if (year == 2015) {
 }
 ```
 
-E' consigliabile raggruppare sempre il codice all'interno delle parentesi graffe `{}` quando si usa un `if`, anche se contiene una sola istruzione. La leggibilità viene migliorata.
+E' consigliabile raggruppare sempre il codice all'interno delle parentesi graffe `{}`, quando si usa un `if`, anche se contiene una sola istruzione. La leggibilità ne guadagna.
 
 ## Conversione booleana
 
-L'istruzione `if (…)` valuta la condizione tra le parentesi e la converte al tipo booleano.
+L'istruzione `if (…)` valuta la condizione tra le parentesi e converte il risultato al tipo booleano.
 
 Ricordiamo le regole di conversione viste nel capitolo <info:type-conversions>:
 
 - Il numero `0`, una stringa vuota `""`, `null`, `undefined` e `NaN` diventano `false`. Per questo vengono chiamati valori "falsi".
 - Gli altri valori diventano `true`, quindi vengono chiamati "veri".
 
-Quindi, il codice nell'esempio qui sotto, non verrà mai eseguito:
+Quindi, il codice nell'esempio sotto non verrà mai eseguito:
 
 ```js
 if (0) { // 0 è falso
@@ -48,7 +48,7 @@ if (0) { // 0 è falso
 }
 ```
 
-...Invece nel prossimo esempio -- verrà eseguito sempre:
+...Nel seguente esempio, invece, verrà sempre eseguito:
 
 ```js
 if (1) { // 1 è vero
@@ -56,7 +56,7 @@ if (1) { // 1 è vero
 }
 ```
 
-Possiamo anche passare un valore già valutato in precedenza su un `if`, come qui:
+Possiamo anche passare un valore già valutato in precedenza, come qui:
 
 ```js
 let cond = (year == 2015); // l'uguaglianza diventa vera o falsa
@@ -99,7 +99,7 @@ if (year < 2015) {
 }
 ```
 
-Nel codice sopra JavaScript controlla prima `year < 2015`. Se risulta falso allora va alla successiva condizione `year > 2015`, altrimenti mostra il blocco else con l'`alert`.
+Nel codice sopra JavaScript controlla anzitutto la prima condizione, `year < 2015`. Se risulta falsa va alla successiva condizione `year > 2015` ed esegue il codice dentro le parentesi graffe, altrimenti esegue il codice dentro al blocco `else`.
 
 Ci possono essere molti blocchi `else if`. L'`else` finale è opzionale.
 
@@ -124,16 +124,16 @@ if (age > 18) {
 alert(accessAllowed);
 ```
 
-Esiste un'operatore "condizionale" o "punto interrogativo" che ci consente di farlo in maniera più breve e semplice.
+Esiste un operatore "condizionale", o "punto interrogativo", che ci consente di farlo in maniera più breve e semplice.
 
-L'operatore viene rappresentato dal punto interrogativo `?`.  Il termine formale è "ternario", il che significa che richiede tre operatori. E' l'unico operatore in JavaScript di questo tipo.
+L'operatore viene rappresentato dal punto interrogativo `?`.  Il termine formale è "ternario", perché richiede tre operatori. E' l'unico operatore in JavaScript che ne accetta così tanti.
 
 La sintassi è:
 ```js
 let result = condition ? value1 : value2;
 ```
 
-La `condition` viene valutata, se risulta viene ritornato il `value1`, altrimenti viene ritornato il -- `value2`.
+La `condition` viene valutata; se risulta vera, viene ritornato `value1`, altrimenti viene ritornato `value2`.
 
 Ad esempio:
 
@@ -141,9 +141,9 @@ Ad esempio:
 let accessAllowed = (age > 18) ? true : false;
 ```
 
-Tecnicamente, potremmo omettere le parentesi su `age > 18`. L'operatore condizionale ha una precedenza molto bassa. Viene eseguito dopo gli operatori di confronto `>`.
+Tecnicamente, potremmo omettere le parentesi attorno ad `age > 18`. L'operatore condizionale ha una precedenza molto bassa, viene eseguito dopo gli operatori di confronto `>`.
 
-Questo esempio porta allo stesso risultato di quello precedente:
+Il risultato dell'esempio sotto è uguale a quello precedente:
 
 ```js
 // l'operatore di confronto "age > 18" viene eseguito per primo
@@ -151,18 +151,18 @@ Questo esempio porta allo stesso risultato di quello precedente:
 let accessAllowed = age > 18 ? true : false;
 ```
 
-Le parentesi rendono però il codice più leggibile, quindi è consigliabile utilizzarle.
+Ma le parentesi rendono il codice più leggibile, quindi è consigliabile utilizzarle.
 
 ````smart
-Nell'esempio sopra sarebbe possibile evitare l'operatore ternario, perchè l'operatore di confronto ritorna già di suo `true/false`:
+Nell'esempio sopra sarebbe possibile omettere anche l'operatore ternario, perchè l'operatore di confronto `>` ritorna già di suo `true/false`:
 
 ```js
-// the same
+// stesso risultato (risulterà in `true` o `false`, a seconda del valore di `age`)
 let accessAllowed = age > 18;
 ```
 ````
 
-## Operatori '?' multipli
+## Multipli operatori '?'
 
 Una sequenza di operatori `?` consente di ritornare un valore che dipende da più condizioni.
 
@@ -178,14 +178,14 @@ let message = (age < 3) ? 'Hi, baby!' :
 alert( message );
 ```
 
-Potrebbe essere difficile inizialmente capirne la logica. Ma dopo averlo guardato da più vicino ci accorgiamo è una semplice sequenza di condizioni.
+Potrebbe essere difficile, inizialmente, capirne la logica. Ma dopo averlo guardato da più vicino ci accorgeremo che è una semplice sequenza di condizioni.
 
 1. Il primo operatore "?" controlla `age < 3`.
-2. Se è vero -- ritorna `'Hi, baby!'`, altrimenti -- segue la colonna `":"` e controlla `age < 18`.
-3. Se questo è vero -- ritorna `'Hello!'`, altrimenti -- segue la colonna `":"` e controlla `age < 100`.
-4. Se questo è vero -- ritorna `'Greetings!'`, altrimenti -- segue la colonna `":"` e ritorna `'What an unusual age!'`.
+2. Se è vero -- ritorna `'Hi, baby!'`, altrimenti -- segue la colonna `":"`, controlla `age < 18`.
+3. Se questo è vero -- ritorna `'Hello!'`, altrimenti -- segue la colonna `":"`, controlla `age < 100`.
+4. Se questo è vero -- ritorna `'Greetings!'`, altrimenti -- segue la colonna `":"`, ritorna `'What an unusual age!'`.
 
-La stessa logica viene usata con `if..else`:
+La stessa logica riscritta utilizzando `if..else`:
 
 ```js
 if (age < 3) {
@@ -212,16 +212,15 @@ let company = prompt('Which company created JavaScript?', '');
 */!*
 ```
 
-In base al risultato della condizione `company == 'Netscape'`, viene eseguita la prima o la seconda parte, e mostra il giusto alert.
+In base alla valutazione della condizione `company == 'Netscape'`, viene eseguita la prima o la seconda parte (e il rispettivo `alert`).
 
-Qui non assegnamo il risultato ad una variabile. L'idea è di eseguire codice differente in base alla condizione.
+Qui non assegniamo il risultato ad una variabile. L'idea è di eseguire un codice differente a seconda della condizione.
 
 **Non è consigliabile utilizzare l'operatore ternario in questo modo.**
 
-La notazione risulta essere molto più breve rispetto all'istruzione `if`, questo viene sfruttato da molti programmatori. Ma risulta meno leggibile.
+La notazione risulta essere molto più breve rispetto all'istruzione `if`; questo viene sfruttato da molti programmatori, ma risulta meno leggibile.
 
-Lo stesso codice realizzato con un istruzione `if`:
-
+Compariamo il codice sopra con una versione che utilizza `if` invece dell'operatore ternario `?`:
 ```js run no-beautify
 let company = prompt('Which company created JavaScript?', '');
 
@@ -234,6 +233,6 @@ if (company == 'Netscape') {
 */!*
 ```
 
-I nostri occhi scannerizzano il codice verticalmente. Quindi i costrutti che si estendono per qualche riga risultano più semplici da capire piuttosto di un'unica istruzione che si estende orrizontalmente.
+I nostri occhi esaminano il codice verticalmente. I costrutti che si estendono per qualche riga risultano più semplici da capire piuttosto di un'unica istruzione che si estende orrizontalmente.
 
-L'idea dell'operatore ternario `?` è di ritornare un valore piuttosto che un altro, in base al valore di una condizione. Va quindi utilizzato solo per questo tipo di situazioni. Invece per eseguire diversi codice è consigliabile utilizzare il costrutto `if`.
+L'idea dell'operatore ternario `?` è di ritornare, in base a una condizione, un valore piuttosto di un altro. Va quindi utilizzato solo in questo tipo di situazioni. Per eseguire diversi codici è consigliabile utilizzare il costrutto `if`.
