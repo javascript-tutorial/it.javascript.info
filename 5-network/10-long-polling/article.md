@@ -1,6 +1,6 @@
 # Long polling
 
-Il long polling è l'esempio più semplice di connessione persistente con il server, non usa nessun tipo di protocollo specifico, contrariamente ai WebSocket o ai Server Side Events.
+Il long polling è l'esempio più semplice di connessione persistente con il server, e contrariamente ai WebSocket o ai Server Side Events, non usa nessun tipo di protocollo specifico. 
 
 Essendo molto semplice da implementare, è anche sufficientemente valido in molti casi d'uso.
 
@@ -12,7 +12,7 @@ In risposta, come prima cosa, il server prende nota del fatto che il client è o
 
 Funziona, ma ci sono degli svantaggi:
 1. I messaggi vengono trasferiti con un ritardo che può arrivare fino a 10 secondi (tra una richiesta e l'altra).
-2. Anche se non ci sono messaggi, il server viene bombardato di richieste ogni 10 secondi, anche se l'utente è passato ad altre attività, o se è inattivo. Si tratta di un bel carico da gestire, in termini di prestazioni.
+2. Anche se non ci sono messaggi, il server viene bombardato di richieste ogni 10 secondi, pure se l'utente è passato ad altre attività, o è inattivo. In termini di prestazioni, si tratta di un bel carico da gestire.
 
 Quindi, se stiamo parlando di un servizio molto piccolo, l'approccio può essere percorribile, ma generalmente necessita di miglioramenti.
 
