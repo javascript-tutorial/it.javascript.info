@@ -40,7 +40,7 @@ Ricordiamo le regole di conversione viste nel capitolo <info:type-conversions>:
 - Il numero `0`, una stringa vuota `""`, `null`, `undefined` e `NaN` diventano `false`. Per questo vengono chiamati valori "falsi".
 - Gli altri valori diventano `true`, quindi vengono chiamati "veri".
 
-Quindi, il codice nell'esempio sotto non verrà mai eseguito:
+Quindi, il codice nell'esempio sotto, non verrà mai eseguito:
 
 ```js
 if (0) { // 0 è falso
