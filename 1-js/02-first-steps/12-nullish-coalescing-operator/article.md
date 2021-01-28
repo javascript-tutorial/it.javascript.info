@@ -157,7 +157,7 @@ alert(x); // 2
     È usato per assegnare valori di default alle variabili:
 
     ```js
-    //  height = 100 se 'height' è *null* o *undefined*
+    //  imposta height = 100 se 'height' è *null* o *undefined*
     height = height ?? 100;
     ```
 
