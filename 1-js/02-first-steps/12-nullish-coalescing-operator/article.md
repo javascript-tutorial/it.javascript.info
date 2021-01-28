@@ -76,7 +76,7 @@ alert(firstName || lastName || nickName || "Anonymous"); // Supercoder
 
 L'operatore OR `||` esiste sin dagli inizi di JavaScript e gli sviluppatori lo hanno usato a tale scopo per molto tempo.
 
-Il nullish coalescing operator `??`, invece, è stato aggiunto  recentemente. La ragione è che alcune persone non erano del tutto contente dell'operatore `||`.
+Il nullish coalescing operator `??`, invece, è stato aggiunto  recentemente. La ragione è che alcuni sviluppatori non erano del tutto contenti dell'operatore `||`.
 
 L'importante differenza tra essi è la seguente:
 - `||` ritorna il primo valore *truthy*.
