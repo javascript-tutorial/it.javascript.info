@@ -112,7 +112,7 @@ Quindi, se volessimo scegliere un valore tramite l'operatore `??` in un'espressi
 let height = null;
 let width = null;
 
-// importante: use le parentesi
+// importante: utilizzare le parentesi
 let area = (height ?? 100) * (width ?? 50);
 
 alert(area); // 5000
