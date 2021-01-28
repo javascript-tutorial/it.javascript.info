@@ -118,4 +118,4 @@ new Function('a', 'b', 'return a + b'); // sintassi base
 new Function('a,b', 'return a + b'); // elenco separato da virgola
 new Function('a , b', 'return a + b'); // elenco separato da virgola e spazio
 ```
-Nelle funzioni create con `new Function`, `[[Environment]]` fa riferimento al Lexical Environment globale, non a quello esterno. Quindi queste funzioni non possono utilizzare variabili esterne. In realtà ciò è un bene perché ci mette al riparo da da errori. Passare i parametri in modo esplicito è un metodo migliore dal punto di vista architetturale e non causa problemi con i minifiers.
+Nelle funzioni create con `new Function`, `[[Environment]]` fa riferimento al Lexical Environment globale, non a quello esterno. Quindi queste funzioni non possono utilizzare variabili esterne. In realtà ciò è un bene perché ci mette al riparo da errori. Passare i parametri in modo esplicito è un metodo migliore dal punto di vista architetturale e non causa problemi con i minifiers.
