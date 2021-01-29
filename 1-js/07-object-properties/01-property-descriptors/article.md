@@ -221,7 +221,7 @@ Math.PI = 3; // Error
 
 Rendere una proprietà *non-configurable* è una "strada a senso unico". Non possiamo tornare indietro tramite `defineProperty`.
 
-Per essere precisi, l'attributo non-configurable impone diverse restrizioni su `defineProperty`:
+Per essere precisi, l'attributo non-configurable impone diverse restrizioni a `defineProperty`:
 1. Non possiamo modificare l'attributo `configurable`.
 2. Non possiamo modificare l'attributo `enumerable`.
 3. Non possiamo modificare l'attributo da `writable: false` a `true` (possiamo invece modificarlo da `true` a `false`).
