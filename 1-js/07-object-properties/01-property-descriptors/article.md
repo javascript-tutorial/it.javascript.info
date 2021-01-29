@@ -12,7 +12,7 @@ In questo capitolo studieremo ulteriori opzioni di configurazione, e nel prossim
 Le proprietà degli oggetti, oltre ad un **`valore`**, possiedono tre attributi speciali (cosi detti "flags", o "bandiere"):
 
 - **`writable`** -- se impostato a `true`, il valore può essere modificato, altrimenti è possibile accedervi in sola lettura.
-- **`enumerable`** -- se impostato a `true`, potrà apparire nei loop, altrimenti non verrà considerata.
+- **`enumerable`** -- se impostato a `true`, appare nei loop, altrimenti non verrà considerata.
 - **`configurable`** -- se impostato a `true`, la proprietà può essere cancellata e questi attributi possono essere modificati.
 
 Non li abbiamo mai visti fino ad ora, perché generalmente non vengono mostrati. Quando creiamo una proprietà in "modo ordinario", questi attributi vengono tutti impostati a `true`. Ma possiamo comunque modificarli in qualsiasi momento.
@@ -63,14 +63,14 @@ Object.defineProperty(obj, propertyName, descriptor)
 ```
 
 `obj`, `propertyName`
-: L'oggetto e la proprietà in cui applicare il descrittore.
+: L'oggetto e la proprietà a cui applicare il descrittore.
 
 `descriptor`
-: Descrittore di proprietà dell'oggetto da applicare.
+: Oggetto *descriptor* da utilizzare.
 
-Se la proprietà esiste, `defineProperty` aggiornerà l'attributo. Altrimenti, creerà la proprietà con il valore e gli attributi forniti, se un attributo non viene fornito, gli verrà assegnato il valore `false`.
+Se la proprietà esiste, `defineProperty` aggiornerà l'attributo. Altrimenti, creerà la proprietà con il valore e gli attributi forniti; se un attributo non viene fornito, gli verrà assegnato il valore `false`.
 
-Ad esempio. qui creiamo una proprietà `name` con tutti gli attributi a `false`:
+Ad esempio, qui creiamo una proprietà `name` con tutti gli attributi `false`:
 
 ```js run
 let user = {};
@@ -96,13 +96,13 @@ alert( JSON.stringify(descriptor, null, 2 ) );
  */
 ```
 
-Confrontandola con la proprietà "creata normalmente" `user.name` vista sopra, ora tutti gli attributi sono a `false`. Se questo non è ciò che vogliamo, allora dovremmo impostarli a `true` tramite il `descriptor`.
+Confrontandola con la proprietà "creata normalmente" `user.name` vista sopra, ora tutti gli attributi sono `false`. Se questo non è ciò che vogliamo, allora dovremmo impostarli a `true` tramite il `descriptor`.
 
-Ora analizziamo gli effetti degli attributi guardando ad alcuni esempi.
+Ora analizziamo gli effetti degli attributi guardando alcuni esempi.
 
 ## Non-writable
 
-Vediamo come rendere `user.name` non-writable (non può essere riassegnata), modificando l'attributo `writable`:
+Vediamo come rendere `user.name` *non-writable* (la variabile non può essere riassegnata) modificando l'attributo `writable`:
 
 ```js run
 let user = {
@@ -123,10 +123,10 @@ user.name = "Pete"; // Error: Cannot assign to read only property 'name'
 Ora nessuno potrà modificare il nome dell'utente, a meno che non vada a sovrascrivere il valore degli attributi con `defineProperty`.
 
 ```smart header="Gli errori verranno mostrati solamente in strict mode"
-Se non siamo in "strict mode", e tentiamo di sovrascrivere una proprietà non-writable, non verrà mostrato alcun errore. Nonostante non venga mostrato l'errore, l'operazione fallirà comunque. Quindi le violazioni di attributi fuori dalla strict mode verranno ignorate silenziosamente.
+Se non siamo in "strict mode", e tentiamo di sovrascrivere una proprietà non-writable, non verrà mostrato alcun errore. Nonostante non venga mostrato l'errore, l'operazione fallirà comunque. Quindi le violazioni di attributi fuori dalla strict mode verranno silenziosamente  ignorate.
 ```
 
-Qui vediamo lo stesso esempio, ma la proprietà viene creata da zero:
+Qui vediamo lo stesso esempio, ma la proprietà viene creata dal nulla:
 
 ```js run
 let user = { };
@@ -134,7 +134,7 @@ let user = { };
 Object.defineProperty(user, "name", {
 *!*
   value: "John",
-  // per le nuove proprietà dobbiamo esplicitare quali attributi valgono true
+  // per le nuove proprietà dobbiamo esplicitare quali attributi sono true
   enumerable: true,
   configurable: true
 */!*
@@ -148,7 +148,7 @@ user.name = "Pete"; // Error
 
 Ora proviamo ad aggiungere un metodo `toString` ad `user`.
 
-Normalmente, la funzione built-in (integrata) `toString` per gli oggetti, è non-enumerable, quindi non verrà mostrata nei cicli come `for..in`. Ma se proviamo ad aggiungere una nostra definizione di `toString`, allora questa verrà mostrata nei cicli `for..in`, come nell'esempio:
+Normalmente, la funzione *built-in* (integrata) `toString` , per gli oggetti è non-enumerable, quindi non verrà mostrata nei cicli come `for..in`. Ma se proviamo ad aggiungere una nostra definizione di `toString`, allora questa verrà mostrata nei cicli `for..in`, come nell'esempio:
 
 ```js run
 let user = {
@@ -162,7 +162,7 @@ let user = {
 for (let key in user) alert(key); // name, toString
 ```
 
-Se non è cio che ci aspettiamo, possiamo impostare l'attributo `enumerable:false`. In questo modo non verrà più mostrata nei cicli `for..in`, propriò come la funzione integrata definita da JavaScript:
+Se non è ciò che ci aspettiamo, possiamo impostare l'attributo `enumerable:false`. In questo modo non verrà più mostrata nei cicli `for..in`, proprio come la funzione  già integrata (definita da Javascript):
 
 ```js run
 let user = {
@@ -192,11 +192,11 @@ alert(Object.keys(user)); // name
 
 ## Non-configurable
 
-L'attributo non-configurable (`configurable:false`), talvolta è preimpostato negli gli oggetti e nelle proprietà integrate.
+L'attributo non-configurable (`configurable:false`) è talvolta preimpostato negli oggetti e nelle proprietà integrate.
 
-Una proprietà non-configurable non può essere cancellata.
+Una proprietà *non-configurable* non può essere cancellata.
 
-Ad esempio, `Math.PI` è non-writable, non-enumerable e non-configurable:
+Ad esempio, `Math.PI` è *non-writable*, *non-enumerable* e *non-configurable*:
 
 ```js run
 let descriptor = Object.getOwnPropertyDescriptor(Math, 'PI');
@@ -211,7 +211,7 @@ alert( JSON.stringify(descriptor, null, 2 ) );
 }
 */
 ```
-Quindi, uno sviluppatore, non sarà in grado di cambiare il valore `Math.PI` o sovrascriverlo.
+Quindi, uno sviluppatore non sarà in grado di cambiare il valore `Math.PI` o di sovrascriverlo.
 
 ```js run
 Math.PI = 3; // Error
@@ -219,17 +219,17 @@ Math.PI = 3; // Error
 // non si potrebbe comunque cancellare Math.PI
 ```
 
-Rendere una proprietà non-configurable è una "strada a senso unico". Non possiamo tornare indietro con `defineProperty`.
+Rendere una proprietà *non-configurable* è una "strada a senso unico". Non possiamo tornare indietro tramite `defineProperty`.
 
 Per essere precisi, l'attributo non-configurable impone diverse restrizioni su `defineProperty`:
 1. Non possiamo modificare l'attributo `configurable`.
 2. Non possiamo modificare l'attributo `enumerable`.
-3. Non possiamo modificare l'attributo da `writable: false` a `true` (possiamo invece modificarla da `true` a `false`).
+3. Non possiamo modificare l'attributo da `writable: false` a `true` (possiamo invece modificarlo da `true` a `false`).
 4. Non possiamo modificare le funzioni di accesso `get/set` (ma possiamo assegnarle nel caso non siano definite).
 
 **L'idea alla base di "configurable: false" è quella di prevenire la modifica e la rimozione degli attributi di una proprietà, permettendo comunque la modifica del suo valore.**
 
-In questo esempio `user.name` è non-configurable, ma possiamo comunque modificarlo (poiché è writable):
+In questo esempio `user.name` è *non-configurable*, ma possiamo comunque modificarlo (poiché è *writable*):
 
 ```js run
 let user = {
@@ -300,7 +300,7 @@ Il metodo `Object.defineProperties`  può essere utilizzato per clonare un ogget
 let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj));
 ```
 
-Normalmente quando cloniamo un oggetto, utilizziamo l'assegnazione per copiarne le proprietà, come nell'esempio:
+Normalmente, quando cloniamo un oggetto, utilizziamo l'assegnazione per copiarne le proprietà, come nell'esempio:
 
 ```js
 for (let key in user) {
@@ -310,7 +310,7 @@ for (let key in user) {
 
 ...Ma in questo modo non stiamo copiando gli attributi. Quindi per una clonazione più completa, l'utilizzo di `Object.defineProperties` è la strada migliore.
 
-Un'altra differenza è che `for..in` ignora le proprietà di tipo symbol, invece `Object.getOwnPropertyDescriptors` ritorna *tutti* i descrittori, inclusi quelli di tipi symbol.
+Un'altra differenza è che `for..in` ignora le proprietà di tipo `symbol`, mentre `Object.getOwnPropertyDescriptors` ritorna *tutti* i descrittori, inclusi quelli di tipo symbol.
 
 ## Sigillare un oggetto globalmente
 
@@ -327,7 +327,7 @@ Esistono però diversi metodi in grado di limitare l'accesso *all'intero* oggett
 [Object.freeze(obj)](mdn:js/Object/freeze)
 : Vieta di aggiungere/rimuovere/modificare le proprietà dell'oggetto. Imposta `configurable: false, writable: false` su tutte le proprietà già esistenti dell'oggetto.
 
-Ed esistono anche dei metodi verificare lo stato di un oggetto:
+Ed esistono anche dei metodi per verificare lo stato degli attributi di un oggetto:
 
 [Object.isExtensible(obj)](mdn:js/Object/isExtensible)
 : Ritorna `false` se è vietato aggiungere nuove proprietà, altrimenti ritorna `true`.
@@ -338,4 +338,4 @@ Ed esistono anche dei metodi verificare lo stato di un oggetto:
 [Object.isFrozen(obj)](mdn:js/Object/isFrozen)
 : Ritorna `true` se è vietato aggiungere/rimuovere/modificare proprietà, e tutte le altre proprietà sono impostate a `configurable: false, writable: false`.
 
-Nella pratica questi metodi sono utilizzati molto raramente.
+In pratica, tuttavia, questi metodi sono utilizzati molto raramente.
