@@ -2,7 +2,7 @@ importance: 4
 
 ---
 
-# Riscrivi "if" con "switch"
+# Riscrivi "if" utilizzando "switch"
 
 Riscrivi il codice sotto utilizzando un singolo `switch`:
 
