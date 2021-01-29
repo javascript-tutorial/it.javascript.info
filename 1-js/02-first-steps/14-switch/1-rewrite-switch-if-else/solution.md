@@ -1,6 +1,6 @@
-Per ottener un match preciso con il costrutto `switch`, `if` deve utilizzare l'uguaglianza stretta `'==='`.
+Per ottenere una corrispondenza precisa con il costrutto `switch`, `if` deve utilizzare l'uguaglianza stretta `'==='`.
 
-Per le stringhe fornite, un semplice `'=='` può bastare.
+Per le stringhe fornite, tuttavia, un semplice `'=='` può bastare.
 
 ```js no-beautify
 if(browser == 'Edge') {
