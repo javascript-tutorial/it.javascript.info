@@ -214,7 +214,7 @@ Ogni handler accede alle proprietà dell'oggetto `event`:
 - `event.currentTarget` (=`this`) -- l'elemento che sta attualmente gestendo l'evento (quello che ha il gestore su di esso)
 - `event.eventPhase` -- la fase corrente (capturing=1, target=2, bubbling=3).
 
-Qualunque gestore può interrompere la propagazione dell'evento chiamando `event.stopPropagation()`, ma non è raccomandabile, in quanto non possiamo essere del tutto sicuri che non ne abbiamo bisogno ai livello superiori, magari per questioni del  tutto differenti.
+Qualunque gestore può interrompere la propagazione dell'evento chiamando `event.stopPropagation()`, ma non è raccomandabile, in quanto non possiamo essere del tutto sicuri che non ne abbiamo bisogno ai livelli superiori, magari per questioni del tutto differenti.
 
 La fase di *capturing* viene usata molto raramente, solitamente gestiamo gli eventi nella fase di *bubbling*. Ed in questo c'è una logica.
 
