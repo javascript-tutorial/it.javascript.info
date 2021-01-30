@@ -55,7 +55,7 @@ L'evento `focus`, per esempio, non è tra questi. Ci sono anche altri esempi, ch
 
 ## event.target
 
-Un gestore su un elemento genitore può sempre ottenere i dettagli sul dove l'evento sia stato generato.
+Un gestore su un elemento genitore può sempre ottenere i dettagli relativi all'elemento che ha innescato l'evento.
 
 **L'elemento annidato più in profondità che ha innescato l'evento viene chiamato elemento *target*, accessibile come `event.target`.**
 
