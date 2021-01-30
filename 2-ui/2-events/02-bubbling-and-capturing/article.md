@@ -50,7 +50,7 @@ Il processo viene soprannominato "bubbling", perché gli eventi si comportano co
 ```warn header="*Quasi* tutti gli eventi sono soggetti al bubbling."
 La parole chiave è in questa frase è "quasi".
 
-L'evento `focus`, per esempio, non è tra questi. Ci sono anche altri esempi, che incontreremo. Ma ancorauna volta è un'eccezione, piuttosto che una regola, in quanto la maggior parte degli eventi sono soggetti al *bubbling*.
+L'evento `focus`, per esempio, non è tra questi. Ci sono anche altri esempi, che incontreremo. Ma ancora una volta è un'eccezione, piuttosto che una regola, in quanto la maggior parte degli eventi sono soggetti al *bubbling*.
 ```
 
 ## event.target
