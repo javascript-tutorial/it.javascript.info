@@ -16,7 +16,7 @@ Non è un po' strano? Perché il gestore su `<div>` viene eseguito se il click �
 
 Il principio alla base del *bubbling* è semplice.
 
-**Quando viene innescato un evento su un elemento, come prima cosa vengono eseguito i gestori ad esso assegnati, poi ai nodi genitori, ed infine risale fino agli altri nodi antenati.**
+**Quando viene innescato un evento su un elemento, come prima cosa vengono eseguiti i gestori ad esso assegnati, poi ai nodi genitori, ed infine risale fino agli altri nodi antenati.**
 
 Poniamo il caso di avere 3 elementi annidati `FORM > DIV > P` con un gestore per ognuno di essi:
 
