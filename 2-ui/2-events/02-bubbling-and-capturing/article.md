@@ -10,7 +10,7 @@ Questo gestore è assegnato al `<div>`, ma viene eseguito anche se clicchiamo qu
 </div>
 ```
 
-Non è un po' strano? Perché il gestore su `<div>` viene eseguito se il click è su`<em>`?
+Non è un po' strano? Perché il gestore su `<div>` viene eseguito se il click è su `<em>`?
 
 ## Bubbling
 
