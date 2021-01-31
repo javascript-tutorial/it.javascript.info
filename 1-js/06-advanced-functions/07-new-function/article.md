@@ -42,7 +42,7 @@ let func = new Function(str);
 func();
 ```
 
-Viene utilizzato in casi molto specifici, come quando riceviamo codice da un server, o per compilare dinamicamente una funzione da un modello, in applicazioni web complesse.
+Viene utilizzato in casi molto specifici, come quando riceviamo del codice da un server, o per compilare dinamicamente una funzione da un modello, in applicazioni web complesse.
 
 ## Closure (chiusura)
 
