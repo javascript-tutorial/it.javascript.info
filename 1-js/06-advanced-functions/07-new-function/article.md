@@ -29,7 +29,7 @@ let sayHi = new Function('alert("Hello")');
 sayHi(); // Hello
 ```
 
-La differenza dalle altre modalità di creazione funzioni che abbiamo visto, è che  qui la funzione viene creata letteralmente da una stringa, che viene passata in fase di esecuzione.
+La differenza dalle altre modalità di creazione delle funzioni che abbiamo visto, è che  qui la funzione viene creata letteralmente da una stringa, che viene passata in fase di esecuzione.
 
 Tutte le dichiarazioni di funzione precedenti richiedevano di scrivere il codice della funzione nello script.
 
