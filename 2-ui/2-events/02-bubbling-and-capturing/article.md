@@ -48,7 +48,7 @@ Quindi se clicchiamo su `<p>`, vedremo 3 alerts: `p` -> `div` -> `form`.
 Il processo viene soprannominato "bubbling", perché gli eventi si comportano come delle "bolle": dall'elemento interno vanno risalendo sempre più in alto, attraversando gli elementi genitori, come farebbe una bolla d'aria nell'acqua.
 
 ```warn header="*Quasi* tutti gli eventi sono soggetti al bubbling."
-La parole chiave è in questa frase è "quasi".
+La parola chiave in questa frase è "quasi".
 
 L'evento `focus`, per esempio, non è tra questi. Ci sono anche altri esempi, che incontreremo. Ma ancora una volta è un'eccezione, piuttosto che una regola, in quanto la maggior parte degli eventi sono soggetti al *bubbling*.
 ```
