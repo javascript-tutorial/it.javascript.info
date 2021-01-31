@@ -5,7 +5,7 @@ Esistono due tipi di proprietà per gli oggetti.
 
 Il primo tipo sono le *data properties* (proprietà di tipo "dato"). Sappiamo già come utilizzarle, poiché tutte le proprietà viste fino ad ora erano *date properties*.
 
-Il secondo tipo di proprietà è qualcosa di nuovo. Sono definite *accessor properties* (proprietà di accesso). Sostanzialmente sono delle funzioni che agiscono come *getter* e *setter* per un valore, che appaiono come normali proprietà al codice esterno.
+Il secondo tipo di proprietà è qualcosa di nuovo. Sono definite *accessor properties* (proprietà accessorie). Sono essenzialmente funzioni che vengono eseguite quando viene letto o impostato un valore, ma al codice esterno appaiono come normali proprietà.
 
 ## Getters e setters
 
