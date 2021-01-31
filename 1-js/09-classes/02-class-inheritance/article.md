@@ -353,7 +353,7 @@ new Rabbit(); // rabbit
 
 Notiamo che l'output è differente.
 
-E questo è quello che ci aspetteremo. Quando il costruttore genitore viene invocato da una classe derivata, utilizzate i metodi sovrascritti.
+E questo è quello che ci aspetteremmo. Quando il costruttore genitore viene invocato da una classe derivata, utilizzate i metodi sovrascritti.
 
 ...Ma per i campi dati non è cosi. Come già detto, il costruttore genitore utilizza sempre i suoi campi dati.
 
