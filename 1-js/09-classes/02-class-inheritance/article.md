@@ -369,7 +369,7 @@ Quindi, `new Rabbit()` invoca `super()`, che esegue il costruttore genitore, e (
 
 Abbiamo quindi una sottile differenza di trattamento tra i campi dati ed i metodi in JavaScript.
 
-Fortunatamente, questo comportamento si verifica solamente se un campo dati va a sovrascrivere quelli della classe genitore. Potrebbe essere difficile da capire come comportamento, per questo lo abbiamo spiegato qui.
+Fortunatamente, questo comportamento si verifica solamente se un campo dati va a sovrascrivere quelli della classe genitore. Potrebbe essere difficile da capire come comportamento, per questo lo abbiamo spiegato.
 
 Se dovesse verificarsi questo problema, si possono utilizzare i metodi invece dei campi dati.
 
