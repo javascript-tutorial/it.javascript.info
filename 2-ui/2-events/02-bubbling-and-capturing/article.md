@@ -176,7 +176,7 @@ Vediamo le fasi di *capturing* e di *bubbling* in azione:
 </script>
 ```
 
-Il codice imposta i gestori in *ogni*  elemento nel documento per vedere quali che stanno funzionando.
+Il codice imposta i gestori di click per *ogni*  elemento nel documento per vedere quali sono in azione.
 
 Se clicchiamo su `<p>`, la sequenza sarà:
 
