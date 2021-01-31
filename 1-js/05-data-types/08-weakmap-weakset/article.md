@@ -1,6 +1,6 @@
 # WeakMap e WeakSet
 
-Come abbiamo già compreso nel capitolo <info:garbage-collection>, il motore JavaScript mantiene un valore in memoria fino a che questo risulta accessibile (e potrebbe potenzialmente essere utilizzato).
+Come abbiamo già visto nel capitolo <info:garbage-collection>, il motore JavaScript mantiene un valore in memoria fino a che questo risulta accessibile (e potrebbe potenzialmente essere utilizzato).
 
 Ad esempio:
 ```js
@@ -16,9 +16,9 @@ john = null;
 */!*
 ```
 
-Solitamente, le proprietà di un oggetto o gli elementi di un array o di qualsiasi altra struttura dati vengono considerati accessibili e mantenuti in memoria fino a che la struttura di dati rimane in memoria.
+Solitamente, le proprietà di un oggetto o gli elementi di un array o di qualsiasi altra struttura dati vengono considerati accessibili fino a che questi rimangono mantenuti in memoria.
 
-Ad esempio, se inseriamo un oggetto in un array, fino a che l'array rimane vivo, anche l'oggetto rimarrà vivo, anche se non sono presenti riferimenti.
+Ad esempio, se inseriamo un oggetto in un array, fino a che l'array rimane "vivo", anche l'oggetto rimarrà in memoria, anche se non sono presenti riferimenti.
 
 Come nell'esempio:
 

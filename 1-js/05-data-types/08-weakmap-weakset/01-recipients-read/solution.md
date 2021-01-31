@@ -24,7 +24,7 @@ La struttura `WeakSet` consente di memorizzare un insieme di messaggi e di verif
 
 Viene ripulita automaticamente. Il lato negativo è che non possiamo eseguire iterazioni. Non possiamo ottenere direttamente "tutti i messaggi letti". Ma possiamo farlo iterando su tutti i messaggi e filtrando tutti quelli che sono presenti nel set.
 
-P.S. Aggiungere una proprietà ad ogni messaggio potrebbe essere pericoloso, se questo oggetto viene gestito dal codice di un'altra persona, possiamo però utilizzare un symbol per evitare conflitti.
+P.S. Aggiungere una proprietà ad ogni messaggio potrebbe essere pericoloso, se questo oggetto viene gestito dal codice di un'altra persona;  per evitare conflitti possiamo utilizzare un *symbol*.
 
 Come qui:
 ```js
