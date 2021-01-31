@@ -96,7 +96,7 @@ Per esempio, qui `body.onclick` non funziona se clicchiamo su `<button>`:
 ```smart header="event.stopImmediatePropagation()"
 Se un elemento ha gestori multipli su un singolo elemento, allora se uno di questi interrompe il *bubbling*, gli altri continuano ad essere eseguiti.
 
-In altri termini, `event.stopPropagation()` interrompe il *bubbling* da lì in poi, ma sull'elemento attuale tutti gli altri gestori verranno eseguiti.
+In altri termini, `event.stopPropagation()` interrompe il *bubbling* da lì in poi, ma tutti gli altri gestori assegnati all'elemento corrente verranno eseguiti.
 
 Per interrompere il *bubbling* ed evitare di eseguire i gestori sull'elemento attuale, c'è il metodo `event.stopImmediatePropagation()`. Dopo di esso non verrà eseguito nessun altro gestore.
 ```
