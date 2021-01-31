@@ -220,6 +220,6 @@ La fase di *capturing* viene usata molto raramente, solitamente gestiamo gli eve
 
 Nel mondo reale, quando avviene un incidente, prima intervengono le autorità locali. Loro conoscono meglio il posto dove è avvenuto. Quindi intervengono e autorità di alto livello in caso di necessità. 
 
-Per gli eventi è lo stesso. Il codice che assegna il gestore su un particolare elemento ha il massimo livello di dettagli dell'elemento e cosa fa. Un gestore su un particolare `<td>` può essere adattato perfettamente per quel `<td>`, sa tutto su di esso, quindi dovrebbe avere la prima possibilità. Dopodiché i nodi immediatamente superiori conoscono il contesto, anche se un po' meno, e così via fino ad arrivare al nodo di più alto livello che gestisce concetti generali e che quindi viene eseguito per ultimo.
+Per gli eventi è lo stesso. Il codice che assegna il gestore su un particolare elemento ha il massimo livello di dettagli dell'elemento e di cosa fa. Un gestore su un particolare `<td>` può essere adattato perfettamente per quel `<td>`, sa tutto su di esso, quindi dovrebbe avere la prima possibilità. Dopodiché i nodi immediatamente superiori conoscono il contesto, anche se un po' meno, e così via fino ad arrivare al nodo di più alto livello che gestisce concetti generali e che quindi viene eseguito per ultimo.
 
 Bubbling e Capturing gettano le basi per il concetto di "event delegation" un pattern di gestione degli eventi estremamente potente, che studieremo nel prossimo capitolo.
