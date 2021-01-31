@@ -291,7 +291,7 @@ Se trovate questa sezione troppo difficile da capire, saltatela pure, continuate
 
 In una sotto-classe possiamo estendere non solo i metodi, ma anche i campi di classe.
 
-Anche se, si verifica un comportamento strano quando proviamo ad accedere ad un campo sovrascritto nel costruttore padre, piuttosto differente da altri linguaggi di programmazione.
+Anche se, si verifica un comportamento strano quando proviamo ad accedere ad un campo sovrascritto nel costruttore genitore, piuttosto differente da altri linguaggi di programmazione.
 
 Consideriamo questi esempio:
 
