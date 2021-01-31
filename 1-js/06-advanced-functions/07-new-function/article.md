@@ -46,7 +46,7 @@ Viene utilizzato in casi molto specifici, come quando riceviamo codice da un ser
 
 ## Closure (chiusura)
 
-Di solito, una funzione memorizza dove è nata nella proprietà speciale `[[Environment]]`. Questa fa riferimento al Lexical Environment da cui è stata creata (lo abbiamo trattato nel capitolo <info:closure>).
+Di solito, una funzione memorizza dove è nata nella proprietà speciale `[[Environment]]`. Questa fa riferimento al Lexical Environment in cui è stata creata (lo abbiamo trattato nel capitolo <info:closure>).
 
 Ma quando una funzione viene creata con `new Function`, il suo `[[Environment]]` non fa riferimento all'attuale Lexical Environment, ma a quello globale.
 
