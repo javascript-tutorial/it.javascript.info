@@ -3,7 +3,7 @@
 
 Esistono due tipi di proprietà per gli oggetti.
 
-Il primo tipo sono le *data properties* (proprietà di tipo dato). Sappiamo già come utilizzarle, poiché tutte le proprietà viste fino ad ora sono erano  *date properites*.
+Il primo tipo sono le *data properties* (proprietà di tipo "dato"). Sappiamo già come utilizzarle, poiché tutte le proprietà viste fino ad ora erano *date properties*.
 
 Il secondo tipo di proprietà è qualcosa di nuovo. Sono definite *accessor properties* (proprietà di accesso). Sostanzialmente sono delle funzioni che agiscono come *getter* e *setter* per un valore, che appaiono come normali proprietà al codice esterno.
 
@@ -53,7 +53,7 @@ alert(user.fullName); // John Smith
 */!*
 ```
 
-Vista esternamente, una *accessor property* è del tutto simile ad una proprietà regolare. Vediamo l'idea che sta dietro alle *accessor properties*. Non *invochiamo* `user.fullName` come una normale funzione, ma la *leggiamo* come una normale proprietà: in questo caso il *getter* sta lavorando per noi.
+Vista esternamente, una *accessor property* è del tutto simile ad una normale proprietà, è questa l'idea che sta dietro alle *accessor properties*. Non *invochiamo* `user.fullName` come una normale funzione, ma la *leggiamo* come una normale proprietà: in questo caso il *getter* sta lavorando per noi.
 
 Per ora, `fullName` possiede un solo getter. Se provassimo ad assegnare `user.fullName=`, otterremo un errore:
 
@@ -96,7 +96,7 @@ alert(user.surname); // Cooper
 
 Come risultato finale, abbiamo un proprietà "virtuale" `fullName`. Che possiamo sia leggere che scrivere.
 
-## Descritto degli accessors
+## Descrittori degli *accessors*
 
 I descrittori per le *accessor prorperties* sono diversi da quelli per le *data properties*.
 
@@ -185,7 +185,7 @@ Tecnicamente, il codice all'esterno potrebbe accedere direttamente al nome utili
 
 ## Utilizzato per compatibilità
 
-Uno dei principali vantaggi offerti dagli *accessors* è che permettono di controllare il comportamento di una *data property*, questo comportamento può essere modificato rimpiazzando le proprietà *getter* e *setter*.
+Uno dei principali vantaggi offerti dagli *accessors* è che permettono di migliorare il controllo di una normale *data property* rimpiazzandola con le proprietà *getter* e *setter* e lavorando sul loro comportamento.
 
 Immaginiamo di inziare ad implementare l'oggetto `user` con le proprietà `name` e `age`°
 
