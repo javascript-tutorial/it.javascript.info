@@ -152,7 +152,7 @@ Ci sono due possibili valori dell'opzione `capture`:
 
 Notare che mentre formalmente esistono 3 fasi, la seconda fase ("fase target": l'evento ha raggiunto l'elemento) non viene gestita separatamente: i gestori, sia nella fase di *capturing* che nella fase di *bubbling* innescano in questa fase.
 
-Vediamo la fase di *capturing* e di *bubbling* in azione entrambi:
+Vediamo le fasi di *capturing* e di *bubbling* in azione:
 
 ```html run autorun height=140 edit
 <style>
