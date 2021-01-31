@@ -216,7 +216,7 @@ Quindi, uno sviluppatore non sarà in grado di cambiare il valore `Math.PI` o di
 ```js run
 Math.PI = 3; // Error
 
-// non si potrebbe comunque cancellare Math.PI
+// e nemmeno la cancellazione di Math.PI funzionerebbe
 ```
 
 Rendere una proprietà *non-configurable* è una "strada a senso unico". Non possiamo tornare indietro tramite `defineProperty`.
