@@ -118,7 +118,7 @@ In genere non ci sono reali necessità di interrompere il *bubbling*. Magari è 
 
 ## Capturing
 
-Un'altra fase sul processamento degli eventi soprannominato "capturing". Viene usata raramente nel codice, ma talvolta può essere utile.
+C'è un'altra fase nell'elaborazione degli eventi, chiamata "capturing". Viene usata raramente nel codice, ma talvolta può essere utile.
 
 Lo standard [DOM Events](http://www.w3.org/TR/DOM-Level-3-Events/) descrive 3 fasi dei propagazione dell'evento:
 
