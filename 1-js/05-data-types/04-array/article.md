@@ -495,7 +495,7 @@ Gli array sono uno speciale tipo di oggetto, studiati per immagazzinare e gestir
 - La proprietà `length` è la lunghezza dell'array, in realtà per essere precisi, contiene l'indice dell'ultimo elemento più uno. Questo valore viene aggiornato automaticamente. 
 - Se decrementiamo manualmente `length`, l'array viene troncato.
 
-Possiamo utilizzare un array come deque con le seguenti operazioni:
+Possiamo eseguire sugli arrays le seguenti operazioni:
 
 - `push(...items)` aggiunge `items` in coda.
 - `pop()` rimuove un elemento dalla coda e lo ritorna.

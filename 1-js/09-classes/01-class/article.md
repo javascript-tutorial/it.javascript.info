@@ -154,7 +154,7 @@ Ci sono però delle importanti differenze.
         }
 
         alert(typeof User); // funzione
-        User(); // Errore: Il costruttore della classe può essere riciamato solo attraverso 'new'
+        User(); // Errore: Il costruttore della classe può essere richiamato solo attraverso 'new'
     ```
 
     Inoltre, nella maggior parte dei motori JavaScript il costruttore comincia con "class"
@@ -368,7 +368,7 @@ Ci sono due differenti approcci per affrontare questo problema, come discusso ne
 1. Passare una funzione contenitore, come `setTimeout(() => button.click(), 1000)`.
 2. Associare il metodo all'oggetto, e.g. nel costruttore.
 
-I campi di una classe fornicono un'altra sintassi molto più elegante:
+I campi di una classe forniscono un'altra sintassi molto più elegante:
 
 ```js run
 class Button {
@@ -391,7 +391,7 @@ Il campo della classe `click = () => {...}` viene creato per ogni oggetto, abbia
 
 Questo è particolarmente utile in ambiente browser, per gli event listeners (ascoltatori di eventi).
 
-## Riepilog
+## Riepilogo
 
 Il seguente esempio riporta la sintassi base di una classe:
 
