@@ -54,7 +54,7 @@ john = null; // sovrascriviamo il riferimento
 */!*
 ```
 
-`WeakMap` è fondamentalmente diverso in questo aspetto. Infatti non previene l'azione del garbage collector sugli oggetti utilizzati come chiave.
+`WeakMap` è fondamentalmente diverso sotto questo aspetto. Infatti non previene l'azione del garbage collector sugli oggetti utilizzati come chiave.
 
 Vediamo cosa significa questo, utilizzando degli esempi.
 
