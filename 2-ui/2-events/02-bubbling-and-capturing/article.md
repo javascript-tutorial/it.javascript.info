@@ -79,7 +79,7 @@ Proviamolo:
 
 ## Interrompere il bubbling
 
-Un evento risale dall'elemento target risalendo direttamente verso l'alto. Normalmente fino al tag `<html>`, poi fino all'oggetto `document`, ed alcuni eventi arrivano ad incontrare la `window`, chiamando tutti i gestori lungo il suo cammino.
+Un evento di bubbling va dall'elemento target verso l'alto, normalmente fino al tag `<html>`, poi fino all'oggetto `document`. Alcuni eventi arrivano ad incontrare l'oggetto `window`, chiamando tutti i gestori lungo il suo cammino.
 
 Ogni gestore può decidere che quell'evento è stato completamente processato ed interrompere il *bubbling*.
 
