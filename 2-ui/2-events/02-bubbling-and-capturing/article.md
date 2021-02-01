@@ -104,7 +104,7 @@ Per interrompere il *bubbling* ed evitare di eseguire i gestori sull'elemento at
 ```warn header="Non interrompere il *bubbling* senza una necessità!"
 Il *bubbling* è conveniente. Non interromperlo senza una reale necessità: è ovvio ed architetturalmente ben congegnato.
 
-Talvolta `event.stopPropagation()` genera piccole trappole che successivamente possono diventare problemi.
+Talvolta `event.stopPropagation()` nasconde piccole insidie che successivamente possono diventare problemi.
 
 Ad esempio:
 
@@ -112,7 +112,7 @@ Ad esempio:
 2. Successivamente decidiamo di catturare i click nell'intera finestra, per tenere traccia dei comportamenti dell'utente (dove gli utenti cliccano). Alcuni sistemi analitici lo fanno. Solitamente il codice usa `document.addEventListener('click'…)` per catturare tutti i click.
 3. I nostri sistemi analitici non funzioneranno laddove i click vengano interrotti da`stopPropagation`. E, purtroppo, avremo delle "zone morte".
 
-In genere non ci sono reali necessità di interrompere il *bubbling*. Magari è un'attività che richiede visibilmente di essere risolta in altre maniere. Uno di questi è quello di usare eventi personalizzati, di cui ci occuperemo più avanti. Possiamo anche scrivere i nostri dati dentro l'oggetto `event` in un gestore, e poi farli leggere da un altro, in questo modo possiamo passare ai gestori dei nodi genitori informazioni sulle processi che avvengono più in basso.
+In genere non ci sono reali necessità di interrompere il *bubbling*. Un problema che apparentemente lo richiede,   può essere spesso risolto in altre maniere. Una di queste è quella di usare eventi personalizzati, di cui ci occuperemo più avanti. Possiamo anche scrivere i nostri dati dentro l'oggetto `event` in un gestore, e poi farli leggere da un altro, in questo modo possiamo passare ai gestori dei nodi genitori informazioni sui processi che avvengono più in basso.
 ```
 
 
