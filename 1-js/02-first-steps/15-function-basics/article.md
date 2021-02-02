@@ -49,7 +49,7 @@ Questo esempio mostra chiaramente uno dei principali scopi delle funzioni: evita
 
 Se avremo la necessità di cambiare il messaggio o il modo in cui viene mostrato, sarà sufficiente modificare il codice in un solo punto: la funzione che lo implementa.
 
-## Variabili locali
+## Variabili locali 
 
 Una variabile dichiarata all'interno di una funzione è visibile solamente all'interno di quella funzione.
 
