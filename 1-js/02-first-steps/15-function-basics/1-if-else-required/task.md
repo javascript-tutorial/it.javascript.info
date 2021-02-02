@@ -21,7 +21,7 @@ function checkAge(age) {
 }
 ```
 
-La funzione lavorerebbe diversamente se rimovessimo `else`?
+La funzione lavorerebbe diversamente se rimuovessimo `else`?
 
 ```js
 function checkAge(age) {
