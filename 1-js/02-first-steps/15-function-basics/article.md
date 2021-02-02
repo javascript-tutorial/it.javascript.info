@@ -423,7 +423,7 @@ function showPrimes(n) {
 }
 ```
 
-La seconda variante utilizza un funzione addizionale `isPrime(n)` per testare se un numero rispetta la condizione "è primo?":
+La seconda variante utilizza un funzione addizionale `isPrime(n)` per testare se un numero rispetta la condizione di essere primo:
 
 ```js
 function showPrimes(n) {
