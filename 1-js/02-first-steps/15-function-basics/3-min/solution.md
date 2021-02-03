@@ -10,7 +10,7 @@ function min(a, b) {
 }
 ```
 
-Un'altra soluzione con l'operatore `'?'`:
+Un'altra soluzione, con l'operatore `'?'`:
 
 ```js
 function min(a, b) {

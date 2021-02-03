@@ -12,8 +12,8 @@ pow(3, 3) = 3 * 3 * 3 = 27
 pow(1, 100) = 1 * 1 * ...* 1 = 1
 ```
 
-Crea una pagina web che con prompt richiede `x` e `n`, e in seguito mostra il risultato di `pow(x,n)`.
+Crea una pagina web che con un `prompt` richiede `x` e `n`, e in seguito mostra il risultato di `pow(x,n)`.
 
 [demo]
 
-P.S. In questo esercizio è sufficiente che la funzione supporti solo i numeri naturali per `n`: interi a partire da `1`.
+P.S. In questo esercizio è sufficiente che per `n` la funzione supporti solo i numeri naturali interi, a partire da `1`.
