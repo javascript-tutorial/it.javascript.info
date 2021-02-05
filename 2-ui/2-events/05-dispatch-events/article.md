@@ -282,7 +282,7 @@ Per eventi personalizzati dovremmo usare il costruttore `CustomEvent`, il quale 
 
 Nonostante tecnicamente esista la possibilità di generare eventi del browser come `click` o `keydown`, dovremmo usarli con molta attenzione.
 
-Non dovremmo generare eventi del browser perché una pratica poco elegante e sporca nell'esecuzione dei gestori. La maggior parte delle volte, si tratta di cattiva architettura.
+Non dovremmo generare eventi del browser perché è una pratica poco elegante e sporca nell'esecuzione dei gestori. La maggior parte delle volte, si tratta di cattiva architettura.
 
 Gi eventi nativi possono essere generati quando:
 
