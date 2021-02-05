@@ -43,7 +43,7 @@ Nel seguente esempio, l'evento `click` viene inizializzato attraverso JavaScript
 ```
 
 ```smart header="event.isTrusted"
-Per poter distinguere un evento generato da un utente "reale", da una generato da script esiste un modo.
+Per poter distinguere un evento generato da un utente "reale", da uno generato da script esiste un modo.
 
 La proprietà `event.isTrusted` sarà `true` per eventi che provengono da azioni reali dell'utente e `false` per quelli generati da script.
 ```
