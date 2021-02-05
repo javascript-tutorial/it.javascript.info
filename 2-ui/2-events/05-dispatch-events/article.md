@@ -127,7 +127,7 @@ alert(event.clientX); // undefined, la proprietà sconosciuta viene ignorata!
 
 Tecnicamente, possiamo aggirare il problema assegnandogli direttamente `event.clientX=100` dopo la creazione. Ma è una questione di comodità oltre che di aderenza alle regole. Gli eventi generati dal browser garantiscono sempre di avere il tipo corretto.
 
-La lista completa delle proprietà, per i vari venti della UI sono descritti nelle specifiche, ad esempio, [MouseEvent](https://www.w3.org/TR/uievents/#mouseevent).
+La lista completa delle proprietà, per i vari eventi della UI sono descritti nelle specifiche, ad esempio, [MouseEvent](https://www.w3.org/TR/uievents/#mouseevent).
 
 ## Eventi personalizzati (custom events)
 
