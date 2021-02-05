@@ -2,7 +2,7 @@
 
 Oltre ad assegnare gestori, possiamo anche generare eventi attraverso JavaScript.
 
-Gli eventi personalizzati (custom events) possono essere usati per creare "componenti grafici". Ad esempio un elemento radice del nostro menù basato su JavaScript, può innescare degli eventi che indicano cosa avviene nel menù: `open` (se il menù è aperto), `select` (se c'è un elemento selezionato) e così via. Del codice in altre aree, potrebbe mettersi in ascolto per questi eventi e tenere traccia di cosa sta avvenendo nel menù.
+Gli eventi personalizzati (custom events) possono essere usati per creare "componenti grafici". Ad esempio un elemento radice del nostro menù basato su JavaScript, potrebbe innescare eventi che indicano al menù come comportarsi: `open` (aprire il menu), `select` (selezionare un elemento) e così via. Del codice in altre aree, potrebbe mettersi in ascolto per questi eventi e tenere traccia di cosa sta avvenendo nel menù.
 
 Possiamo generare non solo eventi del tutto nuovi, creati apposta per i nostri scopi, ma anche quelli predefiniti del linguaggio, come `click`, `mousedown` etc. Questo può essere utile per dei testi automatici.
 
