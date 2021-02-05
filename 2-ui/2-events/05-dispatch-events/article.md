@@ -206,7 +206,7 @@ Qualunque gestore può mettersi in ascolto per questo evento tramite `rabbit.add
 
 Nota bene: l'evento deve avere il flag `cancelable: true`, altrimenti la chiamata `event.preventDefault()` verrà ignorata.
 
-## Gli eventi negli eventi sono sincroni
+## Gli eventi annidati sono sincroni
 
 Solitamente gli eventi vengono elaborati in una coda. Ossia: se il browser sta elaborando `onclick` e viene generato un nuovo evento, ad esempio il mouse viene mosso, il suo gestore verrà messo in coda, ed i corrispondenti gestori di `mousemove` verranno chiamati dopo che l'elaborazione di `onclick` sarà terminata.
 
