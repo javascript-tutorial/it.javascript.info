@@ -18,7 +18,7 @@ let event = new Event(type[, options]);
 
 Argomenti:
 
-- *type* -- tipo dell'evento, una stringa come `"click"` oppure una personale come `"mio-evento"`.
+- *type* -- tipo dell'evento, una stringa come `"click"` oppure una personalizzata come `"mio-evento"`.
 - *options* -- l'oggetto con due proprietà opzionali:
   - `bubbles: true/false` -- se `true`, l'evento sarà soggetto a bubbling.
   - `cancelable: true/false` -- se `true`, "l'azione predefinita" può essere impedita. Successivamente vedremo cosa questo significhi per gli eventi personalizzati.
