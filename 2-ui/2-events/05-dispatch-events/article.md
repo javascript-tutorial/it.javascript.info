@@ -75,7 +75,7 @@ Tutto quello che dobbiamo fare è impostare `bubbles` a `true`:
 
 Note:
 
-1. Per i nostri eventi personalizzati dobbiamo usare `addEventListener`, in quanto `on<event>` esiste solo per quelli predefiniti: `document.onhello` non funziona.
+1. Per i nostri eventi personalizzati dobbiamo usare `addEventListener`, in quanto `on<event>` esiste solo per quelli predefiniti: quindi `document.onhello` non funzionerà.
 2. Dobbiamo impostare `bubbles:true`, altrimenti l'evento non risalirà attraverso i nodi genitori.
 
 La meccanica del bubbling è la stessa per gli eventi predefiniti (`click`) e personalizzati (`hello`), comprese anche le fasi di capturing e bubbling.
