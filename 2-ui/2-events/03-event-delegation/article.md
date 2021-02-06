@@ -34,7 +34,7 @@ La tabella è composta da 9 celle, ma potrebbero anche essercene 99 o 9999, è i
 
 **Il nostro compito è quello di evidenziare un cella `<td>` al click.**
 
-Invece di assegnare un gestore all'`onclick` per ogni `<td>` (potrebbero essercene tantissime) -- andiamo a impostare un gestore del tipo "catturali tutti" sull'elemento `<table>`.
+Invece di assegnare un gestore all'`onclick` per ogni `<td>` (potrebbero essercene tantissime) -- andiamo a impostare un gestore che sarà in grado di "catturali tutti" sull'elemento `<table>`.
 
 Verrà utilizzato `event.target` per ottenere l'elemento cliccato ed evidenziarlo.
 
