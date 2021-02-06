@@ -105,7 +105,7 @@ Chiarimenti:
 3. Ne caso di tabelle annidate, `event.target` potrebbe essere un `<td>`, ma fuori dalla tabelle corrente. Quindi andiamo a controllare se sia il `<td>` della *nostra tabella*.
 4. E se così, la evidenziamo.
 
-Come risultato, averemo un codice di evidenziazione veloce ede efficiente, indipendente dal numero di `<td>` nella tabella.
+Come risultato, averemo un codice di evidenziazione veloce ed efficiente, indipendente dal numero di `<td>` nella tabella.
 
 ## Esempio di delegation: azioni nel markup
 
