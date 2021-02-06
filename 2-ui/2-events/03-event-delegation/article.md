@@ -5,7 +5,7 @@ Capturing e bubbling ci permettono di implementare uno dei pattern più potenti 
 
 Il concetto alla base è che se abbiamo una serie di elementi gestiti in maniera simile, allora invece di assegnare un gestore per ognuno di essi, possiamo metterne uno solo sui loro antenati comuni.
 
-Nel gestore avremo a disposizione `event.target` per controllare l'elemento dal quale sia partito l'evento e poterlo quindi gestire di conseguenza.
+Nel gestore avremo a disposizione `event.target` per controllare l'elemento dal quale è partito l'evento e poterlo quindi gestire di conseguenza.
 
 Guardiamo un esempio -- il [diagramma Ba-Gua](http://en.wikipedia.org/wiki/Ba_gua) che riflette l'antica filosofia Cinese.
 
