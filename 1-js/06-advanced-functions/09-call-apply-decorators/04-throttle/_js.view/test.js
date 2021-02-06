@@ -1,4 +1,4 @@
-describe("throttle(f, 1000)", function() {
+describe("throttle(f, 1000)", function () {
   let f1000;
   let log = "";
 
@@ -6,41 +6,41 @@ describe("throttle(f, 1000)", function() {
     log += a;
   }
 
-  before(function() {
+  before(function () {
     this.clock = sinon.useFakeTimers();
     f1000 = throttle(f, 1000);
   });
 
-  it("the first call runs now", function() {
+  it("la prima chiamata viene eseguita ora", function () {
     f1000(1); // runs now
     assert.equal(log, "1");
   });
 
-  it("then calls are ignored till 1000ms when the last call works", function() {
-    f1000(2); // (throttling - less than 1000ms since the last run)
-    f1000(3); // (throttling - less than 1000ms since the last run)
-    // after 1000 ms f(3) call is scheduled
+  it("quindi tutte le chiamate vengono ignorate fino allo scadere di 1000ms dall'ultima", function () {
+    f1000(2); // (throttling - meno di 1000ms dall'ultima esecuzione)
+    f1000(3); // (throttling - meno di 1000ms dall'ultima esecuzione)
+    // dopo 1000 ms la chiamata f(3) viene pianificata
 
-    assert.equal(log, "1"); // right now only the 1st call done
+    assert.equal(log, "1"); // in questo momento solo la prima chiamata è stata fatta
 
-    this.clock.tick(1000); // after 1000ms...
-    assert.equal(log, "13"); // log==13, the call to f1000(3) is made
+    this.clock.tick(1000); // dopo 1000ms...
+    assert.equal(log, "13"); // log==13, viene fatta la chiamata a f1000(3)
   });
 
-  it("the third call waits 1000ms after the second call", function() {
+  it("la terza chiamata attende 1000ms dopo la seconda", function () {
     this.clock.tick(100);
-    f1000(4); // (throttling - less than 1000ms since the last run)
+    f1000(4); // (throttling - meno di 1000ms dall'ultima esecuzione)
     this.clock.tick(100);
-    f1000(5); // (throttling - less than 1000ms since the last run)
+    f1000(5); // (throttling - meno di 1000ms dall'ultima esecuzione)
     this.clock.tick(700);
-    f1000(6); // (throttling - less than 1000ms since the last run)
+    f1000(6); // (throttling - meno di 1000ms dall'ultima esecuzione)
 
-    this.clock.tick(100); // now 100 + 100 + 700 + 100 = 1000ms passed
+    this.clock.tick(100); // ora 100 + 100 + 700 + 100 = 1000ms sono passati
 
-    assert.equal(log, "136"); // the last call was f(6)
+    assert.equal(log, "136"); // l'ultima chiamata f(6)
   });
 
-  after(function() {
+  after(function () {
     this.clock.restore();
   });
 
@@ -48,14 +48,14 @@ describe("throttle(f, 1000)", function() {
 
 describe('throttle', () => {
 
-  it('runs a forwarded call once', done => {
+  it('esegue un unico inoltro di chiamata', done => {
     let log = '';
     const f = str => log += str;
     const f10 = throttle(f, 10);
-    f10('once');
+    f10('una volta');
 
     setTimeout(() => {
-      assert.equal(log, 'once');
+      assert.equal(log, 'una volta');
       done();
     }, 20);
   });

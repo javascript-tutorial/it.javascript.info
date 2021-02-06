@@ -9,5 +9,5 @@ function debounce(func, ms) {
 
 ```
 
-A call to `debounce` returns a wrapper. When called, it schedules the original function call after given `ms` and cancels the previous such timeout.
+Una chiamata a `debounce` restituisce un wrapper. Quando viene chiamato, pianifica la chiamata della funzione originale dopo tot `ms` e annulla il precedente timeout.
 
