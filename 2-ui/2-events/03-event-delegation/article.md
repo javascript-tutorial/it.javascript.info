@@ -102,7 +102,7 @@ table.onclick = function(event) {
 Chiarimenti:
 1. Il metodo `elem.closest(selector)` ritorna l'antenato più vicino che combacia con il selettore. Nel nostro caso cerchiamo un `<td>` verso l'alto dall'elemento di origine dell'evento.
 2. Se `event.target` non è dentro nessun `<td>`, la chiamata esce immediatamente, dal momento che non c'è nulla da fare.
-3. Ne caso di tabelle annidate, `event.target` potrebbe essere un `<td>`, ma fuori dalla tabelle corrente. Quindi andiamo a controllare se sia il `<td>` della *nostra tabella*.
+3. Ne caso di tabelle annidate, `event.target` potrebbe riferirsi ad `<td>`, ma fuori dalla tabelle corrente. Quindi andiamo a controllare se `<td>`  appartiene alla *nostra tabella*.
 4. E se così, la evidenziamo.
 
 Come risultato, averemo un codice di evidenziazione veloce ed efficiente, indipendente dal numero di `<td>` nella tabella.
