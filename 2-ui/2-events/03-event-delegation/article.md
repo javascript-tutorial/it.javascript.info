@@ -238,7 +238,7 @@ Ancora un esempio di comportamento. Un click su un elemento con l'attributo `dat
 
 Notiamo ancora una volta cosa abbiamo fatto. Adesso, per aggiungere la funzionalità di toggling su un elemento -- non è necessario conoscere JavaScript, è sufficiente usare l'attributo `data-toggle-id`.
 
-Questo può essere davvero conveniente -- nessuna necessità di scrivere codice JavaScript per ogni nuovo elemento di questo genere. Basta solo usare il comportamento. Il gestore a livello di documento fa in modo che funzioni per ogni elemento nella pagina.
+Questo può essere davvero conveniente -- nessuna necessità di scrivere codice JavaScript per ogni nuovo elemento di questo genere. Ci basta solo applicare il comportamento. Il gestore a livello di documento fa in modo che funzioni per ogni elemento nella pagina.
 
 Possiamo pure combinare comportamenti multipli su un singolo elemento.
 
