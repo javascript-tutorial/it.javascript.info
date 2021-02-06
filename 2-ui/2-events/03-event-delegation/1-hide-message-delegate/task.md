@@ -2,12 +2,12 @@ importance: 5
 
 ---
 
-# Hide messages with delegation
+# Nascondere messaggi traminte delegation
 
-There's a list of messages with removal buttons `[x]`. Make the buttons work.
+C'è una lista di messaggi con il pulsante di rimozione `[x]`. Fare in modo che il pulsante funzioni.
 
-Like this:
+Come questo per esempio:
 
 [iframe src="solution" height=420]
 
-P.S. Should be only one event listener on the container, use event delegation.
+P.S.: Sul container dovrebbe esserci solo un listener, usare event delegation.
