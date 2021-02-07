@@ -364,7 +364,7 @@ Risulta anche più facile vedere `function f(…) {…}`, nel codice, piuttosto 
 - Le funzioni sono valori. Possono essere assegnate, copiate o dichiarate in qualsiasi punto del codice.
 - Se la funzione viene dichiarata come un blocco "separato" dal flusso d'esecuzione principale del codice, tale definizione viene chiamata "dichiarazione di funzione".
 - Se la funzione viene definita tramite un'espressione, viene chiamata "espressione di funzione".
-- Le dichiarazioni di funzione vengono processate prima che il bloco di codice dove sono state definitie sia raggiunto.
+- Le dichiarazioni di funzione vengono processate prima che il blocco di codice dove sono state definite sia raggiunto.
 - Le espressioni di funzione vengono processate quando il flusso d'esecuzione del codice principale le raggiunge.
 
 Nella maggior parte dei casi, quando abbiamo bisogno di dichiarare una funzione una dichiarazione di funzione è preferibile poiché è visibile anche prima della sua dichiarazione. Questo ci fornisce più flessibilità nell'organizzazione del codice, e solitamente risulta più leggibile.
