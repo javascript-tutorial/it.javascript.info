@@ -237,7 +237,7 @@ Per maggiore flessibilità potremmo dotare il decorator di una funzione di *hash
 Per molte applicazioni pratiche, la terza soluzione è sufficiente, quindi ci atterremo ad essa.
 
 Non abbiamo bisogno di passare solo `x`, ma anche gli altri argomenti in `func.call`.  
-Also we need to pass not just `x`, but all arguments in `func.call`. Ricordiamo che in una `function()` sono disponibili tutti i suoi argomenti tramite il *pseudo-array* `arguments`. Quindi `func.call(this, x)` può essere sostituito con `func.call(this, ...arguments)`.
+Ricordiamo che in una `function()` sono disponibili tutti i suoi argomenti tramite il *pseudo-array* `arguments`. Quindi `func.call(this, x)` può essere sostituito con `func.call(this, ...arguments)`.
 
 IL seguente è `cachingDecorator` migliorato:
 
