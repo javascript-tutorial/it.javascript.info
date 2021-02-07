@@ -45,7 +45,7 @@ alert( "Again: " + slow(2) ); // lo stesso della linea precedente
 
 Nel codice precedente `cachingDecorator` è un *decorator*: una speciale funzione che prende come argomento un'altra funzione e ne altera il comportamento.
 
-L'idea è quella di poter chiamare `cachingDecorator` con qualsiasi funzione per applicare la funzionalità di *caching*. È fantastico, perché possiamo avere molte funzioni che potrebbero utilizzare tale caratteristica, e tutto ciò che dobbiamo fare è applicare ad esse `cachingDecorator`.
+L'idea è quella di poter chiamare `cachingDecorator` con qualsiasi funzione per applicare la funzionalità di *caching*. È fantastico, perché in questo modo possiamo avere molte funzioni che utilizzano tale caratteristica, e tutto ciò che dobbiamo fare è applicare ad esse `cachingDecorator`.
 
 Separando la funzionalità di caching dalla funzione principale abbiamo anche il vantaggio di mantenere il codice semplice.
 
