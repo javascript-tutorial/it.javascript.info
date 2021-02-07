@@ -393,7 +393,7 @@ Preso quasi letteralmente dalla specifica:
 7. Ritorna `result`.
 
 
-Quindi, tecnicamente prende `this` ed unisce `this[0]`, `this[1]` ...ecc. E' scritto intenzionalmente in moda da permette l'uso di un simil-array come `this` (non è una coincidenza se molti metodi seguono questa pratica). E' per questo motivo che funziona anche con `this=arguments`.
+Quindi, tecnicamente prende `this` ed unisce `this[0]`, `this[1]` ...ecc. E' scritto intenzionalmente in modo da permette l'uso di un simil-array come `this` (non è una coincidenza se molti metodi seguono questa pratica). E' per questo motivo che funziona anche con `this=arguments`.
 
 ## Decorators e proprietà di funzione
 
