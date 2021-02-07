@@ -97,11 +97,7 @@ La risposta è semplice:
 - Una function expression viene utilizzata all'interno di un'istruzione: `let sayHi = ...;`, come valore. Non è un blocco di codice. Quindi il `;` è consigliato al termine dell'istruzione, indipendentemente dal valore.  Il punto e virgola non è collegato alla function expression; più semplicemente, termina un'istruzione.
 ````
 
-<<<<<<< HEAD
-## *Callback functions* (funzioni richiamate)
-=======
 ## Callback functions (funzioni richiamate)
->>>>>>> e49dc24647385a2a7d373ce0c18153e506912bde
 
 Diamo un'occhiata ad ulteriori esempi di passaggio di funzione come valore e utilizzo della sintassi function expression.
 
@@ -360,22 +356,16 @@ Come regola fondamentale, quando abbiamo la necessità di dichiarare una funzion
 
 Risulta anche più facile vedere `function f(…) {…}`, nel codice, piuttosto di `let f = function(…) {…}`. La dichiarazione di funzione è più facile da individuare.
 
-...Ma se per qualche ragione la dichiarazione di funzione non si applica bene al caso in questione (abbiamo visto degli esempi, sopra), allora l'espressione di funzione può essere un'alternativa.
+...Ma se per qualche ragione la dichiarazione di funzione non si applica bene al caso in questione (abbiamo visto degli esempi, sopra), allora la function expression può essere un'alternativa.
 ```
 
 ## Riepilogo
 
 - Le funzioni sono valori. Possono essere assegnate, copiate o dichiarate in qualsiasi punto del codice.
 - Se la funzione viene dichiarata come un blocco "separato" dal flusso d'esecuzione principale del codice, tale definizione viene chiamata "dichiarazione di funzione".
-<<<<<<< HEAD
 - Se la funzione viene definita tramite un'espressione, viene chiamata "function expression".
 - Le dichiarazioni di funzione vengono processate prima che il blocco di codice dove sono state definite sia raggiunto.
 - Le function expression vengono processate quando il flusso d'esecuzione del codice principale le raggiunge.
-=======
-- Se la funzione viene definita tramite un'espressione, viene chiamata "espressione di funzione".
-- Le dichiarazioni di funzione vengono processate prima che il blocco di codice dove sono state definite sia raggiunto.
-- Le espressioni di funzione vengono processate quando il flusso d'esecuzione del codice principale le raggiunge.
->>>>>>> e49dc24647385a2a7d373ce0c18153e506912bde
 
 Nella maggior parte dei casi, quando abbiamo bisogno di dichiarare una funzione una dichiarazione di funzione è preferibile poiché è visibile anche prima della sua dichiarazione. Questo ci fornisce più flessibilità nell'organizzazione del codice, e solitamente risulta più leggibile.
 
