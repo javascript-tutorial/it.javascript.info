@@ -18,7 +18,7 @@ function checkAge(age) {
 }
 ```
 
-Riscrivila, in modo che il comportamento sia uguale, ma senza utilizzare `if`, in una sola riga.
+Riscrivila in modo che il comportamento sia uguale, ma senza utilizzare `if`. In una sola riga.
 
 Fai due varianti di `checkAge`:
 

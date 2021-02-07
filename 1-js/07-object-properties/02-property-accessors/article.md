@@ -1,31 +1,31 @@
 
-# Property getters and setters
+# Proprietà getters e setters
 
-There are two kinds of object properties.
+Esistono due tipi di proprietà per gli oggetti.
 
-The first kind is *data properties*. We already know how to work with them. All properties that we've been using until now were data properties.
+Il primo tipo sono le *data properties* (proprietà di tipo "dato"). Sappiamo già come utilizzarle, poiché tutte le proprietà viste fino ad ora erano *date properties*.
 
-The second type of properties is something new. It's *accessor properties*. They are essentially functions that execute on getting and setting a value, but look like regular properties to an external code.
+Il secondo tipo di proprietà è qualcosa di nuovo. Sono definite *accessor properties* (proprietà accessorie). Sono essenzialmente funzioni che vengono eseguite quando viene letto o impostato un valore, ma al codice esterno appaiono come normali proprietà.
 
-## Getters and setters
+## Getters e setters
 
-Accessor properties are represented by "getter" and "setter" methods. In an object literal they are denoted by `get` and `set`:
+Le *accessor properties* sono rappresentate dai metodi *"getter"* e *"setter"*. In un *object literal* vengono indicate da *`get`* e *`set`*:
 
 ```js
 let obj = {
   *!*get propName()*/!* {
-    // getter, the code executed on getting obj.propName
+    // getter, il codice eseguito per ottenere obj.propName
   },
 
   *!*set propName(value)*/!* {
-    // setter, the code executed on setting obj.propName = value
+    // setter, il codice eseguito per impostare il valore di obj.propName = value
   }
 };
 ```
 
-The getter works when `obj.propName` is read, the setter -- when it is assigned.
+La proprietà *getter* viene eseguita quando `obj.propName` viene letto, la proprietà *setter*, invece, quando viene assegnato.
 
-For instance, we have a `user` object with `name` and `surname`:
+Ad esempio, abbiamo un oggetto `user` con le proprietà `name` e `surname`:
 
 ```js
 let user = {
@@ -34,7 +34,7 @@ let user = {
 };
 ```
 
-Now we want to add a `fullName` property, that should be `"John Smith"`. Of course, we don't want to copy-paste existing information, so we can implement it as an accessor:
+Ora vogliamo aggiungere una proprietà `fullName`, che dovrebbe valere `"John Smith"`. Ovviamente vorremmo evitare di copiare ed incollare informazioni già esistenti, quindi possiamo implementare questa funzionalità tramite un *accessor*:
 
 ```js run
 let user = {
@@ -53,9 +53,9 @@ alert(user.fullName); // John Smith
 */!*
 ```
 
-From the outside, an accessor property looks like a regular one. That's the idea of accessor properties. We don't *call* `user.fullName` as a function, we *read* it normally: the getter runs behind the scenes.
+Vista esternamente, una *accessor property* è del tutto simile ad una normale proprietà, è questa l'idea che sta dietro alle *accessor properties*. Non *invochiamo* `user.fullName` come una normale funzione, ma la *leggiamo* come una normale proprietà: in questo caso il *getter* sta lavorando per noi.
 
-As of now, `fullName` has only a getter. If we attempt to assign `user.fullName=`, there will be an error:
+Per ora, `fullName` possiede un solo getter. Se provassimo ad assegnare `user.fullName=`, otterremo un errore:
 
 ```js run
 let user = {
@@ -65,11 +65,11 @@ let user = {
 };
 
 *!*
-user.fullName = "Test"; // Error (property has only a getter)
+user.fullName = "Test"; // Error (la proprietà possiede solo un getter)
 */!*
 ```
 
-Let's fix it by adding a setter for `user.fullName`:
+Aggiungiamo quindi un *setter* per `user.fullName`:
 
 ```js run
 let user = {
@@ -87,29 +87,29 @@ let user = {
 */!*
 };
 
-// set fullName is executed with the given value.
+// set fullName viene eseguito con i valori forniti
 user.fullName = "Alice Cooper";
 
 alert(user.name); // Alice
 alert(user.surname); // Cooper
 ```
 
-As the result, we have a "virtual" property `fullName`. It is readable and writable.
+Come risultato finale, abbiamo un proprietà "virtuale" `fullName`. Che possiamo sia leggere che scrivere.
 
-## Accessor descriptors
+## Descrittori degli *accessors*
 
-Descriptors for accessor properties are different from those for data properties.
+I descrittori per le *accessor prorperties* sono diversi da quelli per le *data properties*.
 
-For accessor properties, there is no `value` or `writable`, but instead there are `get` and `set` functions.
+Per le *accessor properties*, non ci sono `value` o `writable`, ma ci sono invece le funzioni `get` or `set`.
 
-That is, an accessor descriptor may have:
+Un descrittore di *accessor properties* può possedere:
 
-- **`get`** -- a function without arguments, that works when a property is read,
-- **`set`** -- a function with one argument, that is called when the property is set,
-- **`enumerable`** -- same as for data properties,
-- **`configurable`** -- same as for data properties.
+- **`get`** -- una funzione che non accetta argomenti, che specifica come accedere in lettura ad una proprietà,
+- **`set`** -- una funzione con un solo argomento, che specifica come impostare il valore della proprietà,
+- **`enumerable`** -- stesso comportamento visto per le *data properties*,
+- **`configurable`** -- stesso comportamento visto per le *data properties*.
 
-For instance, to create an accessor `fullName` with `defineProperty`, we can pass a descriptor with `get` and `set`:
+Ad esempio, possiamo creare un *accessor* `fullName` con `defineProperty`, passando un *descriptor* con `get` e `set`:
 
 ```js run
 let user = {
@@ -134,9 +134,9 @@ alert(user.fullName); // John Smith
 for(let key in user) alert(key); // name, surname
 ```
 
-Please note that a property can be either an accessor (has `get/set` methods) or a data property (has a `value`), not both.
+Da notare che una proprietà può essere o un *accessor* (con i metodi `get/set`) o una *data property* (con un `value`), ma non entrambe.
 
-If we try to supply both `get` and `value` in the same descriptor, there will be an error:
+Se proviamo a fornire sia `get` che `value`, nello stesso *descriptor*, otterremo un errore:
 
 ```js run
 *!*
@@ -151,11 +151,11 @@ Object.defineProperty({}, 'prop', {
 });
 ```
 
-## Smarter getters/setters
+## Getters/setters intelligenti
 
-Getters/setters can be used as wrappers over "real" property values to gain more control over operations with them.
+*Getters/setters* possono essere utilizzati come *wrappers* (contenitori) per le proprietà "reali", in questo modo avremo più controllo sulle operazioni di lettura/scrittura.
 
-For instance, if we want to forbid too short names for `user`, we can have a setter `name` and keep the value in a separate property `_name`:
+Ad esempio, potremmo vietare nomi troppo brevi per la proprietà `name`, possiamo definire un *setter* `name` e mantenere il valore in una proprietà diversa `_name`:
 
 ```js run
 let user = {
@@ -175,19 +175,19 @@ let user = {
 user.name = "Pete";
 alert(user.name); // Pete
 
-user.name = ""; // Name is too short...
+user.name = ""; // Il nome è troppo corto...
 ```
 
-So, the name is stored in `_name` property, and the access is done via getter and setter.
+Quindi, il nome viene memorizzato nella prorietà `_name`, e gli accessi vengono effettuati tramite *getter* e *setter*.
 
-Technically, external code is able to access the name directly by using `user._name`. But there is a widely known convention that properties starting with an underscore `"_"` are internal and should not be touched from outside the object.
+Tecnicamente, il codice all'esterno potrebbe accedere direttamente al nome utilizzando `user._name`. Ma esiste una convezione molto diffusa che specifica di non utilizzare direttamente le proprietà che iniziano con `"_"`.
 
 
-## Using for compatibility
+## Utilizzato per compatibilità
 
-One of the great uses of accessors is that they allow to take control over a "regular" data property at any moment by replacing it with a getter and a setter and tweak its behavior.
+Uno dei principali vantaggi offerti dagli *accessors* è che permettono di migliorare il controllo di una normale *data property* rimpiazzandola con le proprietà *getter* e *setter* e lavorando sul loro comportamento.
 
-Imagine we started implementing user objects using data properties `name` and `age`:
+Immaginiamo di inziare ad implementare l'oggetto `user` con le proprietà `name` e `age`°
 
 ```js
 function User(name, age) {
@@ -200,7 +200,7 @@ let john = new User("John", 25);
 alert( john.age ); // 25
 ```
 
-...But sooner or later, things may change. Instead of `age` we may decide to store `birthday`, because it's more precise and convenient:
+...Ma prima o poi, le cose potrebbero cambiare. Invece di `age` potremmo decidere di memorizzare `birthday`, poiché è più preciso e conveniente:
 
 ```js
 function User(name, birthday) {
@@ -211,13 +211,13 @@ function User(name, birthday) {
 let john = new User("John", new Date(1992, 6, 1));
 ```
 
-Now what to do with the old code that still uses `age` property?
+Ora come ci comportiamo con il codice "vecchio" che utilizza ancora la proprietà `age`?
 
-We can try to find all such places and fix them, but that takes time and can be hard to do if that code is used by many other people. And besides, `age` is a nice thing to have in `user`, right?
+Possiamo provare a cercare tutti i posti in cui viene utilizzata nel codice e sistemarlo, ma questo potrebbe richiedere tempo e potrebbe essere ancora più complesso se lo stesso codice viene utilizzato da altre persone. E in ogni caso, `age` è una proprietà utile da avere in `user`, giusto?
 
-Let's keep it.
+Quindi manteniamola.
 
-Adding a getter for `age` solves the problem:
+Aggiungere un *getter* per `age` risolve il problema:
 
 ```js run no-beautify
 function User(name, birthday) {
@@ -225,7 +225,7 @@ function User(name, birthday) {
   this.birthday = birthday;
 
 *!*
-  // age is calculated from the current date and birthday
+  // age viene calcolata utilizzando la data attuale ed il compleanno
   Object.defineProperty(this, "age", {
     get() {
       let todayYear = new Date().getFullYear();
@@ -237,8 +237,8 @@ function User(name, birthday) {
 
 let john = new User("John", new Date(1992, 6, 1));
 
-alert( john.birthday ); // birthday is available
-alert( john.age );      // ...as well as the age
+alert( john.birthday ); // birthday è disponibile
+alert( john.age );      // ...è lo è anche age
 ```
 
-Now the old code works too and we've got a nice additional property.
+In questo modo il codice "vecchio" continua a funzionare e abbiamo anche guadagnato un'ottima proprietà aggiuntiva.

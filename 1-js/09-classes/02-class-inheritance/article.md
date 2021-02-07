@@ -291,7 +291,7 @@ Se trovate questa sezione troppo difficile da capire, saltatela pure, continuate
 
 In una sotto-classe possiamo estendere non solo i metodi, ma anche i campi di classe.
 
-Anche se, si verifica un comportamento strano quando proviamo ad accedere ad un campo sovrascritto nel costruttore padre, piuttosto differente da altri linguaggi di programmazione.
+Anche se, si verifica un comportamento strano quando proviamo ad accedere ad un campo sovrascritto nel costruttore genitore, piuttosto differente da altri linguaggi di programmazione.
 
 Consideriamo questi esempio:
 
@@ -353,7 +353,7 @@ new Rabbit(); // rabbit
 
 Notiamo che l'output è differente.
 
-E questo è quello che ci aspetteremo. Quando il costruttore genitore viene invocato da una classe derivata, utilizzate i metodi sovrascritti.
+E questo è quello che ci aspetteremmo. Quando il costruttore genitore viene invocato da una classe derivata, utilizzate i metodi sovrascritti.
 
 ...Ma per i campi dati non è cosi. Come già detto, il costruttore genitore utilizza sempre i suoi campi dati.
 
@@ -369,7 +369,7 @@ Quindi, `new Rabbit()` invoca `super()`, che esegue il costruttore genitore, e (
 
 Abbiamo quindi una sottile differenza di trattamento tra i campi dati ed i metodi in JavaScript.
 
-Fortunatamente, questo comportamento si verifica solamente se un campo dati va a sovrascrivere quelli della classe genitore. Potrebbe essere difficile da capire come comportamento, per questo lo abbiamo spiegato qui.
+Fortunatamente, questo comportamento si verifica solamente se un campo dati va a sovrascrivere quelli della classe genitore. Potrebbe essere difficile da capire come comportamento, per questo lo abbiamo spiegato.
 
 Se dovesse verificarsi questo problema, si possono utilizzare i metodi invece dei campi dati.
 
