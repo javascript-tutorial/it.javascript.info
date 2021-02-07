@@ -8,7 +8,7 @@ La *prototypal inheritance* (ereditarietà dei prototype) è una caratteristica 
 
 ## [[Prototype]]
 
-In JavaScript, possiedono una speciale proprietà nascosta `[[Prototype]]` (come definito nella specifica), questo puo valere `null` oppure puo contenere il riferimento ad un altro oggetto. Quell'oggetto viene definito "prototype" (prototipo):
+In JavaScript, possiedono una speciale proprietà nascosta `[[Prototype]]` (come definito nella specifica), questo può valere `null` oppure può contenere il riferimento ad un altro oggetto. Quell'oggetto viene definito "prototype" (prototipo):
 
 ![prototype](object-prototype-empty.svg)
 
