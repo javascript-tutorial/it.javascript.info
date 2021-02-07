@@ -211,7 +211,7 @@ Per renderlo ancora più chiaro, vediamo più approfonditamente come viene passa
 
 ## Passando argomenti multipli
 
-Rendiamo `cachingDecorator` un po' più universale. Finora abbiamo lavorato solo con funzioni con un solo argomento.
+Rendiamo `cachingDecorator` un po' più universale. Finora abbiamo lavorato solamente con funzioni con un solo argomento.
 
 Come fare per gestire il caching del metodo con argomenti multipli `worker.slow`?
 
