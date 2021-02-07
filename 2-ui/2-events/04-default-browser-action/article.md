@@ -1,43 +1,43 @@
-# Browser default actions
+# Azioni predefinite del browser
 
-Many events automatically lead to certain actions performed by the browser.
+Molti eventi vengono ricondotti verso determinate azioni eseguite dal browser.
 
-For instance:
+Per esempio:
 
-- A click on a link - initiates navigation to its URL.
-- A click on a form submit button - initiates its submission to the server.
-- Pressing a mouse button over a text and moving it - selects the text.
+- Un click su un link - inizializza la navigazione verso il suo URL.
+- Un click su un pulsante di invio di un form - inizializza l'invio dello stesso al server.
+- Premendo e spostando il pulsante su un testo - lo seleziona.
 
-If we handle an event in JavaScript, we may not want the corresponding browser action to happen, and want to implement another behavior instead.
+Quando gestiamo un evento con JavaScript, potremmo non volere affatto che la corrispondente azione del browser avvenga, ed implementare, invece, un altro comportamento.
 
-## Preventing browser actions
+## Prevenire le azioni del browser
 
-There are two ways to tell the browser we don't want it to act:
+Ci sono due maniere per comunicare al browser che non vogliamo che esegua alcuna azione:
 
-- The main way is to use the `event` object. There's a method `event.preventDefault()`.
-- If the handler is assigned using `on<event>` (not by `addEventListener`), then returning `false` also works the same.
+- La maniera principale è quella di usare l'oggetto `event`, all'interno del quale c'è il metodo `event.preventDefault()`.
+- Se il gestore viene assegnato tramite `on<event>` (e non tramite `addEventListener`), allora restiruire `false` avrà lo stesso effetto.
 
-In this HTML a click on a link doesn't lead to navigation, browser doesn't do anything:
+In questo HTML un click su un link non porta a navigarlo, il browser di fatto non fa nulla:
 
 ```html autorun height=60 no-beautify
-<a href="/" onclick="return false">Click here</a>
-or
-<a href="/" onclick="event.preventDefault()">here</a>
+<a href="/" onclick="return false">Clicca qui</a>
+o
+<a href="/" onclick="event.preventDefault()">qui</a>
 ```
 
-In the next example we'll use this technique to create a JavaScript-powered menu.
+Nel prossimo esempio useremo questa tecnicaper creare un menù potenziato via JavaScript.
 
-```warn header="Returning `false` from a handler is an exception"
-The value returned by an event handler is usually ignored.
+```warn header="Restituire `false` da un gestore è un'eccezione"
+Il valore restituito da un gestore evento solitamente viene ignorato.
 
-The only exception is `return false` from a handler assigned using `on<event>`.
+L'unica eccezione è il `return false` di un gestore assegnato con l'uso di `on<event>`.
 
-In all other cases, `return` value is ignored. In particular, there's no sense in returning `true`.
+In tutti gli altri casi, il valore del `return` viene ignorato. Nello specifico, non ha alcun senso restituire `true`.
 ```
 
-### Example: the menu
+### Esempio: il menù
 
-Consider a site menu, like this:
+Considera un menù di questo tipo:
 
 ```html
 <ul id="menu" class="menu">
@@ -47,18 +47,18 @@ Consider a site menu, like this:
 </ul>
 ```
 
-Here's how it looks with some CSS:
+Ecco come appare con un po' di CSS:
 
 [iframe height=70 src="menu" link edit]
 
-Menu items are implemented as HTML-links `<a>`, not buttons `<button>`. There are several reasons to do so, for instance:
+Gli elementi del menù sono implementati com links HTML `<a>`, non pulsanti `<button>`. Ci sono tanti ragioni per fare ciò, per esempio:
 
-- Many people like to use "right click" -- "open in a new window". If we use `<button>` or `<span>`, that doesn't work.
-- Search engines follow `<a href="...">` links while indexing.
+- A molte persone piace usare "tasto destro" -- "apri in una nuova finestra". Se usassimo `<button>` oppure `<span>`, questa funzionalità non potrebbe essere usata.
+- I motori di ricerca seguono i link `<a href="...">` per l'indicizzazione.
 
-So we use `<a>` in the markup. But normally we intend to handle clicks in JavaScript. So we should prevent the default browser action.
+Quindi usiamo `<a>` nel markup. Ma normalmente intendiamo gestire i click tramite JavaScript e quidni dovremmo prevenire le azioni predefinite del browser.
 
-Like here:
+Come in questo caso:
 
 ```js
 menu.onclick = function(event) {
