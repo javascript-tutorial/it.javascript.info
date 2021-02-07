@@ -271,7 +271,7 @@ welcome(); // Errore: welcome non è definita
 */!*
 ```
 
-Questo accade perché una dichiarazione di funzione è visibile solamente all'interno del blocco di codice in cui è stata definitia.
+Questo accade perché una dichiarazione di funzione è visibile solamente all'interno del blocco di codice in cui è stata definita.
 
 Un altro esempio:
 
