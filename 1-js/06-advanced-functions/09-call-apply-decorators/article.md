@@ -239,7 +239,7 @@ Per molte applicazioni pratiche, la terza soluzione è sufficiente, quindi ci at
 Non abbiamo bisogno di passare solo `x`, ma anche gli altri argomenti in `func.call`.  
 Ricordiamo che in una `function()` sono disponibili tutti i suoi argomenti tramite il *pseudo-array* `arguments`. Quindi `func.call(this, x)` può essere sostituito con `func.call(this, ...arguments)`.
 
-IL seguente è `cachingDecorator` migliorato:
+Il seguente è `cachingDecorator` migliorato:
 
 ```js run
 let worker = {
