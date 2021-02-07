@@ -399,7 +399,7 @@ Quindi, tecnicamente prende `this` ed unisce `this[0]`, `this[1]` ...ecc. E' scr
 
 In genere è sicuro sostituire una funzione o un metodo con una sua versione "decorata", tranne per una piccola cosa. Se la funzione originale aveva proprietà associate, come `func.calledCount` o qualsiasi altra cosa, allora quella decorata non le fornirà. Perché quello è un *wrapper*, quindi bisogna stare attenti a come lo si usa.
 
-Es. nell'esempio sopra, se la funzione `slow` avesse avuto delle proprietà, allora `cachingDecorator (slow)` sarebbe stato un *wrapper* senza di esse.
+Es. nell'esempio sopra, se la funzione `slow` avesse avuto delle proprietà, allora `cachingDecorator(slow)` sarebbe stato un *wrapper* senza di esse.
 
 Alcuni *decorators* possono fornire le proprie proprietà. Per esempio, un *decorator* può contare quante volte una funzione è stata invocata e quanto tempo ha impiegato, ed esporre queste informazioni tramite le proprietà del *wrapper*.
 
