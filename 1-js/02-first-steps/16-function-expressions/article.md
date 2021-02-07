@@ -97,7 +97,7 @@ La risposta è semplice:
 - Un'espressione di funzione viene utilizzata all'interno di un'istruzione: `let sayHi = ...;`, come valore. Non è un blocco di codice. Quindi il `;` è consigliato al termine dell'istruzione, indipendentemente dal valore.  Il punto e virgola non è collegato all'espressione di funzione; più semplicemente, termina un'istruzione.
 ````
 
-## Funzioni richiamate (*callback functions*)
+## Callback functions (funzioni richiamate)
 
 Diamo un'occhiata ad ulteriori esempi di passaggio di funzione come valore e utilizzo di espressioni di funzione.
 
