@@ -1,4 +1,4 @@
-# Espressioni di funzione
+# Function expression
 
 In JavaScript, una funzione non è una "struttura magica del linguaggio", ma un valore speciale.
 
@@ -10,7 +10,7 @@ function sayHi() {
 }
 ```
 
-E' disponibile un'altra sintassi per creare una funzione, chiamata *Espressione di Funzione*.
+E' disponibile un'altra sintassi per creare una funzione, chiamata *function expression*.
 
 La sintassi:
 
@@ -65,7 +65,7 @@ Quello che succede, nel dettaglio, è:
     Ancora una volta: non ci sono parentesi dopo `sayHi`. Se ci fossero state, allora `func = sayHi()` avrebbe inserito *il risultato della chiamata* `sayHi()`, non *la funzione* `sayHi`.
 3. Adesso la funzione può essere richiamata sia con `sayHi()` che con `func()`.
 
-Avremmo anche potuto utilizzare, nella prima riga, un'espressione di funzione per dichiarare `sayHi`:
+Avremmo anche potuto utilizzare, nella prima riga, una function expression per dichiarare `sayHi`:
 
 ```js
 let sayHi = function() {
@@ -80,7 +80,7 @@ Tutto funzionerebbe ugualmente. Risulta anche più chiaro cosa sta succedendo, g
 
 
 ````smart header="Perché c'è un punto e virgola alla fine?"
-Vi starete chiedendo perché con l'espressione di funzione bisogna mettere `;` alla fine, mentre con la dichiarazione di funzione non serve:
+Vi starete chiedendo perché con la function expression bisogna mettere `;` alla fine, mentre con la dichiarazione di funzione non serve:
 
 ```js
 function sayHi() {
@@ -94,12 +94,12 @@ let sayHi = function() {
 
 La risposta è semplice:
 - Non c'è bisogno di `;` alla fine dei blocchi di codice che utilizzano una sintassi del tipo `if { ... }`, `for {  }`, `function f { }` etc.
-- Un'espressione di funzione viene utilizzata all'interno di un'istruzione: `let sayHi = ...;`, come valore. Non è un blocco di codice. Quindi il `;` è consigliato al termine dell'istruzione, indipendentemente dal valore.  Il punto e virgola non è collegato all'espressione di funzione; più semplicemente, termina un'istruzione.
+- Una function expression viene utilizzata all'interno di un'istruzione: `let sayHi = ...;`, come valore. Non è un blocco di codice. Quindi il `;` è consigliato al termine dell'istruzione, indipendentemente dal valore.  Il punto e virgola non è collegato alla function expression; più semplicemente, termina un'istruzione.
 ````
 
-## Funzioni richiamate (*callback functions*)
+## *Callback functions* (funzioni richiamate)
 
-Diamo un'occhiata ad ulteriori esempi di passaggio di funzione come valore e utilizzo di espressioni di funzione.
+Diamo un'occhiata ad ulteriori esempi di passaggio di funzione come valore e utilizzo della sintassi function expression.
 
 Scriveremo una funzione `ask(question, yes, no)` con tre parametri:
 
@@ -140,7 +140,7 @@ Queste funzioni possono essere molto utili. La principale differenza tra un'impl
 
 L'idea è di passare una funzione e di "richiamarla" più tardi se necessario. Nel nostro caso `showOk` diventa la callback per la risposta "yes", e `showCancel` per la risposta "no".
 
-Possiamo utilizzare un'espressione di funzione per scrivere la stessa funzione più concisamente:
+Possiamo utilizzare una function expression per scrivere la stessa funzione più concisamente:
 
 ```js run no-beautify
 function ask(question, yes, no) {
@@ -172,7 +172,7 @@ Possiamo passarla tra le variabili ed eseguirla quando vogliamo.
 ```
 
 
-## Espressione di Funzioni vs Dichiarazione di Funzioni
+## Function expression vs Dichiarazione di Funzioni
 
 Cerchiamo di elencare le differenze chiave tra Dichiarazioni ed Espressioni di Funzione.
 
@@ -186,10 +186,10 @@ Primo, la sintassi: come  distinguerle nel codice.
       return a + b;
     }
     ```
-- *Espressione di funzione:* una funzione, creata all'interno di un'espressione o all'interno di un altro costrutto. Qui, la funzione è creata alla destra dell' "espressione di assegnazione" `=`:
+- *Function expression:* una funzione, creata all'interno di un'espressione o all'interno di un altro costrutto. Qui, la funzione è creata alla destra dell' "espressione di assegnazione" `=`:
     
     ```js
-    // Espressione di funzione
+    // function expression
     let sum = function(a, b) {
       return a + b;
     };
@@ -197,7 +197,7 @@ Primo, la sintassi: come  distinguerle nel codice.
 
 La differenza più subdola è *quando* una funzione viene creata dal motore JavaScript.
 
-**Un'espressione di funzione viene creata quando l'esecuzione la raggiunge ed è utilizzabile solo da quel momento in poi.**
+**Una function expression viene creata quando l'esecuzione la raggiunge ed è utilizzabile solo da quel momento in poi.**
 
 Quando il flusso di esecuzione passa alla destra dell'operatore di assegnamento `let sum = function…` , la funzione viene creata e, a partire da questo momento, può essere utilizzata (assegnata, chiamata, etc...).
 
@@ -225,7 +225,7 @@ function sayHi(name) {
 
 La dichiarazione di funzione `sayHi` viene creata quando JavaScript si sta preparando ad eseguire lo script ed è visibile in ogni suo punto.
 
-...Se fosse stata un'espressione di funzione, non avrebbe funzionato:
+...Se fosse stata una function expression, non avrebbe funzionato:
 
 ```js run refresh untrusted
 *!*
@@ -271,7 +271,7 @@ welcome(); // Errore: welcome non è definita
 */!*
 ```
 
-Questo accade perché una dichiarazione di funzione è visibile solamente all'interno del blocco di codice in cui è stata definitia.
+Questo accade perché una dichiarazione di funzione è visibile solamente all'interno del blocco di codice in cui è stata definita.
 
 Un altro esempio:
 
@@ -308,7 +308,7 @@ welcome(); // Errore: welcome non è definita
 
 Cosa possiamo fare per rendere visibile `welcome` all'esterno del blocco `if`?
 
-Il giusto approccio è quello di utilizzare un'espressione di funzione ed assegnarla ad una variabile `welcome`, che viene dichiarata all'esterno di `if` ed ha quindi la corretta visibilità.
+Il giusto approccio è quello di utilizzare una function expression ed assegnarla ad una variabile `welcome`, che viene dichiarata all'esterno di `if` ed ha quindi la corretta visibilità.
 
 Ora funziona:
 
@@ -351,7 +351,7 @@ welcome(); // ora funziona
 ```
 
 
-```smart header="Quando conviene scegliere una dichiarazione di funzione piuttosto di un'espressione di funzione?"
+```smart header="Quando conviene scegliere una dichiarazione di funzione piuttosto di una function expression?"
 Come regola fondamentale, quando abbiamo la necessità di dichiarare una funzione, la prima opzione da considerare è la dichiarazione di funzione. Fornisce maggiore libertà per quanto riguarda l'organizzazione del codice, poiché possiamo utilizzare la funzione anche prima della sua dichiarazione.
 
 Risulta anche più facile vedere `function f(…) {…}`, nel codice, piuttosto di `let f = function(…) {…}`. La dichiarazione di funzione è più facile da individuare.
@@ -363,10 +363,10 @@ Risulta anche più facile vedere `function f(…) {…}`, nel codice, piuttosto 
 
 - Le funzioni sono valori. Possono essere assegnate, copiate o dichiarate in qualsiasi punto del codice.
 - Se la funzione viene dichiarata come un blocco "separato" dal flusso d'esecuzione principale del codice, tale definizione viene chiamata "dichiarazione di funzione".
-- Se la funzione viene definita tramite un'espressione, viene chiamata "espressione di funzione".
-- Le dichiarazioni di funzione vengono processate prima che il bloco di codice dove sono state definitie sia raggiunto.
-- Le espressioni di funzione vengono processate quando il flusso d'esecuzione del codice principale le raggiunge.
+- Se la funzione viene definita tramite un'espressione, viene chiamata "function expression".
+- Le dichiarazioni di funzione vengono processate prima che il blocco di codice dove sono state definite sia raggiunto.
+- Le function expression vengono processate quando il flusso d'esecuzione del codice principale le raggiunge.
 
 Nella maggior parte dei casi, quando abbiamo bisogno di dichiarare una funzione una dichiarazione di funzione è preferibile poiché è visibile anche prima della sua dichiarazione. Questo ci fornisce più flessibilità nell'organizzazione del codice, e solitamente risulta più leggibile.
 
-Dovremmo, quindi, utilizzare un'espressione di funzione solo quando una dichiarazione di funzione non è adatta a un caso specifico. Abbiamo visto un paio di esempi in questo capitolo, e ne vederemo altri in futuro.
+Dovremmo, quindi, utilizzare una function expression solo quando una dichiarazione di funzione non è adatta a un caso specifico. Abbiamo visto un paio di esempi in questo capitolo, e ne vederemo altri in futuro.
