@@ -311,7 +311,7 @@ C'è solo una sottile differenza:
 - La sintassi `...` permette di passare `args` *iterabili* come lista a `call`.
 - `apply` accetta solo *simil-array* `args`.
 
-Quindi, se ci aspettiamo un iterabile usiamo `call`, se invece ci aspettiamo un array, usiamo` apply`.
+Quindi, se ci aspettiamo un iterabile usiamo `call`, se invece ci aspettiamo un array, usiamo ` apply`.
 
 E per oggetti che sono sia iterabili che simil-array, come un vero array, possiamo usarne uno qualsiasi, ma `apply` sarà probabilmente più veloce, perché è meglio ottimizzato nella maggior parte dei motori JavaScript.
 
