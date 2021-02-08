@@ -1,6 +1,6 @@
 # Prototypal inheritance
 
-Nella programmazione, spesso vogliamo prendere qualcosa ed estenderlo.
+Nella programmazione, spesso vogliamo prendere qualcosa ed estenderla.
 
 Ad esempio, potremmo avere un oggetto `user` con le sue proprietà e i suoi metodi, e voler definire gli oggetti `admin` e `guest` come sue varianti. Vorremmo però poter riutilizzare ciò che abbiamo nell'oggetto `user`, evitando di copiare e reimplementare nuovamente i suoi metodi, quindi vorremmo semplicemente definire un nuovo oggetto a partire da esso.
 
@@ -8,15 +8,15 @@ La *prototypal inheritance* (ereditarietà dei prototype) è una caratteristica 
 
 ## [[Prototype]]
 
-In JavaScript, possiedono una speciale proprietà nascosta `[[Prototype]]` (come definito nella specifica), questo può valere `null` oppure può contenere il riferimento ad un altro oggetto. Quell'oggetto viene definito "prototype" (prototipo):
+In JavaScript, gli oggetti possiedono una speciale proprietà nascosta `[[Prototype]]` (come definito nella specifica); questo può valere `null` oppure può contenere il riferimento ad un altro oggetto. Quell'oggetto viene definito "prototype" (prototipo):
 
 ![prototype](object-prototype-empty.svg)
 
-Quando leggiamo una proprietà da `object`, e questa non esiste, JavaScript prova automaticamente a recuperarla dal suo prototype. In programmazione, questo comportamento viene definito "prototypal inheritance". Presto vederemo diversi esempi di questo tipo di ereditarietà, e vedremo anche delle interessanti caratteristiche di linguaggio basate su di essa. 
+Quando leggiamo una proprietà da `object`, e questa non esiste, JavaScript prova automaticamente a recuperarla dal suo prototype. In programmazione, questo comportamento viene definito "prototypal inheritance". Presto vederemo diversi esempi di questo tipo di ereditarietà, e vedremo anche delle interessanti caratteristiche del linguaggio basate su di essa. 
 
 La proprietà `[[Prototype]]` è interna e nascosta, ma esistono diversi modi per poterla impostare.
 
-Uno di questi è quello di utilizzare la nomenclatura speciale `__proto__`, in questo modo:
+Uno di questi è quello di utilizzare la nomenclatura speciale `__proto__`:
 
 ```js run
 let animal = {
@@ -27,7 +27,7 @@ let rabbit = {
 };
 
 *!*
-rabbit.__proto__ = animal; // imposta il prototy di rabbit,.[[Prototype]] = animal
+rabbit.__proto__ = animal; // imposta il prototype di rabbit,.[[Prototype]] = animal
 */!*
 ```
 
@@ -60,7 +60,7 @@ Successivamente, quando `alert` proverà a leggere la proprietà `rabbit.eats` `
 
 ![](proto-animal-rabbit.svg)
 
-In questo caso possiamo dire che "`animal` è il prototype di `rabbit`" o, in alternativa, che "`rabbit` prototypically inherits (eredità dal prototipo) da `animal`"
+In questo caso possiamo dire che "`animal` è il prototype di `rabbit`" o, in alternativa, che "`rabbit` *prototypically inherits* (eredità dal prototipo) da `animal`"
 
 Quindi se `animal` possiede molte proprietà e metodi utili, questi saranno automaticamente disponibili in `rabbit`. Queste proprietà vengono definite come "ereditate".
 
@@ -127,9 +127,9 @@ Ora, se provassimo a leggere qualcosa da `longEar`, e non esistesse, JavaScript 
 Ci sono solamente due limitazioni:
 
 1. Non possono esserci riferimenti circolari. JavaScript lancerebbe un errore se provassimo ad assegnare a `__proto__` un riferimento circolare.
-2. Il valore di `__proto__` può essere o un oggetto o `null`. Gli altri valore vengono ignorati.
+2. Il valore di `__proto__` può essere o un oggetto o `null`. Gli altri valori vengono ignorati.
 
-Inoltre, anche se dovrebbe essere già ovvio: può esserci solamente un `[[Prototype]]`. Un oggetto non può eridatare da più oggetti.
+Inoltre, anche se dovrebbe essere già ovvio: può esserci solamente un `[[Prototype]]`. Un oggetto non può ereditare da più oggetti.
 
 
 ```smart header="`__proto__` è un getter/setter storico per `[[Prototype]]`"
@@ -141,7 +141,7 @@ La proprietà `__proto__` è leggermente datata. Esiste solamente per ragioni st
 
 Secondo la specifica, `__proto__` deve essere supportato solamente dai browser. In realtà, tutti gli ambienti, inclusi quelli server-side, supportano `__proto__`, quindi il suo utilizzo è piuttosto sicuro.
 
-Poichè la notazione `__proto__` risulta essere più intuitiva, la utilizzeremo nei nostri esempi.
+Poiché la notazione `__proto__` risulta essere più intuitiva, la utilizzeremo nei nostri esempi.
 ```
 
 ## La scrittura non utilizza prototype
@@ -150,7 +150,7 @@ Il prototype viene utilizzato solamente per la lettura delle proprietà.
 
 Le operazioni di scrittura/rimozione utilizzano direttamente l'oggetto.
 
-Nell'esempio che vediamo sotto, assegniamo un suo metodo `walk` a `rabbit`:
+Nell'esempio che vediamo sotto, assegniamo un metodo `walk` a `rabbit`, che sarà solo suo:
 
 ```js run
 let animal = {
@@ -209,21 +209,21 @@ alert(admin.fullName); // Alice Cooper, lo stato di admin è stato modificato
 alert(user.fullName); // John Smith, lo stato di user è protetto
 ```
 
-Nell'esempio in linea `(*)` la proprietà `admin.fullName` possiede un getter nel prototype `user`, quindi viene invocato. In linea `(**)` la proprietà ha un setter nel prototype, che viene quindi invocato.
+Nell'esempio in linea `(*)` la proprietà `admin.fullName` ha un getter nel prototype `user`, quindi viene invocato. In linea `(**)` la proprietà ha un setter nel prototype, che viene quindi invocato.
 
 ## Il valore di "this"
 
-Dall'esempio sopra potrebbe sorgere una domanda interessante: qual'è il valore di `this` all'interno `set fullName(value)`? Dove vengono scritte le proprietà `this.name` e `this.surname`: in `user` o `admin`?
+Dall'esempio sopra potrebbe sorgere una domanda interessante: qual è il valore di `this` all'interno `set fullName(value)`? Dove vengono scritte le proprietà `this.name` e `this.surname`: in `user` o `admin`?
 
 La risposta è semplice: `this` non viene influenzato dai prototype.
 
-**Non ha importanza dove viene trovato il metodo: nell'oggetto o in un suo prototupe. Quando invochiamo un metodo, `this` fa sempre riferimento all'oggetto che precede il punto.**
+**Non ha importanza dove viene trovato il metodo: nell'oggetto o in un suo prototype. Quando invochiamo un metodo, `this` fa sempre riferimento all'oggetto che precede il punto.**
 
 Quindi, l'invocazione del setter `admin.fullName=` utilizza `admin` come `this`, non `user`.
 
-Questo è molto importante, poiché potremmo avere un oggetto molto grande con molti metodi, e avere diversi oggetti che ereditano da esso. Quando gli oggetti che ereditano, eseguono un metodo ereditato, andranno a modificare solamente il loro stato, non quello dell'oggetto principale.
+Questo è molto importante, poiché potremmo avere un oggetto molto grande con molti metodi, e avere diversi oggetti che ereditano da esso. Quando gli oggetti che ereditano eseguono un metodo ereditato, andranno a modificare solamente il loro stato, non quello dell'oggetto principale da cui ereditano.
 
-Ad esempio, qui `animal` rappresenta un "memorizzato di metodi", che `rabbit` utilizza.
+Ad esempio, qui `animal` rappresenta un "archivio di metodi", che `rabbit` utilizza.
 
 La chiamata `rabbit.sleep()` imposta `this.isSleeping` nell'oggetto `rabbit`:
 
@@ -256,9 +256,9 @@ Il risultato:
 
 ![](proto-animal-rabbit-walk-3.svg)
 
-Se avessimo altri oggetti, come `bird`, `snake`, etc., che ereditano da `animal`, avrebbero a loro volta accesso ai metodi di `animal`. In ogni caso, `this` all'interno della chiamata, farebbere riferimento all'oggetto corrispondente, che viene valutato al momento dell'invocazione (appena prima del punto), e non ad `animal`. Quindi quando scriviamo dati utilizzando `this`, questi verranno memorizzati nell'oggetto corrispondente.
+Se avessimo altri oggetti, come `bird`, `snake`, etc., che ereditano da `animal`, avrebbero a loro volta accesso ai metodi di `animal`. In ogni caso, `this` all'interno della chiamata farebbe riferimento all'oggetto corrispondente, che viene valutato al momento dell'invocazione (appena prima del punto), e non ad `animal`. Quindi quando scriviamo dati utilizzando `this`, questi verranno memorizzati nell'oggetto corrispondente.
 
-Come risultato otteniamo che dei metodi condivisi, mentre lo stato degli oggetti non lo è.
+Come risultato i metodi sono condivisi, mentre lo stato degli oggetti non lo è.
 
 ## Il ciclo for..in
 
@@ -282,14 +282,14 @@ alert(Object.keys(rabbit)); // jumps
 */!*
 
 *!*
-// il ciclo for..in itera sia le proprietà di rabbi, che quelle ereditate da animal
+// il ciclo for..in itera sia le proprietà di rabbit, che quelle ereditate da animal
 for(let prop in rabbit) alert(prop); // jumps, then eats
 */!*
 ```
 
-Se questo non è ciò che ci aspettiamo, e voglia escludere le proprietà ereditate, esiste un metodo integrato [obj.hasOwnProperty(key)](mdn:js/Object/hasOwnProperty): ritorna `true` se `obj` possiede la proprietà `key` come non ereditata (propria).
+Se questo non è ciò che ci aspettiamo, e voglia escludere le proprietà ereditate, esiste un metodo integrato [obj.hasOwnProperty(key)](mdn:js/Object/hasOwnProperty): ritorna `true` se `obj` possiede la propria proprietà `key` (non ereditata).
 
-Quindi possiamo filtrare le proprietà ereditate (o farci qualcos altro):
+Quindi possiamo filtrare le proprietà ereditate (o farci qualcos'altro):
 
 ```js run
 let animal = {
@@ -334,6 +334,6 @@ Questi metodi lavorano solamente sull'oggetto stesso. Le proprietà di prototype
 - Possiamo utilizzare `obj.__proto__` per accedervi (una proprietà getter/setter storica, ci sono altri modi che vederemo presto).
 - L'oggetto a cui fa riferimento `[[Prototype]]` viene chiamato "prototype".
 - Se vogliamo leggere una proprietà di `obj` o invocare un metodo, ma questo non esiste, allora JavaScript andrà a cercarlo nel prototype.
-- Le operazioni di scrittrua/rimozione agiscono direttamente nell'oggetto, non utilizzano il prototype (assumendo che questa sia una proprietà e non un setter).
+- Le operazioni di scrittura/rimozione agiscono direttamente sull'oggetto, non utilizzano il prototype (assumendo che questa sia una proprietà e non un setter).
 - Se invochiamo `obj.method()`, e il `method` viene prelevato dal prototype, `this` farà comunque riferimento a `obj`. Quindi i metodi lavoreranno sempre con l'oggetto corrente, anche se questi sono ereditati.
 - Il ciclo `for..in` itera sia le proprietà dell'oggetto che quelle ereditate. Tutti gli altri metodi di tipo getter key/value operano solamente sull'oggetto stesso.

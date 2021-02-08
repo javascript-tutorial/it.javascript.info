@@ -1,4 +1,4 @@
-Guardiamo attentamente a cosa succende nella chiamata `speedy.eat("apple")`.
+Guardiamo attentamente cosa succede nella chiamata `speedy.eat("apple")`.
 
 1. Il metodo `speedy.eat` viene trovato nel prototype (`=hamster`), eseguito con `this=speedy` (l'oggetto prima del punto).
 
@@ -77,4 +77,4 @@ alert( speedy.stomach ); // apple
 alert( lazy.stomach ); // <nothing>
 ```
 
-Una soluzione comune, tutte le proprietà che descrivono un particolare stato dell'oggetto, come `stomach`, dovrebbero essere memorizzate nell'oggetto. In questo modo eviteremo il problema.
+Come soluzione comune, tutte le proprietà che descrivono un particolare stato dell'oggetto, come `stomach`, dovrebbero essere memorizzate nell'oggetto. In questo modo eviteremo il problema.

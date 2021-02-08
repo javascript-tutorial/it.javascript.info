@@ -27,6 +27,6 @@
     alert( table.money ); // undefined
     ```
 
-2. Nei moderni engine, che valutano le performance, non c'è alcuna differenza tra il prelevare una proprietà dall'oggetto oppure direttamente dal suo prototype. Sono in grado di ricordare da dove è stata presa la proprietà e riutilizzarla alla prossima richiesta.
+2. Nei moderni engine, che valutano la performance, non c'è alcuna differenza tra il prelevare una proprietà dall'oggetto oppure direttamente dal suo prototype. Sono in grado di ricordare da dove è stata presa la proprietà e riutilizzarla alla prossima richiesta.
 
-    Ad esempio, per `pockets.glasses` loro ricordano dove hanno trovato `glasses` (in `head`), quindi la prossima volta la cercheranno proprio li. Sono anche abbastanza intelligenti da aggiornare la cache interna nel caso qualcosa cambi, quindi questa ottimizzazione è sicura.
+    Ad esempio, per `pockets.glasses` ricordano dove hanno trovato `glasses` (in `head`), quindi la prossima volta la cercheranno proprio li. Sono anche abbastanza intelligenti da aggiornare la cache interna nel caso qualcosa cambi, quindi questa ottimizzazione è sicura.

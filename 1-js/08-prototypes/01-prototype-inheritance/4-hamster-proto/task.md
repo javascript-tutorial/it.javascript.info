@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Perché entrabi i criceti sono sazi?
+# Perché entrambi i criceti sono sazi?
 
 Abbiamo due criceti: `speedy` e `lazy`, che erditano dall'oggetto `hamster`. 
 
-Quando nutriamo uno di loro, anche l'altro è sazio. Perché? Come possiamo sistemare?
+Quando nutriamo uno di loro, anche l'altro è sazio. Perché? Come possiamo sistemare il problema?
 
 ```js run
 let hamster = {
@@ -32,4 +32,3 @@ alert( speedy.stomach ); // apple
 // Anche questo lo ha ricevuto, perché? provate a sistemarlo
 alert( lazy.stomach ); // apple
 ```
-
