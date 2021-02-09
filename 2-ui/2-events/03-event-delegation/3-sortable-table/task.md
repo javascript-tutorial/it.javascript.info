@@ -6,7 +6,7 @@ importance: 4
 
 Rendere la tabella ordinabile: i click sui `<th>` dovrebbero ordinarne i valori secondo la colonna corrispondente.
 
-Ogni `<th>` ha il suo tipo specificato nell'attributo, come in qesto esempio:
+Ogni `<th>` ha il suo tipo specificato nell'attributo, come in questo esempio:
 
 ```html
 <table id="grid">
