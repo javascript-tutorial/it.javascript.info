@@ -156,7 +156,7 @@ Esempio:
 
 La proprietà `detail` può contenere qualunque tipo di dato. Tecnicamente si potrebbe farne a meno, dato che possiamo assegnare qualunque proprietà dentro un normalissimo oggetto `new Event`, dopo la sua creazione. Ma `CustomEvent` fornisce il campo speciale `detail` adatto allo scopo, con cui ci si assicura di evitare conflitti con le altre proprietà dell'evento.
 
-Oltretutto, la classe evento descrive "che tipo di evento" sia, e se si tratta di un evento personalizzato, allora possiamo usare `CustomEvent` anche solo per palesare di cosa si tratti.
+Oltretutto, la classe evento descrive "che tipo di evento" sia, e se si tratta di un evento personalizzato, quindi potremmo usare `CustomEvent` anche solo per palesare di cosa si tratti.
 
 ## event.preventDefault()
 
