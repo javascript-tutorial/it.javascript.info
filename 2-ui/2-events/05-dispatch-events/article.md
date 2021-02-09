@@ -29,7 +29,7 @@ Argomenti:
 
 Dopo la creazione di un evento, dovremmo "eseguirlo" su un elemento, attraverso la chiamata `elem.dispatchEvent(event)`.
 
-A questo punto, il gestore reagisce su di esso come se fosse un evento del browser normale. Se l'evento è stato creato con l'opzione `bubbles` attivata, allora procederà con il bubbling.
+A questo punto, il gestore reagisce su di esso come se fosse un normale evento del browser. Se l'evento è stato creato con l'opzione `bubbles` attivata, allora procederà con il bubbling.
 
 Nel seguente esempio, l'evento `click` viene inizializzato attraverso JavaScript. Il gestore si comporta esattamente come se il pulsante fosse stato cliccato:
 
