@@ -161,7 +161,7 @@ Il gestore legge l'attributo ed esegue il metodo. Diamo uno sguardo all'esempio:
 </script>
 ```
 
-Nota bene che `this.onClick` è collegato a `this` nel punto `(*)`.  Questo è importante, altrimenti `this` potrebbe riferirsi all'elemento del DOM (`elem`), e non l'oggetto `Menu`, di conseguenza `this[action]` non farebbe quello di cui abbiamo bisogno.
+Nota bene che `this.onClick` è collegato a `this` nel punto `(*)`.  Questo è importante, altrimenti `this` si riferirebbe all'elemento del DOM (`elem`), e non l'oggetto `Menu`, di conseguenza `this[action]` non farebbe quello di cui abbiamo bisogno.
 
 Quindi, quali vantaggi apporta delegation qui?
 
