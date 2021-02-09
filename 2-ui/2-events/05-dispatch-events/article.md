@@ -284,7 +284,7 @@ Nonostante tecnicamente esista la possibilità di generare eventi del browser co
 
 Non dovremmo generare eventi del browser perché è una pratica poco elegante e sporca nell'esecuzione dei gestori. La maggior parte delle volte, si tratta di cattiva architettura.
 
-Gi eventi nativi possono essere generati quando:
+Gli eventi nativi possono essere generati:
 
 - Come un modo poco pulito per far sì che delle librerie di terze parti lavorino nella maniera voluta, se queste non forniscono altri modi con cui poter interagire.
 - Per test automatici, per "cliccare il pulsante" nello script e vedere se l'interfaccia risponde correttamente.
