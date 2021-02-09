@@ -18,7 +18,7 @@ Should work like this:
 
 [iframe src="solution" height=200 border=1]
 
-In questo compito aassumiamo che tutti gli elementi con il `data-tooltip` contengano solamente testo. Nessun tag annidato.
+In questo compito assumiamo che tutti gli elementi con il `data-tooltip` contengano solamente testo. Nessun tag annidato.
 
 Dettagli:
 
