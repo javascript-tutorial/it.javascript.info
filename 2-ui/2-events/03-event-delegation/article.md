@@ -182,7 +182,7 @@ Il pattern consta di due parti:
 
 ### Comportamento: contatore
 
-Per esempio, qui l'attributo `data-counter` aggiunge un comportamento: "aumenta il valore al click" sui pulsanti:
+Per esempio, qui l'attributo `data-counter` aggiunge un comportamento: "incrementa il valore al click" sui pulsanti:
 
 ```html run autorun height=60
 Counter: <input type="button" value="1" data-counter>
