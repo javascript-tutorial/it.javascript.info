@@ -244,7 +244,7 @@ Questo non vale solo per `dispatchEvent`, ma esistono altri casi. Se un gestore 
 
 Ora mettiamo il caso che questa cosa non ci stia bene, e che invece volessimo che `onclick` venisse elaborato per primo, indipendentemente da `menu-open` o prima di qualunque altro evento interno.
 
-Allora potremmo sia inserire `dispatchEvent` (o un altra chiamata che generi un evento) alla fine di  `onclick` o, forse anche meglio, avvolgerlo in un `setTimeout` a ritardo zero:
+Allora potremmo sia inserire `dispatchEvent` (o un altra chiamata che generi un evento) alla fine di  `onclick` oppure, forse anche meglio, incapsularlo in un `setTimeout` a ritardo zero:
 
 ```html run
 <button id="menu">Menù (cliccami)</button>
