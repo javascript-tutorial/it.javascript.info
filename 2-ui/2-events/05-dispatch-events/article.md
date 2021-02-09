@@ -276,7 +276,7 @@ Il costruttore generico `Event(name, options)` accetta un nome di evento arbitra
 - `bubbles: true` se l'evento deve fare bubbling.
 - `cancelable: true` se `event.preventDefault()` deve poter funzionare.
 
-Altri costruttori di eventi nativi come `MouseEvent`, `KeyboardEvent` e così via, accettano proprietà specifiche per quel tipo di evento. Ad esempio, `clientX` per glie eventi del mouse.
+Altri costruttori di eventi nativi come `MouseEvent`, `KeyboardEvent` e così via, accettano proprietà specifiche per quel tipo di evento. Ad esempio, `clientX` per gli eventi del mouse.
 
 Per eventi personalizzati dovremmo usare il costruttore `CustomEvent`, il quale ha una opzione aggiuntiva chiamata `detail`, per potervi assegnare i dati specifici del tipo di evento, ai quali i gestori potranno accedere tramite `event.detail`.
 
