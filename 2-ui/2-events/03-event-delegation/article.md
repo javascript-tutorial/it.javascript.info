@@ -203,7 +203,7 @@ Se clicchiamo un pulsante -- il suo valore aumenterà. Non sono importanti i pul
 
 Possono esserci quanti attributi `data-counter` vogliamo. Possiamo aggiungerne di nuovi all'HTML in ogni momento. Usando la event delegation abbiamo "esteso" HTML, aggiunto un attributo che descrive un nuovo comportamento.
 
-```warn header="Pe gestori a livello di documento -- usare sempre `addEventListener`"
+```warn header="Per gestori a livello di documento -- usare sempre `addEventListener`"
 Quando assegniamo un gestore di eventi all'oggetto `document`, dovremmo sempre usare `addEventListener`, e non `document.on<event>`, perché il secondo causerebbe conflitti: dei nuovi gestori sovrascriverebbero i precedenti.
 
 Per progetti reali è normale che vi siano molti gestori su `document` impostati in punti differenti del codice.
