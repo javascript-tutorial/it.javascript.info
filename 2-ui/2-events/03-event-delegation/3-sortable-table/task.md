@@ -34,7 +34,7 @@ Ogni `<th>` ha il suo tipo specificato nell'attributo, come in qesto esempio:
 
 Nell'esempio, la prima colonna contiene numeri, la seconda -- stringhe. La funzione di ordinamento dovrebbe gestire l'ordine secondo il tipo specificato in attributo.
 
-Devono essere supportate solo i tipi `"string"` e `"number"`.
+Devono essere supportati solo i tipi `"string"` e `"number"`.
 
 Esempio funzionante:
 
