@@ -35,4 +35,4 @@ Usare la event delegation: impostare due gestori su `document` per tenere tracci
 
 Dopo che il comportamento è stato implementato, anche persone non avvezze a JavaScript possono aggiungere elementi con i tooltip.
 
-P.S.: Puà essere mostrato solo un tooltip alla volta.
+P.S.: Può essere mostrato solo un tooltip alla volta.
