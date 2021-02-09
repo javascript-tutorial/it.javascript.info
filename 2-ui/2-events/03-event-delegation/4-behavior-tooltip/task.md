@@ -27,7 +27,7 @@ Dettagli:
 - Il tooltip non dovrebbe oltrepassare i bordi della finestra. Normalmente dovrebbe stare sopra l'elemento, ma se quest'ultimo dovesse essere nella parte superiore della finestra, allora dovrebbe stare sotto.
 - Il contenuto del tooltip è dato dall'attributo `data-tooltip`. Può essere un qualunque HTML.
 
-Necessitano due eventi:
+Sono necessari due eventi:
 - `mouseover` viene innescato quando il puntatore passa sopra l'elemento.
 - `mouseout` innescato quando il puntatore abbandona un elemento.
 
