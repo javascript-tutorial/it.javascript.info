@@ -33,6 +33,6 @@ Sono necessari due eventi:
 
 Usare la event delegation: impostare due gestori su `document` per tenere traccia di tutti gli "overs" ed "outs" degli elementi con `data-tooltip` e gestirli da lì.
 
-Dopo che il comportameto sia implementato, anche persone non avvezze a JavaScript possono aggiungere elementi con i tooltip.
+Dopo che il comportamento è stato implementato, anche persone non avvezze a JavaScript possono aggiungere elementi con i tooltip.
 
 P.S.: Puà essere mostrato solo un tooltip alla volta.
