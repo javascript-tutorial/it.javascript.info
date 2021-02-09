@@ -178,7 +178,7 @@ Possiamo anche usare la event delegation per aggiungere "comportamenti" agli ele
 
 Il pattern consta di due parti:
 1. Aggiungiamo un attributo personalizzato a un elemento, che descrive il suo comportamento.
-2. Un gestore su tutto il documento tiene traccia degli eventi, e se viene scaturito un evento su un elemento con l'attributo -- esegue l'azione.
+2. Un gestore su tutto il documento tiene traccia degli eventi, e se viene attivato un evento su un elemento con quell'attributo -- esegue l'azione.
 
 ### Comportamento: contatore
 
