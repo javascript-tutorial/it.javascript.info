@@ -2,13 +2,13 @@ importance: 5
 
 ---
 
-# Tree menu
+# Menù ad albero
 
-Create a tree that shows/hides node children on click:
+Creare una struttura ad albero che al click, mostra o nasconde i nodi figli:
 
 [iframe border=1 src="solution"]
 
-Requirements:
+Requisiti:
 
-- Only one event handler (use delegation)
-- A click outside the node title (on an empty space) should not do anything.
+- Un solo gestore di eventi (usare delegation)
+- Un click fuori dal nodo del titolo (su uno spazio vuoto) non dovrebbe generare alcuna operazione.
