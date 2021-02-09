@@ -264,7 +264,7 @@ Allora potremmo sia inserire `dispatchEvent` (o un altra chiamata che generi un 
 </script>
 ```
 
-Adesso `dispatchEvent` viene eseguito in maniera asincrona, dopo che l'esecuzione del codice corrente è terminata, incluso `menu.onclick`, ed in questo modo i gestori sono totalmente separati.
+Adesso `dispatchEvent` viene eseguito in maniera asincrona dopo che l'esecuzione del codice corrente è terminata, incluso `menu.onclick`, ed in questo modo i gestori sono totalmente separati.
 
 L'ordine di output diventa: 1 -> 2 -> annidato.
 
