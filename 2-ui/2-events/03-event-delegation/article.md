@@ -111,7 +111,7 @@ Come risultato, averemo un codice di evidenziazione veloce ed efficiente, indipe
 
 Esistono altri utilizzi per l'event delegation.
 
-Poniamo il caso che volessimo fare un menù con i pulsanti "Save", "Load", "Search" e cosi via, e che via sia un oggetto con i metodi `save`, `load`, `search`... Come potremmo distinguerli?
+Poniamo il caso che volessimo fare un menù con i pulsanti "Save", "Load", "Search" e cosi via, e che vi sia un oggetto con i metodi `save`, `load`, `search`... Come potremmo distinguerli?
 
 La prima idea potrebbe essere quella di assegnare dei gestori separati per ogni pulsante. Esiste però una soluzione più elegante. Possiamo aggiungere un gestore per l'intero menù e degli attributi `data-action` per i pulsanti che devono chiamare il metodo:
 
