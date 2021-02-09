@@ -3,7 +3,7 @@
 
 Capturing e bubbling ci permettono di implementare uno dei pattern più potenti nella gestione degli eventi, e cioè *event delegation*.
 
-Il concetto alla base è che se abbiamo una serie di elementi gestiti in maniera simile, allora invece di assegnare un gestore per ognuno di essi, possiamo metterne uno solo sui loro antenati comuni.
+Il concetto di base è che se abbiamo una serie di elementi gestiti in maniera simile, allora, invece di assegnare un gestore per ognuno di essi, possiamo metterne uno solo sui loro antenati comuni.
 
 Nel gestore avremo a disposizione `event.target` per controllare l'elemento dal quale è partito l'evento e poterlo quindi gestire di conseguenza.
 
