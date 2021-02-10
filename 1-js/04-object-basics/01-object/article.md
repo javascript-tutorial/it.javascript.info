@@ -116,7 +116,7 @@ alert(user["likes birds"]); // true
 delete user["likes birds"];
 ```
 
-Ora funziona. Da notare che la stringa all'interno delle parentesi va comunque messa tra vrigolette (singole o doppie).
+Ora funziona. Da notare che la stringa all'interno delle parentesi va comunque messa tra virgolette (singole o doppie).
 
 Le parentesi quadre permettono di passare il nome della proprietà come risultato di un espressione -- a differenza delle stringhe letterali --, ad esempio una variabile:
 
