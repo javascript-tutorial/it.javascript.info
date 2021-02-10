@@ -1,6 +1,6 @@
 Certo, funziona senza problemi.
 
-La keyword `const` protegge la variabile solo dai cambiamenti *in toto*. 
+La keyword `const` protegge la variabile solo da riassegnazioni. 
 
 In altre parole, `user` memorizza un riferimento all'oggetto. Questo non può cambiare. Ma l'oggetto contenuto non ha nessun vincolo.
 
