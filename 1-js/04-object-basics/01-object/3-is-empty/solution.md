@@ -1,4 +1,4 @@
-E' sufficiente eseguire un ciclo e `return false` (ritornare falso) se l'oggetto contiene almeno una proprietà.
+E' sufficiente eseguire un ciclo e ritornare `false` se l'oggetto contiene almeno una proprietà.
 
 ```js
 function isEmpty(obj) {
