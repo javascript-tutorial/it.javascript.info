@@ -6,7 +6,7 @@ importance: 5
 
 Qui la funzione `makeUser` ritorna un oggetto.
 
-Qual'è il risultato dell'accesso a `ref`? Perché?
+Qual è il risultato dell'accesso a `ref`? Perché?
 
 ```js
 function makeUser() {
@@ -18,6 +18,6 @@ function makeUser() {
 
 let user = makeUser();
 
-alert( user.ref.name ); // What's the result?
+alert( user.ref.name ); //Qual è il risultato?
 ```
 

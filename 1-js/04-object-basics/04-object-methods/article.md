@@ -32,13 +32,13 @@ user.sayHi = function() {
 user.sayHi(); // Hello!
 ```
 
-Qui abbiamo appena utilizzato un espressione di funzione per creare una funzione ed assegnarla alla proprietà `user.sayHi` dell'oggetto.
+Qui abbiamo appena utilizzato un'espressione di funzione per creare una funzione ed assegnarla alla proprietà `user.sayHi` dell'oggetto.
 
-Successivamente possiamo chiamarla. Ora l'utente potrà parlare!
+Successivamente possiamo chiamarla. Ora l'utente può parlare!
 
 Una funzione che è una proprietà di un oggetto si chiama *metodo*.
 
-Quindi, nell'esempio abbiamo un metodo `sayHi` per l'oggetto `user`.
+Quindi, nell'esempio abbiamo un metodo `sayHi`  dell'oggetto `user`.
 
 Ovviamente possiamo utilizzare una funzione già dichiarata come metodo:
 
@@ -70,7 +70,7 @@ OOP è una grande cosa, un ambito di interesse con i propri studi. Come sceglier
 Esiste una sintassi più breve per i metodi in un oggetto letterale:
 
 ```js
-// questi oggetti sono la stessa cosa
+// questi oggetti fanno la stessa cosa
 
 user = {
   sayHi: function() {
@@ -90,11 +90,11 @@ user = {
 
 Come possiamo notare, si può omettere `"function"` e scrivere solamente `sayHi()`.
 
-A dire la verità, la notazione non è proprio uguale. Ci sono delle sottili differenze legate all'ereditarietà degli oggetti (le studieremo più avanti), per ora non hanno importanza. Nella maggior parte dei casi la forma breve viene preferita.
+A dire la verità, la notazione non è proprio uguale. Ci sono delle sottili differenze legate all'ereditarietà degli oggetti (le studieremo più avanti), ma per ora non hanno importanza. Nella maggior parte dei casi la forma breve viene preferita.
 
 ## "this" nei metodi
 
-E' molto comune che un metodo abbia necessità di accedere alle informazioni memorizzate nell'oggetto, per eseguire determinate azioni.
+E' molto comune che, per eseguire determinate azioni, un metodo abbia necessità di accedere alle informazioni memorizzate nell'oggetto.
 
 Ad esempio, il codice dentro `user.sayHi()` potrebbe aver bisogno del nome dell'`user`.
 
@@ -121,9 +121,9 @@ let user = {
 user.sayHi(); // John
 ```
 
-Quindi in fase di esecuzione quando viene chiamato il metodo `user.sayHi()`, il valore di `this` sarà `user`.
+In fase di esecuzione, quando viene chiamato il metodo `user.sayHi()`, il valore di `this` sarà `user`.
 
-Tecnicamente, è possibile accedere all'oggetto anche senza `this`, tramite riferimento come variabile esterna:
+Tecnicamente, è possibile accedere all'oggetto anche senza `this`; lo si fa tramite riferimento alla variabile esterna:
 
 ```js
 let user = {
@@ -139,9 +139,9 @@ let user = {
 };
 ```
 
-...Questo codice è instabile. Se decidessimo di copiare `user` in un'altra variabile, ad esempio `admin = user` e sovrascrivere `user` con qualcos'altro, allora verrebbe effettuato l'accesso all'oggetto sbagliato.
+...Questo codice è instabile. Se decidessimo di copiare `user` in un'altra variabile, ad esempio `admin = user` e sovrascrivere `user` con qualcos'altro, verrebbe allora effettuato l'accesso all'oggetto sbagliato.
 
-Lo dimostriamo:
+Dimostriamolo:
 
 ```js run
 let user = {
@@ -169,7 +169,7 @@ Se scriviamo `this.name` piuttosto di `user.name` all'interno di `alert`, il cod
 
 ## "this" non ha limiti
 
-In JavaScript, la parola chiave "this" si comporta diversamente da molti altri linguaggi di programmazione. Essa può essere usata in qualsiasi funzione, anche se non si tratta di un metodo di un oggetto.
+In JavaScript, la parola chiave "this" si comporta diversamente da come fa in molti altri linguaggi di programmazione. Essa può essere usata in qualsiasi funzione, anche se non si tratta del metodo di un oggetto.
 
 Non c'è alcun errore di sintassi in un codice come questo:
 
@@ -179,7 +179,7 @@ function sayHi() {
 }
 ```
 
-Il valore di `this` viene valutato in esecuzione. E può essere un valore qualsiasi.
+Il valore di `this` viene valutato al momento dell'esecuzione. E può essere un valore qualsiasi.
 
 Ad esempio, la stessa funzione potrebbe avere diversi "this" quando viene chiamata da oggetti diversi:
 
@@ -205,7 +205,7 @@ admin.f(); // Admin  (this == admin)
 admin['f'](); // Admin (il punto o le parentesi quadre forniscono entrambi accesso ai metodi - non c'è differenza)
 ```
 
-La regola è semplice: se viene chiamato `obj.f()`, allora `this` vale `obj` durante la chiamata di `f`. Quindi nell'esempio sopra assume il valore sia di `user` che di `admin`.
+La regola è semplice: se viene chiamato `obj.f()`, allora, durante la chiamata di `f`, `this` si riferisce a `obj`. Nell'esempio sopra assume il valore sia di `user` che di `admin`.
 
 ````smart header="Invocazione senza un oggetto: `this == undefined`"
 Possiamo anche chiamare la funzione senza un oggetto:
@@ -220,22 +220,22 @@ sayHi(); // undefined
 
 In questo caso `this`  è `undefined` in modalità strict. Se tentiamo di accedere a `this.name`, ci sarà un errore.
 
-Se non è attiva la modalità strict (quindi se ci dimentichiamo `use strict`) il valor di `this` in questo sarà *l'oggetto globale* (`window` in un browser, lo studieremo più avanti nel capitolo [](info:global-object)). Questo strano comportamento ha delle motivazioni storiche, che `"use strict"` risolve.
+Se non è attiva la modalità *strict*  il valore di `this` in questo caso sarà *l'oggetto globale* (`window` in un browser, lo studieremo più avanti nel capitolo [](info:global-object)). Questo strano comportamento ha delle motivazioni storiche, che `"use strict"` risolve.
 
-Solitamente questo tipo di chiamate rappresenta un errore di programmazione. Se c'è un `this` all'interno di una funzione, ci si aspetta che sia chiamato nel contesto di un oggetto.
+Solitamente questo tipo di chiamate significano un errore di programmazione. Se c'è un `this` all'interno di una funzione, ci si aspetta che sia chiamato da un oggetto.
 ````
 
 ```smart header="Le conseguenze della libertà di `this`"
-Se avete utilizzato altri linguaggi di programmazione, probabilmente la vostra idea è di un "`this` limitato", quando viene definito un metodo in un oggetto questo avrà sempre in `this` il riferimento all'oggetto.
+Se avete utilizzato altri linguaggi di programmazione, probabilmente sarete abituati all'idea di un "`this` limitato": quando viene definito un metodo in un oggetto, questo avrà sempre in `this` il riferimento all'oggetto.
 
-In JavaScript `this` è "libero", il suo valore viene prelevato durante l'esecuzione e non dipende da dove il metodo è stato definito, ma piuttosto dall'oggetto "prima del punto".
+In JavaScript `this` è "libero", il suo valore viene calcolato durante l'esecuzione e non dipende da dove il metodo è stato definito, ma piuttosto dall'oggetto "prima del punto".
 
 Il concetto di valutare `this` durante l'esecuzione ha i suoi pregi e difetti. Da una parte una funzione può essere riutilizzata per oggetti diversi, dall'altra questa grande flessibilità può essere fonte di molti errori.
 
-La nostra posizione non è di giudicare se questa caratteristica del linguaggio sia buona o cattiva, ma si tratta di capire come lavorare con essa sfruttandone i benefici ed evitando i problemi.
+Il nostro scopo non è di giudicare se questa caratteristica del linguaggio sia buona o cattiva, ma di capire come lavorare con essa sfruttandone i benefici ed evitando i problemi.
 ```
 
-## Arrow functions have no "this"
+## Le arrow functions non hanno "this"
 
 Ad esempio, qui `arrow()` usa `this` preso dal metodo esterno `user.sayHi()`:
 
@@ -251,18 +251,18 @@ let user = {
 user.sayHi(); // Ilya
 ```
 
-Questa è una speciale caratteristica delle funzioni freccia, è utile quando non vogliamo avere un ulteriore `this`, ma utilizzare quello del contesto esterno. Più avanti nel capitolo <info:arrow-functions> studieremo più in dettaglio le funzioni freccia.
+Questa è una speciale caratteristica delle arrow functions; è utile quando non vogliamo avere un ulteriore `this`, ma utilizzare quello del contesto esterno. Più avanti nel capitolo <info:arrow-functions> studieremo più in dettaglio le arrow functions.
 
 
 ## Riepilogo
 
 - Le funzioni che vengono memorizzate come proprietà di un oggetto vengono dette "metodi".
-- I metodi consentono agli oggetti di "agire" come `object.doSomething()`.
+- I metodi consentono agli oggetti di "agire", come `object.doSomething()`.
 - I metodi possono riferirsi all'oggetto tramite `this`.
 
 Il valore `this` viene definito durante l'esecuzione (run-time).
 - Quando una funzione viene dichiarata, può utilizzare `this`, ma questo `this` non avrà alcun valore fino a che la funzione non verrà chiamata.
-- La funzione può essere copiata in vari oggetti.
-- Quando una funzione viene chiamata come "metodo": `object.method()`, il valore di `this` durante la chiamata vale `object`.
+- Una funzione può essere copiata in vari oggetti.
+- Quando una funzione viene chiamata come "metodo": `object.method()`, il valore di `this` durante la chiamata si riferisce a `object`.
 
-Da notare che le funzioni freccia sono speciali: non hanno `this`. Quando si prova ad accedere a `this` in una funzione freccia, questo verrà preso dal contesto esterno.
+Da notare che le arrow functions sono speciali: non hanno `this`. Quando si prova ad accedere a `this` in una funzione freccia, questo verrà preso dal contesto esterno.

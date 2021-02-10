@@ -16,9 +16,9 @@ alert( user.ref.name ); // Error: Cannot read property 'name' of undefined
 
 Questo avviene perché le regole che impostano `this` non guardano agli oggetti letterali. 
 
-Qui il valore di `this` dentro `makeUser()` è `undefined`, perché viene chiamato come una funzione, non come un metodo.
+Qui il valore di `this` dentro `makeUser()` è `undefined`, perché viene chiamato dentro una funzione, non un metodo.
 
-E gli oggetti letterali non hanno alcun effetto su `this`. Il valore di `this` è unico per tutta la funzione, quindi i blocchi di codice e gli oggetti letterali non hanno alcuna importanza.
+Gli oggetti letterali non hanno alcun effetto su `this`. Il valore di `this` è unico per tutta la funzione, quindi i blocchi di codice e gli oggetti letterali che vi si trovano dentro non hanno alcuna importanza.
 
 Quindi `ref: this` prende il `this` della funzione.
 
@@ -31,7 +31,7 @@ function makeUser(){
 
 alert( makeUser().name ); // Error: Cannot read property 'name' of undefined
 ```
-Come puoi vedere, il risultato di  `alert( makeUser().name )` è lo stesso di `alert( user.ref.name )` nell'esempio precedente.
+Come possiamo vedere, il risultato di  `alert( makeUser().name )` è lo stesso di `alert( user.ref.name )` nell'esempio precedente.
 
 Qui abbiamo il caso opposto:
 
@@ -52,6 +52,6 @@ let user = makeUser();
 alert( user.ref().name ); // John
 ```
 
-Ora funziona, perché `user.ref()` è un metodo. E il valore di `this` viene impostato all'oggetto prima del punto `.`.
+Ora funziona, perché `user.ref()` è un metodo. E il valore di `this` si riferisce all'oggetto prima del punto `.`.
 
 
