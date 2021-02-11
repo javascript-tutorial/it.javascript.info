@@ -1,6 +1,6 @@
 # Azioni predefinite del browser
 
-Molti eventi vengono ricondotti verso determinate azioni eseguite dal browser.
+Molti eventi vengono ricondotti verso determinate azioni del browser.
 
 Per esempio:
 
@@ -8,16 +8,16 @@ Per esempio:
 - Un click su un pulsante di invio di un form - inizializza l'invio dello stesso al server.
 - Premendo e spostando il pulsante su un testo - lo seleziona.
 
-Quando gestiamo un evento con JavaScript, potremmo non volere affatto che la corrispondente azione del browser avvenga, ed implementare, invece, un altro comportamento.
+Quando gestiamo un evento con JavaScript, potremmo non volere affatto che la corrispondente azione del browser avvenga, ed implementare invece un altro comportamento.
 
 ## Prevenire le azioni del browser
 
 Ci sono due maniere per comunicare al browser che non vogliamo che esegua alcuna azione:
 
-- La maniera principale è quella di usare l'oggetto `event`, all'interno del quale c'è il metodo `event.preventDefault()`.
-- Se il gestore viene assegnato tramite `on<event>` (e non tramite `addEventListener`), allora restiruire `false` avrà lo stesso effetto.
+- La maniera principale è quella di usare l'oggetto `event`, dentro il quale c'è il metodo `event.preventDefault()`.
+- Se il gestore viene assegnato tramite `on<event>` (e non tramite `addEventListener`), allora restituire `false` sortirà lo stesso effetto.
 
-In questo HTML un click su un link non porta a navigarlo, il browser di fatto non fa nulla:
+In questo HTML un click su un link non porta a navigarne l'URL, e di fatto il browser  non fa nulla:
 
 ```html autorun height=60 no-beautify
 <a href="/" onclick="return false">Clicca qui</a>
@@ -25,10 +25,10 @@ o
 <a href="/" onclick="event.preventDefault()">qui</a>
 ```
 
-Nel prossimo esempio useremo questa tecnicaper creare un menù potenziato via JavaScript.
+Nel prossimo esempio useremo questa tecnica per creare un menù potenziato tramite JavaScript.
 
 ```warn header="Restituire `false` da un gestore è un'eccezione"
-Il valore restituito da un gestore evento solitamente viene ignorato.
+Il valore restituito da un gestore di eventi solitamente viene ignorato.
 
 L'unica eccezione è il `return false` di un gestore assegnato con l'uso di `on<event>`.
 
@@ -37,7 +37,7 @@ In tutti gli altri casi, il valore del `return` viene ignorato. Nello specifico,
 
 ### Esempio: il menù
 
-Considera un menù di questo tipo:
+Consideriamo un menù di questo tipo:
 
 ```html
 <ul id="menu" class="menu">
@@ -47,16 +47,16 @@ Considera un menù di questo tipo:
 </ul>
 ```
 
-Ecco come appare con un po' di CSS:
+Ecco come appare applicando qualche stile CSS:
 
 [iframe height=70 src="menu" link edit]
 
-Gli elementi del menù sono implementati com links HTML `<a>`, non pulsanti `<button>`. Ci sono tanti ragioni per fare ciò, per esempio:
+Gli elementi del menù sono implementati come links HTML `<a>`, e non pulsanti `<button>`. Ci sono tante ragioni per fare ciò, per esempio:
 
 - A molte persone piace usare "tasto destro" -- "apri in una nuova finestra". Se usassimo `<button>` oppure `<span>`, questa funzionalità non potrebbe essere usata.
-- I motori di ricerca seguono i link `<a href="...">` per l'indicizzazione.
+- I motori di ricerca seguono i link `<a href="...">` nel processo di indicizzazione.
 
-Quindi usiamo `<a>` nel markup. Ma normalmente intendiamo gestire i click tramite JavaScript e quidni dovremmo prevenire le azioni predefinite del browser.
+Questo è il motivo per cui usiamo `<a>` nel markup. Ma dato che normalmente intendiamo gestire i click tramite JavaScript, dovremo prevenire le azioni predefinite del browser.
 
 Come in questo caso:
 
@@ -65,98 +65,98 @@ menu.onclick = function(event) {
   if (event.target.nodeName != 'A') return;
 
   let href = event.target.getAttribute('href');
-  alert( href ); // ...can be loading from the server, UI generation etc
+  alert( href ); // ...possono derivare dai dati scaricati dal server, dalla generazione della UI, etc. 
 
 *!*
-  return false; // prevent browser action (don't go to the URL)
+  return false; // previene l'azione del browser (non reindirizza verso l'URL)
 */!*
 };
 ```
 
-If we omit `return false`, then after our code executes the browser will do its "default action" -- navigating to the URL in `href`. And we don't need that here, as we're handling the click by ourselves.
+Se omettessimo `return false`, subito dopo l'esecuzione del nostro codice, il browser compirebbe la sua "azione predefinita" -- navigando quindi verso l'URL impostato nell'`href`. E non è ciò che vogliamo, dal momento che stiamo gestendo noi stessi il click.
 
-By the way, using event delegation here makes our menu very flexible. We can add nested lists and style them using CSS to "slide down".
+A proposito, qui l'utilizzo dell'event delegation rende il nostro menù molto flessibile. Possiamo aggiungere liste annidate e stilizzare usando i CSS per farle "scendere a mo' di tendina".
 
-````smart header="Follow-up events"
-Certain events flow one into another. If we prevent the first event, there will be no second.
+````smart header="Eventi a seguire"
+Certi eventi scorrono in una sola direzione. Se preveniamo il primo evento, quello seguente (conseguentemente correlato) non ci sarà.
 
-For instance, `mousedown` on an `<input>` field leads to focusing in it, and the `focus` event. If we prevent the `mousedown` event, there's no focus.
+Ad esempio, il `mousedown` su un campo `<input>` porta al focus su di esso, e a seguire all'evento `focus`. Se preveniamo l'evento `mousedown`, il focus non ci sarà.
 
-Try to click on the first `<input>` below -- the `focus` event happens. But if you click the second one, there's no focus.
+Proviamo a cliccare sul primo `<input>` -- verrà innescato l'evento `focus`. Cliccando una seconda volta, no.
 
 ```html run autorun
-<input value="Focus works" onfocus="this.value=''">
-<input *!*onmousedown="return false"*/!* onfocus="this.value=''" value="Click me">
+<input value="Il focus funziona" onfocus="this.value=''">
+<input *!*onmousedown="return false"*/!* onfocus="this.value=''" value="Cliccami">
 ```
 
-That's because the browser action is canceled on `mousedown`. The focusing is still possible if we use another way to enter the input. For instance, the `key:Tab` key to switch from the 1st input into the 2nd. But not with the mouse click any more.
+Questo perché l'azione del browser viene annullata sul `mousedown`. Il focus sarà ancora possibile se usiamo un altro modo per entrare nell'input. Ad esempio con il tasto `key:Tab` per spostasi dal primo input al secondo. Ma non più con il click del mouse.
 ````
 
-## The "passive" handler option
+## L'opzione "passive" del gestore
 
-The optional `passive: true` option of `addEventListener` signals the browser that the handler is not going to call `preventDefault()`.
+L'opzione facoltativa `passive: true` di `addEventListener` segnala al browser che il gestore non chiamerà `preventDefault()`.
 
-Why that may be needed?
+Perché dovrebbe essere necessaria una cosa del genere?
 
-There are some events like `touchmove` on mobile devices (when the user moves their finger across the screen), that cause scrolling by default, but that scrolling can be prevented using `preventDefault()` in the handler.
+Ci sono alcuni eventi come `touchmove` su dispositivi *mobile* (quando l'utente sposta le dita lungo lo schermo), che di default causerebbero lo scrolling, ma ciò può essere evitato con `preventDefault()` sul gestore.
 
-So when the browser detects such event, it has first to process all handlers, and then if `preventDefault` is not called anywhere, it can proceed with scrolling. That may cause unnecessary delays and "jitters" in the UI.
+E così quando il browser rileva questo evento, prima elabora tutti i vari gestori, ed infine, solo nel caso in cui `preventDefault` non sia stato chiamato da nessuno dei gestori, procede con lo scrolling. Questa cosa potrebbe causare dei ritardi non voluti o dei "jitters" a video sulla UI.
 
-The `passive: true` options tells the browser that the handler is not going to cancel scrolling. Then browser scrolls immediately providing a maximally fluent experience, and the event is handled by the way.
+L'opzione `passive: true` comunica al browser che il gestore non annullerà lo scrolling e il browser scrollerà la pagina immediatamente fornendo un'esperienza con la massima fluidità, con gli eventi che verranno gestiti all'occorrenza.
 
-For some browsers (Firefox, Chrome), `passive` is `true` by default for `touchstart` and `touchmove` events.
+Per alcuni browser (Firefox, Chrome), `passive` è impostato a `true` di default per gli eventi `touchstart` e `touchmove`.
 
 
 ## event.defaultPrevented
 
-The property `event.defaultPrevented` is `true` if the default action was prevented, and `false` otherwise.
+La proprietà `event.defaultPrevented` sarà `true` se l'azione predefinita sarà stata prevenuta, altrimenti sarà `false`.
 
-There's an interesting use case for it.
+C'è un relativo caso d'uso interessante.
 
-You remember in the chapter <info:bubbling-and-capturing> we talked about `event.stopPropagation()` and why stopping bubbling is bad?
+Ricordate nel capitolo <info:bubbling-and-capturing> quando abbiamo discusso di `event.stopPropagation()` e del perché interrompere il bubbling fosse una cattiva idea?
 
-Sometimes we can use `event.defaultPrevented` instead, to signal other event handlers that the event was handled.
+Qualche volta, possiamo usare `event.defaultPrevented`, per avvisare gli altri gestori che l'evento è stato gestito.
 
-Let's see a practical example.
+Vediamo un esempio pratico.
 
-By default the browser on `contextmenu` event (right mouse click) shows a context menu with standard options. We can prevent it and show our own, like this:
+Di default il browser, nell'evento `contextmenu` (tasto destro del mouse) mostra il menù contestuale con le opzioni standard. Possiamo prevenirlo e mostrare il nostro, come in questo esempio:
 
 ```html autorun height=50 no-beautify run
-<button>Right-click shows browser context menu</button>
+<button>Il click sul tasto destro mostra il menù contestuale</button>
 
-<button *!*oncontextmenu="alert('Draw our menu'); return false"*/!*>
-  Right-click shows our context menu
+<button *!*oncontextmenu="alert('Mostra il nostro menu'); return false"*/!*>
+  Il click sul tasto destro mostra il nostro menù contestuale
 </button>
 ```
 
-Now, in addition to that context menu we'd like to implement document-wide context menu.
+Adesso, in aggiunta a questo menù, ci piacerebbe implementare un menù contestuale sul *documento*.
 
-Upon right click, the closest context menu should show up.
+Al click sul tasto destro, dovrebbe comparire il relativo menù contestuale.
 
 ```html autorun height=80 no-beautify run
-<p>Right-click here for the document context menu</p>
-<button id="elem">Right-click here for the button context menu</button>
+<p>Click sul tasto destro per il menù contestuale del documento</p>
+<button id="elem">Clicca qui col tasto destro per il menu contestuale del pulsante</button>
 
 <script>
   elem.oncontextmenu = function(event) {
     event.preventDefault();
-    alert("Button context menu");
+    alert("Menu contestuale del pulsante");
   };
 
   document.oncontextmenu = function(event) {
     event.preventDefault();
-    alert("Document context menu");
+    alert("Menu contestuale del documento");
   };
 </script>
 ```
 
-The problem is that when we click on `elem`, we get two menus: the button-level and (the event bubbles up) the document-level menu.
+Il problema è che così facendo, cliccando su `elem`, otterremmo due menù: quello del pulsante (l'evento va risalendo per via del bubbling) e quello del documento.
 
-How to fix it? One of solutions is to think like: "When we handle right-click in the button handler, let's stop its bubbling" and use `event.stopPropagation()`:
+Come possiamo evitarlo? Una delle soluzioni è fare questo ragionamento: "Quando gestiamo il click sul tasto destro nel gestore del pulsante, stoppiamo il bubbling" e usiamo `event.stopPropagation()`:
 
 ```html autorun height=80 no-beautify run
-<p>Right-click for the document menu</p>
-<button id="elem">Right-click for the button menu (fixed with event.stopPropagation)</button>
+<p>Click sul tasto destro per il documento</p>
+<button id="elem">Click sul tasto destro per il menù del pulsante (sistemato con event.stopPropagation)</button>
 
 <script>
   elem.oncontextmenu = function(event) {
@@ -164,29 +164,29 @@ How to fix it? One of solutions is to think like: "When we handle right-click in
 *!*
     event.stopPropagation();
 */!*
-    alert("Button context menu");
+    alert("Menu contestuale del pulsante");
   };
 
   document.oncontextmenu = function(event) {
     event.preventDefault();
-    alert("Document context menu");
+    alert("Menu contestuale del documento");
   };
 </script>
 ```
 
-Now the button-level menu works as intended. But the price is high. We forever deny access to information about right-clicks for any outer code, including counters that gather statistics and so on. That's quite unwise.
+A questo punto il menù del pulsante funzionerà come previsto. Ma il prezzo sarà alto, perché a quel punto negheremo per sempre l'accesso alle informazioni relative ai click sul tasto destro, a qualunque altro codice esterno, inclusi contatori che raccologono statistiche e così via. Ed è una cosa poco saggia.
 
-An alternative solution would be to check in the `document` handler if the default action was prevented? If it is so, then the event was handled, and we don't need to react on it.
+Una soluzione alternativa potrebbe essere quella di controllare nel gestore del `document` se l'azione predefinita sia stata prevenuta. Se così fosse, significherebbe che l'evento è stato gestito, e quindi non sarà necessario gestirlo a sua volta.
 
 
 ```html autorun height=80 no-beautify run
-<p>Right-click for the document menu (added a check for event.defaultPrevented)</p>
-<button id="elem">Right-click for the button menu</button>
+<p>Click sul tasto destro per il menu del documento (aggiunto un controllo per event.defaultPrevented)</p>
+<button id="elem">Click sul tasto destro per il menù del pulsante</button>
 
 <script>
   elem.oncontextmenu = function(event) {
     event.preventDefault();
-    alert("Button context menu");
+    alert("Menu contestuale del pulsante");
   };
 
   document.oncontextmenu = function(event) {
@@ -195,50 +195,50 @@ An alternative solution would be to check in the `document` handler if the defau
 */!*
 
     event.preventDefault();
-    alert("Document context menu");
+    alert("Menu contestuale del documento");
   };
 </script>
 ```
 
-Now everything also works correctly. If we have nested elements, and each of them has a context menu of its own, that would also work. Just make sure to check for `event.defaultPrevented` in each `contextmenu` handler.
+Ora funziona tutto correttamente. Se abbiamo elementi annidati, ed ognuno di essi ha un suo menù contestuale, funzionerà anche questo. Dobbiamo solo assicurarci di controllare `event.defaultPrevented` in ogni gestore di `contextmenu`.
 
 ```smart header="event.stopPropagation() and event.preventDefault()"
-As we can clearly see, `event.stopPropagation()` and `event.preventDefault()` (also known as `return false`) are two different things. They are not related to each other.
+Come possiamo chiaramente notare, `event.stopPropagation()` ed `event.preventDefault()` (conosciuto anche come `return false`) sono due cose diverse. Non sono relazionate tra loro.
 ```
 
-```smart header="Nested context menus architecture"
-There are also alternative ways to implement nested context menus. One of them is to have a single global object with a handler for `document.oncontextmenu`, and also methods that allow us to store other handlers in it.
+```smart header="Architettura dei menù contestuali annidati"
+Ci sono pure dei modi alternativi per implementare i menù contestuali annidati. Uno di questi è quello di avere un singolo oggetto globale con un solo gestore per `document.oncontextmenu`, e metodi che ci permettono di gestire altri gestori al suo interno.
 
-The object will catch any right-click, look through stored handlers and run the appropriate one.
+L'oggetto catturerà ogni click sul tasto destro, controllando tra i suoi gestori ed eseguire quello appropriato.
 
-But then each piece of code that wants a context menu should know about that object and use its help instead of the own `contextmenu` handler.
+Ma in questo caso ogni pezzo di codice che vuole implementare un menù contestuale, dovrebbe conoscere l'esistenza di questo oggetto e del suo supporto, invece di avere il proprio gestore per `contextmenu`.
 ```
 
-## Summary
+## Riepilogo
 
-There are many default browser actions:
+Ci sono tante azioni predefinite del borwser:
 
-- `mousedown` -- starts the selection (move the mouse to select).
-- `click` on `<input type="checkbox">` -- checks/unchecks the `input`.
-- `submit` -- clicking an `<input type="submit">` or hitting `key:Enter` inside a form field causes this event to happen, and the browser submits the form after it.
-- `keydown` -- pressing a key may lead to adding a character into a field, or other actions.
-- `contextmenu` -- the event happens on a right-click, the action is to show the browser context menu.
-- ...there are more...
+- `mousedown` -- comincia una selezione (spostare il mouse per continuare a selezionare).
+- `click` su `<input type="checkbox">` -- check/uncheck sull'`input`.
+- `submit` -- cliccando su `<input type="submit">` o premendo su `key:Enter` dentro un campo del form, scatena questo evento, ed il browser invia il form subito dopo.
+- `keydown` -- premendo un tasto può portare ad aggiungere un carattere dentro un campo, o altre azioni.
+- `contextmenu` -- viene scatenato al click sul tasto destro, e l'azione che ne deriva è quella di mostarre il menù contestuale del browser.
+- ...e ce ne sono altri...
 
-All the default actions can be prevented if we want to handle the event exclusively by JavaScript.
+Tutte le azione predefinite possono essere prevenute se vogliamo gestire gli eventi esclusivamente tramite JavaScript.
 
-To prevent a default action -- use either `event.preventDefault()` or  `return false`. The second method works only for handlers assigned with `on<event>`.
+Per prevenire un'azione predefinita -- si possono usare `event.preventDefault()` oppure  `return false`. Il secondo metodo è valido solo con gestori assegnati con `on<event>`.
 
-The `passive: true` option of `addEventListener` tells the browser that the action is not going to be prevented. That's useful for some mobile events, like `touchstart` and `touchmove`, to tell the browser that it should not wait for all handlers to finish before scrolling.
+L'opzione `passive: true` di  `addEventListener` comunica al browser che l'azione non sarà prevenuta. La sua utilità si palesa per eventi su dispositivi mobiles, come ad esempio `touchstart` e `touchmove`, per comunicare al browser che non deve attendere l'esecuzione di tutti i gestori prima di effettuare lo scrolling.
 
-If the default action was prevented, the value of `event.defaultPrevented` becomes `true`, otherwise it's `false`.
+Se l'azione predefinita è stata prevenuta, il valore di `event.defaultPrevented` diventa `true`, altrimenti è `false`.
 
-```warn header="Stay semantic, don't abuse"
-Technically, by preventing default actions and adding JavaScript we can customize the behavior of any elements. For instance, we can make a link `<a>` work like a button, and a button `<button>` behave as a link (redirect to another URL or so).
+```warn header="Aderire alla semantica, non farne abuso"
+Tecnicamente, prevenendo le azioni predefinite del browser e aggiungendo JavaScript, possiamo personalizzare il comportamento di qualunque elemento. Per esempio, possiamo fare in modo che un link `<a>` si comporti come un  pulsante, e un pulsante `<button>` come un link (redirezione su un altro URL o cose del genere).
 
-But we should generally keep the semantic meaning of HTML elements. For instance, `<a>` should perform navigation, not a button.
+Generalmente però, dovremmo mantenere il significato semantico degli elementi HTML. Per esempio, `<a>` dovrebbe comportare una navigazione, e non essere un pulsante.
 
-Besides being "just a good thing", that makes your HTML better in terms of accessibility.
+Oltre ad essere una "solo una cosa buona", ciò rende l'HTML migliore in termini di accessibilità.
 
-Also if we consider the example with `<a>`, then please note: a browser allows us to open such links in a new window (by right-clicking them and other means). And people like that. But if we make a button behave as a link using JavaScript and even look like a link using CSS, then `<a>`-specific browser features still won't work for it.
+Inoltre se consideriamo l'esempio con `<a>`, notiamo bene che: un browser ci permette di default di aprire questi links in una nuova finestra (cliccando sul tasto destro e con altri mezzi). E alla gente questo piace. Ma se invece creiamo un pulsante, che si comporta come se fosse un link usando JavaScript, e che appaia come se fosse un link con l'ausilio dei CSS, le funzionalità del browser, che specificatamente dedicate agli elementi `<a>`, non funzioneranno per il pulsante.
 ```
