@@ -38,7 +38,7 @@ Successivamente possiamo chiamarla. Ora l'utente può parlare!
 
 Una funzione che è una proprietà di un oggetto si chiama *metodo*.
 
-Quindi, nell'esempio abbiamo un metodo `sayHi`  dell'oggetto `user`.
+Quindi, nell'esempio abbiamo un metodo `sayHi` dell'oggetto `user`.
 
 Ovviamente possiamo utilizzare una funzione già dichiarata come metodo:
 
@@ -220,7 +220,7 @@ sayHi(); // undefined
 
 In questo caso `this`  è `undefined` in modalità strict. Se tentiamo di accedere a `this.name`, ci sarà un errore.
 
-Se non è attiva la modalità *strict*  il valore di `this` in questo caso sarà *l'oggetto globale* (`window` in un browser, lo studieremo più avanti nel capitolo [](info:global-object)). Questo strano comportamento ha delle motivazioni storiche, che `"use strict"` risolve.
+Se non è attiva la modalità *strict* il valore di `this` in questo caso sarà *l'oggetto globale* (`window` in un browser, lo studieremo più avanti nel capitolo [](info:global-object)). Questo strano comportamento ha delle motivazioni storiche, che `"use strict"` risolve.
 
 Solitamente questo tipo di chiamate significano un errore di programmazione. Se c'è un `this` all'interno di una funzione, ci si aspetta che sia chiamato da un oggetto.
 ````
