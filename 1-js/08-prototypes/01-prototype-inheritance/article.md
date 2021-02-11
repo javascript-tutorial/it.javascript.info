@@ -126,7 +126,7 @@ Ora, se provassimo a leggere qualcosa da `longEar`, e non esistesse, JavaScript 
 
 Ci sono solamente due limitazioni:
 
-1. Non possono esserci riferimenti circolari. JavaScript lancerebbe un errore se provassimo ad assegnare a `__proto__` un riferimento circolare.
+1. Non possono esserci riferimenti circolari. JavaScript restituirebbe un errore se provassimo ad assegnare a `__proto__` un riferimento circolare.
 2. Il valore di `__proto__` può essere o un oggetto o `null`. Gli altri valori vengono ignorati.
 
 Inoltre, anche se dovrebbe essere già ovvio: può esserci solamente un `[[Prototype]]`. Un oggetto non può ereditare da più oggetti.
@@ -135,7 +135,7 @@ Inoltre, anche se dovrebbe essere già ovvio: può esserci solamente un `[[Proto
 ```smart header="`__proto__` è un getter/setter storico per `[[Prototype]]`"
 E' un errore comune tra i principianti quello di non conoscere la differenza tra questi due.
 
-Da notare che `__proto__` non è *la stessa cosa* della proprietà `[[Prototype]]`. E' solamente un getter/setter per `[[Prototype]]`. Più avanti vedremo alcune situazioni in cui questa differenza avrà importanza, quando avremo una buona conoscenza del linguaggio JavaScript.
+Da notare che `__proto__` non è *la stessa cosa* della proprietà `[[Prototype]]`. E' solamente un getter/setter per `[[Prototype]]`. Più avanti vedremo alcune situazioni in cui questa differenza avrà importanza, ma per ora tenetelo solo a mente.
 
 La proprietà `__proto__` è leggermente datata. Esiste solamente per ragioni storiche, la versione attuale di JavaScript suggerisce di utilizzare le funzioni `Object.getPrototypeOf/Object.setPrototypeOf` per impostare il prototype. Vedremo meglio queste funzioni più avanti.
 
@@ -209,7 +209,7 @@ alert(admin.fullName); // Alice Cooper, lo stato di admin è stato modificato
 alert(user.fullName); // John Smith, lo stato di user è protetto
 ```
 
-Nell'esempio in linea `(*)` la proprietà `admin.fullName` ha un getter nel prototype `user`, quindi viene invocato. In linea `(**)` la proprietà ha un setter nel prototype, che viene quindi invocato.
+Nell'esempio, alla linea `(*)` la proprietà `admin.fullName` ha un getter nel prototype `user`, quindi viene invocato. E alla linea `(**)` la proprietà ha un setter nel prototype, che viene quindi invocato.
 
 ## Il valore di "this"
 
@@ -287,7 +287,7 @@ for(let prop in rabbit) alert(prop); // jumps, then eats
 */!*
 ```
 
-Se questo non è ciò che ci aspettiamo, e voglia escludere le proprietà ereditate, esiste un metodo integrato [obj.hasOwnProperty(key)](mdn:js/Object/hasOwnProperty): ritorna `true` se `obj` possiede la propria proprietà `key` (non ereditata).
+Se questo non è ciò che ci aspettiamo, e vogliamo escludere le proprietà ereditate, esiste un metodo integrato [obj.hasOwnProperty(key)](mdn:js/Object/hasOwnProperty): ritorna `true` se `obj` possiede la propria proprietà `key` (non ereditata).
 
 Quindi possiamo filtrare le proprietà ereditate (o farci qualcos'altro):
 

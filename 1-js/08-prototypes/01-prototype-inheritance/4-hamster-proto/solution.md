@@ -44,7 +44,7 @@ alert( lazy.stomach ); // <nothing>
 
 Ora tutto funziona bene, perché `this.stomach=` non deve andare alla ricerca di `stomach`. Il valore è scritto direttamente nell'oggetto `this`.
 
-Possiamo anche evitare completamente il problema, facendo in modo che ogni criceto abbia il suo stoamco:
+Possiamo anche evitare completamente il problema, facendo in modo che ogni criceto abbia il suo stomaco:
 
 ```js run
 let hamster = {

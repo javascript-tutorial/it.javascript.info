@@ -4,7 +4,7 @@ importance: 5
 
 # Perché entrambi i criceti sono sazi?
 
-Abbiamo due criceti: `speedy` e `lazy`, che erditano dall'oggetto `hamster`. 
+Abbiamo due criceti: `speedy` e `lazy`, che ereditano dall'oggetto `hamster`. 
 
 Quando nutriamo uno di loro, anche l'altro è sazio. Perché? Come possiamo sistemare il problema?
 
