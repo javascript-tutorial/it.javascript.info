@@ -36,4 +36,4 @@ Modificare il codice di `up`, `down` e `showStep` per rendere le chiamate concat
 ladder.up().up().down().showStep(); // 1
 ```
 
-Questo approcio è largamente utilizzato dalle librerie JavaScript.
+Questo approccio è largamente utilizzato dalle librerie JavaScript.
