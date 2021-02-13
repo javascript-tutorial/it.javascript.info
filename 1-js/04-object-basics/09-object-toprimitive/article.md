@@ -1,26 +1,26 @@
 
-# Conversione da oggetto a primitiva
+# Conversione da oggetto a primitivi
 
-Cosa acca de quando degli oggetti vengono sommati `obj1 + obj2`, sottratti `obj1 - obj2` o stampati tramite `alert(obj)`?
+Cosa accade quando degli oggetti vengono sommati `obj1 + obj2`, sottratti `obj1 - obj2` o mostrati tramite `alert(obj)`?
 
-In questo caso gli oggetti vengono auto convertiti a primitivi, e successivamente viene gestita l'operazione.
+In questo caso gli oggetti vengono auto convertiti a primitivi; successivamente viene gestita l'operazione.
 
-Nel capitolo <info:type-conversions> abbiamo visto le regole per quelle di tipo numerico, string e boolean. Però abbiamo lasciato un vuoto riguardo gli oggetti. Adesso che conosciamo i metodi e i symbol diventa più semplice parlarne.
+Nel capitolo <info:type-conversions> abbiamo visto le regole per le conversioni dei primitivi di tipo numerico, stringa e booleano. Però abbiamo lasciato un vuoto riguardo gli oggetti. Adesso che conosciamo i metodi e i symbol diventa più semplice parlarne.
 
-1. Tutti gli oggetti sono `true` in un contesto booleano. Ci sono solamente conversioni numeriche e a stringhe.
+1. Tutti gli oggetti sono `true` in contesto booleano. Ci sono solamente conversioni numeriche e a stringhe.
 2. La conversione numerica avviene quando eseguiamo una sottrazione tra oggetti oppure applichiamo funzioni matematiche. Ad esempio, gli oggetti `Date` (che studieremo nel capitolo <info:date>) possono essere sottratti, ed il risultato di `date1 - date2` è la differenza di tempo tra le due date.
-3. Le conversioni a stringa -- solitamente accadono quando stampiamo un oggetto come `alert(obj)` e in altri contesti simili.
+3. Le conversioni a stringa -- solitamente avvengono quando mostriamo un oggetto, come in `alert(obj)` e in altri contesti simili.
 
 ## ToPrimitive
 
 Possiamo gestire la conversione numerica o a stringa, utilizzando dei metodi speciali dell'oggetto.
 
-L'algoritmo di conversione si chiama `ToPrimitive` ([specification](https://tc39.github.io/ecma262/#sec-toprimitive)). In base al contesto, la conversione viene definita "hint" ("suggerimento").
+L'algoritmo di conversione si chiama `ToPrimitive`. In base al contesto, la conversione viene definita "hint" ("suggerimento"), ed è descritta nella ([specification](https://tc39.github.io/ecma262/#sec-toprimitive)).
 
 Ci sono tre varianti:
 
 `"string"`
-: Un operazione di conversione oggetto a stringa, avviene quando un operazione si apetta una stringa, come `alert`:
+: Un'operazione di conversione oggetto a stringa, avviene quando un operazione si apetta una stringa, come `alert`:
 
     ```js
     // output
@@ -46,7 +46,7 @@ Ci sono tre varianti:
     ```
 
 `"default"`
-: Utilizzata in casi rari quando l'operatore "non è sicuro" del tipo necessario.
+: Utilizzata in casi rari quando l'operatore "non è sicuro" del tipo da aspettarsi.
 
     Ad esempio, la somma binaria `+` può essere utilizzata sia con le stringhe (per concatenarle) sia con i numeri (per eseguire la somma), quindi sia la conversione a stringa che quella a tipo numerico potrebbero andare bene. Oppure quando un oggetto viene confrontato usando `==` con una stringa, un numero o un symbol.
 
@@ -67,7 +67,7 @@ Notate -- ci sono solo tre hint. Semplice. Non esiste alcuna conversione al tipo
 **Per eseguire la conversione JavaScript tenta di chiamare tre metodi dell'oggetto:**
 
 1. Chiama `obj[Symbol.toPrimitive](hint)` se il metodo esiste,
-2. Altrimenti se "hint" è di tipo `"string"`
+2. Altrimenti, se "hint" è di tipo `"string"`
     - prova `obj.toString()` e `obj.valueOf()`, sempre se esistono.
 3. Altrimenti se "hint" è di tipo `"number"` o `"default"`
     - prova `obj.valueOf()` and `obj.toString()`, sempre se esistono.
@@ -102,14 +102,14 @@ alert(+user); // hint: number -> 1000
 alert(user + 500); // hint: default -> 1500
 ```
 
-Come possiamo vedere dal codice, `user` diventa una stringa auto-descrittiva o una quantità di soldi, in base al tipo di conversione. Il semplice metodo `user[Symbol.toPrimitive]` gestisce tutte le conversioni.
+Come possiamo vedere nel codice, `user` diventa una stringa auto-descrittiva o una quantità di soldi, in base al tipo di conversione. Il semplice metodo `user[Symbol.toPrimitive]` gestisce tutte le conversioni.
 
 
 ## toString/valueOf
 
 I metodi `toString` e `valueOf` sono molto vecchi. Non sono symbol (i symbol sono stati introdotti recentemente), ma dei metodi "classici". Forniscono un alternativa "old-style" per implementare le conversioni.
 
-Se non è presente `Symbol.toPrimitive` allora JavaScript prova a richiamare questi due metodi nell'ordine:
+Se non è presente `Symbol.toPrimitive`, JavaScript prova a richiamare questi due metodi nell'ordine:
 
 - `toString -> valueOf` per hint di tipo "string".
 - `valueOf -> toString` altrimenti.
@@ -157,30 +157,58 @@ In assenza di `Symbol.toPrimitive` e `valueOf`, `toString` gestirà tutte le con
 
 ## Tipi di ritorno
 
-Una cosa importante da sapere riguardo tutte le conversioni primitive è che non devono necessariamente ritornare il tipo "hint" (suggerito).
+Una cosa importante da sapere riguardo le conversioni primitive è che non devono necessariamente ritornare il tipo "hint" (suggerito).
 
-There is no control whether `toString` returns exactly a string, or whether `Symbol.toPrimitive` method returns a number for a hint `"number"`.
+Non c'è controllo riguardo al ritorno; ad esempio se `toString` ritorna effettivamente una stringa, o se `Symbol.toPrimitive` ritorna un numero per una *hint* `"number"`
 
 L'unico obbligo: questi metodi devono ritornare un tipo primitivo, non un oggetto.
 
 ```smart header="Note storiche"
-Per ragioni storiche, se `toString` o `valueOf` ritornasse un oggetto, non ci sarebbero errori, ma sarebbe semplicemente ignorato(come se il metodo non esistesse). Questo accade perché inzialmente in JavaScript non c'era il concetto di "errore".
+Per ragioni storiche, se `toString` o `valueOf` ritornassero un oggetto, non ci sarebbero errori, ma il risultato sarebbe ignorato (come se il metodo non esistesse). Questo accade perché inzialmente in JavaScript non c'era il concetto di "errore".
 
 Invece, `Symbol.toPrimitive` *deve* ritornare un tipo primitivo, altrimenti ci sarebbe un errore.
 ```
 
-## Further conversions
+## Ulteriori conversioni
 
-As we know already, many operators and functions perform type conversions, e.g. multiplication `*` converts operands to numbers.
+Come già sappiamo, molti operatori eseguono una conversione dei tipi, per esempio l'operatore `*`, che converte gli operandi a numeri.
 
-If we pass an object as an argument, then there are two stages:
-1. The object is converted to a primitive (using the rules described above).
-2. If the resulting primitive isn't of the right type, it's converted.
+Se passiamo un oggetto come argomento, ci sono due passaggi:
+1. L'oggetto è convertito a primitivo (secondo le regole spiegate sopra).
+2. Se il risultato primitivo non è del tipo giusto, viene convertito.
 
 Ad esempio:
 
+```js run
+let obj = {
+  // toString handles all conversions in the absence of other methods
+  toString() {
+    return "2";
+  }
+};
+
+alert(obj * 2); // 4, object converted to primitive "2", then multiplication made it a number
+```
+
+1. La moltiplicazione `obj * 2` prima converte l'oggetto a primitivo (è una stringa, `"2"`).
+2. Quindi `"2" * 2` diventa `2 * 2` (la stringa è convertita a numero).
+
+Binary plus will concatenate strings in the same situation, as it gladly accepts a string:
+L'operatorio binario `+` concatenerebbe delle stringhe nella stessa situazione:
+
+```js run
+let obj = {
+  toString() {
+    return "2";
+  }
+};
+
+alert(obj + 2); // 22 ("2" + 2), conversion to primitive returned a string => concatenation
+```
+
 ## Riepilogo
 
+La conversione di un oggetto a primitivo viene automaticamene effettuata da molte funzioni integrate e da operatori che si aspettano un primitivo come valore.
 Ce ne sono tre tipi (hint):
 - `"string"` (per `alert` e altre conversioni al tipo string)
 - `"number"` (per operazioni matematiche)
@@ -197,4 +225,4 @@ L'algoritmo di conversione segue questi passi:
 3. Altrimenti se "hint" è di tipo `"number"` o `"default"`
     - prova `obj.valueOf()` and `obj.toString()`, sempre se esiste.
 
-Nella pratica, spesso è sufficiente implementare solo `obj.toString()` come metodo che "cattura tutte" le conversioni, e ritorna una rappresentazione dell'oggetto "interpretabile dall'uomo".  
+Nella pratica, spesso è sufficiente implementare solo `obj.toString()` come metodo che "cattura tutte" le conversioni e ritorna una rappresentazione dell'oggetto "interpretabile dall'uomo", per mostrarlo o per il debugging.  
