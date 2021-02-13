@@ -51,7 +51,7 @@ Ecco come appare applicando qualche stile CSS:
 
 [iframe height=70 src="menu" link edit]
 
-Gli elementi del menù sono implementati come links HTML `<a>`, e non pulsanti `<button>`. Ci sono tante ragioni per fare ciò, per esempio:
+Gli elementi del menù sono implementati come links HTML `<a>`, e non come pulsanti `<button>`. Ci sono tante ragioni per fare ciò, per esempio:
 
 - A molte persone piace usare "tasto destro" -- "apri in una nuova finestra". Se usassimo `<button>` oppure `<span>`, questa funzionalità non potrebbe essere usata.
 - I motori di ricerca seguono i link `<a href="...">` nel processo di indicizzazione.
