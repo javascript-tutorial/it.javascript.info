@@ -7,13 +7,13 @@ Il concatenamento opzionale (optional chaining), `?.`, è un modo sicuro di acce
 
 ## Il problema della "proprietà inesistente"
 
-Se avete appena cominciato a leggere il tutorial e a imparare JavaScript, forse questo problema non lo avete ancora affrontato, ma è piuttosto comune.
+Se avete appena cominciato a leggere questo tutorial e a imparare JavaScript, forse questo problema non lo avete ancora affrontato, ma è piuttosto comune.
 
 Ad esempio, ipotizziamo di avere un oggetto `user`, in cui sono memorizzate le informazioni relative ai nostri utenti.
 
 La maggior parte dei nostri utenti possiedono l'indirizzo nella proprietà `user.address`, la via in `user.address.street`, ma qualcuno potrebbe non averle fornite.
 
-In questo caso, quando proviamo ad accedere a `user.address.street`, e l'utente non possiede un indirizzo, otterremo un errore:
+In questo caso, quando proviamo ad accedere a `user.address.street`, e l'utente non possiede un indirizzo, avremo un errore:
 
 ```js run
 let user = {}; // un utente senza la proprietà "address"
@@ -23,7 +23,7 @@ alert(user.address.street); // Errore!
 
 Questo è il risultato che ci si aspetta. JavaScript funziona in questo modo. Se `user.address` è `undefined`, un tentativo di accesso a `user.address.street` fallirà con un errore.
 
-Nella maggior parte dei casi, preferiremmo avere `undefined` piuttosto di un errore (con il significato "nessuna via").
+Nella maggior parte dei casi, preferiremmo avere `undefined` piuttosto di un errore (in questo caso con il significato "nessuna via").
 
 ... Un altro esempio. Il metodo `document.querySelector('.elem')` ritorna un oggetto che corrisponde ad un elemento della pagina web, che ritorna `null` quando l'elemento non esite.
 
@@ -36,7 +36,7 @@ Di nuovo, se un elemente non esiste, otterremo un errore nel tentativo di accede
 
 Come possiamo farlo?
 
-La soluzione più ovvia sarebbe di controllare il valore utilizzando `if` o l'operatore condizionale `?`, prima di accedere alle proprietà, come nell'esempio:
+La soluzione più ovvia sarebbe di controllare il valore utilizzando `if` o l'operatore condizionale `?` prima di accedere alle proprietà, come nell'esempio:
 
 ```js
 let user = {};
@@ -68,7 +68,7 @@ alert( user.address && user.address.street && user.address.street.name ); // und
 
 Concatenare con `&&` l'intero percorso verso la proprietà ci assicura che tutti i componenti esistano (in caso contrario, la valutazione si interrompe), ma non è comunque l'ideale.
 
-Come potete vedere, il nome della proprietà è ancora duplicato nel codice. Ad esempio, nel codice sopra, `user.address` è ripetuto tre volte.
+Come potete vedere, i nome delle proprietà sono ancora duplicate nel codice. Ad esempio, nel codice sopra, `user.address` è ripetuto tre volte.
 
 Questo è il motivo per cui la concatenazione opzionale `?.` è stata aggiunta al linguaggio. Per risolvere questo problema una volta per tutte!
 
@@ -76,7 +76,7 @@ Questo è il motivo per cui la concatenazione opzionale `?.` è stata aggiunta a
 
 La concatenazione opzionale `?.` interrompe la valutazione se il valore prima di `?.` è `undefined` o `null`, e ritorna `undefined`.
 
-**D'ora in poi in questo articolo, per brevità, diremo che qualcosa "esiste" se non è ne `null` né `undefined`.**
+**D'ora in poi, in questo articolo, per brevità diremo che qualcosa "esiste" se non è né `null` né `undefined`.**
 
 In altre parole, `value?.prop`:
 - funziona come `value.prop`, se `value` esiste,
@@ -92,7 +92,7 @@ alert( user?.address?.street ); // undefined (nessun errore)
 
 Il codice è corto e pulito, non c'è alcuna duplicazione.
 
-Leggendo l'indirizzo con `user?.address` funzionerebbe anche se l'oggetto `user` non esistesse:
+Leggere l'indirizzo con `user?.address` funzionerebbe anche se l'oggetto `user` non esistesse:
 
 ```js run
 let user = null;
@@ -127,7 +127,7 @@ La variabile deve essere dichiarata (ad esempio come `let/const/var user` o come
 
 Come detto in precedenza, il costrutto `?.` interrompe immediatamente (manda in "corto circuito") la valutazione se la proprietà a destra non esiste.
 
-Quindi, nel caso ci siano ulteriori chiamate a funzione o side-effects, questi non verranno elaborati.
+Quindi, nel caso ci siano ulteriori chiamate a funzione o side-effects, questi non verranno eseguiti.
 
 Ad esempio:
 
@@ -170,7 +170,7 @@ Qui, in entrambe le righe, come prima cosa abbiamo utilizzato il punto (`user1.a
 
 Successivamente `?.()` controlla la parte sinistra: se la funzione `admin` esiste, allora viene eseguita (ciò che accade con `user1`). Altrimenti (con `user2`) la valutazione si interrompe senza errori.
 
-La sintassi `?.` funziona anche con le parentesi `[]` (invece del punto `.`). Come nei casi precedenti, possiamo accedere con sicurezza ad una proprietà di un oggetto che potrebbe non esistere.
+La sintassi `?.` funziona anche con le parentesi `[]` (invece del punto `.`). Come nei casi precedenti, possiamo accedere con sicurezza alla proprietà di un oggetto che potrebbe non esistere.
 
 ```js run
 let key = "firstName";
@@ -213,7 +213,7 @@ La concatenazione opzionale `?.` ha tre forme:
 2. `obj?.[prop]` -- ritorna `obj[prop]` se `obj` esiste, altrimenti ritorna `undefined`.
 3. `obj.method?.()` -- invoca `obj.method()` se `obj.method` esiste, altrimenti ritorna `undefined`.
 
-Come possiamo vedere, le tre forme sono semplici da utilizzare. Il costrutto `?.` verifica che la parte sinistra non sia `null/undefined`; se non lo è, permette alla valutazione di proseguire, altrimenti interrompe immediatamente la valutazione.
+Come possiamo vedere, le tre forme sono semplici da utilizzare. Il costrutto `?.` verifica che la parte sinistra non sia `null/undefined`; se non lo è, permette alla valutazione di proseguire, altrimenti la interrompe immediatamente.
 
 La concatenazione di `?.` permette di accedere in sicurezza a proprietà annidate.
 
