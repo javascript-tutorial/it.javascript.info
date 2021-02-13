@@ -222,7 +222,7 @@ Ci sono tante azioni predefinite del browser:
 - `click` su `<input type="checkbox">` -- check/uncheck sull'`input`.
 - `submit` -- cliccando su `<input type="submit">` o premendo su `key:Enter` dentro un campo del form, scatena questo evento, ed il browser invia il form subito dopo.
 - `keydown` -- premendo un tasto può portare ad aggiungere un carattere dentro un campo, o altre azioni.
-- `contextmenu` -- viene scatenato al click sul tasto destro, e l'azione che ne deriva è quella di mostarre il menù contestuale del browser.
+- `contextmenu` -- viene scatenato al click sul tasto destro, e l'azione che ne deriva è quella di mostrare il menù contestuale del browser.
 - ...e ce ne sono altri...
 
 Tutte le azione predefinite possono essere prevenute se vogliamo gestire gli eventi esclusivamente tramite JavaScript.
