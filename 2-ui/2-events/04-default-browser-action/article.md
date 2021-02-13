@@ -6,7 +6,7 @@ Per esempio:
 
 - Un click su un link - inizializza la navigazione verso il suo URL.
 - Un click su un pulsante di invio di un form - inizializza l'invio verso il server.
-- Premendo e spostando il pulsante su un testo - lo seleziona.
+- Premendo e spostando il pulsante su un testo - lo si seleziona.
 
 Quando gestiamo un evento con JavaScript, potremmo non volere affatto che la corrispondente azione del browser avvenga, ed implementare invece un altro comportamento.
 
