@@ -4,7 +4,7 @@ importance: 3
 
 # Perché "return false" non funziona?
 
-Perchè nel seguente codice `return false` non funziona per niente?
+Perché nel seguente codice `return false` non funziona per niente?
 
 ```html autorun run
 <script>
