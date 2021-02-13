@@ -75,7 +75,7 @@ menu.onclick = function(event) {
 
 Se omettessimo `return false`, subito dopo l'esecuzione del nostro codice, il browser compirebbe la sua "azione predefinita" -- navigando quindi verso l'URL impostato nell'`href`. E non è ciò che vogliamo, dal momento che stiamo gestendo noi stessi il click.
 
-A proposito, qui l'utilizzo dell'event delegation rende il nostro menù molto flessibile. Possiamo aggiungere liste annidate e stilizzare usando i CSS per farle "scendere a mo' di tendina".
+A proposito, qui l'utilizzo dell'event delegation rende il nostro menù molto flessibile. Possiamo aggiungere liste annidate e stilizzarle usando i CSS per farle "scendere a mo' di tendina".
 
 ````smart header="Eventi a seguire"
 Certi eventi scorrono in una sola direzione. Se preveniamo il primo evento, quello seguente (conseguentemente correlato) non ci sarà.
