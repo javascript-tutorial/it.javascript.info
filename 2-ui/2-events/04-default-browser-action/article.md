@@ -152,7 +152,7 @@ Al click sul tasto destro, dovrebbe comparire il relativo menù contestuale.
 
 Il problema è che così facendo, cliccando su `elem`, otterremmo due menù: quello del pulsante (l'evento va risalendo per via del bubbling) e quello del documento.
 
-Come possiamo evitarlo? Una delle soluzioni è fare questo ragionamento: "Quando gestiamo il click sul tasto destro nel gestore del pulsante, stoppiamo il bubbling" e usiamo `event.stopPropagation()`:
+Come possiamo evitarlo? Una delle soluzioni è fare questo ragionamento: "Quando gestiamo il click sul tasto destro nel gestore del pulsante, interrompiamo il bubbling" e usiamo `event.stopPropagation()`:
 
 ```html autorun height=80 no-beautify run
 <p>Click sul tasto destro per il documento</p>
