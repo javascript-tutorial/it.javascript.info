@@ -176,7 +176,7 @@ Come possiamo evitarlo? Una delle soluzioni è fare questo ragionamento: "Quando
 
 A questo punto il menù del pulsante funzionerà come previsto. Ma il prezzo sarà alto, perché a quel punto negheremo per sempre l'accesso alle informazioni relative ai click sul tasto destro, a qualunque altro codice esterno, inclusi contatori che raccolgono statistiche e così via. Ed è una cosa poco saggia.
 
-Una soluzione alternativa potrebbe essere quella di controllare nel gestore del `document` se l'azione predefinita sia stata prevenuta. Se così fosse, significherebbe che l'evento è stato gestito, e quindi non sarà necessario gestirlo a sua volta.
+Una soluzione alternativa potrebbe essere quella di controllare nel gestore del `document` se l'azione predefinita sia stata prevenuta. Se così fosse, significherebbe che l'evento è stato gestito, e quindi non sarà necessario gestirlo nuovamente.
 
 
 ```html autorun height=80 no-beautify run
