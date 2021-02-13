@@ -240,5 +240,5 @@ Generalmente però, dovremmo mantenere il significato semantico degli elementi H
 
 Non è "solamente una cosa buona", ciò rende l'HTML migliore in termini di accessibilità.
 
-Inoltre se consideriamo l'esempio con `<a>`, notiamo bene che: un browser ci permette di default di aprire questi links in una nuova finestra (cliccando sul tasto destro e con altri mezzi). E alla gente questo piace. Ma se invece creiamo un pulsante, che si comporta come se fosse un link usando JavaScript, e che appaia come se fosse un link con l'ausilio dei CSS, le funzionalità del browser, che specificatamente dedicate agli elementi `<a>`, non funzioneranno per il pulsante.
+Inoltre se consideriamo l'esempio con `<a>`, notiamo bene che: un browser ci permette di default di aprire questi links in una nuova finestra (cliccando sul tasto destro e con altri mezzi). E agli utenti questo piace. Ma se invece creiamo un pulsante, che si comporta come se fosse un link usando JavaScript, e che appaia come se fosse un link con l'ausilio dei CSS, le funzionalità del browser, che specificatamente dedicate agli elementi `<a>`, non funzioneranno per il pulsante.
 ```
