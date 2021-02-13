@@ -216,7 +216,7 @@ Ma in questo caso ogni pezzo di codice che vuole implementare un menù contestua
 
 ## Riepilogo
 
-Ci sono tante azioni predefinite del borwser:
+Ci sono tante azioni predefinite del browser:
 
 - `mousedown` -- comincia una selezione (spostare il mouse per continuare a selezionare).
 - `click` su `<input type="checkbox">` -- check/uncheck sull'`input`.
