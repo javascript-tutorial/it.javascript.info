@@ -22,7 +22,7 @@ Possiamo anche usare il carattere underscore `_` come separatore:
 let billion = 1_000_000_000;
 ```
 
-Qui il carattere `_` gioca il ruolo di "szucchero sintattico", cioè rende il numero più leggibile. Il motore JavaScript semplicemente ignorerà i caratteri `_` tra le cifre, quindi è come scrive il milione di poco sopra.
+Qui il carattere `_` gioca il ruolo di "zucchero sintattico", cioè rende il numero più leggibile. Il motore JavaScript semplicemente ignorerà i caratteri `_` tra le cifre, quindi è equivalente al milione scritto sopra.
 
 Nella vita reale però cerchiamo di evitare di scrivere lunghe file di zeri per evitare errori. E anche perché siamo pigri. Solitamente scriviamo qualcosa del tipo `"1ml"` per un milione o `"7.3ml"` 7 milioni e 300mila. Lo stesso vale per i numeri più grandi.
 
@@ -38,8 +38,8 @@ In altre parole, `"e"` moltiplica il numero `1` seguito dal numero di zeri dati.
 
 
 ```js
-1e3 = 1 * 1000 // e3 means *1000
-1.23e6 = 1.23 * 1000000 // e6 means *1000000
+1e3 = 1 * 1000 // e3 significa *1000
+1.23e6 = 1.23 * 1000000 // e6 significa *1000000
 ```
 
 Ora proviamo a scrivere qualcosa di molto piccolo. Ad esempio, 1 microsecondo (un milionesimo di secondo): 
@@ -77,7 +77,7 @@ alert( 0xff ); // 255
 alert( 0xFF ); // 255 (equivalente)
 ```
 
-I sistemi binario e ottale sono utilizzati raramente, ma sono comunque supportati con l'utilizzo dei prefissi `0b` e `0o`:
+Il sistema binario e ottale sono utilizzati raramente, ma sono comunque supportati con l'utilizzo dei prefissi `0b` e `0o`:
 
 
 ```js run
@@ -91,7 +91,7 @@ Ci sono solo 3 sistemi di numerazione con questo livello di supporto. Per gli al
 
 ## toString(base)
 
-Il metodo `num.toString(base)` ritorna una rappresentazione in stringa del numero `num` con il sistema numerazione fornito `base`.
+Il metodo `num.toString(base)` ritorna una rappresentazione in stringa del numero `num` con il sistema di numerazione fornito `base`.
 
 Ad esempio:
 ```js run
@@ -150,7 +150,7 @@ Qui abbiamo una tabella che riassume le principali differenze:
 |`-1.6`|  `-2`    |   `-1`  |    `-2`  |   `-1`   |
 
 
-Queste funzioni coprono tutti i possibili casi quando trattiamo numeri con una parte decimale. Come potremmo fare se volessi arrotondare il numero ad `n` cifre dopo la virgola?
+Queste funzioni coprono tutti i possibili casi quando trattiamo numeri con una parte decimale. Come potremmo fare se volessimo arrotondare il numero ad `n` cifre dopo la virgola?
 
 Ad esempio, abbiamo `1.2345` e vogliamo arrotondarlo a due cifre dopo la virgola, tenendo solo `1.23`.
 
@@ -214,7 +214,7 @@ Strano! Quale può essere il risultato se non `0.3`?
 alert( 0.1 + 0.2 ); // 0.30000000000000004
 ```
 
-Ouch! Ci possono essere molte conseguenze dovute ad un errato confronto. Immaginate di progettare un sito di e-shop in cui i visitatori aggiungono al carrello articoli da `$0.10` e `$0.20`. Poi come prezzo totale viene mostrato `$0.30000000000000004`. Questo risultato lascerebbe sorpreso chiunque.
+Ouch! Un confronto errato di questo tipo può generare diverse conseguenze. Immaginate di progettare un sito di e-shop in cui i visitatori aggiungono al carrello articoli da `$0.10` e `$0.20`. Poi come prezzo totale viene mostrato `$0.30000000000000004`. Questo risultato lascerebbe sorpreso chiunque.
 
 Ma perché accade questo?
 
@@ -252,7 +252,7 @@ let sum = 0.1 + 0.2;
 alert( sum.toFixed(2) ); // 0.30
 ```
 
-    Da notare che `toFixed` ritorna sempre una stringa. Viene cosi garantito che ci siano almeno due cifre dopo la virgola decimale. Questo ci torna molto utile se abbiamo un e-shopping e vogliamo mostrare `$0.30`. Per tutti gli altri casi possiamo semplicemente chiamare la conversione con l'operatore di somma unaria:
+Da notare che `toFixed` ritorna sempre una stringa. Viene cosi garantito che ci siano almeno due cifre dopo la virgola decimale. Questo ci torna molto utile se abbiamo un e-shopping e vogliamo mostrare `$0.30`. Per tutti gli altri casi possiamo semplicemente chiamare la conversione con l'operatore di somma unaria:
 
 ```js run
 let sum = 0.1 + 0.2;
@@ -266,13 +266,13 @@ alert( (0.1 * 10 + 0.2 * 10) / 10 ); // 0.3
 alert( (0.28 * 100 + 0.14 * 100) / 100); // 0.4200000000000001
 ```
 
-    Questo funziona perché quando facciamo `0.1 * 10 = 1` e `0.2 * 10 = 2` entrambi diventano interi, non vi è quindi perdita di precisione. 
+Questo funziona perché quando facciamo `0.1 * 10 = 1` e `0.2 * 10 = 2` entrambi diventano interi, non vi è quindi perdita di precisione. 
 
-3. Se abbiamo a che fare con dei prezzi, la miglior soluzione rimane quella di memorizzare tutti i prezzi in centesimi, evitando quindi di utilizzare i numeri con virgola. Ma cosa succede se proviamo ad applicare uno sconto del 30%? Nella pratica, evadere completamente questo problema è difficile, in alcuni casi possono tornare utili entrambe le soluzioni viste sopra.
+3. Se abbiamo a che fare con dei prezzi, la miglior soluzione rimane quella di memorizzare tutti i prezzi in centesimi, evitando quindi di utilizzare i numeri con virgola. Ma cosa succede se proviamo ad applicare uno sconto del 30%? Nella pratica, evitare completamente questo problema è difficile, in alcuni casi possono tornare utili entrambe le soluzioni viste sopra.
 
 Quindi, l'approccio moltiplicazione/divisione riduce gli errori, ma non li elimina completamente.
 
-Talvolta possiamo evitare le frazioni. Ad esempio se abbiamo a che fare con un negozio, allora possiamo memorizzare i prezzi in centesimi piuttosto che in dollari.  
+Talvolta possiamo evitare le frazioni. Ad esempio se abbiamo a che fare con un negozio, allora possiamo memorizzare i prezzi in centesimi piuttosto che in euro.
 
 ````smart header="La cosa divertente"
 Provate ad eseguire questo:
@@ -424,7 +424,7 @@ Un paio di esempi:
 
 Ci sono molte altre funzioni e costanti nell'oggetto `Math`, incluse quelle trigonometriche, che potete trovare nella [documentazione dell'oggetto Math](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math).
 
-``````
+
 ## Riepilogo
 
 Per scrivere numeri molto grandi:
@@ -434,11 +434,13 @@ Per scrivere numeri molto grandi:
 
 Per diversi sistemi numerici:
 
-Per convertire a numeri valori del tipo `12pt` e `100px`:
-
 - Potete scrivere direttamente in esadecimale (`0x`), ottale (`0o`) e binario (`0b`) 
 - `parseInt(str, base)` analizza un numero intero con un qualsiasi sistema numerico con base: `2 ≤ base ≤ 36`.
 - `num.toString(base)` converte un numero ad una stringa utilizzando il sistema numerico fornito in `base`.
+
+Per convertire a numeri valori del tipo `12pt` e `100px`:
+
+- Utilizzate parseInt/parseFloat per un conversione "soft", i quali provano a leggere un numero da una stringa e ritornano ciò che sono riusciuti ad estrarre prima di interrompersi.
 
 Per i numeri con la virgola:
 

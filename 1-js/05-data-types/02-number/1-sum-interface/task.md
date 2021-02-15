@@ -4,9 +4,9 @@ importance: 5
 
 # Sommate i numeri forniti dall'utente
 
-Create uno script che richiede due numeri all'utente (tramite prompt) e successivamente mostrate la somma.
+Create uno script che richiede due numeri all'utente (tramite prompt) e successivamente mostra la somma.
 
 [demo]
 
-P.S. Attenzione alla cattura dei tipi.
+P.S. Fate attenzione ai tipi.
 

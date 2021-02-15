@@ -1,4 +1,4 @@
-Questo accede perché `i` non sarà mai uguale `10`.
+Questo accade perché `i` non sarà mai uguale `10`.
 
 Eseguitelo per vedere il *vero* risultato di `i`:
 
