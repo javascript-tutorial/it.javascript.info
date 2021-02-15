@@ -1,6 +1,6 @@
 # Operatori logici
 
-In JavaScript ci sono tre operatori logici: `||` (OR), `&&` (AND), e `!` (NOT).
+In JavaScript ci sono quattro operatori logici: `||` (OR), `&&` (AND), e `!` (NOT), `??` (Nullish Coalescing). Qui abbiamo trattato i primi tre, l'operatore `??` sarà approfondito nel prossimo articolo. 
 
 Nonostante si chiamino "logici", possono essere applicati a valori di qualsiasi tipo, non solo ai booleani (i risultati stessi possono essere di qualunque tipo).
 
@@ -103,7 +103,7 @@ Questo ci permette alcuni utilizzi interessanti rispetto al "puro e classico OR 
 
     Immaginiamo di avere diverse variabili, `firstName`, `lastName` e `nickName`, tutte opzionali (possono quindi essere *undefined* o avere valori falsi).
 
-    Possiamo utilizzare OR `||` per selezionare quella che contiene un valore e mostrarlo (oppure mostrare `"Anonymous"` se nessua variabile è definita):
+    Possiamo utilizzare OR `||` per selezionare quella che contiene un valore e mostrarlo (oppure mostrare `"Anonymous"` se nessuna variabile è definita):
 
     ```js run
     let firstName = "";
@@ -139,7 +139,7 @@ L'operatore AND viene rappresentato con `&&`:
 result = a && b;
 ```
 
-Nella programmazione classica AND ritorna `true` se entrambri gli operandi sono veri, altrimenti ritorna `false`:
+Nella programmazione classica AND ritorna `true` se entrambi gli operandi sono veri, altrimenti ritorna `false`:
 
 ```js run
 alert( true && true );   // true
@@ -219,7 +219,7 @@ Quindi il codice `a && b || c && d` è analogo all'espressione: `(a && b) || (c 
 ````
 
 ````warn header="Non rimpiazzate `if` con `||` o `&&`"
-Talvolta, le persone utilizzano l'operatore AND `&&` come una "scorcatoia" dell'espressione `if`".
+Talvolta, le persone utilizzano l'operatore AND `&&` come una "scorciatoia" dell'espressione `if`".
 Proprio come l'OR, anche AND `&&` può qualche volta rimpiazzare `if`.
 
 Ad esempio:
@@ -232,7 +232,7 @@ let x = 1;
 
 Le azioni nella parte destra di `&&` vengono eseguite solamente se la valutazione non si ferma prima. Cioè: solo se `(x > 0)` è vera.
 
-Il codie sopra è sostanzialmente analogo a:
+Il codice sopra è sostanzialmente analogo a:
 
 ```js run
 let x = 1;

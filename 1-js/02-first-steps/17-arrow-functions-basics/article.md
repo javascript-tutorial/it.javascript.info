@@ -5,7 +5,7 @@ Esiste un'altra sintassi molto semplice e concisa per creare funzioni e che spes
 E' chiamata "arrow functions", perché si presenta in questo modo:
 
 ```js
-let func = (arg1, arg2, ...argN) => expression
+let func = (arg1, arg2, ..., argN) => expression
 ```
 
 Questo codice crea una funzione `func` che accetta gli argomenti `arg1..argN` e li utilizza per valutare `expression` e restituirne il risultato.
@@ -13,7 +13,7 @@ Questo codice crea una funzione `func` che accetta gli argomenti `arg1..argN` e 
 In altre parole è una versione abbreviata di:
 
 ```js
-let func = function(arg1, arg2, ...argN) {
+let func = function(arg1, arg2, ..., argN) {
   return expression;
 };
 ```

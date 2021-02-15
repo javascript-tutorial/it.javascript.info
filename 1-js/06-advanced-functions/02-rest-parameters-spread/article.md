@@ -45,7 +45,7 @@ alert( sumAll(1, 2, 3) ); // 6
 
 Possiamo anche decidere di prendere i primi parametri e memorizzarli in variabili, e i parametri avanzati metterli in un array.
 
-In questo caso i primi due argomenti vengono memorizzati in variabli i restanti finiscono nell'array `titles`:
+In questo caso i primi due argomenti vengono memorizzati in variabili i restanti finiscono nell'array `titles`:
 
 ```js run
 function showName(firstName, lastName, ...titles) {
@@ -225,7 +225,7 @@ C'è però una sottile differenza tra `Array.from(obj)` e `[...obj]`:
 Quindi, per convertire qualcosa in array, la scelta migliore è `Array.from`.
 
 
-## Ottenere una nuova copia di un array/oggetto
+## Copiare un array/oggetto
 
 Ricordate quando abbiamo parlato del metodo [`Object.assign()`](info:object-copy#cloning-and-merging-object-assign)?
 
@@ -233,8 +233,10 @@ E' possibile fare la stessa cosa con l'operatore di espansione (spread).
 
 ```js run
 let arr = [1, 2, 3];
+*!*
 let arrCopy = [...arr]; // espande l'array in una lista di parametri
                         // successivamente inserisce il risultato in un nuovo array
+*/!*
 
 // l'array ha gli stessi contenuti?
 alert(JSON.stringify(arr) === JSON.stringify(arrCopy)); // true
@@ -252,8 +254,10 @@ Da notare che è possibile fare la stessa cosa per copiare un oggetto:
 
 ```js run
 let obj = { a: 1, b: 2, c: 3 };
+*!*
 let objCopy = { ...obj }; // espande l'oggetto in una lista di parametri
                           // successivamente inserisce il risultato in un oggetto
+*/!*
 
 // l'oggetto ha gli stessi contenuti?
 alert(JSON.stringify(obj) === JSON.stringify(objCopy)); // true

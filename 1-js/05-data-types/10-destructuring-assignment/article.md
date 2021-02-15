@@ -1,13 +1,13 @@
 # Assegnamento di destrutturazione
 
-Le due strutture dati più utilizzate in JavaScritp sono `Object` e `Array`.
+Le due strutture dati più utilizzate in JavaScript sono `Object` e `Array`.
 
 - Gli oggetti ci consentono di creare un'unica entità che memorizza elementi nel formato chiave-valore
 - Gli array ci consentono di raccogliere elementi in elenchi ordinati.
 
-A volte, quando li passiamo ad una funzione, potebbe non èssere necessario tutto l'oggetto/array, ma solo una parte di esso.
+A volte, quando li passiamo ad una funzione, potrebbe non èssere necessario tutto l'oggetto/array, ma solo una parte di esso.
 
-*L'assegnamento di destrutturazione (Destructuring assignment)* è una speciale sintassi che ci consente di "spacchettare" oggetti o array in un gruppi di variabili, questo a volte risulta molto convenente.
+*L'assegnamento di destrutturazione (Destructuring assignment)* è una speciale sintassi che ci consente di "spacchettare" oggetti o array in un gruppi di variabili, questo a volte risulta molto conveniente.
 
 La destrutturazione funziona alla grande anche con funzioni complesse che hanno molti parametri, valori predefiniti e così via. Presto lo vedremo.
 
@@ -79,7 +79,7 @@ let [a, b, c] = "abc"; // ["a", "b", "c"]
 let [one, two, three] = new Set([1, 2, 3]);
 ```
 
-Funziona, perchè internamente un'assegnazione di destrutturazione lavora iterando sul valore di destra. E' una specie di "zucchero sintattico" per chiamare `for..of` sul valore a destra di `=` assegnando i valori.
+Funziona, perché internamente un'assegnazione di destrutturazione lavora iterando sul valore di destra. E' una specie di "zucchero sintattico" per chiamare `for..of` sul valore a destra di `=` assegnando i valori.
 ````
 
 ````smart header="Assegna a qualsiasi cosa ci sia dalla parte sinistra"
@@ -101,7 +101,7 @@ alert(user.surname); // Smith
 
 Nel capitolo precedente abbiamo visto il metodo [Object.entries(obj)](mdn:js/Object/entries).
 
-Possiamo utilizzarlo con la destrutturazione per eseguire cicli su chaivi/valore di un oggetto:
+Possiamo utilizzarlo con la destrutturazione per eseguire cicli su chiave/valore di un oggetto:
 
 ```js run
 let user = {
@@ -135,7 +135,7 @@ for (let [key, value] of user) {
 ````
 
 
-```smart header="Il trucco dello scambio di varibili"
+```smart header="Il trucco dello scambio di variabili"
 c'è un trucco molto conosciuto per scambiare i valori di due variabili usando l'assegnamento di destrutturazione:
 
 
@@ -233,7 +233,7 @@ alert(name);    // Julius (dall'array)
 alert(surname); // qualsiasi cosa provenga dal prompt
 ```
 
-Attenzione: la funzione `prompt` verrà eseguita solo per il valore vancante (`surname`).
+Attenzione: la funzione `prompt` verrà eseguita solo per il valore mancante (`surname`).
 
 ## Destrutturazione di oggetti
 
@@ -322,7 +322,7 @@ alert(height); // 200
 
 Proprio come nel caso degli array o dei parametri di funzione, i valori di default possono essere espressioni più complesse o chiamate a funzioni. Questi verranno valutati solo nel caso in cui il valore non verrà fornito.
 
-Il codice richiederà tramite `prompt` la `width` (larghezzza), ma non il `title` (titolo):
+Il codice richiederà tramite `prompt` la `width` (larghezza), ma non il `title` (titolo):
 
 ```js run
 let options = {
@@ -368,7 +368,7 @@ let { title } = options;
 alert(title); // Menu
 ```
 
-### Il modelo rest "..."
+### Il modello rest "..."
 
 Cosa succede se l'oggetto possiede più proprietà delle variabili da noi fornite? Possiamo prendere solamente alcune ed assegnare tutto ciò che avanza da un'altra parte?
 
@@ -465,7 +465,7 @@ alert(item2);  // Donut
 
 L'intero oggetto `options` ad eccezione di `extra` il quale non viene menzionato, viene assegnato alle corrispondenti variabili.
 
-Note that `size` and `items` itself is not destructured.
+Nota che `size` e `items` stesso non è destrutturato.
 
 ![](destructuring-complex.svg)
 
