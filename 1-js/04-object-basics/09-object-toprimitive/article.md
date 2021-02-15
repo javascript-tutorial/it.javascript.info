@@ -208,7 +208,7 @@ alert(obj + 2); // 22 ("2" + 2), la conversione a primitivo ha restituito una st
 
 ## Riepilogo
 
-La conversione di un oggetto a primitivo viene automaticamene effettuata da molte funzioni integrate e da operatori che si aspettano un primitivo come valore.
+La conversione di un oggetto a primitivo viene automaticamente effettuata da molte funzioni integrate e da operatori che si aspettano un primitivo come valore.
 Ce ne sono tre tipi (hint):
 - `"string"` (per `alert` e altre conversioni al tipo string)
 - `"number"` (per operazioni matematiche)
