@@ -20,7 +20,7 @@ L'algoritmo di conversione si chiama `ToPrimitive`. In base al contesto, la conv
 Ci sono tre varianti:
 
 `"string"`
-: Un'operazione di conversione oggetto a stringa, avviene quando un operazione si apetta una stringa, come `alert`:
+: Un'operazione di conversione oggetto a stringa, avviene quando un operazione si aspetta una stringa, come `alert`:
 
     ```js
     // output
