@@ -187,7 +187,7 @@ let obj = {
   }
 };
 
-alert(obj * 2); // 4, object converted to primitive "2", then multiplication made it a number
+alert(obj * 2); // 4, l'oggetto viene convertito al primitivo "2", successivamente la moltiplicazione lo converte a numero
 ```
 
 1. La moltiplicazione `obj * 2` prima converte l'oggetto a primitivo (è una stringa, `"2"`).
