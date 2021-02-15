@@ -203,7 +203,7 @@ let obj = {
   }
 };
 
-alert(obj + 2); // 22 ("2" + 2), conversion to primitive returned a string => concatenation
+alert(obj + 2); // 22 ("2" + 2), la conversione a primitivo ha restituito una stringa => concatenazione
 ```
 
 ## Riepilogo
