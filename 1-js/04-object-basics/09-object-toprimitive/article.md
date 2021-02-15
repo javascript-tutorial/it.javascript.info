@@ -181,7 +181,7 @@ Ad esempio:
 
 ```js run
 let obj = {
-  // toString handles all conversions in the absence of other methods
+  // toString gestisce tutte le conversioni nel caso manchino gli altri metodi
   toString() {
     return "2";
   }
