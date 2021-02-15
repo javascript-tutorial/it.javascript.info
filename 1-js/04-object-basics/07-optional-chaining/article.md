@@ -25,14 +25,14 @@ Questo è il risultato che ci si aspetta. JavaScript funziona in questo modo. Se
 
 Nella maggior parte dei casi, preferiremmo avere `undefined` piuttosto di un errore (in questo caso con il significato "nessuna via").
 
-... Un altro esempio. Il metodo `document.querySelector('.elem')` ritorna un oggetto che corrisponde ad un elemento della pagina web, che ritorna `null` quando l'elemento non esite.
+... Un altro esempio. Il metodo `document.querySelector('.elem')` ritorna un oggetto che corrisponde ad un elemento della pagina web, che ritorna `null` quando l'elemento non esiste.
 
 ```js run
 // document.querySelector('.elem') è null se non esiste l'elemento
 let html = document.querySelector('.elem').innerHTML; // errore se è null
 ```
 
-Di nuovo, se un elemente non esiste, otterremo un errore nel tentativo di accedere a `.innerHTML` di `null`. In alcuni casi, in cui l'assenza di un elemento è normale, vorremo evitare l'errore e accettare come risultato `html = null`.
+Di nuovo, se un elemento non esiste, otterremo un errore nel tentativo di accedere a `.innerHTML` di `null`. In alcuni casi, in cui l'assenza di un elemento è normale, vorremo evitare l'errore e accettare come risultato `html = null`.
 
 Come possiamo farlo?
 
@@ -63,7 +63,7 @@ Ci sarebbe un modo migliore per riscriverlo, utilizzando l'operatore `&&`:
 ```js run
 let user = {}; // l'utente non ha address
 
-alert( user.address && user.address.street && user.address.street.name ); // undefined (nessune errore)
+alert( user.address && user.address.street && user.address.street.name ); // undefined (nessun errore)
 ```
 
 Concatenare con `&&` l'intero percorso verso la proprietà ci assicura che tutti i componenti esistano (in caso contrario, la valutazione si interrompe), ma non è comunque l'ideale.
