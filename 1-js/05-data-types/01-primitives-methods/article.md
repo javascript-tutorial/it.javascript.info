@@ -2,21 +2,21 @@
 
 JavaScript ci consente di trattare i tipi primitivi (stringhe, numeri, etc.) come se fossero oggetti.
 
-Possiedono dei metodi per fare ciò. Molto presto li studieremo, prima dobbiamo vedere come funzionano, perché ovviamente i tipi primitivi non sono oggetti (cercheremo quindi di fare chiarezza).
+Mette a disposizione diversi metodi per farlo, che molto presto studieremo, prima però dobbiamo capire come funzionano, perché ovviamente i tipi primitivi non sono oggetti (cercheremo quindi di fare chiarezza).
 
 Vediamo quali sono i punti chiave che distinguono i tipi primitivi dagli oggetti.
 
 Un primitivo
 
 - E' un valore di tipo primitivo.
-- Ci sono 6 tipi primitivi: `string`, `number`, `bigint`, `boolean`, `symbol`, `null` e `undefined`.
+- Esistono 6 tipi primitivi: `string`, `number`, `bigint`, `boolean`, `symbol`, `null` e `undefined`.
 
 Un oggetto
 
 - E' in grado di memorizzare molti valori come proprietà.
 - Può essere creato con `{}`, ad esempio: `{name: "John", age: 30}`. Ci sono altri tipi di oggetto in JavaScript; le funzioni ad esempio sono oggetti.
 
-Uno dei migliori vantaggi degli oggetti è che possiamo memorizzarci funzioni come proprietà dello stesso.
+Uno dei principali vantaggi degli oggetti, è che questi possono essere utilizzati per memorizzare funzioni come sue proprietà.
 
 ```js run
 let john = {
@@ -31,7 +31,7 @@ john.sayHi(); // Hi buddy!
 
 In questo esempio abbiamo creato un oggetto `john` con il metodo `sayHi`.
 
-Esistono molti oggetti integrati, come quelli per manipolare le date, errori, elementi HTML, etc. Che possiedono diverse proprietà e metodi.
+Esistono diversi oggetti built-in (integrati nel linguaggio), come quelli per dedicati alla manipolazione delle date, degli errori, degli elementi HTML, etc. I quali possiedono diverse proprietà e metodi.
 
 Ma tutte queste caratteristiche hanno un costo!
 
@@ -41,14 +41,14 @@ Gli oggetti sono più "pesanti" dei tipi primitivi. Richiedono risorse extra per
 
 Questo è il paradosso contro cui si è scontato il creatore di JavaScript:
 
-- Ci sono molte operazioni che uno vorrebbe fare con i tipi primitivi (come una stringa o un numero). Sarebbe molto bello poterli utilizzare con dei metodi.
+- Esitono molte operazioni che uno sviluppatore vorrebbe poter fare con i diversi tipi primitivi, come una stringa o un numero. Sarebbe molto bello poter utilizzare questi tipi di dato con dei metodi.
 - I tipi primitivi devono essere veloci e il più leggeri possibile.
 
 La soluzione sembra un po' strana:
 
-1. Le primitive rimangono primitive. Contengono un singolo valore.
+1. I primitivi rimangono primitivi. Contengono un singolo valore.
 2. Il linguaggio consente di accedere alle proprietà e ai metodi di stringhe, numeri, booleani e symbol.
-3. Quando questo accade, viene creato uno speciale "oggetto contenitore" che fornisce le funzionalità extra, successivamente verrà distrutto.
+3. Quando questo accade, viene creato uno speciale "oggetto contenitore" che fornisce le funzionalità extra, successivamente questo verrà distrutto.
 
 Gli "oggetti contenitore" sono diversi per ogni primitiva e sono chiamati: `String`, `Number`, `Boolean` e `Symbol`. Questi forniscono diversi insiemi di metodi.
 
@@ -68,11 +68,11 @@ Semplice, vero?  Questo è quello che accade realmente in `str.toUpperCase()`:
 2. Questo metodo viene eseguito e ritorna una nuova stringa (mostrata da `alert`).
 3. L'oggetto speciale viene distrutto, lasciando solamente la primitiva `str`.
 
-In questo modo le primitive possono fornire i vantaggi portati dai metodi, rimanendo allo stesso tempo molto leggere.
+In questo modo i primitivi possono sfruttare i vantaggi forniti dall'utilizzo dei metodi, rimanendo allo stesso tempo molto leggeri.
 
-JavaScript cerca di ottimizzare il più possibile questo processo. In alcuni casi riesce ad evitare la creazione di oggetti inutili. Deve comunque aderire e comportarsi come definito dallo standard, quindi deve comportarsi come se ne fosse stato creato uno.
+JavaScript cerca di ottimizzare il più possibile questo processo. In alcuni casi riesce ad evitare la creazione di oggetti inutili. Nonostance ciò, deve comunque aderire alle specifiche, quindi il comportamento deve essere simile a quello che si avrebbe con la creazione di un oggetto.
 
-Un numero ha dei propri metodi, ad esempio [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed) che arrotonda il numero alla precisioni richiesta:
+Un variabile di tipo number ha dei propri metodi, ad esempio [toFixed(n)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed) che arrotonda il numero alla precisione richiesta:
 
 ```js run
 let n = 1.23456;
@@ -96,7 +96,7 @@ alert( typeof 0 ); // "number"
 alert( typeof new Number(0) ); // "object"!
 ```
 
-Gli oggetti valutati da un `if` sono sempre true, quindi l'alert verrà mostrato:
+Gli oggetti valutati da un `if` sono sempre true, quindi il seguente alert verrà mostrato sempre:
 
 ```js run
 let zero = new Number(0);
@@ -106,9 +106,9 @@ if (zero) { // zero è true, perché è un oggetto
 }
 ```
 
-In altre parole, utilizzare le stesse funzioni con `String/Number/Boolean` senza `new` è completamente sicuro. Poiché le variabili primitive verranno convertite all'oggetto corrispondente: ad una stringa, ad un numero, o ad un bool (primitive).
+In altre parole, utilizzare le stesse funzioni con `String/Number/Boolean` senza `new` è completamente sicuro. Poiché le variabili primitive verranno convertite all'oggetto corrispondente: ad una stringa, ad un numero, o ad un bool.
 
-Ad esempio, è corretto fare:
+Ad esempio, il seguente codice è corretto:
 ```js
 let num = Number("123"); // converte una string in number
 ```
@@ -116,9 +116,9 @@ let num = Number("123"); // converte una string in number
 
 
 ````warn header="null/undefined non hanno metodi"
-Le primitive speciali `null` e `undefined` sono delle eccezioni. Non possiedono degli speciali "oggetti contenitori", quindi non forniscono metodi. In questo senso, sono "molto primitive".
+I primitivi speciali `null` e `undefined` sono delle eccezioni. Non possiedono degli speciali "oggetti contenitori", quindi non forniscono metodi. In questo senso, sono "molto primitivi".
 
-Un tentativo di accedere ad una proprietà con questi tipi di valore, lancerà un errore:
+Un tentativo di accedere ad una proprietà con questi tipi di valore, ritornerà un errore:
 
 ```js run
 alert(null.test); // errore
@@ -126,5 +126,5 @@ alert(null.test); // errore
 
 ## Riepilogo
 
-- Le primitive, ad eccezioni di `null` e `undefined` forniscono molti metodi utili. Li studieremo nei prossimi capitoli.
+- I primitivi, ad eccezione di `null` e `undefined` forniscono molti metodi utili. Li studieremo nei prossimi capitoli.
 - Formalmente, questi metodi lavorano su oggetti temporanei, JavaScript però è ottimizzato per sfruttare al meglio le risorse, non risultano quindi molto "costosi".

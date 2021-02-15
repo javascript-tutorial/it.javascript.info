@@ -9,11 +9,11 @@ str.test = 5; // (*)
 alert(str.test);
 ```
 
-Potrebbero esserci due diversi risultati:
+Potremmo ottenere due diversi risultati:
 1. `undefined`
 2. Un errore (strict mode).
 
-Perché? Proviamo ad esaminare cosa succede nella linea `(*)`:
+Perché? Proviamo ad esaminare cosa succede alla riga `(*)`:
 
 1. Quando si prova ad accedere ad una proprietà di `str`, viene creato un "oggetto contenitore".
 2. L'operazione di accesso viene eseguito su questo. Quindi l'oggetto ottiene la proprietà `test`.
