@@ -164,7 +164,7 @@ Non c'è controllo riguardo al ritorno; ad esempio se `toString` ritorna effetti
 L'unico obbligo: questi metodi devono ritornare un tipo primitivo, non un oggetto.
 
 ```smart header="Note storiche"
-Per ragioni storiche, se `toString` o `valueOf` ritornassero un oggetto, non ci sarebbero errori, ma il risultato sarebbe ignorato (come se il metodo non esistesse). Questo accade perché inzialmente in JavaScript non c'era il concetto di "errore".
+Per ragioni storiche, se `toString` o `valueOf` ritornassero un oggetto, non ci sarebbero errori, ma il risultato sarebbe ignorato (come se il metodo non esistesse). Questo accade perché inizialmente in JavaScript non c'era il concetto di "errore".
 
 Invece, `Symbol.toPrimitive` *deve* ritornare un tipo primitivo, altrimenti ci sarebbe un errore.
 ```
