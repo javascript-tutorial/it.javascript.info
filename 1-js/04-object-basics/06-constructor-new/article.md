@@ -127,7 +127,7 @@ let john = User("John"); // reindirizza la chiamata a new User
 alert(john.name); // John
 ```
 
-Questo approccio viene adottato in alcune librerie per rendere la sintassi più flessibile. Rende possibile la chiamata della funzione sia con senza `new` che senza.
+Questo approccio viene adottato in alcune librerie per rendere la sintassi più flessibile. Rende possibile la chiamata della funzione sia con `new` che senza.
 
 Ma non è un'ottima cosa utilizzare la doppia sintassi ovunque, perché omettendo `new` il codice perde in leggibilità. Con la parola chiave `new` possiamo sapere con certezza che si sta creando un nuovo oggetto.
 
