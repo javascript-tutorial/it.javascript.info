@@ -225,7 +225,11 @@ C'è però una sottile differenza tra `Array.from(obj)` e `[...obj]`:
 Quindi, per convertire qualcosa in array, la scelta migliore è `Array.from`.
 
 
+<<<<<<< HEAD
 ## Ottenere una nuova copia di un array/oggetto
+=======
+## Copy an array/object
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 Ricordate quando abbiamo parlato del metodo [`Object.assign()`](info:object-copy#cloning-and-merging-object-assign)?
 
@@ -233,8 +237,16 @@ E' possibile fare la stessa cosa con l'operatore di espansione (spread).
 
 ```js run
 let arr = [1, 2, 3];
+<<<<<<< HEAD
 let arrCopy = [...arr]; // espande l'array in una lista di parametri
                         // successivamente inserisce il risultato in un nuovo array
+=======
+
+*!*
+let arrCopy = [...arr]; // spread the array into a list of parameters
+                        // then put the result into a new array
+*/!*
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 // l'array ha gli stessi contenuti?
 alert(JSON.stringify(arr) === JSON.stringify(arrCopy)); // true
@@ -252,8 +264,16 @@ Da notare che è possibile fare la stessa cosa per copiare un oggetto:
 
 ```js run
 let obj = { a: 1, b: 2, c: 3 };
+<<<<<<< HEAD
 let objCopy = { ...obj }; // espande l'oggetto in una lista di parametri
                           // successivamente inserisce il risultato in un oggetto
+=======
+
+*!*
+let objCopy = { ...obj }; // spread the object into a list of parameters
+                          // then return the result in a new object
+*/!*
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 // l'oggetto ha gli stessi contenuti?
 alert(JSON.stringify(obj) === JSON.stringify(objCopy)); // true
@@ -267,7 +287,11 @@ alert(JSON.stringify(obj)); // {"a":1,"b":2,"c":3,"d":4}
 alert(JSON.stringify(objCopy)); // {"a":1,"b":2,"c":3}
 ```
 
+<<<<<<< HEAD
 Questa modalità di copia di un oggetto è molto più rapida rispetto a `let objCopy = Object.assign({}, obj);` o per un array `let arrCopy = Object.assign([], arr);` per questo preferiamo utilizzarla quando possibile.
+=======
+This way of copying an object is much shorter than `let objCopy = Object.assign({}, obj)` or for an array `let arrCopy = Object.assign([], arr)` so we prefer to use it whenever we can.
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 
 ## Riepilogo

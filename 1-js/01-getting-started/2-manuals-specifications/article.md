@@ -13,7 +13,11 @@ Ogni anno viene rilasciata una nuova specifica. Di queste pubblicazioni, è poss
 
 Per leggere delle più recenti caratteristiche, incluse quelle considerate "quasi standard" (definite "stage 3"), potete consultare <https://github.com/tc39/proposals>.
 
+<<<<<<< HEAD
 Inoltre, se state sviluppando in ambiente browser, ci sono ulteriori specifiche che verranno analizzate nella [seconda parte](info:browser-environment) del tutorial.
+=======
+Also, if you're developing for the browser, then there are other specifications covered in the [second part](info:browser-environment) of the tutorial.
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 ## Manuali
 

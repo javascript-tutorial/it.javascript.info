@@ -191,7 +191,13 @@ Vengono copiate tutte le proprietà di `user` nell'oggetto vuoto, il quale, poi,
 
 ## Clonazione nidificata
 
+<<<<<<< HEAD
 Finora abbiamo assunto che le proprietà di `user` fossero primitive. Ma le proprietà possono anche essere riferimenti ad altri oggetti. Come si fa in questo caso? 
+=======
+There are also other methods of cloning an object, e.g. using the [spread operator](info:rest-parameters-spread) `clone = {...user}`, covered later in the tutorial.
+
+## Nested cloning
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 Così:
 

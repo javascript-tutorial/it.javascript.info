@@ -26,7 +26,13 @@ alert(window.gVar); // 5 (diventa una proprietà dell'oggetto globale)
 
 Non affidatevi a questo! Questo comportamento esiste solamente per retrocompatibilità. Gli script moderni utilizzano i moduli JavaScript, che si comportano in maniera differente. Li studieremo più avanti nel capitolo [moduli JavaScript](info:modules).
 
+<<<<<<< HEAD
 Inoltre, la dichiarazione di variabili in stile moderno, tramite `let` e `const` non hanno questo tipo di comportamento:
+=======
+Please don't rely on that! This behavior exists for compatibility reasons. Modern scripts use [JavaScript modules](info:modules) where such a thing doesn't happen.
+
+If we used `let` instead, such thing wouldn't happen:
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 ```js run untrusted refresh
 let gLet = 5;

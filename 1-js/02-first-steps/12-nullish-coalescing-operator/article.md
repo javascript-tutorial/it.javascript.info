@@ -2,6 +2,7 @@
 
 [recent browser="new"]
 
+<<<<<<< HEAD
 Il *nullish coalescing operator* è rappresentato da due punti di domanda `??`.
 
 Il risultato di `a ?? b` è:
@@ -13,6 +14,17 @@ Il risultato di `a ?? b` è:
 In altre parole, tra due operatori `??` ritorna il primo se questo non è `null/undefined`; altrimenti, ritorna il secondo.
 
 Il nullish coalescing operator non è qualcosa di completamente nuovo. È solo un modo più elegante per recuperare il primo valore "definito" tra due operatori.
+=======
+The nullish coalescing operator is written as two question marks `??`.
+
+As it treats `null` and `undefined` similarly, we'll use a special term here, in this article. We'll say that an expression is "defined" when it's neither `null` nor `undefined`.
+
+The result of `a ?? b` is:
+- if `a` is defined, then `a`,
+- if `a` isn't defined, then `b`.
+
+In other words, `??` returns the first argument if it's not `null/undefined`. Otherwise, the second one.
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 Possiamo riscrivere `result = a ?? b` usando gli operatori che già conosciamo, nel seguente modo:
 
@@ -20,29 +32,47 @@ Possiamo riscrivere `result = a ?? b` usando gli operatori che già conosciamo, 
 result = (a !== null && a !== undefined) ? a : b;
 ```
 
+<<<<<<< HEAD
 Un caso d'uso comune per l'operatore `??` è quello di fornire un valore di default per una variabile potenzialmente "non definita".
 
 Per esempio, qui mostriamo `Anonymous` se `user` non è definito:
+=======
+Now it should be absolutely clear what `??` does. Let's see where it helps.
+
+The common use case for `??` is to provide a default value for a potentially undefined variable.
+
+For example, here we show `user` if defined, otherwise `Anonymous`:
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 ```js run
 let user;
 
-alert(user ?? "Anonymous"); // Anonymous
+alert(user ?? "Anonymous"); // Anonymous (user not defined)
 ```
 
+<<<<<<< HEAD
 Ovviamente, se `user` ha un qualsiasi valore eccetto `null/undefined`, allora vedremo quel valore:
+=======
+Here's the example with `user` assigned to a name:
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 ```js run
 let user = "John";
 
-alert(user ?? "Anonymous"); // John
+alert(user ?? "Anonymous"); // John (user defined)
 ```
 
 Possiamo anche usare una sequenza di `??` per selezionare, da una lista, il primo valore che non sia `null/undefined`.
 
+<<<<<<< HEAD
 Per esempio, supponiamo di avere i dati di un utente nelle variabili `firstName`, `lastName` o `nickName`. Tutte queste potrebbero essere non definite, se l'utente dovesse decidere di non inserirne i valori.
 
 Vorremmo visualizzare il nome dell'utente usando una di queste variabili, oppure mostrare "Anonymous" se nessuna di esse è definita.
+=======
+Let's say we have a user's data in variables `firstName`, `lastName` or `nickName`. All of them may be not defined, if the user decided not to enter a value.
+
+We'd like to display the user name using one of these variables, or show "Anonymous" if all of them aren't defined.
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 Usiamo l'operatore `??`:
 
@@ -74,7 +104,11 @@ alert(firstName || lastName || nickName || "Anonymous"); // Supercoder
 */!*
 ```
 
+<<<<<<< HEAD
 L'operatore OR `||` esiste sin dagli inizi di JavaScript e gli sviluppatori lo hanno usato a tale scopo per molto tempo.
+=======
+Historically, the OR `||` operator was there first. It exists since the beginning of JavaScript, so developers were using it for such purposes for a long time.
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 Il nullish coalescing operator `??`, invece, è stato aggiunto  recentemente. La ragione è che alcuni sviluppatori non erano del tutto contenti dell'operatore `||`.
 
@@ -95,16 +129,31 @@ alert(height || 100); // 100
 alert(height ?? 100); // 0
 ```
 
+<<<<<<< HEAD
 - `height || 100` controlla se `height` ha un valore falso: così è.
     - il risultato è dunque il secondo argomento, `100`.
 - `height ?? 100` controlla se `height` è `null/undefined`: non lo è.
     - quindi il risultato è `height`, ovvero `0`.
 
 Se un'altezza pari a zero è un valore accettabile, questo non dovrebbe essere rimpiazzato con il valore di default (il secondo operatore, nel'esempio sopra `100`); in questo caso il *nullish coalescing operator* `??` è la scelta giusta.
+=======
+- The `height || 100` checks `height` for being a falsy value, and it's `0`, falsy indeed.
+    - so the result of `||` is the second argument, `100`.
+- The `height ?? 100` checks `height` for being `null/undefined`, and it's not,
+    - so the result is `height` "as is", that is `0`.
+
+In practice, the zero height is often a valid value, that shouldn't be replaced with the default. So `??` does just the right thing.
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 ## Precedenza
 
+<<<<<<< HEAD
 La precedenza dell'operatore `??` è piuttosto bassa: `5` nella [MDN table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table). Quindi `??` è valutato prima di `=` e `?`, ma dopo la maggior parte degli altri operatori, come `+` o `*`.
+=======
+The precedence of the `??` operator is about the same as `||`, just a bit lower. It equals `5` in the [MDN table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table), while `||` is `6`.
+
+That means that, just like `||`, the nullish coalescing operator `??` is evaluated before `=` and `?`, but after most other operations, such as `+`, `*`.
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 Quindi, se volessimo scegliere un valore tramite l'operatore `??` in un'espressione contenente altri operatori, dovremmo considerare l'utilizzo delle parentesi:
 
@@ -138,7 +187,11 @@ Il codice sotto causa un errore di sintassi:
 let x = 1 && 2 ?? 3; // Syntax error
 ```
 
+<<<<<<< HEAD
 La limitazione è sicuramente discutibile, ma fu aggiunta alle specifiche del linguaggio -quando le persone hanno iniziato ad utilizzare `??` al posto di `||`- con lo scopo di evitare errori di programmazione.
+=======
+The limitation is surely debatable, it was added to the language specification with the purpose to avoid programming mistakes, when people start to switch from `||` to `??`.
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 Per aggirare il problema si possono utilizzare delle parentesi esplicite:
 

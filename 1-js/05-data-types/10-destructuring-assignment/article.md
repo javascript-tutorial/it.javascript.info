@@ -157,7 +157,11 @@ Nello stesso modo potemmo scambiare i valori di più di sue variabili.
 
 ### L'operatore rest '...'
 
+<<<<<<< HEAD
 Di solito, se l'array è più lungo della lista a sinistra, gli elementi in eccesso vengono ignorati.
+=======
+Usually, if the array is longer than the list at the left, the "extra" items are omitted.
+>>>>>>> 7533c719fbf62ba57188d6d51fe4c038b282bd0c
 
 Ad esempio, qui vengono presi solo i primi 2 elementi, i restanti vengono semplicemente ignorati:
 
