@@ -14,7 +14,7 @@ Quando gestiamo un evento con JavaScript, potremmo non volere affatto che la cor
 
 Ci sono due maniere per comunicare al browser che non vogliamo che esegua alcuna azione:
 
-- La maniera principale è quella di usare l'oggetto `event`, dentro il quale c'è il metodo `event.preventDefault()`.
+- La maniera più comune è quella di usare il metodo `event.preventDefault()`, incluso nell'oggetto `event`.
 - Se il gestore viene assegnato tramite `on<event>` (e non tramite `addEventListener`), allora restituire `false` sortirà lo stesso effetto.
 
 In questo HTML un click su un link non porta a navigarne l'URL, e di fatto il browser  non fa nulla:
