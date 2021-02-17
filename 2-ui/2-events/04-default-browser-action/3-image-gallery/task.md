@@ -10,4 +10,4 @@ Come in questo esempio:
 
 [iframe src="solution" height=600]
 
-P.S.: Utilizzare event delegation.
+P.S.: Utilizzate event delegation.

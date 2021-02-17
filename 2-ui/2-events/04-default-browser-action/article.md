@@ -51,7 +51,7 @@ Ecco come appare applicando qualche stile CSS:
 
 [iframe height=70 src="menu" link edit]
 
-Gli elementi del menù sono implementati come links HTML `<a>`, e non pulsanti `<button>`. Ci sono tante ragioni per fare ciò, per esempio:
+Gli elementi del menù sono implementati come links HTML `<a>`, e non come pulsanti `<button>`. Ci sono tante ragioni per fare ciò, per esempio:
 
 - A molte persone piace usare "tasto destro" -- "apri in una nuova finestra". Se usassimo `<button>` oppure `<span>`, questa funzionalità non potrebbe essere usata.
 - I motori di ricerca seguono i link `<a href="...">` nel processo di indicizzazione.
@@ -75,7 +75,7 @@ menu.onclick = function(event) {
 
 Se omettessimo `return false`, subito dopo l'esecuzione del nostro codice, il browser compirebbe la sua "azione predefinita" -- navigando quindi verso l'URL impostato nell'`href`. E non è ciò che vogliamo, dal momento che stiamo gestendo noi stessi il click.
 
-A proposito, qui l'utilizzo dell'event delegation rende il nostro menù molto flessibile. Possiamo aggiungere liste annidate e stilizzare usando i CSS per farle "scendere a mo' di tendina".
+A proposito, qui l'utilizzo dell'event delegation rende il nostro menù molto flessibile. Possiamo aggiungere liste annidate e stilizzarle usando i CSS per farle "scendere a mo' di tendina".
 
 ````smart header="Eventi a seguire"
 Certi eventi scorrono in una sola direzione. Se preveniamo il primo evento, quello seguente (conseguentemente correlato) non ci sarà.
@@ -152,7 +152,7 @@ Al click sul tasto destro, dovrebbe comparire il relativo menù contestuale.
 
 Il problema è che così facendo, cliccando su `elem`, otterremmo due menù: quello del pulsante (l'evento va risalendo per via del bubbling) e quello del documento.
 
-Come possiamo evitarlo? Una delle soluzioni è fare questo ragionamento: "Quando gestiamo il click sul tasto destro nel gestore del pulsante, stoppiamo il bubbling" e usiamo `event.stopPropagation()`:
+Come possiamo evitarlo? Una delle soluzioni è fare questo ragionamento: "Quando gestiamo il click sul tasto destro nel gestore del pulsante, interrompiamo il bubbling" e usiamo `event.stopPropagation()`:
 
 ```html autorun height=80 no-beautify run
 <p>Click sul tasto destro per il documento</p>
@@ -174,9 +174,9 @@ Come possiamo evitarlo? Una delle soluzioni è fare questo ragionamento: "Quando
 </script>
 ```
 
-A questo punto il menù del pulsante funzionerà come previsto. Ma il prezzo sarà alto, perché a quel punto negheremo per sempre l'accesso alle informazioni relative ai click sul tasto destro, a qualunque altro codice esterno, inclusi contatori che raccologono statistiche e così via. Ed è una cosa poco saggia.
+A questo punto il menù del pulsante funzionerà come previsto. Ma il prezzo sarà alto, perché a quel punto negheremo per sempre l'accesso alle informazioni relative ai click sul tasto destro, a qualunque altro codice esterno, inclusi contatori che raccolgono statistiche e così via. Ed è una cosa poco saggia.
 
-Una soluzione alternativa potrebbe essere quella di controllare nel gestore del `document` se l'azione predefinita sia stata prevenuta. Se così fosse, significherebbe che l'evento è stato gestito, e quindi non sarà necessario gestirlo a sua volta.
+Una soluzione alternativa potrebbe essere quella di controllare nel gestore del `document` se l'azione predefinita sia stata prevenuta. Se così fosse, significherebbe che l'evento è stato gestito, e quindi non sarà necessario gestirlo nuovamente.
 
 
 ```html autorun height=80 no-beautify run
@@ -216,14 +216,14 @@ Ma in questo caso ogni pezzo di codice che vuole implementare un menù contestua
 
 ## Riepilogo
 
-Ci sono tante azioni predefinite del borwser:
+Ci sono tante azioni predefinite del browser:
 
 - `mousedown` -- comincia una selezione (spostare il mouse per continuare a selezionare).
 - `click` su `<input type="checkbox">` -- check/uncheck sull'`input`.
 - `submit` -- cliccando su `<input type="submit">` o premendo su `key:Enter` dentro un campo del form, scatena questo evento, ed il browser invia il form subito dopo.
 - `keydown` -- premendo un tasto può portare ad aggiungere un carattere dentro un campo, o altre azioni.
-- `contextmenu` -- viene scatenato al click sul tasto destro, e l'azione che ne deriva è quella di mostarre il menù contestuale del browser.
-- ...e ce ne sono altri...
+- `contextmenu` -- viene scatenato al click sul tasto destro, e l'azione che ne deriva è quella di mostrare il menù contestuale del browser.
+- ...e molti altri...
 
 Tutte le azione predefinite possono essere prevenute se vogliamo gestire gli eventi esclusivamente tramite JavaScript.
 
@@ -238,7 +238,7 @@ Tecnicamente, prevenendo le azioni predefinite del browser e aggiungendo JavaScr
 
 Generalmente però, dovremmo mantenere il significato semantico degli elementi HTML. Per esempio, `<a>` dovrebbe comportare una navigazione, e non essere un pulsante.
 
-Oltre ad essere una "solo una cosa buona", ciò rende l'HTML migliore in termini di accessibilità.
+Non è "solamente una cosa buona", ciò rende l'HTML migliore in termini di accessibilità.
 
-Inoltre se consideriamo l'esempio con `<a>`, notiamo bene che: un browser ci permette di default di aprire questi links in una nuova finestra (cliccando sul tasto destro e con altri mezzi). E alla gente questo piace. Ma se invece creiamo un pulsante, che si comporta come se fosse un link usando JavaScript, e che appaia come se fosse un link con l'ausilio dei CSS, le funzionalità del browser, che specificatamente dedicate agli elementi `<a>`, non funzioneranno per il pulsante.
+Inoltre se consideriamo l'esempio con `<a>`, notiamo bene che: un browser ci permette di default di aprire questi links in una nuova finestra (cliccando sul tasto destro e con altri mezzi). E agli utenti questo piace. Ma se invece creiamo un pulsante, che si comporta come se fosse un link usando JavaScript, e che appaia come se fosse un link con l'ausilio dei CSS, le funzionalità del browser, che specificatamente dedicate agli elementi `<a>`, non funzioneranno per il pulsante.
 ```
