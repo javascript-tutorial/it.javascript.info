@@ -12,7 +12,7 @@ Quando gestiamo un evento con JavaScript, potremmo non volere affatto che la cor
 
 ## Prevenire le azioni del browser
 
-Ci sono due maniere per comunicare al browser che non vogliamo che esegua alcuna azione:
+Ci sono due maniere per comunicare al browser che non vogliamo che esegua l'azione predefinita:
 
 - La maniera più comune è quella di usare il metodo `event.preventDefault()`, incluso nell'oggetto `event`.
 - Se il gestore viene assegnato tramite `on<event>` (e non tramite `addEventListener`), allora restituire `false` sortirà lo stesso effetto.
