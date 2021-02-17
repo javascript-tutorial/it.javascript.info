@@ -6,7 +6,7 @@ Per esempio:
 
 - Un click su un link - inizializza la navigazione verso il suo URL.
 - Un click su un pulsante di invio di un form - inizializza l'invio dello stesso al server.
-- Premendo e spostando il pulsante su un testo - lo seleziona.
+- Premendo il pulsante del mouse e spostandoci su un testo - lo si seleziona.
 
 Quando gestiamo un evento con JavaScript, potremmo non volere affatto che la corrispondente azione del browser avvenga, ed implementare invece un altro comportamento.
 
@@ -111,7 +111,7 @@ Per alcuni browser (Firefox, Chrome), `passive` è impostato a `true` di default
 
 La proprietà `event.defaultPrevented` sarà `true` se l'azione predefinita sarà stata prevenuta, altrimenti sarà `false`.
 
-C'è un relativo caso d'uso interessante.
+Relativamente a questo, c'è un caso d'uso interessante.
 
 Ricordate nel capitolo <info:bubbling-and-capturing> quando abbiamo discusso di `event.stopPropagation()` e del perché interrompere il bubbling fosse una cattiva idea?
 
