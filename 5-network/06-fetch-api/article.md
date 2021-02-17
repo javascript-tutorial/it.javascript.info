@@ -3,15 +3,15 @@
 
 Arrivati fin qui, sappiamo un bel po' di cose su `fetch`.
 
-Guardiamo il resto dell'API, per approfindirne le potenzialità.
+Guardiamo il resto dell'API, per approfondirne le potenzialità.
 
 ```smart
-Nota bene: la maggioranza di queste opzioni viene usata raremente. Potresti saltare questo capitolo e comunque continuare ad usare bene `fetch`.
+Nota bene: la maggioranza di queste opzioni viene usata raramente. Potresti saltare questo capitolo e comunque continuare ad usare bene `fetch`.
 
 Ma ancora una volta, è una cosa buona sapere cosa fa `fetch`, e inoltre se dovessero sorgere necessità, possiamo tornare e leggere i dettagli.
 ```
 
-Ecco la lista completa di tutte le opzioni possibili per `fetch` con i loro valorri predefiniti (valori alternativi nei commenti):
+Ecco la lista completa di tutte le opzioni possibili per `fetch` con i loro valori predefiniti (valori alternativi nei commenti):
 
 ```js
 let promise = fetch(url, {
@@ -107,13 +107,13 @@ Ecco una tabella con tutte le combinazioni:
 | `"strict-origin-when-cross-origin"` | full | origin | - |
 | `"unsafe-url"` | full | full | full |
 
-Immaginiamo di avere un'are di amministrazione con una struttura URL che dovrebbe rimanere nascosta all'esterno del sito.
+Immaginiamo di avere un'area di amministrazione con una struttura URL che dovrebbe rimanere nascosta all'esterno del sito.
 
 Se inviamo un `fetch`, per impostazione predefinita invierà sempre l'header `Referer` con l'url completo della nostra pagina (eccetto quando eseguiamo le chiamate da  HTTPS ad HTTP, in cui non ci sarà `Referer`).
 
 Ad esempio `Referer: https://javascript.info/admin/secret/paths`.
 
-Se volessimo che gli altri siti conoscessero solamente la parte dell'origin, e non l'URL-path, possiamo impostare l'opzione:
+Se volessimo che gli altri siti conoscessero solamente la parte relativa all'origin, e non l'URL-path, potremmo impostare l'opzione:
 
 ```js
 fetch('https://another.com/page', {
@@ -124,7 +124,7 @@ fetch('https://another.com/page', {
 
 Possiamo inserirlo in tutte le chiamate `fetch`, magari integrandolo dentro una libreria JavaScript del nostro progetto che effettuerebbe tutte le richieste usando `fetch`.
 
-La differenza con il comportamente predefinito è che per richieste verso altri origin `fetch` invia solamente la parte origin dell'URL (ad esempio `https://javascript.info`, senza il percorso). Per richieste verso la nostra origin otteniamo ancora il `Referer` completo (utile forse a scopo di debugging).
+La differenza con il comportamento predefinito è che per richieste verso altri origin `fetch` invia solamente la parte origin dell'URL (ad esempio `https://javascript.info`, senza il percorso). Per richieste verso la nostra origin otteniamo ancora il `Referer` completo (utile forse a scopo di debugging).
 
 ```smart header="Referrer policy non serve solo per `fetch`"
 La referrer policy, descritta nelle [specifiche](https://w3c.github.io/webappsec-referrer-policy/), non coinvolge solo `fetch`, ma è più generico.
@@ -137,51 +137,51 @@ In particolare, è possibile impostare la policy predefinita per l'intera pagina
 L'opzione `mode` è una salvaguardia che previene richieste cross-origin occasionali:
 
 - **`"cors"`** -- il comportamento predefinito, le richieste cross-origin sono permesse, come descritto in <info:fetch-crossorigin>,
-- **`"same-origin"`** -- le richeiste cross-origin sono vietate,
-- **`"no-cors"`** -- vengono permesse solamante richieste cross-origin sicure.
+- **`"same-origin"`** -- le richieste cross-origin sono vietate,
+- **`"no-cors"`** -- vengono permesse solamente richieste cross-origin sicure.
 
-Questa opzione può essere utile quando l'URL per il `fetch` su terze parti, e vogliamo un "pulsante di spegnimento" per limitare le funzionalità cross-orgin.
+Questa opzione può essere utile quando l'URL per il `fetch` su terze parti, e vogliamo un "pulsante di spegnimento" per limitare le funzionalità cross-origin.
 
 ## credentials
 
 L'opzione `credentials` specifica se `fetch` deve mandare i cookies e gli headers di HTTP-Authorization insieme alla richiesta.
 
-- **`"same-origin"`** -- the default, don't send for cross-origin requests,
-- **`"include"`** -- always send, requires `Accept-Control-Allow-Credentials` from cross-origin server in order for JavaScript to access the response, that was covered in the chapter <info:fetch-crossorigin>,
-- **`"omit"`** -- never send, even for same-origin requests.
+- **`"same-origin"`** -- predefinito, non li invia per richieste cross-origin,
+- **`"include"`** -- li invia sempre, richiede `Accept-Control-Allow-Credentials` dal server cross-origin in modo tale da permettere a JavaScript di accedere alla riposta, l'argomento è stato trattato nel capitolo <info:fetch-crossorigin>,
+- **`"omit"`** -- non li invia in nessun caso, nemmeno per richieste same-origin.
 
 ## cache
 
-By default, `fetch` requests make use of standard HTTP-caching. That is, it respects the `Expires` and `Cache-Control` headers, sends `If-Modified-Since` and so on. Just like regular HTTP-requests do.
+Di default, le richieste con `fetch` fanno uso di caching HTTP standard. In sostanza, tiene conto degli headers `Expires` e `Cache-Control`, invia `If-Modified-Since` e così via. Proprio come una regolare richiesta HTTP.
 
-The `cache` options allows to ignore HTTP-cache or fine-tune its usage:
+L'opzione `cache` permette di ignorare la cache HTTP o regolare il suo utilizzo:
 
-- **`"default"`** -- `fetch` uses standard HTTP-cache rules and headers,
-- **`"no-store"`** -- totally ignore HTTP-cache, this mode becomes the default if we set a header `If-Modified-Since`, `If-None-Match`, `If-Unmodified-Since`, `If-Match`, or `If-Range`,
-- **`"reload"`** -- don't take the result from HTTP-cache (if any), but populate the cache with the response (if the response headers permit this action),
-- **`"no-cache"`** -- create a conditional request if there is a cached response, and a normal request otherwise. Populate HTTP-cache with the response,
-- **`"force-cache"`** -- use a response from HTTP-cache, even if it's stale. If there's no response in HTTP-cache, make a regular HTTP-request, behave normally,
-- **`"only-if-cached"`** -- use a response from HTTP-cache, even if it's stale. If there's no response in HTTP-cache, then error. Only works when `mode` is `"same-origin"`.
+- **`"default"`** -- `fetch` utilizza le regole standard e gli headers HTTP-cache,
+- **`"no-store"`** -- ignora totalmente HTTP-cache, questa modalità diventa quella predefinita se impostiamo un header tra questi: `If-Modified-Since`, `If-None-Match`, `If-Unmodified-Since`, `If-Match`, o `If-Range`,
+- **`"reload"`** -- non considera il risultato da HTTP-cache (se presente), ma popola la cache con la risposta (se l'header di risposta lo permette),
+- **`"no-cache"`** -- crea una richiesta condizionale se c'è una risposta in cache, altrimenti una normale richiesta. Popola HTTP-cache con la risposta,
+- **`"force-cache"`** -- usa la risposta da HTTP-cache, anche se scaduta. Se non c'è contenuto di HTTP-cache, esegue una regolare HTTP-request, si comporta normalmente,
+- **`"only-if-cached"`** -- use la risposta di HTTP-cache, anche se è scaduta. Se non c'è risposta in HTTP-cache, va in errore. Funziona solo quando l'opzione `mode` è impostata su `"same-origin"`.
 
 ## redirect
 
-Normally, `fetch` transparently follows HTTP-redirects, like 301, 302 etc.
+Normalmente, `fetch` segue in maniera trasparente i redirect HTTP, come 301, 302 etc.
 
-The `redirect` option allows to change that:
+L'opzione `redirect` ci permette di cambiare questo comportamento:
 
-- **`"follow"`** -- the default, follow HTTP-redirects,
-- **`"error"`** -- error in case of HTTP-redirect,
-- **`"manual"`** -- don't follow HTTP-redirect, but `response.url` will be the new URL, and `response.redirected` will be `true`, so that we can perform the redirect manually to the new URL (if needed).
+- **`"follow"`** -- il predefinito, segue gli HTTP-redirects,
+- **`"error"`** -- va in errore in caso di HTTP-redirect,
+- **`"manual"`** -- non segue gli HTTP-redirect, ma `response.url` sarà il nuovo URL, e `response.redirected` sarà `true`, cosicché potremo eseguire il redirect manualmente al nuovo URL (se necessario).
 
 ## integrity
 
-The `integrity` option allows to check if the response matches the known-ahead checksum.
+L'opzione `integrity` permette di controllare se la risposta combacia con il checksum noto a priori.
 
-As described in the [specification](https://w3c.github.io/webappsec-subresource-integrity/), supported hash-functions are SHA-256, SHA-384, and SHA-512, there might be others depending on the browser.
+Come descritto nelle [specifiche](https://w3c.github.io/webappsec-subresource-integrity/), funzione hash supportate sono SHA-256, SHA-384, e SHA-512, potrebbero essercene altre a discrezione del browser.
 
-For example, we're downloading a file, and we know that it's SHA-256 checksum is "abcdef" (a real checksum is longer, of course).
+Per esempio, stiamo scaricando un file, e sappiamo che il suo checksum SHA-256 è "abcdef" (un checksum reale è più lungo, chiaramente).
 
-We can put it in the `integrity` option, like this:
+Possiamo inserirlo dentro l'opzione `integrity`:
 
 ```js
 fetch('http://site.com/file', {
@@ -189,17 +189,17 @@ fetch('http://site.com/file', {
 });
 ```
 
-Then `fetch` will calculate SHA-256 on its own and compare it with our string. In case of a mismatch, an error is triggered.
+Quindi `fetch` calcolerà SHA-256 e lo confronterà con la nostra stringa. Nel caso non combaciassero, andrebbe in errore.
 
 ## keepalive
 
-The `keepalive` option indicates that the request may "outlive" the webpage that initiated it.
+L'opzione `keepalive` indica che la richiesta può "sopravvivere" alla pagina che l'ha inizializzata.
 
-For example, we gather statistics on how the current visitor uses our page (mouse clicks, page fragments he views), to analyze and improve the user experience.
+Ad esempio, raccogliamo statistiche su come il visitatore attuale usa la nostra pagina (click del mouse, sezioni della pagina che guarda), per analizzare e migliorare l'esperienza utente.
 
-When the visitor leaves our page -- we'd like to save the data to our server.
+Quando il visitatore abbandona la nostra pagina -- ci piacerebbe salvare il dato nel nostro server.
 
-We can use the `window.onunload` event for that:
+Per questo scopo, possiamo usare l'evento `window.onunload`:
 
 ```js run
 window.onunload = function() {
@@ -213,12 +213,12 @@ window.onunload = function() {
 };
 ```
 
-Normally, when a document is unloaded, all associated network requests are aborted. But the `keepalive` option tells the browser to perform the request in the background, even after it leaves the page. So this option is essential for our request to succeed.
+Normalmente, quando un documento viene chiuso, tutte le richieste di rete ad esso associate vengono annullate. Ma l'opzione `keepalive` dice al browser di eseguire la richiesta in background, anche dopo che la pagina viene abbandonata. Quindi questa opzione è essenziale per far si che la nostra richiesta vada a buon fine.
 
-It has a few limitations:
+Ha qualche limitazione:
 
-- We can't send megabytes: the body limit for `keepalive` requests is 64KB.
-    - If we need to gather a lot of statistics about the visit, we should send it out regularly in packets, so that there won't be a lot left for the last `onunload` request.
-    - This limit applies to all `keepalive` requests together. In other words, we can perform multiple `keepalive` requests in parallel, but the sum of their body lengths should not exceed 64KB.
-- We can't handle the server response if the document is unloaded. So in our example `fetch` will succeed due to `keepalive`, but subsequent functions won't work.
-    - In most cases, such as sending out statistics, it's not a problem, as the server just accepts the data and usually sends an empty response to such requests.
+- Non possiamo inviare megabytes: le dimensioni massime del corpo per richieste `keepalive` sono di 64KB.
+    - Se dobbiamo raccogliere un bel po' di statistiche sulle visite, dovremmo inviarle regolarmente in pacchetti, cosicché non ve ne sia una troppo grande per l'ultima richiesta `onunload`.
+    - Questo limite si applica a tutte le richieste `keepalive` insieme. In altre parole, possiamo effettuare richieste `keepalive` multiple in parallelo, ma la somma dei corpi delle chiamate non devono superare i 64KB.
+- Non possiamo gestire la risposta del server se il documento viene chiuso. Quindi nel nostro esempio `fetch` andrà a buon fine grazie al `keepalive`, ma le funzioni conseguenti non verranno eseguite.
+    - Nella maggior parte dei casi, come l'invio di statistiche, questo non è un problema, dal momento che il server accetta giusto le richieste inviando una risposta vuota.
