@@ -8,7 +8,7 @@ Per esempio:
 - Un click su un pulsante di invio di un form - inizializza l'invio dello stesso al server.
 - Premendo il pulsante del mouse e spostandoci su un testo - lo si seleziona.
 
-Quando gestiamo un evento con JavaScript, potremmo non volere affatto che la corrispondente azione del browser avvenga, ed implementare invece un altro comportamento.
+Quando gestiamo un evento con JavaScript, potremmo non volere che la corrispondente azione del browser avvenga, vorremmo invece implementare un altro comportamento.
 
 ## Prevenire le azioni del browser
 
