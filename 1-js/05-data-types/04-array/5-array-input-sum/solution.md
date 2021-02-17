@@ -1,4 +1,4 @@
-Da notare un dettaglio sottile ma importante. Non convertiamo immediatamente `value` ad un numero subito dopo averlo prelevato con `prompt`, perchè successivamente `value = +value` non saremo in grado di distinguere una stringa vuota da uno zero. Quindi è necessario eseguire la conversione in un secondo momento.
+Da notare un dettaglio sottile ma importante. Non convertiamo immediatamente `value` ad un numero subito dopo averlo prelevato con `prompt`, perchè successivamente tramite `value = +value` non saremmo in grado di distinguere una stringa vuota da uno zero. Quindi è necessario eseguire la conversione in un secondo momento.
 
 
 ```js run demo
