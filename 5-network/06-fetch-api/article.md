@@ -29,7 +29,7 @@ let promise = fetch(url, {
   credentials: "same-origin", // omit, include
   cache: "default", // no-store, reload, no-cache, force-cache, or only-if-cached
   redirect: "follow", // manual, error
-  integrity: "", // a hash, tipo "sha256-abcdef1234567890"
+  integrity: "", // un hash, tipo "sha256-abcdef1234567890"
   keepalive: false, // true
   signal: undefined, // AbortController per annullare la richiesta
   window: window // null
