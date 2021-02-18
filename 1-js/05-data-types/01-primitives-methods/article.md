@@ -16,7 +16,7 @@ Un oggetto
 - E' in grado di memorizzare molti valori come proprietà.
 - Può essere creato con `{}`, ad esempio: `{name: "John", age: 30}`. Ci sono altri tipi di oggetto in JavaScript; le funzioni ad esempio sono oggetti.
 
-Uno dei principali vantaggi degli oggetti, è che questi possono essere utilizzati per memorizzare funzioni come sue proprietà.
+Uno dei principali vantaggi degli oggetti, è che questi possono essere utilizzati per memorizzare funzioni come loro proprietà.
 
 ```js run
 let john = {
@@ -31,7 +31,7 @@ john.sayHi(); // Hi buddy!
 
 In questo esempio abbiamo creato un oggetto `john` con il metodo `sayHi`.
 
-Esistono diversi oggetti built-in (integrati nel linguaggio), come quelli per dedicati alla manipolazione delle date, degli errori, degli elementi HTML, etc. I quali possiedono diverse proprietà e metodi.
+Esistono diversi oggetti built-in (integrati nel linguaggio), come quelli dedicati alla manipolazione delle date, degli errori, degli elementi HTML, etc. I quali possiedono diverse proprietà e metodi.
 
 Ma tutte queste caratteristiche hanno un costo!
 
