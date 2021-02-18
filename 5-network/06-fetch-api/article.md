@@ -91,7 +91,7 @@ I valori possibili vengono descritti nelle [Specifiche di Referrer Policy](https
 - **`"origin-when-cross-origin"`** -- invia il `Referer` completo per richiesta alla stessa origin, ma solamente l'origin per richieste cross-origin (come sopra).
 - **`"same-origin"`** -- invia il `Referer` completo per richieste verso la stessa origin, ma nessun `Referer` per richieste cross-origin.
 - **`"strict-origin"`** -- invia solamente l'origin, non il `Referer` per richieste HTTPS→HTTP.
-- **`"strict-origin-when-cross-origin"`** -- per richieste same-origin invia il `Referer` completo, per quelle cross-origin invia solo l'origin, a meno che non sia una richiesta HTTPS→HTTP request, per le quali non invierebbe nulla.
+- **`"strict-origin-when-cross-origin"`** -- per richieste same-origin invia il `Referer` completo, per quelle cross-origin invia solo l'origin, a meno che non sia una richiesta HTTPS→HTTP, per le quali non invierebbe nulla.
 - **`"unsafe-url"`** -- invia sempre l'url completo nel `Referer`, anche per richieste HTTPS→HTTP.
 
 Ecco una tabella con tutte le combinazioni:
