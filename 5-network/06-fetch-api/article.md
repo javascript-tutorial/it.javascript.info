@@ -124,7 +124,7 @@ fetch('https://another.com/page', {
 
 Possiamo inserirlo in tutte le chiamate `fetch`, magari integrandolo dentro una libreria JavaScript del nostro progetto che effettuerebbe tutte le richieste usando `fetch`.
 
-La differenza con il comportamento predefinito è che per richieste verso altri origin `fetch` invia solamente la parte origin dell'URL (ad esempio `https://javascript.info`, senza il percorso). Per richieste verso la nostra origin otteniamo ancora il `Referer` completo (utile forse a scopo di debugging).
+La differenza con il comportamento predefinito è che, per richieste verso altri origin, `fetch` invia solamente la parte origin dell'URL (ad esempio `https://javascript.info`, senza il percorso). Per richieste verso la nostra origin otteniamo ancora il `Referer` completo (utile forse a scopo di debugging).
 
 ```smart header="Referrer policy non serve solo per `fetch`"
 La referrer policy, descritta nelle [specifiche](https://w3c.github.io/webappsec-referrer-policy/), non coinvolge solo `fetch`, ma è più generico.
