@@ -1,6 +1,6 @@
-We can use such approach if we are sure that `"constructor"` property has the correct value.
+Possiamo utilizzare questo approccio se siamo sicuri che il `"constructor"` possiede il valore corretto.
 
-For instance, if we don't touch the default `"prototype"`, then this code works for sure:
+Ad esempio, se non tocchiamo il `"prototype"` di default, allora il codice funzionerà di sicuro:
 
 ```js run
 function User(name) {
@@ -10,14 +10,14 @@ function User(name) {
 let user = new User('John');
 let user2 = new user.constructor('Pete');
 
-alert( user2.name ); // Pete (worked!)
+alert( user2.name ); // Pete (ha funzionato!)
 ```
 
-It worked, because `User.prototype.constructor == User`.
+Ha funzionato, poiché `User.prototype.constructor == User`.
 
-..But if someone, so to speak, overwrites `User.prototype` and forgets to recreate `constructor` to reference `User`, then it would fail.
+..Ma se qualcuno, per un qualsiasi motivo, sovrascrivesse `User.prototype` e dimenticasse di ricreare il `constructor` di riferimento a `User`,  allora fallirebbe.
 
-For instance:
+Ad esempio:
 
 ```js run
 function User(name) {
@@ -33,12 +33,12 @@ let user2 = new user.constructor('Pete');
 alert( user2.name ); // undefined
 ```
 
-Why `user2.name` is `undefined`?
+Perché `user2.name` è `undefined`?
 
-Here's how `new user.constructor('Pete')` works:
+Ecco come `new user.constructor('Pete')` funziona:
 
-1. First, it looks for `constructor` in `user`. Nothing.
-2. Then it follows the prototype chain. The prototype of `user` is `User.prototype`, and it also has nothing.
-3. The value of `User.prototype` is a plain object `{}`, its prototype is `Object.prototype`. And there is `Object.prototype.constructor == Object`. So it is used.
+1. Prima, controlla se esiste `constructor` in `user`. Niente.
+2. Successivamente segue la catena di prototype. Il prototype di `user` è `User.prototype`, e anche qui non c'è nulla.
+3. Il valore di `User.prototype` è un oggetto semplice `{}`, il suo prototype è `Object.prototype`. E c'è un `Object.prototype.constructor == Object`. Quindi verrà utilizzato.
 
-At the end, we have `let user2 = new Object('Pete')`. The built-in `Object` constructor ignores arguments, it always creates an empty object, similar to `let user2 = {}`, that's what we have in `user2` after all.
+In conclusione, abbiamo `let user2 = new Object('Pete')`. Il costruttore integrato di `Object` ignora gli argomenti, crea sempre un oggetto vuoto, in maniera simile a `let user2 = {}`, questo è ciò che abbiamo in `user2` alla fine di tutto.
