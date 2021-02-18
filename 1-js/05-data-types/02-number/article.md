@@ -77,7 +77,7 @@ alert( 0xff ); // 255
 alert( 0xFF ); // 255 (equivalente)
 ```
 
-Il sistema binario e ottale sono utilizzati raramente, ma sono comunque supportati con l'utilizzo dei prefissi `0b` e `0o`:
+I sistemi binario e ottale sono utilizzati raramente, ma sono comunque supportati con l'utilizzo dei prefissi `0b` e `0o`:
 
 
 ```js run
@@ -450,5 +450,4 @@ Per i numeri con la virgola:
 Altre funzioni matematiche:
 
 - Guardate l'oggetto [Math](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Math) in caso di necessità. La libreria non è molto ampia, ma è in grado di coprire le necessità di base.
-
 
