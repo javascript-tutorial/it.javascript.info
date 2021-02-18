@@ -18,6 +18,7 @@ In questo caso, quando proviamo ad accedere a `user.address.street`, e l'utente 
 ```js run
 let user = {}; // un utente senza la proprietà "address"
 
+
 alert(user.address.street); // Errore!
 ```
 
