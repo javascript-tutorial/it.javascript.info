@@ -35,7 +35,7 @@ alert( user2.name ); // undefined
 
 Perché `user2.name` è `undefined`?
 
-Questo è come `new user.constructor('Pete')` funziona:
+Ecco come `new user.constructor('Pete')` funziona:
 
 1. Prima, controlla se esiste `constructor` in `user`. Niente.
 2. Successivamente segue la catena di prototype. Il prototype di `user` è `User.prototype`, e anche qui non c'è nulla.

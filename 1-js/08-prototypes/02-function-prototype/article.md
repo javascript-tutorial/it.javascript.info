@@ -5,9 +5,9 @@ Ricordate, nuovi oggetti possono essere creati con un costruttore, come `new F()
 Se `F.prototype` è un oggetto, l'operatore `new` si prenderà cura di impostare `[[Prototype]]` per il nuovo oggetto.
 
 ```smart
-JavaScript support la prototypal inheritance fin dall'inizio. Fù una delle caratteristiche principali del linguaggio.
+JavaScript supporta la prototypal inheritance fin dall'inizio. Fu una delle caratteristiche principali del linguaggio.
 
-L'unica differenza era che nei primi tempi non di aveva accesso diretto. L'unica cosa su cui ci si poteva affidare era la proprietà `"prototype"` del costruttore, descritta in questo capitolo. Per questo, esistono ancora molti script che ne fanno utilizzo.
+Ma all'inizio non c'era un accesso diretto. L'unica cosa su cui ci si poteva affidare era la proprietà `"prototype"` del costruttore, descritta in questo capitolo. Per questo, esistono ancora molti script che ne fanno utilizzo.
 ```
 
 Da notare che qui `F.prototype` , sta per una comune proprietà chiamata `"prototype"` in `F`. Sembra molto simile al termine "prototype", ma in questo caso intendiamo realmente riferirci ad una proprietà con questo nome.
@@ -111,7 +111,7 @@ Ma probabilmente la cosa più importante del `"constructor"` è che...
 
 **...JavaScript stesso non garantisce il giusto valore del `"constructor"`.**
 
-Esatto, esiste di default nel `"prototype"` delle funzioni, ma questo è tutto. Ciò che accade dopo -- è  nostra responsabilità.
+E' vero, esiste di default nel `"prototype"` delle funzioni, ma questo è tutto. Ciò che accade dopo -- è  solo nostra responsabilità.
 
 In particolare, se rimpiazziamo completamente il prototype di default, allora non ci sarà alcun `"constructor"`.
 
@@ -156,9 +156,9 @@ Rabbit.prototype = {
 
 ## Riepilogo
 
-In questo capitolo abbiamo descritto brevemente il modo in cui impostare il `[[Prototype]]` per gli oggetti generati tramite il costruttore. Più avantai vedremo dei pattern più avanzati su cui fare affidamento.
+In questo capitolo abbiamo descritto brevemente il modo in cui impostare il `[[Prototype]]` per gli oggetti generati tramite il costruttore. Più avanti vedremo dei pattern più avanzati su cui fare affidamento.
 
-E' tutto abbastanza semplice, alcune note per rendere tutto più chiaro:
+Il tutto è abbastanza semplice, solo alcune note per renderlo più chiaro:
 
 - La proprietà `F.prototype` (da non confondere con `[[Prototype]]`) imposta `[[Prototype]]` dei nuovi oggetti quando viene invocato `new F()`.
 - Il valore di `F.prototype` può essere sia un oggetto che `null`: altri valori verranno ignorati.
