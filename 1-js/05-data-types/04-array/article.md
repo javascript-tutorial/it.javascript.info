@@ -1,6 +1,6 @@
 # Array
 
-Gli oggetti consentono la memorizzazione di una collezione di valori tramite chiavi.
+Gli oggetti consentono la memorizzazione di una collezione di valori associati alle rispettive chiavi.
 
 Ma spesso abbiamo bisogno di una *collezione ordinata*, dove abbiamo un primo, un secondo, un terzo elemento e così via. Ad esempio, abbiamo bisogno di memorizzare una lista di cose: utenti, beni, elementi HTML etc.
 
