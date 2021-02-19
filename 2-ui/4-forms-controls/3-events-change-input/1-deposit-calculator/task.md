@@ -2,20 +2,20 @@ importance: 5
 
 ---
 
-# Deposit calculator
+# Calcolo del deposito
 
-Create an interface that allows to enter a sum of bank deposit and percentage, then calculates how much it will be after given periods of time.
+Creare una interfaccia che permetta di inserire una somma di un deposito bancario e la percentuale, e che calcoli a quanto ammonteranno dopo un ceto periodo di tempo.
 
-Here's the demo:
+La demo:
 
 [iframe src="solution" height="350" border="1"]
 
-Any input change should be processed immediately.
+Ogni modifica all'input dovrebbe essere processata immediatamente.
 
-The formula is:
+La formula è:
 ```js
-// initial: the initial money sum
-// interest: e.g. 0.05 means 5% per year
-// years: how many years to wait
+// initial: la somma iniziale di denaro
+// interest: ad esempio 0.05 significa 5% annualer
+// years: quanti anni attendere
 let result = Math.round(initial * (1 + interest * years));
 ```
