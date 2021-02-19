@@ -504,7 +504,7 @@ Possiamo eseguire sugli arrays le seguenti operazioni:
 
 Per iterare sugli elementi di un array:
 
-- `gor (let i=0; i<arr.length; i++)` - il più veloce, compatibile con i vecchi browsers.
+- `for (let i = 0; i < arr.length; i++)` - il più veloce, compatibile con i vecchi browsers.
 - `for (let item of arr)` - la moderna sintassi, solo per gli elementi.
 - `for (let i in arr) ` - da non usare.
 
