@@ -6,7 +6,7 @@ importance: 4
 
 Abbiamo un costo pari a `"$120"`. Dove: il simbolo del dollaro viene per primo, poi segue il numero.
 
-Create una funzione `extractCurrencyValue(str)` in grado di estrarre il valore numerico dalla stringa e successivamente lo ritorni 
+Create una funzione `extractCurrencyValue(str)` in grado di estrarre il valore numerico dalla stringa e successivamente lo ritorni.
 
 Un esempio:
 
