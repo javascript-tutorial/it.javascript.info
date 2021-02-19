@@ -80,7 +80,7 @@ arr[3](); // hello
 
 
 ````smart header="Virgola pendente"
-Gli array, proprio gli oggetti, possono terminare con una virgola:
+Gli array, proprio come gli oggetti, possono terminare con una virgola:
 ```js 
 let fruits = [
   "Apple",
