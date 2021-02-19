@@ -234,7 +234,7 @@ I modi per usare incorrettamente un array:
 - Creare buchi: aggiungendo `arr[0]` e poi `arr[1000]` (lasciando spazio vuoto tra di loro).
 - Riempire l'array nell'ordine inverso, ad esempio `arr[1000]`, `arr[999]`.
 
-E' molto conveniente pensare agli array come delle speciali strutture utili a lavorare con *dati ordinati*. Provvedono speciali metodi utili a questo scopo. Inoltre sono attentamente ottimizzati dal motore JavaScript per lavorare con dati ordinati e memorizzati in posizioni contigue. Quindi se dovreste aver bisogno di utilizzare una proprietà con una chiave arbitraria, molto probabilmente un oggetto soddisferà maggiormente le vostre necessità.
+E' molto conveniente pensare agli array come delle speciali strutture utili a lavorare con *dati ordinati*. Forniscono speciali metodi utili a questo scopo, inoltre sono attentamente ottimizzati dal motore JavaScript per lavorare con dati ordinati e memorizzati in posizioni contigue. Quindi se doveste aver bisogno di utilizzare una proprietà con una chiave arbitraria, molto probabilmente un oggetto soddisferà le vostre necessità.
 
 ## Performance
 
