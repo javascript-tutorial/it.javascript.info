@@ -4,7 +4,7 @@ importance: 5
 
 # Chiamata di funzione
 
-Qual'è il risultato? Perché?
+Qual è il risultato? Perché?
 
 ```js
 let arr = ["a", "b"];
