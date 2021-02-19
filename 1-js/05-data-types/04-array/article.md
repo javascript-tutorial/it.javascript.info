@@ -385,7 +385,7 @@ Per evitare queste spiacevoli sorprese, solitamente si utilizzano le parentesi q
 
 ## Array multi-dimensionali
 
-Gli array possono contenere oggetti che sono a loro volta array. Possiamo quindi utilizzare questa proprietà per creare array multi-dimensionali, per esempio per memorizzare matrici:
+Gli array possono contenere oggetti che sono a loro volta array. Possiamo quindi utilizzare questa proprietà per creare array multi-dimensionali, ad esempio per memorizzare matrici:
 
 ```js run
 let matrix = [
