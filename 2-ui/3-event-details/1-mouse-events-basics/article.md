@@ -114,7 +114,7 @@ Nella maggior parte delle applicazioni, quando Windows/Linux usano `key:Ctrl`, s
 
 Ossia: quando un utente Windows preme `key:Ctrl+Enter`  o `key:Ctrl+A`, un utente Mac premerebbe `key:Cmd+Enter` o `key:Cmd+A`, e così via.
 
-Ne consegue che se vogliamo dare supporto a combinazioni di tasti come `key:Ctrl`+click, allora per Mac ha senso usare `key:Cmd`+click. La qual cosa è più comoda per utenti Mac.
+Ne consegue che se vogliamo dare supporto a combinazioni di tasti come `key:Ctrl`+click, allora per Mac ha senso usare `key:Cmd`+click, che è molto più comodo per utenti Mac.
 
 Anche se volessimo forzare gli utenti Mac a usare `key:Ctrl`+click -- si va incontro a una certa tipologia di ostacolo. Il problema è che: un click col tasto destro con un `key:Ctrl` su Mac viene interpretato come un *click sul tasto destro*, e genera l'evento `contextmenu`, non un `click` come su Windows/Linux.
 
