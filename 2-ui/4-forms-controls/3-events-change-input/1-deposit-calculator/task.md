@@ -4,7 +4,7 @@ importance: 5
 
 # Calcolo del deposito
 
-Creare una interfaccia che permetta di inserire una somma di un deposito bancario e la percentuale, e che calcoli a quanto ammonteranno dopo un ceto periodo di tempo.
+Creare una interfaccia che permetta di inserire una somma di un deposito bancario e la percentuale, e che calcoli a quanto ammonteranno dopo un certo periodo di tempo.
 
 La demo:
 
