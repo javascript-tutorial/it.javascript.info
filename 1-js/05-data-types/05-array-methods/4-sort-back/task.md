@@ -2,12 +2,12 @@ importance: 4
 
 ---
 
-# Riordinare in ordine descresente
+# Riordinate in ordine descresente
 
 ```js
 let arr = [5, 2, 1, -10, 8];
 
-// ... your code to sort it in decreasing order
+// ... il tuo codice per ordinare in ordine decrescente
 
 alert( arr ); // 8, 5, 2, 1, -10
 ```
