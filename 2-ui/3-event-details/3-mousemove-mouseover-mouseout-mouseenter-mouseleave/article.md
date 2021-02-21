@@ -195,27 +195,27 @@ Ecco un esempio di codice che tiene conto di tutte le situazioni possibili:
 
 [js src="mouseenter-mouseleave-delegation-2/script.js"]
 
-Ancora una volta, le caratteristiche importanti sono:
-1. Usa la event delegation per gestire l'entrata/uscita dai `<td>` dentro la tabella. Quindi si relaziona con `mouseover/out` piuttosto che `mouseenter/leave` i quali non fanno bubbling e di conseguenza non permetterebbero la delegation.
-2. Extra events, such as moving between descendants of `<td>` are filtered out, so that `onEnter/Leave` runs only if the pointer leaves or enters `<td>` as a whole.
+Ancora una volta, le caratteristiche da tenere in considerazione sono:
+1. Usare la event delegation per gestire l'entrata/uscita dai `<td>` dentro la tabella. Quindi relazionarsi con `mouseover/out` piuttosto che con `mouseenter/leave` i quali non fanno bubbling e  non permetterebbero la event delegation.
+2. Gli eventi aggiuntivi, come lo spostamento del mouse tra gli elementi discendenti di `<td>` vanno esclusi, cosicché `onEnter/Leave` venga eseguito solo se il puntatore si entra o lascia il `<td>` nella sua interezza.
 
 ```online
-Here's the full example with all details:
+Ecco un esempio con tutti i dettagli:
 
 [codetabs height=460 src="mouseenter-mouseleave-delegation-2"]
 
-Try to move the cursor in and out of table cells and inside them. Fast or slow -- doesn't matter. Only `<td>` as a whole is highlighted, unlike the example before.
+Prova a spostare il cursore dentro e fuori dalla celle della tabella ed anche al loro interno. Velocemente o lentamente -- è irrilevante. Solo il `<td>` per intero deve essere evindenziato, diversamente dall'esempio precendente.
 ```
 
-## Summary
+## Riepilogo
 
-We covered events `mouseover`, `mouseout`, `mousemove`, `mouseenter` and `mouseleave`.
+Abbiamo visto gli eventi `mouseover`, `mouseout`, `mousemove`, `mouseenter` e `mouseleave`.
 
-These things are good to note:
+Queste sono le cose da evidenziare:
 
-- A fast mouse move may skip intermediate elements.
-- Events `mouseover/out` and `mouseenter/leave` have an additional property: `relatedTarget`. That's the element that we are coming from/to, complementary to `target`.
+- Un rapido movimento del mouse può ignorare gli elementi intermedi.
+- Gli eventi `mouseover/out` e `mouseenter/leave` posseggono una proprietà aggiuntiva: `relatedTarget`. Questo sarà l'elemento nel quale stiamo uscendo, o nel quale stiamo entrando, complementare a `target`.
 
-Events `mouseover/out` trigger even when we go from the parent element to a child element. The browser assumes that the mouse can be only over one element at one time -- the deepest one.
+Gli eventi `mouseover/out` vengono scatenati anche quando andiamo dall'elemento genitore all'elemento figlio. Il browser assume che il mouse può essere in un solo elemento alla volta -- quello più annidato.
 
-Events `mouseenter/leave` are different in that aspect: they only trigger when the mouse comes in and out the element as a whole. Also they do not bubble.
+Gli eventi `mouseenter/leave` sono differenti sotto questo punto di vista: vengono scaturiti solo quando il mouse entra o esce del tutto dall'elemento. Inoltre non fanno bubbling.
