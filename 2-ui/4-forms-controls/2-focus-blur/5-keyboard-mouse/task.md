@@ -2,11 +2,11 @@ importance: 4
 
 ---
 
-# Mouse guidato dalla tastiera
+# Keyboard-driven mouse
 
-Porre il focus sul puntatore. Quindi usare le frecce per muoverlo:
+Focus on the mouse. Then use arrow keys to move it:
 
 [demo src="solution"]
 
-P.S.: Non mettere i gestori da nessuna parte, tranne che sull'elemento `#mouse`.
-P.P.S.: Nnn fare modifiche su HTML e CSS, l'approccio dovrebbe essere generico e funzionare con qualunque elemento.
+P.S. Don't put event handlers anywhere except the `#mouse` element.
+P.P.S. Don't modify HTML/CSS, the approach should be generic and work with any element.
