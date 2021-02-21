@@ -112,7 +112,7 @@ Su Windows e Linux esistono i tasti modificatori `key:Alt`, `key:Shift` e `key:C
 
 Nella maggior parte delle applicazioni, quando Windows/Linux usano `key:Ctrl`, su Mac si usa `key:Cmd`.
 
-Ossia: quando un utente Windows preme `key:Ctrl+Enter` oe `key:Ctrl+A`, un utente Mac premerebbe `key:Cmd+Enter` o `key:Cmd+A`, e così via.
+Ossia: quando un utente Windows preme `key:Ctrl+Enter`  o `key:Ctrl+A`, un utente Mac premerebbe `key:Cmd+Enter` o `key:Cmd+A`, e così via.
 
 Ne consegue che se vogliamo dare supporto a combinazioni di tasti come `key:Ctrl`+click, allora per Mac ha senso usare `key:Cmd`+click. La qual cosa è più comoda per utenti Mac.
 
