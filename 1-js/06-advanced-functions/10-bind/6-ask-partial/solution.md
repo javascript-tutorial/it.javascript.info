@@ -1,14 +1,14 @@
 
 
-1. Either use a wrapper function, an arrow to be concise:
+1. Puoi sia utilizzare una funzione wrapper, una arrow per essere concisi:
 
     ```js 
     askPassword(() => user.login(true), () => user.login(false)); 
     ```
 
-    Now it gets `user` from outer variables and runs it the normal way.
+    Ora riceve `user` dalla variabile esterna ed esegue la funzione in maniera corretta.
 
-2. Or create a partial function from `user.login` that uses `user` as the context and has the correct first argument:
+2. Oppure creare una funzione parziale da `user.login` che utilizzi `user` come contesto ed abbia il giusto primo argomento:
 
 
     ```js 
