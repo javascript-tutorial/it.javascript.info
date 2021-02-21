@@ -190,7 +190,7 @@ Se volessimo disabilitare la selezione per proteggere il contenuto della nostra 
   Sebbene, nel caso in cui tu conosca JS or HTML, allora potrai prendere tutto dal sorgente della pagina.
 </div>
 ```
-Se proveremo a copiare un pezzo del testo nel `<div>`, la copia non andrà a buon fine, perché l'azione predefinita `oncopy` sarà stata prevenuta.
+Se provassimo a copiare un pezzo del testo all'interno del `<div>`, la copia non andrà a buon fine, perché l'azione predefinita `oncopy` sarà stata prevenuta.
 
 Sicuramente l'utente ha accesso al sorgente HTML della pagina, e potrà prendere il contenuto da lì, ma non tutti conoscono come farlo.
 ````
