@@ -1,6 +1,6 @@
 # Eventi: change, input, cut, copy, paste
 
-In qeusta sezione, affronteremo vari argomenti associati alle modifica dei dati.
+In questa sezione, affronteremo vari argomenti associati alle modifica dei dati.
 
 ## Evento: change
 
