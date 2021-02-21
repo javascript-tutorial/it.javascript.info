@@ -6,7 +6,7 @@ In questa sezione, affronteremo vari argomenti associati alle modifica dei dati.
 
 L'evento `change` viene scatenato quando si termina la modifica su un elemento.
 
-Per gli input di testo, significa che l'evento si verifica alla perdita del focus.
+Per gli input di testo, ciò si verifica alla perdita del focus.
 
 Ad esempio, mentre scriviamo del testo nel campo di testo seguente -- l'evento non viene scaturito. Ma non appena spostiamo il focus su qualcos'altro, per esempio, clicchiamo su un pulsante -- verrà scatenato un evento `change`:
 
