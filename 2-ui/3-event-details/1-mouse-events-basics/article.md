@@ -145,7 +145,7 @@ Per esempio, se avessimo una finestra di dimensioni 500x500, ed il puntatore del
 E se il puntatore fosse al centro, allora `clientX` e `clientY` sarebbero valorizzati a `250`, senza tenere conto del punto in cui si trovi rispetto al documento. In qualche modo sono simili a `position:fixed` da questo punto di vista.
 
 ````online
-Muover il mouse sopra il campo di testo per vedere `clientX/clientY` (l'esempio è dentro un `iframe`, quindi le coordinate sono relative a questo `iframe`):
+Muovere il mouse sopra il campo di testo per vedere `clientX/clientY` (l'esempio è dentro un `iframe`, quindi le coordinate sono relative a questo `iframe`):
 
 ```html autorun height=50
 <input onmousemove="this.value=event.clientX+':'+event.clientY" value="Muovi il mouse sopra me">
