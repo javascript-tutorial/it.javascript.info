@@ -1,27 +1,27 @@
-# Moving the mouse: mouseover/out, mouseenter/leave
+# Muovere il mouse: mouseover/out, mouseenter/leave
 
-Let's dive into more details about events that happen when the mouse moves between elements.
+Anadiamo più in dettaglio gli eventi che accadono quando il mouse si sposta tra gli elementi.
 
-## Events mouseover/mouseout, relatedTarget
+## Eventi mouseover/mouseout, relatedTarget
 
-The `mouseover` event occurs when a mouse pointer comes over an element, and `mouseout` -- when it leaves.
+L'evento `mouseover` avviene quando il puntatore del mouse passa su un elemento, e `mouseout` -- quando passa oltre.
 
 ![](mouseover-mouseout.svg)
 
-These events are special, because they have property `relatedTarget`. This property complements `target`. When a mouse leaves one element for another, one of them becomes `target`, and the other one - `relatedTarget`.
+Sono eventi particolari, perché posseggono la proprietà `relatedTarget`. Questà proprietà è a complemento di `target`. Quando il mouse passa da un elemento a un altro, uno di questo diventa il `target`, e l'altro - `relatedTarget`.
 
-For `mouseover`:
+Per `mouseover`:
 
-- `event.target` -- is the element where the mouse came over.
-- `event.relatedTarget` -- is the element from which the mouse came (`relatedTarget` -> `target`).
+- `event.target` -- é l'elemento appena raggiunto dal mouse.
+- `event.relatedTarget` -- è l'elemeno dal quale si è spostato il mouse (`relatedTarget` -> `target`).
 
-For `mouseout` the reverse:
+Per `mouseout` è il contrario:
 
-- `event.target` -- is the element that the mouse left.
-- `event.relatedTarget` -- is the new under-the-pointer element, that mouse left for (`target` -> `relatedTarget`).
+- `event.target` -- è l'elemento appena lasciato dal mouse.
+- `event.relatedTarget` -- è il nuovo elemento sotto il puntatore (`target` -> `relatedTarget`).
 
 ```online
-In the example below each face and its features are separate elements. When you move the mouse, you can see mouse events in the text area.
+Nel seguente esempio ogni  In the example below each face and its features are separate elements. When you move the mouse, you can see mouse events in the text area.
 
 Each event has the information about both `target` and `relatedTarget`:
 
