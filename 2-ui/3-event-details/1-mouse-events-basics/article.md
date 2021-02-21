@@ -89,7 +89,7 @@ Proprietà dell'evento:
 - `ctrlKey`: `key:Ctrl`
 - `metaKey`: `key:Cmd` per Mac
 
-Vengono valorizzati a `true` quando il tasto corrispondente era premuto durante l'evento.
+Vengono valorizzati a `true` quando il tasto corrispondente viene premuto.
 
 Per esempio, il seguente pulsante funziona solamente con `key:Alt+Shift`+click:
 
