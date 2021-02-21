@@ -39,7 +39,7 @@ Quando un'azione singola inizia eventi multipli, il loro ordine è fisso. Ossia,
 ```online
 Premi il seguente pulsante e vedrai gli eventi. prova anche il doppio click.
 
-Nel banco di prova in basso tutti gli eventi del mouse vengono loggati, e se passa più di un secondo tra uno e l'altro vengono separati da una riga orizzontale.
+Nel banco di prova in basso, vengono elencati tutti gli eventi del mouse, e se passa più di un secondo tra uno e l'altro vengono separati da una riga orizzontale.
 
 Possiamo inoltre notare la proprietà `button` che permette di rilevare il pulsante del mouse, viene spiegato successivamente.
 
