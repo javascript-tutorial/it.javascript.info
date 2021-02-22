@@ -1,9 +1,9 @@
 
-# Static properties and methods
+# Proprietà e metodi statici
 
-We can also assign a method to the class function itself, not to its `"prototype"`. Such methods are called *static*.
+Possiamo anche assegnare metodi alle classi stesse, non solamente al loro `"prototype"`. Questi metodi sono detti *statici*.
 
-In a class, they are prepended by `static` keyword, like this:
+All'interno della classe, questi vengono preceduti dalla keyword `static`, come possiamo vedere nell'esempio:
 
 ```js run
 class User {
@@ -17,7 +17,7 @@ class User {
 User.staticMethod(); // true
 ```
 
-That actually does the same as assigning it as a property directly:
+Questo avrà lo stesso effetto di assegnarla direttamente come proprietà:
 
 ```js run
 class User { }
@@ -29,11 +29,11 @@ User.staticMethod = function() {
 User.staticMethod(); // true
 ```
 
-The value of `this` in `User.staticMethod()` call is the class constructor `User` itself (the "object before dot" rule).
+Il valore di `this` nella chiamata `User.staticMethod()` è rappresentato dal costruttore dell classe `User` (la regola dell' "oggetto prima del punto").
 
-Usually, static methods are used to implement functions that belong to the class, but not to any particular object of it.
+Solitamente, i metodi statici vengono utilizzati per rappresentare funzioni che appartengono alla classe, ma non ad un oggetto in particolare.
 
-For instance, we have `Article` objects and need a function to compare them. A natural solution would be to add `Article.compare` method, like this:
+Ad esempio, potremmo avere degli oggetti di tipo `Article` e necessitare di una funzione per confrontarli. Una soluzione naturale sarebbe quella di aggiungere il metodo `Article.compare`, come nell'esempio:
 
 ```js run
 class Article {
@@ -63,17 +63,17 @@ articles.sort(Article.compare);
 alert( articles[0].title ); // CSS
 ```
 
-Here `Article.compare` stands "above" articles, as a means to compare them. It's not a method of an article, but rather of the whole class.
+Qui `Article.compare` sta "al di sopra" degli articoli, poiché ha lo scopo di confrontarli. Non è un metodo di un articolo, ma piuttosto dell'intera classe.
 
-Another example would be a so-called "factory" method. Imagine, we need few ways to create an article:
+Un altro esempio comune è quello del "factory method" (un particolare design pattern). Immaginiamo di avere bisogno di diversi modalità di creazione di un articolo:
 
-1. Create by given parameters (`title`, `date` etc).
-2. Create an empty article with today's date.
-3. ...or else somehow.
+1. Creazione con i parametri forniti (`title`, `date` etc).
+2. Creazione di un articolo vuoto con la data di oggi.
+3. ...o qualsiasi altra modalità.
 
-The first way can be implemented by the constructor. And for the second one we can make a static method of the class.
+Il primo metodo può essere implementato tramite il costruttore. Mentre per il secondo, possiamo creare un metodo statico appartenente alla classe.
 
-Like `Article.createTodays()` here:
+Come `Article.createTodays()` nell'esempio:
 
 ```js run
 class Article {
@@ -84,7 +84,7 @@ class Article {
 
 *!*
   static createTodays() {
-    // remember, this = Article
+    // ricorda, this = Article
     return new this("Today's digest", new Date());
   }
 */!*
@@ -95,21 +95,21 @@ let article = Article.createTodays();
 alert( article.title ); // Today's digest
 ```
 
-Now every time we need to create a today's digest, we can call `Article.createTodays()`. Once again, that's not a method of an article, but a method of the whole class.
+Ora, ogni volta in cui avremo bisogno di crare un "today's digest", possiamo invocare `Article.createTodays()`. Ripetiamolo nuovamente, questo non è un metodo per uno specifico articolo, ma piuttosto un metodo dell'intera classe.
 
-Static methods are also used in database-related classes to search/save/remove entries from the database, like this:
+I metodi statici vengono utilizzati anche nelle classi database-related (relative a database), per poter cercare/salvare/rimuovere elementi dal database, come nell'esempio:
 
 ```js
-// assuming Article is a special class for managing articles
-// static method to remove the article:
+// assumiamo che Article sia una classe speciale per la gestione degli articoli
+// metodo statico per la rimozione di un articolo:
 Article.remove({id: 12345});
 ```
 
-## Static properties
+## Proprietà statiche
 
 [recent browser=Chrome]
 
-Static properties are also possible, they look like regular class properties, but prepended by `static`:
+E' anche possibile definire proprietà statiche, queste sono molto simili alle proprietà della classe, ma sono precedute dalla keyword `static`:
 
 ```js run
 class Article {
@@ -119,17 +119,17 @@ class Article {
 alert( Article.publisher ); // Ilya Kantor
 ```
 
-That is the same as a direct assignment to `Article`:
+Lo stesso che si otterrebbe con un assegnazione diretta ad `Article`:
 
 ```js
 Article.publisher = "Ilya Kantor";
 ```
 
-## Inheritance of static properties and methods
+## Ereditarietà delle proprietà e dei metodi statici
 
-Static properties and methods are inherited.
+Anche le proprietà ed i metodi statici vengono ereditati.
 
-For instance, `Animal.compare` and `Animal.planet` in the code below are inherited and accessible as `Rabbit.compare` and `Rabbit.planet`:
+Ad esempio, `Animal.compare` e `Animal.planet` nel codice sotto, vengono ereditate e diventano quindi accessibili come `Rabbit.compare` e `Rabbit.planet`:
 
 ```js run
 class Animal {
@@ -153,7 +153,7 @@ class Animal {
 
 }
 
-// Inherit from Animal
+// Eredita da Animal
 class Rabbit extends Animal {
   hide() {
     alert(`${this.name} hides!`);
@@ -174,43 +174,43 @@ rabbits[0].run(); // Black Rabbit runs with speed 5.
 alert(Rabbit.planet); // Earth
 ```
 
-Now when we call `Rabbit.compare`, the inherited `Animal.compare` will be called.
+Ora, quando invochiamo `Rabbit.compare`, verrà invocato il metodo `Animal.compare` ereditato.
 
-How does it work? Again, using prototypes. As you might have already guessed, `extends` gives `Rabbit` the `[[Prototype]]` reference to `Animal`.
-
-![](animal-rabbit-static.svg)
+Come funziona? Nuovamente, utilizzando il prototypes. Come potrete aver già intuito, `extends` fornisce a `Rabbit` il  riferimento a `[[Prototype]]` di `Animal`.
 
 ![](animal-rabbit-static.svg)
 
-1. `Rabbit` function prototypally inherits from `Animal` function.
-2. `Rabbit.prototype` prototypally inherits from `Animal.prototype`.
+![](animal-rabbit-static.svg)
 
-As a result, inheritance works both for regular and static methods.
+1. La funzione `Rabbit` eredita dalla funzione di `Animal` .
+2. `Rabbit.prototype` eredita il prototye di `Animal.prototype`.
 
-Here, let's check that by code:
+Come risultato, l'ereditarietà funziona sia per i metodi regolari che per quelli statici.
+
+Ora, verifichiamo quanto detto guardando al codice:
 
 ```js run
 class Animal {}
 class Rabbit extends Animal {}
 
-// for statics
+// per proprietà statiche
 alert(Rabbit.__proto__ === Animal); // true
 
-// for regular methods
+// per proprietà regolari
 alert(Rabbit.prototype.__proto__ === Animal.prototype); // true
 ```
 
-## Summary
+## Riepilogo
 
-Static methods are used for the functionality that belongs to the class "as a whole". It doesn't relate to a concrete class instance.
+I metodi statici vengono utilizzati per funzionalità che appartengono all'intera classe. Non hanno nulla a che fare con l'istanza della classe.
 
-For example, a method for comparison `Article.compare(article1, article2)` or a factory method `Article.createTodays()`.
+Ad esempio, un metodo per il confronto `Article.compare(article1, article2)` o un factory method `Article.createTodays()`.
 
-They are labeled by the word `static` in class declaration.
+Queste vengono precedute dalla keyword `static` all'interno della dichiarazione della classe.
 
-Static properties are used when we'd like to store class-level data, also not bound to an instance.
+Le proprietà statiche vengono utilizzate quando si ha intenzione di memorizzare dati relativi alla classe, che non sono quindi legate ad un'istanza precisa.
 
-The syntax is:
+La sintassi è:
 
 ```js
 class MyClass {
@@ -222,13 +222,13 @@ class MyClass {
 }
 ```
 
-Technically, static declaration is the same as assigning to the class itself:
+Tecnicamente, le dichiarazioni di proprietà statiche equivalgono all'assegnazione diretta alla classe stessa:
 
 ```js
 MyClass.property = ...
 MyClass.method = ...
 ```
 
-Static properties and methods are inherited.
+Le proprietà ed i metodi statici vengono ereditati.
 
-For `class B extends A` the prototype of the class `B` itself points to `A`: `B.[[Prototype]] = A`. So if a field is not found in `B`, the search continues in `A`.
+Nel caso in cui `class B extends A` il prototype della classe `B` punta ad `A`: `B.[[Prototype]] = A`. Quindi se un campo non viene trovato in `B`, la ricerca continuerà in `A`.
