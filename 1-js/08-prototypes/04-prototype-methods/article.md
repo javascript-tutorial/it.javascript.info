@@ -11,7 +11,7 @@ Alcuni dei metodi più moderni sono:
 - [Object.getPrototypeOf(obj)](mdn:js/Object/getPrototypeOf) -- ritorna il `[[Prototype]]` di `obj`.
 - [Object.setPrototypeOf(obj, proto)](mdn:js/Object/setPrototypeOf) -- imposta il `[[Prototype]]` di `obj` a `proto`.
 
-Questi metodi dovrebbero sempre essere preferiti rispetto a `__proto__`.
+Questi metodi dovrebbero sempre essere preferiti a `__proto__`.
 
 Ad esempio:
 
@@ -54,13 +54,13 @@ alert(rabbit.jumps); // true
 
 I descrittori vanno forniti nel formato descritto nel capitolo <info:property-descriptors>.
 
-Possiamo utilizzare `Object.create` per clonare un oggetto in maniera più performante rispetto a copiare le proprietà con un `for..in`:
+Possiamo utilizzare `Object.create` per clonare un oggetto in maniera più efficace rispetto al copiare le proprietà con un `for..in`:
 
 ```js
 let clone = Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescriptors(obj));
 ```
 
-Questa chiamata crea una copia esatta di `obj`, inculdendo tutte le proprietà: enumerable e non-enumerable, tutte le proprietà ed i relativi setters/getters -- tutto, impostando anche il giusto `[[Prototype]]`.
+Questa chiamata crea una copia esatta di `obj`, inculdendo tutte le proprietà: enumerable e non-enumerable, e i relativi setters/getters -- tutto, impostando anche il giusto `[[Prototype]]`.
 
 ## Una breve storia
 
@@ -72,16 +72,16 @@ Motivazioni storiche.
 
 - La proprietà `"prototype"` di un costruttore è disponibile fin dai primi tempi in JavaScript.
 - Più tardi, nel 2012, è apparso nello standard `Object.create`. Il quale permette di creare oggetti fornendogli un prototype, ma non consente di impostarlo o di ottenerlo. Quindi i browser implementarono il metodo non-standard `__proto__`, come proprietà di accesso per impostare o otternere il prototype in qualsiasi momento.
-- Più tardi, nel 2015, `Object.setPrototypeOf` e `Object.getPrototypeOf` vennero aggiunti allo standard, con le stesse funzionalità di `__proto__`. Poiché `__proto__` era di fatto implementato ovunque, entro in un fase di deprecazione, entrando nella sezione Annex B dello standard, ovvero: opzionale per gli ambienti non-browser.
+- Più tardi, nel 2015, `Object.setPrototypeOf` e `Object.getPrototypeOf` vennero aggiunti allo standard, con le stesse funzionalità di `__proto__`. Poiché `__proto__` era di fatto implementato ovunque, entrò in un fase di deprecazione, nella sezione Annex B dello standard, ovvero: opzionale per gli ambienti non-browser.
 
 Ad oggi abbiamo molti metodi a nostra disposizione.
 
-Perché `__proto__` è stato rimpiazzato dalle funzioni `getPrototypeOf/setPrototypeOf`? Questa è una domanda interessante, dobbiamo capire perché l'utilizzo di `__proto__` non è una buona pratica. Continuate a leggere per avere la risposta.
+Perché `__proto__` è stato rimpiazzato dalle funzioni `getPrototypeOf/setPrototypeOf`? Questa è una domanda interessante; dobbiamo capire perché l'utilizzo di `__proto__` non è una buona pratica. Continuate a leggere per avere la risposta.
 
 ```warn header="Non cambiate il `[[Prototype]]` ad oggetti esistenti se la velocità è importante"
 Tecnicamente, possiamo impostare/ottenere il `[[Prototype]]` in qualsiasi momento. Ma solitamente lo impostiamo in fase di creazione dell'oggetto e successivamente non lo modifichiamo più: `rabbit` eredita da `animal`, e questo non dovrebbe cambiare.
 
-I motori JavaScript sono altamente ottimizzati per questo. Cambiare il prototype "on-the-fly" (al momento), con `Object.setPrototypeOf` o `obj.__proto__=` è un operazione molto lenta, poiché vanifica le ottimizzazioni interne fatte per le operazioni di accesso alle proprietà. Quindi evitate questa pratica, a meno ché non siate consci di ciò che state facendo, e la velocità di esecuzioni non è un problema per voi.
+I motori JavaScript sono altamente ottimizzati per questo. Cambiare il prototype durante l'esecuzione, con `Object.setPrototypeOf` o `obj.__proto__=` è un operazione molto lenta, poiché vanifica le ottimizzazioni interne fatte per le operazioni di accesso alle proprietà. Quindi evitate questa pratica, a meno che non siate consci di ciò che state facendo, e la velocità di esecuzione non è un problema per voi.
 ```
 
 ## "Very plain" objects [#very-plain]
@@ -103,13 +103,13 @@ alert(obj[key]); // [object Object], non "some value"!
 
 In questo esempio, se l'utente digita `__proto__`, l'assegnazione è ignorata!
 
-Questo non dovrebbe sorprenderci. La proprietà `__proto__` è speciale: deve contenere un oggetto o valere `null`. Una stringa non può fungere da prototype.
+Questo non dovrebbe sorprenderci. La proprietà `__proto__` è speciale: deve contenere un oggetto o `null`. Una stringa non può fungere da prototype.
 
 Ma il nostro *intento* non è quello di implementare questo comportamento, giusto? Vogliamo semplicemente memorizzare una coppia chiave/valore, ma utilizzando come chiave il termine `"__proto__"` questo non viene memorizzato correttamente. Quindi, questo è un bug!
 
-In questo caso le conseguenze non sono cosi terribili. Ma in altri casi potremmo assegnarli oggetti, andando a modificare il valore di prototype. Risultato: l'esecuzione fallirà in maniera imprevedibile.
+In questo caso le conseguenze non sono così terribili. Ma in altri casi potremmo assegnarli oggetti, andando a modificare il valore del prototype. Risultato: l'esecuzione fallirà in maniera imprevedibile.
 
-Ancora peggio -- solitamente gli sviluppatori non pensano affatto a questa eventualità. Questo lo rende un bug veramente difficile da trovare e può generare bug con diverse vulnerabilità, specialmente se il codice viene eseguito server-side.
+Ancora peggio -- solitamente gli sviluppatori non pensano affatto a questa eventualità. Questo lo rende un bug veramente difficile da trovare e può portare a diverse vulnerabilità, specialmente se il codice viene eseguito server-side.
 
 Questi comportamenti inaspettati accadono anche se proviamo ad assegnare la chiave `toString`, la quale è una funzione di default, e lo stesso vale per gli altri metodi integrati.
 
@@ -123,11 +123,11 @@ Ma `Object` potrebbe esserci utile, perché i creatori del linguaggio hanno pens
 
 ![](object-prototype-2.svg)
 
-Quindi, se `obj.__proto__` viene letta o impostata, il corrispondende getter/setter viene chiamato dal suo prototypeil quale legge/imposta il `[[Prototype]]`.
+Quindi, se `obj.__proto__` viene letta o impostata, il corrispondende getter/setter viene chiamato dal suo prototype, il quale legge/imposta il `[[Prototype]]`.
 
 Come detto all'inizio di questa sezione: `__proto__` è un modo per accedere al `[[Prototype]]`, non è il `[[Prototype]]` stesso.
 
-Ora, se il nostro scopo è quello di utilizzare un oggetto come array associativo, e voglia evitare questo tipo di problemi, possiamo farlo in questo modo:
+Ora, se il nostro scopo è quello di utilizzare un oggetto come array associativo, e vogliamo evitare questo tipo di problemi, possiamo farlo in questo modo:
 
 ```js run
 *!*
@@ -144,23 +144,23 @@ alert(obj[key]); // "some value"
 
 ![](object-prototype-null.svg)
 
-Quindi, non si ha alcun getter/setter ereditato per `__proto__`. D'ora in poi verrà trattata come una comune proprietà, quindi l'esempio visto sopra, funzionerà senza problemi.
+Quindi, non si ha alcun getter/setter ereditato per `__proto__`. D'ora in poi verrà trattata come una comune proprietà; l'esempio visto sopra funzionerà senza problemi.
 
 Questo tipo di oggetti vengono chiamati "very plain" ("molto semplici") o "pure dictionary" ("dizionari puri"), poiché sono molto più semplici dei normali plain object `{...}`.
 
-Il lato negativo di questi oggetti è che mancano di tutti gli oggetti integrati nei metodi, ad esempio `toString`:
+Il lato negativo di questi oggetti è che mancano di tutti i metodi integrati, ad esempio `toString`:
 
 ```js run
 *!*
 let obj = Object.create(null);
 */!*
 
-alert(obj); // Error (nnon esiste toString)
+alert(obj); // Error (non esiste toString)
 ```
 
 ...Ma questo può andarci bene per gli array associativi.
 
-Da notare che molti dei metodi relativi agli oggetti sono del tipo `Object.something(...)`, come `Object.keys(obj)` -- non sono contenuti all'interno del prototype, quindi continueranno a funzionare anche con questo tipo di oggetti:
+Da notare che molti dei metodi relativi agli oggetti sono come `Object.something(...)`, ad esempio `Object.keys(obj)` -- non sono contenuti all'interno del prototype, quindi continueranno a funzionare anche con questo tipo di oggetti:
 
 
 ```js run
@@ -173,13 +173,13 @@ alert(Object.keys(chineseDictionary)); // hello,bye
 
 ## Riepilogo
 
-I metodi moderi per impostare e leggere il prototype sono:
+I metodi moderni per impostare e leggere il prototype sono:
 
 - [Object.create(proto, [descriptors])](mdn:js/Object/create) -- crea un oggetto vuoto utilizzando `proto` come `[[Prototype]]` (può essere anche `null`) e dei property descriptors (descrittori di proprietà).
 - [Object.getPrototypeOf(obj)](mdn:js/Object/getPrototypeOf) -- ritorna il `[[Prototype]]` di `obj` (equivale a `__proto__`).
 - [Object.setPrototypeOf(obj, proto)](mdn:js/Object/setPrototypeOf) -- imposta il `[[Prototype]]` di `obj` a `proto` (equivale a `__proto__`).
 
-La proprietà integrata `__proto__`, utilizzata come getter/setter, non è sicura nel caso in cui volessimo inserire in un oggetto chiavi fornite dall'utente. Un utente potrebbe inserire `"__proto__"` come chiave, che genererebbe un errore, potrebbe non avere gravi conseguenze, ma generalmente non è prevedibile.
+La proprietà integrata `__proto__`, utilizzata come getter/setter, non è sicura nel caso in cui volessimo inserire in un oggetto chiavi fornite dall'utente. Un utente potrebbe inserire `"__proto__"` come chiave, che genererebbe un errore; potrebbe non avere gravi conseguenze, ma generalmente non è prevedibile.
 
 Le alternative disponibili sono: usare `Object.create(null)` per creare un "very plain" object, senza `__proto__`, o in alternativa, utilizzare `Map`.
 
@@ -191,7 +191,7 @@ let clone = Object.create(Object.getPrototypeOf(obj), Object.getOwnPropertyDescr
 
 Abbiamo anche chiarito che `__proto__` è un getter/setter per `[[Prototype]]` e risiede in `Object.prototype`, proprio come gli altri metodi.
 
-Possiamo creare un oggetto senza prototype utilizzando `Object.create(null)`. Questo tipo di oggetti vengono utilizzati come "pure dictionaries", che non presentano problemi nel caso in cui venga utilizzata `"__proto__"` come chiave.
+Possiamo creare un oggetto senza prototype utilizzando `Object.create(null)`. Questo tipo di oggetti vengono utilizzati come "puri dizionari", e non causano problemi nel caso in cui venga utilizzata `"__proto__"` come chiave.
 
 Altri metodi:
 

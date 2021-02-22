@@ -8,7 +8,7 @@ Abbiamo un oggetto `dictionary`, creato come `Object.create(null)`, in cui memor
 
 Aggiungi un metodo `dictionary.toString()`, il quale dovrebbe ritornare un lista di chiavi separate da virgola. Il metodo `toString` non deve essere mostrato nei cicli `for..in`.
 
-Cosi è come dovrebbe funzionare:
+Dovrebbe funzionare così:
 
 ```js
 let dictionary = Object.create(null);
@@ -21,7 +21,7 @@ let dictionary = Object.create(null);
 dictionary.apple = "Apple";
 dictionary.__proto__ = "test"; // __proto__ è una proprietà comune in questo caso
 
-// visualizziamo solamente apple e __proto__ are nel ciclo
+// nel ciclo compaiono solo apple e __proto__ 
 for(let key in dictionary) {
   alert(key); // "apple", poi "__proto__"
 }  
