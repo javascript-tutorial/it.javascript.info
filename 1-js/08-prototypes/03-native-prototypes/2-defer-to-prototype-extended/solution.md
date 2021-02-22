@@ -16,7 +16,7 @@ function f(a, b) {
 f.defer(1000)(1, 2); // mostra 3 dopo 1 secondo
 ```
 
-Da notare: utilizziamo `this` in `f.apply` per far si che il nostro decorator funzioni con i metodi degli oggetti.
+Da notare: utilizziamo `this` in `f.apply` per far sì che il nostro decorator funzioni con i metodi degli oggetti.
 
 Quindi se la nostra funzione viene invocata come metodo di un oggeto, allora `this` viene passato al metodo originale `f`.
 

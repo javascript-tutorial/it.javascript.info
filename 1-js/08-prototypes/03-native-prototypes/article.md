@@ -1,12 +1,12 @@
 # Native prototypes
 
-La proprietà `"prototype"` viene largamente utilizzate da JavaScript stesso. Tutti i costruttori integrati ne fanno uso.
+La proprietà `"prototype"` viene largamente utilizzata da JavaScript stesso. Tutti i costruttori integrati ne fanno uso.
 
-Come prima cosa andremo ad analizzare questa proprietà nel dettaglio, in un secondo momento vedremo come utilizzarla per aggiungere nuove funzionalità agli oggetti integrati.
+Come prima cosa andremo ad analizzare questa proprietà nel dettaglio; in un secondo momento vedremo come utilizzarla per aggiungere nuove funzionalità agli oggetti integrati.
 
 ## Object.prototype
 
-Ipotizziamo di stampare un oggetto vuoto:
+Ipotizziamo di dover mostrare un oggetto vuoto:
 
 ```js run
 let obj = {};
@@ -46,9 +46,9 @@ alert(Object.prototype.__proto__); // null
 
 ## Altri prototypes integrati
 
-Altri oggetti integrati, come `Array`, `Date`, `Function` ed altri, mantengono i metodi in prototypes.
+Altri oggetti integrati, come `Array`, `Date`, `Function` ed altri, hanno i propri metodi in prototypes.
 
-Ad esempio, quando creiamo un array `[1, 2, 3]`, il costruttore di default `new Array()` viene invocato internamente. Quindi `Array.prototype` diventa il suo prototipo e ne fonisce i suoi metodi. Questo comportamento rende l'utilizzo della memoria molto efficiente.
+Ad esempio, quando creiamo un array `[1, 2, 3]`, il costruttore di default `new Array()` viene invocato internamente. Quindi `Array.prototype` ne diventa il prototipo e fonisce i suoi metodi. Questo comportamento rende l'utilizzo della memoria molto efficiente.
 
 Come definito nella specifica, tutti i prototype integrati hanno `Object.prototype` in cima. Questo è il motivo per cui alcune persone dicono che "tutto deriva dagli oggetti".
 
@@ -94,24 +94,24 @@ Gli altri ogetti integrati funzionano allo stesso modo. Anche le funzioni -- poi
 function f() {}
 
 alert(f.__proto__ == Function.prototype); // true
-alert(f.__proto__.__proto__ == Object.prototype); // true, eredità da objects
+alert(f.__proto__.__proto__ == Object.prototype); // true, eredita da objects
 ```
 
 ## Primitivi
 
 La situazione è molto più complessa con strings, numbers e booleans.
 
-Come abbiamo già visto, questi non sono oggetti. Ma se proviamo ad accedere alle loro proprietà, viene creato un oggetto temporaneo utilizzando i rispettivi costruttori `String`, `Number` e `Boolean`. Forniscono i metodi e poi spariscono.
+Come abbiamo già visto, questi non sono oggetti. Ma se proviamo ad accedere alle loro proprietà, viene creato un oggetto temporaneo utilizzando i rispettivi costruttori `String`, `Number` e `Boolean`. Essi forniscono metodi e poi spariscono.
 
-Questi oggetti vengono creati di "nascosto" e in realtà molti motori ottimizzano il loro utilizzo, ma la specifica li descrive in questo modo. I metodi di questi oggetti sono memorizzati proprietà prototype, e sono disponibili tramite `String.prototype`, `Number.prototype` e `Boolean.prototype`.
+Questi oggetti vengono creati di "nascosto" e in realtà molti motori ottimizzano il loro utilizzo, ma la specifica li descrive in questo modo. I metodi di questi oggetti sono memorizzati in proprietà del loro prototype, e sono disponibili tramite `String.prototype`, `Number.prototype` e `Boolean.prototype`.
 
 ```warn header="I valori `null` e `undefined` non possiedono degli oggetti che li contengono"
-I valori speciali `null` e `undefined` si comportano diversamente. Non possiedono degli oggetti contenitori, quindi non avremmo a disposizione le proprietà e i metodi. E non avremmo nemmeno propotype corrispondente.
+I valori speciali `null` e `undefined` si comportano diversamente. Non possiedono degli oggetti contenitori, quindi non avremmo a disposizione proprietà e metodi. E non avremmo nemmeno il propotype corrispondente.
 ```
 
 ## Modificare i native prototypes [#native-prototype-change]
 
-I Nntive prototypes possono essere modificati. Ad esempio, se aggiungiamo il metodo `String.prototype`, e questo diventa disponibile a tutte le string:
+I Native prototypes possono essere modificati. Ad esempio, se aggiungiamo il metodo `String.prototype`, questo diventa disponibile a tutte le string:
 
 ```js run
 String.prototype.show = function() {
@@ -155,9 +155,9 @@ alert( "La".repeat(3) ); // LaLaLa
 ```
 
 
-## Prendere in prestito da prototypes
+## Prendere in prestito dai prototypes
 
-Nel capitolo <info:call-apply-decorators#method-borrowing> abbiamo parlato di come "prendere in prestito" i metodi.
+Nel capitolo <info:call-apply-decorators#method-borrowing> abbiamo parlato di come "prendere in prestito" metodi.
 
 Questo avviene quando prendiamo un metodo da un oggetto e lo copiamo in un altro.
 
@@ -195,4 +195,4 @@ La pratica di "prendere in prestito" i metodi è flessibile, consente di eredita
     - I metodi vengono memorizzati nel prototype (`Array.prototype`, `Object.prototype`, `Date.prototype`, etc.)
     - L'oggetto memorizza solamente i dati (gli elementdi dell'array, le proprietà dell'object, la data)
 - I tipi di dato primitivi memorizzano i metodi nel prototype, utilizzando degli oggetti "contenitori": `Number.prototype`, `String.prototype` e `Boolean.prototype`. Fanno eccezione `undefined` e `null` che non possiedono alcun oggetto contenitore.
-- I prototype integrati possono essere modificati o popolati con nuovi metodi. Ma questa, è una pratica sconsigliata. L'unico caso in cui è accettabile aggiungere nuovi metodi, è per fornire l'implementazione di funzionalità definite nella specifica JavaScript, agli engines che ancora non le supportano.
+- I prototype integrati possono essere modificati o popolati con nuovi metodi. Ma questa è una pratica sconsigliata. L'unico caso in cui è accettabile aggiungere nuovi metodi è per fornire l'implementazione di funzionalità definite nella specifica JavaScript agli engines che ancora non le supportano.
