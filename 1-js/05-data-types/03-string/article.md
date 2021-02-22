@@ -17,7 +17,7 @@ let double = "double-quoted";
 let backticks = `backticks`;
 ```
 
-Gli apici singoli e doppi sono essenzialmente uguali. I backticks, oltretutto, ci consentono di includere una qualsiasi espressione all'interno della stringa, inserendola all'interno di `${…}`:
+Gli apici singoli e doppi sono essenzialmente uguali. I backticks, invece, ci consentono di includere una qualsiasi espressione all'interno della stringa, inserendola all'interno di `${…}`:
 
 ```js run
 function sum(a, b) {
@@ -526,7 +526,7 @@ I caratteri vengono confrontati utilizzando il loro codice numerico. Un codice m
 
 ### Confronto tra stringhe corretto
 
-L'algoritmo più corretto da utilizzare per confrontare stringhe è più complesso di come si possa pensare, poiché l'alfabeto è diverso per ogni lingua. Lettere uguali possono avere posizioni diverse nei vari alfabeti.
+L'algoritmo più corretto da utilizzare per confrontare stringhe è più complesso di quanto si possa pensare, poiché l'alfabeto è diverso per ogni lingua. Lettere uguali possono avere posizioni diverse nei vari alfabeti.
 
 Quindi il browser deve sapere quale lingua utilizzare nel confronto.
 
