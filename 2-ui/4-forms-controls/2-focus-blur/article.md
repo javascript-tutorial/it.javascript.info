@@ -12,7 +12,7 @@ Ci sono delle peculiarità importanti da considerare quando si lavora con gli ev
 
 ## Gli eventi focus/blur
 
-L'evento `focus` viene chiamato quando si entra dentro un elemento (focusing), e `blur` -- quando l'elemento perde il focus.
+L'evento `focus` viene emesso quando si entra dentro un elemento (focusing), e `blur` -- quando l'elemento perde il focus.
 
 Proviamo questi due eventi per la validazione di un campo di input.
 
