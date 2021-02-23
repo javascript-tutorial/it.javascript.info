@@ -4,7 +4,7 @@ Un elemento riceve il focus sia quando l'utente ci clicca sopra, sia quando usa 
 
 Porre il focus su un elemento in genere significa: "preparati ad accettare il dato qui", quindi è questo il momento in cui possiamo eseguire il codice per inizializzare la funzionalità richiesta.
 
-Il momento della perdita del focus ("blur") può essere ancora più importante. Si concretizza quando un utente clicca da qualche altra parte o preme il tasto `key:Tab` per andare al prossimo campo del form, ma ci sono altri modi per farlo.
+Il momento della perdita del focus ("blur") può essere ancora più importante. Si concretizza quando un utente clicca da qualche altra parte o preme il tasto `key:Tab` per spostarsi al prossimo campo del form, ma ci sono altri modi per farlo.
 
 Perdere il focus generalmente significa: "il dato è stato inserito", quindi possiamo eseguire il codice per controllarlo oppure salvarlo sul server e così via.
 
