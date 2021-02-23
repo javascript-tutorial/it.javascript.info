@@ -88,7 +88,7 @@ Funziona su tutti i browser tranne che su Firefox ([bug](https://bugzilla.mozill
 
 Se inseriamo qualcosa nell'input e proviamo ad usare `key:Tab` o cliccare fuori dall'input `<input>`, `onblur` rimette il focus sull'input.
 
-Nota bene che non possiamo "prevenire la perdita del focus" chiamando `event.preventDefault()` su `onblur`, perché `onblur` viene creato *dopo* che l'elemento per il focus.
+Nota bene che non possiamo "prevenire la perdita del focus" chiamando `event.preventDefault()` su `onblur`, poiché `onblur` viene creato *dopo* che l'elemento ha perso il focus.
 
 ```warn header="Perdita del focus creata tramite JavaScript"
 La perdita del focus può avvenire per varie ragioni.
