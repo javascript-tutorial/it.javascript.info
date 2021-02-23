@@ -220,6 +220,6 @@ Gli eventi `focus` e `blur` vengono generati su un elemento quando si pone/perde
 
 Le loro peculiarità sono:
 - Non sono soggetti al bubbling. Si può però ricorrere all'uso dello stato *capturing* oppure di `focusin/focusout`.
-- La maggioranza degli elementi non supporta il focus di default. Si può usare `tabindex` su ogni cosa per attivarne il supporto.
+- La maggioranza degli elementi non supporta il focus di default. Si può usare `tabindex` su ogni elemento per attivarne il supporto.
 
 L'elemento con il focus attualmente attivo è disponibile con `document.activeElement`.
