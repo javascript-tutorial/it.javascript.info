@@ -104,7 +104,7 @@ La pratica migliore è quella di fare attenzione nell'uso di questi eventi. Se v
 ```
 ## Permettere il focus su ogni elemento: tabindex
 
-Di default c'è una varietà di elementi che non supporta il focus.
+Di default ci sono una varietà di elementi che non supportano il focus.
 
 La lista varia leggermente a seconda del browser, ma una cosa è sempre vera: il supporto al `focus/blur` viene garantito per elementi con i quali l'utente può interagire: `<button>`, `<input>`, `<select>`, `<a>` e così via.
 
