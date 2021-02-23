@@ -96,7 +96,7 @@ La perdita del focus può avvenire per varie ragioni.
 Una di queste è quando il visitatore clicca da qualche altra parte. Ma anche JavaScript stesso può causarlo, per esempio:
 
 - Un `alert` sposta il focus su sé stesso, questo causa la perdita del focus sull'elemento (evento `blur`), e quando l'`alert` viene dismesso, il focus ritorna sull'elemento (evento `focus`).
-- La rimozione di un elemento dal DOM, causa essa stessa la perdita del ficus. Nel caso in cui venga reinserito, ovviamente il focus non ritornerà su di esso.
+- La rimozione di un elemento dal DOM, causa essa stessa la perdita del focus. Nel caso in cui venga reinserito, ovviamente il focus non ritornerà su di esso.
 
 Queste caratteristiche causano, nei gestori `focus/blur`, dei comportamenti inattesi -- a scatenarsi quando non richiesto.
 
