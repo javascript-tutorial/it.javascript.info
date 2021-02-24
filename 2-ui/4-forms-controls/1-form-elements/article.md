@@ -284,7 +284,7 @@ Navigazione dei form:
 : Un form è disponibile come `document.forms[name/index]`.
 
 `form.elements`  
-: Gli elementi del form sono disponibili come `form.elements[name/index]`, oppure si può anche solo usare `form[name/index]`. La proprietà `elements` esiste anche per i `<fieldset>`.
+: Gli elementi del form sono disponibili come `form.elements[name/index]`, oppure, più semplicemente con `form[name/index]`. La proprietà `elements` esiste anche per i `<fieldset>`.
 
 `element.form`
 : Gli elementi referenziano i loro form nella proprietà `form`.
