@@ -2,7 +2,7 @@
 
 Drag'n'Drop è una fantastica soluzione a livello di interfaccia. Prendere qualcosa e trascinarla e rilasciarla è un modo semplice ed intuitivo per fare tantissime cose, dal copiare e spostare documenti (come nei gestori di files) all'ordinare qualcosa online (rilasciando un prodotto in un carrello).
 
-Nello standar HTML attuale c'è una [sezione sul Drag and Drop](https://html.spec.whatwg.org/multipage/interaction.html#dnd) con eventi speciali come `dragstart`, `dragend`, e così via.
+Nello standard HTML attuale c'è una [sezione sul Drag and Drop](https://html.spec.whatwg.org/multipage/interaction.html#dnd) con eventi speciali come `dragstart`, `dragend`, e così via.
 
 Questi eventi ci permettono di supportare tipi particolari di drag'n'drop, come gestire il trascinamento di un file dal gestore file dell'OS e rilasciarlo dentro la finestra del browser. Quindi JavaScript potrà accedere ai conenuto di tali files.
 
