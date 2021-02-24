@@ -231,7 +231,7 @@ Le specifiche complete dell'elemento `<select>` sono disponibili nelle specifich
 
 ### new Option
 
-Nelle specifiche [specification](https://html.spec.whatwg.org/multipage/forms.html#the-option-element) c'è una sintassi breve e carina per creare una elemento  `<option>`:
+Nelle specifiche [specification](https://html.spec.whatwg.org/multipage/forms.html#the-option-element) viene descritta una sintassi breve ed elegante per creare una elemento  `<option>`:
 
 ```js
 option = new Option(text, value, defaultSelected, selected);
