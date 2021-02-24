@@ -18,7 +18,7 @@ Requisiti:
 - Quando viene mostrato il form, il focus dovrebbe essere dentro il campo `<input>` per l'utente.
 - I tasti `key:Tab`/`key:Shift+Tab` dovrebbe cambiare il focus tra i campi del form, e non permettergli di lasciarlo per altri elementi della pagina.
 
-Usage example:
+Un esempio di come dovrebbe funzionare:
 
 ```js
 showPrompt("Enter something<br>...smart :)", function(value) {
