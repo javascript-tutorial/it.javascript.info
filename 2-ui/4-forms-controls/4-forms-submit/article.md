@@ -47,7 +47,7 @@ Ecco la demo:
 
 Per eseguire l'invio (submit)  di un form sul server manualmente, possiamo chiamare `form.submit()`.
 
-A quel punto l'evento `submit` non viene generato. Si assume che il programmatore chiamando `form.submit()`, abbia previsto che nello script siano state considerate tutte le dovute elaborazioni.
+In questo caso l'evento di `submit` non viene generato. Si assume che il programmatore chiamando `form.submit()`, abbia previsto che nello script siano state considerate tutte le dovute elaborazioni.
 
 Talvolta viene usato per creare ed inviare manualmente un form, come in questo esempio:
 
