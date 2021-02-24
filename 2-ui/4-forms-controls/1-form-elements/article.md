@@ -163,7 +163,7 @@ Come in questo caso:
 input.value = "Nuovo valore";
 textarea.value = "Nuovo testo";
 
-input.checked = true; // for a checkbox o per un radio button
+input.checked = true; // per una checkbox o un radio button
 ```
 
 ```warn header="Usare `textarea.value`, e non `textarea.innerHTML`"
