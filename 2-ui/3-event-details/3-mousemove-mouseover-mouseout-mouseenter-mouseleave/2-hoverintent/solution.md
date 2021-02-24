@@ -1,18 +1,18 @@
 
-The algorithm looks simple:
-1. Put `onmouseover/out` handlers on the element. Also can use `onmouseenter/leave` here, but they are less universal, won't work if we introduce delegation.
-2. When a mouse cursor entered the element, start measuring the speed on `mousemove`.
-3. If the speed is slow, then run `over`.
-4. When we're going out of the element, and `over` was executed, run `out`.
+L'algoritmo è semplice:
+1. Impostare dei gestori `onmouseover/out` sull'elemento. Qui si possono anche usare `onmouseenter/leave`,  ma sono meno universali, e non funzionerebbero se introducessimo l'uso della delagation.
+2. Quando il puntatore è entrato dentro l'elemento, si comincia a misurare la velocità al `mousemove`.
+3. Se la velocità è lenta, eseguire `over`.
+4. Quando si esce fuori dall'elemento, ed è stato eseguito `over`, eseguire `out`.
 
-But how to measure the speed?
+Ma come misurare la velocità?
 
-The first idea can be: run a function every `100ms` and measure the distance between previous and new coordinates. If it's small, then the speed is small.
+La prima strategia potrebbe essere: eseguire una funzione ogni `100ms` e misurare la distanza tra le vecchie e nuove coordinate. Se fosse piccola, anche la velocità lo sarebbe.
 
-Unfortunately, there's no way to get "current mouse coordinates" in JavaScript. There's no function like `getCurrentMouseCoordinates()`.
+Sfortunatamente, non c'è modo di ricavare "le coordinate attuali del mouse" in JavaScript. Non esistono funzioni come `getCurrentMouseCoordinates()`.
 
-The only way to get coordinates is to listen for mouse events, like `mousemove`, and take coordinates from the event object.
+L'unico modo è di mettersi in ascolto sugli eventi del mouse, come `mousemove`, e prendere le coordinate dall'oggetto evento.
 
-So let's set a handler on `mousemove` to track coordinates and remember them. And then compare them, once per `100ms`.
+Quindi impostiamo un gestore su `mousemove` per tenere traccia delle coordinate e memorizzarle. Quindi confrontarle una volta ogni `100ms`.
 
-P.S. Please note: the solution tests use `dispatchEvent` to see if the tooltip works right.
+P.S.: Nota bene: i test della soluzione fanno uso di `dispatchEvent` per vedere se il tooltip funziona bene.
