@@ -1,6 +1,6 @@
 # Focusing: focus/blur
 
-Un elemento riceve il focus sia quando l'utente ci clicca sopra, sia quando usa il tasto `key:Tab` della tastiera. Esiste anche un attributo HTML `autofocus` che mette il focus dentro un elemento di default al caricamento della pagina ed anche altri modi per ottenere il focus.
+Un elemento riceve il focus sia quando l'utente ci clicca sopra, sia quando usa il tasto `key:Tab` della tastiera. Esiste anche un attributo HTML `autofocus` che imposta il focus in un elemento di default al caricamento della pagina ed anche altri modi per ottenere il focus.
 
 Porre il focus su un elemento in genere significa: "preparati ad accettare il dato qui", quindi è questo il momento in cui possiamo eseguire il codice per inizializzare la funzionalità richiesta.
 
