@@ -4,7 +4,7 @@ I forms e gli elementi control, come `<input>` hanno una serie di eventi e propr
 
 Lavorando con i forms sarà molto più comodo quando li avremo imparati.
 
-## Navigazione: form and elements
+## Navigazione: form e elements
 
 I form del documento sono membri della speciale collezione `document.forms`.
 
