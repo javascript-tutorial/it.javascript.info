@@ -127,7 +127,7 @@ Solitamente non è un problema, in quanto raramente andiamo a modificare il nome
 
 Per ogni elemento, il form è disponibile come `element.form`. Quindi un form referenzia tutti gli elementi, e gli elementi referenziano il form.
 
-Ecco un figura:
+Come possiamo vedere in figura:
 
 ![](form-navigation.svg)
 
