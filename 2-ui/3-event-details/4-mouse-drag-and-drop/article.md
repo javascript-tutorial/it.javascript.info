@@ -1,12 +1,12 @@
-# Drag'n'Drop with mouse events
+# Drag'n'Drop con gli eventi del mouse
 
-Drag'n'Drop is a great interface solution. Taking something and dragging and dropping it is a clear and simple way to do many things, from copying and moving documents (as in file managers) to ordering (dropping items into a cart).
+Drag'n'Drop è una fantastica soluzione a livello di interfaccia. Prendere qualcosa e trascinarla e rilasciarla è un modo semplice ed intuitivo per fare tantissime cose, dal copiare e spostare documenti (come nei gestori di files) all'ordinare qualcosa online (rilasciando un prodotto in un carrello).
 
-In the modern HTML standard there's a [section about Drag and Drop](https://html.spec.whatwg.org/multipage/interaction.html#dnd) with special events such as `dragstart`, `dragend`, and so on.
+Nello standar HTML attuale c'è una [sezione sul Drag and Drop](https://html.spec.whatwg.org/multipage/interaction.html#dnd) con eventi speciali come `dragstart`, `dragend`, e così via.
 
-These events allow us to support special kinds of drag'n'drop, such as handling dragging a file from OS file-manager and dropping it into the browser window. Then JavaScript can access the contents of such files.
+Questi eventi ci permettono di supportare tipi particolari di drag'n'drop, come gestire il trascinamento di un file dal gestore file dell'OS e rilasciarlo dentro la finestra del browser. Quindi JavaScript potrà accedere ai conenuto di tali files.
 
-But native Drag Events also have limitations. For instance, we can't prevent dragging from a certain area. Also we can't make the dragging "horizontal" or "vertical" only. And there are many other drag'n'drop tasks that can't be done using them. Also, mobile device support for such events is very weak.
+Ma gli eventi Drag Events hanno anche delle limitazioni. For instance, we can't prevent dragging from a certain area. Also we can't make the dragging "horizontal" or "vertical" only. And there are many other drag'n'drop tasks that can't be done using them. Also, mobile device support for such events is very weak.
 
 So here we'll see how to implement Drag'n'Drop using mouse events.
 
