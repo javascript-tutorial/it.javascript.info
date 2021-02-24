@@ -167,7 +167,7 @@ input.checked = true; // for a checkbox o per un radio button
 ```
 
 ```warn header="Usare `textarea.value`, e non `textarea.innerHTML`"
-Nota bene che sebbene anche `<textarea>...</textarea>` contenga il suo valore come HTML annidato, non dovremmo mai usare `textarea.innerHTML` per accedervi.
+Nota bene che, nonostante anche `<textarea>...</textarea>` contenga il suo valore come HTML annidato, non dovremmo mai usare `textarea.innerHTML` per accedervi.
 
 Esso conterrà solamente l'HTML che era stato inizialmente impostato nella pagina, e non il valore attuale.
 ```
