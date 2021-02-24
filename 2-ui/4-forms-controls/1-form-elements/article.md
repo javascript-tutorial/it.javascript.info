@@ -206,7 +206,7 @@ Ecco un esempio per tutti e tre i metodi:
 
 Diversamente da altri controls, `<select>` permette più opzioni alla volta se contiene l'attributo `multiple`. Sebbene questo attributo venga usato raramente.
 
-Per valori multipli selezionati, usiamo il primo modo per impostare i valori: aggiungere/rimuovere la proprietà `selected` dai sottolementi `<option>`.
+Per valori multipli selezionati, usiamo il primo modo per impostare i valori: aggiungere/rimuovere la proprietà `selected` dai sottoelementi `<option>`.
 
 Ecco un esempio di come ottenere i valori selezionati da un multi-select:
 
