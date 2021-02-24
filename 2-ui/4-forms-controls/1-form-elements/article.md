@@ -90,7 +90,7 @@ Per esempio:
 ````
 
 ````warn header="Notazione breve: `form.name`"
-C'è una notazione breve: possiamo accedere all'elemento come `form[index/name]`.
+Esiste una notazione breve: possiamo accedere all'elemento come `form[index/name]`.
 
 In altre parole, invece di `form.elements.login` possiamo scrivere `form.login`.
 
