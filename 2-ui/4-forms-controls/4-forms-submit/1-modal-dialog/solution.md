@@ -13,7 +13,7 @@ Una finestra modale può essere implementata usando un `<div id="cover-div">` se
 }
 ```
 
-Dato che il `<div>` copre ogni cosa, è questo elemenoto a catturare tutti i click, e non la pagina sottostante.
+Dato che il `<div>` copre ogni cosa, sarà questo elemento a catturare tutti i click, e non la pagina sottostante.
 
 Inoltre può essere prevenuto lo scrolling della pagina impostando `body.style.overflowY='hidden'`.
 
