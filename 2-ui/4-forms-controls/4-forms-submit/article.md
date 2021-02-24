@@ -1,6 +1,6 @@
 # Form: eventi e metodi di submit
 
-L'evento `submit` si scatena quando il forma viene inviato, e solitamente viene usato per validare il form prima dell'invio al server o per annullare l'invio e elaborarlo con JavaScript.
+L'evento `submit` si scatena quando il form viene inviato, e solitamente viene usato per validare il form prima dell'invio al server o per annullare l'invio e elaborarlo con JavaScript.
 
 Il metodo `form.submit()` ci permette di iniziare l'invio del form da JavaScript. Possiamo usarlo per creare ed inviare i nostri form al server dinamicamente.
 
