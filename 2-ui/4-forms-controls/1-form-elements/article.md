@@ -94,7 +94,7 @@ Esiste una notazione breve: possiamo accedere all'elemento come `form[index/name
 
 In altre parole, invece di `form.elements.login` possiamo scrivere `form.login`.
 
-Funziona ugualmente, ma c'è un piccolo problema: se accediamo a un elemento, e dopo cambia il suo  `name`, allora sarà ancora disponibile attraverso il vecchio nome (ma anche da quello nuovo).
+Funziona ugualmente, ma c'è un piccolo problema: se accediamo a un elemento, che in successivamente cambia il suo `name`, questo sarà ancora accessibile sia attraverso il vecchio nome, ma anche tramite quello nuovo.
 
 È facile capirlo da un esempio:
 
