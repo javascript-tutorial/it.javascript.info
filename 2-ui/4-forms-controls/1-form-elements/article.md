@@ -15,7 +15,7 @@ document.forms.my - il form con name="my"
 document.forms[0] - il primo form del documento
 ```
 
-Quando abbiamo un form, allora qualunque elemento dentro di esso sarà contenuto nella named collection `form.elements`.
+Quando abbiamo un form, allora tutti gli elementi saranno contenuti nella named collection `form.elements`.
 
 Per esempio:
 
