@@ -4,20 +4,20 @@ importance: 5
 
 # "Smart" tooltip
 
-Scrivere una funzione che mostra un tooltip su un elemento solo se l'utente sposta il mouse *su di esso*, e non *attraverso di esso*.
+Scrivere una funzione che mostri un tooltip su un elemento solo se l'utente sposta il mouse *su di esso*, e non *attraverso di esso*.
 
-In altre parole, se il visitatore sposta il mouse su questo elemento e si ferma lì -- mostra il tooltip. E se invece ha solo spostato il mouse passandoci sopra, non ce n'è bisogno, chi vuole elementi lampeggianti non desiderati?
+In altre parole, se il visitatore sposta il mouse su questo elemento e si ferma lì -- mostra il tooltip. Se invece ha solo spostato il mouse passandoci sopra, non ce n'è bisogno, d'altronde chi mai vorrebbe altri elementi lampeggianti non desiderati?
 
-Tecnicamente, possiamo misurare la velocità del mouse su un elemento, e se è lento possiamo assumere che sta arrivando "sull'elemento" e mostrare il tooltip, se è veloce -- allora lo ignoriamo.
+Tecnicamente, possiamo misurare la velocità del mouse su un elemento, e se è abbastanza lento possiamo supporre che sta arrivando proprio "sull'elemento", mostrando il tooltip, se è troppo veloce -- lo ignoriamo.
 
 Creare un oggetto universale `new HoverIntent(options)` allo scopo.
 
-Le sue opzioni `options`:
+Le opzioni possibili `options`:
 - `elem` -- elemento da tracciare.
-- `over` -- una funzione da chiamare se il mouse arriva sull'elemento: ossia, se si muove lentamente o si ferma sull'elemento.
+- `over` -- una funzione da chiamare se il mouse arriva sull'elemento: ossia, se si muove lentamente o se si ferma sull'elemento.
 - `out` -- una funzione da chiamare quando il mouse abbandona l'elemento (se è stato chiamato `over`).
 
-Un esempio dell'uso di questo oggetto per il tooltip:
+Ecco un esempio dell'uso di questo oggetto per il tooltip:
 
 ```js
 // un tooltip di esempio
@@ -43,6 +43,6 @@ La demo:
 
 [iframe src="solution" height=140]
 
-Muovendo il mouse oltre la velocità di "clock" non succede nulla, e facendolo lentamente o fermandosi lì, verrà mostrato un tooltip.
+Muovendo il mouse oltre la velocità di "clock" non succede nulla, facendolo lentamente o fermandocisi sopra, viene mostrato il tooltip.
 
 Nota bene: il tooltip non "lampeggia" quando il cursore si muove tra i sottoelementi dell'orologio.
