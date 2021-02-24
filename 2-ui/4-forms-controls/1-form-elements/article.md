@@ -244,7 +244,7 @@ Questa sintassi è opzionale. Possiamo usare `document.createElement('option')` 
 - `defaultSelected` -- se `true`, allora verrà creato l'attributo HTML `selected`,
 - `selected` -- se `true`, allora l'opzione verrà selezionata.
 
-La differenza tra `defaultSelected` e `selected` è che `defaultSelected` imposta l'attributo HTML (che possiamo ottenere usando `option.getAttribute('selected')`, mentre `selected` decide se l'opzione è selezionata o meno.
+La differenza tra `defaultSelected` e `selected` è che `defaultSelected` imposta l'attributo HTML (che possiamo ottenere usando `option.getAttribute('selected')`, mentre `selected` definisce lo stato della selezione (se è selezionata o meno).
 
 In pratica, solitamente possiamo impostare entrambi i valori a `true` o `false` (oppure ometterli, che equivale a `false`).
 
