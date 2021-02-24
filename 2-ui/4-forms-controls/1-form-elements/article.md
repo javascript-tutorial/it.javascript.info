@@ -293,6 +293,6 @@ Il valore è disponibile come `input.value`, `textarea.value`, `select.value` et
 
 Per `<select>` possiamo anche ottenere il valore tramite l'indice `select.selectedIndex` o attraverso la collezione di options `select.options`.
 
-Questi sono le basi da cui partire con i form. Incontreremo molti esempi più avanti nel tutorial.
+Queste sono le basi da cui partire con i form. Incontreremo molti esempi più avanti nel tutorial.
 
 Nel prossimo capitolo affronteremo gli eventi `focus` e `blur` che possono avvenire per qualunque evento, ma sono maggiormente gestiti nei form.
