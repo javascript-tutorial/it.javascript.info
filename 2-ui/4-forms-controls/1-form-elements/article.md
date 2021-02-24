@@ -2,7 +2,7 @@
 
 I forms e gli elementi control, come `<input>` hanno una serie di eventi e proprietà peculiari.
 
-Lavorando con i forms sarà molto più comodo quando li avremo imparati.
+Lavorando con i forms, questi saranno molto comodi quando li avremo imparati.
 
 ## Navigazione: form e elements
 
