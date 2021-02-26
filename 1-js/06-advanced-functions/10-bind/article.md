@@ -104,7 +104,7 @@ La sintassi di base è la seguente:
 let boundFunc = func.bind(context);
 ```
 
-Il risultato di `func.bind(context)` è un "exotic object", una particolare simil-funzione richiamabile come una normale funzione e che passa in maniera trasparente la chiamata a `func` impostando `this=context`.
+Il risultato di `func.bind(context)` è un "exotic object", una particolare funzione richiamabile come una normale funzione e che passa in maniera trasparente la chiamata a `func` impostando `this=context`.
 
 In altre parole, chiamare `boundFunc` è come chiamare `func` con `this` fisso.
 
