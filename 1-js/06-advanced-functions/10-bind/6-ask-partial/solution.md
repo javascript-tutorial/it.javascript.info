@@ -1,6 +1,6 @@
 
 
-1. Puoi sia utilizzare una funzione wrapper, una arrow per essere concisi:
+1. Puoi sia utilizzare una funzione wrapper, che una arrow per essere concisi:
 
     ```js 
     askPassword(() => user.login(true), () => user.login(false)); 
