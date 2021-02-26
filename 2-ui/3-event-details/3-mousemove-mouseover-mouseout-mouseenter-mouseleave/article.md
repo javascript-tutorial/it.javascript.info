@@ -86,7 +86,7 @@ Se siamo su `#parent` e spostiamo il mouse del tutto dentro `#child`, otteniamo 
 
 A prima vista può sembrare strano, ma la spiegazione è molto semplice.
 
-**Coerentemente con la logica del browser, il puntatore del mouse può stare sopra su un *solo* elemento per volta -- il più annidato e con il valore di z-index più alto.**
+**Coerentemente con la logica del browser, il puntatore del mouse può stare sopra un *solo* elemento per volta -- il più annidato e con il valore di z-index più alto.**
 
 Quindi, se il puntatore si sposta su un altro elemento (anche nel caso di un suo discendente), allora lascia il precedente.
 
