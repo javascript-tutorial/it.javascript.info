@@ -13,6 +13,6 @@ let user = {
 user.g();
 ```
 
-Il contesto di una funzione associata e fisso. Non esiste alcun modo di cambiarlo successivamente.
+Il contesto di una funzione associata è fisso. Non esiste alcun modo di cambiarlo successivamente.
 
 Quindi, anche se eseguiamo `user.g()`, la funzione originale verrà chiamata con `this=null`.
