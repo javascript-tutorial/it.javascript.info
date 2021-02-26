@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Second0 bind
+# Secondo bind
 
 Possiamo cambiare `this` con una associazione addizionale?
 
@@ -17,4 +17,3 @@ f = f.bind( {name: "John"} ).bind( {name: "Ann" } );
 
 f();
 ```
-
