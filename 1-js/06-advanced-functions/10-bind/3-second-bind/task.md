@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Second bind
+# Secondo bind
 
-Can we change `this` by additional binding?
+Possiamo cambiare `this` con una associazione addizionale?
 
-What will be the output?
+Quale sarà l'output?
 
 ```js no-beautify
 function f() {
@@ -17,4 +17,3 @@ f = f.bind( {name: "John"} ).bind( {name: "Ann" } );
 
 f();
 ```
-
