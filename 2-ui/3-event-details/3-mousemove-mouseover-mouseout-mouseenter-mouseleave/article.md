@@ -59,7 +59,7 @@ In particolare, è possibile che il puntatore arrivi direttamente al centro dell
 ```online
 Possiamo testare dal "vivo" il concetto, nel seguente banco di test.
 
-Questo HTML ha due elementi nidificati: un `<div id="child">` dentro un `<div id="parent">`. Muovendo il mouse velocemente su di loro, potrebbe accedere che l'evento venga generato solo dal div figlio, o magari solo dal genitore, oppure ancora, potrebbe non esserci alcun evento.
+Questo HTML ha due elementi nidificati: un `<div id="child">` dentro un `<div id="parent">`. Muovendo il mouse velocemente su di loro, potrebbe accadere che l'evento venga generato solo dal div figlio, o magari solo dal genitore, oppure ancora, potrebbe non esserci alcun evento.
 
 Inoltre, si potrebbe provare a spostare il puntatore dentro il `div` figlio, e poi subito dopo, muoverlo velocemente attraverso il genitore. Se il movimento è abbastanza veloce, allora l'elemento genitore potrebbe essere ignorato. In questo caso, il mouse attraverserebbe l'elemento genitore senza nemmeno "notarlo".
 
