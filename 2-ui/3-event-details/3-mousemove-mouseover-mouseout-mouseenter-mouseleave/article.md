@@ -158,7 +158,7 @@ Ora immaginiamo di voler gestire il movimento del mouse, sia in entrata che in u
 
 La soluzione più naturale sarebbe quella di -- impostare un gestore su `<table>` per elaborare lì gli eventi. Ma il problema è che `mouseenter/leave` non fanno bubbling. Quindi se questi eventi avvengono su `<td>`, solo un gestore su `<td>` potrà catturarli.
 
-I gestori per `mouseenter/leave` sulla `<table>` verrebbero generati solo il puntatore entrasse ed uscisse dalla tabella, e sarebbe impossibile ottenere informazioni sugli spostamento al suo interno.
+I gestori per `mouseenter/leave` sulla `<table>` verrebbero generati solo se il puntatore entrasse ed uscisse dalla tabella, e sarebbe impossibile ottenere informazioni sugli spostamenti al suo interno.
 
 Quindi, saremmo costretti ad usare `mouseover/mouseout`.
 
