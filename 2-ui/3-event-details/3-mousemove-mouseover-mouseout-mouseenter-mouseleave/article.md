@@ -4,7 +4,7 @@ Entriamo nel dettaglio degli eventi generati quando il mouse si sposta tra gli e
 
 ## Eventi mouseover/mouseout, relatedTarget
 
-L'evento `mouseover` si genera quando il puntatore del mouse passa su un elemento, e `mouseout` -- quando lo abbandona.
+L'evento `mouseover` viene generato quando il puntatore del mouse passa su un elemento, e `mouseout` -- quando lo abbandona.
 
 ![](mouseover-mouseout.svg)
 
