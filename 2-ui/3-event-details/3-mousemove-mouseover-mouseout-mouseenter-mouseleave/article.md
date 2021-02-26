@@ -1,4 +1,4 @@
-# Spostando il mouse: mouseover/out, mouseenter/leave
+# Movimenti del mouse: mouseover/out, mouseenter/leave
 
 Entriamo nel dettaglio degli eventi generati quando il mouse si sposta tra gli elementi.
 
