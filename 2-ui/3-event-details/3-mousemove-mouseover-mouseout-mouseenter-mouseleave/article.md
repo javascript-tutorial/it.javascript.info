@@ -21,7 +21,7 @@ Per `mouseout`, invece, è esattamente il contrario:
 - `event.relatedTarget` -- è il nuovo elemento sotto il puntatore (`target` -> `relatedTarget`).
 
 ```online
-Nel seguente esempio, ogni faccia e le sue proprietà sono elementi separati. Al movimento il mouse, corrispondono degli eventi che vengono descritti nell'area di testo.
+Nel seguente esempio, ogni faccia e le sue proprietà sono elementi separati. Al movimento del mouse, corrispondono degli eventi che vengono descritti nell'area di testo.
 
 Ogni evento contiene entrambe le informazioni sia del `target` che del `relatedTarget`:
 
