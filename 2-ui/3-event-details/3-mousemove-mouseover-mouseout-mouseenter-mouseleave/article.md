@@ -204,7 +204,7 @@ Ecco un esempio con tutti i dettagli:
 
 [codetabs height=460 src="mouseenter-mouseleave-delegation-2"]
 
-Proviamo a spostare il cursore dentro e fuori dalla celle della tabella ed anche al loro interno. Velocemente o lentamente -- è irrilevante. Solo l'intero `<td>` deve essere evindenziato, diversamente da quanto fatto nell'esempio precendente.
+Proviamo a spostare il cursore dentro e fuori dalla celle della tabella ed anche al loro interno. Velocemente o lentamente -- è irrilevante. Solo l'intero `<td>` deve essere evidenziato, diversamente da quanto fatto nell'esempio precedente.
 ```
 
 ## Riepilogo
