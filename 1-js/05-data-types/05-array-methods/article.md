@@ -124,7 +124,7 @@ arr.slice([start], [end])
 
 Ritorna un nuovo array contente tutti gli elementi a partire da `"start"` fino ad `"end"` (`"end"` escluso). Sia `start` che `end` possono essere negativi; in tal caso si inizierà a contare dalla coda dell'array.
 
-Funziona come `str.slice`, ma crea dei sotto-array piuttosto di sotto-stringhe.
+Funziona come `str.slice`, ma crea dei sotto-array piuttosto che sotto-stringhe.
 
 Ad esempio:
 
@@ -136,7 +136,7 @@ alert( arr.slice(1, 3) ); // e,s (copia da 1 a 3)
 alert( arr.slice(-2) ); // s,t (copia da -2 fino alla fine)
 ```
 
-Possiamo anche utilizzarlo senza argomenti: `arr.slice()` crea una copia di `arr`. Questo tipo di chiamata è spesso utilizzata per una copia con cui poter liberamente lavorare senza modificare l'array originale. 
+Possiamo anche utilizzarlo senza argomenti: `arr.slice()` crea una copia di `arr`. Questo tipo di chiamata è spesso utilizzata per creare una copia con cui poter liberamente lavorare senza modificare l'array originale. 
 
 ### concat
 
@@ -300,7 +300,7 @@ let user = users.find(item => item.id == 1);
 alert(user.name); // John
 ```
 
- Gli array di oggetti sono molto comuno, quindi il metodo `find` risulta molto utile.
+ Gli array di oggetti sono molto comuni, quindi il metodo `find` risulta molto utile.
 
 Da notare che nell'esempio noi forniamo a `find` un singolo argomento `item => item.id == 1`. Gli altri parametri di `find` sono raramente utilizzati.
 
@@ -308,7 +308,7 @@ Il metodo [arr.findIndex](mdn:js/Array/findIndex) fa essenzialmente la stessa co
 
 ### filter
 
-Il metodo `find` cerca un singola occorrenza dell'elemento, la prima, che passata a una funzione ritorna `true`.
+Il metodo `find` cerca un singola occorrenza dell'elemento, la prima, e se trovata ritorna `true`.
 
 Se vogliamo cercare più occorrenze, possiamo utilizzare [arr.filter(fn)](mdn:js/Array/filter).
 
@@ -448,7 +448,7 @@ alert(arr);  // *!*1, 2, 15*/!*
 ````
 
 ````smart header="Le arrow functions sono le migliori"
-Ricordate le [arrow functions](info:function-expressions-arrows#arrow-functions)? Possiamo utilizzarle per un più breve ordinamento:
+Ricordate le [arrow functions](info:function-expressions-arrows#arrow-functions)? Possiamo utilizzarle per più conciso il codice di ordinamento:
 
 ```js
 arr.sort( (a, b) => a - b );
@@ -490,7 +490,7 @@ Inoltre ritorna `arr` dopo averlo invertito.
 
 ### split e join
 
-Vediamo una situazione realistica. Stiamo scrivendo un'applicazione di messaggistica, e l'utente inserisce una lista di destinatari: `John, Pete, Mary`. Per noi sarebbe più comodo avere un array di nomi piuttosto di una singola stringa. Come possiamo ottenerlo?
+Vediamo una situazione reale. Stiamo scrivendo un'applicazione di messaggistica, e l'utente inserisce una lista di destinatari: `John, Pete, Mary`. Per noi sarebbe più comodo avere un array di nomi piuttosto di una singola stringa. Come possiamo ottenerlo?
 
 Il metodo [str.split(delim)](mdn:js/String/split) fa esattamente questo. Divide la stringa in un array utilizzando il delimitatore `delim`.
 
@@ -524,7 +524,7 @@ alert( str.split('') ); // t,e,s,t
 ```
 ````
 
-La chiamata ad [arr.join("collante")](mdn:js/Array/join) fa esattamente l'inverso di `split`. Crea una stringa con gli elementi di `arr` incollati tra loro dal `collante`.
+La chiamata ad [arr.join(separatore)](mdn:js/Array/join) fa esattamente l'inverso di `split`. Crea una stringa con gli elementi di `arr` incollati tra loro dal `separatore`.
 
 Ad esempio:
 
@@ -653,9 +653,9 @@ alert(Array.isArray({})); // false
 alert(Array.isArray([])); // true
 ```
 
-## I più dei metodi accettano "thisArg"
+## la maggior parte dei metodi accetta "thisArg"
 
-Quasi tutti i metodi dedicati degli array che richiedono una funzione -- come `find`, `filter`, `map`, fatta eccezione per `sort`, accettano un parametro opzionale `thisArg`.
+Quasi tutti i metodi degli array che richiedono una funzione -- come `find`, `filter`, `map`, fatta eccezione per `sort`, accettano un parametro opzionale `thisArg`.
 
 Questo parametro non è stato spiegato nella sezione sopra, perché viene raramente utilizzato. Studiamolo per completezza.
 
@@ -701,7 +701,6 @@ alert(soldiers[1].age); // 23
 
 Nella chiamata sopra, utilizziamo `user.younger` come filtro e forniamo `user` come contesto. Se non avessimo fornito il contesto, `users.filter(user.younger)` avrebbe chiamato `user.younger` come funzione a sé stante, con `this=undefined`. Che avrebbe provocato un errore.
 
-A call to users.filter(army.canJoin, army) can be replaced with users.filter(user => army.canJoin(user)), that does the same. The latter is used more often, as it’s a bit easier to understand for most people.
 
 Una chiamata a `user.filter(army.canJoin, army)` può essere sostituita da 
 `users.filter(user => army.canJoin(user))`, che fa lo stesso. L'ultima versione viene utilizzata più spesso e per molte persone è più semplice da capire.

@@ -16,4 +16,4 @@ camelize("list-style-image") == 'listStyleImage';
 camelize("-webkit-transition") == 'WebkitTransition';
 ```
 
-P.S. Suggerimento: usate `split` per divider una stringa in un array, trasformatela e infinite riunite tutto con `join`.
+P.S. Suggerimento: usate `split` per dividere una stringa in un array, trasformatela e infinite riunite tutto con `join`.

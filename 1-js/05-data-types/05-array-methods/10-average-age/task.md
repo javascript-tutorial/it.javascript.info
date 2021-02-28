@@ -4,7 +4,7 @@ importance: 4
 
 # Ottenere l'età media+
 
-Scrivete una funzione `getAverageAge(users)` che accetta un array di oggetti con la proprietà `age` e ritorni l'età media.
+Scrivete una funzione `getAverageAge(users)` che accetti un array di oggetti con la proprietà `age` e ritorni l'età media.
 
 La formula della media è: `(age1 + age2 + ... + ageN) / N`.
 
