@@ -1,211 +1,211 @@
-# Mouse events
+# Eventi del mouse 
 
-In this chapter we'll get into more details about mouse events and their properties.
+In questo capitolo andremo un po' più a fondo sugli eventi del mouse e le loro proprietà.
 
-Please note: such events may come not only from "mouse devices", but are also from other devices, such as phones and tablets, where they are emulated for compatibility.
+Nota bene: questi eventi potrebbero derivare non solo da "dispositivi mouse", ma anche da dispositivi di altro tipo, come telefoni e tablets, nei quali sono emulati per compatibilità.
 
-## Mouse event types
+## Tipi di eventi del mouse
 
-We've already seen some of these events:
+Abbiamo visto precedentemente alcuni di questi eventi:
 
 `mousedown/mouseup`
-: Mouse button is clicked/released over an element.
+: Il pulsante del mouse viene premuto/rilasciato su un elemento.
 
 `mouseover/mouseout`
-: Mouse pointer comes over/out from an element.
+: Il puntatore del mouse passa sopra/abbandona un elemento.
 
 `mousemove`
-: Every mouse move over an element triggers that event.
+: Ogni movimento del mouse su un elemento genera questo evento.
 
 `click`
-: Triggers after `mousedown` and then `mouseup` over the same element if the left mouse button was used.
+: Scaturito dopo l'evento `mousedown` e quindi `mouseup` sullo stesso elemento se viene usato il pulsante sinistro del mouse.
 
 `dblclick`
-: Triggers after two clicks on the same element within a short timeframe. Rarely used nowadays.
+: Generato quando avvengono due click sullo stesso elemento in un piccolo intervallo di tempo. Oggigiorno usato raramente.
 
 `contextmenu`
-: Triggers when the right mouse button is pressed. There are other ways to open a context menu, e.g. using a special keyboard key, it triggers in that case also, so it's not exactly the mouse event.
+: Scaturito quando viene premuto il pulsante destro del mouse. Ci sono altri modi per aprire un menù contestuale, per esempio usando un particolare tasto della tastiera, quindi viene generato anche in quest'ultimo caso e non è propriamente un evento del mouse.
 
-...There are several other events too, we'll cover them later.
+...Ci sono tanti altri eventi, che affronteremo successivamente.
 
-## Events order
+## Ordine degli eventi
 
-As you can see from the list above, a user action may trigger multiple events.
+Come possiamo notare dalla lista appena descritta, un'azione dell'utente può generare eventi multipli.
 
-For instance, a left-button click first triggers `mousedown`, when the button is pressed, then `mouseup` and `click` when it's released.
+Per esempio, un click sul pulsante sinistro del mouse genera `mousedown`, quando il pulsante viene premuto, quindi `mouseup` e `click` quando viene rilasciato.
 
-In cases when a single action initiates multiple events, their order is fixed. That is, the handlers are called in the order `mousedown` -> `mouseup` -> `click`.
+Quando un'azione singola inizia eventi multipli, il loro ordine è fisso. Ossia, i gestori vengono chiamati nell'ordine `mousedown` -> `mouseup` -> `click`.
 
 ```online
-Click the button below and you'll see the events. Try double-click too.
+Premi il seguente pulsante e vedrai gli eventi. prova anche il doppio click.
 
-On the teststand below all mouse events are logged, and if there is more than a 1 second delay between them they are separated by a horizontal ruler.
+Nel banco di prova in basso, vengono elencati tutti gli eventi del mouse, e se passa più di un secondo tra uno e l'altro vengono separati da una riga orizzontale.
 
-Also we can see the `button` property that allows to detect the mouse button, it's explained below.
+Possiamo inoltre notare la proprietà `button` che permette di rilevare il pulsante del mouse, viene spiegato successivamente.
 
-<input onmousedown="return logMouse(event)" onmouseup="return logMouse(event)" onclick="return logMouse(event)" oncontextmenu="return logMouse(event)" ondblclick="return logMouse(event)" value="Click me with the right or the left mouse button" type="button"> <input onclick="logClear('test')" value="Clear" type="button"> <form id="testform" name="testform"> <textarea style="font-size:12px;height:150px;width:360px;"></textarea></form>
+<input onmousedown="return logMouse(event)" onmouseup="return logMouse(event)" onclick="return logMouse(event)" oncontextmenu="return logMouse(event)" ondblclick="return logMouse(event)" value="Cliccami con il pulsante destro o sinistro del mouse" type="button"> <input onclick="logClear('test')" value="Clear" type="button"> <form id="testform" name="testform"> <textarea style="font-size:12px;height:150px;width:360px;"></textarea></form>
 ```
 
-## Mouse button
+## Pulsante del mouse
 
-Click-related events always have the `button` property, which allows to get the exact mouse button.
+Gli eventi relativi al click contengono sempre la proprietà `button`, che permette di conoscere esattamente quale pulsante del mouse viene premuto.
 
-We usually don't use it for `click` and `contextmenu` events, because the former happens only on left-click, and the latter -- only on right-click.
+Solitamente non lo usiamo per gli eventi `click` e `contextmenu`, perché il primo avviene solo per il click sul pulsante sinistro, ed il secondo -- solo per quelli sul tasto destro.
 
-From the other hand, `mousedown` and `mouseup` handlers may need `event.button`, because these events trigger on any button, so `button` allows to distinguish between "right-mousedown" and "left-mousedown".
+D'altra parte, i gestori `mousedown` e `mouseup` potrebbero necessitare di `event.button`, in quanto questi eventi vengono generati su qualunque pulsante, quindi `button` permette di discriminare tra "mousedown destro" e "mousedown sinistro".
 
-The possible values of `event.button` are:
+I valori possibili di `event.button` sono:
 
 | Button state | `event.button` |
 |--------------|----------------|
-| Left button (primary) | 0 |
-| Middle button (auxiliary) | 1 |
-| Right button (secondary) | 2 |
-| X1 button (back) | 3 |
-| X2 button (forward) | 4 |
+| Pulsante sinistro (principale) | 0 |
+| Pulsante medio (ausiliario) | 1 |
+| Pulsante destro (secondario) | 2 |
+| Pulsante X1 (indietro) | 3 |
+| Pulsante X2 (avanti) | 4 |
 
-Most mouse devices only have the left and right buttons, so possible values are `0` or `2`. Touch devices also generate similar events when one taps on them.
+La maggioranza dei mouse hanno solo il tasto destro e sinistro, quindi i valori possibili sono `0` o `2`. Anche i dispositivi touch generano event simili al tocco.
 
-Also there's `event.buttons` property that has all currently pressed buttons as an integer, one bit per button. In practice this property is very rarely used, you can find details at [MDN](mdn:/api/MouseEvent/buttons) if you ever need it.
+Inoltre esiste la proprietà `event.buttons` che include tutti i pulsanti attualmente premuti, rappresentati come numero intero, una cifra per pulsante. In pratica questa proprietà viene usata raramente, ma si possono trovare i dettagli su [MDN](mdn:/api/MouseEvent/buttons) in caso di necessità.
 
-```warn header="The outdated `event.which`"
-Old code may use `event.which` property that's an old non-standard way of getting a button, with possible values:
+```warn header="L'obsoleta `event.which`"
+Codice più antiquato potrebbe fare uso della proprietà `event.which` che è un vecchio e non standard modo di ottenere informazioni sul pulsante, con questi possibili valori:
 
-- `event.which == 1` – left button,
-- `event.which == 2` – middle button,
-- `event.which == 3` – right button.
+- `event.which == 1` – pulsante sinistro,
+- `event.which == 2` – pulsante centrale,
+- `event.which == 3` – pulsante destro.
 
-As of now, `event.which` is deprecated, we shouldn't use it.
+Attualmente, `event.which` è deprecato e non dovremmo usarlo.
 ```
 
-## Modifiers: shift, alt, ctrl and meta
+## Modificatori: shift, alt, ctrl e meta
 
-All mouse events include the information about pressed modifier keys.
+Tutti gli eventi del mouse includono informazioni circa i tasti modificatori premuti.
 
-Event properties:
+Proprietà dell'evento:
 
 - `shiftKey`: `key:Shift`
-- `altKey`: `key:Alt` (or `key:Opt` for Mac)
+- `altKey`: `key:Alt` (oppure `key:Opt` per Mac)
 - `ctrlKey`: `key:Ctrl`
-- `metaKey`: `key:Cmd` for Mac
+- `metaKey`: `key:Cmd` per Mac
 
-They are `true` if the corresponding key was pressed during the event.
+Vengono valorizzati a `true` quando il tasto corrispondente viene premuto.
 
-For instance, the button below only works on `key:Alt+Shift`+click:
+Per esempio, il seguente pulsante funziona solamente con `key:Alt+Shift`+click:
 
 ```html autorun height=60
-<button id="button">Alt+Shift+Click on me!</button>
+<button id="button">Alt+Shift+Click qui!</button>
 
 <script>
   button.onclick = function(event) {
 *!*
     if (event.altKey && event.shiftKey) {
 */!*
-      alert('Hooray!');
+      alert('Urrà!');
     }
   };
 </script>
 ```
 
-```warn header="Attention: on Mac it's usually `Cmd` instead of `Ctrl`"
-On Windows and Linux there are modifier keys `key:Alt`, `key:Shift` and `key:Ctrl`. On Mac there's one more: `key:Cmd`, corresponding to the property `metaKey`.
+```warn header="Attenzione: su Mac solitamente si usa `Cmd` invece di `Ctrl`"
+Su Windows e Linux esistono i tasti modificatori `key:Alt`, `key:Shift` e `key:Ctrl`. Su Mac ne esiste uno in più: `key:Cmd`, corrispondente alla proprietà `metaKey`.
 
-In most applications, when Windows/Linux uses `key:Ctrl`, on Mac `key:Cmd` is used.
+Nella maggior parte delle applicazioni, quando Windows/Linux usano `key:Ctrl`, su Mac si usa `key:Cmd`.
 
-That is: where a Windows user presses `key:Ctrl+Enter` or `key:Ctrl+A`, a Mac user would press `key:Cmd+Enter` or `key:Cmd+A`, and so on.
+Ossia: quando un utente Windows preme `key:Ctrl+Enter`  o `key:Ctrl+A`, un utente Mac premerebbe `key:Cmd+Enter` o `key:Cmd+A`, e così via.
 
-So if we want to support combinations like `key:Ctrl`+click, then for Mac it makes sense to use `key:Cmd`+click. That's more comfortable for Mac users.
+Ne consegue che se vogliamo dare supporto a combinazioni di tasti come `key:Ctrl`+click, allora per Mac ha senso usare `key:Cmd`+click, che è molto più comodo per utenti Mac.
 
-Even if we'd like to force Mac users to `key:Ctrl`+click -- that's kind of difficult. The problem is: a left-click with `key:Ctrl` is interpreted as a *right-click* on MacOS, and it generates the `contextmenu` event, not `click` like Windows/Linux.
+Anche se volessimo forzare gli utenti Mac a usare `key:Ctrl`+click -- si va incontro a una certa tipologia di ostacolo. Il problema è che: un click col tasto destro con un `key:Ctrl` su Mac viene interpretato come un *click sul tasto destro*, e genera l'evento `contextmenu`, non un `click` come su Windows/Linux.
 
-So if we want users of all operating systems to feel comfortable, then together with `ctrlKey` we should check `metaKey`.
+Quindi se vogliamo che gli utenti di tutti i sistemi operativi lavorino si sentano a proprio agio, allora insieme a `ctrlKey` dovremmo controllare `metaKey`.
 
-For JS-code it means that we should check `if (event.ctrlKey || event.metaKey)`.
+Per il codice JS ciò significa che dovremmo controllare `if (event.ctrlKey || event.metaKey)`.
 ```
 
-```warn header="There are also mobile devices"
-Keyboard combinations are good as an addition to the workflow. So that if the visitor uses a keyboard -- they work. 
+```warn header="Esistono anche i dispositivi mobile"
+Le combinazioni di tasti vanno bene in aggiunta al flusso di lavoro. Quindi se il visitatore usa una tastiera -- andranno bene. 
 
-But if their device doesn't have it -- then there should be a way to live without modifier keys.
+Ma in mancanza di questa -- allora dovrebbe esserci una maniera per poter "vivere" senza tasti modificatori.
 ```
 
-## Coordinates: clientX/Y, pageX/Y
+## Coordinate: clientX/Y, pageX/Y
 
-All mouse events provide coordinates in two flavours:
+Tutti gli eventi del mouse forniscono le coordinate in due modi:
 
-1. Window-relative: `clientX` and `clientY`.
-2. Document-relative: `pageX` and `pageY`.
+1. Relative alla Window: `clientX` e `clientY`.
+2. Relative al Document: `pageX` e `pageY`.
 
-We already covered the difference between them in the chapter <info:coordinates>.
+Abbiamo già affrontato la differenza tra le due nel capitolo <info:coordinates>.
 
-In short, document-relative coordinates `pageX/Y` are counted from the left-upper corner of the document, and do not change when the page is scrolled, while `clientX/Y` are counted from the current window left-upper corner. When the page is scrolled, they change.
+In soldoni, le coordinate relative al documento `pageX/Y` vengono misurate a partire dall'angolo in alto a sinistra del documento, e non cambiano se la pagina viene scrollata, mentre invece `clientX/Y` vengono misurate a partire dall'angolo in alto a sinistra della finestra. Quando la pagina viene scrollata, i loro valori cambiano.
 
-For instance, if we have a window of the size 500x500, and the mouse is in the left-upper corner, then `clientX` and `clientY` are `0`, no matter how the page is scrolled. 
+Per esempio, se avessimo una finestra di dimensioni 500x500, ed il puntatore del mouse fosse nell'angolo in alto a destra, allora `clientX` e `clientY` sarebbero valorizzate a `0`, senza alcuna considerazione del fatto che la pagina sia scrollata o meno. 
 
-And if the mouse is in the center, then `clientX` and `clientY` are `250`, no matter what place in the document it is. They are similar to `position:fixed` in that aspect.
+E se il puntatore fosse al centro, allora `clientX` e `clientY` sarebbero valorizzati a `250`, senza tenere conto del punto in cui si trovi rispetto al documento. In qualche modo sono simili a `position:fixed` da questo punto di vista.
 
 ````online
-Move the mouse over the input field to see `clientX/clientY` (the example is in the `iframe`, so coordinates are relative to that `iframe`):
+Muovere il mouse sopra il campo di testo per vedere `clientX/clientY` (l'esempio è dentro un `iframe`, quindi le coordinate sono relative a questo `iframe`):
 
 ```html autorun height=50
-<input onmousemove="this.value=event.clientX+':'+event.clientY" value="Mouse over me">
+<input onmousemove="this.value=event.clientX+':'+event.clientY" value="Muovi il mouse sopra me">
 ```
 ````
 
-## Preventing selection on mousedown
+## Prevenire la selezione su mousedown
 
-Double mouse click has a side-effect that may be disturbing in some interfaces: it selects text.
+Il doppio click del mouse ha un effetto collaterale che potrebbe dare fastidio in alcune interfacce: seleziona il testo.
 
-For instance, double-clicking on the text below selects it in addition to our handler:
+Per esempio, il doppio click sul seguente testo lo seleziona in aggiunta al nostro gestore:
 
 ```html autorun height=50
-<span ondblclick="alert('dblclick')">Double-click me</span>
+<span ondblclick="alert('dblclick')">Doppio click su di me</span>
 ```
 
-If one presses the left mouse button and, without releasing it, moves the mouse, that also makes the selection, often unwanted.
+Se si preme sul pulsante sinistro del mouse e, senza rilasciarlo, si muove il mouse, si ottiene una selezione, spesso non voluta.
 
-There are multiple ways to prevent the selection, that you can read in the chapter <info:selection-range>.
+Ci sono vari modi per prevenire la selezione, consultabili nel capitolo <info:selection-range>.
 
-In this particular case the most reasonable way is to prevent the browser action on `mousedown`. It prevents both these selections:
+In questo caso particolare la maniera più ragionevole è di prevenire l'azione del browser su `mousedown`. La cosa previene entrambe queste selezioni:
 
 ```html autorun height=50
-Before...
+Prima...
 <b ondblclick="alert('Click!')" *!*onmousedown="return false"*/!*>
   Double-click me
 </b>
-...After
+...Dopo
 ```
 
-Now the bold element is not selected on double clicks, and pressing the left button on it won't start the selection.
+Adesso l'elemento in grassetto non viene selezionato al doppio click, e premendo il pulsante sinistro su di esso non comincerà la selezione.
 
-Please note: the text inside it is still selectable. However, the selection should start not on the text itself, but before or after it. Usually that's fine for users.
+Nota bene: il testo all'interno è ancora selezionabile. Comunque, la selezione dovrebbe cominciare non sul testo stesso, ma prima o dopo di esso. Solitamente la cosa è accettabile per gli utenti.
 
-````smart header="Preventing copying"
-If we want to disable selection to protect our page content from copy-pasting, then we can use another event: `oncopy`.
+````smart header="Prevenire la copia"
+Se volessimo disabilitare la selezione per proteggere il contenuto della nostra pagina dal copia-incolla, potremmo usare un altro evento: `oncopy`.
 
 ```html autorun height=80 no-beautify
 <div *!*oncopy="alert('Copying forbidden!');return false"*/!*>
-  Dear user,
-  The copying is forbidden for you.
-  If you know JS or HTML, then you can get everything from the page source though.
+  Caro utente,
+  La copia è vietata.
+  Sebbene, nel caso in cui tu conosca JS or HTML, allora potrai prendere tutto dal sorgente della pagina.
 </div>
 ```
-If you try to copy a piece of text in the `<div>`, that won't work, because the default action `oncopy` is prevented.
+Se provassimo a copiare un pezzo del testo all'interno del `<div>`, la copia non andrà a buon fine, perché l'azione predefinita `oncopy` sarà stata prevenuta.
 
-Surely the user has access to HTML-source of the page, and can take the content from there, but not everyone knows how to do it.
+Sicuramente l'utente ha accesso al sorgente HTML della pagina, e potrà prendere il contenuto da lì, ma non tutti conoscono come farlo.
 ````
 
-## Summary
+## Riepilogo
 
-Mouse events have the following properties:
+Gli eventi del mouse contengono le seguenti proprietà:
 
-- Button: `button`.
-- Modifier keys (`true` if pressed): `altKey`, `ctrlKey`, `shiftKey` and `metaKey` (Mac).
-  - If you want to handle `key:Ctrl`, then don't forget Mac users, they usually use `key:Cmd`, so it's better to check `if (e.metaKey || e.ctrlKey)`.
+- Pulsante: `button`.
+- Tasti modificatori (`true` se premuto): `altKey`, `ctrlKey`, `shiftKey` e `metaKey` (Mac).
+  - Se vogliamo gestire `key:Ctrl`, allora non dobbiamo dimenticarci degli utenti Mac, che solitamente usano `key:Cmd`, quindi sarebbe meglio controllare `if (e.metaKey || e.ctrlKey)`.
 
-- Window-relative coordinates: `clientX/clientY`.
-- Document-relative coordinates: `pageX/pageY`.
+- Coordinate relative alla Window: `clientX/clientY`.
+- Coordinate relative al Document: `pageX/pageY`.
 
-The default browser action of `mousedown` is text selection, if it's not good for the interface, then it should be prevented.
+L'azione predefinita del browser di `mousedown` è la selezione del testo, se non è cosa gradita per l'interfaccia, allora dovrebbe essere prevenuta.
 
-In the next chapter we'll see more details about events that follow pointer movement and how to track element changes under it.
+Nel prossimo capitolo vedremo più in dettaglio gli eventi che seguono i movimenti del puntatore e come tenere traccia degli elementi che cambiano sotto di esso.
