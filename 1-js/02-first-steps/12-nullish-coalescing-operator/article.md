@@ -4,11 +4,11 @@
 
 Il *nullish coalescing operator* è rappresentato da due punti di domanda `??`.
 
+Siccome trattiamo `null` e `undefined` in modo simile, avremo bisogno di una definizione particolare. In questo articolo, diremo che un'espressione è "definita" quando non è né `null` né `undefined`.
+
 Il risultato di `a ?? b` è:
 - se `a` è definito, allora `a`,
 - se `a` non è definito, allora `b`.
-
-(In questo articolo, diremo che un'espressione è "definita" quando non è né `null` né `undefined`.)
 
 In altre parole, tra due operatori `??` ritorna il primo se questo non è `null/undefined`; altrimenti, ritorna il secondo.
 
@@ -27,7 +27,7 @@ Per esempio, qui mostriamo `Anonymous` se `user` non è definito:
 ```js run
 let user;
 
-alert(user ?? "Anonymous"); // Anonymous
+alert(user ?? "Anonymous"); // Anonymous (user not defined)
 ```
 
 Ovviamente, se `user` ha un qualsiasi valore eccetto `null/undefined`, allora vedremo quel valore:
@@ -35,7 +35,7 @@ Ovviamente, se `user` ha un qualsiasi valore eccetto `null/undefined`, allora ve
 ```js run
 let user = "John";
 
-alert(user ?? "Anonymous"); // John
+alert(user ?? "Anonymous"); // John (user defined)
 ```
 
 Possiamo anche usare una sequenza di `??` per selezionare, da una lista, il primo valore che non sia `null/undefined`.

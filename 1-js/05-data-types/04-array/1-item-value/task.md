@@ -9,11 +9,11 @@ Cosa mostrerà il codice sotto?
 ```js
 let fruits = ["Apples", "Pear", "Orange"];
 
-// push a new value into the "copy"
+// inserisci un nuovo elemento dentro a "copy"
 let shoppingCart = fruits;
 shoppingCart.push("Banana");
 
-// what's in fruits?
+// che cosa c'è in fruits?
 alert( fruits.length ); // ?
 ```
 

@@ -1,12 +1,12 @@
 # Costruttore, operatore "new"
 
-La sintassi `{...}` ci consente di creare un oggetto. Spesso abbiamo bisogno di creare più oggetti simili, come ad esempio più utenti, oggetti del menu e molto altro.
+La sintassi `{...}` ci consente di creare un oggetto. Ma spesso abbiamo bisogno di creare multipli oggetti simili, come ad esempio più utenti, oggetti del menu e molto altro.
 
-Questo può essere fatto utilizzando il costruttore e l'operatore `"new"`.
+Questo può essere fatto utilizzando un costruttore e l'operatore `"new"`.
 
 ## Costruttore
 
-Il costruttore tecnicamente è una normale funzione. Ci sono due convenzioni:
+Tecnicamente un costruttore è una normale funzione. Ma ci sono due convenzioni:
 
 1. Vengono denominati con la prima lettera maiuscola.
 2. Questi dovrebbero essere eseguiti solo con l'operatore `"new"`.
@@ -27,9 +27,9 @@ alert(user.name); // Jack
 alert(user.isAdmin); // false
 ```
 
-Quando una funzione viene eseguita con `new`, segue questi passaggi:
+Quando una funzione viene eseguita con `new`, esegue questi passaggi:
 
-1. Un nuovo oggetto vuoto viene creato ed assegnato a `this`.
+1. Un nuovo oggetto, vuoto, viene creato ed assegnato a `this`.
 2. Viene eseguito il corpo della funzione. Solitamente questo modifica `this`, aggiungendo nuove proprietà.
 3. Viene ritornato il valore assegnato a `this`.
 
@@ -60,11 +60,11 @@ let user = {
 };
 ```
 
-Ora se vogliamo creare altri utenti, possiamo chiamare `new User("Ann")`, `new User("Alice")` e cosi via. Molto più rapido piuttosto che utilizzare oggetti letterali ogni volta, risulta anche più facile da leggere.
+Ora, se vogliamo creare altri utenti, possiamo chiamare `new User("Ann")`, `new User("Alice")` e cosi via. Molto più rapido rispetto all'utilizzare ogni volta oggetti letterali; risulta anche più facile da leggere.
 
-Questo è il principale scopo dei costruttori -- implementare codice riutilizzabile per la creazione degli oggetti.
+Questo è il principale scopo dei costruttori -- implementare codice riutilizzabile per la creazione di oggetti.
 
-Ribadiamo -- tecnicamente, ogni funzione può essere utilizzata come costruttore. Cioè: ogni funzione può essere eseguita con `new`. La "prima lettera maiuscola" è semplicemente una convenzione, per rendere esplicito che la funzione deve essere eseguita con `new`.
+Ribadiamo -- tecnicamente, ogni funzione può essere utilizzata come costruttore. Ovvero: ogni funzione può essere eseguita con `new`. La "prima lettera maiuscola" è semplicemente una convenzione, per rendere esplicito che la funzione deve essere eseguita con `new`.
 
 ````smart header="new function() { ... }"
 Se abbiamo molte linee di codice utili alla creazione di un unico oggetto, possiamo raggrupparle in un costruttore, come qui:
@@ -80,13 +80,13 @@ let user = new function() {
 };
 ```
 
-Il costruttore non può essere chiamato nuovamente, perché non è salvato da nessuna parte, viene solo creato e chiamato. Quindi questo trucco consente di incapsulare codice che costruisce un singolo oggetto, senza possibilità di riutilizzo futuro.
+Il costruttore non può essere chiamato nuovamente, perché non è salvato da nessuna parte; viene solo creato e chiamato. Questo trucco consente di incapsulare un codice che costruisce un singolo oggetto, senza possibilità di riutilizzo futuro.
 ````
 
 ## Costruttori modalità test: new.target
 
 ```smart header="Tecniche avanzate"
-La sintassi presentata in questa sessione viene utilizzata raramente, potete tranquillamente saltarlo se non siete interessati.
+La sintassi presentata nella seguente sezione viene utilizzata raramente; potete tranquillamente saltarla se non vi interessa sapere proprio tutto.
 ```
 
 Dentro la funzione, possiamo controllare quando questa viene chiamata con `new` e quando senza, utilizzando una speciale proprietà `new.target`.
@@ -110,9 +110,9 @@ new User(); // function User { ... }
 */!*
 ```
 
-Questo può essere utilizzato per consentire ad entrambe le chiamate di funzionare (con `new` e senza), quindi sia in in "modalità costruttore" che in "modalità classica".
+Questo può essere utilizzato per consentire ad entrambe le chiamate di funzionare (con `new` e senza), quindi sia in in "modalità costruttore" che in "modalità regolare".
 
-Possiamo anche utilizzarli entrambi `new` e chiamata regole, per fare la stessa cosa, come in questo esempio:
+Possiamo anche fare in modo che le chiamate con *new* e quelle regolari facciano la stessa cosa, come in questo esempio:
 
 ```js run
 function User(name) {
@@ -127,21 +127,21 @@ let john = User("John"); // reindirizza la chiamata a new User
 alert(john.name); // John
 ```
 
-Questo approccio viene adottato in alcune librerie per rendere la sintassi più flessibile. Rendendo possibile la chiamata della funzione sia senza che con la parola chiave`new`.
+Questo approccio viene adottato in alcune librerie per rendere la sintassi più flessibile. Rende possibile la chiamata della funzione sia con `new` che senza.
 
-Non è un ottima cosa utilizzare la doppia sintassi ovunque, perché omettendo `new` il codice perde di leggibilità. Con la parola chiave `new` possiamo dire con certezza che si sta creando un nuovo oggetto.
+Ma non è un'ottima cosa utilizzare la doppia sintassi ovunque, perché omettendo `new` il codice perde in leggibilità. Con la parola chiave `new` possiamo sapere con certezza che si sta creando un nuovo oggetto.
 
 ## Return nel costruttore
 
 
-Solitamente, i costruttori non hanno l'istruzione `return`. Il loro compito è di eseguire tutto ciò che è necessario a creare l'oggetto lavorando su `this`, quest'ultimo sarà il risultato.
+Solitamente, i costruttori non hanno l'istruzione `return`. Il loro compito è di eseguire tutto ciò che è necessario a creare l'oggetto lavorando su `this`; quest'ultimo sarà il risultato.
 
-Se decidiamo di inserire un istruzione di `return`, vanno seguite delle semplici regole:
+Se decidiamo di inserire un'istruzione di `return`, vanno seguite delle semplici regole:
 
 - Se `return` viene invocato con un oggetto, questo verrà ritornato al posto di `this`.
 - Se `return` viene invocato con un tipo primitivo, verrà ignorato.
 
-In altre parole, `return` su un oggetto ritorna quell'oggetto, in tutti gli altri casi verrà ritornato `this`.
+In altre parole, `return` con un oggetto ritorna quell'oggetto; in tutti gli altri casi verrà ritornato `this`.
 
 Ad esempio, qui `return` sovrascrive `this` ritornando un oggetto:
 
@@ -153,7 +153,7 @@ function BigUser() {
   return { name: "Godzilla" };  // <-- ritorna questo oggetto
 }
 
-alert( new BigUser().name );  // Godzilla, ottieni quell'oggetto
+alert( new BigUser().name );  // Godzilla
 ```
 
 Qui invece abbiamo un esempio con un `return` vuoto (potremmo anche ritornare un qualsiasi valore di tipo primitivo):
@@ -163,12 +163,13 @@ function SmallUser() {
 
   this.name = "John";
 
-
-  // ...
-
+  return; // <-- returns this
 }
 
-Solitamente i costruttori non possiedono l'istruzione `return`. Qui per completezza abbiamo citato gli eventuali comportamenti, se si tenta di ritornare un oggetto.
+alert(new SmallUser().name);  //John
+```
+
+Solitamente i costruttori non hanno l'istruzione `return`. Abbiamo comunque riportato, per completezza, quel che succede se si tenta di ritornare un oggetto.
 
 ````smart header="Omettere le parentesi"
 Possiamo anche omettere le parentesi dopo `new`, se non ci sono argomenti:
@@ -184,11 +185,11 @@ L'omissione delle parentesi non viene considerata come "buona programmazione", l
 
 ## Metodi in un costruttore
 
-Utilizzare costruttori per creare degli oggetti fornisce una grande vantaggio in termini di flessibilità. Il costruttore può avere dei parametri che definiscono come costruire l'oggetto, e cosa "metterci dentro".
+Utilizzare costruttori per creare degli oggetti ci dà un grande vantaggio in termini di flessibilità. Il costruttore può avere dei parametri che definiscono come costruire l'oggetto, e cosa "metterci dentro".
 
 Ovviamente, possiamo aggiunger a `this` non solo proprietà, ma anche metodi.
 
-Ad esempio, `new User(name)` crea un oggetto con un nome dato `name` e un metodo `sayHi`:
+Ad esempio, `new User(name)` crea un oggetto con un nome (passato come `name`) e un metodo `sayHi`:
 
 ```js run
 function User(name) {
@@ -202,7 +203,7 @@ function User(name) {
 *!*
 let john = new User("John");
 
-john.sayHi(); // Il mio nome è: John
+john.sayHi(); // My name is: John
 */!*
 
 /*
@@ -217,15 +218,15 @@ Per creare oggetti più complessi, esiste una sintassi più avanzata, [classes](
 
 ## Riepilogo
 
-- Le funzioni di costruzione, o meglio, i costruttori, solo delle normali funzioni, che seguono però una regola di accordo comune che prevede di denominarle con la prima lettera maiuscola.
-- Un costruttore dovrebbe essere chiamato solamente utilizzando `new`. Questo tipo di chiamata implica la creazione di un oggetto vuoto `this`, che verrà popolato entro la fine della funzione.
+- Le funzioni di costruzione, o meglio, i costruttori, sono solo delle normali funzioni; seguono però una convenzione comune che prevede di denominarle con la prima lettera maiuscola.
+- Un costruttore dovrebbe essere chiamato solamente utilizzando `new`. Questo tipo di chiamata implica la creazione di un oggetto vuoto, `this`, che verrà popolato entro la fine della funzione.
 
 Possiamo utilizzare i costruttori per costruire molti oggetti simili tra loro.
 
 JavaScript fornisce costruttori per la maggior parte degli oggetti integrati nel linguaggio: come `Date` per le date, `Set` per gli insiemi e molti altri che studieremo più avanti.
 
 ```smart header="Oggetti, ci ritorneremo!"
-In questo capitolo abbiamo coperto solamente le basi degli oggetti e dei costruttori. Era necessario conoscerne le basi per capire meglio riguardo i data types e le funzioni che studieremo nel prossimo capitolo.
+In questo capitolo abbiamo coperto solamente le basi degli oggetti e dei costruttori. Era necessario conoscerne le basi per capire meglio i data types e le funzioni che studieremo nel prossimo capitolo.
 
-Dopo averli compresi, ritorneremo sugli oggetti e li analizzeremo più in dettaglio nei capitoli <info:prototypes> e <info:classes>.
+Dopo questo, ritorneremo sugli oggetti e li analizzeremo più in dettaglio nei capitoli <info:prototypes> e <info:classes>.
 ```

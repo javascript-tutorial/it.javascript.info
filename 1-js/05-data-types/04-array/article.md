@@ -1,10 +1,10 @@
 # Array
 
-Gli oggetti consentono la memorizzazione di una collezione di valori con chiave.
+Gli oggetti consentono la memorizzazione di una collezione di valori associati alle rispettive chiavi.
 
-Molto spesso abbiamo bisogno di una *collezione ordinata*, dove abbiamo un primo, un secondo, un terzo elemento e cosi via. Ad esempio, abbiamo bisogno di memorizzare una lista di cose: utenti, beni, elementi HTML etc.
+Ma spesso abbiamo bisogno di una *collezione ordinata*, dove abbiamo un primo, un secondo, un terzo elemento e così via. Ad esempio, abbiamo bisogno di memorizzare una lista di cose: utenti, beni, elementi HTML etc.
 
-Non è conveniente utilizzare un oggetto per questo tipo di lavori, poiché non avremmo alcun metodo per gestire l'ordine degli elementi. Non possiamo inserire una nuova proprietà "tra" due già esistenti. Infatti gli oggetti non sono pensati per questo scopo.
+Non è conveniente utilizzare un oggetto per questo tipo di lavori, poiché non avremmo alcun metodo per gestire l'ordine degli elementi. Non possiamo inserire una nuova proprietà "tra" due già esistenti.  Gli oggetti non sono stati pensati per questo scopo.
 
 Esistono delle speciali strutture dati chiamate `Array`, che consentono la memorizzazione di collezioni ordinate. 
 
@@ -17,13 +17,13 @@ let arr = new Array();
 let arr = [];
 ```
 
-Nella maggioranza dei casi, la seconda sintassi è quella preferita. Possiamo già fornire degli elementi da inserire, all'interno delle parentesi:
+Nella maggioranza dei casi, la seconda sintassi è quella preferita. Possiamo già fornire degli elementi da inserire, all'interno delle parentesi quadre:
 
 ```js
 let fruits = ["Apple", "Orange", "Plum"];
 ```
 
-Gli elementi di un array sono numerati, a partire dallo zero.
+Gli elementi di un array sono numerati a partire dallo zero.
 
 Possiamo ottenere un elemento tramite il suo numero di indice:
 
@@ -47,7 +47,7 @@ fruits[2] = 'Pear'; // ora ["Apple", "Orange", "Pear"]
 fruits[3] = 'Lemon'; // ora ["Apple", "Orange", "Pear", "Lemon"]
 ```
 
-Il contatore locale degli elementi dell'array è `length`:
+Il numero degli elementi dell'array è `length`:
 
 ```js run
 let fruits = ["Apple", "Orange", "Plum"];
@@ -71,7 +71,7 @@ Ad esempio:
 // insieme di valori
 let arr = [ 'Apple', { name: 'John' }, true, function() { alert('hello'); } ];
 
-// prende l'oggetto all'indice 1 e ne mostra il name
+// prende l'oggetto all'indice 1 e ne mostra il nome
 alert( arr[1].name ); // John
 
 // prende la funzione all'indice 3 e la esegue
@@ -80,7 +80,7 @@ arr[3](); // hello
 
 
 ````smart header="Virgola pendente"
-Negli array, proprio come per gli oggetti, c'è la possibilità di terminare con una virgola:
+Gli array, proprio come gli oggetti, possono terminare con una virgola:
 ```js 
 let fruits = [
   "Apple",
@@ -95,16 +95,16 @@ La "virgola pendente" rende più semplice inserire/rimuovere elementi, perché t
 
 ## I metodi pop/push, shift/unshift
 
-Una [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) (coda) è una delle maggiori applicazioni di un array. In ambito informatico, questa è una collezione ordinata che consente due operazioni:
+Una [queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type)) (coda) è una delle più comuni applicazioni di un array. In ambito informatico, questa è una collezione ordinata che consente due operazioni:
 
 - `push` inserisce un elemento in coda.
-- `shift` per estrarre un elemento dalla testa della cda, e scorrere in avanti la lista, in questo modo il secondo elemento diventa il primo.
+- `shift` per estrarre un elemento dall'inizio, e scorrere in avanti la coda, di modo che il secondo elemento diventa il primo.
 
 ![](queue.svg)
 
 Gli array supportano entrambe le operazioni.
 
-Nella pratica non è strano incontrare questo "tipo" di array. Ad esempio una coda di messaggi che devono essere mostrati a schermo.
+Nella pratica non è strano incontrare questo "tipo" di array. Ad esempio una coda di messaggi che devono essere mostrati sullo schermo.
 
 Esiste un altro caso d'uso degli array -- la struttura dati chiamata [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)). 
 
@@ -115,11 +115,11 @@ Questa supporta due operazioni:
 
 Quindi gli elementi vengono sempre aggiunti o presi dalla "fine".
 
-Uno stack viene spesso illustrato come un pacco di carte: le nuove carte vengono aggiunte sempre in cima o prese dalla cima:
+Uno stack viene spesso illustrato come un pacco di carte: le nuove carte vengono aggiunte sempre in cima o da lì estratte:
 
 ![](stack.svg)
 
-Per gli stack, l'ultimo elemento inserito viene prelevato per primo, questo comportamento viene definito LIFO (Last-In-First-Out). Nel caso delle code, il comportamento viene chiamato FIFO (First-In-First-Out).
+Negli gli stack, l'ultimo elemento inserito viene prelevato per primo. Questo comportamento viene definito LIFO (Last-In-First-Out). Nel caso delle code, il comportamento viene chiamato FIFO (First-In-First-Out).
 
 Gli array in JavaScript possono implementare sia una queue che uno stack. C'è la possibilità di aggiungere/rimuovere elementi sia in cima che in coda.
 
@@ -151,7 +151,7 @@ In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/
 
     La chiamata `fruits.push(...)` è equivalente a `fruits[fruits.length] = ...`.
 
-**Metodi che operano sulla testa dell'array:**
+**Metodi che operano sull'inizio dell'array:**
 
 `shift`
 : Estrae il primo elemento dell'array e lo ritorna:
@@ -165,7 +165,7 @@ In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/
     ```
 
 `unshift`
-: Aggiunge l'elemento in testa dell'array:
+: Aggiunge l'elemento alla testa dell'array:
 
     ```js run
     let fruits = ["Orange", "Pear"];
@@ -189,8 +189,8 @@ alert( fruits );
 
 ## Internamente
 
-Un array è uno speciale tipo di oggetto. Le parentesi quadre vengono utilizzate per accedere alla proprietà `arr[0]`, questa sintassi deriva da quella utilizzata per gli oggetti. I numeri vengono utilizzati come chiave. 
-Equivale a `obj[key]`, dove `arr` è l'oggetto, mentre i numeri vengono utilizzati come chiavi.
+
+Un array è uno speciale tipo di oggetto. Le parentesi quadre utilizzate per accedere alla proprietà `arr[0]` derivano dalla sintassi utilizzata con gli oggetti. Questo equivale a `obj[key]`, dove `arr` è l'oggetto, mentre i numeri vengono utilizzati come chiavi.
 
 Inoltre estendono gli oggetti fornendo speciali metodi per operare ordinatamente su collezioni di dati, e contengono la proprietà `length`. Ma internamente rimane sempre un oggetto.
 
@@ -210,9 +210,9 @@ arr.push("Pear"); // modifica l'array per riferimento
 alert( fruits ); // Banana, Pear - ora sono 2 elementi
 ```
 
-... Ma ciò che li rende realmente speciali è la loro rappresentazione interna. Il motore prova a memorizzare gli elementi in aree di memoria contigue, uno dopo l'altro, propri come nelle illustrazioni di questo capitolo, ci sono anche altre ottimizzazioni per rendere gli array molto veloci.
+... Ma ciò che li rende realmente speciali è la loro rappresentazione interna. Il motore prova a memorizzare gli elementi in aree di memoria contigue, uno dopo l'altro, proprio come nelle illustrazioni di questo capitolo, e ci sono anche altre ottimizzazioni per rendere gli array molto veloci.
 
-Se iniziamo a trattare gli array come oggetti ordinari tutte le ottimizzazioni vengono a meno.
+Se iniziamo a trattare gli array come oggetti ordinari tutte le ottimizzazioni vengono meno.
 
 Ad esempio, tecnicamente possiamo fare:
 
@@ -224,17 +224,17 @@ fruits[99999] = 5; // assegna una proprietà con indice maggiore della sua lungh
 fruits.age = 25; // crea una proprietà con un nome a scelta
 ```
 
-Questo è possibile, perché gli array sono comunque degli oggetti. Possiamo anche aggiungere proprietà.
+Questo è possibile, perché gli array sono comunque degli oggetti. Possiamo aggiungervi qualsiasi proprietà.
 
-Il motore si accorgerà che stiamo gli array come comuni oggetti. Le ottimizzazioni specifiche per gli array non sono studiate per questi casi, verranno quindi disattivate.
+Ma *l'engine* si accorgerà che stiamo utilizzando gli array come comuni oggetti. Le ottimizzazioni specifiche per gli array non sono studiate per questi casi, e verranno quindi disattivate.
 
-I modi per "maltrattare" un array:
+I modi per usare incorrettamente un array:
 
 - Aggiungere una proprietà non numerica, come `arr.test = 5`. 
 - Creare buchi: aggiungendo `arr[0]` e poi `arr[1000]` (lasciando spazio vuoto tra di loro).
 - Riempire l'array nell'ordine inverso, ad esempio `arr[1000]`, `arr[999]`.
 
-E' molto conveniente pensare agli array come delle speciali strutture utili a lavorare con *dati ordinati*. Infatti contengono degli speciali metodi per poterli trattare. Inoltre sono attentamente ottimizzati dal motore JavaScript per lavorare con dati ordinati e memorizzati in posizioni contigue. Quindi se dovreste aver bisogno di utilizzare una proprietà con una chiave arbitraria, molto probabilmente un oggetto soddisferà maggiormente le vostre necessità.
+E' molto conveniente pensare agli array come delle speciali strutture utili a lavorare con *dati ordinati*. Forniscono speciali metodi utili a questo scopo, inoltre sono attentamente ottimizzati dal motore JavaScript per lavorare con dati ordinati e memorizzati in posizioni contigue. Quindi se doveste aver bisogno di utilizzare una proprietà con una chiave arbitraria, molto probabilmente un oggetto soddisferà le vostre necessità.
 
 ## Performance
 
@@ -242,7 +242,7 @@ I metodi `push/pop` vengono eseguiti rapidamente, mentre `shift/unshift` sono pi
 
 ![](array-speed.svg)
 
-Perché è più veloce eseguire operazioni sulla coda degli array piuttosto che in testa? Andiamo a vedere cosa accade durante l'esecuzione:
+Perché è più veloce eseguire operazioni sulla coda degli array rispetto a quelle sulla testa? Andiamo a vedere cosa accade durante l'esecuzione:
 
 ```js
 fruits.shift(); // prende 1 elemento dall'inizio
@@ -261,7 +261,7 @@ L'operazione di `shift` deve seguire 3 passi:
 **Maggiore sarà il numero di elementi, maggiore sarà il tempo richiesto, e maggiori saranno il numero di operazioni in memoria.**
 
 Una cosa simile accade con `unshift`: per aggiungere un elemento in testa all'array, abbiamo prima bisogno di spostare tutti gli elementi a destra e aggiornare gli indici.
-Invece con `push/pop`? Non richiedono lo spostamento di nulla in memoria. Per poter prelevare un elemento dalla coda, il metodo `pop` pulisce l'indirizzo e decrementa la `length`.
+Invece con `push/pop`? Non richiedono lo spostamento di nulla in memoria. Per poter prelevare un elemento dalla coda, il metodo `pop` pulisce l'indirizzo e decrementa `length`.
 
 Le azioni eseguite da `pop`:
 
@@ -271,13 +271,13 @@ fruits.pop(); // prende 1 elemento dalla fine
 
 ![](array-pop.svg)
 
-**Il metodo `pop` non richiede spostamenti, perché ogni elemento mantiene il suo indice. Questo è il motivo per cui risulta essere un operazione molto veloce.**
+**Il metodo `pop` non richiede spostamenti, perché ogni elemento mantiene il suo indice. Questo è il motivo per cui risulta essere un'operazione molto veloce.**
 
 Una cosa simile accade con il metodo `push`.
 
 ## Cicli
 
-Uno dei modi più utilizzati per eseguire cicli sugli elementi di un array è il `for` utilizzando gli indici:
+Uno dei modi più vecchi per eseguire cicli sugli elementi di un array è il `for` utilizzando gli indici:
 
 ```js run
 let arr = ["Apple", "Orange", "Pear"];
@@ -300,7 +300,7 @@ for (let fruit of fruits) {
 }
 ```
 
-Il ciclo `for..of` non fornisce il numero dell'indice dell'elemento corrente, solo il suo valore, in molte situazioni questo è più che sufficiente. E più breve.
+Il ciclo `for..of` non fornisce il numero d'indice dell'elemento corrente, solo il suo valore; in molte situazioni questo è più che sufficiente. E più breve.
 
 Tecnicamente, poiché gli array sono oggetti, è anche possibile utilizzare `for..in`:
 
@@ -314,22 +314,22 @@ for (let key in arr) {
 }
 ```
 
-Non è comunque un ottima idea. Si possono verificare diversi errori:
+Non è comunque un'ottima idea. Si possono verificare diversi errori:
 
 1. Il ciclo `for..in` itera su *tutte le proprietà*, non solo su quelle numeriche.
 
-    Ci sono anche degli oggetti chiamati "array-like" (simili ad array) nei browser e in altri ambienti, che *assomigliano ad array*. Infatti come proprietà possiedono `length` e degli indici, ma allo stesso tempo contengono proprietà e metodi di tipo non numerico, di cui solitamente non abbiamo bisogno. Il ciclo `for..in` li passerà tutti. Quindi se stiamo utilizzando degli oggetti array-like, questi "extra" potrebbero rivelarsi un problema.
+    Ci sono anche degli oggetti chiamati "array-like" (simili ad array), nei browser e in altri ambienti, che *assomigliano ad array*. Infatti come proprietà possiedono `length` e degli indici, ma allo stesso tempo contengono proprietà e metodi di tipo non numerico, di cui solitamente non abbiamo bisogno. Il ciclo `for..in` li passerà tutti. Quindi se stiamo utilizzando degli oggetti array-like, questi "extra" potrebbero rivelarsi un problema.
 
-2. Il ciclo `for..in` è ottimizzato per oggetti generici, non array, può risultare quindi 10-100 volte più lento. Ovviamente rimane comunque un operazione molto veloce. Può essere un problema solo in caso si verifichino ingorghi. 
+2. Il ciclo `for..in` è ottimizzato per gli oggetti generici, non gli array, e può risultare quindi 10-100 volte più lento. Ovviamente rimane comunque un'operazione molto veloce. Può essere un problema solo in caso si verifichino ingorghi. 
 
-Generalmente, non dovremmo utilizzare `for..in` per array.
+Generalmente, non dovremmo utilizzare `for..in` per gli array.
 
 
 ## Una parola riguardo "length"
 
-La proprietà `length` si aggiorna automaticamente ad ogni modifica. Volendo essere precisi non ne rappresenta la lunghezza, ma l'indirizzo più grande più uno.
+La proprietà `length` si aggiorna automaticamente ad ogni modifica. Volendo essere precisi non ne rappresenta la lunghezza, ma l'ultimo indice numerico più uno.
 
-Ad esempio, un singolo elemento con un indirizzo molto alto fornisce una grande lunghezza:
+Ad esempio, un singolo elemento con un indice molto alto fornisce un'altrettanto grande lunghezza:
 
 ```js run
 let fruits = [];
@@ -340,9 +340,9 @@ alert( fruits.length ); // 124
 
 Ovviamente questo non è il modo corretto di utilizzare un array. 
 
-Un'altra cosa interessante riguardo la proprietà `length` è che è sovra scrivibile.
+Un'altra cosa interessante riguardo la proprietà `length` è che è sovrascrivibile.
 
-Se provassimo ad incrementarla manualmente, non accadrebbe nulla di interessante. Se invece la decrementiamo, l'array verrà troncato. Il processo è irreversibile, vediamo questo esempio:
+Se provassimo ad incrementarla manualmente, non accadrebbe nulla di interessante. Se invece la decrementiamo, l'array verrà troncato. Il processo è irreversibile. Vediamo un esempio:
 
 ```js run
 let arr = [1, 2, 3, 4, 5];
@@ -369,10 +369,10 @@ Viene utilizzata raramente, le parentesi `[]` risultano più brevi. Anche se c'�
 
 Se utilizziamo `new Array` con un solo argomento di tipo numerico, allora verrà creato un array *vuoto, ma con lunghezza data*.
 
-Quindi vediamo come ci si potrebbe sparare sui piedi:
+Quindi vediamo come ci si potrebbe sparare da soli al piede:
 
 ```js run
-let arr = new Array(2); // creerà un array di [2] ?
+let arr = new Array(2); // creerà un array [2] ?
 
 alert( arr[0] ); // undefined! nessun elemento.
 
@@ -381,11 +381,11 @@ alert( arr.length ); // length 2
 
 Nel codice sopra, `new Array(number)` ha tutti gli elementi `undefined`.
 
-Per evitare queste spiacevoli sorprese, solitamente si utilizzano le parentesi, senza doversi preoccupare di cosa stia accadendo.
+Per evitare queste spiacevoli sorprese, solitamente si utilizzano le parentesi quadre, a meno di non sapere davvero che cosa si sta faccendo.
 
 ## Array multi-dimensionali
 
-Gli array possono contenere oggetti che sono a loro volta array. Possiamo quindi utilizzare questa proprietà per creare array multi-dimensionali, per memorizzare matrici:
+Gli array possono contenere oggetti che sono a loro volta array. Possiamo quindi utilizzare questa proprietà per creare array multi-dimensionali, ad esempio per memorizzare matrici:
 
 ```js run
 let matrix = [
@@ -419,7 +419,7 @@ alert( [1] + 1 ); // "11"
 alert( [1,2] + 1 ); // "1,21"
 ```
 
-Gli array non possiedono `Symbol.toPrimitive`, e nemmeno `valueOf`, implementano solamente la conversione `toString`, quindi `[]` diventa una stringa vuota, `[1]` diventa `"1"` e `[1,2]` diventa `"1,2"`.
+Gli array non possiedono `Symbol.toPrimitive`, e nemmeno `valueOf`; implementano solamente la conversione `toString`, quindi `[]` diventa una stringa vuota, `[1]` diventa `"1"` e `[1,2]` diventa `"1,2"`.
 
 Quando l'operatore di somma binaria `"+"` aggiunge qualcosa ad una stringa, converte tutto a stringa, quindi l'esempio di prima sarà equivalente a:
 
@@ -431,17 +431,17 @@ alert( "1,2" + 1 ); // "1,21"
 
 ## Non confrontate gli array con ==
 
-Gli array in JavaScript, a differenza di altri linguaggi di programmazione, non dovrebbero essere confrontati con l'operatore `==`.
+In JavaScript gli array, a differenza di altri linguaggi di programmazione, non dovrebbero essere confrontati con l'operatore `==`.
 
-Questo operatore non offre alcun tipo di trattamento speciale per gli array, li considera come un oggetto.
+Questo operatore non offre alcun tipo di trattamento speciale per gli array: li considera come oggetti.
 
 Ricordando velocemente le regole:
 
 - Due oggetti sono uguali con `==` solamente se fanno riferimento allo stesso oggetto.
-- Se uno dei due argomenti forniti all'operatore `==` è un oggetto, e l'altro è un tipo primitivo, allora l'oggetto viene convertito in primitivo, come spiegato nel capitolo <info:object-toprimitive>.
+- Se uno dei due argomenti forniti all'operatore `==` è un oggetto, e l'altro è un tipo primitivo, allora l'oggetto viene convertito a primitivo, come spiegato nel capitolo <info:object-toprimitive>.
 - ...Con l'eccezione di `null` e `undefined` che sono uguali solamente tra di loro.
 
-Il confronto stretto, con l'operatore `===` è ancora più semplice, poiché non converte i tipi. 
+Il confronto stretto con l'operatore `===` è ancora più semplice, poiché non converte i tipi. 
 
 Quindi, se confrontiamo array con `==`, non saranno mai equivalenti, a meno chè non confrontiamo due variabili che fanno riferimento allo stesso array.
 
@@ -451,7 +451,7 @@ alert( [] == [] ); // false
 alert( [0] == [0] ); // false
 ```
 
-Questi array sono tecnicamente oggetti differenti. Quindi non si equivalgono, L'operatore `==` non effettua il confronto elemento per elemento.
+Questi array sono tecnicamente oggetti differenti. Quindi non si equivalgono. L'operatore `==` non effettua il confronto elemento per elemento.
 
 Anche il confronto con tipi primitivi potrebbe dare risultati strani:
 
@@ -490,9 +490,9 @@ Gli array sono uno speciale tipo di oggetto, studiati per immagazzinare e gestir
     let arr = new Array(item1, item2...);
     ```
 
-    La chiamata a `new Array(number)` crea un array con lunghezza data, ma senza elementi.
+    La chiamata a `new Array(number)` crea un array con la lunghezza data, ma senza elementi.
 
-- La proprietà `length` è la lunghezza dell'array, in realtà per essere precisi, contiene l'indice dell'ultimo elemento più uno. Questo valore viene aggiornato automaticamente. 
+- La proprietà `length` è la lunghezza dell'array; in realtà, per essere precisi, contiene l'indice dell'ultimo elemento più uno. Questo valore viene aggiornato automaticamente. 
 - Se decrementiamo manualmente `length`, l'array viene troncato.
 
 Possiamo eseguire sugli arrays le seguenti operazioni:
@@ -500,11 +500,15 @@ Possiamo eseguire sugli arrays le seguenti operazioni:
 - `push(...items)` aggiunge `items` in coda.
 - `pop()` rimuove un elemento dalla coda e lo ritorna.
 - `shift()` rimuove un elemento dalla testa e lo ritorna.
-- `unshift(...items)` aggiunge un elemento in testa.
+- `unshift(...items)` aggiunge un elemento alla testa.
 
-Ritorneremo sugli array e studieremo più metodi per aggiungere, rimuovere, estrarre ed ordinare elementi nel capitolo <info:array-methods>.
+Per iterare sugli elementi di un array:
 
-Per confrontare gli array, non utilizzate l'operatore  `==` (lo stesso vale per `>`, `<` e gli altri), poiché non riservano alcun trattamento speciale per gli array. Li trattano come degli oggetti comuni, e solitamente non è quello che vogliamo.
+- `for (let i = 0; i < arr.length; i++)` - il più veloce, compatibile con i vecchi browsers.
+- `for (let item of arr)` - la moderna sintassi, solo per gli elementi.
+- `for (let i in arr) ` - da non usare.
+
+Per confrontare gli array, non utilizzate l'operatore  `==` (lo stesso vale per `>`, `<` ecc), poiché non riservano alcun trattamento speciale per gli array. Li trattano come degli oggetti comuni, e solitamente non è quello che vogliamo.
 
 Piuttosto si possono utilizzare i cicli come `for..of` per confrontare ogni elemento dei due array.
 

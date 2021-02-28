@@ -1,5 +1,5 @@
 function spy(func) {
-  // your code
+  // il tuo codice
 }
 
 

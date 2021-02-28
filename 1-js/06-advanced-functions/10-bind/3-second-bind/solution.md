@@ -1,4 +1,4 @@
-The answer: **John**.
+Risposta: **John**.
 
 ```js run no-beautify
 function f() {
@@ -10,6 +10,6 @@ f = f.bind( {name: "John"} ).bind( {name: "Pete"} );
 f(); // John
 ```
 
-The exotic [bound function](https://tc39.github.io/ecma262/#sec-bound-function-exotic-objects) object returned by `f.bind(...)` remembers the context (and arguments if provided) only at creation time. 
+L' *exotic object* [bound function](https://tc39.github.io/ecma262/#sec-bound-function-exotic-objects) restituito da `f.bind(...)` memorizza il contesto (e gli argomenti, se forniti) solo in fase di creazione. 
 
-A function cannot be re-bound.
+Una funzione non può essere riassegnata.

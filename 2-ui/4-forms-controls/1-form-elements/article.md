@@ -2,9 +2,9 @@
 
 Forms and control elements, such as `<input>` have a lot of special properties and events.
 
-Working with forms will be much more convenient when we learn them.
+Lavorando con i forms, questi saranno molto comodi quando li avremo imparati.
 
-## Navigation: form and elements
+## Navigazione: form e elements
 
 Document forms are members of the special collection `document.forms`.
 
@@ -15,7 +15,7 @@ document.forms.my - the form with name="my"
 document.forms[0] - the first form in the document
 ```
 
-When we have a form, then any element is available in the named collection `form.elements`.
+Quando abbiamo un form, allora tutti gli elementi saranno contenuti nella named collection `form.elements`.
 
 For instance:
 
@@ -89,12 +89,12 @@ For instance:
 ```
 ````
 
-````warn header="Shorter notation: `form.name`"
-There's a shorter notation: we can access the element as `form[index/name]`.
+````warn header="Notazione breve: `form.name`"
+Esiste una notazione breve: possiamo accedere all'elemento come `form[index/name]`.
 
 In other words, instead of `form.elements.login` we can write `form.login`.
 
-That also works, but there's a minor issue: if we access an element, and then change its `name`, then it is still available under the old name (as well as under the new one).
+Funziona ugualmente, ma c'è un piccolo problema: se accediamo a un elemento, che in successivamente cambia il suo `name`, questo sarà ancora accessibile sia attraverso il vecchio nome, ma anche tramite quello nuovo.
 
 That's easy to see in an example:
 
@@ -127,7 +127,7 @@ That's usually not a problem, because we rarely change names of form elements.
 
 For any element, the form is available as `element.form`. So a form references all elements, and elements reference the form.
 
-Here's the picture:
+Come possiamo vedere in figura:
 
 ![](form-navigation.svg)
 
@@ -163,11 +163,11 @@ Like this:
 input.value = "New value";
 textarea.value = "New text";
 
-input.checked = true; // for a checkbox or radio button
+input.checked = true; // per una checkbox o un radio button
 ```
 
-```warn header="Use `textarea.value`, not `textarea.innerHTML`"
-Please note that even though `<textarea>...</textarea>` holds its value as nested HTML, we should never use `textarea.innerHTML` to access it.
+```warn header="Usare `textarea.value`, e non `textarea.innerHTML`"
+Nota bene che, nonostante anche `<textarea>...</textarea>` contenga il suo valore come HTML annidato, non dovremmo mai usare `textarea.innerHTML` per accedervi.
 
 It stores only the HTML that was initially on the page, not the current value.
 ```
@@ -206,7 +206,7 @@ Here is an example of all three methods:
 
 Unlike most other controls, `<select>` allows to select multiple options at once if it has `multiple` attribute. This attribute is rarely used though.
 
-For multiple selected values, use the first way of setting values: add/remove the `selected` property from `<option>` subelements.
+Per valori multipli selezionati, usiamo il primo modo per impostare i valori: aggiungere/rimuovere la proprietà `selected` dai sottoelementi `<option>`.
 
 Here's an example of how to get selected values from a multi-select:
 
@@ -231,7 +231,7 @@ The full specification of the `<select>` element is available in the specificati
 
 ### new Option
 
-In the [specification](https://html.spec.whatwg.org/multipage/forms.html#the-option-element) there's a nice short syntax to create an `<option>` element:
+Nelle specifiche [specification](https://html.spec.whatwg.org/multipage/forms.html#the-option-element) viene descritta una sintassi breve ed elegante per creare una elemento  `<option>`:
 
 ```js
 option = new Option(text, value, defaultSelected, selected);
@@ -244,7 +244,7 @@ This syntax is optional. We can use `document.createElement('option')` and set a
 - `defaultSelected` -- if `true`, then `selected` HTML-attribute is created,
 - `selected` -- if `true`, then the option is selected.
 
-The difference between `defaultSelected` and `selected` is that `defaultSelected` sets the HTML-attribute (that we can get using `option.getAttribute('selected')`, while `selected` sets whether the option is selected or not.
+La differenza tra `defaultSelected` e `selected` è che `defaultSelected` imposta l'attributo HTML (che possiamo ottenere usando `option.getAttribute('selected')`, mentre `selected` definisce lo stato della selezione (se è selezionata o meno).
 
 In practice, we usually should set both values to `true` or `false` (or omit, that's the same as `false`).
 
@@ -284,7 +284,8 @@ Form navigation:
 : A form is available as `document.forms[name/index]`.
 
 `form.elements`  
-: Form elements are available as `form.elements[name/index]`, or can use just `form[name/index]`. The `elements` property also works for `<fieldset>`.
+: Gli elementi del form sono disponibili come `form.elements[name/index]`, oppure, più semplicemente con `form[name/index]`. La proprietà `elements` esiste anche per i `<fieldset>`.
+
 
 `element.form`
 : Elements reference their form in the `form` property.
@@ -293,6 +294,7 @@ Value is available as `input.value`, `textarea.value`, `select.value` etc, or `i
 
 For `<select>` we can also get the value by the index `select.selectedIndex` or through the options collection `select.options`.
 
-These are the basics to start working with forms. We'll meet many examples further in the tutorial.
+Queste sono le basi da cui partire con i form. Incontreremo molti esempi più avanti nel tutorial.
+
 
 In the next chapter we'll cover `focus` and `blur` events that may occur on any element, but are mostly handled on forms.

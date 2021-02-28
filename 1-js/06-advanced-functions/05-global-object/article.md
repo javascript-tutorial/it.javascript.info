@@ -16,7 +16,7 @@ alert("Hello");
 window.alert("Hello");
 ```
 
-In un browserm le variabili globalo dichiarate con `var` diventano proprietà dell'oggetto globale:
+In un browser le variabili globali dichiarate con `var` diventano proprietà dell'oggetto globale:
 
 ```js run untrusted refresh
 var gVar = 5;
@@ -52,7 +52,7 @@ alert(currentUser.name);  // John
 alert(window.currentUser.name); // John
 ```
 
-Detto ciò, l'utilizzo di variabili globali è da evitare. Dovrebbero esserci sempre il minor numero di varibili globali possibili. Il design del codice in cui una funzione richiede un `input` e ritorna un `output` risulta essere molto più chiaro, e molto meno propenso ad errori.
+Detto ciò, l'utilizzo di variabili globali è da evitare. Dovrebbero esserci sempre il minor numero di variabili globali possibili. Il design del codice in cui una funzione richiede un `input` e ritorna un `output` risulta essere molto più chiaro, e molto meno propenso ad errori.
 
 ## Utilizzo di polyfill
 

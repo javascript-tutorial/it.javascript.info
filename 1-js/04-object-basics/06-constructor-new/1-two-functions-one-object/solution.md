@@ -1,6 +1,6 @@
 Si, è possibile.
 
-Se una funzione ritorna un oggetto, questo verrà fornito alla `new` piuttosto che `this`.
+Se una funzione ritorna un oggetto, questo verrà ritornato da `new` invece di `this`.
 
 Quindi, le due funzioni potrebbero ritornare un oggetto definito esternamente `obj`:
 
