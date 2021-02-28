@@ -24,7 +24,7 @@ usersMapped = [
 alert( usersMapped[0].id ); // 1
 alert( usersMapped[0].fullName ); // John Smith
 ```
-Da notare che nella funzione a freccia abbiamo bisogno di utilizzare un ulteriore parentesi. 
+Da notare che nell'arrow function abbiamo bisogno di utilizzare un'ulteriore parentesi. 
 
 Non possiamo scrivere semplicemente:
 ```js
@@ -34,9 +34,9 @@ let usersMapped = users.map(user => *!*{*/!*
 });
 ```
 
-Se ricordate, ci sono due tipi di funzioni freccia: senza corpo `value => expr` e con il corpo `value => {...}`.
+Se ricordate, ci sono due tipi di arrow function: senza corpo `value => expr` e con il corpo `value => {...}`.
 
-Qui JavaScript tratterà `{` come l'inzio del corpo della funzione, non l'inizio dell'oggetto. Questo trucco viene utilizzato per racchiuderle nell normali parentesi:
+Qui JavaScript tratterà `{` come l'inzio del corpo della funzione, non l'inizio dell'oggetto. Questo trucco viene utilizzato per racchiuderle nelle normali parentesi:
 
 ```js
 let usersMapped = users.map(user => *!*({*/!*
@@ -45,6 +45,6 @@ let usersMapped = users.map(user => *!*({*/!*
 }));
 ```
 
-Now fine.
+Ora funziona.
 
 
