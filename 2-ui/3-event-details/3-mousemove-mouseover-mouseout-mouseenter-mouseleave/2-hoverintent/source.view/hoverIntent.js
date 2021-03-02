@@ -44,7 +44,7 @@ class HoverIntent {
 
 
   destroy() {
-    /* il tuo codice per "disattivare" la funzionalita', che rimuove tutti i gestori  */
+    /* il tuo codice per "disattivare" la funzionalità, che rimuove tutti i gestori  */
     /* è necesario per fare funzionare i test */
   }
 
