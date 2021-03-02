@@ -1,6 +1,6 @@
 Come prima cosa, cerchiamo di capire perché il codice non funziona.
 
-La motivazione diventa piuttosto ovvia se proviamo ad eseguire il codice. Un classe che eredita, deve invocare `super()`. Diversamente, il valore di `"this"` non sarà "definito".
+La motivazione appare piuttosto ovvia se proviamo ad eseguire il codice. Un classe che eredita, deve invocare `super()`. Diversamente, il valore di `"this"` non sarà "definito".
 
 Vediamo come sistemarlo:
 
@@ -48,7 +48,7 @@ alert ( Rabbit.getOwnPropertyNames({a: 1, b: 2})); // a,b
 */!*
 ```
 
-Ma se non estendiamo l'oggetto, con`extends Object`, allore `Rabbit.__proto__` non sarà impostato a `Object`.
+Ma se non estendiamo l'oggetto, con`extends Object`, allora `Rabbit.__proto__` non sarà impostato a `Object`.
 
 Qui una demo:
 
@@ -67,7 +67,7 @@ alert ( Rabbit.getOwnPropertyNames({a: 1, b: 2})); // Error
 
 Quindi `Rabbit`, in questo caso, non fornisce l'accesso ai metodi statici di `Object`.
 
-In ogni caso, `Function.prototype` possiede metodi "generici", come `call`, `bind` etc. Questi saranno disponibili in ogni caso, grazie al costruttore di `Object`, `Object.__proto__ === Function.prototype`.
+In ogni caso, `Function.prototype` possiede metodi "generici", come `call`, `bind` etc. Questi saranno disponibili in entrambi i casi, grazie al costruttore di `Object`, `Object.__proto__ === Function.prototype`.
 
 Come mostrato in figura:
 

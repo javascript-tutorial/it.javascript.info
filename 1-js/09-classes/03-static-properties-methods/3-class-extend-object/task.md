@@ -23,11 +23,11 @@ alert( rabbit.hasOwnProperty('name') ); // true
 */!*
 ```
 
-Ma se lo esplicitiamo noi in questo modo: `"class Rabbit extends Object"`, allora il risultato sarebbe diverso da un semplice `"class Rabbit"`?
+Ma se lo invocassimo esplicitamente in questo modo: `"class Rabbit extends Object"`, allora il risultato sarebbe diverso da un semplice `"class Rabbit"`?
 
 Qual'è la differenza?
 
-Qui vediamo un esempio (non funziona -- perché? è possibile sistemralo?):
+Qui vediamo un esempio (perché non funziona? è possibile sistemarlo?):
 
 ```js
 class Rabbit extends Object {

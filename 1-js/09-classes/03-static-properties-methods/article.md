@@ -65,7 +65,7 @@ alert( articles[0].title ); // CSS
 
 Qui `Article.compare` sta "al di sopra" degli articoli, poiché ha lo scopo di confrontarli. Non è un metodo di un articolo, ma piuttosto dell'intera classe.
 
-Un altro esempio comune è quello del "factory method" (un particolare design pattern). Immaginiamo di avere bisogno di diversi modalità di creazione di un articolo:
+Un altro esempio comune è quello del "factory method" (un particolare design pattern). Immaginiamo di avere bisogno di diverse modalità di creazione di un articolo:
 
 1. Creazione con i parametri forniti (`title`, `date` etc).
 2. Creazione di un articolo vuoto con la data di oggi.
@@ -208,7 +208,7 @@ Ad esempio, un metodo per il confronto `Article.compare(article1, article2)` o u
 
 Queste vengono precedute dalla keyword `static` all'interno della dichiarazione della classe.
 
-Le proprietà statiche vengono utilizzate quando si ha intenzione di memorizzare dati relativi alla classe, che non sono quindi legate ad un'istanza precisa.
+Le proprietà statiche vengono utilizzate quando si ha intenzione di memorizzare dati relativi alla classe, che non sono quindi legati ad un'istanza precisa.
 
 La sintassi è:
 
