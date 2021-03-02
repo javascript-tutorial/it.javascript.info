@@ -1,10 +1,10 @@
 # Arrow functions rivisitate
 
-Rivisitiamo l'argomento delle arrow functions.
+Rivediamo l'argomento delle arrow functions.
 
 Le arrow functions non sono semplicemente una "scorciatoia" per scrivere codice più breve. Infatti queste possiedono delle caratteristiche aggiuntive piuttosto utili.
 
-Scrivendo codice in JavaScript ci troviamo spesso a dover scrivere delle funzioni molto semplici, che verranno però eseguite in un diverso punto del codice.
+Usando JavaScript ci troviamo spesso a dover scrivere delle funzioni molto semplici, che verranno però eseguite in un diverso punto del codice.
 
 Ad esemmpio:
 
@@ -61,7 +61,7 @@ let group = {
 group.showList();
 ```
 
-L'errore viene lanciato perché `forEach` esegue le funzioni con `this=undefined` di default, quindi il codice equivale a: `undefined.title`.
+L'errore viene generato perché `forEach` esegue le funzioni con `this=undefined` di default, quindi il codice equivale a: `undefined.title`.
 
 Questo non si verifica con le arrow functions, poiché queste non possiedono un `this`.
 
