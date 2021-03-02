@@ -1,6 +1,6 @@
 'use strict';
 
-// Ecco un breve schizzo
+// Ecco una bozza
 // con le cose di cui avrete bisogno comunque
 class HoverIntent {
 
