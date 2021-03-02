@@ -3,7 +3,7 @@
 class HoverIntent {
 
   constructor({
-    sensitivity = 0.1, // velocita' inferiore a 0.1px/ms indica "hovering su un elemento"
+    sensitivity = 0.1, // velocità inferiore a 0.1px/ms indica "hovering su un elemento"
     interval = 100,    // misura la velocità del mouse ogni 100ms
     elem,
     over,
@@ -33,7 +33,7 @@ class HoverIntent {
 
     if (this.isOverElement) {
       // se siamo sull'elemento, ignoriamo l'evento
-      // dato che stiamo gia' misurando la velocita'
+      // dato che stiamo già misurando la velocità
       return;
     }
 
@@ -41,7 +41,7 @@ class HoverIntent {
 
     // dopo ogni mousemove controlliamo la distanza
     // tra le coordinate attuali e le precedenti
-    // se e' minore della "sensibilita'", allora la velocita' sara' bassa
+    // se e' minore della "sensibilità", allora la velocità sarà bassa
 
     this.prevX = event.pageX;
     this.prevY = event.pageY;
@@ -58,7 +58,7 @@ class HoverIntent {
       this.elem.removeEventListener('mousemove', this.onMouseMove);
       clearInterval(this.checkSpeedInterval);
       if (this.isHover) {
-        // se c'e' stato uno stop sull'elemento
+        // se c'è stato uno stop sull'elemento
         this.out.call(this.elem, event);
         this.isHover = false;
       }
@@ -76,7 +76,7 @@ class HoverIntent {
     let speed;
 
     if (!this.lastTime || this.lastTime == this.prevTime) {
-      // il cursore non si e' mosso
+      // il cursore non si è mosso
       speed = 0;
     } else {
       speed = Math.sqrt(
@@ -90,7 +90,7 @@ class HoverIntent {
       this.isHover = true;
       this.over.call(this.elem, event);
     } else {
-      // alta velocita', memorizza le nuove coordinate come quelle precedenti
+      // alta velocità, memorizza le nuove coordinate come quelle precedenti
       this.prevX = this.lastX;
       this.prevY = this.lastY;
       this.prevTime = this.lastTime;
