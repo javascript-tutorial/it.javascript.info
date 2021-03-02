@@ -121,7 +121,7 @@ parent.onmouseover = function(event) {
 
 Ma non è così. Il puntatore è ancora sul genitore, solo che si è mosso più internamente, dentro l'elemento figlio.
 
-Se vi fossero alcune azioni a seguito di eventi, che coinvolgessero l'abbandono dell'elemento genitore, ad esempio un'animazione eseguita al `parent.onmouseout`, nella maggioranza dei casi non vorremmo che si attivassero quando il puntatore entrasse in profondità nel `#parent` andando dentro il figlio (anzi, in generale vogliamo che lavorino quando il puntatore va all'esterno dell'area del `#parent`).
+Se vi fossero degli eventi generati dall'abbandono dell'elemento genitore, ad esempio un'animazione eseguita al `parent.onmouseout`, nella maggioranza dei casi non vorremmo che si attivassero se il puntatore entrasse in profondità nel `#parent` andando dentro il figlio (anzi, in generale vorremmo che si attivassero solo quando il puntatore va all'esterno dell'area del `#parent`).
 
 Quindi, per evitare questo, possiamo controllare `relatedTarget` nel gestore, e se il mouse è ancora dentro l'elemento, ignoriamo del tutto l'evento.
 
