@@ -4,7 +4,7 @@ let currentElem = null;
 table.onmouseover = function(event) {
   // prima di entrare su un nuovo elemento, il mouse abbandona quello precedente
   // se currentElem e' impostato, non abbiamo abbandonato il precedente <td>,
-  // il mouse e' ancora dentro, ignoriamo l'evento
+  // il mouse è ancora dentro, ignoriamo l'evento
   if (currentElem) return;
 
   let target = event.target.closest('td');
