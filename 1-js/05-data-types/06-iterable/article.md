@@ -30,7 +30,7 @@ Per rendere iterabile l'oggetto `range` (e poter quindi utilizzare correttamente
 1. Quando `for..of` inizia, prova a chiamare questo metodo (o ritorna un errore se non lo trova). Il metodo deve ritornare un *iteratore* -- un oggetto con il metodo `next`.
 2. La possibilità di avanzare di `for..of` funziona *solamente con l'oggetto ritornato*.
 3. Quando `for..of` vuole il prossimo valore, chiama `next()` su quell'oggetto.
-4. Il risultato di `next()` deve avere la forma `{done: Boolean, value: any}`, dove `done=true` significa che l'iterazione è completa, altrimenti `value` deve contenere il prossimo valore.
+4. Il risultato di `next()` deve avere la forma `{done: Boolean, value: any}`, dove `done=true` significa che l'iterazione è completa, altrimenti `value` deve contenere il valore successivo.
 
 Qui l'implementazione completa per `range`:
 
