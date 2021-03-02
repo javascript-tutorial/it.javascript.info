@@ -129,7 +129,7 @@ In alternativa, possiamo usare altri eventi: `mouseenter` e `mouseleave`, che af
 
 ## Eventi mouseenter e mouseleave
 
-Gli eventi `mouseenter/mouseleave` si comportano come `mouseover/mouseout`. Vengono scaturiti quando il puntatore del mouse entra/lascia l'elemento.
+Gli eventi `mouseenter/mouseleave` si comportano come `mouseover/mouseout`. Vengono attivati quando il puntatore del mouse entra/lascia l'elemento.
 
 Ma hanno due importanti differenze:
 
