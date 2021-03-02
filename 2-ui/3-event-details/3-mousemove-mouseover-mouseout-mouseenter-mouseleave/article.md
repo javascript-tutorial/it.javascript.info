@@ -57,7 +57,7 @@ In particolare, è possibile che il puntatore arrivi direttamente al centro dell
 ![](mouseover-mouseout-from-outside.svg)
 
 ```online
-Possiamo testare dal "vivo" il concetto, nel seguente banco di test.
+Possiamo testare dal "vivo" il concetto, nel seguente banco di prova.
 
 Questo HTML ha due elementi nidificati: un `<div id="child">` dentro un `<div id="parent">`. Muovendo il mouse velocemente su di loro, potrebbe accadere che l'evento venga generato solo dal div figlio, o magari solo dal genitore, oppure ancora, potrebbe non esserci alcun evento.
 
