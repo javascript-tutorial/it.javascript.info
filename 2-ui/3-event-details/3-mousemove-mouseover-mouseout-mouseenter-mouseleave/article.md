@@ -196,7 +196,7 @@ Ecco un esempio di codice che tiene conto di tutte le combinazioni:
 [js src="mouseenter-mouseleave-delegation-2/script.js"]
 
 Ancora una volta, le caratteristiche da tenere in considerazione sono:
-1. Usare la event delegation per gestire l'entrata/uscita dai `<td>` dentro la tabella. Quindi usare `mouseover/out` piuttosto che `mouseenter/leave`, in quanto questi ultimi non facendo bubbling,  non permetterebbero la event delegation.
+1. Usare la event delegation per gestire l'entrata/uscita dai `<td>` dentro la tabella. Quindi usare `mouseover/out` piuttosto che `mouseenter/leave`, in quanto questi ultimi, non facendo bubbling,  non permetterebbero la event delegation.
 2. Gli eventi aggiuntivi, come lo spostamento del mouse tra gli elementi discendenti di `<td>` vanno esclusi, in modo da eseguire `onEnter/Leave` solo qundo il puntatore entra o abbandona del tutto il `<td>`.
 
 ```online
