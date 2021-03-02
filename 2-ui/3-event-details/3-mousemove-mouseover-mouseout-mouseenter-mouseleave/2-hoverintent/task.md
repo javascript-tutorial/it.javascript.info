@@ -10,7 +10,7 @@ In altre parole, se il visitatore sposta il mouse su questo elemento e si ferma 
 
 Tecnicamente, possiamo misurare la velocità del mouse su un elemento, e se è abbastanza lento possiamo supporre che sta arrivando proprio "sull'elemento", mostrando il tooltip, se è troppo veloce -- lo ignoriamo.
 
-Creare un oggetto universale `new HoverIntent(options)` allo scopo.
+Creare un oggetto universale `new HoverIntent(options)` utile allo scopo.
 
 Le opzioni possibili `options`:
 - `elem` -- elemento da tracciare.
