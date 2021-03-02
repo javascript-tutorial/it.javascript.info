@@ -38,7 +38,7 @@ Dobbiamo tenere a mente questa eventualità, quando coinvolgiamo `event.relatedT
 
 ## Saltare elementi
 
-L'evento `mousemove` viene scaturito col movimento del mouse. Tuttavia, ciò non significa che ogni pixel porterà ad un evento.
+L'evento `mousemove` viene attivato dal movimento del mouse. Tuttavia, ciò non significa che ogni pixel porterà ad un evento.
 
 Il browser controlla la posizione del mouse di tanto in tanto. E se in questo frangente noterà qualche cambiamento, allora genererà degli eventi.
 
