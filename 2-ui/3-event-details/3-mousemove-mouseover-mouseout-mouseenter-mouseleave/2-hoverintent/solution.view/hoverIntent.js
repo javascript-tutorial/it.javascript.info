@@ -4,7 +4,7 @@ class HoverIntent {
 
   constructor({
     sensitivity = 0.1, // velocita' inferiore a 0.1px/ms indica "hovering su un elemento"
-    interval = 100,    // misura la velocita' del mouse ogni 100ms
+    interval = 100,    // misura la velocità del mouse ogni 100ms
     elem,
     over,
     out
