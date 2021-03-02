@@ -218,4 +218,4 @@ Queste sono le cose da evidenziare:
 
 Gli eventi `mouseover/out` vengono generati anche quando andiamo dall'elemento genitore all'elemento figlio. Il browser assume che il mouse può stare su un solo elemento alla volta -- quello più annidato.
 
-Gli eventi `mouseenter/leave` sono differenti da questo punto di vista: vengono scaturiti solo quando il mouse entra o esce del tutto da un elemento. Inoltre non sono soggetti al bubbling.
+Gli eventi `mouseenter/leave` sono differenti da questo punto di vista: vengono attivati solo quando il mouse entra o esce del tutto da un elemento. Inoltre non sono soggetti al bubbling.
