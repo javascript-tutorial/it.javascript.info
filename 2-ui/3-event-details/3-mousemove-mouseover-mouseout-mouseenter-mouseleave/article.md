@@ -143,7 +143,7 @@ Quando il puntatore entra su un elemento -- viene generato `mouseenter`. La posi
 Quando il puntatore lascia un elemento -- viene generato `mouseleave`.
 
 ```online
-L'esempio seguente è simile al precedente, solo che in questo caso l'elemento superiore è associato a  `mouseenter/mouseleave` piuttosto che `mouseover/mouseout`.
+L'esempio seguente è simile al precedente, solo che in questo caso l'elemento superiore è associato a `mouseenter/mouseleave` piuttosto che `mouseover/mouseout`.
 
 Come possiamo notare, gli unici venti generati sono quelli relativi al movimento del puntatore del mouse dentro e fuori dall'elemento superiore. Se il puntatore va dentro l'elemento figlio, non succede nulla. Le transizioni tra i figli vengono ignorate.
 
