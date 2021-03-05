@@ -4,7 +4,7 @@ importance: 5
 
 # Chiavi iterabili
 
-Vorremmo avere un array di `map.keys()` in una variabile, quindi poterle applicare un metodo specifico degli arrays, ad esempio `.push`.
+Vorremmo avere un array di `map.keys()` in una variabile, quindi potergli applicare un metodo specifico degli arrays, ad esempio `.push`.
 
 Ma c'è un problema:
 

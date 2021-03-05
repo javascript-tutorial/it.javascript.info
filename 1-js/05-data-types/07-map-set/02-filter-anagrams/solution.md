@@ -9,14 +9,14 @@ cheaters, hectares, teachers -> aceehrst
 ...
 ```
 
-Utilizzeremo la variante con le lettere ordite come chiave di una map per memorizzare un solo valore:
+Utilizzeremo la variante con le lettere ordinate come chiave di una map per memorizzare un solo valore:
 
 ```js run
 function aclean(arr) {
   let map = new Map();
 
   for (let word of arr) {
-    // split the word by letters, sort them and join back
+    // dividi la parola in lettere, ordinale e ricongiungile 
 *!*
     let sorted = word.toLowerCase().split('').sort().join(''); // (*)
 */!*
@@ -53,7 +53,7 @@ map.set(sorted, word);
 
 Se abbiamo già incontrato una parola con la stessa forma, la sovrascriviamo con quella nuova, in modo tale da avere sempre una sola occorrenza all'interno della map. 
 
-Alla fine `Array.from(map.values())` prende un iteratore sui valori di map (non abbiamo bisogno delle chiavi nel risultato) e ne ritorna un array.
+Alla fine `Array.from(map.values())` prende un iteratore sui valori di `map` (non abbiamo bisogno delle chiavi nel risultato) e ne ritorna un array.
 
 Qui potremmo anche utilizzare un normale oggetto piuttosto di `Map`, poiché le chiavi sono stringhe.
 
