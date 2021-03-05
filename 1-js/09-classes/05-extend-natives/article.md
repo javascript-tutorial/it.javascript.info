@@ -34,7 +34,7 @@ Ancora meglio, possiamo personalizzarne il comportamento.
 
 Possiamo aggiungere uno speciale getter statico `Symbol.species` alla classe. Questo dovrebbe ritornare il costruttore che Javascript utilizzerà internamente per creare le nuove entità in  `map`, `filter` e gli altri metodi.
 
-Se invece, la nostra intenzione è quella di restituire degli array standard tramite l'utilizzo dei metodi come `map` o `filter`, possiamo ritornare `Array` in `Symbol.species`, come nell'esempio:
+Se, invece, la nostra intenzione è quella di restituire degli array standard tramite l'utilizzo dei metodi come `map` o `filter`, possiamo ritornare `Array` in `Symbol.species`, come nell'esempio:
 
 ```js run
 class PowerArray extends Array {
