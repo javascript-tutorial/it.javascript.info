@@ -16,4 +16,4 @@ let messages = [
 
 Ora la domanda è: quale struttura di dati converrebbe utilizzare per memorizzare l'informazione: "quando è stato letto il messaggio?".
 
-Nel compito precedente la necessità era semplicemente di memorizzare la lettura del messaggio. Ora abbiamo bisogno di memorizzare anche la data, anche in questo caso, se il messaggio viene eliminato questa dovrebbe sparire.
+Nel compito precedente la necessità era semplicemente di memorizzare la lettura del messaggio. Ora abbiamo bisogno di memorizzare anche la data; anche in questo caso, se il messaggio viene eliminato questa dovrebbe sparire.
