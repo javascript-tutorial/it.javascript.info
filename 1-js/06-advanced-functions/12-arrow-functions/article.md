@@ -12,7 +12,7 @@ Ad esemmpio:
 - `setTimeout(func)` -- `func` viene eseguita dallo scheduler integrato.
 - ...ed esistono molti altri casi.
 
-Sta nel vero spirito di JavaScript il fatto di poter creare una funzione in un punto e passarla in qualsiasi altra parte del codice.
+È nel vero spirito di JavaScript poter creare una funzione in un punto e passarla in qualsiasi altra parte del codice.
 
 E in questo tipo di funzioni, generalmente, non vorremmo perdere il riferimento al context (il contesto in cui la funzione è stata definita). Queste sono le situazioni in cui le arrow functions ci vengono in soccorso.
 
@@ -20,7 +20,7 @@ E in questo tipo di funzioni, generalmente, non vorremmo perdere il riferimento 
 
 Come già abbiamo studiato nel capitolo <info:object-methods>, le arrow functions non possiedono un `this`. Infatti, il valore di `this`, viene preso dal contesto esterno.
 
-Ad esempio, possiamo utilizzarlo per le iterazioni all'interno di un metodo di un oggetto:
+Ad esempio, possiamo utilizzarlo per le iterazioni all'interno del un metodo di un oggetto:
 
 ```js run
 let group = {
@@ -82,7 +82,7 @@ Le arrow functions non possiedo la varibile `arguments`.
 
 Questo è fantastico per i decorators, in cui abbiamo biosogno di inoltrare una chiamata con il valori attuali di `this` e `arguments`.
 
-Ad esempio, `defer(f, ms)` accetta una funzione come parametro e ne ritorna un wrapper della stessa, il quale ne ritarderà l'invocazione di `ms` millisecondi:
+Ad esempio, `defer(f, ms)` accetta una funzione come parametro e ritorna un wrapper della stessa, il quale ne ritarderà l'invocazione di `ms` millisecondi:
 
 ```js run
 function defer(f, ms) {
