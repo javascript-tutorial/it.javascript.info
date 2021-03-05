@@ -36,7 +36,7 @@ john = null; // sovrascriviamo il riferimento
 */!*
 ```
 
-O, se utilizziamo un oggetto come chiave in un `Map`, fino a che la `Map` esiste, anche l'oggetto esisterà. Occuperà memoria e non potrà essere ripulito dal garbage collector.
+O, se utilizziamo un oggetto come chiave in una `Map`, fino a che la `Map` esiste, anche l'oggetto esisterà. Occuperà memoria e non potrà essere ripulito dal garbage collector.
 
 Ad esempio:
 
@@ -54,7 +54,7 @@ john = null; // sovrascriviamo il riferimento
 */!*
 ```
 
-`WeakMap` è fondamentalmente diverso sotto questo aspetto. Infatti non previene l'azione del garbage collector sugli oggetti utilizzati come chiave.
+`WeakMap` è fondamentalmente diverso sotto questo aspetto. Infatti non previene la garbage-collection degli oggetti utilizzati come chiave.
 
 Vediamo cosa significa questo, utilizzando degli esempi.
 
@@ -85,12 +85,12 @@ weakMap.set(john, "...");
 
 john = null; // sovrascriviamo il riferimento
 
-// john è stato rimossa dalla memoria!
+// john è stato rimosso dalla memoria!
 ```
 
-Confrontiamolo con l'esempio di `Map` visto sopra. Ora se `john` esiste solo come chiave della `WeakMap` -- verrà eliminato automaticamente dalla map (e anche dalla memoria).
+Confrontiamolo con l'esempio di `Map` visto sopra. Ora, se `john` esiste solo come chiave della `WeakMap` -- verrà eliminato automaticamente dalla map (e anche dalla memoria).
 
-`WeakMap` non supporta gli iteratori e i metodi `keys()`, `values()`, `entries()`, quindi non c'è alcun modo di ottenere tutte le chiavi o valori tramite questi metodi.
+`WeakMap` non supporta gli iteratori e i metodi `keys()`, `values()`, `entries()`, quindi non c'è alcun modo di ottenere tutte le chiavi o i valori tramite questi metodi.
 
 `WeakMap` possiede solamente i seguenti metodi:
 
@@ -99,9 +99,9 @@ Confrontiamolo con l'esempio di `Map` visto sopra. Ora se `john` esiste solo com
 - `weakMap.delete(key)`
 - `weakMap.has(key)`
 
-Perché questa limitazione? Per ragioni tecniche. Se un oggetto ha perso tutti i riferimenti (come `john` nel codice sopra), allora verrà automaticamente eliminato. Ma tecnicamente non è specificato esattamente quando *averrà la pulizia*.
+Perché questa limitazione? Per ragioni tecniche. Se un oggetto ha perso tutti i riferimenti (come `john` nel codice sopra), allora verrà automaticamente eliminato. Ma tecnicamente non è specificato esattamente *quando averrà la pulizia*.
 
-Sarà il motore JavaScript a deciderlo. Potrebbe decidere di effettuare subito la pulizia della memoria oppure aspettare più oggetti per eliminarli in blocco. Quindi, tecnicamente il conteggio degli elementi di un `WeakMap` non è conosciuto. Il motore potrebbe già aver effettuato la pulizia oppure no, o averlo fatto solo parzialmente. Per questo motivo, i metodi che accedono a `WeakMap` per intero, non sopo supportati.
+Sarà il motore JavaScript a deciderlo. Potrebbe decidere di effettuare subito la pulizia della memoria oppure aspettare più oggetti per eliminarli in blocco. Quindi, tecnicamente il numero degli elementi di una `WeakMap` non è conosciuto. Il motore potrebbe già aver effettuato la pulizia oppure no, o averlo fatto solo parzialmente. Per questo motivo, i metodi che accedono a `WeakMap` per intero non sopo supportati.
 
 Dove potremmo avere bisogno di una struttura simile?
 
@@ -111,7 +111,7 @@ Il principale campo di applicazione di `WeakMap` è quello di un *additional dat
 
 Se stiamo lavorando con un oggetto che "appartiene" ad un altro codice, magari una libreria di terze parti, e vogliamo memorizzare alcuni dati associati ad esso, che però dovrebbero esistere solamente finché l'oggetto esiste - allora una `WeakMap` è proprio ciò di cui abbiamo bisogno.
 
-Inseriamo i dati in una `WeakMap`, utilizzando l'oggetto come chiave, quando l'oggetto verrà ripulito dal garbage collecetor, anche i dati associati verranno ripuliti.
+Inseriamo i dati in una `WeakMap`, utilizzando l'oggetto come chiave; quando l'oggetto verrà ripulito dal garbage collector, anche i dati associati verranno ripuliti.
 
 ```js
 weakMap.set(john, "secret documents");
@@ -164,11 +164,11 @@ function countUser(user) {
 }
 ```
 
-Ora non dobbiamo più ripulire `visitsCountMap`. Una volta che `john` non è più accessibile, ad eccezione che come chiave della `WeakMap`, viene rimosso dalla memoria, insieme a tutte le informazioni associate contenute nella `WeakMap`.
+Ora non dobbiamo più ripulire `visitsCountMap`. Una volta che `john` non sarà più accessibile, ad eccezione che come chiave della `WeakMap`, verrà rimosso dalla memoria, insieme a tutte le informazioni associate contenute nella `WeakMap`.
 
 ## Caso d'uso: caching
 
-Un altro caso d'uso comune è il caching. Possiamo memorizzare i risultati di una funzione, cosi che le successive chiamate alla funzione possano riutilizzarli.
+Un altro caso d'uso comune è il caching. Possiamo memorizzare i risultati di una funzione, così che le successive chiamate alla funzione possano riutilizzarli.
 
 Per fare questo possiamo utilizzare una `Map` (non la scelta ottimale):
 
@@ -199,7 +199,7 @@ let result1 = process(obj); // calcolato
 // ...più tardi, da un'altra parte del codice...
 let result2 = process(obj); // prendiamo il risultato dalla cache
 
-// ...più avanti, quando non avremmo più bisogno dell'oggetto:
+// ...più avanti, quando non abbiamo più bisogno dell'oggetto:
 obj = null;
 
 alert(cache.size); // 1 (Ouch! L'oggetto è ancora in cache, sta occupando memoria!)
@@ -236,7 +236,7 @@ let result2 = process(obj);
 obj = null;
 
 // Non possiamo ottenere la dimensione della cache, poichè è una WeakMap,
-// ma o è 0 oppure lo sarà presto
+// ma è 0 oppure lo sarà presto
 // Quando un oggetto viene ripulito dal garbage collector, anche i dati associati vengono ripuliti
 ```
 
@@ -244,11 +244,11 @@ obj = null;
 
 `WeakSet` si comporta in maniera simile:
 
-- E' analogo a `Set`, ma possiamo solamente aggiungere oggetti a `WeakSet` (non primitive).
+- E' analogo a `Set`, ma possiamo aggiungere solamente oggetti a `WeakSet` (non primitivi).
 - Un oggetto esiste in un set solamente finché rimane accessibile in un altro punto del codice.
 - Come `Set`,  supporta `add`, `has` e `delete`, ma non `size`, `keys()` e nemmeno gli iteratori.
 
-Il fatto che sia "weak", la rende utile come spazio di archiviazione aggiuntivo. Non per dati arbitrari, ma piuttosto per questioni di tipo "si/no". Il fatto di appartenere ad un `WeakSet` può aggiungere significato all'oggetto.
+Il fatto che sia "weak" la rende utile come spazio di archiviazione aggiuntivo. Non per dati arbitrari, ma piuttosto per questioni di tipo "si/no". Il fatto di appartenere ad un `WeakSet` può significare qualcosa sull'oggetto.
 
 Ad esempio, possiamo aggiungere gli utenti ad un `WeakSet` per tenere traccia di chi ha visitato il nostro sito:
 
@@ -280,7 +280,7 @@ La maggior limitazione di `WeakMap` e `WeakSet` è l'assenza di iteratori, e la 
 
 ## Riepilogo
 
-`WeakMap` è una collezione simile a `Map`, che permette di utilizzare solamente gli oggetti come chiave, con la differenza che la rimozione di un oggetto, rimuove anche il valore associato.
+`WeakMap` è una collezione simile a `Map`, ma permette di utilizzare solamente oggetti come chiavi; inoltre, la rimozione di un oggetto rimuove anche il valore associato.
 
 `WeakSet` è una collezione simile a `Set`, che memorizza solamente oggetti, e li rimuove completamente una volta che diventano inaccessibili.
 
