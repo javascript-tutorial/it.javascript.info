@@ -1,22 +1,22 @@
 # Mixins
 
-In JavaScript we can only inherit from a single object. There can be only one `[[Prototype]]` for an object. And a class may extend only one other class.
+In JavaScript possiamo ereditare solamente da un oggetto. Può esserci solamente un `[[Prototype]]` per oggetto. Ed una classe può estendere solamente un'altra classe.
 
-But sometimes that feels limiting. For instance, we have a class `StreetSweeper` and a class `Bicycle`, and want to make their mix: a `StreetSweepingBicycle`.
+In certi casi questo può essere un limite. Ad esempio, abbiamo una classe `StreetSweeper` ed una classe `Bicycle`, e vogliamo crearne un mix: un `StreetSweepingBicycle`.
 
-Or we have a class `User` and a class `EventEmitter` that implements event generation, and we'd like to add the functionality of `EventEmitter` to `User`, so that our users can emit events.
+Oppure abbiamo una classe `User` ed una classe `EventEmitter` che implementa la generazione degli eventi, e vorremmo poter aggiungere la funzionalità di `EventEmitter` a `User`, cosicché i nostri utenti possano emettere eventi.
 
-There's a concept that can help here, called "mixins".
+Esiste un concetto che può aiutare in questi casi, chiamato "mixins".
 
-As defined in Wikipedia, a [mixin](https://en.wikipedia.org/wiki/Mixin) is a class containing methods that can be used by other classes without a need to inherit from it.
+Come definito in Wikipedia, un [mixin](https://en.wikipedia.org/wiki/Mixin) è una classe contenente metodi che possono essere utilizzati da altre classi, senza che ci sia la necessità di ereditare da questa classe.
 
-In other words, a *mixin* provides methods that implement a certain behavior, but we do not use it alone, we use it to add the behavior to other classes.
+In altre parole, un *mixin* fornisce dei metodi che implementano delle funzionalità specifiche, che non andremo ad utilizzare da soli, ma piuttosto andremo ad aggiungerli ad altre classi.
 
-## A mixin example
+## Un esempio di mixin
 
-The simplest way to implement a mixin in JavaScript is to make an object with useful methods, so that we can easily merge them into a prototype of any class.
+Il modo più semplice per implementare un mixin in JavaScript è quello di creare un oggetto con dei metodi utili, in questo modo potremo fondermi molto semplicemente nel prototype di un'altra classe.
 
-For instance here the mixin `sayHiMixin` is used to add some "speech" for `User`:
+Ad esempio, qui vediamo il mixin `sayHiMixin` che viene utilizzato per aggiungere la funzionalità di "parlare" a `User`:
 
 ```js run
 *!*
@@ -32,7 +32,7 @@ let sayHiMixin = {
 };
 
 *!*
-// usage:
+// utilizzo:
 */!*
 class User {
   constructor(name) {
@@ -40,14 +40,14 @@ class User {
   }
 }
 
-// copy the methods
+// copiamo i metodi
 Object.assign(User.prototype, sayHiMixin);
 
-// now User can say hi
+// ora User può salutare
 new User("Dude").sayHi(); // Hello Dude!
 ```
 
-There's no inheritance, but a simple method copying. So `User` may inherit from another class and also include the mixin to "mix-in" the additional methods, like this:
+Non abbiamo utilizzato l'ereditarietà, ma abbiamo semplicemente copiato un metodo. Quindi `User` può tranquillamente ereditare da un'altra classe, ed includere il mixin per aggiungere funzionalità, come nell'esempio:
 
 ```js
 class User extends Person {
@@ -57,9 +57,9 @@ class User extends Person {
 Object.assign(User.prototype, sayHiMixin);
 ```
 
-Mixins can make use of inheritance inside themselves.
+I mixins possono utilizzare a loro volta l'ereditarietà.
 
-For instance, here `sayHiMixin` inherits from `sayMixin`:
+Ad esempio, qui abbiamo `sayHiMixin` che erediata da `sayMixin`:
 
 ```js run
 let sayMixin = {
@@ -69,11 +69,11 @@ let sayMixin = {
 };
 
 let sayHiMixin = {
-  __proto__: sayMixin, // (or we could use Object.setPrototypeOf to set the prototype here)
+  __proto__: sayMixin, // (oppure potremmo utilizzare Object.setPrototypeOf per impostare il prototype)
 
   sayHi() {
     *!*
-    // call parent method
+    // invocazione del metodo padre
     */!*
     super.say(`Hello ${this.name}`); // (*)
   },
@@ -88,43 +88,43 @@ class User {
   }
 }
 
-// copy the methods
+// copiamo i metodi
 Object.assign(User.prototype, sayHiMixin);
 
-// now User can say hi
+// ora User può salutare
 new User("Dude").sayHi(); // Hello Dude!
 ```
 
-Please note that the call to the parent method `super.say()` from `sayHiMixin` (at lines labelled with `(*)`) looks for the method in the prototype of that mixin, not the class.
+Da notare che l'invocazione al metodo padre `super.say()` da `sayHiMixin` (alla riga etichettata con `(*)`) cerca il metodo nel prototype di quel mixin, non in quello della classe.
 
 ![](mixin-inheritance.svg)
 
 ![](mixin-inheritance.svg)
 
-That's because methods `sayHi` and `sayBye` were initially created in `sayHiMixin`. So even though they got copied, their `[[HomeObject]]` internal property references `sayHiMixin`, as shown in the picture above.
+Questo accade perché i metodi `sayHi` e `sayBye` sono stati creati in `sayHiMixin`. Quindi, anche dopo essere stati copiati, le loro proprietà `[[HomeObject]]` fanno riferimento a `sayHiMixin`, come mostrato in figura.
 
-As `super` looks for parent methods in `[[HomeObject]].[[Prototype]]`, that means it searches `sayHiMixin.[[Prototype]]`, not `User.[[Prototype]]`.
+Poiché `super` ricerca i metodi in `[[HomeObject]].[[Prototype]]`, ciò significa che ricerca `sayHiMixin.[[Prototype]]`, non `User.[[Prototype]]`.
 
 ## EventMixin
 
-Now let's make a mixin for real life.
+Ora creiamo un mixin per la vita reale.
 
-An important feature of many browser objects (for instance) is that they can generate events. Events are a great way to "broadcast information" to anyone who wants it. So let's make a mixin that allows us to easily add event-related functions to any class/object.
+Una caratteristica importante di molti oggetti del browser (ad esempio) è che questi possono generare eventi. Gli eventi sono un'ottimo modo per "trasmettere informazioni" a chiunque ne sia interessato. Quindi creiamo un mixin che ci consenta di aggiungere funzioni relative agli eventi, ad una qualsiasi classe/oggetto.
 
-- The mixin will provide a method `.trigger(name, [...data])` to "generate an event" when something important happens to it. The `name` argument is a name of the event, optionally followed by additional arguments with event data.
-- Also the method `.on(name, handler)` that adds `handler` function as the listener to events with the given name. It will be called when an event with the given `name` triggers, and get the arguments from the `.trigger` call.
-- ...And the method `.off(name, handler)` that removes the `handler` listener.
+- Il mixin fornirà un metodo `.trigger(name, [...data])` per "generare un evento" quando qualcosa di significativo accade. L'argomento `name` è il nome dell'evento, ed altri argomenti opzionali possono essere aggiunti con dati relativi all'evento.
+- Anche il metodo `.on(name, handler)` che aggiunge una funzione `handler` come listener degli eventi con il nome fornito. Sarà invocato nel momento in cui un evento con il `name` fornito verrà invocato dalla chiamata `.trigger`.
+- ...Ed il metodo `.off(name, handler)` che rimuove il listener `handler`.
 
-After adding the mixin, an object `user` will be able to generate an event `"login"` when the visitor logs in. And another object, say, `calendar` may want to listen for such events to load the calendar for the logged-in person.
+Dopo aver aggiunto il mixin, un oggetto `user` sarà in grado di generare un evento di `"login"` quando l'utente effettua l'accesso. Ed un altro oggetto, diciamo, `calendar` potrebbe essere in ascolto di questi eventi in modo da caricare il calendario della persona autenticata.
 
-Or, a `menu` can generate the event `"select"` when a menu item is selected, and other objects may assign handlers to react on that event. And so on.
+Oppure un `menu` potrebbe generare un evento di `"select"` quando un elemento viene selezionato, ed un altro oggetto potrebbe essere in ascolto dell'evento. E cosi via.
 
-Here's the code:
+Qui vediamo il codice:
 
 ```js run
 let eventMixin = {
   /**
-   * Subscribe to event, usage:
+   * Iscrizione ad un evento, utilizzo:
    *  menu.on('select', function(item) { ... }
   */
   on(eventName, handler) {
@@ -136,7 +136,7 @@ let eventMixin = {
   },
 
   /**
-   * Cancel the subscription, usage:
+   * Cancellare l'iscrizione, utilizzo:
    *  menu.off('select', handler)
    */
   off(eventName, handler) {
@@ -150,59 +150,59 @@ let eventMixin = {
   },
 
   /**
-   * Generate an event with the given name and data
+   * Generare un evento con uno specifico nome ed i dati relativi
    *  this.trigger('select', data1, data2);
    */
   trigger(eventName, ...args) {
     if (!this._eventHandlers?.[eventName]) {
-      return; // no handlers for that event name
+      return; // nessun gestore per questo evento
     }
 
-    // call the handlers
+    // invochiamo i gestori
     this._eventHandlers[eventName].forEach(handler => handler.apply(this, args));
   }
 };
 ```
 
 
-- `.on(eventName, handler)` -- assigns function `handler` to run when the event with that name occurs. Technically, there's an `_eventHandlers` property that stores an array of handlers for each event name, and it just adds it to the list.
-- `.off(eventName, handler)` -- removes the function from the handlers list.
-- `.trigger(eventName, ...args)` -- generates the event: all handlers from `_eventHandlers[eventName]` are called, with a list of arguments `...args`.
+- `.on(eventName, handler)` -- assegna la funzione `handler` in modo tale che venga eseguita quando l'evento con il nome fornito viene generato. Tecnicamente, avremmo a disposizione anche la proprietà `_eventHandlers` che memorizza un array di gestori per ogni tipo di evento, quindi potremmo semplicemente alla lista.
+- `.off(eventName, handler)` -- rimuove la funzione dalla lista dei gestori.
+- `.trigger(eventName, ...args)` -- genera l'evento: tutti i gestori in `_eventHandlers[eventName]` vengono invocati, con la lista degli argomenti `...args`.
 
-Usage:
+Utilizzo:
 
 ```js run
-// Make a class
+// Definiamo una classe
 class Menu {
   choose(value) {
     this.trigger("select", value);
   }
 }
-// Add the mixin with event-related methods
+// Aggiungiamo il mixin con i metodi relativi agli eventi
 Object.assign(Menu.prototype, eventMixin);
 
 let menu = new Menu();
 
-// add a handler, to be called on selection:
+// aggiungiamo un gestore, da invocare alla selezione:
 *!*
 menu.on("select", value => alert(`Value selected: ${value}`));
 */!*
 
-// triggers the event => the handler above runs and shows:
+// inneschiamo l'evento => il gestore definito sopra verrà invocato e mostrerà:
 // Value selected: 123
 menu.choose("123");
 ```
 
-Now, if we'd like any code to react to a menu selection, we can listen for it with `menu.on(...)`.
+Ora, nel caso volessimo che un'altra parte di codice reagisca alla selezione nel menu, ci basterà semplicemente aggiungere un listener con `menu.on(...)`.
 
-And `eventMixin` mixin makes it easy to add such behavior to as many classes as we'd like, without interfering with the inheritance chain.
+E grazie al mixin `eventMixin`, questo comportamento diventa molto semplice da integrare in tutte le classi in cui desideriamo aggiungerlo, senza che questo vada ad interferire con l'ereditarietà.
 
-## Summary
+## Riepilogo
 
-*Mixin* -- is a generic object-oriented programming term: a class that contains methods for other classes.
+*Mixin* -- è un termine utilizzato nella programmazione orientata agli oggetti: un classe che contiene metodi utili per altre classi.
 
-Some other languages allow multiple inheritance. JavaScript does not support multiple inheritance, but mixins can be implemented by copying methods into prototype.
+Molti altri linguaggi di programmazione consentono l'ereditarietà multipla. JavaScript non la supporta, ma possiamo implementare i mixin copiando i loro metodi all'interno del prototype.
 
-We can use mixins as a way to augment a class by adding multiple behaviors, like event-handling as we have seen above.
+Possiamo utilizzare i mixins per aumentare una classe, andando ad aggiungere diversi comportamenti, come la gestione degli eventi vista sopra.
 
-Mixins may become a point of conflict if they accidentally overwrite existing class methods. So generally one should think well about the naming methods of a mixin, to minimize the probability of that happening.
+I mixins potrebbero creare conflitti nel caso in cui andassero a sovrascrivere metodi già esistenti nella classe. Quindi, generalmente, i nomi dei metodi nei mixin vanno scelti con attenzione, in modo tale da minimizzare il rischio che si generino tali conflitti.
