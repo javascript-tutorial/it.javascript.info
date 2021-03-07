@@ -7,11 +7,11 @@ Questa pratica è un "must" nello sviluppo di una qualsiasi applicazione che sia
 
 Per comprenderla, usciamo dal mondo dello sviluppo e guardiamo al mondo reale.
 
-Solitamente, i dispositivi che utilizziamo sono piuttosto complessi. Ma poter delimitare la loro interfaccia interna da quelal esterna, ci consente di utilizzarli senza grossi problemi.
+Solitamente, i dispositivi che utilizziamo sono piuttosto complessi. Poter delimitare la loro interfaccia interna da quella esterna, ci consente di utilizzarli senza grossi problemi.
 
-## Un esempio nel mondo reale
+## Un esempio del mondo reale
 
-Ad esempio, una macchina del caffe. Semplice all'esterno: un bottone, un dispaly, un paio di fori... E, ovviamente, il risultato -- un ottimo caffe! :)
+Ad esempio, una macchina del caffè. Semplice all'esterno: un bottone, un dispaly, un paio di fori... E, ovviamente, il risultato -- un ottimo caffè! :)
 
 ![](coffee.jpg)
 
@@ -21,15 +21,15 @@ Ma internamente... (una rappresentazione dei suoi componenti)
 
 Ci sono molti dettagli. Ma riusciamo comunque ad utilizzarla anche senza conoscerli.
 
-Le macchine del caffe sono piuttosto affidabili, giusto? Possono durare per anni, e solamente nel caso in cui qualcosa smetta di funzionare -- la portiamo a riparare.
+Le macchine del caffè sono piuttosto affidabili, giusto? Possono durare per anni, e solamente nel caso in cui qualcosa smetta di funzionare -- le portiamo a riparare.
 
-Il segreto dietro all'affidabilità e alla semplicità di una macchina del caffe -- tutti i dettagli sono ottimizzati e *nascosti*.
+Il segreto dietro all'affidabilità e alla semplicità di una macchina del caffè -- tutti i dettagli sono ottimizzati e *nascosti*.
 
-Se rimuovessimo la copertura della macchina del caffe, allora il suo utilizzo sarebbe molto più complesso (dove dovremmo premere?), e pericoloso (potremmo prendere la scossa).
+Se rimuovessimo la copertura della macchina del caffè, allora il suo utilizzo sarebbe molto più complesso (dove dovremmo premere?), e pericoloso (potremmo prendere la scossa).
 
-Come vedremo in seguito, nella programmazione, gli oggetti, sono come le macchine del caffe.
+Come vedremo in seguito, nella programmazione gli oggetti sono come le macchine del caffè.
 
-Ma per poter nascondere i loro dettagli interni, non utilizzeremo una copertura di sicurezza, ma piuttosto un speciale sintassi del linguaggio ed alcune convenzioni.
+Ma per poter nascondere i loro dettagli interni, non utilizzeremo una copertura di sicurezza, ma piuttosto una speciale sintassi del linguaggio ed alcune convenzioni.
 
 ## Interfaccia interna ed esterna
 
@@ -38,13 +38,13 @@ Nella programmazione orientata agli oggetti, le proprietà ed i metodi sono divi
 - *Interfaccia interna* -- metodi e proprietà, accessibili dagli altri metodi della classe, ma non dall'esterno.
 - *Interfaccia esterna* -- metodi e proprietà, accessibili dall'esterno della classe.
 
-Continuando con l'analogia della macchina del caffe -- ciò che è nascosto internamente: una pompa, un meccanismo di riscaldamento e cosi via -- al sua interfaccia interna.
+Continuando con l'analogia della macchina del caffè -- ciò che è nascosto internamente: una pompa, un meccanismo di riscaldamento e così via -- è la sua interfaccia interna.
 
 L'interfaccia interna viene utilizzata per far funzionare l'oggetto, ogni dettaglio viene utilizzato da altri elementi. Ad esempio, la pompa è collegata al meccanismo di riscaldamento.
 
 Ma vista dall'esterno, la macchina del caffe è protetta da una copertura, in modo che nessuno possa accedervi. I dettagli sono nascosti ed inaccesibili. Possiamo sfruttarne le caratteristiche tramite la sua interfaccia esterna.
 
-Quindi, tutto ciò di cui abbiamo bisogno per utilizzare un oggetto è la sua interfaccia esterna. Potremmo essere completamente inconsapevoli del suo funzionamento interno, ciò sarebbe la situazione ottimale.
+Quindi, tutto ciò di cui abbiamo bisogno per utilizzare un oggetto è la sua interfaccia esterna. Potremmo essere completamente inconsapevoli del suo funzionamento interno; e ciò andrebbe bene.
 
 Questa era un'introduzione generale.
 
@@ -53,15 +53,15 @@ In JavaScript, esistono due tipi di campi per un oggetto (proprietà e metodi):
 - Pubblici: accessibili ovunque. Questi ne definiscono l'interfaccia esterna. Finora abbiamo sempre utilizzato proprietà e metodi pubblici.
 - Privati: accessibili solamente dall'interno della classe. Questi ne definiscono l'interfaccia interna.
 
-In molti altri linguaggi di programmazione esiste anche il concetto di campo "protected" (protetto): accessibile solamente dall'interno della classe e da quelle che al estendono (come i campi privati, ma in aggiunta sono accessibili anche dalle classi che ereditano). Questi sono altrettanto utili per la definizione dell'interfaccia interna. Generalmente sono più diffusi dei campi privati, poiché solitamente la nostra intenzione è quella di renderli accessibili anche nelle sotto-classi.
+In molti altri linguaggi di programmazione esiste anche il concetto di campo "protected" (protetto): accessibile solamente dall'interno della classe e da quelle che la estendono (come i campi privati, ma in aggiunta sono accessibili anche dalle classi che ereditano). Questi sono altrettanto utili per la definizione dell'interfaccia interna. Generalmente sono più diffusi dei campi privati, poiché solitamente la nostra intenzione è quella di renderli accessibili anche nelle sotto-classi.
 
-I campi protetti non sono implementati in JavaScript a livello di linguaggio, ma nella pratica risultano essere molto comodi, per questo vengono spesso emulati.
+I campi protetti non sono implementati in JavaScript a livello del linguaggio, ma nella pratica risultano essere molto comodi, per questo vengono spesso emulati.
 
-Ora costruiremo una macchina del caffe in JavaScript con tutti i tipi di proprietà descritti. Una macchina del caffe è composta da molti dettagli, non la modelleremo per intero, in modo da tenere l'esempio semplice (anche se potremo).
+Ora costruiremo una macchina del caffè in JavaScript, con tutti i tipi di proprietà descritti. Una macchina del caffè è composta da molti dettagli; non la modelleremo per intero, in modo da mantenere l'esempio semplice (anche se potremmo).
 
 ## Protecting "waterAmount"
 
-Come prima cosa creiamo una semplice classe per modellare una macchina del caffe:
+Come prima cosa creiamo una semplice classe per modellare una macchina del caffè:
 
 ```js run
 class CoffeeMachine {
@@ -74,7 +74,7 @@ class CoffeeMachine {
 
 }
 
-// creiamo la macchina del caffe
+// creiamo la macchina del caffè
 let coffeeMachine = new CoffeeMachine(100);
 
 // aggiungiamo acqua
@@ -87,7 +87,7 @@ Proviamo a modificare la proprietà `waterAmount` rendendola protetta, in modo d
 
 **Le proprietà protette, solitamente, vengono prefissate con un underscore `_`.**
 
-Questa non è una forzatura del linguaggio, ma piuttosto una convenzione piuttosto diffusa tra i programmatori, che specifica che queste proprietà e metodi non dovrebbero essere accedute dall'esterno.
+Questa non è una forzatura del linguaggio, ma piuttosto una convenzione diffusa tra i programmatori, che specifica che queste proprietà e metodi non dovrebbero essere accessibili dall'esterno.
 
 Quindi la nostra proprietà diventa `_waterAmount`:
 
@@ -112,7 +112,7 @@ class CoffeeMachine {
 
 }
 
-// creiamo la macchina del caffe
+// creiamo la macchina del caffè
 let coffeeMachine = new CoffeeMachine(100);
 
 // aggiungiamo acqua
@@ -125,7 +125,7 @@ Ora l'accesso è sotto controllo, quindi non è più possibile impostare la quan
 
 Proviamo a rendere la proprietà `power` come read-only (sola lettura). In alcuni casi, potremmo aver bisogno di definire una proprietà in fase di costruzione, e non volerla più modificare in seguito.
 
-Questo è esattamente il caso per un macchina del caffe: la potenza non può variare.
+Questo è esattamente il caso per un macchina del caffè: la potenza non può variare.
 
 Per farlo, possiamo semplicemente definire un getter, e nessun setter:
 
@@ -143,7 +143,7 @@ class CoffeeMachine {
 
 }
 
-// creiamo la macchina del caffe
+// creiamo la macchina del caffè
 let coffeeMachine = new CoffeeMachine(100);
 
 alert(`Power is: ${coffeeMachine.power}W`); // Power is: 100W
@@ -154,14 +154,14 @@ coffeeMachine.power = 25; // Errore (nessun setter)
 ````smart header="Le funzioni getter/setter"
 Qui abbiamo utilizzato la sintassi getter/setter.
 
-Ma nella maggior parte dei casi, le funzioni `get.../set...`, si preferisce definirle in questo modo:
+Ma nella maggior parte dei casi, le funzioni `get.../set...` si preferisce definirle in questo modo:
 
 ```js
 class CoffeeMachine {
   _waterAmount = 0;
 
   *!*setWaterAmount(value)*/!* {
-    i (value < 0) value = 0;
+    if (value < 0) value = 0;
     this._waterAmount = value;
   }
 
@@ -226,7 +226,7 @@ A livello di linguaggio, `#` è un carattere speciale per indicare che quel camp
 
 Inoltre i campi privati non entrano in conflitto con quelli pubblici. Possiamo avere sia un campo privato `#waterAmount` che uno pubblico `waterAmount`.
 
-Ad esempio, facciamo si che `waterAmount` sia una proprietà per accedere a `#waterAmount`:
+Ad esempio, facciamo sì che `waterAmount` sia una proprietà per accedere a `#waterAmount`:
 
 ```js run
 class CoffeeMachine {
@@ -251,7 +251,7 @@ alert(machine.#waterAmount); // Errore
 
 A differenza di quelli protetti, i campi privati sono forzati dal linguaggio stesso. E questa è una buona cosa.
 
-Nel caso in cui stessimo ereditando da `CoffeeMachine`, allora non avremo accesso diretto a `#waterAmount`. Dovremo affidarci al getter/setter `waterAmount`:
+Nel caso in cui stessimo ereditando da `CoffeeMachine`, allora non avremmo accesso diretto a `#waterAmount`. Dovremmo affidarci al getter/setter `waterAmount`:
 
 ```js
 class MegaCoffeeMachine extends CoffeeMachine {
@@ -285,30 +285,30 @@ Con i campi privati questo è impossibile: `this['#name']` non funzionerebbe. Qu
 
 ## Riepilogo
 
-In termini di OOP (Programmazione Orientata agli Oggetti), la delimitazione dell'interfaccia interna da quella esterna, si chiama [incapsulamento](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)).
+In termini di OOP (Programmazione Orientata agli Oggetti), la delimitazione dell'interfaccia interna da quella esterna si chiama [incapsulamento](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)).
 
 Fornisce diversi vantaggi:
 
 Protezione per gli utenti, in modo che questi non possano spararsi ai piedi
-: Immaginiamo ci sia un team di sviluppatori che utilizzano una macchina del caffe. Costruita dall'azienda "Best CoffeeMachine", che funziona correttamente, ma la protezione viene rimossa. In questo modo, la sua interfaccia interna viene esposta.
+: Immaginiamo un team di sviluppatori che utilizzano una macchina del caffè costruita dall'azienda "Best CoffeeMachine", che funziona correttamente, ma la cui protezione viene rimossa. In questo modo, la sua interfaccia interna viene esposta.
 
-    Tutti gli sviluppatori sono civilizzati -- utilizzano la macchina del caffe come previsto. Ma uno di loro, Jhon, che crede di essere il più intelligente, ed effettua alcune modifiche ai componenti della macchina. La macchina del caffe si rompe due giorni dopo.
+    Tutti gli sviluppatori sono civilizzati -- utilizzano la macchina del caffè come previsto. Ma uno di loro, John, che crede di essere il più intelligente, effettua alcune modifiche alla macchina. Che si rompe due giorni dopo.
 
-    Questa non è sicuramente colpa di Jhon, ma piuttosto della persona che ha rimosso la protezione e ha permesso a Jhon di manometterla.
+    Questa non è sicuramente colpa di John, ma piuttosto della persona che ha rimosso la protezione e ha permesso a John di manometterla.
 
     Lo stesso vale nella programmazione. Se un utente prova a cambiare campi che non dovrebbero essere modificati dall'esterno -- le conseguenze sono imprevedibili.
 
-Manutenibili
-: La situazione nella programmazione rispetto ad una macchina del caffe, poiché non la compriamo solamente una volta. Il codice è costantemente sotto sviluppo e miglioramenti.
+Sostenibile
+: La situazione, nella programmazione, è più complessa rispetto ad una macchina del caffe, poiché non la compriamo solamente una volta. Il codice è costantemente sotto sviluppo e miglioramenti.
 
     **Se limitiamo l'accesso all'interfaccia interna, allora lo sviluppatore della classe ha la possibilità di modificarla, anche senza dover informare gli utenti.**
 
-    Se sei lo sviluppatore di una classe di questo tipo, è ottimo sapere che i metodi privati possono essere rinominati in totale sicurezza, i parametri possono essere modificati, o addirittura rimossi, poiché nessun codice esterno dipende da questi.
+    Se sei lo sviluppatore di una classe di questo tipo, è ottimo sapere che i metodi privati possono essere rinominati in totale sicurezza; i parametri possono essere modificati, o addirittura rimossi, poiché nessun codice esterno dipende da questi.
 
     Per gli utenti, quando esce una nuova versione, questa potrebbe essere cambiata completamente al suo interno, ma l'aggiornamento rimane comunque un'operazione semplice se la sua interfaccia esterna è rimasta la stessa.
 
 Nasconde la complessità
-: Le persone adorano utilizzare cose semplici. Almeno esternamente. Ciò che è internamente è una questione diversa.
+: Le persone adorano utilizzare cose semplici. Almeno esternamente. Ciò che è interno è una questione diversa.
 
     I programmatori non fanno eccezione.
 
