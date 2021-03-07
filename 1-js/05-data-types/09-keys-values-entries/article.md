@@ -17,7 +17,7 @@ Anche gli oggetti supportano dei metodi simili, ma la loro sintassi è leggermen
 
 ## Object.keys, values, entries
 
-Per i semplici oggetti, sono resi disponibile i seguenti metodi:
+Per i semplici oggetti, sono disponibili i seguenti metodi:
 
 - [Object.keys(obj)](mdn:js/Object/keys) -- ritorna un array di chiavi.
 - [Object.values(obj)](mdn:js/Object/values) -- ritorna un array di valori.
@@ -34,7 +34,7 @@ La prima differenza è che dobbiamo chiamare `Object.keys(obj)`, non `obj.keys()
 
 Perché? La principale motivazione è la flessibilità. Ricordate, gli oggetti sono la base di tutte le strutture complesse in JavaScript. Quindi potremmo avere un nostro oggetto come `order` che implementa il proprio metodo `order.values()`. E potremmo ancora chiamare `Object.values(order)`.
 
-La seconda differenza è che i metodi `Object.*` ritornano un array, non un oggetto iterabile. Questo è comportamento è dovuto a ragioni storiche.
+La seconda differenza è che i metodi `Object.*` ritornano un array, non un oggetto iterabile. Questo comportamento è dovuto a ragioni storiche.
 
 Ad esempio:
 
@@ -63,21 +63,21 @@ for (let value of Object.values(user)) {
 }
 ```
 
-```warn header="Object.keys/values/entries ingorano le proprietà di tipo symbol"
+```warn header="Object.keys/values/entries ignorano le proprietà di tipo symbol"
 Proprio come nel caso del ciclo `for..in`, questi metodi ignorano le proprietà che utilizzano `Symbol(...)` come chiave.
 
 Solitamente questo è un vantaggio. Ma se volessimo ottenere anche le chiavi di tipo symbol, esiste un secondo metodo [Object.getOwnPropertySymbols](mdn:js/Object/getOwnPropertySymbols)  che ritorna un array di chiavi di tipo symbol. Invece, il metodo [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) ritorna *tutte* le chiavi.
 ```
 
 
-## Transforming objects
+## Trasformare gli oggetti
 
 Per gli oggetti mancano molti metodi che sono invece presenti per gli array, ad esempio `map`, `filter` e molti altri.
 
 Se volessimo comunque applicarli, allora possiamo utilizzare `Object.entries` seguito da `Object.fromEntries`:
 
 1. Applichiamo `Object.entries(obj)` per ottenere un array di coppie chiave/valore da `obj`.
-2. Applichiamo il metodo, esempio `map`.
+2. Applichiamo il metodo, ad esempio `map`.
 3. Applichiamo `Object.fromEntries(array)` all'array risultante per ottenere nuovamente un oggetto.
 
 Ad esempio, se abbiamo un oggetto di prezzi che vogliamo raddoppiare:
@@ -91,7 +91,7 @@ let prices = {
 
 *!*
 let doublePrices = Object.fromEntries(
-  // converte ad array, map, e successivamente fromEntries ci ritorna l'oggetto
+  // converte ad array, chiama map, e successivamente fromEntries ci ritorna l'oggetto
   Object.entries(prices).map(([key, value]) => [key, value * 2])
 );
 */!*
@@ -99,5 +99,5 @@ let doublePrices = Object.fromEntries(
 alert(doublePrices.meat); // 8
 ```   
 
-Ad un primo sguardo potrebbere risultare complesso, ma diventa molto più familiare dopo un paio di utilizzi.
+Ad un primo sguardo potrebbe risultare complesso, ma diventa molto più familiare dopo un paio di utilizzi.
 
