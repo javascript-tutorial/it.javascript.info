@@ -21,20 +21,20 @@ alert(filteredArr); // 10, 50
 alert(filteredArr.isEmpty()); // false
 ```
 
-Notiamo una cosa interessante. I metodi built-in come `filter`, `map` e così via -- ritornano nuovi oggetti del tipo ereditato, cioè `PowerArray`. La loro implementazione interna utilizzata il `costruttore` per farlo.
+Notiamo una cosa interessante. I metodi built-in come `filter`, `map` e così via, ritornano nuovi oggetti del tipo ereditato, cioè `PowerArray`. La loro implementazione interna utilizzata la proprietà oggetto `constructor` per farlo.
 
 Nell'esempio sopra,
 ```js
 arr.constructor === PowerArray
 ```
 
-Quando invochiamo `arr.filter()`, questo creerà internamente il nuovo array contenente i risultati utilizzando `arr.constructor`, non l'`Array` standard. Questo è molto utile, poiché possiamo continuare ad utilizzare i metodi di `PowerArray` anche dopo aver ottenuto il risultato.
+Quando invochiamo `arr.filter()`, questo creerà internamente il nuovo array contenente i risultati utilizzando `arr.constructor`, non l'oggetto `Array` standard. Questo è molto utile, poiché successivamente possiamo utilizzare i metodi di `PowerArray` sul risultato ottenuto.
 
-Ancora meglio, possiamo personalizzarne il comportamento.
+Inoltre, possiamo personalizzarne il comportamento.
 
-Possiamo aggiungere uno speciale getter statico `Symbol.species` alla classe. Questo dovrebbe ritornare il costruttore che Javascript utilizzerà internamente per creare le nuove entità in  `map`, `filter` e gli altri metodi.
+Possiamo aggiungere uno speciale getter statico `Symbol.species` alla classe. Questo dovrebbe ritornare il costruttore che Javascript utilizzerà internamente per creare le nuove entità in  `map`, `filter` e così via.
 
-Se, invece, la nostra intenzione è quella di restituire degli array standard tramite l'utilizzo dei metodi come `map` o `filter`, possiamo ritornare `Array` in `Symbol.species`, come nell'esempio:
+Se, ad esempio, volessimo che metodi come `map` o `filter` restituiscano un array standard, possiamo ritornare `Array` in `Symbol.species`, come nell'esempio:
 
 ```js run
 class PowerArray extends Array {
@@ -76,7 +76,7 @@ Come già sappiamo, le classi integrate si estendono a vicenda. Ad esempio, `Arr
 
 Normalmente, quando una classe ne estende un'altra, sia i metodi statici che quelli non-statici vengono ereditati. Questo è stato ampiamente spiegato nell'articolo [](info:static-properties-methods#statics-and-inheritance).
 
-Ma le classi built-in fanno eccezione. Queste, infatti, non ereditano i membri statici a vicenda.
+Ma le classi built-in fanno eccezione. Queste, infatti, non ereditano i membri statici a le une dalle altre.
 
 Ad esempio, sia `Array` che `Date` ereditano da `Object`, quindi le loro istanze possiedono i metodi di `Object.prototype`. Ma `Array.[[Prototype]]` non fa riferimento ad `Object`, quindi, ad esempio, non si ha alcun metodo statico come `Array.keys()` (o `Date.keys()`).
 
