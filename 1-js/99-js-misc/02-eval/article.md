@@ -1,25 +1,25 @@
-# Eval: run a code string
+# Eval: eseguire una stringa di codice
 
-The built-in `eval` function allows to execute a string of code.
+La funzione integrata `eval` consente di eseguire stringhe di codice.
 
-The syntax is:
+La sintassi da utilizzare è:
 
 ```js
 let result = eval(code);
 ```
 
-For example:
+Ad esempio:
 
 ```js run
 let code = 'alert("Hello")';
 eval(code); // Hello
 ```
 
-A string of code may be long, contain line breaks, function declarations, variables and so on.
+Una stringa di codice potrebbe essere molto lunga, potrebbe contenere interruzioni di riga, dichiarazioni di funzione, variabili e cosi via.
 
-The result of `eval` is the result of the last statement.
+Il risultato ritornato da `eval` corrisponde a quello dell'ultima istruzione.
 
-For example:
+Ad esempio:
 ```js run
 let value = eval('1+1');
 alert(value); // 2
@@ -30,7 +30,7 @@ let value = eval('let i = 0; ++i');
 alert(value); // 1
 ```
 
-The eval'ed code is executed in the current lexical environment, so it can see outer variables:
+Il codice valutato viene eseguito nel lexical environment corrente, quindi può accedere alle variabili esterne:
 
 ```js run no-beautify
 let a = 1;
@@ -46,56 +46,56 @@ function f() {
 f();
 ```
 
-It can change outer variables as well:
+Può quindi modificare le variabili esterne:
 
 ```js untrusted refresh run
 let x = 5;
 eval("x = 10");
-alert(x); // 10, value modified
+alert(x); // 10, valore modificato
 ```
 
-In strict mode, `eval` has its own lexical environment. So functions and variables, declared inside eval, are not visible outside:
+In strict mode, `eval` viene eseguito in un lexical environment separato. Quindi le funzioni e le variabili dichiarate internamente, non sono visibili all'esterno:
 
 ```js untrusted refresh run
-// reminder: 'use strict' is enabled in runnable examples by default
+// reminder: 'use strict' è abilitato di default negli esempio che stiamo eseguendo
 
 eval("let x = 5; function f() {}");
 
-alert(typeof x); // undefined (no such variable)
-// function f is also not visible
+alert(typeof x); // undefined (variabile inesistente)
+// anche la funzione f non è visibile
 ```
 
-Without `use strict`, `eval` doesn't have its own lexical environment, so we would see `x` and `f` outside.
+Senza `use strict`, `eval` non viene eseguito in un lexical environment separato, quindi saremo in grado di vedere `x` e `f` dall'esterno.
 
-## Using "eval"
+## Utilizzare "eval"
 
-In modern programming `eval` is used very sparingly. It's often said that "eval is evil".
+Nella programmazione moderna `eval` viene utilizzato di rado. Spesso si dice "eval is evil" ("eval è il diavolo").
 
-The reason is simple: long, long time ago JavaScript was a much weaker language, many things could only be done with `eval`. But that time passed a decade ago.
+La motivazione è piuttosto semplice: molto tempo fa, JavaScript era un linguaggio molto povero, molte cose potevano essere fatte solamente tramite `eval`. Ma quei tempi, ormai sono passati da un decennio.
 
-Right now, there's almost no reason to use `eval`. If someone is using it, there's a good chance they can replace it with a modern language construct or a [JavaScript Module](info:modules).
+Al momento, non esiste alcuna ragione per cui utilizzare `eval`. Se qualcuno lo sta utilizzando, c'è una buona possibilità che questo sia rimpiazzabile con un costrutto del linguaggio oppure con un [modulo JavaScript](info:modules).
 
-Please note that its ability to access outer variables has side-effects.
+Fate attenzione che la sua capacità di accedere alle variabile esterne, può generare side-effects.
 
-Code minifiers (tools used before JS gets to production, to compress it) rename local variables into shorter ones (like `a`, `b` etc) to make the code smaller. That's usually safe, but not if `eval` is used, as local variables may be accessed from eval'ed code string. So minifiers don't do that renaming for all variables potentially visible from `eval`. That negatively affects code compression ratio.
+I code minifiers (strumenti utilizzati sugli script JS prima di spostarli in produzione, per comprimerli) rinominano le variabili locali con nomi più brevi (come `a`, `b` etc) in modo da rendere il codice più breve. Questa operazione, solitamente, è sicura. Non lo è, però, se stiamo utilizzando `eval`, poiché al suo interno potremmo provare ad accedere alle variabili locali. Quindi i minifiers non rinominano tutte le variabili che sono potenzialmente accessibili da `eval`. Questo comporta una perdita di qualità della compressione del codice.
 
-Using outer local variables inside `eval` is also considered a bad programming practice, as it makes maintaining the code more difficult.
+L'utilizzo delle variabili locali all'interno di `eval` è considerata una bad practice nella programmazione, poiché rende il codice molto più complesso da mantenere.
 
-There are two ways how to be totally safe from such problems.
+Esistono due modi per mettersi al sicuro da questi problemi.
 
-**If eval'ed code doesn't use outer variables, please call `eval` as `window.eval(...)`:**
+**Se il codice all'interno di eval non richiede variabili esterne, allora invocate `eval` come `window.eval(...)`:**
 
-This way the code is executed in the global scope:
+In questo modo il codice viene eseguito nello scope globale:
 
 ```js untrusted refresh run
 let x = 1;
 {
   let x = 5;
-  window.eval('alert(x)'); // 1 (global variable)
+  window.eval('alert(x)'); // 1 (variabile globale)
 }
 ```
 
-**If eval'ed code needs local variables, change `eval` to `new Function` and pass them as arguments:**
+**Se il codice all'interno di eval ha bisogno di variabili locali, sostituite `eval` con `new Function` e passategliele come argomenti:**
 
 ```js run
 let f = new Function('a', 'alert(a)');
@@ -103,12 +103,12 @@ let f = new Function('a', 'alert(a)');
 f(5); // 5
 ```
 
-The `new Function` construct is explained in the chapter <info:new-function>. It creates a function from a string, also in the global scope. So it can't see local variables. But it's so much clearer to pass them explicitly as arguments, like in the example above.
+Il costrutto `new Function` viene spiegato più nel dettaglio nel capitolo <info:new-function>. Crea una nuova funzione a partire da una stringa, sempre nello scope globale. Quindi può accedere alle variabili locali. Questo è molto più semplice passargliele esplicitamente come argomenti, come nell'esempio visto sopra.
 
-## Summary
+## Riepilogo
 
-A call to `eval(code)` runs the string of code and returns the result of the last statement.
-- Rarely used in modern JavaScript, as there's usually no need.
-- Can access outer local variables. That's considered bad practice.
-- Instead, to `eval` the code in the global scope, use `window.eval(code)`.
-- Or, if your code needs some data from the outer scope, use `new Function` and pass it as arguments.
+L'invocazione di `eval(code)` esegue una stringa di codice e ne ritorna il risultato dell'ultima istruzione.
+- Viene raramente utilizzano in JavaScript moderno, quindi in genere non ne avremo bisogno.
+- Può accedere alle variabili locali. Questa è considerata una bad practice.
+- Piuttosto di utilzzare `eval` nello scope globale, utilizzate `window.eval(code)`.
+- Oppure, se il codice dovesse avere bisogno di data dallo scope esterno, utilizzate il costrutto `new Function` e passategliele come argomenti.
