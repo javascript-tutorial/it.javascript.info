@@ -10,7 +10,7 @@ Esiste un concetto che può aiutare in questi casi, chiamato "mixins".
 
 Come definito in Wikipedia, un [mixin](https://en.wikipedia.org/wiki/Mixin) è una classe contenente metodi che possono essere utilizzati da altre classi, senza che ci sia la necessità di ereditare da questa classe.
 
-In altre parole, un *mixin* fornisce dei metodi che implementano delle funzionalità specifiche, che non andremo ad utilizzare da soli, ma piuttosto andremo ad aggiungerli ad altre classi.
+In altre parole, un *mixin* fornisce dei metodi che implementano delle funzionalità specifiche, che non andremo ad utilizzare da soli, ma piuttosto andremo ad aggiungere ad altre classi.
 
 ## Un esempio di mixin
 
@@ -115,9 +115,9 @@ Una caratteristica importante di molti oggetti del browser (ad esempio) è che q
 - Anche il metodo `.on(name, handler)`, che aggiunge una funzione `handler` come listener degli eventi con il nome fornito. Sarà invocato nel momento in cui un evento con il `name` fornito verrà invocato dalla chiamata `.trigger`.
 - ...Ed il metodo `.off(name, handler)` che rimuove il listener `handler`.
 
-Dopo aver aggiunto il mixin, un oggetto `user` sarà in grado di generare un evento di `"login"` quando l'utente effettua l'accesso. Ed un altro oggetto, diciamo, `calendar` potrebbe essere in ascolto di questi eventi in modo da caricare il calendario della persona autenticata.
+Dopo aver aggiunto il mixin, un oggetto `user` sarà in grado di generare un evento di `"login"` quando l'utente effettua l'accesso. Ed un altro oggetto, diciamo, `calendar` può stare in ascolto di questi eventi in modo da caricare il calendario della persona autenticata.
 
-Oppure un `menu` potrebbe generare un evento di `"select"` quando un elemento viene selezionato, ed un altro oggetto potrebbe essere in ascolto dell'evento. E così via.
+Oppure un `menu` può generare un evento di `"select"` quando un elemento viene selezionato, ed un altro oggetto stare in ascolto dell'evento. E così via.
 
 Qui vediamo il codice:
 
@@ -203,6 +203,6 @@ E grazie al mixin `eventMixin`, questo comportamento diventa molto semplice da i
 
 Molti altri linguaggi di programmazione consentono l'ereditarietà multipla. JavaScript non la supporta, ma possiamo implementare i mixin copiando i loro metodi all'interno del prototype.
 
-Possiamo utilizzare i mixins per aumentare una classe, andando ad aggiungere diversi comportamenti, come la gestione degli eventi vista sopra.
+Possiamo utilizzare i mixins per migliorare una classe, andando ad aggiungere diversi comportamenti, come la gestione degli eventi vista sopra.
 
 I mixins potrebbero creare conflitti nel caso in cui andassero a sovrascrivere metodi già esistenti nella classe. Quindi, generalmente, i nomi dei metodi nei mixin vanno scelti con attenzione, in modo tale da minimizzare il rischio che si generino tali conflitti.
