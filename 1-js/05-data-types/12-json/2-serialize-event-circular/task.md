@@ -22,16 +22,16 @@ let meetup = {
 };
 
 *!*
-// circular references
+// referenze circolari
 room.occupiedBy = meetup;
 meetup.self = meetup;
 */!*
 
 alert( JSON.stringify(meetup, function replacer(key, value) {
-  /* your code */
+  /* il tuo codice */
 }));
 
-/* result should be:
+/* il risultato dovrebbe essere:
 {
   "title":"Conference",
   "occupiedBy":[{"name":"John"},{"name":"Alice"}],
