@@ -26,5 +26,5 @@ alert( JSON.stringify(meetup, function replacer(key, value) {
 */
 ```
 
-In questo caso abbiamo bisogno, oltre che del test su `key==""`, anche di quello su `value`, per escludere il caso in cui quest ultimo valga `meetup`.
+In questo caso abbiamo bisogno, oltre che del test su `key==""`, anche di quello su `value`, per escludere il caso in cui quest'ultimo valga `meetup`.
 
