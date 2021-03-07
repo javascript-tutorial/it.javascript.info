@@ -14,7 +14,7 @@ In altre parole, un *mixin* fornisce dei metodi che implementano delle funzional
 
 ## Un esempio di mixin
 
-Il modo più semplice per implementare un mixin in JavaScript è quello di creare un oggetto con dei metodi utili, in questo modo potremo fondermi molto semplicemente nel prototype di un'altra classe.
+Il modo più semplice per implementare un mixin in JavaScript è quello di creare un oggetto con dei metodi utili, in questo modo potremo fonderli molto semplicemente nel prototype di un'altra classe.
 
 Ad esempio, qui vediamo il mixin `sayHiMixin` che viene utilizzato per aggiungere la funzionalità di "parlare" a `User`:
 
@@ -73,7 +73,7 @@ let sayHiMixin = {
 
   sayHi() {
     *!*
-    // invocazione del metodo padre
+    // invocazione del metodo genitore
     */!*
     super.say(`Hello ${this.name}`); // (*)
   },
@@ -101,7 +101,7 @@ Da notare che l'invocazione al metodo padre `super.say()` da `sayHiMixin` (alla 
 
 ![](mixin-inheritance.svg)
 
-Questo accade perché i metodi `sayHi` e `sayBye` sono stati creati in `sayHiMixin`. Quindi, anche dopo essere stati copiati, le loro proprietà `[[HomeObject]]` fanno riferimento a `sayHiMixin`, come mostrato in figura.
+Questo accade perché i metodi `sayHi` e `sayBye` sono stati creati in `sayHiMixin`. Quindi, anche dopo essere stati copiati, le loro proprietà `[[HomeObject]]` fanno riferimento a `sayHiMixin`, come mostrato nella figura.
 
 Poiché `super` ricerca i metodi in `[[HomeObject]].[[Prototype]]`, ciò significa che ricerca `sayHiMixin.[[Prototype]]`, non `User.[[Prototype]]`.
 
@@ -112,12 +112,12 @@ Ora creiamo un mixin per la vita reale.
 Una caratteristica importante di molti oggetti del browser (ad esempio) è che questi possono generare eventi. Gli eventi sono un'ottimo modo per "trasmettere informazioni" a chiunque ne sia interessato. Quindi creiamo un mixin che ci consenta di aggiungere funzioni relative agli eventi, ad una qualsiasi classe/oggetto.
 
 - Il mixin fornirà un metodo `.trigger(name, [...data])` per "generare un evento" quando qualcosa di significativo accade. L'argomento `name` è il nome dell'evento, ed altri argomenti opzionali possono essere aggiunti con dati relativi all'evento.
-- Anche il metodo `.on(name, handler)` che aggiunge una funzione `handler` come listener degli eventi con il nome fornito. Sarà invocato nel momento in cui un evento con il `name` fornito verrà invocato dalla chiamata `.trigger`.
+- Anche il metodo `.on(name, handler)`, che aggiunge una funzione `handler` come listener degli eventi con il nome fornito. Sarà invocato nel momento in cui un evento con il `name` fornito verrà invocato dalla chiamata `.trigger`.
 - ...Ed il metodo `.off(name, handler)` che rimuove il listener `handler`.
 
 Dopo aver aggiunto il mixin, un oggetto `user` sarà in grado di generare un evento di `"login"` quando l'utente effettua l'accesso. Ed un altro oggetto, diciamo, `calendar` potrebbe essere in ascolto di questi eventi in modo da caricare il calendario della persona autenticata.
 
-Oppure un `menu` potrebbe generare un evento di `"select"` quando un elemento viene selezionato, ed un altro oggetto potrebbe essere in ascolto dell'evento. E cosi via.
+Oppure un `menu` potrebbe generare un evento di `"select"` quando un elemento viene selezionato, ed un altro oggetto potrebbe essere in ascolto dell'evento. E così via.
 
 Qui vediamo il codice:
 
@@ -165,9 +165,9 @@ let eventMixin = {
 ```
 
 
-- `.on(eventName, handler)` -- assegna la funzione `handler` in modo tale che venga eseguita quando l'evento con il nome fornito viene generato. Tecnicamente, avremmo a disposizione anche la proprietà `_eventHandlers` che memorizza un array di gestori per ogni tipo di evento, quindi potremmo semplicemente alla lista.
+- `.on(eventName, handler)` -- assegna la funzione `handler` in modo tale che venga eseguita quando l'evento con il nome fornito viene generato. Tecnicamente, avremmo a disposizione anche la proprietà `_eventHandlers` che memorizza un array di gestori per ogni tipo di evento, quindi potremmo semplicemente aggiungerlo alla lista.
 - `.off(eventName, handler)` -- rimuove la funzione dalla lista dei gestori.
-- `.trigger(eventName, ...args)` -- genera l'evento: tutti i gestori in `_eventHandlers[eventName]` vengono invocati, con la lista degli argomenti `...args`.
+- `.trigger(eventName, ...args)` -- genera l'evento: tutti i gestori in `_eventHandlers[eventName]` vengono invocati con la lista degli argomenti `...args`.
 
 Utilizzo:
 
