@@ -4,8 +4,8 @@ importance: 4
 
 # Eval-calculator
 
-Create a calculator that prompts for an arithmetic expression and returns its result.
+Create una calcolatrice che richieda all'utente (tramite prompt) un'espressione aritmetica e ne ritorni il risultato.
 
-There's no need to check the expression for correctness in this task. Just evaluate and return the result.
+Non c'è alcun bisogno di testare la correttezza dell'espressione. Limitatevi ad eseguirla e ritornarne il risultato.
 
 [demo]
