@@ -1,6 +1,6 @@
 # Dynamic imports
 
-Le istruzioni di export ed importa che abbiamo visto nei capitolo precedenti, sono detti "statici". La sintassi è veramente semplice.
+Le istruzioni di export ed import che abbiamo visto nei capitolo precedenti sono detti "statici". La sintassi è veramente semplice.
 
 Come prima cosa, non possiamo generare dinamicamente parametri di `import`.
 
@@ -24,7 +24,7 @@ if(...) {
 
 Questo accade perché `import`/`export` mirano a fornire uno scheletro per la struttura del codice. Questa è una buona cosa, poiché la struttura del codice può essere analizzata, i moduli possono essere raccolti and impacchettati in un singolo file (grazie ad alcuni strumenti), gli export inutilizzati possono essere rimossi ("tree-shaken"). Questo è possibile solamente perché la struttura degli imports/exports è semplice e pre-fissata.
 
-Ma come possiamo importare un modulo dinamicamente, al volo?
+Ma come possiamo importare un modulo dinamicamente, secondo necessità?
 
 ## L'espressione di import()
 
@@ -55,7 +55,7 @@ export function bye() {
 }
 ```
 
-...Allora il dyamic import, può essere scritto cosi:
+...Allora il dyamic import può essere scritto così:
 
 ```js
 let {hi, bye} = await import('./say.js');
