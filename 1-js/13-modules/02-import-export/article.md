@@ -28,7 +28,7 @@ Ad esempio, i seguenti exports sono tutti validi:
 ````smart header="Non c'è bisogno del punto e virgola dopo l'export di una classe/funzione"
 Da notare che il termine `export` prima di una funzione, non la rende un'[espressione di funzione](info:function-expressions). Rimane sempre una dichiarazione di funzione, viene semplicemente esportata.
 
-Molte style guide di JavaScript sconsigliano l'utilizzo del punto e virgola dopo la dichiarazione di una classe o funzione.
+Molte guide style di JavaScript sconsigliano l'utilizzo del punto e virgola dopo la dichiarazione di una classe o funzione.
 
 Questo è il motivo per cui non c'è alcun bisogno del punto e virgola dopo `export class` e `export function`:
 
@@ -77,7 +77,7 @@ sayHi('John'); // Hello, John!
 sayBye('John'); // Bye, John!
 ```
 
-Ma ne caso in cui si fossero molti import, potremmo importare tutto come un oggetto, utilizzando `import * as <obj>`, ad esempio:
+Ma nel caso in cui ci fossero molti import, potremmo importare tutto come un oggetto, utilizzando `import * as <obj>`, ad esempio:
 
 ```js
 // 📁 main.js
@@ -153,18 +153,18 @@ say.*!*bye*/!*('John'); // Bye, John!
 
 ## Export default
 
-Nella pratica, esistono principalmente due tipi di moduli.
+In pratica, esistono principalmente due tipi di moduli.
 
 1. Moduli che contengono una library, pacchetti di funzioni, come `say.js` visto sopra.
 2. Moduli che dichiarano una singola entità, esempio un modulo `user.js` che esporta solamente `class User`.
 
-Nella maggior parte dei casi, si preferisce il secondo approccio, in modo tale che "ogni cosa" stia nel suo modulo.
+Nella maggior parte dei casi, si preferisce il secondo approccio, in modo tale che ogni "cosa" stia nel suo modulo.
 
-Naturalmente, questa pratica richiede l'utilizzo di molti files, poiché ogni cosa richiede il suo modulo, ma questo non è un problema. In realtà, la navigazione del codice diventa più semplice se tutti i file hanno dei nomi parlanti e sono ben strutturati all'interno di cartelle.
+Naturalmente, questa pratica richiede l'utilizzo di molti files, poiché ogni cosa richiede il suo modulo, ma questo non è un problema. In realtà, la navigazione del codice diventa più semplice se tutti i file hanno dei nomi descrittivi e sono ben strutturati all'interno di cartelle.
 
-I moduli forniscono una speciali sintassi, `export default` ("export di default"), per rendere la pratica "una cosa per modulo" più elegante.
+I moduli forniscono una speciale sintassi, `export default` ("export di default"), per rendere la pratica "una cosa per modulo" più elegante.
 
-E' sufficiente inserire `export default`, prima dell'entità da esportare:
+E' sufficiente inserire `export default` prima dell'entità da esportare:
 
 ```js
 // 📁 user.js
@@ -193,7 +193,7 @@ Gli import senza parentesi graffe sono più eleganti. Un errore comune quando si
 | `export class User {...}` | `export default class User {...}` |
 | `import {User} from ...` | `import User from ...`|
 
-Tecnicamente, potremmo avere sia il default che il named export nello stesso modulo, ma nella pratica gli sviluppatori non lo fanno. Un modulo può essere named export o default export.
+Tecnicamente, potremmo avere sia il default che il named export nello stesso modulo, ma in pratica gli sviluppatori non lo fanno. Un modulo può essere named export o default export.
 
 Poiché possiamo utilizzare al massimo un default export per file, l'entità esportata non richiede alcun nome.
 
@@ -286,17 +286,17 @@ import {User} from './user.js';
 // import {MyUser} non funzionerebbe, il nome deve essere {User}
 ```
 
-...Mentre per un default export, noi possiamo decidere il nome in fase di importazione:
+...Mentre per un default export, possiamo decidere il nome in fase di importazione:
 
 ```js
 import User from './user.js'; // funziona
 import MyUser from './user.js'; // funziona
-// potrebbe essere anche import Anything... e comunque funzionerebbe
+// potrebbe essere anche import Anything... e funzionerebbe comunque
 ```
 
 Quindi i membri del team potrebbero utilizzare nomi differenti per importare le stesse cose, e questa non è una buona cosa.
 
-Solitamente, per evitare questo problema, e mantenere il codice consistente, ci si pone come regole che le variabili importate debbano corrispondere ai nomi dei file, esempio:
+Solitamente, per evitare questo problema, e mantenere il codice consistente, ci si pone come regola che le variabili importate debbano corrispondere ai nomi dei file, esempio:
 
 ```js
 import User from './user.js';
@@ -351,7 +351,7 @@ Il "main file", `auth/index.js` esporta tutte le funzionalità che vogliamo forn
 
 L'idea è che gli esterni, gli altri programmatori che utilizzano il nostro package, non dovrebbero preoccuparsi della struttura interna, alla ricerca dei file all'interno del nostro package. Esportiamo solamente ciò che è necessario in `auth/index.js` e teniamo il resto nascosto da occhi indiscreti.
 
-Poiché le funzionalità di export sono sparpagliate nel package, possiamo importarle in `auth/index.js` ed esportarle da li:
+Poiché le funzionalità di export sono sparpagliate nel package, possiamo importarle in `auth/index.js` ed esportarle da lì:
 
 ```js
 // 📁 auth/index.js
@@ -403,13 +403,13 @@ Potremmo incontrare due problemi:
 
 2. `export * from './user.js'` ri-esporta solamente i named exports, ma ignora quelli di default.
 
-    Nel caso in cui volessimo ri-esportare sia i named che i defaul export, allora abbiamo bisogno di due istruzioni:
+    Nel caso in cui volessimo ri-esportare sia i named che i defaul export, allora avremmo bisogno di due istruzioni:
     ```js
     export * from './user.js'; // per ri-esportare i named exports
     export {default} from './user.js'; // per ri-esportare i default export
     ```
 
-Queste stranezza nella ri-esportazione di un default export, è una delle ragioni del perché alcuni sviluppatori non amano i default export, ma preferiscono quelli di default.
+Queste stranezze nella ri-esportazione di un default export sono tra le ragioni del per cui alcuni sviluppatori non amano i default export, ma preferiscono quelli named.
 
 ## Riepilogo
 
@@ -438,7 +438,7 @@ Import:
 - Importa il modulo (il suo codice viene eseguito), ma non lo assegna ad alcuna variabile:
   - `import "module"`
 
-Possiamo inserire le istruzioni di `import/export` in cima o in cosa allo script, non ha importanza.
+Possiamo inserire le istruzioni di `import/export` in cima o in coda allo script, non ha importanza.
 
 Quindi, tecnicamente, questo codice funziona:
 ```js
