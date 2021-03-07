@@ -28,7 +28,7 @@ Ad esempio, i seguenti exports sono tutti validi:
 ````smart header="Non c'è bisogno del punto e virgola dopo l'export di una classe/funzione"
 Da notare che il termine `export` prima di una funzione, non la rende un'[espressione di funzione](info:function-expressions). Rimane sempre una dichiarazione di funzione, viene semplicemente esportata.
 
-Molte guide style di JavaScript sconsigliano l'utilizzo del punto e virgola dopo la dichiarazione di una classe o funzione.
+Molte *style guides* di JavaScript sconsigliano l'utilizzo del punto e virgola dopo la dichiarazione di una classe o funzione.
 
 Questo è il motivo per cui non c'è alcun bisogno del punto e virgola dopo `export class` e `export function`:
 
@@ -155,8 +155,8 @@ say.*!*bye*/!*('John'); // Bye, John!
 
 In pratica, esistono principalmente due tipi di moduli.
 
-1. Moduli che contengono una library, pacchetti di funzioni, come `say.js` visto sopra.
-2. Moduli che dichiarano una singola entità, esempio un modulo `user.js` che esporta solamente `class User`.
+1. Moduli che contengono una libreria: pacchetti di funzioni, come `say.js` visto sopra.
+2. Moduli che dichiarano una singola entità: esempio un modulo `user.js` che esporta solamente `class User`.
 
 Nella maggior parte dei casi, si preferisce il secondo approccio, in modo tale che ogni "cosa" stia nel suo modulo.
 
@@ -277,7 +277,7 @@ new User('John');
 
 ### Una parola contro il default exports
 
-I named export sono espliciti. Elencano esattamente il nome di ciò che vogliono importare, quindi avremo questa informazione (il nome) da loro; questa è sempre una buona cosa.
+I named export sono espliciti, elencano esattamente il nome di ciò che vogliono importare. Avere in chiaro questa informazione (il nome), è sempre una buona cosa.
 
 I named export ci forzano ad utilizzare il nome esatto di ciò che vogliamo importare:
 
@@ -294,7 +294,7 @@ import MyUser from './user.js'; // funziona
 // potrebbe essere anche import Anything... e funzionerebbe comunque
 ```
 
-Quindi i membri del team potrebbero utilizzare nomi differenti per importare le stesse cose, e questa non è una buona cosa.
+Quindi i membri del team possono utilizzare nomi differenti per importare le stesse cose, e questa non è una buona cosa.
 
 Solitamente, per evitare questo problema, e mantenere il codice consistente, ci si pone come regola che le variabili importate debbano corrispondere ai nomi dei file, esempio:
 
@@ -321,7 +321,7 @@ export {default as User} from './user.js'; // re-export default
 
 Perché questo dovrebbe essere necessario? Vediamolo con un esempio pratico.
 
-Immaginiamo di scrivere un "package" (pacchetto): una cartella contenente molti moduli, con alcune funzionalità esportate esternamente (strumenti come NPM ci consentono di pubblicare e distribuire questi pacchetti, ma non li utilizzeremo), e molti moduli sono semplicemente "helpers", per uso interno in altri moduli del package.
+Immaginiamo di scrivere un "package" (pacchetto): una cartella contenente molti moduli, con alcune funzionalità esportate esternamente (strumenti come NPM ci consentono di pubblicare e distribuire questi pacchetti, ma non li utilizzeremo), e con molti moduli che sono semplicemente "helpers", per uso interno in altri moduli del package.
 
 La struttura dei file potrebbe essere qualcosa del genere:
 ```
@@ -349,18 +349,18 @@ import {login, logout} from 'auth/index.js'
 
 Il "main file", `auth/index.js` esporta tutte le funzionalità che vogliamo fornire con il nostro package.
 
-L'idea è che gli esterni, gli altri programmatori che utilizzano il nostro package, non dovrebbero preoccuparsi della struttura interna, alla ricerca dei file all'interno del nostro package. Esportiamo solamente ciò che è necessario in `auth/index.js` e teniamo il resto nascosto da occhi indiscreti.
+L'idea è che gli esterni, gli altri programmatori che utilizzano il nostro package, non debbano preoccuparsi della struttura interna e o di cercare files tra le cartelle in esso contenute. Esportiamo solamente ciò che è necessario in `auth/index.js` e teniamo il resto nascosto da occhi indiscreti.
 
 Poiché le funzionalità di export sono sparpagliate nel package, possiamo importarle in `auth/index.js` ed esportarle da lì:
 
 ```js
 // 📁 auth/index.js
 
-// import login/logout e li esportiamo immediatamente
+// importiamo login/logout e li esportiamo immediatamente
 import {login, logout} from './helpers.js';
 export {login, logout};
 
-// import default come User e lo esportiamo
+// importiamo default come User e lo esportiamo
 import User from './user.js';
 export {User};
 ...
