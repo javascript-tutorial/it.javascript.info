@@ -1,1 +1,1 @@
-# Lavorazioni avanzate con funzioni
+# Gestione avanzata delle funzioni
