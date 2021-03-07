@@ -1,4 +1,4 @@
-# Verifica delel classi: "instanceof"
+# Verifica delle classi: "instanceof"
 
 L'operatore `instanceof` ci consente di verificare se un oggetto appartiene ad una specifica classe. Anche l'ereditarietà viene presa in considerazione.
 
@@ -50,12 +50,12 @@ Normalmente `instanceof` esamina la catena dei prototype per effettuare questa v
 
 L'algoritmo di `obj instanceof Class` funzione, a grandi linee, in questo modo:
 
-1. Se è stato definito un metodo statico `Symbol.hasInstance`, allora questo verrà invocato: `Class[Symbol.hasInstance](obj)`. Dovrebbe ritornare `true` o `false`, questo è tutto. Cosi è come possiamo personalizzare il comportamento di `instanceof`.
+1. Se è stato definito un metodo statico `Symbol.hasInstance`, allora questo verrà invocato: `Class[Symbol.hasInstance](obj)`. Dovrebbe ritornare `true` o `false`, questo è tutto. Così possiamo personalizzare il comportamento di `instanceof`.
 
     For example:
 
     ```js run
-    // impostiamo il controllo instanceOf in modo che assuma che
+    // impostiamo il controllo instanceOf in modo che supponga che
     // qualsiasi cosa con la proprietà canEat sia un animale
     class Animal {
       static [Symbol.hasInstance](obj) {
@@ -76,11 +76,11 @@ L'algoritmo di `obj instanceof Class` funzione, a grandi linee, in questo modo:
     obj.__proto__.__proto__ === Class.prototype?
     obj.__proto__.__proto__.__proto__ === Class.prototype?
     ...
-    // se una di questa vale true, allora viene ritornato true
+    // se una di questa è true, allora viene ritornato true
     // altrimenti, se siamo arrivati al termine della catena, ritorna false
     ```
 
-    Nell'esempio sopra `rabbit.__proto__ === Rabbit.prototype`, questo ci ritorna una risposta immediata.
+    Nell'esempio sopra `rabbit.__proto__ === Rabbit.prototype`, che ci ritorna una risposta immediata.
 
     In caso di ereditarietà, il riscontro avverrà al secondo passo:
 
@@ -201,7 +201,7 @@ Come potete vedere, il risultato è esattamente `Symbol.toStringTag` (se esiste)
 
 Al termine avremo "typeof on steroids" che non funziona solamente con i tipi di dato primitivo, ma anche con gli oggetti integrati e può anche essere personalizzato.
 
-Possiamo utilizzare `{}.toString.call` piuttosto di `instanceof` per gli oggetti integrati quando vogliamo ottenerne il tipo come stringa piuttosto che effettuare una semplice verifica.
+Possiamo utilizzare `{}.toString.call` piuttosto di `instanceof` per gli oggetti integrati quando vogliamo ottenerne il tipo come stringa invece di effettuare una semplice verifica.
 
 ## Riepilogo
 

@@ -1,4 +1,4 @@
-Si, sembra strano.
+Sì, sembra strano.
 
 Ma `instanceof` non prende in considerazione la funzione, ma piuttosto il suo `prototype`, che trova riscontro nella catena dei prototye.
 
