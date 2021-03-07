@@ -1,6 +1,6 @@
 # Dynamic imports
 
-Le istruzioni di export ed import che abbiamo visto nei capitolo precedenti sono detti "statici". La sintassi è veramente semplice.
+Le istruzioni di export ed import che abbiamo visto nei capitolo precedente sono detti "statici". La sintassi è molto semplice e rigorosa.
 
 Come prima cosa, non possiamo generare dinamicamente parametri di `import`.
 
@@ -22,15 +22,15 @@ if(...) {
 }
 ```
 
-Questo accade perché `import`/`export` mirano a fornire uno scheletro per la struttura del codice. Questa è una buona cosa, poiché la struttura del codice può essere analizzata, i moduli possono essere raccolti and impacchettati in un singolo file (grazie ad alcuni strumenti), gli export inutilizzati possono essere rimossi ("tree-shaken"). Questo è possibile solamente perché la struttura degli imports/exports è semplice e pre-fissata.
+Questo accade perché `import`/`export` mirano a fornire uno scheletro per la struttura del codice. Questa è una buona cosa, poiché la struttura del codice può essere analizzata, i moduli possono essere raccolti and impacchettati in un singolo file (grazie ad alcuni strumenti) e gli export inutilizzati possono essere rimossi ("tree-shaken"). Questo è possibile solamente perché la struttura degli imports/exports è semplice e preimpostata.
 
-Ma come possiamo importare un modulo dinamicamente, secondo necessità?
+Ma come possiamo importare un modulo dinamicamente, a seconda delle necessità?
 
-## L'espressione di import()
+## L'espressione import()
 
-L'espressione di `import(module)` carica il modulo e ritorna una promise, che si risolve in un oggetto che contiene tutti gli export del modulo. Può essere quindi invocata in un qualsiasi punto del codice.
+L'espressione `import(module)` carica il modulo e ritorna una promise, che si risolve in un oggetto che contiene tutti gli export del modulo. Può essere quindi invocata in un qualsiasi punto del codice.
 
-Possiamo utilizzarlo dinamicamente ovunque, ad esempio:
+Possiamo utilizzarla dinamicamente ovunque, ad esempio:
 
 ```js
 let modulePath = prompt("Which module to load?");
@@ -73,7 +73,7 @@ export default function() {
 }
 ```
 
-...Poi, per potervi accedere, possiamo utilizzare la proprietà `default` dell'oggetto:
+...Quindi, per potervi accedere, possiamo utilizzare la proprietà `default` dell'oggetto:
 
 ```js
 let obj = await import('./say.js');
