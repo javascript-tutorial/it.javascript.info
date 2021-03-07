@@ -1,7 +1,7 @@
-Yeah, looks strange indeed.
+Sì, sembra strano.
 
-But `instanceof` does not care about the function, but rather about its `prototype`, that it matches against the prototype chain.
+Ma `instanceof` non prende in considerazione la funzione, ma piuttosto il suo `prototype`, che trova riscontro nella catena dei prototye.
 
-And here `a.__proto__ == B.prototype`, so `instanceof` returns `true`.
+In questo caso `a.__proto__ == B.prototype`, quindi `instanceof` ritorna `true`.
 
-So, by the logic of `instanceof`, the `prototype` actually defines the type, not the constructor function.
+Quindi, secondo la logica di `instanceof`, è il `prototype` a definire il tipo, non il costruttore.
