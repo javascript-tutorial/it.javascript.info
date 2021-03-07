@@ -8,7 +8,7 @@ Scrivi una funzione `getLastDayOfMonth(year, month)` che ritorna l'ultimo giorno
 
 Parametri:
 
-- `year` -- anno nel formato 4 cifre, ad esempio.
+- `year` -- anno nel formato 4 cifre, ad esempio 2012.
 - `month` -- mese, da 0 a 11.
 
 Ad esempio, `getLastDayOfMonth(2012, 1) = 29` (anno bisestile, Febbraio).
