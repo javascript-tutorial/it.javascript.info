@@ -284,7 +284,7 @@ Adesso abbiamo l'attuale "obiettivo drop", sul quale stiamo sorvolando, dentro l
 
 ## Riepilogo
 
-Abbiamo preso in considerazione un algoritmo base di Drag'n'Drop.
+Abbiamo preso in considerazione un algoritmo base del Drag'n'Drop.
 
 I componenti chiave:
 
