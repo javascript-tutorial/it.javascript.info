@@ -24,9 +24,9 @@ document.addEventListener('mousedown', function(event) {
     moveAt(event.clientX, event.clientY);
   }
 
-  // on drag start:
-  //   remember the initial shift
-  //   move the element position:fixed and a direct child of body
+  // all'inizio del trascinamento:
+  //   memorizza lo spostamento iniziale
+  //   sposta l'elemento con position:fixed come diretto figlio del body
   function startDrag(element, clientX, clientY) {
     if(isDragging) {
       return;
@@ -45,7 +45,7 @@ document.addEventListener('mousedown', function(event) {
     moveAt(clientX, clientY);
   };
 
-  // switch to absolute coordinates at the end, to fix the element in the document
+  // cambia su coordinate absolute alla fine, per fissare l'elemento nel docuemnto
   function finishDrag() {
     if(!isDragging) {
       return;
@@ -61,49 +61,49 @@ document.addEventListener('mousedown', function(event) {
   }
 
   function moveAt(clientX, clientY) {
-    // new window-relative coordinates
+    // nuove coordinate relative alla window
     let newX = clientX - shiftX;
     let newY = clientY - shiftY;
 
-    // check if the new coordinates are below the bottom window edge
-    let newBottom = newY + dragElement.offsetHeight; // new bottom
+    // controlla se le nuove coordinate sono sotto il bordo della finestra
+    let newBottom = newY + dragElement.offsetHeight; // nuovo bottom
 
-    // below the window? let's scroll the page
+    // sotto la finestra? scrolliamo la pagina
     if (newBottom > document.documentElement.clientHeight) {
-      // window-relative coordinate of document end
+      // coordinate relative alla window della fine del documento
       let docBottom = document.documentElement.getBoundingClientRect().bottom;
 
-      // scroll the document down by 10px has a problem
-      // it can scroll beyond the end of the document
-      // Math.min(how much left to the end, 10)
+      // lo scrolling del documento giù di 10px porta il problema che
+      // può scrollare oltre la fine del document
+      // Math.min(quanto a sinistra dall fine, 10)
       let scrollY = Math.min(docBottom - newBottom, 10);
 
-      // calculations are imprecise, there may be rounding errors that lead to scrolling up
-      // that should be impossible, fix that here
+      // i calcoli sono imprecisi, perché potrebbero esserci errori di arrotondamento che portano a scollare in su
+      // la cui cosa dovrebbe essere impossibile, e quindi lo aggiustiamo
       if (scrollY < 0) scrollY = 0;
 
       window.scrollBy(0, scrollY);
 
-      // a swift mouse move make put the cursor beyond the document end
-      // if that happens -
-      // limit the new Y by the maximally possible (right at the bottom of the document)
+      // un movimento rapido del mouse porta il cursore oltre la fine del documento
+      // se succede
+      // limitiamo la nuova Y al massimo possibile (giusto poco sopra il documento)
       newY = Math.min(newY, document.documentElement.clientHeight - dragElement.offsetHeight);
     }
 
-    // check if the new coordinates are above the top window edge (similar logic)
+    // controlla se le nuove coordinate sono sopra i bordi superiori (logica simile)
     if (newY < 0) {
-      // scroll up
+      // scrolla in alto
       let scrollY = Math.min(-newY, 10);
-      if (scrollY < 0) scrollY = 0; // check precision errors
+      if (scrollY < 0) scrollY = 0; // controlla la precisione degli errori
 
       window.scrollBy(0, -scrollY);
-      // a swift mouse move can put the cursor beyond the document start
-      newY = Math.max(newY, 0); // newY may not be below 0
+      // un movimento rapido del mouse porta il cursore oltre l'inizio del documento
+      newY = Math.max(newY, 0); // newY non dovrebbe essere meno di 0
     }
 
 
-    // limit the new X within the window boundaries
-    // there's no scroll here so it's simple
+    // limita la nuova X all'interno dei limiti della finestra
+    // qui non abbiamo scrolling quindi è semplice
     if (newX < 0) newX = 0;
     if (newX > document.documentElement.clientWidth - dragElement.offsetWidth) {
       newX = document.documentElement.clientWidth - dragElement.offsetWidth;

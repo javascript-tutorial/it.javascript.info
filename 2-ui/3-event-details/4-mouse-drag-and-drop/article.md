@@ -1,6 +1,6 @@
 # Drag'n'Drop con gli eventi del mouse
 
-Drag'n'Drop, i termini di interfaccia utente, è una soluzione grandiosa. Prendere qualcosa, trascinarla e rilasciarla è un modo semplice ed intuitivo per fare tantissime cose, dal copiare e spostare documenti (come nei gestori di files) all'ordinare qualcosa online (rilasciando un prodotto in un carrello).
+Il Drag'n'Drop, in termini di interfaccia utente, è una soluzione grandiosa. Il fatto di poter prendere qualcosa, trascinarla e rilasciarla è un modo semplice ed intuitivo per fare tantissime operazioni, dal copiare e spostare documenti (come nei gestori di files), al fare un ordine online (rilasciando un prodotto in un carrello).
 
 Nello standard HTML attuale c'è una [sezione sul Drag and Drop](https://html.spec.whatwg.org/multipage/interaction.html#dnd) con eventi speciali come `dragstart`, `dragend`, e via dicendo.
 
@@ -32,7 +32,7 @@ ball.onmousedown = function(event) {
   // per posizionarlo relativamente ad esso
   document.body.append(ball);  
 
-  // centramento del pallone alle coordinate (pageX, pageY)
+  // centratura del pallone alle coordinate (pageX, pageY)
   function moveAt(pageX, pageY) {
     ball.style.left = pageX - ball.offsetWidth / 2 + 'px';
     ball.style.top = pageY - ball.offsetHeight / 2 + 'px';
@@ -45,7 +45,7 @@ ball.onmousedown = function(event) {
     moveAt(event.pageX, event.pageY);
   }
 
-  // (2) sostamento del pallone al mousemove
+  // (2) spostamento del pallone al mousemove
   document.addEventListener('mousemove', onMouseMove);
 
   // (3) rilascio del pallone, rimozione di gestori non necessari
@@ -64,10 +64,10 @@ Ecco un esempio in azione:
 
 [iframe src="ball" height=230]
 
-Prova a fare il drag'n'drop con il mouse per vedere questo comportamente anomalo.
+Prova a fare il drag'n'drop con il mouse per vedere questo comportamento anomalo.
 ```
 
-Questo accade perché il browser ha un suo supporto al drag'n'drop per le immagini e qualche altro elemento. Lo esegue in automatico e va in conflitto con il nostro.
+Questo accade perché il browser ha un suo supporto al drag'n'drop per le immagini e su qualche altro elemento. Lo esegue in automatico e andrebbe in conflitto con il nostro.
 
 Per disabilitarlo:
 
@@ -87,7 +87,7 @@ In azione:
 
 Un altro aspetto importante -- noi teniamo traccia di `mousemove` nel `document`, non su `ball`. A prima vista potrebbe sembrare che il mouse sia sempre sopra il pallone, e possiamo attivare `mousemove` su di essa.
 
- Ma come noto, `mousemove` viene generato spesso, ma non per ogni pixel. Quindi a seguito di qualche movimento rapido porebbe saltare dal pallone a qualche punto nel bel mezzo del documento (o anche fuori dalla finestra).
+ Ma come noto, `mousemove` viene generato spesso, ma non per ogni pixel. Quindi a seguito di qualche movimento rapido potrebbe saltare dal pallone a qualche punto nel bel mezzo del documento (o anche fuori dalla finestra).
 
 Di conseguenza dovremmo metterci in ascolto sul `document` per la cattura.
 
@@ -104,7 +104,7 @@ Non male, ma c'è un effetto collaterale. Cominciando il drag'n'drop, potremmo c
 
 Sarebbe meglio se mantenessimo lo spostamento iniziale dell'elemento rispetto al puntatore.
 
-Ad esempio, se comiciassimo dal bordo del pallone, il puntatore dovrebbe rimanere sul bordo mentre lo trasciniamo.
+Ad esempio, se cominciassimo dal bordo del pallone, il puntatore dovrebbe rimanere sul bordo mentre lo trasciniamo.
 
 ![](ball_shift.svg)
 
@@ -186,7 +186,7 @@ Negli esempi precedenti il pallone può essere rilasciato "ovunque". In applicaz
 
 Parlando in maniera astratta, prendiamo un elemento "draggable" e lo rilasciamo su uno "droppable".
 
-Dovviamo quindi sapere:
+Dobbiamo quindi sapere:
 - dove viene rilasciato l'elemento alla fine del Drag'n'Drop -- per eseguire l'azione corrispondente,
 - e, preferibilmente, conoscere il droppable sul quale lo stiamo rilasciando, per evidenziarlo.
 
@@ -198,7 +198,7 @@ Non funzionerebbe.
 
 Il problema principale, sarebbe che durante il trascinamento, l'elemento draggable è sempre sopra gli altri. E gli eventi del mouse vengono generati sull'elemento superiore, e non su quelli sotto.
 
-Per esempio, sotto ci sono due elementi `<div>`, uno rosso sopra uno blu (lo copre del tutto). Non c'è modo di catturare un evento su quello blu, perchè il rosso sta sopra:
+Per esempio, sotto ci sono due elementi `<div>`, uno rosso sopra uno blu (lo copre del tutto). Non c'è modo di catturare un evento su quello blu, perché il rosso sta sopra:
 
 ```html run autorun height=60
 <style>
@@ -254,7 +254,7 @@ function onMouseMove(event) {
   // se clientX/clientY sono fuori dalla window, elementFromPoint restituisce null
   if (!elemBelow) return;
 
-  // i potentiali droppables sono contrassegnati con la classe "droppable" (la logica potrebbe essere anche altra)
+  // i potenziali elementi droppables sono contrassegnati con la classe "droppable" (la logica potrebbe essere anche altra)
   let droppableBelow = elemBelow.closest('.droppable');
 
   if (currentDroppable != droppableBelow) {
