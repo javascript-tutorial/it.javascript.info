@@ -325,7 +325,7 @@ Proprietà di navigazione aggiuntive, sono anche disponibili per i moduli HTML. 
 
 Dato un nodo DOM, possiamo puntare ai suoi vicini usando le proprietà di navigazione.
 
-Ne esistono di due tipi principali:
+Ne esistono due tipi principali:
 
 - Per tutti i nodi: `parentNode`, `childNodes`, `firstChild`, `lastChild`, `previousSibling`, `nextSibling`.
 - Solo per i nodi elemento: `parentElement`, `children`, `firstElementChild`, `lastElementChild`, `previousElementSibling`, `nextElementSibling`.
