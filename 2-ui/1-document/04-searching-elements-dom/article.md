@@ -142,7 +142,7 @@ Ad esempio:
 
 Gli *antenati* di un elemento sono: il genitore, il genitore del genitore, il genitore di quest'ultimo e così via. Gli antenati formano la catena di genitori dall'elemento in cima.
 
-Il metodo `elem.closest(css)` cerca l'antenato più vicino che combacia il dato CSS selector. `elem` stesso è incluso nella ricerca.
+Il metodo `elem.closest(css)` cerca l'antenato più vicino che combacia il selettore CSS specificato. `elem` stesso è incluso nella ricerca.
 
 In altre parole, il metodo `closest` parte dall'elemento e controlla tutti i suoi genitori. Se uno di essi combacia con il selector, la ricerca si interrompe e l'antenato viene ritornato.
 
