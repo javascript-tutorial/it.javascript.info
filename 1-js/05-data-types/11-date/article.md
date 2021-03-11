@@ -47,7 +47,7 @@ Per creare un nuovo oggetto `Date`, chiamiamo `new Date()` con uno dei seguenti 
     ```js run
     let date = new Date("2017-01-26");
     alert(date);
-    // Il tempo non è impostato, quindi si da per scontato che sia mezzanotte GMT e viene
+    // Il tempo non è specificato, quindi si da per scontato che sia mezzanotte GMT e viene
     // corretto a seconda della timezone dove il codice viene eseguito
     // Quindi il risultato potrebbe essere
     // Thu Jan 26 2017 11:00:00 GMT+1100 (Australian Eastern Daylight Time)
