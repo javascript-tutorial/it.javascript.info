@@ -241,7 +241,7 @@ alert( document.documentElement.parentElement ); // null
 
 La ragione è che il nodo radice `document.documentElement` (`<html>`) ha `document` come genitore, ma document non è un nodo elemento, quindi `parentNode` lo restituisce, mentre `parentElement` no. 
 
-Questo dettaglio può essere utile quando volgiamo risalire da un elemento arbitrario `elem` verso `<html>`, ma senza arrivare a `document`: 
+Questo dettaglio può essere utile quando vogliamo risalire da un elemento arbitrario `elem` verso `<html>`, ma senza arrivare a `document`: 
 ```js
 while(elem = elem.parentElement) { // su, fino a <html>
   alert( elem );
