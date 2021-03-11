@@ -108,7 +108,7 @@ Le pseudo-classi come `:hover` e `:active` sono altresì supportate. Ad esempio,
 
 ## querySelector [#querySelector]
 
-La chiamata a `elem.querySelector(css)` ritorna il primo elemento che combacia con il dato CSS selector.
+La chiamata a `elem.querySelector(css)` ritorna il primo elemento che combacia con il selettore CSS specificato.
 
 In altre parole, il risultato  è lo stesso di `elem.querySelectorAll(css)[0]`, ma quest'ultimo cerca *tutti* gli elementi per poi prenderne uno, mentre `elem.querySelector` ne cerca solo uno. E' più veloce e più breve da scrivere.
 
