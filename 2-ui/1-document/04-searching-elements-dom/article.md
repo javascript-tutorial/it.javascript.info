@@ -265,7 +265,7 @@ Tutti i metodi `"getElementsBy*"` ritornano una collection *viva*. Questa collct
 
 Nell'esempio sotto ci sono due script.
 
-1. Il primo crea una referenza alla collezione di `<div>`. Ora la sua length è `1`.
+1. Il primo crea una referenza alla collezione di `<div>`. Inizialmente la sua length è `1`.
 2. Il secondo script viene eseguito dopo di che il browser incontra un altro `<div>`, quindi la sua length è `2`.
 
 ```html run
