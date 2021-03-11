@@ -26,7 +26,7 @@ Ad esempio:
 </script>
 ```
 
-Inoltre, c'è una variabile globale chiamata come l'`id` che referenzia l'elemento:
+Inoltre, c'è una variabile globale chiamata come l'`id` che fa riferimento all'elemento:
 
 ```html run
 <div id="*!*elem*/!*">
