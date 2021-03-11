@@ -221,7 +221,7 @@ Troviamo tutti gli `input` tag dentro la tabella:
 ```warn header="Non dimenticate la lettera `\"s\"`"
 Gli sviluppatori principianti scordano qualche volta la lettera `"s"`. Cercano di chiamare `getElementByTagName` invece di <code>getElement<b>s</b>ByTagName</code>.
 
-La lettera `"s"` manca in `getElementById`, perché ritorna un singolo elemento. Ma `getElementsByTagName` ritorna una collezione di elementi, quindi c'è una `"s"`.
+La lettera `"s"` manca in `getElementById`, perché esso ritorna un singolo elemento. Ma `getElementsByTagName` ritorna una collezione di elementi, quindi c'è una `"s"`.
 ```
 
 ````warn header="Ritorna una collezione, non un elemento!"
