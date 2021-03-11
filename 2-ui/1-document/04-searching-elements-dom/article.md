@@ -259,7 +259,7 @@ Cerchiamo gli elementi con `.article`:
 </script>
 ```
 
-## Collezioni live 
+## Collections vive
 
 Tutti i metodi `"getElementsBy*"` ritornano una collezione *live*. Questa collezione rispecchia sempre lo stato corrente del documento e si "auto-aggiorna" quando questo cambia.
 
