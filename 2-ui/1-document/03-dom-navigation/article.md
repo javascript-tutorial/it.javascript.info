@@ -285,7 +285,7 @@ Le tabelle ne sono un esempio, e rappresentano un caso particolarmente important
 **L'elemento `<table>`** supporta (in aggiunta a quelle trattate sinora) le seguenti proprietà:
 - `table.rows` -- la collection degli elementi `<tr>` della tabella.
 - `table.caption/tHead/tFoot` -- riferimenti agli elementi `<caption>`, `<thead>`, `<tfoot>`.
-- `table.tBodies` -- la collection degli elementi `<tbody>` (secondo lo standard possono essere molti, ma ce ne sarà sempre almeno uno. Anche se non è nell' HTML di origine, il browser lo inserirà automaticamente nel DOM).
+- `table.tBodies` -- la collection degli elementi `<tbody>` (secondo lo standard possono essere molti, ma ce ne sarà sempre almeno uno. Anche se non è nell'HTML di origine, il browser lo inserirà automaticamente nel DOM).
 
 **Gli elementi `<thead>`, `<tfoot>`, `<tbody>`** hanno la proprietà `rows`:
 - `tbody.rows` -- la collection degli elementi `<tr>` contenuti.
