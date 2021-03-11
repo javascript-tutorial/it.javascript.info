@@ -319,7 +319,7 @@ Un esempio di utilizzo:
 
 La specifica: [tabular data](https://html.spec.whatwg.org/multipage/tables.html).
 
-Proprietà di navigazione aggiuntive, sono anche disponibili per i moduli HTML. Li esamineremo più avanti, quando inizieremo a lavorare con i moduli.
+Proprietà di navigazione aggiuntive, sono anche disponibili per i moduli HTML. Le esamineremo più avanti, quando inizieremo a lavorare con i moduli.
 
 ## Riepilogo
 
