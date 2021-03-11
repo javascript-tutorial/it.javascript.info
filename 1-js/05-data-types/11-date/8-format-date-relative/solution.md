@@ -8,7 +8,7 @@ function formatDate(date) {
     return 'right now';
   }
 
-  let sec = Math.floor(diff / 1000); // converti diff a seconds
+  let sec = Math.floor(diff / 1000); // converti diff in secondi
 
   if (sec < 60) {
     return sec + ' sec. ago';
