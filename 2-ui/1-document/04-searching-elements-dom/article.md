@@ -144,7 +144,7 @@ Gli *antenati* di un elemento sono: il genitore, il genitore del genitore, il ge
 
 Il metodo `elem.closest(css)` cerca l'antenato più vicino che combacia il selettore CSS specificato. `elem` stesso è incluso nella ricerca.
 
-In altre parole, il metodo `closest` parte dall'elemento e controlla tutti i suoi genitori. Se uno di essi combacia con il selector, la ricerca si interrompe e l'antenato viene ritornato.
+In altre parole, il metodo `closest` parte dall'elemento e controlla tutti i suoi genitori. Se uno di essi combacia con il selettore, la ricerca si interrompe e l'antenato viene ritornato.
 
 Ad esempio:
 
