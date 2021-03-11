@@ -161,7 +161,7 @@ Modificare il DOM richiede l'utilizzo di altri metodi, che vedremo nel prossimo 
 ```
 
 ```warn header="Le DOM collections sono vive"
-Salvo poche eccezioni, tutte le DOM collections sono *vive*. In altre parole, riflettono lo stato corrente DOM.
+Salvo poche eccezioni, tutte le DOM collections sono *vive*. In altre parole, riflettono lo stato corrente del DOM.
 
 Se prendiamo come riferimento `elem.childNodes`, ed aggiungiamo o rimuoviamo nodi dal DOM, essi appariranno o scompariranno automaticamente dalla collection.
 ```
