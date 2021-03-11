@@ -212,7 +212,7 @@ alert( document.head.nextSibling ); // HTMLBodyElement
 alert( document.body.previousSibling ); // HTMLHeadElement
 ```
 
-## navigazione solo tra elementi
+## Navigazione solo tra elementi
 
 Le proprietà di navigazione viste finora fanno riferimento a *tutti* i nodi. Ad esempio, in `childNodes` possiamo trovare: nodi elemento, nodi di testo, ed anche nodi commento se ce ne sono.
 
