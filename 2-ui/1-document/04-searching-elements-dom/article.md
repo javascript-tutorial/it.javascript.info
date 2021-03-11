@@ -48,7 +48,7 @@ Inoltre, c'è una variabile globale chiamata come l'`id` che fa riferimento all'
 <div id="elem"></div>
 
 <script>
-  let elem = 5; // ora elem è 5, non una referenza a <div id="elem">
+  let elem = 5; // ora elem è 5, non un riferimento a <div id="elem">
 
   alert(elem); // 5
 </script>
