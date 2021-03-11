@@ -14,7 +14,7 @@ function formatDate(date) {
     return sec + ' sec. ago';
   }
 
-  let min = Math.floor(diff / 60000); // converti diff a minuti
+  let min = Math.floor(diff / 60000); // converti diff in minuti
   if (min < 60) {
     return min + ' min. ago';
   }
