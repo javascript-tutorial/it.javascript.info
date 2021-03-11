@@ -155,7 +155,7 @@ Il primo punto è ottimo, il secondo è tollerabile. Infatti nel caso avessimo b
 ```warn header="Le DOM collections funzionano in sola lettura"
 Le DOM collections, ed in generale *tutte* le proprietà utili alla navigazione elencate in questo capitolo, funzionano in sola lettura.
 
-Non possiamo un nodo figlio con qualcos'altro con l'assegnazione `childNodes[i] = ...`.
+Non possiamo sostituire un nodo figlio con qualcos'altro con l'assegnazione `childNodes[i] = ...`.
 
 Modificare il DOM richiede l'utilizzo di altri metodi, che vedremo nel prossimo capitolo.
 ```
