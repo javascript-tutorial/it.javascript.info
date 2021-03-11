@@ -180,7 +180,7 @@ Per favore non farlo. I cicli `for..in` iterano su tutte le proprietà enumerabi
 </body>
 ````
 
-## i fratelli (*siblings*) ed il genitore (*parent*)
+## I fratelli (*siblings*) ed il genitore (*parent*)
 
 I fratelli sono nodi figli dello stesso genitore.
 
