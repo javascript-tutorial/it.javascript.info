@@ -186,7 +186,7 @@ Ad esempio:
 let divs = document.getElementsByTagName('div');
 ```
 
-Troviamo tutti gli `input` tag dentro la tabella
+Troviamo tutti gli `input` tag dentro la tabella:
 
 ```html run height=50
 <table id="table">
