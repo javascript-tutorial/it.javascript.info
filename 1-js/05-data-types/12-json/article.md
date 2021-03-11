@@ -521,7 +521,7 @@ alert( schedule.meetups[1].date.getDate() ); // works!
 
 ## Riepilogo
 
-- JSON è un formattatore di dati con i suoi standard; possiede molte librerie che gli consentono di lavorare con molti linguaggio di programmazione.
+- JSON è un formattatore di dati con i suoi standard; possiede molte librerie che gli consentono di lavorare con altrettanti linguaggi di programmazione.
 - JSON supporta oggetti, array, stringhe, numeri, booleani, e `null`.
 - JavaScript fornisce dei metodi: [JSON.stringify](mdn:js/JSON/stringify) per serializzare in JSON e [JSON.parse](mdn:js/JSON/parse) per la lettura da JSON.
 - Entrambi i metodi supportano funzioni di rimpiazzo per scritture/letture "intelligenti".
