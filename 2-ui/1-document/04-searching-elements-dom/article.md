@@ -176,7 +176,7 @@ Oggi sono più che altro storia, essendo `querySelector` più potente e più bre
 
 Qui li studiamo per completezza, mentre possono essere ancora trovati nei vecchi script.
 
-- `elem.getElementsByTagName(tag)` cerca gli elementi con il dato tag e ritorna una loro collezione. Il parametro `tag` può anche essere `*`, per "qualsiasi tag"
+- `elem.getElementsByTagName(tag)` cerca gli elementi con il tag specificato e ritorna una loro collection. Il parametro `tag` può anche essere `*`, che equivale a "qualsiasi tag"
 - `elem.getElementsByClassName(className)` ritorna gli elementi con la data classe.
 - `document.getElementsByName(name)` ritorna gli elementi con l'attributo `name`, ovunque nel documento. Raramente usato.
 
