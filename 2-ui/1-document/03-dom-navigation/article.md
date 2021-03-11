@@ -17,7 +17,7 @@ Ecco un'immagine dei collegamenti che consentono di muoversi tra i nodi del DOM:
 
 Esaminiamoli nel dettaglio.
 
-## In cima: documentElement a body
+## In cima: documentElement e body
 
 I nodi in cima all'albero sono disponibili direttamente come proprietà di `document`:
 
