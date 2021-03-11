@@ -34,7 +34,7 @@ Inoltre, c'è una variabile globale chiamata come l'`id` che referenzia l'elemen
 </div>
 
 <script>
-  // elem referenzia un elemento del DOM con id="elem"
+  // elem e' un riferimento all'elemento del DOM con id="elem"
   elem.style.background = 'red';
 
   // id="elem-content" contiene un trattino, quindi non può essere il nome di una variabile
