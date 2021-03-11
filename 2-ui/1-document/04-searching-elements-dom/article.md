@@ -71,7 +71,7 @@ Se ci sono più elementi con lo stesso `id` il comportamento dei metodi che lo u
 ```
 
 ```warn header="Solo `document.getElementById`, non `anyElem.getElementById`"
-Il metodo `getElementById` può essere chiamato solo sull'oggetto `document`. Cerca l'`id` in tutto il documento.
+Il metodo `getElementById` può essere chiamato solo sull'oggetto `document`, cerca l'`id` in tutto il documento.
 ```
 
 ## querySelectorAll [#querySelectorAll]
