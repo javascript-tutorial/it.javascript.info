@@ -231,7 +231,7 @@ Un altro errore diffuso tra principianti è quello di scrivere:
 // non funziona
 document.getElementsByTagName('input').value = 5;
 ```
-Non funziona perché prende una *collezione* di input e assegna al suo valore invece che agli elementi dentro. 
+Non funziona perché prende una *collection* di input e le assegna un valore, invece che assegnare il valore agli elementi contenuti. 
 
 Dovremmo iterare sopra la collezione oppure selezionare un elemento tramite il suo indice e solo dopo assegnare, così:
 
