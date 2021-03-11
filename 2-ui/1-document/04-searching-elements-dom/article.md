@@ -367,7 +367,7 @@ I più utilizzati sono `querySelector` e `querySelectorAll`, ma `getElement(s)By
 Inoltre:
 
 - C'è `elem.matches(css)` per controllare se `elem` combacia con il selettore CSS specificato.
-- C'è `elem.closest(css)` per cercare l'antenato più vicino che combacia con il dato CSS-selector. Anche `elem` viene controllato.
+- C'è `elem.closest(css)` per cercare l'antenato più vicino che combacia con il selettore CSS specificato. Anche `elem` viene controllato.
 
 Menzioniamo anche un altro metodo, qualche volta utile, per controllare il rapporto figlio-genitore:
 
