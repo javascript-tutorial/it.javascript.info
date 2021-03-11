@@ -202,7 +202,7 @@ Il genitore è disponibile come `parentNode`.
 Ad esempio
 
 ```js run
-// il genitore di <body> e' <html>
+// il genitore di <body> è <html>
 alert( document.body.parentNode === document.documentElement ); // true
 
 // dopo di <head> c'è <body>
