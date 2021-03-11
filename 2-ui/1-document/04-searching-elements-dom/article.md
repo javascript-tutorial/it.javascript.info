@@ -233,7 +233,7 @@ document.getElementsByTagName('input').value = 5;
 ```
 Non funziona perché prende una *collection* di input e le assegna un valore, invece che assegnare il valore agli elementi contenuti. 
 
-Dovremmo iterare sopra la collezione oppure selezionare un elemento tramite il suo indice e solo dopo assegnare, così:
+Dovremmo iterare sopra la collection, oppure selezionare un elemento tramite il suo indice e quindi eseguire l'assegnazione, così:
 
 ```js
 // dovrebbe funzionare (se c'è un input)
