@@ -59,7 +59,7 @@ Questo comportamento è descritto [nella specifica](http://www.whatwg.org/specs/
 
 Il browser cerca di aiutarci mischiando i namespaces di JS e del DOM. Questo va bene per un semplice script, ma generalmente non è una buona cosa. Potrebbero esserci conflitti tra i nomi. Inoltre, quando uno legge il codice JS e non ha sott'occhio quello HTML non è ovvia la provenienza di una variabile.
 
-Qui nel tutorial utilizziamo `id` per brevità, quando è chiaro da dove viene l'elemento.
+Qui nel tutorial, per brevità e quando è ovvia la provenienza dell'elemento, utilizziamo `id` come diretto riferimento ad esso.
 
 Normalmente `document.getElementById` è il metodo da preferire.
 ```
