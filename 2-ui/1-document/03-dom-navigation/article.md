@@ -208,7 +208,7 @@ alert( document.body.parentNode === document.documentElement ); // true
 // dopo di <head> c'è <body>
 alert( document.head.nextSibling ); // HTMLBodyElement
 
-// prima di <body> c'e' <head>
+// prima di <body> c'è <head>
 alert( document.body.previousSibling ); // HTMLHeadElement
 ```
 
