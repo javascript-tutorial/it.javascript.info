@@ -214,7 +214,7 @@ alert( JSON.stringify(meetup, *!*['title', 'participants']*/!*) );
 // {"title":"Conference","participants":[{},{}]}
 ```
 
-Qui, probabilmente, siamo stati troppo rigidi. La lista di proprietà viene applicata all'intera struttura dell'oggetto. Quindi `participants` risulta essere vuoto, perché `name`non è in lista.
+Qui, probabilmente, siamo stati troppo rigidi. La lista di proprietà viene applicata all'intera struttura dell'oggetto. Quindi `participants` risulta essere vuoto, perché `name` non è in lista.
 
 Andiamo ad includere ogni proprietà ad eccezione di `room.occupiedBy`, che potrebbe causare un riferimento ciclico:
 
