@@ -307,7 +307,7 @@ Se lo utilizziamo al posto di `getElementsBy*`, entrambi gli script mostreranno 
 </script>
 ```
 
-Ora possiamo facilmente vedere la differenza. La collezione statica non viene incrementata dopo l'apparizione del nuovo `div` nel documento. 
+Ora possiamo facilmente vedere la differenza. La collection statica non viene incrementata dopo l'apparizione del nuovo `div` nel documento. 
 
 ## Riepilogo
 
