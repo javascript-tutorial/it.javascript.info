@@ -205,7 +205,7 @@ Ad esempio
 // il genitore di <body> e' <html>
 alert( document.body.parentNode === document.documentElement ); // true
 
-// dopo di <head> c'e' <body>
+// dopo di <head> c'è <body>
 alert( document.head.nextSibling ); // HTMLBodyElement
 
 // prima di <body> c'e' <head>
