@@ -33,7 +33,7 @@ I nodi in cima all'albero sono disponibili direttamente come proprietà di `docu
 ````warn header="C'è un problema: `document.body` può essere `null`"
 Uno script non può accedere ad un elemento che non esiste al momento dell'esecuzione.
 
-In particolare, se uno script si trova all'intendo di `<head>`, `document.body` non è disponibile, perché il browser non lo ha ancora letto.
+In particolare, se uno script si trova all'interno di `<head>`, `document.body` non è disponibile, perché il browser non lo ha ancora letto.
 
 Quindi, nell'esempio sottostante, il primo `alert` mostra `null`:
 
