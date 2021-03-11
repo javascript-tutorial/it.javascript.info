@@ -165,7 +165,7 @@ meetup.place = room;       // meetup referenzia room
 room.occupiedBy = meetup; // room referenzia meetup
 
 *!*
-JSON.stringify(meetup); // Errore: conversione di struttura circolare a JSON
+JSON.stringify(meetup); // Errore: conversione di struttura circolare in JSON
 */!*
 ```
 
