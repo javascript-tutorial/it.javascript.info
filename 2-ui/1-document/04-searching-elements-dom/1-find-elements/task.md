@@ -2,7 +2,7 @@ importance: 4
 
 ---
 
-# Cercate degli elementi
+# Ricerca degli elementi
 
 Abbiamo un documento con una tabella e una form.
 
