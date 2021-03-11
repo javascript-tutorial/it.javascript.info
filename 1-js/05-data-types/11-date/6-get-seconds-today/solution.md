@@ -10,7 +10,7 @@ function getSecondsToday() {
   let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
   let diff = now - today; // differenza in ms
-  return Math.round(diff / 1000); // converti a secondi
+  return Math.round(diff / 1000); // converti in secondi
 }
 
 alert( getSecondsToday() );
