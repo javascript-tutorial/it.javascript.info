@@ -33,7 +33,7 @@ Per creare un nuovo oggetto `Date`, chiamiamo `new Date()` con uno dei seguenti 
 
     E' un modo semplice di rappresentare una data. Possiamo sempre creare una data a partire da un timestamp utilizzando `new Date(timestamp)`, o possiamo convertire un oggetto `Date` esistente utilizzando il metodo `date.getTime()` (vedi sotto).
 
-    Le date prima del 01.01.1970 hanno timestamps negative, ad esempio:
+    Le date prima del 01.01.1970 hanno timestamps negativi, ad esempio:
     ```js run
     // 31 Dec 1969
     let Dec31_1969 = new Date(-24 * 3600 * 1000);
