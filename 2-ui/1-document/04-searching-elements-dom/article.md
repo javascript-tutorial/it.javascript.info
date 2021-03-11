@@ -100,7 +100,7 @@ Qui cerchiamo tutti i `<li>` che sono gli ultimi figli:
 </script>
 ```
 
-Questo metodo è molto potente poiché può utilizzare qualsiasi CSS selector.
+Questo metodo è molto potente poiché può utilizzare qualsiasi selettore CSS.
 
 ```smart header="Può utilizzare anche pseudo-classi"
 Le pseudo-classi come `:hover` e `:active` sono altresì supportate. Ad esempio, `document.querySelectorAll(':hover')` ritornerà una collezione con gli elementi sopra cui punta il cursore in questo momento (seguendo l'ordine di annidamento, dal più esterno `<html>` all'elemento più annidato).
