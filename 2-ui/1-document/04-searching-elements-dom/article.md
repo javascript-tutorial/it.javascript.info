@@ -114,7 +114,7 @@ In altre parole, il risultato  è lo stesso di `elem.querySelectorAll(css)[0]`, 
 
 ## matches
 
-Finora i metodi cercavano nel DOM.
+I metodi visti finora cercavano nel DOM.
 
 Il metodo [elem.matches(css)](http://dom.spec.whatwg.org/#dom-element-matches) non cerca nulla; controlla semplicemente se `elem` combacia con il dato CSS selector; ritorna `true` o `false`.
 
