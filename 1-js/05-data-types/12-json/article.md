@@ -281,7 +281,7 @@ occupiedBy: [object Object]
 */
 ```
 
-Da notare che la funzione `replacer` ottiene tutte le coppie key/value, incluse quelle degli oggetti annidati. Viene applicata ricorsivamente. Il valore di `this` all'interno di `replacer` è l'oggetto che contiene la proprietà corrente.
+Da notare che la funzione `replacer` ottiene tutte le coppie key/value, incluse quelle degli oggetti annidati e viene applicata ricorsivamente. Il valore di `this` all'interno di `replacer` è l'oggetto che contiene la proprietà corrente.
 
 La prima chiamata è speciale. Viene effettuata utilizzando uno speciale "oggetto contenitore": `{"": meetup}`. In altre parole, la prima coppia `(key, value)` possiede una chiave vuota, e il valore è l'oggetto stesso. Questo è il motivo per cui la prima riga dell'esempio sopra risulta essere `":[object Object]"`.
 
