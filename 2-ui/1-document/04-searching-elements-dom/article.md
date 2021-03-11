@@ -224,7 +224,7 @@ Gli sviluppatori principianti scordano qualche volta la lettera `"s"`. Cercano d
 La lettera `"s"` manca in `getElementById`, perché esso ritorna un singolo elemento. Ma `getElementsByTagName` ritorna una collezione di elementi, quindi c'è una `"s"`.
 ```
 
-````warn header="Ritorna una collezione, non un elemento!"
+````warn header="Ritorna una collection, non un elemento!"
 Un altro errore diffuso tra principianti è quello di scrivere:
 
 ```js
