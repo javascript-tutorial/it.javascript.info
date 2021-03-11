@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# figli nel DOM
+# Figli nel DOM
 
 Guardiamo questa pagina:
 
