@@ -285,7 +285,7 @@ Nell'esempio sotto ci sono due script.
 </script>
 ```
 
-`querySelectorAll`, invece, ritorna una collezione *statica*. E' come un array con degli elementi fissi.
+`querySelectorAll`, invece, ritorna una collection *statica*. E' come un array con degli elementi fissi.
 
 Se lo utilizziamo, entrambi gli script mostreranno `1`:
 
