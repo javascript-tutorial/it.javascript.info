@@ -7,7 +7,7 @@ libs:
 
 # Percorrere il DOM
 
-Il DOM ci consente di fare qualsiasi cosa con gli elementi ed il loro contenuto, ma prima dobbiamo essere in grado raggiungere l'oggetto DOM corrispondente.
+Il DOM ci consente di fare qualsiasi cosa con gli elementi ed il loro contenuto, ma prima dobbiamo essere in grado di raggiungere l'oggetto DOM corrispondente.
 
 Tutte le operazioni sul DOM iniziano con l'oggetto `document`. Questo è il principale "punto di ingresso" per il DOM, dal quale possiamo accedere a qualsiasi nodo.
 
