@@ -253,7 +253,7 @@ Cerchiamo gli elementi con `.article`:
   // cerca tramite il nome dell'attributo
   let form = document.getElementsByName('my-form')[0];
 
-  //trova tramite la classe dentro la form
+  // trova tramite la classe contenuta in form
   let articles = form.getElementsByClassName('article');
   alert(articles.length); // 2, trovati due elementi con la classe "article"
 </script>
