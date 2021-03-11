@@ -96,7 +96,7 @@ Ci sono diversi metodi per poter accedere a 'year', 'month' e agli altri paramet
 : Fornisce il valore del corrispettivo parametro.
 
 ```warn header="Not `getYear()`, but `getFullYear()`"
-Molti motori JavaScript implementano una versione non standard del metodo, `getYear()`. In alcuni casi potrebbe ritornare 2 cifre. E' un metodo deprecato ed è sconsigliato utilizzarlo. Viene fornito un metodo più completo, `getFullYear()`, con lo stesso risultato.
+Molti motori JavaScript implementano una versione non standard del metodo `getYear()`, che in alcuni casi ritorna un valore a 2 cifre. Per questo è un metodo deprecato ed è sconsigliato utilizzarlo. In sostituzione esiste un metodo più completo, `getFullYear()`.
 ```
 
 In più potremmo anche prelevare il giorno della settimana:
