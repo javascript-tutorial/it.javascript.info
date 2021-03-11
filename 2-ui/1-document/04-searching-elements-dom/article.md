@@ -319,7 +319,7 @@ Ci sono sei metodi principali per cercare nodi nel DOM:
 <td>Metodo</td>
 <td>Cerca tramite...</td>
 <td>Può essere chiamato su un elemento?</td>
-<td>Live?</td>
+<td>Vivo?</td>
 </tr>
 </thead>
 <tbody>
