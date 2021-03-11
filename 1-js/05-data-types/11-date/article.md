@@ -29,7 +29,7 @@ Per creare un nuovo oggetto `Date`, chiamiamo `new Date()` con uno dei seguenti 
     alert( Jan02_1970 );
     ```
 
-    Il numero di millisecondi passati a questa data vengono detti *timestamp*.
+    Il numero di millisecondi passati da questa data vengono detti *timestamp*.
 
     E' un modo semplice di rappresentare una data. Possiamo sempre creare una data a partire da un timestamp utilizzando `new Date(timestamp)`, o possiamo convertire un oggetto `Date` esistente utilizzando il metodo `date.getTime()` (vedi sotto).
 
