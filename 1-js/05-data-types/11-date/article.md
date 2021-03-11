@@ -320,7 +320,7 @@ Wow! L'utilizzo di `getTime()` è molto più veloce! Questo accade perché non c
 
 Okay, abbiamo qualcosa. Ma non è sufficiente.
 
-Immaginiamo che al momento dell'esecuzione di `bench(diffSubtract)` la CPU sia stata occupata da qualcosa che occupava risorse. E che allo stesso tempo `bench(diffGetTime)` avesse finito di eseguire.
+Immaginiamo che al momento dell'esecuzione di `bench(diffSubtract)` le risorse della CPU siano occupate, e che allo stesso tempo `bench(diffGetTime)` sia già stato elaborato.
 
 Uno scenario realistico per i processori moderni.
 
