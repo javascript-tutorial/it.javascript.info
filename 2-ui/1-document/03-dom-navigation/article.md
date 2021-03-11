@@ -230,7 +230,7 @@ I collegamenti sono simili a quelli visti prima, ma con l'aggiunta della parola 
 - `parentElement` -- l'elemento genitore.
 
 ````smart header="Why `parentElement`? Può un genitore *non* essere un elemento?"
-La proprietà `parentElement` restituisce l' "elemento" genitore, mentre `parentNode` restituisce "qualsiasi nodo" genitore. Queste proprietà in genere coincidono: entrambe restituiscono lo stesso genitore.
+La proprietà `parentElement` restituisce l'elemento genitore, mentre `parentNode` restituisce "qualsiasi nodo" genitore. Queste proprietà in genere coincidono: entrambe restituiscono lo stesso genitore.
 
 Con l'unica eccezione di `document.documentElement`:
 
