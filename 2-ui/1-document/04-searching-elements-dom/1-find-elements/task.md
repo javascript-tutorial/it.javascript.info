@@ -4,7 +4,7 @@ importance: 4
 
 # Ricerca degli elementi
 
-Abbiamo un documento con una tabella e una form.
+Abbiamo un documento con una tabella e un form.
 
 Come trovare?...
 
