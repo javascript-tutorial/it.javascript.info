@@ -29,7 +29,7 @@ form.getElementsByTagName('input')[0]
 // oppure
 form.querySelector('input')
 
-// 6. L'ultimo input nella form
+// 6. L'ultimo input in form
 let inputs = form.querySelectorAll('input') // trova tutti gli input
 inputs[inputs.length-1] // prendi l'ultimo
 ```
