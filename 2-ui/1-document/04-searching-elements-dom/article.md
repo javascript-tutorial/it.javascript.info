@@ -76,7 +76,7 @@ Il metodo `getElementById` può essere chiamato solo sull'oggetto `document`, ce
 
 ## querySelectorAll [#querySelectorAll]
 
-Tra i metodi più versatili, `elem.querySelectorAll(css)` ritorna tutti gli elementi dentro a `elem` che combaciano con il CSS selector.
+Tra i metodi più versatili, `elem.querySelectorAll(css)` ritorna tutti gli elementi contenuti in `elem` che combaciano con il selettore CSS specificato.
 
 Qui cerchiamo tutti i `<li>` che sono gli ultimi figli:
 
