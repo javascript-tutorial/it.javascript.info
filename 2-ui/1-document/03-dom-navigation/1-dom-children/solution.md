@@ -7,7 +7,7 @@ Il nodo DOM `<div>`:
 document.body.firstElementChild
 // oppure
 document.body.children[0]
-// oppure (il primo nodo e' uno spazio, quindi prendiamo il secondo)
+// oppure (il primo nodo è uno spazio, quindi prendiamo il secondo)
 document.body.childNodes[1]
 ```
 
