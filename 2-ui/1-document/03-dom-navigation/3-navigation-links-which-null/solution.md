@@ -3,4 +3,4 @@
 
 Nota: in entrambi i casi, se non ci sono figli si verificherà un errore.
 
-Se non ci sono figli, `elem.lastChild` è `null`, quindi non possiamo accedere a `elem.lastChild.nextSibling`. E la collection `elem.children` sarà vuota (Come un array vuoto `[]`).
+Se non ci sono figli, `elem.lastChild` è `null`, quindi non possiamo accedere a `elem.lastChild.nextSibling`. E la collection `elem.children` sarà vuota (come un array vuoto `[]`).
