@@ -102,7 +102,7 @@ Molti motori JavaScript implementano una versione non standard del metodo `getYe
 In più potremmo anche prelevare il giorno della settimana:
 
 [getDay()](mdn:js/Date/getDay)
-: Fornisce il giorno della settimana, da `0` (Domenica) a `6` (Sabato). Il primo giorno è sempre Domenica; in alcuni stati non è cosi, ma non può essere modificato.
+: Restituisce il giorno della settimana, da `0` (Domenica) a `6` (Sabato). Il primo giorno è sempre Domenica; in alcuni stati non è cosi, ma non può essere modificato.
 
 **Tutti i metodi sopra ritornano componenti relativi all'orario locale.**
 
