@@ -174,7 +174,7 @@ Ci sono altri metodi per cercare nodi tramite tag, classi ecc.
 
 Oggi sono più che altro storia, essendo `querySelector` più potente e più breve da scrivere.
 
-Qui li studiamo per completezza, mentre possono essere ancora trovati nei vecchi script.
+Qui li studiamo per completezza, poiché possono essere ancora trovati nei vecchi script.
 
 - `elem.getElementsByTagName(tag)` cerca gli elementi con il tag specificato e ritorna una loro collection. Il parametro `tag` può anche essere `*`, che equivale a "qualsiasi tag"
 - `elem.getElementsByClassName(className)` ritorna gli elementi con la data classe.
