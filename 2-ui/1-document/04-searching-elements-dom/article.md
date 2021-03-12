@@ -362,7 +362,7 @@ Ci sono sei metodi principali per cercare nodi nel DOM:
 </tbody>
 </table>
 
-I più utilizzati sono `querySelector` e `querySelectorAll`, ma `getElement(s)By*` può essere utile qualche volta, e si trova nei vecchi script.
+I più utilizzati sono `querySelector` e `querySelectorAll`, ma `getElement(s)By*` può essere utile in alcuni casi, e si trova nei vecchi script.
 
 Inoltre:
 
