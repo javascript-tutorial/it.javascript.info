@@ -261,7 +261,7 @@ Cerchiamo gli elementi con `.article`:
 
 ## Collections vive
 
-Tutti i metodi `"getElementsBy*"` ritornano una collection *viva*. Questa collction rispecchia sempre lo stato corrente del documento e si "auto-aggiorna" quando questo cambia.
+Tutti i metodi `"getElementsBy*"` ritornano una collection *viva*. Questa collection rispecchia sempre lo stato corrente del documento e si "auto-aggiorna" quando questo cambia.
 
 Nell'esempio sotto ci sono due script.
 
