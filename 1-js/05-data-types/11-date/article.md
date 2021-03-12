@@ -117,7 +117,7 @@ let date = new Date();
 // l'ora nella tua time zone corrente
 alert( date.getHours() );
 
-// L'ora in UTC+0 time zone (l'orario di London senza il daylight saving time)
+// L'ora in UTC+0 time zone (l'orario di Londra senza l'ora legale)
 alert( date.getUTCHours() );
 ```
 
