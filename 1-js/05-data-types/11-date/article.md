@@ -316,7 +316,7 @@ alert( 'Time of diffSubtract: ' + bench(diffSubtract) + 'ms' );
 alert( 'Time of diffGetTime: ' + bench(diffGetTime) + 'ms' );
 ```
 
-Wow! L'utilizzo di `getTime()` è molto più veloce! Questo accade perché non c'è alcuna conversione di tipo, il che risulta un'operazione più semplice da ottimizzare.
+Wow! L'utilizzo di `getTime()` è molto più veloce! Questo accade perché non c'è alcuna conversione di tipo, il che significa un'operazione più semplice da ottimizzare.
 
 Okay, abbiamo qualcosa. Ma non è sufficiente.
 
