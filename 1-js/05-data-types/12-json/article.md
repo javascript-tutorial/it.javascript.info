@@ -165,7 +165,7 @@ meetup.place = room;       // meetup referenzia room
 room.occupiedBy = meetup; // room referenzia meetup
 
 *!*
-JSON.stringify(meetup); // Errore: conversione di struttura circolare a JSON
+JSON.stringify(meetup); // Errore: conversione di struttura circolare in JSON
 */!*
 ```
 
@@ -214,7 +214,7 @@ alert( JSON.stringify(meetup, *!*['title', 'participants']*/!*) );
 // {"title":"Conference","participants":[{},{}]}
 ```
 
-Qui, probabilmente, siamo stati troppo rigidi. La lista di proprietà viene applicata all'intera struttura dell'oggetto. Quindi `participants` risulta essere vuoto, perché `name`non è in lista.
+Qui, probabilmente, siamo stati troppo rigidi. La lista di proprietà viene applicata all'intera struttura dell'oggetto. Quindi `participants` risulta essere vuoto, perché `name` non è in lista.
 
 Andiamo ad includere ogni proprietà ad eccezione di `room.occupiedBy`, che potrebbe causare un riferimento ciclico:
 
@@ -281,7 +281,7 @@ occupiedBy: [object Object]
 */
 ```
 
-Da notare che la funzione `replacer` ottiene tutte le coppie key/value, incluse quelle degli oggetti annidati. Viene applicata ricorsivamente. Il valore di `this` all'interno di `replacer` è l'oggetto che contiene la proprietà corrente.
+Da notare che la funzione `replacer` ottiene tutte le coppie key/value, incluse quelle degli oggetti annidati e viene applicata ricorsivamente. Il valore di `this` all'interno di `replacer` è l'oggetto che contiene la proprietà corrente.
 
 La prima chiamata è speciale. Viene effettuata utilizzando uno speciale "oggetto contenitore": `{"": meetup}`. In altre parole, la prima coppia `(key, value)` possiede una chiave vuota, e il valore è l'oggetto stesso. Questo è il motivo per cui la prima riga dell'esempio sopra risulta essere `":[object Object]"`.
 
@@ -521,7 +521,7 @@ alert( schedule.meetups[1].date.getDate() ); // works!
 
 ## Riepilogo
 
-- JSON è un formattatore di dati con i suoi standard; possiede molte librerie che gli consentono di lavorare con molti linguaggio di programmazione.
+- JSON è un formattatore di dati con i suoi standard; possiede molte librerie che gli consentono di lavorare con altrettanti linguaggi di programmazione.
 - JSON supporta oggetti, array, stringhe, numeri, booleani, e `null`.
 - JavaScript fornisce dei metodi: [JSON.stringify](mdn:js/JSON/stringify) per serializzare in JSON e [JSON.parse](mdn:js/JSON/parse) per la lettura da JSON.
 - Entrambi i metodi supportano funzioni di rimpiazzo per scritture/letture "intelligenti".

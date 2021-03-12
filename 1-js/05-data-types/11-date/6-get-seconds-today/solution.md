@@ -1,16 +1,16 @@
-Per ottenere il numero di secondi, possiamo generare una data usando il giorno corrente e il tempo 00:00:00, la differenza rappresenta il tempo trascorso.
+Per ottenere il numero di secondi, possiamo generare una data usando il giorno corrente e il tempo 00:00:00; la differenza rappresenta il tempo trascorso.
 
-La differenza è il numero di millisecondi trascorsi dall'inizio del giorno, che dovremmo poi divider per 100 per ottenere i secondi:
+La differenza è il numero di millisecondi trascorsi dall'inizio del giorno, che dovremmo poi dividere per 100 per ottenere i secondi:
 
 ```js run
 function getSecondsToday() {
   let now = new Date();
 
-  // create an object using the current day/month/year
+  // crea un oggetto utilizzando il giorno/mese/anno corrente
   let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-  let diff = now - today; // ms difference
-  return Math.round(diff / 1000); // make seconds
+  let diff = now - today; // differenza in ms
+  return Math.round(diff / 1000); // converti in secondi
 }
 
 alert( getSecondsToday() );

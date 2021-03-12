@@ -6,7 +6,7 @@ importance: 5
 
 Scrivete una funzione `getSecondsToday()` che ritorna il numero di secondi trascorsi oggi.
 
-Ad esempio, se ora sono le `10:00 am`, senza contare gli spostamenti dovuti a l'ora legale, allora:
+Ad esempio, se ora sono le `10:00 am`, senza contare gli spostamenti dovuti all'ora legale, allora:
 
 ```js
 getSecondsToday() == 36000 // (3600 * 10)
