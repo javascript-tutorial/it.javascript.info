@@ -263,7 +263,7 @@ for (let i = 0; i < 100000; i++) {
 let end = Date.now(); // done
 */!*
 
-alert( `The loop took ${end - start} ms` ); // sottrai numberi, not date
+alert( `The loop took ${end - start} ms` ); // sottrai numeri, non date
 ```
 
 ## Benchmarking
