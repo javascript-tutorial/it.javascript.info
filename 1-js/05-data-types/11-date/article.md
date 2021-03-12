@@ -174,7 +174,7 @@ Ad esempio:
 
 ```js run
 let date = new Date(2013, 0, *!*32*/!*); // 32 Gen 2013 ?!?
-alert(date); // ...è il il primo Feb 2013!
+alert(date); // ...è il primo Feb 2013!
 ```
 
 I componenti fuori dall'intervallo vengono distribuiti automaticamente.
