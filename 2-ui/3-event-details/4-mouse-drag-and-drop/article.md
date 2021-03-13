@@ -250,7 +250,7 @@ function onMouseMove(event) {
   let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
   ball.hidden = false;
 
-  // glie venti mousemove possono essere generati fuori dalla window (quando il pallone è trascinato fuori dallo schermo)
+  // gli eventi mousemove possono essere generati fuori dalla window (quando il pallone è trascinato fuori dallo schermo)
   // se clientX/clientY sono fuori dalla window, elementFromPoint restituisce null
   if (!elemBelow) return;
 
