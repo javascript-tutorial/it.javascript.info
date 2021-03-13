@@ -93,7 +93,7 @@ Di conseguenza dovremmo metterci in ascolto sul `document` per la cattura.
 
 ## Posizionamento corretto
 
-Negli esempi precedenti il pallone viene sempre spostata in modo che il suo centro si sotto il puntatore:
+Negli esempi precedenti il pallone viene sempre spostato in modo che il suo centro sia sotto il puntatore:
 
 ```js
 ball.style.left = pageX - ball.offsetWidth / 2 + 'px';
