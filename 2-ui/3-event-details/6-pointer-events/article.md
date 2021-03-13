@@ -1,36 +1,36 @@
 # Pointer events
 
-Pointer events are a modern way to handle input from a variety of pointing devices, such as a mouse, a pen/stylus, a touchscreen, and so on.
+I Pointer events (da adesso in poi, eventi del puntatore) sono una maniera moderna di gestire gli input di una varietà di dispositivi di puntamento, come mouse, penne/stilo, touchscreen e così via.
 
 ## The brief history
 
-Let's make a small overview, so that you understand the general picture and the place of Pointer Events among other event types.
+Facciamo una breve panoramica, in modo da comprendere la visione generale e il posto che occupano gli questi eventi, rispetto agli altri.
 
-- Long ago, in the past, there were only mouse events.
+- Tanto tempo fa, lontano nel passato, c'erano solo gli eventi del mouse.
 
-    Then touch devices became widespread, phones and tablets in particular. For the existing scripts to work, they generated (and still generate) mouse events. For instance, tapping a touchscreen generates `mousedown`. So touch devices worked well with web pages.
+    Ad un certo punto, si diffusero i dispositivi touch, in particolar modo telefoni e tablet. Per fare in modo che gli script esistenti potessero continuare a funzionare, questi generavano (e lo fanno ancora oggi) eventi del mouse. Ad esempio, un touchscreen al tocco, genera un `mousedown`. In questa maniera i nuovi dispositivi poterono funzionare correttamente, con le pagine web.
     
-    But touch devices have more capabilities than a mouse. For example, it's possible to touch multiple points at once ("multi-touch"). Although, mouse events don't have necessary properties to handle such multi-touches.
+    Tuttavia i dispositivi touch hanno molte più potenzialità rispetto a quelle di un mouse. Ad esempio, con questi dispositivi, è possibile toccare contemporaneamente più punti dello schermo ("multi-touch"). A dispetto di ciò, gli eventi del mouse non hanno le proprietà necessarie per poterlo gestire.
 
-- So touch events were introduced, such as `touchstart`, `touchend`, `touchmove`, that have touch-specific properties (we don't cover them in detail here, because pointer events are even better).
+- Quindi vennero introdotti gli eventi touch, come `touchstart`, `touchend`, `touchmove`, che hanno delle proprietà apposite (non le affronteremo adesso in dettaglio, perché gli eventi del puntatore sono anche migliori).
 
-    Still, it wasn't enough, as there are many other devices, such as pens, that have their own features. Also, writing code that listens for both touch and mouse events was cumbersome. 
+    Tuttavia, questo non era ancora sufficiente, dal momento che ci sono tanti altri dispositivi, come le penne, che hanno le loro caratteristiche peculiari. Inoltre, scrivere del codice che rimane in ascolto per eventi touch e del mouse, era abbastanza scomodo.
 
-- To solve these issues, the new standard Pointer Events was introduced. It provides a single set of events for all kinds of pointing devices.
+- Per risolvere questi problemi, è stato introdotto il nuovo standard degli eventi del puntatore, il quale supporta tutti i tipi di dispositivi di puntamento.
 
-As of now, [Pointer Events Level 2](https://www.w3.org/TR/pointerevents2/) specification is supported in all major browsers, while the newer [Pointer Events Level 3](https://w3c.github.io/pointerevents/) is in the works and is mostly compartible with Pointer Events level 2. 
+Ad oggi, la specifica [Pointer Events di livello 2](https://www.w3.org/TR/pointerevents2/) viene supportata in tutti i browser principali, e la nuova specifica [Pointer Events di livello 3](https://w3c.github.io/pointerevents/) ancora in fase di sviluppo, è per la maggior parte compatibile con gli eventi del puntatore di livello 2. 
 
-Unless you develop for old browsers, such as Internet Explorer 10, or for Safari 12 or below, there's no point in using mouse or touch events any more -- we can switch to pointer events.
+A meno che non si sviluppi per vecchi browser, come Internet Explorer 10, o Safari dal 12 in giù, non esiste più alcun motivo per usare gli eventi del mouse o touch, e possiamo passare agli eventi del puntatore.
 
-Then your code will work well with both touch and mouse devices.
+Con la loro introduzione, il codice funziona perfettamente con dispositivi touch e mouse.
 
-That said, there are some important peculiarities that one should know in order to use Pointer Events correctly and avoid surprises. We'll make note of them in this article.
+Detto ciò, ci sono alcune importanti caratteristiche da conoscere per poter usare gli eventi del puntatore in modo corretto ed evitare sorprese. Ne prenderemo nota in questo articolo.
 
-## Pointer event types
+## Tipi di evento del puntatore
 
-Pointer events are named similarly to mouse events:
+Gli eventi del puntatore vengono chiamati in maniera simile a quelli del mouse:
 
-| Pointer event | Similar mouse event |
+| Evento del puntatore | Evento del mouse similare |
 |---------------|-------------|
 | `pointerdown` | `mousedown` |
 | `pointerup` | `mouseup` |
@@ -43,206 +43,206 @@ Pointer events are named similarly to mouse events:
 | `gotpointercapture` | - |
 | `lostpointercapture` | - |
 
-As we can see, for every `mouse<event>`, there's a `pointer<event>` that plays a similar role. Also there are 3 additional pointer events that don't have a corresponding `mouse...` counterpart, we'll explain them soon. 
+Come possiamo osservare, per ogni `mouse<event>`, c'è un `pointer<event>` che gioca un ruolo simile. Inoltre ci sono 3 eventi del puntatore aggiuntivi, privi della controparte `mouse...`, che verranno spiegati tra poco. 
 
-```smart header="Replacing `mouse<event>` with `pointer<event>` in our code"
-We can replace `mouse<event>` events with `pointer<event>` in our code and expect things to continue working fine with mouse.
+```smart header="Replacing `mouse<event>` con `pointer<event>` nel codice"
+Possiamo rimpiazzare gli eventi `mouse<event>` con quelli `pointer<event>` nel codice, ed aspettarci che il tutto continui a funzionare perfettamente con il mouse.
 
-The support for touch devices will also "magically" improve. Although, we may need to add `touch-action: none` in some places in CSS. We'll cover it below in the section about `pointercancel`. 
+Il supporto ai dispositivi touch inoltre migliorerà "magicamente". Sebbene, saremo costretti ad aggiungere  `touch-action: none` in alcune sezioni del CSS. Affronteremo questa cosa più avanti nella sezione del `pointercancel`. 
 ```
 
-## Pointer event properties
+## Proprietà degli eventi del puntatore
 
-Pointer events have the same properties as mouse events, such as `clientX/Y`, `target`, etc., plus some others:
+Gli eventi del puntatore hanno le stesse proprietà di quelli del mouse, come `clientX/Y`, `target`, etc., più altri:
 
-- `pointerId` - the unique identifier of the pointer causing the event.
+- `pointerId` - un identificatore unico del puntatore che ha generato l'evento.
     
-    Browser-generated. Allows us to handle multiple pointers, such as a touchscreen with stylus and multi-touch (examples will follow).
-- `pointerType` - the pointing device type. Must be a string, one of: "mouse", "pen" or "touch". 
+    Generato dal browser. Ci permette di gestire puntatori multipli, come touchscreen con stilo e multi-touch (esempi a seguire).
+- `pointerType` - il tipo di dispositivo puntatore. È una stringa tra queste: "mouse", "pen" o "touch". 
 
-    We can use this property to react differently on various pointer types.
-- `isPrimary` - is `true` for the primary pointer (the first finger in multi-touch).
+    Possiamo usare questa proprietà per reagire differentemente discriminando i diversi tipi di puntatore.
+- `isPrimary` - assume il valore `true` per il puntatore principale (il primo dito nel multi-touch).
 
-Some pointer devices measure contact area and pressure, e.g. for a finger on the touchscreen, there are additional properties for that:
+Alcuni dispositivi di puntamento misurano l'area di contatto e la pressione, ad esempi, nel caso del dito sul touchscreen, esistono delle apposite proprietà aggiuntive:
 
-- `width` - the width of the area where the pointer (e.g. a finger) touches the device. Where unsupported, e.g. for a mouse, it's always `1`. 
-- `height` - the height of the area where the pointer touches the device. Where unsupported, it's always `1`.
-- `pressure` - the pressure of the pointer tip, in range from 0 to 1. For devices that don't support pressure must be either `0.5` (pressed) or `0`.
-- `tangentialPressure` - the normalized tangential pressure.
-- `tiltX`, `tiltY`, `twist` - pen-specific properties that describe how the pen is positioned relative the surface.
+- `width` - la larghezza dell'area dello schermo toccato dal puntatore (ad esempio un dito). Dove non supportato, il valore è sempre `1`, come nel caso del mouse. 
+- `height` - l'altezza dell'area dello schermo toccato dal puntatore. Dove non supportato è sempre `1`.
+- `pressure` - la pressione della punta del dispositivo puntatore, in un intervallo di valori che va da 0 a 1. Per dispositivi che non supportano la pressione, i valori potranno essere `0` (non premuto) e `0.5` (premuto).
+- `tangentialPressure` - la pressione tangenziale normalizzata.
+- `tiltX`, `tiltY`, `twist` - proprietà specifiche delle penne che descrivono come la penna è posizionata rispetto alla superficie dello schermo.
 
-These properties aren't supported by most devices, so they are rarely used. You can find the details about them in the [specification](https://w3c.github.io/pointerevents/#pointerevent-interface) if needed.
+Queste proprietà non sono supportate dalla maggioranza dei dispositivi, quindi sono usate raramente. In caso di necessità potete trovarne i dettagli nelle [specifiche](https://w3c.github.io/pointerevents/#pointerevent-interface).
 
 ## Multi-touch
 
-One of the things that mouse events totally don't support is multi-touch: a user can touch in several places at once on their phone or tablet, or perform special gestures.
+Una delle cose assolutamente non supportate dagli eventi del mouse è il multi-touch: quando un utente può toccare lo schermo contemporaneamente in più punti sul telefono o tablet, o esegue gesti particolari.
 
-Pointer Events allow handling multi-touch with the help of the `pointerId` and `isPrimary` properties.
+I Pointer Events permettono di gestire il multi-touch con l'aiuto delle proprietà `pointerId` e `isPrimary`.
 
-Here's what happens when a user touches a touchscreen in one place, then puts another finger somewhere else on it:
+Ecco ciò che succede quando un utente tocca il touchscreen in punto, e successivamente poggia un altro dito in su qualche altro punto dello schermo:
 
-1. At the first finger touch:
-    - `pointerdown` with `isPrimary=true` and some `pointerId`.
-2. For the second finger and more fingers (assuming the first one is still touching):
-    - `pointerdown` with `isPrimary=false` and a different `pointerId` for every finger.
+1. Al primo tocco:
+    - `pointerdown` con `isPrimary=true` con un determinato `pointerId`.
+2. Per il secondo dito e tutti gli altri (dando per assunto che il primo stia ancora toccando):
+    - `pointerdown` con `isPrimary=false` con un `pointerId` diverso per ogni altro dito aggiuntivo.
 
-Please note: the `pointerId` is assigned not to the whole device, but for each touching finger. If we use 5 fingers to simultaneously touch the screen, we have 5 `pointerdown` events, each with their respective coordinates and a different `pointerId`.
+Nota bene: `pointerId` viene assegnato non al device, ma ad ogni dito coinvolto nel tocco. Se usassimo 5 dita simultaneamente, avremmo ben 5 eventi `pointerdown`, ognuno con le loro rispettive coordinate e `pointerId` differenti.
 
-The events associated with the first finger always have `isPrimary=true`.
+Gli eventi associati al primo dito hanno sempre la proprietà `isPrimary=true`.
 
-We can track multiple touching fingers using their `pointerId`. When the user moves and then removes a finger, we get `pointermove` and `pointerup` events with the same `pointerId` as we had in `pointerdown`.
+Possiamo tenere traccia delle dita multiple usando i `pointerId` corrispondenti. Quando l'utente sposta e rimuove un dito, otteniamo gli eventi `pointermove` e `pointerup` aventi lo stesso `pointerId` ottenuto con l'evento `pointerdown`.
 
 ```online
-Here's the demo that logs `pointerdown` and `pointerup` events:
+Ecco una demo che tiene traccia degli eventi `pointerdown` e `pointerup`:
 
 [iframe src="multitouch" edit height=200]
 
-Please note: you must be using a touchscreen device, such as a phone or a tablet, to actually see the difference in `pointerId/isPrimary`. For single-touch devices, such as a mouse, there'll be always same `pointerId` with `isPrimary=true`, for all pointer events.
+Nota bene: Per vedere la differenza nei `pointerId/isPrimary` è necessario usare un dispositivo touch, come un telefono o un tablet. Per dispositivi a tocco singolo, tipo i mouse, ci sarà sempre lo stesso `pointerId` con `isPrimary=true`, per tutti gli eventi del puntatore.
 ```
 
-## Event: pointercancel
+## Evento: pointercancel
 
-The `pointercancel` event fires when there's an ongoing pointer interaction, and then something happens that causes it to be aborted, so that no more pointer events are generated. 
+L'evento `pointercancel` si genera se, nel bel mezzo di una interazione, avviene qualcosa che ne causa la cancellazione,tale che non venga generato nessun evento del puntatore.
 
-Such causes are: 
-- The pointer device hardware was physically disabled.
-- The device orientation changed (tablet rotated). 
-- The browser decided to handle the interaction on its own, considering it a mouse gesture or zoom-and-pan action or something else.
+Le cause possono essere: 
+- Il dispositivo di puntamento è stato fisicamene disabilitato.
+- È cambiato l'orientamento del dispositivo (tablet ruotato). 
+- Il browser ha deciso di gestire l'interazione da sè, considerandola un gesto del mouse, oppure un'azione zoom-and-pan o altro.
 
-We'll demonstrate `pointercancel` on a practical example to see how it affects us.
+Dimostreremo l'evento `pointercancel` con un esempio reale per vedere cosa e come ci influenza.
 
-Let's say we're impelementing drag'n'drop for a ball, just as in the beginning of the article <info:mouse-drag-and-drop>.
+Mettiamo il caso che stiamo implementando il drag'n'drop per un pallone, proprio come all'inizio dell'articolo <info:mouse-drag-and-drop>.
 
-Here is the flow of user actions and the corresponding events:
+Ecco il flusso delle azioni dell'utente e gli eventi corrispondenti:
 
-1) The user presses on an image, to start dragging
-    - `pointerdown` event fires
-2) Then they start moving the pointer (thus dragging the image)
-    - `pointermove` fires, maybe several times
-3) And then the surprise happens! The browser has native drag'n'drop support for images, that kicks in and takes over the drag'n'drop process, thus generating `pointercancel` event.
-    - The browser now handles drag'n'drop of the image on its own. The user may even drag the ball image out of the browser, into their Mail program or a File Manager.
-    - No more `pointermove` events for us.
+1) L'utente preme su una immagine, per iniziare il trascinamento
+    - viene generato l'evento `pointerdown`
+2) Quindi, comincia a spostare il puntatore (spostando così l'immagine)
+    - viene generato l'evento `pointermove`, magari più volte
+3) A quel punto ecco la sorpresa! Il browser ha il supporto nativo al drag'n'drop per le immagini, che subentra scalpitando e prende il sopravvento nel processo del drag'n'drop, generando così l'evento `pointercancel`.
+    - Il browser ora gestisce il drag'n'drop dell'immagine autonomamente. L'utente può anche trascinare l'immagine del pallone fuori dal browser, dentro il programma delle Mail o su un File Manager.
+    - Niente più eventi `pointermove` per noi.
 
-So the issue is that the browser "hijacks" the interaction: `pointercancel` fires in the beginning of the "drag-and-drop" process, and no more `pointermove` events are generated.
+Qui il problema è che il browser "dirotta" l'interazione: viene generato `pointercancel` all'inizio del processo di "drag-and-drop", e non vengono più generati eventi `pointermove`.
 
 ```online
-Here's the drag'n'drop demo with loggin of pointer events (only `up/down`, `move` and `cancel`) in the `textarea`: 
+Ecco una demo con drag'n'drop con il tracciamento degli eventi del puntatore (solo per `up/down`, `move` e `cancel`) nella `textarea`: 
 
 [iframe src="ball" height=240 edit]
 ```
 
-We'd like to implement the drag'n'drop on our own, so let's tell the browser not to take it over.
+Vorremmo implementare il drag'n'drop da noi, quindi diremo al browser di non prendere il controllo.
 
-**Prevent the default browser action to avoid `pointercancel`.**
+**Prevenire l'azione di default del browser per evitare il `pointercancel`.**
 
-We need to do two things:
+È necessario fare due cose:
 
-1. Prevent native drag'n'drop from happening:
-    - We can do this by setting `ball.ondragstart = () => false`, just as described in the article <info:mouse-drag-and-drop>.
-    - That works well for mouse events.
-2. For touch devices, there are other touch-related browser actions (besides drag'n'drop). To avoid problems with them too:
-    - Prevent them by setting `#ball { touch-action: none }` in CSS. 
-    - Then our code will start working on touch devices.
+1. Prevenire che avvenga il drag'n'drop nativo:
+    - Si può fare impostando `ball.ondragstart = () => false`, come descritto nell'articolo <info:mouse-drag-and-drop>.
+    - Funziona bene per gli eventi del mouse.
+2. Per i dispositivi touch, ci sono altre azioni del browser relative (oltre al drag'n'drop). Per evitare problemi anche con questi:
+    - Prevenirli impostando `#ball { touch-action: none }` nel CSS. 
+    - In questa maniera il nostro codice comincerà a funzionare anche nei dispositivi touch.
 
-After we do that, the events will work as intended, the browser won't hijack the process and doesn't emit `pointercancel`.
+Fatto ciò, gli eventi funzioneranno come previsto, ed il browser non prenderà il controllo del processo e non emetterà il `pointercancel`.
 
 ```online
-This demo adds these lines:
+Questa demo aggiunge queste righe:
 
 [iframe src="ball-2" height=240 edit]
 
-As you can see, there's no `pointercancel` any more.
+Come si può notare, non c'è più nessun evento `pointercancel`.
 ```
 
-Now we can add the code to actually move the ball, and our drag'n'drop will work for mouse devices and touch devices.
+Ora possiamo aggiungere il codice per spostare il pallone, ed il nostro drag'n'drop funzionerà per i mouse ed i dispositivi touch.
 
-## Pointer capturing
+## Cattura del puntatore
 
-Pointer capturing is a special feature of pointer events.
+La cattura del puntatore è una peculiarità degli eventi del puntatore.
 
-The idea is very simple, but may seem quite odd at first, as nothing like that exists for any other event type.
+L'idea è molto semplice, anche se, all'inizio, può risultare un po' stramba, dal momento che non esiste nulla del genere per nessun'altra tipologia di evento.
 
-The main method is:
-- `elem.setPointerCapture(pointerId)` - binds events with the given `pointerId` to `elem`. After the call all pointer events with the same `pointerId` will have `elem` as the target (as if happened on `elem`), no matter where in document they really happened.
+Il metodo principale è:
+- `elem.setPointerCapture(pointerId)` - esegue il binding degli eventi con un certo `pointerId` a `elem`. Dopo la chiamata tutti gli eventi puntatore con il medesimo `pointerId` avranno `elem` come target (come se fossero avvenuti su `elem`), non importa dove sia realmente accaduto nel documento.
 
-In other words, `elem.setPointerCapture(pointerId)` retargets all subsequent events with the given `pointerId` to `elem`.
+In altre parole, `elem.setPointerCapture(pointerId)` reindirizza tutti gli eventi successivi del dato `pointerId` a `elem`.
 
-The binding is removed:
-- automatically when `pointerup` or `pointercancel` events occur,
-- automatically when `elem` is removed from the document,
-- when `elem.releasePointerCapture(pointerId)` is called.
+Il binding viene rimosso:
+- automaticamente, al generarsi degli eventi `pointerup` o `pointercancel`,
+- automaticamente, se `elem` viene rimosso dal documento,
+- quando viene chiamato `elem.releasePointerCapture(pointerId)`.
 
-**Pointer capturing can be used to simplify drag'n'drop kind of interactions.**
+**La cattura del puntatore può essere usata per semplificare delle tipologie di interazioni di drag'n'drop.**
 
-As an example, let's recall how one can implement a custom slider, described in the <info:mouse-drag-and-drop>.
+Per fare un esempio, riprendiamo l'esempio di come poter implementare uno cursore/slider personalizzato, come descritto nella sezione <info:mouse-drag-and-drop>.
 
-We make a slider element with the strip and the "runner" (`thumb`) inside it.
+Creiamo un elemento con la striscia ed il "cursore" (`thumb`) all'interno.
 
-Then it works like this:
+Funziona in questa maniera:
 
-1. The user presses on the slider `thumb` - `pointerdown` triggers.
-2. Then they move the pointer - `pointermove` triggers, and we move the `thumb` along.
-    - ...As the pointer moves, it may leave the slider `thumb`: go above or below it. The `thumb` should move strictly horizontally, remaining aligned with the pointer.
+1. L'utente preme sul cursore `thumb`, e viene generato `pointerdown`.
+2. Quindi, sposta il il puntatore, generando un evento `pointermove`, dopodiché sposterà `thumb` lungo la striscia.
+    - ...Spostando il puntatore, potrebbe lasciare il `thumb` dello slider: andando sopra o sotto di esso. L'elemento `thumb` si può muovere solo in orizzontale, rimanendo però allineato verticalmente con il puntatore.
 
-So, to track all pointer movements, including when it goes above/below the `thumb`, we had to assign `pointermove` event handler on the whole `document`.
+Quindi, per tenere traccia di tutti i movimenti del puntatore, incluso quando va sopra o sotto il `thumb`, abbiamo dovuto assegnare il gestore evento `pointermove` all'intero `document`.
 
-That solution looks a bit "dirty". One of the problems is that pointer movements around the document may cause side effects, trigger other event handlers, totally not related to the slider.
+Questa soluzione sembra un po' "sporca". Uno dei problemi è che i movimenti del puntatore sul documento possono causare effetti collaterali, innescare altri gestori evento, per nulla correlate allo slider.
 
-Pointer capturing provides a means to bind `pointermove` to `thumb` and avoid any such problems:
+La cattura del puntatore fornisce il mezzo per effettuare il binding di `pointermove` a `thumb` ed evitare questo tipo di problemi:
 
-- We can call `thumb.setPointerCapture(event.pointerId)` in `pointerdown` handler,
-- Then future pointer events until `pointerup/cancel` will be retargeted to `thumb`. 
-- When `pointerup` happens (dragging complete), the binding is removed automatically, we don't need to care about it.
+- Possiamo chiamare `thumb.setPointerCapture(event.pointerId)` nel gestore `pointerdown`,
+- A quel punto i successivi eventi fino al `pointerup/cancel` verranno reindirizzati a `thumb`. 
+- Al verificaris dell'evento `pointerup` (trascinamento completato), il binding viene rimosso automaticamente, e non abbiamo bisogno di curarcene.
 
-So, even if the user moves the pointer around the whole document, events handlers will be called on `thumb`. Besides, coordinate properties of the event objects, such as `clientX/clientY` will still be correct - the capturing only affects `target/currentTarget`.
+Così, anche se l'utente sposta il cursore attorno a tutto il documento, i gestori evento verranno chiamati su `thumb`. Oltretutto, le coordinate degli oggetti evento, come `clientX/clientY` saranno ancora corrette, perché la cattura influenza solamente `target/currentTarget`.
 
-Here's the essential code:
+Ecco il codice essenziale:
 
 ```js
 thumb.onpointerdown = function(event) {
-  // retarget all pointer events (until pointerup) to thumb
+  // reindirizza tutti gli eventi del puntatore (fino al pointerup) su thumb
   thumb.setPointerCapture(event.pointerId);
 };
 
 thumb.onpointermove = function(event) {
-  // moving the slider: listen on the thumb, as all pointer events are retargeted to it
+  // spostando lo slider: si mette in ascolto su thumb, dal momento che tutti gli eventi del puntatore vengono reindirizzati su di esso
   let newLeft = event.clientX - slider.getBoundingClientRect().left;
   thumb.style.left = newLeft + 'px';
 };
 
-// note: no need to call thumb.releasePointerCapture, 
-// it happens on pointerup automatically
+// nota: non necessita la chiamata a thumb.releasePointerCapture, 
+// avviene autamaticamente al pointerup
 ```
 
 ```online
-The full demo:
+La demo completa:
 
 [iframe src="slider" height=100 edit]
 ```
 
-At the end, pointer capturing gives us two benefits:
-1. The code becomes cleaner as we don't need to add/remove handlers on the whole `document` any more. The binding is released automatically.
-2. If there are any `pointermove` handlers in the document, they won't be accidentally triggered by the pointer while the user is dragging the slider.
+In fin dei conti, la cattura del puntatore ci dà due benefici:
+1. Il codice diventa più pulito dal momento che non dobbiamo bisogno di aggiungere/rimuovere gestori sull'intero `document`. Il binding viene rimosso automaticamente.
+2. Nel caso vi fossero altri gestori `pointermove` nel documento, non verrebbero innescati dal puntatore mentre l'utente è intento a trascinare il curosore.
 
-### Pointer capturing events
+### Eventi di cattura del puntatore
 
-There are two associated pointer events:
+Ci sono due eventi del puntatore associati:
 
-- `gotpointercapture` fires when an element uses `setPointerCapture` to enable capturing.
-- `lostpointercapture` fires when the capture is released: either explicitly with `releasePointerCapture` call, or automatically on `pointerup`/`pointercancel`.
+- `gotpointercapture` viene generato quando un elemento usa `setPointerCapture` per abilitare la cattura.
+- `lostpointercapture` viene generato quando la cattura viene rilasciata: o esplicitamente con la chiamata a `releasePointerCapture`, o automaticamente attraverso `pointerup`/`pointercancel`.
 
-## Summary
+## Riepilogo
 
-Pointer events allow handling mouse, touch and pen events simultaneously, with a single piece of code.
+Gli eventi del puntatore permettono di gestire gli eventi del mouse, del touch e delle penne simultaneamente, con un'unica porzione di codice.
 
-Pointer events extend mouse events. We can replace `mouse` with `pointer` in event names and expect our code to continue working for mouse, with better support for other device types.
+Gli eventi del puntatore estendon gli eventi del mouse. Possiamo sostituire `mouse` con `pointer` nei nomi degli evenit ed aspettarci che il codice continui a funzionare per il mouse, con un supporto migliore per altri tipi di dispositivi.
 
-For drag'n'drops and complex touch interactions that the browser may decide to hijack and handle on its own - remember to cancel the default action on events and set `touch-events: none` in CSS for elements that we engage.
+Per i drag'n'drop ed interazioni touch complesse che il browser potrebbe decidere di dirottare sulla propria gestione, dobbiamo ricordarci di disabilitarne l'azione predifinita sugli eventi ed impostare sul CSS `touch-events: none`, per gli elementi che vogliamo coinvolgere.
 
-Additional abilities of pointer events are:
+Le abilità aggiuntive degli eventi del puntatore sono:
 
-- Multi-touch support using `pointerId` and `isPrimary`.
-- Device-specific properties, such as `pressure`, `width/height`, and others.
-- Pointer capturing: we can retarget all pointer events to a specific element until `pointerup`/`pointercancel`.
+- Supporto al multi-touch con `pointerId` e `isPrimary`.
+- Proprietà spiecifiche per alcuni dispositivi, come `pressure`, `width/height`, ed altri.
+- Cattura del puntatore: possiamo reindirizzare tutti i puntatori evento su uno specifico elemento fino al verificarsi degli eventi `pointerup`/`pointercancel`.
 
-As of now, pointer events are supported in all major browsers, so we can safely switch to them, especially if IE10- and Safari 12- are not needed. And even with those browsers, there are polyfills that enable the support of pointer events.
+Ad oggi, gli eventi del puntore sono supportati da tutti i principali browser, quindi possiamo passare a questi, specialmente se IE10- e Safari 12- non sono necessari. Tuttavia, anche con questi browser, esistono i polyfill che abilitano il supporto degli eventi di tipo puntatore.
