@@ -67,7 +67,7 @@ Ecco un esempio in azione:
 Prova a fare il drag'n'drop con il mouse per vedere questo comportamento anomalo.
 ```
 
-Questo accade perché il browser ha un suo supporto al drag'n'drop per le immagini e su qualche altro elemento. Lo esegue in automatico e andrebbe in conflitto con il nostro.
+Questo accade perché il browser ha una sua implementazione del drag'n'drop per immagini e qualche altro elemento. La esegue in automatico e va quindi in conflitto con la nostra.
 
 Per disabilitarlo:
 
