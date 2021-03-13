@@ -178,7 +178,7 @@ In azione (inside `<iframe>`):
 [iframe src="ball3" height=230]
 ```
 
-La differenza è particolarmente visibile se trasciniamo il pallone dall'angolo in basso a destra. Nell'esempio precendente il pallone "salterebbe" sotto il puntatore. Adesso segue fluidamente il puntatore dalla posizione corrente.
+La differenza è particolarmente visibile se trasciniamo il pallone dall'angolo in basso a destra. Nell'esempio precedente, il pallone "salterebbe" sotto il puntatore. Adesso segue fluidamente il puntatore dalla posizione corrente.
 
 ## Potenziali obiettivi per il drop (droppables)
 
