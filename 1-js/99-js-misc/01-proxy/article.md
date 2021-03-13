@@ -139,9 +139,9 @@ alert( dictionary['Hello'] ); // Hola
 alert( dictionary['Welcome'] ); // undefined
 ```
 
-Attualmente, se non esiste un termine, la lettura dal `dictionary` ritorna `undefined`. Ma nella pratica, mantenere un termine non tradotto è generalmente meglio di `undefined`. Quindi facciamo in modo che ritorni il termine non tradotto piuttosto di `undefined`.
+Attualmente, se non esiste un termine, la lettura dal `dictionary` ritorna `undefined`. Ma nella pratica, ritornare un termine non tradotto è generalmente meglio di `undefined`. Quindi facciamo in modo che ritorni il termine non tradotto piuttosto di `undefined`.
 
-To achieve that, we'll wrap `dictionary` in a proxy that intercepts reading operations:
+Per farlo, costruiremo un contenitore per `dictionary` con un proxy che interecetterà le operazioni di lettura:
 
 ```js run
 let dictionary = {
@@ -151,58 +151,58 @@ let dictionary = {
 
 dictionary = new Proxy(dictionary, {
 *!*
-  get(target, phrase) { // intercept reading a property from dictionary
+  get(target, phrase) { // interecetta la lettura di una proprietà dal dictionary
 */!*
-    if (phrase in target) { // if we have it in the dictionary
-      return target[phrase]; // return the translation
+    if (phrase in target) { // se è contenuto nel dictionary
+      return target[phrase]; // ritorna la traduzione
     } else {
-      // otherwise, return the non-translated phrase
+      // altrimenti, ritorna il termine non tradotto
       return phrase;
     }
   }
 });
 
-// Look up arbitrary phrases in the dictionary!
-// At worst, they're not translated.
+// Cerchiamo un termine casuale nel dictionary!
+// Nel peggiore dei casi, questo non sarà tradotto.
 alert( dictionary['Hello'] ); // Hola
 *!*
-alert( dictionary['Welcome to Proxy']); // Welcome to Proxy (no translation)
+alert( dictionary['Welcome to Proxy']); // BeWelcome to Proxy (nessuna traduzione)
 */!*
 ```
 
 ````smart
-Please note how the proxy overwrites the variable:
+Da notare come il proxy sovrascrive la variabile:
 
 ```js
 dictionary = new Proxy(dictionary, ...);
 ```
 
-The proxy should totally replace the target object everywhere. No one should ever reference the target object after it got proxied. Otherwise it's easy to mess up.
+Il proxy dovrebbe rimpiazzare completamente il target ovunque. Nessuno dovrebbe più fare riferimento all'oggetto target una volta che questo ne è stato costruito un proxy. Altrimenti diventa molto facile commettere errori.
 ````
 
-## Validation with "set" trap
+## Validazione con la trappola "set"
 
-Let's say we want an array exclusively for numbers. If a value of another type is added, there should be an error.
+Ipotizziamo di volere un array di soli numeri. Se viene aggiunto un valore di un altro tipo, questo dovrebbe generare un errore.
 
-The `set` trap triggers when a property is written.
+La "trappola" `set` si innesca quando si accede in scrittura ad una proprietà.
 
 `set(target, property, value, receiver)`:
 
-- `target` -- is the target object, the one passed as the first argument to `new Proxy`,
-- `property` -- property name,
-- `value` -- property value,
-- `receiver` -- similar to `get` trap, matters only for setter properties.
+- `target` -- rappresenta l'oggetto target, quello fornito come primo argomento a `new Proxy`,
+- `property` -- il nome della proprietà,
+- `value` -- il valore della proprietà,
+- `receiver` -- similmente alla trappola `get`, ha importanza solamente per le proprietà di tipo setter.
 
-The `set` trap should return `true` if setting is successful, and `false` otherwise (triggers `TypeError`).
+La trappola `set` dovrebbe ritornare `true` se è stata imposta correttamete, `false` altrimenti (innescando `TypeError`).
 
-Let's use it to validate new values:
+Utilizziamola per validare un nuovo valore:
 
 ```js run
 let numbers = [];
 
 numbers = new Proxy(numbers, { // (*)
 *!*
-  set(target, prop, val) { // to intercept property writing
+  set(target, prop, val) { // per intercettare la scrittura di proprietà
 */!*
     if (typeof val == 'number') {
       target[prop] = val;
@@ -213,44 +213,44 @@ numbers = new Proxy(numbers, { // (*)
   }
 });
 
-numbers.push(1); // added successfully
-numbers.push(2); // added successfully
+numbers.push(1); // aggiunta con successo
+numbers.push(2); // aggiunta con successo
 alert("Length is: " + numbers.length); // 2
 
 *!*
-numbers.push("test"); // TypeError ('set' on proxy returned false)
+numbers.push("test"); // TypeError ('set' di proxy ha ritornato false)
 */!*
 
 alert("This line is never reached (error in the line above)");
 ```
 
-Please note: the built-in functionality of arrays is still working! Values are added by `push`. The `length` property auto-increases when values are added. Our proxy doesn't break anything.
+Da notare: la funzionalità interna degli array integrati continuano a funzionare! I valori vengono aggiunti tramite `push`. La proprietà `length` viene auto-incrementata quando i valori vengono aggiunti. Il nostro proxy non rompe nulla.
 
-We don't have to override value-adding array methods like `push` and `unshift`, and so on, to add checks in there, because internally they use the `[[Set]]` operation that's intercepted by the proxy.
+Non dobbiamo sovrascrivere il metodo di aggiunta valori agli array come `push` e `unshift`, e così via, per aggiungere i controlli in questi casi, poiché questi internamente utilizzano operazioni di `[[Set]]` che verranno intercettate dal proxy.
 
-So the code is clean and concise.
+In questo modo il codice rimane pulito e conciso.
 
-```warn header="Don't forget to return `true`"
-As said above, there are invariants to be held.
+```warn header="Non dimenticate di ritornare `true`"
+Come detto sopra, vanno tenute in considerazione le invarianti.
 
-For `set`, it must return `true` for a successful write.
+Nel caso di `set`, questo deve ritornare `true` per scritture avvenute con successo.
 
-If we forget to do it or return any falsy value, the operation triggers `TypeError`.
+Se ci dimentichiamo di farlo o ritorniamo qualsiasi altro valore, l'operazione innescherà `TypeError`.
 ```
 
-## Iteration with "ownKeys" and "getOwnPropertyDescriptor"
+## Iterazione con "ownKeys" e "getOwnPropertyDescriptor"
 
-`Object.keys`, `for..in` loop and most other methods that iterate over object properties use `[[OwnPropertyKeys]]` internal method (intercepted by `ownKeys` trap) to get a list of properties.
+I cicli `Object.keys`, `for..in` e molti altri metodi che iterano sulle proprietà degli oggetti utilizzano il metodo interno `[[OwnPropertyKeys]]` (intercettate dalla trappola `ownKeys`) per ottenere la lista delle proprietà.
 
-Such methods differ in details:
-- `Object.getOwnPropertyNames(obj)` returns non-symbol keys.
-- `Object.getOwnPropertySymbols(obj)` returns symbol keys.
-- `Object.keys/values()` returns non-symbol keys/values with `enumerable` flag (property flags were explained in the article <info:property-descriptors>).
-- `for..in` loops over non-symbol keys with `enumerable` flag, and also prototype keys.
+Questi metodi si distinguono per alcuni dettagli:
+- `Object.getOwnPropertyNames(obj)` ritorna le chiavi non-symbol.
+- `Object.getOwnPropertySymbols(obj)` ritorna le chiavi symbol.
+- `Object.keys/values()` ritorna coppie keys/values non-symbol, con la flag `enumerable` (le flag  sono state spiegate nell'articolo <info:property-descriptors>).
+- `for..in` cicla su chiavi non-symbol, con la flag `enumerable`, ed anche sullle chiavi del prototype.
 
-...But all of them start with that list.
+...Ma tutti questi, incominciamo dalla stessa lista.
 
-In the example below we use `ownKeys` trap to make `for..in` loop over `user`, and also `Object.keys` and `Object.values`, to skip properties starting with an underscore `_`:
+Nell'esempio sotto, utilizziamo la trappola `ownKeys` per far sì che `for..in` cicli su `user`, `Object.keys` e `Object.values`, saltando le proprietà il cui nome incomincia con un underscore `_`:
 
 ```js run
 let user = {
@@ -267,17 +267,17 @@ user = new Proxy(user, {
   }
 });
 
-// "ownKeys" filters out _password
+// "ownKeys" filtra _password, saltandolo
 for(let key in user) alert(key); // name, then: age
 
-// same effect on these methods:
+// abbiamo lo stesso effetto in questi meotodi:
 alert( Object.keys(user) ); // name,age
 alert( Object.values(user) ); // John,30
 ```
 
-So far, it works.
+Finora, funziona.
 
-Although, if we return a key that doesn't exist in the object, `Object.keys` won't list it:
+Anche se, nel caso in cui ritornassimo una chiave che non esiste nell'oggetto, `Object.keys` non la elencherà:
 
 ```js run
 let user = { };
@@ -293,25 +293,25 @@ user = new Proxy(user, {
 alert( Object.keys(user) ); // <empty>
 ```
 
-Why? The reason is simple: `Object.keys` returns only properties with the `enumerable` flag. To check for it, it calls the internal method `[[GetOwnProperty]]` for every property to get [its descriptor](info:property-descriptors). And here, as there's no property, its descriptor is empty, no `enumerable` flag, so it's skipped.
+Perché? La motivazione è semplice: `Object.keys` ritorna solamente le prorpietà con la flag `enumerable`. Per verificarlo, invoca il metodo interno `[[GetOwnProperty]]`su ogni proprietà per ottenere [i suoi descrittori](info:property-descriptors). E in questo caso, poiché non ci sono proprietà, i descrittori sono vuoti, non abbiamo alcuna flag `enumerable`, quindi questa verrà saltata.
 
-For `Object.keys` to return a property, we need it to either exist in the object, with the `enumerable` flag, or we can intercept calls to `[[GetOwnProperty]]` (the trap `getOwnPropertyDescriptor` does it), and return a descriptor with `enumerable: true`.
+Per far sì che `Object.keys` ritorni una proprietà, è necessario che, o questa esiste nell'oggetto con la flag `enumerable`, oppure possiamo intercettare l'invocazione di `[[GetOwnProperty]]` (tramite la trappola `getOwnPropertyDescriptor`), e ritornare un descrittore con `enumerable: true`.
 
-Here's an example of that:
+Qui vediamo un esempio:
 
 ```js run
 let user = { };
 
 user = new Proxy(user, {
-  ownKeys(target) { // called once to get a list of properties
+  ownKeys(target) { // invocata una volta per ottenere una lista delle proprietà
     return ['a', 'b', 'c'];
   },
 
-  getOwnPropertyDescriptor(target, prop) { // called for every property
+  getOwnPropertyDescriptor(target, prop) { // invocata per ogni proprietà
     return {
       enumerable: true,
       configurable: true
-      /* ...other flags, probable "value:..." */
+      /* ...altre flag, tra cui "value:..." */
     };
   }
 
@@ -320,13 +320,13 @@ user = new Proxy(user, {
 alert( Object.keys(user) ); // a, b, c
 ```
 
-Let's note once again: we only need to intercept `[[GetOwnProperty]]` if the property is absent in the object.
+Ripetiamolo una volta ancora: è sufficiente intercettare `[[GetOwnProperty]]` se la proprietà non è presente nell'oggetto.
 
-## Protected properties with "deleteProperty" and other traps
+## Le proprietà protette da "deleteProperty" e altre trappole
 
-There's a widespread convention that properties and methods prefixed by an underscore `_` are internal. They shouldn't be accessed from outside the object.
+Esiste una convenzione piuttosto diffusa, in cui le proprietà e i metodi il cui nome ha come suffisso un underscore `_`, sono da considerarsi interne. Non dovrebbero quindi essere accedute dall'esterno dell'oggetto.
 
-Technically that's possible though:
+Anche se riamane tecnicamente possibile accedervi:
 
 ```js run
 let user = {
@@ -337,15 +337,15 @@ let user = {
 alert(user._password); // secret
 ```
 
-Let's use proxies to prevent any access to properties starting with `_`.
+Possiamo utilizzare un proxy per rendere inaccessibile le proprietà che iniziano con  `_`.
 
-We'll need the traps:
-- `get` to throw an error when reading such property,
-- `set` to throw an error when writing,
-- `deleteProperty` to throw an error when deleting,
-- `ownKeys` to exclude properties starting with `_` from `for..in` and methods like `Object.keys`.
+Avremo bisogno delle seguenti trappole:
+- `get` per ritornare un errore nel tentativo di accedere a questa proprietà,
+- `set` per ritornare un errore nel tentativo di scrittura,
+- `deleteProperty` per ritornare un errore nel tentativo di rimozione,
+- `ownKeys` per escludere le proprietà che iniziano con `_` da `for..in` ed altri metodi come `Object.keys`.
 
-Here's the code:
+Vediamo il codice:
 
 ```js run
 let user = {
@@ -364,7 +364,7 @@ user = new Proxy(user, {
     return (typeof value === 'function') ? value.bind(target) : value; // (*)
   },
 *!*
-  set(target, prop, val) { // to intercept property writing
+  set(target, prop, val) { // per intercettare la scrittura delle proprietà
 */!*
     if (prop.startsWith('_')) {
       throw new Error("Access denied");
@@ -374,7 +374,7 @@ user = new Proxy(user, {
     }
   },
 *!*
-  deleteProperty(target, prop) { // to intercept property deletion
+  deleteProperty(target, prop) { // per intercettare la rimozione delle proprietà
 */!*
     if (prop.startsWith('_')) {
       throw new Error("Access denied");
@@ -384,32 +384,32 @@ user = new Proxy(user, {
     }
   },
 *!*
-  ownKeys(target) { // to intercept property list
+  ownKeys(target) { // per intercettare lo scorrimento delle proprietà
 */!*
     return Object.keys(target).filter(key => !key.startsWith('_'));
   }
 });
 
-// "get" doesn't allow to read _password
+// "get" non consente di leggere _password
 try {
-  alert(user._password); // Error: Access denied
+  alert(user._password); // Errore: Access denied
 } catch(e) { alert(e.message); }
 
-// "set" doesn't allow to write _password
+// "set" non consente di scrivere _password
 try {
-  user._password = "test"; // Error: Access denied
+  user._password = "test"; // Errore: Access denied
 } catch(e) { alert(e.message); }
 
-// "deleteProperty" doesn't allow to delete _password
+// "deleteProperty" non consente di rimuovere _password
 try {
-  delete user._password; // Error: Access denied
+  delete user._password; // Errore: Access denied
 } catch(e) { alert(e.message); }
 
-// "ownKeys" filters out _password
+// "ownKeys" rimuove _password dal ciclo
 for(let key in user) alert(key); // name
 ```
 
-Please note the important detail in the `get` trap, in the line `(*)`:
+Da notare un dettaglio importante nella trappola `get`, nella riga `(*)`:
 
 ```js
 get(target, prop) {
@@ -421,15 +421,15 @@ get(target, prop) {
 }
 ```
 
-Why do we need a function to call `value.bind(target)`?
+Perché abbiamo bisogno di una funzione per invocare `value.bind(target)`?
 
-The reason is that object methods, such as `user.checkPassword()`, must be able to access `_password`:
+La motivazione è che i metodi dell'oggetto, come `user.checkPassword()`, devono essere in grado di accedere a `_password`:
 
 ```js
 user = {
   // ...
   checkPassword(value) {
-    // object method must be able to read _password
+    // i metodi dell'oggetto devono essere in grado di leggere _password
     return value === this._password;
   }
 }
