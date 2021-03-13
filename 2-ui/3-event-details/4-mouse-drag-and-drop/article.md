@@ -8,7 +8,7 @@ Questi eventi ci permettono di supportare tipi particolari di drag'n'drop, come 
 
 Ma gli eventi Drag Events hanno anche delle limitazioni. Ad esempio, non possiamo prevenire il trascinamento da una certa sezione.Inoltre non possiamo rendere il trascinamento solo "orizzontale" o "verticale". E ci sono tante altre azioni drag'n'drop che non è possibile sfruttare. Inoltre il supporto dei dispositivi mobile per questo tipo di eventi è abbastanza debole.
 
-Di conseguenza, vedremo come implemntara il Drag'n'Drop solo tramite l'utilizzo degli eventi del mouse.
+Di conseguenza, vedremo come implementare il Drag'n'Drop solo tramite l'utilizzo degli eventi del mouse.
 
 ## Algortimeo del Drag'n'Drop
 
