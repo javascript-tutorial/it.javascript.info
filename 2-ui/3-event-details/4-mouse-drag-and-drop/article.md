@@ -18,7 +18,7 @@ L'algoritmo di base del Drag'n'Drop è qualcosa del genere:
 2. Quindi al `mousemove` spostalo variando `left/top` con il `position:absolute`.
 3. Al `mouseup` - esegui tutte le azioni coinvolte per completare il drag'n'drop.
 
-Queste sono le basi. Dopo vedremo come gestire altre caratteristiche, come evidenziare gli altri elementi sottostanti mentre effettuiamo il trascoinamento su di essi.
+Queste sono le basi. Dopo vedremo come gestire altre caratteristiche, come evidenziare gli altri elementi sottostanti mentre effettuiamo il trascinamento su di essi.
 
 Ecco una implementazione del trascinamento di un pallone:
 
