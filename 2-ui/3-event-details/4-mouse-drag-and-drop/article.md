@@ -289,7 +289,7 @@ Abbiamo preso in considerazione un algoritmo base del Drag'n'Drop.
 I componenti chiave:
 
 1. Flusso degli eventi: `ball.mousedown` -> `document.mousemove` -> `ball.mouseup` (non dimenticare di eliminare il `ondragstart` nativo).
-2. All'inizio del trascinamento -- ricorda lo spostamento iniziale del puntatore rispetto all'elemento: `shiftX/shiftY` e mantenerlo durante il tutta la fase di trascinamento.
+2. All'inizio del trascinamento -- ricorda lo spostamento iniziale del puntatore rispetto all'elemento: `shiftX/shiftY` e mantenerlo durante tutta la fase di trascinamento.
 3. Rileva gli elementi droppable sotto il puntatore tramite `document.elementFromPoint`.
 
 Possiamo trarre molto da queste basi.
