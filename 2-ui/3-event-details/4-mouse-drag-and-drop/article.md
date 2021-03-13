@@ -235,7 +235,7 @@ ball.hidden = false;
 
 Nota bene: abbiamo bisogno di nascondere il pallone prima della chiamata `(*)`. Altrimenti otterremmo la palla a queste coordinate, dato che sarebbe questo l'elemento più in alto sotto il puntatore: `elemBelow=ball`. Quindi lo nascondiamo per mostrarlo nuovamente immediatamente dopo.
 
-Possiamo usare questo codice per sapere quale elemento stiamo "sorvolando" in ogni momento. E gestire il rilasciamento quando accade.
+Possiamo usare questo codice per sapere quale elemento stiamo "sorvolando" in ogni momento. E gestire il rilascio quando accade.
 
 Un codice esteso di `onMouseMove` per individuare gli elementi "droppable":
 
