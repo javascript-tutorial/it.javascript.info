@@ -215,7 +215,7 @@ Per esempio, sotto ci sono due elementi `<div>`, uno rosso sopra uno blu (lo cop
 
 Stessa cosa per un elemento draggable. Il pallone sta sempre sopra gli altri elementi, e quindi gli eventi vengono generati su di esso. Qualunque gestore assegnassimo agli elementi sotto, non funzionerebbero.
 
-Questo è il motivo per cui l'idea iniziale di impostare i gestori su dei potenziali droppables non funzionerebbero. Non verrebbero eseguiti.
+Questo è il motivo per cui l'idea iniziale di impostare i gestori su dei potenziali droppables non funziona. I gestori non verrebbero eseguiti.
 
 Come fare, quindi?
 
