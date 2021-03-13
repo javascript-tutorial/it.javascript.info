@@ -1,31 +1,31 @@
-# Node properties: type, tag and contents
+# Le proprietà del nodo: tipo, tag e contenuto
 
-Let's get a more in-depth look at DOM nodes.
+Diamo uno sguardo più approfondito ai nodi del DOM.
 
-In this chapter we'll see more into what they are and learn their most used properties.
+In questo capitolo vedremo meglio cosa sono e impareremo le loro proprietà più utilizzate.
 
-## DOM node classes
+## Le classi dei nodi del DOM
 
-Different DOM nodes may have different properties. For instance, an element node corresponding to tag `<a>` has link-related properties, and the one corresponding to `<input>` has input-related properties and so on. Text nodes are not the same as element nodes. But there are also common properties and methods between all of them, because all classes of DOM nodes form a single hierarchy.
+Nodi del DOM differenti possono avere proprietà differenti. Ad esempio, un nodo elemento corrispondente ad un tag `<a>` avrà proprietà tipiche dei link ed uno corrispondente al tag `<input>` avrà proprietà tipiche dei campi di testo e così via. I nodi di testo sono differenti dai nodi elemento, tuttavia condividono anche proprietà e metodi comuni a tutti loro perché tutte le classi dei nodi del DOM costituiscono un'unica gerarchia.
 
-Each DOM node belongs to the corresponding built-in class.
+Ogni nodo del DOM appartiene alla corrispondente classe integrata.
 
-The root of the hierarchy is [EventTarget](https://dom.spec.whatwg.org/#eventtarget), that is inherited by  [Node](http://dom.spec.whatwg.org/#interface-node), and other DOM nodes inherit from it.
+La classe base della gerarchia è [EventTarget](https://dom.spec.whatwg.org/#eventtarget), che è ereditata dalla classe [Node](http://dom.spec.whatwg.org/#interface-node) che, a sua volta, è ereditata dalle altre classi corrispondenti ai nodi del DOM.
 
-Here's the picture, explanations to follow:
+Qui lo schema, le spiegazioni a seguire:
 
 ![](dom-class-hierarchy.svg)
 
-The classes are:
+Le classi sono:
 
-- [EventTarget](https://dom.spec.whatwg.org/#eventtarget) -- is the root "abstract" class. Objects of that class are never created. It serves as a base, so that all DOM nodes support so-called "events", we'll study them later.
-- [Node](http://dom.spec.whatwg.org/#interface-node) -- is also an "abstract" class, serving as a base  for DOM nodes. It provides the core tree functionality: `parentNode`, `nextSibling`, `childNodes` and so on (they are getters). Objects of `Node` class are never created. But there are concrete node classes that inherit from it, namely: `Text` for text nodes, `Element` for element nodes and more exotic ones like `Comment` for comment nodes.
-- [Element](http://dom.spec.whatwg.org/#interface-element) -- is a base class for DOM elements. It provides element-level navigation like `nextElementSibling`, `children` and searching methods like `getElementsByTagName`, `querySelector`. A browser supports not only HTML, but also XML and SVG. The `Element` class serves as a base for more specific classes: `SVGElement`, `XMLElement` and `HTMLElement`.
-- [HTMLElement](https://html.spec.whatwg.org/multipage/dom.html#htmlelement) -- is finally the basic class for all HTML elements. It is inherited by concrete HTML elements:
-    - [HTMLInputElement](https://html.spec.whatwg.org/multipage/forms.html#htmlinputelement) -- the class for `<input>` elements,
-    - [HTMLBodyElement](https://html.spec.whatwg.org/multipage/semantics.html#htmlbodyelement) -- the class for `<body>` elements,
-    - [HTMLAnchorElement](https://html.spec.whatwg.org/multipage/semantics.html#htmlanchorelement) -- the class for `<a>` elements,
-    - ...and so on, each tag has its own class that may provide specific properties and methods.
+- [EventTarget](https://dom.spec.whatwg.org/#eventtarget) -- è la classe radice (root class) "astratta". Gli oggetti di questa classe non vengono mai creati. Serve solo come base, in questo modo tutti i nodi del DOM supportano i cosiddetti "eventi" che studieremo successivamente.
+- [Node](http://dom.spec.whatwg.org/#interface-node) -- anche questa è una classe "astratta" che serve da base per i nodi del DOM. Fornisce le funzionalità principali della struttura gerarchica: `parentNode`, `nextSibling`, `childNodes` e così via (si tratta di getters). Dalla classe `Node` non vengono mai creati oggetti, tuttavia da questa  ereditano classi corrispondenti a nodi concreti, nella fattispecie: `Text` per i nodi di testo, `Element` per i nodi elemento e quelli meno ricorrenti come `Comment` per i nodi commento.
+- [Element](http://dom.spec.whatwg.org/#interface-element) -- è la classe base per gli elementi del DOM. Fornisce le funzionalità di navigazione tra elementi come `nextElementSibling`, `children` ed i metodi di ricerca come `getElementsByTagName`, `querySelector`. Un browser non supporta solo HTML, ma anche XML e SVG. La classe `Element` serve da base per le classi più specifiche: `SVGElement`, `XMLElement` e `HTMLElement`.
+- [HTMLElement](https://html.spec.whatwg.org/multipage/dom.html#htmlelement) -- è, infine, la classe base per tutti gli elementi HTML. Essa è ereditata da elementi HTML concreti:
+    - [HTMLInputElement](https://html.spec.whatwg.org/multipage/forms.html#htmlinputelement) -- la classe per gli elementi `<input>`,
+    - [HTMLBodyElement](https://html.spec.whatwg.org/multipage/semantics.html#htmlbodyelement) -- la classe per gli elementi `<body>`,
+    - [HTMLAnchorElement](https://html.spec.whatwg.org/multipage/semantics.html#htmlanchorelement) -- la classe per gli elementi `<a>`,
+    - ...e così via, ogni tag ha una propria classe che espone proprietà e metodi specifici.
 
 So, the full set of properties and methods of a given node comes as the result of the inheritance.
 
