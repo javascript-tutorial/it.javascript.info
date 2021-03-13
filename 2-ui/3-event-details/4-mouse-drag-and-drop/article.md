@@ -20,7 +20,7 @@ L'algoritmo di base del Drag'n'Drop è qualcosa del genere:
 
 Queste sono le basi. Dopo vedremo come gestire altre caratteristiche, come evidenziare gli altri elementi sottostanti mentre effettuiamo il trascinamento su di essi.
 
-Ecco una implementazione del trascinamento di un pallone:
+Ecco un'implementazione del trascinamento di un pallone:
 
 ```js
 ball.onmousedown = function(event) { 
