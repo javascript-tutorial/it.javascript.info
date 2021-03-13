@@ -10,7 +10,7 @@ Ma gli eventi Drag Events hanno anche delle limitazioni. Ad esempio, non possiam
 
 Di conseguenza, vedremo come implementare il Drag'n'Drop solo tramite l'utilizzo degli eventi del mouse.
 
-## Algortimeo del Drag'n'Drop
+## Algortimo del Drag'n'Drop
 
 L'algoritmo di base del Drag'n'Drop è qualcosa del genere:
 
