@@ -100,7 +100,7 @@ ball.style.left = pageX - ball.offsetWidth / 2 + 'px';
 ball.style.top = pageY - ball.offsetHeight / 2 + 'px';
 ```
 
-Non male, ma c'è un effetto collaterale. Cominciando il drag'n'drop, potremmo cominciare `mousedown` da un punto qualunque del pallone. Ma se lo "prendessimo" dai bordi, si centrerebbe repentinamente sotto il puntatore facendo una specie di "salto".
+Non male, ma c'è un effetto collaterale. Per innescare il drag'n'drop, potremmo cominciare `mousedown` da un punto qualunque del pallone. Ma se lo "prendessimo" dai bordi, si centrerebbe repentinamente sotto il puntatore facendo una specie di "salto".
 
 Sarebbe meglio se mantenessimo lo spostamento iniziale dell'elemento rispetto al puntatore.
 
