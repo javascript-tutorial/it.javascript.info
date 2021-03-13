@@ -57,7 +57,7 @@ ball.onmousedown = function(event) {
 };
 ```
 
-Eseguendo il codice, noteremo qualcosa di anomalo. All'inizio del drag'n'drop, il pallone si "duplica": cominceremo trascinando il suo "clone".
+Eseguendo il codice, noteremo qualcosa di anomalo. All'inizio del drag'n'drop, il pallone si "duplica": abbiamo cominciato trascinando il suo "clone".
 
 ```online
 Ecco un esempio in azione:
