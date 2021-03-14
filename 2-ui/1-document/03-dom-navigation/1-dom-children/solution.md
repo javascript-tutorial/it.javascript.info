@@ -1,4 +1,4 @@
-There are many ways, for instance:
+E' possibile farlo in diversi modi, ad esempio:
 
 
 Il nodo DOM `<div>`:
