@@ -166,30 +166,30 @@ Adesso le frecce e il tasto cancella funzionano.
 
 ## Eredità
 
-Nel passato, c'era un evento `keypress`, ed anche le proprietà `keyCode`, `charCode`, `which` dell'oggetto evento.
+In passato, c'era un evento `keypress`, ed anche le proprietà `keyCode`, `charCode`, `which` dell'oggetto evento.
 
-C'erano tante di quelle incompatibilità tra i vari browser anche mentre ci stavano lavorando, che gli sviluppatori delle specifiche non avevano modo che deprecarli tutti e creare dei nuovi e moderni eventi (descritti sopra in questo capitolo). Il codice vecchio funziona ancora, da momento che i broweser continuano a supportarli, ma assolutamente non c'è nessuna ragione per continuare a farlo.
+C'erano tante di quelle incompatibilità tra i vari browser anche mentre ci stavano lavorando, che gli sviluppatori delle specifiche non avevano modo che deprecarli tutti e creare dei nuovi e moderni eventi (descritti sopra in questo capitolo). Il codice vecchio funziona ancora, da momento che i browser continuano a supportarli, ma assolutamente non c'è nessuna ragione per continuare a farlo.
 
 ## Tastiere dei dispositivi mobile
 
-Usando le tastiere virtuali dei dispositivi mobile, conosciute formalmente come IME (Input-Method Editor), the W3C standard states that a KeyboardEvent's [`e.keyCode` should be `229`](https://www.w3.org/TR/uievents/#determine-keydown-keyup-keyCode) and [`e.key` should be `"Unidentified"`](https://www.w3.org/TR/uievents-key/#key-attr-values).
+Usando le tastiere virtuali dei dispositivi mobile, conosciute formalmente come IME (Input-Method Editor), lo standard W3C ha stabilito che per quanto riguarda il KeyboardEvent il [`e.keyCode` dovrebbe essere `229`](https://www.w3.org/TR/uievents/#determine-keydown-keyup-keyCode) ed il [`e.key` dovrebbe essere `"Unidentified"`](https://www.w3.org/TR/uievents-key/#key-attr-values).
 
-While some of these keyboards might still use the right values for `e.key`, `e.code`, `e.keyCode`... when pressing certain keys such as arrows or backspace, there's no guarantee, so your keyboard logic might not always work on mobile devices.
+Mentre alcune di queste tastiere potrebbere usare il valore corretto per `e.key`, `e.code`, `e.keyCode`... premendo certi tasti come le frecce o lo barra spaziatrice, non vi sono garanzie, quindi la logica della tastiera pottrebbe non funzionare sui dispositvi mobile.
 
-## Summary
+## Riepilogo
 
-Pressing a key always generates a keyboard event, be it symbol keys or special keys like `key:Shift` or `key:Ctrl` and so on. The only exception is `key:Fn` key that sometimes presents on a laptop keyboard. There's no keyboard event for it, because it's often implemented on lower level than OS.
+La pressione di una tasto genera sempre un evento da tastiera, che sia un tasto simbolo o un tasto speciale come `key:Shift` oppure `key:Ctrl` e così via. L'unica eccezione è rappresentata dal tasto `key:Fn` che a volte è presente nelle tastiere dei portatili. Per questo tasto non ci sono eventi, perché spesso il funzionamento di questo tasto è implmentato a un livello più basso del sistema operativo.
 
-Keyboard events:
+Eventi da tastiera:
 
-- `keydown` -- on pressing the key (auto-repeats if the key is pressed for long),
-- `keyup` -- on releasing the key.
+- `keydown` premendo il tasto (auto-repeat se il tasto viene tenuto premuto a lungo),
+- `keyup` rilasciando il tasto.
 
-Main keyboard event properties:
+Le principali proprietà degli eventi da tastiera sono:
 
-- `code` -- the "key code" (`"KeyA"`, `"ArrowLeft"` and so on), specific to the physical location of the key on keyboard.
-- `key` -- the character (`"A"`, `"a"` and so on), for non-character keys, such as `key:Esc`, usually has the same value  as `code`.
+- `code` il "codice del tasto" (`"KeyA"`, `"ArrowLeft"` e così via), specifico della posizione fisica del tasto sulla tastiera.
+- `key` -- il carattere (`"A"`, `"a"` e così via), per tasti che non rappresentano caratteri, come `key:Esc`, solitamente ha lo stesso valore di `code`.
 
-In the past, keyboard events were sometimes used to track user input in form fields. That's not reliable, because the input can come from various sources. We have `input` and `change` events to handle any input (covered later in the chapter <info:events-change-input>). They trigger after any kind of input, including copy-pasting or speech recognition.
+In passato, gli eventi da tastiera erano talvolta usati per tenere traccia degli input dell'utente nei campi dei form, cosa non molto affidabile perché l'input può avvenire da varie fonti. Per gestire qualunque tipo di input abbiamo `input` e `change` (affrontati più avanti nel capitolo <info:events-change-input>). Vengono scaturiti dopo qualunque tipo di input, inclusi il copia-incolla o il riconoscimento vocale.
 
-We should use keyboard events when we really want keyboard. For example, to react on hotkeys or special keys.
+Dovremmo usare gli eventi da tastiera solamente quando vogliamo usare la tastiera. Ad esempio per scorciatoie o tasti speciali.
