@@ -39,7 +39,7 @@ Esso riceve proprietà e metodi per effetto della sovrapposizione di (elencate i
 - `Element` -- fornisce i metodi generici propri di un elemento,
 - `Node` -- fornisce i metodi generici propri di un nodo DOM,
 - `EventTarget` -- consente il supporto agli eventi (che tratteremo in seguito),
-- ...e, infine, esso eredita da `Object`, quindi saranno anche disponibili i metodi di un "oggetto semplice" come `hasOwnProperty`.
+- ...e, infine, esso eredita da `Object`, quindi saranno disponibili anche i metodi della classe Object come `hasOwnProperty`.
 
 Per conoscere il nome della classe di un nodo DOM, ricordiamoci che un oggetto ha solitamente la proprietà `constructor`. Questa si riferisce al costruttore della classe e il suo nome è `constructor.name`:
 
