@@ -79,7 +79,7 @@ Una delle cose assolutamente non supportate dagli eventi del mouse è il multi-t
 
 I Pointer Events permettono di gestire il multi-touch con l'aiuto delle proprietà `pointerId` e `isPrimary`.
 
-Ecco ciò che succede quando un utente tocca il touchscreen in punto, e successivamente poggia un altro dito in su qualche altro punto dello schermo:
+Ecco ciò che succede quando un utente tocca il touchscreen in punto, e successivamente poggia un altro dito su qualche altro punto dello schermo:
 
 1. Al primo tocco:
     - `pointerdown` con `isPrimary=true` con un determinato `pointerId`.
