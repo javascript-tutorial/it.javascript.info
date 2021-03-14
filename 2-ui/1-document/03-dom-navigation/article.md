@@ -323,7 +323,7 @@ Proprietà di navigazione aggiuntive, sono anche disponibili per i moduli HTML. 
 
 ## Riepilogo
 
-Dato un nodo DOM, possiamo puntare ai suoi vicini usando le proprietà di navigazione.
+Dato un nodo DOM, possiamo spostarci tra i suoi vicini usando le proprietà di navigazione.
 
 Ne esistono due tipi principali:
 
