@@ -97,7 +97,7 @@ Ecco una demo che tiene traccia degli eventi `pointerdown` e `pointerup`:
 
 [iframe src="multitouch" edit height=200]
 
-Nota bene: Per vedere la differenza dei valori di `pointerId/isPrimary` è necessario usare un dispositivo touch, ad esempi un telefono o un tablet. Per dispositivi a tocco singolo, come i mouse, ci sarà sempre lo stesso `pointerId` con `isPrimary=true`, per tutti gli eventi del puntatore.
+Nota bene: Per vedere la differenza dei valori di `pointerId/isPrimary` è necessario usare un dispositivo touch, ad esempio un telefono o un tablet. Per dispositivi a tocco singolo, come i mouse, ci sarà sempre lo stesso `pointerId` con `isPrimary=true`, per tutti gli eventi del puntatore.
 ```
 
 ## Evento: pointercancel
