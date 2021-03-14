@@ -117,7 +117,7 @@ L'esempio qui sotto mostra i figli di `document.body`:
 
 Da notare un particolare interessante. Se eseguiamo l'esempio, l'ultimo elemento mostrato è `<script>`. Di fatto l'ultimo elemento sarebbe "...altro...", ma al momento dell'esecuzione dello script esso non è ancora stato letto, quindi non viene visto.
 
-**Le proprietà `firstChild` e `lastChild` permettono un veloce accesso al primo ed all'ultimo figlio.**
+**Le proprietà `firstChild` e `lastChild` permettono un accesso più veloce al primo ed all'ultimo figlio.**
 
 Sono delle semplici scorciatoie. Se sono presenti dei nodi figlio, allora le seguenti espressioni sono sempre vere :
 ```js
