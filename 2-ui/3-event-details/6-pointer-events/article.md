@@ -235,7 +235,7 @@ Ci sono due eventi del puntatore associati:
 
 Gli eventi del puntatore permettono di gestire gli eventi del mouse, del touch e delle penne simultaneamente, con un'unica porzione di codice.
 
-Gli eventi del puntatore estendon gli eventi del mouse. Possiamo sostituire `mouse` con `pointer` nei nomi degli evenit ed aspettarci che il codice continui a funzionare per il mouse, con un supporto migliore per altri tipi di dispositivi.
+Gli eventi del puntatore estendono gli eventi del mouse. Possiamo sostituire `mouse` con `pointer` nei nomi degli eventi ed aspettarci che il codice continui a funzionare per il mouse, con un supporto migliore per altri tipi di dispositivi.
 
 Per i drag'n'drop ed interazioni touch complesse che il browser potrebbe decidere di dirottare sulla propria gestione, dobbiamo ricordarci di disabilitarne l'azione predifinita sugli eventi ed impostare sul CSS `touch-events: none`, per gli elementi che vogliamo coinvolgere.
 
