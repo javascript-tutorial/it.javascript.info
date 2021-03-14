@@ -245,4 +245,4 @@ Le abilità aggiuntive degli eventi del puntatore sono:
 - Proprietà specifiche per alcuni dispositivi, come `pressure`, `width/height`, ed altri.
 - Cattura del puntatore: possiamo reindirizzare tutti i puntatori evento su uno specifico elemento fino al verificarsi degli eventi `pointerup`/`pointercancel`.
 
-Ad oggi, gli eventi del puntore sono supportati da tutti i principali browser, quindi possiamo passare a questi, specialmente se IE10- e Safari 12- non sono necessari. Tuttavia, anche con questi browser, esistono i polyfill che abilitano il supporto degli eventi di tipo puntatore.
+Ad oggi, gli eventi del puntatore sono supportati da tutti i principali browser, quindi possiamo passare a questi, specialmente se IE10- e Safari 12- non sono necessari. Tuttavia, anche con questi browser, esistono i polyfill che abilitano il supporto degli eventi di tipo puntatore.
