@@ -12,7 +12,7 @@ Facciamo una breve panoramica, in modo da averne una visione generale del posto 
     
     Tuttavia i dispositivi touch hanno molte più potenzialità rispetto a quelle di un mouse. Ad esempio, con questi dispositivi, è possibile toccare contemporaneamente più punti dello schermo ("multi-touch"). A dispetto di ciò, gli eventi del mouse non hanno le proprietà necessarie per poterlo gestire.
 
-- Quindi vennero introdotti gli eventi touch, come `touchstart`, `touchend`, `touchmove`, che hanno delle proprietà apposite (non le affronteremo adesso in dettaglio, perché gli eventi del puntatore sono anche migliori).
+- Quindi vennero introdotti gli eventi touch, come `touchstart`, `touchend`, `touchmove`, che possiedono delle proprietà dedicate (non le affronteremo adesso in dettaglio, perché gli eventi del puntatore sono migliori).
 
     Tuttavia, questo non era ancora sufficiente, dal momento che ci sono tanti altri dispositivi, come le penne, che hanno le loro caratteristiche peculiari. Inoltre, scrivere del codice che rimane in ascolto per eventi touch e del mouse, era abbastanza scomodo.
 
