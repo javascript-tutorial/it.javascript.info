@@ -103,38 +103,38 @@ Se andiamo a controllare `event.code == 'KeyZ'` nel nostro codice, per gli utent
 
 Questo può sembrare strano,ma è così. Le [specifiche](https://www.w3.org/TR/uievents-code/#table-key-code-alphanumeric-writing-system) menzionano in modo esplicito questo comportamento.
 
-Quindi, `event.code` può corrispondere a un carattere errato da layout inaspettati. A parità di lettera, per layout differenti potrebbero essere mappati a tasti fisici differenti, portando a codici differenti. Fortunatamente, that happens only with several codes, e.g. `keyA`, `keyQ`, `keyZ` (as we've seen), and doesn't happen with special keys such as `Shift`. You can find the list in the [specification](https://www.w3.org/TR/uievents-code/#table-key-code-alphanumeric-writing-system).
+Quindi, `event.code` può corrispondere a un carattere errato da layout inaspettati. A parità di lettera, per layout differenti potrebbero essere mappati a tasti fisici differenti, portando a codici differenti. Fortunatamente, questo avviene solo con alcuni codici, ad esempio `keyA`, `keyQ`, `keyZ` (come abbiamo visto), e non avviene con i tasti speciali come `Shift`. Si può vedere la lista nelle [specifiche](https://www.w3.org/TR/uievents-code/#table-key-code-alphanumeric-writing-system).
 
-To reliably track layout-dependent characters, `event.key` may be a better way.
+Per il tracciamento affidabile di carattere dipendenti dal layout, `event.key` potrebbe essere la soluzione migliore.
 
-On the other hand, `event.code` has the benefit of staying always the same, bound to the physical key location, even if the visitor changes languages. So hotkeys that rely on it work well even in case of a language switch.
+D'altra parte, `event.code` ha il beneficio di essere sempre lo stesso, legato alla posizione fisica del tasto, anche se il visitatore dovesse modificare la lingua. Quindi le scorciatoie relative ad essi funzionano bene anche in caso di cambio lingua.
 
-Do we want to handle layout-dependant keys? Then `event.key` is the way to go.
+Vogliamo gestire dei tasti dipendenti dal layout? Allora `event.key` è la quello che fa per noi.
 
-Or we want a hotkey to work even after a language switch? Then `event.code` may be better.
+Oppure volgiamo una scorciatoia che funzioni anche al cambio lingua? Allora `event.code` potrebbe essere meglio.
 
 ## Auto-repeat
 
-If a key is being pressed for a long enough time, it starts to "auto-repeat": the `keydown` triggers again and again, and then when it's released we finally get `keyup`. So it's kind of normal to have many `keydown` and a single `keyup`.
+Se un tasto viene premuto abbastanza a lungo, comincia l'"auto-repeat": l'evento `keydown` viene scaturito ancora e ancora, e alla fine quando verrà rilasciato otterremo un evento `keyup`. Quindi è abbastanza normale avere molti `keydown` e un solo `keyup`.
 
-For events triggered by auto-repeat, the event object has `event.repeat` property set to `true`.
+Per eventi generati da auto-repeat, l'oggetto evento ha la proprietà `event.repeat` impostata a `true`.
 
 
-## Default actions
+## Azioni default
 
-Default actions vary, as there are many possible things that may be initiated by the keyboard.
+Le azioni di default possono variare, dal momento che sono tante le cose che possono essere iniziate con la tastiera.
 
-For instance:
+Per esempio:
 
-- A character appears on the screen (the most obvious outcome).
-- A character is deleted (`key:Delete` key).
-- The page is scrolled (`key:PageDown` key).
-- The browser opens the "Save Page" dialog (`key:Ctrl+S`)
--  ...and so on.
+- Compare un carattere sullo schermo (lo scenario più ovvio).
+- Viene cancellato un carattere (tasto `key:Delete`).
+- Si scrolla la pagina (tasto `key:PageDown`).
+- Il browser apre la finestra di dialogo "Sala la Pagina" (`key:Ctrl+S`)
+-  ...e così via.
 
-Preventing the default action on `keydown` can cancel most of them, with the exception of OS-based special keys. For instance, on Windows `key:Alt+F4` closes the current browser window. And there's no way to stop it by preventing the default action in JavaScript.
+Prevenire le azioni di default sul `keydown` può annullare la maggioranza di essere, con l'eccezione delle combinazioni di tasti del sistema operativo. Per esempio, su Windows `key:Alt+F4` chiude la finestra attuale del browser. E non c'è modo per prevenire questa azione predefinita tramite JavaScript.
 
-For instance, the `<input>` below expects a phone number, so it does not accept keys except digits, `+`, `()` or `-`:
+Per esempio, il seguene campo `<input>` si aspetta un numero di telefono, quindi nn accetta tasti che non siano numeri, `+`, `()` or `-`:
 
 ```html autorun height=60 run
 <script>
@@ -142,12 +142,12 @@ function checkPhoneKey(key) {
   return (key >= '0' && key <= '9') || key == '+' || key == '(' || key == ')' || key == '-';
 }
 </script>
-<input *!*onkeydown="return checkPhoneKey(event.key)"*/!* placeholder="Phone, please" type="tel">
+<input *!*onkeydown="return checkPhoneKey(event.key)"*/!* placeholder="Numero di telefono, per piacere" type="tel">
 ```
 
-Please note that special keys, such as `key:Backspace`, `key:Left`, `key:Right`, `key:Ctrl+V`, do not work in the input. That's a side-effect of the strict filter `checkPhoneKey`.
+È interessante notare che i tasti speciali, come `key:Backspace`, `key:Left`, `key:Right`, `key:Ctrl+V`, non funzionano nel campo input. Questo è un effetto collaterale delle restrizioni del filtro `checkPhoneKey`.
 
-Let's relax it a little bit:
+Facciamolo "rilassare" un attimo:
 
 
 ```html autorun height=60 run
@@ -160,19 +160,19 @@ function checkPhoneKey(key) {
 <input onkeydown="return checkPhoneKey(event.key)" placeholder="Phone, please" type="tel">
 ```
 
-Now arrows and deletion works well.
+Adesso le frecce e il tasto cancella funzionano.
 
-...But we still can enter anything by using a mouse and right-click + Paste. So the filter is not 100% reliable. We can just let it be like that, because most of time it works. Or an alternative approach would be to track the `input` event -- it triggers after any modification. There we can check the new value and highlight/modify it when it's invalid.
+...Ma possiamo ancora inserire qualunque valore usando il mouse e facendo tasto destro + Incolla. Quindi il filtro non è al 100% affidabile. Possiamo solo lasciarlo così, dato che funzionerà la maggior parte delle volte. O un approccio alternativo potrebbe essere quello di tenere traccia dell'evento `input`, che viene scaturito dopo ogni modifica. A quel punto, possiamo verificare il nuovo valore e evidenziarlo/modificarlo se non valido.
 
-## Legacy
+## Eredità
 
-In the past, there was a `keypress` event, and also `keyCode`, `charCode`, `which` properties of the event object.
+Nel passato, c'era un evento `keypress`, ed anche le proprietà `keyCode`, `charCode`, `which` dell'oggetto evento.
 
-There were so many browser incompatibilities while working with them, that developers of the specification had no way, other than deprecating all of them and creating new, modern events (described above in this chapter). The old code still works, as browsers keep supporting them, but there's totally no need to use those any more.
+C'erano tante di quelle incompatibilità tra i vari browser anche mentre ci stavano lavorando, che gli sviluppatori delle specifiche non avevano modo che deprecarli tutti e creare dei nuovi e moderni eventi (descritti sopra in questo capitolo). Il codice vecchio funziona ancora, da momento che i broweser continuano a supportarli, ma assolutamente non c'è nessuna ragione per continuare a farlo.
 
-## Mobile Keyboards
+## Tastiere dei dispositivi mobile
 
-When using virtual/mobile keyboards, formally known as IME (Input-Method Editor), the W3C standard states that a KeyboardEvent's [`e.keyCode` should be `229`](https://www.w3.org/TR/uievents/#determine-keydown-keyup-keyCode) and [`e.key` should be `"Unidentified"`](https://www.w3.org/TR/uievents-key/#key-attr-values).
+Usando le tastiere virtuali dei dispositivi mobile, conosciute formalmente come IME (Input-Method Editor), the W3C standard states that a KeyboardEvent's [`e.keyCode` should be `229`](https://www.w3.org/TR/uievents/#determine-keydown-keyup-keyCode) and [`e.key` should be `"Unidentified"`](https://www.w3.org/TR/uievents-key/#key-attr-values).
 
 While some of these keyboards might still use the right values for `e.key`, `e.code`, `e.keyCode`... when pressing certain keys such as arrows or backspace, there's no guarantee, so your keyboard logic might not always work on mobile devices.
 
