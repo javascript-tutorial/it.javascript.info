@@ -75,7 +75,7 @@ Queste proprietà non sono supportate dalla maggioranza dei dispositivi, per que
 
 ## Multi-touch
 
-Una delle cose assolutamente non supportate dagli eventi del mouse è il multi-touch: quando un utente può toccare lo schermo contemporaneamente in più punti sul telefono o tablet, o esegue gesti particolari.
+Una delle cose assolutamente non supportate dagli eventi del mouse è il multi-touch: un utente può toccare lo schermo contemporaneamente in più punti sul telefono o tablet, o eseguire gesti particolari.
 
 I Pointer Events permettono di gestire il multi-touch con l'aiuto delle proprietà `pointerId` e `isPrimary`.
 
