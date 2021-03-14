@@ -8,7 +8,7 @@ Facciamo una breve panoramica, in modo da averne una visione generale del posto 
 
 - Tanto tempo fa, lontano nel passato, c'erano solo gli eventi del mouse.
 
-    Ad un certo punto, si diffusero i dispositivi touch, in particolar modo telefoni e tablet. Per fare in modo che gli script esistenti potessero continuare a funzionare, questi generavano (e lo fanno ancora oggi) eventi del mouse. Ad esempio, un touchscreen al tocco, genera un `mousedown`. In questa maniera i nuovi dispositivi poterono funzionare correttamente, con le pagine web.
+    Ad un certo punto, iniziarono a diffondersi i dispositivi touch, in particolar modo telefoni e tablet. Per fare in modo che gli script esistenti potessero continuare a funzionare, questi generavano (e lo fanno ancora oggi) eventi del mouse. Ad esempio, un touchscreen al tocco, genera un `mousedown`. In questa maniera i nuovi dispositivi poterono funzionare correttamente con le pagine web.
     
     Tuttavia i dispositivi touch hanno molte più potenzialità rispetto a quelle di un mouse. Ad esempio, con questi dispositivi, è possibile toccare contemporaneamente più punti dello schermo ("multi-touch"). A dispetto di ciò, gli eventi del mouse non hanno le proprietà necessarie per poterlo gestire.
 
