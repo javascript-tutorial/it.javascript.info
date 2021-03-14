@@ -63,7 +63,7 @@ Gli eventi del puntatore hanno le stesse proprietà di quelli del mouse, come `c
     Possiamo usare questa proprietà per reagire differentemente discriminando i diversi tipi di puntatore.
 - `isPrimary` - assume il valore `true` per il puntatore principale (il primo dito nel multi-touch).
 
-Alcuni dispositivi di puntamento misurano l'area di contatto e la pressione, ad esempi, nel caso del dito sul touchscreen, esistono delle apposite proprietà aggiuntive:
+Alcuni dispositivi di puntamento misurano l'area di contatto e la pressione, ad esempio, nel caso del dito sul touchscreen, esistono delle apposite proprietà aggiuntive:
 
 - `width` - la larghezza dell'area dello schermo toccato dal puntatore (ad esempio un dito). Dove non supportato, il valore è sempre `1`, come nel caso del mouse. 
 - `height` - l'altezza dell'area dello schermo toccato dal puntatore. Dove non supportato è sempre `1`.
