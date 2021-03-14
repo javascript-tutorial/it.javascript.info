@@ -42,7 +42,7 @@ Il valore di `document.cookie` consiste nelle coppie `name=value`, delimitate da
 per trovare un cookie particolare, possiamo dividere document.cookie con `; `, e in seguito, trovare il nome corretto.
 Possiamo usare una regolare espressione o delle funzioni di matrice.
 
-Lasciamo il compito in questione al lettore come esercizio.Inoltre, alla fine del capitolo, troverai delle funzioni che ti aiuteranno a manipolare i cookies.
+Lasciamo il compito in questione al lettore come esercizio. Inoltre, alla fine del capitolo, troverai delle funzioni che ti aiuteranno a manipolare i cookies.
 
 ## Scrivere nel document.cookie
 
