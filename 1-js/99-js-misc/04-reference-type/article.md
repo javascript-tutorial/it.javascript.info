@@ -2,9 +2,9 @@
 # Il tipo Reference
 
 ```warn header="Caratteristica avanzata di linguaggio"
-Questo articolo tratta un'argomento avanzato, utile per capire alcuni casi limite.
+Questo articolo tratta un argomento avanzato, utile per capire meglio alcuni casi limite.
 
-Non è di fondamentale importanza. Molti sviluppatori esperti vivono bene senza esserne a conoscenza. Continua la lettura solamente se sei interessato a sapere come funziona le cose internamente.
+Non è di fondamentale importanza. Molti sviluppatori esperti vivono bene senza esserne a conoscenza. Continua la lettura solamente se sei interessato a sapere come funzionano le cose internamente.
 ```
 
 Un invocazione di un metodo valutata dinamicamente può perdere il `this`.
@@ -37,18 +37,18 @@ Questo invece funziona (object punto metodo):
 user.hi();
 ```
 
-Questoo no (valutazione del metodo):
+Questo no (valutazione del metodo):
 ```js
 (user.name == "John" ? user.hi : user.bye)(); // Errore!
 ```
 
-Perchè? Se vogliamo capire perchè ciò accade, dobbiamo addentrarci nei dettagli del funzionamento della chiamata `obj.method()`.
+Perché? Se vogliamo capire il motivo, dobbiamo addentrarci nei dettagli del funzionamento della chiamata `obj.method()`.
 
 ## Il tipo Reference spiegato
 
 Guardando da più vicino, possiamo notare due operazioni nell'istruzione `obj.method()`:
 
-1. Primo, il punto `'.'` accede alla proprietà `obj.method`.
+1. Primo, il punto `'.'` recupera la proprietà `obj.method`.
 2. Successivamente le parentesi `()` la eseguono.
 
 Quindi, come vengono passate le informazioni riguardo al `this` dalla prima alla seconda parte?
