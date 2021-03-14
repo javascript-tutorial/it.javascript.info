@@ -4,7 +4,7 @@ I Pointer events (da adesso in poi, eventi del puntatore) sono una maniera moder
 
 ## The brief history
 
-Facciamo una breve panoramica, in modo da comprendere la visione generale e il posto che occupano gli questi eventi, rispetto agli altri.
+Facciamo una breve panoramica, in modo da averne una visione generale del posto che occupano gli questi eventi, rispetto agli altri.
 
 - Tanto tempo fa, lontano nel passato, c'erano solo gli eventi del mouse.
 
