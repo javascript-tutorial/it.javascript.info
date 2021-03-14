@@ -169,7 +169,7 @@ Se prendiamo come riferimento `elem.childNodes`, ed aggiungiamo o rimuoviamo nod
 ````warn header="Non usare `for..in` per eseguire cicli sulle collections"
 Le collections sono iterabili usando `for..of`, ma a volte qualcuno prova ad usare `for..in`.
 
-Per favore non farlo. I cicli `for..in` iterano su tutte le proprietà enumerabili, e le collections possiedono alcune proprietà "extra", che vengono usare raramente, e che in genere non vorremmo ci fossero restituite dal ciclo:
+E' una pratica sconsigliata. I cicli `for..in` iterano su tutte le proprietà enumerabili, e le collections possiedono alcune proprietà "extra", che vengono usate raramente, e che in genere non vorremmo ci fossero restituite dal ciclo:
 
 ```html run
 <body>
