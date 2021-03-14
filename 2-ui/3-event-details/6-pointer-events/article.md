@@ -86,40 +86,40 @@ Ecco ciò che succede quando un utente tocca il touchscreen in punto, e successi
 2. Per il secondo dito e tutti gli altri (dando per assunto che il primo stia ancora toccando):
     - `pointerdown` con `isPrimary=false` con un `pointerId` diverso per ogni altro dito aggiuntivo.
 
-Nota bene: `pointerId` viene assegnato non al device, ma ad ogni dito coinvolto nel tocco. Se usassimo 5 dita simultaneamente, avremmo ben 5 eventi `pointerdown`, ognuno con le loro rispettive coordinate e `pointerId` differenti.
+Nota bene: `pointerId` viene assegnato ad ogni dito coinvolto nell'operazione e non al device. Se usassimo 5 dita simultaneamente, avremmo ben 5 eventi `pointerdown`, ognuno con le loro rispettive coordinate e `pointerId`.
 
 Gli eventi associati al primo dito hanno sempre la proprietà `isPrimary=true`.
 
-Possiamo tenere traccia delle dita multiple usando i `pointerId` corrispondenti. Quando l'utente sposta e rimuove un dito, otteniamo gli eventi `pointermove` e `pointerup` aventi lo stesso `pointerId` ottenuto con l'evento `pointerdown`.
+Possiamo tenere traccia delle dita usando i `pointerId` corrispondenti. Quando l'utente sposta e rimuove un dito, otteniamo gli eventi `pointermove` e `pointerup` aventi lo stesso `pointerId` ottenuto con l'evento `pointerdown`.
 
 ```online
 Ecco una demo che tiene traccia degli eventi `pointerdown` e `pointerup`:
 
 [iframe src="multitouch" edit height=200]
 
-Nota bene: Per vedere la differenza nei `pointerId/isPrimary` è necessario usare un dispositivo touch, come un telefono o un tablet. Per dispositivi a tocco singolo, tipo i mouse, ci sarà sempre lo stesso `pointerId` con `isPrimary=true`, per tutti gli eventi del puntatore.
+Nota bene: Per vedere la differenza dei valori di `pointerId/isPrimary` è necessario usare un dispositivo touch, ad esempi un telefono o un tablet. Per dispositivi a tocco singolo, come i mouse, ci sarà sempre lo stesso `pointerId` con `isPrimary=true`, per tutti gli eventi del puntatore.
 ```
 
 ## Evento: pointercancel
 
-L'evento `pointercancel` si genera se, nel bel mezzo di una interazione, avviene qualcosa che ne causa la cancellazione,tale che non venga generato nessun evento del puntatore.
+L'evento `pointercancel` si genera se nel bel mezzo di una interazione, avviene qualcosa che ne causa la cancellazione, tale che non venga generato nessun evento del puntatore.
 
 Le cause possono essere: 
 - Il dispositivo di puntamento è stato fisicamene disabilitato.
 - È cambiato l'orientamento del dispositivo (tablet ruotato). 
 - Il browser ha deciso di gestire l'interazione da sè, considerandola un gesto del mouse, oppure un'azione zoom-and-pan o altro.
 
-Dimostreremo l'evento `pointercancel` con un esempio reale per vedere cosa e come ci influenza.
+Ecco un caso reale di evento `pointercancel` per vedere cosa e come ci influenza.
 
-Mettiamo il caso che stiamo implementando il drag'n'drop per un pallone, proprio come all'inizio dell'articolo <info:mouse-drag-and-drop>.
+Mettiamo il caso che stiamo implementando il drag'n'drop per un pallone, proprio come fatto all'inizio dell'articolo <info:mouse-drag-and-drop>.
 
 Ecco il flusso delle azioni dell'utente e gli eventi corrispondenti:
 
-1) L'utente preme su una immagine, per iniziare il trascinamento
+1) L'utente preme su un'immagine, per iniziare il trascinamento
     - viene generato l'evento `pointerdown`
-2) Quindi, comincia a spostare il puntatore (spostando così l'immagine)
+2) Quindi comincia a spostare il puntatore (spostando così l'immagine)
     - viene generato l'evento `pointermove`, magari più volte
-3) A quel punto ecco la sorpresa! Il browser ha il supporto nativo al drag'n'drop per le immagini, che subentra scalpitando e prende il sopravvento nel processo del drag'n'drop, generando così l'evento `pointercancel`.
+3) A quel punto ecco la sorpresa! Il browser avendo il supporto nativo al drag'n'drop per le immagini, subentra nell'azione, prendendo il sopravvento nel processo di drag'n'drop, generando così l'evento `pointercancel`.
     - Il browser ora gestisce il drag'n'drop dell'immagine autonomamente. L'utente può anche trascinare l'immagine del pallone fuori dal browser, dentro il programma delle Mail o su un File Manager.
     - Niente più eventi `pointermove` per noi.
 
@@ -142,9 +142,9 @@ Vorremmo implementare il drag'n'drop da noi, quindi diremo al browser di non pre
     - Funziona bene per gli eventi del mouse.
 2. Per i dispositivi touch, ci sono altre azioni del browser relative (oltre al drag'n'drop). Per evitare problemi anche con questi:
     - Prevenirli impostando `#ball { touch-action: none }` nel CSS. 
-    - In questa maniera il nostro codice comincerà a funzionare anche nei dispositivi touch.
+    - In questa maniera il nostro codice comincerà a funzionare anche sui dispositivi touch.
 
-Fatto ciò, gli eventi funzioneranno come previsto, ed il browser non prenderà il controllo del processo e non emetterà il `pointercancel`.
+Fatto ciò, gli eventi funzioneranno come previsto, ed il browser non prenderà il controllo del processo e non verrà emesso l'evento `pointercancel`.
 
 ```online
 Questa demo aggiunge queste righe:
@@ -154,13 +154,13 @@ Questa demo aggiunge queste righe:
 Come si può notare, non c'è più nessun evento `pointercancel`.
 ```
 
-Ora possiamo aggiungere il codice per spostare il pallone, ed il nostro drag'n'drop funzionerà per i mouse ed i dispositivi touch.
+Ora possiamo aggiungere il codice per spostare il pallone, ed il nostro drag'n'drop funzionerà sia con i mouse che con i dispositivi touch.
 
 ## Cattura del puntatore
 
 La cattura del puntatore è una peculiarità degli eventi del puntatore.
 
-L'idea è molto semplice, anche se, all'inizio, può risultare un po' stramba, dal momento che non esiste nulla del genere per nessun'altra tipologia di evento.
+L'idea è molto semplice, anche se all'inizio può risultare un po' stramba, dal momento che non esiste nulla del genere per nessun'altra tipologia di evento.
 
 Il metodo principale è:
 - `elem.setPointerCapture(pointerId)` - esegue il binding degli eventi con un certo `pointerId` a `elem`. Dopo la chiamata tutti gli eventi puntatore con il medesimo `pointerId` avranno `elem` come target (come se fossero avvenuti su `elem`), non importa dove sia realmente accaduto nel documento.
@@ -174,14 +174,14 @@ Il binding viene rimosso:
 
 **La cattura del puntatore può essere usata per semplificare delle tipologie di interazioni di drag'n'drop.**
 
-Per fare un esempio, riprendiamo l'esempio di come poter implementare uno cursore/slider personalizzato, come descritto nella sezione <info:mouse-drag-and-drop>.
+Per fare un esempio, riprendiamo l'implementazione del cursore/slider personalizzato, come descritto nella sezione <info:mouse-drag-and-drop>.
 
 Creiamo un elemento con la striscia ed il "cursore" (`thumb`) all'interno.
 
 Funziona in questa maniera:
 
 1. L'utente preme sul cursore `thumb`, e viene generato `pointerdown`.
-2. Quindi, sposta il il puntatore, generando un evento `pointermove`, dopodiché sposterà `thumb` lungo la striscia.
+2. Quindi sposta il il puntatore, generando un evento `pointermove`, dopodiché sposterà `thumb` lungo la striscia.
     - ...Spostando il puntatore, potrebbe lasciare il `thumb` dello slider: andando sopra o sotto di esso. L'elemento `thumb` si può muovere solo in orizzontale, rimanendo però allineato verticalmente con il puntatore.
 
 Quindi, per tenere traccia di tutti i movimenti del puntatore, incluso quando va sopra o sotto il `thumb`, abbiamo dovuto assegnare il gestore evento `pointermove` all'intero `document`.
@@ -192,7 +192,7 @@ La cattura del puntatore fornisce il mezzo per effettuare il binding di `pointer
 
 - Possiamo chiamare `thumb.setPointerCapture(event.pointerId)` nel gestore `pointerdown`,
 - A quel punto i successivi eventi fino al `pointerup/cancel` verranno reindirizzati a `thumb`. 
-- Al verificaris dell'evento `pointerup` (trascinamento completato), il binding viene rimosso automaticamente, e non abbiamo bisogno di curarcene.
+- Al verificarsi dell'evento `pointerup` (trascinamento completato), il binding viene rimosso automaticamente, e non abbiamo bisogno di curarcene.
 
 Così, anche se l'utente sposta il cursore attorno a tutto il documento, i gestori evento verranno chiamati su `thumb`. Oltretutto, le coordinate degli oggetti evento, come `clientX/clientY` saranno ancora corrette, perché la cattura influenza solamente `target/currentTarget`.
 
@@ -221,7 +221,7 @@ La demo completa:
 ```
 
 In fin dei conti, la cattura del puntatore ci dà due benefici:
-1. Il codice diventa più pulito dal momento che non dobbiamo bisogno di aggiungere/rimuovere gestori sull'intero `document`. Il binding viene rimosso automaticamente.
+1. Il codice diventa più pulito, dal momento che non dobbiamo bisogno di aggiungere/rimuovere gestori sull'intero `document`. Il binding viene rimosso automaticamente.
 2. Nel caso vi fossero altri gestori `pointermove` nel documento, non verrebbero innescati dal puntatore mentre l'utente è intento a trascinare il curosore.
 
 ### Eventi di cattura del puntatore
