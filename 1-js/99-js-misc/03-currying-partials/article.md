@@ -5,13 +5,13 @@ libs:
 
 # Currying
 
-Il [currying](https://en.wikipedia.org/wiki/Currying) è una tecnica avanzata che si applica durante lo sviluppo di funzioni. Non viene utilizzata solamente in JavaScript, ma anche in altri linguaggi di programmazione.
+Il [currying](https://en.wikipedia.org/wiki/Currying) è una tecnica avanzata che si applica alle funzioni. Non viene utilizzata solamente in JavaScript, ma anche in altri linguaggi di programmazione.
 
-Il currying è una trasformazione delle funzioni, in cui si traduce una funzione invocabile come `f(a, b, c)` in una invocabile come `f(a)(b)(c)`.
+Il currying è una trasformazione che traduce una funzione invocabile come `f(a, b, c)` in una invocabile come `f(a)(b)(c)`.
 
 Il currying non invoca la funzione. Si occupa solamente della sua trasformazione.
 
-Come prima cosa vediamo un esempio, in modo da capire di cosa stiamo parlando, e le sue applicazioni nella pratica.
+Come prima cosa vediamo un esempio, in modo da capire di cosa stiamo parlando, e le applicazioni nella pratica.
 
 Creeremo una funzione di supporto `curry(f)` che esegue il currying per una funzione a due argomenti `f`. In altre parole, `curry(f)`, trasformerà `f(a, b)` in una funzione invocabile come `f(a)(b)`:
 
@@ -59,7 +59,7 @@ alert( curriedSum(1)(2) ); // 3, invocata parzialmente
 
 Per poterne comprendere i benefici abbiamo bisogno di un esempio di applicazione reale.
 
-Ad esempio, abbiamo una funzione di logging `log(date, importance, message)` che formatta e ritorna le informazioni. In un progetto reale una funzione del genere ha diverse funzionalità utili, come l'invio di log in rete, qui useremo semplicemente un `alert`:
+Ad esempio, abbiamo una funzione di logging `log(date, importance, message)` che formatta e ritorna le informazioni. In un progetto reale, una funzione del genere ha diverse funzionalità utili, come l'invio di log in rete, qui useremo semplicemente un `alert`:
 
 ```js
 function log(date, importance, message) {
@@ -85,7 +85,7 @@ log(new Date(), "DEBUG", "some debug"); // log(a, b, c)
 log(new Date())("DEBUG")("some debug"); // log(a)(b)(c)
 ```
 
-Ora possiamo creare una funzione utile per i logs attuali:
+Ora possiamo creare una funzione utile per registrare i logs:
 
 ```js
 // logNow sarà la versione parziale di log con il primo argomento fisso
@@ -97,7 +97,7 @@ logNow("INFO", "message"); // [HH:mm] INFO message
 
 Ora `logNow` equivale a `log` con il primo argomento fissato, in altre parole, una "funzione applicata parzialmente" o "parziale" (più breve).
 
-Possiamo anche andare oltre, e creare una funzione utile per i logs di debug attuali:
+Possiamo anche andare oltre, e creare una funzione utile per registrare i logs di debug:
 
 ```js
 let debugNow = logNow("DEBUG");
@@ -111,7 +111,7 @@ Quindi:
 
 ## Implementazione avanzata del currying
 
-Nel caso in cui vogliate entrare più nel dettaglio, di seguito vediamo un'implementazione "avanzata" del currying per funzioni con più  argomenti che avremmo potuto usare sopra.
+Nel caso in cui vogliate entrare più nel dettaglio, di seguito vediamo un'implementazione "avanzata" del currying per funzioni con più argomenti, che avremmo anche potuto usare sopra.
 
 E' piuttosto breve:
 
@@ -147,7 +147,7 @@ alert( curriedSum(1)(2)(3) ); // 6, currying completo
 
 La funzione `curry` può sembrare complicata, ma in realtà è piuttosto semplice da capire.
 
-Il risultato dell'invocazione `curry(func)` è il wrapper `curried` (che ha subito il processo di curryiong), ed appare in questo modo:
+Il risultato dell'invocazione `curry(func)` è il wrapper `curried` (che ha subito il processo di currying), ed appare in questo modo:
 
 ```js
 // func è la funzionie trasformata
@@ -165,9 +165,9 @@ function curried(...args) {
 Quando la eseguiamo, ci sono due percorsi di esecuzione `if`:
 
 1. Se il numero di `args` forniti è uguale o maggiore rispetto a quelli che la funzione originale ha nella sua definizione (`func.length`), allora gli giriamo semplicemente l'invocazione utilizzando `func.apply`. 
-2. Altrimenti, otterremo un parziale: non invochiamo ancora `func`. Invece, un altro wrapper viene ritornato, che riapplicherà il `curried` fornendo gli argomenti precedenti insieme a quelli nuovi. 
+2. Altrimenti, otterremo un parziale: non invochiamo ancora `func`. Invece, viene ritornato un altro wrapper, che riapplicherà il `curried` passando gli argomenti precedenti insieme a quelli nuovi. 
 
-Successivamente, se la invochiamo, di nuovo avremmo o una nuova funzione parziale (se non vengono forniti abbastanza argomenti) oppure otteremo il risultato.
+Quindi, se la invochiamo, di nuovo, avremo o una nuova funzione parziale (se non vengono forniti abbastanza argomenti) oppure otterremo il risultato.
 
 ```smart header="Solo funzioni di lunghezza fissa"
 Il currying richiede che la funzione abbia un numero fissato di argomenti.
@@ -183,6 +183,6 @@ Ma la maggiora parte delle implementazioni in JavaScript sono più avanzate di c
 
 ## Riepilogo
 
-Il *currying* è una trasformazione che rende `f(a,b,c)` invocabile come `f(a)(b)(c)`. Le implementazioni in JavaScript, solitamente, mantengono entrambe le varianti, sia quella normale che quella parziale, se invoca con un numero di argomenti non sufficienti.
+Il *currying* è una trasformazione che rende `f(a,b,c)` invocabile come `f(a)(b)(c)`. Le implementazioni in JavaScript, solitamente, mantengono entrambe le varianti, sia quella normale che quella parziale, se il numero di argomenti non è sufficiente.
 
 Il currying permette di ottenere delle funzioni parziali molto semplicemente. Come abbiamo visto nell'esempio del logging, dopo il currying la funzione universale a tre argomenti `log(date, importance, message)` ci fornisce una funzione parziale quando invocata con un solo argomento (come `log(date)`) o due argomenti (come `log(date, importance)`).  
