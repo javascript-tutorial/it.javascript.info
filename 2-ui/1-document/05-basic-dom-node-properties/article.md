@@ -6,7 +6,7 @@ In questo capitolo vedremo meglio cosa sono e impareremo le loro proprietà più
 
 ## Le classi dei nodi del DOM
 
-Nodi del DOM differenti possono avere proprietà differenti. Ad esempio, un nodo elemento corrispondente ad un tag `<a>` avrà proprietà tipiche dei link ed uno corrispondente al tag `<input>` avrà proprietà tipiche dei campi di testo e così via. I nodi di testo sono differenti dai nodi elemento, tuttavia condividono anche proprietà e metodi comuni a tutti loro perché tutte le classi dei nodi del DOM costituiscono un'unica gerarchia.
+Nodi del DOM differenti possono avere proprietà differenti. Ad esempio, un nodo elemento corrispondente ad un tag `<a>` avrà proprietà tipiche dei link ed un nodo corrispondente al tag `<input>` avrà proprietà tipiche dei campi di testo e così via. I nodi di testo sono differenti dai nodi elemento, tuttavia condividono anche proprietà e metodi comuni a tutti perché tutte le classi dei nodi del DOM costituiscono un'unica gerarchia.
 
 Ogni nodo del DOM appartiene alla corrispondente classe integrata.
 
@@ -27,18 +27,19 @@ Le classi sono:
     - [HTMLAnchorElement](https://html.spec.whatwg.org/multipage/semantics.html#htmlanchorelement) -- la classe per gli elementi `<a>`,
     - ...e così via, ogni tag ha una propria classe che espone proprietà e metodi specifici.
 
-So, the full set of properties and methods of a given node comes as the result of the inheritance.
+In definitiva, la lista completa delle proprietà e dei metodi di un nodo è il risultato dell'ereditarietà.
 
-For example, let's consider the DOM object for an `<input>` element. It belongs to [HTMLInputElement](https://html.spec.whatwg.org/multipage/forms.html#htmlinputelement) class.
+Si consideri, ad esempio, l'oggetto DOM per un elemento `<input>` che appartiene alla classe [HTMLInputElement](https://html.spec.whatwg.org/multipage/forms.html#htmlinputelement).
 
-It gets properties and methods as a superposition of (listed in inheritance order):
+Esso riceve proprietà e metodi per effetto della sovrapposizione di (elencate in ordine di ereditarietà):
 
-- `HTMLInputElement` -- this class provides input-specific properties,
-- `HTMLElement` -- it provides common HTML element methods (and getters/setters),
-- `Element` -- provides generic element methods,
-- `Node` -- provides common DOM node properties,
-- `EventTarget` -- gives the support for events (to be covered),
-- ...and finally it inherits from `Object`, so "plain object" methods like `hasOwnProperty` are also available.
+
+- `HTMLInputElement` -- questa classe fornisce le proprietà specifiche per un campo di testo,
+- `HTMLElement` -- espone i metodi (e i getters/setters) comuni agli elementi HTML,
+- `Element` -- fornisce i metodi generici propri di un elemento,
+- `Node` -- fornisce i metodi generici propri di un nodo DOM,
+- `EventTarget` -- consente il supporto agli eventi (che tratteremo in seguito),
+- ...e, infine, esso eredita da `Object`, quindi saranno anche disponibili i metodi di un "oggetto semplice" come `hasOwnProperty`.
 
 To see the DOM node class name, we can recall that an object usually has the `constructor` property. It references the class constructor, and `constructor.name` is its name:
 
