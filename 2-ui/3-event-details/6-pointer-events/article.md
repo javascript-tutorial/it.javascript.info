@@ -71,7 +71,7 @@ Alcuni dispositivi di puntamento misurano l'area di contatto e la pressione, ad 
 - `tangentialPressure` - la pressione tangenziale normalizzata.
 - `tiltX`, `tiltY`, `twist` - proprietà specifiche delle penne che descrivono come la penna è posizionata rispetto alla superficie dello schermo.
 
-Queste proprietà non sono supportate dalla maggioranza dei dispositivi, quindi sono usate raramente. In caso di necessità potete trovarne i dettagli nelle [specifiche](https://w3c.github.io/pointerevents/#pointerevent-interface).
+Queste proprietà non sono supportate dalla maggioranza dei dispositivi, per questo vengono usate raramente. In caso di necessità potete trovarne i dettagli nelle [specifiche](https://w3c.github.io/pointerevents/#pointerevent-interface).
 
 ## Multi-touch
 
