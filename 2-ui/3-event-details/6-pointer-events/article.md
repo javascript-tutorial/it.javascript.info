@@ -105,7 +105,7 @@ Nota bene: Per vedere la differenza dei valori di `pointerId/isPrimary` è neces
 L'evento `pointercancel` si genera se nel bel mezzo di una interazione, avviene qualcosa che ne causa la cancellazione, tale che non venga generato nessun evento del puntatore.
 
 Le cause possono essere: 
-- Il dispositivo di puntamento è stato fisicamene disabilitato.
+- Il dispositivo di puntamento è stato fisicamente disabilitato.
 - È cambiato l'orientamento del dispositivo (tablet ruotato). 
 - Il browser ha deciso di gestire l'interazione da sè, considerandola un gesto del mouse, oppure un'azione zoom-and-pan o altro.
 
