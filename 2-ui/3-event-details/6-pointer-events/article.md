@@ -194,7 +194,7 @@ La cattura del puntatore fornisce il mezzo per effettuare il binding di `pointer
 - A quel punto i successivi eventi fino al `pointerup/cancel` verranno reindirizzati a `thumb`. 
 - Al verificarsi dell'evento `pointerup` (trascinamento completato), il binding viene rimosso automaticamente, e non abbiamo bisogno di curarcene.
 
-Così, anche se l'utente sposta il cursore attorno a tutto il documento, i gestori evento verranno chiamati su `thumb`. Oltretutto, le coordinate degli oggetti evento, come `clientX/clientY` saranno ancora corrette, perché la cattura influenza solamente `target/currentTarget`.
+Così, anche se l'utente sposta il cursore in un qualsiasi punto della pagina, i gestori evento verranno chiamati su `thumb`. Oltretutto, le coordinate degli oggetti evento, come `clientX/clientY` saranno ancora corrette, perché la cattura influenza solamente `target/currentTarget`.
 
 Ecco il codice essenziale:
 
