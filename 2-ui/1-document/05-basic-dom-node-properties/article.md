@@ -29,7 +29,7 @@ Le classi sono:
 
 In definitiva, la lista completa delle proprietà e dei metodi di un nodo è il risultato dell'ereditarietà.
 
-Si consideri, ad esempio, l'oggetto DOM per un elemento `<input>` che appartiene alla classe [HTMLInputElement](https://html.spec.whatwg.org/multipage/forms.html#htmlinputelement).
+Consideriamo, ad esempio, l'oggetto DOM per un elemento `<input>` che appartiene alla classe [HTMLInputElement](https://html.spec.whatwg.org/multipage/forms.html#htmlinputelement).
 
 Esso riceve proprietà e metodi per effetto della sovrapposizione di (elencate in ordine di ereditarietà):
 
@@ -41,19 +41,19 @@ Esso riceve proprietà e metodi per effetto della sovrapposizione di (elencate i
 - `EventTarget` -- consente il supporto agli eventi (che tratteremo in seguito),
 - ...e, infine, esso eredita da `Object`, quindi saranno anche disponibili i metodi di un "oggetto semplice" come `hasOwnProperty`.
 
-To see the DOM node class name, we can recall that an object usually has the `constructor` property. It references the class constructor, and `constructor.name` is its name:
+Per conoscere il nome della classe di un nodo DOM, ricordiamoci che un oggetto ha solitamente la proprietà `constructor`. Questa si riferisce al costruttore della classe e il suo nome è `constructor.name`:
 
 ```js run
 alert( document.body.constructor.name ); // HTMLBodyElement
 ```
 
-...Or we can just `toString` it:
+...O possiamo semplicemente eseguire il metodo `toString`:
 
 ```js run
 alert( document.body ); // [object HTMLBodyElement]
 ```
 
-We also can use `instanceof` to check the inheritance:
+Possiamo inoltre usare `instanceof` per verificare l'ereditarietà:
 
 ```js run
 alert( document.body instanceof HTMLBodyElement ); // true
@@ -63,38 +63,38 @@ alert( document.body instanceof Node ); // true
 alert( document.body instanceof EventTarget ); // true
 ```
 
-As we can see, DOM nodes are regular JavaScript objects. They use prototype-based classes for inheritance.
+Come possiamo notare i nodi DOM sono regolari oggetti JavaScript ed usano classi basate sui prototipi per l'ereditarietà.
 
-That's also easy to see by outputting an element with `console.dir(elem)` in a browser. There in the console you can see `HTMLElement.prototype`, `Element.prototype` and so on.
+Questo è anche facile da osservare esaminando un elemento in un browser con `console.dir(elem)`. Nella console potremo vedere `HTMLElement.prototype`, `Element.prototype` e così via.
 
 ```smart header="`console.dir(elem)` versus `console.log(elem)`"
-Most browsers support two commands in their developer tools: `console.log` and `console.dir`. They output their arguments to the console. For JavaScript objects these commands usually do the same.
+La maggior parte dei browser supportano due comandi nei loro strumenti di sviluppo: `console.log` e `console.dir` che mostrano in console i loro argomenti. Per quanto riguarda gli oggetti JavaScript solitamente questi comandi funzionano allo stesso modo.
 
-But for DOM elements they are different:
+Ma per gli elementi DOM sono differenti:
 
-- `console.log(elem)` shows the element DOM tree.
-- `console.dir(elem)` shows the element as a DOM object, good to explore its properties.
+- `console.log(elem)` mostra l'alberatura DOM dell'elemento.
+- `console.dir(elem)` mostra l'elemento come oggetto DOM, ottimo per esplorarne le proprietà.
 
-Try it on `document.body`.
+Provatelo con `document.body`.
 ```
 
-````smart header="IDL in the spec"
-In the specification, DOM classes aren't described by using JavaScript, but a special [Interface description language](https://en.wikipedia.org/wiki/Interface_description_language) (IDL), that is usually easy to understand.
+````smart header="L'IDL della specifica"
+Nella specifica, le classi DOM non sono descritte con JavaScript, ma con uno speciale [Interface description language](https://en.wikipedia.org/wiki/Interface_description_language) (IDL), che di solito è facile da capire.
 
-In IDL all properties are prepended with their types. For instance, `DOMString`, `boolean` and so on.
+Nell'IDL tutte le proprietà sono precedute dai rispettivi tipi. Per esempio `DOMString`, `boolean` e così via.
 
-Here's an excerpt from it, with comments:
+Eccone un estratto, con commenti:
 
 ```js
-// Define HTMLInputElement
+// Definisce HTMLInputElement
 *!*
-// The colon ":" means that HTMLInputElement inherits from HTMLElement
+// I due punti ":" significano che HTMLInputElement eredita da HTMLElement
 */!*
 interface HTMLInputElement: HTMLElement {
-  // here go properties and methods of <input> elements
+  // seguono le proprietà ed i metodi degli elementi <input>
 
 *!*
-  // "DOMString" means that the value of a property is a string
+  // "DOMString" significa che il valore di una proprietà è una stringa
 */!*
   attribute DOMString accept;
   attribute DOMString alt;
@@ -102,12 +102,12 @@ interface HTMLInputElement: HTMLElement {
   attribute DOMString value;
 
 *!*
-  // boolean value property (true/false)
+  // proprietà con valore booleano (true/false)
   attribute boolean autofocus;
 */!*
   ...
 *!*
-  // now the method: "void" means that the method returns no value
+  // ora un metodo: "void" significa che il metodo non restituisce alcun valore
 */!*
   void select();
   ...
@@ -115,7 +115,7 @@ interface HTMLInputElement: HTMLElement {
 ```
 ````
 
-## The "nodeType" property
+## La proprietà "nodeType"
 
 The `nodeType` property provides one more, "old-fashioned" way to get the "type" of a DOM node.
 
