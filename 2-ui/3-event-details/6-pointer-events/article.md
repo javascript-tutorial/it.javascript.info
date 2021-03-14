@@ -222,7 +222,7 @@ La demo completa:
 
 In fin dei conti, la cattura del puntatore ci dà due benefici:
 1. Il codice diventa più pulito, dal momento che non dobbiamo bisogno di aggiungere/rimuovere gestori sull'intero `document`. Il binding viene rimosso automaticamente.
-2. Nel caso vi fossero altri gestori `pointermove` nel documento, non verrebbero innescati dal puntatore mentre l'utente è intento a trascinare il curosore.
+2. Nel caso vi fossero altri gestori `pointermove` nel documento, non verrebbero innescati dal puntatore mentre l'utente è intento a trascinare il cursore.
 
 ### Eventi di cattura del puntatore
 
