@@ -1,33 +1,33 @@
 
-# Accessing array[-1]
+# Accesso ad un array[-1]
 
-In some programming languages, we can access array elements using negative indexes, counted from the end.
+In alcuni linguaggi di programmazione, possiamo accedere agli elementi dell'array utilizzando indici negativi, che iniziano il conteggio dalla coda dell'array.
 
-Like this:
+Come nell'esempio:
 
 ```js
 let array = [1, 2, 3];
 
-array[-1]; // 3, the last element
-array[-2]; // 2, one step from the end
-array[-3]; // 1, two steps from the end
+array[-1]; // 3, l'ultimo elemento
+array[-2]; // 2, il penultimo elemento
+array[-3]; // 1, il terzultimo elemento
 ```
 
-In other words, `array[-N]` is the same as `array[array.length - N]`.
+In altre parole, `array[-N]` eqwuivale a `array[array.length - N]`.
 
-Create a proxy to implement that behavior.
+Create un proxy che implementa questa funzionalità.
 
-That's how it should work:
+Così è come dovrebbe funzionare:
 
 ```js
 let array = [1, 2, 3];
 
 array = new Proxy(array, {
-  /* your code */
+  /* il vostro codice */
 });
 
 alert( array[-1] ); // 3
 alert( array[-2] ); // 2
 
-// Other array functionality should be kept "as is"
+// Le altre funzionalità dell'array devono rimanere tali
 ```
