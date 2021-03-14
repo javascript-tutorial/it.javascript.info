@@ -1,3 +1,3 @@
 # Le basi JavaScript 
 
-Impariamo le basi della scrittura di uno script.
+Impareremo le basi dello sviluppo di uno script.
