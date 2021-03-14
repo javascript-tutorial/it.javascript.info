@@ -45,7 +45,7 @@ Gli eventi del puntatore vengono chiamati in maniera simile a quelli del mouse:
 
 Come possiamo osservare, per ogni `mouse<event>`, c'è un `pointer<event>` che gioca un ruolo simile. Inoltre ci sono 3 eventi del puntatore aggiuntivi, privi della controparte `mouse...`, che verranno spiegati tra poco. 
 
-```smart header="Replacing `mouse<event>` con `pointer<event>` nel codice"
+```smart header="Rimpiazzare `mouse<event>` con `pointer<event>` nel codice"
 Possiamo rimpiazzare gli eventi `mouse<event>` con quelli `pointer<event>` nel codice, ed aspettarci che il tutto continui a funzionare perfettamente con il mouse.
 
 Il supporto ai dispositivi touch inoltre migliorerà "magicamente". Sebbene, saremo costretti ad aggiungere  `touch-action: none` in alcune sezioni del CSS. Affronteremo questa cosa più avanti nella sezione del `pointercancel`. 
