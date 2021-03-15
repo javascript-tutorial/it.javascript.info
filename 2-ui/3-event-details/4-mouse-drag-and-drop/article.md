@@ -146,7 +146,7 @@ ball.onmousedown = function(event) {
   moveAt(event.pageX, event.pageY);
 
   // sposta il pallone alle coordinate (pageX, pageY)
-  // tenendo conto dello spostamento iniziale
+  // tenendo conto dello scostamento iniziale
   function moveAt(pageX, pageY) {
     ball.style.left = pageX - *!*shiftX*/!* + 'px';
     ball.style.top = pageY - *!*shiftY*/!* + 'px';
