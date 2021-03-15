@@ -300,4 +300,4 @@ Possiamo trarre molto da queste basi.
 - Possiamo usare la event delegation per `mousedown/up`. Un gestore evento per aree vaste che controlla `event.target` può gestire centinaia di elementi.
 - E così via.
 
-Esistono frameworks che basano intere architetture su di esso: `DragZone`, `Droppable`, `Draggable` ed altre classi. La maggior parte di essi fanno cose simili a quelle appena descritte, quindi potrebbe essere semplice comprenderle adesso. Oppure potresti preparartelo da te, dal momento che abbiamo visto quanto sia facile da fare, talvolta più semplice di adattare una soluzione terze parti.
+Esistono frameworks che basano intere architetture su di esso: `DragZone`, `Droppable`, `Draggable` ed altre classi. La maggior parte di essi fanno cose simili a quelle appena descritte, quindi potrebbe essere semplice comprenderle adesso. Oppure potresti preparartelo da te, dal momento che abbiamo visto quanto sia facile da fare, talvolta più semplice di adattare una soluzione di terze parti.
