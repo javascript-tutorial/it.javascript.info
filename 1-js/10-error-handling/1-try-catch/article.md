@@ -81,7 +81,7 @@ Non funzionerà se il codice è sintatticamente errato, per esempio se ha delle 
 try {
   {{{{{{{{{{{{
 } catch (err) {
-  alert("The engine can't understand this code, it's invalid");
+  alert("Il motore (engine) non riesce a interpretare il codice, esso non è valido");
 }
 ```
 
