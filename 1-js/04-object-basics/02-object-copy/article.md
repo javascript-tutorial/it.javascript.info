@@ -101,7 +101,11 @@ alert( a == b ); // false
 
 Per confronti tra oggetti (Es. `obj1 > obj2`) o con primitivi (Es. `obj == 5`), gli oggetti vengono convertiti in primitivi. Vedremo molto presto come avviene questa conversione, anche se, a dire il vero, questo tipo di confronto è molto raro e generalmente è il risultato di un errore di programmazione.
 
+<<<<<<< HEAD
 ## Clonazione e unione, Object.assign
+=======
+## Cloning and merging, Object.assign [#cloning-and-merging-object-assign]
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 Come abbiamo detto, copiare una "variabile oggetto" crea un ulteriore riferimento allo stesso oggetto.
 
@@ -189,8 +193,12 @@ let clone = Object.assign({}, user);
 
 Vengono copiate tutte le proprietà di `user` nell'oggetto vuoto, il quale, poi, viene restituito.
 
+<<<<<<< HEAD
 Esistono anche altri modi per clonare un oggetto, ad esempio usando lo [spread operator](info:rest-parameters-spread) `clone = {...user}`, che verrà trattato più avanti in questo tutorial.
 ## Clonazione nidificata
+=======
+There are also other methods of cloning an object, e.g. using the [spread syntax](info:rest-parameters-spread) `clone = {...user}`, covered later in the tutorial.
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 Finora abbiamo assunto che le proprietà di `user` fossero primitive. Ma le proprietà possono anche essere riferimenti ad altri oggetti. Come si fa in questo caso? 
 

@@ -169,9 +169,15 @@ Normalmente, `fetch` segue in maniera trasparente i redirect HTTP, come 301, 302
 
 L'opzione `redirect` ci permette di cambiare questo comportamento:
 
+<<<<<<< HEAD
 - **`"follow"`** -- il predefinito, segue gli HTTP-redirects,
 - **`"error"`** -- va in errore in caso di HTTP-redirect,
 - **`"manual"`** -- non segue gli HTTP-redirect, ma `response.url` sarà il nuovo URL, e `response.redirected` sarà `true`, cosicché potremo eseguire il redirect manualmente al nuovo URL (se necessario).
+=======
+- **`"follow"`** -- the default, follow HTTP-redirects,
+- **`"error"`** -- error in case of HTTP-redirect,
+- **`"manual"`** -- allows to process HTTP-redirects manually. In case of redirect, we'll get a special response object, with `response.type="opaqueredirect"` and and zeroed/empty status and most other properies.
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 ## integrity
 

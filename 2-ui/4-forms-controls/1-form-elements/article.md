@@ -8,11 +8,19 @@ Lavorando con i forms, questi saranno molto comodi quando li avremo imparati.
 
 I form del documento sono membri della speciale collezione `document.forms`.
 
+<<<<<<< HEAD
 Questa è una cosiddetta "named collection": è sia associativa che ordinata. Possiamo usare sia il nome che l'indice nel documento per accedervi.
 
 ```js no-beautify
 document.forms.my - il form con name="my"
 document.forms[0] - il primo form del documento
+=======
+That's a so-called *"named collection"*: it's both named and ordered. We can use both the name or the number in the document to get the form.
+
+```js no-beautify
+document.forms.my; // the form with name="my"
+document.forms[0]; // the first form in the document
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 ```
 
 Quando abbiamo un form, allora tutti gli elementi saranno contenuti nella named collection `form.elements`.
@@ -36,9 +44,15 @@ Per esempio:
 </script>
 ```
 
+<<<<<<< HEAD
 Potrebbero esserci elementi multipli con lo stesso nome, ed è una cosa che capita spesso con i radio buttons.
 
 In questo caso `form.elements[name]` sarà una collezione, per esempio:
+=======
+There may be multiple elements with the same name. This is typical with radio buttons and checkboxes.
+
+In that case, `form.elements[name]` is a *collection*. For instance:
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 ```html run height=40
 <form>
@@ -119,7 +133,11 @@ Funziona ugualmente, ma c'è un piccolo problema: se accediamo a un elemento, ch
 </script>
 ```
 
+<<<<<<< HEAD
 Solitamente non è un problema, in quanto raramente andiamo a modificare il nome degli elementi dei form.
+=======
+That's usually not a problem, however, because we rarely change names of form elements.
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 ````
 
@@ -204,7 +222,11 @@ Ecco un esempio per tutti e tre i metodi:
 </script>
 ```
 
+<<<<<<< HEAD
 Diversamente da altri controls, `<select>` permette più opzioni alla volta se contiene l'attributo `multiple`. Sebbene questo attributo venga usato raramente.
+=======
+Unlike most other controls, `<select>` allows to select multiple options at once if it has `multiple` attribute. This attribute is rarely used, though.
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 Per valori multipli selezionati, usiamo il primo modo per impostare i valori: aggiungere/rimuovere la proprietà `selected` dai sottoelementi `<option>`.
 
@@ -246,7 +268,11 @@ Questa sintassi è opzionale. Possiamo usare `document.createElement('option')` 
 
 La differenza tra `defaultSelected` e `selected` è che `defaultSelected` imposta l'attributo HTML (che possiamo ottenere usando `option.getAttribute('selected')`, mentre `selected` definisce lo stato della selezione (se è selezionata o meno).
 
+<<<<<<< HEAD
 In pratica, solitamente possiamo impostare entrambi i valori a `true` o `false` (oppure ometterli, che equivale a `false`).
+=======
+In practice, one should usually set _both_ values to `true` or `false`. (Or, simply omit them; both default to `false`.)
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 Per esempio, ecco un nuovo elemento option "non selezionato":
 
@@ -289,9 +315,15 @@ Navigazione dei form:
 `element.form`
 : Gli elementi referenziano i loro form nella proprietà `form`.
 
+<<<<<<< HEAD
 Il valore è disponibile come `input.value`, `textarea.value`, `select.value` etc, o come `input.checked` per i checkbox e radio buttons.
 
 Per `<select>` possiamo anche ottenere il valore tramite l'indice `select.selectedIndex` o attraverso la collezione di options `select.options`.
+=======
+Value is available as `input.value`, `textarea.value`, `select.value`, etc. (For checkboxes and radio buttons, use `input.checked` to determine whether a value is selected.)
+
+For `<select>`, one can also get the value by the index `select.selectedIndex` or through the options collection `select.options`.
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 Queste sono le basi da cui partire con i form. Incontreremo molti esempi più avanti nel tutorial.
 

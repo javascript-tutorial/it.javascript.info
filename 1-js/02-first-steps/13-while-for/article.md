@@ -318,7 +318,11 @@ alert('Done!');
 
 Abbiamo bisogno di un modo per bloccare il processo se l'utente annulla l'input.
 
+<<<<<<< HEAD
 Un semplice `break` dopo la variabile `input` interromperebbe solo il ciclo più interno. Questo non è sufficiente. I *label* ci vengono in soccorso.
+=======
+The ordinary `break` after `input` would only break the inner loop. That's not sufficient -- labels, come to the rescue!
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 Un *label* ("etichetta") è un identificatore seguito da ":" e da un ciclo:
 ```js
@@ -365,12 +369,22 @@ I *label* non permettono di saltare in un punto arbitrario del codice.
 
 Ad esempio, non è possibile:
 ```js
+<<<<<<< HEAD
 break label;  // non salta all'etichetta sotto
+=======
+break label; // jump to the label below (doesn't work)
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 label: for (...)
 ```
 
+<<<<<<< HEAD
 La chiamata a `break/continue` è possibile solo dall'interno di un ciclo, e l'etichetta deve essere da qualche parte **sopra** la chiamata.
+=======
+A call to `continue` is only possible from inside the loop.
+
+The `break` directive may be placed before code blocks too, as `label: { ... }`, but it's almost never used like that. And it also works only inside-out.
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 ````
 
 ## Riepilogo

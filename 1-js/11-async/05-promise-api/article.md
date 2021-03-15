@@ -1,5 +1,6 @@
 # Promise API
 
+<<<<<<< HEAD
 Esistono 5 metodi statici nella classe `Promise` . Qui copriremo rapidamente il loro casi d'uso.
 
 ## Promise.resolve
@@ -60,6 +61,9 @@ let promise = new Promise((resolve, reject) => reject(error));
 ```
 
 la copriamo per completezza, poiché viene usata raramente nel codice reale.
+=======
+There are 6 static methods in the `Promise` class. We'll quickly cover their use cases here.
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 ## Promise.all
 

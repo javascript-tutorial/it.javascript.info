@@ -523,6 +523,10 @@ I caratteri vengono confrontati utilizzando il loro codice numerico. Un codice m
 - Tutte le lettere minuscole vengono dopo quelle maiuscole perché il loro codice è maggiore.
 - Alcune lettere come `Ö` vengono escluse dall'alfabeto. Il suo codice viene considerato maggiore di qualsiasi lettera compresa tra `a` e `z`.
 
+<<<<<<< HEAD
+=======
+### Correct comparisons [#correct-comparisons]
+>>>>>>> e01998baf8f85d9d6cef9f1add6c81b901f16d69
 
 ### Confronto tra stringhe corretto
 
