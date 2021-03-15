@@ -6,7 +6,7 @@ Nello standard HTML attuale c'è una [sezione sul Drag and Drop](https://html.sp
 
 Questi eventi ci permettono di supportare tipi particolari di drag'n'drop, come gestire il trascinamento di un file dal sistema operativo ed il rilascio dentro la finestra del browser, in modo che JavaScript possa accedere al contenuto di tali files.
 
-Ma gli eventi Drag Events hanno anche delle limitazioni. Ad esempio, non possiamo prevenire il trascinamento da una certa sezione. Inoltre non possiamo rendere il trascinamento solo "orizzontale" o "verticale". E ci sono tante altre azioni drag'n'drop che non è possibile sfruttare. Inoltre il supporto dei dispositivi mobile per questo tipo di eventi è abbastanza debole.
+Ma i Drag Events hanno anche delle limitazioni. Ad esempio, non possiamo prevenire il trascinamento da una certa sezione. Inoltre non possiamo rendere il trascinamento solo "orizzontale" o "verticale". E ci sono tante altre azioni drag'n'drop che non è possibile sfruttare. Inoltre il supporto dei dispositivi mobile per questo tipo di eventi è abbastanza scarso.
 
 Di conseguenza, vedremo come implementare il Drag'n'Drop solo tramite l'utilizzo degli eventi del mouse.
 
