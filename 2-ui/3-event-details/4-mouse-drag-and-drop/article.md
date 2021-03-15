@@ -219,7 +219,7 @@ Questo è il motivo per cui l'idea iniziale di impostare i gestori su dei potenz
 
 Come fare, quindi?
 
-C'è un metodo chiamato `document.elementFromPoint(clientX, clientY)`. Restituisce le coordinate relative alla window, dell'elemento più annidato (o `null` se le coordinate restituite sono fuori dalla window).
+C'è un metodo chiamato `document.elementFromPoint(clientX, clientY)` che restituisce le coordinate relative alla window, dell'elemento più annidato (o `null` se le coordinate restituite sono fuori dalla window).
 
 Possiamo usarlo su qualunque nostro gestore di evento del mouse per rilevare dei potenziali droppable sotto il puntatore, in questo modo:
 
