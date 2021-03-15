@@ -4,7 +4,7 @@
 
 `BigInt` è uno speciale tipo numerico che supporta numeri interi di lunghezza arbitraria.
 
-Un bigint viene creato aggiungendo il suffisso `n` alla fine di un intero, oppure invocando la funzione `BigInt`, la quale crea bigints a partire da stringhe, numeri etc.
+Un bigint viene creato aggiungendo il suffisso `n` alla fine di un numero intero, oppure invocando la funzione `BigInt`, la quale crea bigints a partire da stringhe, numeri etc.
 
 ```js
 const bigint = 1234567890123456789012345678901234567890n;
