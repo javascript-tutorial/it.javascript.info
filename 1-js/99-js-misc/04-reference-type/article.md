@@ -7,7 +7,7 @@ Questo articolo tratta un argomento avanzato, utile per capire meglio alcuni cas
 Non è di fondamentale importanza. Molti sviluppatori esperti vivono bene senza esserne a conoscenza. Continua la lettura solamente se sei interessato a sapere come funzionano le cose internamente.
 ```
 
-Un invocazione di un metodo valutata dinamicamente può perdere il `this`.
+Un'invocazione di un metodo valutata dinamicamente può perdere il `this`.
 
 Ad esempio:
 
@@ -105,4 +105,4 @@ Questo accade per consentire che la successiva invocazione con `()` imposti corr
 
 Per tutte le altre operazioni, il tipo reference diventa automaticamente il valore della proprietà (una funzione nel nostro caso).
 
-Il meccanismo descritto accade di nascosto dai nostri occhi. Ha importanza in alcuni casi, ad esempio quando un metodo viene ottenuto dinamicamente dall'oggetto, utilizzando un espressione.
+Il meccanismo descritto è nascosto ai nostri occhi. Ha importanza solo in alcuni casi, ad esempio quando un metodo viene ottenuto dinamicamente dall'oggetto, utilizzando un'espressione.
