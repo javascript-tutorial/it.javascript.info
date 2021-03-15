@@ -2,7 +2,7 @@
 
 [recent caniuse="bigint"]
 
-`BigInt` è uno speciale tipo numerico che supporta interi di lunghezza arbitraria.
+`BigInt` è uno speciale tipo numerico che supporta numeri interi di lunghezza arbitraria.
 
 Un bigint viene creato aggiungendo il suffisso `n` alla fine di un intero, oppure invocando la funzione `BigInt`, la quale crea bigints a partire da stringhe, numeri etc.
 
@@ -122,7 +122,7 @@ Questa libreria implementa i bigint utilizzando un proprio metodo. Possiamo util
 
 In altre parole, questo approccio suggerisce di scrivere il codice utilizzando JSBI piuttosto dei bigint integrati. JSBI funziona con i numbers proprio come i bigint integrati, emulandoli secondo quanto descritto nelle specifiche, quindi il codice sarà "bigint-ready".
 
-Possiamo utilizzare questo codice JSBI "cosi com'è" sia per i motori che non supportano i bigint che per quelli che li supportano - il polyfill convertirà le invocazioni in bigint integrati.
+Possiamo utilizzare questo codice JSBI "così com'è" sia per i motori che non supportano i bigint che per quelli che li supportano - il polyfill convertirà le invocazioni in bigint integrati.
 
 ## Riferimenti
 
