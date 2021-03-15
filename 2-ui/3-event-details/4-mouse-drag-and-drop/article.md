@@ -112,7 +112,7 @@ Aggiorniamo il nostro algoritmo:
 
 1. Quando un utente preme il pulsante (`mousedown`) - memorizza la distanza del puntatore dall'angolo in alto a sinistra del pallone nelle variabili `shiftX/shiftY`. Manterremo questa distanza durante il trascinamento.
 
-    Per ottenere questi spostamenti possiamo sottrarre le coordinate:
+    Per ottenere questi scostamenti possiamo sottrarre le coordinate:
 
     ```js
     // onmousedown
