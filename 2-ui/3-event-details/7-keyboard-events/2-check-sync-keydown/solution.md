@@ -1,6 +1,6 @@
 
-We should use two handlers: `document.onkeydown` and `document.onkeyup`.
+Qui dobbiamo usare due gestori: `document.onkeydown` e `document.onkeyup`.
 
-Let's create a set `pressed = new Set()` to keep currently pressed keys.
+Andiamo a creare un set `pressed = new Set()` per mantenere i tasti attualmente premuti.
 
-The first handler adds to it, while the second one removes from it. Every time on `keydown` we check if we have enough keys pressed, and run the function if it is so.
+Il primo gestore lo aggiunge, mentre il secondo lo rimuove. Ad ogni `keydown` controlliamo se abbiamo abbastanza tasti premuti, ed in caso affermativo la funzione verrà eseguita.
