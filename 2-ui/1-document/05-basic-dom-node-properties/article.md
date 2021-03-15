@@ -144,7 +144,7 @@ Per esempio:
 </body>
 ```
 
-Nel codice moderno possiamo usare `instanceof` e altri test basati sulle classi per ottenere il tipo di nodo, ma, talvolta, può risultare più semplice l'uso di `nodeType`. La proprietà `nodeType` è in sola lettura, non possiamo modificarla.
+Nel codice moderno possiamo usare `instanceof` e altri test basati sulle classi per ottenere il tipo di nodo, ma, talvolta, può risultare più immediato l'uso di `nodeType`. La proprietà `nodeType` è in sola lettura, non possiamo modificarla.
 
 ## Tag: nodeName e tagName
 
@@ -187,7 +187,7 @@ Per esempio paragoniamo `tagName` e `nodeName` per `document` e per un commento:
 
 Se abbiamo a che fare solo con elementi allora possiamo usare senza distinzione `tagName` e `nodeName`
 
-```smart header="Il nome del tag è sempre in maiuscolo tranne che nell'XML"
+```smart header="Il nome del tag è sempre in maiuscolo tranne che per l'XML"
 Il browser ha due modalità di elaborazione dei documenti: HTML e XML. Solitamente per le pagine web usa la modalità HTML. La modalità XML è abilitata quando il browser riceve un documento XML con l'intestazione `Content-Type: application/xml+xhtml`.
 
 In modalità HTML `tagName/nodeName` è sempre maiuscola: restituisce `BODY` sia per `<body>` sia per `<BoDy>`.
