@@ -8,7 +8,7 @@ In questo capitolo vedremo meglio cosa sono e impareremo le loro proprietà più
 
 Nodi del DOM differenti possono avere proprietà differenti. Ad esempio, un nodo elemento corrispondente ad un tag `<a>` avrà proprietà tipiche dei link ed un nodo corrispondente al tag `<input>` avrà proprietà tipiche dei campi di testo e così via. I nodi di testo sono differenti dai nodi elemento, tuttavia condividono anche proprietà e metodi comuni a tutti perché tutte le classi dei nodi del DOM costituiscono un'unica gerarchia.
 
-Ogni nodo del DOM appartiene alla corrispondente classe integrata.
+Ogni nodo del DOM appartiene alla corrispondente classe nativa.
 
 La classe base della gerarchia è [EventTarget](https://dom.spec.whatwg.org/#eventtarget), che è ereditata dalla classe [Node](http://dom.spec.whatwg.org/#interface-node) che, a sua volta, è ereditata dalle altre classi corrispondenti ai nodi del DOM.
 
@@ -117,89 +117,87 @@ interface HTMLInputElement: HTMLElement {
 
 ## La proprietà "nodeType"
 
-The `nodeType` property provides one more, "old-fashioned" way to get the "type" of a DOM node.
+La proprietà `nodeType` offre un altro modo "vecchio stile" per ricavare il "tipo" di un nodo DOM.
 
-It has a numeric value:
-- `elem.nodeType == 1` for element nodes,
-- `elem.nodeType == 3` for text nodes,
-- `elem.nodeType == 9` for the document object,
-- there are few other values in [the specification](https://dom.spec.whatwg.org/#node).
+Ha un valore numerico:
+- `elem.nodeType == 1` per i nodi elemento,
+- `elem.nodeType == 3` per i nodi testo,
+- `elem.nodeType == 9` per l'oggetto documento,
+- c'è qualche altro valore nella [specifica](https://dom.spec.whatwg.org/#node).
 
-For instance:
+Per esempio:
 
 ```html run
 <body>
   <script>  
   let elem = document.body;
 
-  // let's examine what it is?
-  alert(elem.nodeType); // 1 => element
+  // esaminiamo di cosa si tratta
+  alert(elem.nodeType); // 1 => nodo elemento
 
-  // and the first child is...
-  alert(elem.firstChild.nodeType); // 3 => text
+  // e il primo nodo figlio è...
+  alert(elem.firstChild.nodeType); // 3 => nodo testo
 
-  // for the document object, the type is 9
+  // per l'oggetto documento il tipo è 9
   alert( document.nodeType ); // 9
   </script>
 </body>
 ```
 
-In modern scripts, we can use `instanceof` and other class-based tests to see the node type, but sometimes `nodeType` may be simpler. We can only read `nodeType`, not change it.
+Nel codice moderno possiamo usare `instanceof` e altri test basati sulle classi per ottenere il tipo di nodo, ma, talvolta, può risultare più semplice l'uso di `nodeType`. La proprietà `nodeType` è in sola lettura, non possiamo modificarla.
 
-## Tag: nodeName and tagName
+## Tag: nodeName e tagName
 
-Given a DOM node, we can read its tag name from `nodeName` or `tagName` properties:
+Dato un nodo DOM, possiamo leggerne il tag tramite le proprietà `nodeName` o `tagName`:
 
-For instance:
+Per esempio:
 
 ```js run
 alert( document.body.nodeName ); // BODY
 alert( document.body.tagName ); // BODY
 ```
 
-Is there any difference between `tagName` and `nodeName`?
+Esiste una differenza tra `tagName` e `nodeName`?
 
-Sure, the difference is reflected in their names, but is indeed a bit subtle.
+Certamente, i nomi stessi delle proprietà suggeriscono la sottile differenza.
 
-- The `tagName` property exists only for `Element` nodes.
-- The `nodeName` is defined for any `Node`:
-    - for elements it means the same as `tagName`.
-    - for other node types (text, comment, etc.) it has a string with the node type.
+- La proprietà `tagName` esiste solo per i nodi `Element`.
+- La proprietà `nodeName` è definita per ogni `Node`:
+    - per i nodi elemento ha lo stesso valore di `tagName`.
+    - per gli altri tipi di nodo (testo, commento, ecc.) contiene una stringa che indica il tipo di nodo.
 
-In other words, `tagName` is only supported by element nodes (as it originates from `Element` class), while `nodeName` can say something about other node types.
+In altre parole, `tagName` è supportata solo dai nodi elemento (poiché ha origine dalla classe `Element`), mentre `nodeName` riesce a dare un'indicazione sugli altri tipi di nodo.
 
-For instance, let's compare `tagName` and `nodeName` for the `document` and a comment node:
-
+Per esempio paragoniamo `tagName` e `nodeName` per `document` e per un commento:
 
 ```html run
 <body><!-- comment -->
 
   <script>
-    // for comment
-    alert( document.body.firstChild.tagName ); // undefined (not an element)
+    // per un commento
+    alert( document.body.firstChild.tagName ); // undefined (non si tratta di un elemento)
     alert( document.body.firstChild.nodeName ); // #comment
 
-    // for document
-    alert( document.tagName ); // undefined (not an element)
+    // per il documento
+    alert( document.tagName ); // undefined (non si tratta di un elemento)
     alert( document.nodeName ); // #document
   </script>
 </body>
 ```
 
-If we only deal with elements, then we can use both `tagName` and `nodeName` - there's no difference.
+Se abbiamo a che fare solo con elementi allora possiamo usare senza distinzione `tagName` e `nodeName`
 
-```smart header="The tag name is always uppercase except in XML mode"
-The browser has two modes of processing documents: HTML and XML. Usually the HTML-mode is used for webpages. XML-mode is enabled when the browser receives an XML-document with the header: `Content-Type: application/xml+xhtml`.
+```smart header="Il nome del tag è sempre in maiuscolo tranne che nell'XML"
+Il browser ha due modalità di elaborazione dei documenti: HTML e XML. Solitamente per le pagine web usa la modalità HTML. La modalità XML è abilitata quando il browser riceve un documento XML con l'intestazione `Content-Type: application/xml+xhtml`.
 
-In HTML mode `tagName/nodeName` is always uppercased: it's `BODY` either for `<body>` or `<BoDy>`.
+In modalità HTML `tagName/nodeName` è sempre maiuscola: restituisce `BODY` sia per `<body>` sia per `<BoDy>`.
 
-In XML mode the case is kept "as is". Nowadays XML mode is rarely used.
+In modalità XML il case viene mantenuto "così com'è". Ai giorni nostri la modalità XML è usata raramente.
 ```
 
+## innerHTML: i contenuti
 
-## innerHTML: the contents
-
-The [innerHTML](https://w3c.github.io/DOM-Parsing/#the-innerhtml-mixin) property allows to get the HTML inside the element as a string.
+La proprietà [innerHTML](https://w3c.github.io/DOM-Parsing/#the-innerhtml-mixin) consente di ottenere una stringa dell'HTML dentro l'elemento.
 
 We can also modify it. So it's one of the most powerful ways to change the page.
 
