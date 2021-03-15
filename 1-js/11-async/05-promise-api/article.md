@@ -1,65 +1,6 @@
 # Promise API
 
-Esistono 5 metodi statici nella classe `Promise` . Qui copriremo rapidamente il loro casi d'uso.
-
-## Promise.resolve
-
-La sintassi:
-
-```js
-let promise = Promise.resolve(value);
-```
-
-Ritorna la promise risolta  (resolved) con il valore (`value`) dato.
-
-Esattamente come:
-
-```js
-let promise = new Promise(resolve => resolve(value));
-```
-
-Il metodo è usato quando abbiamo già un valore ma lo vogliamo avere inglobato (wrapped) dentro una promise.
-
-Per esempio, la funzione `loadCached` chiama l'`url` e ricorda il risultato, così che le chiamate future allo stesso URL lo ritorneranno immediatamente:
-
-```js
-function loadCached(url) {
-  let cache = loadCached.cache || (loadCached.cache = new Map());
-
-  if (cache.has(url)) {
-*!*
-    return Promise.resolve(cache.get(url)); // (*)
-*/!*
-  }
-
-  return fetch(url)
-    .then(response => response.text())
-    .then(text => {
-      cache.set(url,text);
-      return text;
-    });
-}
-```
-
-Possiamo usare `loadCached(url).then(…)`, sappiamo con certezza che la funzione ritornerà una promise. Questo è lo scopo che `Promise.resolve` serve nella linea `(*)`: rende sicuro che l'interfaccia sia unificata. Possiamo sempre usare `.then` dopo `loadCached`.
-
-## Promise.reject
-
-La sintassi:
-
-```js
-let promise = Promise.reject(error);
-```
-
-Crea una promise respinta (rejected) con l'errore (`error`).
-
-Esattamente come:
-
-```js
-let promise = new Promise((resolve, reject) => reject(error));
-```
-
-la copriamo per completezza, poiché viene usata raramente nel codice reale.
+Esistono 6 metodi statici nella classe `Promise`. Qui copriremo rapidamente il loro casi d'uso.
 
 ## Promise.all
 

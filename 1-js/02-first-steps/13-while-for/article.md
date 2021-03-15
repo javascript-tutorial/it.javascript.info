@@ -370,7 +370,9 @@ break label;  // non salta all'etichetta sotto
 label: for (...)
 ```
 
-La chiamata a `break/continue` è possibile solo dall'interno di un ciclo, e l'etichetta deve essere da qualche parte **sopra** la chiamata.
+La chiamata a `continue` è possibile solo dall'interno di un ciclo
+
+La direttiva `break` può essere posizionata anche prima del blocco di codice, come `label: { ... }`, ma raramente viene usato così.
 ````
 
 ## Riepilogo
