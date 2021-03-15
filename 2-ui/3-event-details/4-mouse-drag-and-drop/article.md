@@ -120,7 +120,7 @@ Aggiorniamo il nostro algoritmo:
     let shiftY = event.clientY - ball.getBoundingClientRect().top;
     ```
 
-2. Quindi, durante il trascinamento posizioneremo il pallone con lo stesso spostamento relativo al puntatore, in questo modo:
+2. Quindi, durante il trascinamento posizioneremo il pallone con lo stesso scostamento relativo al puntatore, in questo modo:
 
     ```js
     // onmousemove
