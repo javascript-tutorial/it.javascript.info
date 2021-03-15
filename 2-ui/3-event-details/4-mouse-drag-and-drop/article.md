@@ -48,7 +48,7 @@ ball.onmousedown = function(event) {
   // (2) spostamento del pallone al mousemove
   document.addEventListener('mousemove', onMouseMove);
 
-  // (3) rilascio del pallone, rimozione di gestori non necessari
+  // (3) rilascio del pallone, rimozione dei gestori non necessari
   ball.onmouseup = function() {
     document.removeEventListener('mousemove', onMouseMove);
     ball.onmouseup = null;
