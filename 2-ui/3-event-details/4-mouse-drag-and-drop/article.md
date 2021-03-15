@@ -260,7 +260,7 @@ function onMouseMove(event) {
   if (currentDroppable != droppableBelow) {
     // sorvolando in entrata o in uscita...
     // nota bene: entrambi i valori potrebbero essere null
-    //   currentDroppable=null se non siamo su un elemento prima di questo evento (e.g su uno spazio vuoto)
+    //   currentDroppable=null se non siamo su un elemento prima di questo evento (es. su uno spazio vuoto)
     //   droppableBelow=null se non siamo attualmente droppable, durante questo evento
 
     if (currentDroppable) {
