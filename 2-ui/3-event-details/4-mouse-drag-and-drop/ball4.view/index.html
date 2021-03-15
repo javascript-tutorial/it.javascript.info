@@ -44,11 +44,11 @@
 
         let droppableBelow = elemBelow.closest('.droppable');
         if (currentDroppable != droppableBelow) {
-          if (currentDroppable) { // null when we were not over a droppable before this event
+          if (currentDroppable) { // null se prima di questo evento non ci trovavamo sopra un elemento droppable
             leaveDroppable(currentDroppable);
           }
           currentDroppable = droppableBelow;
-          if (currentDroppable) { // null if we're not coming over a droppable now
+          if (currentDroppable) { // null se adesso non ci stiamo posizionando su un elemento droppable
             // (maybe just left the droppable)
             enterDroppable(currentDroppable);
           }

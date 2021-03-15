@@ -4,13 +4,13 @@ importance: 5
 
 # Slider
 
-Create a slider:
+Creare uno cursore a scorrimento:
 
 [iframe src="solution" height=60 border=1]
 
-Drag the blue thumb with the mouse and move it.
+Trascinare il cursore blu con il mouse e spostarlo.
 
-Important details:
+Dettagli importanti:
 
-- When the mouse button is pressed, during the dragging the mouse may go over or below the slider. The slider will still work (convenient for the user).
-- If the mouse moves very fast to the left or to the right, the thumb should stop exactly at the edge.
+- Quando si preme il pulsante del mouse, durante il trascinamento il mouse dovrebbe poter andare sotto o sopra il cursore, senza interromperlo (comodo per l'utente).
+- Se il mouse si muove molto velocemente da sinistra a destra, il cursore si dovrebbe fermare esattamente sul bordo.
