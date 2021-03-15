@@ -40,7 +40,7 @@ Come potete vedere, l'implementazione è piuttosto semplice: sono due semplici w
 
 - Il risultato di `curry(func)` è un wrapper `function(a)`.
 - Quando viene invocato come `curriedSum(1)`, l'argomento viene memorizzato nel Lexical Environment, e viene ritornato un nuovo wrapper `function(b)`.
-- Successivamente questo warepper viene invoccato con `2` come argomento, che passerà l'invocazione a `sum`.
+- Successivamente questo wrapper viene invocato con `2` come argomento, che passerà l'invocazione a `sum`.
 
 Implementazioni più avanzate del currying, come [_.curry](https://lodash.com/docs#curry) fornito dalla libreria lodash, ritorna un wrapper che consente di invocare una funzione sia nella forma standard che in quella parziale:
 
@@ -59,7 +59,7 @@ alert( curriedSum(1)(2) ); // 3, invocata parzialmente
 
 Per poterne comprendere i benefici abbiamo bisogno di un esempio di applicazione reale.
 
-Ad esempio, abbiamo una funzione di logging `log(date, importance, message)` che formatta e ritorna le informazioni. In un progetto reale, una funzione del genere ha diverse funzionalità utili, come l'invio di log in rete, qui useremo semplicemente un `alert`:
+Ad esempio, abbiamo una funzione di logging `log(date, importance, message)` che formatta e ritorna le informazioni. In un progetto reale, una funzione del genere ha diverse funzionalità utili, come l'invio di log in rete; qui useremo semplicemente un `alert`:
 
 ```js
 function log(date, importance, message) {
@@ -150,7 +150,7 @@ La funzione `curry` può sembrare complicata, ma in realtà è piuttosto semplic
 Il risultato dell'invocazione `curry(func)` è il wrapper `curried` (che ha subito il processo di currying), ed appare in questo modo:
 
 ```js
-// func è la funzionie trasformata
+// func è la funzione trasformata
 function curried(...args) {
   if (args.length >= func.length) { // (1)
     return func.apply(this, args);
@@ -178,7 +178,7 @@ Una funzione che utilizza i parametri rest, come `f(...args)`, non può passare 
 ```smart header="Un po' più del currying"
 Per definizione, il currying dovrebbe convertire `sum(a, b, c)` in `sum(a)(b)(c)`.
 
-Ma la maggiora parte delle implementazioni in JavaScript sono più avanzate di così, come descritto: queste mantengono la funzione invocabile nella variante a più argomenti.
+Ma la maggior parte delle implementazioni in JavaScript sono più avanzate di così, come descritto: queste mantengono la funzione invocabile nella variante a più argomenti.
 ```
 
 ## Riepilogo
