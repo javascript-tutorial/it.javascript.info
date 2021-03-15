@@ -4,7 +4,7 @@ Il Drag'n'Drop, in termini di interfaccia utente, è una soluzione grandiosa. Il
 
 Nello standard HTML attuale c'è una [sezione sul Drag and Drop](https://html.spec.whatwg.org/multipage/interaction.html#dnd) con eventi speciali come `dragstart`, `dragend`, e via dicendo.
 
-Questi eventi ci permettono di supportare tipi particolari di drag'n'drop, come gestire il trascinamento di un file dal gestore file dell'OS e rilasciarlo dentro la finestra del browser. Successivamente JavaScript potrà accedere al contenuto di tali files.
+Questi eventi ci permettono di supportare tipi particolari di drag'n'drop, come gestire il trascinamento di un file dal sistema operativo ed il rilascio dentro la finestra del browser, in modo che JavaScript possa accedere al contenuto di tali files.
 
 Ma gli eventi Drag Events hanno anche delle limitazioni. Ad esempio, non possiamo prevenire il trascinamento da una certa sezione. Inoltre non possiamo rendere il trascinamento solo "orizzontale" o "verticale". E ci sono tante altre azioni drag'n'drop che non è possibile sfruttare. Inoltre il supporto dei dispositivi mobile per questo tipo di eventi è abbastanza debole.
 
