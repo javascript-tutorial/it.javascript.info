@@ -2,29 +2,29 @@ importance: 4
 
 ---
 
-# Load visible images
+# Caricare immagini visibili
 
-Let's say we have a slow-speed client and want to save their mobile traffic.
+Poniamo il caso di avere un client con connessione lenta e che volessimo risparmiare un po' di traffico dal dispositivo mobile.
 
-For that purpose we decide not to show images immediately, but rather replace them with placeholders, like this:
+A questo proposito, decidiamo di non caricare immediatamente le immagini, ma piuttosto di sostituirle con dei segnaposto, così:
 
 ```html
 <img *!*src="placeholder.svg"*/!* width="128" height="128" *!*data-src="real.jpg"*/!*>
 ```
 
-So, initially all images are `placeholder.svg`. When the page scrolls to the position where the user can see the image -- we change `src` to the one in `data-src`, and so the image loads.
+Quindi, inizialmente tutte le immagini saranno sostituite da un segnaposto `placeholder.svg`. Quando la pagina viene scrollata fino alla posizione in cui possiamo vedere le singole immagini, andiamo a modificare l'attributo `src` sostituendolo con il valore del `data-src`, in modo che l'immagine venga finalmente caricata.
 
-Here's an example in `iframe`:
+Ecco un esempio dentro l'`iframe`:
 
 [iframe src="solution"]
 
-Scroll it to see images load "on-demand".
+Scrollare per vedere le immagini "a richiesta".
 
-Requirements:
-- When the page loads, those images that are on-screen should load immediately, prior to any scrolling.
-- Some images may be regular, without `data-src`. The code should not touch them.
-- Once an image is loaded, it should not reload any more when scrolled in/out.
+Requisiti:
+- Quando la pagina viene caricata, le immagini che sono sullo schermo dovrebbero caricarsi immediatamente, prima di qualunque scroll.
+- Alcune immagini potrebbero essere normali, prive dell'attributo `data-src`. Queste immagini non dovrebbero essere influenzate dal nostro codice.
+- Una volta che l'immagine viene caricata, non dovrebbe più caricarsi, a prescindere che se si stia scrollando oltre o che l'elemento che la contenga torni nuovamente ad essere visibile sullo schermo.
 
-P.S. If you can, make a more advanced solution that would "preload" images that are one page below/after the current position.
+P.S. Se potete, create una soluzione avanzata che effettui un "preload" delle immagini che sono poco sotto la posizione attuale.
 
-P.P.S. Only vertical scroll is to be handled, no horizontal scrolling.
+P.P.S. Si deve gestire solamente lo scroll verticale, e non quello orizzontale.
