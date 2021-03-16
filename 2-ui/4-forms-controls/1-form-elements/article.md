@@ -8,7 +8,7 @@ Lavorando con i forms, questi saranno molto comodi quando li avremo imparati.
 
 I form del documento sono membri della speciale collezione `document.forms`.
 
-Questa è una cosiddetta "named collection": è sia associativa che ordinata. Possiamo usare sia il nome che l'indice nel documento per accedervi.
+Questa è una cosiddetta *"named collection"*: è sia associativa che ordinata. Possiamo usare sia il nome che l'indice nel documento per accedervi.
 
 ```js no-beautify
 document.forms.my - il form con name="my"
@@ -36,9 +36,9 @@ Per esempio:
 </script>
 ```
 
-Potrebbero esserci elementi multipli con lo stesso nome, ed è una cosa che capita spesso con i radio buttons.
+Potrebbero esserci elementi multipli con lo stesso nome, ed è una cosa che capita spesso con i radio buttons ed i checkbox.
 
-In questo caso `form.elements[name]` sarà una collezione, per esempio:
+In questo caso `form.elements[name]` sarà una *collection*, per esempio:
 
 ```html run height=40
 <form>
@@ -204,7 +204,7 @@ Ecco un esempio per tutti e tre i metodi:
 </script>
 ```
 
-Diversamente da altri controls, `<select>` permette più opzioni alla volta se contiene l'attributo `multiple`. Sebbene questo attributo venga usato raramente.
+Diversamente da altri controls, `<select>` permette di selezionare più opzioni alla volta se contiene l'attributo `multiple`. Comunque questo attributo viene usato raramente.
 
 Per valori multipli selezionati, usiamo il primo modo per impostare i valori: aggiungere/rimuovere la proprietà `selected` dai sottoelementi `<option>`.
 
@@ -289,7 +289,7 @@ Navigazione dei form:
 `element.form`
 : Gli elementi referenziano i loro form nella proprietà `form`.
 
-Il valore è disponibile come `input.value`, `textarea.value`, `select.value` etc, o come `input.checked` per i checkbox e radio buttons.
+Il valore è disponibile come `input.value`, `textarea.value`, `select.value` etc. Oppure come `input.checked` per determinare la selezione per checkbox e radio buttons.
 
 Per `<select>` possiamo anche ottenere il valore tramite l'indice `select.selectedIndex` o attraverso la collezione di options `select.options`.
 

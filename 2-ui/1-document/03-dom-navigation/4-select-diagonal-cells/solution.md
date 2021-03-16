@@ -1,1 +1,1 @@
-We'll be using `rows` and `cells` properties to access diagonal table cells.
+Useremo le proprietà `rows` e `cells` per accedere alle celle sulla diagonale della tabella.
