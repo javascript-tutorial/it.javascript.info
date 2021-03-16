@@ -197,11 +197,11 @@ In modalità XML il case viene mantenuto "così com'è". Ai giorni nostri la mod
 
 ## innerHTML: i contenuti
 
-La proprietà [innerHTML](https://w3c.github.io/DOM-Parsing/#the-innerhtml-mixin) consente di ottenere una stringa dell'HTML dentro l'elemento.
+La proprietà [innerHTML](https://w3c.github.io/DOM-Parsing/#the-innerhtml-mixin) consente di ottenere una stringa contenente l'HTML dentro l'elemento.
 
-We can also modify it. So it's one of the most powerful ways to change the page.
+Possiamo anche modificarla e pertanto è uno dei più potenti strumenti per cambiare la pagina.
 
-The example shows the contents of `document.body` and then replaces it completely:
+L'esempio mostra il contenuto di `document.body` e quindi lo rimpiazza completamente:
 
 ```html run
 <body>
@@ -209,71 +209,71 @@ The example shows the contents of `document.body` and then replaces it completel
   <div>A div</div>
 
   <script>
-    alert( document.body.innerHTML ); // read the current contents
-    document.body.innerHTML = 'The new BODY!'; // replace it
+    alert( document.body.innerHTML ); // legge il contenuto corrente
+    document.body.innerHTML = 'The new BODY!'; // lo rimpiazza
   </script>
 
 </body>
 ```
 
-We can try to insert invalid HTML, the browser will fix our errors:
+Se proviamo a inserire HTML non valido, il browser correggerà i nostri errori:
 
 ```html run
 <body>
 
   <script>
-    document.body.innerHTML = '<b>test'; // forgot to close the tag
-    alert( document.body.innerHTML ); // <b>test</b> (fixed)
+    document.body.innerHTML = '<b>test'; // tag non chiuso correttamente
+    alert( document.body.innerHTML ); // <b>test</b> (corretto)
   </script>
 
 </body>
 ```
 
-```smart header="Scripts don't execute"
-If `innerHTML` inserts a `<script>` tag into the document -- it becomes a part of HTML, but doesn't execute.
+```smart header="I tag <script> non vengono eseguiti"
+Se `innerHTML` inserisce un tag `<script>` nel documento -- esso diviene parte dell'HTML ma non viene eseguito.
 ```
 
-### Beware: "innerHTML+=" does a full overwrite
+### Attenzione: "innerHTML+=" esegue una sovrascrittura completa
 
-We can append HTML to an element by using `elem.innerHTML+="more html"`.
+Possiamo aggiungere HTML a un elemento usando `elem.innerHTML+="more html"`.
 
-Like this:
+In questo modo:
 
 ```js
 chatDiv.innerHTML += "<div>Hello<img src='smile.gif'/> !</div>";
 chatDiv.innerHTML += "How goes?";
 ```
 
-But we should be very careful about doing it, because what's going on is *not* an addition, but a full overwrite.
+Tuttavia dovremmo stare molto attenti nel fare un'operazione del genere, perché *non* stiamo facendo una semplice aggiunta ma una sovrascrittura completa.
 
-Technically, these two lines do the same:
+Tecnicamente queste due righe sono equivalenti:
 
 ```js
 elem.innerHTML += "...";
-// is a shorter way to write:
+// è un modo più rapido di scrivere:
 *!*
 elem.innerHTML = elem.innerHTML + "..."
 */!*
 ```
 
-In other words, `innerHTML+=` does this:
+In altre parole, `innerHTML+=` fa questo:
 
-1. The old contents is removed.
-2. The new `innerHTML` is written instead (a concatenation of the old and the new one).
+1. Rimuove il contenuto precedente.
+2. Il nuovo valore di `innerHTML` è inserito al suo posto (una concatenazione del vecchio e del nuovo).
 
-**As the content is "zeroed-out" and rewritten from the scratch, all images and other resources will be reloaded**.
+**Poiché il contenuto viene "azzerato" e riscritto da zero, tutte le immagini e le altre risorse verranno ricaricate**.
 
-In the `chatDiv` example above the line `chatDiv.innerHTML+="How goes?"` re-creates the HTML content and reloads `smile.gif` (hope it's cached). If `chatDiv` has a lot of other text and images, then the reload becomes clearly visible.
+Nell'esempio `chatDiv` sopra, la linea `chatDiv.innerHTML+="How goes?"` ricrea il contenuto HTML e ricarica `smile.gif` (speriamo sia in cache). Se `chatDiv` ha molto altro testo e immagini, in quel caso, il tempo di ricaricamento potrebbe diventare chiaramente percepibile.
 
-There are other side-effects as well. For instance, if the existing text was selected with the mouse, then most browsers will remove the selection upon rewriting `innerHTML`. And if there was an `<input>` with a text entered by the visitor, then the text will be removed. And so on.
+Ci sono anche altri effetti collaterali. Per esempio, se il testo esistente era stato selezionato con il mouse, la maggior parte dei browser rimuoveranno la selezione al momento della riscrittura con `innerHTML`. Se un elemento `<input>` conteneva un testo digitato dal visitatore il testo sarà rimosso, e altri casi simili.
 
-Luckily, there are other ways to add HTML besides `innerHTML`, and we'll study them soon.
+Fortunatamente ci sono altri modi di aggiungere HTML oltre che con `innerHTML`, presto li studieremo.
 
-## outerHTML: full HTML of the element
+## outerHTML: l'HTML completo di un elemento
 
-The `outerHTML` property contains the full HTML of the element. That's like `innerHTML` plus the element itself.
+La proprietà `outerHTML` contiene tutto l'HTML di un elemento. In pratica equivale a `innerHTML` più l'elemento stesso.
 
-Here's an example:
+Di seguito un esempio:
 
 ```html run
 <div id="elem">Hello <b>World</b></div>
@@ -283,11 +283,11 @@ Here's an example:
 </script>
 ```
 
-**Beware: unlike `innerHTML`, writing to `outerHTML` does not change the element. Instead, it replaces it in the DOM.**
+**Attenzione: diversamente da `innerHTML`, la scrittura in `outerHTML` non cambia l'elemento ma lo sostituisce nel DOM.**
 
-Yeah, sounds strange, and strange it is, that's why we make a separate note about it here. Take a look.
+Proprio così, sembra strano, e lo è. Ecco perché ne parliamo subito con una nota a parte. Prestate attenzione.
 
-Consider the example:
+Considerate l'esempio:
 
 ```html run
 <div>Hello, world!</div>
@@ -296,35 +296,35 @@ Consider the example:
   let div = document.querySelector('div');
 
 *!*
-  // replace div.outerHTML with <p>...</p>
+  // sostituisce div.outerHTML con <p>...</p>
 */!*
   div.outerHTML = '<p>A new element</p>'; // (*)
 
 *!*
-  // Wow! 'div' is still the same!
+  // Wow! 'div' non è cambiato!
 */!*
   alert(div.outerHTML); // <div>Hello, world!</div> (**)
 </script>
 ```
 
-Looks really odd, right?
+Sembra davvero strano, vero?
 
-In the line `(*)` we replaced `div` with `<p>A new element</p>`. In the outer document (the DOM) we can see the new content instead of the `<div>`. But, as we can see in line `(**)`, the value of the old `div` variable hasn't changed!
+Nella linea `(*)` sostituiamo `div` con `<p>A new element</p>`. Nel documento (il DOM) possiamo osservare che il nuovo contenuto ha preso il posto di `<div>`. Tuttavia, come possiamo notare nella linea `(**)`, il precedente valore della variabile `div`non è cambiato!
 
-The `outerHTML` assignment does not modify the DOM element (the object referenced by, in this case, the variable 'div'), but removes it from the DOM and inserts the new HTML in its place.
+L'assegnazione con `outerHTML` non cambia l'elemento (cioè l'oggetto a cui fa riferimento, in questo caso, la variabile 'div'), però lo rimuove dal DOM e inserisce il nuovo HTML al suo posto.
 
-So what happened in `div.outerHTML=...` is:
-- `div` was removed from the document.
-- Another piece of HTML `<p>A new element</p>` was inserted in its place.
-- `div` still has its old value. The new HTML wasn't saved to any variable.
+Ricapitolando ciò che è successo in `div.outerHTML=...` è:
+- `div` è stato rimosso dal documento.
+- Un pezzo di HTML differente `<p>A new element</p>` è stato inserito al suo posto.
+- `div` mantiene ancora il suo valore precedente. L'HTML inserito in seguito non è stato memorizzato in alcuna variabile.
 
-It's so easy to make an error here: modify `div.outerHTML` and then continue to work with `div` as if it had the new content in it. But it doesn't. Such thing is correct for `innerHTML`, but not for `outerHTML`.
+È molto semplice commettere un errore a questo punto: modificare `div.outerHTML` e procedere con `div` come se avesse recepito il nuovo contenuto. Ma questo non avviene. Tale  convinzione è corretta per `innerHTML`, ma non per `outerHTML`.
 
-We can write to `elem.outerHTML`, but should keep in mind that it doesn't change the element we're writing to ('elem'). It puts the new HTML in its place instead. We can get references to the new elements by querying the DOM.
+Possiamo scrivere tramite `elem.outerHTML`, ma dovremmo tenere bene presente che non cambia l'elemento ('elem') su cui stiamo scrivendo, sostituisce invece il nuovo HTML al suo posto. Per avere un riferimento valido al nuovo elemento dobbiamo interrogare nuovamente il DOM.
 
-## nodeValue/data: text node content
+## nodeValue/data: il contenuto testuale del nodo
 
-The `innerHTML` property is only valid for element nodes.
+La proprietà `innerHTML` è valida soltanto per i nodi elemento.
 
 Other node types, such as text nodes, have their counterpart: `nodeValue` and `data` properties. These two are almost the same for practical use, there are only minor specification differences. So we'll use `data`, because it's shorter.
 
