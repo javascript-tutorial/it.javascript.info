@@ -1,28 +1,28 @@
 
 # URL objects
 
-The built-in [URL](https://url.spec.whatwg.org/#api) class provides a convenient interface for creating and parsing URLs.
+La classe built-in [URL](https://url.spec.whatwg.org/#api) fornisce una comoda interfaccia per la creazione ed il parsing degli URL.
 
-There are no networking methods that require exactly a `URL` object, strings are good enough. So technically we don't have to use `URL`. But sometimes it can be really helpful.
+Non esistono metodi netowrking che richiedono esattamente un oggetto `URL` object, perché le stringhe sono già abbastanza adatte allo scopo. Quindi tecnicamente non dobbiamo usare `URL`. Talvolta però può essere davvero utile.
 
-## Creating a URL
+## Creare un URL
 
-The syntax to create a new `URL` object:
+La sintassi per creare un nuovo oggetto `URL`:
 
 ```js
 new URL(url, [base])
 ```
 
-- **`url`** -- the full URL or only path (if base is set, see below),
-- **`base`** -- an optional base URL: if set and `url` argument has only path, then the URL is generated relative to `base`.
+- **`url`** -- l'URL completo o solo il path (se base è stato impostato, gaurda sotto),
+- **`base`** -- un base URL opzionale: se impostato ed l'argomento `url` contiene solo il path, URL viene generato relativamente a `base`.
 
-For example:
+Ad esempio:
 
 ```js
 let url = new URL('https://javascript.info/profile/admin');
 ```
 
-These two URLs are same:
+Questi due URL sono identici:
 
 ```js run
 let url1 = new URL('https://javascript.info/profile/admin');
@@ -32,7 +32,7 @@ alert(url1); // https://javascript.info/profile/admin
 alert(url2); // https://javascript.info/profile/admin
 ```
 
-We can easily create a new URL based on the path relative to an existing URL:
+Possiamo facilemnte creare un nuovo URL basato sul path relativo ad un URL già esistente:
 
 ```js run
 let url = new URL('https://javascript.info/profile/admin');
@@ -41,7 +41,7 @@ let newUrl = new URL('tester', url);
 alert(newUrl); // https://javascript.info/profile/tester
 ```
 
-The `URL` object immediately allows us to access its components, so it's a nice way to parse the url, e.g.:
+L'oggetto `URL` ci permette immediatamente di accedere ai suoi componenti, in modo da avere un bel modo di effettuare il parse dell'url, come per esempio:
 
 ```js run
 let url = new URL('https://javascript.info/url');
@@ -51,63 +51,63 @@ alert(url.host);     // javascript.info
 alert(url.pathname); // /url
 ```
 
-Here's the cheatsheet for URL components:
+Ecco una tabella informativa per le componenti dell'URL:
 
 ![](url-object.svg)
 
-- `href` is the full url, same as `url.toString()`
-- `protocol` ends with the colon character `:`
-- `search` - a string of parameters, starts with the question mark `?`
-- `hash` starts with the hash character `#`
-- there may be also `user` and `password` properties if HTTP authentication is present: `http://login:password@site.com` (not painted above, rarely used).
+- `href` è l'url completo, equivalente di `url.toString()`
+- `protocol` termina con il carattere `:`
+- `search` - una stringa contenente parametri, comincia con il punto interrogativo `?`
+- `hash` cominca con il carattere cancelletto `#`
+- possono essere presenti anche le proprietà `user` e `password` se è presente l'autenticazione HTTP: `http://login:password@site.com` (non illustrata sopra, perché usata raramente).
 
 
-```smart header="We can pass `URL` objects to networking (and most other) methods instead of a string"
-We can use a `URL` object in `fetch` or `XMLHttpRequest`, almost everywhere where a URL-string is expected.
+```smart header="Possiamo passare gli oggetti `URL` ai metodi di networking (e molti altri) anziché una stringa"
+Possiamo usare un oggetto `URL` dentro `fetch` o `XMLHttpRequest`, quasi ovunque ci si aspetti una stringa.
 
-Generally, the `URL` object can be passed to any method instead of a string, as most methods will perform the string conversion, that turns a `URL` object into a string with full URL.
+Generalmente, l'oggetto `URL` può essere passato a qualunque metodo al posto di una stringa, dal momento che la maggior parte dei metodi effettueranno una conversione in stringa, e trasformeneranno un oggetto `URL` in una stringa con l'URL completo.
 ```
 
 ## SearchParams "?..."
 
-Let's say we want to create a url with given search params, for instance, `https://google.com/search?query=JavaScript`.
+Mettiamo il caso che volessimo creare un url con dei parametri prestabiliti, ad esmepio, `https://google.com/search?query=JavaScript`.
 
-We can provide them in the URL string:
+Possiamo inserirli dentro la stringa URL:
 
 ```js
 new URL('https://google.com/search?query=JavaScript')
 ```
 
-...But parameters need to be encoded if they contain spaces, non-latin letters, etc (more about that below).
+...Ma i parametri hanno bisogno di essere encodati se contengono spazi, lettere non latine, etc (più informazioni su questo in basso).
 
-So there's a URL property for that: `url.searchParams`, an object of type [URLSearchParams](https://url.spec.whatwg.org/#urlsearchparams).
+Abbiamo una proprietà URL appositamente per questo: `url.searchParams`, un oggetto di tipo [URLSearchParams](https://url.spec.whatwg.org/#urlsearchparams).
 
-It provides convenient methods for search parameters:
+Fornisce metodi comodi per i parametri di ricerca:
 
-- **`append(name, value)`** -- add the parameter by `name`,
-- **`delete(name)`** -- remove the parameter by `name`,
-- **`get(name)`** -- get the parameter by `name`,
-- **`getAll(name)`** -- get all parameters with the same `name` (that's possible, e.g. `?user=John&user=Pete`),
-- **`has(name)`** -- check for the existence of the parameter by `name`,
-- **`set(name, value)`** -- set/replace the parameter,
-- **`sort()`** -- sort parameters by name, rarely needed,
-- ...and it's also iterable, similar to `Map`.
+- **`append(name, value)`** -- aggiunge il parametro per nome `name`,
+- **`delete(name)`** -- rimuove il parametro partendo dal `name`,
+- **`get(name)`** -- recupera il parametro dal nome `name`,
+- **`getAll(name)`** -- recupera tutti i parametri con lo stesso `name` (un caso reale potrebbe essere ad esempio `?user=John&user=Pete`, nel caso di una select a scelta multipla),
+- **`has(name)`** -- controlla l'esistenza del parametro a partire dal nome `name`,
+- **`set(name, value)`** -- imposta/sostituisce il parametro,
+- **`sort()`** -- ordina i parametri per nome, raramente necessario,
+- ...ed è anche iterabile, similmente a `Map`.
 
-An example with parameters that contain spaces and punctuation marks:
+Ecco un esempio con parametri che contengono spazi e segni di punteggiatura:
 
 ```js run
 let url = new URL('https://google.com/search');
 
-url.searchParams.set('q', 'test me!'); // added parameter with a space and !
+url.searchParams.set('q', 'test me!'); // aggiunto un parametro con spazio e !
 
 alert(url); // https://google.com/search?q=test+me%21
 
-url.searchParams.set('tbs', 'qdr:y'); // added parameter with a colon :
+url.searchParams.set('tbs', 'qdr:y'); // aggiunto un parametrio con due punti :
 
-// parameters are automatically encoded
+// i parametri vengono codificati automaticamente
 alert(url); // https://google.com/search?q=test+me%21&tbs=qdr%3Ay
 
-// iterate over search parameters (decoded)
+// itera i parametri di ricerca (decodificati)
 for(let [name, value] of url.searchParams) {
   alert(`${name}=${value}`); // q=test me!, then tbs=qdr:y
 }
