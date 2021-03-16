@@ -125,7 +125,7 @@ Lo stesso che si otterrebbe con un assegnazione diretta ad `Article`:
 Article.publisher = "Ilya Kantor";
 ```
 
-## Ereditarietà delle proprietà e dei metodi statici
+## Ereditarietà delle proprietà e dei metodi statici [#statics-and-inheritance]
 
 Anche le proprietà ed i metodi statici vengono ereditati.
 
