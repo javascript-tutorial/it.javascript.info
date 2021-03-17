@@ -326,9 +326,9 @@ Possiamo scrivere tramite `elem.outerHTML`, ma dovremmo tenere bene presente che
 
 La proprietà `innerHTML` è valida soltanto per i nodi elemento.
 
-Other node types, such as text nodes, have their counterpart: `nodeValue` and `data` properties. These two are almost the same for practical use, there are only minor specification differences. So we'll use `data`, because it's shorter.
+Gli altri tipi di nodo, come i nodi di testo, hanno il loro corrispettivo: le proprietà `nodeValue` e `data`. Nell'uso pratico questi due si comportano quasi alla stessa maniera, ci sono solo piccole differenze nella specifica. Useremo perciò `data` dal momento che è più breve.
 
-An example of reading the content of a text node and a comment:
+Ecco un esempio di lettura del contenuto di un nodo di testo e di un commento:
 
 ```html run height="50"
 <body>
@@ -348,9 +348,9 @@ An example of reading the content of a text node and a comment:
 </body>
 ```
 
-For text nodes we can imagine a reason to read or modify them, but why comments?
+Per i nodi di testo possiamo ipotizzare un motivo per leggerne o modificarne il contenuto testuale, ma perché i commenti?
 
-Sometimes developers embed information or template instructions into HTML in them, like this:
+Talvolta gli sviluppatori incorporano informazioni o istruzioni sui template nei commenti all'interno dell'HTML, in questo modo:
 
 ```html
 <!-- if isAdmin -->
@@ -358,13 +358,13 @@ Sometimes developers embed information or template instructions into HTML in the
 <!-- /if -->
 ```
 
-...Then JavaScript can read it from `data` property and process embedded instructions.
+...così JavaScript può leggerle tramite la proprietà `data` ed elaborare le istruzioni contenute.
 
-## textContent: pure text
+## textContent: solo il testo
 
-The `textContent` provides access to the *text* inside the element: only text, minus all `<tags>`.
+La proprietà `textContent` fornisce l'accesso al *testo* dentro l'elemento: solo il testo, al netto di tutti i `<tag>`.
 
-For instance:
+Per esempio:
 
 ```html run
 <div id="news">
@@ -378,18 +378,18 @@ For instance:
 </script>
 ```
 
-As we can see, only text is returned, as if all `<tags>` were cut out, but the text in them remained.
+Come possiamo notare viene restituito solo il testo, come se tutti i `<tag>` fossero stati eliminati, ma il testo in essi fosse rimasto.
 
-In practice, reading such text is rarely needed.
+Leggere il testo in questa maniera è un'esigenza rara nell'uso pratico.
 
-**Writing to `textContent` is much more useful, because it allows to write text the "safe way".**
+**È molto più utile scrivere con `textContent`, perché consente di inserire testo "in sicurezza".**
 
-Let's say we have an arbitrary string, for instance entered by a user, and want to show it.
+Supponiamo di avere una stringa arbitraria, ad esempio inserita da un utente, e di volerla mostrare.
 
-- With `innerHTML` we'll have it inserted "as HTML", with all HTML tags.
-- With `textContent` we'll have it inserted "as text", all symbols are treated literally.
+- Con `innerHTML` la inseriremo "come HTML", compresi tutti i tag HTML.
+- Con `textContent` la inseriremo "come testo", tutti i simboli sono trattati letteralmente.
 
-Compare the two:
+Paragoniamo le due opzioni:
 
 ```html run
 <div id="elem1"></div>
@@ -403,16 +403,16 @@ Compare the two:
 </script>
 ```
 
-1. The first `<div>` gets the name "as HTML": all tags become tags, so we see the bold name.
-2. The second `<div>` gets the name "as text", so we literally see `<b>Winnie-the-Pooh!</b>`.
+1. Il primo `<div>` riceve il nome "come HTML": tutti i tag diventano tali, perciò vedremo il nome in grassetto.
+2. Il secondo `<div>` riceve il nome "come testo", perciò vedremo letteralmente `<b>Winnie-the-Pooh!</b>`.
 
-In most cases, we expect the text from a user, and want to treat it as text. We don't want unexpected HTML in our site. An assignment to `textContent` does exactly that.
+Nella maggior parte dei casi da un utente ci aspettiamo testo e desideriamo gestirlo in quanto tale. Non vogliamo codice HTML inatteso sul nostro sito. Un'assegnazione con `textContent` fa esattamente questo.
 
-## The "hidden" property
+## La proprietà "hidden"
 
-The "hidden" attribute and the DOM property specifies whether the element is visible or not.
+L'attributo "hidden" e la corrispettiva proprietà del DOM specificano se l'elemento debba essere visibile o meno.
 
-We can use it in HTML or assign it using JavaScript, like this:
+Possiamo agire da codice HTML o da JavaScript in questo modo:
 
 ```html run height="80"
 <div>Both divs below are hidden</div>
@@ -426,9 +426,9 @@ We can use it in HTML or assign it using JavaScript, like this:
 </script>
 ```
 
-Technically, `hidden` works the same as `style="display:none"`. But it's shorter to write.
+Tecnicamente, `hidden` funziona alla stessa maniera di `style="display:none"` ma è più breve da scrivere.
 
-Here's a blinking element:
+Ecco come ottenere un elemento lampeggiante:
 
 
 ```html run height=50
@@ -439,16 +439,16 @@ Here's a blinking element:
 </script>
 ```
 
-## More properties
+## Altre proprietà
 
-DOM elements also have additional properties, in particular those that depend on the class:
+Gli elementi DOM hanno inoltre proprietà aggiuntive, in particolare quelle che dipendono dalla classe:
 
-- `value` -- the value for `<input>`, `<select>` and `<textarea>` (`HTMLInputElement`, `HTMLSelectElement`...).
-- `href` -- the "href" for `<a href="...">` (`HTMLAnchorElement`).
-- `id` -- the value of "id" attribute, for all elements (`HTMLElement`).
-- ...and much more...
+- `value` -- il valore di `<input>`, `<select>` e `<textarea>` (`HTMLInputElement`, `HTMLSelectElement`...).
+- `href` -- il valore dell'attributo "href" di `<a href="...">` (`HTMLAnchorElement`).
+- `id` -- il valore dell'attributo "id" per tutti gli elementi (`HTMLElement`).
+- ...e molte altre...
 
-For instance:
+Per esempio:
 
 ```html run height="80"
 <input type="text" id="elem" value="value">
@@ -466,7 +466,7 @@ If we want to know the full list of supported properties for a given class, we c
 
 Or if we'd like to get them fast or are interested in a concrete browser specification -- we can always output the element using `console.dir(elem)` and read the properties. Or explore "DOM properties" in the Elements tab of the browser developer tools.
 
-## Summary
+## Sommario
 
 Each DOM node belongs to a certain class. The classes form a hierarchy. The full set of properties and methods come as the result of inheritance.
 
