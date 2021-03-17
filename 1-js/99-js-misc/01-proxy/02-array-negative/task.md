@@ -13,7 +13,7 @@ array[-2]; // 2, il penultimo elemento
 array[-3]; // 1, il terzultimo elemento
 ```
 
-In altre parole, `array[-N]` eqwuivale a `array[array.length - N]`.
+In altre parole, `array[-N]` equivale a `array[array.length - N]`.
 
 Create un proxy che implementa questa funzionalità.
 
