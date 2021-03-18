@@ -495,4 +495,4 @@ Le principali proprietà di un nodo DOM sono:
 
 I nodi del DOM hanno inoltre altre proprietà in base alla loro classe di appartenenza. Per esempio gli elementi `<input>` (`HTMLInputElement`) supportano `value`, `type`, mentre gli elementi `<a>` (`HTMLAnchorElement`) supportano `href` etc. La maggior parte degli attributi HTML standard hanno una proprietà DOM corrispondente.
 
-However, HTML attributes and DOM properties are not always the same, as we'll see in the next chapter.
+Ad ogni modo, come vedremo nel prossimo capitolo, gli attributi HTML e le proprietà del DOM non sono sempre corrispondenti.
