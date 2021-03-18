@@ -460,9 +460,9 @@ Per esempio:
 </script>
 ```
 
-Most standard HTML attributes have the corresponding DOM property, and we can access it like that.
+La maggior parte degli attributi HTML standard ha la corrispondente proprietà DOM e possiamo accedervi in questo modo.
 
-If we want to know the full list of supported properties for a given class, we can find them in the specification. For instance, `HTMLInputElement` is documented at <https://html.spec.whatwg.org/#htmlinputelement>.
+Se desideriamo conoscere la lista completa delle proprietà supportate per una classe precisa, le possiamo trovare nella specifica. Per esempio la classe `HTMLInputElement` è documentata su <https://html.spec.whatwg.org/#htmlinputelement>.
 
 Or if we'd like to get them fast or are interested in a concrete browser specification -- we can always output the element using `console.dir(elem)` and read the properties. Or explore "DOM properties" in the Elements tab of the browser developer tools.
 
