@@ -68,7 +68,7 @@ Come possiamo notare i nodi DOM sono regolari oggetti JavaScript ed usano classi
 Questo è anche facile da osservare esaminando un elemento in un browser con `console.dir(elem)`. Nella console potremo vedere `HTMLElement.prototype`, `Element.prototype` e così via.
 
 ```smart header="`console.dir(elem)` versus `console.log(elem)`"
-La maggior parte dei browser supportano due comandi nei loro strumenti di sviluppo: `console.log` e `console.dir` che mostrano in console i loro argomenti. Per quanto riguarda gli oggetti JavaScript solitamente questi comandi funzionano allo stesso modo.
+La maggior parte dei browser supportano due comandi nei loro strumenti per sviluppatori: `console.log` e `console.dir` che mostrano in console i loro argomenti. Per quanto riguarda gli oggetti JavaScript solitamente questi comandi funzionano allo stesso modo.
 
 Ma per gli elementi DOM sono differenti:
 
@@ -464,35 +464,35 @@ La maggior parte degli attributi HTML standard ha la corrispondente proprietà D
 
 Se desideriamo conoscere la lista completa delle proprietà supportate per una classe precisa, le possiamo trovare nella specifica. Per esempio la classe `HTMLInputElement` è documentata su <https://html.spec.whatwg.org/#htmlinputelement>.
 
-Or if we'd like to get them fast or are interested in a concrete browser specification -- we can always output the element using `console.dir(elem)` and read the properties. Or explore "DOM properties" in the Elements tab of the browser developer tools.
+In alternativa, se vogliamo ricavarle rapidamente o siamo interessati ad una concreta implementazione del browser -- possiamo sempre effettuare un output dell'elemento con `console.dir(elem)` e leggerne le proprietà o, ancora, esplorare "Proprietà DOM" nel tab Elementi degli strumenti per sviluppatori del browser.
 
 ## Sommario
 
-Each DOM node belongs to a certain class. The classes form a hierarchy. The full set of properties and methods come as the result of inheritance.
+Ciascun nodo del DOM appartiene ad una determinata classe. Le classi costituiscono una gerarchia. L'elenco completo delle proprietà e dei metodi è il risultato dell'ereditarietà.
 
-Main DOM node properties are:
+Le principali proprietà di un nodo DOM sono:
 
 `nodeType`
-: We can use it to see if a node is a text or an element node. It has a numeric value: `1` for elements,`3` for text nodes, and a few others for other node types. Read-only.
+: Possiamo utilizzarla per sapere se si tratta di un nodo di testo o di un nodo elemento. Ha un valore numerico: `1` per gli elementi, `3` per i nodi di testo e pochi altri valori per gli altri tipi di nodo. La proprietà è in sola lettura.
 
 `nodeName/tagName`
-: For elements, tag name (uppercased unless XML-mode). For non-element nodes `nodeName` describes what it is. Read-only.
+: Per gli elementi indica il nome del tag (in lettere maiuscole a meno che il browser non sia in modalità XML). Per tutti gli altri nodi `nodeName` contiene una stringa destrittiva. La proprietà è in sola lettura.
 
 `innerHTML`
-: The HTML content of the element. Can be modified.
+: Il contenuto HTML dell'elemento. Può essere modificato.
 
 `outerHTML`
-: The full HTML of the element. A write operation into `elem.outerHTML` does not touch `elem` itself. Instead it gets replaced with the new HTML in the outer context.
+: L'HTML completo dell'elemento. Un'operazione di scrittura in `elem.outerHTML` non modifica `elem`, piuttosto viene sostituito nel documento con il nuovo HTML.
 
 `nodeValue/data`
-: The content of a non-element node (text, comment). These two are almost the same, usually we use `data`. Can be modified.
+: Il contenuto dei nodi che non sono elementi (testi, commenti). Le due proprietà sono quasi del tutto equiparabili, solitamente usiamo `data`. Può essere modificata.
 
 `textContent`
-: The text inside the element: HTML minus all `<tags>`. Writing into it puts the text inside the element, with all special characters and tags treated exactly as text. Can safely insert user-generated text and protect from unwanted HTML insertions.
+: Il testo dentro un elemento: l'HTML al netto di tutti i `<tag>`. Scrivere testo dentro un elemento con questa proprietà fa sì che tutti i caratteri speciali ed i tag siano resi esattamente come testo. Può trattare il testo digitato da un utente in modo sicuro prevenendo gli inserimenti di HTML indesiderato.
 
 `hidden`
-: When set to `true`, does the same as CSS `display:none`.
+: Quando è impostata a `true`, è equivalente alla dichiarazione CSS `display:none`.
 
-DOM nodes also have other properties depending on their class. For instance, `<input>` elements (`HTMLInputElement`) support `value`, `type`, while `<a>` elements (`HTMLAnchorElement`) support `href` etc. Most standard HTML attributes have a corresponding DOM property.
+I nodi del DOM hanno inoltre altre proprietà in base alla loro classe di appartenenza. Per esempio gli elementi `<input>` (`HTMLInputElement`) supportano `value`, `type`, mentre gli elementi `<a>` (`HTMLAnchorElement`) supportano `href` etc. La maggior parte degli attributi HTML standard hanno una proprietà DOM corrispondente.
 
 However, HTML attributes and DOM properties are not always the same, as we'll see in the next chapter.
