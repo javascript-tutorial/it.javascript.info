@@ -1,10 +1,10 @@
-importance: 5
+importanza: 5
 
 ---
 
-# What's in the nodeType?
+# Cosa contiene nodeType?
 
-What does the script show?
+Cosa mostrerà lo script?
 
 ```html
 <html>
