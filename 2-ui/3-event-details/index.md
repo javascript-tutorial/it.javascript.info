@@ -1,3 +1,3 @@
-# UI Events
+# Eventi UI
 
-Here we cover most important user interface events and how to work with them.
+Studieremo i principali eventi per interfacce utente e come gestrili.
