@@ -8,4 +8,4 @@ A quale classe appartiene `document`?
 
 Qual è il suo posto nella gerarchia DOM?
 
-Does it inherit from `Node` or `Element`, or maybe `HTMLElement`?
+Eredita da `Node`, da `Element` o forse da `HTMLElement`?
