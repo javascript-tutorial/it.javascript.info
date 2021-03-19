@@ -10,7 +10,7 @@ Risposta: **`BODY`**.
 </script>
 ```
 
-Cosa succede passo dopo passo:
+Vediamo cosa succede passo dopo passo:
 
 1. Il contenuto di `<body>` è rimpiazzato con il commento. Il commento è `<!--BODY-->`, poiché `body.tagName == "BODY"`. Abbiamo detto che, `tagName` è sempre maiuscolo in modalità HTML.
 2. Il commento è ora l'unico nodo figlio, perciò è il risultato di `body.firstChild`.
