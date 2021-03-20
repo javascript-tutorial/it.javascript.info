@@ -10,7 +10,7 @@ Ma la mappatura attributo-proprietà non va di pari passo! In questo capitolo fa
 
 Abbiamo già visto proprietà integrate del DOM. Ce ne sono molte. Ma tecnicamente nessuna di esse ci limita, e se non ce ne sono abbastanza, possiamo aggiungerne. 
 
-I nodi del DOM sono regolari oggetti Javascript. Possiamo modificarli. 
+I nodi del DOM sono regolari oggetti JavaScript. Possiamo modificarli. 
 
 Ad esempio, creiamo una nuova proprietà in `document.body`:
 
