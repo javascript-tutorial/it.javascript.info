@@ -44,7 +44,7 @@ document.documentElement.sayHi(); // Hello, I'm HTML
 document.body.sayHi(); // Hello, I'm BODY
 ```
 
-Quindi, le proprietà e i metodi del DOM si comportano come regolari oggetti Javascript:
+Quindi, le proprietà e i metodi del DOM si comportano come regolari oggetti JavaScript:
 
 - Possono avere qualsiasi valore.
 - Sono sensibili alle maiuscole (scrivi `elem.nodeType`, non `elem.NoDeTyPe`).
