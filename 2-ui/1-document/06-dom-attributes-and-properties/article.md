@@ -1,6 +1,6 @@
 # Attributi e proprietà
 
-Quando il browser carica una pagina, "legge" (in altre parole: "analizza") l'HTML e genera gli oggetti DOM. Per i nodi elemento, i più degli attributi HTML standart diventano automaticamente proprietà degli oggetti DOM.
+Quando il browser carica una pagina, "legge" (in altre parole: "analizza") l'HTML e genera gli oggetti DOM. Per i nodi elemento, i più degli attributi HTML standard diventano automaticamente proprietà degli oggetti DOM.
 
 Ad esempio, se il tag è `<body id="page">`, allora l'oggetto DOM ha `body.id="page"`.
 
