@@ -28,10 +28,10 @@ Come possiamo rendere qualcosa non scrollabile?
 
 Sicuramente, non possiamo prevenire lo scrolling usando `event.preventDefault()` nel listener `onscroll`, perché quest'ultimo viene generato *dopo* che lo scroll è avvenuto.
 
-Tuttavia, possiamo prevenire lo scrolling con l'utilizzo di `event.preventDefault()` su un evento che causi esso stesso lo scroll, pere esempio l'evento `keydown` per `key:pageUp` e `key:pageDown`.
+Tuttavia, possiamo prevenire lo scrolling con l'utilizzo di `event.preventDefault()` con altri eventi che permettono lo scroll, ad esempio l'evento `keydown` per `key:pageUp` e `key:pageDown`.
 
-Se aggiungiamo un gestore di evento a questi eventi con `event.preventDefault()` al loro interno, allora lo scroll non comincerà affatto.
+Se aggiungiamo un gestore a uno di questi eventi, utilizzando `event.preventDefault()`, allora lo scroll non comincerà affatto.
 
-Ci sono vari modi per iniziare uno scroll, al punto tale che spesso è più affidabile usare i CSS tramite la proprietà `overflow`.
+Ci sono vari modi per inizializzare uno scroll, al punto tale che spesso è più affidabile usare i CSS tramite la proprietà `overflow`.
 
 Ecco alcune attività che potrete risolvere o analizzare per vedere le applicazioni di `onscroll`.

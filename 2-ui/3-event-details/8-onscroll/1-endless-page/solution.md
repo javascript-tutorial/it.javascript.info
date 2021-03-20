@@ -1,4 +1,4 @@
-Il cuore della soluzione è una funzione che aggiunge ancora contenuti nella pagina (o carica più cose nei casi reali) una volta arrivati alla fine del documento.
+Il cuore della soluzione è una funzione che aggiunge continuamente contenuti nella pagina (o carica più cose nei casi reali) una volta arrivati alla fine del documento.
 
 Possiamo chiamarla subito, ed aggiungerla come gestore di `window.onscroll`.
 
@@ -25,9 +25,9 @@ document.documentElement.getBoundingClientRect().bottom = 2000
 Se scrolliamo verso il basso di `500px`, avremo che:
 
 ```js
-// la sommita' del documento sta sopra la finestra di 500px
+// la sommità del documento sta sopra la finestra di 500px
 document.documentElement.getBoundingClientRect().top = -500
-// la parte bassa del documento, inverce, sara' 500px un po' piu' vicina
+// la parte bassa del documento, invece, sarà 500px un po' più vicina
 document.documentElement.getBoundingClientRect().bottom = 1500
 ```
 
@@ -35,9 +35,9 @@ Quando avremo scrollato la pagina fino alla fine, posto che l'altezza della fine
 
 
 ```js
-// la sommità del documento stara' sopra la finestra di 1400px
+// la sommità del documento starà sopra la finestra di 1400px
 document.documentElement.getBoundingClientRect().top = -1400
-// la parte bassa del documento sara' piu' in basso rispetto alla finestra di 600px
+// la parte bassa del documento sarà più in basso rispetto alla finestra di 600px
 document.documentElement.getBoundingClientRect().bottom = 600
 ```
 

@@ -4,7 +4,7 @@ importance: 4
 
 # Caricare immagini visibili
 
-Poniamo il caso di avere un client con connessione lenta e che volessimo risparmiare un po' di traffico dal dispositivo mobile.
+Ipotizziamo di avere un client con connessione lenta e di voler far risparmiare un po' di traffico dal dispositivo mobile.
 
 A questo proposito, decidiamo di non caricare immediatamente le immagini, ma piuttosto di sostituirle con dei segnaposto, così:
 

@@ -4,7 +4,7 @@ importance: 5
 
 # Pagina senza fine
 
-Create una pagina senza fine. Quando un visitatore scrolla fino alla fine della pagina, si auto-accoda nel testo la data attuale ( cosicché il visitatore possa scrollare ancora).
+Create una pagina senza fine. Quando un visitatore scrolla fino alla fine della pagina, la data attuale deve essere accodata (cosicché il visitatore possa scrollare ancora).
 
 Come in questo esempio:
 
