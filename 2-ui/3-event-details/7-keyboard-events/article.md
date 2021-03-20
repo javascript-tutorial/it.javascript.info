@@ -2,7 +2,7 @@
 
 Prima di scendere nei dettagli della tastiera, è bene ricordare che nei dispositivi moderni esistono tanti modi per "inserire qualche dato". Per esempio, è doveroso citare l'uso del riconoscimento vocale (specialmente sui dispositivi mobile) o il copia/incolla tramite il mouse.
 
-Quindi, se vogliamo tenere traccia di qualunque input dentro un campo `<input>`, allora gli eventi della tastiera non saranno sufficienti. Esiste però un altro evento chiamato `input` per tenere traccia delle modifiche degli `<input>`, indipendentemente dalla modalità di inserimento. Questa potrebbe essere la scelta corretta per questo tipo di attività. L'argomento, verrà affrontato più avanti nel capitolo <info:events-change-input>.
+Quindi, se vogliamo tenere traccia di qualunque input dentro un campo `<input>`, allora gli eventi della tastiera non saranno sufficienti. Esiste però un altro evento chiamato `input` per tenere traccia delle modifiche degli `<input>`, indipendentemente dalla modalità di inserimento. Questa potrebbe essere la scelta corretta per questo tipo di attività. L'argomento verrà affrontato più avanti nel capitolo <info:events-change-input>.
 
 Gli eventi da tastiera dovrebbero essere usati per gestire, appunto, azioni da tastiera (comprese quelle virtuali). Ad esempio, per reagire ai tasti freccia `key:Up` e `key:Down`, oppure per l'uso delle scorciatoie e/o tasti di scelta rapida (includendo quindi combinazioni di tasti).
 
@@ -24,11 +24,11 @@ Proviamo diverse combinazioni di tasti nel campo di testo.
 
 ## Keydown e keyup
 
-L'evento `keydown` viene scaturito alla pressione di un tasto, `keyup`, invece, quando viene rilasciato.
+L'evento `keydown` scaturisce alla pressione di un tasto; `keyup`, invece, quando viene rilasciato.
 
 ### event.code e event.key
 
-La proprietà `key` dell'oggetto evento, permette di ottenere il carattere, mentre la proprietà `code` ci restituisce il "codice fisico del tasto".
+La proprietà `key` dell'oggetto evento permette di ottenere il carattere, mentre la proprietà `code` ci restituisce il "codice fisico del tasto".
 
 Ad esempio, a parità di `key:Z`, quest'ultimo potrebbe essere stato premuto con o senza il `key:Shift`, cosa che potrebbe restituirci due differenti caratteri: `z` minuscolo oppure `Z` maiuscolo.
 
@@ -40,10 +40,10 @@ Ad esempio, a parità di `key:Z`, quest'ultimo potrebbe essere stato premuto con
 | `key:Shift+Z`|`Z` (maiuscolo)          |`KeyZ`        |
 
 
-Prendendo questo tasto come riferimento, se un utente facesse uso di diverse lingue nello stesso sistema operativo, il passaggio ad un'altra lingua, potrebbe portare ad avere tutt'altro carattere rispetto a `"Z"`. Quest'ultimo sarebbe il valore di `event.key`, mentre `event.code` sarebbe sempre `"KeyZ"`.
+Prendendo questo tasto come riferimento, se un utente facesse uso di diverse lingue nello stesso sistema operativo, il passaggio ad un'altra lingua potrebbe portare ad avere tutt'altro carattere rispetto a `"Z"`. Quest'ultimo sarebbe il valore di `event.key`, mentre `event.code` sarebbe sempre `"KeyZ"`.
 
 ```smart header="\"KeyZ\" e altri codici tasto"
-Ogni tasto ha un codice che dipende dalla sua posizione sulla tastiera. Questi codici, vengono descritti nelle [specifiche dei codici Evento UI](https://www.w3.org/TR/uievents-code/).
+Ogni tasto ha un codice che dipende dalla sua posizione sulla tastiera. Questi codici vengono descritti nelle [specifiche dei codici Evento UI](https://www.w3.org/TR/uievents-code/).
 
 Per esempio:
 - I tasti lettera hanno dei codici: `"Key<letter>"`: `"KeyA"`, `"KeyB"` etc.
@@ -52,7 +52,7 @@ Per esempio:
 
 Esiste una grande varietà di layout di tastiera, e le specifiche danno un codice per ognuno di essi.
 
-Per avere informazioni sui vari codici fare riferimento alla [sezione alfanumerica delle specifiche](https://www.w3.org/TR/uievents-code/#key-alphanumeric-section), oppure, è sufficiente premere un tasto nel [banco di test](#keyboard-test-stand) precedente.
+Per avere informazioni sui vari codici, fare riferimento alla [sezione alfanumerica delle specifiche](https://www.w3.org/TR/uievents-code/#key-alphanumeric-section), oppure, è sufficiente premere un tasto nel [banco di test](#keyboard-test-stand) precedente.
 ```
 
 ```warn header="La distinzione tra maiuscolo e minuscolo è importante: è `\"KeyZ\"`, e non `\"keyZ\"`"
@@ -71,11 +71,11 @@ Cosa succederebbe se un tasto non restituisse nessun carattere? Per esempio, `ke
 
 È importante sottolineare che `event.code` specifica esattamente il tasto premuto. Per esempio, la maggioranza delle tastiere hanno due tasti `key:Shift`: uno nel lato sinistro e uno nel lato destro. `event.code` ci dice esattamente quale dei due viene premuto, `event.key` è invece responsabile invece del "significato" del tasto: cosa è (cioè uno "Shift").
 
-Mettiamo il caso che volessimo gestire una scorciatoia: `key:Ctrl+Z` (o `key:Cmd+Z` su Mac). La maggior parte degli editor di testo associa a questa combinazione, l'azione "Undo". A quel punto potremmo, impostare un listener sul `keydown` e controllare quale tasto venga premuto.
+Mettiamo il caso che volessimo gestire una scorciatoia: `key:Ctrl+Z` (o `key:Cmd+Z` su Mac). La maggior parte degli editor di testo associa a questa combinazione, l'azione "Undo". A quel punto potremmo impostare un listener sul `keydown` e controllare quale tasto venga premuto.
 
 Ma qui ci troveremo di fronta a un dilemma: in questo listener, cosa dovremmo controllare? Il valore di `event.key` oppure quello di `event.code`?
 
-Da una parte, il valore di `event.key` è un carattere, e cambia a seconda del linguaggio. Se il visitatore gestisce più lingue nel suo sistema operativo e passa da uno all'altro, lo stesso tasto restituirebbe caratteri differenti. Quindi ha senso controllare `event.code`, che è sempre lo stesso.
+Da una parte, il valore di `event.key` è un carattere, e cambia a seconda del linguaggio. Se il visitatore gestisce più lingue nel suo sistema operativo e passa da una all'altra, lo stesso tasto restituirebbe caratteri differenti. Quindi ha senso controllare `event.code`, che è sempre lo stesso.
 
 Ecco un esempio:
 
@@ -105,9 +105,9 @@ Questo può sembrare strano, ma è così. Le [specifiche](https://www.w3.org/TR/
 
 Quindi, `event.code` può corrispondere a un carattere errato su layout non contemplati. A parità di lettera, per layout differenti potrebbero essere mappati tasti fisici differenti, portando ad avere codici differenti. Fortunatamente, questo avviene solo con alcuni di questi, ad esempio `keyA`, `keyQ`, `keyZ` (come abbiamo visto), ma non avviene con i tasti speciali come `Shift`. Si può vedere la lista nelle [specifiche](https://www.w3.org/TR/uievents-code/#table-key-code-alphanumeric-writing-system).
 
-Per il tracciamento affidabile dei caratteri, che siano dipendenti dal layout, `event.key` potrebbe essere la soluzione migliore.
+Per il tracciamento affidabile dei caratteri che sono dipendenti dal layout, `event.key` potrebbe essere la soluzione migliore.
 
-Di contro, `event.code` ha il beneficio di essere sempre lo stesso, legato alla posizione fisica del tasto, anche se il visitatore dovesse modificare la lingua. E le scorciatoie ad essi relative funzioneranno bene anche in caso di cambio lingua.
+Di contro, `event.code` ha il beneficio di essere sempre lo stesso, legato alla posizione fisica del tasto, anche se il visitatore dovesse modificare la lingua. E le scorciatoie ad esso relative funzioneranno bene anche in caso di cambio lingua.
 
 Vogliamo gestire dei tasti dipendenti dal layout? Ecco che `event.key` è quello che fa per noi.
 
@@ -115,7 +115,7 @@ Oppure, vogliamo una scorciatoia che funzioni anche modificando la lingua? Allor
 
 ## Auto-repeat
 
-Se un tasto viene premuto abbastanza a lungo, si instaura l'"auto-repeat": l'evento `keydown` viene scaturito ancora e ancora, e alla fine, quando viene rilasciato, otteniamo un evento `keyup`. Quindi è abbastanza normale avere molti `keydown` ed un solo `keyup`.
+Se un tasto viene premuto abbastanza a lungo, si instaura l'"auto-repeat": l'evento `keydown` scaturisce ancora e ancora e, alla fine, quando viene rilasciato, otteniamo un evento `keyup`. Quindi è abbastanza normale avere molti `keydown` ed un solo `keyup`.
 
 Per eventi generati da auto-repeat, l'oggetto evento coinvolto avrà la proprietà `event.repeat` impostata a `true`.
 
@@ -168,7 +168,7 @@ Adesso le frecce e il tasto cancella funzionano.
 
 In passato, c'era l'evento `keypress`, ed anche le proprietà `keyCode`, `charCode`, `which` dell'oggetto evento.
 
-C'erano tante di quelle incompatibilità tra i vari browser, anche durante lo sviluppo delle specifiche da parte degli sviluppatori che cercavano di implementarle, che l'unica soluzione fu quella di deprecarli tutti, e creare degli eventi nuovi e moderni (descritti sopra in questo capitolo). Il codice vecchio funziona ancora, dal momento che i browser continuano a supportarli, ma assolutamente non c'è nessuna ragione per continuare a farlo.
+C'erano tante di quelle incompatibilità tra i vari browser, anche durante lo sviluppo delle specifiche da parte degli sviluppatori che cercavano di implementarle, che l'unica soluzione fu quella di deprecarli tutti, e creare degli eventi nuovi e moderni (descritti sopra in questo capitolo). Il codice vecchio funziona ancora, dal momento che i browser continuano a supportarli, ma non c'è assolutamente nessuna ragione per continuare a farlo.
 
 ## Tastiere dei dispositivi mobile
 
@@ -190,6 +190,6 @@ Le principali proprietà degli eventi da tastiera sono:
 - `code` il "codice del tasto" (`"KeyA"`, `"ArrowLeft"` e così via), specifico della posizione fisica del tasto sulla tastiera.
 - `key` -- il carattere (`"A"`, `"a"` e così via), per tasti che non rappresentano caratteri, come `key:Esc`, solitamente ha lo stesso valore di `code`.
 
-In passato, gli eventi da tastiera erano talvolta usati per tenere traccia degli input dell'utente nei campi dei form, cosa non molto affidabile perché l'input può avvenire in vari modi. Per gestire qualunque tipo di input abbiamo `input` e `change` (affrontati più avanti nel capitolo <info:events-change-input>). Questi vengono scaturiti da qualunque tipo di input, inclusi il copia-incolla o il riconoscimento vocale.
+In passato, gli eventi da tastiera erano talvolta usati per tenere traccia degli input dell'utente nei campi dei form, cosa non molto affidabile perché l'input può avvenire in vari modi. Per gestire qualunque tipo di input abbiamo `input` e `change` (affrontati più avanti nel capitolo <info:events-change-input>). Questi scaturiscono da qualunque tipo di input, inclusi il copia-incolla o il riconoscimento vocale.
 
 In generale, dovremmo usare gli eventi da tastiera solamente quando vogliamo usare, appunto, la tastiera. Ad esempio per scorciatoie o tasti speciali.
