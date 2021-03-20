@@ -10,7 +10,7 @@ Nodi del DOM differenti possono avere proprietà differenti. Ad esempio, un nodo
 
 Ogni nodo del DOM appartiene alla corrispondente classe nativa.
 
-La classe base della gerarchia è [EventTarget](https://dom.spec.whatwg.org/#eventtarget), che è ereditata dalla classe [Node](http://dom.spec.whatwg.org/#interface-node) che, a sua volta, è ereditata dalle altre classi corrispondenti ai nodi del DOM.
+La classe base della gerarchia è [EventTarget](https://dom.spec.whatwg.org/#eventtarget), che è ereditata dalla classe [Node](http://dom.spec.whatwg.org/#interface-node) da cui ereditano le altre classi corrispondenti ai nodi del DOM.
 
 Qui lo schema, le spiegazioni a seguire:
 
@@ -19,7 +19,7 @@ Qui lo schema, le spiegazioni a seguire:
 Le classi sono:
 
 - [EventTarget](https://dom.spec.whatwg.org/#eventtarget) -- è la classe radice (root class) "astratta". Gli oggetti di questa classe non vengono mai creati. Serve solo come base, in questo modo tutti i nodi del DOM supportano i cosiddetti "eventi" che studieremo successivamente.
-- [Node](http://dom.spec.whatwg.org/#interface-node) -- anche questa è una classe "astratta" che serve da base per i nodi del DOM. Fornisce le funzionalità principali della struttura gerarchica: `parentNode`, `nextSibling`, `childNodes` e così via (si tratta di getters). Dalla classe `Node` non vengono mai creati oggetti, tuttavia da questa  ereditano classi corrispondenti a nodi concreti, nella fattispecie: `Text` per i nodi di testo, `Element` per i nodi elemento e quelli meno ricorrenti come `Comment` per i nodi commento.
+- [Node](http://dom.spec.whatwg.org/#interface-node) -- anche questa è una classe "astratta" che serve da base per i nodi del DOM. Fornisce le funzionalità principali della struttura gerarchica: `parentNode`, `nextSibling`, `childNodes` e così via (si tratta di getter). Dalla classe `Node` non vengono mai creati oggetti, tuttavia da questa ereditano classi corrispondenti a nodi concreti, nella fattispecie: `Text` per i nodi di testo, `Element` per i nodi elemento e quelli meno ricorrenti come `Comment` per i nodi commento.
 - [Element](http://dom.spec.whatwg.org/#interface-element) -- è la classe base per gli elementi del DOM. Fornisce le funzionalità di navigazione tra elementi come `nextElementSibling`, `children` ed i metodi di ricerca come `getElementsByTagName`, `querySelector`. Un browser non supporta solo HTML, ma anche XML e SVG. La classe `Element` serve da base per le classi più specifiche: `SVGElement`, `XMLElement` e `HTMLElement`.
 - [HTMLElement](https://html.spec.whatwg.org/multipage/dom.html#htmlelement) -- è, infine, la classe base per tutti gli elementi HTML. Essa è ereditata da elementi HTML concreti:
     - [HTMLInputElement](https://html.spec.whatwg.org/multipage/forms.html#htmlinputelement) -- la classe per gli elementi `<input>`,
@@ -35,19 +35,19 @@ Esso riceve proprietà e metodi per effetto della sovrapposizione di (elencate i
 
 
 - `HTMLInputElement` -- questa classe fornisce le proprietà specifiche per un campo di testo,
-- `HTMLElement` -- espone i metodi (e i getters/setters) comuni agli elementi HTML,
+- `HTMLElement` -- espone i metodi (e i getter/setter) comuni agli elementi HTML,
 - `Element` -- fornisce i metodi generici propri di un elemento,
 - `Node` -- fornisce i metodi generici propri di un nodo DOM,
 - `EventTarget` -- consente il supporto agli eventi (che tratteremo in seguito),
-- ...e, infine, esso eredita da `Object`, quindi saranno disponibili anche i metodi della classe Object come `hasOwnProperty`.
+- ...e, infine, esso eredita da `Object`, quindi saranno disponibili anche i metodi di un oggetto semplice come `hasOwnProperty`.
 
-Per conoscere il nome della classe di un nodo DOM, ricordiamoci che un oggetto ha solitamente la proprietà `constructor`. Questa si riferisce al costruttore della classe e il suo nome è `constructor.name`:
+Per conoscere il nome della classe di un nodo DOM, ricordiamoci che un oggetto ha solitamente la proprietà `constructor`. Questa contiene un riferimento al costruttore della classe e `constructor.name` indica il suo nome:
 
 ```js run
 alert( document.body.constructor.name ); // HTMLBodyElement
 ```
 
-...O possiamo semplicemente eseguire il metodo `toString`:
+...Oppure possiamo semplicemente eseguire il metodo `toString`:
 
 ```js run
 alert( document.body ); // [object HTMLBodyElement]
@@ -63,7 +63,7 @@ alert( document.body instanceof Node ); // true
 alert( document.body instanceof EventTarget ); // true
 ```
 
-Come possiamo notare i nodi DOM sono regolari oggetti JavaScript ed usano classi basate sui prototipi per l'ereditarietà.
+Come possiamo notare i nodi DOM sono oggetti JavaScript regolari ed usano classi basate sui prototipi per l'ereditarietà.
 
 Questo è anche facile da osservare esaminando un elemento in un browser con `console.dir(elem)`. Nella console potremo vedere `HTMLElement.prototype`, `Element.prototype` e così via.
 
@@ -79,7 +79,7 @@ Provatelo con `document.body`.
 ```
 
 ````smart header="L'IDL della specifica"
-Nella specifica, le classi DOM non sono descritte con JavaScript, ma con uno speciale [Interface description language](https://en.wikipedia.org/wiki/Interface_description_language) (IDL), che di solito è facile da capire.
+Nella specifica, le classi DOM non sono descritte con JavaScript, ma con uno speciale [Interface description language](https://en.wikipedia.org/wiki/Interface_description_language) (IDL), che di solito è facile da comprendere.
 
 Nell'IDL tutte le proprietà sono precedute dai rispettivi tipi. Per esempio `DOMString`, `boolean` e così via.
 
@@ -107,7 +107,7 @@ interface HTMLInputElement: HTMLElement {
 */!*
   ...
 *!*
-  // ora un metodo: "void" significa che il metodo non restituisce alcun valore
+  // ora un metodo: "void" per indicare che il metodo non restituisce alcun valore
 */!*
   void select();
   ...
@@ -259,7 +259,7 @@ elem.innerHTML = elem.innerHTML + "..."
 In altre parole, `innerHTML+=` fa questo:
 
 1. Rimuove il contenuto precedente.
-2. Il nuovo valore di `innerHTML` è inserito al suo posto (una concatenazione del vecchio e del nuovo).
+2. Il nuovo valore di `innerHTML` (una concatenazione del vecchio e del nuovo) è inserito al suo posto.
 
 **Poiché il contenuto viene "azzerato" e riscritto da zero, tutte le immagini e le altre risorse verranno ricaricate**.
 
@@ -318,7 +318,7 @@ Ricapitolando ciò che è successo in `div.outerHTML=...` è:
 - Un pezzo di HTML differente `<p>A new element</p>` è stato inserito al suo posto.
 - `div` mantiene ancora il suo valore precedente. L'HTML inserito in seguito non è stato memorizzato in alcuna variabile.
 
-È molto semplice commettere un errore a questo punto: modificare `div.outerHTML` e procedere con `div` come se avesse recepito il nuovo contenuto. Ma questo non avviene. Tale  convinzione è corretta per `innerHTML`, ma non per `outerHTML`.
+È molto semplice commettere un errore a questo punto: modificare `div.outerHTML` e procedere con `div` come se avesse recepito il nuovo contenuto. Ma questo non avviene. Tale convinzione è corretta per `innerHTML`, ma non per `outerHTML`.
 
 Possiamo scrivere tramite `elem.outerHTML`, ma dovremmo tenere bene presente che non cambia l'elemento ('elem') su cui stiamo scrivendo, sostituisce invece il nuovo HTML al suo posto. Per avere un riferimento valido al nuovo elemento dobbiamo interrogare nuovamente il DOM.
 
@@ -350,7 +350,7 @@ Ecco un esempio di lettura del contenuto di un nodo di testo e di un commento:
 
 Per i nodi di testo possiamo ipotizzare un motivo per leggerne o modificarne il contenuto testuale, ma perché i commenti?
 
-Talvolta gli sviluppatori incorporano informazioni o istruzioni sui template nei commenti all'interno dell'HTML, in questo modo:
+Talvolta gli sviluppatori incorporano informazioni o istruzioni per i template nei commenti all'interno dell'HTML, in questo modo:
 
 ```html
 <!-- if isAdmin -->
@@ -464,7 +464,7 @@ La maggior parte degli attributi HTML standard ha la corrispondente proprietà D
 
 Se desideriamo conoscere la lista completa delle proprietà supportate per una classe precisa, le possiamo trovare nella specifica. Per esempio la classe `HTMLInputElement` è documentata su <https://html.spec.whatwg.org/#htmlinputelement>.
 
-In alternativa, se vogliamo ricavarle rapidamente o siamo interessati ad una concreta implementazione del browser -- possiamo sempre effettuare un output dell'elemento con `console.dir(elem)` e leggerne le proprietà o, ancora, esplorare "Proprietà DOM" nel tab Elementi degli strumenti per sviluppatori del browser.
+In alternativa, se vogliamo ricavarle rapidamente o siamo interessati ad una concreta implementazione del browser -- possiamo sempre esaminare l'elemento con `console.dir(elem)` e leggerne le proprietà o, ancora, esplorare le "Proprietà DOM" nel tab Elementi degli strumenti per sviluppatori del browser.
 
 ## Sommario
 
@@ -482,7 +482,7 @@ Le principali proprietà di un nodo DOM sono:
 : Il contenuto HTML dell'elemento. Può essere modificato.
 
 `outerHTML`
-: L'HTML completo dell'elemento. Un'operazione di scrittura in `elem.outerHTML` non modifica `elem`, piuttosto viene sostituito nel documento con il nuovo HTML.
+: L'HTML completo dell'elemento. Un'operazione di scrittura in `elem.outerHTML` non modifica `elem` ma viene sostituito nel documento con il nuovo HTML.
 
 `nodeValue/data`
 : Il contenuto dei nodi che non sono elementi (testi, commenti). Le due proprietà sono quasi del tutto equiparabili, solitamente usiamo `data`. Può essere modificata.

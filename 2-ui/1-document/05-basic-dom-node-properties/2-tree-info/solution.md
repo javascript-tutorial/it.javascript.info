@@ -6,7 +6,7 @@ for (let li of document.querySelectorAll('li')) {
 }
 ```
 
-Durante le iterazioni abbiamo bisogno di ricavare il testo all'interno di ogni `li`.
+Per ciascuna iterazione abbiamo bisogno di ricavare il testo all'interno di ogni `li`.
 
 Possiamo leggere il testo dal primo nodo figlio di `li` che è un nodo di testo:
 
