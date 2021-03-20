@@ -1,14 +1,14 @@
-# Pointer events
+# Eventi del puntatore
 
 I Pointer events (da adesso in poi, eventi del puntatore) sono una maniera moderna di gestire gli input di una varietà di dispositivi di puntamento, come mouse, penne/stilo, touchscreen e così via.
 
-## The brief history
+## Una breve storia
 
-Facciamo una breve panoramica, in modo da averne una visione generale del posto che occupano gli questi eventi, rispetto agli altri.
+Facciamo una breve panoramica, in modo da avere una visione generale del posto che occupano questi eventi rispetto agli altri.
 
 - Tanto tempo fa, lontano nel passato, c'erano solo gli eventi del mouse.
 
-    Ad un certo punto, iniziarono a diffondersi i dispositivi touch, in particolar modo telefoni e tablet. Per fare in modo che gli script esistenti potessero continuare a funzionare, questi generavano (e lo fanno ancora oggi) eventi del mouse. Ad esempio, un touchscreen al tocco, genera un `mousedown`. In questa maniera i nuovi dispositivi poterono funzionare correttamente con le pagine web.
+    Ad un certo punto, iniziarono a diffondersi i dispositivi touch, in particolar modo telefoni e tablet. Per fare in modo che gli script esistenti potessero continuare a funzionare, questi generavano (e lo fanno ancora oggi) eventi del mouse. Ad esempio, un touchscreen, al tocco, genera un `mousedown`. In questa maniera i nuovi dispositivi poterono funzionare correttamente con le pagine web.
     
     Tuttavia i dispositivi touch hanno molte più potenzialità rispetto a quelle di un mouse. Ad esempio, con questi dispositivi, è possibile toccare contemporaneamente più punti dello schermo ("multi-touch"). A dispetto di ciò, gli eventi del mouse non hanno le proprietà necessarie per poterlo gestire.
 
@@ -48,7 +48,7 @@ Come possiamo osservare, per ogni `mouse<event>`, c'è un `pointer<event>` che g
 ```smart header="Rimpiazzare `mouse<event>` con `pointer<event>` nel codice"
 Possiamo rimpiazzare gli eventi `mouse<event>` con quelli `pointer<event>` nel codice, ed aspettarci che il tutto continui a funzionare perfettamente con il mouse.
 
-Il supporto ai dispositivi touch inoltre migliorerà "magicamente". Sebbene, saremo costretti ad aggiungere  `touch-action: none` in alcune sezioni del CSS. Affronteremo questa cosa più avanti nella sezione del `pointercancel`. 
+Il supporto ai dispositivi touch inoltre migliorerà "magicamente". Sebbene saremo costretti ad aggiungere  `touch-action: none` in alcune sezioni del CSS. Affronteremo questa cosa più avanti nella sezione del `pointercancel`. 
 ```
 
 ## Proprietà degli eventi del puntatore
@@ -79,7 +79,7 @@ Una delle cose assolutamente non supportate dagli eventi del mouse è il multi-t
 
 I Pointer Events permettono di gestire il multi-touch con l'aiuto delle proprietà `pointerId` e `isPrimary`.
 
-Ecco ciò che succede quando un utente tocca il touchscreen in punto, e successivamente poggia un altro dito su qualche altro punto dello schermo:
+Ecco ciò che succede quando un utente tocca il touchscreen in un punto, e successivamente poggia un altro dito su qualche altro punto dello schermo:
 
 1. Al primo tocco:
     - `pointerdown` con `isPrimary=true` con un determinato `pointerId`.
@@ -102,7 +102,7 @@ Nota bene: Per vedere la differenza dei valori di `pointerId/isPrimary` è neces
 
 ## Evento: pointercancel
 
-L'evento `pointercancel` si genera se nel bel mezzo di una interazione, avviene qualcosa che ne causa la cancellazione, tale che non venga generato nessun evento del puntatore.
+L'evento `pointercancel` si genera se, nel bel mezzo di una interazione, avviene qualcosa che ne causa la cancellazione, tale che non venga generato nessun evento del puntatore.
 
 Le cause possono essere: 
 - Il dispositivo di puntamento è stato fisicamente disabilitato.
@@ -186,7 +186,7 @@ Funziona in questa maniera:
 
 Quindi, per tenere traccia di tutti i movimenti del puntatore, incluso quando va sopra o sotto il `thumb`, abbiamo dovuto assegnare il gestore evento `pointermove` all'intero `document`.
 
-Questa soluzione sembra un po' "sporca". Uno dei problemi è che i movimenti del puntatore sul documento possono causare effetti collaterali, innescare altri gestori evento, per nulla correlate allo slider.
+Questa soluzione sembra un po' "sporca". Uno dei problemi è che i movimenti del puntatore sul documento possono causare effetti collaterali, innescare altri gestori evento, per nulla correlati allo slider.
 
 La cattura del puntatore fornisce il mezzo per effettuare il binding di `pointermove` a `thumb` ed evitare questo tipo di problemi:
 
@@ -211,7 +211,7 @@ thumb.onpointermove = function(event) {
 };
 
 // nota: non necessita la chiamata a thumb.releasePointerCapture, 
-// avviene autamaticamente al pointerup
+// avviene automaticamente al pointerup
 ```
 
 ```online
@@ -237,7 +237,7 @@ Gli eventi del puntatore permettono di gestire gli eventi del mouse, del touch e
 
 Gli eventi del puntatore estendono gli eventi del mouse. Possiamo sostituire `mouse` con `pointer` nei nomi degli eventi ed aspettarci che il codice continui a funzionare per il mouse, con un supporto migliore per altri tipi di dispositivi.
 
-Per i drag'n'drop ed interazioni touch complesse che il browser potrebbe decidere di dirottare sulla propria gestione, dobbiamo ricordarci di disabilitarne l'azione predifinita sugli eventi ed impostare sul CSS `touch-events: none`, per gli elementi che vogliamo coinvolgere.
+Per i drag'n'drop ed interazioni touch complesse che il browser potrebbe decidere di dirottare sulla propria gestione, dobbiamo ricordarci di disabilitarne l'azione predefinita sugli eventi ed impostare sul CSS `touch-events: none`, per gli elementi che vogliamo coinvolgere.
 
 Le abilità aggiuntive degli eventi del puntatore sono:
 
