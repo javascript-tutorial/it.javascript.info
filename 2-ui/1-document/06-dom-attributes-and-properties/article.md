@@ -4,11 +4,11 @@ Quando il browser carica una pagina, "legge" (in altre parole: "analizza") l'HTM
 
 Ad esempio, se il tag è `<body id="page">`, allora l'oggetto DOM ha `body.id="page"`.
 
-Ma la mappatura attributo-proprietà non va di pari passo! In questo capitolo faremo attenzione a separare queste due nozioni, vedremo come lavorare con esse, quando sono la stessa cosa e quando invece sono differenti. 
+Ma la mappatura attributo-proprietà non è uno a uno! In questo capitolo faremo attenzione a separare queste due nozioni, vedremo come lavorare con esse, quando sono la stessa cosa e quando invece sono differenti. 
 
 ## Proprietà del DOM
 
-Abbiamo già visto proprietà integrate del DOM. Ce ne sono molte. Ma tecnicamente nessuna di esse ci limita, e se non ce ne sono abbastanza, possiamo aggiungerne. 
+Abbiamo già visto proprietà integrate del DOM. Ce ne sono molte. Ma tecnicamente nessuna di esse ci limita, e se non ci sono sufficienti, possiamo aggiungerne. 
 
 I nodi del DOM sono regolari oggetti JavaScript. Possiamo modificarli. 
 
@@ -51,9 +51,9 @@ Quindi, le proprietà e i metodi del DOM si comportano come regolari oggetti Jav
 
 ## Attributi HTML 
 
-In HTML, i tag possono avere attributi. Quando il browser analizza l'HTML per creare oggetti DOM per i tag, riconosce gli attributi *standart* e crea proprietà del DOM a partire da essi.
+In HTML, i tag possono avere attributi. Quando il browser analizza l'HTML per creare gli oggetti DOM corrispondenti, riconosce gli attributi *standard* e crea proprietà del DOM a partire da essi.
 
-Perciò, quando un elemento ha `id` o un altro attributo *standard*, la proprietà corrispondente viene creata. Ma questo non succede se l'attributo non è standart. 
+Perciò, quando un elemento ha `id` o un altro attributo *standard*, la proprietà corrispondente viene creata. Ma questo non succede se l'attributo non è standard. 
 
 Ad esempio:
 ```html run
@@ -68,7 +68,7 @@ Ad esempio:
 </body>
 ```
 
-Nota che un attributo standart di un elemento può essere sconosciuto ad un altro. Ad esempio, `"type"` è standard per `<input>` ([HTMLInputElement](https://html.spec.whatwg.org/#htmlinputelement)), ma non per `<body>` ([HTMLBodyElement](https://html.spec.whatwg.org/#htmlbodyelement)). Gli attributi standart sono descritti nella specifica della classe corrispondente dell'elemento.
+Nota che un attributo standard di un elemento può essere sconosciuto ad un altro. Ad esempio, `"type"` è standard per `<input>` ([HTMLInputElement](https://html.spec.whatwg.org/#htmlinputelement)), ma non per `<body>` ([HTMLBodyElement](https://html.spec.whatwg.org/#htmlbodyelement)). Gli attributi standard sono descritti nella specifica della classe corrispondente dell'elemento.
 
 Possiamo vederlo qui:
 ```html run
@@ -83,7 +83,7 @@ Possiamo vederlo qui:
 </body>
 ```
 
-Dunque, se un attributo non è standart, non vi sarà una corrispondente proprietà del DOM. C'è un modo per accedere a questi attributi?
+Dunque, se un attributo non è standard, non vi sarà una corrispondente proprietà del DOM. C'è un modo per accedere a questi attributi?
 
 Certo. Tutti gli attributi sono accessibili utilizzando i seguenti metodi:
 
@@ -94,9 +94,9 @@ Certo. Tutti gli attributi sono accessibili utilizzando i seguenti metodi:
 
 Questi metodi operano con quello che è scritto in HTML.
 
-Si possono altresì leggere tutti gli attributi utilizzando `elem.attributes`: una collection di oggetti che appartengono alla classe integrata [Attr](https://dom.spec.whatwg.org/#attr), con proprietà come`name` e `value`.
+Si possono altresì leggere tutti gli attributi utilizzando `elem.attributes`: una collection di oggetti che appartengono alla classe integrata [Attr](https://dom.spec.whatwg.org/#attr), con proprietà come `name` e `value`.
 
-Segue un esempio di lettura di proprietà non standart:
+Segue un esempio di lettura di proprietà non standard:
 
 ```html run
 <body something="non-standard">
@@ -135,14 +135,14 @@ Ecco un esempio esaustivo di lavoro con gli attributi:
 
 Nota:
 
-1. `getAttribute('About')` -- la prima lettera è maiuscola, mentre in HTML è minuscola. Ma non importa: i nomi degli attributi sono insensibili alle maiuscole. 
+1. `getAttribute('About')` -- la prima lettera è maiuscola, mentre in HTML è minuscola. Non ha importanza: i nomi degli attributi sono insensibili alle maiuscole. 
 2. Possiamo assegnare qualsiasi cosa a un attributo, ma diventerà una stringa. Perciò qui abbiamo `"123"` come valore.
 3. Tutti gli attributi, inclusi quelli che abbiamo impostato, sono visibili in `outerHTML`.
 4. La collection `attributes` è iterabile e ha tutti gli attributi dell'elemento (standard e non standard) come oggetti con proprietà `name` e `value`.
 
 ## Sincronizzazione proprietà-attributo
 
-Quando un attributo standart viene cambiato, la proprietà corrispondente viene automaticamente aggiornata, e (con qualche eccezione) vice versa.
+Quando un attributo standard viene cambiato, la proprietà corrispondente viene automaticamente aggiornata, e (con qualche eccezione) vice versa.
 
 Nell'esempio sotto `id` viene modificato come attributo, e possiamo vedere che anche la proprietà è cambiata. E questo anche al contrario:
 
@@ -188,7 +188,7 @@ Nell'esempio sopra:
 
 Questa caratteristica può essere utile perché le azioni dell'utente potrebbero portare a cambi di `value`, e dopo questi, se vogliamo recuperare il valore "originale" dall'HTML, lo troveremo nell'attributo.
 
-## Le proprietà del DOM sono tipate
+## Le proprietà del DOM sono tipizzate
 
 Le proprietà del DOM non sono sempre stringhe. Ad esempio, la proprietà `input.checked` (per i checkbox) è un booleano:
 
@@ -201,7 +201,7 @@ Le proprietà del DOM non sono sempre stringhe. Ad esempio, la proprietà `input
 </script>
 ```
 
-Ci sono altri esempi. L'attributo `style` è una stringa, ma la proprietà `style` non la è.
+Ci sono altri esempi. L'attributo `style` è una stringa, ma la proprietà `style` non lo è.
 
 ```html run
 <div id="div" style="color:red;font-size:120%">Hello</div>
@@ -216,7 +216,7 @@ Ci sono altri esempi. L'attributo `style` è una stringa, ma la proprietà `styl
 </script>
 ```
 
-La maggior parte dell proprietà, comunque, sono stringhe.
+La maggior parte delle proprietà, comunque, sono stringhe.
 
 Raramente, anche se il tipo di una proprietà è una stringa, questa potrebbe essere diversa dall'attributo. Ad esempio, la proprietà DOM `href` è sempre una URL *intera*, anche se l'attributo contiene una URL relativa o semplicemente un `#hash`.
 
@@ -238,9 +238,9 @@ Se necessitiamo del valore di `href` o di un qualsiasi altro attributo così com
 
 ## Attributi non standard, dataset
 
-Quando scriviamo HTML, utilizziamo molti attributi standart. E quelli non standart, personalizzati? Prima di tutto, vediamo se sono utili o meno, e per cosa.
+Quando scriviamo HTML, utilizziamo molti attributi standard. E quelli non standard, personalizzati? Prima di tutto, vediamo se sono utili o meno, e per cosa.
 
-Qualche volta gli attributi non standart sono utilizzati per passare dati personalizzati dall'HTML a Javascript, o per "contrassegnare" elementi.
+Qualche volta gli attributi non standard sono utilizzati per passare dati personalizzati dall'HTML a JavaScript, o per "contrassegnare" elementi.
 
 Così:
 
@@ -307,9 +307,9 @@ Perché un attributo è più semplice da gestire. Lo stato può cambiare così:
 div.setAttribute('order-state', 'canceled');
 ```
 
-Ma c'è un potenziale problema con gli attributi personalizzati. Che succederebbe se utilizzassimo un attributo non standart che in seguito verrebbe reso tale, con le sue caratteristiche? Il linguaggio HTML è vivo, cresce, e altri attributi potrebbero apparire per soddisfare le necesssità degli sviluppatori.
+Ma c'è un potenziale problema con gli attributi personalizzati. Che succederebbe se utilizzassimo un attributo non standard che in seguito verrebbe reso tale, con le sue caratteristiche? Il linguaggio HTML è vivo, cresce, e altri attributi potrebbero apparire per soddisfare le necessità degli sviluppatori.
 
-Per evitare conflitti, abbiamo gli attributi [data-*](https://html.spec.whatwg.org/#embedding-custom-non-visible-data-with-the-data-*-attributes).
+Per evitare conflitti, abbiamo a disposizione gli attributi [data-*](https://html.spec.whatwg.org/#embedding-custom-non-visible-data-with-the-data-*-attributes).
 
 **Tutti gli attributi che cominciano con "data-" sono riservati all'uso dei programmatori. Sono disponibili nella proprietà `dataset`.**
 
@@ -371,7 +371,7 @@ Una piccola comparazione:
 
 |            | Proprietà | Attributi  |
 |------------|------------|------------|
-|Tipo|Qualsiasi valore, le proprietà standard hanno i tipi descritti descritti nella specifica|Una stringa|
+|Tipo|Qualsiasi valore, le proprietà standard hanno i tipi descritti nella specifica|Una stringa|
 |Nome|Nome è sensibile alle maiuscole|Nome non è sensibile alle maiuscole|
 
 I metodi per lavorare con gli attributi sono:
@@ -384,5 +384,5 @@ I metodi per lavorare con gli attributi sono:
 
 Nella maggior parte delle situazioni è preferibile utilizzare le proprietà del DOM. Dovremmo riferirci agli attributi solo quando le proprietà non sono sufficienti, quando abbiamo bisogno dell'attributo esatto; ad esempio:
 
-- Abbiamo bisogno di un attributo non standart. Ma se comincia con `data-`, allora dovremmo utilizzare `dataset`.
+- Abbiamo bisogno di un attributo non standard. Ma se comincia con `data-`, allora dovremmo utilizzare `dataset`.
 - Dobbiamo leggere un valore così "come scritto" in HTML. Il valore della corrispondente proprietà DOM potrebbe essere diverso; ad esempio la proprietà `href` è sempre una URL intera, e vorremmo il valore "originale".
