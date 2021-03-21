@@ -1,29 +1,29 @@
-# Styles and classes
+# Stili e classi
 
-Before we get into JavaScript's ways of dealing with styles and classes -- here's an important rule. Hopefully it's obvious enough, but we still have to mention it.
+Prima di cominciare a trattare i modi in cui JavaScript interagisce con gli stili e le classi -- ecco una regola importante. Si spera che sia abbastanza scontata, ma non guasta menzionarla ancora.
 
-There are generally two ways to style an element:
+Ci sono in genere due modi di applicare uno stile ad un elemento:
 
-1. Create a class in CSS and add it: `<div class="...">`
-2. Write properties directly into `style`: `<div style="...">`.
+1. Creare una classe CSS ed aggiungerla: `<div class="...">`
+2. Scrivere direttamente proprietà dentro `style`: `<div style="...">`.
 
-JavaScript can modify both classes and `style` properties.
+JavaScript può modificare sia le classi sia le proprietà all'interno di `style`.
 
-We should always prefer CSS classes to `style`. The latter should only be used if classes "can't handle it".
+Dovremmo sempre preferire le classi CSS a `style`. Quest'ultimo dovrebbe essere usato solo se le classi non sono sufficienti.
 
-For example, `style` is acceptable if we calculate coordinates of an element dynamically and want to set them from JavaScript, like this:
+Per esempio, è ragionevole l'uso di `style` se calcoliamo dinamicamente le coordinate di un elemento e vogliamo impostarle con JavaScript, come in casi analoghi:
 
 ```js
-let top = /* complex calculations */;
-let left = /* complex calculations */;
+let top = /* calcoli complessi */;
+let left = /* calcoli complessi */;
 
-elem.style.left = left; // e.g '123px', calculated at run-time
-elem.style.top = top; // e.g '456px'
+elem.style.left = left; // es '123px', calcolato al momento dell'esecuzione
+elem.style.top = top; // es '456px'
 ```
 
-For other cases, like making the text red, adding a background icon -- describe that in CSS and then add the class (JavaScript can do that). That's more flexible and easier to support.
+Per gli altri casi, come rendere rosso un testo, aggiungere un'icona di sfondo -- definiamo degli stili CSS e poi applichiamo la classe con JavaScript. È più flessibile e più facile da supportare.
 
-## className and classList
+## className e classList
 
 Changing a class is one of the most often used actions in scripts.
 
