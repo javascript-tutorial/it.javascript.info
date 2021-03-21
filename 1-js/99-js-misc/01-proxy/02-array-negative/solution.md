@@ -6,7 +6,7 @@ array = new Proxy(array, {
   get(target, prop, receiver) {
     if (prop < 0) {
       // anche se vi accediamo come arr[1]
-      // prop è una stringa, quindi dobbiamo convertirla a  number
+      // prop è una stringa, quindi dobbiamo convertirla a number
       prop = +prop + target.length;
     }
     return Reflect.get(target, prop, receiver);

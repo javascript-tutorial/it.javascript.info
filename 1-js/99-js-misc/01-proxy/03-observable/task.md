@@ -3,7 +3,7 @@
 
 Create una funzione `makeObservable(target)` che "rende l'oggetto osservabile" ritornandone un proxy.
 
-Così è come dovrebbe funzionare:
+Ecco come dovrebbe funzionare:
 
 ```js run
 function makeObservable(target) {

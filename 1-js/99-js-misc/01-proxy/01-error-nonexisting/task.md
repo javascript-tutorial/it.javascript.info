@@ -8,7 +8,7 @@ Questo può aiutare a trovare errori di programmazione in anticipo.
 
 Scrivete una funzione `wrap(target)` che prende un oggetto `target` e ne ritorna un proxy con la funzionalità appena descritta.
 
-Così è come dovrebbbe funzionare:
+Ecco come dovrebbe funzionare:
 
 ```js
 let user = {

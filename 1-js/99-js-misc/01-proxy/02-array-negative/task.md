@@ -17,7 +17,7 @@ In altre parole, `array[-N]` equivale a `array[array.length - N]`.
 
 Create un proxy che implementa questa funzionalità.
 
-Così è come dovrebbe funzionare:
+Ecco come dovrebbe funzionare:
 
 ```js
 let array = [1, 2, 3];
@@ -29,5 +29,5 @@ array = new Proxy(array, {
 alert( array[-1] ); // 3
 alert( array[-2] ); // 2
 
-// Le altre funzionalità dell'array devono rimanere tali
+// Le altre funzionalità dell'array devono rimanere inalterate
 ```

@@ -81,7 +81,7 @@ Esistono anche altre invarianti, come:
 
 Le "trappole" possono intercettare queste operazioni, ma devono seguire le regole viste.
 
-Le invarianti assicurano che le funzionalità del linguaggio si comportino in maniera corretta e consistente. La lista completa delle invarianti è disponibile [nelle specifiche](https://tc39.es/ecma262/#sec-proxy-object-internal-methods-and-internal-slots). Probabilmente non le violerai, a meno ché tu non stia facendo qualcosa di strano.
+Le invarianti assicurano che le funzionalità del linguaggio si comportino in maniera corretta e consistente. La lista completa delle invarianti è disponibile [nelle specifiche](https://tc39.es/ecma262/#sec-proxy-object-internal-methods-and-internal-slots). Probabilmente non le violerai, a meno che tu non stia facendo qualcosa di strano.
 ```
 
 Vediamo come funzionano con esempi pratici.
@@ -139,7 +139,7 @@ alert( dictionary['Hello'] ); // Hola
 alert( dictionary['Welcome'] ); // undefined
 ```
 
-Attualmente, se non esiste un termine, la lettura dal `dictionary` ritorna `undefined`. Ma nella pratica, ritornare un termine non tradotto è generalmente meglio di `undefined`. Quindi facciamo in modo che ritorni il termine non tradotto piuttosto di `undefined`.
+In questo modo, se non esiste un termine, la lettura dal `dictionary` ritorna `undefined`, ma nella pratica, ritornare un termine non tradotto è generalmente meglio. Quindi facciamo in modo che ritorni il termine non tradotto piuttosto di `undefined`.
 
 Per farlo, costruiremo un contenitore per `dictionary` con un proxy che intrecetterà le operazioni di lettura:
 
@@ -162,7 +162,7 @@ dictionary = new Proxy(dictionary, {
   }
 });
 
-// Cerchiamo un termine casuale nel dictionary!
+// Cerchiamo un termine nel dictionary!
 // Nel peggiore dei casi, questo non sarà tradotto.
 alert( dictionary['Hello'] ); // Hola
 *!*
@@ -177,12 +177,12 @@ Da notare come il proxy sovrascrive la variabile:
 dictionary = new Proxy(dictionary, ...);
 ```
 
-Il proxy dovrebbe rimpiazzare completamente il target, ovunque. Nessuno dovrebbe più fare riferimento all'oggetto target una volta che questo è stato racchiuso da un proxy. Altrimenti diventerebbe molto facile commettere errori.
+Il proxy dovrebbe rimpiazzare completamente l'oggetto target, ovunque. Nessuno dovrebbe più fare riferimento all'oggetto target una volta che questo è stato racchiuso da un proxy. Altrimenti diventerebbe molto facile commettere errori.
 ````
 
 ## Validazione con la trappola "set"
 
-Ipotizziamo di volere un array di soli numeri. Se viene aggiunto un valore di un altro tipo, questo dovrebbe generare un errore.
+Ipotizziamo di volere un array di soli numeri. Se viene aggiunto un valore di un altro tipo, dovrebbe venire generato un errore.
 
 La "trappola" `set` si innesca quando si accede in scrittura ad una proprietà.
 
@@ -224,7 +224,7 @@ numbers.push("test"); // TypeError ('set' di proxy ha ritornato false)
 alert("This line is never reached (error in the line above)");
 ```
 
-Da notare: la funzionalità interna degli array integrati continuano a funzionare! I valori vengono aggiunti tramite `push`. La proprietà `length` viene auto-incrementata quando i valori vengono aggiunti. Il nostro proxy non rompe nulla.
+Da notare: le funzionalità interna degli array integrati continuano a funzionare! I valori vengono aggiunti tramite `push`. La proprietà `length` viene auto-incrementata quando i valori vengono aggiunti. Il nostro proxy non rompe nulla.
 
 Non dobbiamo sovrascrivere i metodi di aggiunta valori agli array come `push`, `unshift` e così via per aggiungere i controlli, poiché questi metodi internamente utilizzano operazioni di `[[Set]]` che verranno intercettate dal proxy.
 
@@ -245,12 +245,12 @@ I cicli `Object.keys`, `for..in` e molti altri metodi che iterano sulle propriet
 Questi metodi si distinguono per alcuni dettagli:
 - `Object.getOwnPropertyNames(obj)` ritorna le chiavi non-symbol.
 - `Object.getOwnPropertySymbols(obj)` ritorna le chiavi symbol.
-- `Object.keys/values()` ritorna coppie keys/values non-symbol, con il flag `enumerable` (i flag  sono state spiegate nell'articolo <info:property-descriptors>).
-- `for..in` cicla su chiavi non-symbol, con il flag `enumerable`, ed anche sulle chiavi del prototype.
+- `Object.keys/values()` ritorna coppie keys/values non-symbol, con il flag `enumerable` (i flag sono stati spiegati nell'articolo <info:property-descriptors>).
+- `for..in` itera su chiavi non-symbol, con il flag `enumerable`, ed anche sulle chiavi del prototype.
 
 ...Ma tutti questi incominciamo dalla stessa lista.
 
-Nell'esempio sotto, utilizziamo la trappola `ownKeys` per far sì che `for..in` cicli su `user`, `Object.keys` e `Object.values`, saltando le proprietà il cui nome incomincia con un underscore `_`:
+Nell'esempio sotto, utilizziamo la trappola `ownKeys` per far sì che `for..in` esegua il ciclo su `user`, `Object.keys` e `Object.values`, saltando le proprietà il cui nome incomincia con un underscore `_`:
 
 ```js run
 let user = {
@@ -270,7 +270,7 @@ user = new Proxy(user, {
 // "ownKeys" filtra _password, saltandolo
 for(let key in user) alert(key); // name, then: age
 
-// abbiamo lo stesso effetto in questi meotodi:
+// abbiamo lo stesso effetto in questi metodi:
 alert( Object.keys(user) ); // name,age
 alert( Object.values(user) ); // John,30
 ```
@@ -293,7 +293,7 @@ user = new Proxy(user, {
 alert( Object.keys(user) ); // <empty>
 ```
 
-Perché? La motivazione è semplice: `Object.keys` ritorna solamente le proprietà con il flag `enumerable`. Per verificarlo, invoca il metodo interno `[[GetOwnProperty]]`su ogni proprietà per ottenere [i suoi descrittori](info:property-descriptors). E in questo caso, poiché non ci sono proprietà, i descrittori sono vuoti, non abbiamo alcun flag `enumerable`, quindi questa verrà saltata.
+Perché? La motivazione è semplice: `Object.keys` ritorna solamente le proprietà con il flag `enumerable`. Per verificarlo, invoca il metodo interno `[[GetOwnProperty]]` su ogni proprietà per ottenere [i suoi descrittori](info:property-descriptors). In questo caso, poiché non ci sono proprietà, i descrittori sono vuoti, non abbiamo alcun flag `enumerable`, quindi questa verrà saltata.
 
 Per far sì che `Object.keys` ritorni una proprietà, è necessario che questa esista nell'oggetto con il flag `enumerable`, oppure possiamo intercettare l'invocazione di `[[GetOwnProperty]]` (tramite la trappola `getOwnPropertyDescriptor`), e ritornare un descrittore con `enumerable: true`.
 
@@ -324,7 +324,7 @@ Ripetiamolo una volta ancora: è sufficiente intercettare `[[GetOwnProperty]]` s
 
 ## Proprietà protette da "deleteProperty" e altre trappole
 
-Esiste una convenzione piuttosto diffusa, in cui le proprietà e i metodi il cui nome ha come suffisso un underscore `_`, sono da considerarsi interne. Non dovrebbero quindi essere accedute dall'esterno dell'oggetto.
+Esiste una convenzione piuttosto diffusa, in cui le proprietà e i metodi il cui nome ha come suffisso un underscore `_`, sono da considerarsi interne. Non bisognerebbe quindi accedervi dall'esterno dell'oggetto.
 
 Anche se rimane tecnicamente possibile accedervi:
 
@@ -337,7 +337,7 @@ let user = {
 alert(user._password); // secret
 ```
 
-Possiamo utilizzare un proxy per rendere inaccessibile le proprietà che iniziano con  `_`.
+Possiamo utilizzare un proxy per rendere inaccessibili le proprietà che iniziano con  `_`.
 
 Avremo bisogno delle seguenti trappole:
 - `get` per ritornare un errore nel tentativo di accedere a questa proprietà,
@@ -474,7 +474,7 @@ La trappola `has` intercetta le invocazioni di `in`.
 - `target` -- è l'oggetto target, passato come primo argomento in `new Proxy`,
 - `property` -- nome della proprietà
 
-Qui vediamo la demo:
+Qui vediamo una dimostrazione:
 
 ```js run
 let range = {
@@ -725,7 +725,7 @@ Ma se rimuoviamo il proxy, tutto funziona correttamente.
 
 Il problema sta quindi nel proxy, alla riga `(*)`.
 
-1. Quando leggiamo `admin.name`, poiché l'oggetto `admin` non possiede questa proprietà, la ricerca prosegue nel suo  prototype.
+1. Quando leggiamo `admin.name`, poiché l'oggetto `admin` non possiede questa proprietà, la ricerca prosegue nel suo prototype.
 2. Il prototype è `userProxy`.
 3. Durante la lettura della proprietà `name` dal proxy, la trappola `get` viene innescata e ritorna la proprietà dell'oggetto originale `target[prop]` alla riga `(*)`.
 
@@ -924,7 +924,7 @@ I proxy possono intercettare molti operatori, come `new` (con `construct`), `in`
 
 Ma non esiste alcun modo per poter intercettare un test di uguaglianza stretta tra oggetti. Un oggetto è strettamente uguale solamente a se stesso, e a nient'altro.
 
-Quindi tutte le operazioni ed le classi integrate che verificano l'uguaglianza tra oggetti differenzieranno l'oggetto dal suo proxy. Non c'è alcun sistema di sostituzione "trasparente" in questo caso.
+Quindi tutte le operazioni e le classi integrate che verificano l'uguaglianza tra oggetti differenzieranno l'oggetto dal suo proxy. Non c'è alcun sistema di sostituzione "trasparente" in questo caso.
 ```
 
 ## Proxy revocabili
@@ -1029,5 +1029,5 @@ I proxy hanno però delle limitazioni:
 
 - Gli oggetti integrati possiedono degli "slot interni", ma l'accesso a questi non può essere intercettato dai proxy. Guardate il workaround descritto sopra.
 - Lo stesso vale per i campi privati delle classi; questi vengono implementati internamente utilizzando gli slot. Quindi le invocazioni dei metodi tramite proxy devono possedere il target object assegnato a `this` per potervi accedere.
-- I test di uguaglianza `===` non possono essere intercettati.
+- I test di uguaglianza `===` sugli oggetti, non possono essere intercettati.
 - Performance: i benchmark dipendono molto dal motore JavaScript, ma generalmente l'accesso alle proprietà utilizzando un proxy, richiede più tempo. Anche se, nella pratica, questo ha importanza solo per oggetti che creano "colli di bottiglia".
