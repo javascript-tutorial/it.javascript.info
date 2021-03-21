@@ -6,7 +6,7 @@ In questo capitolo vedremo meglio cosa sono e impareremo le loro proprietà più
 
 ## Le classi dei nodi del DOM
 
-Nodi del DOM differenti possono avere proprietà differenti. Ad esempio, un nodo elemento corrispondente ad un tag `<a>` avrà proprietà tipiche dei link ed un nodo corrispondente al tag `<input>` avrà proprietà tipiche dei campi di testo e così via. I nodi di testo sono differenti dai nodi elemento, tuttavia condividono anche proprietà e metodi comuni a tutti perché tutte le classi dei nodi del DOM costituiscono un'unica gerarchia.
+Nodi del DOM differenti possono avere proprietà differenti. Ad esempio, un nodo elemento corrispondente ad un tag `<a>` avrà proprietà tipiche dei link ed un nodo corrispondente al tag `<input>` avrà proprietà tipiche dei campi di testo e così via. I nodi di testo sono differenti dai nodi elemento, tuttavia condividono alcune proprietà e metodi comuni a tutti, perché tutte le classi dei nodi del DOM costituiscono un'unica gerarchia.
 
 Ogni nodo del DOM appartiene alla corrispondente classe nativa.
 
@@ -65,10 +65,10 @@ alert( document.body instanceof EventTarget ); // true
 
 Come possiamo notare i nodi DOM sono oggetti JavaScript regolari ed usano classi basate sui prototipi per l'ereditarietà.
 
-Questo è anche facile da osservare esaminando un elemento in un browser con `console.dir(elem)`. Nella console potremo vedere `HTMLElement.prototype`, `Element.prototype` e così via.
+Questo è facilmente osservabile esaminando un elemento in un browser con `console.dir(elem)`. Nella console potremo vedere `HTMLElement.prototype`, `Element.prototype` e così via.
 
 ```smart header="`console.dir(elem)` versus `console.log(elem)`"
-La maggior parte dei browser supportano due comandi nei loro strumenti per sviluppatori: `console.log` e `console.dir` che mostrano in console i loro argomenti. Per quanto riguarda gli oggetti JavaScript solitamente questi comandi funzionano allo stesso modo.
+La maggior parte dei browser supportano due comandi nei loro strumenti per sviluppatori: `console.log` e `console.dir` che mostrano in console i loro argomenti. Per quanto riguarda gli oggetti JavaScript, solitamente questi comandi funzionano allo stesso modo.
 
 Ma per gli elementi DOM sono differenti:
 
@@ -83,7 +83,7 @@ Nella specifica, le classi DOM non sono descritte con JavaScript, ma con uno spe
 
 Nell'IDL tutte le proprietà sono precedute dai rispettivi tipi. Per esempio `DOMString`, `boolean` e così via.
 
-Eccone un estratto, con commenti:
+Eccone un estratto commentato:
 
 ```js
 // Definisce HTMLInputElement
@@ -199,9 +199,9 @@ In modalità XML il case viene mantenuto "così com'è". Ai giorni nostri la mod
 
 La proprietà [innerHTML](https://w3c.github.io/DOM-Parsing/#the-innerhtml-mixin) consente di ottenere una stringa contenente l'HTML dentro l'elemento.
 
-Possiamo anche modificarla e pertanto è uno dei più potenti strumenti per cambiare la pagina.
+Possiamo anche modificarla e pertanto è uno dei più potenti strumenti per cambiare l'HTML di un elemento della pagina.
 
-L'esempio mostra il contenuto di `document.body` e quindi lo rimpiazza completamente:
+L'esempio mostra il contenuto di `document.body` e poi lo rimpiazza completamente:
 
 ```html run
 <body>
@@ -229,7 +229,7 @@ Se proviamo a inserire HTML non valido, il browser correggerà i nostri errori:
 </body>
 ```
 
-```smart header="I tag <script> non vengono eseguiti"
+```smart header="I tag `<script>` non vengono eseguiti"
 Se `innerHTML` inserisce un tag `<script>` nel documento -- esso diviene parte dell'HTML ma non viene eseguito.
 ```
 
@@ -263,7 +263,7 @@ In altre parole, `innerHTML+=` fa questo:
 
 **Poiché il contenuto viene "azzerato" e riscritto da zero, tutte le immagini e le altre risorse verranno ricaricate**.
 
-Nell'esempio `chatDiv` sopra, la linea `chatDiv.innerHTML+="How goes?"` ricrea il contenuto HTML e ricarica `smile.gif` (speriamo sia in cache). Se `chatDiv` ha molto altro testo e immagini, in quel caso, il tempo di ricaricamento potrebbe diventare chiaramente percepibile.
+Nell'esempio `chatDiv` sopra, la linea `chatDiv.innerHTML+="How goes?"` ricrea il contenuto HTML e ricarica `smile.gif` (speriamo sia in cache). Se `chatDiv` ha molto altro testo e immagini il tempo di ricaricamento potrebbe diventare chiaramente percepibile.
 
 Ci sono anche altri effetti collaterali. Per esempio, se il testo esistente era stato selezionato con il mouse, la maggior parte dei browser rimuoveranno la selezione al momento della riscrittura con `innerHTML`. Se un elemento `<input>` conteneva un testo digitato dal visitatore il testo sarà rimosso, e altri casi simili.
 
@@ -309,7 +309,7 @@ Considerate l'esempio:
 
 Sembra davvero strano, vero?
 
-Nella linea `(*)` sostituiamo `div` con `<p>A new element</p>`. Nel documento (il DOM) possiamo osservare che il nuovo contenuto ha preso il posto di `<div>`. Tuttavia, come possiamo notare nella linea `(**)`, il precedente valore della variabile `div`non è cambiato!
+Nella linea `(*)` sostituiamo `div` con `<p>A new element</p>`. Nel documento (il DOM) possiamo osservare che il nuovo contenuto ha preso il posto di `<div>`. Tuttavia, come possiamo notare nella linea `(**)`, il precedente valore della variabile `div` non è cambiato!
 
 L'assegnazione con `outerHTML` non cambia l'elemento (cioè l'oggetto a cui fa riferimento, in questo caso, la variabile 'div'), però lo rimuove dal DOM e inserisce il nuovo HTML al suo posto.
 
@@ -466,7 +466,7 @@ Se desideriamo conoscere la lista completa delle proprietà supportate per una c
 
 In alternativa, se vogliamo ricavarle rapidamente o siamo interessati ad una concreta implementazione del browser -- possiamo sempre esaminare l'elemento con `console.dir(elem)` e leggerne le proprietà o, ancora, esplorare le "Proprietà DOM" nel tab Elementi degli strumenti per sviluppatori del browser.
 
-## Sommario
+## Riepilogo
 
 Ciascun nodo del DOM appartiene ad una determinata classe. Le classi costituiscono una gerarchia. L'elenco completo delle proprietà e dei metodi è il risultato dell'ereditarietà.
 
@@ -476,7 +476,7 @@ Le principali proprietà di un nodo DOM sono:
 : Possiamo utilizzarla per sapere se si tratta di un nodo di testo o di un nodo elemento. Ha un valore numerico: `1` per gli elementi, `3` per i nodi di testo e pochi altri valori per gli altri tipi di nodo. La proprietà è in sola lettura.
 
 `nodeName/tagName`
-: Per gli elementi indica il nome del tag (in lettere maiuscole a meno che il browser non sia in modalità XML). Per tutti gli altri nodi `nodeName` contiene una stringa destrittiva. La proprietà è in sola lettura.
+: Per gli elementi indica il nome del tag (in lettere maiuscole a meno che il browser non sia in modalità XML). Per tutti gli altri nodi `nodeName` contiene una stringa descrittiva. La proprietà è in sola lettura.
 
 `innerHTML`
 : Il contenuto HTML dell'elemento. Può essere modificato.
