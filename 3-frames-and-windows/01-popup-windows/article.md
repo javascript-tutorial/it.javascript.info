@@ -13,7 +13,7 @@ Le finestre a popup esistono da molto tempo. Lo scopo iniziale era quello di uti
 
 Inoltre, i popup possono essere ingannevoli su dispositivi mobile, poiché non verranno mostrare più finestra contemporaneamente.
 
-Ciònonostante, esistono alcune applicazioni in cui i popup sono ancora utilizzati, e.g. per il login OAuth (login con Google/Facebook/...), perché:
+Ciononostante, esistono alcune applicazioni in cui i popup sono ancora utilizzati, e.g. per il login OAuth (login con Google/Facebook/...), perché:
 
 1. Un popup è una finestra separata con un suo ambiente JavaScript separato. Quindi l'apertura di un popup da un sito di terze parti, che potrebbe non essere affidabile, è un operazione sicura.
 2. E' molto semplice aprire un popup.
@@ -21,7 +21,7 @@ Ciònonostante, esistono alcune applicazioni in cui i popup sono ancora utilizza
 
 ## Blocco dei popup
 
-In passato, i siti con scopi maligni, abusavano dei popup. Una pagina con pessimi intenti, poteva aprire decine di finestre di ads. Per questo motivo, molti browser moderni tendono a bloccare le finestere di popup, per proteggere gli utenti.
+In passato, i siti con scopi maligni, abusavano dei popup. Una pagina con pessimi intenti, poteva aprire decine di finestre di ads. Per questo motivo, molti browser moderni tendono a bloccare le finestre di popup, per proteggere gli utenti.
 
 **Molti browser bloccano i popup se questi vengono invocati da eventi non generati da utente. Un evento permesso è quello di `onclick`.**
 
@@ -56,7 +56,7 @@ Il popup si apre in Chrome, ma viene bloccato in Firefox.
 setTimeout(() => window.open('http://google.com'), 1000);
 ```
 
-La differenza sta nel fatto che Firefox tratta un timeout di 2000ms, o inferiore, come accettabile, qualsiasi valore che sia superiore verrà trattato come "inaffidabile", assumendo che un tale tiemeout is "fuori dall'azione dell'utente". Quindi nel primo caso il popup viene bloccato, mentre nel secondo no.
+La differenza sta nel fatto che Firefox tratta un timeout di 2000ms, o inferiore, come accettabile, qualsiasi valore che sia superiore verrà trattato come "inaffidabile", assumendo che un tale timeout sia "fuori dall'azione dell'utente". Quindi nel primo caso il popup viene bloccato, mentre nel secondo no.
 
 ## window.open
 
@@ -116,11 +116,11 @@ Le regole applicate per le impostazioni omesse sono:
 - Se non viene fornito il terzo argomento alla funzione `open`, oppure è vuoto, allora vengono utilizzati i parametri di default della finestra.
 - Se viene fornita una stringa di parametri, ma vengono omesse proprietà di tipo `si/no`, allora verranno impostate di default a `no`. Quindi nel caso in cui forniste dei parametri, assicuratevi di impostarli esplicitamente a `yes`.
 - Se non vengono forniti i parametri `left/top`, allora il browser aprirà la nuova finestra vicino all'ultima aperta.
-- Se non vengono forniti i parametri `width/height`, allora il browser aprirà la nuova finestra con la stessa diemensione dell'ultima aperta.
+- Se non vengono forniti i parametri `width/height`, allora il browser aprirà la nuova finestra con la stessa dimensione dell'ultima aperta.
 
 ## Accedere al popup dalla finestra
 
-L'invocazione di `open` torna un riferimento alla finestra appena aperta. Può quindi essereu utilizzato per manipolarne le proprietà, cambiarne la posizione e molto altro.
+L'invocazione di `open` torna un riferimento alla finestra appena aperta. Può quindi essere utilizzato per manipolarne le proprietà, cambiarne la posizione e molto altro.
 
 In questo esempio, generiamo del contenuto per il popup tramite JavaScript:
 
@@ -146,7 +146,7 @@ newWindow.onload = function() {
 };
 ```
 
-Da notare: nel momento immediatamente successivo a `window.open`, la nuova finestra non è ancora stata caricata. Lo abbiamo dimostrato tramite `alert` in riga `(*)`. Quindi dovremo attendere l'evento `onload`, prima di poter effetuare modifiche. Possiamo utilizzare anche l'handler `DOMContentLoaded` per `newWin.document`.
+Da notare: nel momento immediatamente successivo a `window.open`, la nuova finestra non è ancora stata caricata. Lo abbiamo dimostrato tramite `alert` in riga `(*)`. Quindi dovremo attendere l'evento `onload`, prima di poter effettuare modifiche. Possiamo utilizzare anche l'handler `DOMContentLoaded` per `newWin.document`.
 
 ```warn header="Politica della stessa origine"
 Le finestre possono accedere liberamente al contenuto delle altre, ma solamente se queste appartengono alla stessa origine (lo stesso protocol://domain:port).
@@ -176,7 +176,7 @@ Per chiudere una finestra di popup, possiamo utilizzare: `win.close()`.
 
 Invece, per verificare se una finestra è chiusa possiamo utilizzare: `win.closed`.
 
-Tecnicamente, il metodo `close()` è disponibile su tutte le finestre, ma nella pratica, `window.close()` viene ignorato dalla maggior parte dei browser se la finestra non è stata creata tramite un comando esplicito di `window.open()`. Quindi fuzionerà solamente con le finestre a popup.
+Tecnicamente, il metodo `close()` è disponibile su tutte le finestre, ma nella pratica, `window.close()` viene ignorato dalla maggior parte dei browser se la finestra non è stata creata tramite un comando esplicito di `window.open()`. Quindi funzionerà solamente con le finestre a popup.
 
 La proprietà `closed` vale `true` se la finestra è chiusa. Questa risulta essere molto utile per verificare se il popup (oppure la finestra principale) è ancora aperto. Un utente potrebbe chiudere la finestra di popup in qualsiasi istante, ed il nostro codice dovrà essere pronto a gestire tale eventualità.
 
@@ -191,87 +191,87 @@ newWindow.onload = function() {
 ```
 
 
-## Moving and resizing
+## Riposizionamento e ridimensionamento
 
-There are methods to move/resize a window:
+Abbiamo a disposizione metodi per il riposizionamento/ridimensionamente di una finestra:
 
 `win.moveBy(x,y)`
-: Move the window relative to current position `x` pixels to the right and `y` pixels down. Negative values are allowed (to move left/up).
+: Muove la finestra rispetto alla posizione attuale, di `x` pixels a destra e `y` pixels verso il basso. Sono ammessi anche i valori negativi (per spostare a sinistra o verso l'alto).
 
 `win.moveTo(x,y)`
-: Move the window to coordinates `(x,y)` on the screen.
+: Posiziona la finestra alle coordinate `(x,y)` sullo schermo.
 
 `win.resizeBy(width,height)`
-: Resize the window by given `width/height` relative to the current size. Negative values are allowed.
+: Ridimensiona la finestra secondo i `width/height` forniti, rispetto alla dimensione attuale. Sono ammessi anche i valori negativi.
 
 `win.resizeTo(width,height)`
-: Resize the window to the given size.
+: Ridimensiona la finestra secondo le dimensioni fornite.
 
-There's also `window.onresize` event.
+Abbiamo a disposizione anche l'evento `window.onresize`.
 
-```warn header="Only popups"
-To prevent abuse, the browser usually blocks these methods. They only work reliably on popups that we opened, that have no additional tabs.
+```warn header="Solamente i popup"
+Per prevenire qualsiasi abuso di queste funzionalità, il browser solitamente blocca questi metodi. Questi infatti funzioneranno come atteso solamente con le finestre di popup che apriremo, le quali non hanno altre tab.
 ```
 
-```warn header="No minification/maximization"
-JavaScript has no way to minify or maximize a window. These OS-level functions are hidden from Frontend-developers.
+```warn header="Non è possibile miniaturizzare/massimizzare"
+JavaScript non ha la possibilità di miniaturizzare o massimizzare una finestra. Queste funzionalità a livello di OS (Sistema Operativo) sono nascoste agli sviluppatori frontend.
 
-Move/resize methods do not work for maximized/minimized windows.
+I metodi di riposizionamento e ridimensionamento non hanno alcun effetto su finestre miniaturizzate o massimizzate.
 ```
 
-## Scrolling a window
+## Scorrere all'interno di una finestra
 
-We already talked about scrolling a window in the chapter <info:size-and-scroll-window>.
+Abbiamo già affrontato l'argomento relativo allo scorrimento all'interno delle finestre nel capitolo <info:size-and-scroll-window>.
 
 `win.scrollBy(x,y)`
-: Scroll the window `x` pixels right and `y` down relative the current scroll. Negative values are allowed.
+: Scorre la finestra di `x` pixels a destra e `y` pixels verso il basso, rispetto alla posizione attuale. Sono ammessi anche valori negativi.
 
 `win.scrollTo(x,y)`
-: Scroll the window to the given coordinates `(x,y)`.
+: Scorre la finestra alle coordinate fornite `(x,y)`.
 
 `elem.scrollIntoView(top = true)`
-: Scroll the window to make `elem` show up at the top (the default) or at the bottom for `elem.scrollIntoView(false)`.
+: Scorre la finestra fino a rendere `elem` visibile all'inizio della finestra (comportamento di default) o a fondo finestra con `elem.scrollIntoView(false)`.
 
-There's also `window.onscroll` event.
+Abbiamo a disposizione anche l'evento `window.onscroll`.
 
-## Focus/blur on a window
+## Focus/blur su una finestra
 
-Theoretically, there are `window.focus()` and `window.blur()` methods to focus/unfocus on a window. And there are also `focus/blur` events that allow to catch the moment when the visitor focuses on a window and switches elsewhere.
+Teoricamente, avremmo a disposizione i metodi `window.focus()` e `window.blur()` per innescare il focus/unfocus su una finestra. E anche gli eventi `focus/blur` che ci permettono di verificare il momento in cui un utente entra in una finestra(focus) o la abbandona(blur).
 
-Although, in practice they are severely limited, because in the past evil pages abused them. 
+Anche se nella pratica questi metodi sono fortemente limitati, perché in passato pagine con scopi malevoli ne hanno abusato. 
 
-For instance, look at this code:
+Ad esempio, date un'occhiata al seguente codice:
 
 ```js run
 window.onblur = () => window.focus();
 ```
 
-When a user attempts to switch out of the window (`window.onblur`), it brings the window back into focus. The intention is to "lock" the user within the `window`.
+Quando un utente tenta di abbandonare la finestra (`window.onblur`), questo riporta la finestra in focus. Lo scopo è quello di bloccare l'utente all'interno della finestra.
 
-So browsers had to introduce many limitations to forbid the code like that and protect the user from ads and evils pages. They depend on the browser.
+Quindi i browser hanno dovuto introdurre molte limitazioni per evitare codici come quello appena visto e proteggere l'utente da pubblicità e pagine malevole. Queste limitazioni so diverse di browser in browser.
 
-For instance, a mobile browser usually ignores `window.focus()` completely. Also focusing doesn't work when a popup opens in a separate tab rather than a new window.
+Ad esempio, un browser mobile solitamente ignora completamente `window.focus()`. Inoltre il focus, non funziona nemmeno quando apriamo il popup in una nuova tab piuttosto che in una nuova finestra.
 
-Still, there are some use cases when such calls do work and can be useful.
+Esistono però situazioni in cui l'utilizzo del focus è permesso e può tornare utile.
 
-For instance:
+Ad esempio:
 
-- When we open a popup, it's might be a good idea to run a `newWindow.focus()` on it. Just in case, for some OS/browser combinations it ensures that the user is in the new window now.
-- If we want to track when a visitor actually uses our web-app, we can track `window.onfocus/onblur`. That allows us to suspend/resume in-page activities, animations etc. But please note that the `blur` event means that the visitor switched out from the window, but they still may observe it. The window is in the background, but still may be visible.
+- Quando apriamo un popup, potrebbe essere una buona idea, invocare `newWindow.focus()`. In questo caso, su alcune combinazioni di OS/browser potrebbe funzionare ed assicurarci che l'utente si trovi nella nuova finestra.
+- Se vogliamo tracciare quando un utente utilizza la nostra web app, possiamo osservare gli eventi `window.onfocus/onblur`. Questo ci consente di sospendere/riprendere alcune azioni, come le animazioni. Da notare però che, l'evento di `blur` sta a significare che l'utente è uscito dal contesto della finestra, ma potrebbe continuare ad osservarla. La finestra è in background, ma potrebbe essere ancora visibile.
 
-## Summary   
+## Riepilogo
 
-Popup windows are used rarely, as there are alternatives: loading and displaying information in-page, or in iframe.
+Le finestre di popup vengono utilizzate raramente, ad oggi esistono diverse alternative: caricare e mostrare informazioni direttamete in pagina, oppure utilizzare un iframe.
 
-If we're going to open a popup, a good practice is to inform the user about it. An "opening window" icon near a link or button would allow the visitor to survive the focus shift and keep both windows in mind.
+Se la nostra intenzione è quella di aprire una finestra a popup, una buona pratica è di informare prima l'utente. Un icona di "apertura nuova finestra" vicino al link o al bottone può aiutare l'utente a "sopravvivere" al cambio contesto, mantentendo a mente entrambe le finestre.
 
-- A popup can be opened by the `open(url, name, params)` call. It returns the reference to the newly opened window.
-- Browsers block `open` calls from the code outside of user actions. Usually a notification appears, so that a user may allow them.
-- Browsers open a new tab by default, but if sizes are provided, then it'll be a popup window.
-- The popup may access the opener window using the `window.opener` property.
-- The main window and the popup can freely read and modify each other if they have the same origin. Otherwise, they can change location of each other and [exchange messages](info:cross-window-communication).
+- Una finestra di popup può essere aperto con l'invocazione di `open(url, name, params)`. Questa tornerà il riferimento alla nuova pagina aperta.
+- I browser bloccano il metodo `open` se non invocato da un'azione diretta dell'utente. Solitamente, viene mostrata una notifica, in modo che l'utente possa rifiutare/acconsentire.
+- I browser di default aprono una nuova tab, ma se vengono fornite delle dimensioni, allora verrà aperta una nuova finestra.
+- La finestra di popup può accedere alla finestra che l'ha aperte tramite la proprietà `window.opener`.
+- La finestra principale e quella di popup possono interagire liberamente, se queste appartengono alla stessa origine. Altrimenti, possono solamente modificarne la posizione e [scambiarsi messaggi](info:cross-window-communication).
 
-To close the popup: use `close()` call. Also the user may close them (just like any other windows). The `window.closed` is `true` after that.
+Per chiudere un popup: utilizziamo il metodo `close()`. Anche l'utente può chiuderlo manualmente (come qualsiasi altra finestra). La proprietà `window.closed` assumerà il valore `true`, dopo la chiusura della finestra.
 
-- Methods `focus()` and `blur()` allow to focus/unfocus a window. But they don't work all the time.
-- Events `focus` and `blur` allow to track switching in and out of the window. But please note that a  window may still be visible even in the background state, after `blur`.
+- I metodi `focus()` e `blur()` permettono di innescare focus/unfocus su una finestra. Ma non funzionano in tutti i casi.
+- Gli eventi `focus` e `blur` consentono di tracciare i cambi di contesto di una finestra. Ma tenete a mente che una finestra, dopo l'evento di `blur`, potrebbe continuare ad essere visibile anche se si trova in background.
