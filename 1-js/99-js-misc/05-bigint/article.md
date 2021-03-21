@@ -107,9 +107,9 @@ Per poter emulare questo comportamento, un polyfill deve analizzare il codice e 
 
 Quindi, non esiste alcun polyfill ottimale.
 
-Anche se, un'alternativa è stata proposta dagli sviluppatori della libreria [JSBI](https://github.com/GoogleChromeLabs/jsbi).
+Comunque, un'alternativa è stata proposta dagli sviluppatori della libreria [JSBI](https://github.com/GoogleChromeLabs/jsbi).
 
-Questa libreria implementa i bigint utilizzando un proprio metodo. Possiamo utilizzare questi invece dei bigint integrati dal linguaggio:
+Questa libreria implementa i bigint utilizzando metodi propri. Possiamo utilizzare questi invece dei bigint integrati dal linguaggio:
 
 | Operazione | `BigInt` integrati | JSBI |
 |-----------|-----------------|------|
@@ -118,7 +118,7 @@ Questa libreria implementa i bigint utilizzando un proprio metodo. Possiamo util
 | Sottrazione	| `c = a - b` | `c = JSBI.subtract(a, b)` |
 | ... | ... | ... |
 
-...E poi utilizzare il polyfill (Babel plugin) per convertire le invocazioni a JSBI calls ai bigint integrati per i browser che li supportano.
+...quindi utilizzare il polyfill (Babel plugin) per convertire le invocazioni a JSBI in bigint nativi, per i browser che li supportano.
 
 In altre parole, questo approccio suggerisce di scrivere il codice utilizzando JSBI piuttosto dei bigint integrati. JSBI funziona con i numbers proprio come i bigint integrati, emulandoli secondo quanto descritto nelle specifiche, quindi il codice sarà "bigint-ready".
 
