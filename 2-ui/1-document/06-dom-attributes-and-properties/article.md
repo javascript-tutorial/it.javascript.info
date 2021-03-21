@@ -8,7 +8,7 @@ Ma la mappatura attributo-proprietà non è uno a uno! In questo capitolo faremo
 
 ## Proprietà del DOM
 
-Abbiamo già visto proprietà integrate del DOM. Ce ne sono molte. Ma tecnicamente nessuna di esse ci limita, e se non ci sono sufficienti, possiamo aggiungerne. 
+Abbiamo già visto proprietà integrate del DOM. Ce ne sono molte. Ma tecnicamente nessuna di esse ci limita, e se non sono sufficienti, possiamo aggiungerne. 
 
 I nodi del DOM sono regolari oggetti JavaScript. Possiamo modificarli. 
 
@@ -44,7 +44,7 @@ document.documentElement.sayHi(); // Hello, I'm HTML
 document.body.sayHi(); // Hello, I'm BODY
 ```
 
-Quindi, le proprietà e i metodi del DOM si comportano come regolari oggetti JavaScript:
+Quindi, le proprietà e i metodi del DOM si comportano come normali oggetti JavaScript:
 
 - Possono avere qualsiasi valore.
 - Sono sensibili alle maiuscole (scrivi `elem.nodeType`, non `elem.NoDeTyPe`).
@@ -77,7 +77,7 @@ Possiamo vederlo qui:
   <script>
     alert(input.type); // text
 *!*
-    alert(body.type); // undefined: proprietà del DOM non creata perché non standard
+    alert(body.type); // undefined: proprietà del DOM non creata, perché non standard
 */!*
   </script>
 </body>
@@ -218,7 +218,7 @@ Ci sono altri esempi. L'attributo `style` è una stringa, ma la proprietà `styl
 
 La maggior parte delle proprietà, comunque, sono stringhe.
 
-Raramente, anche se il tipo di una proprietà è una stringa, questa potrebbe essere diversa dall'attributo. Ad esempio, la proprietà DOM `href` è sempre una URL *intera*, anche se l'attributo contiene una URL relativa o semplicemente un `#hash`.
+Raramente, anche se il tipo di una proprietà è una stringa, questa potrebbe essere diversa dall'attributo. Ad esempio, la proprietà DOM `href` è sempre un URL *completo*, anche se l'attributo contiene un URL relativo o semplicemente un `#hash`.
 
 Un esempio:
 
@@ -385,4 +385,4 @@ I metodi per lavorare con gli attributi sono:
 Nella maggior parte delle situazioni è preferibile utilizzare le proprietà del DOM. Dovremmo riferirci agli attributi solo quando le proprietà non sono sufficienti, quando abbiamo bisogno dell'attributo esatto; ad esempio:
 
 - Abbiamo bisogno di un attributo non standard. Ma se comincia con `data-`, allora dovremmo utilizzare `dataset`.
-- Dobbiamo leggere un valore così "come scritto" in HTML. Il valore della corrispondente proprietà DOM potrebbe essere diverso; ad esempio la proprietà `href` è sempre una URL intera, e vorremmo il valore "originale".
+- Dobbiamo leggere un valore così "come scritto" in HTML. Il valore della corrispondente proprietà DOM potrebbe essere diverso; ad esempio la proprietà `href` è sempre un URL completo, e vorremmo il valore "originale".
