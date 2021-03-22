@@ -1,37 +1,37 @@
-# Styles and classes
+# Stili e classi
 
-Before we get into JavaScript's ways of dealing with styles and classes -- here's an important rule. Hopefully it's obvious enough, but we still have to mention it.
+Prima di cominciare a trattare i modi in cui JavaScript interagisce con gli stili e le classi -- ecco una regola importante. Si spera che sia abbastanza scontata, ma non guasta menzionarla ancora.
 
-There are generally two ways to style an element:
+Ci sono in genere due modi di applicare uno stile ad un elemento:
 
-1. Create a class in CSS and add it: `<div class="...">`
-2. Write properties directly into `style`: `<div style="...">`.
+1. Creare una classe CSS ed aggiungerla: `<div class="...">`
+2. Scrivere direttamente proprietà dentro `style`: `<div style="...">`.
 
-JavaScript can modify both classes and `style` properties.
+JavaScript può modificare sia le classi sia le proprietà all'interno di `style`.
 
-We should always prefer CSS classes to `style`. The latter should only be used if classes "can't handle it".
+Dovremmo sempre preferire le classi CSS a `style`. Quest'ultimo dovrebbe essere usato solo se le classi non sono sufficienti.
 
-For example, `style` is acceptable if we calculate coordinates of an element dynamically and want to set them from JavaScript, like this:
+Per esempio, è ragionevole l'uso di `style` se calcoliamo dinamicamente le coordinate di un elemento e vogliamo impostarle con JavaScript, come in casi analoghi:
 
 ```js
-let top = /* complex calculations */;
-let left = /* complex calculations */;
+let top = /* calcoli complessi */;
+let left = /* calcoli complessi */;
 
-elem.style.left = left; // e.g '123px', calculated at run-time
-elem.style.top = top; // e.g '456px'
+elem.style.left = left; // es '123px', calcolato al momento dell'esecuzione
+elem.style.top = top; // es '456px'
 ```
 
-For other cases, like making the text red, adding a background icon -- describe that in CSS and then add the class (JavaScript can do that). That's more flexible and easier to support.
+Per gli altri casi, come rendere rosso un testo, aggiungere un'icona di sfondo -- definiamo degli stili CSS e poi applichiamo la classe con JavaScript. È più flessibile e più facile da supportare.
 
-## className and classList
+## className e classList
 
-Changing a class is one of the most often used actions in scripts.
+Modificare una classe è una delle operazioni più comuni negli script.
 
-In the ancient time, there was a limitation in JavaScript: a reserved word like `"class"` could not be an object property. That limitation does not exist now, but at that time it was impossible to have a `"class"` property, like `elem.class`.
+Anticamente c'era una limitazione in JavaScript: una parola riservata come `"class"` non poteva essere una proprietà di un oggetto. Tale limitazione non c'è più, ma a quel tempo era impossibile avere una proprietà `"class"` come `elem.class`.
 
-So for classes the similar-looking property `"className"` was introduced: the `elem.className` corresponds to the `"class"` attribute.
+Quindi per le classi fu introdotta la proprietà `"className"` che è simile: l'attributo `"class"` ha il suo corrispettivo DOM in `elem.className`.
 
-For instance:
+Per esempio:
 
 ```html run
 <body class="main page">
@@ -41,19 +41,19 @@ For instance:
 </body>
 ```
 
-If we assign something to `elem.className`, it replaces the whole string of classes. Sometimes that's what we need, but often we want to add/remove a single class.
+Se assegniamo un valore a `elem.className` rimpiazziamo l'intero contenuto dell'attributo `"class"`. Talvolta è il risultato che vogliamo ottenere, spesso invece vogliamo aggiungere/rimuovere una singola classe.
 
-There's another property for that: `elem.classList`.
+Esiste un'altra proprietà per quello: `elem.classList`.
 
-The `elem.classList` is a special object with methods to `add/remove/toggle` a single class.
+La proprietà `elem.classList` è uno speciale oggetto con i metodi `add/remove/toggle` per aggiungere/rimuovere/alternare una singola classe.
 
-For instance:
+Per esempio:
 
 ```html run
 <body class="main page">
   <script>
 *!*
-    // add a class
+    // aggiunge una classe
     document.body.classList.add('article');
 */!*
 
@@ -62,31 +62,31 @@ For instance:
 </body>
 ```
 
-So we can operate both on the full class string using `className` or on individual classes using `classList`. What we choose depends on our needs.
+Possiamo agire pertanto sia sulla stringa intera delle classi rappresentata da `className`, oppure sulle singole classi usando `classList`. La nostra scelta dipende dalle nostre esigenze.
 
-Methods of `classList`:
+Metodi di `classList`:
 
-- `elem.classList.add/remove("class")` -- adds/removes the class.
-- `elem.classList.toggle("class")` -- adds the class if it doesn't exist, otherwise removes it.
-- `elem.classList.contains("class")` -- checks for the given class, returns `true/false`.
+- `elem.classList.add/remove("class")` -- aggiunge/rimuove la classe.
+- `elem.classList.toggle("class")` -- aggiunge la classe se non esiste, diversamente la rimuove.
+- `elem.classList.contains("class")` -- verifica che esista una determinata classe, restituisce `true/false`.
 
-Besides, `classList` is iterable, so we can list all classes with `for..of`, like this:
+Oltretutto `classList` è iterabile, quindi possiamo elencare tutte le classi con `for..of` in questo modo:
 
 ```html run
 <body class="main page">
   <script>
     for (let name of document.body.classList) {
-      alert(name); // main, and then page
+      alert(name); // main, e dopo page
     }
   </script>
 </body>
 ```
 
-## Element style
+## La proprietà style di un elemento
 
-The property `elem.style` is an object that corresponds to what's written in the `"style"` attribute. Setting `elem.style.width="100px"` works the same as if we had in the attribute `style` a string `width:100px`.
+La proprietà `elem.style` è un oggetto corrispondente a ciò che è scritto dentro l'attributo `"style"`. Impostando `elem.style.width="100px"` otteniamo lo stesso effetto che otterremmo scrivendo `width:100px` dentro l'attributo `style`.
 
-For multi-word property the camelCase is used:
+Per le proprietà composte da più di una parola, si usa l'iniziale maiuscola dalla seconda parola in poi (camel case):
 
 ```js no-beautify
 background-color  => elem.style.backgroundColor
@@ -94,16 +94,16 @@ z-index           => elem.style.zIndex
 border-left-width => elem.style.borderLeftWidth
 ```
 
-For instance:
+Per esempio:
 
 ```js run
 document.body.style.backgroundColor = prompt('background color?', 'green');
 ```
 
-````smart header="Prefixed properties"
-Browser-prefixed properties like `-moz-border-radius`, `-webkit-border-radius` also follow the same rule: a dash means upper case.
+````smart header="Proprietà con prefisso"
+Le proprietà con il prefisso del browser come `-moz-border-radius`, `-webkit-border-radius` seguono anch'esse la stessa regola: un trattino comporta l'uso del maiuscolo.
 
-For instance:
+Per esempio:
 
 ```js
 button.style.MozBorderRadius = '5px';
@@ -111,7 +111,7 @@ button.style.WebkitBorderRadius = '5px';
 ```
 ````
 
-## Resetting the style property
+## Resettare la proprietà style
 
 Sometimes we want to assign a style property, and later remove it.
 

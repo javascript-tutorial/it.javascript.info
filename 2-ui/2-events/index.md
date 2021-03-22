@@ -1,3 +1,3 @@
-# Introduction to Events
+# Introduzione agli Eventi
 
-An introduction to browser events, event properties and handling patterns.
+Introdurremo gli eventi browser, le loro proprietà e i pattern per la loro gestione.

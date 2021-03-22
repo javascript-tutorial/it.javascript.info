@@ -1,3 +1,3 @@
 # Introduzione
 
-Riguardo il linguaggio JavaScript e l'ambiente di sviluppo.
+Studieremo il linguaggio JavaScript e l'ambiente di sviluppo.
