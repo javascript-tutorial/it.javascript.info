@@ -154,22 +154,22 @@ Questa proprietà è usata di rado, poiché un tale assegnamento rimuove tutti g
 Lo stesso risultato può essere ottenuto impostando un attributo: `div.setAttribute('style', 'color: red...')`.
 ````
 
-## Presta attenzione alle unità
+## Presta attenzione alle unità di misura
 
-Don't forget to add CSS units to values.
+Non dimenticare di aggiungere le unità di misura CSS ai valori.
 
-For instance, we should not set `elem.style.top` to `10`, but rather to `10px`. Otherwise it wouldn't work:
+Ad esempio, non dovremmo impostare `elem.style.top` a `10`, piuttosto a `10px`. Altrimenti non funzionerebbe:
 
 ```html run height=100
 <body>
   <script>
   *!*
-    // doesn't work!
+    // non funziona!
     document.body.style.margin = 20;
-    alert(document.body.style.margin); // '' (empty string, the assignment is ignored)
+    alert(document.body.style.margin); // '' (stringa vuota, l'assegnamento è stato ignorato)
   */!*
 
-    // now add the CSS unit (px) - and it works
+    // aggiungiamo ora l'unità di misura CSS (px) - e funziona
     document.body.style.margin = '20px';
     alert(document.body.style.margin); // 20px
 
@@ -179,19 +179,19 @@ For instance, we should not set `elem.style.top` to `10`, but rather to `10px`. 
 </body>
 ```
 
-Please note: the browser "unpacks" the property `style.margin` in the last lines and infers `style.marginLeft` and `style.marginTop` from it.
+Nota: il browser "spacchetta" la proprietà `style.margin` nelle ultime linee e deduce da essa `style.marginLeft` e `style.marginTop`.
 
-## Computed styles: getComputedStyle
+## Stili calcolati: getComputedStyle
 
-So, modifying a style is easy. But how to *read* it?
+Modificare uno stile, quindi, è semplice. Ma come *leggerlo*?
 
-For instance, we want to know the size, margins, the color of an element. How to do it?
+Vogliamo, ad esempio, conoscere la dimensione, i margini, il colore di un elemento. Come fare?
 
-**The `style` property operates only on the value of the `"style"` attribute, without any CSS cascade.**
+**La proprietà `style` agisce solo sul valore dell'attributo `"style"`, senza considerare alcuna cascata CSS.**
 
-So we can't read anything that comes from CSS classes using `elem.style`.
+Pertanto non possiamo leggere nulla che derivi dalle classi CSS tramite `elem.style`.
 
-For instance, here `style` doesn't see the margin:
+Qui, per esempio, `style` non rileva il margine:
 
 ```html run height=60 no-beautify
 <head>
@@ -202,32 +202,32 @@ For instance, here `style` doesn't see the margin:
   The red text
   <script>
 *!*
-    alert(document.body.style.color); // empty
-    alert(document.body.style.marginTop); // empty
+    alert(document.body.style.color); // vuoto
+    alert(document.body.style.marginTop); // vuoto
 */!*
   </script>
 </body>
 ```
 
-...But what if we need, say, to increase the margin by `20px`? We would want the current value of it.
+...ma cosa dovremmo fare se avessimo bisogno, per dire, di incrementare il margine di `20px`? Dovremmo prima conoscerne il valore corrente.
 
-There's another method for that: `getComputedStyle`.
+C'è un altro metodo per quello: `getComputedStyle`.
 
-The syntax is:
+La sintassi è:
 
 ```js
 getComputedStyle(element, [pseudo])
 ```
 
 element
-: Element to read the value for.
+: L'elemento di cui leggere il valore.
 
 pseudo
-: A pseudo-element if required, for instance `::before`. An empty string or no argument means the element itself.
+: Uno pseudo-elemento se richiesto, per esempio `::before`. Una stringa vuota o nessun argomento significa l'elemento stesso.
 
-The result is an object with styles, like `elem.style`, but now with respect to all CSS classes.
+Il risultato è un oggetto con gli stili, come `elem.style`, ma, a differenza di quello, tiene conto di tutte le classi CSS.
 
-For instance:
+Per esempio:
 
 ```html run height=100
 <head>
@@ -238,7 +238,7 @@ For instance:
   <script>
     let computedStyle = getComputedStyle(document.body);
 
-    // now we can read the margin and the color from it
+    // adesso possiamo ricavare il margine ed il colore
 
     alert( computedStyle.marginTop ); // 5px
     alert( computedStyle.color ); // rgb(255, 0, 0)
@@ -247,7 +247,7 @@ For instance:
 </body>
 ```
 
-```smart header="Computed and resolved values"
+```smart header="Valori calcolati e determinati"
 There are two concepts in [CSS](https://drafts.csswg.org/cssom/#resolved-values):
 
 1. A *computed* style value is the value after all CSS rules and CSS inheritance is applied, as the result of the CSS cascade. It can look like `height:1em` or `font-size:125%`.
