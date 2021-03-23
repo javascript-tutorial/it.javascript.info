@@ -248,22 +248,22 @@ Per esempio:
 ```
 
 ```smart header="Valori calcolati e determinati"
-There are two concepts in [CSS](https://drafts.csswg.org/cssom/#resolved-values):
+Ci sono due concetti nei [CSS](https://drafts.csswg.org/cssom/#resolved-values):
 
-1. A *computed* style value is the value after all CSS rules and CSS inheritance is applied, as the result of the CSS cascade. It can look like `height:1em` or `font-size:125%`.
-2. A *resolved* style value is the one finally applied to the element. Values like `1em` or `125%` are relative. The browser takes the computed value and makes all units fixed and absolute, for instance: `height:20px` or `font-size:16px`. For geometry properties resolved values may have a floating point, like `width:50.5px`.
+1. Un valore stile *calcolato* (computed value) è il valore derivante dall'applicazione di tutte le regole e dell'ereditarietà dei CSS: il risultato della cascata CSS. Può essere simile a `height:1em` o `font-size:125%`.
+2. Un valore stile *determinato* (resolved value) è quello applicato alla fine sull'elemento. Valori come `1em` o `125%` sono relativi. Il browser prende i valori calcolati e li converte tutti in unità di misura fisse e assolute, per esempio: `height:20px` o `font-size:16px`. Per le proprietà geometriche i valori determinati possono avere la virgola, come `width:50.5px`.
 
-A long time ago `getComputedStyle` was created to get computed values, but it turned out that resolved values are much more convenient, and the standard changed.
+Molto tempo addietro `getComputedStyle` è stato creato per ottenere i valori calcolati, ma si scoprì che i valori determinati erano molto più utili e lo standard è cambiato.
 
-So nowadays `getComputedStyle` actually returns the resolved value of the property, usually in `px` for geometry.
+Attualmente, quindi, restituisce il valore determinato della proprietà, di solito espressa in `px` per le proprietà geometriche.
 ```
 
-````warn header="`getComputedStyle` requires the full property name"
-We should always ask for the exact property that we want, like `paddingLeft` or `marginTop` or `borderTopWidth`. Otherwise the correct result is not guaranteed.
+````warn header="`getComputedStyle` richiede il nome completo della proprietà"
+Dovremmo sempre chiedere l'esatta proprietà che si desidera, come `paddingLeft` o `marginTop` o `borderTopWidth`. Diversamente il risultato corretto non è garantito.
 
-For instance, if there are properties `paddingLeft/paddingTop`, then what should we get for `getComputedStyle(elem).padding`? Nothing, or maybe a "generated" value from known paddings? There's no standard rule here.
+Per esempio, se ci sono le proprietà `paddingLeft/paddingTop`, cosa dovremmo ottenere con `getComputedStyle(elem).padding`? Niente, o forse un valore "generato" a partire dai valori di padding noti? Non esiste una regola standard in questo caso.
 
-There are other inconsistencies. As an example, some browsers (Chrome) show `10px` in the document below, and some of them (Firefox) --  do not:
+Ci sono altre incongruenze. Ad esempio, alcuni browser (Chrome) mostrano `10px` nel documento in basso, ed altri (Firefox) -- invece no:
 
 ```html run
 <style>
@@ -273,15 +273,15 @@ There are other inconsistencies. As an example, some browsers (Chrome) show `10p
 </style>
 <script>
   let style = getComputedStyle(document.body);
-  alert(style.margin); // empty string in Firefox
+  alert(style.margin); // Firefox restituisce una stringa vuota
 </script>
 ```
 ````
 
-```smart header="Styles applied to `:visited` links are hidden!"
-Visited links may be colored using `:visited` CSS pseudoclass.
+```smart header="Gli stili applicati ai link `:visited` sono nascosti!"
+I link visitati possono ricevere un colore tramite la pseudoclasse CSS `:visited`.
 
-But `getComputedStyle` does not give access to that color, because otherwise an arbitrary page could find out whether the user visited a link by creating it on the page and checking the styles.
+Tuttavia `getComputedStyle non dà accesso a quel colore, poiché diversamente una pagina arbitraria potrebbe scoprire se l'utente ha visitato un link creandolo sulla pagina e verificandone gli stili.
 
 JavaScript may not see the styles applied by `:visited`. And also, there's a limitation in CSS that forbids applying geometry-changing styles in `:visited`. That's to guarantee that there's no side way for an evil page to test if a link was visited and hence to break the privacy.
 ```
