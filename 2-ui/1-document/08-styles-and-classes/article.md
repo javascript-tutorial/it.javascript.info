@@ -1,11 +1,11 @@
 # Stili e classi
 
-Prima di cominciare a trattare i modi in cui JavaScript interagisce con gli stili e le classi -- ecco una regola importante. Si spera che sia abbastanza scontata, ma non guasta menzionarla ancora.
+Prima di cominciare a trattare i modi in cui JavaScript interagisce con gli stili e le classi -- ecco una regola importante. Si spera che sia abbastanza scontata, ma non guasta ripeterla.
 
 Ci sono in genere due modi di applicare uno stile ad un elemento:
 
 1. Creare una classe CSS ed aggiungerla: `<div class="...">`
-2. Scrivere direttamente proprietà dentro `style`: `<div style="...">`.
+2. Scrivere direttamente le proprietà dentro `style`: `<div style="...">`.
 
 JavaScript può modificare sia le classi sia le proprietà all'interno di `style`.
 
@@ -62,7 +62,7 @@ Per esempio:
 </body>
 ```
 
-Possiamo agire pertanto sia sulla stringa intera delle classi rappresentata da `className`, oppure sulle singole classi usando `classList`. La nostra scelta dipende dalle nostre esigenze.
+Possiamo agire pertanto sia sulla stringa intera delle classi rappresentata da `className`, oppure sulle singole classi usando `classList`. La scelta dipende dalle nostre esigenze.
 
 Metodi di `classList`:
 
@@ -70,7 +70,7 @@ Metodi di `classList`:
 - `elem.classList.toggle("class")` -- aggiunge la classe se non esiste, diversamente la rimuove.
 - `elem.classList.contains("class")` -- verifica che esista una determinata classe, restituisce `true/false`.
 
-Oltretutto `classList` è iterabile, quindi possiamo elencare tutte le classi con `for..of` in questo modo:
+In aggiunta `classList` è iterabile, quindi possiamo elencare tutte le classi con `for..of` in questo modo:
 
 ```html run
 <body class="main page">
@@ -154,9 +154,9 @@ Questa proprietà è usata di rado, poiché un tale assegnamento rimuove tutti g
 Lo stesso risultato può essere ottenuto impostando un attributo: `div.setAttribute('style', 'color: red...')`.
 ````
 
-## Presta attenzione alle unità di misura
+## Prestate attenzione alle unità di misura
 
-Non dimenticare di aggiungere le unità di misura CSS ai valori.
+Non dimenticate di aggiungere le unità di misura CSS ai valori.
 
 Ad esempio, non dovremmo impostare `elem.style.top` a `10`, piuttosto a `10px`. Altrimenti non funzionerebbe:
 
@@ -247,15 +247,15 @@ Per esempio:
 </body>
 ```
 
-```smart header="Valori calcolati e determinati"
+```smart header="Valori computed e resolved"
 Ci sono due concetti nei [CSS](https://drafts.csswg.org/cssom/#resolved-values):
 
-1. Un valore stile *calcolato* (computed value) è il valore derivante dall'applicazione di tutte le regole e dell'ereditarietà dei CSS: il risultato della cascata CSS. Può essere simile a `height:1em` o `font-size:125%`.
-2. Un valore stile *determinato* (resolved value) è quello applicato alla fine sull'elemento. Valori come `1em` o `125%` sono relativi. Il browser prende i valori calcolati e li converte tutti in unità di misura fisse e assolute, per esempio: `height:20px` o `font-size:16px`. Per le proprietà geometriche i valori determinati possono avere la virgola, come `width:50.5px`.
+1. Un valore di uno stile *computed* è il valore derivante dall'applicazione di tutte le regole e dell'ereditarietà dei CSS: il risultato della cascata CSS. Può essere simile a `height:1em` o `font-size:125%`.
+2. Un valore di uno stile *resolved* è quello applicato realmente sull'elemento. Valori come `1em` o `125%` sono relativi. Il browser prende i valori computed e li converte tutti in unità di misura fisse e assolute, per esempio: `height:20px` o `font-size:16px`. Per le proprietà geometriche i valori resolved possono avere la virgola, come `width:50.5px`.
 
-Molto tempo addietro `getComputedStyle` è stato creato per ottenere i valori calcolati, ma si scoprì che i valori determinati erano molto più utili e lo standard è cambiato.
+Molto tempo addietro `getComputedStyle` è stato creato per ottenere i valori computed, ma si scoprì che i valori resolved erano molto più utili e lo standard è cambiato.
 
-Attualmente, quindi, restituisce il valore determinato della proprietà, di solito espressa in `px` per le proprietà geometriche.
+Attualmente, quindi, restituisce il valore resolved della proprietà, di solito espressa in `px` per le proprietà geometriche.
 ```
 
 ````warn header="`getComputedStyle` richiede il nome completo della proprietà"
@@ -283,7 +283,7 @@ I link visitati possono ricevere un colore tramite la pseudoclasse CSS `:visited
 
 Tuttavia `getComputedStyle non dà accesso a quel colore, poiché diversamente una pagina arbitraria potrebbe scoprire se l'utente ha visitato un link creandolo sulla pagina e verificandone gli stili.
 
-JavaScript potrebbe non rilevare gli stili applicati da `:visited`. C'è una limitazione nei CSS, inoltre, che vieta su `:visited` l'applicazione di stili che modifichino le proprietà geometriche. Questo per garantire che non ci sia, per una pagina malevola, una via traversa di testare se un link è stato visitato e quindi di violare la privacy.
+JavaScript potrebbe non rilevare gli stili applicati da `:visited`. C'è una limitazione nei CSS, inoltre, che vieta su `:visited` l'applicazione di stili che modifichino le proprietà geometriche. Questo per garantire che, per una pagina malevola, non ci sia una via traversa di testare se un link è stato visitato e quindi di violare la privacy.
 ```
 
 ## Riepilogo
@@ -299,6 +299,6 @@ Per modificare gli stili:
 
 - La proprietà `style.cssText` corrisponde al contenuto completo dell'attributo `"style"`, l'intera stringa degli stili.
 
-Per leggere gli stili determinati (che tengono conto di tutte le classi, dopo che tutti i CSS sono stati applicati e sono stati calcolati i valori risultanti):
+Per leggere gli stili resolved (che tengono conto di tutte le classi, dopo che tutti i CSS sono stati applicati e sono stati calcolati i valori risultanti):
 
 - Il metodo `getComputedStyle(elem, [pseudo])` restituisce un oggetto simile a `style` con tali valori. Questi sono in sola lettura.
