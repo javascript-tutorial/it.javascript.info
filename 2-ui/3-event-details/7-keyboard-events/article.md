@@ -69,11 +69,11 @@ Cosa succederebbe se un tasto non restituisse nessun carattere? Per esempio, `ke
 | `key:Backspace`      |`Backspace`          |`Backspace`        |
 | `key:Shift`|`Shift`          |`ShiftRight` or `ShiftLeft`        |
 
-È importante sottolineare che `event.code` specifica esattamente il tasto premuto. Per esempio, la maggioranza delle tastiere hanno due tasti `key:Shift`: uno nel lato sinistro e uno nel lato destro. `event.code` ci dice esattamente quale dei due viene premuto, `event.key` è invece responsabile invece del "significato" del tasto: cosa è (cioè uno "Shift").
+È importante sottolineare che `event.code` specifica esattamente il tasto premuto. Per esempio, la maggioranza delle tastiere ha due tasti `key:Shift`: uno nel lato sinistro e uno nel lato destro. `event.code` ci dice esattamente quale dei due viene premuto, `event.key` è invece responsabile del "significato" del tasto: cosa è (cioè uno "Shift").
 
 Mettiamo il caso che volessimo gestire una scorciatoia: `key:Ctrl+Z` (o `key:Cmd+Z` su Mac). La maggior parte degli editor di testo associa a questa combinazione, l'azione "Undo". A quel punto potremmo impostare un listener sul `keydown` e controllare quale tasto venga premuto.
 
-Ma qui ci troveremo di fronta a un dilemma: in questo listener, cosa dovremmo controllare? Il valore di `event.key` oppure quello di `event.code`?
+Ma qui ci troveremo di fronte a un dilemma: in questo listener, cosa dovremmo controllare? Il valore di `event.key` oppure quello di `event.code`?
 
 Da una parte, il valore di `event.key` è un carattere, e cambia a seconda del linguaggio. Se il visitatore gestisce più lingue nel suo sistema operativo e passa da una all'altra, lo stesso tasto restituirebbe caratteri differenti. Quindi ha senso controllare `event.code`, che è sempre lo stesso.
 
@@ -122,7 +122,7 @@ Per eventi generati da auto-repeat, l'oggetto evento coinvolto avrà la propriet
 
 ## Azioni default
 
-Le azioni di default possono essere tante e variegate, dal momento che sono tante le cose che possono essere iniziate tramite la tastiera.
+Le azioni di default possono essere tante e variegate, dal momento che sono tante le cose che possono essere attivate tramite la tastiera.
 
 Per esempio:
 
@@ -162,7 +162,7 @@ function checkPhoneKey(key) {
 
 Adesso le frecce e il tasto cancella funzionano.
 
-...Tuttavia, siamo ancora in grado di inserire qualunque valore, usando il mouse, attraverso la funzionalità tasto destro + Incolla. Quindi il filtro non è al 100% affidabile. Volendo, possiamo lasciarlo così, dato che funzionerà la maggior parte delle volte. Un approccio alternativo, invece, potrebbe essere quello di tenere traccia dell'evento `input`, scaturito dopo ogni modifica al campo di testo. A quel punto, possiamo sempre verificare il nuovo valore ed evidenziarlo/modificarlo se non ritenuto valido.
+...Tuttavia, siamo ancora in grado di inserire qualunque valore, usando il mouse, attraverso la funzionalità tasto destro + Incolla. Quindi il filtro non è al 100% affidabile. Volendo, possiamo lasciarlo così, dato che funzionerà la maggior parte delle volte. Un approccio alternativo, invece, potrebbe essere quello di tenere traccia dell'evento `input`, che scaturisce dopo ogni modifica al campo di testo. In questo modo possiamo sempre verificare il nuovo valore ed evidenziarlo/modificarlo se non ritenuto valido.
 
 ## Eredità
 

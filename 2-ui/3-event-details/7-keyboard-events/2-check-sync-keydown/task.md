@@ -4,7 +4,7 @@ importance: 5
 
 # Tasti di scelta rapida estesi
 
-Create una funzione `runOnKeys(func, code1, code2, ... code_n)` che viene eseguita `func` premendo contemporaneamente sui tasti con i codici `code1`, `code2`, ..., `code_n`.
+Create una funzione `runOnKeys(func, code1, code2, ... code_n)` che esegue `func` quando vengono premuti contemporaneamente i tasti con i codici `code1`, `code2`, ..., `code_n`.
 
 Ad esempio, il seguente codice mostra un `alert` quando vengono premuti `"Q"` e `"W"` insieme (in qualunque lingua, con o senza il CapsLock)
 
