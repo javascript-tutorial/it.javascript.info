@@ -1,99 +1,99 @@
 # XMLHttpRequest
 
-`XMLHttpRequest` is a built-in browser object that allows to make HTTP requests in JavaScript.
+`XMLHttpRequest` è un oggetto built-in che ci permette di eseguire delle richieste HTTP in JavaScript.
 
-Despite of having the word "XML" in its name, it can operate on any data, not only in XML format. We can upload/download files, track progress and much more.
+A dispetto del suo nome contenente la parola "XML", può funzionare con qualunque tipo di dato, non solo con il formato XML. Possiamo usarlo per effettuare upload e download di files, tenere traccia dei loro progressi e molto altro.
 
-Right now, there's another, more modern method `fetch`, that somewhat deprecates `XMLHttpRequest`.
+Oggi c'è il meotodo più moderno `fetch`,  che in qualche modo ha soppiantato `XMLHttpRequest`.
 
-In modern web-development `XMLHttpRequest` is used for three reasons:
+Nello sviluppo web attuale `XMLHttpRequest` viene usato per tre ragioni principali:
 
-1. Historical reasons: we need to support existing scripts with `XMLHttpRequest`.
-2. We need to support old browsers, and don't want polyfills (e.g. to keep scripts tiny).
-3. We need something that `fetch` can't do yet, e.g. to track upload progress.
+1. Ragioni storiche: per il supporto a sgli script esistenti che fanno uso di `XMLHttpRequest`.
+2. Se abbiamo bisogno di supportare i vecchi browser, e non vogliamo fare uso di polyfills (ad esempio per mantenere gli script snelli).
+3. Abbiamo bisogno di fare qualcosa che `fetch` non può ancora fare, ad esempio tenere traccia dei progressi in fase di upload.
 
-Does that sound familiar? If yes, then all right, go on with `XMLHttpRequest`. Otherwise, please head on to <info:fetch>.
+Suona familiare? Se sì, allora possiamo addentrarci nello studio di `XMLHttpRequest`. Altrimenti, si può andare direttamente alla sezione <info:fetch>.
 
-## The basics
+## Le basi
 
-XMLHttpRequest has two modes of operation: synchronous and asynchronous.
+XMLHttpRequest ha due modalità operative: sincrona e asincrona.
 
-Let's see the asynchronous first, as it's used in the majority of cases.
+Prima vediamo la modalità asincrona, dato che è usata nella maggior parte dei casi.
 
-To do the request, we need 3 steps:
+Per fare una richiesta, dividiamo l'operazione in tre fasi:
 
-1. Create `XMLHttpRequest`:
+1. Creiamo `XMLHttpRequest`:
     ```js
     let xhr = new XMLHttpRequest();
     ```
-    The constructor has no arguments.
+    Il costruttore è privo di argomenti.
 
-2. Initialize it, usually right after `new XMLHttpRequest`:
+2. Lo inizializziamo, solitamente subito dopo `new XMLHttpRequest`:
     ```js
     xhr.open(method, URL, [async, user, password])
     ```
 
-    This method specifies the main parameters of the request:
+    Questo metodo specifica i parametri principali della richiesta:
 
-    - `method` -- HTTP-method. Usually `"GET"` or `"POST"`.
-    - `URL` -- the URL to request, a string, can be [URL](info:url) object.
-    - `async` -- if explicitly set to `false`, then the request is synchronous, we'll cover that a bit later.
-    - `user`, `password` -- login and password for basic HTTP auth (if required).
+    - `method` -- metodo HTTP. Solitamente `"GET"` o `"POST"`.
+    - `URL` -- l'URL della richiesta, una stringa che può essere un oggetto [URL](info:url).
+    - `async` -- se impostato esplicitamente a `false`, la richiesta sarà sincrona, lo affronteremo più avanti.
+    - `user`, `password` -- login e password per l'autenticazione HTTP di base (se richiesto).
 
-    Please note that `open` call, contrary to its name, does not open the connection. It only configures the request, but the network activity only starts with the call of `send`.
+    Nota bene che la chiamata a `open`, contrariamente al suo nome, non apre la connessione. Configura solo la richiesta, ma l'attivita di rete comincia solo con la chiamata a `send`.
 
-3. Send it out.
+3. Invio.
 
     ```js
     xhr.send([body])
     ```
 
-    This method opens the connection and sends the request to server. The optional `body` parameter contains the request body.
+    Questo metodo apre la connessione ed invia la richiesta al server. Il parametro opzionale `body` contiene il corpo della richiesta.
 
-    Some request methods like `GET` do not have a body. And some of them like `POST` use `body` to send the data to the server. We'll see examples of that later.
+    Alcuni metodi, come ad esempio `GET` non supportano il corpo nella richiesta, mentre altri, come `POST` usano `body` per inviare dati al server. Vedremo degli esempi più avanti.
 
-4. Listen to `xhr` events for response.
+4. Mettersi in ascolto sugli eventi `xhr` per la risposta.
 
-    These three events are the most widely used:
-    - `load` -- when the request is complete (even if HTTP status is like 400 or 500), and the response is fully downloaded.
-    - `error` -- when the request couldn't be made, e.g. network down or invalid URL.
-    - `progress` -- triggers periodically while the response is being downloaded, reports how much has been downloaded.
+    Questi tre eventi sono quelli utilizzati più di frequente:
+    - `load` -- quando la richiesta è completa (anche se lo status HTTP è 400 o 500), e la risposta è stata scaricata del tutto.
+    - `error` -- quando la richiesta non può essere espletata, ad esempio per problemi di rete o URL non validi.
+    - `progress` -- viene innescato periodicamente mentre la risposta viene scaricata, e dà informazioni su quanto è stato scaricato.
 
     ```js
     xhr.onload = function() {
       alert(`Loaded: ${xhr.status} ${xhr.response}`);
     };
 
-    xhr.onerror = function() { // only triggers if the request couldn't be made at all
+    xhr.onerror = function() { // viene innescato solo se la richiesta non può essere eseguita per niente
       alert(`Network Error`);
     };
 
-    xhr.onprogress = function(event) { // triggers periodically
-      // event.loaded - how many bytes downloaded
-      // event.lengthComputable = true if the server sent Content-Length header
-      // event.total - total number of bytes (if lengthComputable)
-      alert(`Received ${event.loaded} of ${event.total}`);
+    xhr.onprogress = function(event) { // viene scatenato periodicamente
+      // event.loaded - quanti bytes sono stati scaricati
+      // event.lengthComputable = true se il server ha invaito l'header Content-Length
+      // event.total - numero totale di bytes (se lengthComputable è true)
+      alert(`Ricevuti ${event.loaded} su ${event.total}`);
     };
     ```
 
-Here's a full example. The code below loads the URL at `/article/xmlhttprequest/example/load` from the server and prints the progress:
+Ecco un esempio completo. Il seguente codice scarica il contenuto dell'URL `/article/xmlhttprequest/example/load` dal server e stampa il progresso di download:
 
 ```js run
-// 1. Create a new XMLHttpRequest object
+// 1. Crea un nuovo oggetto XMLHttpRequest
 let xhr = new XMLHttpRequest();
 
-// 2. Configure it: GET-request for the URL /article/.../load
+// 2. Lo configura: richiesta GET per l'URL /article/.../load
 xhr.open('GET', '/article/xmlhttprequest/example/load');
 
-// 3. Send the request over the network
+// 3. Invia la richiesta alla rete
 xhr.send();
 
-// 4. This will be called after the response is received
+// 4. Questo viene chiamato dopo la ricezione della risposta
 xhr.onload = function() {
-  if (xhr.status != 200) { // analyze HTTP status of the response
-    alert(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
-  } else { // show the result
-    alert(`Done, got ${xhr.response.length} bytes`); // response is the server response
+  if (xhr.status != 200) { // analizza lo status HTTP della risposta
+    alert(`Error ${xhr.status}: ${xhr.statusText}`); // ad esempio 404: Not Found
+  } else { // mostra il risultato
+    alert(`Done, got ${xhr.response.length} bytes`); // response contiene la risposta del server
   }
 };
 
@@ -101,7 +101,7 @@ xhr.onprogress = function(event) {
   if (event.lengthComputable) {
     alert(`Received ${event.loaded} of ${event.total} bytes`);
   } else {
-    alert(`Received ${event.loaded} bytes`); // no Content-Length
+    alert(`Received ${event.loaded} bytes`); // nessun Content-Length
   }
 
 };
@@ -111,50 +111,50 @@ xhr.onerror = function() {
 };
 ```
 
-Once the server has responded, we can receive the result in the following `xhr` properties:
+Una volta che il server ha risposto, possiamo ricevere il risultato nelle seguenti proprietà `xhr`:
 
 `status`
-: HTTP status code (a number): `200`, `404`, `403` and so on, can be `0` in case of a non-HTTP failure.
+: HTTP status code (un numero): `200`, `404`, `403` e così via, e può essere `0` in caso di fallimento non HTTP.
 
 `statusText`
-: HTTP status message (a string): usually `OK` for `200`, `Not Found` for `404`, `Forbidden` for `403` and so on.
+: messaggio dello status HTTP (una stringa): solitamente `OK` per `200`, `Not Found` per `404`, `Forbidden` per `403` e via dicendo.
 
-`response` (old scripts may use `responseText`)
-: The server response body.
+`response` (vecchi scripts potrebbero usare `responseText`)
+: La risposta del server.
 
-We can also specify a timeout using the corresponding property:
+Possiamo anche specificare un timeout usando la proprietà corrispondente:
 
 ```js
-xhr.timeout = 10000; // timeout in ms, 10 seconds
+xhr.timeout = 10000; // timeout in millisecondi, 10 seconds
 ```
 
-If the request does not succeed within the given time, it gets canceled and `timeout` event triggers.
+Se la richiesta non ha successo nel tempo stabilito, viene annullata e viene scatenato l'evento `timeout`.
 
-````smart header="URL search parameters"
-To add parameters to URL, like `?name=value`, and ensure the proper encoding, we can use [URL](info:url) object:
+````smart header="parametri search dell'URL"
+Per aggiungere dei parametri all'URL, come `?name=value`, ed assicurarci di una corretta codifica, possiamo usare l'oggetto [URL](info:url):
 
 ```js
 let url = new URL('https://google.com/search');
 url.searchParams.set('q', 'test me!');
 
-// the parameter 'q' is encoded
+// codifica il parametro 'q'
 xhr.open('GET', url); // https://google.com/search?q=test+me%21
 ```
 
 ````
 
-## Response Type
+## Tipo di risposta (Response Type)
 
-We can use `xhr.responseType` property to set the response format:
+Possiamo usare la prorietà `xhr.responseType` per impostare il formato della risposta:
 
-- `""` (default) -- get as string,
-- `"text"` -- get as string,
-- `"arraybuffer"` -- get as `ArrayBuffer` (for binary data, see chapter <info:arraybuffer-binary-arrays>),
-- `"blob"` -- get as `Blob` (for binary data, see chapter <info:blob>),
-- `"document"` -- get as XML document (can use XPath and other XML methods) or HTML document (based on the MIME type of the received data),
-- `"json"` -- get as JSON (parsed automatically).
+- `""` (default) -- ottiene una stringa,
+- `"text"` -- ottiene una stringa,
+- `"arraybuffer"` -- ottiene un `ArrayBuffer` (per dati di tipo binario, guardare il capitolo <info:arraybuffer-binary-arrays>),
+- `"blob"` -- ottiene un `Blob` (per dati binari, guardare <info:blob>),
+- `"document"` -- ottiene un documento XML (può usare XPath e altri metodi XML) o un documento HTML (basato sul MIME type del dato ricevuto),
+- `"json"` -- ottien un JSON (effettua il parsing automaticamente).
 
-For example, let's get the response as JSON:
+Per esempio, otteniamo una risposta in JSON:
 
 ```js run
 let xhr = new XMLHttpRequest();
