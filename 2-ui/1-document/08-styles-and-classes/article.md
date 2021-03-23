@@ -283,22 +283,22 @@ I link visitati possono ricevere un colore tramite la pseudoclasse CSS `:visited
 
 Tuttavia `getComputedStyle non dà accesso a quel colore, poiché diversamente una pagina arbitraria potrebbe scoprire se l'utente ha visitato un link creandolo sulla pagina e verificandone gli stili.
 
-JavaScript may not see the styles applied by `:visited`. And also, there's a limitation in CSS that forbids applying geometry-changing styles in `:visited`. That's to guarantee that there's no side way for an evil page to test if a link was visited and hence to break the privacy.
+JavaScript potrebbe non rilevare gli stili applicati da `:visited`. C'è una limitazione nei CSS, inoltre, che vieta su `:visited` l'applicazione di stili che modifichino le proprietà geometriche. Questo per garantire che non ci sia, per una pagina malevola, una via traversa di testare se un link è stato visitato e quindi di violare la privacy.
 ```
 
 ## Riepilogo
 
-To manage classes, there are two DOM properties:
+Per gestire le classi ci sono due proprietà DOM:
 
-- `className` -- the string value, good to manage the whole set of classes.
-- `classList` -- the object with methods `add/remove/toggle/contains`, good for individual classes.
+- `className` -- il valore stringa, ottimo per gestire l'intero insieme delle classi.
+- `classList` -- il valore oggetto con i metodi `add/remove/toggle/contains`, ottimo per gestire le classi individualmente.
 
-To change the styles:
+Per modificare gli stili:
 
-- The `style` property is an object with camelCased styles. Reading and writing to it has the same meaning as modifying individual properties in the `"style"` attribute. To see how to apply `important` and other rare stuff -- there's a list of methods at [MDN](mdn:api/CSSStyleDeclaration).
+- La proprietà `style` è un oggetto contenente gli stili CSS, le proprietà composte da più di una parola sono trascritte in camel case. Leggere e scrivere con questa proprietà equivale a modificare individualmente gli stili con l'attributo `"style"`. Per vedere come applicare `important` e per altre esigenze poco comuni -- c'è una lista di metodi su [MDN](mdn:api/CSSStyleDeclaration).
 
-- The `style.cssText` property corresponds to the whole `"style"` attribute, the full string of styles.
+- La proprietà `style.cssText` corrisponde al contenuto completo dell'attributo `"style"`, l'intera stringa degli stili.
 
-To read the resolved styles (with respect to all classes, after all CSS is applied and final values are calculated):
+Per leggere gli stili determinati (che tengono conto di tutte le classi, dopo che tutti i CSS sono stati applicati e sono stati calcolati i valori risultanti):
 
-- The `getComputedStyle(elem, [pseudo])` returns the style-like object with them. Read-only.
+- Il metodo `getComputedStyle(elem, [pseudo])` restituisce un oggetto simile a `style` con tali valori. Questi sono in sola lettura.
