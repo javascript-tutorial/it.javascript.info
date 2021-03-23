@@ -238,7 +238,7 @@ Per esempio:
   <script>
     let computedStyle = getComputedStyle(document.body);
 
-    // adesso possiamo ricavare il margine ed il colore
+    // adesso possiamo ricavarne il margine ed il colore
 
     alert( computedStyle.marginTop ); // 5px
     alert( computedStyle.color ); // rgb(255, 0, 0)
@@ -286,7 +286,7 @@ But `getComputedStyle` does not give access to that color, because otherwise an 
 JavaScript may not see the styles applied by `:visited`. And also, there's a limitation in CSS that forbids applying geometry-changing styles in `:visited`. That's to guarantee that there's no side way for an evil page to test if a link was visited and hence to break the privacy.
 ```
 
-## Summary
+## Riepilogo
 
 To manage classes, there are two DOM properties:
 
