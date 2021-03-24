@@ -142,13 +142,13 @@ Vediamo un esempio di quanto affermato:
 </script>
 ```
 
-We shouldn't work with the document of a not-yet-loaded iframe, because that's the *wrong document*. If we set any event handlers on it, they will be ignored.
+Dovremmo evitare di effettuare operazioni sul document di un iframe non ancora completamente caricato, poiché questo è il *document sbagliato*. Qualsiasi gestore di evento ad esso collegato, verrà ignorato.
 
-How to detect the moment when the document is there?
+Come possiamo assicurarci che il document sia quello corretto?
 
-The right document is definitely at place when `iframe.onload`  triggers. But it only triggers when the whole iframe with all resources is loaded.
+Per essere sicuri di lavorare con il document corretto, dovremmo attendere fin quando verrà emesso l'evento `iframe.onload`. Il quale verrà innescato solemente una volta che l'iframe avrà caricato tutte le risorse.
 
-We can try to catch the moment earlier using checks in `setInterval`:
+Possiamo provare ad intercettarlo anticipatamente effettuando controlli all'interno di un `setInterval`:
 
 ```html run
 <iframe src="/" id="iframe"></iframe>
@@ -156,26 +156,26 @@ We can try to catch the moment earlier using checks in `setInterval`:
 <script>
   let oldDoc = iframe.contentDocument;
 
-  // every 100 ms check if the document is the new one
+  // ogni 100ms verifichiamo se è stato generato il nuovo document
   let timer = setInterval(() => {
     let newDoc = iframe.contentDocument;
     if (newDoc == oldDoc) return;
 
     alert("New document is here!");
 
-    clearInterval(timer); // cancel setInterval, don't need it any more
+    clearInterval(timer); // cancelliamo il setInterval, non ne abbiamo più bisogno
   }, 100);
 </script>
 ```
 
 ## Collection: window.frames
 
-An alternative way to get a window object for `<iframe>` -- is to get it from the named collection  `window.frames`:
+Un modo alternativo per ottenere l'oggetto realtivo ad una finestra di `<iframe>`, è quello di accedervi tramite la collection `window.frames`:
 
-- By number: `window.frames[0]` -- the window object for the first frame in the document.
-- By name: `window.frames.iframeName` -- the window object for the frame with  `name="iframeName"`.
+- Tramite indice: `window.frames[0]`: l'oggetto relativo alla prima finestra di iframe nel document.
+- By name: `window.frames.iframeName`: l'oggetto realtivo all'iframew con `name="iframeName"`.
 
-For instance:
+Ad esempio:
 
 ```html run
 <iframe src="/" style="height:80px" name="win" id="iframe"></iframe>
@@ -186,31 +186,31 @@ For instance:
 </script>
 ```
 
-An iframe may have other iframes inside. The corresponding `window` objects form a hierarchy.
+Un iframe potrebbe possedere a sua volta degli iframe. I rispettivi oggetti `window` formeranno una gerarchia.
 
-Navigation links are:
+E' possibile navigare tra le finestre della gerarchia utilizzando:
 
-- `window.frames` -- the collection of "children" windows (for nested frames).
-- `window.parent` -- the reference to the "parent" (outer) window.
-- `window.top` -- the reference to the topmost parent window.
+- `window.frames`: la collezione delle finestre "figlie" (per iframe annidati).
+- `window.parent`: il riferimento alla finestra "padre" (quella esterna).
+- `window.top`: il riferiemento alla finestra in cima alla gerarchia.
 
-For instance:
+Ad esempio:
 
 ```js run
 window.frames[0].parent === window; // true
 ```
 
-We can use the `top` property to check if the current document is open inside a frame or not:
+Possiamo utilizzare la proprietà `top` per verificare se il document corrente è aperto all'interno di un iframe o no:
 
 ```js run
-if (window == top) { // current window == window.top?
+if (window == top) { // window == window.top?
   alert('The script is in the topmost window, not in a frame');
 } else {
   alert('The script runs in a frame!');
 }
 ```
 
-## The "sandbox" iframe attribute
+## L'attributo "sandbox" per iframe
 
 The `sandbox` attribute allows for the exclusion of certain actions inside an `<iframe>` in order to prevent it executing untrusted code. It "sandboxes" the iframe by treating it as coming from another origin and/or applying other limitations.
 
