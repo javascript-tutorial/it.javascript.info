@@ -56,4 +56,4 @@ Tutto il progetto è ospitato da GitHub. La seguente guida presuppone che tu con
 
   8. Se tutto è andato per il verso giusto, il tuo lavoro verrà approvato ed incorporato nel progetto ... ora puoi festeggiare :tada: :tada: :tada:
 
-  9. Se hai intenzione di continuare a collaborare, ti sarà utile mantenere la tua repository sincronizzata col lavoro di traduzione in corso. Per farlo ti consigliamo di aggiungere la repository originale come nuovo remote `git remote add upstream https://github.com/javascript-tutorial/it.javascript.info.git`, ed eseguire il comando `git pull upstream master && git push origin master` tutte le volte prima di iniziare un nuovo lavoro di traduzione o correzione.
+  9. Se hai intenzione di continuare a collaborare, ti sarà utile mantenere la tua repository sincronizzata col lavoro di traduzione in corso. Per farlo ti consigliamo di aggiungere la repository originale come nuovo remote `git remote add upstream https://github.com/javascript-tutorial/it.javascript.info.git`, ed eseguire il comando `git pull upstream master` seguito da `git push origin master` tutte le volte prima di iniziare un nuovo lavoro di traduzione o correzione.
