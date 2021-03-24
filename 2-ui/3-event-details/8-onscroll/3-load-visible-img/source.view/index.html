@@ -165,11 +165,11 @@
 
    <script>
     /**
-     * Tests if the element is visible (within the visible part of the page)
-     * It's enough that the top or bottom edge of the element are visible
+     * Controlla se l'elemento risulta visibile (all'interno della parte visibile della pagina)
+     * E' sufficiente che il bordo superiore o inferiore dell'elemento sia visibile
      */
     function isVisible(elem) {
-      // todo: your code
+      // todo: il vostro codice
     }
 
     function showVisible() {
@@ -178,8 +178,8 @@
         if (!realSrc) continue;
 
         if (isVisible(img)) {
-          // disable caching
-          // this line should be removed in production code
+          // disabilita il caching
+          // la seguente riga dovrebbe essere rimossa in produzione
           realSrc += '?nocache=' + Math.random();
 
           img.src = realSrc;

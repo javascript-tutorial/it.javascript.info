@@ -1,13 +1,13 @@
-The `onscroll` handler should check which images are visible and show them.
+Il gestore `onscroll` dovrebbe controllare quali immagini sono visibili e mostrarle.
 
-We also want to run it when the page loads, to detect immediately visible images and load them.
+Vogliamo anche eseguirla al caricamento della pagina, per rilevare immediatamente le immagini visibili e caricarle.
 
-The code should execute when the document is loaded, so that it has access to its content.
+Il codice dovrebbe essere eseguito al caricamento del documento, in modo che abbia accesso al suo contenuto.
 
-Or put it at the `<body>` bottom:
+Oppure, per fare ciò, si potrebbe mettere alla del `<body>`:
 
 ```js
-// ...the page content is above...
+// ...il contenuto della pagina sta sopra...
 
 function isVisible(elem) {
 
@@ -15,10 +15,10 @@ function isVisible(elem) {
 
   let windowHeight = document.documentElement.clientHeight;
 
-  // top elem edge is visible?
+  // il bordo superiore dell'elemento risulta visibile?
   let topVisible = coords.top > 0 && coords.top < windowHeight;
 
-  // bottom elem edge is visible?
+  // il bordo inferiore risulta visibile?
   let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
 
   return topVisible || bottomVisible;
@@ -46,4 +46,4 @@ window.onscroll = showVisible;
 */!*
 ```
 
-P.S. The solution also has a variant of `isVisible` that "preloads" images that are within 1 page above/below the current document scroll.
+P.S. La soluzione ha anche una variante di `isVisible` che "precarica" le immagini che sono distano solo una pagina di scroll sopra o sotto lo scroll corrente del documento.
