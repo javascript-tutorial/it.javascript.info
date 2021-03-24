@@ -21,7 +21,7 @@ elem.style.left = left; // es '123px', calcolato al momento dell'esecuzione
 elem.style.top = top; // es '456px'
 ```
 
-Per gli altri casi, come rendere rosso un testo o aggiungere un'icona di sfondo , definiamo degli stili CSS e poi applichiamo la classe con JavaScript. È più flessibile e più facile da gestire.
+Per gli altri casi, come rendere rosso un testo o aggiungere un'icona di sfondo, definiamo degli stili CSS e poi applichiamo la classe con JavaScript. È più flessibile e più facile da gestire.
 
 ## className e classList
 
