@@ -1,12 +1,12 @@
-# Element size and scrolling
+# Dimensioni dell'elemento e scorrimento
 
-There are many JavaScript properties that allow us to read information about element width, height and other geometry features.
+Ci sono molte proprietà JavaScript che ci consentono di leggere informazioni circa la larghezza di un elemento, l'altezza e le altre caratteristiche geometriche.
 
-We often need them when moving or positioning elements in JavaScript.
+Spesso ne abbiamo bisogno quando spostiamo o posizioniamo gli elementi in JavaScript.
 
-## Sample element
+## Esempio dimostrativo
 
-As a sample element to demonstrate properties we'll use the one given below:
+Useremo l'elemento indicato a seguire come esempio di tali proprietà:
 
 ```html no-beautify
 <div id="example">
