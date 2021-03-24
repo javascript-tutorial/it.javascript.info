@@ -1,65 +1,65 @@
-# Cross-window communication
+# Comuniaczione cross-window
 
-The "Same Origin" (same site) policy limits access of windows and frames to each other.
+La politcia di "Same Origin" ("stessa origine", ovvero stesso sito) limita il reciproco accesso tra finestre ed iframe diversi.
 
-The idea is that if a user has two pages open: one from `john-smith.com`, and another one is `gmail.com`, then they wouldn't want a script from `john-smith.com` to read our mail from `gmail.com`. So, the purpose of the "Same Origin" policy is to protect users from information theft.
+L'idea è che, se un utente ha deu pagine aperte: una su `john-smith.com`, ed un'altra su `gmail.com`, allora non vorrà che uno script ion esecuzione su `john-smith.com` possa leggere tutte le sue mail dalla finestra di `gmail.com`. Quindi, lo scopo della politica "Same Origin" è quello di proteggere l'utente dal furto di informazioni.
 
 ## Same Origin [#same-origin]
 
-Two URLs are said to have the "same origin" if they have the same protocol, domain and port.
+Due URL vengono definiti come appartenenti alla "stessa origine" solo se possiedono lo stesso protocollo, dominio e porta.
 
-These URLs all share the same origin:
+Ad esempio, questi URL condividono la stessa origine:
 
 - `http://site.com`
 - `http://site.com/`
 - `http://site.com/my/page.html`
 
-These ones do not:
+Questi invece no:
 
-- <code>http://<b>www.</b>site.com</code> (another domain: `www.` matters)
-- <code>http://<b>site.org</b></code> (another domain: `.org` matters)
-- <code><b>https://</b>site.com</code> (another protocol: `https`)
-- <code>http://site.com:<b>8080</b></code> (another port: `8080`)
+- <code>http://<b>www.</b>site.com</code> (dominio differente: `www.` è diverso)
+- <code>http://<b>site.org</b></code> (dominio differente: `.org` è diverso)
+- <code><b>https://</b>site.com</code> (protocollo differente: `https`)
+- <code>http://site.com:<b>8080</b></code> (porta differente: `8080`)
 
-The "Same Origin" policy states that:
+La politica di "Same Origin" afferma che:
 
-- if we have a reference to another window, e.g. a popup created by `window.open` or a window inside `<iframe>`, and that window comes from the same origin, then we have full access to that window.
-- otherwise, if it comes from another origin, then we can't access the content of that window: variables, document, anything. The only exception is `location`: we can change it (thus redirecting the user). But we cannot *read* location (so we can't see where the user is now, no information leak).
+- se abbiamo un riferimento ad un'altra finestra, ad esempio un popup creato tramite `window.open` oppure una finestra all'interno di un `<iframe>`, e queste finestre appartengono alla stessa origine, allora avremo pieno accesso ad esse.
+- altrimenti, se queste provengono da origini differenti, allora non potremo accedere al cotenuto della finestra: variables, il suo document, e qualsiasi altra informazione. L'unica eccezione è sulla proprietà `location`: possiamo modificarla (reindirizzando l'utente). Ma non possiamo *leggerne* il contenuto (quindi non possiamo sapere in quale sito si trova l'utente in un dato momento, nessuna infromazione viene trapelata).
 
-### In action: iframe
+### In azione: iframe
 
-An `<iframe>` tag hosts a separate embedded window, with its own separate `document` and `window` objects.
+Un tag di `<iframe>` permette di incorporare una finestra separata, la quale avrà i suoi oggetti `document` e `window` separati.
 
-We can access them using properties:
+Possiamo accedervi utilizzando le proprietà:
 
-- `iframe.contentWindow` to get the window inside the `<iframe>`.
-- `iframe.contentDocument` to get the document inside the `<iframe>`, shorthand for `iframe.contentWindow.document`.
+- `iframe.contentWindow` per ottenere il riferiemnto alla finestra all'interno di `<iframe>`.
+- `iframe.contentDocument` per ottenere il riferimento al document all'interno di `<iframe>`, abbreviazione per `iframe.contentWindow.document`.
 
-When we access something inside the embedded window, the browser checks if the iframe has the same origin. If that's not so then the access is denied (writing to `location` is an exception, it's still permitted).
+Quando accediamo a qualche proprietà della finestra incorporata, il browser verificherà se l'iframe appartiene alla stessa origine. Se cosi non è, allora l'accesso verrà negatp (rimane l'eccezione sulla scrittura di `location`, che è comunque permessa).
 
-For instance, let's try reading and writing to `<iframe>` from another origin:
+Ad esempio, proviamo a leggere e scrivere su un `<iframe>` da un'altra origine:
 
 ```html run
 <iframe src="https://example.com" id="iframe"></iframe>
 
 <script>
   iframe.onload = function() {
-    // we can get the reference to the inner window
+    // possiamo ottenere il riferiemento alla finestra integrata
 *!*
     let iframeWindow = iframe.contentWindow; // OK
 */!*
     try {
-      // ...but not to the document inside it
+      // ...ma non al suo document
 *!*
       let doc = iframe.contentDocument; // ERROR
 */!*
     } catch(e) {
-      alert(e); // Security Error (another origin)
+      alert(e); // Security Error (origine diversa)
     }
 
-    // also we can't READ the URL of the page in iframe
+    // non possiamo nemmeno LEGGERE l'URL di un iframe
     try {
-      // Can't read URL from the Location object
+      // Non possiamo leggere l'URL dall'oggetto Location
 *!*
       let href = iframe.contentWindow.location.href; // ERROR
 */!*
@@ -67,64 +67,64 @@ For instance, let's try reading and writing to `<iframe>` from another origin:
       alert(e); // Security Error
     }
 
-    // ...we can WRITE into location (and thus load something else into the iframe)!
+    // ...possiamo però SCRIVERE sulla proprietà location (e questo caricherà un'altra pagina nell'iframe)!
 *!*
     iframe.contentWindow.location = '/'; // OK
 */!*
 
-    iframe.onload = null; // clear the handler, not to run it after the location change
+    iframe.onload = null; // ripuliamo l'handler, per evitare che venga eseguito dopo il cambio di location
   };
 </script>
 ```
 
-The code above shows errors for any operations except:
+Il codice sopra genera errori in tutti i casi ad eccezione di:
 
-- Getting the reference to the inner window `iframe.contentWindow` - that's allowed.
-- Writing to `location`.
+- Lettura del riferimento alla finestra interna `iframe.contentWindow`, la quale è permessa.
+- Scrittura su `location`.
 
-Contrary to that, if the `<iframe>` has the same origin, we can do anything with it:
+Contrariamente a questo, se l'`<iframe>` proviene dalla stessa origine, possiamo farci qualsiasi cosa:
 
 ```html run
-<!-- iframe from the same site -->
+<!-- iframe dallo stesso sito -->
 <iframe src="/" id="iframe"></iframe>
 
 <script>
   iframe.onload = function() {
-    // just do anything
+    // qualsiasi operazione
     iframe.contentDocument.body.prepend("Hello, world!");
   };
 </script>
 ```
 
 ```smart header="`iframe.onload` vs `iframe.contentWindow.onload`"
-The `iframe.onload` event (on the `<iframe>` tag) is essentially the same as `iframe.contentWindow.onload` (on the embedded window object). It triggers when the embedded window fully loads with all resources.
+L'evento di `iframe.onload` (nel tag `<iframe>`) equivale a `iframe.contentWindow.onload` (nell'oggetto della finestra incorporata). Si innesca quando la finestra integrata completaa il caricamento con tutte le risorse.
 
-...But we can't access `iframe.contentWindow.onload` for an iframe from another origin, so using `iframe.onload`.
+...Ma non possiamo accedere a `iframe.contentWindow.onload` per un iframe che appartiene ad un'altra origine, utilizzando `iframe.onload`.
 ```
 
-## Windows on subdomains: document.domain
+## Finestre di sotto-domini: document.domain
 
-By definition, two URLs with different domains have different origins.
+Per definizione, due URL con domini differenti appartengono ad origini differenti.
 
-But if windows share the same second-level domain, for instance `john.site.com`, `peter.site.com` and `site.com` (so that their common second-level domain is `site.com`), we can make the browser ignore that difference, so that they can be treated as coming from the "same origin" for the purposes of cross-window communication.
+Ma se le due finestre condividono lo stesso dominio di secondo livello, ad esempio `john.site.com`, `peter.site.com` e `site.com` (il loro dominio di secondo livello comunue è `site.com`), possiamo far si che il browser ignori la differenza, in questo modo verrannop trattate come se provenissero dalla "stessa origine", per gli scopi della comunicazione tra finestre.
 
-To make it work, each such window should run the code:
+Per far si che questo funzioni, ogni finestra dovrà eseguire il seguente codice:
 
 ```js
 document.domain = 'site.com';
 ```
 
-That's all. Now they can interact without limitations. Again, that's only possible for pages with the same second-level domain.
+Questo è tutto. Da questo momento in poi potranno interagire senza limitazioni. Nuovamente, questo è possibile solamente per pagine che possiedono lo stesso dominio di secondo livello.
 
-## Iframe: wrong document pitfall
+## Iframe: il tranello del document errato
 
-When an iframe comes from the same origin, and we may access its  `document`, there's a pitfall. It's not related to cross-origin things, but important to know.
+Quando un iframe appartine alla stessa origine, con la possibilità quindi di accere al suo `document`, c'è un piccolo tranello a cui prestare attenzione. Non è strettamente legato al cross-origin, ma è comunque importante esserne a consocenza.
 
-Upon its creation an iframe immediately has a document. But that document is different from the one that loads into it!
+Al momento della creazione, un iframe genera immediatamente un docuement. Ma quest utlimo è diverso da quello che verrà caricato internamente!
 
-So if we do something with the document immediately, that will probably be lost.
+Quindi, se qualsiasi operazione effettuata sul document negli istanti dopo al creazione, andrà probabilmente persa.
 
-Here, look:
+Vediamo un esempio di quanto affermato:
 
 
 ```html run
@@ -135,7 +135,7 @@ Here, look:
   iframe.onload = function() {
     let newDoc = iframe.contentDocument;
 *!*
-    // the loaded document is not the same as initial!
+    // il document caricato non equivale a quello iniziale!
     alert(oldDoc == newDoc); // false
 */!*
   };
