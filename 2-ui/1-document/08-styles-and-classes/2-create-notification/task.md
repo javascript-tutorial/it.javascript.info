@@ -1,4 +1,4 @@
-importanza: 5
+importance: 5
 
 ---
 
@@ -21,4 +21,4 @@ showNotification({
 [demo src="solution"]
 
 
-Usate il posizionamento CSS per mostrare l'elemento nelle coordinate top/right ricevute. Il documento sorgente ha gli stili necessari.
+Usate il posizionamento CSS per mostrare l'elemento alle coordinate top/right ricevute. Il documento sorgente ha gli stili necessari.

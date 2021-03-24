@@ -1,13 +1,13 @@
 # Stili e classi
 
-Prima di cominciare a trattare i modi in cui JavaScript interagisce con gli stili e le classi -- ecco una regola importante. Si spera che sia abbastanza scontata, ma non guasta ripeterla.
+Prima di cominciare a trattare i modi in cui JavaScript interagisce con gli stili e le classi, ecco una regola importante. Si spera che sia abbastanza scontata, ma non guasta ripeterla.
 
 Ci sono in genere due modi di applicare uno stile ad un elemento:
 
 1. Creare una classe CSS ed aggiungerla: `<div class="...">`
 2. Scrivere direttamente le proprietà dentro `style`: `<div style="...">`.
 
-JavaScript può modificare sia le classi sia le proprietà all'interno di `style`.
+JavaScript può modificare sia le classi che le proprietà all'interno di `style`.
 
 Dovremmo sempre preferire le classi CSS a `style`. Quest'ultimo dovrebbe essere usato solo se le classi non sono sufficienti.
 
@@ -21,13 +21,13 @@ elem.style.left = left; // es '123px', calcolato al momento dell'esecuzione
 elem.style.top = top; // es '456px'
 ```
 
-Per gli altri casi, come rendere rosso un testo, aggiungere un'icona di sfondo -- definiamo degli stili CSS e poi applichiamo la classe con JavaScript. È più flessibile e più facile da supportare.
+Per gli altri casi, come rendere rosso un testo o aggiungere un'icona di sfondo , definiamo degli stili CSS e poi applichiamo la classe con JavaScript. È più flessibile e più facile da gestire.
 
 ## className e classList
 
 Modificare una classe è una delle operazioni più comuni negli script.
 
-Anticamente c'era una limitazione in JavaScript: una parola riservata come `"class"` non poteva essere una proprietà di un oggetto. Tale limitazione non c'è più, ma a quel tempo era impossibile avere una proprietà `"class"` come `elem.class`.
+Molto tempo fa c'era una limitazione in JavaScript: una parola riservata come `"class"` non poteva essere una proprietà di un oggetto. Tale limitazione non c'è più, ma a quel tempo era impossibile avere una proprietà `"class"` come `elem.class`.
 
 Quindi per le classi fu introdotta la proprietà `"className"` che è simile: l'attributo `"class"` ha il suo corrispettivo DOM in `elem.className`.
 
@@ -149,7 +149,7 @@ Per impostare tutti gli stili come stringa c'è una speciale proprietà `style.c
 </script>
 ```
 
-Questa proprietà è usata di rado, poiché un tale assegnamento rimuove tutti gli stili esistenti: non li aggiunge, piuttosto li sostituisce. Potrebbe eliminare in modo fortuito qualcosa di necessario. Possiamo tuttavia usarla in sicurezza per i nuovi elementi, quando siamo certi che non cancelleremo uno stile preesistente.
+Questa proprietà è usata di rado, poiché un tale assegnamento rimuove tutti gli stili esistenti: non li aggiunge, ma li sostituisce. Potrebbe eliminare inavvertitamente qualcosa di necessario. Possiamo tuttavia usarla in sicurezza per i nuovi elementi, quando siamo certi che non cancelleremo uno stile preesistente.
 
 Lo stesso risultato può essere ottenuto impostando un attributo: `div.setAttribute('style', 'color: red...')`.
 ````
@@ -255,13 +255,13 @@ Ci sono due concetti nei [CSS](https://drafts.csswg.org/cssom/#resolved-values):
 
 Molto tempo addietro `getComputedStyle` è stato creato per ottenere i valori computed, ma si scoprì che i valori resolved erano molto più utili e lo standard è cambiato.
 
-Attualmente, quindi, restituisce il valore resolved della proprietà, di solito espressa in `px` per le proprietà geometriche.
+Attualmente, quindi, `getComputedStyle` restituisce il valore resolved della proprietà, di solito espressa in `px` per le proprietà geometriche.
 ```
 
 ````warn header="`getComputedStyle` richiede il nome completo della proprietà"
 Dovremmo sempre chiedere l'esatta proprietà che si desidera, come `paddingLeft` o `marginTop` o `borderTopWidth`. Diversamente il risultato corretto non è garantito.
 
-Per esempio, se ci sono le proprietà `paddingLeft/paddingTop`, cosa dovremmo ottenere con `getComputedStyle(elem).padding`? Niente, o forse un valore "generato" a partire dai valori di padding noti? Non esiste una regola standard in questo caso.
+Per esempio, se ci sono le proprietà `paddingLeft/paddingTop`, cosa otterremmo con `getComputedStyle(elem).padding`? Niente, o forse un valore "generato" a partire dai valori di padding noti? Non esiste una regola standard in questo caso.
 
 Ci sono altre incongruenze. Ad esempio, alcuni browser (Chrome) mostrano `10px` nel documento in basso, ed altri (Firefox) -- invece no:
 
@@ -281,7 +281,7 @@ Ci sono altre incongruenze. Ad esempio, alcuni browser (Chrome) mostrano `10px` 
 ```smart header="Gli stili applicati ai link `:visited` sono nascosti!"
 I link visitati possono ricevere un colore tramite la pseudoclasse CSS `:visited`.
 
-Tuttavia `getComputedStyle non dà accesso a quel colore, poiché diversamente una pagina arbitraria potrebbe scoprire se l'utente ha visitato un link creandolo sulla pagina e verificandone gli stili.
+Tuttavia `getComputedStyle non dà accesso a quel colore, poiché diversamente, una pagina arbitraria potrebbe scoprire se l'utente ha visitato un link creandolo e verificandone gli stili.
 
 JavaScript potrebbe non rilevare gli stili applicati da `:visited`. C'è una limitazione nei CSS, inoltre, che vieta su `:visited` l'applicazione di stili che modifichino le proprietà geometriche. Questo per garantire che, per una pagina malevola, non ci sia una via traversa di testare se un link è stato visitato e quindi di violare la privacy.
 ```
@@ -291,7 +291,7 @@ JavaScript potrebbe non rilevare gli stili applicati da `:visited`. C'è una lim
 Per gestire le classi ci sono due proprietà DOM:
 
 - `className` -- il valore stringa, ottimo per gestire l'intero insieme delle classi.
-- `classList` -- il valore oggetto con i metodi `add/remove/toggle/contains`, ottimo per gestire le classi individualmente.
+- `classList` -- l'oggetto con i metodi `add/remove/toggle/contains`, ottimo per gestire le classi individualmente.
 
 Per modificare gli stili:
 
