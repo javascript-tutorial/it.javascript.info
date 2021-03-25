@@ -118,7 +118,7 @@ for(let [name, value] of url.searchParams) {
 
 Lo standard [RFC3986](https://tools.ietf.org/html/rfc3986) definisce i caratteri ammessi e vietati utilizzabili all'interno degli URL.
 
-Quelli non permessi devono essere codificati, per esempio lettere non latine e spazi, e devono essere sostituiti con il relativo codice, con il prefisso `%`, come `%20` (lo spazio può essere codificato con `+`, per ragioni storiche, ma si tratta di una eccezione).
+I caratteri non permessi devono essere codificati, per esempio lettere non latine e spazi, e devono essere sostituiti con il relativo codice, con il prefisso `%`, come `%20` (lo spazio può essere codificato con `+`, per ragioni storiche, ma si tratta di una eccezione).
 
 La buona notizia è che l'oggetto `URL` gestisce questo aspetto in maniera del tutto automatica. È sufficiente inserire i parametri privi di codifica, e convertire l'`URL` in una stringa:
 
