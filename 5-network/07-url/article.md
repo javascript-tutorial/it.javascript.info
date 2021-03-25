@@ -41,7 +41,7 @@ let newUrl = new URL('tester', url);
 alert(newUrl); // https://javascript.info/profile/tester
 ```
 
-L'oggetto `URL` ci permette di accedere alle sue componenti, in modo da avere un modo elegante di effettuare il parsing dell'url, ad esempio:
+L'oggetto `URL` ci permette di accedere alle sue componenti, fornendo un modo elegante di effettuare il parsing dell'url, ad esempio:
 
 ```js run
 let url = new URL('https://javascript.info/url');
