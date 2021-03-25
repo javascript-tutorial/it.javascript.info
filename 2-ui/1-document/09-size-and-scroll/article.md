@@ -1,4 +1,4 @@
-# Dimensioni dell'elemento e scorrimento
+# Dimensioni dell'elemento e barra di scorrimento
 
 Ci sono molte proprietà JavaScript che ci consentono di leggere informazioni circa la larghezza, l'altezza di un elemento e le altre caratteristiche geometriche.
 
@@ -6,7 +6,7 @@ Spesso ne abbiamo bisogno quando spostiamo o posizioniamo gli elementi in JavaSc
 
 ## Esempio dimostrativo
 
-Useremo l'elemento indicato a seguire come esempio di tali proprietà:
+Useremo l'elemento indicato a seguire quale esempio di tali proprietà:
 
 ```html no-beautify
 <div id="example">
@@ -25,7 +25,7 @@ Useremo l'elemento indicato a seguire come esempio di tali proprietà:
 
 Questo elemento possiede bordi, padding e barra di scorrimento: l'intero insieme delle proprietà. Non ci sono margini, in quanto questi non fanno parte dell'elemento stesso, e non ci sono proprietà speciali.
 
-L'elemento ha questo aspetto:
+L'elemento si presenta così:
 
 ![](metric-css.svg)
 
