@@ -86,7 +86,7 @@ Fornisce metodi comodi per i parametri di ricerca:
 
 - **`append(name, value)`** -- aggiunge il parametro per nome: `name`,
 - **`delete(name)`** -- rimuove il parametro partendo dal `name`,
-- **`get(name)`** -- recupera il parametro dal nome `name`,
+- **`get(name)`** -- recupera il parametro dal nome: `name`,
 - **`getAll(name)`** -- recupera tutti i parametri con lo stesso `name` (un caso reale potrebbe essere ad esempio `?user=John&user=Pete`, nel caso di una select a scelta multipla),
 - **`has(name)`** -- controlla l'esistenza del parametro a partire dal nome `name`,
 - **`set(name, value)`** -- imposta/sostituisce il parametro,
