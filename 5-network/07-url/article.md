@@ -3,7 +3,7 @@
 
 La classe built-in [URL](https://url.spec.whatwg.org/#api) fornisce una comoda interfaccia per la creazione ed il parsing degli URL.
 
-Non esistono metodi networking che richiedono esattamente un oggetto `URL` object, in quanto le stringhe sono già abbastanza adatte allo scopo. Quindi, tecnicamente non siamo obbligati all'utilizzo di `URL`. Talvolta però può essere molto utile.
+Non esistono metodi di networking che richiedono esattamente un oggetto di tipo `URL`, in quanto le stringhe sono già abbastanza adatte allo scopo. Quindi, tecnicamente non siamo obbligati all'utilizzo di `URL`. Talvolta però può essere molto utile.
 
 ## Creare un URL
 
