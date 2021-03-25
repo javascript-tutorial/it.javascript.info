@@ -1,4 +1,4 @@
-# Comuniaczione cross-window
+# Comunicazione cross-window
 
 La politica di "Same Origin" ("stessa origine", ovvero stesso sito) limita il reciproco accesso tra finestre ed iframe diversi.
 
