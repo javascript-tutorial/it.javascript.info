@@ -1,6 +1,6 @@
 # Dimensioni dell'elemento e scorrimento
 
-Ci sono molte proprietà JavaScript che ci consentono di leggere informazioni circa la larghezza di un elemento, l'altezza e le altre caratteristiche geometriche.
+Ci sono molte proprietà JavaScript che ci consentono di leggere informazioni circa la larghezza, l'altezza di un elemento e le altre caratteristiche geometriche.
 
 Spesso ne abbiamo bisogno quando spostiamo o posizioniamo gli elementi in JavaScript.
 
@@ -23,31 +23,31 @@ Useremo l'elemento indicato a seguire come esempio di tali proprietà:
 </style>
 ```
 
-It has the border, padding and scrolling. The full set of features. There are no margins, as they are not the part of the element itself, and there are no special properties for them.
+Questo elemento possiede bordi, padding e barra di scorrimento: l'intero insieme delle proprietà. Non ci sono margini, in quanto questi non fanno parte dell'elemento stesso, e non ci sono proprietà speciali.
 
-The element looks like this:
+L'elemento ha questo aspetto:
 
 ![](metric-css.svg)
 
-You can [open the document in the sandbox](sandbox:metric).
+Potete [visualizzare il documento nella sandbox](sandbox:metric).
 
-```smart header="Mind the scrollbar"
-The picture above demonstrates the most complex case when the element has a scrollbar. Some browsers (not all) reserve the space for it by taking it from the content (labeled as "content width" above).
+```smart header="Prestate attenzione alla barra di scorrimento"
+L'immagine sopra rappresenta il caso più complesso in cui l'elemento ha una barra di scorrimento. Alcuni browser (non tutti) ricavano lo spazio per la barra prendendolo dall'area del contenuto (indicata sopra come "content width").
 
-So, without scrollbar the content width would be `300px`, but if the scrollbar is `16px` wide (the width may vary between devices and browsers) then only `300 - 16 = 284px` remains, and we should take it into account. That's why examples from this chapter assume that there's a scrollbar. Without it, some calculations are simpler.
+Senza la barra di scorrimento, pertanto, l'area del contenuto sarebbe `300px`, ma se la barra di scorrimento è larga `16px` (la larghezza è variabile in base al dispositivo ed al browser) allora rimane soltanto `300 - 16 = 284px`, ed è questa la misura che dovremmo tenere in considerazione. Ecco perché gli esempi di questo capitolo presumono che ci sia una barra di scorrimento. Senza questa, alcuni calcoli sono più semplici.
 ```
 
-```smart header="The `padding-bottom` area may be filled with text"
-Usually paddings are shown empty on our illustrations, but if there's a lot of text in the element and it overflows, then browsers show the "overflowing" text at `padding-bottom`, that's normal.
+```smart header="L'area del `padding-bottom` può essere riempita dal testo"
+Di solito gli spazi definiti dai padding sono rappresentati vuoti nelle immagini, ma se c'è molto testo nell'elemento ed eccede l'area del contenuto, in quel caso è normale che il browser mostri il testo eccedente nel `padding-bottom`.
 ```
 
-## Geometry
+## Proprietà geometriche
 
-Here's the overall picture with geometry properties:
+Ecco un'immagine riassuntiva delle proprietà geometriche:
 
 ![](metric-all.svg)
 
-Values of these properties are technically numbers, but these numbers are "of pixels", so these are pixel measurements.
+I valori di tali proprietà sono tecnicamente numerici, ma questi numeri sono pixel, quindi si tratta delle dimensioni in pixel.
 
 Let's start exploring the properties starting from the outside of the element.
 
