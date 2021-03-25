@@ -84,7 +84,7 @@ Abbiamo una proprietà URL appositamente per questo: `url.searchParams`, un ogge
 
 Fornisce metodi comodi per i parametri di ricerca:
 
-- **`append(name, value)`** -- aggiunge il parametro per nome `name`,
+- **`append(name, value)`** -- aggiunge il parametro per nome: `name`,
 - **`delete(name)`** -- rimuove il parametro partendo dal `name`,
 - **`get(name)`** -- recupera il parametro dal nome `name`,
 - **`getAll(name)`** -- recupera tutti i parametri con lo stesso `name` (un caso reale potrebbe essere ad esempio `?user=John&user=Pete`, nel caso di una select a scelta multipla),
