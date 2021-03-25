@@ -11,7 +11,7 @@ JavaScript può modificare sia le classi che le proprietà all'interno di `style
 
 Dovremmo sempre preferire le classi CSS a `style`. Quest'ultimo dovrebbe essere usato solo se le classi non sono sufficienti.
 
-Per esempio, è ragionevole l'uso di `style` se calcoliamo dinamicamente le coordinate di un elemento e vogliamo impostarle con JavaScript, come in casi analoghi:
+Per esempio, è ragionevole l'uso di `style` se calcoliamo dinamicamente le coordinate di un elemento e vogliamo impostarle con JavaScript, come in casi analoghi a questo esempio:
 
 ```js
 let top = /* calcoli complessi */;
@@ -21,7 +21,7 @@ elem.style.left = left; // es '123px', calcolato al momento dell'esecuzione
 elem.style.top = top; // es '456px'
 ```
 
-Per gli altri casi, come rendere rosso un testo o aggiungere un'icona di sfondo, definiamo degli stili CSS e poi applichiamo la classe con JavaScript. È più flessibile e più facile da gestire.
+Per gli altri casi, come rendere rosso un testo o aggiungere un'immagine di sfondo, definiamo degli stili CSS e poi applichiamo la classe con JavaScript. È più flessibile e più facile da gestire.
 
 ## className e classList
 
@@ -209,7 +209,7 @@ Qui, per esempio, `style` non rileva il margine:
 </body>
 ```
 
-...ma cosa dovremmo fare se avessimo bisogno, per dire, di incrementare il margine di `20px`? Dovremmo prima conoscerne il valore corrente.
+...ma cosa dovremmo fare se avessimo bisogno, ad esempio, di incrementare il margine di `20px`? Dovremmo prima conoscerne il valore corrente.
 
 C'è un altro metodo per quello: `getComputedStyle`.
 
@@ -288,7 +288,7 @@ JavaScript potrebbe non rilevare gli stili applicati da `:visited`. C'è una lim
 
 ## Riepilogo
 
-Per gestire le classi ci sono due proprietà DOM:
+Per gestire le classi abbiamo a disposizione due proprietà DOM:
 
 - `className` -- il valore stringa, ottimo per gestire l'intero insieme delle classi.
 - `classList` -- l'oggetto con i metodi `add/remove/toggle/contains`, ottimo per gestire le classi individualmente.
