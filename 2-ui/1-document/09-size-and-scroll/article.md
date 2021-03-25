@@ -47,25 +47,25 @@ Ecco un'immagine riassuntiva delle proprietà geometriche:
 
 ![](metric-all.svg)
 
-I valori di tali proprietà sono tecnicamente numerici, ma questi numeri sono pixel, quindi si tratta delle dimensioni in pixel.
+I valori di tali proprietà sono tecnicamente numerici, ma questi numeri indicano i pixel, quindi si tratta delle dimensioni in pixel.
 
-Let's start exploring the properties starting from the outside of the element.
+Cominciamo ad esplorare le proprietà partendo dall'esterno dell'elemento.
 
 ## offsetParent, offsetLeft/Top
 
-These properties are rarely needed, but still they are the "most outer" geometry properties, so we'll start with them.
+Queste proprietà sono raramente necessarie, ma sono comunque le proprietà geometriche "più esterne" e quindi cominceremo da esse.
 
-The `offsetParent` is the nearest ancestor that the browser uses for calculating coordinates during rendering.
+La proprietà `offsetParent` contiene un riferimento all'antenato più vicino, usato dal browser per il calcolo delle coordinate durante il rendering.
 
-That's the nearest ancestor that is one of the following:
+L'antenato più vicino è uno dei seguenti:
 
-1. CSS-positioned (`position` is `absolute`, `relative`, `fixed` or `sticky`),  or
-2. `<td>`, `<th>`, or `<table>`,  or
+1. l'elemento contenitore più prossimo posizionato tramite CSS (la cui proprietà `position` sia `absolute`, `relative`, `fixed` o `sticky`),  oppure
+2. `<td>`, `<th>`, `<table>`,  oppure
 3. `<body>`.
 
-Properties `offsetLeft/offsetTop` provide x/y coordinates relative to `offsetParent` upper-left corner.
+Le proprietà `offsetLeft/offsetTop` forniscono le coordinate x/y relative all'angolo in alto a sinistra di `offsetParent`.
 
-In the example below the inner `<div>` has `<main>` as `offsetParent` and `offsetLeft/offsetTop` shifts from its upper-left corner (`180`):
+Nell'esempio di seguito il `<div>` interno ha `<main>` come `offsetParent` e `offsetLeft/offsetTop` lo spostano dall'angolo in alto a sinistra di questo (`180`):
 
 ```html run height=10
 <main style="position: relative" id="main">
@@ -75,40 +75,40 @@ In the example below the inner `<div>` has `<main>` as `offsetParent` and `offse
 </main>
 <script>
   alert(example.offsetParent.id); // main
-  alert(example.offsetLeft); // 180 (note: a number, not a string "180px")
+  alert(example.offsetLeft); // 180 (nota: un numero, non una stringa "180px")
   alert(example.offsetTop); // 180
 </script>
 ```
 
 ![](metric-offset-parent.svg)
 
-There are several occasions when `offsetParent` is `null`:
+Ci sono alcune circostanze in cui `offsetParent` è `null`:
 
-1. For not shown elements (`display:none` or not in the document).
-2. For `<body>` and `<html>`.
-3. For elements with `position:fixed`.
+1. Per gli elementi nascosti (`display:none` o non nel documento).
+2. Per `<body>` e `<html>`.
+3. Per gli elementi con `position:fixed`.
 
 ## offsetWidth/Height
 
-Now let's move on to the element itself.
+Adesso occupiamoci dell'elemento stesso.
 
-These two properties are the simplest ones. They provide the "outer" width/height of the element. Or, in other words, its full size including borders.
+Queste due proprietà sono le più semplici. Forniscono la larghezza e l'altezza "esterne" dell'elemento, o, in altre parole, le sue dimensioni bordi compresi.
 
 ![](metric-offset-width-height.svg)
 
-For our sample element:
+In riferimento al nostro esempio:
 
-- `offsetWidth = 390` -- the outer width, can be calculated as inner CSS-width (`300px`) plus paddings (`2 * 20px`) and borders (`2 * 25px`).
-- `offsetHeight = 290` -- the outer height.
+- `offsetWidth = 390` la larghezza esterna, risultante dalla larghezza interna (la proprietà CSS `width` pari a `300px`) più i padding (`2 * 20px`) ed i bordi (`2 * 25px`).
+- `offsetHeight = 290` l'altezza esterna.
 
-````smart header="Geometry properties are zero/null for elements that are not displayed"
-Geometry properties are calculated only for displayed elements.
+````smart header="Le proprietà geometriche valgono zero/null per gli elementi nascosti"
+Le proprietà geometriche sono calcolate solo per gli elementi visibili.
 
-If an element (or any of its ancestors) has `display:none` or is not in the document, then all geometry properties are zero (or `null` for `offsetParent`).
+Se un elemento (o uno dei suoi antenati) ha `display:none` o non è nel documento, allora tutte le proprietà geometriche valgono zero (o `null` per `offsetParent`).
 
-For example, `offsetParent` is `null`, and `offsetWidth`, `offsetHeight` are `0` when we created an element, but haven't inserted it into the document yet, or it (or it's ancestor) has `display:none`.
+Per esempio, `offsetParent` vale `null`, e `offsetWidth`, `offsetHeight` sono `0` quando abbiamo creato un elemento, ma non lo abbiamo ancora inserito nel documento, o esso (o un suo antenato) ha `display:none`.
 
-We can use this to check if an element is hidden, like this:
+Possiamo servirci di questa particolarità per verificare se un elemento è nascosto, in questo modo:
 
 ```js
 function isHidden(elem) {
@@ -116,7 +116,7 @@ function isHidden(elem) {
 }
 ```
 
-Please note that such `isHidden` returns `true` for elements that are on-screen, but have zero sizes (like an empty `<div>`).
+Si noti che tale metodo `isHidden` restituisce `true` anche per gli elementi che sono sullo schermo, ma hanno dimensioni pari a zero (come un `<div>` vuoto).
 ````
 
 ## clientTop/Left
