@@ -212,67 +212,67 @@ if (window == top) { // window == window.top?
 
 ## L'attributo "sandbox" per iframe
 
-The `sandbox` attribute allows for the exclusion of certain actions inside an `<iframe>` in order to prevent it executing untrusted code. It "sandboxes" the iframe by treating it as coming from another origin and/or applying other limitations.
+L'attributo `sandbox` permette l'esclusione di determinate azioni all'interno di un `<iframe>`, in modo da prevenire l'esecuzione di codice non affidabile. Consente di "isolare" ("sandbox") l'iframe, facendo si che venga trattato come se appartenesse ad un origine diversa e/o applicando altre limitazioni.
 
-There's a "default set" of restrictions applied for `<iframe sandbox src="...">`. But it can be relaxed if we provide a space-separated list of restrictions that should not be applied as a value of the attribute, like this: `<iframe sandbox="allow-forms allow-popups">`.
+Ci sono una serie di restriozioni "applicate di default" per un `<iframe sandbox src="...">`. Ma possono essere disattivate esplicitamente fornendo, come valore dell'attributo, la lista delle restrizioni da non applicare separate da un carettere di spazio, in questo modo: `<iframe sandbox="allow-forms allow-popups">`.
 
-In other words, an empty `"sandbox"` attribute puts the strictest limitations possible, but we can put a space-delimited list of those that we want to lift.
+In altre parole, un attributo `"sandbox"` vuoto, applica tutte le restrizioni, ma possiamo fornirgli la lista di quelle che vogliamo disattivare, separandole con uno spazio.
 
-Here's a list of limitations:
+Di seguito la lista delle limitazioni:
 
 `allow-same-origin`
-: By default `"sandbox"` forces the "different origin" policy for the iframe. In other words, it makes the browser to treat the `iframe` as coming from another origin, even if its `src` points to the same site. With all implied restrictions for scripts. This option removes that feature.
+: Di default l'attributo `"sandbox"` forza la politica di "diversa origine" per un iframe. In altre parole, fa si che il browser trati l'`iframe` come se appartenesse ad un origine diversa, anche se in realtà il suo `src` sta puntando allo stesso sito. Con tutte le relative implicazioni viste prima. Questa opzione, disabilita la restrizione.
 
 `allow-top-navigation`
-: Allows the `iframe` to change `parent.location`.
+: Permette all'iframe` di cambiare `parent.location`.
 
 `allow-forms`
-: Allows to submit forms from `iframe`.
+: Permette l'invio di forms dall'`iframe`.
 
 `allow-scripts`
-: Allows to run scripts from the `iframe`.
+: Permette l'esecuzione di script dall'`iframe`.
 
 `allow-popups`
-: Allows to `window.open` popups from the `iframe`
+: Permette all'`iframe` l'apertura di finestre di poopup tramite `window.open`
 
-See [the manual](mdn:/HTML/Element/iframe) for more.
+Consulta [il manuale](mdn:/HTML/Element/iframe) per maggiori informazioni.
 
-The example below demonstrates a sandboxed iframe with the default set of restrictions: `<iframe sandbox src="...">`. It has some JavaScript and a form.
+L'esempio sotto dimostra un iframe "isolato" con le restrizioni di default attivate: `<iframe sandbox src="...">`. Contiene del codice JavaScript ed un form.
 
-Please note that nothing works. So the default set is really harsh:
+Avrete notato che nulla di ciò che è presente funziona. Quindi le restrizioni di default sono piuttosto restrittive:
 
 [codetabs src="sandbox" height=140]
 
 
 ```smart
-The purpose of the `"sandbox"` attribute is only to *add more* restrictions. It cannot remove them. In particular, it can't relax same-origin restrictions if the iframe comes from another origin.
+Lo scopo dell'attributo `"sandbox"` è solamente quello di *aggiungere più* restrizioni. Non di diminuirle. In particolare, non può essere utilizzato per disabilitare la restrizione di "Same Origin" per iframe appartengono ad origini differenti.
 ```
 
-## Cross-window messaging
+## Messaggi Cross-window
 
-The `postMessage` interface allows windows to talk to each other no matter which origin they are from.
+L'interfaccia `postMessage` permette alle finestre di comunicare indistintamente dall'origine di appartenenza.
 
-So, it's a way around the "Same Origin" policy. It allows a window from `john-smith.com` to talk to `gmail.com` and exchange information, but only if they both agree and call corresponding JavaScript functions. That makes it safe for users.
+Quindi, è di fatto un modo per aggirare la politica di "Same Origin". Consente infatti ad una finestra proveniente da `john-smith.com` di comunicare con `gmail.com` e scambiarsi informazioni, ma solamente nel caso in cui entrambe acconsentono questo comportamento ed invocano le rispettive funzoni JavaScript. Questo rende il meccaniscmo di comunicazione tra finestre sicuro per l'utente.
 
-The interface has two parts.
+L'interfaccia è composta da due parti.
 
 ### postMessage
 
-The window that wants to send a message calls [postMessage](mdn:api/Window.postMessage) method of the receiving window. In other words, if we want to send the message to `win`, we should call  `win.postMessage(data, targetOrigin)`.
+La finestra che vuole inviare un messaggio invoca il metodo [postMessage](mdn:api/Window.postMessage) della finestra destinataria. In altre parole, se volessimo inviare un messaggio a `win`, dovremmo invocare `win.postMessage(data, targetOrigin)`.
 
-Arguments:
+Argomenti:
 
 `data`
-: The data to send. Can be any object, the data is cloned using the "structured serialization algorithm". IE supports only strings, so we should `JSON.stringify` complex objects to support that browser.
+: I dati da inviare. Possono essere un qualsiasi oggetto, che verrà poi duplicato utilizzando "l'algorito di serializzazione strutturato". IE supporta solamente stringhe, quindi dovremo utilizzare `JSON.stringify` per supportarlo.
 
 `targetOrigin`
-: Specifies the origin for the target window, so that only a window from the given origin will get the message.
+: Specifica l'origine per al finestra target, in questo modo il messaggio verrà ricevuto solamente dalla giusta finestra.
 
-The `targetOrigin` is a safety measure. Remember, if the target window comes from another origin, we can't read it's `location` in the sender window. So we can't be sure which site is open in the intended window right now: the user could navigate away, and the sender window has no idea about it.
+Il parametro `targetOrigin` è una misura di sicurezza. Ricordate, se una finestra target appartiene ad una diversa origine, non possiamo leggere la sua `location` nella finestra mittente. Quindi non possiamo essere certi di quale sito sia aperto nella finestra a cui vogliamo inviare il messaggio: l'utente potrebbe aver cambiato sito, senza che la finestra mittente ne sia al corrente.
 
-Specifying `targetOrigin` ensures that the window only receives the data if it's still at the right site. Important when the data is sensitive.
+Specificando la proprietà `targetOrigin` ci assicuriamo che la finestra riceva i dati solamente se si trova nel sito che ci aspettiamo li riceva. Questa caratteristica è molto importante, specialmente per dati sensibili.
 
-For instance, here `win` will only receive the message if it has a document from the origin `http://example.com`:
+Ad esempio, in questo caso `win` riceverà il messaggio solamente se si trova nel sito `http://example.com`:
 
 ```html no-beautify
 <iframe src="http://example.com" name="example">
@@ -284,7 +284,7 @@ For instance, here `win` will only receive the message if it has a document from
 </script>
 ```
 
-If we don't want that check, we can set `targetOrigin` to `*`.
+Se non abbiamo intenzione di effettuare tale verifica, possiamo impostare `targetOrigin` a `*`.
 
 ```html no-beautify
 <iframe src="http://example.com" name="example">
@@ -301,70 +301,72 @@ If we don't want that check, we can set `targetOrigin` to `*`.
 
 ### onmessage
 
-To receive a message, the target window should have a handler on the `message` event. It triggers when `postMessage` is called (and `targetOrigin` check is successful).
+Per poter ricevere un messaggio, la finestra target deve aver definito un handler per gestire l'evento `message`. Questo verrà innescato al momento dell'invocazione di `postMessage` (se la verifica del `targetOrigin` avrà successo).
 
-The event object has special properties:
+L'oggetto innescato dall'evento possiede le seguenti proprietà:
 
 `data`
-: The data from `postMessage`.
+: I dati inviati da `postMessage`.
 
 `origin`
-: The origin of the sender, for instance `http://javascript.info`.
+: L'origine del mittente, ad esempio `http://javascript.info`.
 
 `source`
-: The reference to the sender window. We can immediately `source.postMessage(...)` back if we want.
+: Il riferimento alla finestra mittente. Potremmo quindi rispondere immediatamente utilizzando `source.postMessage(...)`, se è ciò che vogliamo fare.
 
-To assign that handler, we should use `addEventListener`, a short syntax `window.onmessage` does not work.
+Per assegnare il gestore, dovremo utilizzare `addEventListener`. Non abbiamo a disposizione la sintassi abbreviata `window.onmessage`,
 
-Here's an example:
+Vediamo un esempio:
 
 ```js
 window.addEventListener("message", function(event) {
   if (event.origin != 'http://javascript.info') {
-    // something from an unknown domain, let's ignore it
+    // qualcosa da un dominio sconosciuto, lo ignoriamo
     return;
   }
 
   alert( "received: " + event.data );
 
-  // can message back using event.source.postMessage(...)
+  // rispondiamo al messaggio utilizzando event.source.postMessage(...)
 });
 ```
 
-The full example:
+Ecco l'esempio completo:
 
 [codetabs src="postmessage" height=120]
 
-## Summary
+## Riepilogo
 
-To call methods and access the content of another window, we should first have a reference to it.
+Per poter invocare metodi ed accedere al contenuto di un'altra finestra, dobbiamo come prima cosa ottenere un riferimeto ad essa.
 
-For popups we have these references:
-- From the opener window: `window.open` -- opens a new window and returns a reference to it,
-- From the popup: `window.opener` -- is a reference to the opener window from a popup.
+Per le finestre di popup abbiamo i seguenti riferimenti:
+- Dalla finestra che innesca l'apertura: `window.open`, consente di aprire una nuova finestra e ne ritorna il riferimento,
+- Dalla finestra di popup: `window.opener`, è il riferimento alla finestra che ha innescato l'apertura.
 
-For iframes, we can access parent/children windows using:
-- `window.frames` -- a collection of nested window objects,
-- `window.parent`, `window.top` are the references to parent and top windows,
-- `iframe.contentWindow` is the window inside an `<iframe>` tag.
+Per gli iframe, possiamo accedere alle finestre padre/figlie utilizzando:
+- `window.frames`, una collection di oggetti relativi alle finestre annidate,
+- `window.parent`, `window.top` sono i riferimenti alle finestre padre e alla figlia,
+- `iframe.contentWindow` è la finestra all'interno di un tag `<iframe>`.
 
-If windows share the same origin (host, port, protocol), then windows can do whatever they want with each other.
+Se le finestre condividono la stessa origine (host, porta e protocollo), allora queste potranno accedere liberamente alle proprietà.
 
-Otherwise, only possible actions are:
-- Change the `location` of another window (write-only access).
-- Post a message to it.
+Altrimenti, le uniche azioni possibili saranno:
+- Cambio di `location` di un'altra finestra (accesso in scrittura).
+- Inviare un messaggio.
 
-Exceptions are:
-- Windows that share the same second-level domain: `a.site.com` and `b.site.com`. Then setting `document.domain='site.com'` in both of them puts them into the "same origin" state.
-- If an iframe has a `sandbox` attribute, it is forcefully put into the "different origin" state, unless the `allow-same-origin` is specified in the attribute value. That can be used to run untrusted code in iframes from the same site.
+Le uniche eccezioni sono:
+- Finestere che condividono lo stesso dominio di secondo livello: `a.site.com` e `b.site.com`. E che abbiamo entrambe impostato: `document.domain='site.com'`. In questo caso verranno intepretate come appartenenti alla stessa origine.
+- Se un iframe possiede l'attributo `sandbox`, allora questo verrà forzato ad uno stato di "origine differente", a meno che non venga esplicitamente disattivato passando come valore dell'attributo `allow-same-origin`. In questo caso verrà permessa l'esecuzione di codice esterno all'interno dell'iframe (se appartengono alla stessa origine).
 
-The `postMessage` interface allows two windows with any origins to talk:
+L'interfaccia `postMessage` consente a due finestre, qualsiasi sia la loro origine, di comunicare:
 
-1. The sender calls `targetWin.postMessage(data, targetOrigin)`.
-2. If `targetOrigin` is not `'*'`, then the browser checks if window `targetWin` has the origin `targetOrigin`.
-3. If it is so, then `targetWin` triggers the `message` event with special properties:
-    - `origin` -- the origin of the sender window (like `http://my.site.com`)
-    - `source` -- the reference to the sender window.
-    - `data` -- the data, any object in everywhere except IE that supports only strings.
+1. Il mittente invocherà `targetWin.postMessage(data, targetOrigin)`.
+2. Se `targetOrigin` non è impostato a `'*'`, allora il browser verificherà se la finestra `targetWin` appartiene all'origine `targetOrigin`.
+3. Se questo è il caso, allora `targetWin` innescherà l'evento `message`, il quale possiede le seguenti proprietà:
+    - `origin`: l'origine della finestra mittente (ad esempio `http://my.site.com`)
+    - `source`: il riferimento alla finestra mittente.
+    - `data`: i dati inviati, sono supportati tutti i tipi di oggetto, ad eccezione di IE che accetta solamente stringhe.
 
-    We should use `addEventListener` to set the handler for this event inside the target window.
+    Dobbiamo utilizzare `addEventListener` all'interno delle finestra targer, per impostare il gestore dell'evento.
+
+
