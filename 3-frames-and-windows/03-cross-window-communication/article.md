@@ -1,8 +1,8 @@
 # Comuniaczione cross-window
 
-La politcia di "Same Origin" ("stessa origine", ovvero stesso sito) limita il reciproco accesso tra finestre ed iframe diversi.
+La politica di "Same Origin" ("stessa origine", ovvero stesso sito) limita il reciproco accesso tra finestre ed iframe diversi.
 
-L'idea è che, se un utente ha deu pagine aperte: una su `john-smith.com`, ed un'altra su `gmail.com`, allora non vorrà che uno script ion esecuzione su `john-smith.com` possa leggere tutte le sue mail dalla finestra di `gmail.com`. Quindi, lo scopo della politica "Same Origin" è quello di proteggere l'utente dal furto di informazioni.
+L'idea è che, se un utente ha due pagine aperte: una su `john-smith.com`, ed un'altra su `gmail.com`, allora non vorrà che uno script in esecuzione su `john-smith.com` possa leggere tutte le sue mail dalla finestra di `gmail.com`. Quindi, lo scopo della politica "Same Origin" è quello di proteggere l'utente dal furto di informazioni.
 
 ## Same Origin [#same-origin]
 
@@ -24,7 +24,7 @@ Questi invece no:
 La politica di "Same Origin" afferma che:
 
 - se abbiamo un riferimento ad un'altra finestra, ad esempio un popup creato tramite `window.open` oppure una finestra all'interno di un `<iframe>`, e queste finestre appartengono alla stessa origine, allora avremo pieno accesso ad esse.
-- altrimenti, se queste provengono da origini differenti, allora non potremo accedere al cotenuto della finestra: variables, il suo document, e qualsiasi altra informazione. L'unica eccezione è sulla proprietà `location`: possiamo modificarla (reindirizzando l'utente). Ma non possiamo *leggerne* il contenuto (quindi non possiamo sapere in quale sito si trova l'utente in un dato momento, nessuna infromazione viene trapelata).
+- altrimenti, se queste provengono da origini differenti, allora non potremo accedere al contenuto della finestra: variabili, il suo document, e qualsiasi altra informazione. L'unica eccezione è sulla proprietà `location`: possiamo modificarla (reindirizzando l'utente). Ma non possiamo *leggerne* il contenuto (quindi non possiamo sapere in quale sito si trova l'utente in un dato momento, nessuna infromazione viene trapelata).
 
 ### In azione: iframe
 
@@ -32,10 +32,10 @@ Un tag di `<iframe>` permette di incorporare una finestra separata, la quale avr
 
 Possiamo accedervi utilizzando le proprietà:
 
-- `iframe.contentWindow` per ottenere il riferiemnto alla finestra all'interno di `<iframe>`.
+- `iframe.contentWindow` per ottenere il riferimento alla finestra all'interno di `<iframe>`.
 - `iframe.contentDocument` per ottenere il riferimento al document all'interno di `<iframe>`, abbreviazione per `iframe.contentWindow.document`.
 
-Quando accediamo a qualche proprietà della finestra incorporata, il browser verificherà se l'iframe appartiene alla stessa origine. Se cosi non è, allora l'accesso verrà negatp (rimane l'eccezione sulla scrittura di `location`, che è comunque permessa).
+Quando accediamo a qualche proprietà della finestra incorporata, il browser verificherà se l'iframe appartiene alla stessa origine. Se cosi non è, allora l'accesso verrà negato (rimane l'eccezione sulla scrittura di `location`, che è comunque permessa).
 
 Ad esempio, proviamo a leggere e scrivere su un `<iframe>` da un'altra origine:
 
@@ -44,7 +44,7 @@ Ad esempio, proviamo a leggere e scrivere su un `<iframe>` da un'altra origine:
 
 <script>
   iframe.onload = function() {
-    // possiamo ottenere il riferiemento alla finestra integrata
+    // possiamo ottenere il riferimento alla finestra integrata
 *!*
     let iframeWindow = iframe.contentWindow; // OK
 */!*
@@ -106,7 +106,7 @@ L'evento di `iframe.onload` (nel tag `<iframe>`) equivale a `iframe.contentWindo
 
 Per definizione, due URL con domini differenti appartengono ad origini differenti.
 
-Ma se le due finestre condividono lo stesso dominio di secondo livello, ad esempio `john.site.com`, `peter.site.com` e `site.com` (il loro dominio di secondo livello comunue è `site.com`), possiamo far si che il browser ignori la differenza, in questo modo verrannop trattate come se provenissero dalla "stessa origine", per gli scopi della comunicazione tra finestre.
+Ma se le due finestre condividono lo stesso dominio di secondo livello, ad esempio `john.site.com`, `peter.site.com` e `site.com` (il loro dominio di secondo livello comune è `site.com`), possiamo far si che il browser ignori la differenza, in questo modo verranno trattate come se provenissero dalla "stessa origine", per gli scopi della comunicazione tra finestre.
 
 Per far si che questo funzioni, ogni finestra dovrà eseguire il seguente codice:
 
@@ -118,9 +118,9 @@ Questo è tutto. Da questo momento in poi potranno interagire senza limitazioni.
 
 ## Iframe: il tranello del document errato
 
-Quando un iframe appartine alla stessa origine, con la possibilità quindi di accere al suo `document`, c'è un piccolo tranello a cui prestare attenzione. Non è strettamente legato al cross-origin, ma è comunque importante esserne a consocenza.
+Quando un iframe appartiene alla stessa origine, con la possibilità quindi di accedere al suo `document`, c'è un piccolo tranello a cui prestare attenzione. Non è strettamente legato al cross-origin, ma è comunque importante esserne a conoscenza.
 
-Al momento della creazione, un iframe genera immediatamente un docuement. Ma quest utlimo è diverso da quello che verrà caricato internamente!
+Al momento della creazione, un iframe genera immediatamente un document. Ma quest ultimo è diverso da quello che verrà caricato internamente!
 
 Quindi, se qualsiasi operazione effettuata sul document negli istanti dopo al creazione, andrà probabilmente persa.
 
@@ -146,7 +146,7 @@ Dovremmo evitare di effettuare operazioni sul document di un iframe non ancora c
 
 Come possiamo assicurarci che il document sia quello corretto?
 
-Per essere sicuri di lavorare con il document corretto, dovremmo attendere fin quando verrà emesso l'evento `iframe.onload`. Il quale verrà innescato solemente una volta che l'iframe avrà caricato tutte le risorse.
+Per essere sicuri di lavorare con il document corretto, dovremmo attendere fin quando verrà emesso l'evento `iframe.onload`. Il quale verrà innescato solamente una volta che l'iframe avrà caricato tutte le risorse.
 
 Possiamo provare ad intercettarlo anticipatamente effettuando controlli all'interno di un `setInterval`:
 
@@ -170,10 +170,10 @@ Possiamo provare ad intercettarlo anticipatamente effettuando controlli all'inte
 
 ## Collection: window.frames
 
-Un modo alternativo per ottenere l'oggetto realtivo ad una finestra di `<iframe>`, è quello di accedervi tramite la collection `window.frames`:
+Un modo alternativo per ottenere l'oggetto relativo ad una finestra di `<iframe>`, è quello di accedervi tramite la collection `window.frames`:
 
 - Tramite indice: `window.frames[0]`: l'oggetto relativo alla prima finestra di iframe nel document.
-- By name: `window.frames.iframeName`: l'oggetto realtivo all'iframew con `name="iframeName"`.
+- By name: `window.frames.iframeName`: l'oggetto relativo all'iframew con `name="iframeName"`.
 
 Ad esempio:
 
@@ -192,7 +192,7 @@ E' possibile navigare tra le finestre della gerarchia utilizzando:
 
 - `window.frames`: la collezione delle finestre "figlie" (per iframe annidati).
 - `window.parent`: il riferimento alla finestra "padre" (quella esterna).
-- `window.top`: il riferiemento alla finestra in cima alla gerarchia.
+- `window.top`: il riferimento alla finestra in cima alla gerarchia.
 
 Ad esempio:
 
@@ -214,14 +214,14 @@ if (window == top) { // window == window.top?
 
 L'attributo `sandbox` permette l'esclusione di determinate azioni all'interno di un `<iframe>`, in modo da prevenire l'esecuzione di codice non affidabile. Consente di "isolare" ("sandbox") l'iframe, facendo si che venga trattato come se appartenesse ad un origine diversa e/o applicando altre limitazioni.
 
-Ci sono una serie di restriozioni "applicate di default" per un `<iframe sandbox src="...">`. Ma possono essere disattivate esplicitamente fornendo, come valore dell'attributo, la lista delle restrizioni da non applicare separate da un carettere di spazio, in questo modo: `<iframe sandbox="allow-forms allow-popups">`.
+Ci sono una serie di restrizioni "applicate di default" per un `<iframe sandbox src="...">`. Ma possono essere disattivate esplicitamente fornendo, come valore dell'attributo, la lista delle restrizioni da non applicare separate da un carattere di spazio, in questo modo: `<iframe sandbox="allow-forms allow-popups">`.
 
 In altre parole, un attributo `"sandbox"` vuoto, applica tutte le restrizioni, ma possiamo fornirgli la lista di quelle che vogliamo disattivare, separandole con uno spazio.
 
 Di seguito la lista delle limitazioni:
 
 `allow-same-origin`
-: Di default l'attributo `"sandbox"` forza la politica di "diversa origine" per un iframe. In altre parole, fa si che il browser trati l'`iframe` come se appartenesse ad un origine diversa, anche se in realtà il suo `src` sta puntando allo stesso sito. Con tutte le relative implicazioni viste prima. Questa opzione, disabilita la restrizione.
+: Di default l'attributo `"sandbox"` forza la politica di "diversa origine" per un iframe. In altre parole, fa si che il browser tratti l'`iframe` come se appartenesse ad un origine diversa, anche se in realtà il suo `src` sta puntando allo stesso sito. Con tutte le relative implicazioni viste prima. Questa opzione, disabilita la restrizione.
 
 `allow-top-navigation`
 : Permette all'iframe` di cambiare `parent.location`.
@@ -233,7 +233,7 @@ Di seguito la lista delle limitazioni:
 : Permette l'esecuzione di script dall'`iframe`.
 
 `allow-popups`
-: Permette all'`iframe` l'apertura di finestre di poopup tramite `window.open`
+: Permette all'`iframe` l'apertura di finestre di popup tramite `window.open`
 
 Consulta [il manuale](mdn:/HTML/Element/iframe) per maggiori informazioni.
 
@@ -252,7 +252,7 @@ Lo scopo dell'attributo `"sandbox"` è solamente quello di *aggiungere più* res
 
 L'interfaccia `postMessage` permette alle finestre di comunicare indistintamente dall'origine di appartenenza.
 
-Quindi, è di fatto un modo per aggirare la politica di "Same Origin". Consente infatti ad una finestra proveniente da `john-smith.com` di comunicare con `gmail.com` e scambiarsi informazioni, ma solamente nel caso in cui entrambe acconsentono questo comportamento ed invocano le rispettive funzoni JavaScript. Questo rende il meccaniscmo di comunicazione tra finestre sicuro per l'utente.
+Quindi, è di fatto un modo per aggirare la politica di "Same Origin". Consente infatti ad una finestra proveniente da `john-smith.com` di comunicare con `gmail.com` e scambiarsi informazioni, ma solamente nel caso in cui entrambe acconsentono questo comportamento ed invocano le rispettive funzioni JavaScript. Questo rende il meccaniscmo di comunicazione tra finestre sicuro per l'utente.
 
 L'interfaccia è composta da due parti.
 
@@ -263,7 +263,7 @@ La finestra che vuole inviare un messaggio invoca il metodo [postMessage](mdn:ap
 Argomenti:
 
 `data`
-: I dati da inviare. Possono essere un qualsiasi oggetto, che verrà poi duplicato utilizzando "l'algorito di serializzazione strutturato". IE supporta solamente stringhe, quindi dovremo utilizzare `JSON.stringify` per supportarlo.
+: I dati da inviare. Possono essere un qualsiasi oggetto, che verrà poi duplicato utilizzando "l'algoritmo di serializzazione strutturato". IE supporta solamente stringhe, quindi dovremo utilizzare `JSON.stringify` per supportarlo.
 
 `targetOrigin`
 : Specifica l'origine per al finestra target, in questo modo il messaggio verrà ricevuto solamente dalla giusta finestra.
@@ -337,7 +337,7 @@ Ecco l'esempio completo:
 
 ## Riepilogo
 
-Per poter invocare metodi ed accedere al contenuto di un'altra finestra, dobbiamo come prima cosa ottenere un riferimeto ad essa.
+Per poter invocare metodi ed accedere al contenuto di un'altra finestra, dobbiamo come prima cosa ottenere un riferimento ad essa.
 
 Per le finestre di popup abbiamo i seguenti riferimenti:
 - Dalla finestra che innesca l'apertura: `window.open`, consente di aprire una nuova finestra e ne ritorna il riferimento,
@@ -355,7 +355,7 @@ Altrimenti, le uniche azioni possibili saranno:
 - Inviare un messaggio.
 
 Le uniche eccezioni sono:
-- Finestere che condividono lo stesso dominio di secondo livello: `a.site.com` e `b.site.com`. E che abbiamo entrambe impostato: `document.domain='site.com'`. In questo caso verranno intepretate come appartenenti alla stessa origine.
+- Finestre che condividono lo stesso dominio di secondo livello: `a.site.com` e `b.site.com`. E che abbiamo entrambe impostato: `document.domain='site.com'`. In questo caso verranno interpretate come appartenenti alla stessa origine.
 - Se un iframe possiede l'attributo `sandbox`, allora questo verrà forzato ad uno stato di "origine differente", a meno che non venga esplicitamente disattivato passando come valore dell'attributo `allow-same-origin`. In questo caso verrà permessa l'esecuzione di codice esterno all'interno dell'iframe (se appartengono alla stessa origine).
 
 L'interfaccia `postMessage` consente a due finestre, qualsiasi sia la loro origine, di comunicare:
@@ -367,6 +367,6 @@ L'interfaccia `postMessage` consente a due finestre, qualsiasi sia la loro origi
     - `source`: il riferimento alla finestra mittente.
     - `data`: i dati inviati, sono supportati tutti i tipi di oggetto, ad eccezione di IE che accetta solamente stringhe.
 
-    Dobbiamo utilizzare `addEventListener` all'interno delle finestra targer, per impostare il gestore dell'evento.
+    Dobbiamo utilizzare `addEventListener` all'interno delle finestra target, per impostare il gestore dell'evento.
 
 
