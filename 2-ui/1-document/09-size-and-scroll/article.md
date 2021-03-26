@@ -38,7 +38,7 @@ Senza la barra di scorrimento, pertanto, l'area del contenuto sarebbe `300px`, m
 ```
 
 ```smart header="L'area del `padding-bottom` può essere riempita dal testo"
-Di solito gli spazi definiti dai padding sono rappresentati vuoti nelle immagini, ma se c'è molto testo nell'elemento ed eccede l'area del contenuto, in quel caso è normale che il browser mostri il testo eccedente nel `padding-bottom`.
+Di solito gli spazi definiti dai padding sono rappresentati vuoti nelle immagini, ma se nell'elemento c'è molto testo ed eccede l'area del contenuto, in quel caso è normale che il browser mostri il testo eccedente nel `padding-bottom`.
 ```
 
 ## Proprietà geometriche
@@ -47,13 +47,13 @@ Ecco un'immagine riassuntiva delle proprietà geometriche:
 
 ![](metric-all.svg)
 
-I valori di tali proprietà sono tecnicamente numerici, ma questi numeri indicano i pixel, quindi si tratta delle dimensioni in pixel.
+I valori di tali proprietà sono tecnicamente numerici, ma questi numeri sottintendono l'unità di misura pixel, stiamo parlando quindi delle dimensioni espresse in pixel.
 
 Cominciamo ad esplorare le proprietà partendo dall'esterno dell'elemento.
 
 ## offsetParent, offsetLeft/Top
 
-Queste proprietà sono raramente necessarie, ma sono comunque le proprietà geometriche "più esterne" e quindi cominceremo da esse.
+Queste proprietà sono raramente necessarie, ma sono comunque le proprietà geometriche "più esterne" e pertanto cominceremo da esse.
 
 La proprietà `offsetParent` contiene un riferimento all'antenato più vicino, usato dal browser per il calcolo delle coordinate durante il rendering.
 
@@ -84,7 +84,7 @@ Nell'esempio di seguito il `<div>` interno ha `<main>` come `offsetParent` e `of
 
 Ci sono alcune circostanze in cui `offsetParent` è `null`:
 
-1. Per gli elementi nascosti (`display:none` o non nel documento).
+1. Per gli elementi nascosti (`display:none` oppure non inserito nel documento).
 2. Per `<body>` e `<html>`.
 3. Per gli elementi con `position:fixed`.
 
@@ -98,8 +98,8 @@ Queste due proprietà sono le più semplici. Forniscono la larghezza e l'altezza
 
 In riferimento al nostro esempio:
 
-- `offsetWidth = 390` la larghezza esterna, risultante dalla larghezza interna (la proprietà CSS `width` pari a `300px`) più i padding (`2 * 20px`) ed i bordi (`2 * 25px`).
-- `offsetHeight = 290` l'altezza esterna.
+- `offsetWidth = 390` -- la larghezza esterna, risultante dalla larghezza interna (la proprietà CSS `width` pari a `300px`) più i padding (`2 * 20px`) ed i bordi (`2 * 25px`).
+- `offsetHeight = 290` -- l'altezza esterna.
 
 ````smart header="Le proprietà geometriche valgono zero/null per gli elementi nascosti"
 Le proprietà geometriche sono calcolate solo per gli elementi visibili.
@@ -116,37 +116,37 @@ function isHidden(elem) {
 }
 ```
 
-Si noti che tale metodo `isHidden` restituisce `true` anche per gli elementi che sono sullo schermo, ma hanno dimensioni pari a zero (come un `<div>` vuoto).
+Si noti che questa funzione `isHidden` restituisce `true` anche per gli elementi che sono presenti sullo schermo, ma hanno dimensioni pari a zero (come un `<div>` vuoto).
 ````
 
 ## clientTop/Left
 
-Inside the element we have the borders.
+Dentro l'elemento abbiamo i bordi.
 
-To measure them, there are properties `clientTop` and `clientLeft`.
+Per misurarli abbiamo a disposizione le proprietà `clientTop` e `clientLeft`.
 
-In our example:
+Nel nostro esempio:
 
-- `clientLeft = 25` -- left border width
-- `clientTop = 25` -- top border width
+- `clientLeft = 25` -- larghezza bordo sinistro
+- `clientTop = 25` -- larghezza bordo superiore
 
 ![](metric-client-left-top.svg)
 
-...But to be precise -- these properties are not border width/height, but rather relative coordinates of the inner side from the outer side.
+...ma per essere precisi -- queste proprietà non indicano la dimensione del bordo, piuttosto le coordinate relative del lato interno rispetto al lato esterno.
 
-What's the difference?
+Qual è la differenza?
 
-It becomes visible when the document is right-to-left (the operating system is in Arabic or Hebrew languages). The scrollbar is then not on the right, but on the left, and then `clientLeft` also includes the scrollbar width.
+La differenza è percepibile quando il testo del documento è da destra verso sinistra (il sistema operativo è in lingua araba o ebraica). In quel caso la barra di scorrimento non è a destra, ma a sinistra, e quindi `clientLeft` include anche la larghezza della barra.
 
-In that case, `clientLeft` would be not `25`, but with the scrollbar width `25 + 16 = 41`.
+In questa ipotesi `clientLeft` non sarebbe `25`, ma, considerata la larghezza della barra di scorrimento, sarebbe `25 + 16 = 41`.
 
-Here's the example in hebrew:
+A seguire l'esempio in ebraico:
 
 ![](metric-client-left-top-rtl.svg)
 
 ## clientWidth/Height
 
-These properties provide the size of the area inside the element borders.
+Queste proprietà forniscono la dimensione dell'area dentro i bordi dell'elemento.
 
 They include the content width together with paddings, but without the scrollbar:
 
