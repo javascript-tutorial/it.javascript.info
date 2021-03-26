@@ -219,13 +219,13 @@ xhr.abort(); // annulla la richiesta
 
 Ciò scatena l'evento `abort`, e `xhr.status` diventa `0`.
 
-## Synchronous requests
+## Richieste sincrone
 
-If in the `open` method the third parameter `async` is set to `false`, the request is made synchronously.
+Se nel metodo `open` impostiamo il terzo parametro `async` a `false`, la richiesta viene eseguita in maniera sincrona.
 
-In other words, JavaScript execution pauses at `send()` and resumes when the response is received. Somewhat like `alert` or `prompt` commands.
+In altre parole, l'esecuzione del codice JavaScript viene messa in pausa su `send()` e si riattiva a risposta ricevuta. Avviene una cosa simile a ciò che succede quando eseguiamo le chiamate ad `alert` o `prompt`.
 
-Here's the rewritten example, the 3rd parameter of `open` is `false`:
+Ecco l'esempio precedente riscritto, impostando il parametro `open` a `false`:
 
 ```js
 let xhr = new XMLHttpRequest();
@@ -239,33 +239,33 @@ try {
   } else {
     alert(xhr.response);
   }
-} catch(err) { // instead of onerror
+} catch(err) { // invece di onerror
   alert("Request failed");
 }
 ```
 
-It might look good, but synchronous calls are used rarely, because they block in-page JavaScript till the loading is complete. In some browsers it becomes impossible to scroll. If a synchronous call takes too much time, the browser may suggest to close the "hanging" webpage.
+Potrebbe sembrare nun buon codice, ma le chiamate sincrone vengono usate raramente, in quanto bloccano la pagina fino a che la chiamata non ha avuto esito. In alcuni browser diventa impossibile persino lo scroll della pagina. Se una chiamata sincrona richiedesse troppo tempo, il browser ci suggerirebbe di chiudere la pagina "bloccata".
 
-Many advanced capabilities of `XMLHttpRequest`, like requesting from another domain or specifying a timeout, are unavailable for synchronous requests. Also, as you can see, no progress indication.
+Molte capacità avanzate di `XMLHttpRequest`, come le richieste da un altro domino o l'impostazione di un timeout, non sono disponibili se la richiesta p asincrona. Inoltre, non si può avere alcuna indicazione sul progresso del caricamento.
 
-Because of all that, synchronous requests are used very sparingly, almost never. We won't talk about them any more.
+Per i suddetti motivi, le chiamate sincrone, sono usate molto raramente, quasi mai. E non affronteremo più argomenti che le coinvolgono direttamente.
 
-## HTTP-headers
+## Headers HTTP
 
-`XMLHttpRequest` allows both to send custom headers and read headers from the response.
+`XMLHttpRequest` permette sia l'invio di headers personalizzati che la loro lettura nelle risposte.
 
-There are 3 methods for HTTP-headers:
+I metodi per gli header HTTP sono 3:
 
 `setRequestHeader(name, value)`
-: Sets the request header with the given `name` and `value`.
+: Imposta un header della richiesta con i `name` e `value` voluti.
 
-    For instance:
+    Per esempio:
 
     ```js
     xhr.setRequestHeader('Content-Type', 'application/json');
     ```
 
-    ```warn header="Headers limitations"
+    ```warn header="Limitazioni degli headers"
     Several headers are managed exclusively by the browser, e.g. `Referer` and `Host`.
     The full list is [in the specification](https://xhr.spec.whatwg.org/#the-setrequestheader()-method).
 
