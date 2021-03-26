@@ -199,7 +199,7 @@ Dovremmo però codificare `&` se si trova all'interno di un parametro di ricerca
 Quindi dovremmo usare solo `encodeURIComponent` per ogni parametro di ricerca, per inserirlo correttamente nella stringa dell'URL. La cosa più sicura è quella di codificare sia il nome che il valore, a meno che non siamo certi che contengano solo caratteri leciti.
 
 ````smart header="Differenze tra l'uso di encode ed `URL`"
-Le classi [URL](https://url.spec.whatwg.org/#url-class) e [URLSearchParams](https://url.spec.whatwg.org/#interface-urlsearchparams) sono entrambi basati sulle ultime specifiche URI: [RFC3986](https://tools.ietf.org/html/rfc3986), mentre le funzioni `encode*` sono basate sulla vecchia versione [RFC2396](https://www.ietf.org/rfc/rfc2396.txt).
+Le classi [URL](https://url.spec.whatwg.org/#url-class) e [URLSearchParams](https://url.spec.whatwg.org/#interface-urlsearchparams) sono entrambe basate sulle ultime specifiche URI: [RFC3986](https://tools.ietf.org/html/rfc3986), mentre le funzioni `encode*` sono basate sulla vecchia versione [RFC2396](https://www.ietf.org/rfc/rfc2396.txt).
 
 C'è qualche piccola differenza, come per esempio nel caso degli indirizzi IPv6 che sono codificati in maniera differente:
 
