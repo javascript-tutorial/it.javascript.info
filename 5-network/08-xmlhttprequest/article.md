@@ -398,35 +398,35 @@ Ossia: se eseguiamo il `POST` di qualcosa, come prima cosa `XMLHttpRequest` eseg
 
 Se facciamo l'upload di qualcosa di grosso, allora sicuramente saremmo più interessati nel tracciare il progresso di upload. Tuttavia `xhr.onprogress` non serve ai nostri scopi.
 
-Esiste un altro oggetto per tenere traccia degli evenit di upload, che è privo di metodi: `xhr.upload`.
+Esiste un altro oggetto per tenere traccia degli eventi di upload, che è privo di metodi: `xhr.upload`.
 
-Genera eventi, in modo simile ad `xhr`, ma `xhr.upload` viene scatenato solamente durante la fase di upload:
+Genera eventi, in modo simile ad `xhr`, con la differenza che `xhr.upload` viene scatenato solo durante la fase di upload:
 
-- `loadstart` -- upload started.
-- `progress` -- triggers periodically during the upload.
-- `abort` -- upload aborted.
-- `error` -- non-HTTP error.
-- `load` -- upload finished successfully.
-- `timeout` -- upload timed out (if `timeout` property is set).
-- `loadend` -- upload finished with either success or error.
+- `loadstart` -- upload cominciato.
+- `progress` -- viene scatenato periodicamente durante l'upload.
+- `abort` -- upload annullato.
+- `error` -- errore non HTTP.
+- `load` -- upload completato con successo.
+- `timeout` -- upload scaduto (se la proprietà `timeout` è stata impostata).
+- `loadend` -- upload completato sia con successo che con errori.
 
-Example of handlers:
+Esempio di gestori:
 
 ```js
 xhr.upload.onprogress = function(event) {
-  alert(`Uploaded ${event.loaded} of ${event.total} bytes`);
+  alert(`Upload di ${event.loaded} su ${event.total} bytes`);
 };
 
 xhr.upload.onload = function() {
-  alert(`Upload finished successfully.`);
+  alert(`Upload completato con successo.`);
 };
 
 xhr.upload.onerror = function() {
-  alert(`Error during the upload: ${xhr.status}`);
+  alert(`Errore durante l'upload: ${xhr.status}`);
 };
 ```
 
-Here's a real-life example: file upload with progress indication:
+Ecco un esempio di un caso d'uso reale: upload di file con indicazione del progresso:
 
 ```html run
 <input type="file" onchange="upload(this.files[0])">
@@ -435,14 +435,14 @@ Here's a real-life example: file upload with progress indication:
 function upload(file) {
   let xhr = new XMLHttpRequest();
 
-  // track upload progress
+  // tiene traccia del progresso di upload
 *!*
   xhr.upload.onprogress = function(event) {
     console.log(`Uploaded ${event.loaded} of ${event.total}`);
   };
 */!*
 
-  // track completion: both successful or not
+  // completamento del tracciamentotrack: che sia con successo o meno
   xhr.onloadend = function() {
     if (xhr.status == 200) {
       console.log("success");
@@ -457,11 +457,11 @@ function upload(file) {
 </script>
 ```
 
-## Cross-origin requests
+## Richieste cross-origin
 
-`XMLHttpRequest` can make cross-origin requests, using the same CORS policy as [fetch](info:fetch-crossorigin).
+`XMLHttpRequest` può eseguire delle richieste cross-origin, usando la stessa policy CORS vista in [fetch](info:fetch-crossorigin).
 
-Just like `fetch`, it doesn't send cookies and HTTP-authorization to another origin by default. To enable them, set `xhr.withCredentials` to `true`:
+Esattamente come `fetch`, non invia cookies ed autorizzazione HTTP verso altre origin di default. Per attivarle, bisogna impostare `xhr.withCredentials` a `true`:
 
 ```js
 let xhr = new XMLHttpRequest();
@@ -473,10 +473,10 @@ xhr.open('POST', 'http://anywhere.com/request');
 ...
 ```
 
-See the chapter <info:fetch-crossorigin> for details about cross-origin headers.
+Guardare il capitolo <info:fetch-crossorigin> per maggiori dettagli riguardanti gli headers cross-origin.
 
 
-## Summary
+## Riepilogo
 
 Typical code of the GET-request with `XMLHttpRequest`:
 
