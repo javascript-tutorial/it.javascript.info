@@ -10,7 +10,7 @@ var file = new static.Server('.', {
 function accept(req, res) {
 
   if (req.url == '/phones.json') {
-    // искусственная задержка для наглядности
+    // va un pochino in stallo per permettere di mostrare il messaggio di "loading"
     setTimeout(function() {
       file.serve(req, res);
     }, 2000);
@@ -21,7 +21,7 @@ function accept(req, res) {
 }
 
 
-// ------ запустить сервер -------
+// ------ avvia il server -------
 
 if (!module.parent) {
   http.createServer(accept).listen(8080);
