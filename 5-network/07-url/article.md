@@ -13,7 +13,7 @@ Ecco la sintassi per creare un nuovo oggetto `URL`:
 new URL(url, [base])
 ```
 
-- **`url`** -- l'URL completo o solo il path (se il parametro base è stato impostato, vedi il parametro seguente),
+- **`url`** -- l'URL completo o solo il path (se il parametro `base` è stato impostato, vedi il parametro seguente),
 - **`base`** -- un base URL opzionale: se è impostato e l'argomento `url` contiene solamente il path, l'URL viene generato in relazione a `base`.
 
 Ad esempio:
