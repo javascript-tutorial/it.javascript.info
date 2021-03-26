@@ -266,41 +266,41 @@ I metodi per gli header HTTP sono 3:
     ```
 
     ```warn header="Limitazioni degli headers"
-    Several headers are managed exclusively by the browser, e.g. `Referer` and `Host`.
-    The full list is [in the specification](https://xhr.spec.whatwg.org/#the-setrequestheader()-method).
+    Molti headers sono gestiti esclusivamente dal browser, come ad esempio `Referer` ed `Host`.
+    La lista completa è descritta [nelle specifiche](https://xhr.spec.whatwg.org/#the-setrequestheader()-method).
 
-    `XMLHttpRequest` is not allowed to change them, for the sake of user safety and correctness of the request.
+    Ad `XMLHttpRequest` non è permesso modficarli, per amore della sicurezza dell'utente ed il mantenimento della correttezza della richiesta.
     ```
 
-    ````warn header="Can't remove a header"
-    Another peculiarity of `XMLHttpRequest` is that one can't undo `setRequestHeader`.
+    ````warn header="Non può rimuovere un header"
+    Un'altra caratteristica di `XMLHttpRequest` è la sua impossibilità di annullare `setRequestHeader`.
 
-    Once the header is set, it's set. Additional calls add information to the header, don't overwrite it.
+    Una volta che un header è impostato, resta tale e qualunque chiamata aggiuntiva non farà altro che aggiungere informazioni all'header stesso, senza sovrascritture.
 
-    For instance:
+    Per esempio:
 
     ```js
     xhr.setRequestHeader('X-Auth', '123');
     xhr.setRequestHeader('X-Auth', '456');
 
-    // the header will be:
+    // l'header diventa:
     // X-Auth: 123, 456
     ```
     ````
 
 `getResponseHeader(name)`
-: Gets the response header with the given `name` (except `Set-Cookie` and `Set-Cookie2`).
+: Restituisce l'header di risposta con il dato `name` (tranne `Set-Cookie` e `Set-Cookie2`).
 
-    For instance:
+    Esempio:
 
     ```js
     xhr.getResponseHeader('Content-Type')
     ```
 
 `getAllResponseHeaders()`
-: Returns all response headers, except `Set-Cookie` and `Set-Cookie2`.
+: Restituisce tutti gli headers di risposta, tranne `Set-Cookie` e `Set-Cookie2`.
 
-    Headers are returned as a single line, e.g.:
+    Viene restituito una riga per ogni header presente, ad esempio:
 
     ```http
     Cache-Control: max-age=31536000
@@ -309,11 +309,11 @@ I metodi per gli header HTTP sono 3:
     Date: Sat, 08 Sep 2012 16:53:16 GMT
     ```
 
-    The line break between headers is always `"\r\n"` (doesn't depend on OS), so we can easily split it into individual headers. The separator between the name and the value is always a colon followed by a space `": "`. That's fixed in the specification.
+    L'interruzione di riga sarà sempre nella forma `"\r\n"` (indipendentemente dal sistema operativo), in modo che si possa dividerli in headers individuali. Il separatore tra il nome ed il valore è sempre un carattere di due punti seguito da uno spazio `": "`. È ben chiarito nelle specifiche.
 
-    So, if we want to get an object with name/value pairs, we need to throw in a bit JS.
+    Quindi, se volessimo ottenere un oggetto con coppie di chiave/valore, vovremmo inserire un po' di JS.
 
-    Like this (assuming that if two headers have the same name, then the latter one overwrites the former one):
+    Come in questo esempio (supponendo che se avessimo due headers con lo stess nome, il secondo sovrascriverebbe il primo):
 
     ```js
     let headers = xhr
@@ -330,21 +330,21 @@ I metodi per gli header HTTP sono 3:
 
 ## POST, FormData
 
-To make a POST request, we can use the built-in [FormData](mdn:api/FormData) object.
+Per eseguire una richiesta POST, usiamo l'oggetto built-in [FormData](mdn:api/FormData).
 
-The syntax:
+Ecco la sintassi:
 
 ```js
-let formData = new FormData([form]); // creates an object, optionally fill from <form>
-formData.append(name, value); // appends a field
+let formData = new FormData([form]); // crea un nuovo oggetto, opzionalmente viene riempito dal <form>
+formData.append(name, value); // accoda un campo
 ```
 
-We create it, optionally fill from a form, `append` more fields if needed, and then:
+Lo creiamo, eventualmente lo rimpiamo partendo da un form, e se necessario eseguiamo l'`append` di più campi, ed infine:
 
-1. `xhr.open('POST', ...)` – use `POST` method.
-2. `xhr.send(formData)` to submit the form to the server.
+1. `xhr.open('POST', ...)` – usa il metodo `POST`.
+2. `xhr.send(formData)` per inviare il form al server.
 
-For instance:
+Per esempio:
 
 ```html run refresh
 <form name="person">
@@ -353,13 +353,13 @@ For instance:
 </form>
 
 <script>
-  // pre-fill FormData from the form
+  // precompila FormData dal form
   let formData = new FormData(document.forms.person);
 
-  // add one more field
+  // agginge ancora un campo
   formData.append("middle", "Lee");
 
-  // send it out
+  // lo invia
   let xhr = new XMLHttpRequest();
   xhr.open("POST", "/article/xmlhttprequest/post/user");
   xhr.send(formData);
@@ -368,11 +368,11 @@ For instance:
 </script>
 ```
 
-The form is sent with `multipart/form-data` encoding.
+Il form viene inviato con la codifica `multipart/form-data`.
 
-Or, if we like JSON more, then `JSON.stringify` and send as a string.
+O, se ci piace di più JSON, allora lo convertiamo con `JSON.stringify` e lo invia come come stringa.
 
-Just don't forget to set the header `Content-Type: application/json`, many server-side frameworks automatically decode JSON with it:
+Solamente non dobbiamo dimenticarci di impostare l'header `Content-Type: application/json`, perché grazie a questo, molti frameworks server-side saranno in grado di codificare JSON:
 
 ```js
 let xhr = new XMLHttpRequest();
@@ -388,19 +388,19 @@ xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 xhr.send(json);
 ```
 
-The `.send(body)` method is pretty omnivore. It can send almost any `body`, including `Blob` and `BufferSource` objects.
+Il metodo `.send(body)` è abbastanza "onnivoro". Può inviare quasi qualunque tipo di `body`, compresi oggetti `Blob` e `BufferSource`.
 
-## Upload progress
+## Progresso dell'upload
 
-The `progress` event triggers only on the downloading stage.
+L'evento `progress` viene scatenato solamente nella fase di downloading.
 
-That is: if we `POST` something, `XMLHttpRequest` first uploads our data (the request body), then downloads the response.
+Ossia: se eseguiamo il `POST` di qualcosa, come prima cosa `XMLHttpRequest` esegue l'upload dei nostri dati (il corpo della richiesta), quindi scarica la risposta.
 
-If we're uploading something big, then we're surely more interested in tracking the upload progress. But `xhr.onprogress` doesn't help here.
+Se facciamo l'upload di qualcosa di grosso, allora sicuramente saremmo più interessati nel tracciare il progresso di upload. Tuttavia `xhr.onprogress` non serve ai nostri scopi.
 
-There's another object, without methods, exclusively to track upload events: `xhr.upload`.
+Esiste un altro oggetto per tenere traccia degli evenit di upload, che è privo di metodi: `xhr.upload`.
 
-It generates events, similar to `xhr`, but `xhr.upload` triggers them solely on uploading:
+Genera eventi, in modo simile ad `xhr`, ma `xhr.upload` viene scatenato solamente durante la fase di upload:
 
 - `loadstart` -- upload started.
 - `progress` -- triggers periodically during the upload.
