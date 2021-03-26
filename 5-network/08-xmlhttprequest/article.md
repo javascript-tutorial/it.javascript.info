@@ -88,7 +88,7 @@ xhr.open('GET', '/article/xmlhttprequest/example/load');
 // 3. Invia la richiesta alla rete
 xhr.send();
 
-// 4. Questo viene chiamato dopo la ricezione della risposta
+// 4. Questo codice viene chiamato dopo la ricezione della risposta
 xhr.onload = function() {
   if (xhr.status != 200) { // analizza lo status HTTP della risposta
     alert(`Error ${xhr.status}: ${xhr.statusText}`); // ad esempio 404: Not Found
@@ -114,7 +114,7 @@ xhr.onerror = function() {
 Una volta che il server ha risposto, possiamo ricevere il risultato nelle seguenti proprietà `xhr`:
 
 `status`
-: HTTP status code (un numero): `200`, `404`, `403` e così via, e può essere `0` in caso di fallimento non HTTP.
+: HTTP status code (un valore numerico): `200`, `404`, `403` e così via, e può essere `0` in caso di fallimento non HTTP.
 
 `statusText`
 : messaggio dello status HTTP (una stringa): solitamente `OK` per `200`, `Not Found` per `404`, `Forbidden` per `403` e via dicendo.
@@ -128,7 +128,7 @@ Possiamo anche specificare un timeout usando la proprietà corrispondente:
 xhr.timeout = 10000; // timeout in millisecondi, 10 seconds
 ```
 
-Se la richiesta non ha successo nel tempo stabilito, viene annullata e viene scatenato l'evento `timeout`.
+Se la richiesta non ha esito nel tempo stabilito, viene annullata e viene scatenato l'evento `timeout`.
 
 ````smart header="parametri search dell'URL"
 Per aggiungere dei parametri all'URL, come `?name=value`, ed assicurarci di una corretta codifica, possiamo usare l'oggetto [URL](info:url):
@@ -145,14 +145,14 @@ xhr.open('GET', url); // https://google.com/search?q=test+me%21
 
 ## Tipo di risposta (Response Type)
 
-Possiamo usare la prorietà `xhr.responseType` per impostare il formato della risposta:
+Possiamo usare la proprietà `xhr.responseType` per impostare il formato della risposta:
 
 - `""` (default) -- ottiene una stringa,
 - `"text"` -- ottiene una stringa,
 - `"arraybuffer"` -- ottiene un `ArrayBuffer` (per dati di tipo binario, guardare il capitolo <info:arraybuffer-binary-arrays>),
 - `"blob"` -- ottiene un `Blob` (per dati binari, guardare <info:blob>),
 - `"document"` -- ottiene un documento XML (può usare XPath e altri metodi XML) o un documento HTML (basato sul MIME type del dato ricevuto),
-- `"json"` -- ottien un JSON (effettua il parsing automaticamente).
+- `"json"` -- ottiene un JSON (effettua il parsing automaticamente).
 
 Per esempio, otteniamo una risposta in JSON:
 
@@ -175,51 +175,49 @@ xhr.onload = function() {
 ```
 
 ```smart
-In the old scripts you may also find `xhr.responseText` and even `xhr.responseXML` properties.
-
-They exist for historical reasons, to get either a string or XML document. Nowadays, we should set the format in `xhr.responseType` and get `xhr.response` as demonstrated above.
+Nei vecchi script potremmo capitarci di incontrare alle proprietà `xhr.responseText` oppure `xhr.responseXML`, che esistono per ragioni storiche, per ottenere sia una stringa che un documento XML. Oggigiorno, dovremmo impostare il formato dentro la proprietà `xhr.responseType` e ottenere `xhr.response` come appena illustrato.
 ```
 
 ## Ready states
 
-`XMLHttpRequest` changes between states as it progresses. The current state is accessible as  `xhr.readyState`.
+`XMLHttpRequest` va modificando lo stato mentre la chiamata progredisce, Lo stato corrente è accessibile tramite `xhr.readyState`.
 
-All states, as in [the specification](https://xhr.spec.whatwg.org/#states):
+Tutti gli stati, come da [specifica](https://xhr.spec.whatwg.org/#states) sono:
 
 ```js
-UNSENT = 0; // initial state
-OPENED = 1; // open called
-HEADERS_RECEIVED = 2; // response headers received
-LOADING = 3; // response is loading (a data packet is received)
-DONE = 4; // request complete
+UNSENT = 0; // stato iniziale
+OPENED = 1; // chiamata aperta
+HEADERS_RECEIVED = 2; // headers della risposta ricevuti
+LOADING = 3; // la risposta è infase di caricamento (è stato già ricevuto un primo pacchetto dati)
+DONE = 4; // richiesta completata
 ```
 
-An `XMLHttpRequest` object travels them in the order `0` -> `1` -> `2` -> `3` -> ... -> `3` -> `4`. State `3` repeats every time a data packet is received over the network.
+Un oggetto `XMLHttpRequest` cambia stato durante la chiamata, questo esatto ordine `0` -> `1` -> `2` -> `3` -> ... -> `3` -> `4`. Lo stato `3` si ripete ad ogni pacchetto ricevuto dalla rete.
 
-We can track them using `readystatechange` event:
+Possiamo tenerne traccia tramite l'evento `readystatechange`:
 
 ```js
 xhr.onreadystatechange = function() {
   if (xhr.readyState == 3) {
-    // loading
+    // caricamneto
   }
   if (xhr.readyState == 4) {
-    // request finished
+    // richiesta terminata
   }
 };
 ```
 
-You can find `readystatechange` listeners in really old code, it's there for historical reasons, as there was a time when there were no `load` and other events. Nowadays, `load/error/progress` handlers deprecate it.
+Potremmo trovare listeners per `readystatechange` in codice molto vecchio, anche qui per ragioni storiche, dal momento che c'era un periodo in cui l'evento `load` e anche altri eventi, non esistevano. Al giorno d'oggi, i gestori `load/error/progress` li hanno deprecati.
 
-## Aborting request
+## Annullamento delle richieste
 
-We can terminate the request at any time. The call to `xhr.abort()` does that:
+Possiamo annullare la richiesta in ogni momento. La chiamata a `xhr.abort()` è adatta allo scopo:
 
 ```js
-xhr.abort(); // terminate the request
+xhr.abort(); // annulla la richiesta
 ```
 
-That triggers `abort` event, and `xhr.status` becomes `0`.
+Ciò scatena l'evento `abort`, e `xhr.status` diventa `0`.
 
 ## Synchronous requests
 
