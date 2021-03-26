@@ -478,7 +478,7 @@ Guardare il capitolo <info:fetch-crossorigin> per maggiori dettagli riguardanti 
 
 ## Riepilogo
 
-Typical code of the GET-request with `XMLHttpRequest`:
+Codice tipo per la richiesta GET con `XMLHttpRequest`:
 
 ```js
 let xhr = new XMLHttpRequest();
@@ -488,39 +488,39 @@ xhr.open('GET', '/my/url');
 xhr.send();
 
 xhr.onload = function() {
-  if (xhr.status != 200) { // HTTP error?
-    // handle error
+  if (xhr.status != 200) { // errore HTTP?
+    // gestisce l'errore
     alert( 'Error: ' + xhr.status);
     return;
   }
 
-  // get the response from xhr.response
+  // ottiene la risposta da xhr.response
 };
 
 xhr.onprogress = function(event) {
-  // report progress
+  // informa sul progresso
   alert(`Loaded ${event.loaded} of ${event.total}`);
 };
 
 xhr.onerror = function() {
-  // handle non-HTTP error (e.g. network down)
+  // gestisce un errore non HTTP (ad esmempio errori di rete)
 };
 ```
 
-There are actually more events, the [modern specification](https://xhr.spec.whatwg.org/#events) lists them (in the lifecycle order):
+Attualmente ci sono più eventi, la [specifica aggiornata](https://xhr.spec.whatwg.org/#events) li elenca (ordinati secondo il ciclo di vita):
 
-- `loadstart` -- the request has started.
-- `progress` -- a data packet of the response has arrived, the whole response body at the moment is in `response`.
-- `abort` -- the request was canceled by the call `xhr.abort()`.
-- `error` -- connection error has occurred, e.g. wrong domain name. Doesn't happen for HTTP-errors like 404.
-- `load` -- the request has finished successfully.
-- `timeout` -- the request was canceled due to timeout (only happens if it was set).
-- `loadend` -- triggers after `load`, `error`, `timeout` or `abort`.
+- `loadstart` -- la richiesta è coomnciata.
+- `progress` -- è arrivato un pacchetto della risposta, tutto il corpo della risposta si trova dentro `response`.
+- `abort` -- la richiesta è stata annullata tramite la chiamata a `xhr.abort()`.
+- `error` -- c'è stato un errore di connessione, ad esempio un nome di domino errato. Non succede per errori HTTP come 404.
+- `load` -- la richiesta è stata completata con successo.
+- `timeout` -- la richiessta è stata annullata a causa di un timeout (solo se è stato impostato).
+- `loadend` -- viene scatenato dopo `load`, `error`, `timeout` o `abort`.
 
-The `error`, `abort`, `timeout`, and `load` events are mutually exclusive. Only one of them may happen.
+Gli eventi `error`, `abort`, `timeout`, e `load` sono mutualmente esclusivi. Solamente uno tra questi può essere innescato.
 
-The most used events are load completion (`load`), load failure (`error`), or we can use a single `loadend` handler and check the properties of the request object `xhr` to see what happened.
+Gli eventi maggiormente usati sono quelli del caricamento avvenuto (`load`), del fallimento del caricamento (`error`), oppure possiamo usare un singolo gestore `loadend` e controllare le proprietà dell'oggetto della richiesta `xhr` per vedere come è andata.
 
-We've already seen another event: `readystatechange`. Historically, it appeared long ago, before the specification settled. Nowadays, there's no need to use it, we can replace it with newer events, but it can often be found in older scripts.
+Abbiamo incontrato anche un altro evento: `readystatechange`. Storicamente, è comparso tanto tempo fa, prima della regolamentazione delle specifiche. Oggigiorno, non è più necessario usarlo, e possiamo sostituirlo con i nuovi eventi, ma può essere spesso trovato in vecchi scripts.
 
-If we need to track uploading specifically, then we should listen to same events on `xhr.upload` object.
+Se dobbiamo tenere traccia degli upload, possiamo metterci in ascolto per gli i medesimi eventi ma sull'oggetto `xhr.upload`.
