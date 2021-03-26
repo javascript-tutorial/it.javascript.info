@@ -1,33 +1,33 @@
-# The clickjacking attack
+# L'attacco clickjacking
 
-The "clickjacking" attack allows an evil page to click on a "victim site" *on behalf of the visitor*.
+L'attacco "clickjacking" consente ad una pagina maligna di cliccare su un "sito vittima" *per conto dell'utente*.
 
-Many sites were hacked this way, including Twitter, Facebook, Paypal and other sites. They have all been fixed, of course.
+Molti siti hanno subito attacchi di questo tipo, inclusi Twitter, Facebook, Paypal e molti altri. Ovviamente, il problema in questi siti è stato risolto.
 
-## The idea
+## L'idea
 
-The idea is very simple.
+L'idea è piuttosto semplice.
 
-Here's how clickjacking was done with Facebook:
+Il clickjacking nel caso di Facebook funzionava in questo modo:
 
-1. A visitor is lured to the evil page. It doesn't matter how.
-2. The page has a harmless-looking link on it (like "get rich now" or "click here, very funny").
-3. Over that link the evil page positions a transparent `<iframe>` with `src` from facebook.com, in such a way that the "Like" button is right above that link. Usually that's done with `z-index`.
-4. In attempting to click the link, the visitor in fact clicks the button.
+1. Un visitatore viene attirato da una pagina maligna. Non importa come.
+2. La pagina contiene un link all'apparenza innocuo (con scritto ad esempio "diventa ricco ora" oppure "clicca qui, è molto divertente").
+3. Sopra quel link la pagina malevola posiziona un `<iframe>` trasparente con `src` proveniente da facebook.com, in questo modo il bottone di "Mi piace" è proprio sopra al link. Solitamente viene fatto utilizzando `z-index`.
+4. Nel tentativo di cliccare il link, il visitatore in realtà clicca il bottone.
 
-## The demo
+## La dimostrazione
 
-Here's how the evil page looks. To make things clear, the `<iframe>` is half-transparent (in real evil pages it's fully transparent):
+Qui vediamo come appare la pagina malevola. Per rendere le cose più chiare, l'`<iframe>` è semi-trasparente (nelle pagine reali invece è completamente trasparente):
 
 ```html run height=120 no-beautify
 <style>
-iframe { /* iframe from the victim site */
+iframe { /* iframe dal sito vittima */
   width: 400px;
   height: 100px;
   position: absolute;
   top:0; left:-20px;
 *!*
-  opacity: 0.5; /* in real opacity:0 */
+  opacity: 0.5; /* in realtà sarà opacity:0 */
 */!*
   z-index: 1;
 }
@@ -35,7 +35,7 @@ iframe { /* iframe from the victim site */
 
 <div>Click to get rich now:</div>
 
-<!-- The url from the victim site -->
+<!-- L'url del sito vittima -->
 *!*
 <iframe src="/clickjacking/facebook.html"></iframe>
 
@@ -45,35 +45,35 @@ iframe { /* iframe from the victim site */
 <div>...And you're cool (I'm a cool hacker actually)!</div>
 ```
 
-The full demo of the attack:
+La dimostrazione completa di come funziona l'attacco:
 
 [codetabs src="clickjacking-visible" height=160]
 
-Here we have a half-transparent `<iframe src="facebook.html">`, and in the example we can see it hovering over the button. A click on the button actually clicks on the iframe, but that's not visible to the user, because the iframe is transparent.
+Qui abbiamo un `<iframe src="facebook.html">` semi-trasparente, e nell'esempio possiamo vederlo andando in hover sul bottone. Un click nel bottone in realtà andrà a cliccare nell'iframe, ma questo non sarà visibile all'utente, perché l'iframe è trasparente.
 
-As a result, if the visitor is authorized on Facebook ("remember me" is usually turned on), then it adds a "Like". On Twitter that would be a "Follow" button.
+Come risultato, se l'utente è autenticato su Facebook ("ricordami" solitamente è attivo), allora aggiungerà un "Mi piace". Su twitter potrebbe corrispondere al bottone di "Segui".
 
-Here's the same example, but closer to reality, with `opacity:0` for `<iframe>`:
+Qui vediamo lo stesso esempio, ma più simile a come apparirebbe realmente, con `opacity:0` nell'`<iframe>`:
 
 [codetabs src="clickjacking" height=160]
 
-All we need to attack -- is to position the `<iframe>` on the evil page in such a way that the button is right over the link. So that when a user clicks the link, they actually click the button. That's usually doable with CSS.
+Tutto ciò di cui abbiamo bisogno per l'attacco, è posizione l'`<iframe>` nella pagina maligna, facendo in modo che il bottone sia proprio sopra il link. Quindi quando l'utente proverà a cliccare il link, in realtà cliccherà il bottone. Tutto questo solitamente è fattibile utilizzando qualche proprietà CSS.
 
-```smart header="Clickjacking is for clicks, not for keyboard"
-The attack only affects mouse actions (or similar, like taps on mobile).
+```smart header="Clickjacking funziona con i click, non cattura gli eventi da tastiera"
+Questo tipo di attacco colpisce solamente le azioni effettuate con il mouse (o in maniera analoga, il tocco su dispositivi mobile).
 
-Keyboard input is much difficult to redirect. Technically, if we have a text field to hack, then we can position an iframe in such a way that text fields overlap each other. So when a visitor tries to focus on the input they see on the page, they actually focus on the input inside the iframe.
+Gli input da tastiera sono più difficili da reindirizzare. Tecnicamente, se volessimo attaccare un campo di testo, allora potremmo posizionare un iframe in modo che i campi di testo si sovrappongano. Quindi quando un utente proverà ad andare in focus sull'input che vedono nella pagina, in realtà starà impostando il focus sull'iframe.
 
-But then there's a problem. Everything that the visitor types will be hidden, because the iframe is not visible.
+Ma in questo caso avremo un problema. Tutto ciò che l'utente scriverà sarà invisibile, perché anche l'iframe lo è.
 
-People will usually stop typing when they can't see their new characters printing on the screen.
+Un utente solitamente smette di digitare quando notano che nessun carattere sta apparendo sullo schermo.
 ```
 
-## Old-school defences (weak)
+## Difesa vecchia scuola (debole)
 
-The oldest defence is a bit of JavaScript which forbids opening the page in a frame (so-called "framebusting").
+La più vecchia difesa contro questi attacchi consiste in un paio di righe di codice JavaScript che bloccano l'apertura di pagine all'interno degli iframe (cosidetto "framebusting").
 
-That looks like this:
+Il codice è qualcosa del genere:
 
 ```js
 if (top != window) {
@@ -81,15 +81,15 @@ if (top != window) {
 }
 ```
 
-That is: if the window finds out that it's not on top, then it automatically makes itself the top.
+Ovvero: se una finestra non è in cima, allora pone automaticamente se stessa in cima.
 
-This not a reliable defence, because there are many ways to hack around it. Let's cover a few.
+Non è una difesa molto affidabile, poiché ci sono diversi modi per aggirarla. Vediamone un paio.
 
-### Blocking top-navigation
+### Bloccare la navigazione della finestra in cima
 
-We can block the transition caused by changing `top.location` in  [beforeunload](info:onload-ondomcontentloaded#window.onbeforeunload) event handler.
+Possiamo bloccare a transizione causata dal cambio di `top.location` nell'handler [beforeunload](info:onload-ondomcontentloaded#window.onbeforeunload).
 
-The top page (enclosing one, belonging to the hacker) sets a preventing handler to it, like this:
+La pagina in cima (quella che fa da contenitore, ovvero quella appartenente alla pagina maligna) può impostare un gestore di evento per bloccarlo, in questo modo:
 
 ```js
 window.onbeforeunload = function() {
@@ -97,68 +97,68 @@ window.onbeforeunload = function() {
 };
 ```
 
-When the `iframe` tries to change `top.location`, the visitor gets a message asking them whether they want to leave.
+Quando l'`iframe` proverà a cambiare la `top.location`, l'utente riceverà un messaggio che gli chiederà se ha intenzione di lasciare la pagina.
 
-In most cases the visitor would answer negatively because they don't know about the iframe - all they can see is the top page, there's no reason to leave. So `top.location` won't change!
+Nella maggior parte dei casi, l'utente risponderà di no, perché non è a conoscenza dell'iframe, tutto ciò che vede è la pagina in cima, non ha quindi alcun motivo per lasciare la pagina. Quindi `top.location` non cambierà!
 
-In action:
+In azione:
 
 [codetabs src="top-location"]
 
-### Sandbox attribute
+### L'attributo sandbox
 
-One of the things restricted by the `sandbox` attribute is navigation. A sandboxed iframe may not change `top.location`.
+Una delle cose che vengono limitate dall'attributo `sandbox` è la navigazione. Un iframe con questo attributo, non può cambiare `top.location`.
 
-So we can add the iframe with `sandbox="allow-scripts allow-forms"`. That would relax the restrictions, permitting scripts and forms. But we omit `allow-top-navigation` so that changing `top.location` is forbidden.
+Quindi possiamo aggiungere l'iframe con `sandbox="allow-scripts allow-forms"`. In questo modo disattiveremo le restrizioni, permettendo l'esecuzione di script e form. Ma lasciando attivo `allow-top-navigation` in questo modo `top.location` non potrà cambiare.
 
-Here's the code:
+Vediamo il codice:
 
 ```html
 <iframe *!*sandbox="allow-scripts allow-forms"*/!* src="facebook.html"></iframe>
 ```
 
-There are other ways to work around that simple protection too.
+Ci sono altri modi per aggirare questa protezione.
 
 ## X-Frame-Options
 
-The server-side header `X-Frame-Options` can permit or forbid displaying the page inside a frame.
+L'header server-side `X-Frame-Options` consente di definire se mostrare una pagina all'interno di un iframe.
 
-It must be sent exactly as HTTP-header: the browser will ignore it if found in HTML `<meta>` tag. So, `<meta http-equiv="X-Frame-Options"...>` won't do anything.
+Deve essere inviato come HTTP-header: il browser lo ignorerà se provate ad inserirlo tarmite il tag `<meta>`. Quindi, `<meta http-equiv="X-Frame-Options"...>` non avrá alcun effetto.
 
-The header may have 3 values:
+L'header può assumere 3 valori:
 
 
 `DENY`
-: Never ever show the page inside a frame.
+: Non mostrare mai la pagina dentro un iframe.
 
 `SAMEORIGIN`
-: Allow inside a frame if the parent document comes from the same origin.
+: Consenti di mostrare una pagina dentro gli iframe, se appartengono alla stessa origine.
 
 `ALLOW-FROM domain`
-: Allow inside a frame if the parent document is from the given domain.
+: Consenti agli iframe di mostrare una pagina se il documento padre appartiene al `domain` fornito.
 
-For instance, Twitter uses `X-Frame-Options: SAMEORIGIN`.
+Ad esempio, Twitter utilizza `X-Frame-Options: SAMEORIGIN`.
 
 ````online
-Here's the result:
+Qui vediamo il risultato:
 
 ```html
 <iframe src="https://twitter.com"></iframe>
 ```
 
-<!-- ebook: prerender/ chrome headless dies and timeouts on this iframe -->
+<!-- ebook: prerender/ chrome headless va in timeout con questo iframe -->
 <iframe src="https://twitter.com"></iframe>
 
-Depending on your browser, the `iframe` above is either empty or alerting you that the browser won't permit that page to be navigating in this way.
+In base al browser che state utilizzando, l'`iframe` definito sopra, potrebbe o essere vuoto oppure avvertirvi che il browser non permette alla pagina questo tipo di navigazione.
 ````
 
-## Showing with disabled functionality
+## Visualizzazione con funzionalità limitate
 
-The `X-Frame-Options` header has a side-effect. Other sites won't be able to show our page in a frame, even if they have good reasons to do so.
+L'utilizzo dell'header `X-Frame-Options` causa un side-effect. Le altre pagine non saranno in grado di mostrare la nostra pagina in un iframe, anche se queste non avessero scopi malevoli.
 
-So there are other solutions... For instance, we can "cover" the page with a `<div>` with styles `height: 100%; width: 100%;`, so that it will intercept all clicks. That `<div>` is to be removed if `window == top` or if we figure out that we don't need the protection.
+Quindi ci sono altre soluzioni... Ad esempio, possiamo "racchiudere" la pagina con un `<div>` e impostargli come stile `height: 100%; width: 100%;`, in questo modo intercetterà tutti i click. Andremo poi a rimuovere quel `<div>` nel caso in cui `window == top` o se ci rendiamo conto di non avere bisogno di questa protezione.
 
-Something like this:
+In questo modo:
 
 ```html
 <style>
@@ -177,45 +177,45 @@ Something like this:
 </div>
 
 <script>
-  // there will be an error if top window is from the different origin
-  // but that's ok here
+  // verrà generato un errore se la finestra in cima appartiene ad un'origin differente
+  // ma in questo caso ci va bene
   if (top.document.domain == document.domain) {
     protector.remove();
   }
 </script>
 ```
 
-The demo:
+La dimostrazione:
 
 [codetabs src="protector"]
 
-## Samesite cookie attribute
+## L'attributo samesite dei cookie
 
-The `samesite` cookie attribute can also prevent clickjacking attacks.
+L'attributo `samesite` dei cookie aiuta anche a prevenire attacchi di tipo clickjacking.
 
-A cookie with such attribute is only sent to a website if it's opened directly, not via a frame, or otherwise. More information in the chapter <info:cookie#samesite>.
+Un cookie con questo attributo viene inoltrato al sito solamente se questo viene aperto direttamente, senza passare per un iframe, o qualche altra via. Potete trovare maggiori informazioni nell'articolo <info:cookie#samesite>.
 
-If the site, such as Facebook, had `samesite` attribute on its authentication cookie, like this:
+Se il sito, ad esempio Facebook, nei suoi cookie di autenticazione ha impostato l'attributo `samesite`, come nell'esempio:
 
 ```
 Set-Cookie: authorization=secret; samesite
 ```
 
-...Then such cookie wouldn't be sent when Facebook is open in iframe from another site. So the attack would fail.
+...Allora questo cookie non verrà inviato se Facebook viene aperto in un iframe da un altro sito. Quindi l'attacco fallirà.
 
-The `samesite` cookie attribute will not have an effect when cookies are not used. This may allow other websites to easily show our public, unauthenticated pages in iframes.
+L'attributo `samesite` dei cookie non ha alcun effetto nel caso in cui questi non vengano utilizzati. Questo consente ad altre pagine di mostrare i contenuti pubblici, e che non richiedono autenticazione negli iframe.
 
-However, this may also allow clickjacking attacks to work in a few limited cases. An anonymous polling website that prevents duplicate voting by checking IP addresses, for example, would still be vulnerable to clickjacking because it does not authenticate users using cookies.
+Per questo, gli attacchi di tipo clickjacking sono comunque possibili in alcuni casi limite. Ad esempio, un sito di sondaggi anonimi che evita la duplicazione dei voti controllando gli indirizzi IP, sarebbe ancora vulnerabili agli attacchi clickjacking, poiché non hanno alcun processo di autenticazione tramite cookie.
 
-## Summary
+## Riepilogo
 
-Clickjacking is a way to "trick" users into clicking on a victim site without even knowing what's happening. That's dangerous if there are important click-activated actions.
+Il clickjacking è un modo per "ingannare" gli utenti facendoli cliccare in un sito vittima, senza che questi ne siano consapevoli. Questo attacco può risultare particolarmente pericoloso nel caso in cui vengano effettuate azioni importanti.
 
-A hacker can post a link to their evil page in a message, or lure visitors to their page by some other means. There are many variations.
+Un hacker può condividere un link nella sua pagina malevola, attirare gli utenti sulla sua pagina con una scusa qualsiasi. Esistono diversi modi per farlo.
 
-From one perspective -- the attack is "not deep": all a hacker is doing is intercepting a single click. But from another perspective, if the hacker knows that after the click another control will appear, then they may use cunning messages to coerce the user into clicking on them as well.
+Da un certo punto di vista, l'attacco non è così complesso: ciò che deve fare l'hacker è semplicemente intercettare un click. Però, se l'hacker è a conoscenza di ciò che apparirà dopo il click, allora potrà utilizzare dei messaggi astuti per convincere l'utente a cliccare anche sui successivi controlli.
 
-The attack is quite dangerous, because when we engineer the UI we usually don't anticipate that a hacker may click on behalf of the visitor. So vulnerabilities can be found in totally unexpected places.
+L'attacco può essere piuttosto pericoloso, perché quando studiano la UI (interfaccia utente), solitamente, non prendiamo in considerazione il fatto che un hacker potrebbe effettuare click al posto di un utente. Quindi possiamo trovare vulnerabilità nei posti più inaspettati.
 
-- It is recommended to use `X-Frame-Options: SAMEORIGIN` on pages (or whole websites) which are not intended to be viewed inside frames.
-- Use a covering `<div>` if we want to allow our pages to be shown in iframes, but still stay safe.
+- E' sempre consigliato utilizzare `X-Frame-Options: SAMEORIGIN` nelle pagine (o anche nell'intero sito) che non abbiamo intenzione vengano mostrare all'interno degli iframe.
+- Possiamo utilizzare un `<div>` "contenitore" se vogliamo consentire alle nostre pagine di essere mostrare negli iframe, ma rimanere comunque protetti.
