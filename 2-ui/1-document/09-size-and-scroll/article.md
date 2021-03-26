@@ -121,7 +121,7 @@ Si noti che questa funzione `isHidden` restituisce `true` anche per gli elementi
 
 ## clientTop/Left
 
-Dentro l'elemento abbiamo i bordi.
+I bordi fanno parte dell'elemento.
 
 Per misurarli abbiamo a disposizione le proprietà `clientTop` e `clientLeft`.
 
@@ -132,11 +132,11 @@ Nel nostro esempio:
 
 ![](metric-client-left-top.svg)
 
-...ma per essere precisi -- queste proprietà non indicano la dimensione del bordo, piuttosto le coordinate relative del lato interno rispetto al lato esterno.
+...ma per essere precisi, queste proprietà non indicano la dimensione del bordo, piuttosto le coordinate relative del lato interno rispetto al lato esterno.
 
 Qual è la differenza?
 
-La differenza è percepibile quando il testo del documento è da destra verso sinistra (il sistema operativo è in lingua araba o ebraica). In quel caso la barra di scorrimento non è a destra, ma a sinistra, e quindi `clientLeft` include anche la larghezza della barra.
+La differenza è percepibile quando il testo del documento è da destra verso sinistra (se il sistema operativo è in lingua araba o ebraica). In quel caso la barra di scorrimento non è a destra, ma a sinistra, e quindi `clientLeft` include anche la larghezza della barra.
 
 In questa ipotesi `clientLeft` non sarebbe `25`, ma, considerata la larghezza della barra di scorrimento, sarebbe `25 + 16 = 41`.
 
@@ -148,25 +148,25 @@ A seguire l'esempio in ebraico:
 
 Queste proprietà forniscono la dimensione dell'area dentro i bordi dell'elemento.
 
-They include the content width together with paddings, but without the scrollbar:
+Includono l'area del contenuto ed i padding ma non la barra di scorrimento:
 
 ![](metric-client-width-height.svg)
 
-On the picture above let's first consider `clientHeight`.
+Nell'immagine sopra soffermiamo prima l'attenzione su `clientHeight`.
 
-There's no horizontal scrollbar, so it's exactly the sum of what's inside the borders: CSS-height `200px` plus top and bottom paddings (`2 * 20px`) total `240px`.
+Non c'è una barra di scorrimento orizzontale, pertanto equivale esattamente alla somma di quanto è compreso tra i bordi: la misura dell'altezza espressa nei CSS `200px` più il padding superiore e quello inferiore (`2 * 20px`) per un totale di `240px`.
 
-Now `clientWidth` -- here the content width is not `300px`, but `284px`, because `16px` are occupied by the scrollbar. So the sum is `284px` plus left and right paddings, total `324px`.
+Esaminiamo ora `clientWidth`, in questo caso l'area del contenuto non coincide con i `300px` espressi nei CSS, ma è `284px`, perché la barra di scorrimento occupa `16px`. La somma è quindi `284px` più i padding sinistro e destro, per un totale di `324px`.
 
-**If there are no paddings, then `clientWidth/Height` is exactly the content area, inside the borders and the scrollbar (if any).**
+**Se non ci sono padding, allora `clientWidth/Height` coincidono esattamente con l'area del contenuto (content width) all'interno dei bordi e delle barre di scorrimento (se presenti).**
 
 ![](metric-client-width-nopadding.svg)
 
-So when there's no padding we can use `clientWidth/clientHeight` to get the content area size.
+In assenza di padding, dunque, possiamo usare `clientWidth/clientHeight` per ricavare la dimensione dell'area del contenuto.
 
 ## scrollWidth/Height
 
-These properties are like `clientWidth/clientHeight`, but they also include the scrolled out (hidden) parts:
+Queste proprietà sono come `clientWidth/clientHeight`, ma includono anche le parti nascoste dallo scorrimento:
 
 ![](metric-scroll-width-height.svg)
 
