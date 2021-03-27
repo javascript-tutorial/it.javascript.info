@@ -1,60 +1,60 @@
-# From the orbital height
+# Da altezze orbitali
 
-This section describes a set of modern standards for "web components".
+Questa sezione descrive un set di standar moderni per i "web components".
 
-As of now, these standards are under development. Some features are well-supported and integrated into the modern HTML/DOM standard, while others are yet in draft stage. You can try examples in any browser, Google Chrome is probably the most up to date with these features. Guess, that's because Google fellows are behind many of the related specifications.
+Ad oggi, questi standards sono in fase di sviluppo. Alcune funzionalità sono ben supportate ed integrate nel standard attuale HTML/DOM, mentre altre sono ancora allo stadio draft. Potremmo provare gli esempi in qualunque browser, ma Google Chrome è probabilmente il più aggiornato con queste funzionalità. Come è facile indovinare, ciò è dato dal fatto che dietro a molti dei concetti relativi a queste specifiche ci siano le organizzazioni di Google.
 
-## What's common between...
+## Cosa c'è in comune tra...
 
-The whole component idea is nothing new. It's used in many frameworks and elsewhere.
+L'idea generale del componente non è nulla di nuovo. Viene usato dappertutto in molti frameworks.
 
-Before we move to implementation details, take a look at this great achievement of humanity:
+Prima di spostarci nei dettagli di implementazione, diamo un'occhiata a questa grandiosa conquista dell'umanità:
 
 ![](satellite.jpg)
 
-That's the International Space Station (ISS).
+Questa è la Stazione Spaziale Internazionale (ISS).
 
-And this is how it's made inside (approximately):
+E csoì è come è fatta dentro (approssimativamente):
 
 ![](satellite-expanded.jpg)
 
-The International Space Station:
-- Consists of many components.
-- Each component, in its turn, has many smaller details inside.
-- The components are very complex, much more complicated than most websites.
-- Components are developed internationally, by teams from different countries, speaking different languages.
+La Stazione Spaziale Internazionale:
+- Consta di molti componenti.
+- Ogni componente, a sua volta, contiene all'interno tanti piccoli dettagli ancora più piccoli.
+- I componenti sono molto complessi, molto più complicati della maggior parte dei siti web.
+- I componenti vengono sviluppati a livello internazionale, da team di paesi differenti, che parlando lingue differenti.
 
-...And this thing flies, keeps humans alive in space!
+...E questa cosa vola, mantenendo delle persone in vita nello spazio!
 
-How such complex devices are created?
+Come vengono creati dei dispositivi così complessi?
 
-Which principles we could borrow to make our development same-level reliable and scalable? Or, at least, close to it.
+Quali principi possiamo prendere in prestito per rendere il nostro sviluppo affidabile e scalabile allo stesso livello? O almeno, per quanto possibile, avvicinarci ad essa.
 
-## Component architecture
+## Architettura di un componente
 
-The well known rule for developing complex software is: don't make complex software.
+La ben nota regola per sviluppare del software complesso è: non sviluppare software complesso.
 
-If something becomes complex -- split it into simpler parts and connect in the most obvious way.
+Se qualcosa diventa complesso, dividerlo in parti più semplici e connetterli nel modo più ovvio.
 
-**A good architect is the one who can make the complex simple.**
+**Un buon architetto è colui che può rendere cose complesse, semplici.**
 
-We can split user interface into visual components: each of them has own place on the page, can "do" a well-described task, and is separate from the others.
+Possiamo dividere l'interfaccia utente in componenti visuali: ognuno di essi ha la propria posizione nella pagina, può "fare" un compito ben preciso, ed è separato dagli altri.
 
-Let's take a look at a website, for example Twitter.
+Guardiamo un sito web, per esempio Twitter.
 
-It naturally splits into components:
+Si divide in componenti abbastanza naturalmente:
 
 ![](web-components-twitter.svg)
 
-1. Top navigation.
-2. User info.
-3. Follow suggestions.
-4. Submit form.
-5. (and also 6, 7) -- messages.
+1. Barra di navigazione superiore.
+2. Informazioni utente.
+3. Suggerimenti di follow.
+4. From di invio.
+5. (e inoltre 6, 7) -- messaggi.
 
-Components may have subcomponents, e.g. messages may be parts of a higher-level "message list" component. A clickable user picture itself may be a component, and so on.
+I componenti possono avere sottocomponenti, per esempio i messaggi possono essere parte di un componente "lista di messaggi" di livello superiore. Una immagine utente può essere essa stessa un componente, e così via.
 
-How do we decide, what is a component? That comes from intuition, experience and common sense. Usually it's a separate visual entity that we can describe in terms of what it does and how it interacts with the page. In the case above, the page has blocks, each of them plays its own role, it's logical to make these components.
+Come possiamo decidere, cosa sia un componente? Ciò arriva dall'intuizione, l'esperienza ed il senso comune. Solitamente è una entità separata a livello visivo che possiamo descrivere in termini di cosa fa e di come interagisce con la pagina. Nell'esempio precedente, la pagina ha dei blocchi, ognuno dei quali gioca un ruolo, ed è logico farne dei componenti.
 
 A component has:
 - Its own JavaScript class.
