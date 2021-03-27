@@ -1,32 +1,32 @@
 
 # Custom elements
 
-We can create custom HTML elements, described by our class, with its own methods and properties, events and so on.
+Possiamo creare custom elements HTML, descritti tramite delle classi proprietarie, con i propri metodi, proprietà, eventi e così via.
 
-Once a custom element is defined, we can use it on par with built-in HTML elements.
+Una volta definito un elemento custom, possiamo usarlo al pari qualunque altro elemento HTML built-in.
 
-That's great, as HTML dictionary is rich, but not infinite. There are no `<easy-tabs>`, `<sliding-carousel>`, `<beautiful-upload>`... Just think of any other tag we might need.
+Ciò è grandioso, dato che il dizionario HTML è molto ricco, ma non infinito. Non ci sono `<easy-tabs>`, `<sliding-carousel>`, `<beautiful-upload>`... Basti pensare a qualunque altro tag di cui abbiamo necessità.
 
-We can define them with a special class, and then use as if they were always a part of HTML.
+Possiamo definirli con classi speciali, ed usarli come se fossero sempre stati parte dell'HTML.
 
-There are two kinds of custom elements:
+I custom elements si dividono in due tipologie:
 
-1. **Autonomous custom elements** -- "all-new" elements, extending the abstract `HTMLElement` class.
-2. **Customized built-in elements** -- extending built-in elements, like a customized button, based on `HTMLButtonElement` etc.
+1. **Custom elements autonomi** -- elementi "nuovi di zecca", che estendono la casse astratta `HTMLElement`.
+2. **Customized built-in elements** -- che estendono gli elementi built-in, come ad esmepio un pulsante personalizzato, basato su `HTMLButtonElement` etc.
 
-First we'll cover autonomous elements, and then move to customized built-in ones.
+Per primo, affrontiamo gli elementi autonomi, dopodiché ci sposteremo su quelli built-in personalizzati.
 
-To create a custom element, we need to tell the browser several details about it: how to show it, what to do when the element is added or removed to page, etc.
+Per creare un elemento personalizzato, abbiamo bisogno di comunicare al browser una serie di dettagli su di esso: come mostrarlo, cosa fare una volta che l'emento venga aggiunto o rimosso dalla pagina, etc.
 
-That's done by making a class with special methods. That's easy, as there are only few methods, and all of them are optional.
+Ciò viene fatto creando una classe con metodi speciali. È facile, dato che ci sono pochi metodi e sono tutti opzionali.
 
-Here's a sketch with the full list:
+Ecco una classe scheletro, con la lista completa:
 
 ```js
 class MyElement extends HTMLElement {
   constructor() {
     super();
-    // element created
+    // elemento creato
   }
 
   connectedCallback() {
