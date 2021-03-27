@@ -3,8 +3,8 @@
 
 Abbiamo già un elemento `<time-formatted>` per mostrare un orario formattato.
 
-Create un elemento `<live-timer>` per mostrare l'orario corrente:
-1. Internamente dovrebbe usare `<time-formatted>`, senza duplicare la sua funzionalità.
+Create un elemento `<live-timer>` per mostrare l'orario corrente con queste specifiche:
+1. Internamente dovrebbe usare `<time-formatted>`, senza duplicarne la funzionalità.
 2. Un tick (aggiornamento) ogni secondo.
 3. Per ogni tick, deve essere generato un evento personalizzato chiamato `tick`, con la data corrente dentro `event.detail` (guardare il capitolo <info:dispatch-events>).
 
