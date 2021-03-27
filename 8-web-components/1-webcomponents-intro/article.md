@@ -54,23 +54,23 @@ Si divide in componenti abbastanza naturalmente:
 
 I componenti possono avere sottocomponenti, per esempio i messaggi possono essere parte di un componente "lista di messaggi" di livello superiore. Una immagine utente può essere essa stessa un componente, e così via.
 
-Come possiamo decidere, cosa sia un componente? Ciò arriva dall'intuizione, l'esperienza ed il senso comune. Solitamente è una entità separata a livello visivo che possiamo descrivere in termini di cosa fa e di come interagisce con la pagina. Nell'esempio precedente, la pagina ha dei blocchi, ognuno dei quali gioca un ruolo, ed è logico farne dei componenti.
+Come possiamo decidere, cosa sia un componente? Ciò arriva dall'intuizione, l'esperienza ed il senso comune. Solitamente è una entità separata a livello visivo che possiamo descrivere in termini di cosa fa e di come interagisce con la pagina. Nell'esempio precedente, la pagina è divisa in blocchi, ognuno dei quali gioca un ruolo, quindi è logico farne dei componenti.
 
-A component has:
-- Its own JavaScript class.
-- DOM structure, managed solely by its class, outside code doesn't access it ("encapsulation" principle).
-- CSS styles, applied to the component.
-- API: events, class methods etc, to interact with other components.
+Un componente ha:
+- Una propria classe JavaScript
+- Una struttura DOM, gestito esclusivamente dalla sua classe, il codice esterno no può accedervi (principio di "incapsulamento").
+- Stili CSS, applicati al componente.
+- API: eventi, metodi della classe etc, per poter interagire con altri componenti.
 
-Once again, the whole "component" thing is nothing special.
+Ancora una volta, il concetto di "componente" nen è niente di speciale.
 
-There exist many frameworks and development methodologies to build them, each with its own bells and whistles. Usually, special CSS classes and conventions are used to provide "component feel" -- CSS scoping and DOM encapsulation.
+Ci sono una serie di frameworks e metodi di sviluppo per costruirli, ognuno con le proprie "fantastiche e super attraenti" caratteristiche. Solitamente, vengono usate classi CSS e convenzioni specifiche per trasmettere la "sensazione di framework", scoping CSS ed incapsulamento del DOM.
 
-"Web components" provide built-in browser capabilities for that, so we don't have to emulate them any more.
+I "Web components" forniscono capacità built-in nel browser per questo, quindi non abbiamo più bisogno di emularli.
 
-- [Custom elements](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements) -- to define custom HTML elements.
-- [Shadow DOM](https://dom.spec.whatwg.org/#shadow-trees) -- to create an internal DOM for the component, hidden from the others.
-- [CSS Scoping](https://drafts.csswg.org/css-scoping/) -- to declare styles that only apply inside the Shadow DOM of the component.
-- [Event retargeting](https://dom.spec.whatwg.org/#retarget) and other minor stuff to make custom components better fit the development.
+- [Custom elements](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements) -- per definire elementi HTML personalizzati.
+- [Shadow DOM](https://dom.spec.whatwg.org/#shadow-trees) -- per creare un DOM interno e visibile al componente stesso ed invisibile per gli altri.
+- [CSS Scoping](https://drafts.csswg.org/css-scoping/) -- per dichiarare stili da applicare solo dentro lo Shadow DOM del componente.
+- [Event retargeting](https://dom.spec.whatwg.org/#retarget) ed altre funzionalità minori per rendere i componenti personalizzati più adatti allo sviluppo.
 
-In the next chapter we'll go into details of "Custom Elements" -- the fundamental and well-supported feature of web components, good on its own.
+Nel prossimo capitolo entreremo nei dettagli dei "Custom Elements", una funzionalità fondamentale e ben supportata dei web component, già ottima anche anche usata da sola.
