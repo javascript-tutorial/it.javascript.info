@@ -1,8 +1,8 @@
-There's a catch here.
+C'è un tranello in questo esercizio.
 
-At the time of `<script>` execution the last DOM node is exactly `<script>`, because the browser did not process the rest of the page yet.
+Al momento dell'esecuzione di `<script>` l'ultimo nodo del DOM è esattamente `<script>`, dal momento che il browser non ha ancora elaborato il resto della pagina.
 
-So the result is `1` (element node).
+Pertanto il risultato è `1` (nodo elemento).
 
 ```html run height=60
 <html>

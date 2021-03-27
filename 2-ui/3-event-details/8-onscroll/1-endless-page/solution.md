@@ -1,64 +1,64 @@
-The core of the solution is a function that adds more dates to the page (or loads more stuff in real-life) while we're at the page end.
+Il cuore della soluzione è una funzione che aggiunge continuamente contenuti nella pagina (o carica più cose nei casi reali) una volta arrivati alla fine del documento.
 
-We can call it immediately and add as a `window.onscroll` handler.
+Possiamo chiamarla subito, ed aggiungerla come gestore di `window.onscroll`.
 
-The most important question is: "How do we detect that the page is scrolled to bottom?"
+La domanda fondamentale è: "Come possiamo rilevare che la pagina è arrivata alla fine dello scroll?"
 
-Let's use window-relative coordinates.
+Usando le coordinate relative alla finestra.
 
-The document is represented (and contained) within `<html>` tag, that is `document.documentElement`.
+Il documento è rappresentato (e contenuto) all'interno del tag `<html>`, che è `document.documentElement`.
 
-We can get window-relative coordinates of the whole document as `document.documentElement.getBoundingClientRect()`, the `bottom` property will be window-relative coordinate of the document bottom.
+Possiamo ottenere le coordinate relative alla finestra dell'intero documento con `document.documentElement.getBoundingClientRect()`, la proprietà `bottom` sarà la coordinata relativa alla finestra, della parte bassa del documento.
 
-For instance, if the height of the whole HTML document is `2000px`, then:
+Per esempio, se l'altezza di tutti il documento HTML è `2000px`, allora avremo che:
 
 ```js
-// when we're on the top of the page
-// window-relative top = 0
+// quando siamo all'inizio della pagina
+// il top rispetto alla finestra = 0
 document.documentElement.getBoundingClientRect().top = 0
 
-// window-relative bottom = 2000
-// the document is long, so that is probably far beyond the window bottom
+// la parte bassa relativa alla finestra = 2000
+// il documento è lungo, quindi probabilmente andrà oltre il limite inferiore della finestra
 document.documentElement.getBoundingClientRect().bottom = 2000
 ```
 
-If we scroll `500px` below, then:
+Se scrolliamo verso il basso di `500px`, avremo che:
 
 ```js
-// document top is above the window 500px
+// la sommità del documento sta sopra la finestra di 500px
 document.documentElement.getBoundingClientRect().top = -500
-// document bottom is 500px closer
+// la parte bassa del documento, invece, sarà 500px un po' più vicina
 document.documentElement.getBoundingClientRect().bottom = 1500
 ```
 
-When we scroll till the end, assuming that the window height is `600px`:
+Quando avremo scrollato la pagina fino alla fine, posto che l'altezza della finestrta sia di `600px`:
 
 
 ```js
-// document top is above the window 1400px
+// la sommità del documento starà sopra la finestra di 1400px
 document.documentElement.getBoundingClientRect().top = -1400
-// document bottom is below the window 600px
+// la parte bassa del documento sarà più in basso rispetto alla finestra di 600px
 document.documentElement.getBoundingClientRect().bottom = 600
 ```
 
-Please note that the `bottom` can't be `0`, because it never reaches the window top. The lowest limit of the `bottom` coordinate is the window height (we assumed it to be `600`), we can't scroll it any more up.
+Notate bene che `bottom` non può essere `0`, perché non arriva mai all'inizio della finestra. Il limite basso delle coordinate di `bottom` è l'altezza della finestra (stiamo ponendo il caso che questa sia `600`), e non può scrollare più in alto.
 
-We can obtain the window height as `document.documentElement.clientHeight`.
+Ricaviamo, quindi, l'altezza della finestra attraverso `document.documentElement.clientHeight`.
 
-For our task, we need to know when the document bottom is not no more than `100px` away from it (that is: `600-700px`, if the height is `600`).
+Per i nostri scopi, ci serve sapere momento in cui la fine del documento si troverà a non più di `100px`. (che è a: `600-700px`, se l'altezza è di `600`).
 
-So here's the function:
+Ecco quindi la funzione:
 
 ```js
 function populate() {
   while(true) {
-    // document bottom
+    // fine del documento
     let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
 
-    // if the user hasn't scrolled far enough (>100px to the end)
+    // se l'utente non ha scrollato abbastanza (>100px dalla fine)
     if (windowRelativeBottom > document.documentElement.clientHeight + 100) break;
     
-    // let's add more data
+    // aggiungiamo più dati
     document.body.insertAdjacentHTML("beforeend", `<p>Date: ${new Date()}</p>`);
   }
 }

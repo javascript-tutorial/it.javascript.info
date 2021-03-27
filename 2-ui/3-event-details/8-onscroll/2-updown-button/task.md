@@ -4,13 +4,13 @@ importance: 5
 
 # Up/down button
 
-Create a "to the top" button to help with page scrolling.
+Create un pulsante "inizio della pagina" per venire in aiuto con lo scroll della pagina.
 
-It should work like this:
-- While the page is not scrolled down at least for the window height -- it's invisible.
-- When the page is scrolled down more than the window height -- there appears an "upwards" arrow in the left-top corner. If the page is scrolled back, it disappears.
-- When the arrow is clicked, the page scrolls to the top.
+Dovrebbe funzionare così:
+- Se la pagina non è stata scrollata per almeno l'altezza della finestra, è invisibile.
+- Se la pagina è stata scrollata per più dell'altezza della finestra, deve comparire una freccia "verso l'alto" nell'angolo in alto a sinistra. Se la pagina viene scrollata in alto, scompare.
+- Se la freccia viene cliccata, la pagina scrolla verso l'alto.
 
-Like this (top-left corner, scroll to see):
+Come in questo esempio (nell'angolo in alto a sinsitra, scrollare per vedere):
 
 [iframe border="1" height="200" link src="solution"]

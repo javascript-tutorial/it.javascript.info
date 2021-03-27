@@ -14,7 +14,7 @@ for (let link of links) {
 */!*
   if (!href) continue; // nessun attributo
 
-  if (!href.includes('://')) continue; // nessun protocolo
+  if (!href.includes('://')) continue; // nessun protocollo
 
   if (href.startsWith('http://internal.com')) continue; // interno
 
