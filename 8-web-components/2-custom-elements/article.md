@@ -313,29 +313,29 @@ Possiamo estedere e personalizzare gli elementi HTML built-in ereditando dalle l
 
 Per esempio, i pulsanti sono una istanza di `HTMLButtonElement`,  lo quello andiamo a costruirci sopra.
 
-1. Extend `HTMLButtonElement` with our class:
+1. Estendiamo il `HTMLButtonElement` con la nostra classe:
 
     ```js
-    class HelloButton extends HTMLButtonElement { /* custom element methods */ }
+    class HelloButton extends HTMLButtonElement { /* metodi degli elementi personalizzati */ }
     ```
 
-2. Provide the third argument to `customElements.define`, that specifies the tag:
+2. Fornisceil terzo argomenti a `customElements.define`, che specifia il tag:
     ```js
     customElements.define('hello-button', HelloButton, *!*{extends: 'button'}*/!*);
     ```    
 
-    There may be different tags that share the same DOM-class, that's why specifying `extends` is needed.
+    Possono esserci tag differenti che condividono la stessa classe DOM, ecco perché è necessario specificare `extends`.
 
-3. At the end, to use our custom element, insert a regular `<button>` tag, but add `is="hello-button"` to it:
+3. Alla fine, per usare il nostro elemento personalizzato, inseriamo un normale tag `<button>`, aggiungendoc però l'attributo `is="hello-button"`:
     ```html
     <button is="hello-button">...</button>
     ```
 
-Here's a full example:
+Ecco l'esempio completo:
 
 ```html run autorun="no-epub"
 <script>
-// The button that says "hello" on click
+// Il pulsante dice "hello" al click
 class HelloButton extends HTMLButtonElement {
 *!*
   constructor() {
@@ -351,28 +351,28 @@ customElements.define('hello-button', HelloButton, {extends: 'button'});
 </script>
 
 *!*
-<button is="hello-button">Click me</button>
+<button is="hello-button">Cliccami</button>
 */!*
 
 *!*
-<button is="hello-button" disabled>Disabled</button>
+<button is="hello-button" disabled>Disabilitato</button>
 */!*
 ```
 
-Our new button extends the built-in one. So it keeps the same styles and standard features like `disabled` attribute.
+Il nostro nuovo pulsante estende quello built-in. Quindi mantiene gli stessi stili e caratteristiche standard come l'attributo `disabled`.
 
-## References
+## Riferimenti
 
 - HTML Living Standard: <https://html.spec.whatwg.org/#custom-elements>.
-- Compatiblity: <https://caniuse.com/#feat=custom-elements>.
+- Compatibilità: <https://caniuse.com/#feat=custom-elements>.
 
-## Summary
+## Riepilogo
 
-Custom elements can be of two types:
+Gli elementi personalizzati possono essere di due tipi:
 
-1. "Autonomous" -- new tags, extending `HTMLElement`.
+1. "Autonomi" -- nuovi tag che estendono `HTMLElement`.
 
-    Definition scheme:
+    Schema di definizione:
 
     ```js
     class MyElement extends HTMLElement {
@@ -387,13 +387,13 @@ Custom elements can be of two types:
     /* <my-element> */
     ```
 
-2. "Customized built-in elements" -- extensions of existing elements.
+2. "Elementi built-in personalizzati" -- estensione di elementi esistenti.
 
-    Requires one more `.define` argument, and `is="..."` in HTML:
+    Richede un argomento `.define` aggiuntivo, e `is="..."` dentro l'HTML:
     ```js
     class MyButton extends HTMLButtonElement { /*...*/ }
     customElements.define('my-button', MyElement, {extends: 'button'});
     /* <button is="my-button"> */
     ```
 
-Custom elements are well-supported among browsers. Edge is a bit behind, but there's a polyfill <https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs>.
+Gli elementi sono ben supportati nei vari browser. Per i browser che non la supportano esistono un polyfill <https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs>.
