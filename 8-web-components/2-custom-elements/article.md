@@ -1,26 +1,26 @@
 
-# Custom elements
+# Elementi personalizzati
 
-Possiamo creare custom elements HTML, descritti tramite delle classi proprietarie, con i propri metodi, proprietà, eventi e così via.
+Possiamo creare elementi HTML personalizzati, descritti tramite delle apposite classi, con metodi propri metodi, proprietà, eventi e così via.
 
-Una volta definito un elemento custom, possiamo usarlo al pari qualunque altro elemento HTML built-in.
+Una volta definito un elemento personalizzato, possiamo usarlo al pari qualunque altro elemento HTML built-in.
 
 Ciò è grandioso, dato che il dizionario HTML è molto ricco, ma non infinito. Non ci sono `<easy-tabs>`, `<sliding-carousel>`, `<beautiful-upload>`... Basti pensare a qualunque altro tag di cui abbiamo necessità.
 
 Possiamo definirli con classi speciali, ed usarli come se fossero sempre stati parte dell'HTML.
 
-I custom elements si dividono in due tipologie:
+Gli elementi personalizzati si dividono in due categorie:
 
 1. **Custom elements autonomi** -- elementi "nuovi di zecca", che estendono la casse astratta `HTMLElement`.
-2. **Customized built-in elements** -- che estendono gli elementi built-in, come ad esmepio un pulsante personalizzato, basato su `HTMLButtonElement` etc.
+2. **Customized built-in elements** -- che estendono gli elementi built-in, ad esempio un pulsante personalizzato, basato su `HTMLButtonElement` etc.
 
 Per primo, affrontiamo gli elementi autonomi, dopodiché ci sposteremo su quelli built-in personalizzati.
 
-Per creare un elemento personalizzato, abbiamo bisogno di comunicare al browser una serie di dettagli su di esso: come mostrarlo, cosa fare una volta che l'emento venga aggiunto o rimosso dalla pagina, etc.
+Per creare un elemento personalizzato, abbiamo bisogno di comunicare al browser una serie di dettagli su di esso: come mostrarlo, cosa fare una volta che l'elemento venga aggiunto o rimosso dalla pagina, etc.
 
 Ciò viene fatto creando una classe con metodi speciali. È facile, dato che ci sono pochi metodi e sono tutti opzionali.
 
-Ecco una classe scheletro, con la lista completa:
+Ecco uno scheletro per la classe, con la lista completa:
 
 ```js
 class MyElement extends HTMLElement {
@@ -30,52 +30,52 @@ class MyElement extends HTMLElement {
   }
 
   connectedCallback() {
-    // browser calls this method when the element is added to the document
-    // (can be called many times if an element is repeatedly added/removed)
+    // il browser chiama questo metodo quando l'elemento viene aggiunto al documento
+    // (può essere chiamato tante volte se un elemento viene raggiunto o rimosso)
   }
 
   disconnectedCallback() {
-    // browser calls this method when the element is removed from the document
-    // (can be called many times if an element is repeatedly added/removed)
+    // il browser chiama questo metodo quando l'elemento viene rimosso dal documento
+    // (può essere chiamato tante volte se un elemento viene aggiunto o rimosso)
   }
 
   static get observedAttributes() {
-    return [/* array of attribute names to monitor for changes */];
+    return [/* un array di nomi di attributi per monitorare le modifiche */];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    // called when one of attributes listed above is modified
+    // chiamato quadno uno degli attributi della lista precendente viene modificato
   }
 
   adoptedCallback() {
-    // called when the element is moved to a new document
-    // (happens in document.adoptNode, very rarely used)
+    // chiamato quando l'elemento viene spostato su un nuovo documento
+    // (avviene in document.adoptNode, usato molto raramente)
   }
 
-  // there can be other element methods and properties
+  // possono esserci altri metodi e proprietà per l'elemento
 }
 ```
 
-After that, we need to register the element:
+Dopodiché, possiamo registrare l'elemento:
 
 ```js
-// let the browser know that <my-element> is served by our new class
+// fa in modo che il browser sappia che <my-element> venga fornito dalla nostra classe
 customElements.define("my-element", MyElement);
 ```
 
-Now for any HTML elements with tag `<my-element>`, an instance of `MyElement` is created, and the aforementioned methods are called. We also can `document.createElement('my-element')` in JavaScript.
+Adesso, per ogni elemento HTML con tag `<my-element>`, verrà creata un'istanza di `MyElement`, e chiamati i sopracitati metodi. Possiamo anche chiamare `document.createElement('my-element')` in JavaScript.
 
-```smart header="Custom element name must contain a hyphen `-`"
-Custom element name must have a hyphen `-`, e.g. `my-element` and `super-button` are valid names, but `myelement` is not.
+```smart header="Il nome degli elementi custom devono contenere un trattino `-`"
+I nomi degli elementi personalizzati devono contenere un trattino `-`, ad esempio `my-element` e `super-button` sono nomi validi, al contrario di `myelement`.
 
-That's to ensure that there are no name conflicts between built-in and custom HTML elements.
+Ciò ci assicura l'assenza di conflitti tra i nostri elementi HTML personalizzati e quelli built-in.
 ```
 
-## Example: "time-formatted"
+## Esempio: "time-formatted"
 
-For example, there already exists `<time>` element in HTML, for date/time. But it doesn't do any formatting by itself.
+Per esempio, esiste già l'elemento `<time>` nell'HTML, per la data/ora. Solo che da sè non compie alcuna formattazione del dato.
 
-Let's create `<time-formatted>` element that displays the time in a nice, language-aware format:
+Creiamo un elemento `<time-formatted>` che visualizza l'ora in un bel formato che consideri la lingua:
 
 
 ```html run height=50 autorun="no-epub"
@@ -115,22 +115,21 @@ customElements.define("time-formatted", TimeFormatted); // (2)
 ></time-formatted>
 ```
 
-1. The class has only one method `connectedCallback()` -- the browser calls it when `<time-formatted>` element is added to page (or when HTML parser detects it), and it uses the built-in [Intl.DateTimeFormat](mdn:/JavaScript/Reference/Global_Objects/DateTimeFormat) data formatter, well-supported across the browsers, to show a nicely formatted time.
-2. We need to register our new element by `customElements.define(tag, class)`.
-3. And then we can use it everywhere.
+1. La classe contiene solo il metodo `connectedCallback()`, che il browser chiama appena l'elemento `<time-formatted>` viene aggiunto alla pagina (o quando il parser HTML lo riconosce). Il metodo usa il formattatore built-in delle date built-in [Intl.DateTimeFormat](mdn:/JavaScript/Reference/Global_Objects/DateTimeFormat), ben supportato dai browser, per mostrare l'ora ben formattata.
+2. Dobbiamo registrare il nostro nuovo elemento tramite `customElements.define(tag, class)`.
+3. A questo punto potremo usarlo ovunque.
 
 
-```smart header="Custom elements upgrade"
-If the browser encounters any `<time-formatted>` elements before `customElements.define`, that's not an error. But the element is yet unknown, just like any non-standard tag.
+```smart header="Aggiornamento degli elementi personalizzati"
+Se il browser incontrasse un elemento `<time-formatted>` prima di `customElements.define`, non andrebbe in errore. Ma tratterebbe l'elemento come sconosciuto, come tratterebbe un tag non standard.
 
-Such "undefined" elements can be styled with CSS selector `:not(:defined)`.
+Così questi elementi "undefined" possono essere stilizzati con il selettore CSS `:not(:defined)`.
 
-When `customElement.define` is called, they are "upgraded": a new instance of `TimeFormatted`
-is created for each, and `connectedCallback` is called. They become `:defined`.
+Quando viene chiamato `customElement.define`, vengono "aggiornati": viene creata una nuova istanza di `TimeFormatted` per ognuno di essi, e chiamato il metodo `connectedCallback`. Quindi diventeranno `:defined`.
 
-To get the information about custom elements, there are methods:
-- `customElements.get(name)` -- returns the class for a custom element with the given `name`,
-- `customElements.whenDefined(name)` -- returns a promise that resolves (without value) when a custom element with the given `name` becomes defined.
+Per avere informazioni sugli elementi personalizzati, ci sono due metodi:
+- `customElements.get(name)` -- restituisce la classe per un elemento con il dato `name`,
+- `customElements.whenDefined(name)` -- restituisce una promise che risolve (senza valore) quando un elmemento con il dato nome diventa definito.
 ```
 
 ```smart header="Rendering in `connectedCallback`, not in `constructor`"
