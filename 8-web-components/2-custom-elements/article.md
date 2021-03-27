@@ -129,28 +129,28 @@ Quando viene chiamato `customElement.define`, vengono "aggiornati": viene creata
 
 Per avere informazioni sugli elementi personalizzati, ci sono due metodi:
 - `customElements.get(name)` -- restituisce la classe per un elemento con il dato `name`,
-- `customElements.whenDefined(name)` -- restituisce una promise che risolve (senza valore) quando un elmemento con il dato nome diventa definito.
+- `customElements.whenDefined(name)` -- restituisce una promise che risolve (senza valore) quando un elemento con il dato nome diventa definito.
 ```
 
-```smart header="Rendering in `connectedCallback`, not in `constructor`"
-In the example above, element content is rendered (created) in `connectedCallback`.
+```smart header="Il rendering va dentro `connectedCallback`, e non nel `constructor`"
+Nell'esempio appena visto, il contenuto dell'elemento viene renderizzato (creato) dentro `connectedCallback`.
 
-Why not in the `constructor`?
+Come mai non nel `constructor`?
 
-The reason is simple: when `constructor` is called, it's yet too early. The element is created, but the browser did not yet process/assign attributes at this stage: calls to `getAttribute` would return `null`. So we can't really render there.
+Il motivo è semplice: quando viene chamato `constructor`, è ancora troppo presto. L'elemento è stato creato, mail browser non ha ancora processato/assegnato gli attributi in questa fase: una chiamata a `getAttribute` restituirebbe `null`. Quindi non possiamo renderizzare proprio nulla in quel punto.
 
-Besides, if you think about it, that's better performance-wise -- to delay the work until it's really needed.
+Oltretutto, pensandoci attentamente, è saggio in termini di prestazioni, ritardare il lavoro fino al momento in cui serve davvero.
 
-The `connectedCallback` triggers when the element is added to the document. Not just appended to another element as a child, but actually becomes a part of the page. So we can build detached DOM, create elements and prepare them for later use. They will only be actually rendered when they make it into the page.
+Il metodo `connectedCallback` viene chiamato in seguito all'aggiunta dell'elemento nel documento. Non quando viene inserito dentro un altro elemento figlio, ma quando entra a far parte della pagina. Quindi possiamo costruire un DOM separato, creare elementi e prepararli per usi successivi. Verranno renerizzati davvero quando saranno parte della pagina.
 ```
 
-## Observing attributes
+## Osservare gli attributi
 
-In the current implementation of `<time-formatted>`, after the element is rendered, further attribute changes don't have any effect. That's strange for an HTML element. Usually, when we change an attribute, like `a.href`, we expect the change to be immediately visible. So let's fix this.
+Nell'implementazione attuale di `<time-formatted>`, dopo che l'elemento viene rederizzato, cambi di attributi successivi non sortiscono alcun effetto. Questo è curioso che avvenga per un elemento HTML. Solitamente, quando cambiamo un attributo come ad esempio `a.href`, ci aspettiamo di vedere subito la modifica. Correggiamo il comportamento.
 
-We can observe attributes by providing their list in `observedAttributes()` static getter. For such attributes, `attributeChangedCallback` is called when they are modified. It doesn't trigger for other, unlisted attributes (that's for performance reasons).
+Possiamo osservare gli attributi fornendo la lista dentro il getter statico `observedAttributes()`. Per questi attributi viene chiamato `attributeChangedCallback` per ogni loro modifica. Non viene chiamato per gli altri attributi fuori dalla lista (questo per ragioni di prestazioni).
 
-Here's a new `<time-formatted>`, that auto-updates when attributes change:
+Ecco un nuovo `<time-formatted>`, che aggiorna in automatico al cambio di attributo:
 
 ```html run autorun="no-epub" height=50
 <script>
@@ -207,17 +207,17 @@ setInterval(() => elem.setAttribute('datetime', new Date()), 1000); // (5)
 </script>
 ```
 
-1. The rendering logic is moved to `render()` helper method.
-2. We call it once when the element is inserted into page.
-3. For a change of an attribute, listed in `observedAttributes()`, `attributeChangedCallback` triggers.
-4. ...and re-renders the element.
-5. At the end, we can easily make a live timer.
+1. La logica di rendering viene spostata sul metodo helper `render()`.
+2. Possiamo chiamarlo una sola volta quando l'lemento viene inserito in pagina.
+3. Al cambio di un attributo, dentro la lista `observedAttributes()`, viene chiamato `attributeChangedCallback`.
+4. ...e viene rirenderizzato l'elemento.
+5. Alla fine, possiamo creare un timer live.
 
-## Rendering order
+## Ordine di rendering
 
-When HTML parser builds the DOM, elements are processed one after another, parents before children. E.g. if we have `<outer><inner></inner></outer>`, then `<outer>` element is created and connected to DOM first, and then `<inner>`.
+Quando il parser HTML costruisce il DOM, gli elementi vengono processati uno dopo l'altro, i genitori prima dei figli. Ad esempio, aveno una siffatta struttura `<outer><inner></inner></outer>`, l'elemento `<outer>` verrebbe creato e connesso per primo al DOM. dopodichè passerebbe a `<inner>`.
 
-That leads to important consequences for custom elements.
+Ciò porta ad importanti conseguenze per gli elementi personlizzati.
 
 For example, if a custom element tries to access `innerHTML` in `connectedCallback`, it gets nothing:
 
