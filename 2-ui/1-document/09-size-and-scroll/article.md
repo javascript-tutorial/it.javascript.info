@@ -216,22 +216,22 @@ Impostare `scrollTop` a `0` o su un grande valore, come `1e9`, farà sì che l'e
 
 ## Non ricavare la larghezza o l'altezza dai CSS
 
-We've just covered geometry properties of DOM elements, that can be used to get widths, heights and calculate distances.
+Abbiamo appena trattato le proprietà geometriche degli elementi DOM che usiamo per ricavare larghezza, altezza e per calcolare le distanze.
 
-But as we know from the chapter <info:styles-and-classes>, we can read CSS-height and width using `getComputedStyle`.
+Ma come abbiamo imparato dal capitolo <info:styles-and-classes>, possiamo ottenere la larghezza e l'altezza CSS tramite `getComputedStyle`.
 
-So why not to read the width of an element with `getComputedStyle`, like this?
+Dunque, perché non leggere la larghezza di un elemento con `getComputedStyle` in questo modo?
 
 ```js run
 let elem = document.body;
 
-alert( getComputedStyle(elem).width ); // show CSS width for elem
+alert( getComputedStyle(elem).width ); // mostra la larghezza CSS per elem
 ```
 
-Why should we use geometry properties instead? There are two reasons:
+Perché invece dovremmo usare le proprietà geometriche? Ci sono due ragioni:
 
-1. First, CSS `width/height` depend on another property: `box-sizing` that defines "what is" CSS width and height. A change in `box-sizing` for CSS purposes may break such JavaScript.
-2. Second, CSS `width/height` may be `auto`, for instance for an inline element:
+1. La prima, le proprietà CSS `width/height` dipendono da un'altra proprietà: `box-sizing` che definisce "cosa siano" la larghezza e l'altezza CSS. Una modifica in `box-sizing` per scopi riguardanti i CSS possono rompere un JavaScript che fa affidamento su questa.
+2. La seconda, le proprietà CSS `width/height` possono valere `auto`, per esempio per un elemento inline:
 
     ```html run
     <span id="elem">Hello!</span>
@@ -243,23 +243,22 @@ Why should we use geometry properties instead? There are two reasons:
     </script>
     ```
 
-    From the CSS standpoint, `width:auto` is perfectly normal, but in JavaScript we need an exact size in `px` that we can use in calculations. So here CSS width is useless.
+    Dal punto di vista dei CSS, `width:auto` è perfettamente normale, ma in JavaScript abbiamo bisogno di un'esatta dimensione in `px` da usare nei calcoli. In questo caso, quindi, la larghezza CSS è inutile.
 
-And there's one more reason: a scrollbar. Sometimes the code that works fine without a scrollbar becomes buggy with it, because a scrollbar takes the space from the content in some browsers. So the real width available for the content is *less* than CSS width. And `clientWidth/clientHeight` take that into account.
+Ma c'è un'altra ragione: la barra di scorrimento. Talvolta un codice che funziona bene senza barra di scorrimento, con questa diventa difettoso, perché la barra di scorrimento su alcuni browser ricava il suo spazio dall'area del contenuto. La larghezza effettiva per il contenuto, dunque, è *minore* della larghezza CSS e `clientWidth/clientHeight` ne tengono conto.
 
-...But with `getComputedStyle(elem).width` the situation is different. Some browsers (e.g. Chrome) return the real inner width, minus the scrollbar, and some of them (e.g. Firefox) -- CSS width (ignore the scrollbar). Such cross-browser differences is the reason not to use `getComputedStyle`, but rather rely on geometry properties.
+...Ma con `getComputedStyle(elem).width` la situazione è differente. Alcuni browser (es. Chrome) restituiscono la larghezza interna effettiva, meno la barra di scorrimento, mentre altri (es. Firefox) la larghezza CSS (ignorando la barra di scorrimento). Queste diversità cross-browser costituiscono il motivo per il quale non usare `getComputedStyle` ma piuttosto fare affidamento sulle proprietà geometriche.
 
 ```online
-If your browser reserves the space for a scrollbar (most browsers for Windows do), then you can test it below.
+Se il tuo browser ricava lo spazio per la barra di scorrimento dall'area del contenuto (la maggior parte dei browser per Windows lo fa), allora puoi testarlo qui di seguito.
 
 [iframe src="cssWidthScroll" link border=1]
 
-The element with text has CSS `width:300px`.
+L'elemento con il testo ha una dichiarazione CSS `width:300px`.
 
-On a Desktop Windows OS, Firefox, Chrome, Edge all reserve the space for the scrollbar. But  Firefox shows `300px`, while Chrome and Edge show less. That's because Firefox returns the CSS width and other browsers return the "real" width.
+Sul sistema operativo Windows i browser Firefox, Chrome, Edge ricavano lo spazio per la barra di scorrimento allo stesso modo. Ma Firefox mostra `300px`, mentre Chrome e Edge mostrano un valore minore. Questo perché Firefox restituisce la larghezza CSS e gli altri browser restituiscono la larghezza "reale".
 ```
-
-Please note that the described difference is only about reading `getComputedStyle(...).width` from JavaScript, visually everything is correct.
+Si noti che la discrepanza descritta riguarda solo la lettura di `getComputedStyle(...).width` tramite JavaScript, dal punto di vista visuale non ci sono differenze.
 
 ## Riepilogo
 
@@ -273,4 +272,4 @@ Gli elementi hanno le seguenti proprietà geometriche:
 - `scrollWidth/scrollHeight` -- la larghezza/altezza del contenuto, proprio come `clientWidth/clientHeight`, ma comprende anche la parte di un elemento nascosta e fuori dall'area visibile di scorrimento.
 - `scrollLeft/scrollTop` -- la larghezza/altezza della parte superiore di un elemento fuori dall'area visibile di scorrimento, partendo dal suo angolo in alto a sinistra.
 
-Tutte le proprietà sono in sola lettura tranne `scrollLeft/scrollTop` che che fanno scorrere l'elemento nel browser se modificate.
+Tutte le proprietà sono in sola lettura tranne `scrollLeft/scrollTop` che, se modificate, fanno scorrere l'elemento nel browser.
