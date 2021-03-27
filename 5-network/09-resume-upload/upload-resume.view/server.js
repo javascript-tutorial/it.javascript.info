@@ -19,7 +19,7 @@ function onUpload(req, res) {
 
   // non salveremo "da nessuna parte"
   let filePath = '/dev/null';
-  // invece sarebbe possibile usare un percorso reale, ad esempio
+  // invece potremmo usare un percorso reale, ad esempio
   // let filePath = path.join('/tmp', fileId);
 
   debug("onUpload fileId: ", fileId);
@@ -40,7 +40,7 @@ function onUpload(req, res) {
     });
     debug("New file created: " + filePath);
   } else {
-    // possiamo controllare su disco la dimension del file per sicurezza
+    // possiamo controllare su disco la dimensione del file per sicurezza
     if (upload.bytesReceived != startByte) {
       res.writeHead(400, "Wrong start byte");
       res.end(upload.bytesReceived);
@@ -62,7 +62,7 @@ function onUpload(req, res) {
   // invia il corpo della richiesta al file
   req.pipe(fileStream);
 
-  // quando la richiesta è completata, e tutti i dati sono stati scritti
+  // quando la richiesta è stata completata, e tutti i dati sono stati scritti
   fileStream.on('close', function() {
     if (upload.bytesReceived == req.headers['x-file-size']) {
       debug("Upload finished");

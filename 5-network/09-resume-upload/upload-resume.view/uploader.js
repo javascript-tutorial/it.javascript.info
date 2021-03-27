@@ -5,7 +5,7 @@ class Uploader {
     this.onProgress = onProgress;
 
     // crea un fileId che identifica univocamente il file
-    // potremmo usare l'identificatore di sessione dell'utente (avendone uno) per essere sicuri che sia ancora più unico
+    // potremmo usare l'identificatore di sessione dell'utente (avendone uno) per essere ancora piu' sicuri della sua univocita'
     this.fileId = file.name + '-' + file.size + '-' + file.lastModified;
   }
 
@@ -31,7 +31,7 @@ class Uploader {
     let xhr = this.xhr = new XMLHttpRequest();
     xhr.open("POST", "upload", true);
 
-    // invia il file id, in modo da consentire al serve di conoscere quale file ripristinarea
+    // invia il file id, in modo da consentire al server di conoscere quale file ripristinare
     xhr.setRequestHeader('X-File-Id', this.fileId);
     // invia la posizione del byte dal quale stiamo partendo per il ripristino, in modo da informare il server da dove stiamo ripartendo
     xhr.setRequestHeader('X-Start-Byte', this.startByte);
