@@ -1,16 +1,16 @@
-To get the scrollbar width, we can create an element with the scroll, but without borders and paddings.
+Per ricavare la larghezza della barra di scorrimento, possiamo creare un elemento con scorrimento ma senza bordi e padding.
 
-Then the difference between its full width `offsetWidth` and the inner content area width `clientWidth` will be exactly the scrollbar:
+In quel caso la sottrazione tra la larghezza totale `offsetWidth` e la larghezza dell'area interna del contenuto `clientWidth` equivarrà esattamente alla larghezza della barra di scorrimento:
 
 ```js run
-// create a div with the scroll
+// creiamo un div con scorrimento
 let div = document.createElement('div');
 
 div.style.overflowY = 'scroll';
 div.style.width = '50px';
 div.style.height = '50px';
 
-// must put it in the document, otherwise sizes will be 0
+// dobbiamo inserirlo nel flusso del documento, altrimenti le dimensioni saranno pari a 0
 document.body.append(div);
 let scrollWidth = div.offsetWidth - div.clientWidth;
 
