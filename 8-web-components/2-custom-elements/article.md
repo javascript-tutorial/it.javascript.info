@@ -219,7 +219,7 @@ Quando il parser HTML costruisce il DOM, gli elementi vengono processati uno dop
 
 Ciò porta ad importanti conseguenze per gli elementi personlizzati.
 
-For example, if a custom element tries to access `innerHTML` in `connectedCallback`, it gets nothing:
+Per esempio, se un elemento custom provasse ad accedere all'`innerHTML` al `connectedCallback`, non otterbbe alcunché:
 
 ```html run height=40
 <script>
@@ -239,15 +239,15 @@ customElements.define('user-info', class extends HTMLElement {
 */!*
 ```
 
-If you run it, the `alert` is empty.
+Eseguendolo, `alert` risulterebbe vuoto is empty.
 
-That's exactly because there are no children on that stage, the DOM is unfinished. HTML parser connected the custom element `<user-info>`, and is going to proceed to its children, but just didn't yet.
+Questo è proprio perché non ci sono figli in questa fase ed il DOM è incompleto. Il parser ha collegato l'elemento custom  `<user-info>`, e sta procedendo verso i suoi figli, ma nient'altro.
 
-If we'd like to pass information to custom element, we can use attributes. They are available immediately.
+Se volessimo inviare delle informazioni all'elemnto, potremmo usare gli attributi, che sono subito disponibili.
 
-Or, if we really need the children, we can defer access to them with zero-delay `setTimeout`.
+Oppure, se davvero abbiamo necessità di avere a che fare con i figli, possiamo ritardarne al''accesso, con un `setTimeout` a ritardo zero.
 
-This works:
+Così funziona:
 
 ```html run height=40
 <script>
@@ -267,20 +267,20 @@ customElements.define('user-info', class extends HTMLElement {
 */!*
 ```
 
-Now the `alert` in line `(*)` shows "John", as we run it asynchronously, after the HTML parsing is complete. We can process children if needed and finish the initialization.
+Ora l'alert `alert` alla riga `(*)` mostrerà "John", come se lo eseguissimo in modo asincrono, a parsing HTML completato. Possiamo processare i figli se necesssario e terminare l'iniziolizzazione.
 
-On the other hand, this solution is also not perfect. If nested custom elements also use `setTimeout` to initialize themselves, then they queue up: the outer `setTimeout` triggers first, and then the inner one.
+D'altra parte la soluzione non è perfetta, perchè se anche i figli utilizzassero `setTimeout` per inzializzare sè stessi a loro volta, si metterebbero in coda: a quel punto prima verrebbe eseguito il `setTimeout` esterno, e poi quello interno.
 
-So the outer element finishes the initialization before the inner one.
+E così l'elemento esterno terminerebbe prima di quello interno.
 
-Let's demonstrate that on example:
+Vediamolo con un esempio:
 
 ```html run height=0
 <script>
 customElements.define('user-info', class extends HTMLElement {
   connectedCallback() {
-    alert(`${this.id} connected.`);
-    setTimeout(() => alert(`${this.id} initialized.`));
+    alert(`${this.id} connesso.`);
+    setTimeout(() => alert(`${this.id} inizializzato.`));
   }
 });
 </script>
@@ -292,26 +292,26 @@ customElements.define('user-info', class extends HTMLElement {
 */!*
 ```
 
-Output order:
+Ordine di output:
 
-1. outer connected.
-2. inner connected.
-3. outer initialized.
-4. inner initialized.
+1. esterno connesso.
+2. interno connesso.
+3. esterno inzializzato.
+4. interno inizializzato.
 
-We can clearly see that the outer element finishes initialization `(3)` before the inner one `(4)`.
+Possiamo chiaramente verificar che l'elemento esterno conclude la sua inizializzazione `(3)` prima di quello interno `(4)`.
 
-There's no built-in callback that triggers after nested elements are ready. If needed, we can implement such thing on our own. For instance, inner elements can dispatch events like `initialized`, and outer ones can listen and react on them.
+Non c'è una una callback che si attiva dopo che gli elmenti annidati sono pronti. Se necessario, possiamo implementare queste genere di cose da noi. per esempio, gli elementi interni possono eseguire eventi come `initialized`, e quelli esterni possono mettersi in ascolto e reagire di conseguenza.
 
 ## Customized built-in elements
 
-New elements that we create, such as `<time-formatted>`, don't have any associated semantics. They are unknown to search engines, and accessibility devices can't handle them.
+I nuovi elementi che creiamo, come `<time-formatted>`, non hanno nessuna semantica associata. Sono del tutto sconosciuti a motori di ricerca, e i dispositivi di accessiblità non possono gestirli.
 
-But such things can be important. E.g, a search engine would be interested to know that we actually show a time. And if we're making a special kind of button, why not reuse the existing `<button>` functionality?
+Ma anche queste cose possono essere rilevanti. Ad esempio al motore di ricerca potrebbe importare di conoscere che mostriamo l'orario. E ese stiamo un particolare tipo di pulsante, perché non riutilizzare la funzionalità esistente di  `<button>`?
 
-We can extend and customize built-in HTML elements by inheriting from their classes.
+Possiamo estedere e personalizzare gli elementi HTML built-in ereditando dalle lor classi.
 
-For example, buttons are instances of `HTMLButtonElement`, let's build upon it.
+Per esempio, i pulsanti sono una istanza di `HTMLButtonElement`,  lo quello andiamo a costruirci sopra.
 
 1. Extend `HTMLButtonElement` with our class:
 
