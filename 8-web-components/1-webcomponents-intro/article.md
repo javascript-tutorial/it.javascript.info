@@ -26,7 +26,7 @@ La Stazione Spaziale Internazionale:
 
 ...E questa cosa orbita, mantenendo delle persone in vita nello spazio!
 
-Come vengono creati delle strutture così complesse?
+Come vengono create delle strutture così complesse?
 
 Quali principi possiamo prendere in prestito, per rendere il nostro sviluppo affidabile e scalabile allo stesso modo? O almeno, per quanto possibile, avvicinarci un po'.
 
