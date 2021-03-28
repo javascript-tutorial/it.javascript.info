@@ -111,7 +111,7 @@ xhr.onerror = function() {
 };
 ```
 
-Una volta che il server ha risposto, possiamo ricevere il risultato dentro le seguenti proprietà `xhr`:
+Una volta che il server ha risposto, otteniamo il risultato dentro le seguenti proprietà `xhr`:
 
 `status`
 : HTTP status code (un valore numerico): `200`, `404`, `403` e così via, e può essere `0` in caso di fallimento non HTTP.
