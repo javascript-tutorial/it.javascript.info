@@ -1,12 +1,12 @@
 # Dimensioni dell'elemento e barra di scorrimento
 
-Ci sono molte proprietà JavaScript che ci consentono di leggere informazioni circa la larghezza, l'altezza di un elemento e le altre caratteristiche geometriche.
+Ci sono molte proprietà JavaScript che ci consentono di leggere informazioni circa la larghezza, l'altezza di un elemento e le altre proprietà geometriche.
 
 Spesso ne abbiamo bisogno quando spostiamo o posizioniamo gli elementi in JavaScript.
 
 ## Esempio dimostrativo
 
-Useremo l'elemento indicato a seguire quale esempio di tali proprietà:
+Useremo l'elemento indicato sotto quale esempio di tali proprietà:
 
 ```html no-beautify
 <div id="example">
@@ -32,7 +32,7 @@ L'elemento si presenta così:
 Potete [visualizzare il documento nella sandbox](sandbox:metric).
 
 ```smart header="Prestate attenzione alla barra di scorrimento"
-L'immagine sopra rappresenta il caso più complesso in cui l'elemento ha una barra di scorrimento. Alcuni browser (non tutti) ricavano lo spazio per la barra prendendolo dall'area del contenuto (indicata sopra come "content width").
+L'immagine sopra rappresenta il caso più complesso in cui l'elemento possiede una barra di scorrimento. Alcuni browser (non tutti) ricavano lo spazio per la barra prendendolo dall'area del contenuto (indicata sopra come "content width").
 
 Senza la barra di scorrimento, pertanto, l'area del contenuto sarebbe `300px`, ma se la barra di scorrimento è larga `16px` (la larghezza è variabile in base al dispositivo ed al browser) allora rimane soltanto `300 - 16 = 284px`, ed è questa la misura che dovremmo tenere in considerazione. Ecco perché gli esempi di questo capitolo presumono che ci sia una barra di scorrimento. Senza questa, alcuni calcoli sono più semplici.
 ```
@@ -166,7 +166,7 @@ In assenza di padding, dunque, possiamo usare `clientWidth/clientHeight` per ric
 
 ## scrollWidth/Height
 
-Queste proprietà sono come `clientWidth/clientHeight`, ma includono anche le parti fuori dall'area visibile di scorrimento (non visibili):
+Queste proprietà sono come `clientWidth/clientHeight`, ma includono anche le parti (non visibili) fuori dall'area di scorrimento:
 
 ![](metric-scroll-width-height.svg)
 
@@ -231,7 +231,7 @@ alert( getComputedStyle(elem).width ); // mostra la larghezza CSS per elem
 Perché invece dovremmo usare le proprietà geometriche? Ci sono due ragioni:
 
 1. La prima, le proprietà CSS `width/height` dipendono da un'altra proprietà: `box-sizing` che definisce "cosa siano" la larghezza e l'altezza CSS. Una modifica in `box-sizing` per scopi riguardanti i CSS possono rompere un JavaScript che fa affidamento su questa.
-2. La seconda, le proprietà CSS `width/height` possono valere `auto`, per esempio per un elemento inline:
+2. La seconda, le proprietà CSS `width/height` possono valere `auto`, ad esempio per un elemento inline:
 
     ```html run
     <span id="elem">Hello!</span>
@@ -247,7 +247,7 @@ Perché invece dovremmo usare le proprietà geometriche? Ci sono due ragioni:
 
 Ma c'è un'altra ragione: la barra di scorrimento. Talvolta un codice che funziona bene senza barra di scorrimento, con questa diventa difettoso, perché la barra di scorrimento su alcuni browser ricava il suo spazio dall'area del contenuto. La larghezza effettiva per il contenuto, dunque, è *minore* della larghezza CSS e `clientWidth/clientHeight` ne tengono conto.
 
-...Ma con `getComputedStyle(elem).width` la situazione è differente. Alcuni browser (es. Chrome) restituiscono la larghezza interna effettiva, meno la barra di scorrimento, mentre altri (es. Firefox) la larghezza CSS (ignorando la barra di scorrimento). Queste diversità cross-browser costituiscono il motivo per il quale non usare `getComputedStyle` ma piuttosto fare affidamento sulle proprietà geometriche.
+...Ma con `getComputedStyle(elem).width` la situazione è differente. Alcuni browser (es. Chrome) restituiscono la larghezza interna effettiva, meno la barra di scorrimento, mentre altri (es. Firefox) la larghezza CSS (ignorando la barra di scorrimento). Queste inconsistenze cross-browser costituiscono il motivo per il quale non usare `getComputedStyle` ma piuttosto fare affidamento sulle proprietà geometriche.
 
 ```online
 Se il tuo browser ricava lo spazio per la barra di scorrimento dall'area del contenuto (la maggior parte dei browser per Windows lo fa), allora puoi testarlo qui di seguito.
