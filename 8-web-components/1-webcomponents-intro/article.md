@@ -34,7 +34,7 @@ Quali principi possiamo prendere in prestito, per rendere il nostro sviluppo aff
 
 La ben nota regola per sviluppare del software complesso è: non sviluppare software complesso.
 
-Se qualcosa diventa complesso, dividerlo in parti più semplici e connetterli nel maniera più ovvia.
+Se qualcosa diventa complesso, dividerlo in parti più semplici e connetterli nella maniera più ovvia.
 
 **Un buon architetto è colui che può rendere cose complesse, semplici.**
 
