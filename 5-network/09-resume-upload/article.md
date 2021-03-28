@@ -12,7 +12,7 @@ Per ripristinare un upload, dobbiamo conoscere la quantità di dato trasferito p
 
 Per tenere traccia del progresso di upload possiamo usare `xhr.upload.onprogress`.
 
-Sfortunatamente, quest non ci aiuta nel ripristinare l'upload, dal momento che questo evento viene scatenato solamente quando il dato è stato *inviato*. Ma è stato ricevuto dal server? Il browser non lo sa.
+Sfortunatamente, questo non ci aiuta nel ripristinare l'upload, dal momento che questo evento viene scatenato solamente quando il dato è stato *inviato*. Ma è stato ricevuto dal server? Il browser non lo sa.
 
 Magari potrebbe essere stato bufferizzato da qualche proxy di rete locale, o magari il processo del server remoto è stato terminato e non è più in grado di processarlo, oppure è stato perso nel bel mezzo del trasferimento e non raggiunge il ricevente.
 
