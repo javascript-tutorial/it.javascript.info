@@ -6,7 +6,7 @@ A dispetto del suo nome, contenente il termine "XML", può funzionare con qualun
 
 Tuttavia oggi c'è il più moderno metodo `fetch`, che in qualche modo ha soppiantato `XMLHttpRequest`.
 
-Nello sviluppo web attuale `XMLHttpRequest` viene ancora oggi, utilizzato per tre principali ragioni:
+Nello sviluppo web attuale `XMLHttpRequest` viene utilizzato ancora oggi per tre principali ragioni:
 
 1. Ragioni storiche: per il supporto a agli script già esistenti che fanno ancora uso di `XMLHttpRequest`.
 2. Se abbiamo bisogno di supportare i vecchi browser, e non vogliamo fare uso di polyfills (ad esempio per mantenere gli script snelli).
