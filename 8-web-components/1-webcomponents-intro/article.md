@@ -38,7 +38,7 @@ Se qualcosa diventa complesso, dividerlo in parti più semplici e connetterli ne
 
 **Un buon architetto è colui che può rendere cose complesse, semplici.**
 
-Possiamo dividere visivamente, l'interfaccia utente in componenti: ognuno di essi ha la propria posizione nella pagina, può "fare" un compito ben preciso, ed è separato dagli altri.
+Possiamo dividere visivamente, l'interfaccia utente in componenti: ognuno di essi ha la propria posizione nella pagina, e il suo compito ben preciso, ed è separato dagli altri.
 
 Guardiamo un sito web, per esempio Twitter.
 
