@@ -24,7 +24,7 @@ La Stazione Spaziale Internazionale:
 - I componenti sono molto complessi, e molto più complicati della maggior parte dei siti web.
 - I componenti vengono sviluppati a livello internazionale, da team di paesi differenti, che parlando lingue differenti.
 
-...E questa cosa vola, mantenendo delle persone in vita nello spazio!
+...E questa cosa orbita, mantenendo delle persone in vita nello spazio!
 
 Come vengono creati delle strutture così complesse?
 
