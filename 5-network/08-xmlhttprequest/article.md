@@ -148,7 +148,7 @@ xhr.open('GET', url); // https://google.com/search?q=test+me%21
 Utilizziamo la proprietà `xhr.responseType` per impostare il formato della risposta:
 
 - `""` (default) -- ottenerlo come stringa,
-- `"text"` -- ottiene una stringa,
+- `"text"` -- ottenerlo come stringa,
 - `"arraybuffer"` -- ottenerlo come `ArrayBuffer` (per dati di tipo binario, guardare il capitolo <info:arraybuffer-binary-arrays>),
 - `"blob"` -- ottiene un `Blob` (per dati binari, guardare <info:blob>),
 - `"document"` -- ottenerlo come un documento XML (può usare XPath e altri metodi XML) o un documento HTML (basato sul MIME type del dato ricevuto),
