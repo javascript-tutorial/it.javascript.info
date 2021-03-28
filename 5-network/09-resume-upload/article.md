@@ -4,7 +4,7 @@ Con il metodo `fetch` è abbastanza semplice eseguire l'upload di un file.
 
 Come possiamo ripristinare l'upload di un file dopo avere perso la connessione? Non esistono opzioni built-in per questa operazione, ma abbiamo dei pezzi di codice per implementarlo.
 
-Il ripristino degli upload dovrebbero andare a braccetto con la possibilità di tenerne traccia durante il trasferimento, come ci aspetteremmo per files di grosse dimensioni (se abbiamo bisogno di ripristinare l'operazione). Dal momento che `fetch` non permette di tenere traccia dell'upload, allora dobbiamo rifarci all'uso di [XMLHttpRequest](info:xmlhttprequest).
+Il ripristino degli upload dovrebbe andare a braccetto con la possibilità di tenerne traccia durante il trasferimento, come ci aspetteremmo per files di grosse dimensioni (se abbiamo bisogno di ripristinare l'operazione). Dal momento che `fetch` non permette di tenere traccia dell'upload, allora dobbiamo rifarci all'uso di [XMLHttpRequest](info:xmlhttprequest).
 
 ## Evento di progresso non-così-utile
 
