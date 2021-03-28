@@ -149,7 +149,7 @@ Utilizziamo la proprietà `xhr.responseType` per impostare il formato della risp
 
 - `""` (default) -- ottenerlo come stringa,
 - `"text"` -- ottiene una stringa,
-- `"arraybuffer"` -- ottiene un `ArrayBuffer` (per dati di tipo binario, guardare il capitolo <info:arraybuffer-binary-arrays>),
+- `"arraybuffer"` -- ottenerlo come `ArrayBuffer` (per dati di tipo binario, guardare il capitolo <info:arraybuffer-binary-arrays>),
 - `"blob"` -- ottiene un `Blob` (per dati binari, guardare <info:blob>),
 - `"document"` -- ottiene un documento XML (può usare XPath e altri metodi XML) o un documento HTML (basato sul MIME type del dato ricevuto),
 - `"json"` -- ottiene un JSON (effettua il parsing automaticamente).
