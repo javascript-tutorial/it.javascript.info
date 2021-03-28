@@ -62,7 +62,7 @@ Un componente ha:
 - Stili CSS, da applicare al componente.
 - API: eventi, metodi della classe etc, per poter interagire con altri componenti.
 
-Ancora una volta, il concetto di "componente" nen è niente di speciale.
+Ancora una volta, il concetto di "componente" non è niente di speciale.
 
 Ci sono una serie di frameworks e metodi di sviluppo per costruirli, ognuno con le proprie "fantastiche e super attraenti" caratteristiche. Solitamente, vengono usate classi CSS e convenzioni specifiche per trasmettere la "sensazione di framework", scoping CSS ed incapsulamento del DOM.
 
