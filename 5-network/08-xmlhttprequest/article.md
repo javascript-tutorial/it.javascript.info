@@ -143,7 +143,7 @@ xhr.open('GET', url); // https://google.com/search?q=test+me%21
 
 ````
 
-## Tipo di risposta (Response Type)
+## Response Type
 
 Utilizziamo la proprietà `xhr.responseType` per impostare il formato della risposta:
 
