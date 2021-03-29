@@ -3,7 +3,7 @@
 
 Possiamo creare elementi HTML personalizzati, dichiarati e descritti tramite delle apposite classi, ognuno con i suoi metodi, proprietà, eventi e così via.
 
-Una volta definito un elemento personalizzato, possiamo usarlo al pari qualunque altro elemento HTML built-in.
+Una volta definito un elemento personalizzato, possiamo usarlo al pari di qualunque altro elemento HTML built-in.
 
 Ciò è grandioso, essendo che il dizionario HTML è molto ricco, ma non infinito. Non ci sono `<easy-tabs>`, `<sliding-carousel>`, `<beautiful-upload>`...Ci basti pensare a qualunque altro tag di cui avremmo necessità.
 
