@@ -43,11 +43,11 @@
     let lis = document.getElementsByTagName('li');
 
     for (let li of lis) {
-      // get the count of all <li> below this <li>
+      // il conto di tutti i <li> sotto l'attuale <li>
       let descendantsCount = li.getElementsByTagName('li').length;
       if (!descendantsCount) continue;
 
-      // add directly to the text node (append to the text)
+      // aggiungi direttamente al nodo di testo (appendi al testo)
       li.firstChild.data += ' [' + descendantsCount + ']';
     }
   </script>

@@ -1,10 +1,10 @@
-importance: 5
+importanza: 5
 
 ---
 
 # createTextNode vs innerHTML vs textContent
 
-We have an empty DOM element `elem` and a string `text`.
+Abbiamo `elem`, un elemento DOM vuoto, e una stringa`text`.
 
 Which of these 3 commands will do exactly the same?
 

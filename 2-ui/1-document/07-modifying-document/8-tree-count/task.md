@@ -1,13 +1,13 @@
-importance: 5
+importanza: 5
 
 ---
 
-# Show descendants in a tree
+# Mostra i discendenti dentro a un albero
 
-There's a tree organized as nested `ul/li`.
+C'è un albero organizzato come `ul/li` annidati.
 
-Write the code that adds to each `<li>` the number of its descendants. Skip leaves (nodes without children).
+Scrivi il codice che aggiunge a ogni `<li>` il numero dei suoi discendenti. Salta le foglie (i nodi senza figli).
 
-The result:
+Il risultato:
 
 [iframe border=1 src="solution"]

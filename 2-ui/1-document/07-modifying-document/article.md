@@ -1,14 +1,14 @@
-# Modifying the document
+# Modificare il documento
 
-DOM modification is the key to creating "live" pages.
+La modifica del DOM è la chiave della creazione di pagine "live".
 
-Here we'll see how to create new elements "on the fly" and modify the existing page content.
+Vedremo come creare elementi "al volo" e come modificare il contenuto della pagina già esistente.
 
-## Example: show a message
+## Esempio: mostrare un messaggio
 
-Let's demonstrate using an example. We'll add a message on the page that looks nicer than `alert`.
+Dimostriamolo con un esempio. Aggiungeremo un messaggio alla pagina, più carino di `alert`.
 
-Here's how it will look:
+Sarà così:
 
 ```html autorun height="80"
 <style>
@@ -28,52 +28,52 @@ Here's how it will look:
 */!*
 ```
 
-That was the HTML example. Now let's create the same `div` with JavaScript (assuming that the styles are in the HTML/CSS already).
+Questo era l'esempio con HTML. Ora creiamo lo stesso `div` con JavaScript (presupponendo che lo stile sia già in HTML/CSS).
 
-## Creating an element
+## Creare un elemento
 
-To create DOM nodes, there are two methods:
+Per creare nodi DOM, ci sono due metodi:
 
 `document.createElement(tag)`
-: Creates a new *element node* with the given tag:
+: Crea un nuovo *nodo elemento* con il dato tag:
 
     ```js
     let div = document.createElement('div');
     ```
 
 `document.createTextNode(text)`
-: Creates a new *text node* with the given text:
+  Crea un nuovo *nodo di testo* con il dato testo:
 
     ```js
     let textNode = document.createTextNode('Here I am');
     ```
 
-Most of the time we need to create element nodes, such as the `div` for the message.
+Nella maggior parte dei casi abbiamo bisogno di creare un nodo elemento, come il `div` per il messaggio.
 
-### Creating the message
+### Creare un messaggio
 
-Creating the message div takes 3 steps:
+Creare un messaggio necessita di tre passaggi:
 
 ```js
-// 1. Create <div> element
+// 1. Creare l'elemento <div> 
 let div = document.createElement('div');
 
-// 2. Set its class to "alert"
+// 2. Impostare la sua classe ad "alert"
 div.className = "alert";
 
-// 3. Fill it with the content
+// 3. Riempirlo con il contenuto
 div.innerHTML = "<strong>Hi there!</strong> You've read an important message.";
 ```
 
-We've created the element. But as of now it's only in a variable named `div`, not in the page yet. So we can't see it.
+Abbiamo creato l'elemento, ma al momento è solo una variabile chiamata `div`, non è ancora nella pagina, perciò non possiamo vederlo.
 
-## Insertion methods
+## I metodi d'inserimento
+   
+Per rendere visibile `div`, dobbiamo inserirlo da qualche parte nel `document`. Per esempio dentro all'elemento `body`, referenziato da `document.body`.
 
-To make the `div` show up, we need to insert it somewhere into `document`. For instance, into `<body>` element, referenced by `document.body`.
+C'è un metodo speciale per questo, `append`: `document.body.append(div)`.
 
-There's a special method `append` for that: `document.body.append(div)`.
-
-Here's the full code:
+Qui il codice completo:
 
 ```html run height="80"
 <style>
@@ -97,21 +97,21 @@ Here's the full code:
 </script>
 ```
 
-Here we called `append` on `document.body`, but we can call `append` method on any other element, to put another element into it. For instance, we can append something to `<div>` by calling `div.append(anotherElement)`.
+Qui abbiamo chiamato `append` su `document.body`, ma possiamo chiamare `append` su qualsiasi elemento e mettervi dentro un altro elemento. Ad esempio, possiamo appendere qualcosa a `div` chiamando `div.append(anotherElement)`.
 
-Here are more insertion methods, they specify different places where to insert:
+Ecco altri metodi d'inserimento; specificano i differenti posti dove inserire un elemento:
 
-- `node.append(...nodes or strings)` -- append nodes or strings *at the end* of `node`,
-- `node.prepend(...nodes or strings)` -- insert nodes or strings *at the beginning* of `node`,
-- `node.before(...nodes or strings)` –- insert nodes or strings *before* `node`,
-- `node.after(...nodes or strings)` –- insert nodes or strings *after* `node`,
-- `node.replaceWith(...nodes or strings)` –- replaces `node` with the given nodes or strings.
+- `node.append(...nodi o stringhe)` -- appende nodi o stringhe *alla fine* di `node`,
+- `node.prepend(...nodi o stringhe)` -- inserisce nodi o stringhe *all'inizio* di `node`,
+- `node.before(...nodi o stringhe)` –- inserisce nodi o stringhe *prima* di `node`,
+- `node.after(...nodi o stringhe)` –- inserisce nodi o stringhe *dopo* `node`,
+- `node.replaceWith(...nodi o stringhe)` –- rimpiazza `node` con i nodi o le stringhe passate.
 
-Arguments of these methods are an arbitrary list of DOM nodes to insert, or text strings (that become text nodes automatically).
+Gli argomenti di questi metodi sono liste arbitrarie di nodi DOM da inserire, o stringhe di testo (che diventano automaticamente nodi testo).
 
-Let's see them in action.
+Vediamoli in azione.
 
-Here's an example of using these methods to add items to a list and the text before/after it:
+Ecco un esempio dell'utilizzo di questi metodi per aggiungere elementi a una lista e del testo prima/dopo di essa:
 
 ```html autorun
 <ol id="ol">
@@ -121,24 +121,24 @@ Here's an example of using these methods to add items to a list and the text bef
 </ol>
 
 <script>
-  ol.before('before'); // insert string "before" before <ol>
-  ol.after('after'); // insert string "after" after <ol>
+  ol.before('before'); // inserisce la stringa "before" prima di <ol>
+  ol.after('after'); // inserisce la stringa "after" dopo <ol>
 
   let liFirst = document.createElement('li');
   liFirst.innerHTML = 'prepend';
-  ol.prepend(liFirst); // insert liFirst at the beginning of <ol>
+  ol.prepend(liFirst); // inserisce liFirst all'inizio di <ol>
 
   let liLast = document.createElement('li');
   liLast.innerHTML = 'append';
-  ol.append(liLast); // insert liLast at the end of <ol>
+  ol.append(liLast); // inserisce liLast alla fine di <ol>
 </script>
 ```
 
-Here's a visual picture of what the methods do:
+Ecco uno schema visivo di cosa fanno questi metodi:
 
 ![](before-prepend-append-after.svg)
 
-So the final list will be:
+La lista finale sarà:
 
 ```html
 before
@@ -152,9 +152,9 @@ before
 after
 ```
 
-As said, these methods can insert multiple nodes and text pieces in a single call.
+Come già detto, questi metodi possono inserire nodi multipli e pezzi di testo in una singola chiamata.
 
-For instance, here a string and an element are inserted:
+Ad esempio, qui vengono inseriti una stringa e un elemento:
 
 ```html run
 <div id="div"></div>
@@ -163,9 +163,9 @@ For instance, here a string and an element are inserted:
 </script>
 ```
 
-Please note: the text is inserted "as text", not "as HTML", with proper escaping of characters such as `<`, `>`.
+Nota: il testo viene inserito "come testo", non "come HTML", con i dovugti ecape per caratteri come `<` o `>`.
 
-So the final HTML is:
+Quindi l'HTML finale sarà:
 
 ```html run
 *!*
@@ -175,26 +175,27 @@ So the final HTML is:
 <div id="div"></div>
 ```
 
-In other words, strings are inserted in a safe way, like `elem.textContent` does it.
+In altre parole, le stringhe sono inserite in sicurezza, come con `elem.textContent`.
 
-So, these methods can only be used to insert DOM nodes or text pieces.
+Quindi, questi metodi possono essere usati solo per inserire nodi o pezzi di testo.
 
-But what if we'd like to insert an HTML string "as html", with all tags and stuff working, in the same manner as `elem.innerHTML` does it?
+E se volessimo inserire stringhe HTML "come HTML", con tutti i tag e le altre funzionalità, come con `elem.innerHTML`?
 
 ## insertAdjacentHTML/Text/Element
 
-For that we can use another, pretty versatile method: `elem.insertAdjacentHTML(where, html)`.
+Per questo abbiamo un altro metodo, molto versatile: `elem.insertAdjacentHTML(where, html)`.
 
-The first parameter is a code word, specifying where to insert relative to `elem`. Must be one of the following:
 
-- `"beforebegin"` -- insert `html` immediately before `elem`,
-- `"afterbegin"` -- insert `html` into `elem`, at the beginning,
-- `"beforeend"` -- insert `html` into `elem`, at the end,
-- `"afterend"` -- insert `html` immediately after `elem`.
+Il primo parametro è una parola-codice che specifica dove inserire in relazione a `elem`. Deve essere una delle seguenti
 
-The second parameter is an HTML string, that is inserted "as HTML".
+- `"beforebegin"` -- inserisce `html` immediatamente prima di `elem`,
+- `"afterbegin"` -- inserisce `html` dentro `elem`, all'inizio,
+- `"beforeend"` -- inserisce `html` dentro `elem`, alla fine,
+- `"afterend"` -- inserisce `html` immediatamente dopo `elem`.
 
-For instance:
+Il secondo parametro è una stringa HTML, che viene inserita "come HTML"
+
+Ad esempio:
 
 ```html run
 <div id="div"></div>
@@ -204,7 +205,7 @@ For instance:
 </script>
 ```
 
-...Would lead to:
+...Porterebbe a:
 
 ```html run
 <p>Hello</p>
@@ -212,22 +213,22 @@ For instance:
 <p>Bye</p>
 ```
 
-That's how we can append arbitrary HTML to the page.
+Così possiamo appendere HTML alla pagina.
 
-Here's the picture of insertion variants:
+Qui un'immagine delle varianti d'inserimento:
 
 ![](insert-adjacent.svg)
 
-We can easily notice similarities between this and the previous picture. The insertion points are actually the same, but this method inserts HTML.
+Possiamo facilmente notare similarità tra questa immagine e le precedenti. I punti di inserimento sono gli stessi, ma questo metodo inserisce HTML. 
 
-The method has two brothers:
+Il metodo ha due fratelli:
 
-- `elem.insertAdjacentText(where, text)` -- the same syntax, but a string of `text` is inserted "as text" instead of HTML,
-- `elem.insertAdjacentElement(where, elem)` -- the same syntax, but inserts an element.
+- `elem.insertAdjacentText(where, text)` -- la stessa sintassi, ma una stringa `text` viene inserita "come testo" invece che come HTML,
+- `elem.insertAdjacentElement(where, elem)` -- la stessa sintassi, ma inserisce un elemento.
 
-They exist mainly to make the syntax "uniform". In practice, only `insertAdjacentHTML` is used most of the time. Because for elements and text, we have methods `append/prepend/before/after` -- they are shorter to write and can insert nodes/text pieces.
+Questi metodi esistono per rendere la sintassi "uniforme". Nella pratica, nella maggioranza dei casi solo `insertAdjacentHTML` viene utilizzato, perché per elementi e testo abbiamo i metodi `append/prepend/before/after`; questi sono più brevi da scrivere e possono inserire nodi/pezzi di testo.
 
-So here's an alternative variant of showing a message:
+Ecco un variante alternativa per mostrare un messaggio:
 
 ```html run
 <style>
@@ -247,11 +248,11 @@ So here's an alternative variant of showing a message:
 </script>
 ```
 
-## Node removal
+## Rimozione di nodi
 
-To remove a node, there's a method `node.remove()`.
+Per rimuovere un nodo, c'è il metodo `node.remove()`.
 
-Let's make our message disappear after a second:
+Facciamo sparire il nostro messaggio dopo un secondo:
 
 ```html run untrusted
 <style>
@@ -276,32 +277,32 @@ Let's make our message disappear after a second:
 </script>
 ```
 
-Please note: if we want to *move* an element to another place -- there's no need to remove it from the old one.
+Nota: se vogliamo *muovere* un elemento in un altro posto, non c'è bisogno di rimuoverlo dal vecchio. 
 
-**All insertion methods automatically remove the node from the old place.**
+**Tutti i metodi d'inserimento rimuovono automaticamente i nodi dal vecchio posto.**
 
-For instance, let's swap elements:
+Ad esempio, scambiamo degli elementi:
 
 ```html run height=50
 <div id="first">First</div>
 <div id="second">Second</div>
 <script>
-  // no need to call remove
-  second.after(first); // take #second and after it insert #first
+  // nessun bisogno di chiamare remove
+  second.after(first); // prende #second e inserisce #first dopo
 </script>
 ```
 
-## Cloning nodes: cloneNode
+## Clonare nodi: cloneNode
 
-How to insert one more similar message?
+Come inserire uno o più messaggi simili? 
 
-We could make a function and put the code there. But the alternative way would be to *clone* the existing `div` and modify the text inside it (if needed).
+Potremmo scrivere una funzione a mettervi dentro il codice. Ma l'alternativa sarebbe *clonare* il `div` esistente e modificare il testo dentro (se necessario).
 
-Sometimes when we have a big element, that may be faster and simpler.
+Qualche volta, quando abbiamo un grosso elemento, questo potrebbe rivelarsi più facile e veloce.
 
-- The call `elem.cloneNode(true)` creates a "deep" clone of the element -- with all attributes and subelements. If we call `elem.cloneNode(false)`, then the clone is made without child elements.
+La chiamata a `elem.cloneNode(true)` crea un clone "profondo" dell'elemento, con tutti gli attributi e i sub-elementi. Se chiamiamo `elem.cloneNode(false)`, l'elemento viene clonato senza i suoi elementi figlio.
 
-An example of copying the message:
+Un esempio copiando un messaggio:
 
 ```html run height="120"
 <style>
@@ -320,21 +321,21 @@ An example of copying the message:
 
 <script>
 *!*
-  let div2 = div.cloneNode(true); // clone the message
-  div2.querySelector('strong').innerHTML = 'Bye there!'; // change the clone
+  let div2 = div.cloneNode(true); // clona il messaggio
+  div2.querySelector('strong').innerHTML = 'Bye there!'; // modifica il clone
 
-  div.after(div2); // show the clone after the existing div
+  div.after(div2); // mostra il clone dopo il div esistente
 */!*
 </script>
 ```
 
 ## DocumentFragment [#document-fragment]
 
-`DocumentFragment` is a special DOM node that serves as a wrapper to pass around lists of nodes.
+`DocumentFragment` è uno speciale nodo DOM che serve come wrapper a liste di nodi.
 
-We can append other nodes to it, but when we insert it somewhere, then its content is inserted instead.
+Possiamo appendervi altri nodi, ma quando viene inserito da qualche parte, viene sostituito con il suo contenuto. 
 
-For example, `getListContent` below generates a fragment with `<li>` items, that are later inserted into `<ul>`:
+Nell'esempio sotto, `getListContent` genera un frammento con elementi `<li>`, che dopo vengono inseriti in `<ul>`.
 
 ```html run
 <ul id="ul"></ul>
@@ -358,8 +359,8 @@ ul.append(getListContent()); // (*)
 </script>
 ```
 
-Please note, at the last line `(*)` we append `DocumentFragment`, but it "blends in", so the resulting structure will be:
-
+Nota, nell'ultima riga `(*)` appendiamo `DocumentFragment`, ma questo viene
+"sciolto", e la risultante struttura sarà:
 ```html
 <ul>
   <li>1</li>
@@ -368,7 +369,7 @@ Please note, at the last line `(*)` we append `DocumentFragment`, but it "blends
 </ul>
 ```
 
-`DocumentFragment` is rarely used explicitly. Why append to a special kind of node, if we can return an array of nodes instead? Rewritten example:
+`DocumentFragment` è raramente utilizzato esplicitamente. Perché appendere elementi a un nodo speciale quando possiamo invece ritornare un array di nodi? Riscriviamo l'esempio:
 
 ```html run
 <ul id="ul"></ul>
@@ -392,22 +393,23 @@ ul.append(...getListContent()); // append + "..." operator = friends!
 </script>
 ```
 
-We mention `DocumentFragment` mainly because there are some concepts on top of it, like [template](info:template-element) element, that we'll cover much later.
+Menzioniamo `DocumentFragment` principalmente perché vi sono alcuni concetti che vi si basano, come un elemento [template](info:template-element), che vedremo molto più avanti. 
 
-## Old-school insert/remove methods
+## Metodi vecchia scuola di inserimento/rimozione 
 
 [old]
 
-There are also "old school" DOM manipulation methods, existing for historical reasons.
+Vi sono dei metodi di manipolazione del DOM "vecchia scuola", che esistono per motivi storici. 
 
-These methods come from really ancient times. Nowadays, there's no reason to use them, as modern methods, such as `append`, `prepend`, `before`, `after`, `remove`, `replaceWith`, are more flexible.
+Questi metodi vengono dai vecchi tempi. Oggi non c'è ragione per utilizzarli, giacché i metodi moderni come `append`, `prepend`, `before`, `after`, `remove`, `replaceWith`, sono più flessibili. 
 
-The only reason we list these methods here is that you can find them in many old scripts:
+L'unica ragione per cui li elenchiamo è che possiamo ancora trovarli in molti vecchi script:
 
 `parentElem.appendChild(node)`
-: Appends `node` as the last child of `parentElem`.
+: Appende `node` come ultimo figlio di `parentElem`.
+  
 
-    The following example adds a new `<li>` to the end of `<ol>`:
+    Il seguente esempio aggiunge un nuovo `<li>` alla fine di `<ol>`:
 
     ```html run height=100
     <ol id="list">
@@ -425,9 +427,9 @@ The only reason we list these methods here is that you can find them in many old
     ```
 
 `parentElem.insertBefore(node, nextSibling)`
-: Inserts `node` before `nextSibling` into `parentElem`.
+: Inserisce `node`, prima di `nextSibling`, dentro `parentElem`.
 
-    The following code inserts a new list item before the second `<li>`:
+    Il codice seguente inserisce una nuova lista di elementi prima del secondo `<li>`:
 
     ```html run height=100
     <ol id="list">
@@ -444,19 +446,19 @@ The only reason we list these methods here is that you can find them in many old
     */!*
     </script>
     ```
-    To insert `newLi` as the first element, we can do it like this:
+    Per inserire `newLi` come primo elemento, possiamo fare così:
 
     ```js
     list.insertBefore(newLi, list.firstChild);
     ```
 
 `parentElem.replaceChild(node, oldChild)`
-: Replaces `oldChild` with `node` among children of `parentElem`.
+: Rimpiazza `oldChild` con `node` tra i figli di `parentElem`.
 
 `parentElem.removeChild(node)`
-: Removes `node` from `parentElem` (assuming `node` is its child).
+: Rimuove `node` da `parentElem` (presupponendo che `node` sia suo figlio).
 
-    The following example removes first `<li>` from `<ol>`:
+    Il seguente esempio rimuove il primo `<li>` da `<ol>`:
 
     ```html run height=100
     <ol id="list">
@@ -471,13 +473,13 @@ The only reason we list these methods here is that you can find them in many old
     </script>
     ```
 
-All these methods return the inserted/removed node. In other words, `parentElem.appendChild(node)` returns `node`. But usually the returned value is not used, we just run the method.
+Tutti questi metodi ritornano i nodi inseriti/rimossi. In altre parole, `parentElem.appendChild(node)` ritorna `node`. Ma solitamente il valore ritornato non viene utilizzato, è il metodo che ci interessa.
 
-## A word about "document.write"
+## Una parola su "document.write"
 
-There's one more, very ancient method of adding something to a web-page: `document.write`.
+C'è un altro metodo, molto vecchio, per aggiungere qualcosa a una pagina web:  `document.write`.
 
-The syntax:
+La sintassi:
 
 ```html run
 <p>Somewhere in the page...</p>
@@ -489,73 +491,73 @@ The syntax:
 <p>The end</p>
 ```
 
-The call to `document.write(html)` writes the `html` into page "right here and now". The `html` string can be dynamically generated, so it's kind of flexible. We can use JavaScript to create a full-fledged webpage and write it.
+La chiamata a `document.write(html)` scrive `html` nella pagina "all'istante". La stringa `html` può essere dinamicamente generata, quindi in un certo senso è flessibile. Possiamo utilizzare JavaScript per creare una pagina web completa e per scrivervi. 
 
-The method comes from times when there was no DOM, no standards... Really old times. It still lives, because there are scripts using it.
+Il metodo viene dai tempi in cui non c'era un DOM, nessun standart... Tempi molto vecchi. E' ancora vivo perché vi sono script che lo utilizzano. 
 
-In modern scripts we can rarely see it, because of the following important limitation:
+Negli script moderni possiamo trovarlo raramente a causa della seguente importante limitazione:
 
-**The call to `document.write` only works while the page is loading.**
+**La chiamata a `document.write` funziona solo mentre la pagina sta caricando.**
+  
+Se lo chiamiamo dopo, il contenuto esistente del documento viene cancellato.
 
-If we call it afterwards, the existing document content is erased.
-
-For instance:
+Ad esempio:
 
 ```html run
 <p>After one second the contents of this page will be replaced...</p>
 *!*
 <script>
-  // document.write after 1 second
-  // that's after the page loaded, so it erases the existing content
+  // document.write dopo 1 secondo
+  // questo dopo che la pagina ha caricato, quindi il contenuto esistente viene cancellato
   setTimeout(() => document.write('<b>...By this.</b>'), 1000);
 </script>
 */!*
 ```
 
-So it's kind of unusable at "after loaded" stage, unlike other DOM methods we covered above.
+Perciò è inutilizzabile dopo il caricamento della pagina, a differenza dei metodi del DOM che abbiamo visto sopra. 
 
-That's the downside.
+Questo è il lato negativo.
 
-There's an upside also. Technically, when `document.write` is called while the browser is reading ("parsing") incoming HTML, and it writes something, the browser consumes it just as if it were initially there, in the HTML text.
+Ma c'è anche un lato positivo. Tecnicamente, quando `document.write` viene chiamato mentre il browser sta leggendo ("analizzando") l'HTML, e vi scrive qualcosa, il browser tratta quel contenuto come se fosse stato dal principio nel testo HTML.
 
-So it works blazingly fast, because there's *no DOM modification* involved. It writes directly into the page text, while the DOM is not yet built.
+Quindi lavora molto velocemente, perché *non viene modificato il DOM*. Scrive direttamente nel testo della pagina, quando il DOM non è ancora stato costruito.
 
-So if we need to add a lot of text into HTML dynamically, and we're at page loading phase, and the speed matters, it may help. But in practice these requirements rarely come together. And usually we can see this method in scripts just because they are old.
+Perciò se abbiamo bisogno di aggiungere dinamicamente molto testo all'HTML, siamo in fase di caricamento della pagina e la velocità conta, potrebbe essere utile. Ma in pratica questo capita raramente. Di solito troviamo questo metodo in uno script solo perché è vecchio. 
 
-## Summary
+## Riepilogo
 
-- Methods to create new nodes:
-    - `document.createElement(tag)` -- creates an element with the given tag,
-    - `document.createTextNode(value)` -- creates a text node (rarely used),
-    - `elem.cloneNode(deep)` -- clones the element, if `deep==true` then with all descendants.  
+  Metodi per creare nuovi nodi:
+    - `document.createElement(tag)` -- crea un elemento con il dato tag,
+    - `document.createTextNode(value)` -- crea un nodo di testo (raramente utilizzato),
+    - `elem.cloneNode(deep)` -- clona un elemento, se `deep==true` include tutti i discendenti.
 
-- Insertion and removal:
-    - `node.append(...nodes or strings)` -- insert into `node`, at the end,
-    - `node.prepend(...nodes or strings)` -- insert into `node`, at the beginning,
-    - `node.before(...nodes or strings)` –- insert right before `node`,
-    - `node.after(...nodes or strings)` –- insert right after `node`,
-    - `node.replaceWith(...nodes or strings)` –- replace `node`.
-    - `node.remove()` –- remove the `node`.
+- Inserzione e rimozione:
+    - `node.append(...nodi o stringhe)` -- inserisce dentro `node`, alla fine,
+    - `node.prepend(...nodi o stringhe)` -- inserisce dentro `node`, all'inizio,
+    - `node.before(...nodi o stringhe)` –- inserisce subito prima di `node`,
+    - `node.after(...nodi o stringhe)` –- inserisce subito dopo `node`,
+    - `node.replaceWith(...nodi o stringhe)` –- rimpiazza `node`.
+    - `node.remove()` –- rimuove `node`.
 
-    Text strings are inserted "as text".
+    Le stringhe di testo vengono iserite "come testo".
 
-- There are also "old school" methods:
+- Ci sono anche metodi "vecchia scuola":
     - `parent.appendChild(node)`
     - `parent.insertBefore(node, nextSibling)`
     - `parent.removeChild(node)`
     - `parent.replaceChild(newElem, node)`
 
-    All these methods return `node`.
+    Tutti questi metodi ritornano `node`.
 
-- Given some HTML in `html`, `elem.insertAdjacentHTML(where, html)` inserts it depending on the value of `where`:
-    - `"beforebegin"` -- insert `html` right before `elem`,
-    - `"afterbegin"` -- insert `html` into `elem`, at the beginning,
-    - `"beforeend"` -- insert `html` into `elem`, at the end,
-    - `"afterend"` -- insert `html` right after `elem`.
+- Data HTML come `html`, `elem.insertAdjacentHTML(where, html)` inserisce in base al valore di `where`:
+    - `"beforebegin"` -- inserisce `html` subito prima di `elem`,
+    - `"afterbegin"` -- inserisce `html` in `elem`, all'inizio,
+    - `"beforeend"` -- inserisce `html` in `elem`, alla fine,
+    - `"afterend"` -- inserisce `html` subito dopo `elem`.
 
-    Also there are similar methods, `elem.insertAdjacentText` and `elem.insertAdjacentElement`, that insert text strings and elements, but they are rarely used.
+    Ci sono altri metodi simili, `elem.insertAdjacentText` e `elem.insertAdjacentElement`, che inseriscono stringhe di testo ed elementi, ma vengono raramente utilizzati.
 
-- To append HTML to the page before it has finished loading:
+- Per appendere HTML a una pagina prima che questa carichi:
     - `document.write(html)`
 
-    After the page is loaded such a call erases the document. Mostly seen in old scripts.
+    Dopo che la pagina ha caricato la sua chiamata cancella il contenuto della pagina. Si trova principalmente in vecchi script. 

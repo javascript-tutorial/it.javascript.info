@@ -1,4 +1,4 @@
-The solution is short, yet may look a bit tricky, so here I provide it with extensive comments:
+La soluzione è breve, ma potrebbe sembrare difficile, quindi la commenteremo in dettaglio:
 
 ```js
 let sortedRows = Array.from(table.tBodies[0].rows) // 1
@@ -7,12 +7,12 @@ let sortedRows = Array.from(table.tBodies[0].rows) // 1
 table.tBodies[0].append(...sortedRows); // (3)
 ```
 
-The step-by-step algorthm:
+L'algoritmo passo per passo:
 
-1. Get all `<tr>`, from `<tbody>`.
-2. Then sort them comparing by the content of the first `<td>` (the name field).
-3. Now insert nodes in the right order by `.append(...sortedRows)`.
+1. Trova tutti i `<tr>` dentro `<tbody>`. 
+2. Ordinali comparando il contenuto del primo `<td>` (il campo con il nome).
+3. Ora inserisci i nodi nel giusto ordine con `.append(...sortedRows)`.
 
-We don't have to remove row elements, just "re-insert", they leave the old place automatically.
+Non dobbiamo rimuovere gli elementi della fila, solo "re-inserirli", lasciano automaticamente il vecchio posto.
 
-P.S. In our case, there's an explicit `<tbody>` in the table, but even if HTML table doesn't have `<tbody>`, the DOM structure always has it.
+P.S. Nel nostro caso c'è un esplicito `<tbody>` nella tabella; ma se anche non vi fosse, la struttura DOM lo include sempre e comunque. 

@@ -1,9 +1,9 @@
-The HTML in the task is incorrect. That's the reason of the odd thing.
+L'HTML nella task è incorretta. Questa è la ragione della stranezza.
 
-The browser has to fix it automatically. But there may be no text inside the `<table>`: according to the spec only table-specific tags are allowed. So the browser adds `"aaa"` *before* the `<table>`.
+Il browser deve sistemarla automaticamente. Ma non vi può essere testo dentro a `<table>`: secondo la specifica, solo gli specifici tag per le tabelle sono permessi. Perciò il browser aggiunge `"aaa"` *prima* di `<table>`.
 
-Now it's obvious that when we remove the table, it remains.
+Ora è ovvio perché, rimuovendo la tabella, il testo rimane.
 
-The question can be easily answered by exploring the DOM using the browser tools. It shows `"aaa"` before the `<table>`.
+La domanda può facilmente trovare risposta esplorando il DOM con gli strumenti del browser. Mostra `"aaa"` prima di `<table>`.
 
-The HTML standard specifies in detail how to process bad HTML, and such behavior of the browser is correct.
+Lo standart HTML specifica in dettaglio come processare cattivo HTML, e questo comportamento del browser è corretto. 

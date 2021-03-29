@@ -1,10 +1,10 @@
-importance: 5
+importanza: 5
 
 ---
 
-# Insert the HTML in the list
+# Inserisci l'HTML nella lista
 
-Write the code to insert `<li>2</li><li>3</li>` between two `<li>` here:
+Scrivi il codice per inserire `<li>2</li><li>3</li>` tra i due `<li>` sotto:
 
 ```html
 <ul id="ul">
