@@ -4,24 +4,24 @@ Come scoprire la larghezza e l'altezza della finestra del browser? Come ricavare
 
 Per questo genere di informazioni possiamo utilizzare l'elemento radice del documento `document.documentElement`, che corrisponde al tag `<html>`. Ci sono, tuttavia, ulteriori metodi e peculiarità da considerare.
 
-## Width/height of the window
+## Larghezza e altezza della finestra
 
-To get window width and height, we can use the `clientWidth/clientHeight` of `document.documentElement`:
+Per ottenere la larghezza e l'altezza della finestra, possiamo far uso delle proprietà `clientWidth/clientHeight` di `document.documentElement`:
 
 ![](document-client-width-height.svg)
 
 ```online
-For instance, this button shows the height of your window:
+Ad esempio questo pulsante mostra l'altezza della tua finestra:
 
 <button onclick="alert(document.documentElement.clientHeight)">alert(document.documentElement.clientHeight)</button>
 ```
 
-````warn header="Not `window.innerWidth/innerHeight`"
-Browsers also support properties like `window.innerWidth/innerHeight`. They look like what we want, so why not to use them instead?
+````warn header="Non usare `window.innerWidth/innerHeight`"
+I browser supportano inoltre proprietà come `window.innerWidth/innerHeight`. Sembra che facciano al nostro caso, quindi perché non usare queste?
 
-If there exists a scrollbar, and it occupies some space, `clientWidth/clientHeight` provide the width/height without it (subtract it). In other words, they return the width/height of the visible part of the document, available for the content.
+Se esiste una barra di scorrimento ed occupa uno spazio, `clientWidth/clientHeight` forniscono la larghezza e l'altezza al netto della barra (la sottraggono). In altre parole restituiscono le dimensioni della parte visibile del documento disponibile per il contenuto.
 
-`window.innerWidth/innerHeight` includes the scrollbar.
+`window.innerWidth/innerHeight` includono la barra di scorrimento.
 
 If there's a scrollbar, and it occupies some space, then these two lines show different values:
 ```js run
