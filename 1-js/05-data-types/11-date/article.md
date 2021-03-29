@@ -217,7 +217,7 @@ Quando un oggetto `Date` viene convertito a numero, diventa un the timestamp com
 
 ```js run
 let date = new Date();
-alert(+date); // il numero di milliseconi, uguale a date.getTime()
+alert(+date); // il numero di millisecondi, uguale a date.getTime()
 ```
 
 Un importante effetto collaterale: le date possono essere sottratte; il risultato è la loro differenza in millisecondi.
@@ -352,7 +352,7 @@ let time1 = 0;
 let time2 = 0;
 
 *!*
-// esegui bench(upperSlice) e bench(upperLoop) 10 volte a ritmo alternato
+// esegue alternativamente bench(diffSubtract) e bench(diffGetTime) per 10 volte
 for (let i = 0; i < 10; i++) {
   time1 += bench(diffSubtract);
   time2 += bench(diffGetTime);

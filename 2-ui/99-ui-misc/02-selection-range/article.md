@@ -22,18 +22,46 @@ let range = new Range();
 ```
 Possiamo quindi impostare i limiti della nostra selezione usando `range.setStart(node, offset)` e `range.setEnd(node, offset)`.
 
-Il primo argomento `node` può essere un nodo di tipo testuale o di tipo elemento. Il significato del secondo, invece, dipende dal primo:
+Come puoi immaginare, più avanti useremo gli oggetti `Range` per la selezione, ma prima proviamo a creare alcuni di questi oggetti.
 
-- Se `node` è testuale, `offset` sarà la posizione nel testo.
-- Se `node` è un elemento, `offset` sarà la posizione del nodo figlio.
+### Selezione parziale del testo
 
-Per esempio, creiamo un range in questo frammento:
+la cosa interessante è che il primo argomento `node` in entrambi i metodi, può essere sia uno nodo di testo che uno nodo-elemento, ed l'interpretazione del secondo elemento dipende da questo.
+
+**Se `node` è un nodo di testo, allora `offset` deve essere la posizione nel testo.**
+
+Ad esempio, dato l'elemento `<p>Hello</p>`, possiamo creare il range contenente le lettere "ll" nel seguente modo:
+
+```html run
+<p id="p">Hello</p>
+<script>
+  let range = new Range();
+  range.setStart(p.firstChild, 2);
+  range.setEnd(p.firstChild, 4);
+  
+  // toString di un range, restituisce il suo contenuto come testo
+  console.log(range); // ll
+</script>
+```
+
+Qui prendiamo il primo elemento figlio di `<p>` (che è il nodo di testo) e specifichiamo la posizione del testo al suo interno:
+
+![](range-hello-1.svg)
+
+### Selezione nei nodi elemento
+
+**In alternativa, se `node` è un nodo elemento, allora `offset` deve essere il numero dell'elemento figlio.** 
+
+Questo è  utile per creare selezioni che contengono nodi completi, senza limitarsi al solo testo contenuto.
+
+Ad esempio, qui abbiamo una parte di un documento più complesso:
+
 
 ```html autorun
 <p id="p">Example: <i>italic</i> and <b>bold</b></p>
 ```
 
-Ecco la struttura del DOM:
+Ecco la struttura del DOM con sia nodi testo che nodi elemento:
 
 <div class="select-p-domtree"></div>
 
@@ -71,14 +99,15 @@ let selectPDomtree = {
 drawHtmlTree(selectPDomtree, 'div.select-p-domtree', 690, 320);
 </script>
 
-Creaiamo un range per `"Example: <i>italic</i>"`.
+Creiamo un range per `"Example: <i>italic</i>"`.
 
-Come possiamo vedere, questa frase è composta esattamente dal primo e dal secondo figlio di `<p>`:
+Come possiamo vedere, questa frase è composta esattamente dal primo e dal secondo figlio di `<p>`, con indici `0` e `1`:
 
 ![](range-example-p-0-1.svg)
 
-- L'inizio contiene `<p>` come `nodo` genitore, e `0` come offset.
-- La fine contiene anch'esso `<p>` come `nodo` genitore, ma `2` come offset (specifica il range fino a `offset`, ma senza includerlo).
+- L'inizio contiene `<p>` come `nodo` genitore, e `0` come offset. Quindi possiamo impostarlo con `range.setStart(p, 0)`.
+
+- La fine contiene anch'essa `<p>` come `nodo` genitore, ma `2` come offset (specifica il range fino a `offset`, ma senza includerlo). Quindi possiamo impostarlo con `range.setEnd(p, 2)`.
 
 Eseguendo la demo potrai vedere il testo che viene selezionato:
 
@@ -101,7 +130,7 @@ Eseguendo la demo potrai vedere il testo che viene selezionato:
 </script>
 ```
 
-Ecco un banco di prova più flessibile, dove provare più varianti:
+Ecco esempio più flessibile, dove provare più varianti:
 
 ```html run autorun
 <p id="p">Example: <i>italic</i> and <b>bold</b></p>
@@ -117,28 +146,28 @@ From <input id="start" type="number" value=1> – To <input id="end" type="numbe
     range.setEnd(p, end.value);
   */!*
 
-    // applica la selezione, spiegato in seguito
+    // applica la selezione, verrà spiegato in seguito
     document.getSelection().removeAllRanges();
     document.getSelection().addRange(range);
   };
 </script>
 ```
 
-Ad esempio selezionando all'interno della stesso `<p>` da offset `1` a `4` restituisce il range `<i>italic</i> and <b>bold</b>`:
+Ad esempio, la selezione all'interno della stesso `<p>` da offset `1` a `4`, ci restituisce il range `<i>italic</i> and <b>bold</b>`:
 
 ![](range-example-p-1-3.svg)
 
+```smart header="Il nodo iniziale può essere differente da quello finale"
 Non dobbiamo necessariamente usare lo stesso nodo in `setStart` e `setEnd`. Un range può spaziare attraverso un serie di nodi non necessariamente correlati. La sola cosa che importa è che la fine sia effettivamente dopo l'inizio.
+```
 
-### Selezionare porzioni di nodi testuali
+### Selezionare porzioni più estese
 
+Creiamo una selezione più estesa a partire dal nostro esempio, in questo modo:
 
 ![](range-example-p-2-b-3.svg)
 
-Selezioniamo parzialmente il testo, come nell'esempio:
-![](range-example-p-2-b-3.svg)
-
-Possiamo fare anche questo, abbiamo solo bisogno di impostare l'inizio e la fine come offset relativo nei nodi testuali.
+Sappiamo già come farlo. Abbiamo solo bisogno di impostare l'inizio e la fine come offset relativo nei nodi testuali.
 
 Dobbiamo creare un range che:
 - cominci dalla posizione 2 in `<p>` primo figlio (prendendo tutto tranne le prime due lettere di "Ex<b>ample:</b> ")
@@ -160,8 +189,14 @@ Dobbiamo creare un range che:
 </script>
 ```
 
+Come puoi vedere, è abbastanza facile creare una selezione di qualsiasi cosa ci serva.
 
-L'oggetto Range ha le seguenti proprietà:
+Se vogliamo selezionare nodi completi, possiamo passare gli elementi in `setStart / setEnd`. Altrimenti, possiamo lavorare a livello di testo.
+
+## proprietà di range
+
+L'oggetto range che abbiamo creato nell'esempio ha le seguenti proprietà:
+
 ![](range-example-p-2-b-3-range.svg)
 
 - `startContainer`, `startOffset` -- nodo e offset di inizio,
@@ -173,31 +208,36 @@ L'oggetto Range ha le seguenti proprietà:
 - `commonAncestorContainer` -- il più vicino genitore tra tutti i nodi all'interno del range,
   - nell'esempio sopra: `<p>`
 
-## Metodi di Range
+## Metodi di range
 
-Ci sono una serie di metodi convenienti per manipolare i range.
+Ci sono una serie di metodi utili per manipolare i range.
 
-Imposta l'inizio del range:
+Abbiamo già visto `setStart` e `setEnd`, di seguito alcuni metodi utili agli stessi scopi.
+
+Impostare l'inizio del range:
 
 - `setStart(node, offset)` imposta l'inizio: alla posizione `offset` del `node`
 - `setStartBefore(node)` imposta l'inizio: appena prima di `node`
 - `setStartAfter(node)` imposta l'inizio: appena dopo di `node`
 
-Imposta la fine del range (metodi simili):
+Impostare la fine del range (metodi simili):
 
 - `setEnd(node, offset)` imposta la fine: alla posizione `offset` nel `node`
 - `setEndBefore(node)` imposta la fine: appena prima di `node`
 - `setEndAfter(node)` imposta la fine: appena dopo `node`
 
-**Come visto, `node` può essere sia un nodo testuale che un nodo elemento: per i nodi testuali `offset` salta un equivalente numero di caratteri, mentre per i nodi elemento salta altrettanti nodi figlio.**
+Tecnicamente, `setStart/setEnd` può fare tutto, ma più metodi possono rivelarsi utili.
+Come visto, `node` può essere sia un nodo testuale che un nodo elemento: per i nodi testuali `offset` salta il numero di caratteri specificato, mentre per i nodi elemento salta i nodi figlio specificati.
 
-Altri metodi:
+Altri metodi per creare ranges:
 - `selectNode(node)` Imposta un range per selezionare l'intero `nodo`.
 - `selectNodeContents(node)` Imposta un range per selezionare l'intero contenuto del `nodo`.
 - `collapse(toStart)` se `toStart=true` imposta `end=start`, altrimenti imposta `start=end`, collassando così il range.
 - `cloneRange()` crea un nuovo range con lo stesso inizio e fine
 
-Per manipolare il contenuto attraverso il range:
+## metodi per la modifica di range
+
+Una volta creato il range, possiamo manipolare il contenuto con i seguenti metodi:
 
 - `deleteContents()` -- rimuove il contenuto del range dal documento
 - `extractContents()` -- rimuove il contenuto del range dal documento e lo ritorna come [DocumentFragment](info:modifying-document#document-fragment)
@@ -270,7 +310,9 @@ Ci sono anche metodi per confrontare i range, ma vengono usati raramente. Nel ca
 
 ## Selection
 
-`Range` è un oggetto generico per la gestione dei range di selezione. Possiamo creare questi oggetti, passarli in giro -- ma non selezionano nulla a livello visivo di per sé.
+`Range` è un oggetto generico per la gestione di selezioni. Comunque, creare un `Range` non significa che vedremo la selezione sullo schermo.
+
+Possiamo creare oggetti `Range`, passarli in giro, ma visivamente non avranno alcun effetto.
 
 La selezione del documento è rappresentata da un oggetto `Selection`, che si può ottenere come `window.getSelection()` o tramite `document.getSelection()`. Una selezione può includere zero o più range. Almeno così dice la [Specifica della API Selection](https://www.w3.org/TR/selection-api/).
 In pratica, tuttavia, solamente Firefox permette di selezionare range multipli nel documento, attraverso la combinazione di tasti `key:Ctrl+click` (`key:Cmd+click` su Mac).
@@ -281,11 +323,21 @@ Qui potete vedere uno screenshot di una selezione con 3 range, fatta su Firefox:
 
 Gli altri browser supportano al massimo 1 range. Come vedremo, alcuni dei metodi di `Selection` implicano la possibilità di avere più range, ma di nuovo, tutti i browser eccetto Firefox, ne possono avere massimo 1.
 
+Questo è un piccolo esempio che mostra la selezione corrente come testo. Seleziona qualcosa e clicca:
+
+<button onclick="alert(document.getSelection())">alert(document.getSelection())</button>
+
 ## Proprietà di Selection
+
+Come detto, una selection può in teoria contenere più ranges. Possiamo ottenere questi renge usando il seguente metodo:
+
+- `getRangeAt(i)` -- recupera il range numero `i`, partendo da `0`. In tutti i browser, ad eccezione di Firefox, viene usato solo il numero `0`.
+
+Inoltre, esistono proprietà che spesso sono più comode da usare.
 
 In modo simile a un range, una selezione ha un inizio, chiamato "anchor", e una fine, chiamata "focus".
 
-Le principali proprietà di selection sono:
+Le proprietà principali di selection sono:
 
 - `anchorNode` -- il nodo dove comincia la selezione,
 - `anchorOffset` -- l'offset in `anchorNode` dove comincia la selezione,
@@ -295,36 +347,39 @@ Le principali proprietà di selection sono:
 - `rangeCount` -- conto del numero di selezioni, massimo `1` su tutti i browser, eccetto Firefox.
 
 
-````smart header="Solitamente, l'offset in cui termina la selezione `focusNode`, si trova dopo l'offset di inizio selezione `anchorNode`, ma non è sempre questo il caso"
-Esistono diversi modi per selezionare il contenuto, dipende dallo user agent: mouse, hotkeys, tap sullo schermo, etc.
+```smart header="Selection end/start contro Range"
 
-Alcuni di essi, come il mouse, permettono che la selezione possa essere creata nelle due direzioni: "da sinistra a destra" e da "destra a sinistra".
+Esiste un'importante differenza tra una selection anchor/focus e un `Range` start/end.
 
-Se l'inizio (anchor) della selezione nel documento si trova prima della fine (focus), si dice che questa selezione ha una direzione "forward" (in avanti)
+Come sappiamo, l' oggetto `Range` ha il suo inizio prima della fine.
+
+Per le selections, questo non è sempre vero.
+
+le selezione tramite il mouse, può avvenire in entrambe le direzioni: sia da sinistra verso destra, che da destra verso sinistra.
+
+In altre parole, se mentre il pulsante del mouse è premuto ci muoviamo avanti nel documento, la fine (focus) sarà dopo l'inizio (anchor)
 
 Ad esempio, se l'utente comincia la selezione con il mouse andando da "Example" a "italic":
 
 ![](selection-direction-forward.svg)
 
-Diversamente, se la selezione va dalla fine di "italic" fino a "Example", si ha una selezione di tipo "backward" (all'indietro), il suo focus sarà prima dell'anchor:
+Ma la stessa selezione potrebbe essere effettuata anche a ritroso, partendo da "italic" a "Example" (direzione contraria), in questo caso la fine (focus) sarà prima dell'inizio (anchor):
 
 ![](selection-direction-backward.svg)
-
-Questo è diverso dagli oggetti `Range` i quali sono sempre direzionati in avanti: l'inizio del range non può essere dopo la sua fine.
-````
+```
 
 ## Eventi di Selection
 
 Ci sono eventi per tenere traccia della selezione:
 
-- `elem.onselectstart` -- quando una selezione comincia su `elem`, per esempio, l'utente comincia a muovere il mouse tenendo il pulsante premuto.
-    - Prevenire l'azione predefinita (prevent default), fa in modo che la selezione non cominci.
+- `elem.onselectstart` -- quando una selezione *inizia* su specificatamente su `elem` (o al suo interno). Ad esempio, quando l'utente preme il pulsante del mouse sull'elemento e poi muove il puntatore.
+    - Prevenire l'azione predefinita (prevent default), fa in modo che la selezione non cominci. Quindi iniziare una selezione dall'elemento diventa impossibile, ma l'elemento è ancora selezionabile. Il visitatore deve solo iniziare la selezione da altrove.
 - `document.onselectionchange` -- ogni volta che una selezione viene modificata.
     - Nota bene: questo gestore può essere impostato solo su `document`.
 
 ### Demo di tracciamento per Selection
 
-Ecco una piccola demo che mostra i limiti (intesi come confini), della Selection, dinamicamente al variare di essa:
+Ecco una piccola demo che tiene traccia della selezione corrente sul `documento` e mostra i suoi confini:
 
 ```html run height=80
 <p id="p">Select me: <i>italic</i> and <b>bold</b></p>
@@ -332,21 +387,25 @@ Ecco una piccola demo che mostra i limiti (intesi come confini), della Selection
 From <input id="from" disabled> – To <input id="to" disabled>
 <script>
   document.onselectionchange = function() {
-    let {anchorNode, anchorOffset, focusNode, focusOffset} = document.getSelection();
+    let selection = document.getSelection();
 
-    from.value = `${anchorNode && anchorNode.data}:${anchorOffset}`;
-    to.value = `${focusNode && focusNode.data}:${focusOffset}`;
+    let {anchorNode, anchorOffset, focusNode, focusOffset} = selection;
+
+    // anchorNode and focusNode are text nodes usually
+    from.value = `${anchorNode?.data}, offset ${anchorOffset}`;
+    to.value = `${focusNode?.data}, offset ${focusOffset}`;
   };
 </script>
 ```
 
-### Demo di ottenimento della selezione
+### Copiare una selezione
 
-Per ottenere l'intera selezione:
-- Come testo: è sufficiente chiamare `document.getSelection().toString()`.
-- Come nodo DOM: ottenere il range sottostante e chiamare i relativi metodi `cloneContents()` (solo il primo range nel caso non venga supportata la selezione multirange di Firefox).
+Ci sono due approcci alla copia del contenuto di una selezione:
 
-Ecco la demo per ottenere sia la selezione di testo che di nodi DOM:
+1. Possiamo usare `document.getSelection().toString()` per avere il contenuto come testo.
+2. Oppure possiamo copiare il DOM completo (ad esempio se volgiamo mantenere la formattazione) recuperando i ranges con `getRangesAt(...)`. Un oggetto `Range` possiede il metodo `cloneContents()` che clona il contenuto e lo ritorna come oggetto `DocumentFragment`, che può essere inserito dove necessario.
+
+Ecco la demo per copiare il contenuto selezionato, sia come testo che come nodi del DOM:
 
 ```html run height=100
 <p id="p">Select me: <i>italic</i> and <b>bold</b></p>
@@ -374,9 +433,9 @@ As text: <span id="astext"></span>
 
 ## Metodi per la selezione
 
-I metodi di selezione per aggiungere/rimuovere i range:
+Possiamo lavorare con la selezione aggiungendo/rimuovendo ranges:
 
-- `getRangeAt(i)` -- ottiene il range alla posizione i, partendo da '0'. In tutti i browser, tranne Firefox, viene usato solo `0`.
+- `getRangeAt(i)` -- legge il range alla posizione i, partendo da '0'. In tutti i browser, tranne Firefox, viene usato solo `0`.
 - `addRange(range)` -- aggiunge `range` alla selezione. Tutti i browser, eccetto Firefox, ignorano la chiamata, se la selezione ha già un range associato.
 - `removeRange(range)` -- Rimuove `range` dalla selezione.
 - `removeAllRanges()` -- Rimuove tutti i range.

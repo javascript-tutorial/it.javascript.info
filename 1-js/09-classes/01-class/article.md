@@ -109,8 +109,8 @@ alert(typeof User); // function
 // ...o, più precisamente, il costruttore
 alert(User === User.prototype.constructor); // true
 
-// I metodi vengono salvati in User.prototype:
-alert(User.prototype.sayHi); // alert(this.name);
+// I metodi sono in User.prototype:
+alert(User.prototype.sayHi); // il codice del metodo sayHi
 
 // ci sono due funzioni all'interno del prototipo
 alert(Object.getOwnPropertyNames(User.prototype)); // constructor, sayHi
