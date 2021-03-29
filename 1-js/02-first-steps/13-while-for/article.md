@@ -141,7 +141,7 @@ if (i < 3) { alert(i); i++ }
 ```
 
 ````smart header="Dichiarazioni di variabili inline"
-Qui il "counter", che utlizzeremo nella nostra *condition*, è una variabile: `i`. Viene dichiarata all'interno del corpo del ciclo ed è accessibile solo al suo interno. Questo tipo di espressione si chiama "dichiarazione di una variabile *inline*". 
+Qui il "counter", che utilizzeremo nella nostra *condition*, è una variabile: `i`. Viene dichiarata all'interno del corpo del ciclo ed è accessibile solo al suo interno. Questo tipo di espressione si chiama "dichiarazione di una variabile *inline*". 
 
 ```js run
 for (*!*let*/!* i = 0; i < 3; i++) { //'i' è definito, e accessibile, solo dentro il corpo del ciclo
@@ -347,7 +347,7 @@ Come nell'esempio:
 alert('Done!');
 ```
 
-Nel codice sopra `break outer` interrompoe il ciclo e va all'etichetta chiamata `outer`.
+Nel codice sopra `break outer` interrompe il ciclo e va all'etichetta chiamata `outer`.
 
 Quindi il controllo va da `(*)` a `alert('Done!')`.
 
@@ -370,9 +370,18 @@ break label;  // non salta all'etichetta sotto
 label: for (...)
 ```
 
-La chiamata a `continue` è possibile solo dall'interno di un ciclo
+La direttiva `break` deve essere all'interno del blocco di codice. Tecnicamente l'etichettatura funzionerà con qualsiasi blocco di codice, ad esempio:
+```js
+label: {
+  // ...
+  break label; // funziona
+  // ...
+}
+```
 
-La direttiva `break` può essere posizionata anche prima del blocco di codice, come `label: { ... }`, ma raramente viene usato così.
+...Comunque, nel 99.9% dei casi, `break` viene usato nei cicli, come abbiamo visto negli esempi precedenti.
+
+La chiamata a `continue` è possibile solo dall'interno di un ciclo
 ````
 
 ## Riepilogo
@@ -383,7 +392,7 @@ Abbiamo visto tre tipi di cicli:
 - `do..while` -- La condizione viene controllata dopo una prima iterazione.
 - `for (;;)` -- La condizione viene controllata prima di ogni iterazione; sono possibili altre condizioni all'interno del ciclo.
 
-Per crere un ciclo infinito, si usa il costrutto `while(true)`. Questo tipo di cicli, come tutti gli altri, possono essere interrotti con la direttiva `break`.
+Per creare un ciclo infinito, si usa il costrutto `while(true)`. Questo tipo di cicli, come tutti gli altri, possono essere interrotti con la direttiva `break`.
 
 Se non si ha più intenzione di fare nulla nell'iterazione corrente e si vuole quindi saltare alla successiva, possiamo usare la direttiva `continue`.
 

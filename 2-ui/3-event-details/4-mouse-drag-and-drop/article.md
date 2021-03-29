@@ -10,7 +10,7 @@ Ma i Drag Events hanno anche delle limitazioni. Ad esempio, non possiamo preveni
 
 Di conseguenza, vedremo come implementare il Drag'n'Drop solo tramite l'utilizzo degli eventi del mouse.
 
-## Algortimo del Drag'n'Drop
+## Algoritmo del Drag'n'Drop
 
 L'algoritmo di base del Drag'n'Drop è qualcosa del genere:
 
@@ -124,7 +124,7 @@ Aggiorniamo il nostro algoritmo:
 
     ```js
     // onmousemove
-    // il pallone ha position:absoute
+    // il pallone ha position:absolute
     ball.style.left = event.pageX - *!*shiftX*/!* + 'px';
     ball.style.top = event.pageY - *!*shiftY*/!* + 'px';
     ```
