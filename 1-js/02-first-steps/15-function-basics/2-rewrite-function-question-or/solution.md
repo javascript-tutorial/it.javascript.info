@@ -14,4 +14,4 @@ function checkAge(age) {
 }
 ```
 
-Nota che le parentesi su `age > 18` non sono richieste. Vengono utilizzate per migliorarne la leggibilità.
+Nota che le parentesi che includono `age > 18` non sono obbligatorie. Vengono utilizzate per migliorare la leggibilità.
