@@ -309,7 +309,7 @@ I nuovi elementi che creiamo, come `<time-formatted>`, non hanno una semantica a
 
 Queste cose possono avere la loro rilevanza. Ad esempio al motore di ricerca potrebbe interessare sapere che un componente mostra l'orario. E se stiamo creando un particolare tipo di pulsante, perché non riutilizzare la funzionalità esistente di  `<button>`?
 
-Possiamo estedere e personalizzare gli elementi HTML built-in ereditando dalle loro classi.
+Possiamo estendere e personalizzare gli elementi HTML built-in ereditando dalle loro classi.
 
 Per esempio, i pulsanti sono una istanza di `HTMLButtonElement`, e possiamo partire da quello per andarci a costruire sopra.
 
