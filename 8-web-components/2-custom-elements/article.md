@@ -16,7 +16,7 @@ Gli elementi personalizzati si dividono in due categorie:
 
 Prima di tutto, affrontiamo gli elementi autonomi, dopodiché ci spostiamo su quelli built-in personalizzati.
 
-Per creare un elemento personalizzato, abbiamo bisogno di comunicare al browser una serie di dettagli relativi: come mostrarlo, cosa fare una volta che l'elemento venga aggiunto o rimosso dalla pagina, etc.
+Per creare un elemento personalizzato, abbiamo bisogno di comunicare al browser una serie di dettagli relativi: come mostrarlo, cosa fare una volta che l'elemento viene aggiunto o rimosso dalla pagina, etc.
 
 Ciò viene fatto creando una classe con dei metodi appositi. È facile, dato che ci sono pochi metodi, tutti opzionali.
 
