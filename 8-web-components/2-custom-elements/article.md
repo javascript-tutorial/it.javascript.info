@@ -296,7 +296,7 @@ Ordine di output:
 
 1. esterno connesso.
 2. interno connesso.
-3. esterno inzializzato.
+3. esterno inizializzato.
 4. interno inizializzato.
 
 Possiamo chiaramente verificare che l'elemento esterno conclude la sua inizializzazione `(3)` prima di quello interno `(4)`.
