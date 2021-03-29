@@ -146,10 +146,14 @@ Proseguiamo con l'esempio `makeCounter`. Crea una funzione "contatore" che ritor
 
 Come funziona il counter internamente?
 
+<<<<<<< HEAD
 Quando viene eseguita la funzione esterna , la variabile `count++` viene ricercata dall'interno verso l'esterno. Nell'esempio sopra, l'ordine sarà:
 
 
 Conoscere queste cose è ottimo per una conoscenza generale di JavaScript è può essere utile nella gestione di sceari più complessi. Quindi proviamo ad entrare più nel dettaglio
+=======
+Understanding such things is great for the overall knowledge of JavaScript and beneficial for more complex scenarios. So let's go a bit in-depth.
+>>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
 
 ## Lexical Environment
 

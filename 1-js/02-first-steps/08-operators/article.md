@@ -57,17 +57,34 @@ alert( 8 % 3 ); // 2, è il resto dell'operazione 8 diviso 3
 
 ### Elevamento a Potenza **
 
+<<<<<<< HEAD
 L'operatore potenza `a ** b` moltiplica `a` per se stesso, `b` volte.
+=======
+The exponentiation operator `a ** b` raises `a` to the power of `b`.
+
+In school maths, we write that as a<sup>b</sup>.
+>>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
 
 Ad esempio:
 
 ```js run
+<<<<<<< HEAD
 alert( 2 ** 2 ); // 4  (2 moltiplicato per se stesso 2 volte)
 alert( 2 ** 3 ); // 8  (2 * 2 * 2, 3 volte)
 alert( 2 ** 4 ); // 16 (2 * 2 * 2 * 2, 4 volte)
 ```
 
 Matematicamente, l'esponente può essere anche un valore numerico non intero. Ad esempio, la radice quadrata può essere vista come un elevamento a potenza con esponente `1/2`:
+=======
+alert( 2 ** 2 ); // 2² = 4  
+alert( 2 ** 3 ); // 2³ = 8 
+alert( 2 ** 4 ); // 2⁴ = 16
+```
+
+Just like in maths, the exponentiation operator is defined for non-integer numbers as well. 
+
+For example, a square root is an exponentiation by ½:
+>>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
 
 ```js run
 alert( 4 ** (1/2) ); // 2 (potenza 1/2 equivale alla radice quadrata)

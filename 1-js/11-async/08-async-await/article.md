@@ -70,10 +70,17 @@ L'esecuzione della funzione "va in pausa" alla linea `(*)` e riprende quando la 
 
 Enfatizziamo: `await` fa letteralmente attendere JavaScript fino a quando la promise si ferma, poi va avanti con il risultato. Questo non costa alcuna risorsa della CPU, perché il motore può fare altri lavori nel frattempo: eseguire altri script, gestire eventi etc.
 
+<<<<<<< HEAD
 È giusto una sintassi più elegante per ottenere il risultato della promise di `promise.then`, più facile da leggere e da scrivere.
 
 ````warn header="Can't use `await` in regular functions"
 Se proviamo ad utilizzare `await` in una funzione non asincrona, ci sarebbe un errore di sintassi:
+=======
+It's just a more elegant syntax of getting the promise result than `promise.then`. And, it's easier to read and write.
+
+````warn header="Can't use `await` in regular functions"
+If we try to use `await` in a non-async function, there would be a syntax error:
+>>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
 
 ```js run
 function f() {
@@ -84,7 +91,11 @@ function f() {
 }
 ```
 
+<<<<<<< HEAD
 Avremo questo errore se non mettiamo `async` prima di una funzione. Come detto, `await` funziona solo dentro una funzione asincrona (`async function`).
+=======
+We may get this error if we forget to put `async` before a function. As stated earlier, `await` only works inside an `async` function.
+>>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
 ````
 
 Prendiamo l'esempio `showAvatar()` dal capitolo <info:promise-chaining> e riscriviamolo usando `async/await`:
@@ -186,7 +197,7 @@ class Waiter {
 
 new Waiter()
   .wait()
-  .then(alert); // 1
+  .then(alert); // 1 (this is the same as (result => alert(result)))
 ```
 Il significato è lo stesso: assicura che il valore ritornato sia una promise ed abilita `await`.
 

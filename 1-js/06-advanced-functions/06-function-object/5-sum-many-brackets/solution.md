@@ -52,4 +52,8 @@ function f(b) {
 }
 ```
 
+<<<<<<< HEAD
 Questa `f` verrà utilizzata dalla prossiama chiamata, e nuovamente ritornerà se stessa, tutte le volte che sarà necessario. Successivamente, quando la utilizzeremo come numero o stringa -- `toString` ritorna la `currentSum`. Possiamo anche utilizzare `Symbol.toPrimitive` o `valueOf` per la conversione.
+=======
+This `f` will be used in the next call, again return itself, as many times as needed. Then, when used as a number or a string -- the `toString` returns the `currentSum`. We could also use `Symbol.toPrimitive` or `valueOf` here for the conversion.
+>>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3

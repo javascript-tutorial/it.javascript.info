@@ -25,7 +25,11 @@ messages.shift();
 // ora readMessages ha un elemento (tecnicamente la memoria potrebbe essere ripulita dopo)
 ```
 
+<<<<<<< HEAD
 La struttura `WeakSet` consente di memorizzare un insieme di messaggi e di verificare molto rapidamente la presenza di un dato messaggio.
+=======
+The `WeakSet` allows to store a set of messages and easily check for the existence of a message in it.
+>>>>>>> 7b76185892aa9798c3f058256aed44a9fb413cc3
 
 Viene ripulita automaticamente. Il lato negativo è che non possiamo eseguire iterazioni. Non possiamo ottenere direttamente "tutti i messaggi letti". Ma possiamo farlo iterando su tutti i messaggi e filtrando tutti quelli che sono presenti nel set.
 
