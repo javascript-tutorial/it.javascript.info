@@ -1,8 +1,8 @@
-# Window sizes and scrolling
+# Dimensioni e scorrimento della finestra del browser
 
-How do we find the width and height of the browser window? How do we get the full width and height of the document, including the scrolled out part? How do we scroll the page using JavaScript?
+Come scoprire la larghezza e l'altezza della finestra del browser? Come ricavare la larghezza e l'altezza totali del documento, incluse le parti fuori dall'area visibile di scorrimento? Come far scorrere la pagina tramite JavaScript?
 
-For this type of information, we can use the root document element `document.documentElement`, that corresponds to the `<html>` tag. But there are additional methods and peculiarities to consider.
+Per questo genere di informazioni possiamo utilizzare l'elemento radice del documento `document.documentElement`, che corrisponde al tag `<html>`. Ci sono, tuttavia, ulteriori metodi e peculiarità da considerare.
 
 ## Width/height of the window
 
