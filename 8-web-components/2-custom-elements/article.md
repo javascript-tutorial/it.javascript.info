@@ -305,7 +305,7 @@ Non c'è una una callback che si attiva dopo che gli elementi annidati sono pron
 
 ## Elementi built-in personlizzati
 
-I nuovi elementi che creiamo, come `<time-formatted>`, non hanno una semantica associata. Sono del tutto sconosciuti per motori di ricerca, e dispositivi di accessiblità, che non possono quindi gestirli.
+I nuovi elementi che creiamo, come `<time-formatted>`, non hanno una semantica associata. Sono del tutto sconosciuti per motori di ricerca, e dispositivi di accessibilità, che non possono quindi gestirli.
 
 Queste cose possono avere la loro rilevanza. Ad esempio al motore di ricerca potrebbe interessare sapere che un componente mostra l'orario. E se stiamo creando un particolare tipo di pulsante, perché non riutilizzare la funzionalità esistente di  `<button>`?
 
