@@ -21,24 +21,24 @@ I browser supportano inoltre proprietà come `window.innerWidth/innerHeight`. Se
 
 Se esiste una barra di scorrimento ed occupa uno spazio, `clientWidth/clientHeight` forniscono la larghezza e l'altezza al netto della barra (la sottraggono). In altre parole restituiscono le dimensioni della parte visibile del documento disponibile per il contenuto.
 
-`window.innerWidth/innerHeight` includono la barra di scorrimento.
+`window.innerWidth/innerHeight` includono invece la barra di scorrimento.
 
-If there's a scrollbar, and it occupies some space, then these two lines show different values:
+Se la barra di scorrimento è presente ed occupa uno spazio, allora queste due linee di codice mostreranno dei valori differenti:
 ```js run
-alert( window.innerWidth ); // full window width
-alert( document.documentElement.clientWidth ); // window width minus the scrollbar
+alert( window.innerWidth ); // larghezza della finestra comprensiva di barra di scorrimento
+alert( document.documentElement.clientWidth ); // larghezza della finestra barra esclusa
 ```
 
-In most cases, we need the *available* window width in order to draw or position something within scrollbars (if there are any), so we should use `documentElement.clientHeight/clientWidth`.
+Nella maggior parte dei casi abbiamo bisogno della larghezza delle finestra *disponibile* per disegnare o posizionare qualcosa all'interno delle barre di scorrimento (se presenti), quindi dovremmo usare `documentElement.clientHeight/clientWidth`.
 ````
 
-```warn header="`DOCTYPE` is important"
-Please note: top-level geometry properties may work a little bit differently when there's no `<!DOCTYPE HTML>` in HTML. Odd things are possible.
+```warn header="Il `DOCTYPE` è importante"
+Si noti che le proprietà geometriche ad alto livello possono funzionare in modo leggermente differente se non c'è `<!DOCTYPE HTML>` nell'HTML. Si potrebbero verificare comportamenti imprevedibili.
 
-In modern HTML we should always write `DOCTYPE`.
+Nell'HTML moderno dovremmo sempre indicare il `DOCTYPE`.
 ```
 
-## Width/height of the document
+## Larghezza e altezza del documento
 
 Theoretically, as the root document element is `document.documentElement`, and it encloses all the content, we could measure the document's full size as `document.documentElement.scrollWidth/scrollHeight`.
 
