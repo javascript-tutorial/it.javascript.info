@@ -58,22 +58,22 @@ alert("Altezza totale del documento, compresa la parte fuori dall'area visibile 
 
 Perché così? Meglio non chiedere. Queste incongruenze provengono da tempi lontani, non c'è alcuna logica.
 
-## Ottenere il valore corrente dello scorrimento [#page-scroll]
+## Ottenere il valore corrente di scorrimento [#page-scroll]
 
-DOM elements have their current scroll state in their `scrollLeft/scrollTop` properties.
+Gli elementi DOM memorizzano lo stato corrente dei valori di scorrimento nelle loro proprietà `scrollLeft/scrollTop`.
 
-For document scroll, `document.documentElement.scrollLeft/scrollTop` works in most browsers, except older WebKit-based ones, like Safari (bug [5991](https://bugs.webkit.org/show_bug.cgi?id=5991)), where we should use `document.body` instead of `document.documentElement`.
+Per lo scorrimento del documento, `document.documentElement.scrollLeft/scrollTop` funzionano sulla maggioranza dei browser, ad eccezione di quelli più vecchi basati su WebKit, come Safari (bug [5991](https://bugs.webkit.org/show_bug.cgi?id=5991)), dove dovremmo usare `document.body` al posto di `document.documentElement`.
 
-Luckily, we don't have to remember these peculiarities at all, because the scroll is available in the special properties, `window.pageXOffset/pageYOffset`:
+Fortunatamente, non dobbiamo ricordare affatto queste peculiarità, perché lo scorrimento del documento è disponibile anche nelle speciali proprietà `window.pageXOffset/pageYOffset`:
 
 ```js run
-alert('Current scroll from the top: ' + window.pageYOffset);
-alert('Current scroll from the left: ' + window.pageXOffset);
+alert("Scorrimento corrente dall'alto: " + window.pageYOffset);
+alert('Scorrimento corrente da sinistra: ' + window.pageXOffset);
 ```
 
-These properties are read-only.
+Queste proprietà sono in sola lettura.
 
-## Scrolling: scrollTo, scrollBy, scrollIntoView [#window-scroll]
+## Lo scorrimento con scrollTo, scrollBy, scrollIntoView [#window-scroll]
 
 ```warn
 To scroll the page with JavaScript, its DOM must be fully built.
