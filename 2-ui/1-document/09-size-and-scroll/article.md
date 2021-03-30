@@ -1,6 +1,6 @@
 # Dimensioni dell'elemento e barra di scorrimento
 
-Ci sono molte proprietà JavaScript che ci consentono di leggere informazioni circa la larghezza, l'altezza di un elemento e le altre proprietà geometriche.
+Ci sono molte proprietà JavaScript che ci consentono di leggere informazioni circa la larghezza, l'altezza e altre proprietà geometriche di un elemento.
 
 Spesso ne abbiamo bisogno quando spostiamo o posizioniamo gli elementi in JavaScript.
 
@@ -32,9 +32,9 @@ L'elemento si presenta così:
 Potete [visualizzare il documento nella sandbox](sandbox:metric).
 
 ```smart header="Prestate attenzione alla barra di scorrimento"
-L'immagine sopra rappresenta il caso più complesso in cui l'elemento possiede una barra di scorrimento. Alcuni browser (non tutti) ricavano lo spazio per la barra prendendolo dall'area del contenuto (indicata sopra come "content width").
+L'immagine sopra rappresenta il caso più complesso, quello in cui l'elemento possiede una barra di scorrimento. Alcuni browser (non tutti) ricavano lo spazio per la barra prendendolo dall'area del contenuto (indicata sopra come "content width").
 
-Senza la barra di scorrimento, pertanto, l'area del contenuto sarebbe `300px`, ma se la barra di scorrimento è larga `16px` (la larghezza è variabile in base al dispositivo ed al browser) allora rimane soltanto `300 - 16 = 284px`, ed è questa la misura che dovremmo tenere in considerazione. Ecco perché gli esempi di questo capitolo presumono che ci sia una barra di scorrimento. Senza questa, alcuni calcoli sono più semplici.
+Senza la barra di scorrimento, pertanto, l'area del contenuto sarebbe `300px`, ma se la barra di scorrimento è larga `16px` (la larghezza è variabile in base al dispositivo ed al browser) allora rimane soltanto `300 - 16 = 284px`, ed è questa la misura che dovremmo tenere in considerazione. Ecco perché gli esempi di questo capitolo presumono che ci sia una barra di scorrimento. Senza questa, alcuni calcoli sarebbero più semplici.
 ```
 
 ```smart header="L'area del `padding-bottom` può essere occupata dal testo"
@@ -172,7 +172,7 @@ Queste proprietà sono come `clientWidth/clientHeight`, ma includono anche le pa
 
 Nell'immagine sopra:
 
-- `scrollHeight = 723` -- è l'intera altezza del contenuto includendo le parti fuori dall'area visibile di scorrimento.
+- `scrollHeight = 723` -- è l'intera altezza del contenuto, include le parti fuori dall'area visibile di scorrimento.
 - `scrollWidth = 324` -- è l'intera larghezza, dal momento che non c'è barra di scorrimento orizzontale equivale a `clientWidth`.
 
 Possiamo servirci di queste proprietà per espandere l'elemento fino alla sua larghezza/altezza completa.
@@ -203,10 +203,10 @@ Nell'immagine sotto possiamo osservare la rappresentazione di `scrollHeight` e `
 In altre parole, con `scrollTop` si intende "quanto l'elemento è stato fatto scorrere verso l'alto".
 
 ````smart header="`scrollLeft/scrollTop` possono essere modificate"
-La maggior parte delle proprietà geometriche trattate sono in sola lettura, ma `scrollLeft/scrollTop` possono essere modificate, e il browser farà scorrere l'elemento.
+La maggior parte delle proprietà geometriche trattate sono in sola lettura, ma `scrollLeft/scrollTop` possono essere modificate, e il browser farà scorrere il contenuto.
 
 ```online
-Nell'elemento sottostante ogni clic esegue il codice `elem.scrollTop += 10`. Ciò comporta che il contenuto dell'elemento scorre verso il basso di `10px`.
+Nell'elemento sottostante ogni clic esegue il codice `elem.scrollTop += 10`. Ciò comporta lo scorrimento del contenuto verso il basso di `10px`.
 
 <div onclick="this.scrollTop+=10" style="cursor:pointer;border:1px solid black;width:100px;height:80px;overflow:auto">Click<br>Me<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9</div>
 ```
@@ -272,4 +272,4 @@ Gli elementi hanno le seguenti proprietà geometriche:
 - `scrollWidth/scrollHeight` -- la larghezza/altezza del contenuto, proprio come `clientWidth/clientHeight`, ma comprende anche la parte di un elemento nascosta e fuori dall'area visibile di scorrimento.
 - `scrollLeft/scrollTop` -- la larghezza/altezza della parte superiore di un elemento fuori dall'area visibile di scorrimento, partendo dal suo angolo in alto a sinistra.
 
-Tutte le proprietà sono in sola lettura tranne `scrollLeft/scrollTop` che, se modificate, fanno scorrere l'elemento nel browser.
+Tutte le proprietà sono in sola lettura tranne `scrollLeft/scrollTop` che, se modificate, fanno scorrere il contenuto nel browser.
