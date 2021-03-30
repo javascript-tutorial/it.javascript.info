@@ -21,7 +21,7 @@ I browser supportano inoltre proprietà come `window.innerWidth/innerHeight`. Se
 
 Se esiste una barra di scorrimento ed occupa uno spazio, `clientWidth/clientHeight` forniscono la larghezza e l'altezza al netto della barra (la sottraggono). In altre parole restituiscono le dimensioni della parte visibile del documento disponibile per il contenuto.
 
-`window.innerWidth/innerHeight` includono invece la barra di scorrimento.
+Le proprietà `window.innerWidth/innerHeight` includono invece la barra di scorrimento.
 
 Se la barra di scorrimento è presente ed occupa uno spazio, allora queste due linee di codice mostreranno dei valori differenti:
 ```js run
@@ -29,7 +29,7 @@ alert( window.innerWidth ); // larghezza della finestra comprensiva di barra di 
 alert( document.documentElement.clientWidth ); // larghezza della finestra barra esclusa
 ```
 
-Nella maggior parte dei casi abbiamo bisogno della larghezza delle finestra *disponibile* per disegnare o posizionare qualcosa all'interno delle barre di scorrimento (se presenti), quindi dovremmo usare `documentElement.clientHeight/clientWidth`.
+Nella maggior parte dei casi abbiamo bisogno della larghezza della finestra *disponibile* per disegnare o posizionare qualcosa all'interno delle barre di scorrimento (se presenti), quindi dovremmo usare `documentElement.clientHeight/clientWidth`.
 ````
 
 ```warn header="Il `DOCTYPE` è importante"
