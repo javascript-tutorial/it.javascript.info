@@ -40,11 +40,11 @@ Nell'HTML moderno dovremmo sempre indicare il `DOCTYPE`.
 
 ## Larghezza e altezza del documento
 
-Theoretically, as the root document element is `document.documentElement`, and it encloses all the content, we could measure the document's full size as `document.documentElement.scrollWidth/scrollHeight`.
+Teoricamente, poiché l'elemento radice del documento è `document.documentElement` e racchiude tutto il contenuto, potremmo misurare le dimensioni totali del documento con `document.documentElement.scrollWidth/scrollHeight`.
 
-But on that element, for the whole page, these properties do not work as intended. In Chrome/Safari/Opera, if there's no scroll, then `documentElement.scrollHeight` may be even less than `documentElement.clientHeight`! Weird, right?
+Ma su questo elemento, per l'intera pagina, queste proprietà non funzionano come dovrebbero. In Chrome/Safari/Opera, nel caso in cui non ci sia barra di scorrimento, `documentElement.scrollHeight` può essere anche minore di `documentElement.clientHeight`! Strano, no?
 
-To reliably obtain the full document height, we should take the maximum of these properties:
+Per ottenere l'altezza totale del documento in modo affidabile, dovremmo scegliere il valore maggiore tra queste proprietà:
 
 ```js run
 let scrollHeight = Math.max(
@@ -53,12 +53,12 @@ let scrollHeight = Math.max(
   document.body.clientHeight, document.documentElement.clientHeight
 );
 
-alert('Full document height, with scrolled out part: ' + scrollHeight);
+alert("Altezza totale del documento, compresa la parte fuori dall'area visibile di scorrimento: " + scrollHeight);
 ```
 
-Why so? Better don't ask. These inconsistencies come from ancient times, not a "smart" logic.
+Perché così? Meglio non chiedere. Queste incongruenze provengono da tempi lontani, non c'è alcuna logica.
 
-## Get the current scroll [#page-scroll]
+## Ottenere il valore corrente dello scorrimento [#page-scroll]
 
 DOM elements have their current scroll state in their `scrollLeft/scrollTop` properties.
 
