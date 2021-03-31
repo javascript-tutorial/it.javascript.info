@@ -246,7 +246,7 @@ try {
 
 Potrebbe sembrare un buon codice, ma le chiamate sincrone vengono usate raramente, in quanto bloccano la pagina fino a che la chiamata non ha avuto esito completo. In alcuni browser, diventa persino impossibile eseguire lo scroll della pagina. Se una chiamata sincrona richiedesse troppo tempo, il browser ci suggerirebbe di chiudere la pagina "bloccata".
 
-Molte capacità avanzate di `XMLHttpRequest`, come le richieste da un altro domino o l'impostazione di un timeout, non sono disponibili se la richiesta è sincrona. Inoltre, non si può avere alcuna indicazione sul progresso del caricamento.
+Molte capacità avanzate di `XMLHttpRequest`, come le richieste da un altro dominio o l'impostazione di un timeout, non sono disponibili se la richiesta è sincrona. Inoltre, non si può avere alcuna indicazione sul progresso del caricamento.
 
 Per i suddetti motivi, le chiamate sincrone sono usate molto raramente, quasi mai, e non affronteremo più argomenti che le coinvolgono direttamente.
 
