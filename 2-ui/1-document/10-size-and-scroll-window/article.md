@@ -76,33 +76,33 @@ Queste proprietà sono in sola lettura.
 ## Lo scorrimento con scrollTo, scrollBy, scrollIntoView [#window-scroll]
 
 ```warn
-To scroll the page with JavaScript, its DOM must be fully built.
+Per scorrere la pagina con JavaScript, il DOM deve essere stato completamente elaborato.
 
-For instance, if we try to scroll the page with a script in `<head>`, it won't work.
+Se proviamo, ad esempio, a scorrere la pagina con uno script nella sezione `<head>`, non funzionerà.
 ```
 
-Regular elements can be scrolled by changing `scrollTop/scrollLeft`.
+I normali elementi possono essere fatti scorrere modificando `scrollTop/scrollLeft`.
 
-We can do the same for the page using `document.documentElement.scrollTop/scrollLeft` (except Safari, where `document.body.scrollTop/Left` should be used instead).
+Possiamo applicare lo stesso principio per la pagina usando `document.documentElement.scrollTop/scrollLeft` (tranne che per Safari, con il quale dovremmo usare invece `document.body.scrollTop/Left`).
 
-Alternatively, there's a simpler, universal solution: special methods [window.scrollBy(x,y)](mdn:api/Window/scrollBy) and [window.scrollTo(pageX,pageY)](mdn:api/Window/scrollTo).
+In alternativa, c'è una soluzione più semplice ed universale: i metodi speciali [window.scrollBy(x,y)](mdn:api/Window/scrollBy) e [window.scrollTo(pageX,pageY)](mdn:api/Window/scrollTo).
 
-- The method `scrollBy(x,y)` scrolls the page *relative to its current position*. For instance, `scrollBy(0,10)` scrolls the page `10px` down.
+- Il metodo `scrollBy(x,y)` scorre la pagina *in base alla sua posizione corrente*. Per esempio, `scrollBy(0,10)` scorre la pagina di `10px` in basso.
 
     ```online
-    The button below demonstrates this:
+    Il pulsante in basso dimostra quanto appena affermato:
 
     <button onclick="window.scrollBy(0,10)">window.scrollBy(0,10)</button>
     ```
-- The method `scrollTo(pageX,pageY)` scrolls the page *to absolute coordinates*, so that the top-left corner of the visible part has coordinates `(pageX, pageY)` relative to the document's top-left corner. It's like setting `scrollLeft/scrollTop`.
+- Il metodo `scrollTo(pageX,pageY)` scorre la pagina *in base alle coordinate assolute*, di modo che l'angolo superiore sinistro della parte visibile abbia le coordinate `(pageX, pageY)` relative all'angolo superiore sinistro del documento. Di fatto, è come agire sulle proprietà `scrollLeft/scrollTop`.
 
-    To scroll to the very beginning, we can use `scrollTo(0,0)`.
+    Per scorrere fino all'inizio possiamo usare `scrollTo(0,0)`.
 
     ```online
     <button onclick="window.scrollTo(0,0)">window.scrollTo(0,0)</button>
     ```
 
-These methods work for all browsers the same way.
+Questi metodo godono di un supporto universale da parte di tutti i browser.
 
 ## scrollIntoView
 
@@ -145,7 +145,7 @@ The drawback of the method is that the scrollbar disappears. If it occupied some
 
 That looks a bit odd, but can be worked around if we compare `clientWidth` before and after the freeze. If it increased (the scrollbar disappeared), then add `padding` to `document.body` in place of the scrollbar to keep the content width the same.
 
-## Summary
+## Riepilogo
 
 Geometry:
 
