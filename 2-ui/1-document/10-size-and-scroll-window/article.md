@@ -56,11 +56,11 @@ let scrollHeight = Math.max(
 alert("Altezza totale del documento, compresa la parte fuori dall'area visibile di scorrimento: " + scrollHeight);
 ```
 
-Perché così? Meglio non chiedere. Queste incongruenze provengono da tempi lontani, non c'è alcuna logica.
+Perché così? Meglio non chiedere. Queste incongruenze derivano da tempi lontani, non c'è alcuna logica.
 
 ## Ottenere il valore corrente di scorrimento [#page-scroll]
 
-Gli elementi DOM memorizzano lo stato corrente dei valori di scorrimento nelle loro proprietà `scrollLeft/scrollTop`.
+Gli elementi DOM memorizzano lo stato corrente dei loro valori di scorrimento nelle proprietà `scrollLeft/scrollTop`.
 
 Per lo scorrimento del documento, `document.documentElement.scrollLeft/scrollTop` funzionano sulla maggioranza dei browser, ad eccezione di quelli più vecchi basati su WebKit, come Safari (bug [5991](https://bugs.webkit.org/show_bug.cgi?id=5991)), dove dovremmo usare `document.body` al posto di `document.documentElement`.
 
@@ -106,37 +106,37 @@ Questi metodo godono di un supporto universale da parte di tutti i browser.
 
 ## scrollIntoView
 
-For completeness, let's cover one more method: [elem.scrollIntoView(top)](mdn:api/Element/scrollIntoView).
+Per completezza trattiamo anche il metodo [elem.scrollIntoView(top)](mdn:api/Element/scrollIntoView).
 
-The call to `elem.scrollIntoView(top)` scrolls the page to make `elem` visible. It has one argument:
+L'esecuzione di `elem.scrollIntoView(top)` scorre la pagina in modo da rendere visibile `elem`. Ha un solo argomento:
 
-- If `top=true` (that's the default), then the page will be scrolled to make `elem` appear on the top of the window. The upper edge of the element will be aligned with the window top.
-- If `top=false`, then the page scrolls to make `elem` appear at the bottom. The bottom edge of the element will be aligned with the window bottom.
+- Se `top=true` (è il valore predefinito), allora la pagina sarà fatta scorrere in modo che `elem` appaia nella parte alta della finestra. Il bordo superiore dell'elemento sarà allineato con la parte superiore della finestra.
+- Se `top=false`, allora la pagina scorre così che `elem` appaia in basso. Il bordo inferiore dell'elemento sarà allineato con il bordo inferiore della finestra.
 
 ```online
-The button below scrolls the page to position itself at the window top:
+Il pulsante in basso scorre la pagina in modo da allinearsi con il bordo superiore della finestra:
 
 <button onclick="this.scrollIntoView()">this.scrollIntoView()</button>
 
-And this button scrolls the page to position itself at the bottom:
+Questo pulsante, invece, si allinea con il bordo inferiore:
 
 <button onclick="this.scrollIntoView(false)">this.scrollIntoView(false)</button>
 ```
 
-## Forbid the scrolling
+## Impedire lo scorrimento
 
-Sometimes we need to make the document "unscrollable". For instance, when we need to cover the page with a large message requiring immediate attention, and we want the visitor to interact with that message, not with the document.
+Talvolta si pone la necessità di impedire lo scorrimento del documento. Per esempio in presenza di un messaggio che ricopre l'intera larghezza della pagina e che richiede immediata attenzione. In quel caso desideriamo che il visitatore interagisca prima con quel messaggio, non con il documento.
 
-To make the document unscrollable, it's enough to set `document.body.style.overflow = "hidden"`. The page will "freeze" at its current scroll position.
+Per impedire lo scorrimento, è sufficiente ricorrere a `document.body.style.overflow = "hidden"`. La pagina rimarrà "congelata" nella sua posizione corrente di scorrimento.
 
 ```online
-Try it:
+Prova:
 
 <button onclick="document.body.style.overflow = 'hidden'">document.body.style.overflow = 'hidden'</button>
 
 <button onclick="document.body.style.overflow = ''">document.body.style.overflow = ''</button>
 
-The first button freezes the scroll, while the second one releases it.
+Il primo pulsante congela lo scorrimento, il secondo invece lo ripristina.
 ```
 
 We can use the same technique to freeze the scroll for other elements, not just for `document.body`.
