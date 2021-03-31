@@ -139,18 +139,18 @@ Prova:
 Il primo pulsante congela lo scorrimento, il secondo invece lo ripristina.
 ```
 
-We can use the same technique to freeze the scroll for other elements, not just for `document.body`.
+Possiamo usare la stessa tecnica per congelare lo scorrimento anche di altri elementi, non solo di `document.body`.
 
-The drawback of the method is that the scrollbar disappears. If it occupied some space, then that space is now free and the content "jumps" to fill it.
+L'inconveniente di questo approccio è che scompare la barra di scorrimento. Se questa occupava uno spazio, allora quello spazio si libererà ed il contenuto si adatterà bruscamente per riempirlo.
 
-That looks a bit odd, but can be worked around if we compare `clientWidth` before and after the freeze. If it increased (the scrollbar disappeared), then add `padding` to `document.body` in place of the scrollbar to keep the content width the same.
+Può sembrare un po' strano, ma possiamo aggirare il problema se mettiamo a paragone il valore di `clientWidth` prima e dopo il congelamento. Se aumenta (la barra di scorrimento è scomparsa), allora aggiungiamo `padding` a `document.body` al posto della barra per mantenere la larghezza del contenuto inalterata.
 
 ## Riepilogo
 
-Geometry:
+Proprietà geometriche:
 
-- Width/height of the visible part of the document (content area width/height): `document.documentElement.clientWidth/clientHeight`
-- Width/height of the whole document, with the scrolled out part:
+- Larghezza/altezza della parte visibile del documento (larghezza/altezza dell'area del contenuto): `document.documentElement.clientWidth/clientHeight`
+- Larghezza/altezza dell'intero documento, comprese le parti fuori dall'area visibile di scorrimento:
 
     ```js
     let scrollHeight = Math.max(
@@ -160,7 +160,7 @@ Geometry:
     );
     ```
 
-Scrolling:
+Scorrimento:
 
 - Read the current scroll: `window.pageYOffset/pageXOffset`.
 - Change the current scroll:
