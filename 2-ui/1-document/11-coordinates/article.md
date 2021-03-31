@@ -1,6 +1,6 @@
-# Coordinates
+# Coordinate
 
-To move elements around we should be familiar with coordinates.
+Per spostare gli elementi dovremmo conoscere bene le coordinate.
 
 Most JavaScript methods deal with one of two coordinate systems:
 
