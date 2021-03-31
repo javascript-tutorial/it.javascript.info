@@ -8,7 +8,7 @@ Il ripristino degli upload dovrebbe andare a braccetto con la possibilità di te
 
 ## Evento di progresso non-così-utile
 
-Per ripristinare un upload, dobbiamo conoscere la quantità di dato trasferito prima che la connessione si interrompesse.
+Per ripristinare un upload, dobbiamo conoscere la quantità di dati trasferiti prima che la connessione si interrompesse.
 
 Per tenere traccia del progresso di upload possiamo usare `xhr.upload.onprogress`.
 
