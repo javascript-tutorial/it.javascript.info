@@ -54,7 +54,7 @@ Possiamo dividerlo abbastanza naturalmente in componenti:
 
 I componenti possono avere sotto-componenti, per esempio i messaggi possono essere parte di un componente "lista di messaggi" di livello superiore. Una immagine di un utente può essere, essa stessa, un componente, e così via.
 
-Come possiamo decidere, cosa sia un componente? Ciò arriva dall'intuizione, l'esperienza ed il senso comune. Solitamente è una entità separata a livello visivo, che possiamo descrivere in termini di "cosa fa" e di "come interagisce" con la pagina. Nell'esempio precedente, la pagina è divisa in blocchi, ognuno dei quali gioca un ruolo, quindi è logico farne dei componenti.
+Come possiamo decidere cosa sia un componente? Ciò arriva dall'intuizione, l'esperienza ed il buon senso. Solitamente è una entità separata a livello visivo, che possiamo descrivere in termini di "cosa fa" e di "come interagisce" con la pagina. Nell'esempio precedente, la pagina è divisa in blocchi, ognuno dei quali gioca un ruolo, quindi è logico farne dei componenti.
 
 Un componente ha:
 - Una propria classe JavaScript
