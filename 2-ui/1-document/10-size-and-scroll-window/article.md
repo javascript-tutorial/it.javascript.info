@@ -162,9 +162,9 @@ Proprietà geometriche:
 
 Scorrimento:
 
-- Read the current scroll: `window.pageYOffset/pageXOffset`.
-- Change the current scroll:
+- Leggere il valore di scorrimento corrente: `window.pageYOffset/pageXOffset`.
+- Modificare il valore di scorrimento corrente:
 
-    - `window.scrollTo(pageX,pageY)` -- absolute coordinates,
-    - `window.scrollBy(x,y)` -- scroll relative the current place,
-    - `elem.scrollIntoView(top)` -- scroll to make `elem` visible (align with the top/bottom of the window).
+    - `window.scrollTo(pageX,pageY)` -- scorre la pagina in base a coordinate assolute,
+    - `window.scrollBy(x,y)` -- scorre la pagina in base alla sua posizione corrente,
+    - `elem.scrollIntoView(top)` -- scorre la pagina per rendere visibile `elem` (allineato al bordo superiore o inferiore della finestra).
