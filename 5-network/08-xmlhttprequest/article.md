@@ -207,7 +207,7 @@ xhr.onreadystatechange = function() {
 };
 ```
 
-Potremmo trovare listeners per `readystatechange` in codice molto vecchio, anche qui per ragioni storiche, in quanto c'era un periodo in cui l'evento `load` e anche altri eventi, non esistevano ancora. Al giorno d'oggi, i gestori `load/error/progress` li hanno deprecati.
+Potremmo trovare listeners per `readystatechange` in codice molto vecchio, anche qui per ragioni storiche, in quanto c'era un periodo in cui l'evento `load`, e altri eventi, non esistevano ancora. Al giorno d'oggi, i gestori `load/error/progress` li hanno deprecati.
 
 ## Annullamento delle richieste
 
