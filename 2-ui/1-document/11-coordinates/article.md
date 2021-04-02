@@ -21,22 +21,22 @@ Quando il documento scorre:
 
 ## Le coordinate di un elemento: getBoundingClientRect
 
-The method `elem.getBoundingClientRect()` returns window coordinates for a minimal rectangle that encloses `elem` as an object of built-in [DOMRect](https://www.w3.org/TR/geometry-1/#domrect) class.
+Il metodo `elem.getBoundingClientRect()` restituisce le coordinate relative alla finestra del rettangolo minimo che racchiude `elem` come oggetto della classe nativa [DOMRect](https://www.w3.org/TR/geometry-1/#domrect).
 
-Main `DOMRect` properties:
+Ecco le principali proprietà di `DOMRect`:
 
-- `x/y` -- X/Y-coordinates of the rectangle origin relative to window,
-- `width/height` -- width/height of the rectangle (can be negative).
+- `x/y` -- le coordinate X/Y dell'origine rettangolo relative alla finestra,
+- `width/height` -- larghezza/altezza del rettangolo (può avere valori negativi).
 
-Additionally, there are derived properties:
+Ci sono, inoltre, proprietà derivate:
 
-- `top/bottom` -- Y-coordinate for the top/bottom rectangle edge,
-- `left/right` -- X-coordinate for the left/right rectangle edge.
+- `top/bottom` -- la coordinata Y per i bordi superiore/inferiore del rettangolo,
+- `left/right` -- la coordinata X per i bordi sinistro/destro del rettangolo.
 
 ```online
-For instance click this button to see its window coordinates:
+Clicca, per esempio, su questo pulsante per conoscere le sue coordinate relative alla finestra:
 
-<p><input id="brTest" type="button" value="Get coordinates using button.getBoundingClientRect() for this button" onclick='showRect(this)'/></p>
+<p><input id="brTest" type="button" value="Ottieni le coordinate utilizzando button.getBoundingClientRect() per questo pulsante" onclick='showRect(this)'/></p>
 
 <script>
 function showRect(elem) {
@@ -53,7 +53,7 @@ right:${r.right}
 }
 </script>
 
-If you scroll the page and repeat, you'll notice that as window-relative button position changes, its window coordinates (`y/top/bottom` if you scroll vertically) change as well.
+Se scorrete la pagina e ripetete il test, noterete che quando cambia la posizione relativa alla finestra del pulsante, cambiano anche le sue coordinate relative alla finestra (`y/top/bottom` se scorri verticalmente)
 ```
 
 Here's the picture of `elem.getBoundingClientRect()` output:
