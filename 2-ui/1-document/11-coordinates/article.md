@@ -26,7 +26,7 @@ Il metodo `elem.getBoundingClientRect()` restituisce le coordinate relative alla
 Ecco le principali proprietà di `DOMRect`:
 
 - `x/y` -- le coordinate X/Y dell'origine rettangolo relative alla finestra,
-- `width/height` -- larghezza/altezza del rettangolo (può avere valori negativi).
+- `width/height` -- larghezza/altezza del rettangolo (possono avere valori negativi).
 
 Ci sono, inoltre, proprietà derivate:
 
@@ -56,23 +56,23 @@ right:${r.right}
 Se scorrete la pagina e ripetete il test, noterete che quando cambia la posizione relativa alla finestra del pulsante, cambiano anche le sue coordinate relative alla finestra (`y/top/bottom` se scorri verticalmente)
 ```
 
-Here's the picture of `elem.getBoundingClientRect()` output:
+Di seguito un'immagine descrittiva dell'output di `elem.getBoundingClientRect()`:
 
 ![](coordinates.svg)
 
-As you can see, `x/y` and `width/height` fully describe the rectangle. Derived properties can be easily calculated from them:
+Come potete osservare, `x/y` e `width/height` descrivono pienamente il rettangolo. A partire da queste si possono calcolare agevolmente le proprietà derivate:
 
 - `left = x`
 - `top = y`
 - `right = x + width`
 - `bottom = y + height`
 
-Please note:
+Nota bene:
 
-- Coordinates may be decimal fractions, such as `10.5`. That's normal, internally browser uses fractions in calculations. We don't have to round them when setting to `style.left/top`.
-- Coordinates may be negative. For instance, if the page is scrolled so that `elem` is now above the window, then `elem.getBoundingClientRect().top` is negative.
+- Le coordinate possono avere valori decimali, come `10.5`. È normale, il browser internamente usa frazioni nei calcoli. Non dobbiamo arrotondare quando assegniamo i valori a `style.left/top`.
+- Le coordinate possono essere negative. Per esempio se la pagina scorre in modo che `elem` sia al di là del bordo della dinestra, allora `elem.getBoundingClientRect().top` è negativa.
 
-```smart header="Why derived properties are needed? Why does `top/left` exist if there's `x/y`?"
+```smart header="Perché le proprietà derivate sono necessarie? Perché `top/left` esistono se ci sono già `x/y`?"
 Mathematically, a rectangle is uniquely defined with its starting point `(x,y)` and the direction vector `(width,height)`. So the additional derived properties are for convenience.
 
 Technically it's possible for `width/height` to be negative, that allows for "directed" rectangle, e.g. to represent mouse selection with properly marked start and end.
