@@ -1,4 +1,4 @@
-importanza: 5
+importance: 5
 
 ---
 
@@ -49,4 +49,3 @@ Scegli uno dei due metodi per risolvere la task:
 Sarebbe grandioso se riuscissi con entrambi.
 
 P.S. L'albero non dovrebbe avere elementi "extra" -ad esempio`<ul></ul>` vuoti- come foglie.
-

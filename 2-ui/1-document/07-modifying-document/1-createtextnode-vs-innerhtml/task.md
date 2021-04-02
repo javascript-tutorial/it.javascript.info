@@ -1,4 +1,4 @@
-importanza: 5
+importance: 5
 
 ---
 
@@ -6,7 +6,7 @@ importanza: 5
 
 Abbiamo `elem`, un elemento DOM vuoto, e una stringa`text`.
 
-Which of these 3 commands will do exactly the same?
+Quali di questi 3 comandi fanno esattamente la stessa cosa?
 
 1. `elem.append(document.createTextNode(text))`
 2. `elem.innerHTML = text`

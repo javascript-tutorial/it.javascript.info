@@ -1,6 +1,6 @@
 # Modificare il documento
 
-La modifica del DOM è la chiave della creazione di pagine "live".
+La modifica del DOM è la chiave della creazione di pagine dinamiche.
 
 Vedremo come creare elementi "al volo" e come modificare il contenuto della pagina già esistente.
 
@@ -35,14 +35,14 @@ Questo era l'esempio con HTML. Ora creiamo lo stesso `div` con JavaScript (presu
 Per creare nodi DOM, ci sono due metodi:
 
 `document.createElement(tag)`
-: Crea un nuovo *nodo elemento* con il dato tag:
+: Crea un nuovo *nodo elemento* con il tag fornito:
 
     ```js
     let div = document.createElement('div');
     ```
 
 `document.createTextNode(text)`
-  Crea un nuovo *nodo di testo* con il dato testo:
+  Crea un nuovo *nodo di testo* con il testo fornito:
 
     ```js
     let textNode = document.createTextNode('Here I am');
@@ -163,7 +163,7 @@ Ad esempio, qui vengono inseriti una stringa e un elemento:
 </script>
 ```
 
-Nota: il testo viene inserito "come testo", non "come HTML", con i dovugti ecape per caratteri come `<` o `>`.
+Nota: il testo viene inserito "come testo", non "come HTML", con i dovuti escape per caratteri come `<` o `>`.
 
 Quindi l'HTML finale sarà:
 
@@ -183,10 +183,10 @@ E se volessimo inserire stringhe HTML "come HTML", con tutti i tag e le altre fu
 
 ## insertAdjacentHTML/Text/Element
 
-Per questo abbiamo un altro metodo, molto versatile: `elem.insertAdjacentHTML(where, html)`.
+Per questo abbiamo a disposizione un altro metodo, molto versatile: `elem.insertAdjacentHTML(where, html)`.
 
 
-Il primo parametro è una parola-codice che specifica dove inserire in relazione a `elem`. Deve essere una delle seguenti
+Il primo parametro è una parola-codice che specifica dove inserire in relazione a `elem`. Deve essere una delle seguenti:
 
 - `"beforebegin"` -- inserisce `html` immediatamente prima di `elem`,
 - `"afterbegin"` -- inserisce `html` dentro `elem`, all'inizio,
@@ -250,7 +250,7 @@ Ecco un variante alternativa per mostrare un messaggio:
 
 ## Rimozione di nodi
 
-Per rimuovere un nodo, c'è il metodo `node.remove()`.
+Per rimuovere un nodo, abbiamo a disposizione il metodo `node.remove()`.
 
 Facciamo sparire il nostro messaggio dopo un secondo:
 
@@ -491,7 +491,7 @@ La sintassi:
 <p>The end</p>
 ```
 
-La chiamata a `document.write(html)` scrive `html` nella pagina "all'istante". La stringa `html` può essere dinamicamente generata, quindi in un certo senso è flessibile. Possiamo utilizzare JavaScript per creare una pagina web completa e per scrivervi. 
+La chiamata a `document.write(html)` inserisce `html` nella pagina "all'istante". La stringa `html` può essere generata dinamicamente, quindi in un certo senso è flessibile. Possiamo utilizzare JavaScript per creare una pagina web completa e per scrivervi. 
 
 Il metodo viene dai tempi in cui non c'era un DOM, nessun standart... Tempi molto vecchi. E' ancora vivo perché vi sono script che lo utilizzano. 
 
@@ -539,7 +539,7 @@ Perciò se abbiamo bisogno di aggiungere dinamicamente molto testo all'HTML, sia
     - `node.replaceWith(...nodi o stringhe)` –- rimpiazza `node`.
     - `node.remove()` –- rimuove `node`.
 
-    Le stringhe di testo vengono iserite "come testo".
+    Le stringhe di testo vengono inserite "come testo".
 
 - Ci sono anche metodi "vecchia scuola":
     - `parent.appendChild(node)`

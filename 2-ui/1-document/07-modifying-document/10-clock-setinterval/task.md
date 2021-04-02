@@ -1,10 +1,10 @@
-importanza: 4
+importance: 4
 
 ---
 
 # Orologio colorato con setInterval
 
-Crea un orologio colorato come qui:
+Crea un orologio colorato come quello dell'esempio:
 
 [iframe src="solution" height=60]
 

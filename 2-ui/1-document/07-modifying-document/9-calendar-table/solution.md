@@ -1,4 +1,4 @@
-Creeremo una tabella come stringa, `"<table>...</table>"`. e poi la assegneremo a `innerHTML`
+Creeremo una tabella come stringa, `"<table>...</table>"`, e poi la assegneremo a `innerHTML`.
 
 L'algoritmo:
 

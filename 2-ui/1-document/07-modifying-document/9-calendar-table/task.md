@@ -1,4 +1,4 @@
-importanza: 4
+importance: 4
 
 ---
 
@@ -13,4 +13,4 @@ Ad esempio, `createCalendar(cal, 2012, 9)` dovrebbe generare un elemento `cal` c
 
 [iframe height=210 src="solution"]
 
-P.S. Per questa task è sufficiente creare il calendario, non deve ancora essere cliccabile.
+P.S. Per questa task è sufficiente creare il calendario, non è necessario che sia cliccabile.
