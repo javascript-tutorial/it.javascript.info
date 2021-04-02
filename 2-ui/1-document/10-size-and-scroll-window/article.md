@@ -162,8 +162,8 @@ Proprietà geometriche:
 
 Scorrimento:
 
-- Leggere il valore di scorrimento corrente: `window.pageYOffset/pageXOffset`.
-- Modificare il valore di scorrimento corrente:
+- Legge il valore di scorrimento corrente: `window.pageYOffset/pageXOffset`.
+- Modifica il valore di scorrimento corrente:
 
     - `window.scrollTo(pageX,pageY)` -- scorre la pagina in base a coordinate assolute,
     - `window.scrollBy(x,y)` -- scorre la pagina in base alla sua posizione corrente,
