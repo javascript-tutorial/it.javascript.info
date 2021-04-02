@@ -1,5 +1,5 @@
 
-# Animated circle with callback
+# Animate il cerchio con callback
 
 Nel task <info:task/animate-circle> è mostrato un cerchio crescente animato.
 
