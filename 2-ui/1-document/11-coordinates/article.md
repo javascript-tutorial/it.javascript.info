@@ -6,7 +6,7 @@ La gran parte dei metodi JavaScript ha a che fare con uno di questi due sistemi 
 
 1. **Coordinate relative alla finestra** - paragonabili a `position:fixed`, calcolate dal bordo superiore sinistro della finestra.
     - indicheremo queste coordinate con `clientX/clientY`, il ragionamento per tale nome diventerà evidente in seguito, quando studieremo le proprietà degli eventi.
-2. **Coordinate relative al documento** - paragonabili a `position:absolute` quando riferita alla radice del documento, calcolate dal bordo superiore sinistro del documento.
+2. **Coordinate relative al documento** - paragonabili a `position:absolute` riferito alla radice del documento, calcolate dal bordo superiore sinistro del documento.
     - le indicheremo con `pageX/pageY`.
 
 Quando la pagina è al suo inizio, così che l'angolo superiore sinistro della finestra coincide esattamente con l'angolo superiore sinistro del documento, queste coordinate sono uguali tra loro. Ma dopo che si scorre la pagina, le coordinate relative alla finestra cambiano via via che gli elementi si spostano all'interno di questa, mentre le coordinate relative al documento rimangono invariate.
@@ -70,36 +70,36 @@ Come potete osservare, `x/y` e `width/height` descrivono pienamente il rettangol
 Nota bene:
 
 - Le coordinate possono avere valori decimali, come `10.5`. È normale, il browser internamente usa frazioni nei calcoli. Non dobbiamo arrotondare quando assegniamo i valori a `style.left/top`.
-- Le coordinate possono essere negative. Per esempio se la pagina scorre in modo che `elem` sia al di là del bordo della dinestra, allora `elem.getBoundingClientRect().top` è negativa.
+- Le coordinate possono essere negative. Per esempio se la pagina scorre in modo che `elem` sia al di là del bordo della finestra, allora `elem.getBoundingClientRect().top` è negativa.
 
-```smart header="Perché le proprietà derivate sono necessarie? Perché `top/left` esistono se ci sono già `x/y`?"
-Mathematically, a rectangle is uniquely defined with its starting point `(x,y)` and the direction vector `(width,height)`. So the additional derived properties are for convenience.
+```smart header="Perché le proprietà derivate sono necessarie? Perché esistono `top/left` se ci sono già `x/y`?"
+In matematica un rettangolo è definito unicamente dalla sua origine `(x,y)` e dal vettore di direzione `(width,height)`. Le proprietà aggiuntive derivate esistono quindi per comodità.
 
-Technically it's possible for `width/height` to be negative, that allows for "directed" rectangle, e.g. to represent mouse selection with properly marked start and end.
+Tecnicamente è possibile per `width/height` essere negativi in base alla "direzione" del rettangolo, ad esempio per rappresentare la selezione del mouse con l'inizio e la fine contrassegnati adeguatamente.
 
-Negative `width/height` values mean that the rectangle starts at its bottom-right corner and then "grows" left-upwards.
+Valori negativi per `width/height` comportano che il rettangolo abbia inizio dal suo angolo in basso a destra e si sviluppi a sinistra verso l'alto.
 
-Here's a rectangle with negative `width` and `height` (e.g. `width=-200`, `height=-100`):
+Ecco un rettangolo con `width` e `height` negativi (es. `width=-200`, `height=-100`):
 
 ![](coordinates-negative.svg)
 
-As you can see, `left/top` do not equal `x/y` in such case.
+Come potete notare, in casi del genere `left/top` non sono equivalenti a `x/y`.
 
-In practice though, `elem.getBoundingClientRect()` always returns positive width/height, here we mention negative `width/height` only for you to understand why these seemingly duplicate properties are not actually duplicates.
+Ma in pratica `elem.getBoundingClientRect()` restituisce sempre valori positivi per width/height. Qui menzioniamo i valori negativi per `width/height` solo per farvi comprendere il motivo per cui queste proprietà apparentemente duplicate in realtà non lo siano.
 ```
 
-```warn header="Internet Explorer: no support for `x/y`"
-Internet Explorer doesn't support `x/y` properties for historical reasons.
+```warn header="Internet Explorer non supporta `x/y`"
+Internet Explorer non supporta le proprietà `x/y` per ragioni storiche.
 
-So we can either make a polyfill (add getters in `DomRect.prototype`) or just use `top/left`, as they are always the same as `x/y` for positive `width/height`, in particular in the result of `elem.getBoundingClientRect()`.
+Possiamo quindi ricorrere ad un polyfill (aggiungendo dei getter in `DomRect.prototype`) o utilizzare semplicemente `top/left`, dal momento che, queste ultime, corrispondono sempre a `x/y` per i valori positivi di `width/height` restituiti da `elem.getBoundingClientRect()`.
 ```
 
-```warn header="Coordinates right/bottom are different from CSS position properties"
-There are obvious similarities between window-relative coordinates and CSS `position:fixed`.
+```warn header="Le coordinate right/bottom sono differenti dalle proprietà di posizione CSS"
+Ci sono delle evidenti rassomiglianze tra le coordinate relative alla finestra e `position:fixed` dei CSS.
 
-But in CSS positioning, `right` property means the distance from the right edge, and `bottom` property means the distance from the bottom edge.
+Nel posizionamento CSS, tuttavia, la proprietà `right` indica la distanza dal bordo destro, e la proprietà `bottom` indica la distanza dal bordo in basso.
 
-If we just look at the picture above, we can see that in JavaScript it is not so. All window coordinates are counted from the top-left corner, including these ones.
+Se diamo una semplice occhiata all'immagine sopra, possiamo notare che in JavaScript non è così. Tutte le coodinate relative alla finestra sono calcolate a partire dall'angolo superiore sinistro e queste non fanno eccezione.
 ```
 
 ## elementFromPoint(x, y) [#elementFromPoint]
