@@ -24,7 +24,7 @@ Questi invece no:
 La politica di "Same Origin" afferma che:
 
 - se abbiamo un riferimento ad un'altra finestra, ad esempio un popup creato tramite `window.open` oppure una finestra all'interno di un `<iframe>`, e queste finestre appartengono alla stessa origine, allora avremo pieno accesso ad esse.
-- altrimenti, se queste provengono da origini differenti, allora non potremo accedere al contenuto della finestra: variabili, il suo document, e qualsiasi altra informazione. L'unica eccezione è sulla proprietà `location`: possiamo modificarla (reindirizzando l'utente). Ma non possiamo *leggerne* il contenuto (quindi non possiamo sapere in quale sito si trova l'utente in un dato momento, nessuna infromazione viene trapelata).
+- altrimenti, se queste provengono da origini differenti, allora non potremo accedere al contenuto della finestra: alle variabili, il suo document, e qualsiasi altra informazione. L'unica eccezione è sulla proprietà `location`: possiamo modificarla (reindirizzando l'utente). Ma non possiamo *leggerne* il contenuto (quindi non possiamo sapere in quale sito si trova l'utente in un dato momento, nessuna infromazione viene trapelata).
 
 ### In azione: iframe
 
@@ -120,9 +120,9 @@ Questo è tutto. Da questo momento in poi potranno interagire senza limitazioni.
 
 Quando un iframe appartiene alla stessa origine, con la possibilità quindi di accedere al suo `document`, c'è un piccolo tranello a cui prestare attenzione. Non è strettamente legato al cross-origin, ma è comunque importante esserne a conoscenza.
 
-Al momento della creazione, un iframe genera immediatamente un document. Ma quest ultimo è diverso da quello che verrà caricato internamente!
+Al momento della creazione, un iframe genera immediatamente un document. Ma quest'ultimo è diverso da quello che verrà caricato internamente!
 
-Quindi, se qualsiasi operazione effettuata sul document negli istanti dopo al creazione, andrà probabilmente persa.
+Quindi, qualsiasi operazione effettuata sul document negli istanti dopo al creazione, andrà probabilmente persa.
 
 Vediamo un esempio di quanto affermato:
 
@@ -191,7 +191,7 @@ Un iframe potrebbe possedere a sua volta degli iframe. I rispettivi oggetti `win
 E' possibile navigare tra le finestre della gerarchia utilizzando:
 
 - `window.frames`: la collezione delle finestre "figlie" (per iframe annidati).
-- `window.parent`: il riferimento alla finestra "padre" (quella esterna).
+- `window.parent`: il riferimento alla finestra "genitore" (quella esterna).
 - `window.top`: il riferimento alla finestra in cima alla gerarchia.
 
 Ad esempio:
@@ -221,7 +221,7 @@ In altre parole, un attributo `"sandbox"` vuoto, applica tutte le restrizioni, m
 Di seguito la lista delle limitazioni:
 
 `allow-same-origin`
-: Di default l'attributo `"sandbox"` forza la politica di "diversa origine" per un iframe. In altre parole, fa si che il browser tratti l'`iframe` come se appartenesse ad un origine diversa, anche se in realtà il suo `src` sta puntando allo stesso sito. Con tutte le relative implicazioni viste prima. Questa opzione, disabilita la restrizione.
+: Di default l'attributo `"sandbox"` forza la politica di "diversa origine" per un iframe. In altre parole, fa sì che il browser tratti l'`iframe` come se appartenesse ad un origine diversa, anche se in realtà il suo `src` sta puntando allo stesso sito. Con tutte le relative implicazioni viste prima. Questa opzione disabilita la restrizione.
 
 `allow-top-navigation`
 : Permette all'iframe` di cambiare `parent.location`.
@@ -343,9 +343,9 @@ Per le finestre di popup abbiamo i seguenti riferimenti:
 - Dalla finestra che innesca l'apertura: `window.open`, consente di aprire una nuova finestra e ne ritorna il riferimento,
 - Dalla finestra di popup: `window.opener`, è il riferimento alla finestra che ha innescato l'apertura.
 
-Per gli iframe, possiamo accedere alle finestre padre/figlie utilizzando:
+Per gli iframe, possiamo accedere alle finestre genitrici/figlie utilizzando:
 - `window.frames`, una collection di oggetti relativi alle finestre annidate,
-- `window.parent`, `window.top` sono i riferimenti alle finestre padre e alla figlia,
+- `window.parent`, `window.top` sono i riferimenti alle finestre genitrici e figlia,
 - `iframe.contentWindow` è la finestra all'interno di un tag `<iframe>`.
 
 Se le finestre condividono la stessa origine (host, porta e protocollo), allora queste potranno accedere liberamente alle proprietà.
@@ -367,6 +367,5 @@ L'interfaccia `postMessage` consente a due finestre, qualsiasi sia la loro origi
     - `source`: il riferimento alla finestra mittente.
     - `data`: i dati inviati, sono supportati tutti i tipi di oggetto, ad eccezione di IE che accetta solamente stringhe.
 
-    Dobbiamo utilizzare `addEventListener` all'interno delle finestra target, per impostare il gestore dell'evento.
-
+    Dobbiamo utilizzare `addEventListener` all'interno delle finestra target per impostare il gestore dell'evento.
 
