@@ -64,9 +64,9 @@ Questo tipo di attacco colpisce solamente le azioni effettuate con il mouse (o i
 
 Gli input da tastiera sono più difficili da reindirizzare. Tecnicamente, se volessimo attaccare un campo di testo, allora potremmo posizionare un iframe in modo che i campi di testo si sovrappongano. Quindi quando un utente proverà ad andare in focus sull'input che vedono nella pagina, in realtà starà impostando il focus sull'iframe.
 
-Ma in questo caso avremo un problema. Tutto ciò che l'utente scriverà sarà invisibile, perché anche l'iframe lo è.
+Ma in questo caso avremmo un problema. Tutto ciò che l'utente scriverà sarà invisibile, perché anche l'iframe lo è.
 
-Un utente solitamente smette di digitare quando notano che nessun carattere sta apparendo sullo schermo.
+Un utente solitamente smette di digitare quando notanche nessun carattere sta apparendo sullo schermo.
 ```
 
 ## Difesa vecchia scuola (debole)
@@ -123,7 +123,7 @@ Ci sono altri modi per aggirare questa protezione.
 
 L'header server-side `X-Frame-Options` consente di definire se mostrare una pagina all'interno di un iframe.
 
-Deve essere inviato come HTTP-header: il browser lo ignorerà se provate ad inserirlo tarmite il tag `<meta>`. Quindi, `<meta http-equiv="X-Frame-Options"...>` non avrá alcun effetto.
+Deve essere inviato come HTTP-header: il browser lo ignorerà se provate ad inserirlo tarmite il tag `<meta>`. Quindi, `<meta http-equiv="X-Frame-Options"...>` non avrà alcun effetto.
 
 L'header può assumere 3 valori:
 
@@ -132,10 +132,10 @@ L'header può assumere 3 valori:
 : Non mostrare mai la pagina dentro un iframe.
 
 `SAMEORIGIN`
-: Consenti di mostrare una pagina dentro gli iframe, se appartengono alla stessa origine.
+: Consenti di mostrare una pagina dentro gli iframe, se appartiene alla stessa origine.
 
 `ALLOW-FROM domain`
-: Consenti agli iframe di mostrare una pagina se il documento padre appartiene al `domain` fornito.
+: Consenti agli iframe di mostrare una pagina se il documento genitore appartiene al `domain` fornito.
 
 Ad esempio, Twitter utilizza `X-Frame-Options: SAMEORIGIN`.
 
@@ -149,7 +149,7 @@ Qui vediamo il risultato:
 <!-- ebook: prerender/ chrome headless va in timeout con questo iframe -->
 <iframe src="https://twitter.com"></iframe>
 
-In base al browser che state utilizzando, l'`iframe` definito sopra, potrebbe o essere vuoto oppure avvertirvi che il browser non permette alla pagina questo tipo di navigazione.
+In base al browser che state utilizzando, l'`iframe` definito sopra potrebbe o essere vuoto oppure avvertirvi che il browser non permette alla pagina questo tipo di navigazione.
 ````
 
 ## Visualizzazione con funzionalità limitate
@@ -215,7 +215,7 @@ Un hacker può condividere un link nella sua pagina malevola, attirare gli utent
 
 Da un certo punto di vista, l'attacco non è così complesso: ciò che deve fare l'hacker è semplicemente intercettare un click. Però, se l'hacker è a conoscenza di ciò che apparirà dopo il click, allora potrà utilizzare dei messaggi astuti per convincere l'utente a cliccare anche sui successivi controlli.
 
-L'attacco può essere piuttosto pericoloso, perché quando studiano la UI (interfaccia utente), solitamente, non prendiamo in considerazione il fatto che un hacker potrebbe effettuare click al posto di un utente. Quindi possiamo trovare vulnerabilità nei posti più inaspettati.
+L'attacco può essere piuttosto pericoloso, perché quando studiano la UI (interfaccia utente), solitamente non prendiamo in considerazione il fatto che un hacker potrebbe effettuare un click al posto di un utente. Quindi possiamo trovare vulnerabilità nei posti più inaspettati.
 
 - E' sempre consigliato utilizzare `X-Frame-Options: SAMEORIGIN` nelle pagine (o anche nell'intero sito) che non abbiamo intenzione vengano mostrare all'interno degli iframe.
 - Possiamo utilizzare un `<div>` "contenitore" se vogliamo consentire alle nostre pagine di essere mostrare negli iframe, ma rimanere comunque protetti.
