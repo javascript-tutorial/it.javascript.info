@@ -6,7 +6,7 @@ Le coordinate sono a partire dall'angolo interno superiore sinistro del campo:
 
 Le dimensioni interne del campo si calcolano con `clientWidth/clientHeight`. I valori delle coordinate del centro del campo, quindi, si ottengono con `(clientWidth/2, clientHeight/2)`.
 
-...Ma se impostiamo tali valori per `ball.style.left/top`, allora si troverebbe al centro non la palla ma il suo bordo superiore sinistro
+...Ma se impostiamo tali valori per `ball.style.left/top`, allora si troverebbe al centro non la palla ma il suo bordo superiore sinistro:
 
 ```js
 ball.style.left = Math.round(field.clientWidth / 2) + 'px';
