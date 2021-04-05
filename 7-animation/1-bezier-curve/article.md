@@ -31,9 +31,9 @@ Con due punti avremo una curva lineare (una retta), con tre punti, avremo una cu
 
     ![](bezier4-e.svg) ![](bezier3-e.svg)
 
-Proprio grazie a quest'ultima proprietà, in computer grafica è possibile ottimizzare le verifiche di interesezione. Se due inviluppi convessi non si intersecano, allora neanche le curve lo fanno. Quindi le verifiche sugli inviluppi convessi possono dare degli esiti più rapidi nella verifica della "non intersezione". La verifica di intersezione tra inviluppi convessi è molto più semplice, poiché questi sono rettangoli, triangoli e cosi via (vedi la figura sopra), le quali sono figure molto più semplici rispetto alle curve.
+Proprio grazie a quest'ultima proprietà, in computer grafica è possibile ottimizzare i test di intersezione. Se due inviluppi convessi non si intersecano, allora neanche le curve lo fanno. Quindi le verifiche sugli inviluppi convessi possono dare degli esiti più rapidi nella verifica della "non intersezione". La verifica di intersezione tra inviluppi convessi è molto più semplice, poiché questi sono rettangoli, triangoli e cosi via (vedi la figura sopra), le quali sono figure molto più semplici rispetto alle curve.
 
-**Il principale vantaggio delle curve di Bezier in grafica, è che muovendo i punti le curve cambiano *in maniera piuttosto intuitiva*.**
+**In grafica, ll principale vantaggio delle curve di Bezier è che muovendo i punti, le curve cambiano *in maniera piuttosto intuitiva*.**
 
 Provate a giocare con i punti di controllo in questo esempio:
 
@@ -62,7 +62,7 @@ I punti di controllo (1,2 e 3) possono essere mossi utilizzando il mouse. Premet
 **L'algoritmo di De Casteljau's per la costruzione di una curva di Bezier a 3 punti:**
 
 1. Traccia i punti di controllo. Nella dimostrazione vista sopra, questi sono etichettati come: `1`, `2`, `3`.
-2. Traccia le semirette che congiungono i punti di controllo 1 -> 2 -> 3. Nella dimostrazione vista sopra questi sono <span style="color:#825E28">marrone</span>.
+2. Traccia le semirette che congiungono i punti di controllo 1 -> 2 -> 3. Nella dimostrazione vista sopra questi sono di colore <span style="color:#825E28">marrone</span>.
 3. Il parametro `t` passa da `0` a `1`. Nell'esempio sopra questo cresce con passi di `0.05`: il ciclo esegue `0, 0.05, 0.1, 0.15, ... 0.95, 1`.
 
     Per ognuno dei valori assunti da `t`:
@@ -71,7 +71,7 @@ I punti di controllo (1,2 e 3) possono essere mossi utilizzando il mouse. Premet
 
         Ad esempio, per `t=0`, entrambi i punti si troverano all'inizio del segmento, per `t=0.25`, si troveranno al 25% della lunghezza del segmento, per 50% (al centro), per `t=1`, alla fine del segmento.
 
-    - Collega i punti. Nella figura sotto, i segmenti collegati sono colarti di <span style="color:#167490">blu</span>.
+    - Collega i punti. Nella figura sotto, i segmenti collegati sono colorati di <span style="color:#167490">blu</span>.
 
 
 | For `t=0.25`             | For `t=0.5`            |
@@ -97,7 +97,7 @@ L'algoritmo applicato per 4 punti:
     - Nel segmento blu, tracciamo un punto in base al valore di `t`. Nell'esempio sopra è <span style="color:red">rosso</span>.
 - L'insieme di questi punti forma la curva.
 
-L'algoritmo è ricorsivo è ricorsivo, e può essere quindi generalizzato per un qualsiasi numero di punti di controllo.
+L'algoritmo è ricorsivo, e può essere quindi generalizzato per un qualsiasi numero di punti di controllo.
 
 Dato un numero N di punti di controllo:
 
