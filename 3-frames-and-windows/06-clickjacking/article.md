@@ -121,7 +121,7 @@ Ci sono altri modi per aggirare questa protezione.
 
 ## X-Frame-Options
 
-L'header server-side `X-Frame-Options` consente di definire se mostrare una pagina all'interno di un iframe.
+L'header server-side `X-Frame-Options` consente di definire se permettere o meno l'apertura di una pagina all'interno di un iframe.
 
 Deve essere inviato come HTTP-header: il browser lo ignorerà se provate ad inserirlo tarmite il tag `<meta>`. Quindi, `<meta http-equiv="X-Frame-Options"...>` non avrà alcun effetto.
 
@@ -132,10 +132,10 @@ L'header può assumere 3 valori:
 : Non mostrare mai la pagina dentro un iframe.
 
 `SAMEORIGIN`
-: Consenti di mostrare una pagina dentro gli iframe, se appartiene alla stessa origine.
+: Consenti di mostrare la pagina dentro un iframe, se appartiene alla stessa origine.
 
 `ALLOW-FROM domain`
-: Consenti agli iframe di mostrare una pagina se il documento genitore appartiene al `domain` fornito.
+: Consenti di mostrare la pagina dentro un iframe se il documento genitore appartiene al `domain` fornito.
 
 Ad esempio, Twitter utilizza `X-Frame-Options: SAMEORIGIN`.
 
@@ -191,7 +191,7 @@ La dimostrazione:
 
 ## L'attributo samesite dei cookie
 
-L'attributo `samesite` dei cookie aiuta anche a prevenire attacchi di tipo clickjacking.
+Anche l'attributo `samesite` dei cookie aiuta a prevenire attacchi di tipo clickjacking.
 
 Un cookie con questo attributo viene inoltrato al sito solamente se questo viene aperto direttamente, senza passare per un iframe, o qualche altra via. Potete trovare maggiori informazioni nell'articolo <info:cookie#samesite>.
 
@@ -215,7 +215,7 @@ Un hacker può condividere un link nella sua pagina malevola, attirare gli utent
 
 Da un certo punto di vista, l'attacco non è così complesso: ciò che deve fare l'hacker è semplicemente intercettare un click. Però, se l'hacker è a conoscenza di ciò che apparirà dopo il click, allora potrà utilizzare dei messaggi astuti per convincere l'utente a cliccare anche sui successivi controlli.
 
-L'attacco può essere piuttosto pericoloso, perché quando studiano la UI (interfaccia utente), solitamente non prendiamo in considerazione il fatto che un hacker potrebbe effettuare un click al posto di un utente. Quindi possiamo trovare vulnerabilità nei posti più inaspettati.
+L'attacco può essere piuttosto pericoloso, perché quando implementiamo la UI (interfaccia utente), solitamente non prendiamo in considerazione il fatto che un hacker potrebbe effettuare un click al posto di un utente. Quindi possiamo trovare vulnerabilità nei posti più inaspettati.
 
 - E' sempre consigliato utilizzare `X-Frame-Options: SAMEORIGIN` nelle pagine (o anche nell'intero sito) che non abbiamo intenzione vengano mostrare all'interno degli iframe.
 - Possiamo utilizzare un `<div>` "contenitore" se vogliamo consentire alle nostre pagine di essere mostrare negli iframe, ma rimanere comunque protetti.
