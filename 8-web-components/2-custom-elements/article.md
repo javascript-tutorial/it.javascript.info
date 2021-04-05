@@ -11,10 +11,10 @@ Possiamo definirli con delle classi speciali, ed usarli come se fossero sempre s
 
 Gli elementi personalizzati si dividono in due categorie:
 
-1. **Elementi personalizzati autonomi** -- elementi "nuovi di zecca", che estendono la casse astratta `HTMLElement`.
+1. **Elementi personalizzati autonomi** -- elementi "nuovi di zecca", che estendono la classe astratta `HTMLElement`.
 2. **Elementi built-in personalizzati** -- estendono gli elementi built-in, ad esempio un pulsante personalizzato, basato su `HTMLButtonElement` etc.
 
-Prima di tutto, affrontiamo gli elementi autonomi, dopodiché ci spostiamo su quelli built-in personalizzati.
+Prima di tutto, affrontiamo gli elementi autonomi, dopodiché ci sposteremo a quelli built-in personalizzati.
 
 Per creare un elemento personalizzato, abbiamo bisogno di comunicare al browser una serie di dettagli relativi: come mostrarlo, cosa fare una volta che l'elemento viene aggiunto o rimosso dalla pagina, etc.
 
@@ -59,7 +59,7 @@ class MyElement extends HTMLElement {
 Dopodiché, possiamo registrare l'elemento:
 
 ```js
-// fa in modo che il browser sappia che <my-element> venga fornito dalla nostra classe
+// fa in modo che il browser sappia che <my-element> viene fornito dalla nostra classe
 customElements.define("my-element", MyElement);
 ```
 
@@ -137,7 +137,7 @@ Nell'esempio appena visto, il contenuto dell'elemento viene renderizzato (creato
 
 Come mai non nel `constructor`?
 
-Il motivo è semplice: quando viene chiamato `constructor`, è ancora troppo presto. L'elemento è stato creato, ma in questa fase, il browser non ha ancora processato/assegnato gli i vari attributi: in questo frangente, una chiamata a `getAttribute` restituirebbe `null`. Di conseguenza, non possiamo renderizzare proprio nulla in quel punto.
+Il motivo è semplice: quando viene chiamato `constructor`, è ancora troppo presto. L'elemento è stato creato, ma in questa fase, il browser non ha ancora processato/assegnato i vari attributi: in questo frangente, una chiamata a `getAttribute` restituirebbe `null`. Di conseguenza, non possiamo renderizzare proprio nulla in quel punto.
 
 Oltretutto, pensandoci attentamente, in termini di prestazioni, è una cosa saggia ritardare il lavoro fino al momento in cui non serva davvero.
 
@@ -208,7 +208,7 @@ setInterval(() => elem.setAttribute('datetime', new Date()), 1000); // (5)
 ```
 
 1. La logica di rendering viene spostata sul metodo helper `render()`.
-2. Possiamo chiamarlo una sola volta quando l'elemento viene inserito in pagina.
+2. Possiamo chiamarlo una sola volta quando l'elemento viene inserito nella pagina.
 3. Al cambio di un attributo, dentro la lista `observedAttributes()`, viene chiamato `attributeChangedCallback`.
 4. ...e l'elemento viene renderizzato nuovamente.
 5. Alla fine, possiamo creare un timer live.
@@ -241,11 +241,11 @@ customElements.define('user-info', class extends HTMLElement {
 
 Eseguendolo, il contenuto dell'`alert` risulterebbe vuoto.
 
-Questo è proprio perché in questa fase non ci sono figli, ed il DOM è ancora incompleto. Il parser ha collegato l'elemento custom `<user-info>`, e sta procedendo verso i suoi figli, ma nient'altro.
+Questo proprio perché in questa fase non ci sono figli, ed il DOM è ancora incompleto. Il parser ha collegato l'elemento custom `<user-info>`, e sta procedendo verso i suoi figli, ma nient'altro.
 
 Se volessimo inviare delle informazioni all'elemento, potremmo usare gli attributi, che sono subito disponibili.
 
-Oppure, se davvero abbiamo necessità di avere a che fare con i figli, possiamo ritardarne impostare un `setTimeout` a latenza zero.
+Oppure, se davvero abbiamo necessità di avere a che fare con i figli, possiamo ritardare l'accesso impostando un `setTimeout` a latenza zero.
 
 Funziona così:
 
@@ -269,7 +269,7 @@ customElements.define('user-info', class extends HTMLElement {
 
 Adesso l'`alert` alla riga `(*)` mostrerà "John", come se lo eseguissimo in modo asincrono, a parsing HTML completato. Possiamo processare i figli se necessario e terminare l'inizializzazione.
 
-D'altra parte, la soluzione non è perfetta, perchè se anche i figli utilizzassero `setTimeout` per inizializzare sé stessi a loro volta, si metterebbero in coda: a quel punto prima verrebbe eseguito il `setTimeout` esterno, e poi quello interno.
+D'altra parte, la soluzione non è perfetta, perché se anche i figli utilizzassero `setTimeout` per inizializzare sé stessi a loro volta, si metterebbero in coda: a quel punto prima verrebbe eseguito il `setTimeout` esterno, e poi quello interno.
 
 E così non avremmo risolto granché, dato che di nuovo l'elemento esterno terminerebbe prima di quello interno.
 
@@ -305,7 +305,7 @@ Non c'è una una callback che si attiva dopo che gli elementi annidati sono pron
 
 ## Elementi built-in personlizzati
 
-I nuovi elementi che creiamo, come `<time-formatted>`, non hanno una semantica associata. Sono del tutto sconosciuti per motori di ricerca, e dispositivi di accessibilità, che non possono quindi gestirli.
+I nuovi elementi che creiamo, come `<time-formatted>`, non hanno una semantica associata. Sono del tutto sconosciuti per i motori di ricerca e i dispositivi di accessibilità, che non possono quindi gestirli.
 
 Queste cose possono avere la loro rilevanza. Ad esempio al motore di ricerca potrebbe interessare sapere che un componente mostra l'orario. E se stiamo creando un particolare tipo di pulsante, perché non riutilizzare la funzionalità esistente di  `<button>`?
 
@@ -319,7 +319,7 @@ Per esempio, i pulsanti sono una istanza di `HTMLButtonElement`, e possiamo part
     class HelloButton extends HTMLButtonElement { /* metodi degli elementi personalizzati */ }
     ```
 
-2. Forniamo il terzo argomenti a `customElements.define`, che specifica il tag:
+2. Forniamo il terzo argomento a `customElements.define`, che specifica il tag:
     ```js
     customElements.define('hello-button', HelloButton, *!*{extends: 'button'}*/!*);
     ```    
@@ -359,7 +359,7 @@ customElements.define('hello-button', HelloButton, {extends: 'button'});
 */!*
 ```
 
-Il nostro nuovo pulsante estende quello built-in. Ne mantiene gli stili e le caratteristiche standard come ad esempio, l'attributo `disabled`.
+Il nostro nuovo pulsante estende quello built-in. Ne mantiene gli stili e le caratteristiche standard, come ad esempio l'attributo `disabled`.
 
 ## Riferimenti
 
