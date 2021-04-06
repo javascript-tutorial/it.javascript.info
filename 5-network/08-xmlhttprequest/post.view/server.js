@@ -17,7 +17,7 @@ function accept(req, res) {
       chunks.push(data);
       length += data.length;
 
-      // More than 10mb, kill the connection!
+      // Per un contenuto maggiore di 10mb, termina la connessione!
       if (length > 1e8) {
         req.connection.destroy();
       }
@@ -49,7 +49,7 @@ function accept(req, res) {
 }
 
 
-// ------ запустить сервер -------
+// ------ avvia il server -------
 
 if (!module.parent) {
   http.createServer(accept).listen(8080);

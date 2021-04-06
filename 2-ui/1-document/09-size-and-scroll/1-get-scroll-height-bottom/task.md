@@ -2,10 +2,10 @@ importance: 5
 
 ---
 
-# What's the scroll from the bottom?
+# Qual è la misura dello scorrimento verso il basso?
 
-The `elem.scrollTop` property is the size of the scrolled out part from the top. How to get the size of the bottom scroll (let's call it `scrollBottom`)?
+La proprietà `elem.scrollTop` è la misura della parte superiore di un elemento fuori dall'area di scorrimento. Come ottenere la misura della parte inferiore (chiamiamola `scrollBottom`)?
 
-Write the code that works for an arbitrary `elem`.
+Scrivete il codice che funzioni per un elemento arbitrario `elem`.
 
-P.S. Please check your code: if there's no scroll or the element is fully scrolled down, then it should return `0`.
+P.S. Verificate il vostro codice: se non c'è scorrimento o è stato effettuato tutto lo scorrimento verso il basso, allora dovrebbe restituire `0`.

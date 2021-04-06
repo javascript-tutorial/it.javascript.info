@@ -25,7 +25,7 @@ messages.shift();
 // ora readMessages ha un elemento (tecnicamente la memoria potrebbe essere ripulita dopo)
 ```
 
-La struttura `WeakSet` consente di memorizzare un insieme di messaggi e di verificare molto rapidamente la presenza di un dato messaggio.
+La struttura `WeakSet` consente di memorizzare un insieme di messaggi e di verificare facilmente la presenza di un dato messaggio.
 
 Viene ripulita automaticamente. Il lato negativo è che non possiamo eseguire iterazioni. Non possiamo ottenere direttamente "tutti i messaggi letti". Ma possiamo farlo iterando su tutti i messaggi e filtrando tutti quelli che sono presenti nel set.
 
@@ -40,7 +40,7 @@ let isRead = Symbol("isRead");
 messages[0][isRead] = true;
 ```
 
-Ora anche se qualcun altro utilizza `for..in` per avere accesso a tutte le proprietà di messagge, la nostra proprietà sarà segreta.
+Ora anche se qualcun altro utilizza `for..in` per avere accesso a tutte le proprietà di messages, la nostra proprietà sarà segreta.
 
 
 Although symbols allow to lower the probability of problems, using `WeakSet` is better from the architectural point of view.

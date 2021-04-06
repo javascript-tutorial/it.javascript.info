@@ -27,11 +27,11 @@ Esaminiamo cosa accade dentro `makeArmy`, e la soluzioni ci apparirà ovvia.
 
 3. L'array viene ritornato dalla funzione.
 
-Successivamente, la chiamata `army[5]()` otterrà l'elemento `army[5]` dall'array (cioè una funzione) e la invocherà.
+Successivamente, la chiamata `army[5]()` recupererà l'elemento `army[5]` dall'array (cioè una funzione) e la invocherà.
 
-Ora perchè tutte le funzione mostrano lo stesso risultato?
+Ora perché tutte le funzione mostrano lo stesso risultato, `10`?
 
-Questo accade perchè non c'è alcuna variabile locale `i` interna alla funzione `shooter`. Quando questa funzione viene invocata, prende `i` dal lexical environment esterno.
+Questo accade perché non c'è alcuna variabile locale `i` interna alla funzione `shooter`. Quando questa funzione viene invocata, prende `i` dal lexical environment esterno.
 
 Quale sarà il valore di `i`?
 
@@ -43,52 +43,22 @@ function makeArmy() {
   let i = 0;
   while (i < 10) {
     let shooter = function() { // shooter function
-      alert( i ); // should show its number
+      alert( i ); // dovrebbe mostrare il suo numero
     };
-    ...
+    shooters.push(shooter); // aggiunge function all'array
+    i++;
   }
   ...
 }
 ```
 
-...Notiamo che si trova nel lexival environment associato a `makeArmy()`. Ma quando invochiamo `army[5]()`, `makeArmy` ha già terminato l'esecuzione, e `i` possiede l'ultimo valore: `10`.
+Possiamo notare che la funzione `shooter` viene creata nel lexical environment di `makeArmy()`. Ma quando invochiamo `army[5]()`, `makeArmy` ha già terminato l'esecuzione, ed il valore finale di `i` è `10` (`while` si ferma a `i=10`).
 
-Il risultato è che tutte le funzioni `shooter` la prendono dallo stesso lexical envrironment esterno, in cui l'ultimo valore è `i=10`.
+Il risultato è che tutte le funzioni `shooter` prendono lo stesso valore dal lexical envrironment esterno, in cui l'ultimo valore è `i=10`.
 
-Questo può essere sistemato molto facilmente:
+![](lexenv-makearmy-empty.svg)
 
-```js run
-function makeArmy() {
-
-  let shooters = [];
-
-*!*
-  for(let i = 0; i < 10; i++) {
-*/!*
-    let shooter = function() { // shooter function
-      alert( i ); // should show its number
-    };
-    shooters.push(shooter);
-  }
-
-  return shooters;
-}
-
-let army = makeArmy();
-
-army[0](); // 0
-army[5](); // 5
-```
-Ora funziona correttamente, perché ogni volta che viene eseguito il blocco di codice `for (..) {...}`, viene creato un nuovo Lexical Environment, con il corrispondente valore `i`.
-
-Quindi, il valore di `i` ora si trova più "vicino". Non più nel lexical environment di `makeArmy()`, ma in quello del corrispondente ciclo. Uno `shooter` preleva il valore esattamente da dove è stato creato.
-
-![](lexenv-makearmy.svg)
-
-Qui abbiamo riscritto `while` in `for`.
-
-Eì possibile farlo in un altro modo, vediamolo per capirlo meglio:
-
+Come puoi vedere qui sotto, a ogni iterazione del blocco `while {...}` viene creato un nuovo lexical environment. Quindi, per correggere, possiamo copiare il valore di `i` in una variabile all'interno del blocco `while {...}` stesso, così:
 
 ```js run
 function makeArmy() {
@@ -96,12 +66,12 @@ function makeArmy() {
 
   let i = 0;
   while (i < 10) {
-*!*
-    let j = i;
-*/!*
-    let shooter = function() { // shooter function
-      alert( *!*j*/!* ); // should show its number
-    };
+    *!*
+      let j = i;
+    */!*
+      let shooter = function() { // shooter function
+        alert( *!*j*/!* ); // dovrebbe mostrare il suo numero
+      };
     shooters.push(shooter);
     i++;
   }
@@ -111,10 +81,42 @@ function makeArmy() {
 
 let army = makeArmy();
 
+// Ora il codice funziona correttamente
 army[0](); // 0
 army[5](); // 5
 ```
 
-Il ciclo `while`, come `for`, crea un nuovo Lexical Environment ad ogni esecuzone. Quindi siamo sicuri di ottener il giusto valore di `shooter`.
+Qui `let j = i` dichiara la variabile `j` "locale all'iterazione" e copia `i` al suo interno. I tipi primitivi vengo copiato "per valore", quindi otteniamo una copia indipendente di `i`, appartenente all'iterazione corrente del ciclo.
 
-Copiamo `let j = i`. Questo rende il corpo del ciclo locale e copia su `j` il valore di `i`. Gli oggetti primitivi vengono copiati per valore, quindi ora abbiamo un copia indipendente di `i`, che appartiene all iterazione corrente.
+Shooters funziona correttamente, perché il valore di `i` è un po' più vicino. Non è nel Lexical Environment di `makeArmy()`, ma nel Lexical Environment che corrisponde all'iterazione corrente del ciclo:
+
+![](lexenv-makearmy-while-fixed.svg)
+
+Questo tipo di problema può anche essere evitato usando `for` all'inizio, in questo modo:
+
+```js run demo
+function makeArmy() {
+
+  let shooters = [];
+
+*!*
+  for(let i = 0; i < 10; i++) {
+*/!*
+    let shooter = function() { // shooter function
+      alert( i ); // dovrebbe mostrare il suo numero
+    };
+    shooters.push(shooter);
+  }
+
+  return shooters;
+}
+
+let army = makeArmy();
+
+army[0](); // 0
+army[5](); // 5
+```
+
+Essenzialmente è la stessa cosa, perché ad ogni iterazione `for` viene generato un nuovo lexical environment, con la propria variabile `i`. Quindi `shooter` generato in ogni iterazione fa riferimento alla propria `i`, in quella stessa iterazione.
+
+![](lexenv-makearmy-for-fixed.svg)

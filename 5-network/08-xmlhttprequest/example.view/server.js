@@ -43,7 +43,7 @@ function accept(req, res) {
 
 
 
-// ----- запуск accept как сервера из консоли или как модуля ------
+// ----- avvia il server ------
 
 if (!module.parent) {
   http.createServer(accept).listen(8080);
