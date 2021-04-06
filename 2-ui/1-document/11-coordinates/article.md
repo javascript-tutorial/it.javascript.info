@@ -104,15 +104,15 @@ Se diamo una semplice occhiata all'immagine sopra, possiamo notare che in JavaSc
 
 ## elementFromPoint(x, y) [#elementFromPoint]
 
-The call to `document.elementFromPoint(x, y)` returns the most nested element at window coordinates `(x, y)`.
+La chiamata a `document.elementFromPoint(x, y)` restituisce l'elemento più annidato alle coordinate `(x, y)` relative alla finestra.
 
-The syntax is:
+La sintassi è:
 
 ```js
 let elem = document.elementFromPoint(x, y);
 ```
 
-For instance, the code below highlights and outputs the tag of the element that is now in the middle of the window:
+Il codice sotto, ad esempio, evidenzia e mostra il tag dell'elemento che si trova adesso al centro della finestra:
 
 ```js run
 let centerX = document.documentElement.clientWidth / 2;
@@ -124,25 +124,25 @@ elem.style.background = "red";
 alert(elem.tagName);
 ```
 
-As it uses window coordinates, the element may be different depending on the current scroll position.
+Dal momento che usa le coordinate relative alla finestra, l'elemento può variare in base alla posizione di scorrimento corrente.
 
-````warn header="For out-of-window coordinates the `elementFromPoint` returns `null`"
-The method `document.elementFromPoint(x,y)` only works if `(x,y)` are inside the visible area.
+````warn header="Per coordinate al di fuori della finestra `elementFromPoint` restituisce `null`"
+Il metodo `document.elementFromPoint(x,y)` funziona solo se `(x,y)` sono dentro l'area visibile.
 
-If any of the coordinates is negative or exceeds the window width/height, then it returns `null`.
+Se una delle coordinate è negativa o eccede le dimensioni della finestra, restituisce `null`.
 
-Here's a typical error that may occur if we don't check for it:
+Ecco un tipico errore che può verificarsi se non prestiamo attenzione a questa eventualità:
 
 ```js
 let elem = document.elementFromPoint(x, y);
-// if the coordinates happen to be out of the window, then elem = null
+// se le coordinate sono fuori dalla finestra elem = null
 *!*
 elem.style.background = ''; // Error!
 */!*
 ```
 ````
 
-## Using for "fixed" positioning
+## Uso per il posizionamento "fisso"
 
 Most of time we need coordinates in order to position something.
 
