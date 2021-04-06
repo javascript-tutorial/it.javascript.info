@@ -142,7 +142,7 @@ elem.style.background = ''; // Error!
 ```
 ````
 
-## Uso per il posizionamento "fisso"
+## Usare il posizionamento "fisso"
 
 Most of time we need coordinates in order to position something.
 
