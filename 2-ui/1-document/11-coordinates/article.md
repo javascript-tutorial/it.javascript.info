@@ -142,13 +142,13 @@ elem.style.background = ''; // Error!
 ```
 ````
 
-## Usare il posizionamento "fisso"
+## Utilizzare il posizionamento "fisso"
 
-Most of time we need coordinates in order to position something.
+La maggior parte delle volte abbiamo bisogno delle coordinate per posizionare qualcosa.
 
-To show something near an element, we can use `getBoundingClientRect` to get its coordinates, and then CSS `position` together with `left/top` (or `right/bottom`).
+Per mostrare qualcosa vicino un elemento, possiamo usare `getBoundingClientRect` per ricavare le sue coordinate e successivamente utilizzare la proprietà CSS `position` insieme a `left/top` (o `right/bottom`).
 
-For instance, the function `createMessageUnder(elem, html)` below shows the message under `elem`:
+Per esempio la funzione `createMessageUnder(elem, html)` in basso, mostra un messaggio sotto `elem`:
 
 ```js
 let elem = document.getElementById("coords-show-mark");
@@ -172,32 +172,32 @@ function createMessageUnder(elem, html) {
   return message;
 }
 
-// Usage:
-// add it for 5 seconds in the document
+// Esempio d'uso:
+// aggiunge il messaggio al documento per 5 secondi
 let message = createMessageUnder(elem, 'Hello, world!');
 document.body.append(message);
 setTimeout(() => message.remove(), 5000);
 ```
 
 ```online
-Click the button to run it:
+Clicca il pulsante per eseguire:
 
-<button id="coords-show-mark">Button with id="coords-show-mark", the message will appear under it</button>
+<button id="coords-show-mark">Pulsante con id="coords-show-mark", il messaggio apparirà sotto</button>
 ```
 
-The code can be modified to show the message at the left, right, below, apply CSS animations to "fade it in" and so on. That's easy, as we have all the coordinates and sizes of the element.
+Il codice può essere modificato per mostrare il messaggio a sinistra, a destra, sopra, per applicare animazioni CSS di dissolvenza e così via. Dal momento che disponiamo di tutte le coordinate e dimensioni dell'elemento è piuttosto semplice.
 
-But note the important detail: when the page is scrolled, the message flows away from the button.
+Fate attenzione, tuttavia, ad un dettaglio importante: quando la pagina scorre, il pulsante si allontana dal messaggio.
 
-The reason is obvious: the message element relies on `position:fixed`, so it remains at the same place of the window while the page scrolls away.
+Il motivo è ovvio: il messaggio si basa su `position:fixed`, quindi rimane nello stessa posizione relativamente alla finestra mentre la pagina scorre via.
 
-To change that, we need to use document-based coordinates and `position:absolute`.
+Per cambiare questo comportamento, dobbiamo usare coordinate relative al documento e `position:absolute`.
 
-## Document coordinates [#getCoords]
+## Coordinate relative al documento [#getCoords]
 
-Document-relative coordinates start from the upper-left corner of the document, not the window.
+Le coordinate relative al documento hanno come riferimento l'angolo superiore sinistro del documento, non della finestra.
 
-In CSS, window coordinates correspond to `position:fixed`, while document coordinates are similar to `position:absolute` on top.
+Nei CSS, le coordinate relative alla finestra corrispondono a `position:fixed`, mentre le coordinate relative al documento sono assimilabili a `position:absolute` riferito alla radice del documento.
 
 We can use `position:absolute` and `top/left` to put something at a certain place of the document, so that it remains there during a page scroll. But we need the right coordinates first.
 
@@ -245,11 +245,11 @@ function createMessageUnder(elem, html) {
 
 ## Riepilogo
 
-Any point on the page has coordinates:
+Ogni punto sulla pagina ha delle coordinate:
 
-1. Relative to the window -- `elem.getBoundingClientRect()`.
-2. Relative to the document -- `elem.getBoundingClientRect()` plus the current page scroll.
+1. relative alla finestra -- `elem.getBoundingClientRect()`.
+2. relative al documento -- `elem.getBoundingClientRect()` più lo scorrimento corrente di pagina.
 
-Window coordinates are great to use with `position:fixed`, and document coordinates do well with `position:absolute`.
+Le coordinate relative alla finestra sono ottime per un utilizzo con `position:fixed` e le coordinate relative al documento vanno bene con `position:absolute`.
 
-Both coordinate systems have their pros and cons; there are times we need one or the other one, just like CSS `position` `absolute` and `fixed`.
+Entrambi i sistemi di coordinate hanno i loro vantaggi e svantaggi; ci sono circostanze in cui abbiamo bisogno dell'uno o dell'altro, proprio come per la proprietà CSS `position` `absolute` e `fixed`.
