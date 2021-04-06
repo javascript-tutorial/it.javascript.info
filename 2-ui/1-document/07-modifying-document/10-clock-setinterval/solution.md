@@ -52,6 +52,6 @@ function clockStop() {
 }
 ```
 
-Please note that the call to `update()` is not only scheduled in `clockStart()`, but immediately run in the line `(*)`. Otherwise the visitor would have to wait till the first execution of `setInterval`. And the clock would be empty till then.
+Nota che la chiamata a `update()` non è programmata solo in `clockStart()`, ma immediatamente dopo l'esecuzione della linea `(*)`. Altrimenti il visitatore dovrebbe aspettare fino alla prima esecuzione di `setInterval`. E l'orologio sarebbe vuoto fino ad allora. 
 
-Also it is important to set a new interval in `clockStart()` only when the clock is not running. Otherways clicking the start button several times would set multiple concurrent intervals. Even worse - we would only keep the `timerID` of the last interval, losing references to all others. Then we wouldn't be able to stop the clock ever again! Note that we need to clear the `timerID` when the clock is stopped in the line `(**)`, so that it can be started again by running `clockStart()`.
+E' altresì importante impostare il nuovo intervallo in `clockStart()` solo quando l'orologio non sta andando. Altrimenti cliccare il bottone start svariate volte imposterebbe multipli intervali concorrenti. Ancora peggio: terremmo solo il `timerID` dell'ultimo intervallo, perdendo la referenza a tutti gli altri. Così non potremmo più fermare l'orologio! Nota che dobbiamo rimuovere il `timerID` quando l'orologio viene fermato alla linea `(**)`, in modo da permettergi di ricominciare eseguendo `clockStart()`.
