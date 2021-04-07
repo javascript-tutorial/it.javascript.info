@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="index.css">
   <script>
-    document.onclick = function(e) { // shows click coordinates
+    document.onclick = function(e) { // mostra le coordinate del clic
       coords.innerHTML = e.clientX + ':' + e.clientY;
     };
   </script>
@@ -13,10 +13,10 @@
 
 <body>
 
-  Click anywhere to get window coordinates.
-  <br> That's for testing, to check the result you get by JavaScript.
+  Clicca in un punto qualsiasi per ottenere le coordinate relative alla finestra.
+  <br> Fatelo a scopo di test, per verificare il risultato che ottenete con JavaScript.
   <br>
-  <div id="coords">(click coordinates show up here)</div>
+  <div id="coords">(le coordinate del clic vengono mostrate qui)</div>
 
 
   <div id="field">

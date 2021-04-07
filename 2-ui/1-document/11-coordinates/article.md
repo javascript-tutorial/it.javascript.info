@@ -156,7 +156,7 @@ let elem = document.getElementById("coords-show-mark");
 function createMessageUnder(elem, html) {
   // crea l'elemento messaggio
   let message = document.createElement('div');
-  // è preferibile usare una classe CSS per assegnargli degli stili
+  // per assegnare degli stili è preferibile usare una classe CSS
   message.style.cssText = "position:fixed; color: red";
 
 *!*
