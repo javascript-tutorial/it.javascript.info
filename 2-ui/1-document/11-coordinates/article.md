@@ -53,7 +53,7 @@ right:${r.right}
 }
 </script>
 
-Se scorrete la pagina e ripetete il test, noterete che quando cambia la posizione relativa alla finestra del pulsante, cambiano anche le sue coordinate relative alla finestra (`y/top/bottom` se scorri verticalmente)
+Se scorrete la pagina e ripetete il test, noterete che quando cambia la posizione relativa alla finestra del pulsante, cambiano anche le sue coordinate relative alla finestra (`y/top/bottom` se scorri verticalmente).
 ```
 
 Di seguito un'immagine descrittiva dell'output di `elem.getBoundingClientRect()`:
@@ -70,7 +70,7 @@ Come potete osservare, `x/y` e `width/height` descrivono pienamente il rettangol
 Nota bene:
 
 - Le coordinate possono avere valori decimali, come `10.5`. È normale, il browser internamente usa frazioni nei calcoli. Non dobbiamo arrotondare quando assegniamo i valori a `style.left/top`.
-- Le coordinate possono essere negative. Per esempio se la pagina scorre in modo che `elem` sia al di là del bordo della finestra, allora `elem.getBoundingClientRect().top` è negativa.
+- Le coordinate possono essere negative. Per esempio se la pagina scorre in modo che `elem` sia al di sopra del bordo della finestra, allora `elem.getBoundingClientRect().top` è negativa.
 
 ```smart header="Perché le proprietà derivate sono necessarie? Perché esistono `top/left` se ci sono già `x/y`?"
 In matematica un rettangolo è definito unicamente dalla sua origine `(x,y)` e dal vettore di direzione `(width,height)`. Le proprietà aggiuntive derivate esistono quindi per comodità.
@@ -144,7 +144,7 @@ elem.style.background = ''; // Error!
 
 ## Utilizzare il posizionamento "fisso"
 
-La maggior parte delle volte abbiamo bisogno delle coordinate per posizionare qualcosa.
+La maggior parte delle volte per posizionare qualcosa abbiamo bisogno delle coordinate.
 
 Per mostrare qualcosa vicino un elemento, possiamo usare `getBoundingClientRect` per ricavare le sue coordinate e successivamente utilizzare la proprietà CSS `position` insieme a `left/top` (o `right/bottom`).
 
@@ -154,13 +154,13 @@ Per esempio la funzione `createMessageUnder(elem, html)` in basso, mostra un mes
 let elem = document.getElementById("coords-show-mark");
 
 function createMessageUnder(elem, html) {
-  // create message element
+  // crea l'elemento messaggio
   let message = document.createElement('div');
-  // better to use a css class for the style here
+  // è preferibile usare una classe CSS per assegnargli degli stili
   message.style.cssText = "position:fixed; color: red";
 
 *!*
-  // assign coordinates, don't forget "px"!
+  // assegna le coordinate, non dimenticare "px"!
   let coords = elem.getBoundingClientRect();
 
   message.style.left = coords.left + "px";
@@ -225,7 +225,7 @@ function getCoords(elem) {
 
 Se nell'esempio sopra l'avessimo usata con `position:absolute`, il messaggio sarebbe rimasto vicino l'elemento durante lo scorrimento.
 
-La funzione `createMessageUnder` adattata:
+Ecco la funzione `createMessageUnder` adattata:
 
 ```js
 function createMessageUnder(elem, html) {
