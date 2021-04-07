@@ -199,18 +199,18 @@ Le coordinate relative al documento hanno come riferimento l'angolo superiore si
 
 Nei CSS, le coordinate relative alla finestra corrispondono a `position:fixed`, mentre le coordinate relative al documento sono assimilabili a `position:absolute` riferito alla radice del documento.
 
-We can use `position:absolute` and `top/left` to put something at a certain place of the document, so that it remains there during a page scroll. But we need the right coordinates first.
+Possiamo usare `position:absolute` e `top/left` per posizionare qualcosa in un determinato punto del documento, in modo che rimanga lì durante lo scorrimento di pagina. Ma prima abbiamo bisogno di conoscerne le coordinate corrette.
 
-There's no standard method to get the document coordinates of an element. But it's easy to write it.
+Non esiste un metodo standard per ottenere le coordinate di un elemento relative al documento, però è facile ricavarle.
 
-The two coordinate systems are connected by the formula:
-- `pageY` = `clientY` + height of the scrolled-out vertical part of the document.
-- `pageX` = `clientX` + width of the scrolled-out horizontal part of the document.
+I due sistemi di coordinate sono correlati dalla formula:
+- `pageY` = `clientY` + altezza della parte verticale del documento fuori dall'area visibile di scorrimento.
+- `pageX` = `clientX` + larghezza della parte orizzontale del documento fuori dall'area visibile di scorrimento.
 
-The function `getCoords(elem)` will take window coordinates from `elem.getBoundingClientRect()` and add the current scroll to them:
+La funzione `getCoords(elem)` ricaverà le coordinate relative alla finestra da `elem.getBoundingClientRect()` ed aggiungerà a queste lo scorrimento di pagina corrente:
 
 ```js
-// get document coordinates of the element
+// ottiene le coordinate relative al documento di un elemento
 function getCoords(elem) {
   let box = elem.getBoundingClientRect();
 
@@ -223,9 +223,9 @@ function getCoords(elem) {
 }
 ```
 
-If in the example above we used it with `position:absolute`, then the message would stay near the element on scroll.
+Se nell'esempio sopra l'avessimo usata con `position:absolute`, il messaggio sarebbe rimasto vicino l'elemento durante lo scorrimento.
 
-The modified `createMessageUnder` function:
+La funzione `createMessageUnder` adattata:
 
 ```js
 function createMessageUnder(elem, html) {
@@ -248,7 +248,7 @@ function createMessageUnder(elem, html) {
 Ogni punto sulla pagina ha delle coordinate:
 
 1. relative alla finestra -- `elem.getBoundingClientRect()`.
-2. relative al documento -- `elem.getBoundingClientRect()` più lo scorrimento corrente di pagina.
+2. relative al documento -- `elem.getBoundingClientRect()` più lo scorrimento di pagina corrente.
 
 Le coordinate relative alla finestra sono ottime per un utilizzo con `position:fixed` e le coordinate relative al documento vanno bene con `position:absolute`.
 
