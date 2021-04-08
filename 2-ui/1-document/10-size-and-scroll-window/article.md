@@ -17,7 +17,7 @@ Ad esempio questo pulsante mostra l'altezza della tua finestra:
 ```
 
 ````warn header="Non usare `window.innerWidth/innerHeight`"
-I browser supportano inoltre proprietà come `window.innerWidth/innerHeight`. Sembra che facciano al nostro caso, quindi perché non usare queste?
+I browser supportano inoltre proprietà come `window.innerWidth/innerHeight`. Sembra che facciano al nostro caso, quindi perché non dovremmo usarle?
 
 Se esiste una barra di scorrimento ed occupa uno spazio, `clientWidth/clientHeight` forniscono la larghezza e l'altezza al netto della barra (la sottraggono). In altre parole restituiscono le dimensioni della parte visibile del documento disponibile per il contenuto.
 
@@ -81,7 +81,7 @@ Per scorrere la pagina con JavaScript, il DOM deve essere stato completamente el
 Se proviamo, ad esempio, a scorrere la pagina con uno script nella sezione `<head>`, non funzionerà.
 ```
 
-I normali elementi possono essere fatti scorrere modificando `scrollTop/scrollLeft`.
+Gli elementi normali possono essere fatti scorrere modificando `scrollTop/scrollLeft`.
 
 Possiamo applicare lo stesso principio per la pagina usando `document.documentElement.scrollTop/scrollLeft` (tranne che per Safari, con il quale dovremmo usare invece `document.body.scrollTop/Left`).
 
