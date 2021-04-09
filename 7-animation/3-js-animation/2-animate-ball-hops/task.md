@@ -2,12 +2,12 @@ importance: 5
 
 ---
 
-# Animate the ball bouncing to the right
+# Fate rimbalzare la palla verso destra
 
-Make the ball bounce to the right. Like this:
+Fate rimbalzare la palla verso destra. Come nell'esempio:
 
 [iframe height=250 src="solution"]
 
-Write the animation code. The distance to the left is `100px`.
+Scrivete il codice relativo all'animazione. La distanza da sinistra è `100px`.
 
-Take the solution of the previous task <info:task/animate-ball> as the source.
+Prendete la soluzione dell'esercizio precedente <info:task/animate-ball> come punto di partenza.

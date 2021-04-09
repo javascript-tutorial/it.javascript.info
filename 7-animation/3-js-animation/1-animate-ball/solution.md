@@ -1,8 +1,8 @@
-To bounce we can use CSS property `top` and `position:absolute` for the ball inside the field with `position:relative`.
+Per il rimbalzo potete utilizzare la proprietà CSS `top` e `position:absolute` sulla palla dentro il campo con `position:relative`.
 
-The bottom coordinate of the field is `field.clientHeight`. The CSS `top` property refers to the upper edge of the ball. So it should go from `0` till `field.clientHeight - ball.clientHeight`, that's the final lowest position of the upper edge of the ball.
+Le coordinate del fondo del campo sono `field.clientHeight`. La proprietà CSS `top` fa riferimento al bordo alto della palla. Quindi dovrebbe andare da `0` fino a `field.clientHeight - ball.clientHeight`, questa è la posizione finale, quella più bassa rispetto al bordo alto della palla.
 
-To get the "bouncing" effect we can use the timing function `bounce` in `easeOut` mode.
+Per dare l'effetto di "rimbalzo" possiamo utilizzare la funzione di temporizzazione `bounce` in modalità `easeOut`.
 
 Here's the final code for the animation:
 
