@@ -2,11 +2,11 @@
 
 Le animazioni CSS ci consentono di realizzare semplici animazioni senza l'utilizzo di JavaScript.
 
-JavaScript può eventualmente essere utilizzato per controllare le animazioni CSS e migliorare, aggiungendo qualche riga di codice.
+JavaScript può eventualmente essere utilizzato per controllare le animazioni CSS e migliorarle, aggiungendo qualche riga di codice.
 
 ## Transizioni CSS [#css-transition]
 
-L'idea che sta alla base delle transizioni CSS è molto semplice. Ci consente di definire come animare i cambiamenti su una determinata proprietà. Quando il valore dei questa proprietà cambierà, il browser mostrerà l'animazione.
+L'idea che sta alla base delle transizioni CSS è molto semplice. Ci consente di definire come animare i cambiamenti su una determinata proprietà. Quando il valore di questa proprietà cambierà, il browser mostrerà l'animazione.
 
 Questo è tutto, l'unica cosa di cui abbiamo bisogno ora è di cambiare il valore della proprietà, e la transizione definita verrà eseguita dal browser.
 
@@ -21,7 +21,7 @@ Ad esempio, il codice CSS qui sotto definisce un'animazione al cambiamento della
 
 Quindi ora, se un elemento possiede la class `.animated`, qualsiasi cambiamento al suo `background-color` verrà animato con una durata di 3 secondi.
 
-Provate a clicchare il bottone qui sotto per vedere l'animazione sul background:
+Provate a cliccare il bottone qui sotto per vedere l'animazione sul background:
 
 ```html run autorun height=60
 <button id="color">Click me</button>
@@ -86,7 +86,7 @@ In `transition-duration` possiamo definire la durata dell'animazione. Il tempo d
 
 In `transition-delay` possiamo specificare un *ritardo* dell'animazione. Ad esempio, se `transition-delay` è impostato ad `1s` e `transition-duration` vale `2s`, allora l'animazione inizierà con 1 secondo di ritardo rispetto al cambiamento del valore della proprietà a cui fa riferimento, e avrà una durata totale di 2 secondi.
 
-E' possibile definire anche valori negativi. In questo caso l'animazione inizierà immediatamente, ma l'inizio dell'animazione avverrà dopo il tempo fornito. Ad esempio, se `transition-delay` è impostato a `-1s` e `transition-duration` vale `2s`, l'animazione inizierà a metà del tempo fornito ed avrà una durata totale di 1 secondo. 
+E' possibile definire anche valori negativi. In questo caso l'animazione inizierà immediatamente, ma il punto di inizio verrà spostato di tanti secondi quanti sono quelli del tempo di ritardo fornito. Ad esempio, se `transition-delay` è impostato a `-1s` e `transition-duration` vale `2s`, l'animazione inizierà a metà ed avrà una durata totale di 1 secondo. 
 
 Qui vediamo un animazione che scorre le cifre da `0` a `9` utilizzando la proprietà CSS `translate`:
 
@@ -102,13 +102,13 @@ La proprietà `transform` viene animata in questo modo:
 }
 ```
 
-Nell'esempio visto sopra, JavaScript aggiunge la classe `.animate` all'elemento, iniziando cosi l'animazione:
+Nell'esempio visto sopra, JavaScript aggiunge la classe `.animate` all'elemento, iniziando così l'animazione:
 
 ```js
 stripe.classList.add('animate');
 ```
 
-Possiamo anche iniziarla a metà della transizione, da un numero specifico, ad esempio corrispondente al secondo attuale, utilizzano un valore negativo per la proprietà `transition-delay`.
+Possiamo anche iniziarla a metà della transizione, da un numero specifico, ad esempio corrispondente al secondo attuale, utilizzando un valore negativo per la proprietà `transition-delay`.
 
 Nell'esempio sotto, se cliccate il numero, l'animazione inizierà dal secondo attuale:
 
@@ -148,17 +148,17 @@ La sintassi per descrivere una curva di Bezier nel CSS: `cubic-bezier(x2, y2, x3
 La funzione di temporizzazione descrive la velocità di riproduzione dell'animazione.
 
 - L'asse delle `x` rappresenta il tempo: `0` -- l'inizio, `1` il termine dell'animazione, specificato in `transition-duration`.
-- L'asse delle `y` specifica il completamente del processo: `0` il valore iniziale della proprietà, `1` il valore finale.
+- L'asse delle `y` specifica il completamento del processo: `0` il valore iniziale della proprietà, `1` il valore finale.
 
 La variante più semplice è quando un'animazione procede uniformemente, con velocita lineare. Questo tipo di animazione può essere definito con la curva `cubic-bezier(0, 0, 1, 1)`.
 
-Cosi è come appare la curva descritta:
+Così è come appare la curva descritta:
 
 ![](bezier-linear.svg)
 
-...Come possiamo vedere, è una semplice linea retta. Al passare del tempo (`x`), la completezza (`y`) dell'animazione passa da `0` a `1`.
+...Come possiamo vedere, è una semplice linea retta. Al passare del tempo (`x`), il completamento (`y`) dell'animazione passa da `0` a `1`.
 
-Il treno nell'esempio sotto va da sinistra verso desta con velocità costante (provate a cliccarci sopra):
+Il treno nell'esempio sotto va da sinistra verso destra con velocità costante (provate a cliccarci sopra):
 
 [codetabs src="train-linear"]
 
@@ -176,7 +176,7 @@ La `transition` CSS è basata su questa curva:
 
 Possiamo utilizzare una curva di Bezier differente: `cubic-bezier(0.0, 0.5, 0.5 ,1.0)`.
 
-La curva appare cosi:
+La curva appare così:
 
 ![](train-curve.svg)
 
@@ -360,7 +360,7 @@ boat.onclick = function() {
 L'oggetto emesso dall'evento `transitionend` possiede un paio di proprietà specifiche:
 
 `event.propertyName`
-: La proprietà che ah concluso l'animazione. Può essere utile seh abbiamo definito animazioni per più proprietà.
+: La proprietà che ha concluso l'animazione. Può essere utile se abbiamo definito animazioni per più proprietà.
 
 `event.elapsedTime`
 : Il tempo (in secondi) impiegato per concludere l'animazione, senza considerare `transition-delay`.
@@ -369,7 +369,7 @@ L'oggetto emesso dall'evento `transitionend` possiede un paio di proprietà spec
 
 Possiamo unire tra di loro più animazioni utilizzando la regola CSS `@keyframes`.
 
-Specifica il "nome" dell'animazione e della regola: cosa, quando e dove eseguire l'animazione. Successivamente, utilizzando la proprietà `animation`, possiamo attaccare l'animazione all'elemento ed eventualmente specificare parametri addizionali.
+Tale regola specifica il "nome" dell'animazione e le modalità: cosa, quando e dove eseguire l'animazione. Successivamente, utilizzando la proprietà `animation`, possiamo attribuire l'animazione all'elemento ed eventualmente specificare parametri addizionali.
 
 Qui vediamo un'esempio commentato:
 
@@ -379,7 +379,7 @@ Qui vediamo un'esempio commentato:
 <style>
 *!*
   @keyframes go-left-right {        /* gli diamo un nome: "go-left-right" */
-    from { left: 0px; }             /* amima da sinistra: 0px */
+    from { left: 0px; }             /* anima da sinistra: 0px */
     to { left: calc(100% - 50px); } /* anima verso sinistra: 100%-50px */
   }
 */!*
@@ -409,7 +409,7 @@ Probabilmente non avrete bisogno di utilizzare `@keyframes` spesso, a meno che t
 
 ## Riepilogo
 
-Le animazioni CSS consentono di definire delle animazioni su una o più proprietà CSS.
+Le animazioni CSS consentono di definire delle animazioni fluide (o meno) su una o più proprietà CSS.
 
 Sono utili nella maggior parte dei casi in cui dobbiamo definire delle animazioni. Possiamo anche utilizzare JavaScript per definire le animazioni, ed il prossimo capitolo sarà infatti dedicato a questo.
 
@@ -424,4 +424,4 @@ Le limitazioni delle animazioni CSS rispetto a quelle definite utilizzando JavaS
 
 La maggior parte delle animazioni possono essere implementate con CSS come descritto in questo articolo. Insieme all'evento `transitionend` possiamo eseguire codice al termine dell'animazione, integrandoci perfettamente con l'animazione.
 
-Nel prossimo articolo vedremo le animazioni con JavaScript, andando a coprire casi più complessi.
+Nel prossimo articolo vedremo le animazioni con JavaScript, andando a trattare casi più complessi.

@@ -9,7 +9,7 @@ Create una funzione `showCircle(cx, cy, radius)` che mostri un cerchio che cresc
 - `cx,cy` sono le coordinate del centro del cerchio rispetto alla finestra del browser,
 - `radius` è il raggio del cerchio.
 
-Cliccahte il bottone sotto per vedere come dovrebbe apparire:
+Cliccate il bottone sotto per vedere come dovrebbe apparire:
 
 [iframe src="solution" height=260]
 
