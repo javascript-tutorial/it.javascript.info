@@ -1,6 +1,6 @@
-# Word boundary: \b
+# Confine di parola: \b
 
-A word boundary `pattern:\b` is a test, just like `pattern:^` and `pattern:$`.
+Il confine di parola `pattern:\b` è un test, proprio come `pattern:^` e `pattern:$`.
 
 When the regexp engine (program module that implements searching for regexps) comes across `pattern:\b`, it checks that the position in the string is a word boundary.
 
