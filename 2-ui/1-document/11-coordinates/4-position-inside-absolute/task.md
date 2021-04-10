@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Position the note inside (absolute)
+# Position the note inside (position:absolute)
 
 Extend the previous task <info:task/position-at-absolute>: teach the function  `positionAt(anchor, position, elem)` to insert `elem` inside the `anchor`.
 
