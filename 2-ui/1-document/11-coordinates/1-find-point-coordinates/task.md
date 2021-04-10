@@ -8,7 +8,7 @@ Nell'iframe sotto potete osservare un documento con un "campo" verde.
 
 Usate JavaScript per trovare le coordinate relative alla finestra degli angoli indicati dalle frecce.
 
-Per comodità è stata implementata una semplice funzionalità nel documento: un click in un punto qualsiasi mostra le coordinate.
+Per comodità è stata implementata una semplice funzionalità nel documento: un click in un punto qualsiasi mostrerà le coordinate.
 
 [iframe border=1 height=360 src="source" link edit]
 

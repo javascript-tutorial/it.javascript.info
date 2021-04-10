@@ -1,6 +1,6 @@
 # Coordinate
 
-Per spostare gli elementi dovremmo conoscere bene le coordinate.
+Per spostare gli elementi dovremmo avere familiarità con le coordinate.
 
 La gran parte dei metodi JavaScript ha a che fare con uno di questi due sistemi di coordinate:
 
@@ -156,7 +156,7 @@ let elem = document.getElementById("coords-show-mark");
 function createMessageUnder(elem, html) {
   // crea l'elemento messaggio
   let message = document.createElement('div');
-  // per assegnare degli stili è preferibile usare una classe CSS
+  // per assegnare degli stili sarebbe preferibile usare una classe CSS
   message.style.cssText = "position:fixed; color: red";
 
 *!*
@@ -185,7 +185,7 @@ Clicca il pulsante per eseguire:
 <button id="coords-show-mark">Pulsante con id="coords-show-mark", il messaggio apparirà sotto</button>
 ```
 
-Il codice può essere modificato per mostrare il messaggio a sinistra, a destra, sopra, per applicare animazioni CSS di dissolvenza e così via. Dal momento che disponiamo di tutte le coordinate e dimensioni dell'elemento è piuttosto semplice.
+Il codice può essere modificato per mostrare il messaggio a sinistra, a destra, sopra, per applicare animazioni CSS di dissolvenza e così via. Dal momento che disponiamo di tutte le coordinate e dimensioni dell'elemento, è piuttosto semplice.
 
 Fate attenzione, tuttavia, ad un dettaglio importante: quando la pagina scorre, il pulsante si allontana dal messaggio.
 

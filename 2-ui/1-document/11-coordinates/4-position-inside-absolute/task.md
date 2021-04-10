@@ -2,27 +2,27 @@ importance: 5
 
 ---
 
-# Position the note inside (position:absolute)
+# Posizionate la nota all'interno (position:absolute)
 
-Extend the previous task <info:task/position-at-absolute>: teach the function  `positionAt(anchor, position, elem)` to insert `elem` inside the `anchor`.
+Estendete l'esercizio precedente <info:task/position-at-absolute>: fate in modo che la funzione `positionAt(anchor, position, elem)` inserisca `elem` all'interno di `anchor`.
 
-New values for `position`:
+Nuovi valori per `position`:
 
-- `top-out`, `right-out`, `bottom-out` -- work the same as before, they insert the `elem` over/right/under `anchor`.
-- `top-in`, `right-in`, `bottom-in` -- insert `elem` inside the `anchor`: stick it to the upper/right/bottom edge.
+- `top-out`, `right-out`, `bottom-out` -- funzionano come prima, inseriscono `elem` sopra/a destra/sotto `anchor`.
+- `top-in`, `right-in`, `bottom-in` -- inseriscono `elem` all'interno di `anchor`: posizionandolo nel bordo superiore/a destra/inferiore.
 
-For instance:
+Per esempio:
 
 ```js
-// shows the note above blockquote
+// mostra la nota sopra blockquote
 positionAt(blockquote, "top-out", note);
 
-// shows the note inside blockquote, at the top
+// mostra la nota all'interno di blockquote, nel bordo superiore
 positionAt(blockquote, "top-in", note);
 ```
 
-The result:
+Ecco il risultato:
 
 [iframe src="solution" height="310" border="1" link]
 
-As the source code, take the solution of the task <info:task/position-at-absolute>.
+Prendete la soluzione dell'esercizio <info:task/position-at-absolute> come codice sorgente.

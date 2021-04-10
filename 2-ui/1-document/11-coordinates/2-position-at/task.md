@@ -11,7 +11,7 @@ Il parametro `position` deve essere una stringa con uno dei 3 valori seguenti:
 - `"right"` - posiziona `elem` subito a destra di `anchor`
 - `"bottom"` - posiziona `elem` esattamente sotto `anchor`
 
-Il codice che scriverete viene richiamato dalla funzione `showNote(anchor, position, html)`, che trovate nel codice sorgente dell'esercizio e che crea una nota con l'`html` passato come parametro e lo mostra nella `position` assegnata vicino all'elemento `anchor`.
+Il codice che scriverete viene richiamato dalla funzione `showNote(anchor, position, html)`, che trovate nel codice sorgente dell'esercizio e che crea una nota con l'`html` passato come parametro e lo mostra nella posizione assegnata `position` vicino all'elemento `anchor`.
 
 Ecco un esempio:
 
