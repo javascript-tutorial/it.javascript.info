@@ -1,7 +1,7 @@
-We need to choose the right Bezier curve for that animation. It should have `y>1` somewhere for the plane to "jump out".
+Dovete scegliere la giusta curva di Bezier per questa animazione. Deve avere un valore `y>1` in qualche punto per far sì che l'aereo "ecceda" le sue dimensioni originali.
 
-For instance, we can take both control points with `y>1`, like: `cubic-bezier(0.25, 1.5, 0.75, 1.5)`.
+Ad esempio, potete impostare entrambi i punti di controllo con `y>1`, come: `cubic-bezier(0.25, 1.5, 0.75, 1.5)`.
 
-The graph:
+La curva:
 
 ![](bezier-up.svg)

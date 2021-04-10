@@ -2,13 +2,13 @@ importance: 5
 
 ---
 
-# Animate a plane (CSS)
+# Animate un aereo (CSS)
 
-Show the animation like on the picture below (click the plane):
+Definite un animazione che si comporti come quella mostrata nella figura sotto (cliccate l'areo):
 
 [iframe src="solution" height=300]
 
-- The picture grows on click from `40x24px` to `400x240px` (10 times larger).
-- The animation takes 3 seconds.
-- At the end output: "Done!".
-- During the animation process, there may be more clicks on the plane. They shouldn't "break" anything.
+- L'immagine si ridimensiona al click da `40x24px` a `400x240px` (10 volte più grande).
+- L'animazione ha una durata di 3 secondi.
+- Al terminte dovrete mostrare: "Done!".
+- Durante l'animazione, potrebbero esserci più click sull'aereo. Questi non dovrebbero comprometterne il funzionamento.
