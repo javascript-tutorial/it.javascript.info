@@ -1,6 +1,6 @@
 # Coordinate
 
-Per spostare gli elementi dovremmo avere familiarità con le coordinate.
+Per spostare gli elementi dovremmo prendere familiarità con le coordinate.
 
 La gran parte dei metodi JavaScript ha a che fare con uno di questi due sistemi di coordinate:
 
@@ -9,7 +9,7 @@ La gran parte dei metodi JavaScript ha a che fare con uno di questi due sistemi 
 2. **Coordinate relative al documento** - paragonabili a `position:absolute` riferito alla radice del documento, calcolate dal bordo superiore sinistro del documento.
     - le indicheremo con `pageX/pageY`.
 
-Quando la pagina è al suo inizio, così che l'angolo superiore sinistro della finestra coincide esattamente con l'angolo superiore sinistro del documento, queste coordinate sono uguali tra loro. Ma dopo che si scorre la pagina, le coordinate relative alla finestra cambiano via via che gli elementi si spostano all'interno di questa, mentre le coordinate relative al documento rimangono invariate.
+Quando ci troviamo all'inizio della pagina, così che l'angolo superiore sinistro della finestra coincide esattamente con l'angolo superiore sinistro del documento, queste coordinate sono uguali tra loro. Ma dopo che si scorre la pagina, le coordinate relative alla finestra cambiano via via che gli elementi si spostano all'interno di questa, mentre le coordinate relative al documento rimangono invariate.
 
 In questa immagine consideriamo un punto nel documento e mostriamo le sue coordinate prima dello scorrimento (riquadro a sinistra) e dopo di esso (riquadro a destra):
 
@@ -95,11 +95,11 @@ Possiamo quindi ricorrere ad un polyfill (aggiungendo dei getter in `DomRect.pro
 ```
 
 ```warn header="Le coordinate right/bottom sono differenti dalle proprietà di posizione CSS"
-Ci sono delle evidenti rassomiglianze tra le coordinate relative alla finestra e `position:fixed` dei CSS.
+Ci sono delle evidenti somiglianze tra le coordinate relative alla finestra e `position:fixed` dei CSS.
 
 Nel posizionamento CSS, tuttavia, la proprietà `right` indica la distanza dal bordo destro, e la proprietà `bottom` indica la distanza dal bordo in basso.
 
-Se diamo una semplice occhiata all'immagine sopra, possiamo notare che in JavaScript non è così. Tutte le coodinate relative alla finestra sono calcolate a partire dall'angolo superiore sinistro e queste non fanno eccezione.
+Se diamo una semplice occhiata all'immagine sopra, possiamo notare che in JavaScript non è così. Tutte le coordinate relative alla finestra sono calcolate a partire dall'angolo superiore sinistro e queste non fanno eccezione.
 ```
 
 ## elementFromPoint(x, y) [#elementFromPoint]
@@ -127,7 +127,7 @@ alert(elem.tagName);
 Dal momento che usa le coordinate relative alla finestra, l'elemento può variare in base alla posizione di scorrimento corrente.
 
 ````warn header="Per coordinate al di fuori della finestra `elementFromPoint` restituisce `null`"
-Il metodo `document.elementFromPoint(x,y)` funziona solo se `(x,y)` sono dentro l'area visibile.
+Il metodo `document.elementFromPoint(x,y)` funziona solo se `(x,y)` si trovano all'interno dell'area visibile.
 
 Se una delle coordinate è negativa o eccede le dimensioni della finestra, restituisce `null`.
 
@@ -142,7 +142,7 @@ elem.style.background = ''; // Error!
 ```
 ````
 
-## Utilizzare il posizionamento "fisso"
+## Utilizzo con il posizionamento "fixed"
 
 La maggior parte delle volte per posizionare qualcosa abbiamo bisogno delle coordinate.
 
