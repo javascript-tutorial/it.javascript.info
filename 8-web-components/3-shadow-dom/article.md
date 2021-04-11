@@ -1,6 +1,6 @@
 # Shadow DOM
 
-Lo Shadow DOM serve all'incapsulamento e permette al componente di avere il proprio DOM "shadow" (fantasma), al quale il documento principale non può accedere nemmeno accidentalmente, può avere regole di stile con scope locale e molto altro.
+Lo Shadow DOM serve all'incapsulamento e permette al componente di avere il proprio DOM "shadow", al quale il documento principale non può accedere nemmeno accidentalmente. Inoltre può avere regole di stile con scope locale e molto altro ancora.
 
 ## Shadow DOM built-in
 
@@ -18,11 +18,11 @@ Così facendo `<input type="range">` verrà mostrato in questo modo:
 
 ![](shadow-dom-range.png)
 
-Quello che vediamo alla voce `#shadow-root` viene chiamato "shadow DOM".
+Quello che vediamo alla voce `#shadow-root` viene chiamato "Shadow DOM".
 
-Non possiamo lavorare sugli elementi built-in dello shadow DOM tramite normale chiamate o selettori CSS. Non sono nodi figli normali, ma una potente tecnica di incapsulamento.
+Non possiamo lavorare sugli elementi built-in dello Shadow DOM tramite normale chiamate o selettori CSS. Non sono nodi figli normali, ma una potente tecnica di incapsulamento.
 
-Nell'esempio precedente, possiamo notare l'attributo `pseudo` che è molto utile. Non è standard, esiste per ragioni storiche e possiamo usarlo per stilizzare i sottoelementi tramite CSS, in questo modo:
+Nell'esempio precedente, possiamo notare l'attributo `pseudo` che è molto utile. Non è un attributo standard, esiste per ragioni storiche e possiamo usarlo per stilizzare i sottoelementi tramite CSS, in questo modo:
 
 ```html run autorun
 <style>
@@ -35,9 +35,9 @@ input::-webkit-slider-runnable-track {
 <input type="range">
 ```
 
-Ripetiamolo ancora una volta, `pseudo` non è un attributo standard. Storicamente, i browser hanno cominciato a sperimentare con le strutture interne del DOM per implementare dei controlli, e con il passare del tempo, lo shadow DOM è stato standardizzato per permettere a noi sviluppatori, di fare alla stessa maniera.
+Ripetiamolo ancora una volta, `pseudo` non è un attributo standard. Storicamente, i browser hanno cominciato a sperimentare con le strutture interne del DOM per implementare dei controlli, e con il passare del tempo, lo Shadow DOM è stato standardizzato per permettere a noi sviluppatori, di fare alla stessa maniera.
 
-Più avanti, utilizzeremo lo standard shadow DOM moderno, nella sezione delle [spacifiche DOM](https://dom.spec.whatwg.org/#shadow-trees) ed altre specifiche correlate.  
+Più avanti, utilizzeremo lo standard Shadow DOM moderno, nella sezione delle [spacifiche DOM](https://dom.spec.whatwg.org/#shadow-trees) ed altre specifiche correlate.  
 
 ## Shadow tree
 
@@ -46,11 +46,11 @@ Un elemento DOM può contenere due tipi di sottoalberi:
 1. Light tree -- un normale sottoalbero DOM, fatto di figli HTML. Tutti i sottoalberi affrontati nei capitolo precedenti appartengono a questa categoria "light".
 2. Shadow tree -- un sottoalbero DOM nascosto, senza un elemento corrispondente nell'HTML, nascosto da "occhi indiscreti".
 
-Se un elemento li ha entrambi, il browser renderizza solo lo shadow tree. Tuttavia possiamo impostare una sorta di composizione tra gli il light e lo shadow tree. Vedremo in dettaglio l'argomento nell'apposita sezione <info:slots-composition>.
+Se un elemento li ha entrambi, il browser renderizza solo lo Shadow tree. Tuttavia possiamo impostare una sorta di composizione tra gli il light e lo Shadow tree. Vedremo in dettaglio l'argomento nell'apposita sezione <info:slots-composition>.
 
-Lo shadow tree può essere usato all'interno dei Custom Elements per nascondere i componenti interni ed applicare gli stili localmente all'interno componente.
+Lo Shadow tree può essere usato all'interno dei Custom Elements per nascondere i componenti interni ed applicare gli stili localmente all'interno componente.
 
-Per esempio, questo elemento, `<show-hello>` nasconde il suo DOM interno dell' shadow tree:
+Per esempio, questo elemento, `<show-hello>` nasconde il suo DOM interno dell' Shadow tree:
 
 ```html run autorun height=60
 <script>
@@ -71,23 +71,23 @@ Ecco come risulta il DOM, negli strumenti di sviluppo di Chrome, con il contenut
 
 ![](shadow-dom-say-hello.png)
 
-Inizialmente, la chiamata a `elem.attachShadow({mode: …})` crea uno shadow tree.
+Inizialmente, la chiamata a `elem.attachShadow({mode: …})` crea uno Shadow tree.
 
 Ci sono due limitazioni:
-1. Possiamo creare solo una shadow root per ogni elemento.
-2. L'elemento `elem` deve essere, o un elemento personalizzato, o uno tra questi elementi: "article", "aside", "blockquote", "body", "div", "footer", "h1..h6", "header", "main" "nav", "p", "section", o "span". Altri elementi, come ad esempio, `<img>`, non possono contenere un albero shadow.
+1. Possiamo creare solo una Shadow root per ogni elemento.
+2. L'elemento `elem` deve essere, o un elemento personalizzato, o uno tra questi elementi: "article", "aside", "blockquote", "body", "div", "footer", "h1..h6", "header", "main" "nav", "p", "section", o "span". Altri elementi, come ad esempio, `<img>`, non possono contenere uno Shadow tree.
 
 L'opzione `mode` imposta il livello di incapsulamento. Le opzioni possibili sono:
-- `"open"` -- la shadow root è disponibile tramite `elem.shadowRoot`.
+- `"open"` -- la Shadow root è disponibile tramite `elem.shadowRoot`.
 
-    L'albero shadow di `elem` è accessibile da qualunque codice.   
+    Lo Shadow tree di `elem` è accessibile da qualunque punto del codice.   
 - `"closed"` -- `elem.shadowRoot` è sempre `null`.
 
-    Il shadow DOM è accessibile esclusivamente dal riferimento restituito da `attachShadow` (il quale, con ogni probabilità, sarà nascosto dentro una classe. Shadow tree nativi del browser, come `<input type="range">`, appartengono a questa categoria, e non c'è modo di accedervi.
+    Lo Shadow DOM è accessibile esclusivamente dal riferimento restituito da `attachShadow` (il quale, con ogni probabilità, sarà nascosto dentro una classe. Shadow tree nativi del browser, come `<input type="range">`, appartengono a questa categoria, e non c'è modo di accedervi.
 
-La [shadow root](https://dom.spec.whatwg.org/#shadowroot), restituita con `attachShadow`, è come un elemento: possiamo usare `innerHTML` o i metodi DOM, come `append`, per popolarlo di elementi.
+La [Shadow root](https://dom.spec.whatwg.org/#shadowroot), restituita con `attachShadow`, è come un elemento: possiamo usare `innerHTML` o i metodi DOM, come `append`, per popolarlo di elementi.
 
-L'elemento con una shadow root viene invece chiamato "shadow tree host", ed è disponibile attraverso la proprietà `host` della shadow root:
+L'elemento con una Shadow root viene invece chiamato "Shadow tree host", ed è disponibile attraverso la proprietà `host` della Shadow root:
 
 ```js
 // supponiamo di avere {mode: "open"}, altrimenti elem.shadowRoot sarebbe null
@@ -96,17 +96,17 @@ alert(elem.shadowRoot.host === elem); // true
 
 ## Incapsulamento
 
-Vi è una marcata delimitazione tra ilo shadow DOM ed il documento principale:
+Vi è una separazione marcata tra lo Shadow DOM ed il documento principale:
 
-1. Gli elementi dello shadow DOM non sono rilevabili tramite `querySelector` del light DOM. In particolare, gli id degli elementi dello shadow DOM, potrebbero andare in conflitto con quelli dell'albero del light DOM.
-2. Lo shadow DOM ha i suoi fogli di stile e le regole di stile del DOM esterno non vengono applicate.
+1. Gli elementi dello Shadow DOM non sono rilevabili tramite `querySelector` del light DOM. In particolare, gli id degli elementi dello Shadow DOM, potrebbero andare in conflitto con quelli dell'albero del light DOM.
+2. Lo Shadow DOM ha i suoi fogli di stile e le regole di stile del DOM esterno non vengono applicate.
 
 Per esempio:
 
 ```html run untrusted height=40
 <style>
 *!*
-  /* lo stile del documento non viene applicato allo shadow tree contenuto in #elem (1) */
+  /* lo stile del documento non viene applicato allo Shadow tree contenuto in #elem (1) */
 */!*
   p { color: red; }
 </style>
@@ -116,7 +116,7 @@ Per esempio:
 <script>
   elem.attachShadow({mode: 'open'});
 *!*
-    // shadow tree possiede un proprio stile (2)
+    // Lo Shadow tree possiede un proprio stile (2)
 */!*
   elem.shadowRoot.innerHTML = `
     <style> p { font-weight: bold; } </style>
@@ -124,34 +124,34 @@ Per esempio:
   `;
 
 *!*
-  // <p> e' visibile solamente da queries dentro lo shadow tree (3)
+  // <p> e' visibile solamente da queries dentro lo Shadow tree (3)
 */!*
   alert(document.querySelectorAll('p').length); // 0
   alert(elem.shadowRoot.querySelectorAll('p').length); // 1
 </script>  
 ```
 
-1. Lo stile del documento non influenza lo shadow tree.
+1. Lo stile del documento non influenza lo Shadow tree.
 2. ...ma lo stile all'interno sì.
-3. Per avere gli elementi dentro lo shadow tree, dobbiamo fare le query da dentro l'albero.
+3. Per avere gli elementi dentro lo Shadow tree, dobbiamo fare le query da dentro l'albero.
 
 ## Riferimenti
 
 - DOM: <https://dom.spec.whatwg.org/#shadow-trees>
 - Compatibilità: <https://caniuse.com/#feat=shadowdomv1>
-- Lo shadow DOM viene menzionato in molte altre specifiche, ad esempio in [DOM Parsing](https://w3c.github.io/DOM-Parsing/#the-innerhtml-mixin) specifica che la shadow root possiede la proprietà `innerHTML`.
+- Lo Shadow DOM viene menzionato in molte altre specifiche, ad esempio in [DOM Parsing](https://w3c.github.io/DOM-Parsing/#the-innerhtml-mixin) specifica che la Shadow root possiede la proprietà `innerHTML`.
 
 
 ## Riepilogo
 
 Lo "Shadow DOM" è una modalità di creazione di un componente DOM locale.
 
-1. Il comando `shadowRoot = elem.attachShadow({mode: open|closed})` crea uno shadow DOM per `elem`. Se `mode="open"`, allora sarà possibile accedervi attraverso la proprietà `elem.shadowRoot`.
+1. Il comando `shadowRoot = elem.attachShadow({mode: open|closed})` crea uno Shadow DOM per `elem`. Se `mode="open"`, allora sarà possibile accedervi attraverso la proprietà `elem.shadowRoot`.
 2. Possiamo popolare `shadowRoot` usando `innerHTML` o altri metodi DOM.
 
-Gli elementi dello shadow DOM:
+Gli elementi dello Shadow DOM:
 - Hanno la loro area per gli id
 - Sono invisibili ai selettori JavaScript dal documento principale, se cercati con `querySelector`
-- Usano gli stili dello shadow tree, e non quelli del documento principale.
+- Usano gli stili dello Shadow tree, e non quelli del documento principale.
 
-Lo shadow DOM, se esiste, viene renderizzato dal browser al posto del cosiddetto "light DOM" (normali nodi figli). Nel capitolo <info:slots-composition> vedremo come comporli.
+Lo Shadow DOM, se esiste, viene renderizzato dal browser al posto del cosiddetto "light DOM" (normali nodi figli). Nel capitolo <info:slots-composition> vedremo come comporli.
