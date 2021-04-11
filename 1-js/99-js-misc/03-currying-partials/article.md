@@ -5,19 +5,19 @@ libs:
 
 # Currying
 
-[Currying](https://en.wikipedia.org/wiki/Currying) is an advanced technique of working with functions. It's used not only in JavaScript, but in other languages as well.
+Il [currying](https://en.wikipedia.org/wiki/Currying) è una tecnica avanzata che si applica alle funzioni. Non viene utilizzata solamente in JavaScript, ma anche in altri linguaggi di programmazione.
 
-Currying is a transformation of functions that translates a function from callable as `f(a, b, c)` into callable as `f(a)(b)(c)`.
+Il currying è una trasformazione che traduce una funzione invocabile come `f(a, b, c)` in una invocabile come `f(a)(b)(c)`.
 
-Currying doesn't call a function. It just transforms it.
+Il currying non invoca la funzione. Si occupa solamente della sua trasformazione.
 
-Let's see an example first, to better understand what we're talking about, and then practical applications.
+Come prima cosa vediamo un esempio, in modo da capire di cosa stiamo parlando, e le applicazioni nella pratica.
 
-We'll create a helper function `curry(f)` that performs currying for a two-argument `f`. In other words, `curry(f)` for two-argument `f(a, b)` translates it into a function that runs as `f(a)(b)`:
+Creeremo una funzione di supporto `curry(f)` che esegue il currying per una funzione a due argomenti `f`. In altre parole, `curry(f)`, trasformerà `f(a, b)` in una funzione invocabile come `f(a)(b)`:
 
 ```js run
 *!*
-function curry(f) { // curry(f) does the currying transform
+function curry(f) { // curry(f) esegue il currying
   return function(a) {
     return function(b) {
       return f(a, b);
@@ -26,7 +26,7 @@ function curry(f) { // curry(f) does the currying transform
 }
 */!*
 
-// usage
+// utilizzo
 function sum(a, b) {
   return a + b;
 }
@@ -36,30 +36,30 @@ let curriedSum = curry(sum);
 alert( curriedSum(1)(2) ); // 3
 ```
 
-As you can see, the implementation is straightforward: it's just two wrappers.
+Come potete vedere, l'implementazione è piuttosto semplice: sono due semplici wrappers.
 
-- The result of `curry(func)` is a wrapper `function(a)`.
-- When it is called like `curriedSum(1)`, the argument is saved in the Lexical Environment, and a new wrapper is returned `function(b)`.
-- Then this wrapper is called with `2` as an argument, and it passes the call to the original `sum`.
+- Il risultato di `curry(func)` è un wrapper `function(a)`.
+- Quando viene invocato come `curriedSum(1)`, l'argomento viene memorizzato nel Lexical Environment, e viene ritornato un nuovo wrapper `function(b)`.
+- Successivamente questo wrapper viene invocato con `2` come argomento, che passerà l'invocazione a `sum`.
 
-More advanced implementations of currying, such as [_.curry](https://lodash.com/docs#curry) from lodash library, return a wrapper that allows a function to be called both normally and partially:
+Implementazioni più avanzate del currying, come [_.curry](https://lodash.com/docs#curry) fornito dalla libreria lodash, ritorna un wrapper che consente di invocare una funzione sia nella forma standard che in quella parziale:
 
 ```js run
 function sum(a, b) {
   return a + b;
 }
 
-let curriedSum = _.curry(sum); // using _.curry from lodash library
+let curriedSum = _.curry(sum); // utilizzando _.curry della libreria lodash
 
-alert( curriedSum(1, 2) ); // 3, still callable normally
-alert( curriedSum(1)(2) ); // 3, called partially
+alert( curriedSum(1, 2) ); // 3, riamane invocabile normalmente
+alert( curriedSum(1)(2) ); // 3, invocata parzialmente
 ```
 
-## Currying? What for?
+## Currying? Per quale motivo?
 
-To understand the benefits we need a worthy real-life example.
+Per poterne comprendere i benefici abbiamo bisogno di un esempio di applicazione reale.
 
-For instance, we have the logging function `log(date, importance, message)` that formats and outputs the information. In real projects such functions have many useful features like sending logs over the network, here we'll just use `alert`:
+Ad esempio, abbiamo una funzione di logging `log(date, importance, message)` che formatta e ritorna le informazioni. In un progetto reale, una funzione del genere ha diverse funzionalità utili, come l'invio di log in rete; qui useremo semplicemente un `alert`:
 
 ```js
 function log(date, importance, message) {
@@ -67,37 +67,37 @@ function log(date, importance, message) {
 }
 ```
 
-Let's curry it!
+Eseguiamo il currying!
 
 ```js
 log = _.curry(log);
 ```
 
-After that `log` works normally:
+Successivamente al `log`, funzionerà normalmente:
 
 ```js
 log(new Date(), "DEBUG", "some debug"); // log(a, b, c)
 ```
 
-...But also works in the curried form:
+...Ma funzionerà anche nella forma parziale:
 
 ```js
 log(new Date())("DEBUG")("some debug"); // log(a)(b)(c)
 ```
 
-Now we can easily make a convenience function for current logs:
+Ora possiamo creare una funzione utile per registrare i logs:
 
 ```js
-// logNow will be the partial of log with fixed first argument
+// logNow sarà la versione parziale di log con il primo argomento fisso
 let logNow = log(new Date());
 
-// use it
+// utilizziamola
 logNow("INFO", "message"); // [HH:mm] INFO message
 ```
 
-Now `logNow` is `log` with fixed first argument, in other words "partially applied function" or "partial" for short.
+Ora `logNow` equivale a `log` con il primo argomento fissato, in altre parole, una "funzione applicata parzialmente" o "parziale" (più breve).
 
-We can go further and make a convenience function for current debug logs:
+Possiamo anche andare oltre, e creare una funzione utile per registrare i logs di debug:
 
 ```js
 let debugNow = logNow("DEBUG");
@@ -105,15 +105,15 @@ let debugNow = logNow("DEBUG");
 debugNow("message"); // [HH:mm] DEBUG message
 ```
 
-So:
-1. We didn't lose anything after currying: `log` is still callable normally.
-2. We can easily generate partial functions such as for today's logs.
+Quindi:
+1. Non perdiamo nulla dopo il currying: `log` rimane invocabile normalmente.
+2. Possiamo generare molto semplicemente funzioni parziali per i logs quotidiani.
 
-## Advanced curry implementation
+## Implementazione avanzata del currying
 
-In case you'd like to get in to the details, here's the "advanced" curry implementation for multi-argument functions that we could use above.
+Nel caso in cui vogliate entrare più nel dettaglio, di seguito vediamo un'implementazione "avanzata" del currying per funzioni con più argomenti, che avremmo anche potuto usare sopra.
 
-It's pretty short:
+E' piuttosto breve:
 
 ```js
 function curry(func) {
@@ -131,7 +131,7 @@ function curry(func) {
 }
 ```
 
-Usage examples:
+Esempi di utilizzo:
 
 ```js
 function sum(a, b, c) {
@@ -140,57 +140,49 @@ function sum(a, b, c) {
 
 let curriedSum = curry(sum);
 
-alert( curriedSum(1, 2, 3) ); // 6, still callable normally
-alert( curriedSum(1)(2,3) ); // 6, currying of 1st arg
-alert( curriedSum(1)(2)(3) ); // 6, full currying
+alert( curriedSum(1, 2, 3) ); // 6, ancora invocabile normalmente
+alert( curriedSum(1)(2,3) ); // 6, currying del primo argomento
+alert( curriedSum(1)(2)(3) ); // 6, currying completo
 ```
 
-The new `curry` may look complicated, but it's actually easy to understand.
+La funzione `curry` può sembrare complicata, ma in realtà è piuttosto semplice da capire.
 
-The result of `curry(func)` call is the wrapper `curried` that looks like this:
+Il risultato dell'invocazione `curry(func)` è il wrapper `curried` (che ha subito il processo di currying), ed appare in questo modo:
 
 ```js
-// func is the function to transform
+// func è la funzione trasformata
 function curried(...args) {
   if (args.length >= func.length) { // (1)
     return func.apply(this, args);
   } else {
-    return function pass(...args2) { // (2)
+    return function(...args2) { // (2)
       return curried.apply(this, args.concat(args2));
     }
   }
 };
 ```
 
-When we run it, there are two `if` execution branches:
+Quando la eseguiamo, ci sono due percorsi di esecuzione `if`:
 
-1. Call now: if passed `args` count is the same as the original function has in its definition (`func.length`) or longer, then just pass the call to it.
-2. Get a partial: otherwise, `func` is not called yet. Instead, another wrapper `pass` is returned, that will re-apply `curried` providing previous arguments together with the new ones. Then on a new call, again, we'll get either a new partial (if not enough arguments) or, finally, the result.
+1. Se il numero di `args` forniti è uguale o maggiore rispetto a quelli che la funzione originale ha nella sua definizione (`func.length`), allora gli giriamo semplicemente l'invocazione utilizzando `func.apply`. 
+2. Altrimenti, otterremo un parziale: non invochiamo ancora `func`. Invece, viene ritornato un altro wrapper, che riapplicherà il `curried` passando gli argomenti precedenti insieme a quelli nuovi. 
 
-For instance, let's see what happens in the case of `sum(a, b, c)`. Three arguments, so `sum.length = 3`.
+Quindi, se la invochiamo, di nuovo, avremo o una nuova funzione parziale (se non vengono forniti abbastanza argomenti) oppure otterremo il risultato.
 
-For the call `curried(1)(2)(3)`:
+```smart header="Solo funzioni di lunghezza fissa"
+Il currying richiede che la funzione abbia un numero fissato di argomenti.
 
-1. The first call `curried(1)` remembers `1` in its Lexical Environment, and returns a wrapper `pass`.
-2. The wrapper `pass` is called with `(2)`: it takes previous args (`1`), concatenates them with what it got `(2)` and calls `curried(1, 2)` with them together. As the argument count is still less than 3, `curry` returns `pass`.
-3. The wrapper `pass` is called again with `(3)`,  for the next call `pass(3)` takes previous args (`1`, `2`) and adds `3` to them, making the call `curried(1, 2, 3)` -- there are `3` arguments at last, they are given to the original function.
-
-If that's still not obvious, just trace the calls sequence in your mind or on paper.
-
-```smart header="Fixed-length functions only"
-The currying requires the function to have a fixed number of arguments.
-
-A function that uses rest parameters, such as `f(...args)`, can't be curried this way.
+Una funzione che utilizza i parametri rest, come `f(...args)`, non può passare attraverso il processo di currying in questo modo.
 ```
 
-```smart header="A little more than currying"
-By definition, currying should convert `sum(a, b, c)` into `sum(a)(b)(c)`.
+```smart header="Un po' più del currying"
+Per definizione, il currying dovrebbe convertire `sum(a, b, c)` in `sum(a)(b)(c)`.
 
-But most implementations of currying in JavaScript are advanced, as described: they also keep the function callable in the multi-argument variant.
+Ma la maggior parte delle implementazioni in JavaScript sono più avanzate di così, come descritto: queste mantengono la funzione invocabile nella variante a più argomenti.
 ```
 
-## Summary
+## Riepilogo
 
-*Currying* is a transform that makes `f(a,b,c)` callable as `f(a)(b)(c)`. JavaScript implementations usually both keep the function callable normally and return the partial if the arguments count is not enough.
+Il *currying* è una trasformazione che rende `f(a,b,c)` invocabile come `f(a)(b)(c)`. Le implementazioni in JavaScript, solitamente, mantengono entrambe le varianti, sia quella normale che quella parziale, se il numero di argomenti non è sufficiente.
 
-Currying allows us to easily get partials. As we've seen in the logging example, after currying the three argument universal function `log(date, importance, message)` gives us partials when called with one argument (like `log(date)`) or two arguments (like `log(date, importance)`).  
+Il currying permette di ottenere delle funzioni parziali molto semplicemente. Come abbiamo visto nell'esempio del logging, dopo il currying la funzione universale a tre argomenti `log(date, importance, message)` ci fornisce una funzione parziale quando invocata con un solo argomento (come `log(date)`) o due argomenti (come `log(date, importance)`).  

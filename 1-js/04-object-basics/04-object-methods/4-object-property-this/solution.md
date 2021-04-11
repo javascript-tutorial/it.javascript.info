@@ -16,28 +16,24 @@ alert( user.ref.name ); // Error: Cannot read property 'name' of undefined
 
 Questo avviene perché le regole che impostano `this` non guardano agli oggetti letterali. 
 
-Qui il valore di `this` dentro `makeUser()` è `undefined`, perchè viene chiamato come una funzione, non come un metodo.
+Qui il valore di `this` dentro `makeUser()` è `undefined`, perché viene chiamato dentro una funzione, non un metodo.
 
-E gli oggetti letterali non hanno alcun effetto su `this`. Il valore di `this` è unico per tutta la funzione, quindi i blocchi di codice e gli oggetti letterali non hanno alcuna importanza.
+Gli oggetti letterali non hanno alcun effetto su `this`. Il valore di `this` è unico per tutta la funzione, quindi i blocchi di codice e gli oggetti letterali che vi si trovano dentro non hanno alcuna importanza.
 
 Quindi `ref: this` prende il `this` della funzione.
 
-<<<<<<< HEAD
-Qui abbiamo il caso opposto:
-=======
-We can rewrite the function and return the same `this` with `undefined` value: 
+Possiamo riscrivere la funzione e ritornare lo stesso `this` con valore `undefined`: 
 
 ```js run
 function makeUser(){
-  return this; // this time there's no object literal
+  return this; // questa volta non c'e' un oggetto letterale
 }
 
 alert( makeUser().name ); // Error: Cannot read property 'name' of undefined
 ```
-As you can see the result of `alert( makeUser().name )` is the same as the result of `alert( user.ref.name )` from the previous example.
+Come possiamo vedere, il risultato di  `alert( makeUser().name )` è lo stesso di `alert( user.ref.name )` nell'esempio precedente.
 
-Here's the opposite case:
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+Qui abbiamo il caso opposto:
 
 ```js run
 function makeUser() {
@@ -56,6 +52,6 @@ let user = makeUser();
 alert( user.ref().name ); // John
 ```
 
-Ora funziona, perché `user.ref()` è un metodo. E il valore di `this` viene impostato all'oggetto prima del punto `.`.
+Ora funziona, perché `user.ref()` è un metodo. E il valore di `this` si riferisce all'oggetto prima del punto `.`.
 
 

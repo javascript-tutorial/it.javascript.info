@@ -4,7 +4,7 @@ importance: 5
 
 # Chiavi iterabili
 
-Vogliamo avere un rray di `map.keys()` e poterci lavorare.
+Vorremmo avere un array di `map.keys()` in una variabile, quindi potergli applicare un metodo specifico degli arrays, ad esempio `.push`.
 
 Ma c'è un problema:
 
@@ -21,4 +21,4 @@ keys.push("more");
 */!*
 ```
 
-Perchè? Come possiamo sistemare il codice per rendere `keys.push` funzionante?
+Perché? Come possiamo sistemare il codice per rendere `keys.push` funzionante?

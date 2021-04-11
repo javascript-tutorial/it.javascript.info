@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Sort the table
+# Ordina la tabella
 
-There's a table:
+Ecco una tabella:
 
 ```html run
 <table>
@@ -30,6 +30,6 @@ There's a table:
 </table>
 ```
 
-There may be more rows in it.
+Potrebbero esserci più file dentro.
 
-Write the code to sort it by the `"name"` column.
+Scrivi il codice per ordinarla in base alla colonna `"name"`.

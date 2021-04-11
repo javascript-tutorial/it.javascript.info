@@ -1,12 +1,12 @@
 # Scrolling
 
-The `scroll` event allows reacting to a page or element scrolling. There are quite a few good things we can do here.
+L'evento `scroll` permette di reagire allo scroll della pagina o di un elemento. Ci sono poche e semplici operazioni che possiamo compiere in questi casi.
 
-For instance:
-- Show/hide additional controls or information depending on where in the document the user is.
-- Load more data when the user scrolls down till the end of the page.
+Per esempio:
+- Mostrare/nascondere controlli aggiuntivi o informazioni, a seconda della posizione del documento in cui si trova l'utente.
+- Caricare più dati quando l'utente scolla fino in fondo alla pagina.
 
-Here's a small function to show the current scroll:
+Ecco una piccola funzione per mostrare lo scroll del documento:
 
 ```js autorun
 window.addEventListener('scroll', function() {
@@ -15,23 +15,23 @@ window.addEventListener('scroll', function() {
 ```
 
 ```online
-In action:
+Eccolo in azione:
 
-Current scroll = <b id="showScroll">scroll the window</b>
+Scroll attuale = <b id="showScroll">Scrolla la finestra</b>
 ```
 
-The `scroll` event works both on the `window` and on scrollable elements.
+L'evento `scroll` funziona sia sulla `window` che sugli elementi scrollabili.
 
-## Prevent scrolling
+## Prevenire lo scrolling
 
-How do we make something unscrollable?
+Come possiamo rendere qualcosa non scrollabile?
 
-We can't prevent scrolling by using `event.preventDefault()` in `onscroll` listener, because it triggers *after* the scroll has already happened.
+Sicuramente, non possiamo prevenire lo scrolling usando `event.preventDefault()` nel listener `onscroll`, perché quest'ultimo viene generato *dopo* che lo scroll è avvenuto.
 
-But we can prevent scrolling by `event.preventDefault()` on an event that causes the scroll, for instance `keydown` event for `key:pageUp` and `key:pageDown`.
+Tuttavia, possiamo prevenire lo scrolling con l'utilizzo di `event.preventDefault()` con altri eventi che permettono lo scroll, ad esempio l'evento `keydown` per `key:pageUp` e `key:pageDown`.
 
-If we add an event handler to these events and `event.preventDefault()` in it, then the scroll won't start.
+Se aggiungiamo un gestore a uno di questi eventi, utilizzando `event.preventDefault()`, allora lo scroll non comincerà affatto.
 
-There are many ways to initiate a scroll, so it's more reliable to use CSS, `overflow` property.
+Ci sono vari modi per inizializzare uno scroll, al punto tale che spesso è più affidabile usare i CSS tramite la proprietà `overflow`.
 
-Here are few tasks that you can solve or look through to see applications of `onscroll`.
+Ecco alcune attività che potrete risolvere o analizzare per vedere le applicazioni di `onscroll`.

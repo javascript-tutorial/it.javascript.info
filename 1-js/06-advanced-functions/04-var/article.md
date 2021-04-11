@@ -42,9 +42,19 @@ alert(test); // vero, la variabile vive dopo if
 */!*
 ```
 
-Se avessimo utilizzato `let test` nella seconda riga, allora non sarebbe stata visibile ad `alert`. Ma `var` ignora i blocchi di codice, quindi `test` risulta essere globale.
+Se avessimo utilizzato `let test` invece di `var test`, allora la variabile sarebbe stata visibile solo all'interno dell' `if`.
 
-La stessa cosa accade con i cicli: `var` non può essere locale ad un blocco/ciclo:
+```js run
+if (true) {
+  let test = true; // use "let"
+}
+
+*!*
+alert(test); // ReferenceError: test is not defined
+*/!*
+```
+
+La stessa cosa accade con i cicli, `var` non può essere locale ad un blocco/ciclo:
 
 ```js
 for (var i = 0; i < 10; i++) {
@@ -70,7 +80,7 @@ function sayHi() {
 }
 
 sayHi();
-alert(phrase); // Errore: phrase non è definito (Provate a controllare la console)
+alert(phrase); // Errore: phrase non è definito
 ```
 
 Come possiamo vedere, `var` passa attraverso `if`, `for` o altri blocchi di codice. Questo accade perché molto tempo fa i blocchi JavaScript non possedevano un Lexical Environments. E `var` ne è un ricordo.
@@ -84,7 +94,7 @@ let user;
 let user; // SyntaxError: 'user' has already been declared
 ```
 
-Con `var`, possiamo ri-dichiarare una variabile quante volte vogliamo. Se proviamo ad utilizzare `var` con una variabile già dichiarata, verrà semplicemente ignoratp:
+Con `var`, possiamo ri-dichiarare una variabile quante volte vogliamo. Se proviamo ad utilizzare `var` con una variabile già dichiarata, esso verrà semplicemente ignorato e la variabile verrà normalmente riassegnata:
 
 ```js run
 var user = "Pete";
@@ -197,7 +207,7 @@ In entrambi gli esempi sopra `alert` esegue senza errori, poiché la variabile `
 
 ## IIFE
 
-In passato, poichè esisteva solo `var`, che non consentiva di definire variabili con visibilità a livello di blocco, i programmatori hanno inventato un modo per emulare questa situazione. Quello che facevano fu chiamato "immediately-invoked function expressions" (espressioni di funzioni invocate immediatamente,abbraviato come IIFE).
+In passato, poiché esisteva solo `var`, che non consentiva di definire variabili con visibilità a livello di blocco, i programmatori hanno inventato un modo per emulare questa situazione. Quello che facevano fu chiamato "immediately-invoked function expressions" (espressioni di funzioni invocate immediatamente,abbreviato come IIFE).
 
 E' qualcosa che dovremmo evitare oggi, ma è possibile trovare questo trucco nei vecchi script.
 
@@ -215,11 +225,11 @@ Una IIFE viene scritta in questo modo:
 
 Qui, un'espressione di funzione viene creata ed immediatamente chiamata. Quindi il codice esegue nel modo giusto, e possiede le sue variabili private.
 
-L'espressione di funzione è avvolta dalle parentesi `(function {...})`, poichè quando JavaScript incontra `"function"` nel flusso principale del codice, lo interpreta come l'inizio di una dichiarazione di funzione. Ma una dichiarazione di funzione deve avere un nome, quindi questo tipo di codice daebbe un errore:
+L'espressione di funzione è avvolta dalle parentesi `(function {...})`, poiché quando JavaScript incontra `"function"` nel flusso principale del codice, lo interpreta come l'inizio di una dichiarazione di funzione. Ma una dichiarazione di funzione deve avere un nome, quindi questo tipo di codice daebbe un errore:
 
 ```js run
 // Proviamo a dichiarare ed invocare immediatamente una funzione
-function() { // <-- Error: La dichiarazione di funzione richiede un nome
+function() { // <-- Errore di sintassi: La dichiarazione di funzione richiede un nome
 
   var message = "Hello";
 
@@ -237,9 +247,9 @@ function go() {
 }(); // <-- non è possibile invocare una dichiarazione di funzione immediatamente
 ```
 
-Quindi, le parentesi intorno alla funzione sono un trucco per mostrare a JavaScript che la funzone viene creata in un altro contesto, e quindi è un'espressione di funzione: la quale non richiede nome e può essere invocata immediatamente.
+Quindi, le parentesi intorno alla funzione sono un trucco per mostrare a JavaScript che la funzione viene creata in un altro contesto, e quindi è un'espressione di funzione: la quale non richiede nome e può essere invocata immediatamente.
 
-Esistono altri modi oltrea alle parentesi per dire a JavaScript che intendiamo definire un'espressione di funzione:
+Esistono altri modi oltre alle parentesi per dire a JavaScript che intendiamo definire un'espressione di funzione:
 
 ```js run
 // Altri modi per creare una IIFE
@@ -272,4 +282,4 @@ Ci sono due principali differenze tra `var` e `let/const`:
 
 C'è un ulteriore differenza di minore importanza legata all'oggetto globale, che andremo ad analizzare nel prossimo capitolo.
 
-L'insieme di queste differenze fa si che `var` venga considerato uno svantaggio. Come prima cosa, non possiamo creare delle variabili locali al blocco. Il "sollevameto" genera solamente confusione. Quindi, negli script più recenti `var` viene utilizzato solamente in casi eccezionali.
+L'insieme di queste differenze fa si che `var` venga considerato uno svantaggio. Come prima cosa, non possiamo creare delle variabili locali al blocco. Il "sollevamento" genera solamente confusione. Quindi, negli script più recenti `var` viene utilizzato solamente in casi eccezionali.

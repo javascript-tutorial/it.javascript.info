@@ -4,7 +4,7 @@ Immagina di essere un cantante famoso, ed i fan ti chiedono giorno e notte del t
 
 Per avere un pò di sollievo, prometti di inviarglielo quando sarà pubblicato. Fornisci ai tuoi fan una lista. Loro possono compilarla con la loro email, quindi quando la funzione sarà disponibile, tutti gli iscritti la riceveranno. E anche se qualcosa dovesse andare storto, ad esempio un incendio nello studio, che ti impedisce di pubblicare la canzone, i fan verranno comunque notificati.
 
-Tutti sono felici: tu, perchè le persone non ti disturbano più, ed i fan, poichè in questo modo non si perderanno nessuna canzone.
+Tutti sono felici: tu, perché le persone non ti disturbano più, ed i fan, poiché in questo modo non si perderanno nessuna canzone.
 
 1. Un "codice produttore" (producing code) che fa qualcosa e che richiede tempo. Per esempio, il codice che carica uno script remoto. Questo è un "cantante".
 2. Un "codice consumatore" (consuming code) che vuole il risultato del "codice produttore" una volta che è pronto. Molte funzioni possono aver bisogno di questo risultato. Queste sono i "fan".
@@ -146,7 +146,7 @@ promise.then(
 
 Il primo argomento di `.then` è una funzione che esegue quando una promise viene risolta, e ne riceve il risultato.
 
-Il secondo argomento di `.then` è una funzione che esegue quando una promise viene rifiutatam e riceve l'errore.
+Il secondo argomento di `.then` è una funzione che esegue quando una promise viene rifiutata e riceve l'errore.
 
 Per esempio, ecco una reazione ad una promise soddisfatta:
 

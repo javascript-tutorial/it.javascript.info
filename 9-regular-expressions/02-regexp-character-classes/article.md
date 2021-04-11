@@ -97,7 +97,7 @@ Per esempio, nella stringa `subject:Hello, Java!` le seguenti posizioni corrispo
 
 ![](hello-java-boundaries.svg)
 
-Quindi trova `pattern:\bHello\b`, perchè:
+Quindi trova `pattern:\bHello\b`, perché:
 
 1. All'inizio della stringa il primo test `\b` ha corrispondenza positiva.
 2. Successivamente la parola `Hello` corrisponde.

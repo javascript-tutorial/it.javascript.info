@@ -165,8 +165,8 @@
 
    <script>
     /**
-     * Tests if the element is visible (within the visible part of the page)
-     * It's enough that the top or bottom edge of the element are visible
+     * Controlla se l'elemento risulta visibile (all'interno della parte visibile della pagina)
+     * E' sufficiente che il bordo superiore o inferiore dell'elemento sia visibile
      */
     function isVisible(elem) {
 
@@ -174,7 +174,7 @@
 
       let windowHeight = document.documentElement.clientHeight;
 
-      // top elem edge is visible OR bottom elem edge is visible
+      // il bordo superiore dell'elemento OPPURE il bordo inferiore dell'elemento e' visibile
       let topVisible = coords.top > 0 && coords.top < windowHeight;
       let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
 
@@ -182,8 +182,7 @@
     }
 
     /**
-    A variant of the test that considers the element visible if it's no more than
-    one page after/behind the current screen.
+    Una variante del test che considera l'elemento visibile se non siamo a più di una pagina di scroll di distanza prima o dopo la schermata attuale.
 
     function isVisible(elem) {
 
@@ -194,7 +193,7 @@
       let extendedTop = -windowHeight;
       let extendedBottom = 2 * windowHeight;
 
-      // top visible || bottom visible
+      // parte superiore visibile || parte inferiore visibile
       let topVisible = coords.top > extendedTop && coords.top < extendedBottom;
       let bottomVisible = coords.bottom < extendedBottom && coords.bottom > extendedTop;
 
@@ -208,8 +207,8 @@
         if (!realSrc) continue;
 
         if (isVisible(img)) {
-          // disable caching
-          // this line should be removed in production code
+          // disabilita il caching
+          // la seguente riga dovrebbe essere rimossa in produzione
           realSrc += '?nocache=' + Math.random();
 
           img.src = realSrc;

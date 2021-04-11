@@ -55,23 +55,23 @@ Un esempio di risultato possibile (dipende dal motore JS):
 312: 125148
 321: 125223
 ```
-Possiamo chiaramente vedere: `123` e `213` appaiono molto più spesso delle altre.
+Possiamo chiaramente vedere che le combinazioni `123` e `213` appaiono molto più spesso delle altre.
 
 Il risultato del codice potrebbe variare in base al motore JavaScript, ma già possiamo notare che questo tipo di approccio è inaccettabile.
 
-Perché non funziona? Generalmente parlando, `sort` è una "scatola nera": gli passiamo un array ed una funzione di confronto e ci aspettiamo di ottenere l'array ordinato. Ma a causa della difficoltà nell'implementazione della casualità la scatola nera potrebbe funzionare male, quanto male dipende dal motore JavaScript.
+Perché non funziona? Generalmente parlando, `sort` è una "scatola nera": gli passiamo un array ed una funzione di confronto e ci aspettiamo di ottenere l'array ordinato. Ma a causa della difficoltà nell'implementazione della casualità la scatola nera potrebbe funzionare male; quanto male, dipende dal motore JavaScript.
 
-Esistono altri modi per compiere questo compito. Ad esempio, c'è un ottimo algoritmo chiamato [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle). L'idea è di attraversare l'array in ordine inverso e di scambiare l'elemento con un altro casuale, che venga prima di lui:
+Esistono altri modi per questo compito. Ad esempio, c'è un ottimo algoritmo chiamato [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle). L'idea è di attraversare l'array in ordine inverso e di scambiare l'elemento con un altro casuale, che venga prima di lui:
 
 ```js
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+    let j = Math.floor(Math.random() * (i + 1)); // indice casuale da 0 a i
 
-    // swap elements array[i] and array[j]
-    // we use "destructuring assignment" syntax to achieve that
-    // you'll find more details about that syntax in later chapters
-    // same can be written as:
+    //scambia gli elementi array[i] e array[j]
+    // usiamo la sintassi "destructuring assignment" 
+    //troverai maggiori dettagli su questa sintassi nei capitoli seguenti
+    //potrebbe essere scritto come
     // let t = array[i]; array[i] = array[j]; array[j] = t
     [array[i], array[j]] = [array[j], array[i]];
   }

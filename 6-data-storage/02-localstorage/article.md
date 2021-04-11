@@ -2,13 +2,13 @@
 
 Gli oggetti web storage `localStorage` e `sessionStorage` permetto di salvare le coppie key/value nel browser.Ciò che è interessante è che i dati sopravvivono al ricaricamento della pagina (per `sessionStorage`) e anche in seguito a un restart del browser (for `localStorage`). Vedremo come.
 
-Abbiamo già i cookies. Perchè usiamo altri oggetti?
+Abbiamo già i cookies. Perché usiamo altri oggetti?
 
 - Rispetto ai cookies, gli oggetti web storage non vengono inviati al server con ogni richiesta. Per questo motivo, possiamo archiviarne molti di più. La maggior parte dei browser permette almeno 2 megabytes di dati (o più) e possiedono impostazioni per configurare questa scelta.
 - Inoltre, il server non può manipolare la memorizzazione degli oggetti tramite HTTP headers. Tutto viene fatto in JavaScript.
-- l'archiviazione è legata alla sorgete (origin) (domain/protocol/port triplet). Questo perchè, protocolli differenti o subdomini deducono diverse archiviazioni a oggetti e non possono accedere ai dati tra di loro.
+- l'archiviazione è legata alla sorgete (origin) (domain/protocol/port triplet). Questo perché, protocolli differenti o sottodomini deducono diverse archiviazioni a oggetti e non possono accedere ai dati tra di loro.
 
-Le due archiviazioni a oggetti propongono stessi metodi e propietà:
+Le due archiviazioni a oggetti propongono stessi metodi e proprietà:
 
 - `setItem(key, value)` -- archivia la coppia key/value.
 - `getItem(key)` -- ottiene il valore dalla key.
@@ -19,13 +19,7 @@ Le due archiviazioni a oggetti propongono stessi metodi e propietà:
 
 Come potete vedere, è simile alla collezione `Map` (`setItem/getItem/removeItem`), mantiene comunque l'ordine degli elementi e permette il loro accesso tramite indice con `key(index)`.
 
-<<<<<<< HEAD
 Vediamo come funziona.
-=======
-As you can see, it's like a `Map` collection (`setItem/getItem/removeItem`), but also allows access by index with `key(index)`.
-
-Let's see how it works.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 ## localStorage demo
 
@@ -65,9 +59,9 @@ alert( localStorage.test ); // 2
 delete localStorage.test;
 ```
 
-Questo è permetto per ragioni storiche, e principalmente funziona , ma generalmente non è raccomandato, perchè:
+Questo è permetto per ragioni storiche, e principalmente funziona , ma generalmente non è raccomandato, perché:
 
-1. Se la key è generata dall utente, può essere qualsiasi cosa,, come `length` o `toString`, o un altro built-in method of `localStorage`. In questo caso `getItem/setItem` funziona normalmente, mentre l'accesso object-like fallisce:
+1. Se la key è generata dall'utente, può essere qualsiasi cosa,, come `length` o `toString`, o un altro built-in method of `localStorage`. In questo caso `getItem/setItem` funziona normalmente, mentre l'accesso object-like fallisce:
     ```js run
     let key = 'length';
     localStorage[key] = 5; // Error, can't assign length
@@ -92,7 +86,7 @@ for(let i=0; i<localStorage.length; i++) {
 
 Un altro modo è quello di usare un loop `for key in localStorage` , come facciamo con oggetti regolari.
 
-L'iterazione avverrà sulle keys, ma anche sugli outputs di campi associati ad alcune funzioni built-in di cui non abbbiamo bisogno:
+L'iterazione avverrà sulle keys, ma anche sugli outputs di campi associati ad alcune funzioni built-in di cui non abbiamo bisogno:
 
 ```js run
 // cattivo esempio
@@ -121,7 +115,7 @@ for(let key of keys) {
 }
 ```
 
-Un lavoro extra, poichè `Object.keys` restituisce solo le keys che appartengono all oggetto, ignorando il prototipo.
+Un lavoro extra, poiché `Object.keys` restituisce solo le keys che appartengono all oggetto, ignorando il prototipo.
 
 
 ## Strings only
@@ -148,14 +142,14 @@ alert( user.name ); // John
 inoltre è possibile convertire a stringa l'intero archivio di object, per esempio per motivi di debugging:
 
 ```js run
-// aggiunte leopzioni di formattazione a JSON.stringify per rendere object migliore
+// aggiunte le opzioni di formattazione a JSON.stringify per rendere object migliore
 alert( JSON.stringify(localStorage, null, 2) );
 ```
 
 
 ## sessionStorage
- <
-L'object `sessionStorage` è usato molto meno spesso del `localStorage`.
+
+L'oggetto `sessionStorage` è usato molto meno spesso del `localStorage`.
 
 Proprietà e metodi sono gli stessi, ma è più limitato:
 
@@ -178,21 +172,21 @@ sessionStorage.setItem('test', 1);
 alert( sessionStorage.getItem('test') ); // after refresh: 1
 ```
 
-...Ma se apri la stessa pagina inun altra tab, e provi di nuovo, dal codice otterrai  `null`, Significa "non è stato trovato nulla".
+...Ma se apri la stessa pagina in un'altra tab, e provi di nuovo, dal codice otterrai  `null`, Significa "non è stato trovato nulla".
 
-Questo perchè `sessionStorage` è legato non solo all'origine, ma anche alla tab del browser. Per questo motivo, `sessionStorage` è usato sporadicamente.
+Questo perché `sessionStorage` è legato non solo all'origine, ma anche alla tab del browser. Per questo motivo, `sessionStorage` è usato sporadicamente.
 
 ## Storage event
 
-Quando i dati vengono aggiornati in `localStorage` o `sessionStorage`, [storage](https://www.w3.org/TR/webstorage/#the-storage-event)un evento si attiva, con le seguenti propietà:
+Quando i dati vengono aggiornati in `localStorage` o `sessionStorage`, [storage](https://www.w3.org/TR/webstorage/#the-storage-event)un evento si attiva, con le seguenti proprietà:
 
-- `key` –La key che è stata cambiata (`null` if `.clear()` is called).
-- `oldValue` – Il vecchio vallue (`null` if the key is newly added).
-- `newValue` – il nuovo value (`null` if the key is removed).
+- `key` – La key che è stata cambiata (`null` if `.clear()` is called).
+- `oldValue` – Il vecchio valore (`null` if the key is newly added).
+- `newValue` – il nuovo valore (`null` if the key is removed).
 - `url` – L'url del documento in cui è avvenuto l'aggiornamento.
 - `storageArea` – o `localStorage` o `sessionStorage` object in cui è avvenuto l'aggiornamento.
 
-La cosa importante è: l'evento si attiva in tutti gli objects `window` dove l'archivio è accessibile, ad eccezzione per quello in cui è stato causato.
+La cosa importante è: l'evento si attiva in tutti gli objects `window` dove l'archivio è accessibile, ad eccezione per quello in cui è stato causato.
 
 Elaboriamo.
 
@@ -205,13 +199,8 @@ dovresti aprire questa pagina in due browser per testare il seguente codice.
 Se entrambe le finestre sono connesse a `window.onstorage`, allora reagiranno agli aggiornamenti che accadono in una delle due.
 
 ```js run
-<<<<<<< HEAD
 // attiva un aggiornamento fatto dallo stesso archivio degli altri documenti
-window.onstorage = event => {
-=======
-// triggers on updates made to the same storage from other documents
-window.onstorage = event => { // same as window.addEventListener('storage', () => {
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
+window.onstorage = event => { // identico a window.addEventListener('storage', event => {
   if (event.key != 'now') return;
   alert(event.key + ':' + event.newValue + " at " + event.url);
 };
@@ -220,9 +209,8 @@ localStorage.setItem('now', Date.now());
 ```
 
 Notare che l'evento contiene: `event.url` -- l'url del documento in cui i dati sono stati aggiornati.
-Inoltre, `event.storageArea` contiene lo storage object -- l'evento è lo stesso per entrambi `sessionStorage` e `localStorage`, quindi `event.storageArea` si rivolge a quello che è stato motificato. Potremmo anche impostare qualcosa all'interno, per "rispondere" al cambiamento.**That allows different windows from the same origin to exchange messages.**
+Inoltre, `event.storageArea` contiene lo storage object -- l'evento è lo stesso per entrambi `sessionStorage` e `localStorage`, quindi `event.storageArea` si rivolge a quello che è stato modificato. Potremmo anche impostare qualcosa all'interno, per "rispondere" al cambiamento.**That allows different windows from the same origin to exchange messages.**
 
-<<<<<<< HEAD
 I Browser moderni supportano [Broadcast channel API](https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API),  API speciale per comunicazione inter-finestra provenienti dalla stessa sorgente, possiede molte più funzione ma è meno supportata.Esistono librerie che sostituiscono quella API,basate su `localStorage`, che lo rendono disponibile ovunque.
 
 ## Summary
@@ -232,17 +220,6 @@ Web storage objects `localStorage` e `sessionStorage` permettono di archiviare k
 - Il limite è 2mb+, dipende dal browser.
 - Non scadono.
 - I dati sono legati alla sorgente (domain/port/protocol).
-=======
-Modern browsers also support [Broadcast channel API](mdn:/api/Broadcast_Channel_API), the special API for same-origin inter-window communication, it's more full featured, but less supported. There are libraries that polyfill that API, based on `localStorage`, that make it available everywhere.
-
-## Summary
-
-Web storage objects `localStorage` and `sessionStorage` allow to store key/value in the browser.
-- Both `key` and `value` must be strings.
-- The limit is 5mb+, depends on the browser.
-- They do not expire.
-- The data is bound to the origin (domain/port/protocol).
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864
 
 | `localStorage` | `sessionStorage` |
 |----------------|------------------|
@@ -258,10 +235,10 @@ API:
 - `key(index)` -- ottieni il numero della key `index`.
 - `length` -- il numero di oggetti archiviati.
 - Use `Object.keys` ottieni tutte le chiavi.
-- accediamo alle keys come propietà degli object, in questo caso un evento `storage` non viene attivato.
+- accediamo alle keys come proprietà degli object, in questo caso un evento `storage` non viene attivato.
 
 Storage event:
 
 - attivato su chiamata di `setItem`, `removeItem`, `clear` .
 - COntiene tutti i data riguardo l'operazione (`key/oldValue/newValue`), il documento `url` e lo storage object `storageArea`.
-- Attivato su tutti gli oggetti `window` che hanno accesso all'archivio eccetto quello da cui è stato generato (all'intenro di una tab per `sessionStorage`, globalmente per `localStorage`).
+- Attivato su tutti gli oggetti `window` che hanno accesso all'archivio eccetto quello da cui è stato generato (all'interno di una tab per `sessionStorage`, globalmente per `localStorage`).

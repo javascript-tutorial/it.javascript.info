@@ -1,29 +1,29 @@
-# Arrow functions, the basics
+# Arrow functions, le basi
 
-There's another very simple and concise syntax for creating functions, that's often better than Function Expressions.
+Esiste un'altra sintassi molto semplice e concisa per creare funzioni e che spesso è migliore delle Function Expressions.
 
-It's called "arrow functions", because it looks like this:
+E' chiamata "arrow functions", perché si presenta in questo modo:
 
 ```js
-let func = (arg1, arg2, ...argN) => expression
+let func = (arg1, arg2, ..., argN) => expression
 ```
 
-...This creates a function `func` that accepts arguments `arg1..argN`, then evaluates the `expression` on the right side with their use and returns its result.
+Questo codice crea una funzione `func` che accetta gli argomenti `arg1..argN` e li utilizza per valutare `expression` e restituirne il risultato.
 
-In other words, it's the shorter version of:
+In altre parole è una versione abbreviata di:
 
 ```js
-let func = function(arg1, arg2, ...argN) {
+let func = function(arg1, arg2, ..., argN) {
   return expression;
 };
 ```
 
-Let's see a concrete example:
+Vediamo un esempio concreto:
 
 ```js run
 let sum = (a, b) => a + b;
 
-/* This arrow function is a shorter form of:
+/* Questa arrow function è una versione abbreviata di:
 
 let sum = function(a, b) {
   return a + b;
@@ -33,22 +33,22 @@ let sum = function(a, b) {
 alert( sum(1, 2) ); // 3
 ```
 
-As you can, see `(a, b) => a + b` means a function that accepts two arguments named `a` and `b`. Upon the execution, it evaluates the expression `a + b` and returns the result.
+Come puoi vedere `(a, b) => a + b` rappresenta una funzione che accetta due argomenti `a` e `b`. Al momento dell'esecuzione, questa valuta l'espressione `a + b` e restituisce il risultato.
 
-- If we have only one argument, then parentheses around parameters can be omitted, making that even shorter.
+- Se abbiamo un solo argomento, le parentesi che racchiudono gli argomenti possono essere omesse, abbreviando ulteriormente il codice.
 
-    For example:
+    Ad esempio:
 
     ```js run
     *!*
     let double = n => n * 2;
-    // roughly the same as: let double = function(n) { return n * 2 }
+    // più o meno lo steso di: let double = function(n) { return n * 2 }
     */!*
 
     alert( double(3) ); // 6
     ```
 
-- If there are no arguments, parentheses will be empty (but they should be present):
+- Se non ci sono argomenti, le parentesi saranno vuote (ma devono essere presenti):
 
     ```js run
     let sayHi = () => alert("Hello!");
@@ -56,9 +56,9 @@ As you can, see `(a, b) => a + b` means a function that accepts two arguments na
     sayHi();
     ```
 
-Arrow functions can be used in the same way as Function Expressions.
+Le arrow functions possono essere usate allo stesso modo delle Function Expressions.
 
-For instance, to dynamically create a function:
+Ad esempio, per creare dinamicamente una funzione:
 
 ```js run
 let age = prompt("What is your age?", 18);
@@ -70,42 +70,44 @@ let welcome = (age < 18) ?
 welcome();
 ```
 
-Arrow functions may appear unfamiliar and not very readable at first, but that quickly changes as the eyes get used to the structure.
+Le arrow functions possono apparire poco familiari e leggibili all'inizio, ma ciò cambia rapidamente man mano che gli occhi si abitueranno alla struttura.
 
-They are very convenient for simple one-line actions, when we're just too lazy to write many words.
+Esse sono molto comode per semplici azioni su una riga, se siamo troppo pigri per scrivere più parole.
 
-## Multiline arrow functions
+## Arrow functions su più linee
 
-The examples above took arguments from the left of `=>` and evaluated the right-side expression with them.
+Gli esempi precedenti hanno preso argomenti alla sinistra di "=>" e con essi hanno valutato l'espressione a destra.
 
-Sometimes we need something a little bit more complex, like multiple expressions or statements. It is also possible, but we should enclose them in curly braces. Then use a normal `return` within them.
+A volte abbiamo bisogno di qualcosa di un po' più complesso, come espressioni o dichiarazioni multiple. Anche questo è possibile, ma dovremo racchiuderle tra parentesi graffe ed usare un normale return.
 
-Like this:
+In questo modo:
 
 ```js run
-let sum = (a, b) => {  // the curly brace opens a multiline function
+let sum = (a, b) => {  // le parentesi graffe aprono una funzione multilinea
   let result = a + b;
 *!*
-  return result; // if we use curly braces, then we need an explicit "return" 
+  return result; // se usiamo le parentesi graffe abbiamo bisogno di un esplicito "return" 
 */!*
 };
 
 alert( sum(1, 2) ); // 3
 ```
 
-```smart header="More to come"
-Here we praised arrow functions for brevity. But that's not all!
+```smart header="Molto di più..."
 
-Arrow functions have other interesting features.
+Qui abbiamo presentato le arrow functions in breve, ma questo non è tutto!
 
-To study them in-depth, we first need to get to know some other aspects of JavaScript, so we'll return to arrow functions later in the chapter <info:arrow-functions>.
+Le arrow functions possiedono altre interessanti caratteristiche.
 
-For now, we can already use arrow functions for one-line actions and callbacks.
+Per studiarle approfonditamente dobbiamo prima conoscere qualche altro aspetto di JavaScript, quindi torneremo alle arrow functions più avanti, nel capitolo <info:arrow-functions>.
+
+Per ora possiamo già utilizzarle per azioni su una riga sola e per callbacks.
 ```
 
 ## Summary
 
-Arrow functions are handy for one-liners. They come in two flavors:
+Le arrow functions sono utili per azioni su una riga sola. Possono essere scritte in due modi:
 
-1. Without curly braces: `(...args) => expression` -- the right side is an expression: the function evaluates it and returns the result.
-2. With curly braces: `(...args) => { body }` -- brackets allow us to write multiple statements inside the function, but we need an explicit `return` to return something.
+1. Senza parentesi graffe: `(...args) => expression` -- la parte destra è un'espressione: la funzione la valuta e restituisce il risultato.
+2. Con parentesi graffe: `(...args) => { body }` -- le parentesi ci permettono di scrivere comandi multipli all'interno della funzione, ma abbiamo bisogno di dichiarare esplicitamente
+`return` affinché sia ritornato qualcosa.

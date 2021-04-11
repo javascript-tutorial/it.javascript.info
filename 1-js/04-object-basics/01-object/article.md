@@ -1,9 +1,13 @@
 
 # Oggetti
 
+Come sappiamo dal capitolo *Tipi di dati*, in Javascript ci sono otto tipi di dati. Sette di loro sono chiamati "primitivi", perché i loro valori contengono sempre un singolo elemento (una stringa, un numero, un booleano ecc).
 
+Gli oggetti, invece, vengono utilizzati per catalogare vari tipi di dati ed altri elementi più complessi. In Javascript, essi permeano ogni aspetto del linguaggio. Dobbiamo perciò comprenderli bene prima di procedere nello studio approfondito di un qualsiasi altro argomento.
 
-Possiamo immaginare un oggetto come un archivio con dei documenti firmati. Ogni dato viene scritto nel documento utilizzandone la chiave (il nome). E' facile trovare un file conoscendone il nome oppure aggiungere di nuovi/rimuovere quelli vecchi.
+Un oggetto può essere creato tramite le parentesi graffe `{...}`, con un'opzionale lista di proprietà. Una proprietà è una coppia "chiave: valore", dove "chiave" è una stringa (detta anche "nome di proprietà"), mentre "valore" può essere qualsiasi cosa.
+
+Possiamo immaginare un oggetto come un archivio con dei documenti catalogati. Ogni dato viene archiviato utilizzando una specifica chiave. E' facile trovare un file quando se ne conosce il nome, oppure aggiungerne di nuovi o rimuovere quelli vecchi.
 
 ![](object.svg)
 
@@ -16,7 +20,7 @@ let user = {};  // sintassi "oggetto letterale"
 
 ![](object-user-empty.svg)
 
-Solitamente vengono utilizzate le `{...}`. La dichiarazione viene chiamata *object literal* ("oggetto letterale").
+Solitamente vengono utilizzate le parentesi graffe `{...}`. Questo tipo di dichiarazione viene chiamata *object literal* ("oggetto letterale").
 
 ## Le proprietà dei literal
 
@@ -29,23 +33,23 @@ let user = {     // un oggetto
 };
 ```
 
-Una proprietà ha una chiave (conosciuta anche come "nome" o "identificatore") prima dei due punti `":"` ed un valore alla destra.
+Una proprietà ha una chiave (conosciuta anche come "nome" o "identificatore") prima dei due punti `":"`, ed un valore alla sua destra.
 
-Nell'oggetto `user`, ci sono due proprietà:
+Nell'oggetto `user` ci sono due proprietà:
 
-1. La prima proprietà ha come nome `"name"` e valore `"John"`.
-2. La seconda come nome ha `"age"` e valore `30`.
+1. La prima proprietà ha come nome `"name"` e come valore `"John"`.
+2. La seconda ha come nome `"age"` e come valore `30`.
 
-L'oggetto risultate `user` può essere visto come un archivio con due file etichettati con "name" ed "age".
+L'oggetto `user` può essere visto come un archivio con due file etichettati come "name" ed "age".
 
 ![user object](object-user.svg)
 
-Noi possiamo aggiungere, rimuovere e leggere file in qualsiasi momento.
+Possiamo aggiungere, rimuovere o leggere un file in qualsiasi momento.
 
 I valori delle proprietà sono accessibili utilizzando la notazione puntata:
 
 ```js
-// ottiene i campi dell'oggetto:
+// ritorna i campi dell'oggetto:
 alert( user.name ); // John
 alert( user.age ); // 30
 ```
@@ -66,13 +70,13 @@ delete user.age;
 
 ![user object 3](object-user-delete.svg)
 
-Possiamo anche utilizzare nomi di proprietà composti da più parole ("multi-parola"), ma devono essere compresi tra apici:
+Possiamo anche utilizzare nomi di proprietà composti da più parole ("multi-parola"), ma devono essere racchiusi tra virgolette:
 
 ```js
 let user = {
   name: "John",
   age: 30,
-  "likes birds": true  // nome di proprietà composta da più parole deve essere racchiusa tra virgolette
+  "likes birds": true  // un nome di proprietà composto da più parole deve essere racchiuso tra virgolette
 };
 ```
 
@@ -85,19 +89,19 @@ let user = {
   age: 30*!*,*/!*
 }
 ```
-Questa viene chiamata virgola di "trailing" ("trascinamento") o "hanging" ("sospensione"). Rende più facile l'aggiunzione/rimozione/spostamento delle proprietà, poiché tutte le righe risultano essere uguali.
+Rende più facile l'aggiunta/rimozione/spostamento delle proprietà, poiché tutte le righe hanno una virgola.
 
 ## Parentesi quadre
 
-Per le proprietà con nomi "multi-parola", l'accesso con notazione puntata non funziona:
+Per le proprietà con nomi "multi-parola" l'accesso con la notazione puntata non funziona:
 
 ```js run
 // questo darebbe un errore di sintassi
 user.likes birds = true
 ```
-Questo perché il punto richiede che la chiave sia un identificatore valido. Un identificatore non deve avere spazi (oltre a seguire le altre limitazioni già studiate).
+Questo perché il punto richiede che la chiave che segue sia un identificatore valido. Un identificatore non deve avere spazi (oltre a seguire le altre limitazioni già studiate).
 
-Esiste una "notazione con parentesi quadre", per aggirare questo vincolo:
+Per aggirare questo vincolo esiste una "notazione con parentesi quadre":
 
 ```js run
 let user = {};
@@ -112,9 +116,9 @@ alert(user["likes birds"]); // true
 delete user["likes birds"];
 ```
 
-Ora tutto funziona. Da notare che la stringa all'interno delle parentesi va comunque messa tra apici (qualsiasi tipo di apici).
+Ora funziona. Da notare che la stringa all'interno delle parentesi va comunque messa tra virgolette (singole o doppie).
 
-Le parentesi quadre forniscono anche un modo per fornire il nome della proprietà come risultato di un espressione -- a differenza delle stringhe letterali -- ad esempio una variabile:
+Le parentesi quadre permettono di passare il nome della proprietà come risultato di un espressione -- a differenza delle stringhe letterali --, ad esempio una variabile:
 
 ```js
 let key = "likes birds";
@@ -123,7 +127,7 @@ let key = "likes birds";
 user[key] = true;
 ```
 
-Qui la variabile `key` può essere calcolata a run-time o dipendere dall'input dell'utente. Successivamente possiamo utilizzarla per accedere alla proprietà. Questa caratteristica ci fornisce una grande flessibilità. La notazione puntata non può essere utilizzata in questo modo.
+Qui la variabile `key` può essere calcolata durante il run-time o dipendere dall'input dell'utente. Successivamente possiamo utilizzarla per accedere alla proprietà. Questa caratteristica ci fornisce una grande flessibilità.
 
 Ad esempio:
 
@@ -139,7 +143,7 @@ let key = prompt("What do you want to know about the user?", "name");
 alert( user[key] ); // John (se si inserisce "name")
 ```
 
-The dot notation cannot be used in a similar way:
+La notazione puntata non può essere utilizzata in questo modo:
 
 ```js run
 let user = {
@@ -153,7 +157,7 @@ alert( user.key ) // undefined
 
 ### Proprietà calcolate
 
-In un oggetto letterale possiamo utilizzare le parentesi quadre. Questo viene chiamato *calcolo delle proprietà*.
+Possiamo utilizzare le parentesi quadre al momento della creazione di un oggetto letterale. Questo metodo viene chiamato *calcolo delle proprietà*.
 
 Ad esempio:
 
@@ -169,11 +173,11 @@ let bag = {
 alert( bag.apple ); // 5 se fruit="apple"
 ```
 
-Il significato delle proprietà calcolate è semplice: `[fruit]` significa che il nome della proprietà deve essere preso da `fruit`.
+La logica dietro le proprietà calcolate è semplice: `[fruit]` significa che il nome della proprietà deve essere preso da `fruit`.
 
-Quindi se un utente inserisce `"apple"`, `bag` diventerà `{apple: 5}`.
+Quindi, se un utente inserisce `"apple"`, `bag` diventerà `{apple: 5}`.
 
-Essenzialmente, questo funziona allo stesso modo:
+Essenzialmente, questo funziona allo stesso modo di:
 ```js run
 let fruit = prompt("Which fruit to buy?", "apple");
 let bag = {};
@@ -193,48 +197,13 @@ let bag = {
 };
 ```
 
-Le parentesi quadre sono molto più potenti della notazione puntata. Ci permettono di assegnare qualsiasi nome. Ma sono più ingombranti da scrivere.
-
-Quindi la maggior parte delle volte, quando il nome della proprietà è conosciuto, la notazione puntata viene preferita. Se invece necessitiamo di qualcosa di più complesso, possiamo utilizzare le parentesi quadre.
-
-
-
-````smart header="Le parole riservate sono consentite come nomi di proprietà"
-Una variabile non può avere un nome uguale ad una parola riservata dal linguaggio come "for", "let", "return" etc.
-
-Ma per una proprietà di un oggetto, non ci sono restrizioni. Qualsiasi nome va bene:
-
-```js run
-let obj = {
-  for: 1,
-  let: 2,
-  return: 3
-};
-
-alert( obj.for + obj.let + obj.return );  // 6
-```
-Praticamente ogni nome è consentito, ma c'è n'è uno speciale: `"__proto__"` questo per varie ragioni storiche, gli viene fornito un trattamento speciale. Ad esempio non possiamo settarlo ad un valore diverso da un oggetto:
-
-```js run
-let obj = {};
-obj.__proto__ = 5;
-alert(obj.__proto__); // [object Object], non funzionerebbe
-```
-
-Come possiamo veder dal codice, l'assegnazione alla primitiva `5` viene ignorata.
-
-Questa può diventare una situazione vulnerabile se abbiamo intenzione di memorizzare una coppia chiave-valore in un oggetto, consentendo al visitatore di specificare al chiave.
-
-In questo caso il visitatore potrebbe scegliere "__proto__" come chiave, e l'assegnazione verrebbe rovinata (come abbiamo visto sopra).
-
-C'è un modo per trattare `__proto__` come una prorietà, lo vederemo più avanti, prima abbiamo bisogno di conoscere meglio gli oggetti.
-C'è un ulteriore struttura dati [Map](info:map-set), che apprenderemo nel capitolo <info:map-set>, che supporta chiavi arbitrarie.
-````
+Le parentesi quadre sono molto più potenti della notazione puntata. Ci permettono di assegnare qualsiasi nome, ma sono più "ingombranti".
+La maggior parte delle volte, quando il nome della proprietà è conosciuto e semplice, la notazione puntata viene preferita. Se invece necessitiamo di qualcosa di più complesso, possiamo utilizzare le parentesi quadre.
 
 
 ## Abbreviazione per il valore di una proprietà
 
-Nella pratica spesso usiamo delle variabili esistenti come valori per i nomi delle proprietà.
+Spesso usiamo delle variabili esistenti come valori per i nomi delle proprietà.
 
 Ad esempio:
 
@@ -251,9 +220,9 @@ let user = makeUser("John", 30);
 alert(user.name); // John
 ```
 
-Nell'esempio sopra, le proprietà hanno lo stesso nome delle varibili. Il caso d'uso di creare una proprietà da una varibilie è molto comune, tanto che esiste una speciale *abbreviazione* per comodità.
+Nell'esempio sopra, le proprietà hanno lo stesso nome delle varibili. Il caso d'uso di creare una proprietà da una variabile è molto comune, tanto che, per comodità, esiste una speciale *abbreviazione* .
 
-Invece che scrivere `name:name` possiamo semplicemente scrivere `name`, come in questo esempio:
+Invece di scrivere `name:name` possiamo semplicemente scrivere `name`, come in questo esempio:
 
 ```js
 function makeUser(name, age) {
@@ -266,7 +235,7 @@ function makeUser(name, age) {
 */!*
 }
 ```
-Nello stesso oggetto possiamo usare entrambe ler proprietà:
+Possiamo usare entrambe le proprietà, normale e abbreviata, nello stesso oggetto:
 
 ```js
 let user = {
@@ -274,11 +243,9 @@ let user = {
   age: 30
 };
 ```
+## Limitazioni per i nomi di una proprietà
 
-
-## Property names limitations
-
-Come abbiamo già appreso, una variabile non può avere il nome uguale ad una parola chiave del riservata al linguaggio come "for", "let", "return" etc.
+Come già sappiamo, una variabile non può avere il nome uguale ad una parola chiave riservata al linguaggio come "for", "let", "return" etc.
 
 Ma per le proprietà degli oggetti, non ci sono restrizioni:
 
@@ -293,18 +260,18 @@ let obj = {
 alert( obj.for + obj.let + obj.return );  // 6
 ```
 
-In breve, non ci sono limitazioni nei nomi delle proprietà. Possono essere sia di tipo string che symbols (un tipo speciale, che andremo ad analizzare più avanti).
+In breve, non ci sono limitazioni per i nomi delle proprietà. Possono essere stringhe o simboli (un tipo di dato speciale che andremo ad analizzare più avanti).
 
-Nomi di proprietà con altri tipi, vengono autoamaticamente convertiti a string.
+Nomi di proprietà con altri tipi "primitivi" vengono automaticamente convertiti a stringhe.
 
-Ad esempio, un numero `0` diventa una stringa `"0"` quando viene utilizzata come chiave di una prorietà:
+Ad esempio, un numero `0` diventa una stringa `"0"` quando viene utilizzato come chiave di una proprietà:
 
 ```js run
 let obj = {
   0: "test" // equivale a "0": "test"
 };
 
-// entrambi gli alert accedono alla stessa proprietà (il nuemero 0 viene convertito nella stringa "0")
+// entrambi gli alert accedono alla stessa proprietà (il numero 0 viene convertito nella stringa "0")
 alert( obj["0"] ); // test
 alert( obj[0] ); // test (stessa proprietà)
 ```
@@ -317,21 +284,23 @@ obj.__proto__ = 5; // assegnamo un numero
 alert(obj.__proto__); // [object Object] - il valore è un oggetto, non ha funzionato come ci si aspettava
 ```
 
-Come possiamo osservare dal codice, l'assegazione del numero intero `5` è stata ignorata.
+Come possiamo osservare nel codice sopra, l'assegnazione del numero intero `5` è stata ignorata.
 
 Studieremo più nel dettaglio `__proto__` nel [capitolo](info:prototype-inheritance), e vedremo come [sistemare](info:prototype-methods) questo comportamento.
 
-## Controllo di esistenza
+## Controllo di esistenza, operatore "in"
 
-Un importante caratteristica degli oggetti è che è possibile accedere qualsiasi proprietà. Non ci sarà alcun errore se la proprietà non esiste! L'accesso ad una variabile non esistente ritornerà `undefined`. Questa caratteristica fornisce un metodo comodo per verificare se una proprietà esiste -- prelevandola e confrontandola con undefined:
+Un'importante caratteristica degli oggetti, in Javascript, è che è possibile accedere a una qualsiasi proprietà. Non ci sarà alcun errore se la proprietà non esiste! 
+
+L'accesso ad una variabile non esistente ritornerà `undefined`. Possiamo quindi facilmente verificare se una properietà esiste:
 
 ```js run
 let user = {};
 
-alert( user.noSuchProperty === undefined ); // true significa "no such property"
+alert( user.noSuchProperty === undefined ); // true significa "nessuna properietà"
 ```
 
-Esiste anche uno speciale operatore `"in"` per controllare l'esistenza di una proprietà.
+Esiste anche uno speciale operatore `"in"` per lo stesso scopo.
 
 La sintassi è:
 ```js
@@ -347,9 +316,9 @@ alert( "age" in user ); // true, significa che user.age esiste
 alert( "blabla" in user ); // false, significa che user.blabla non esiste
 ```
 
-Da notare che alla sinistra di  `in` deve esserci il *nome di una proprietà*. Questa solitamente è una stringa tra apici.
+Da notare che alla sinistra di `in` deve esserci il *nome di una proprietà*. Questa, solitamente, è una stringa.
 
-Se omettiamo gli apici, allora verrà cercata una variabile con quel nome e verrà utilizzato il suo contenuto come test. Ad esempio:
+Se omettiamo le virgolette attorno alla proprietà da cercare, verrà cercata una variabile con quel nome e verrà utilizzato il suo valore. Ad esempio:
 
 ```js run
 let user = { age: 30 };
@@ -359,7 +328,7 @@ alert( *!*key*/!* in user ); // true, prende il nome da key e controlla l'esiste
 ```
 
 ````smart header="Utilizzare \"in\" con le proprietà che contengono `undefined`"
-Solitamente, il confronto stretto con `"=== undefined"` funziona correttamente. Ma c'è un particolare caso in cui questo fallisce, ma `"in"` funziona correttamente.
+Solitamente, il confronto stretto con `"=== undefined"` funziona correttamente. Ma c'è un particolare caso in cui questo fallisce, mentre con `"in"` funziona correttamente.
 
 Questo accade quando una proprietà esiste, ma contiene `undefined`:
 
@@ -374,10 +343,9 @@ alert( "test" in obj ); // true, la proprietà esiste!
 ```
 
 
-Nel codice sopra, la proprietà `obj.test` tecnicamente esiste. Quindi l'operatore `in` funziona.
+Nel codice sopra, tecnicamente, la proprietà `obj.test` esiste. Quindi l'operatore `in` funziona.
 
-Situazioni come questa accadono raramente, perché solitamente non si assegna `undefined`. Si usa più comunemente `null` per valori "sconosciuti" o "vuoti". Quindi l'operatore `in` è più un ospite esoterico nel codice.
-````
+Situazioni come questa capitano raramente, perché solitamente non si assegna `undefined`. Si usa più comunemente `null` per valori "sconosciuti" o "vuoti". Quindi l'operatore `in` è più un ospite "esotico" nel codice.
 
 
 ## Il ciclo "for..in" 
@@ -392,7 +360,7 @@ for (key in object) {
 }
 ```
 
-Ad esempio, proviamo a stampare tutte le proprietà di `user`:
+Ad esempio, proviamo a mostrare tutte le proprietà di `user`:
 
 ```js run
 let user = {
@@ -409,16 +377,16 @@ for (let key in user) {
 }
 ```
 
-Da notare che tutti i costrutti "for" ci consentono di dichiarare delle variabili di ciclo da utilizzare all'interno del ciclo stesso, come `let key` in questo esempio.
+Da notare che tutti i costrutti "for" ci consentono di dichiarare delle variabili da utilizzare all'interno del ciclo stesso, come `let key` in questo esempio.
 
-Inoltre possiamo utilizzare qualsiasi altr variabile al posto di `key`. Ad esempio `"for(let prop in obj)"` è molto utilizzato.
+Inoltre possiamo utilizzare qualsiasi altra variabile al posto di `key`. Ad esempio `"for(let prop in obj)"` è molto utilizzato.
 
 
 ### Ordinato come un oggetto
 
-Gli oggetti sono ordinati? In altre parole, se cicliamo un oggetto, otterremo le sue proprietà nello stesso ordine in cui le abbiamo aggiunte? 
+Gli oggetti sono ordinati? In altre parole, se iteriamo un oggetto, otterremo le sue proprietà nello stesso ordine in cui le abbiamo aggiunte? 
 
-Una risposta breve è: "sono ordinati in modo speciale": le proprietà di tipo intero vengono ordinate, le altre appaiono seguendo l'ordine di creazione. Seguiranno maggiori dettagli.
+Una risposta breve è: "sono ordinati in modo speciale": le proprietà che hanno numeri interi come chiavi vengono ordinate, le altre appaiono seguendo l'ordine di creazione. Seguiranno maggiori dettagli.
 
 Per fare un esempio, consideriamo un oggetto con dei prefissi telefonici:
 
@@ -438,14 +406,14 @@ for (let code in codes) {
 */!*
 ```
 
-L'oggetto può essere utilizzato per suggerire una lista di opzioni all'utente. Se stiamo sviluppato un sito dedicato al pubblico Tedesco propbabilmente vorrano vedersi apparire come primo valore `49`.
+L'oggetto può essere utilizzato per suggerire una lista di opzioni all'utente. Se stiamo sviluppando un sito dedicato al pubblico tedesco propbabilmente vorrano vedersi apparire come primo valore `49`.
 
 Se proviamo ad eseguire il codice, vedremo un risultato totalmente inaspettato:
 
 - USA (1) viene per primo
 - po Switzerland (41) e a seguire gli altri.
 
-I prefissi telefonici seguono un ordine crescente, questo accade perché sono interi. Quindi vedremo `1, 41, 44, 49`.
+I prefissi telefonici seguono un ordine crescente; questo accade perché sono numeri interi. Quindi vedremo `1, 41, 44, 49`.
 
 ````smart header="Proprietà degli interi? Cos'è?"
 La "proprietà degli interi" è un termine che indica una stringa che può essere convertita da e ad un intero senza subire modifiche.
@@ -455,12 +423,12 @@ Quindi "49" segue la proprietà degli interi, perché quando viene trasformato i
 ```js run
 // Math.trunc è una proprietà integrata che rimuove la parte decimale
 alert( String(Math.trunc(Number("49"))) ); // "49", rimane uguale
-alert( String(Math.trunc(Number("+49"))) ); // "49", è diverso da "+49" ⇒ non è un intero
-alert( String(Math.trunc(Number("1.2"))) ); // "1", è diverso da "1.2" ⇒ non è un intero
+alert( String(Math.trunc(Number("+49"))) ); // "49", è diverso da "+49" ⇒ non è un numero intero
+alert( String(Math.trunc(Number("1.2"))) ); // "1", è diverso da "1.2" ⇒ non è un numero intero
 ```
 ````
 
-...Differentemente, se le chiavi non sono di tipo intero, vengono restituite nell'ordine di creazione, ad esempio:
+...Differentemente, se le chiavi non sono numeri interi, vengono restituite nell'ordine di creazione, ad esempio:
 
 ```js run
 let user = {
@@ -498,6 +466,7 @@ for (let code in codes) {
 Ora funziona come previsto.
 
 ## Riepilogo
+Gli oggetti sono arrays associativi con diverse caratteristiche speciali:
 
 Possono memorizzare proprietà (coppie di chiave-valore) in cui:
 - Il nome della proprietà (chiave) deve essere composta da una o più stringhe o simboli (solitamente stringhe).
@@ -512,9 +481,11 @@ Operatori specifici:
 - Per controllare se un una proprietà con un certo nome esiste: `"key" in obj`.
 - Per iterare un oggetto: `for(let key in obj)`.
 
-Gli oggetti vengono assegnati e copiati per riferimento. In altre parole, la variabile non memorizza il "valore dell'oggetto", ma puittosto un "riferimento" (indirizzo di memoria). Quindi copiando questa variabile o passandola come argomento ad una funzione, fornirà un riferimento all'oggetto e non una copia. Tutte le operazioni effettuate su un oggetto copiato per riferimento (come aggiungere/rimuovere proprietà) vengono effettuate sullo stesso oggetto.
+Gli oggetti vengono assegnati e copiati per riferimento. In altre parole, la variabile non memorizza il "valore dell'oggetto", ma piuttosto un "riferimento" (indirizzo di memoria). Quindi copiando questa variabile o passandola come argomento ad una funzione, fornirà un riferimento all'oggetto e non una copia. Tutte le operazioni effettuate su un oggetto copiato per riferimento (come aggiungere/rimuovere proprietà) vengono effettuate sullo stesso oggetto.
 
 Quello che abbiamo studiato in questo capitolo viene chiamato "oggetto semplice", o solo `Object`.
+
+Ci sono altri tipi di oggetti in Javascript:
 
 - `Array` per memorizzare dati ordinati,
 - `Date` per memorizzare informazioni riguardo date e orari,
@@ -524,4 +495,4 @@ Quello che abbiamo studiato in questo capitolo viene chiamato "oggetto semplice"
 
 Ognuno di questi ha le sue caratteristiche speciali che studieremo più avanti. Qualche volta le persone dicono cose tipo "Array type" ("tipo Array") o "Date type" ("tipo Data"), ma formalmente non sono dei tipi, appartengono al tipo di dato "object". Sono semplicemente delle estensioni.
 
-Gli oggetti in JavaScript sono molto potenti. Qui abbiamo grattato solamente la superficie, ma l'argomento è veramente grande. Lavoreremo molto con gli oggetti per imparare ulteriori caratteristiche.
+Gli oggetti in JavaScript sono molto potenti. Qui abbiamo grattato solamente la superficie, l'argomento è veramente ampio. Lavoreremo molto con gli oggetti per impararne ulteriori caratteristiche.

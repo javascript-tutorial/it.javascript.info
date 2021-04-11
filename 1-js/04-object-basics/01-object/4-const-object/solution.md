@@ -1,6 +1,6 @@
 Certo, funziona senza problemi.
 
-Il `const` protegge solo la variabile da cambiamenti. 
+La keyword `const` protegge la variabile solo da riassegnazioni. 
 
 In altre parole, `user` memorizza un riferimento all'oggetto. Questo non può cambiare. Ma l'oggetto contenuto non ha nessun vincolo.
 
@@ -10,10 +10,10 @@ const user = {
 };
 
 *!*
-// works
+// funziona (abbiamo cambiato una properietà dell'oggetto)
 user.name = "Pete";
 */!*
 
-// error
+// errore (abbiamo cercato di cambiare tutto valore in un colpo solo)
 user = 123;
 ```

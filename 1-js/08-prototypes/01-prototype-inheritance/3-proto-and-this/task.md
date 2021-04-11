@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Where does it write?
+# Dove andrà a scrivere?
 
-We have `rabbit` inheriting from `animal`.
+Abbiamo un oggetto `rabbit` che eredita da `animal`.
 
-If we call `rabbit.eat()`, which object receives the `full` property: `animal` or `rabbit`? 
+Se invochiamo `rabbit.eat()`, quale oggetto riceverà la proprietà `full`: `animal` o `rabbit`? 
 
 ```js
 let animal = {

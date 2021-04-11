@@ -1,4 +1,4 @@
-I primi due controlli vengono trasmormati in due `case`. Il terzo controllo viene diviso in due casi:
+I primi due controlli vengono trasformati in due `case` separati. Il terzo controllo viene diviso in due `case` raggruppati:
 
 ```js run
 let a = +prompt('a?', '');
@@ -23,4 +23,4 @@ switch (a) {
 
 Da notare: il `break` alla fine non è richiesto. Lo abbiamo messo per rendere il codice pronto ad aggiornamenti futuri.
 
-In futuro, potremmo voler aggiungere un ulteriore `case`, ad esempio `case 4`. E se ci dimentichiamo di aggiungere il break prima di scrivere il nuovo case, al termine del `case 3` ci sarà un errore. Quindi aggiungere il break è una sorta di auto-certezza.
+In futuro, potremmo voler aggiungere un ulteriore `case`, ad esempio `case 4`. E se ci dimentichiamo di aggiungere il `break` prima di scrivere il nuovo `case`, al termine del `case 3` ci sarà un errore. Quindi aggiungere il `break` è una sorta di prevenzione.

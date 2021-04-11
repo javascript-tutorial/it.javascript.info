@@ -1,6 +1,6 @@
-Differences:
+Differenze:
 
-1. `clientWidth` is numeric, while `getComputedStyle(elem).width` returns a string with `px` at the end.
-2. `getComputedStyle` may return non-numeric width like `"auto"` for an inline element.
-3. `clientWidth` is the inner content area of the element plus paddings, while CSS width (with standard `box-sizing`) is the inner content area *without paddings*.
-4. If there's a scrollbar and the browser reserves the space for it, some browser substract that space from CSS width (cause it's not available for content any more), and some do not. The `clientWidth` property is always the same: scrollbar size is substracted if reserved.
+1. `clientWidth` è un valore numerico, `getComputedStyle(elem).width` invece restituisce una stringa con `px` alla fine.
+2. `getComputedStyle` può restituire una larghezza non numerica come `"auto"` per un elemento inline.
+3. `clientWidth` è l'area del contenuto interna di un elemento più il padding, mentre la proprietà width dei CSS (con il valore predefinito di `box-sizing`) è l'area del contenuto interna *senza il padding*.
+4. Se c'è una barra di scorrimento ed il browser le riserva uno spazio, alcuni browser sottraggono quello spazio alla larghezza impostata tramite CSS (perché non è più disponibile per i contenuti), e altri invece no. La proprietà `clientWidth` è sempre la stessa: se la barra di scorrimento ha uno spazio riservato viene sottratto all'area del contenuto.

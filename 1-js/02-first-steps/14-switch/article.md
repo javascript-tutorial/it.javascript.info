@@ -1,14 +1,14 @@
 # L'istruzione "switch"
 
-L'istruzione `switch` può essere utile per rimpiazzare `if` multipli.
+L'istruzione `switch` può essere utile per rimpiazzare multipli `if`.
 
-E' infatti un metodo molto più descrittivo per confrontare un valore che può assumere più varianti.
+E' infatti un metodo molto più descrittivo per lavorare con un elemento che può avere svariati valori.
 
 ## La sintassi
 
-Un istruzione `switch` possiede uno o più `case` ed opzionalmente un blocco default.
+Un istruzione `switch` possiede uno o più `case` ed opzionalmente un blocco *default*.
 
-Appare cosi:
+Un esempio:
 
 ```js no-beautify
 switch(x) {
@@ -26,9 +26,9 @@ switch(x) {
 }
 ```
 
-- Il valore di `x` viene controllato utilizzando l'uguaglianza stretta con il valore fornito dal primo blocco `case` (che è, `value1`) poi dal secondo (`value2`) e avanti cosi.
+- Il valore di `x` viene controllato utilizzando l'uguaglianza stretta con i valori dei blocchi `case` (`value1` e `value2` nell'esempio sopra).
 - Se l'uguaglianza viene trovata, `switch` inizia ad eseguire il codice partendo dal corrispondente blocco `case`, fino al `break` più vicino (oppure fino alla fine dello `switch`).
-- Se non viene trovata nessuna uguaglianza allora viene eseguito il codice del blocco `default` (se questo è presente).
+- Se non viene trovata nessuna uguaglianza allora viene eseguito il codice del blocco `default` (se presente).
 
 ## Un esempio
 
@@ -47,18 +47,18 @@ switch (a) {
     break;
 */!*
   case 5:
-    alert( 'Too large' );
+    alert( 'Too big' );
     break;
   default:
     alert( "I don't know such values" );
 }
 ```
 
-Qui lo `switch` inizia confrontando `a` con il primo `case`, la sua variante è `3`. Quindi il match fallisce.
+Qui lo `switch` inizia confrontando `a` con il primo `case`, il cui valore è `3`. Non vi è corrispondenza.
 
-Poi valuta `4`. Questo è un match riuscito, quindi l'esecuzione inizia da `case 4` fino al `break` più vicino.
+Poi valuta `4`. C'è una corrispondenza, quindi l'esecuzione inizia da `case 4` fino al `break` più vicino.
 
-**Se non c'è nessun `break` l'esecuzione procede al prossimo `case` senza alcun controllo.**
+**Se non c'è nessun `break` l'esecuzione procede al prossimo `case`.**
 
 Un esempio senza `break`:
 
@@ -79,7 +79,7 @@ switch (a) {
 }
 ```
 
-Nell'esempio sopra abbiamo visto l'esecuzione sequenziale dei tre `alert`:
+Nell'esempio sopra, non essendoci un `break`, abbiamo l'esecuzione sequenziale dei tre `alert`:
 
 ```js
 alert( 'Exactly!' );
@@ -107,12 +107,13 @@ switch (+a) {
     alert("this doesn't run");
 }
 ```
-Qui `+a` viene convertito in `1`, che viene confrontato con `b + 1` nei `case`, ed il codice corrispondente viene eseguito.
-````
+```
+Qui `+a` viene convertito in `1`, che nei `case` viene confrontato con `b + 1`, ed il codice corrispondente viene eseguito. 
+``` 
 
 ## Raggruppare i "case"
 
-Diverse varianti di `case` che condividono lo stesso codice possono essere raggruppate.
+Possiamo raggruppare diverse varianti di `case` e far loro eseguire lo stesso codice.
 
 Ad esempio, se vogliamo eseguire lo stesso codice per `case 3` e `case 5`:
 
@@ -139,11 +140,11 @@ switch (a) {
 
 Ora sia `3` che `5` mostreranno lo stesso messaggio.
 
-L'abilità di "raggruppare" più case è un effetto collaterale di come `switch/case` funziona senza `break`. Qui l'esecuzione del case `case 3` inizia dalla linea `(*)` e prosegue fino a `case 5`, perchè non c'è alcun `break`.
+L'abilità di "raggruppare" più `case` è un effetto collaterale di come `switch/case` funziona senza `break`. Qui l'esecuzione del `case 3` inizia dalla linea `(*)` e prosegue fino a `case 5`, perché non c'è alcun `break`.
 
 ## Il tipo conta
 
-Mettiamo in risalto che il confronto di uguaglianza è sempre stretto. I valori devono essere dello stesso tipo perchè si possa avere un match.
+Mettiamo in risalto che il confronto di uguaglianza è sempre stretto. I valori devono essere dello stesso tipo perché si possa avere una corrispondenza.
 
 Ad esempio, consideriamo il codice:
 
@@ -167,6 +168,6 @@ switch (arg) {
 }
 ```
 
-1. Per `0`, `1`, viene eseguito il primo `alert`.
+1. Per `0` e `1`, viene eseguito il primo `alert`.
 2. Per `2` viene eseguito il secondo `alert`.
-3. Ma per `3`, il risultato del `prompt` è una stringa `"3"`, che non è strettamente uguale `===` al numero `3`. Quindi qui abbiamo del codice morto in  `case 3`! Verrà quindi eseguita la variante `default`.
+3. Per `3`, il risultato del `prompt` è una stringa, `"3"`, che non è strettamente uguale `===` al numero `3`. Quindi abbiamo del codice 'morto' nel `case 3`! Verrà quindi eseguito il codice dentro `default`.

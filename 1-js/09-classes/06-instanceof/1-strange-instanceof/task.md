@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Strange instanceof
+# Uno strano instanceof
 
-In the code below, why does `instanceof` return `true`? We can easily see that `a` is not created by `B()`.
+Nel codice sottostante, perché `instanceof` ritorna `true`? Possiamo facilmente vedere che `a` non è creato da `B()`.
 
 ```js run
 function A() {}

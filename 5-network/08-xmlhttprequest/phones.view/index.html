@@ -15,10 +15,10 @@
       xhr.send();
 
       if (xhr.status != 200) {
-        // handle error
+        // gestisce l'errore
         alert('Error ' + xhr.status + ': ' + xhr.statusText);
       } else {
-        // show result
+        // mostra il risultato
         alert(xhr.responseText);
       }
     }

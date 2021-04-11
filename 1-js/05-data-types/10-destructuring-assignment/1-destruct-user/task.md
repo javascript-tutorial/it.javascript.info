@@ -17,14 +17,14 @@ Scrivete l'assegnamento di destrutturazione che legge:
 
 - la proprietà `name` nella variabile `name`.
 - la proprietà `years` nella variabile `age`.
-- la proprietà `isAdmin` nella variabile `isAdmin` (falsa se assete)
+- la proprietà `isAdmin` nella variabile `isAdmin` (falsa se assente)
 
 I valori dopo l'assegnazione dovrebbero essere:
 
 ```js
 let user = { name: "John", years: 30 };
 
-// your code to the left side:
+// il tuo codice a sinistra:
 // ... = user
 
 alert( name ); // John

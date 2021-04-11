@@ -1,6 +1,6 @@
 # Async/await
 
-Esiste una sintassi speciale per lavorare con le promise in un modo più comodo, chiamata asnyc/await. È sorprendentemente facile da capire e usare.
+Esiste una sintassi speciale per lavorare con le promise in un modo più comodo, chiamata async/await. È sorprendentemente facile da capire e usare.
 
 
 ## Async functions
@@ -70,10 +70,10 @@ L'esecuzione della funzione "va in pausa" alla linea `(*)` e riprende quando la 
 
 Enfatizziamo: `await` fa letteralmente attendere JavaScript fino a quando la promise si ferma, poi va avanti con il risultato. Questo non costa alcuna risorsa della CPU, perché il motore può fare altri lavori nel frattempo: eseguire altri script, gestire eventi etc.
 
-È giusto una sintassi più elegante per ottenere il risultato della promise di `promise.then`, più facile da leggere e da scrivere.
+È solo una sintassi più elegante per ottenere il risultato della promise `promise.then`, più facile da leggere e da scrivere.
 
-````warn header="Can't use `await` in regular functions"
-Se proviamo ad utilizzare `await` in una funzione non asincrona, ci sarebbe un errore di sintassi:
+````warn header="Non possiamo usare `await` nelle normali funzioni"
+Se proviamo ad utilizzare `await` in una funzione non asincrona, otterremmo un errore di sintassi:
 
 ```js run
 function f() {
@@ -84,7 +84,7 @@ function f() {
 }
 ```
 
-Avremo questo errore se non mettiamo `async` prima di una funzione. Come detto, `await` funziona solo dentro una funzione asincrona (`async function`).
+Avremo questo errore se non mettiamo `async` prima di una funzione. Come detto, `await` funziona solo all'interno di una funzione asincrona (`async function`).
 ````
 
 Prendiamo l'esempio `showAvatar()` dal capitolo <info:promise-chaining> e riscriviamolo usando `async/await`:
@@ -140,9 +140,11 @@ Possiamo "avvolgerlo" wrap in una funzione async anonima, come qui:
   ...
 })();
 ```
+
+P.S. New feature: starting from V8 engine version 8.9+, top-level await works in [modules](info:modules).
 ````
 ````smart header="`await` accetta i \"thenables\""
-Come `promise.then`, `await` permette di usare gli oggetti "thenable" (quelli con un metodo `then` chiamabile). L' idea è che un oggetto di terze parti possa non essere una promise, ma essere promise-compatibile: se supporta `.then`, è abbastanza per usarlo con `await`.
+Come `promise.then`, `await` permette di usare gli oggetti "thenable" (quelli con un metodo `then`). L' idea è che un oggetto di terze parti possa non essere una promise, ma essere promise-compatibile: se supporta `.then`, è abbastanza per usarlo con `await`.
 
 Ecco una dimostrazione: la classe `Thenable` class, l'`await` sotto accetta:
 
@@ -184,7 +186,7 @@ class Waiter {
 
 new Waiter()
   .wait()
-  .then(alert); // 1
+  .then(alert); // 1 (this is the same as (result => alert(result)))
 ```
 Il significato è lo stesso: assicura che il valore ritornato sia una promise ed abilita `await`.
 
@@ -262,11 +264,11 @@ f().catch(alert); // TypeError: failed to fetch // (*)
 */!*
 ```
 
-Se ci dimentichiamo di aggiungere `.catch` qui, allora otteremo un errore di una promise non gestito (visibile nella console). Possiamo catturare usando un gestore di eventi globale come descritto nel capitolo <info:promise-error-handling>.
+Se ci dimentichiamo di aggiungere `.catch` qui, allora otterremo un errore di una promise non gestito (visibile nella console). Possiamo catturare usando un gestore di eventi globale come descritto nel capitolo <info:promise-error-handling>.
 
 
 ```smart header="`async/await` and `promise.then/catch`"
-Quando usiamo `async/await`, raramente abbiamo bisogno di `.then`, perchè `await` gestisce l'attesa per noi. E possiamo usare un normale `try..catch` invece di `.catch`. Questo è spesso (non sempre) più conveniente.
+Quando usiamo `async/await`, raramente abbiamo bisogno di `.then`, perché `await` gestisce l'attesa per noi. E possiamo usare un normale `try..catch` invece di `.catch`. Questo è spesso (non sempre) più conveniente.
 
 Ma al livello più alto del codice, quando siamo fuori da qualunque funzione `async`, non siamo sintatticamente in grado id usare `await`, così è una pratica normale usare `.then/catch` per gestire il risultato finale degli errori che "cadono attraverso" (falling-through).
 

@@ -4,7 +4,7 @@ importance: 4
 
 # Filtri
 
-Scrivete una funzione `filterRange(arr, a, b)` che prende un array `arr`, cerca un elemento tra `a` e `b` e ne ritorna un array. 
+Scrivete una funzione `filterRange(arr, a, b)` che accetta come argomento un array `arr`, filtra gli elementi tra `a` e `b` e ne ritorna un array. 
 
 La funzione non dovrebbe modificare l'array. Dovrebbe invece ritornare il nuovo array.
 
@@ -15,8 +15,8 @@ let arr = [5, 3, 8, 1];
 
 let filtered = filterRange(arr, 1, 4); 
 
-alert( filtered ); // 3,1 (matching values)
+alert( filtered ); // 3,1 (i valori filtrati)
 
-alert( arr ); // 5,3,8,1 (not modified)
+alert( arr ); // 5,3,8,1 (non modificato)
 ```
 

@@ -4,9 +4,9 @@ class Uploader {
     this.file = file;
     this.onProgress = onProgress;
 
-    // create fileId that uniquely identifies the file
-    // we could also add user session identifier (if had one), to make it even more unique
-    this.fileId = file.name + '-' + file.size + '-' + +file.lastModifiedDate;
+    // crea un fileId che identifica univocamente il file
+    // potremmo usare l'identificatore di sessione dell'utente (avendone uno) per essere ancora piu' sicuri della sua univocita'
+    this.fileId = file.name + '-' + file.size + '-' + file.lastModified;
   }
 
   async getUploadedBytes() {
@@ -31,9 +31,9 @@ class Uploader {
     let xhr = this.xhr = new XMLHttpRequest();
     xhr.open("POST", "upload", true);
 
-    // send file id, so that the server knows which file to resume
+    // invia il file id, in modo da consentire al server di conoscere quale file ripristinare
     xhr.setRequestHeader('X-File-Id', this.fileId);
-    // send the byte we're resuming from, so the server knows we're resuming
+    // invia la posizione del byte dal quale stiamo partendo per il ripristino, in modo da informare il server da dove stiamo ripartendo
     xhr.setRequestHeader('X-Start-Byte', this.startByte);
 
     xhr.upload.onprogress = (e) => {
@@ -44,9 +44,9 @@ class Uploader {
     xhr.send(this.file.slice(this.startByte));
 
     // return
-    //   true if upload was successful,
-    //   false if aborted
-    // throw in case of an error
+    //   true se l'upload e' andato a buon fine
+    //   false se annullato
+    // throw in caso di errore
     return await new Promise((resolve, reject) => {
 
       xhr.onload = xhr.onerror = () => {
@@ -59,7 +59,7 @@ class Uploader {
         }
       };
 
-      // onabort triggers only when xhr.abort() is called
+      // onabort viene scatenato solo se viene chiamato xhr.abort()
       xhr.onabort = () => resolve(false);
 
     });

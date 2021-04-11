@@ -6,7 +6,7 @@ Questo è semplice:
 let ourPlanetName = "Earth";
 ```
 
-Nota che avremmo anche potuto usare un nome più corto, come `planet`, ma potrebbe non essere ovvio a cosa si rifrisce. E' una buona cosa essere un pò più descrittivi. Almeno finche le variabili nonDiventanoTroppoLunghe.
+Nota che avremmo anche potuto usare un nome più corto, come `planet`, ma potrebbe non essere ovvio a cosa si riferisce. E' una buona pratica essere un po' più descrittivi. Almeno finché le variabili nonDiventanoTroppoLunghe.
 
 # Il nome del visitatore attuale
 

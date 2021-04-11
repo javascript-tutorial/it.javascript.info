@@ -1,5 +1,5 @@
-That's a great use of the event delegation pattern.
+Questo è un ottimo uso del pattern event delegation.
 
-In real life instead of asking we can send a "logging" request to the server that saves the information about where the visitor left. Or we can load the content and show it right in the page (if allowable).
+In applicazioni concrete, invece di chiedere, potremmo inviare una richiesta di "logging" al server, che salvi l'informazione relativa al momento in cui l'utente ha deciso di abbandonare la pagina. Oppure potremmo caricare il contenuto e mostrarlo direttamente in pagina (se permesso).
 
-All we need is to catch the `contents.onclick` and use `confirm` to ask the user. A good idea would be to use `link.getAttribute('href')` instead of `link.href` for the URL. See the solution for details.
+Tutto ciò di cui abbiamo bisogno è di catturare i `contents.onclick` ed usare `confirm` per chiedere all'utente. Una buona idea potrebbe essere quella di usare `link.getAttribute('href')` invece di `link.href` per l'URL. Guarda la soluzione per i dettagli.

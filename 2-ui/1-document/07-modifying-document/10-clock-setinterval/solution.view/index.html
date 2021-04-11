@@ -43,21 +43,26 @@
     }
 
     function clockStart() {
-      timerId = setInterval(update, 1000);
-      update(); // <--  start right now, don't wait 1 second till the first setInterval works
+      // imposta un nuovo intervallo solo se l'orologio è fermo
+      // altrimenti dovremmo riscrivere la referenza di timerID all'intervallo in esecuzione e non potremmo più fermare l'orologio
+      if (!timerId) { 
+        timerId = setInterval(update, 1000);
+      }
+      update(); // <--  comincia subito, non aspettare un secondo affinché il primo setInterval funzioni
     }
 
     function clockStop() {
       clearInterval(timerId);
+      timerId = null; // <-- rimuovi timerID per indicare che l'orologio è stato fermato, in modo da poterlo far ripartire in clockStart()
     }
 
     clockStart();
   </script>
 
-  <!-- click on this button calls clockStart() -->
+  <!-- cliccare questo bottone chiama clockStart() -->
   <input type="button" onclick="clockStart()" value="Start">
 
-  <!-- click on this button calls clockStop() -->
+  <!-- cliccare questo bottone chiama clockStop() -->
   <input type="button" onclick="clockStop()" value="Stop">
 
 </body>

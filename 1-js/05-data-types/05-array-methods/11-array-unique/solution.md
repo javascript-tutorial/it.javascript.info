@@ -22,7 +22,7 @@ let strings = ["Hare", "Krishna", "Hare", "Krishna",
 alert( unique(strings) ); // Hare, Krishna, :-O
 ```
 
-Il codice funziona, ma c'è un potenziale problmea di performace.
+Il codice funziona, ma c'è un potenziale problema di performace.
 
 Il metodo `result.includes(str)` internamente attraversa l'array `result` e confronta ogni elemento con `str` per trovare una corrispondenza.
 
@@ -30,7 +30,7 @@ Quindi se ci sono `100` elementi in `result` e nessuna corrispondenza con `str`,
 
 Non è propriamente un problema, perché il motore JavaScript è molto rapido, quindi un array grande `10000` è questione di pochi microsecondi.
 
-Ma dovremo eseguire questo test per ogni elemento di `arr`, nel ciclo `for`.
+Ma dovremo eseguire questo test per ogni elemento di `arr` nel ciclo `for`.
 
 Quindi se `arr.length` è `10000` avremmo qualcosa come `10000*10000` = 100 milioni di confronti. Sono molti.
 

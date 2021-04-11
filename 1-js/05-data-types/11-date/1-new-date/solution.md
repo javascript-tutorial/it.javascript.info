@@ -2,14 +2,14 @@ Il costruttore `new Date` utilizza l'ora locale di default. Quindi l'unica cosa 
 
 Quindi Febbraio è il numero 1.
 
-Here's an example with numbers as date components:
+Qui c'è un esempio con i numeri come componenti della data:
 
 ```js run
-//new Date(year, month, date, hour, minute, second, millisecond)
+//new Date(anno, mese, data, ora, minuti, secondi, millisecondi)
 let d1 = new Date(2012, 1, 20, 3, 12);
 alert( d1 );
 ```
-We could also create a date from a string, like this:
+Potremmo anche creare una data da una stringa, così:
 
 ```js run
 //new Date(datastring)

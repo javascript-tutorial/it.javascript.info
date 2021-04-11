@@ -2,7 +2,7 @@ importance: 5
 
 ---
 
-# Qual'è il risultato dell'AND?
+# Qual è il risultato dell'AND?
 
 Cosa mostrerà l'esecuzione di questo codice?
 

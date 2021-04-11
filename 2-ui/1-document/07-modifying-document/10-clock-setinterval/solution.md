@@ -39,15 +39,19 @@ The clock-managing functions:
 ```js
 let timerId;
 
-function clockStart() { // run the clock
-  timerId = setInterval(update, 1000);
+function clockStart() { // run the clock  
+  if (!timerId) { // only set a new interval if the clock is not running
+    timerId = setInterval(update, 1000);
+  }
   update(); // (*)
 }
 
 function clockStop() {
   clearInterval(timerId);
-  timerId = null;
+  timerId = null; // (**)
 }
 ```
 
-Please note that the call to `update()` is not only scheduled in `clockStart()`, but immediately run in the line `(*)`. Otherwise the visitor would have to wait till the first execution of `setInterval`. And the clock would be empty till then.
+Nota che la chiamata a `update()` non è programmata solo in `clockStart()`, ma immediatamente dopo l'esecuzione della linea `(*)`. Altrimenti il visitatore dovrebbe aspettare fino alla prima esecuzione di `setInterval`. E l'orologio sarebbe vuoto fino ad allora. 
+
+E' altresì importante impostare il nuovo intervallo in `clockStart()` solo quando l'orologio non sta andando. Altrimenti cliccare il bottone start svariate volte imposterebbe multipli intervali concorrenti. Ancora peggio: terremmo solo il `timerID` dell'ultimo intervallo, perdendo la referenza a tutti gli altri. Così non potremmo più fermare l'orologio! Nota che dobbiamo rimuovere il `timerID` quando l'orologio viene fermato alla linea `(**)`, in modo da permettergi di ricominciare eseguendo `clockStart()`.

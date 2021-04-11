@@ -1,14 +1,14 @@
 
-# Live timer element
+# Elemento live timer
 
-We already have `<time-formatted>` element to show a nicely formatted time.
+Abbiamo già un elemento `<time-formatted>` per mostrare un orario formattato.
 
-Create `<live-timer>` element to show the current time:
-1. It should use `<time-formatted>` internally, not duplicate its functionality.
-2. Ticks (updates) every second.
-3. For every tick, a custom event named `tick` should be generated, with the current date in `event.detail` (see chapter <info:dispatch-events>).
+Create un elemento `<live-timer>` per mostrare l'orario corrente con queste specifiche:
+1. Internamente dovrebbe usare `<time-formatted>`, senza duplicarne la funzionalità.
+2. Un tick (aggiornamento) ogni secondo.
+3. Per ogni tick, deve essere generato un evento personalizzato chiamato `tick`, con la data corrente dentro `event.detail` (guardare il capitolo <info:dispatch-events>).
 
-Usage:
+Uso:
 
 ```html
 <live-timer id="elem"></live-timer>

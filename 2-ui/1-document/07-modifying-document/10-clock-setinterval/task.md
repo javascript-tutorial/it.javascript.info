@@ -2,10 +2,10 @@ importance: 4
 
 ---
 
-# Colored clock with setInterval
+# Orologio colorato con setInterval
 
-Create a colored clock like here:
+Crea un orologio colorato come quello dell'esempio:
 
 [iframe src="solution" height=60]
 
-Use HTML/CSS for the styling, JavaScript only updates time in elements.
+Usa HTML/CSS per lo styling, JavaScript aggiorna solo il tempo negli elementi.

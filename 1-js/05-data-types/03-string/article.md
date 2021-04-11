@@ -2,7 +2,7 @@
 
 In JavaScript, i dati di tipo testuale vengono memorizzati in stringhe. Non esiste un tipo separato per i caratteri singoli.
 
-Il formato interno per le stringhe è sempre [UTF-16](https://en.wikipedia.org/wiki/UTF-16), non viene influenzato dalla codifica della pagina.
+Il formato utilizzato per le stringhe è sempre [UTF-16](https://en.wikipedia.org/wiki/UTF-16), non viene influenzato dalla codifica della pagina.
 
 ## Apici
 
@@ -17,7 +17,7 @@ let double = "double-quoted";
 let backticks = `backticks`;
 ```
 
-Gli apici singoli e doppi sono essenzialmente uguali. I backticks, oltretutto, ci consentono di includere una qualsiasi espressione all'interno della stringa, raccogliendole all'interno di `${…}`:
+Gli apici singoli e doppi sono essenzialmente uguali. I backticks, invece, ci consentono di includere una qualsiasi espressione all'interno della stringa, inserendola all'interno di `${…}`:
 
 ```js run
 function sum(a, b) {
@@ -47,7 +47,7 @@ let guestList = "Guests: // Error: Unexpected token ILLEGAL
 
 Gli apici singoli e doppi sono nati insieme al linguaggio, quando non era stato ancora messo in conto la possibilità di stringhe multilinea. Le backticks sono apparse più tardi, per questo risultano più versatili.
 
-Le backticks ci consentono anche di specificare un "template di funzione" prima della backtick di apertura. La sintassi è: <code>func&#96;string&#96;</code>. La funzione `func` viene chiamata automaticamente, gli viene passata la "string", può essere cosi trattata dalla funzione. Potete approfondire leggendo la [documentazione](mdn:/JavaScript/Reference/Template_literals#Tagged_template_literals). Questo viene chiamata "funzione template". Con questa caratteristica diventa più facile raccogliere stringhe da passare a funzioni, ma è raramente utilizzata.
+Le backticks ci consentono anche di specificare un "template di funzione" prima della backtick di apertura. La sintassi è: <code>func&#96;string&#96;</code>. La funzione `func` viene chiamata automaticamente, gli viene passata la "string", può essere cosi trattata dalla funzione. Potete approfondire leggendo la [documentazione](mdn:/JavaScript/Reference/Template_literals#Tagged_templates). Questo viene chiamata "funzione template". Con questa caratteristica diventa più facile raccogliere stringhe da passare a funzioni, ma è raramente utilizzata.
 
 
 ## Caratteri speciali
@@ -63,11 +63,11 @@ alert(guestList); // una lista di guest multi riga
 Ad esempio, queste due funzioni portano allo stesso risultato:
 
 ```js run
-alert( "Hello\nWorld" ); // due righe con il simbolo "nuova riga"
+let str1 = "Hello\nWorld"; // due righe utilizzando il "carattere nuova riga"
 
 // due righe utilizzando le backticks
-alert( `Hello
-World` );
+let str2 = `Hello
+World`;
 ```
 
 Ci sono altri caratteri "speciali" meno comuni. Qui una lista:
@@ -109,6 +109,7 @@ Ovviamente, questo è valido per un apice uguale a quello utilizzato in apertura
 ```js run
 alert( `I'm the Walrus!` ); // I'm the Walrus!
 ```
+
 Da notare che il backslash `\` ha l'unico scopo di aiutare JavaScript nella lettura della stringa, questo verrà poi rimosso. La stringa in memoria non avrà `\`. Lo avrete sicuramente notato con gli `alert` dei vari esempi sopra.
 
 Ma se volessimo realmente mostrare un backslash `\` dentro la stringa?
@@ -119,7 +120,7 @@ E' possibile farlo, ma dobbiamo esplicitarlo con un doppio backslash `\\`:
 alert( `The backslash: \\` ); // The backslash: \
 ```
 
-## String lengt
+## String length
 
 La proprietà `length` (lunghezza) contiene la lunghezza della stringa:
 
@@ -256,11 +257,11 @@ while (true) {
   if (foundPos == -1) break;
 
   alert( `Found at ${foundPos}` );
-  pos = foundPos + 1; // continua la ricerca a partire dalla prossima posizio
+  pos = foundPos + 1; // continua la ricerca a partire dalla prossima posizione
 }
 ```
 
-Lo stesso algoritmo può essere applicato in manierà più breve:
+Lo stesso algoritmo può essere riscritto più brevemente:
 
 ```js run
 let str = "As sly as a fox, as strong as an ox";
@@ -275,12 +276,12 @@ while ((pos = str.indexOf(target, pos + 1)) != -1) {
 ```
 
 ```smart header="`str.lastIndexOf(substr, position)`"
-Un altro metodo simile è [str.lastIndexOf(substr, position)](mdn:js/String/lastIndexOf) che ricerca a partire dalla fine della stringa.
+Un altro metodo simile è [str.lastIndexOf(substr, position)](mdn:js/String/lastIndexOf), che effettua la ricerca partendo dalla fine della stringa.
 
 Elenca quindi le occorrenze in ordine inverso.
 ```
 
-C'è solo un piccolo inconveniente con `indexOf` nei test `if`. Non possiamo inserirlo in un `if` in questo modo:
+C'è solo un piccolo inconveniente dovuto all'utilizzo di `indexOf` all'interno delle espressioni `if`. Non possiamo inserirlo in un `if` in questo modo:
 
 ```js run
 let str = "Widget with id";
@@ -340,7 +341,7 @@ Ricordatevi solo che: `if (~str.indexOf(...))` si legge come "se trovi".
 
 Per essere precisi, numeri molto grandi vengono troncati a 32bit dall'operatore `~`, esistono altri numeri che potrebbero dare `0`, il più piccolo è `~4294967295=0`. Questo fa si che questo tipo di controlli siano corretti solamente se una stringa non è troppo lunga.
 
-Attualmente questo trucco lo troviamo solamente nei codici vecchi, poichè JavaScript moderno fornisce un metodo dedicato, `.includes`(vedi sotto).
+Attualmente questo trucco lo troviamo solamente nei codici vecchi, poiché JavaScript moderno fornisce un metodo dedicato, `.includes`(vedi sotto).
 
 ### includes, startsWith, endsWith
 
@@ -448,16 +449,16 @@ Ricapitoliamo questi metodi per evitare confusione:
 
 
 ```smart header="Quale scegliere?"
-Tutti quelli esaminati possono portare a termine il lavoro. Formalmente, `substr` ha un piccolo inconveniente: non è descritto nelle specifiche del core JavaScript, ma in quelle di Annex B, che copre solo le caratteristiche utili nello sviluppo browser. Quindi ambienti diversi da browser potrebbero non supportarla. Ma nella pratica viene utilizzata ovunque.
+Tutti i metodi esaminati possono portare a termine il lavoro. Formalmente, `substr` ha un piccolo inconveniente: non è descritto nelle specifiche del core JavaScript, ma in quelle di Annex B, che copre solo le caratteristiche utili nello sviluppo browser. Quindi ambienti diversi dal browser potrebbero non supportarla. Ma nella pratica viene utilizzata ovunque.
 
-L'autore della guida si trova spesso ad utilizzare `slice`.
+L'autore della guida si trova spesso ad utilizzare il metodo `slice`.
 ```
 
-## Confrontare stringhe
+## Confronto tra stringhe
 
 Come sappiamo dal capitolo <info:comparison>, le stringhe vengono confrontate carattere per carattere in ordine alfabetico.
 
-Sebbene ci siano delle stranezze.
+Sebbene ci siano dei casi particolari.
 
 1. Una lettera minuscola è sempre maggiore di una maiuscola:
 
@@ -496,7 +497,7 @@ Tutte le stringhe vengono codificate utilizzando [UTF-16](https://en.wikipedia.o
     Possiamo anche aggiungere caratteri unicode tramite il loro codice utilizzando `\u` seguito dal codice esadecimale:
 
     ```js run
-    // 90 è 5a nel istema esadecimale
+    // 90 è 5a nel sistema esadecimale
     alert( '\u005a' ); // Z
     ```
 
@@ -522,14 +523,13 @@ I caratteri vengono confrontati utilizzando il loro codice numerico. Un codice m
 - Tutte le lettere minuscole vengono dopo quelle maiuscole perché il loro codice è maggiore.
 - Alcune lettere come `Ö` vengono escluse dall'alfabeto. Il suo codice viene considerato maggiore di qualsiasi lettera compresa tra `a` e `z`.
 
+### Confronto tra stringhe corretto [#correct-comparisons]
 
-### Confronto tra stringhe corretto
-
-Il "giusto" algoritmo per confrontare stringhe è più complesso di come possa sembrare, poiché l'alfabeto è diverso per ogni lingua. Lettere uguali possono avere posizioni diverse nei vari alfabeti.
+L'algoritmo più corretto da utilizzare per confrontare stringhe è più complesso di quanto si possa pensare, poiché l'alfabeto è diverso per ogni lingua. Lettere uguali possono avere posizioni diverse nei vari alfabeti.
 
 Quindi il browser deve sapere quale lingua utilizzare nel confronto.
 
-Fortunatamente, tutti i browser moderni (IE10 + richiede una libreria esterna [Intl.js](https://github.com/andyearnshaw/Intl.js/)) supportano lo standard internazionale  [ECMA-402](http://www.ecma-international.org/ecma-402/1.0/ECMA-402.pdf).
+Fortunatamente, tutti i browser moderni (IE10 richiede una libreria esterna [Intl.js](https://github.com/andyearnshaw/Intl.js/)) supportano lo standard internazionale  [ECMA-402](http://www.ecma-international.org/ecma-402/1.0/ECMA-402.pdf).
 
 Questo fornisce uno speciale metodo per confrontare stringhe in lingue diverse, seguendo delle regole.
 
@@ -573,16 +573,16 @@ Da notare che le coppie surrogate non esistevano al momento della creazione di J
 
 In realtà abbiamo un solo simbolo in ogni stringa sopra, ma la `length` vale `2`.
 
-`String.fromCodePoint` e `str.codePointAt` sono dei rari metodi che operano correttamente con le coppie surrogate. Sono apparsi di recente nel linguaggio. Prima di loro, esisteva solo [String.fromCharCode](mdn:js/String/fromCharCode) e [str.charCodeAt](mdn:js/String/charCodeAt). Sono esattamente la stessa cosa di `fromCodePoint/codePointAt`, semplicemente non funzionano con le coppie surrogate.
+`String.fromCodePoint` e `str.codePointAt` sono dei metodi utilizzati per lavorare con le coppie surrogate. Sono apparsi di recente nel linguaggio. Prima di loro, esisteva solo [String.fromCharCode](mdn:js/String/fromCharCode) e [str.charCodeAt](mdn:js/String/charCodeAt). Sono esattamente la stessa cosa di `fromCodePoint/codePointAt`, semplicemente non funzionano con le coppie surrogate.
 
-Però cercare di ottenere un simbolo può essere difficile, perché una coppia surrogata viene trattata come due caratteri:
+Però cercare di ottenere un simbolo può essere difficile, poiché una coppia surrogata viene trattata come due caratteri:
 
 ```js run
 alert( '𝒳'[0] ); // uno strano simbolo...
 alert( '𝒳'[1] ); // ...parte di una coppia surrogata
 ```
 
-Da notare che un pezzo di una coppia surrogata non ha alcun senza l'altro. Quindi nell'esempio sopra verrà mostrata "spazzatura".
+Da notare che un pezzo di una coppia surrogata non ha alcun senso senza l'altro. Quindi nell'esempio sopra verrà mostrata "spazzatura".
 
 Tecnicamente, le coppie surrogate sono decifrabili anche per i loro codici: se il primo carattere ha un intervallo di codice di `0xd800..0xdbff`. Allora il successivo carattere (seconda parte) deve avere l'intervallo `0xdc00..0xdfff`. Questi intervalli sono riservati esclusivamente per coppie surrogate definite dallo standard.
 
@@ -599,7 +599,7 @@ Nel capitolo <info:iterable> troverete molti altri modi per operare con le coppi
 
 ### Lettere speciali e normalizzazione
 
-In molti lingue ci sono lettere composte da un carattere di base completato da un simbolo che può stare sopra/sotto.
+In molte lingue ci sono lettere composte da un carattere di base completato da un simbolo che può stare sopra/sotto.
 
 Ad esempio, la lettera `a` può essere il carattere di base per: `àáâäãåā`. Molti dei caratteri "composti" hanno una loro rappresentazione nella tabella UTF-16. Però non tutte, poiché le combinazioni possibili sono veramente molte.
 
@@ -627,7 +627,9 @@ Ad esempio:
 
 ```js run
 
-alert( s1 == s2 ); // false though the characters look identical (?!)
+alert( s1 == s2 ); // false, nonostante i due caratteri sembrino identici (?!)
+
+```
 
 Per risolvere questo, esiste un algoritmo di "normalizzazione unicode" che porta ogni stringa alla forma "normale".
 
@@ -637,7 +639,7 @@ Questo algoritmo viene implementato da [str.normalize()](mdn:js/String/normalize
 alert( "S\u0307\u0323".normalize() == "S\u0323\u0307".normalize() ); // true
 ```
 
-E' divertente notare che nella nostra situzione `normalize()` trasforma una sequenza di 3 caratteri in una che ne contiene solo uno: `\u1e68` (S con due punti).
+E' divertente notare che nella nostra situazione `normalize()` trasforma una sequenza di 3 caratteri in una che ne contiene solo uno: `\u1e68` (S con due punti).
 
 ```js run
 alert( "S\u0307\u0323".normalize().length ); // 1
@@ -647,7 +649,7 @@ alert( "S\u0307\u0323".normalize() == "\u1e68" ); // true
 
 In realtà, non è sempre cosi. La ragione è che il simbolo `Ṩ` è "abbastanza comune", quindi la tabella UTF-16 lo contiene già.
 
-Se volete apprendere di più riguardo la normalizzazione e le sue varianti -- vengono descritte nell'appendice dello standard Unicode: [Unicode Normalization Forms](http://www.unicode.org/reports/tr15/), nella pratica le informazioni fornite in questa sezione sono sufficienti.
+Se volete approfondire il tema della normalizzazione e le sue varianti -- vengono descritte nell'appendice dello standard Unicode: [Unicode Normalization Forms](http://www.unicode.org/reports/tr15/), nella pratica le informazioni fornite in questa sezione, ti saranno sufficienti.
 
 
 ## Riepilogo
@@ -658,8 +660,8 @@ Se volete apprendere di più riguardo la normalizzazione e le sue varianti -- ve
 - Per ottenere un carattere, si utilizza: `[]`.
 - Per ottenere una sotto-stringa, si utilizza: `slice` o `substring`.
 - Per cambiare il timbro delle lettere di una stringa si utilizza: `toLowerCase/toUpperCase`.
-- Per cercare una sotto-stringa, usate: `indexOf`, o `includes/startsWith/endsWith` for simple checks.
-- Per confrontar stringhe seguendo le regole della lingua, usate: `localeCompare`, altrimenti verranno comparate in base al codice del singolo carattere.
+- Per cercare una sotto-stringa, usate: `indexOf`, o `includes/startsWith/endsWith` per controlli semplici.
+- Per confrontare stringhe seguendo le regole della lingua, usate: `localeCompare`, altrimenti verranno comparate in base al codice del singolo carattere.
 
 Ci sono molti altri metodi utili per operare con le stringhe:
 

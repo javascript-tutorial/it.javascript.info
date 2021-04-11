@@ -17,5 +17,5 @@ alert( count(user) ); // 2
 
 Cercate di rendere il codice il più breve possibile.
 
-P.S. Ignorate le proprietà di tipo symbol, tenete il conto solamente di quelle "regolari".
+P.S. Ignorate le proprietà di tipo symbol, tenete conto solamente di quelle "regolari".
 

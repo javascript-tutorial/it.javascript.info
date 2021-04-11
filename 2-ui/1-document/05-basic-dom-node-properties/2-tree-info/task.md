@@ -1,14 +1,14 @@
-importance: 5
+importanza: 5
 
 ---
 
-# Count descendants
+# Contate i discendenti
 
-There's a tree structured as nested `ul/li`.
+Abbiamo un alberatura HTML strutturata come un elenco di `ul/li` annidati.
 
-Write the code that for each `<li>` shows:
+Scrivete il codice che per ogni elemento `<li>` mostri:
 
-1. What's the text inside it (without the subtree)
-2. The number of nested `<li>` -- all descendants, including the deeply nested ones.
+1. Qual è il testo al suo interno (senza considerare il testo di eventuali sottoelementi).
+2. Il numero degli elementi `<li>` annidati -- tutti i discendenti, considerando tutti i livelli di annidamento.
 
 [demo src="solution"]

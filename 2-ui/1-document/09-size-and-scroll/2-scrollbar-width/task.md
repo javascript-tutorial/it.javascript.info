@@ -2,10 +2,10 @@ importance: 3
 
 ---
 
-# What is the scrollbar width?
+# Qual è la larghezza della barra di scorrimento?
 
-Write the code that returns the width of a standard scrollbar.
+Scrivete il codice che restituisca la larghezza di una barra di scorrimento standard.
 
-For Windows it usually varies between `12px` and `20px`. If the browser doesn't reserve any space for it (the scrollbar is half-translucent over the text, also happens), then it may be `0px`.
+Per Windows solitamente varia tra `12px` e `20px`. Se il browser non le riserva alcuno spazio (capita che la barra di scorrimento appaia semi-opaca sopra il testo), allora può essere `0px`.
 
-P.S. The code should work for any HTML document, do not depend on its content.
+P.S. Il codice dovrebbe funzionare per ogni documento HTML indipendentemente dal contenuto.

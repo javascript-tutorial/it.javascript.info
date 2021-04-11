@@ -6,7 +6,7 @@ importance: 4
 
 Abbiamo un array `arr`.
 
-Create una funzione `unique(arr)` che dovrebbe ritornare un array con elementi unici.
+Create una funzione `unique(arr)` che ritorni un array con elementi unici.
 
 Ad esempio:
 

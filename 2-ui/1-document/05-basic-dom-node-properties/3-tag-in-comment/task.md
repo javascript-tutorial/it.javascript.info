@@ -1,10 +1,10 @@
-importance: 3
+importanza: 3
 
 ---
 
-# Tag in comment
+# Tag nel commento
 
-What does this code show?
+Cosa mostrerà questo codice?
 
 ```html
 <script>
@@ -12,6 +12,6 @@ What does this code show?
 
   body.innerHTML = "<!--" + body.tagName + "-->";
 
-  alert( body.firstChild.data ); // what's here?
+  alert( body.firstChild.data ); // cosa c'è qui?
 </script>
 ```

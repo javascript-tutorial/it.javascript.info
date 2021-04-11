@@ -2,11 +2,11 @@ importance: 5
 
 ---
 
-# Why are both hamsters full?
+# Perché entrambi i criceti sono sazi?
 
-We have two hamsters: `speedy` and `lazy` inheriting from the general `hamster` object. 
+Abbiamo due criceti: `speedy` e `lazy`, che ereditano dall'oggetto `hamster`. 
 
-When we feed one of them, the other one is also full. Why? How can we fix it?
+Quando nutriamo uno di loro, anche l'altro è sazio. Perché? Come possiamo sistemare il problema?
 
 ```js run
 let hamster = {
@@ -25,11 +25,10 @@ let lazy = {
   __proto__: hamster
 };
 
-// This one found the food
+// Questo ha trovato il cibo
 speedy.eat("apple");
 alert( speedy.stomach ); // apple
 
-// This one also has it, why? fix please.
+// Anche questo lo ha ricevuto, perché? provate a sistemarlo
 alert( lazy.stomach ); // apple
 ```
-

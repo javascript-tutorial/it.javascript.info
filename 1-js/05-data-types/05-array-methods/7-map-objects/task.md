@@ -6,7 +6,7 @@ importance: 5
 
 Avete un array di oggetti `user`, ognuno di questi possiede `name`, `surname` e `id`.
 
-Scrivete il codice per creare un altro array che provenga da questo, sempre composta da oggetti con `id` e `fullName`, dove `fullName` viene generato da `name` e `surname`.
+Scrivete il codice per creare un altro array che derivi da questo, sempre composto da oggetti con `id` e `fullName`, dove `fullName` viene generato da `name` e `surname`.
 
 Un esempio:
 
@@ -18,7 +18,7 @@ let mary = { name: "Mary", surname: "Key", id: 3 };
 let users = [ john, pete, mary ];
 
 *!*
-let usersMapped = /* ... your code ... */
+let usersMapped = /* ... il vostro codice ... */
 */!*
 
 /*

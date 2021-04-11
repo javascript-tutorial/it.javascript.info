@@ -226,7 +226,7 @@ function pow(x, n) {
 
 Non ci sono ulteriori chiamata annidate, quindi la funzione si conclude, ritornando `2`.
 
-Quando la funzione ha terminato, il suo contesto d'esecuzione non è più necessario, quindi viene rimosso dalla memoria. Viene ripristinato quello precedente, prelevandolo dall cima della pila:
+Quando la funzione ha terminato, il suo contesto d'esecuzione non è più necessario, quindi viene rimosso dalla memoria. Viene ripristinato quello precedente, prelevandolo dalla cima della pila:
 
 
 <ul class="function-execution-context-list">

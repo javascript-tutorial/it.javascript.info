@@ -1,26 +1,26 @@
-# Arrow functions revisited
+# Arrow functions rivisitate
 
-Let's revisit arrow functions.
+Rivediamo l'argomento delle arrow functions.
 
-Arrow functions are not just a "shorthand" for writing small stuff. They have some very specific and useful features.
+Le arrow functions non sono semplicemente una "scorciatoia" per scrivere codice più breve. Infatti queste possiedono delle caratteristiche aggiuntive piuttosto utili.
 
-JavaScript is full of situations where we need to write a small function that's executed somewhere else.
+Usando JavaScript ci troviamo spesso a dover scrivere delle funzioni molto semplici, che verranno però eseguite in un diverso punto del codice.
 
-For instance:
+Ad esemmpio:
 
-- `arr.forEach(func)` -- `func` is executed by `forEach` for every array item.
-- `setTimeout(func)` -- `func` is executed by the built-in scheduler.
-- ...there are more.
+- `arr.forEach(func)` -- `func` viene eseguita da `forEach` per ogni elemento dell'array.
+- `setTimeout(func)` -- `func` viene eseguita dallo scheduler integrato.
+- ...ed esistono molti altri casi.
 
-It's in the very spirit of JavaScript to create a function and pass it somewhere.
+È nel vero spirito di JavaScript poter creare una funzione in un punto e passarla in qualsiasi altra parte del codice.
 
-And in such functions we usually don't want to leave the current context. That's where arrow functions come in handy.
+E in questo tipo di funzioni, generalmente, non vorremmo perdere il riferimento al context (il contesto in cui la funzione è stata definita). Queste sono le situazioni in cui le arrow functions ci vengono in soccorso.
 
-## Arrow functions have no "this"
+## Le arrow functions non possiedono un "this"
 
-As we remember from the chapter <info:object-methods>, arrow functions do not have `this`. If `this` is accessed, it is taken from the outside.
+Come già abbiamo studiato nel capitolo <info:object-methods>, le arrow functions non possiedono un `this`. Infatti, il valore di `this`, viene preso dal contesto esterno.
 
-For instance, we can use it to iterate inside an object method:
+Ad esempio, possiamo utilizzarlo per le iterazioni all'interno del un metodo di un oggetto:
 
 ```js run
 let group = {
@@ -39,9 +39,9 @@ let group = {
 group.showList();
 ```
 
-Here in `forEach`, the arrow function is used, so `this.title` in it is exactly the same as in the outer method `showList`. That is: `group.title`.
+Qui, all'interno del `forEach`, viene utilizzata una arrow function, quindi il valore di `this.title` è esattamente lo stesso che troviamo nel metodo esterno `showList`. Cioè: `group.title`.
 
-If we used a "regular" function, there would be an error:
+Se avessimo utilizzato una funzione "regolare", avremmo ottenuto un errore:
 
 ```js run
 let group = {
@@ -52,7 +52,7 @@ let group = {
 *!*
     this.students.forEach(function(student) {
       // Error: Cannot read property 'title' of undefined
-      alert(this.title + ': ' + student)
+      alert(this.title + ': ' + student);
     });
 */!*
   }
@@ -61,33 +61,33 @@ let group = {
 group.showList();
 ```
 
-The error occurs because `forEach` runs functions with `this=undefined` by default, so the attempt to access `undefined.title` is made.
+L'errore viene generato perché `forEach` esegue le funzioni con `this=undefined` di default, quindi il codice equivale a: `undefined.title`.
 
-That doesn't affect arrow functions, because they just don't have `this`.
+Questo non si verifica con le arrow functions, poiché queste non possiedono un `this`.
 
-```warn header="Arrow functions can't run with `new`"
-Not having `this` naturally means another limitation: arrow functions can't be used as constructors. They can't be called with `new`.
+```warn header="Arrow functions non funzionano con `new`"
+Il fatto di non possedere un `this` porta ad una naturale limitazione: le arrow functions non possono essere utilizzate come costruttori. Non possono essere invocate con la keyword `new`.
 ```
 
 ```smart header="Arrow functions VS bind"
-There's a subtle difference between an arrow function `=>` and a regular function called with `.bind(this)`:
+Esiste una sottile differenza tra l'utilizzo di una arrow function `=>` ed una funzione regolare invocata con `.bind(this)`:
 
-- `.bind(this)` creates a "bound version" of the function.
-- The arrow `=>` doesn't create any binding. The function simply doesn't have `this`. The lookup of `this` is made exactly the same way as a regular variable search: in the outer lexical environment.
+- `.bind(this)` crea una versione "bounded" (delimitata) della funzione.
+- Le arrow functions, tramite `=>`, non creano alcun binding. La funzione semplicemente non avrà un `this`. La ricerca di `this` seguirà esattamente le stesse procedure della ricerca di una variabile: verrà cercata nel lexical environment esterno.
 ```
 
-## Arrows have no "arguments"
+## Le arrow functions non possiedono "arguments"
 
-Arrow functions also have no `arguments` variable.
+Le arrow functions non possiedo la varibile `arguments`.
 
-That's great for decorators, when we need to forward a call with the current `this` and `arguments`.
+Questo è fantastico per i decorators, in cui abbiamo biosogno di inoltrare una chiamata con il valori attuali di `this` e `arguments`.
 
-For instance, `defer(f, ms)` gets a function and returns a wrapper around it that delays the call by `ms` milliseconds:
+Ad esempio, `defer(f, ms)` accetta una funzione come parametro e ritorna un wrapper della stessa, il quale ne ritarderà l'invocazione di `ms` millisecondi:
 
 ```js run
 function defer(f, ms) {
   return function() {
-    setTimeout(() => f.apply(this, arguments), ms)
+    setTimeout(() => f.apply(this, arguments), ms);
   };
 }
 
@@ -96,10 +96,10 @@ function sayHi(who) {
 }
 
 let sayHiDeferred = defer(sayHi, 2000);
-sayHiDeferred("John"); // Hello, John after 2 seconds
+sayHiDeferred("John"); // Hello, John dopo 2 secondi
 ```
 
-The same without an arrow function would look like:
+La stessa cosa, senza una arrow function, sarebbe:
 
 ```js
 function defer(f, ms) {
@@ -112,15 +112,15 @@ function defer(f, ms) {
 }
 ```
 
-Here we had to create additional variables `args` and `ctx` so that the function inside `setTimeout` could take them.
+In questo caso abbiamo avuto bisogno di creare delle variabili aggiuntive come `args` e `ctx`, in modo che la funzione interna a `setTimeout` possa riceverle.
 
-## Summary
+## Riepilogo
 
 Arrow functions:
 
-- Do not have `this`
-- Do not have `arguments`
-- Can't be called with `new`
-- They also don't have `super`, but we didn't study it yet. We will on the chapter <info:class-inheritance>
+- Non possiedono `this`
+- Non possiedono `arguments`
+- Non possono essere invocate con `new`
+- Non possiedono `super`, ma non lo abbiamo ancora studiato. Lo faremo nel capitolo <info:class-inheritance>
 
-That's because they are meant for short pieces of code that do not have their own "context", but rather work in the current one. And they really shine in that use case.
+Questo perché sono pensate per piccole parti di codice che non possiedono un contesto proprio, ma piuttosto, lavorano nel contesto corrente. E sono veramente perfette per questi casi d'uso.

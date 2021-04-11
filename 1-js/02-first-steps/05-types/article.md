@@ -2,9 +2,9 @@
 
 Un valore in JavaScript ha sempre un tipo specifico. Ad esempio, string o number.
 
-Ci sono otto tipi di base in JavaScript. In questo articolo, vedremo i loro aspetti generali, nei prossimi capitoli parleremo di ognuno di essi in dettaglio.
+Ci sono otto tipi di base in JavaScript. In questo articolo, vedremo i loro aspetti generali, mentre nei prossimi capitoli parleremo di ognuno di essi in maniera più dettagliata.
 
-Una variabile in JavaScript può contenere qualsiasi dato. Una variabile può essere di tipo stringa in un istante e successivamente ricevere un valore numerico:
+Una variabile in JavaScript può contenere qualsiasi dato. Quindi è possibile avere una variabile di tipo string ed in un secondo momento potrebbe contenere un valore numerico:
 
 ```js
 // nessun errore
@@ -21,13 +21,13 @@ let n = 123;
 n = 12.345;
 ```
 
-Il tipo *numerico* serve sia per i numeri interi che per quelli in virgola mobile.
+Il tipo *number* viene utilizzato sia per i numeri interi che per quelli in virgola mobile.
 
-Ci sono varie operazioni disponibili con i numeri, ad esempio la moltiplicazione `*`, la divisione `/`, l'addizione `+`, la sottrazione `-` e molte altre.
+Con i valori di tipo number si hanno diverse operazioni a disposizione, ad esempio la moltiplicazione `*`, la divisione `/`, l'addizione `+`, la sottrazione `-` e molte altre.
 
-Oltre i normali numeri, ci sono anche i "valori numerici speciali" che appartengono sempre al tipo numerico: `Infinito`, `-Infinito` e `NaN`.
+Oltre a i normali valori numeri, esistono anche i "valori numerici speciali" che appartengono sempre al tipo numerico: `Infinity`, `-Infinity` e `NaN`.
 
-- `Infinito` rappresenta il concetto matematico [Infinito](https://en.wikipedia.org/wiki/Infinity) ∞. E' un valore speciale che è più grande di qualsiasi altro numero.
+- `Infinity` rappresenta il concetto matematico [Infinito](https://en.wikipedia.org/wiki/Infinity) ∞. E' un valore speciale che è più grande di qualsiasi altro numero.
 
     Possiamo ottenerlo come risultato tramite la divisione per zero:
 
@@ -40,13 +40,13 @@ Oltre i normali numeri, ci sono anche i "valori numerici speciali" che apparteng
     ```js run
     alert( Infinity ); // Infinity
     ```
-- `NaN` rappresenta un errore di calcolo. E' il risultato di un operazione non corretta o indefinita, per esempio:
+- `NaN` rappresenta un errore di calcolo. E' il risultato di un'operazione non corretta o indefinita, ad esempio:
 
     ```js run
-    alert( "not a number" / 2 ); // NaN, such division is erroneous
+    alert( "not a number" / 2 ); // NaN, è una divisione errata
     ```
 
-    `NaN` è "appiccicoso". Qualsiasi operazione su `NaN` restituirà `NaN`:
+    `NaN` è "fisso". Qualsiasi operazione su `NaN` restituirà `NaN`:
 
     ```js run
     alert( "not a number" / 2 + 5 ); // NaN
@@ -55,9 +55,9 @@ Oltre i normali numeri, ci sono anche i "valori numerici speciali" che apparteng
     Quindi, se è presente un `NaN` da qualche parte nell'operazione matematica, questo si propagherà fino al risultato.
 
 ```smart header="Le operazioni matematiche sono sicure"
-In JavaScript le operazioni matematichstrige sono sicure. Possiamo fare qualsiasi cosa: dividere per zero, trattare stringhe non numeriche come numeri, etc.
+In JavaScript le operazioni matematiche sono sicure. Possiamo fare qualsiasi cosa: dividere per zero, trattare stringhe non numeriche come numeri, etc.
 
-Lo script non si interromperà mai con un errore fatale ("die"). Nel peggiore dei casi otterremo un `NaN` come risultato.
+Lo script non si interromperà mai con un errore fatale. Nel peggiore dei casi otterremo un `NaN` come risultato.
 ```
 
 I numeri con valore speciale appartengono formalmente al tipo "numerico". Ovviamente non sono numeri nel vero senso della parola.
@@ -79,7 +79,7 @@ Un valore di tipo `BigInt` viene creato aggiungendo `n` alla fine del numero:
 const bigInt = 1234567890123456789012345678901234567890n;
 ```
 
-Poichè i `BigInt` sono utilizzati raramente, non li analizzeremo in questo articolo, ma li vedremo più in dettaglio nel capitolo dedicato <info:bigint>.
+Poiché i `BigInt` sono utilizzati raramente, non li analizzeremo in questo articolo, ma li vedremo più in dettaglio nel capitolo dedicato <info:bigint>.
 
 
 ```smart header="Problemi di compatibilità"
@@ -102,11 +102,11 @@ In JavaScript, ci sono 3 tipi di apici.
 
 1. Apici doppi: `"Hello"`.
 2. Apice singolo: `'Hello'`.
-3. Accento grave: <code>&#96;Hello&#96;</code>.
+3. Backtick: <code>&#96;Hello&#96;</code>.
 
-Gli apici doppi e singoli sono apici "semplici". Non c'e differenza tra di loro in JavaScript.
+Gli apici doppi e singoli sono apici "semplici". In JavaScript li tratta allo stesso modo.
 
-L'accento grave (backticks) sono degli apici per le "funzionalità estese". Ci consentono di integrare variabili ed espressioni in una stringa racchiudendole in `${…}`, per esempio:
+Il backtick è un tipo di apice utilizzato per definire stringhe con "funzionalità estese". Ci consente di integrare variabili ed espressioni in una stringa racchiudendola tra `${…}`, per esempio:
 
 ```js run
 let name = "John";
@@ -120,7 +120,7 @@ alert( `the result is *!*${1 + 2}*/!*` ); // il risultato è 3
 
 L'espressione all'interno di `${…}` viene valutata ed il risultato diventa parte della stringa. Possiamo metterci qualsiasi cosa: una variabile come `name` oppure un espressione aritmetica come `1 + 2` o qualcosa di più complesso.
 
-Nota che questo è possibile sono tramite l'accento grave. Gli altri apici non lo consentono!
+Nota che questo è possibile sono tramite l'uso del backtick. Gli altri apici non lo consentono!
 ```js run
 alert( "the result is ${1 + 2}" ); // il risultato è ${1 + 2} (le virgolette non fanno nulla)
 ```
@@ -130,14 +130,14 @@ Copriremo meglio le stringhe nel capitolo <info:string>.
 ```smart header="Non c'è il tipo *carattere*."
 In alcuni linguaggi, c'è un tipo "carattere" per i caratteri singoli. Per esempio, nel linguaggio C ed in Java c'è `char`.
 
-In JavaScript, non è presente questo tipo. C'è solamente il tipo: `string`. Una stringa può contenere un solo carattere o più di uno.
+In JavaScript, non è presente questo tipo. C'è solamente il tipo: `string`, che può essere utilizzato per contenere un singolo carattere o più di uno.
 ```
 
-## Tipo booleano (tipo logico)
+## Tipo boolean (tipo logico)
 
-Il tipo booleano ha solo due valori: `true` e `false`.
+Il tipo boolean ha solo due valori: `true` e `false`.
 
-Questo tipo viene tipicamente utilizzato per memorizzare valori si/no: `true` significa "Si, corretto", e `false` significa "No, scorretto".
+Questo tipo viene tipicamente utilizzato per memorizzare valori "si/no": `true` significa "Si, corretto", e `false` significa "No, scorretto".
 
 Per esempio:
 
@@ -168,13 +168,13 @@ let age = null;
 
 In JavaScript `null` non è un "riferimento ad un oggetto inesistente" o un "puntatore nullo" come in altri linguaggi.
 
-E' solamente un valore speciale che ha il senso di "nulla", "vuoto" o "valore sconosciuto".
+E' solamente un valore speciale utilizzato per indicare il valore "nullo", "vuoto" o "valore sconosciuto".
 
 Il codice sopra indica che `age` è sconosciuto o vuoto per qualche motivo.
 
 ## Il valore "undefined" 
 
-Il valore speciale `undefined` vive a parte. Fa da tipo a se stesso, proprio come `null`.
+Il valore speciale `undefined` è un tipo a se stante. Fa da tipo a se stesso, proprio come `null`.
 
 Il significato di `undefined` è che "il valore non è assegnato".
 
@@ -199,11 +199,11 @@ alert(age); // "undefined"
 
 ...Ma non è comunque consigliabile farlo. Normalmente, si utilizza `null` per descrivere un valore "vuoto" o "sconosciuto" della variabile, e `undefined` viene utilizzato solo per i controlli, per verificare se la variabile è stata assegnata.
 
-## Oggetti e Simboli
+## Object e Symbol
 
-Il tipo `object` è speciale.
+Il tipo `object` è un tipo speciale.
 
-Tutti gli altri tipi descritti sono chiamati "primitivi", perchè i loro valori possono contenere solo una cosa (può essere una stringa, un numero o altro). Invece, gli oggetti vengono utilizzati per memorizzare una collezione di dati ed entità più complesse. Li tratteremo nel capitolo <info:object> dopo avere appreso abbastanza sui tipi primitivi.
+Tutti gli altri tipi descritti sono definiti "primitivi", perché i loro valori possono contenere solo una cosa (può essere una stringa, un numero o altro). Invece, gli oggetti vengono utilizzati per memorizzare una collezione di dati ed entità più complesse. Li tratteremo nel capitolo <info:object> dopo avere appreso abbastanza sui tipi primitivi.
 
 Il tipo `symbol` viene utilizzato per creare identificatori unici per gli oggetti. Li abbiamo citati per completezza, ma è meglio studiarli dopo aver compreso gli oggetti.
 
@@ -249,8 +249,8 @@ typeof alert // "function"  (3)
 Le ultime tre linee potrebbero richiedere una spiegazione ulteriore:
 
 1. `Math` è un oggetto integrato che fornisce operazioni matematiche avanzate. Lo studieremo nel capitolo <info:number>. Qui ha il semplice scopo di rappresentare un oggetto.
-2. Il risultato di `typerisulaof null` è `"object"`. Questo è errato. E' un errore ufficialmente riconosciuto del `typeof`, mantenuto per retro-compatibilità. Ovviamente, `null` non è un oggetto. E' un valore speciale che fa da tipo a se stesso. Quindi, nuovamente, questo è un errore del linguaggio.
-3. Il risultato di `typeof alert` è `"function"`, perchè `alert` è una funzione del linguaggio. Studieremo le funzioni nel prossimo capitolo, e vedremo che non c'e nessun tipo "funzione" nel linguaggio. Le funzioni appartengono al tipo oggetto. Ma `typeof` le tratta differentemente. Formalmente, è errato, ma molto utile nella pratica.
+2. Il risultato di `typeof null` è `"object"`. Questo è un errore del linguaggio, ufficialmente riconosciuto e mantenuto per retro-compatibilità. Ovviamente, `null` non è un oggetto. E' un valore speciale che fa da tipo a se stesso. Quindi, nuovamente, questo è un errore del linguaggio.
+3. Il risultato di `typeof alert` è `"function"`, poiché `alert` è una funzione del linguaggio. Studieremo le funzioni nel prossimo capitolo, e vedremo che non c'e nessun tipo "funzione" nel linguaggio. Le funzioni appartengono al tipo oggetto. Ma `typeof` le tratta differentemente. Formalmente, è errato, ma molto utile nella pratica.
 
 ## Riepilogo
 

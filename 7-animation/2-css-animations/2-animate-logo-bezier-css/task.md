@@ -2,12 +2,12 @@ importance: 5
 
 ---
 
-# Animate the flying plane (CSS)
+# Animate il volo dell'aereo (CSS)
 
-Modify the solution of the previous task <info:task/animate-logo-css> to make the plane grow more than its original size 400x240px (jump out), and then return to that size.
+Modificate la soluzione dell'esercizio precedente <info:task/animate-logo-css> per far sì che l'aereo ecceda le dimensioni originali di 400x240px e successivamente ritorni al suo aspetto originale.
 
-Here's how it should look (click on the plane):
+Cosi è come dovrebbe apparire (cliccate sull'aereo):
 
 [iframe src="solution" height=350]
 
-Take the solution of the previous task as the source.
+Prendete la soluzione dell'esercizio precedente come punto di partenza.

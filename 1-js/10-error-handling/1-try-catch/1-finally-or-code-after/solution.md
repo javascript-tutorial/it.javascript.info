@@ -1,8 +1,8 @@
 La differenza diventa ovvia quando inseriamo il codice all'interno di una funzione.
 
-Il comportamento è differente se c'è un salto dall'interno del `try..catch`.
+The behavior is different if there's a "jump out" of `try...catch`.
 
-Per esempio, quando c'è un `return` all'interno del `try..catch`. La clausola `finally` funziona indipendentemente da come termina il `try..catch`, anche nel caso avvenga tramite un `return`: subito dopo la conclusione del `try..catch`, ma prima che il codice richiamato prenda il controllo.
+For instance, when there's a `return` inside `try...catch`. The `finally` clause works in case of *any* exit from `try...catch`, even via the `return` statement: right after `try...catch` is done, but before the calling code gets the control.
 
 ```js run
 function f() {
@@ -11,7 +11,7 @@ function f() {
 *!*
     return "result";
 */!*
-  } catch (e) {
+  } catch (err) {
     /// ...
   } finally {
     alert('cleanup!');
@@ -28,11 +28,11 @@ function f() {
   try {
     alert('start');
     throw new Error("an error");
-  } catch (e) {
+  } catch (err) {
     // ...
     if("can't handle the error") {
 *!*
-      throw e;
+      throw err;
 */!*
     }
 

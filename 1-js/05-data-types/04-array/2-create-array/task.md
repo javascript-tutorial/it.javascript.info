@@ -2,13 +2,13 @@ importance: 5
 
 ---
 
-# Operazioni su array.
+# Operazioni sugli array.
 
-Proviamo 5 operazioni su array.
+Proviamo 5 operazioni su un array.
 
 1. Create un array `styles` con gli elementi "Jazz" e "Blues".
 2. Aggiungete "Rock-n-Roll" in coda.
-3. Rimpiazzate l'elemento al centro con "Classics". Il codice che utilizzate per trovare il centro dovrebbe funzionare con qualsiasi array di lunghezza dispari.
+3. Rimpiazzate l'elemento al centro con "Classics". Il codice che utilizzerete per trovare il centro dovrebbe funzionare con qualsiasi array, anche di lunghezza dispari.
 4. Prelevate il primo elemento dell'array e mostratelo.
 5. Aggiungete in testa `Rap` e `Reggae` .
 

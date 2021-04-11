@@ -1,11 +1,11 @@
 
-# Riscrivi con funzioni freccia
+# Riscrivi usando le arrow functions
 
-Rimpiazza le espressioni di funzione con funzioni freccia:
+Sostituisci le function expressions con arrow functions:
 
 ```js run
 function ask(question, yes, no) {
-  if (confirm(question)) yes()
+  if (confirm(question)) yes();
   else no();
 }
 

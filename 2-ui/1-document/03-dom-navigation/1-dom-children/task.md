@@ -2,14 +2,14 @@ importance: 5
 
 ---
 
-# DOM children
+# Figli nel DOM
 
-Look at this page:
+Guardiamo questa pagina:
 
 ```html
 <html>
 <body>
-  <div>Users:</div>
+  <div>Utenti:</div>
   <ul>
     <li>John</li>
     <li>Pete</li>
@@ -18,7 +18,7 @@ Look at this page:
 </html>
 ```
 
-For each of the following, give at least one way of how to access them:
-- The `<div>` DOM node?
-- The `<ul>` DOM node?
-- The second `<li>` (with Pete)?
+Per ciascuno dei seguenti, fornire almeno un modo per accedervi:
+- Il nodo DOM `<div>` ?
+- Il nodo DOM `<ul>` ?
+- Il secondo `<li>` (con Pete)?

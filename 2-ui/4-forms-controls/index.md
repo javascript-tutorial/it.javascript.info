@@ -1,3 +1,3 @@
 # Forms, controls
 
-Special properties and events for forms `<form>` and controls: `<input>`, `<select>` and other.
+Studieremo proprietà speciali ed eventi per i form `<form>` e i controlli: `<input>`, `<select>` e altri.

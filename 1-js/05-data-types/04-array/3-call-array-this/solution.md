@@ -1,4 +1,4 @@
-La chiamata `arr[2]()` è sintatticamente equivalente a `obj[method]()`, al posto di `obj` abbiamo `arr`, e al posto di `method` abbiamo `2`.
+La chiamata `arr[2]()` è sintatticamente equivalente a `obj[method]()`; al posto di `obj` abbiamo `arr`, e al posto di `method` abbiamo `2`.
 
 Quindi abbiamo una chiamata al metodo `arr[2]`. Naturalmente, riceve il riferimento a `this` e ritorna l'array:
 

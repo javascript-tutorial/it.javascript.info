@@ -8,7 +8,7 @@ Create un costruttore `Calculator` che crei oggetti calcoltrice "estensibili".
 
 Il compito consiste in due parti.
 
-1. La priam parte, consiste nell'implementare il metodo `calculate(str)` che prenda una stringa come `"1 + 2"` nel formato "NUMERO operatore NUMERO" (delimitata da spazi) e ne ritorni il risultato. Dovrebbe interpretare sia `+` che `-`.
+1. La prima parte consiste nell'implementare il metodo `calculate(str)` che accetti una stringa come `"1 + 2"` nel formato "NUMERO operatore NUMERO" (delimitata da spazi) e ne ritorni il risultato. Dovrebbe saper interpretare sia `+` che `-`.
 
     Esempio d'uso:
 
@@ -32,5 +32,5 @@ Il compito consiste in due parti.
     ```
 
 - Non è richiesta la gestione delle parentesi o di operazioni complesse.
-- I numeri e l'operatore sono separati esattamente da un singolo carattere spaziatore.
+- I numeri e l'operatore sono separati esattamente da un singolo spazio.
 - Se ne hai voglia potresti provare ad aggiungere un minimo di gestione degli errori.

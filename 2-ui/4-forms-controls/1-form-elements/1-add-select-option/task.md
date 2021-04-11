@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Add an option to select
+# Aggiungi un opzione di select
 
-There's a `<select>`:
+Abbiamo una select `<select>`:
 
 ```html
 <select id="genres">
@@ -13,10 +13,10 @@ There's a `<select>`:
 </select>
 ```
 
-Use JavaScript to:
+Utilizza JavaScript per:
 
-1. Show the value and the text of the selected option.
-2. Add an option: `<option value="classic">Classic</option>`.
-3. Make it selected.
+1. Mostrare il valore ed il testo dell'opzione selezionata.
+2. Aggiungere un opzione: `<option value="classic">Classic</option>`.
+3. Selezionarla.
 
-Note, if you've done everything right, your alert should show `blues`.
+Nota, se hai fatto tutto giusto, l'alert dovrebbe mostrare `blues`.

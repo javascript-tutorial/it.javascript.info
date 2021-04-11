@@ -1,42 +1,29 @@
 
 # Il tipo Symbol
 
-Secondo le specifiche, una proprietà di un oggetto può essere sia di tipo stringa che di tipo symbol("simbolo"). Non sono quindi accettati, numeri, valori booleani, solamente stringhe e symbol.
+Secondo le specifiche, le chiavi delle proprietà di un oggetto possono essere di tipo stringa o di tipo symbol("simbolo"). Non sono accettati numeri o valori booleani, solamente stringhe e symbol.
 
-<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
-Finora abbiamo visto solo stringhe. Ora proviamo a vedere i vantaggi forniti dal tipo symbol.
-=======
-Till now we've been using only strings. Now let's see the benefits that symbols can give us.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864:1-js/04-object-basics/08-symbol/article.md
+Finora abbiamo utilizzato solo stringhe. Ora proviamo a vedere i vantaggi forniti dal tipo symbol.
 
 ## Symbol
 
-<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
-Il valore "Symbol" rappresenta un identificatore unico.
-=======
-A "symbol" represents a unique identifier.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864:1-js/04-object-basics/08-symbol/article.md
+Il valore "Symbol" rappresenta un identificatore univoco.
 
-Un valore di questo tipo può essere creato `Symbol()`:
+Un valore di questo tipo può essere creato usando `Symbol()`:
 
 ```js
 // id è un nuovo symbol
 let id = Symbol();
 ```
 
-Possiamo fornire anche una descrizione al symbol (chiamata nome del symbol), utile per il debugging:
+Al momento della creazione, possiamo anche fornire una descrizione al symbol (chiamata nome del symbol), utile per il debugging:
 
-<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
-```js run
-// id è un symbol con descrizione "id"
-=======
 ```js
-// id is a symbol with the description "id"
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864:1-js/04-object-basics/08-symbol/article.md
+// id è un symbol con descrizione "id"
 let id = Symbol("id");
 ```
 
-I Symbol garantiscono di essere unici. Anche se creiamo più simboli con la stessa descrizione, saranno comunque valori differenti. La descrizione è utile solamente come etichetta.
+I Symbol garantiscono di essere unici. Anche se creiamo più simboli con la stessa descrizione, saranno comunque valori differenti. La descrizione è utile solamente come etichetta, non ha effetto su nulla.
 
 Ad esempio, qui abbiamo due simboli con la stessa descrizione -- ma non sono uguali:
 
@@ -49,10 +36,10 @@ alert(id1 == id2); // false
 */!*
 ```
 
-Se conoscete linguaggi come Ruby che utilizzano una keyword "symbol" fate attenzione. I symbol in JavaScript sono differenti.
+Se conosci Ruby, od altri linguaggi che possiedono la keyword "symbol", fai attenzione a non confonderti. I symbol in JavaScript sono differenti.
 
 ````warn header="I symbol non si auto-convertono a stringa"
-Molti valori in JavaScript supportano la conversione implicita a stinga. Ad esempio, possiamo utilizzare `alert` con quasi tutti i valori, e funzionerà ugualmente. Symbol è un tipo speciale. Infatti non verrà convertito.
+Molti valori in JavaScript supportano la conversione implicita a stinga. Ad esempio, possiamo utilizzare `alert` con quasi tutti i valori, e funzionerà ugualmente. Symbol è un tipo speciale, non verrà convertito.
 
 Ad esempio, questo `alert` vi mostrerà un errore:
 
@@ -62,22 +49,10 @@ let id = Symbol("id");
 alert(id); // TypeError: Cannot convert a Symbol value to a string
 */!*
 ```
-<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
-Se vogliamo veramente mostrare un symbol, dobbiamo utilizzare `.toString()`:
-=======
+Questo è un "controllo del linguaggio" per prevenire pasticci, perché le stringhe e i symbol sono fondamentalmente differenti e non dovrebbero essere accidentalmente convertiti gli uni negli altri.
 
-That's a "language guard" against messing up, because strings and symbols are fundamentally different and should not accidentally convert one into another.
+Se vogliamo veramente mostrare un symbol, dobbiamo convertirlo esplicitamente utilizzando `.toString()`:
 
-If we really want to show a symbol, we need to explicitly call `.toString()` on it, like here:
-```js run
-let id = Symbol("id");
-*!*
-alert(id.toString()); // Symbol(id), now it works
-*/!*
-```
-
-Or get `symbol.description` property to show the description only:
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864:1-js/04-object-basics/08-symbol/article.md
 ```js run
 let id = Symbol("id");
 *!*
@@ -85,49 +60,39 @@ alert(id.toString()); // Symbol(id), ora funziona
 */!*
 ```
 
-Questo blocco è un "controllo di linguaggio" contro gli errori accidentali, perché le stringhe e i symbol sono fondamentalmente differenti e spesso non dovrebbe essere necessario convertirli.
+Oppure usare la proprietà symbol.description per mostrare solo la descrizione:
+
+```js run
+let id = Symbol("id");
+*!*
+alert(id.description); // id
+*/!*
+```
 ````
 
 ## Proprietà "nascoste"
 
-<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
-Symbol ci consente di creare delle proprietà "nascoste" dentro un oggetto, quindi nessun'altra parte del codice potrà accedervi o modificarle.
+Symbol ci consente di creare delle proprietà "nascoste" dentro un oggetto, che nessun'altra parte del codice potrà leggere o modificare.
 
-Ad esempio, se vogliamo memorizzare un "identificativo" per l'oggetto `user`, possiamo utilizzare symbol:
-=======
-Symbols allow us to create "hidden" properties of an object, that no other part of code can accidentally access or overwrite.
-
-For instance, if we're working with `user` objects, that belong to a third-party code. We'd like to add identifiers to them.
-
-Let's use a symbol key for it:
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864:1-js/04-object-basics/08-symbol/article.md
+Ad esempio, se stiamo lavorando con l'oggetto `user`, che appartiene a un codice di terze parti, e vogliamo aggiungere identificatore.
 
 ```js run
-let user = { // belongs to another code
+let user = { // appartiene ad un altro codice
   name: "John"
 };
 
 let id = Symbol("id");
 
-<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
 user[id] = "ID Value";
-alert( user[id] ); // possiamo accedere ai dati utilizzando il symbol come chiave
-=======
-user[id] = 1;
 
-alert( user[id] ); // we can access the data using the symbol as the key
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864:1-js/04-object-basics/08-symbol/article.md
+alert( user[id] ); // possiamo accedere ai dati utilizzando il symbol come chiave
 ```
 
 Qual'è il beneficio di utilizzare `Symbol("id")` piuttosto che `"id"`?
 
-<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
-Cerchiamo di andare più in profondità per capirlo.
-=======
-As `user` objects belongs to another code, and that code also works with them, we shouldn't just add any fields to it. That's unsafe. But a symbol cannot be accessed accidentally, the third-party code probably won't even see it, so it's probably all right to do.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864:1-js/04-object-basics/08-symbol/article.md
+Poiché l'oggetto `user` appartiene a un altro codice che lo utilizza, non dovremmo aggiungervi alcun campo, non è sicuro. Ma un *symbol* non è accessibile accidentalmente, il codice di terze parti probabilmente non lo vedrà nemmeno, quindi andrà tutto bene.
 
-Immaginiamo che un altro script voglia avere una sua proprietà "id" dentro `user`. Questo potrebbe essere il caso di due librerie, quindi i due script sono ignari l'uno dell'altro.
+Inoltre, immagina che un altro script necessiti di avere il proprio identificatore all'interno di `user`. Potrebbe essere un'altra libreria JavaScript, e gli script sarebbero completamente inconsapevoli l'uno dell'altro.
 
 Quindi ogni script può creare il suo `Symbol("id")`:
 
@@ -140,12 +105,11 @@ user[id] = "Their id value";
 
 Non ci saranno conflitti, poiché i simboli saranno sempre differenti, anche se hanno lo stesso nome.
 
-Invece se proviamo ad utilizzare una stringa `"id"` piuttosto del symbol, *otterremo* un conflitto:
+Invece se proviamo ad utilizzare una stringa `"id"` piuttosto che symbol, otterremo un conflitto:
 
-```js run
+```js
 let user = { name: "John" };
 
-<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
 // il nostro script utilizza la proprietà "id"
 user.id = "ID Value";
 
@@ -155,21 +119,9 @@ user.id = "Their id value"
 // boom! sovrascritto! non intendeva danneggiare il codice del collega, ma lo ha fatto!
 ```
 
-### Symbol negli oggetti letterali
-=======
-// Our script uses "id" property
-user.id = "Our id value";
+### Symbol in un *object literal*
 
-// ...Another script also wants "id" for its purposes...
-
-user.id = "Their id value"
-// Boom! overwritten by another script!
-```
-
-### Symbols in an object literal
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864:1-js/04-object-basics/08-symbol/article.md
-
-Se vogliamo utilizzare un symbol in un oggetto letterale, abbiamo bisogno delle parentesi quadre.
+Se vogliamo utilizzare un symbol in un *object literal* `{...}`, abbiamo bisogno di includerlo nelle parentesi quadre.
 
 Come nell'esempio:
 
@@ -179,11 +131,7 @@ let id = Symbol("id");
 let user = {
   name: "John",
 *!*
-<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
-  [id]: 123 // non basta "id: 123"
-=======
-  [id]: 123 // not "id": 123
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864:1-js/04-object-basics/08-symbol/article.md
+  [id]: 123 // non "id: 123"
 */!*
 };
 ```
@@ -204,16 +152,16 @@ let user = {
 };
 
 *!*
-for (let key in user) alert(key); // name, age (no symbols)
+for (let key in user) alert(key); // name, age (nessun symbol)
 */!*
 
 // l'accesso diretto al symbol funziona
 alert( "Direct: " + user[id] );
 ```
 
-Anche `Object.keys(user)` li ignora. Questo è il meccanisco di occultazione delle proprietà symbol. Se uno script esterno o una libreria tenta di eseguire istruzioni sul nostro oggetto, non avrà la possibilità di accedere ad una proprietà di tipo symbol.
+Anche `Object.keys(user)` li ignora. Questo fa parte del principio generale di occultazione delle proprietà symbol. Se uno script esterno o una libreria eseguisse un ciclo sul nostro oggetto, non avrebbe inaspettatamente accesso a una proprietà di tipo symbol.
 
-Invece [Object.assign](mdn:js/Object/assign) esegue la copia sia delle proprietà di tipo stringa si di quelle symbol:
+Invece [Object.assign](mdn:js/Object/assign) esegue la copia sia delle proprietà di tipo stringa sia di quelle symbol:
 
 ```js run
 let id = Symbol("id");
@@ -226,39 +174,17 @@ let clone = Object.assign({}, user);
 alert( clone[id] ); // 123
 ```
 
-Non c'è nulla di strano. E' una semplice scelta di design. L'idea è che quando vogliamo copiare o clonare un oggetto, solitamente abbiamo intenzione di copiarne *tutte* le proprietà (incluse quelle di tipo symbol come `id`).
-
-<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
-````smart header="Le chiavi delle proprietà vengono convertite a stringhe"
-Possiamo utilizzare solamente stringhe o symbol come chiavi in un oggetto. Gli altri tipi vengono convertiti a stringa.
-
-Ad esempio, un numero `0` diventa una stringa `"0"` quando lo utilizziamo come chiave di una proprietà:
-
-```js run
-let obj = {
-  0: "test" // equivale a "0": "test"
-};
-
-// entrambi gli alert accedono alla stessa proprietà (il numero 0 è convertito a stringa "0")
-alert( obj["0"] ); // test
-alert( obj[0] ); // test (stessa proprietà)
-```
-````
+Non c'è nulla di strano. E' una semplice scelta di design. L'idea è che quando vogliamo clonare o unire oggetti, solitamente abbiamo intenzione di copiarne *tutte* le proprietà (incluse quelle di tipo symbol come `id`).
 
 ## Symbol globali
 
-Come abbiamo visto solitamente i symbol sono differenti, persino quelli con gli stessi nomi. Qualche volta voglia che i symbol con nomi uguali vengano visti come una sola entità.
-=======
-## Global symbols
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864:1-js/04-object-basics/08-symbol/article.md
-
-Ad esempio, parti differente del codice potrebbero voler accedere al symbol `"id"`, volendo utilizzare tutte la stessa proprietà.
+Come abbiamo visto, solitamente i symbol sono differenti, anche se hanno lo stesso nome. Ma a volte vogliamo che symbol con nomi uguali vengano visti come la stessa entità. Ad esempio, parti differenti del codice potrebbero voler accedere al symbol `"id"`, riferendosi alla stessa proprietà.
 
 Per soddisfare questa necessità, esiste un *registro globale dei symbol*. Possiamo creare dei symbol al suo interno ed accedervi successivamente, e questo garantirà che lo stesso nome ritornerà esattamente lo stesso symbol.
 
 Per poter leggere (o creare in caso di assenza) un symbol nel registro va usata la sintassi `Symbol.for(key)`.
 
-Questa chiamata controlla il registro globale, se trova un symbol descritto dalla `key`, lo ritorna, altrimenti crea un nuovo simbolo  `Symbol(key)` e lo memorizza nel registro con la chiave `key`.
+Questa chiamata controlla il registro globale, se trova un symbol descritto dalla `key`, lo ritorna, altrimenti crea un nuovo simbolo `Symbol(key)` e lo memorizza nel registro con la chiave `key`.
 
 Ad esempio:
 
@@ -273,7 +199,7 @@ let idAgain = Symbol.for("id");
 alert( id === idAgain ); // true
 ```
 
-I symbol dentro il registro vengono chiamati *symbol globali*. Se abbiamo bisogno di molti symbol, che siano accessibili ovunque nel codice -- questo è il modo.
+I symbols dentro il registro vengono chiamati *symbol globali*. Se abbiamo bisogno di molti symbol, che siano accessibili ovunque nel codice -- questo è il modo.
 
 ```smart header="Assomigliano a Ruby"
 In alcuni linguaggi di programmazione, come Ruby, c'è un solo symbol per nome.
@@ -288,22 +214,18 @@ Per i symbol globali, non esiste solo `Symbol.for(key)` per accedere ad un symbo
 Ad esempio:
 
 ```js run
-// get symbol by name
+// estraiamo symbol dal nome
 let sym = Symbol.for("name");
 let sym2 = Symbol.for("id");
 
-// prende name da symbol
+// estraiamo il nome dal symbol
 alert( Symbol.keyFor(sym) ); // name
 alert( Symbol.keyFor(sym2) ); // id
 ```
 
-<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
 La funzione `Symbol.keyFor` internamente utilizza il registro globale dei symbol per cercare la chiave del symbol. Quindi non avrà alcun effetto per symbol non globali. Se gli viene passato un symbol non globale, non sarà in grado di trovarlo e ritornerà `undefined`.
-=======
-The `Symbol.keyFor` internally uses the global symbol registry to look up the key for the symbol. So it doesn't work for non-global symbols. If the symbol is not global, it won't be able to find it and returns `undefined`.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864:1-js/04-object-basics/08-symbol/article.md
 
-Questo significa che ogni symbol possiede una proprietà `description`.
+Detto questo, ogni symbol possiede una proprietà `description`.
 
 Ad esempio:
 
@@ -311,15 +233,15 @@ Ad esempio:
 let globalSymbol = Symbol.for("name");
 let localSymbol = Symbol("name");
 
-alert( Symbol.keyFor(globalSymbol) ); // name, global symbol
-alert( Symbol.keyFor(localSymbol) ); // undefined, non global
+alert( Symbol.keyFor(globalSymbol) ); // name, symbol globale
+alert( Symbol.keyFor(localSymbol) ); // undefined, non globale
 
 alert( localSymbol.description ); // name
 ```
 
-## Sistemi per symbol
+## Symbol di sistema
 
-In JavaScript esistono diversi "sistemi" per symbol, e possiamo utilizzarli per gestire vari aspetti dei nostri oggetti.
+In JavaScript esistono diversi *symbol di sistema*, e possiamo utilizzarli per gestire vari aspetti dei nostri oggetti.
 
 Questi sono elencati in dettaglio nella tabella [Well-known symbols](https://tc39.github.io/ecma262/#sec-well-known-symbols) :
 
@@ -331,28 +253,22 @@ Questi sono elencati in dettaglio nella tabella [Well-known symbols](https://tc3
 
 Ad esempio, `Symbol.toPrimitive` ci consente di descrivere l'oggetto per la conversione ad un tipo primitivo. Vedremo meglio come utilizzarlo a breve.
 
-Altri simboli diventeranno più familiari man mano che studieremo il linguaggio.
+Altri symbol diventeranno più familiari quando studieremo le corrispondenti caratteristiche del linguaggio.
 
 ## Riepilogo
 
-`Symbol` è un tipo primitivo per definire identificatori unici.
+`Symbol` è un tipo primitivo per definire identificatori univoci.
 
-I symbol vengono creati con una chiamata a `Symbol()`, aggiungendo una descrizione opzionale.
+I symbol vengono creati con una chiamata a `Symbol()`, aggiungendo una descrizione opzionale (nome).
 
-I symbol sono sempre differenti, anche se hanno lo stesso nome. Se abbiamo bisogno di avere symbol con lo stesso nome che uguali tra lo, dovremmo utilizzare il registro globale: `Symbol.for(key)` ritorna un symbol globale con la `key` (se non esiste la crea). Diverse chiamate di `Symbol.for` ritorneranno sempre lo stesso symbol.
+I symbol sono sempre differenti, anche se hanno lo stesso nome. Se abbiamo bisogno di avere symbol con lo stesso nome ed uguali tra loro, dovremmo utilizzare il registro globale: `Symbol.for(key)` ritorna un symbol globale con la `key` (se non esiste la crea). Diverse chiamate di `Symbol.for` ritorneranno sempre lo stesso symbol.
 
 I symbol hanno due principali ambiti d'uso:
 
-<<<<<<< HEAD:1-js/04-object-basics/03-symbol/article.md
-1. "Nascondere" le proprietà di un oggetto.
-    Se vogliamo aggiungere una proprietà in un oggetto che "appartiene" ad un altro script (o libreria), possiamo creare un symbol ed utilizzarlo come chiave della proprietà. Una proprietà di tipo symbol non sarà disponibile in un `for..in`, quindi non sarà mai resa visibile. Non sarà nemmeno accessibile direttamente poiché uno script diverso non potrà avere i nostri symbol.
-=======
-1. "Hidden" object properties.
-    If we want to add a property into an object that "belongs" to another script or a library, we can create a symbol and use it as a property key. A symbolic property does not appear in `for..in`, so it won't be accidentally processed together with other properties. Also it won't be accessed directly, because another script does not have our symbol. So the property will be protected from accidental use or overwrite.
->>>>>>> 872cc6adedac4ff3ebec73916bf435f1d72f2864:1-js/04-object-basics/08-symbol/article.md
+1. "Nascondere" le proprietà di un oggetto. Se vogliamo aggiungere una proprietà ad un oggetto che "appartiene" ad un altro script (o libreria), possiamo creare un symbol ed utilizzarlo come chiave della proprietà. Una proprietà di tipo symbol non sarà disponibile in un `for..in`, quindi non sarà mai resa visibile. Non sarà nemmeno accessibile direttamente poiché uno script diverso non potrà avere i nostri symbol. Quindi la proprietà sarà protetta dall'uso accidentale o dalla sovrascrittura.
 
-    Possiamo quindi "nascondere" una proprietà di un oggetto se ne abbiamo al necessità, senza che nessun altro possa vederlo, usando proprità di tipo symbol.
+Possiamo quindi aggiungere "di nascosto" una proprietà in un oggetto se ne abbiamo la necessità, senza che nessun altro possa vederla, usando proprietà di tipo symbol.
 
-2. Ci sono diversi sistemi di symbol utilizzati da JavaScript che sono accessibili come `Symbol.*`. Possiamo utilizzarli per modificare alcune caratteristiche incorporate. Ad esempio, più avanti nella guida utilizzeremo `Symbol.iterator` per [iterables](info:iterable), `Symbol.toPrimitive` per impostare la [conversione da oggetto a primitivo](info:object-toprimitive).
+2. Ci sono diversi symbol di sistema utilizzati da JavaScript che sono accessibili come `Symbol.*`. Possiamo utilizzarli per modificare alcune caratteristiche native. Ad esempio, più avanti nella guida utilizzeremo `Symbol.iterator` per [iterables](info:iterable), `Symbol.toPrimitive` per impostare la [conversione da oggetto a primitivo](info:object-toprimitive).
 
-Tecnicamente i symbol non sono nascosti al 100%. C'è un metodo integrato in JavaScript [Object.getOwnPropertySymbols(obj)](mdn:js/Object/getOwnPropertySymbols) che ci consente di ottenere tutti i symbol. Esiste anche un metodo chiamato [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) che ritorna *tutte* le chiavi di un oggetto incluse quelle di tipo symbol. Quindi non sono realmente invisibili. Molte librerie ne fanno utilizzo, come accordo comune. Chi proverà esplicitamente ad utilizzarle probabilmente è abbastanza esperto da capire ciò che sta facendo.
+Tecnicamente i symbol non sono nascosti al 100%. C'è un metodo nativo in JavaScript [Object.getOwnPropertySymbols(obj)](mdn:js/Object/getOwnPropertySymbols) che ci consente di ottenere tutti i symbol. Esiste anche un metodo chiamato [Reflect.ownKeys(obj)](mdn:js/Reflect/ownKeys) che ritorna *tutte* le chiavi di un oggetto incluse quelle di tipo symbol. Quindi non sono realmente invisibili. Ma la maggior parte delle  librerie, delle funzioni native e dei costrutti non utilizzano questi metodi.

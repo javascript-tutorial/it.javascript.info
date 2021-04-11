@@ -4,7 +4,7 @@ importance: 5
 
 # Oggetti costanti?
 
-E' possibile modificare un oggetto dichiarato `const`? Cosa ne pensi?
+E' possibile modificare un oggetto dichiarato con `const`? Cosa ne pensi?
 
 ```js
 const user = {

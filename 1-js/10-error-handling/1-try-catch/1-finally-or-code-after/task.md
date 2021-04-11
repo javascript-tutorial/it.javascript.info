@@ -6,26 +6,26 @@ importanza: 5
 
 Confronta i due frammenti di codice.
 
-1. Il primo utilizza `finally` per eseguire il codice dopo `try..catch`:
+1. Il primo utilizza `finally` per eseguire il codice dopo `try...catch`:
 
     ```js
     try {
       lavoro lavoro
     } catch (e) {
-      gestisci gli errori
+      gestione errori
     } finally {
     *!*
       ripulisci lo spazio di lavoro
     */!*
     }
     ```
-2. Il secondo posiziona la puliza subito dopo il `try..catch`:
+2. Il secondo posiziona la pulizia subito dopo il `try...catch`:
 
     ```js
     try {
       lavoro lavoro
     } catch (e) {
-      gestisci gli errori
+      gestione errori
     }
 
     *!*

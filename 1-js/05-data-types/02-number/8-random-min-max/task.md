@@ -6,7 +6,7 @@ importance: 2
 
 La funzione integrata `Math.random()` crea un valore random compreso tra `0` e `1` (`1` escluso).
 
-scrivete la funzione `random(min, max)` per generare un numero random in virgola mobile che va da `min` a `max` (`max` escluso).
+Scrivete la funzione `random(min, max)` per generare un numero random in virgola mobile che va da `min` a `max` (`max` escluso).
 
 Esempi:
 

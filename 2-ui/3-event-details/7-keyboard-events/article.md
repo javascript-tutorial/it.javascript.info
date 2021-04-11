@@ -1,67 +1,67 @@
-# Keyboard: keydown and keyup
+# Tastiera: keydown e keyup
 
-Before we get to keyboard, please note that on modern devices there are other ways to "input something". For instance, people use speech recognition (especially on mobile devices) or copy/paste with the mouse.
+Prima di scendere nei dettagli della tastiera, è bene ricordare che nei dispositivi moderni esistono tanti modi per "inserire qualche dato". Per esempio, è doveroso citare l'uso del riconoscimento vocale (specialmente sui dispositivi mobile) o il copia/incolla tramite il mouse.
 
-So if we want to track any input into an `<input>` field, then keyboard events are not enough. There's another event named `input` to track changes of an `<input>` field, by any means. And it may be a better choice for such task. We'll cover it later in the chapter <info:events-change-input>.
+Quindi, se vogliamo tenere traccia di qualunque input dentro un campo `<input>`, allora gli eventi della tastiera non saranno sufficienti. Esiste però un altro evento chiamato `input` per tenere traccia delle modifiche degli `<input>`, indipendentemente dalla modalità di inserimento. Questa potrebbe essere la scelta corretta per questo tipo di attività. L'argomento verrà affrontato più avanti nel capitolo <info:events-change-input>.
 
-Keyboard events should be used when we want to handle keyboard actions (virtual keyboard also counts). For instance, to react on arrow keys `key:Up` and `key:Down` or hotkeys (including combinations of keys).
+Gli eventi da tastiera dovrebbero essere usati per gestire, appunto, azioni da tastiera (comprese quelle virtuali). Ad esempio, per reagire ai tasti freccia `key:Up` e `key:Down`, oppure per l'uso delle scorciatoie e/o tasti di scelta rapida (includendo quindi combinazioni di tasti).
 
 
-## Teststand [#keyboard-test-stand]
+## Banco di test [#keyboard-test-stand]
 
 ```offline
-To better understand keyboard events, you can use the [teststand](sandbox:keyboard-dump).
+Per capire meglio questo tipo di eventi, possiamo usare il seguente [banco di test](sandbox:keyboard-dump).
 ```
 
 ```online
-To better understand keyboard events, you can use the teststand below.
+Per capire meglio gli eventi da tastiera, possiamo usare il seguente banco di test.
 
-Try different key combinations in the text field.
+Proviamo diverse combinazioni di tasti nel campo di testo.
 
 [codetabs src="keyboard-dump" height=480]
 ```
 
 
-## Keydown and keyup
+## Keydown e keyup
 
-The `keydown` events happens when a key is pressed down, and then `keyup` -- when it's released.
+L'evento `keydown` scaturisce alla pressione di un tasto; `keyup`, invece, quando viene rilasciato.
 
-### event.code and event.key
+### event.code e event.key
 
-The `key` property of the event object allows to get the character, while the `code` property of the event object allows to get the "physical key code".
+La proprietà `key` dell'oggetto evento permette di ottenere il carattere, mentre la proprietà `code` ci restituisce il "codice fisico del tasto".
 
-For instance, the same key `key:Z` can be pressed with or without `key:Shift`. That gives us two different characters: lowercase `z` and uppercase `Z`.
+Ad esempio, a parità di `key:Z`, quest'ultimo potrebbe essere stato premuto con o senza il `key:Shift`, cosa che potrebbe restituirci due differenti caratteri: `z` minuscolo oppure `Z` maiuscolo.
 
-The `event.key` is exactly the character, and it will be different. But `event.code` is the same:
+`event.key` è esattamente il carattere, che può essere diverso secondo alcuni criteri. Invece `event.code`, a parità di tasto, restituisce sempre lo stesso valore:
 
 | Key          | `event.key` | `event.code` |
 |--------------|-------------|--------------|
-| `key:Z`      |`z` (lowercase)         |`KeyZ`        |
-| `key:Shift+Z`|`Z` (uppercase)          |`KeyZ`        |
+| `key:Z`      |`z` (minuscolo)         |`KeyZ`        |
+| `key:Shift+Z`|`Z` (maiuscolo)          |`KeyZ`        |
 
 
-If a user works with different languages, then switching to another language would make a totally different character instead of `"Z"`. That will become the value of `event.key`, while `event.code` is always the same: `"KeyZ"`.
+Prendendo questo tasto come riferimento, se un utente facesse uso di diverse lingue nello stesso sistema operativo, il passaggio ad un'altra lingua potrebbe portare ad avere tutt'altro carattere rispetto a `"Z"`. Quest'ultimo sarebbe il valore di `event.key`, mentre `event.code` sarebbe sempre `"KeyZ"`.
 
-```smart header="\"KeyZ\" and other key codes"
-Every key has the code that depends on its location on the keyboard. Key codes described in the [UI Events code specification](https://www.w3.org/TR/uievents-code/).
+```smart header="\"KeyZ\" e altri codici tasto"
+Ogni tasto ha un codice che dipende dalla sua posizione sulla tastiera. Questi codici vengono descritti nelle [specifiche dei codici Evento UI](https://www.w3.org/TR/uievents-code/).
 
-For instance:
-- Letter keys have codes `"Key<letter>"`: `"KeyA"`, `"KeyB"` etc.
-- Digit keys have codes: `"Digit<number>"`: `"Digit0"`, `"Digit1"` etc.
-- Special keys are coded by their names: `"Enter"`, `"Backspace"`, `"Tab"` etc.
+Per esempio:
+- I tasti lettera hanno dei codici: `"Key<letter>"`: `"KeyA"`, `"KeyB"` etc.
+- I tasti numerici hanno dei codici: `"Digit<number>"`: `"Digit0"`, `"Digit1"` etc.
+- I tasti speciali sono codificati con i loro nomi: `"Enter"`, `"Backspace"`, `"Tab"` etc.
 
-There are several widespread keyboard layouts, and the specification gives key codes for each of them.
+Esiste una grande varietà di layout di tastiera, e le specifiche danno un codice per ognuno di essi.
 
-Read the [alphanumeric section of the spec](https://www.w3.org/TR/uievents-code/#key-alphanumeric-section) for more codes, or just press a key in the [teststand](#keyboard-test-stand) above.
+Per avere informazioni sui vari codici, fare riferimento alla [sezione alfanumerica delle specifiche](https://www.w3.org/TR/uievents-code/#key-alphanumeric-section), oppure, è sufficiente premere un tasto nel [banco di test](#keyboard-test-stand) precedente.
 ```
 
-```warn header="Case matters: `\"KeyZ\"`, not `\"keyZ\"`"
-Seems obvious, but people still make mistakes.
+```warn header="La distinzione tra maiuscolo e minuscolo è importante: è `\"KeyZ\"`, e non `\"keyZ\"`"
+Sembra ovvio, ma le persone sbagliano ancora.
 
-Please evade mistypes: it's `KeyZ`, not `keyZ`. The check like `event.code=="keyZ"` won't work: the first letter of `"Key"` must be uppercase.
+Bisogna evitare di scrivere in modo errato: la dicitura corretta è `KeyZ`, e non `keyZ`. Di conseguenza, un controllo scritto così `event.code=="keyZ"` non funziona: la prima lettera di `"Key"` deve essere maiuscola.
 ```
 
-What if a key does not give any character? For instance, `key:Shift` or `key:F1` or others. For those keys, `event.key` is approximately the same as `event.code`:
+Cosa succederebbe se un tasto non restituisse nessun carattere? Per esempio, `key:Shift` oppure `key:F1` o altri ancora. Per questi tasti il valore di `event.key` è, con buona approssimazione, lo stesso di `event.code`:
 
 | Key          | `event.key` | `event.code` |
 |--------------|-------------|--------------|
@@ -69,15 +69,15 @@ What if a key does not give any character? For instance, `key:Shift` or `key:F1`
 | `key:Backspace`      |`Backspace`          |`Backspace`        |
 | `key:Shift`|`Shift`          |`ShiftRight` or `ShiftLeft`        |
 
-Please note that `event.code` specifies exactly which key is pressed. For instance, most keyboards have two `key:Shift` keys: on the left and on the right side. The `event.code` tells us exactly which one was pressed, and `event.key` is responsible for the "meaning" of the key: what it is (a "Shift").
+È importante sottolineare che `event.code` specifica esattamente il tasto premuto. Per esempio, la maggioranza delle tastiere ha due tasti `key:Shift`: uno nel lato sinistro e uno nel lato destro. `event.code` ci dice esattamente quale dei due viene premuto, `event.key` è invece responsabile del "significato" del tasto: cosa è (cioè uno "Shift").
 
-Let's say, we want to handle a hotkey: `key:Ctrl+Z` (or `key:Cmd+Z` for Mac). Most text editors hook the "Undo" action on it. We can set a listener on `keydown` and check which key is pressed.
+Mettiamo il caso che volessimo gestire una scorciatoia: `key:Ctrl+Z` (o `key:Cmd+Z` su Mac). La maggior parte degli editor di testo associa a questa combinazione, l'azione "Undo". A quel punto potremmo impostare un listener sul `keydown` e controllare quale tasto venga premuto.
 
-There's a dilemma here: in such a listener, should we check the value of `event.key` or `event.code`?
+Ma qui ci troveremo di fronte a un dilemma: in questo listener, cosa dovremmo controllare? Il valore di `event.key` oppure quello di `event.code`?
 
-On one hand, the value of `event.key` is a character, it changes depending on the language. If the visitor has several languages in OS and switches between them, the same key gives different characters. So it makes sense to check `event.code`, it's always the same.
+Da una parte, il valore di `event.key` è un carattere, e cambia a seconda del linguaggio. Se il visitatore gestisce più lingue nel suo sistema operativo e passa da una all'altra, lo stesso tasto restituirebbe caratteri differenti. Quindi ha senso controllare `event.code`, che è sempre lo stesso.
 
-Like this:
+Ecco un esempio:
 
 ```js run
 document.addEventListener('keydown', function(event) {
@@ -87,54 +87,54 @@ document.addEventListener('keydown', function(event) {
 });
 ```
 
-On the other hand, there's a problem with `event.code`. For different keyboard layouts, the same key may have different characters.
+D'altra parte, c'è un problema anche con `event.code`, dato che per layout di tastiera differenti, possono corrispondere caratteri differenti.
 
-For example, here are US layout ("QWERTY") and German layout ("QWERTZ") under it (from Wikipedia):
+Per esempio, qui abbiamo un layout americano ("QWERTY") e sotto di esso un layout Tedesco ("QWERTZ") (da Wikipedia):
 
 ![](us-layout.svg)
 
 ![](german-layout.svg)
 
-For the same key, US layout has "Z", while German layout has "Y" (letters are swapped).
+A parità di tasto, sul layout americano corrisponderà il carattere "Z", invece per quello tedesco sarà "Y" (le lettere sono scambiate tra di loro).
 
-Literally, `event.code` will equal `KeyZ` for people with German layout when they press `key:Y`.
+Letteralmente, `event.code` equivale a `KeyZ` per gli utenti con il layout tedesco quando premono `key:Y`.
 
-If we check `event.code == 'KeyZ'` in our code, then for people with German layout such test will pass when they press `key:Y`.
+Se andiamo a controllare `event.code == 'KeyZ'` nel nostro codice, per gli utenti con il layout tedesco, il test passerà alla pressione del tasto `key:Y`.
 
-That sounds really odd, but so it is. The [specification](https://www.w3.org/TR/uievents-code/#table-key-code-alphanumeric-writing-system) explicitly mentions such behavior.
+Questo può sembrare strano, ma è così. Le [specifiche](https://www.w3.org/TR/uievents-code/#table-key-code-alphanumeric-writing-system) menzionano in modo esplicito questo comportamento.
 
-So, `event.code` may match a wrong character for unexpected layout. Same letters in different layouts may map to different physical keys, leading to different codes. Luckily, that happens only with several codes, e.g. `keyA`, `keyQ`, `keyZ` (as we've seen), and doesn't happen with special keys such as `Shift`. You can find the list in the [specification](https://www.w3.org/TR/uievents-code/#table-key-code-alphanumeric-writing-system).
+Quindi, `event.code` può corrispondere a un carattere errato su layout non contemplati. A parità di lettera, per layout differenti potrebbero essere mappati tasti fisici differenti, portando ad avere codici differenti. Fortunatamente, questo avviene solo con alcuni di questi, ad esempio `keyA`, `keyQ`, `keyZ` (come abbiamo visto), ma non avviene con i tasti speciali come `Shift`. Si può vedere la lista nelle [specifiche](https://www.w3.org/TR/uievents-code/#table-key-code-alphanumeric-writing-system).
 
-To reliably track layout-dependent characters, `event.key` may be a better way.
+Per il tracciamento affidabile dei caratteri che sono dipendenti dal layout, `event.key` potrebbe essere la soluzione migliore.
 
-On the other hand, `event.code` has the benefit of staying always the same, bound to the physical key location, even if the visitor changes languages. So hotkeys that rely on it work well even in case of a language switch.
+Di contro, `event.code` ha il beneficio di essere sempre lo stesso, legato alla posizione fisica del tasto, anche se il visitatore dovesse modificare la lingua. E le scorciatoie ad esso relative funzioneranno bene anche in caso di cambio lingua.
 
-Do we want to handle layout-dependant keys? Then `event.key` is the way to go.
+Vogliamo gestire dei tasti dipendenti dal layout? Ecco che `event.key` è quello che fa per noi.
 
-Or we want a hotkey to work even after a language switch? Then `event.code` may be better.
+Oppure, vogliamo una scorciatoia che funzioni anche modificando la lingua? Allora `event.code` sarebbe più adatto.
 
 ## Auto-repeat
 
-If a key is being pressed for a long enough time, it starts to "auto-repeat": the `keydown` triggers again and again, and then when it's released we finally get `keyup`. So it's kind of normal to have many `keydown` and a single `keyup`.
+Se un tasto viene premuto abbastanza a lungo, si instaura l'"auto-repeat": l'evento `keydown` scaturisce ancora e ancora e, alla fine, quando viene rilasciato, otteniamo un evento `keyup`. Quindi è abbastanza normale avere molti `keydown` ed un solo `keyup`.
 
-For events triggered by auto-repeat, the event object has `event.repeat` property set to `true`.
+Per eventi generati da auto-repeat, l'oggetto evento coinvolto avrà la proprietà `event.repeat` impostata a `true`.
 
 
-## Default actions
+## Azioni default
 
-Default actions vary, as there are many possible things that may be initiated by the keyboard.
+Le azioni di default possono essere tante e variegate, dal momento che sono tante le cose che possono essere attivate tramite la tastiera.
 
-For instance:
+Per esempio:
 
-- A character appears on the screen (the most obvious outcome).
-- A character is deleted (`key:Delete` key).
-- The page is scrolled (`key:PageDown` key).
-- The browser opens the "Save Page" dialog (`key:Ctrl+S`)
--  ...and so on.
+- Appare un nuovo carattere sullo schermo (lo scenario più frequente).
+- Viene cancellato un carattere (tasto `key:Delete`).
+- Si scrolla la pagina (tasto `key:PageDown`).
+- Il browser apre la finestra di dialogo "Salva la pagina" (`key:Ctrl+S`)
+-  ...e così via.
 
-Preventing the default action on `keydown` can cancel most of them, with the exception of OS-based special keys. For instance, on Windows `key:Alt+F4` closes the current browser window. And there's no way to stop it by preventing the default action in JavaScript.
+Prevenire le azioni di default sul `keydown` può annullare la maggioranza di esse, con l'eccezione delle combinazioni di tasti del sistema operativo. Per esempio, su Windows `key:Alt+F4` chiude la finestra attuale del browser. E non c'è modo per prevenire questa azione predefinita attraverso JavaScript.
 
-For instance, the `<input>` below expects a phone number, so it does not accept keys except digits, `+`, `()` or `-`:
+Ora un esempio: il seguente campo `<input>` si aspetta un numero di telefono, quindi non accetta tasti che non siano numeri, `+`, `()` o `-`:
 
 ```html autorun height=60 run
 <script>
@@ -142,12 +142,12 @@ function checkPhoneKey(key) {
   return (key >= '0' && key <= '9') || key == '+' || key == '(' || key == ')' || key == '-';
 }
 </script>
-<input *!*onkeydown="return checkPhoneKey(event.key)"*/!* placeholder="Phone, please" type="tel">
+<input *!*onkeydown="return checkPhoneKey(event.key)"*/!* placeholder="Inserire un numero di telefono" type="tel">
 ```
 
-Please note that special keys, such as `key:Backspace`, `key:Left`, `key:Right`, `key:Ctrl+V`, do not work in the input. That's a side-effect of the strict filter `checkPhoneKey`.
+È interessante notare che i tasti speciali, come `key:Backspace`, `key:Left`, `key:Right`, `key:Ctrl+V`, non funzionano nel campo input. Questo è un effetto collaterale delle restrizioni del filtro `checkPhoneKey`.
 
-Let's relax it a little bit:
+Facciamolo "rilassare" un attimo:
 
 
 ```html autorun height=60 run
@@ -160,30 +160,36 @@ function checkPhoneKey(key) {
 <input onkeydown="return checkPhoneKey(event.key)" placeholder="Phone, please" type="tel">
 ```
 
-Now arrows and deletion works well.
+Adesso le frecce e il tasto cancella funzionano.
 
-...But we still can enter anything by using a mouse and right-click + Paste. So the filter is not 100% reliable. We can just let it be like that, because most of time it works. Or an alternative approach would be to track the `input` event -- it triggers after any modification. There we can check the new value and highlight/modify it when it's invalid.
+...Tuttavia, siamo ancora in grado di inserire qualunque valore, usando il mouse, attraverso la funzionalità tasto destro + Incolla. Quindi il filtro non è al 100% affidabile. Volendo, possiamo lasciarlo così, dato che funzionerà la maggior parte delle volte. Un approccio alternativo, invece, potrebbe essere quello di tenere traccia dell'evento `input`, che scaturisce dopo ogni modifica al campo di testo. In questo modo possiamo sempre verificare il nuovo valore ed evidenziarlo/modificarlo se non ritenuto valido.
 
-## Legacy
+## Eredità
 
-In the past, there was a `keypress` event, and also `keyCode`, `charCode`, `which` properties of the event object.
+In passato, c'era l'evento `keypress`, ed anche le proprietà `keyCode`, `charCode`, `which` dell'oggetto evento.
 
-There were so many browser incompatibilities while working with them, that developers of the specification had no way, other than deprecating all of them and creating new, modern events (described above in this chapter). The old code still works, as browsers keep supporting them, but there's totally no need to use those any more.
+C'erano tante di quelle incompatibilità tra i vari browser, anche durante lo sviluppo delle specifiche da parte degli sviluppatori che cercavano di implementarle, che l'unica soluzione fu quella di deprecarli tutti, e creare degli eventi nuovi e moderni (descritti sopra in questo capitolo). Il codice vecchio funziona ancora, dal momento che i browser continuano a supportarli, ma non c'è assolutamente nessuna ragione per continuare a farlo.
 
-## Summary
+## Tastiere dei dispositivi mobile
 
-Pressing a key always generates a keyboard event, be it symbol keys or special keys like `key:Shift` or `key:Ctrl` and so on. The only exception is `key:Fn` key that sometimes presents on a laptop keyboard. There's no keyboard event for it, because it's often implemented on lower level than OS.
+Usando le tastiere virtuali dei dispositivi mobile, conosciute formalmente come IME (Input-Method Editor), lo standard W3C ha stabilito che per quanto riguarda il KeyboardEvent, il [`e.keyCode` dovrebbe essere `229`](https://www.w3.org/TR/uievents/#determine-keydown-keyup-keyCode) ed il [`e.key` dovrebbe essere `"Unidentified"`](https://www.w3.org/TR/uievents-key/#key-attr-values).
 
-Keyboard events:
+Mentre alcune tastiere potrebbero usare il valore corretto per `e.key`, `e.code`, `e.keyCode`... premendo certi tasti come le frecce o lo barra spaziatrice, non esistono garanzie di aderenza alle specifiche, quindi la logica della tastiera potrebbe non funzionare sui dispositivi mobile.
 
-- `keydown` -- on pressing the key (auto-repeats if the key is pressed for long),
-- `keyup` -- on releasing the key.
+## Riepilogo
 
-Main keyboard event properties:
+La pressione di una tasto genera sempre un evento da tastiera, che sia un tasto simbolo o un tasto speciale come `key:Shift`, `key:Ctrl` e così via. L'unica eccezione è rappresentata dal tasto `key:Fn` che a volte è presente nelle tastiere dei portatili. Per questo tasto non ci sono eventi, perché spesso il funzionamento di questo tasto è implementato a un livello più basso del sistema operativo.
 
-- `code` -- the "key code" (`"KeyA"`, `"ArrowLeft"` and so on), specific to the physical location of the key on keyboard.
-- `key` -- the character (`"A"`, `"a"` and so on), for non-character keys, such as `key:Esc`, usually has the same value  as `code`.
+Eventi da tastiera:
 
-In the past, keyboard events were sometimes used to track user input in form fields. That's not reliable, because the input can come from various sources. We have `input` and `change` events to handle any input (covered later in the chapter <info:events-change-input>). They trigger after any kind of input, including copy-pasting or speech recognition.
+- `keydown` premendo il tasto (auto-repeat se il tasto viene tenuto premuto a lungo),
+- `keyup` rilasciando il tasto.
 
-We should use keyboard events when we really want keyboard. For example, to react on hotkeys or special keys.
+Le principali proprietà degli eventi da tastiera sono:
+
+- `code` il "codice del tasto" (`"KeyA"`, `"ArrowLeft"` e così via), specifico della posizione fisica del tasto sulla tastiera.
+- `key` -- il carattere (`"A"`, `"a"` e così via), per tasti che non rappresentano caratteri, come `key:Esc`, solitamente ha lo stesso valore di `code`.
+
+In passato, gli eventi da tastiera erano talvolta usati per tenere traccia degli input dell'utente nei campi dei form, cosa non molto affidabile perché l'input può avvenire in vari modi. Per gestire qualunque tipo di input abbiamo `input` e `change` (affrontati più avanti nel capitolo <info:events-change-input>). Questi scaturiscono da qualunque tipo di input, inclusi il copia-incolla o il riconoscimento vocale.
+
+In generale, dovremmo usare gli eventi da tastiera solamente quando vogliamo usare, appunto, la tastiera. Ad esempio per scorciatoie o tasti speciali.

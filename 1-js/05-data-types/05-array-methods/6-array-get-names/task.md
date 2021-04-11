@@ -4,7 +4,7 @@ importance: 5
 
 # Map di nomi
 
-Avete un array di oggetti `user`, ognugno di essi ha la proprietà `user.name`. Scrivete il codice che converte gli oggetti in un array di nomi.
+Avete un array di oggetti `user`; ognuno di essi ha la proprietà `user.name`. Scrivete il codice che converte gli oggetti in un array di nomi.
 
 Ad esempio:
 
@@ -15,7 +15,7 @@ let mary = { name: "Mary", age: 28 };
 
 let users = [ john, pete, mary ];
 
-let names = /* ... your code */
+let names = /* ... il vostro codice */
 
 alert( names ); // John, Pete, Mary
 ```
