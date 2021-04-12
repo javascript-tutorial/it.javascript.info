@@ -2,22 +2,22 @@
 
 Il confine di parola `pattern:\b` è un test, proprio come `pattern:^` e `pattern:$`.
 
-When the regexp engine (program module that implements searching for regexps) comes across `pattern:\b`, it checks that the position in the string is a word boundary.
+Quando l'interprete delle regexp (il modulo software che cerca all'interno delle espressioni regolari) si imbatte in `pattern:\b`, verifica se la posizione nella stringa sia un confine di parola.
 
-There are three different positions that qualify as word boundaries:
+Ci sono tre differenti posizioni che qualificano il confine di parola:
 
-- At string start, if the first string character is a word character `pattern:\w`.
-- Between two characters in the string, where one is a word character `pattern:\w` and the other is not.
-- At string end, if the last string character is a word character `pattern:\w`.
+- Ad inizio stringa, se il primo carattere di essa è un carattere di parola `pattern:\w`.
+- Tra due caratteri di una stringa, laddove una sia un carattere di parola `pattern:\w` e l'altro no.
+- A fine stringa, se l'ultimo carattere è un carattere di parola `pattern:\w`.
 
-For instance, regexp `pattern:\bJava\b` will be found in `subject:Hello, Java!`, where `subject:Java` is a standalone word, but not in `subject:Hello, JavaScript!`.
+Ad esempio, la regexp `pattern:\bJava\b` troverà corrispondenza in `subject:Hello, Java!`, dove `subject:Java` è una parola a sé, ma non troverà alcuna corrispondenza in `subject:Hello, JavaScript!`.
 
 ```js run
 alert( "Hello, Java!".match(/\bJava\b/) ); // Java
 alert( "Hello, JavaScript!".match(/\bJava\b/) ); // null
 ```
 
-In the string `subject:Hello, Java!` following positions correspond to `pattern:\b`:
+Nella stringa `subject:Hello, Java!` trovano riscontro in `pattern:\b` le seguenti posizioni:
 
 ![](hello-java-boundaries.svg)
 
