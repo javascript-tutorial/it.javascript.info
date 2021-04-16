@@ -1,1 +1,1 @@
-# Gestione degli Errori
+# Gestione degli errori
