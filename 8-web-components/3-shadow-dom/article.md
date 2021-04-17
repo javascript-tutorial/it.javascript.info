@@ -12,7 +12,7 @@ Prendiamo `<input type="range">` come esempio:
 <input type="range">
 </p>
 
-Il browser usa la combinazione DOM e CSS internamente, per visualizzarli a schermo. Normalmente la struttura del DOM ci è invisibile, ma possiamo vederla negli strumenti dello sviluppatore dei browser. Ad esempio, negli strumenti di sviluppo di Chrome, si può fare attivando nelle impostazioni generiche, l'opzione "Show user agent shadow DOM".
+Il browser usa la combinazione DOM e CSS internamente, per visualizzarli a schermo. Normalmente la struttura del DOM ci è invisibile, ma possiamo visualizzarla negli strumenti dello sviluppatore dei browser. Ad esempio, negli strumenti di sviluppo di Chrome, si può attivarne la visualizzazione nelle impostazioni generiche, l'opzione "Show user agent shadow DOM".
 
 Così facendo `<input type="range">` verrà mostrato in questo modo:
 
