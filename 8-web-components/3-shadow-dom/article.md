@@ -6,7 +6,7 @@ Lo Shadow DOM serve all'incapsulamento e permette al componente di avere il prop
 
 Avete mai pensato a come, dei controlli così complessi come quelli del browser, vengono creati e stilizzati?
 
-Prendiamo `<input type="range">` ad esempio:
+Prendiamo `<input type="range">` come esempio:
 
 <p>
 <input type="range">
