@@ -43,7 +43,7 @@ Più avanti, utilizzeremo lo standard Shadow DOM moderno, nella sezione delle [s
 
 Un elemento DOM può contenere due tipi di sottoalberi:
 
-1. Light tree -- un normale sottoalbero DOM, fatto di figli HTML. Tutti i sottoalberi affrontati nei capitolo precedenti appartengono a questa categoria "light".
+1. Light tree -- un normale sottoalbero DOM, fatto di figli HTML. Tutti i sottoalberi affrontati nei capitoli precedenti appartengono a questa categoria "light".
 2. Shadow tree -- un sottoalbero DOM nascosto, senza un elemento corrispondente nell'HTML, nascosto da "occhi indiscreti".
 
 Se un elemento li ha entrambi, il browser renderizza solo lo Shadow tree. Tuttavia possiamo impostare una sorta di composizione tra gli il light e lo Shadow tree. Vedremo in dettaglio l'argomento nell'apposita sezione <info:slots-composition>.
