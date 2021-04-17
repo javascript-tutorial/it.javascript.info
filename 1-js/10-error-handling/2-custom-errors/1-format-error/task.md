@@ -2,21 +2,21 @@ importance: 5
 
 ---
 
-# Inherit from SyntaxError
+# Eredita da SyntaxError
 
-Create a class `FormatError` that inherits from the built-in `SyntaxError` class.
+Crea una classe `FormatError` che eredita dalla classe incorporata `SyntaxError`.
 
-It should support `message`, `name` and `stack` properties.
+Dovrebbe supportare le proprietà `message`, `name` e `stack`.
 
-Usage example:
+Esempio di esecuzione:
 
 ```js
 let err = new FormatError("formatting error");
 
-alert( err.message ); // formatting error
+alert( err.message ); // Errore nella formattazione
 alert( err.name ); // FormatError
 alert( err.stack ); // stack
 
-alert( err instanceof FormatError ); // true
-alert( err instanceof SyntaxError ); // true (because inherits from SyntaxError)
+alert( err instanceof FormatError ); // vero
+alert( err instanceof SyntaxError ); // vero (poiché eredita SyntaxError)
 ```

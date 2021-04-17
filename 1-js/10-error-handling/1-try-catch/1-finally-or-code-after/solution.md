@@ -1,8 +1,8 @@
-The difference becomes obvious when we look at the code inside a function.
+La differenza diventa ovvia quando inseriamo il codice all'interno di una funzione.
 
-The behavior is different if there's a "jump out" of `try...catch`.
+Il comportamento è diverso se c'è una "uscita anticipata" dal `try...catch`.
 
-For instance, when there's a `return` inside `try...catch`. The `finally` clause works in case of *any* exit from `try...catch`, even via the `return` statement: right after `try...catch` is done, but before the calling code gets the control.
+Per esempio, quando c'è un `return` all'interno del `try...catch`. La clausola `finally` funziona *qualunque* sia la lcausa dell'uscita dal `try...catch`, anche tramite l'istruzione "return": appena il `try...catch` è terminato, ma prima che il codice richiamato prenda il controllo.
 
 ```js run
 function f() {
@@ -21,7 +21,7 @@ function f() {
 f(); // cleanup!
 ```
 
-...Or when there's a `throw`, like here:
+...O quando si presenta un `throw`, come:
 
 ```js run
 function f() {
@@ -44,4 +44,4 @@ function f() {
 f(); // cleanup!
 ```
 
-It's `finally` that guarantees the cleanup here. If we just put the code at the end of `f`, it wouldn't run in these situations.
+È `finally` che garantisce la pulizia qui. Se inseriamo del codice alla fine di `f`, in queste situazioni, non verrà eseguito.
