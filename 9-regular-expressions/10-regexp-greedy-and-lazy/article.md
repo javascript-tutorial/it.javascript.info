@@ -1,20 +1,20 @@
-# Greedy and lazy quantifiers
+# Modalità greedy e lazy dei quantificatori
 
-Quantifiers are very simple from the first sight, but in fact they can be tricky.
+I quantificatori sono molto semplici a prima vista, ma in realtà possono essere complicati.
 
-We should understand how the search works very well if we plan to look for something more complex than `pattern:/\d+/`.
+Dovremmo comprendere appieno come funziona la ricerca se intendiamo cercare qualcosa di più complesso di `pattern:/\d+/`.
 
-Let's take the following task as an example.
+Prendiamo ad esempio la seguente attività.
 
-We have a text and need to replace all quotes `"..."` with guillemet marks: `«...»`. They are preferred for typography in many countries.
+Abbiamo bisogno di rimpiazzare tutti i doppi apici `"..."` in un testo con le virgolette basse: `«...»`, che sono preferite nella tipografia di molti paesi.
 
-For instance: `"Hello, world"` should become `«Hello, world»`. There exist other quotes, such as `„Witam, świat!”` (Polish) or `「你好，世界」` (Chinese), but for our task let's choose `«...»`.
+Ad esempio: `"Hello, world"` dovrebbe diventare `«Hello, world»`. Esistono altre virgolette, come `„Witam, świat!”` (in Polonia) o `「你好，世界」` (in Cina). In questo caso, tuttavia, scegliamo `«...»`.
 
-The first thing to do is to locate quoted strings, and then we can replace them.
+Innanzitutto dobbiamo individuare le stringhe tra doppi apici per poi sostituirli.
 
-A regular expression like `pattern:/".+"/g` (a quote, then something, then the other quote) may seem like a good fit, but it isn't!
+Un'espressione regolare come `pattern:/".+"/g` (una stringa di lunghezza variabile racchiusa da doppi apici) può sembrare efficace, ma non lo è!
 
-Let's try it:
+Verifichiamo:
 
 ```js run
 let regexp = /".+"/g;
@@ -24,13 +24,13 @@ let str = 'a "witch" and her "broom" is one';
 alert( str.match(regexp) ); // "witch" and her "broom"
 ```
 
-...We can see that it works not as intended!
+...Non funziona come desideravamo!
 
-Instead of finding two matches `match:"witch"` and `match:"broom"`, it finds one: `match:"witch" and her "broom"`.
+Invece di trovare i due riscontri `match:"witch"` e `match:"broom"`, ne trova solo uno: `match:"witch" and her "broom"`.
 
-That can be described as "greediness is the cause of all evil".
+Questo fenomeno può essere descritto così: "l'avidità è la causa di tutti i mali".
 
-## Greedy search
+## La ricerca in modalità greedy (avida)
 
 To find a match, the regular expression engine uses the following algorithm:
 
@@ -288,7 +288,7 @@ alert( str1.match(regexp) ); // null, no matches, that's correct
 alert( str2.match(regexp) ); // <a href="link1" class="doc">, <a href="link2" class="doc">
 ```
 
-## Summary
+## Riepilogo
 
 Quantifiers have two modes of work:
 
