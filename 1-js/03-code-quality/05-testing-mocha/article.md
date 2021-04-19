@@ -2,7 +2,11 @@
 
 Il test automatico sarà utilizzato per molte attività.
 
+<<<<<<< HEAD
 Fa parte della "preparazione minima" di uno sviluppatore.
+=======
+## Why do we need tests?
+>>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 ## Perché sono necessari i test?
 

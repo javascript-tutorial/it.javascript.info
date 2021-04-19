@@ -9,7 +9,11 @@ Per poter visualizzare gli errori e ricevere altre informazioni utili riguardo g
 Molti sviluppatori preferiscono utilizzare Chrome o Firefox poiché questi browser incorporano i migliori strumenti per lo sviluppo. Anche gli altri browser hanno gli strumenti per lo sviluppo, talvolta con caratteristiche speciali, ma più che altro inseguono le caratteristiche di Chrome e Firefox.
 In genere gli sviluppatori hanno un browser "preferito" e utilizzano gli altri solo quando un problema è specifico di quel browser.
 
+<<<<<<< HEAD
 Gli strumenti per lo sviluppo sono molto potenti e possiedono molte funzionalità. Per iniziare, dobbiamo capire come accedervi, come individuare gli errori e come eseguire comandi JavaScript.
+=======
+Developer tools are potent; they have many features. To start, we'll learn how to open them, look at errors, and run JavaScript commands.
+>>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 ## Google Chrome
 

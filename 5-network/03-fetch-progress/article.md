@@ -9,7 +9,11 @@ Per tracciare i progressi in fase di download, possiamo usare la proprietà `res
 
 A differenza di `response.text()`, `response.json()` ed altri metodi, `response.body` dà il pieno controllo sul processo di lettura e possiamo quindi valutare quanto viene scaricato in qualsiasi momento.
 
+<<<<<<< HEAD
 Ecco una bozza di codice che legge la risposta da `response.body`:
+=======
+Here's the sketch of code that reads the response from `response.body`:
+>>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 ```js
 // al posto di response.json() e di altri metodi

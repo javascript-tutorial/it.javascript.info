@@ -32,7 +32,17 @@ alert( str.match(/^\d+/g) ); // 1
 */!*
 ```
 
+<<<<<<< HEAD
 Questo accade perchè di base il comportamento del caret `pattern:^` trova corrispondenza solo con l'inizio del testo, mentre in modo multilinea trova -- con l'inizio di ogni riga.
+=======
+That's because by default a caret `pattern:^` only matches at the beginning of the text, and in the multiline mode -- at the start of any line.
+
+```smart
+"Start of a line" formally means "immediately after a line break": the test  `pattern:^` in multiline mode matches at all positions preceded by a newline character `\n`.
+
+And at the text start.
+```
+>>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 ## Fine linea $
 

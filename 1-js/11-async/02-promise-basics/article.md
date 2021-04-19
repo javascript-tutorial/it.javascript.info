@@ -22,9 +22,16 @@ let promise = new Promise(function(resolve, reject) {
 
 La funzione passata a `new Promise` è chiamata *esecutore (executor)*. Quando la promise è creata, questa funzione esecutore viene eseguita automaticamente. Contiene il codice produttore, che eventualmente produrrà un risultato. Nei termini dell'analogia precedente: l'esecutore è il "cantante".
 
+<<<<<<< HEAD
 I suoi argomenti `resolve` e `reject` sono delle callback fornite da JavaScript stesso. Il nostro codice sta solamente dentro l'esecutore.
 
 ![](promise-resolve-reject.svg)
+=======
+- `resolve(value)` — if the job is finished successfully, with result `value`.
+- `reject(error)` — if an error has occurred, `error` is the error object.
+
+So to summarize: the executor runs automatically and attempts to perform a job. When it is finished with the attempt, it calls `resolve` if it was successful or `reject` if there was an error.
+>>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 L'oggetto `promise` risultante ha queste proprietà interne:
 

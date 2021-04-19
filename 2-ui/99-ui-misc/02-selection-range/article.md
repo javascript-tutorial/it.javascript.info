@@ -372,10 +372,17 @@ Ma la stessa selezione potrebbe essere effettuata anche a ritroso, partendo da "
 
 Ci sono eventi per tenere traccia della selezione:
 
+<<<<<<< HEAD
 - `elem.onselectstart` -- quando una selezione *inizia* su specificatamente su `elem` (o al suo interno). Ad esempio, quando l'utente preme il pulsante del mouse sull'elemento e poi muove il puntatore.
     - Prevenire l'azione predefinita (prevent default), fa in modo che la selezione non cominci. Quindi iniziare una selezione dall'elemento diventa impossibile, ma l'elemento è ancora selezionabile. Il visitatore deve solo iniziare la selezione da altrove.
 - `document.onselectionchange` -- ogni volta che una selezione viene modificata.
     - Nota bene: questo gestore può essere impostato solo su `document`.
+=======
+- `elem.onselectstart` -- when a selection *starts* specifically on element `elem` (or inside it). For instance, when the user presses the mouse button on it and starts to move the pointer.
+    - Preventing the default action cancels the selection start. So starting a selection from this element becomes impossible, but the element is still selectable. The visitor just needs to start the selection from elsewhere.
+- `document.onselectionchange` -- whenever a selection changes or starts.
+    - Please note: this handler can be set only on `document`, it tracks all selections in it.
+>>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 ### Demo di tracciamento per Selection
 

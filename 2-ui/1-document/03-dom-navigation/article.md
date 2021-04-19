@@ -214,7 +214,11 @@ alert( document.body.previousSibling ); // HTMLHeadElement
 
 ## Navigazione solo tra elementi
 
+<<<<<<< HEAD
 Le proprietà di navigazione viste finora fanno riferimento a *tutti* i nodi. Ad esempio, in `childNodes` possiamo trovare: nodi elemento, nodi di testo, ed anche nodi commento se ce ne sono.
+=======
+Navigation properties listed above refer to *all* nodes. For instance, in `childNodes` we can see both text nodes, element nodes, and even comment nodes if they exist.
+>>>>>>> 6ab384f2512902d74e4b0ff5a6be60e48ab52e96
 
 Ma per alcuni compiti non vogliamo nodi di testo o di commento. Vogliamo solo manipolare nodi che rappresentano i tags e che costituiscono la struttura della pagina.
 
