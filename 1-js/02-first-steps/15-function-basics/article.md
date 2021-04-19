@@ -154,7 +154,7 @@ showMessage('Ann', "What's up?"); // Ann: What's up? (**)
 
 Quando la funzione viene chiamata nelle righe `(*)` e `(**)`, il valore passato viene copiato nelle variabili locali `from` e `text`, che verranno utilizzate nella chiamata ad `alert`.
 
-Guardiamo un altro esempio: abbiamo una variabile `from` e la passiamo a una funzione. Da notare: la funzione cambia `from`, ma il cambiamento non è visibile all'esterno perchè la funzione usa sempre una copia del valore passato:
+Guardiamo un altro esempio: abbiamo una variabile `from` e la passiamo a una funzione. Da notare: la funzione cambia `from`, ma il cambiamento non è visibile all'esterno perché la funzione usa sempre una copia del valore passato:
 
 
 ```js run
@@ -232,7 +232,7 @@ function showMessage(text) {
 showMessage(); // empty message
 ```
 
-...Oppure utilizare l'operatore `||`:
+...Oppure utilizzare l'operatore `||`:
 
 ```js
 function showMessage(from, text) {
@@ -342,7 +342,7 @@ Per espressioni lunghe dopo la direttiva `return`, si potrebbe essere tentati da
 return
  (some + long + expression + or + whatever * f(a) + f(b))
 ```
-Questo non funziona, perchè JavaScript interpreta un punto e virgola dopo `return`. E' come se dopo `return` ci fosse scritto:
+Questo non funziona, perché JavaScript interpreta un punto e virgola dopo `return`. E' come se dopo `return` ci fosse scritto:
 
 ```js
 return*!*;*/!*
@@ -370,7 +370,7 @@ Esempi di nomi:
 
 ```js no-beautify
 showMessage(..)     // mostra un messaggio
-getAge(..)          // ritonra l'età (prendendola da qualche parte)
+getAge(..)          // ritorna l'età (prendendola da qualche parte)
 calcSum(..)         // calcola la somma e ritorna il risultato
 createForm(..)      // crea un form (e solitamente lo ritorna)
 checkPermission(..) // controlla i permessi, ritorna true/false
@@ -397,14 +397,14 @@ Funzioni che vengono utilizzate *molto spesso* potrebbero avere nomi molto corti
 
 Ad esempio il framework [jQuery](http://jquery.com) definisce una funzione con `$`. La libreria [Lodash](http://lodash.com/) ha nel *core* una funzione denominata `_`.
 
-Queste sono eccezioni. Generalmente i nomi delle funzioni sono precisi e descrittivi.
+Queste sono eccezioni. Generalmente i nomi delle funzioni dovrebbero essere concisi e descrittivi.
 ```
 
 ## Funzioni == Commenti
 
 Le funzioni dovrebbero essere brevi ed eseguire un solo compito. Se invece risultano lunghe, forse varrebbe la pena spezzarle in funzioni più piccole. Qualche volta può non essere semplice seguire questa regola, anche se sarebbe la cosa migliore.
 
-Una funzione separata non è solo semplice da testare e debuggare -- la sua stessa esistenza è un commento!
+Una funzione separata non è solo semplice da testare e correggere -- la sua stessa esistenza è un commento!
 
 Ad esempio, osserviamo le due funzioni `showPrimes(n)` sotto . Entrambe ritornano i [numeri primi](https://en.wikipedia.org/wiki/Prime_number) fino a `n`.
 

@@ -259,7 +259,7 @@ Il `describe` annidato definisce un nuovo "sotto-gruppo" di test. Nell'output po
 
 [iframe height=250 src="pow-4" edit border="1"]
 
-In futuro potremmo aggiungere più `it` e `describe` allo stesso livello, ognugo di questi avrà le proprie funzioni di supporto ma non potranno vedere `makeTest`.
+In futuro potremmo aggiungere più `it` e `describe` allo stesso livello, ognuno di questi avrà le proprie funzioni di supporto ma non potranno vedere `makeTest`.
 
 ````smart header="`before/after` and `beforeEach/afterEach`"
 Possiamo impostare le funzione `before/after` (prima/dopo) che vengono eseguite prima/dopo i test, o addirittura le funzioni `beforeEach/afterEach` (prima di ogni/dopo di ogni) che verranno eseguite prima di *ogni* `it`.
