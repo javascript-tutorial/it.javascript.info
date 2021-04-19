@@ -6,7 +6,7 @@ Ad esempio:
 ```js
 let john = { name: "John" };
 
-// l'oggetto è accessibilie, john è un suo riferimento
+// l'oggetto è accessibile, john è un suo riferimento
 
 // sovrascriviamo il riferimento
 john = null;
@@ -99,7 +99,7 @@ Confrontiamolo con l'esempio di `Map` visto sopra. Ora, se `john` esiste solo co
 - `weakMap.delete(key)`
 - `weakMap.has(key)`
 
-Perché questa limitazione? Per ragioni tecniche. Se un oggetto ha perso tutti i riferimenti (come `john` nel codice sopra), allora verrà automaticamente eliminato. Ma tecnicamente non è specificato esattamente *quando averrà la pulizia*.
+Perché questa limitazione? Per ragioni tecniche. Se un oggetto ha perso tutti i riferimenti (come `john` nel codice sopra), allora verrà automaticamente eliminato. Ma tecnicamente non è specificato esattamente *quando avverrà la pulizia*.
 
 Sarà il motore JavaScript a deciderlo. Potrebbe decidere di effettuare subito la pulizia della memoria oppure aspettare più oggetti per eliminarli in blocco. Quindi, tecnicamente il numero degli elementi di una `WeakMap` non è conosciuto. Il motore potrebbe già aver effettuato la pulizia oppure no, o averlo fatto solo parzialmente. Per questo motivo, i metodi che accedono a `WeakMap` per intero non sopo supportati.
 
@@ -120,7 +120,7 @@ weakMap.set(john, "secret documents");
 
 Proviamo a guardare un esempio.
 
-Immaginiamo di avere del codice che tiene nota del numero di visite per ogni utente. L'informazioni viene memorizzata in un map: l'utente è la chiave, mentre il conteggio delle visite è il valore. Quando l'utente esce, vogliamo smettere di mantenere in memoria il conteggio delle visite.
+Immaginiamo di avere del codice che tiene nota del numero di visite per ogni utente. L'informazione viene memorizzata in un map: l'utente è la chiave, mentre il conteggio delle visite è il valore. Quando l'utente esce, vogliamo smettere di mantenere in memoria il conteggio delle visite.
 
 Qui vediamo un esempio di conteggio utilizzando `Map`:
 
@@ -188,7 +188,7 @@ function process(obj) {
 }
 
 *!*
-// Ora utilizzaimo process() in un altro file:
+// Ora utilizziamo process() in un altro file:
 */!*
 
 // 📁 main.js
@@ -205,7 +205,7 @@ obj = null;
 alert(cache.size); // 1 (Ouch! L'oggetto è ancora in cache, sta occupando memoria!)
 ```
 
-Per chiamate multiple di `process(obj)` con lo stesso oggetto, il risultato viene calcolato solamente la prima volta, le successive chiamate lo prenderanno dalla `cache`. Il lato negatico è che dobbiamo ricordarci di pulire la `cache` quando non è più necessaria.
+Per chiamate multiple di `process(obj)` con lo stesso oggetto, il risultato viene calcolato solamente la prima volta, le successive chiamate lo prenderanno dalla `cache`. Il lato negativo è che dobbiamo ricordarci di pulire la `cache` quando non è più necessaria.
 
 Se sostituiamo `Map` con `WeakMap`, il problema si risolve. I risultati in cache vengono automaticamente rimossi una volta che l'oggetto viene ripulito dal garbage collector.
 
@@ -232,10 +232,10 @@ let obj = {/* un oggetto */};
 let result1 = process(obj);
 let result2 = process(obj);
 
-// ...più tadi, quando non abbiamo più bisogno dell'oggetto
+// ...più tardi, quando non abbiamo più bisogno dell'oggetto
 obj = null;
 
-// Non possiamo ottenere la dimensione della cache, poichè è una WeakMap,
+// Non possiamo ottenere la dimensione della cache, poiché è una WeakMap,
 // ma è 0 oppure lo sarà presto
 // Quando un oggetto viene ripulito dal garbage collector, anche i dati associati vengono ripuliti
 ```

@@ -24,21 +24,19 @@ La funzione passata a `new Promise` è chiamata *esecutore (executor)*. Quando l
 
 I suoi argomenti `resolve` e `reject` sono delle callback fornite da JavaScript stesso. Il nostro codice sta solamente dentro l'esecutore.
 
+- `resolve(value)` — se il processo termina correttamente, col risultato `value`.
+- `reject(error)` — se si verifica un errore, `error` è l'oggetto errore.
+
+Ricapitolando: l'esecutore parte automaticamente e tenta di eseguire un compito. Quando l'esecuzione termina, viene invocato `resolve` in caso di successo, oppure `reject` in caso di errore.
+
+L'oggetto `promise` restituito ha le seguenti proprietà interne:
+
+- `state` — inizialmente "pending", poi cambia in "fulfilled" se viene invocato `resolve` o in "rejected" se viene invocato `reject`.
+- `result` — inizialmente `undefined`, poi cambia in `value` se viene invocato `resolve(value)` o in `error` se viene invocato `reject(error)`.
+
+Quindi l'esecutore, alla fine, mette la promise in uno di questi stati:
+
 ![](promise-resolve-reject.svg)
-
-L'oggetto `promise` risultante ha queste proprietà interne:
-
-- `state` — inizialmente "pending", poi cambia con "fulfilled" o "rejected",
-- `result` — un valore arbitrario di tua scelta, inizialmente `undefined`.
-
-Quando l'esecutore finisce il lavoro (job), dovrebbe chiamare una delle funzioni che riceve come argomento:
-
-- `resolve(value)` — per indicare che il lavoro è finito con successo:
-    - imposta `state` come `"fulfilled"`,
-    - imposta `result` come `value`.
-- `reject(error)` — per indicare che si è verificato un errore:
-    - imposta `state` come `"rejected"`,
-    - imposta `result` come `error`.
 
 Più avanti vedremo come questi cambiamenti diventano noti ai "fan".
 

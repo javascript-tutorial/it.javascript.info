@@ -73,6 +73,12 @@ alert('Scorrimento corrente da sinistra: ' + window.pageXOffset);
 
 Queste proprietà sono in sola lettura.
 
+```smart header="`scrollX` e `scrollY` disponibili anche come proprietà di `window`"
+Per ragioni storiche, esistono entrambe le proprietà, ma sono identiche:
+- `window.pageXOffset` è un alias di `window.scrollX`.
+- `window.pageYOffset` è un alias di `window.scrollY`.
+```
+
 ## Lo scorrimento con scrollTo, scrollBy, scrollIntoView [#window-scroll]
 
 ```warn
