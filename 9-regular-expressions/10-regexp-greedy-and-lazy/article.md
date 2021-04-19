@@ -8,7 +8,7 @@ Prendiamo ad esempio la seguente attività.
 
 Abbiamo bisogno di rimpiazzare tutti i doppi apici `"..."` in un testo con le virgolette basse: `«...»`, che sono preferite nella tipografia di molti paesi.
 
-Ad esempio: `"Hello, world"` dovrebbe diventare `«Hello, world»`. Esistono altre virgolette, come `„Witam, świat!”` (in Polonia) o `「你好，世界」` (in Cina). In questo caso, tuttavia, scegliamo `«...»`.
+Ad esempio: `"Hello, world"` dovrebbe diventare `«Hello, world»`. Esistono altre virgolette, come `„Witam, świat!”` (in Polonia) o `「你好，世界」` (in Cina), in questo caso, tuttavia, scegliamo `«...»`.
 
 Innanzitutto dobbiamo individuare le stringhe tra doppi apici per poi sostituirli.
 
@@ -32,25 +32,25 @@ Questo fenomeno può essere descritto così: "l'avidità è la causa di tutti i 
 
 ## La ricerca in modalità greedy (avida)
 
-To find a match, the regular expression engine uses the following algorithm:
+Per trovare un riscontro, il motore dell'espressione regolare usa il seguente algoritmo:
 
-- For every position in the string
-    - Try to match the pattern at that position.
-    - If there's no match, go to the next position.
+- Per ogni posizione nella stringa
+    - Prova a trovare un riscontro del pattern in quella posizione.
+    - Se non c'è un riscontro, passa alla posizione successiva.
 
-These common words do not make it obvious why the regexp fails, so let's elaborate how the search works for the pattern `pattern:".+"`.
+Questa procedura generica non ci spiega con evidenza perché l'espressione regolare fallisca, quindi approfondiamo come funziona la ricerca per il pattern `pattern:".+"`.
 
-1. The first pattern character is a quote `pattern:"`.
+1. Il primo carattere del pattern è un doppio apice `pattern:"`.
 
-    The regular expression engine tries to find it at the zero position of the source string `subject:a "witch" and her "broom" is one`, but there's `subject:a` there, so there's immediately no match.
+    Il motore dell'espressione regolare prova a trovarlo nella posizione zero della stringa `subject:a "witch" and her "broom" is one`, ma in quel punto trova `subject:a`, pertanto non c'è immediata corrispondenza.
 
-    Then it advances: goes to the next positions in the source string and tries to find the first character of the pattern there, fails again, and finally finds the quote at the 3rd position:
+    Quindi procede: passa alle successive posizioni nella stringa sorgente e prova a trovare lì il primo carattere del pattern, prima fallisce nuovamente, e poi trova finalmente il doppio apice nella terza posizione:
 
     ![](witch_greedy1.svg)
 
-2. The quote is detected, and then the engine tries to find a match for the rest of the pattern. It tries to see if the rest of the subject string conforms to `pattern:.+"`.
+2. Rilevato il doppio apice, il motore tenta di trovare riscontro per il resto del pattern. Verifica se il resto della stringa sia conforme a `pattern:.+"`.
 
-    In our case the next pattern character is `pattern:.` (a dot). It denotes "any character except a newline", so the next string letter `match:'w'` fits:
+    Nel nostro esempio il successivo carattere del pattern è `pattern:.` (un punto) che indica "qualsiasi carattere tranne una nuova riga". Trova pertanto corrispondenza nel carattere successivo della stringa `match:'w'`:
 
     ![](witch_greedy2.svg)
 
