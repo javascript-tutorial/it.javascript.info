@@ -2,9 +2,9 @@ importance: 5
 
 ---
 
-# Aggiungere un pulsante di chiusura
+# Aggiungete un pulsante di chiusura
 
-Abbiamo una lista di messaggi.
+Avete una lista di messaggi.
 
 Aggiungete tramite JavaScript un pulsante di chiusura nell'angolo in alto a destra di ogni messaggio.
 
