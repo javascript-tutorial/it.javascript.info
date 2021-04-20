@@ -1,11 +1,11 @@
 
 # Elemento Template
 
-Un elemento `<template>`  built-in funziona come uno storage per i templates del markup HTML. Il browser ne ignora il contenuto, controllando solamente la validità della sintassi, ma possiamo accedervi ed usarli via JavaScript, per creare altri elementi.
+L'elemento built-in `<template>` funziona come uno storage per i templates del markup HTML. Il browser ignora il suo contenuto, controllandone solamente la validità della sintassi, ma possiamo accedervi ed usarli via JavaScript, per creare altri elementi.
 
-In teoria, possiamo creare qualunque elemento invisibile in qualunque punto dell'HTML, al solo scopo di salvare del markup HTML. Cosa possiamo dire su `<template>`?
+In teoria, possiamo creare qualunque elemento invisibile in qualunque punto dell'HTML, al solo scopo di salvare del markup HTML. Cos'altro possiamo dire su `<template>`?
 
-Prima di tutto il contenuto può essere un qaualunque tipo di HTML valido, anche se, normalmente richiede un tag di inclusione appropriato.
+Prima di tutto il contenuto può essere qualunque HTML valido, anche se, normalmente richiede un tag di inclusione appropriato.
 
 Per esempio, possiamo possiamo inserire una riga di una tabella `<tr>`:
 ```html
@@ -16,9 +16,9 @@ Per esempio, possiamo possiamo inserire una riga di una tabella `<tr>`:
 </template>
 ```
 
-Solitamente, se proviamo a inserire un `<tr>` per esempio dentro un `<div>`, il browser riconoscerà una struttura non valida, "correggendola", aggiungendovi una tabella attorno. Questo non è il comportamento designato, e d'altra parte `<template>` mantiene le cose esattamente come le inseriamo.
+Solitamente, se proviamo a inserire un `<tr>` per esempio dentro un `<div>`, il browser riconoscerà una struttura non valida, "correggendola", aggiungendovi una tabella attorno. Questo non è il comportamento corretto, ma d'altra parte `<template>` mantiene le cose esattamente come le inseriamo.
 
-Possiamo anche inserire stili e scripts dentro i `<template>`:
+Dentro i tag `<template>` possiamo anche inserire stili e scripts:
 
 ```html
 <template>
@@ -31,15 +31,15 @@ Possiamo anche inserire stili e scripts dentro i `<template>`:
 </template>
 ```
 
-Il browser considera il contenuto di `<template>` "avulso dal documento": gli stili non verranno applicati, gli script non verranno eseguiti, i `<video autoplay>` non verranno partiranno in automatico, etc.
+Il browser considera il contenuto di `<template>` "avulso dal documento": gli stili non verranno applicati, gli script non verranno eseguiti, i `<video autoplay>` non partiranno in automatico, etc.
 
-Il contenuto diventa vivo (gli stili vengono applicati, gli script vengono eseguiti, etc) solo quando andiamo ad inserirlo dentro il documento.
+Il contenuto prende vita (gli stili vengono applicati, gli script vengono eseguiti, etc) solo quando viene inseririto dentro il documento.
 
 ## Inserimento del template
 
 Il contenuto del template è disponibile nella proprietà `content` come [DocumentFragment](info:modifying-document#document-fragment), un particolare tipo di nodo DOM.
 
-Possiamo trattarlo come ogni altro nodo del DOM, tranne per una sua peculiarità: quando lo inseriamo da qualche parte, come DocumentFragment, vengono inseriti i suoi figli.
+Possiamo trattarlo come ogni altro nodo del DOM, tranne per una sua peculiarità: quando lo inseriamo da qualche parte, come DocumentFragment, vengono inseriti solo i suoi figli.
 
 Per esempio:
 
@@ -55,7 +55,7 @@ Per esempio:
   let elem = document.createElement('div');
 
 *!*
-  // Clona il contenuto del template per riutilizzarlo più volte
+  // Clona il contenuto del template per riutilizzarlo piu' volte
   elem.append(tmpl.content.cloneNode(true));
 */!*
 
@@ -101,16 +101,14 @@ Questi formano lo shadow DOM:
 
 ## Riepilogo
 
-Per riepilogare:
-
 - il contenuto di `<template>` può essere qualunque HTML sintatticamente corretto.
-- i contenuto di `<template>` viene considerato "avulso dal documento", quindi non modificherà o eseguirà alcunché.
-- Possiamo accedere a `template.content` via JavaScript, clonarlo per poterlo riutilizzare in un nuovo componente.
+- il contenuto di `<template>` essendo considerato "avulso dal documento", non modificherà, nè eseguirà alcunché al suo interno.
+- Possiamo accedere a `template.content` via JavaScript, ed anche clonarlo per poterlo riutilizzare in un nuovo componente.
 
-Il tag `<template>` è unico, perché:
+Il tag `<template>` ha delle pecurialità uniche, in quanto:
 
 - Il browser controlla la sintassi HTML al suo interno (diversamente dall'uso di un template string dentro uno script).
 - ...Tuttavia è permesso l'uso di tag HTML top-level, anche quelli che non avrebbero alcun senso se privi del loro appropriato contenitore (per esempio i `<tr>`).
 - Il contenuto diventa interattivo (gli scripts vengono eseguiti, i `<video autoplay>` partono, etc) quando viene inserito dentro il documento.
 
-L'elemento `<template>` non comprende alcun tipo di meccanismo di interazione, data binding o sostituzioni di variabili, ma possiamo implementarli su di essi.
+L'elemento `<template>` non comprende alcun tipo di meccanismo di interazione, data binding o sostituzioni di variabili, ma possiamo implementarli.
