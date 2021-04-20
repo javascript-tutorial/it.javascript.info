@@ -1,33 +1,33 @@
 # Shadow DOM slots, composition
 
-Many types of components, such as tabs, menus, image galleries, and so on, need the content to render.
+Molti tipi di components, come tabs, menù, gallerie di immagini e così via, necessitano di contenuti da visualizzare.
 
-Just like built-in browser `<select>` expects `<option>` items, our `<custom-tabs>` may expect the actual tab content to be passed. And a `<custom-menu>` may expect menu items.
+Proprio come gli elementi built-in del browser, dove `<select>` si aspetta degli elementi `<option>`, i nostri `<custom-tabs>` potrebbero aspettarsi che gli venga passato l'attuale contenuto del tab. Ed un `<custom-menu>`, ad esempio, si aspetterebbe degli elemetni del menù.
 
-The code that makes use of `<custom-menu>` can look like this:
+Il codice che fa uso del `<custom-menu>` potrebbe essere questo:
 
 ```html
 <custom-menu>
-  <title>Candy menu</title>
-  <item>Lollipop</item>
-  <item>Fruit Toast</item>
+  <title>Menù dei dolciumi</title>
+  <item>Lecca-lecca</item>
+  <item>Toast alla frutta</item>
   <item>Cup Cake</item>
 </custom-menu>
 ```
 
-...Then our component should render it properly, as a nice menu with given title and items, handle menu events, etc.
+...Quindi il nostro "component" dovrebbe visualizzarsi correttamente, come un menù con titolo e relativi elementi, gestione degli eventi e tutto il resto...
 
-How to implement it?
+Come si può implementare?
 
-We could try to analyze the element content and dynamically copy-rearrange DOM nodes. That's possible, but if we're moving elements to shadow DOM, then CSS styles from the document do not apply in there, so the visual styling may be lost. Also that requires some coding.
+Possiamo provare ad analizzare il contenuto dell'elemento, e copiare e poi riarrangiare dinamicamente i nodi DOM. Ciò è sicuramente fattibile, ma se stiamo spostando gli elementi nello shadow DOM, e quindi gli stili CSS del documento non verranno applicati in quella sezione, potremmo perdere lo stile visuale. Ed anche questo richiederebbe un po' di gestione lato codice.
 
-Luckily, we don't have to. Shadow DOM supports `<slot>` elements, that are automatically filled by the content from light DOM.
+Fortunatamente, non è necessario. Lo Shadow DOM supporta gli elementi `<slot>`, che vengono automaticamente riempiti dal contenuto del light DOM.
 
 ## Named slots
 
-Let's see how slots work on a simple example.
+Diamo un'occhiata al funzionamento degli slots con un esempio basilare.
 
-Here, `<user-card>` shadow DOM provides two slots, filled from light DOM:
+Qui, lo shadow DOM `<user-card>` fornisce due slots, riempiti dal light DOM:
 
 ```html run autorun="no-epub" untrusted height=80
 <script>
@@ -56,11 +56,11 @@ customElements.define('user-card', class extends HTMLElement {
 </user-card>
 ```
 
-In the shadow DOM, `<slot name="X">` defines an "insertion point", a place where elements with `slot="X"` are rendered.
+Nello shadow DOM, `<slot name="X">` definisce un "punto di inserimento", un posto dove vengono visualizzati gli elementi con `slot="X"`.
 
-Then the browser performs "composition": it takes elements from the light DOM and renders them in corresponding slots of the shadow DOM. At the end, we have exactly what we want -- a component that can be filled with data.
+Quindi il browser esegue la "composizione": prende gli elementi dal light DOM e ne esegue il rendering negli slots corrispondenti dello shadow DOM. Quindi alla fine, avremo esattamente quello che vogliamo: un componente che può essere riempito con dei dati.
 
-Here's the DOM structure after the script, not taking composition into account:
+Ecco come sarà la struttura dopo lo script, senza il coinvolgimento della composition:
 
 ```html
 <user-card>
@@ -76,20 +76,20 @@ Here's the DOM structure after the script, not taking composition into account:
 </user-card>
 ```
 
-We created the shadow DOM, so here it is, under `#shadow-root`. Now the element has both light and shadow DOM.
+Abbiamo creato lo shadow DOM, quindi eccolo, dentro `#shadow-root`. Ora ha sia lo shadow che il light DOM.
 
-For rendering purposes, for each `<slot name="...">` in shadow DOM, the browser looks for `slot="..."` with the same name in the light DOM. These elements are rendered inside the slots:
+Per esigenze di rendering, per ogni `<slot name="...">` dello shadow DOM, il browser cerca uno `slot="..."` con lo stesso nome all'interno del light DOM. Questi elementi vengono renderizzati dentro gli slots:
 
 ![](shadow-dom-user-card.svg)
 
-The result is called "flattened" DOM:
+Il risultato viene soprannominato "flattened" DOM:
 
 ```html
 <user-card>
   #shadow-root
     <div>Name:
       <slot name="username">
-        <!-- slotted element is inserted into the slot -->
+        <!-- l'elemento slotted viene inserito nello slot -->
         <span slot="username">John Smith</span>
       </slot>
     </div>
@@ -101,35 +101,35 @@ The result is called "flattened" DOM:
 </user-card>
 ```
 
-...But the flattened DOM exists only for rendering and event-handling purposes. It's kind of "virtual". That's how things are shown. But the nodes in the document are actually not moved around!
+...Ma il flattened DOM esiste poer scopi puramente di rendering e di gestione degli eventi. È come se fosse "virtuale". Le cose vengono mostrate così. Ma i nodi nel documento non vengono spostati!
 
-That can be easily checked if we run `querySelectorAll`: nodes are still at their places.
+Ciò può essere facilmente verificato se andiamo ad eseguire `querySelectorAll`: i nodi saranno al proprio posto.
 
 ```js
-// light DOM <span> nodes are still at the same place, under `<user-card>`
+// gli nodi degli <span> del light DOM sono ancora nella stessa posizione, dentro `<user-card>`
 alert( document.querySelectorAll('user-card span').length ); // 2
 ```
 
-So, the flattened DOM is derived from shadow DOM by inserting slots. The browser renders it and uses for style inheritance, event propagation (more about that later). But JavaScript still sees the document "as is", before flattening.
+Quindi, il flattened DOM deriva dallo shadow DOM andando ad inserire gli slots. Il browser ne effettua il rendering e li usa per ereditare gli stili e per la propagazione degli eventi (vedremo questi aspetti più avanti). Ma JavaScript vede ancora il documento "per quello che è", cioè come era prima del flattening.
 
-````warn header="Only top-level children may have slot=\"...\" attribute"
-The `slot="..."` attribute is only valid for direct children of the shadow host (in our example, `<user-card>` element). For nested elements it's ignored.
+````warn header="Solo i figli top-level possono avere l'attributo slot=\"...\" "
+L'attrbibuto `slot="..."` è valido solamente per i figli diretti dello shadow host (nel nostro esempio, l'elemento `<user-card>`). Per gli elementi annidati vengono ignorati.
 
-For example, the second `<span>` here is ignored (as it's not a top-level child of `<user-card>`):
+Ad esempio, qui il secondo `<span>` viene ignorato (dal momento che non è un figlio top-level di `<user-card>`):
 ```html
 <user-card>
   <span slot="username">John Smith</span>
   <div>
-    <!-- invalid slot, must be direct child of user-card -->
+    <!-- slot non valido, deve essere un figlio diretto di user-card -->
     <span slot="birthday">01.01.2001</span>
   </div>
 </user-card>
 ```
 ````
 
-If there are multiple elements in light DOM with the same slot name, they are appended into the slot, one after another.
+Se ci sono più elementi nel light DOM con lo stesso slot name, vengono inseriti nello slot, uno dopo l'altro, in successione.
 
-For example, this:
+Per esempio, qui abbiamo:
 ```html
 <user-card>
   <span slot="username">John</span>
@@ -137,7 +137,7 @@ For example, this:
 </user-card>
 ```
 
-Gives this flattened DOM with two elements in `<slot name="username">`:
+Restituisce questo flattened DOM con due elementi dentro `<slot name="username">`:
 
 ```html
 <user-card>
@@ -156,9 +156,9 @@ Gives this flattened DOM with two elements in `<slot name="username">`:
 
 ## Slot fallback content
 
-If we put something inside a `<slot>`, it becomes the fallback, "default" content. The browser shows it if there's no corresponding filler in light DOM.
+Se inseriamo qualcosa dentro uno `<slot>`, diverrà il contenuto di ripiego, quello "default". Il browser mostrerà questo, nel caso in cui non vi fossero contenuti corrispondenti nel light DOM.
 
-For example, in this piece of shadow DOM, `Anonymous` renders if there's no `slot="username"` in light DOM.
+Per esempio, in questo pezzo di shadow DOM, verrà visualizzato `Anonymous` se non ci sono `slot="username"` nel light DOM.
 
 ```html
 <div>Name:
@@ -166,11 +166,11 @@ For example, in this piece of shadow DOM, `Anonymous` renders if there's no `slo
 </div>
 ```
 
-## Default slot: first unnamed
+## Slot "default": il primo senza nome
 
-The first `<slot>` in shadow DOM that doesn't have a name is a "default" slot. It gets all nodes from the light DOM that aren't slotted elsewhere.
+Il primo `<slot>` dello shadow DOM privo di nome è uno slot "default". Esso riceve tutti i nodi dal light DOM che non sono stati slottati da nessuna parte.
 
-For example, let's add the default slot to our `<user-card>` that shows all unslotted information about the user:
+Per esempio, aggiungiamo lo slot default al nostro `<user-card>` che mostrerà tutte le informazioni non slottate dell'utente:
 
 ```html run autorun="no-epub" untrusted height=140
 <script>
@@ -197,21 +197,21 @@ customElements.define('user-card', class extends HTMLElement {
 
 <user-card>
 *!*
-  <div>I like to swim.</div>
+  <div>Mi piace nuotare.</div>
 */!*
   <span slot="username">John Smith</span>
   <span slot="birthday">01.01.2001</span>
 *!*
-  <div>...And play volleyball too!</div>
+  <div>...ed anche giocare a pallavolo!</div>
 */!*
 </user-card>
 ```
 
-All the unslotted light DOM content gets into the "Other information" fieldset.
+Tutti i contenuti del light DOM non slottati andranno a finire dentro il fieldset "Other information".
 
-Elements are appended to a slot one after another, so both unslotted pieces of information are in the default slot together.
+Glie elementi vengono accodati su uno slot, uno dopo l'altro, quindi anche i pezzi di informazione non slottare vanno a finire dentro lo slot default tutti insieme.
 
-The flattened DOM looks like this:
+Il flattened DOM apparirà come questo:
 
 ```html
 <user-card>
@@ -238,24 +238,24 @@ The flattened DOM looks like this:
 </user-card>
 ```
 
-## Menu example
+## Esempio di menù
 
-Now let's back to `<custom-menu>`, mentioned at the beginning of the chapter.
+Torniamo adesso al `<custom-menu>`, citato all'inizio del capitolo.
 
-We can use slots to distribute elements.
+Possiamo usare gli slot per distribuire gli elementi.
 
-Here's the markup for `<custom-menu>`:
+Ecco il markup per il `<custom-menu>`:
 
 ```html
 <custom-menu>
-  <span slot="title">Candy menu</span>
-  <li slot="item">Lollipop</li>
-  <li slot="item">Fruit Toast</li>
+  <span slot="title">Menù dei dolciumi</span>
+  <li slot="item">Lecca-lecca</li>
+  <li slot="item">Toast alla frutta</li>
   <li slot="item">Cup Cake</li>
 </custom-menu>
 ```
 
-The shadow DOM template with proper slots:
+Invece il template dello shadow DOM con gli slot appropriati:
 
 ```html
 <template id="tmpl">
@@ -267,10 +267,10 @@ The shadow DOM template with proper slots:
 </template>
 ```
 
-1. `<span slot="title">` goes into `<slot name="title">`.
-2. There are many `<li slot="item">` in the template, but only one `<slot name="item">` in the template. So all such `<li slot="item">` are appended to `<slot name="item">` one after another, thus forming the list.
+1. `<span slot="title">` andrà a finire dentro `<slot name="title">`.
+2. Ci sono tanti `<li slot="item">`, ma solo uno `<slot name="item">` nel template. Quindi tutti questi `<li slot="item">` verranno inseriti dentro `<slot name="item">` uno dopo l'altro, così da formare la lista.
 
-The flattened DOM becomes:
+Il flattened DOM diventa:
 
 ```html
 <custom-menu>
@@ -278,12 +278,12 @@ The flattened DOM becomes:
     <style> /* menu styles */ </style>
     <div class="menu">
       <slot name="title">
-        <span slot="title">Candy menu</span>
+        <span slot="title">Menù dei dolciumi</span>
       </slot>
       <ul>
         <slot name="item">
-          <li slot="item">Lollipop</li>
-          <li slot="item">Fruit Toast</li>
+          <li slot="item">Lecca-lecca</li>
+          <li slot="item">Toast alla frutta</li>
           <li slot="item">Cup Cake</li>
         </slot>
       </ul>
@@ -291,48 +291,48 @@ The flattened DOM becomes:
 </custom-menu>
 ```
 
-One might notice that, in a valid DOM, `<li>` must be a direct child of `<ul>`. But that's flattened DOM, it describes how the component is rendered, such thing happens naturally here.
+Qualcuno potrebbe fare notare che, in un DOM valido, un `<li>` dovrebbe essere figlio diretto di `<ul>`. Ma questo è un flattened DOM, che descrive come il componente verrà renderizzato, quindi è perfettamente regolare.
 
-We just need to add a `click` handler to open/close the list, and the `<custom-menu>` is ready:
+Dobbiamo solo aggiungere un gestire al `click` per aprire e chiudere la lista, ed il `<custom-menu>` sarà pronto:
 
 ```js
 customElements.define('custom-menu', class extends HTMLElement {
   connectedCallback() {
     this.attachShadow({mode: 'open'});
 
-    // tmpl is the shadow DOM template (above)
+    // tmpl e' il template dello shadow DOM (sopra)
     this.shadowRoot.append( tmpl.content.cloneNode(true) );
 
-    // we can't select light DOM nodes, so let's handle clicks on the slot
+    // non possiamo selezionare nodi del light DOM, quindi andiamo a gestire gli eventi nello slot
     this.shadowRoot.querySelector('slot[name="title"]').onclick = () => {
-      // open/close the menu
+      // apre e chiude il menu'
       this.shadowRoot.querySelector('.menu').classList.toggle('closed');
     };
   }
 });
 ```
 
-Here's the full demo:
+Ecco la demo completa:
 
 [iframe src="menu" height=140 edit]
 
-Of course, we can add more functionality to it: events, methods and so on.
+Certamente possiamo andare ad aggiungere più funzionalità: eventi metodi e via dicendo.
 
-## Updating slots
+## Aggiornamento degli slots
 
-What if the outer code wants to add/remove menu items dynamically?
+E se volessimo aggiungere e rimuovere elementi del menù dinamicamente?
 
-**The browser monitors slots and updates the rendering if slotted elements are added/removed.**
+**Il browser monitora dgli slots e aggiorna la visualizzazione all'inserimento o rimozione di elementi slottati.**
 
-Also, as light DOM nodes are not copied, but just rendered in slots, the changes inside them immediately become visible.
+Inoltre, dal momento che i nodi del light DOM non vengono copiati, ma solo visualizzati negli slots, le modifiche al loro interno divengono immmediatamente visibili.
 
-So we don't have to do anything to update rendering. But if the component code wants to know about slot changes, then `slotchange` event is available.
+Quindi non dobbiamo fare nulla per aggiornare la visualizzazione. Ma se il codice del componente vuole avere dei dettagli sulla modifica degli slots, allora si potrà usare l'evento `slotchange`.
 
-For example, here the menu item is inserted dynamically after 1 second, and the title changes after 2 seconds:
+Per esempio, qui l'elemento del menù viene inserito dinamicamente dopo un secondo, ed il titolo cambia dopo 2 secondi:
 
 ```html run untrusted height=80
 <custom-menu id="menu">
-  <span slot="title">Candy menu</span>
+  <span slot="title">Menù dei dolciumi</span>
 </custom-menu>
 
 <script>
@@ -344,7 +344,7 @@ customElements.define('custom-menu', class extends HTMLElement {
       <ul><slot name="item"></slot></ul>
     </div>`;
 
-    // shadowRoot can't have event handlers, so using the first child
+    // shadowRoot non puo' gestori di evento, quindi usiamo il primo nodo figlio
     this.shadowRoot.firstElementChild.addEventListener('slotchange',
       e => alert("slotchange: " + e.target.name)
     );
@@ -352,38 +352,38 @@ customElements.define('custom-menu', class extends HTMLElement {
 });
 
 setTimeout(() => {
-  menu.insertAdjacentHTML('beforeEnd', '<li slot="item">Lollipop</li>')
+  menu.insertAdjacentHTML('beforeEnd', '<li slot="item">Lecca-lecca</li>')
 }, 1000);
 
 setTimeout(() => {
-  menu.querySelector('[slot="title"]').innerHTML = "New menu";
+  menu.querySelector('[slot="title"]').innerHTML = "Nuovo menù";
 }, 2000);
 </script>
 ```
 
-The menu rendering updates each time without our intervention.
+Il rendering del menù, viene aggiornato ogni volta senza la necessità di un nostro intervento.
 
-There are two `slotchange` events here:
+In questo esempio, ci sono due eventi `slotchange`:
 
-1. At initialization:
+1. Nella inizializzazione:
 
-    `slotchange: title` triggers immediately, as the `slot="title"` from the light DOM gets into the corresponding slot.
-2. After 1 second:
+    `slotchange: title` viene scaturito immediatamente, dal momento che `slot="title"` dal light DOM va a finire nello slot corrispondente.
+2. Dopo 1 secondo:
 
-    `slotchange: item` triggers, when a new `<li slot="item">` is added.
+    `slotchange: item` viene scaturito quando viene aggiunto un nuovo `<li slot="item">`.
 
-Please note: there's no `slotchange` event after 2 seconds, when the content of `slot="title"` is modified. That's because there's no slot change. We modify the content inside the slotted element, that's another thing.
+Norta bene: non ci sono eventi `slotchange` dopo 2 secondi, quando viene modificato il contenuto di `slot="title"`. Questo perché non ci sono modifiche slot. Abbiamo modificato il contenuto dentro l'elemento slotted, che è tutt'altra cosa.
 
-If we'd like to track internal modifications of light DOM from JavaScript, that's also possible using a more generic mechanism: [MutationObserver](info:mutation-observer).
+Se volessimo tenere traccia delle modifiche interne del light DOM tramite JavaScript, si potrebbe anche usare un meccanismo più generico: I [MutationObserver](info:mutation-observer).
 
 ## Slot API
 
-Finally, let's mention the slot-related JavaScript methods.
+Infine, citiamo i metodi JavaScript inerenti gli slots.
 
-As we've seen before, JavaScript looks at the "real" DOM, without flattening. But, if the shadow tree has `{mode: 'open'}`, then we can figure out which elements assigned to a slot and, vise-versa, the slot by the element inside it:
+Come già visto, JavaScript osserva il DOM "effettivo", privo di flattening. Ma, se lo shadow tree ha il `{mode: 'open'}`, possiamo vedere quali elementi vengono assegnati a uno slot e, vice versa, lo slot con l'elemento al suo interno:
 
-- `node.assignedSlot` -- returns the `<slot>` element that the `node` is assigned to.
-- `slot.assignedNodes({flatten: true/false})` -- DOM nodes, assigned to the slot. The `flatten` option is `false` by default. If explicitly set to `true`, then it looks more deeply into the flattened DOM, returning nested slots in case of nested components and the fallback content if no node assigned.
+- `node.assignedSlot` -- restiuisce l'elemento `<slot>` a cui è assegnato il `node`.
+- `slot.assignedNodes({flatten: true/false})` -- nodi DOM, assegnati allo slot. L'opzione `flatten` è `false` di default. Se impostata explicitly set to `true`, then it looks more deeply into the flattened DOM, returning nested slots in case of nested components and the fallback content if no node assigned.
 - `slot.assignedElements({flatten: true/false})` -- DOM elements, assigned to the slot (same as above, but only element nodes).
 
 These methods are useful when we need not just show the slotted content, but also track it in JavaScript.
