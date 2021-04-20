@@ -4,7 +4,7 @@ importance: 5
 
 # Catturare i links nell'elemento
 
-Fare in modo che tutti i links dentro l'elemento con `id="contents"` chiedano all'utente se vuole davvero abbandonare la pagina al click. Se risponde no, allora non deve seguire il link.
+Fate in modo che tutti i links dentro l'elemento con `id="contents"` chiedano all'utente se vuole davvero abbandonare la pagina al click. Se risponde no, allora non deve seguire il link.
 
 Come nell'esempio seguente:
 

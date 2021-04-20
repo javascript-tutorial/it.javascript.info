@@ -4,7 +4,7 @@ importance: 3
 
 # Perché "return false" non funziona?
 
-Perché nel seguente codice `return false` non funziona per niente?
+Perché nel seguente codice `return false` non funziona?
 
 ```html autorun run
 <script>
@@ -17,6 +17,6 @@ Perché nel seguente codice `return false` non funziona per niente?
 <a href="https://w3.org" onclick="handler()">il browser andrà su w3.org</a>
 ```
 
-Il browser andrà all'URL al click, ma non è ciò che vogliamo.
+Il browser navigherà verso all'URL al click, ma non è ciò che vogliamo.
 
 Come si può sistemare?
