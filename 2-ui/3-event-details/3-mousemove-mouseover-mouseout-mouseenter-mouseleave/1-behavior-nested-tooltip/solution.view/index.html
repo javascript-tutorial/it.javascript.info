@@ -6,7 +6,7 @@
   <style>
     body {
       height: 2000px;
-      /* the tooltip should work after page scroll too */
+      /* la tooltip dovrebbe continuare a funzionare anche dopo lo scroll della pagina */
     }
 
     .tooltip {
@@ -66,25 +66,25 @@
     let tooltip;
 
     document.onmouseover = function(event) {
-      // important: a fast-moving mouse may "jump" right to a child on an annotated node, skipping the parent
-      // so mouseover may happen on a child.
+      // importante: un movimento veloce del mouse potrebbe "saltare" direttamente al figlio del nodo, saltando il genitore
+      // quindi il mouseover potrebbe verificarsi su un figlio.
 
       let anchorElem = event.target.closest('[data-tooltip]');
 
       if (!anchorElem) return;
 
-      // show tooltip and remember it
+      // mostra una tooltip e ricordala
       tooltip = showTooltip(anchorElem, anchorElem.dataset.tooltip);
     }
 
     document.onmouseout = function() {
-      // it is possible that mouseout triggered, but we're still inside the element
-      // (its target was inside, and it bubbled)
-      // but in this case we'll have an immediate mouseover,
-      // so the tooltip will be destroyed and shown again
+      // è possibile che mouseout venga innescato, anche se ci troviamo ancora all'interno dell'elemento
+      // (il target si trova all'interno, e si è diffuso)
+      // ma in questo caso avremo un mouseover immediato,
+      // quindi la tooltip verrà distrutta e mostrata nuovamente
       //
-      // luckily, the "blinking" won't be visible,
-      // as both events happen almost at the same time
+      // fortunatamente, questo non sarà visibile,
+      // poiché questi due eventi avvengono nello stesso istante
       if (tooltip) {
         tooltip.remove();
         tooltip = false;
@@ -101,7 +101,7 @@
 
       let coords = anchorElem.getBoundingClientRect();
 
-      // position the tooltip over the center of the element
+      // posiziona la tooltip al centro dell'elemento
       let left = coords.left + (anchorElem.offsetWidth - tooltipElem.offsetWidth) / 2;
       if (left < 0) left = 0;
 
