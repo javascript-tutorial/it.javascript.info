@@ -5,8 +5,9 @@ Risposte: **no, sì**.
     ```js run
     alert( "Java".match(/Java[^script]/) ); // null
     ```
-- Sì, poiché la parte `pattern:[^script]` al carattere `"S"`. Non è uno di `pattern:script`. Poiché la regexp fa distinzione tra maiuscole e minuscole (non c'è il flag `pattern:i`), tratta `"S"` come un carattere differente da `"s"`.
+- Sì, poiché la parte `pattern:[^script]` al carattere `"S"`, non è uno di `pattern:script`. Poiché la regexp fa distinzione tra maiuscole e minuscole (non c'è il flag `pattern:i`), tratta `"S"` come un carattere differente da `"s"`.
 
     ```js run
     alert( "JavaScript".match(/Java[^script]/) ); // "JavaS"
     ```
+    

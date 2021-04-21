@@ -9,4 +9,4 @@ let regexp = /your regexp/g;
 alert( "Breakfast at 09:00. Dinner at 21-30".match(regexp) ); // 09:00, 21-30
 ```
 
-P.S. In questo esercizio che l'orario è sempre corretto, non c'è necessità di filtrare stringhe come "45:67". Più tardi ci occuperemo anche di questo.
+P.S. In questo esercizio considereremo che l'orario è sempre corretto, non c'è necessità di filtrare stringhe come "45:67". Più tardi ci occuperemo anche di questo tipo di problema.

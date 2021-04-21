@@ -1,12 +1,12 @@
 # Insiemi e intervalli [...]
 
-Diversi caratteri o classi di caratteri all'interno di parantesi quadre `[…]` significao "cercare qualsiasi carattere tra quelli dati".
+Diversi caratteri o classi di caratteri inseriti all'interno di parantesi quadre `[…]` significano "cercare qualsiasi carattere tra quelli forniti".
 
 ## Insiemi
 
-Per esempio, `pattern:[eao]` significa qualunque dei 3 caratteri: `'a'`, `'e'`, o `'o'`.
+Per esempio, `pattern:[eao]` significa qualunque dei 3 caratteri: `'a'`, `'e'`, od `'o'`.
 
-Questo è chiamato un *insieme* (set). Gli insiemi posso essere usati in una regexp insieme ai caratteri normali:
+Questo è chiamato un *insieme* o *set*. I sets posso essere usati in una regexp insieme ad altri caratteri:
 
 ```js run
 // trova [t o m], e quindi "op"
@@ -18,7 +18,7 @@ Si noti che sebbene ci siano più caratteri nel set, corrispondono esattamente a
 Quindi il seguente esempio non da alcuna corrispondenza:
 
 ```js run
-// trova "V", poi [o o i], quindi "la"
+// trova "V", poi ['o' o 'i'], quindi "la"
 alert( "Voila".match(/V[oi]la/) ); // null, nessuna corrispondenza
 ```
 
@@ -62,9 +62,9 @@ Per esempio:
 
 ### Esempio: multi lingua \w
 
-La classe di caratteri `pattern:\w` è una scorciatoia per `pattern:[a-zA-Z0-9_]`, non può trovare geroglifici Cinesi, lettere Cirilliche, ecc.
+La classe di caratteri `pattern:\w` è una scorciatoia per `pattern:[a-zA-Z0-9_]`, che tuttavia non può trovare geroglifici Cinesi, lettere Cirilliche, ecc.
 
-Possiamo allora scrivere un modello più universale, che può trovare qualunque carattere in qualunque lingua. È facile con le proprietà Unicode: `pattern:[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]`.
+Possiamo allora scrivere un modello più universale, che può trovare qualunque carattere in qualunque lingua. Questo è reso facile dalle proprietà Unicode: `pattern:[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]`.
 
 Decifriamolo. Similarmente a `pattern:\w`, stiamo creando un nostro insieme che include i caratteri con le seguenti proprietà Unicode:
 
@@ -95,7 +95,7 @@ O giusto utilizzare un intervallo di caratteri nella lingua che ci interessa, a.
 
 ## Esclusione di intervalli
 
-Oltre ai normali intervalli, è possibile creare dei modelli di "esclusione"come `pattern:[^…]`.
+Oltre ai normali intervalli, è possibile creare dei modelli di "esclusione", come `pattern:[^…]`.
 
 Vengono indicati da un accento circonflesso `^` all'inizio e indicano qualunque carattere *tranne quelli forniti*.
 
@@ -122,7 +122,7 @@ Dentro le parentesi quadre, possiamo usare la stragrande maggioranza di caratter
 - Un accento circonflesso `pattern:^` è soggeto ad escape solo all'inizio (dove significa esclusione).
 - La parentesi quadra di chiusura `pattern:]` dev'essere sempre soggetta ad escape (se abbiamo bisogno di cercare questo simbolo).
 
-In altre parole, tutti i caratteri speciali sono permessi senza necessita di escape, eccetto quando servono a qualcosa nelle parentesi quadre.
+In altre parole, tutti i caratteri speciali sono permessi senza necessita di escape, eccetto quando servono a qualcosa all'interno delle parentesi quadre.
 
 Un punto `.` all'interno delle parentesi quadre significa giusto un punto. Il modello `pattern:[.,]` cercherebbe per uno dei caratteri: o un punto o una virgola.
 
@@ -135,7 +135,7 @@ let regexp = /[-().^+]/g;
 alert( "1 + 2 - 3".match(regexp) ); // Corrispondono +, -
 ```
 
-...Ma se decidi di effettuarne l'escape "giusto per non sbagliare", il risultato non cambierebbe:
+...Ma se decidiamo di effettuarne l'escape "giusto per non sbagliare", il risultato non cambierebbe:
 
 ```js run
 // Escape tutto
@@ -146,7 +146,7 @@ alert( "1 + 2 - 3".match(regexp) ); // funziona ugualmente: +, -
 
 ## Intervalli e flag "u"
 
-Se ci sono coppie surrogate nel set, il flag `pattern:u` è necessario affinché funzionino correttamente.
+Se ci sono coppie surrogate nel set, il flag `pattern:u` è necessario affinché la ricerca funzioni correttamente.
 
 Per esempio, cerchiamo `pattern:[𝒳𝒴]` nella stringa `subject:𝒳`:
 
