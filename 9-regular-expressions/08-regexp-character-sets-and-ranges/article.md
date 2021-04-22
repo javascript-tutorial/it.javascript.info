@@ -13,7 +13,7 @@ Questo è chiamato un *insieme* o *set*. I set posso essere usati in una regexp 
 alert( "Mop top".match(/[tm]op/gi) ); // "Mop", "top"
 ```
 
-Si noti che sebbene ci siano più caratteri nel set, corrispondono esattamente a un carattere nel match.
+Si noti che sebbene ci siano più caratteri nel set, questi corrispondano esattamente a un carattere nel match.
 
 Quindi il seguente esempio non da alcuna corrispondenza:
 
