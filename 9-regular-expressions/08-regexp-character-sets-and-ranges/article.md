@@ -50,7 +50,7 @@ Possiamo anche usare classi di caratteri dentro `[…]`.
 
 Per esempio, se volessimo cercare un carattere di parola `pattern:\w` o un trattino `pattern:-`, allora l'insieme sarà `pattern:[\w-]`.
 
-È anche possibile combinare diverse classi, a.e. `pattern:[\s\d]` significa "uno spazio o un numero".
+È anche possibile combinare diverse classi, es `pattern:[\s\d]` significa "uno spazio o un numero".
 
 ```smart header="Le classi di caratteri sono abbreviazioni per determinati set di caratteri"
 Per esempio:
