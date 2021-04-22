@@ -57,7 +57,7 @@ Per esempio:
 
 - **\d** -- è la stessa cosa di `pattern:[0-9]`,
 - **\w** -- è la stessa cosa di `pattern:[a-zA-Z0-9_]`,
-- **\s** -- è la stessa cosa di `pattern:[\t\n\v\f\r ]`, pochi altri rari caratteri Unicode.
+- **\s** -- è la stessa cosa di `pattern:[\t\n\v\f\r ]` e pochi altri rari caratteri Unicode.
 ```
 
 ### Esempio: multi lingua \w
