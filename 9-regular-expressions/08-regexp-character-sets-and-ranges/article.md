@@ -90,7 +90,7 @@ Naturalmente possiamo modificare questo modello: aggiungere proprietà Unicode o
 ```warn header="Le proprietà Unicode non sono supportate da IE"
 Le proprietà Unicode `pattern:p{…}` non sono implementate in IE. Se ne abbiamo davvero bisogno possiamo utilizzare la libreria [XRegExp](http://xregexp.com/).
 
-O giusto utilizzare un intervallo di caratteri nella lingua che ci interessa, a.e.  `pattern:[а-я]` per le lettere Cirilliche.
+In alternativa possiamo utilizzare soltanto un intervallo di caratteri nella lingua che ci interessa, a.e.  `pattern:[а-я]` per le lettere cirilliche.
 ```
 
 ## Esclusione di intervalli
