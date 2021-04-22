@@ -48,7 +48,7 @@ Se volessimo cercare anche lettere minuscole, possiamo aggiungere l'intervallo `
 
 Possiamo anche usare classi di caratteri dentro `[…]`.
 
-Per esempio, se vorremmo cercare qualunque carattere `pattern:\w` o un trattino `pattern:-`, allora l'insieme sarà `pattern:[\w-]`.
+Per esempio, se volessimo cercare un carattere di parola `pattern:\w` o un trattino `pattern:-`, allora l'insieme sarà `pattern:[\w-]`.
 
 È anche possibile combinare diverse classi, a.e. `pattern:[\s\d]` significa "uno spazio o un numero".
 
