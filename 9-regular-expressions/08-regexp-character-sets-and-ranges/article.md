@@ -46,7 +46,7 @@ Il modello `pattern:[0-9A-F]` ha due intervalli: cerca un carattere che sia una 
 
 Se volessimo cercare anche lettere minuscole, possiamo aggiungere l'intervallo `a-f`: `pattern:[0-9A-Fa-f]`, o aggiungere il flag `pattern:i`.
 
-Possiamo anche usare la classe di caratteri `[…]`.
+Possiamo anche usare classi di caratteri dentro `[…]`.
 
 Per esempio, se vorremmo cercare qualunque carattere `pattern:\w` o un trattino `pattern:-`, allora l'insieme sarà `pattern:[\w-]`.
 
