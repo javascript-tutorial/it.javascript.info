@@ -1,6 +1,6 @@
 Risposte: **no, sì**.
 
-- Nello script `subject:Java` non corrisponde nulla, dato che per `pattern:[^script]` si intende "qualunque carattere eccetto quelli dati". Quindi la regexp cerca per `"Java"` seguito da uno di questi simboli, ma c'è una stringa alla fine, non ci sono symboli dopo di esso.
+- Nello script `subject:Java` non c'è corrispondenza, dato che per `pattern:[^script]` si intende "qualunque carattere eccetto quelli dati". Quindi la regexp cerca `"Java"` seguito da uno di tali caratteri, ma c'è la fine della stringa, non ci sono caratteri dopo di esso.
 
     ```js run
     alert( "Java".match(/Java[^script]/) ); // null
