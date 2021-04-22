@@ -105,7 +105,7 @@ Per esempio:
 - `pattern:[^0-9]` -- qualunque carattere tranne un numero, come `pattern:\D`.
 - `pattern:[^\s]` -- qualunque carattere che non sia uno spazio, come `\S`.
 
-L'esempio seguente cerca per qualunque carattere eccetto lettere, numeri e spazi:
+L'esempio seguente cerca qualunque carattere eccetto lettere, numeri e spazi:
 
 ```js run
 alert( "alice15@gmail.com".match(/[^\d\sA-Z]/gi) ); // @ e .
