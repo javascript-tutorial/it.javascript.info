@@ -6,7 +6,7 @@ Ad esempio, definire movimenti che seguono un percorso complesso, con funzioni d
 
 ## Utilizzo di setInterval
 
-Un animazione può essere implementata come una sequenza di frame, solitamente delle piccole modifiche alle proprietà HTML/CSS.
+Un animazione può essere implementata come una sequenza di frame, solitamente sfruttando delle piccole modifiche alle proprietà HTML/CSS.
 
 Ad esempio, modificando `style.left` da `0px` a `100px` per spostare l'elemento. Se lo incrementiamo in `setInterval`, applicando incrementi di `2px` con un piccolo ritardo, ad esempio 50 volte per secondo, allora otterremo un'animazione molto fluida. Questo è lo stesso principio applicato nel cinema: 24 frame per secondo sono sufficienti per far si che le immagini appaiano fluide.
 
@@ -19,13 +19,13 @@ let timer = setInterval(function() {
 }, 20); // cambia di 2px ogni 20ms, circa 50 frame per secondo
 ```
 
-L'esempio più completo dell'animazione:
+Un esempio più completo dell'animazione:
 
 ```js
-let start = Date.now(); // ricordiamo il momento di partenza
+let start = Date.now(); // memorizziamo il momento di partenza
 
 let timer = setInterval(function() {
-  // qaunto tempo è passato dall'inizio?
+  // quanto tempo è passato dall'inizio?
   let timePassed = Date.now() - start;
 
   if (timePassed >= 2000) {
@@ -33,7 +33,7 @@ let timer = setInterval(function() {
     return;
   }
 
-  // tracciamo l'animazione utilizzando timePassed
+  // tracciamo l'animazione all'istante timePassed
   draw(timePassed);
 
 }, 20);
@@ -53,7 +53,7 @@ Cliccate per visualizzare la dimostrazione:
 
 Immaginiamo di avere diverse animazioni in esecuzione contemporaneamente.
 
-Se le eseguissimo separatamente, se ognuna di esse avesse `setInterval(..., 20)`, allora il browser dovrebbe effettuare operazioni di repaint con molta più frequenza di una ogni `20ms`.
+Se le eseguissimo separatamente, ed ognuna di esse avesse `setInterval(..., 20)`, allora il browser dovrebbe effettuare operazioni di repaint con molta più frequenza di una ogni `20ms`.
 
 Questo perché le animazioni hanno degli istanti di inizio differenti, quindi "ogni 20ms" è differente per ogni singola animazione. Gli intervalli non sono allineati. Quindi abbiamo molte animazioni indipendenti che vengono eseguite in `20ms`.
 
@@ -77,7 +77,7 @@ setInterval(animate3, 20);
 
 Questa serie di operazioni di repaint dovrebbero essere raggruppate, in modo tale da rendere il repaint più semplice per il browser, portare meno carico alla CPU e rendere il tutto più fluido.
 
-C'è un ulteriore cosa a cui prestare attenzione. Talvolta la CPU potrebbe essere sovraccarica, oppure potrebbero esserci altri motivi per cui potremmo effettuare il repaint con minore frequenza (ad esempio quando la tab del browser non è visibile), quindi non è necessario eseguirla ogni `20ms`.
+C'è un ulteriore cosa a cui prestare attenzione. Talvolta la CPU potrebbe essere sovraccarica, oppure potrebbero esserci altri motivi per cui potremmo effettuare il repaint con minore frequenza (ad esempio quando la tab del browser non è visibile), quindi non è necessaria l'esecuzione ogni `20ms`.
 
 Ma come facciamo ad avere controllo su questo utilizzando JavaScript? Abbiamo a disposizione [Animation timing](http://www.w3.org/TR/animation-timing/) definita nelle specifiche, che ci fornisce la funzione `requestAnimationFrame`. Questa ha lo scopo di aiutarci a risolvere questo tipo di problemi.
 
@@ -86,9 +86,9 @@ La sintassi:
 let requestId = requestAnimationFrame(callback)
 ```
 
-In questo modo programmiamo la funzione `callback` in modo tale che venga eseguita appena il browser si trova in una situazione in cui vuole eseguire animazioni.
+In questo modo pianifichiamo la funzione `callback` in modo tale che venga eseguita appena il browser vorrà eseguire animazioni.
 
-Se facciamo modifiche negli elementi `callback` allora questi verranno raggruppati con le altre callbacks in `requestAnimationFrame` e con le animazioni CSS. In questo modo avremo un solo ricalcolo geometrico ed un repaint, piuttosto di averne molte.
+Se facciamo modifiche agli elementi nella `callback`, allora questi verranno raggruppati con le altre callbacks in `requestAnimationFrame` e con le animazioni CSS. In questo modo avremo un solo ricalcolo geometrico ed un repaint, piuttosto di averne molti.
 
 Il valore ritornato, `requestId`, può essere utilizzato per annullare l'invocazione:
 ```js
@@ -98,7 +98,7 @@ cancelAnimationFrame(requestId);
 
 La `callback` riceve un solo argomento, il tempo trascorso dall'inizio del caricamento della pagina, in microsecondi. Possiamo ottenere questa informazione anche invocando [performance.now()](mdn:api/Performance/now).
 
-Solitamente `callback` viene eseguita molto preso, a meno che la CPU non sia in uno stato di sovraccarico, la batteria del portatile non sia quasi scarica, o altri motivi.
+Solitamente `callback` viene eseguita molto presto, a meno che la CPU non sia in uno stato di sovraccarico, la batteria del portatile non sia quasi scarica, o per altri motivi.
 
 Il codice sotto mostra il tempo trascorso tra le prime 10 esecuzioni di `requestAnimationFrame`. Solitamente è circa 10-20ms:
 
@@ -130,7 +130,7 @@ function animate({timing, draw, duration}) {
     let timeFraction = (time - start) / duration;
     if (timeFraction > 1) timeFraction = 1;
 
-    // calcola lo stato dell'animazione corrente
+    // calcola lo stato corrente dell'animazione
     let progress = timing(timeFraction)
 
     draw(progress); // la esegue
@@ -149,9 +149,9 @@ La funzione `animate` accetta 3 parametri che descrivono l'animazione:
 : Durata totale dell'animazione. Ad esempio, `1000`.
 
 `timing(timeFraction)`
-: Funzione di temporizzazione, proprio come la proprietà CSS `transition-timing-function` che ottiene come input la frazione di tempo passato (`0` all'inizio, `1` alla fine) e ritorna lo stato di completamento dell'animazione (ad esmepio `y` nelle curve di Bezier).
+: Funzione di temporizzazione, proprio come la proprietà CSS `transition-timing-function` che prende come input la frazione di tempo passato (`0` all'inizio, `1` alla fine) e ritorna lo stato di completamento dell'animazione (ad esempio `y` nelle curve di Bezier).
 
-    Ad esempio, una funzione lineare significa che l'animazione procede uniformemente con al stessa velocità:
+    Ad esempio, una funzione lineare significa che l'animazione procede uniformemente con la stessa velocità:
 
     ```js
     function linear(timeFraction) {
@@ -165,7 +165,7 @@ La funzione `animate` accetta 3 parametri che descrivono l'animazione:
     Proprio come `transition-timing-function: linear`. Vengono mostrare altre varianti sotto.
 
 `draw(progress)`
-: La funzione che accetta come input lo stato di completamento dell'animazione e la esegue. Il valore `progress=0` indica l'inizio dello stato dell'animazione, mentre `progress=1` lo stato finale.
+: La funzione che accetta come input lo stato di completamento dell'animazione e la esegue. Il valore `progress=0` indica lo stato iniziale dell'animazione, mentre `progress=1` lo stato finale.
 
     Questa è la funzione che si occupa di eseguire l'animazione.
 
@@ -413,7 +413,7 @@ Qui vediamo l'animazione di scrittura con "rimbalzo":
 
 ## Riepilogo
 
-Per le animazione che il CSS non è in grado di gestire molto bene, o per quelle in cui è richiesto un controllo del dettaglio, JavaScript può aiutare. Le animazioni JavaScript dovrebbero essere implementate via `requestAnimationFrame`. Questo metodo integrato ci consente di impostare le funzione di callback in modo tale che vengano eseguite nel momento in cui il browser effettua il repaint. Solitamente questo tempo è breve, ma dipende molto dal browser.
+Per le animazione che il CSS non è in grado di gestire molto bene, o per quelle in cui è richiesto un controllo preciso, JavaScript può aiutare. Le animazioni JavaScript dovrebbero essere implementate via `requestAnimationFrame`. Questo metodo integrato ci consente di impostare le funzione di callback in modo tale che vengano eseguite nel momento in cui il browser effettua il repaint. Solitamente questo intervallo di tempo è breve, ma dipende molto dal browser.
 
 Quando la pagina è in background, non si ha alcun repaint, quindi le callback non verranno invocate: le animazioni vengono sospese, e non avremo alcuno spreco di risorse. Questo è grandioso.
 
@@ -448,7 +448,7 @@ Opzioni:
 - `timing`: la funzione per calcolare lo stato dell'animazione. Accetta in input una frazione di tempo che va da 0 a 1, e ritorna il progresso dell'animazione, solitamente da 0 a 1.
 - `draw`: la funzione per disegnare l'animazione.
 
-Ovviamente potremmo migliorarla, aggiungendo più decorazioni, ma le animazioni JavaScript non vengono utilizzate quotidianamente. Vengono piuttosto utilizzate per costruire qualcosa di più interessante e non standard. Quindi potrete aggiungere più funzionalità nel momento in cui ne avrete bisogno.
+Ovviamente potremmo migliorarla aggiungendo più opzioni, ma le animazioni JavaScript non vengono utilizzate quotidianamente. Vengono piuttosto utilizzate per costruire qualcosa di più interessante e non standard. Quindi potrete aggiungere più funzionalità nel momento in cui ne avrete bisogno.
 
 Le animazioni JavaScript possono utilizzare qualsiasi funzione di temporizzazione. Abbiamo visto molti esempi e trasformazioni che le rendono molto versatili. A differenza del CSS, non siamo limitati alle sole curve di Bezier.
 
