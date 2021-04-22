@@ -111,7 +111,7 @@ L'esempio seguente cerca qualunque carattere eccetto lettere, numeri e spazi:
 alert( "alice15@gmail.com".match(/[^\d\sA-Z]/gi) ); // @ e .
 ```
 
-## Escaping in […]
+## L'escape dentro […]
 
 In genere quando vogliamo trovare esattamente un carattere speciale, dobbiamo effettuarne l'escape come `pattern:\.`. E se abbiamo bisogno di un backslash, allora dobbiamo usare `pattern:\\`, e così via.
 
