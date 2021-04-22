@@ -85,7 +85,7 @@ let str = `Hi 你好 12`;
 alert( str.match(regexp) ); // H,i,你,好,1,2
 ```
 
-Naturalmente, possiamo modificare questo modello: aggiungere proprietà Unicode o rimuoverle. Le proprietà Unicode sono descritte meglio nell'articolo <info:regexp-unicode>.
+Naturalmente possiamo modificare questo modello: aggiungere proprietà Unicode o rimuoverle. Le proprietà Unicode sono descritte meglio nell'articolo <info:regexp-unicode>.
 
 ```warn header="Le proprietà Unicode non sono supportate da IE"
 Le proprietà Unicode `pattern:p{…}` non sono implementate in IE. Se ci necessitano veramente, possiamo utilizzare la libreria [XRegExp](http://xregexp.com/).
