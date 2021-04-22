@@ -81,7 +81,7 @@ let regexp = /[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]/gu;
 
 let str = `Hi 你好 12`;
 
-// Cerca tutte le lettere e i numeri:
+// Trova tutte le lettere e i numeri:
 alert( str.match(regexp) ); // H,i,你,好,1,2
 ```
 
