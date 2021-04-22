@@ -44,7 +44,7 @@ alert( "Exception 0xAF".match(/x[0-9A-F][0-9A-F]/g) ); // xAF
 
 Il modello `pattern:[0-9A-F]` ha due intervalli: cerca un carattere che sia una cifra da `0` a `9` o una lettera da `A` a `F`.
 
-Se vorremo cercare anche lettere minuscole, possiamo aggiungere l'intervallo `a-f`: `pattern:[0-9A-Fa-f]`. O aggiungere il flagr `pattern:i`.
+Se volessimo cercare anche lettere minuscole, possiamo aggiungere l'intervallo `a-f`: `pattern:[0-9A-Fa-f]`, o aggiungere il flag `pattern:i`.
 
 Possiamo anche usare la classe di caratteri `[…]`.
 
