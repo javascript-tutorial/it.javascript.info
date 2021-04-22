@@ -7,7 +7,7 @@ function concat(arrays) {
   let result = new Uint8Array(totalLength);
 
   // ogni array, lo copiamo in result
-  // il prossimo array viene copiato accanto a quello precedente
+  // l'array successivo viene copiato subito dopo quello precedente
   let length = 0;
   for(let array of arrays) {
     result.set(array, length);

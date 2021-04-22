@@ -4,12 +4,12 @@ Nello sviluppo web incontriamo dati di tipo binario principalmente quando lavori
 
 Sono tutte cose possibili con JavaScript, e le operazioni binarie ottimizzano le prestazioni.
 
-Sebbene ci sia un pò di confusione, poiché esistono molte classi. Per citarne alcune:
+Sebbene ci sia un po' di confusione, poiché esistono molte classi. Per citarne alcune:
 - `ArrayBuffer`, `Uint8Array`, `DataView`, `Blob`, `File`, etc.
 
-I dati binari in JavaScript sono implementati in maniera non standard, se paragona ad altri linguaggi. Ma se riusciamo a riorganizzare le idee, tutto diventa piuttosto semplice.
+I dati binari in JavaScript sono implementati in maniera non standard, rispetto ad altri linguaggi. Ma se riusciamo a riorganizzare le idee, tutto diventa piuttosto semplice.
 
-**L'oggetto binario di base è `ArrayBuffer`, un riferimento ad un'area di memoria contigua di lunghezza fissata.**
+**L'oggetto binario di base è `ArrayBuffer`, un riferimento ad un'area di memoria contigua di lunghezza fissa.**
 
 Lo possiamo creare in questo modo:
 ```js run
@@ -19,11 +19,11 @@ alert(buffer.byteLength); // 16
 
 Questo alloca un'area di memoria contigua di 16 byte, e la popola con degli zeri.
 
-```warn header="`ArrayBuffer` non sono degli array di "qualcosa""
-Eliminiamo subito una possibile fonte di confusione. `ArrayBuffer` non hanno nulla in comune con gli `Array`:
-- Hanno dimensione prefissata, non possiamo aumentarla o diminuirla.
-- Occupano esattamente quello spazio in memoria.
-- Per accedere a uno specifico byte, è richiesto un ulteriore oggetto, `buffer[index]` non  funzionerebbe.
+```warn header="`ArrayBuffer` è un array di "qualcosa""
+Eliminiamo subito una possibile fonte di confusione. `ArrayBuffer` non ha nulla in comune con `Array`:
+- Ha una dimensione prefissata, non possiamo aumentarla o diminuirla.
+- Occupa esattamente quello spazio in memoria.
+- Per accedere a uno specifico byte, è richiesto un ulteriore oggetto. `buffer[index]` non  funzionerebbe.
 ```
 
 `ArrayBuffer` rappresenta un'area di memoria. Cosa vi è memorizzano? Non ne ha assolutamente idea. Semplicemente una sequenza di byte.
@@ -130,11 +130,11 @@ Per accedere all'`ArrayBuffer`, abbiamo a disposizione le seguenti proprietà:
 - `arr.buffer`, che fa riferimento a `ArrayBuffer`.
 - `arr.byteLength`, la lunghezza dell'`ArrayBuffer`.
 
-Quindi possiamo sempre spostarci da un visualizzatore ad un altro:
+Quindi possiamo sempre cambiare da un visualizzatore ad un altro:
 ```js
 let arr8 = new Uint8Array([0, 1, 2, 3]);
 
-// un altro visualizzatore sugli stessi dati
+// un altro visualizzatore per gli stessi dati
 let arr16 = new Uint16Array(arr8.buffer);
 ```
 
@@ -185,7 +185,7 @@ alert(uint8array[0]); // 0
 alert(uint8array[1]); // 1
 ```
 
-`Uint8ClampedArray` è speciale in questo aspetto, il suo comportamento è differente. Memorizza 255 per qualsiasi numero maggiore di 255, e 0 per qualsiasi valore negativo. Questo comportamento risulta essere molto utile nell'elaborazione di immagini.
+`Uint8ClampedArray` è speciale sotto questo aspetto, il suo comportamento è differente. Memorizza 255 per qualsiasi numero maggiore di 255, e 0 per qualsiasi valore negativo. Questo comportamento risulta essere molto utile nell'elaborazione di immagini.
 
 ## Metodi dei TypedArray
 
@@ -212,7 +212,7 @@ Questi metodi ci consentono di copiare i TypedArray, mescolarli, creare nuovi ar
 [DataView](mdn:/JavaScript/Reference/Global_Objects/DataView) è uno speciale, super flessibile visualizzatore "non tipizzato" su `ArrayBuffer`. Consente di accedere ai dati in qualsiasi offset in qualsiasi formato.
 
 - Nel caso di TypedArray, il costruttore ne definiva il formato. Si supponeva che l'intero array fosse uniforme. L'i-esimo numero è `arr[i]`.
-- Nel caos id `DataView` accediamo ai dati con metodi come `.getUint8(i)` o `.getUint16(i)`. Scegliamo il formato al momento della lettura, piuttosto che al momento della costruzione.
+- Con `DataView` accediamo ai dati con metodi come `.getUint8(i)` o `.getUint16(i)`. Scegliamo il formato al momento della lettura, piuttosto che al momento della costruzione.
 
 La sintassi:
 
@@ -221,7 +221,7 @@ new DataView(buffer, [byteOffset], [byteLength])
 ```
 
 - **`buffer`**, l'`ArrayBuffer` di riferimento. A differenza dei TypedArray, `DataView` non crea un suo buffer. Dobbiamo averne già uno pronto.
-- **`byteOffset`**, la posizione del byte di partenza del visualizzatore (do default 0).
+- **`byteOffset`**, la posizione del byte di partenza del visualizzatore (di default 0).
 - **`byteLength`**, la lunghezza in byte del visualizzatore (di default fino alla fine di `buffer`).
 
 Ad esempio, qui estraiamo numeri in formati differenti dallo stesso buffer:
@@ -248,7 +248,7 @@ dataView.setUint32(0, 0); // imposta un numero a 4 byte a zero, questo imposta t
 
 ## Riepilogo
 
-`ArrayBuffer` è l'oggetto principale, un riferimento un'area di memoria contigua di lunghezza fissata.
+`ArrayBuffer` è l'oggetto principale, un riferimento un'area di memoria contigua di lunghezza fissa.
 
 Per eseguire qualsiasi operazioni su un `ArrayBuffer`, abbiamo bisogno di un visualizzatore.
 
