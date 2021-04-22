@@ -4,7 +4,7 @@ Alcuni caratteri o classi di caratteri inseriti all'interno di parantesi quadre 
 
 ## Insiemi
 
-Per esempio, `pattern:[eao]` significa qualunque dei 3 caratteri: `'a'`, `'e'`, od `'o'`.
+Per esempio, `pattern:[eao]` significa uno qualunque dei 3 caratteri: `'a'`, `'e'`, od `'o'`.
 
 Questo è chiamato un *insieme* o *set*. I sets posso essere usati in una regexp insieme ad altri caratteri:
 
