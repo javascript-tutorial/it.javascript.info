@@ -97,7 +97,7 @@ In alternativa possiamo utilizzare soltanto un intervallo di caratteri nella lin
 
 Oltre ai normali intervalli, è possibile creare dei modelli di "esclusione", come `pattern:[^…]`.
 
-Vengono indicati da un accento circonflesso `^` all'inizio e indicano qualunque carattere *tranne quelli forniti*.
+Sono contraddistinti da un accento circonflesso `^` all'inizio e trovano corrispondenza in qualunque carattere *tranne quelli indicati*.
 
 Per esempio:
 
