@@ -64,7 +64,7 @@ Per esempio:
 
 Dal momento che la classe di caratteri `pattern:\w` è una scorciatoia per `pattern:[a-zA-Z0-9_]`, non può trovare geroglifici cinesi, lettere cirilliche, ecc.
 
-Possiamo allora scrivere un modello più universale, che può trovare qualunque carattere in qualunque lingua. Questo è reso facile dalle proprietà Unicode: `pattern:[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]`.
+Possiamo allora scrivere un modello più universale, che cerca un carattere di parola in qualunque lingua. Questo è reso facile dalle proprietà Unicode: `pattern:[\p{Alpha}\p{M}\p{Nd}\p{Pc}\p{Join_C}]`.
 
 Decifriamolo. Similarmente a `pattern:\w`, stiamo creando un nostro insieme che include i caratteri con le seguenti proprietà Unicode:
 
