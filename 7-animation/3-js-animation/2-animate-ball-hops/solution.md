@@ -1,8 +1,8 @@
 Nell'esercizio <info:task/animate-ball> era richiesto di animare una sola proprietà. Ora dovete animarne una in più: `elem.style.left`.
 
-La coordinata orizzontale deve variare: non deve limitarsi a rimbalzare, ma anche di scorrere verso destra.
+La coordinata orizzontale varia secondo un'altra regola: non deve limitarsi a rimbalzare, ma deve anche scorrere verso destra.
 
-Potete scrivere un'ulteriore `animate` per questo.
+Potete scrivere un ulteriore `animate` per questo.
 
 Potreste utilizzare la funzione di temporizzazione `linear`, ma qualcosa come `makeEaseOut(quad)` renderà l'animazione migliore.
 
