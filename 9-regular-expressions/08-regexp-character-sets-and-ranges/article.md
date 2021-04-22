@@ -1,6 +1,6 @@
 # Insiemi e intervalli [...]
 
-Diversi caratteri o classi di caratteri inseriti all'interno di parantesi quadre `[…]` significano "cercare qualsiasi carattere tra quelli forniti".
+Alcuni caratteri o classi di caratteri inseriti all'interno di parantesi quadre `[…]` significano "cerca qualsiasi carattere tra quelli forniti".
 
 ## Insiemi
 
