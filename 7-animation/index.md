@@ -1,3 +1,3 @@
-# Animation
+# Animazioni
 
-CSS and JavaScript animations.
+Animazioni CSS e JavaScript.

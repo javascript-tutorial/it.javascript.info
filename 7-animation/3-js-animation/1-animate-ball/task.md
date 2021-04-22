@@ -2,8 +2,8 @@ importance: 5
 
 ---
 
-# Animate the bouncing ball
+# Fate rimbalzare la palla
 
-Make a bouncing ball. Click to see how it should look:
+Fate rimbalzare la palla. Clicca per vedere come dovrebbe apparire l'animazione:
 
 [iframe height=250 src="solution"]
