@@ -1,6 +1,6 @@
 # TextDecoder e TextEncoder
 
-Come ci comportiamo se il dato binario è veramente una stringa? Ad esempio, se riceviamo un file contente dati testuali.
+E se il dato binario in realtà fosse una stringa? Ad esempio, se ricevessimo un file contente dati testuali.
 
 L'oggetto integrato [TextDecoder](https://encoding.spec.whatwg.org/#interface-textdecoder), dato il buffer e l'encoding, ci consente di leggere il valore come se fosse una stringa JavaScript.
 
@@ -9,9 +9,9 @@ Come prima cosa dobbiamo crearlo:
 let decoder = new TextDecoder([label], [options]);
 ```
 
-- **`label`**, l'encoding, `utf-8` di default, ma sono supportati anche `big5`, `windows-1251` e molti altri.
+- **`label`**, l'encoding di default è `utf-8`, ma sono supportati anche `big5`, `windows-1251` e molti altri.
 - **`options`**, oggetto opzionale:
-  - **`fatal`**, boolean, se vale `true` allora verrà generata un'eccezione per io caratteri invalidi (non-decodificabili), altrimenti (default) verranno rimpiazzati con il carattere `\uFFFD`.
+  - **`fatal`**, boolean, se vale `true` allora verrà generata un'eccezione per i caratteri invalidi (non-decodificabili), altrimenti (default) verranno rimpiazzati con il carattere `\uFFFD`.
   - **`ignoreBOM`**, boolean, se vale `true` allora ignora BOM (un marcatore opzionale di byte-order Unicode), raramente utilizzato.
 
 ...E successivamente decodificare:
@@ -54,7 +54,7 @@ alert( new TextDecoder().decode(binaryString) ); // Hello
 
 ## TextEncoder
 
-[TextEncoder](https://encoding.spec.whatwg.org/#interface-textencoder) fa esattamente l'opzione inversa, converte stringe in byte.
+[TextEncoder](https://encoding.spec.whatwg.org/#interface-textencoder) fa esattamente l'operazione inversa, converte stringe in byte.
 
 La sintassi è:
 
