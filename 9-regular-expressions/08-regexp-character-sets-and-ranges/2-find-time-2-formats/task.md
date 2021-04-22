@@ -2,7 +2,7 @@
 
 L'orario può essere nel formato `ore:minuti` o `ore-minuti`. Entrambi, ore e minuti, hanno 2 numeri:  `09:00` o `21-30`.
 
-Scrivi una regexp per trovare l'orario:
+Scrivete una regexp per trovare l'orario:
 
 ```js
 let regexp = /your regexp/g;
