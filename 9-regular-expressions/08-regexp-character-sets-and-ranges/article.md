@@ -15,7 +15,7 @@ alert( "Mop top".match(/[tm]op/gi) ); // "Mop", "top"
 
 Si noti che sebbene ci siano più caratteri nel set, questi corrispondano esattamente a un carattere nel match.
 
-Quindi il seguente esempio non da alcuna corrispondenza:
+Quindi il seguente esempio non dà alcuna corrispondenza:
 
 ```js run
 // trova "V", poi ['o' o 'i'], quindi "la"
