@@ -88,7 +88,7 @@ alert( str.match(regexp) ); // H,i,你,好,1,2
 Naturalmente possiamo modificare questo modello: aggiungere proprietà Unicode o rimuoverle. Le proprietà Unicode sono descritte meglio nell'articolo <info:regexp-unicode>.
 
 ```warn header="Le proprietà Unicode non sono supportate da IE"
-Le proprietà Unicode `pattern:p{…}` non sono implementate in IE. Se ci necessitano veramente, possiamo utilizzare la libreria [XRegExp](http://xregexp.com/).
+Le proprietà Unicode `pattern:p{…}` non sono implementate in IE. Se ne abbiamo davvero bisogno possiamo utilizzare la libreria [XRegExp](http://xregexp.com/).
 
 O giusto utilizzare un intervallo di caratteri nella lingua che ci interessa, a.e.  `pattern:[а-я]` per le lettere Cirilliche.
 ```
