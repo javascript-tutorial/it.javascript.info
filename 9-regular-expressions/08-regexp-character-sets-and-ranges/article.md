@@ -113,18 +113,18 @@ alert( "alice15@gmail.com".match(/[^\d\sA-Z]/gi) ); // @ e .
 
 ## L'escape dentro […]
 
-In genere quando vogliamo trovare esattamente un carattere speciale, dobbiamo effettuarne l'escape come `pattern:\.`. E se abbiamo bisogno di un backslash, allora dobbiamo usare `pattern:\\`, e così via.
+In genere quando vogliamo trovare esattamente un carattere speciale, dobbiamo effettuarne l'escape: `pattern:\.`. Se abbiamo bisogno di un backslash, allora dobbiamo usare `pattern:\\`, e così via.
 
-Dentro le parentesi quadre, possiamo usare la stragrande maggioranza di caratteri speciali senza la necessità di effettuarne l'escaping:
+Dentro le parentesi quadre, possiamo usare la stragrande maggioranza di caratteri speciali senza la necessità di effettuarne l'escape:
 
 - I simboli `pattern:. + ( )` non necessitano mai di escaping.
 - Il trattino `pattern:-` non è preceduto da caratteri di escape all'inizio o alla fine (dove non definisce un intervallo).
-- Un accento circonflesso `pattern:^` è soggeto ad escape solo all'inizio (dove significa esclusione).
+- Un accento circonflesso `pattern:^` è soggetto ad escape solo all'inizio (dove significa esclusione).
 - La parentesi quadra di chiusura `pattern:]` dev'essere sempre soggetta ad escape (se abbiamo bisogno di cercare questo simbolo).
 
-In altre parole, tutti i caratteri speciali sono permessi senza necessita di escape, eccetto quando servono a qualcosa all'interno delle parentesi quadre.
+In altre parole, tutti i caratteri speciali sono consentiti senza necessità di escape, eccetto quando significano qualcosa all'interno delle parentesi quadre.
 
-Un punto `.` all'interno delle parentesi quadre significa giusto un punto. Il modello `pattern:[.,]` cercherebbe per uno dei caratteri: o un punto o una virgola.
+Un punto `.` all'interno delle parentesi quadre significa soltanto un punto. Il modello `pattern:[.,]` cercherebbe uno dei caratteri: o un punto o una virgola.
 
 Nell'esempio seguente la regexp `pattern:[-().^+]` effettua la ricerca per uno dei caratteri `-().^+`:
 
@@ -135,10 +135,10 @@ let regexp = /[-().^+]/g;
 alert( "1 + 2 - 3".match(regexp) ); // Corrispondono +, -
 ```
 
-...Ma se decidiamo di effettuarne l'escape "giusto per non sbagliare", il risultato non cambierebbe:
+...Ma se decidete di effettuare l'escape "per ogni evenienza", il risultato non cambierebbe:
 
 ```js run
-// Escape tutto
+// Escape di ogni carattere
 let regexp = /[\-\(\)\.\^\+]/g;
 
 alert( "1 + 2 - 3".match(regexp) ); // funziona ugualmente: +, -
@@ -152,12 +152,12 @@ Per esempio, cerchiamo `pattern:[𝒳𝒴]` nella stringa `subject:𝒳`:
 
 ```js run
 alert( '𝒳'.match(/[𝒳𝒴]/) ); // mostra uno strano carattere, come [?]
-// (la ricerca è stata eseguita in modo errato, mezzo-carattere restituito)
+// (la ricerca è stata eseguita in modo errato, viene restituito mezzo-carattere)
 ```
 
-Il risultato non è corretto, perché di base la regular expressions "non sa nulla" riguardo le coppie surrogate.
+Il risultato non è corretto, perché di base le espressioni regolari "non sanno nulla" riguardo le coppie surrogate.
 
-Il motore delle regular expression pensa che `[𝒳𝒴]` -- non sono due, ma quattro caratteri:
+Il motore delle espressioni regolari pensa che `[𝒳𝒴]` -- non sono due, ma quattro caratteri:
 1. metà alla sinistra di `𝒳` `(1)`,
 2. metà alla destra di `𝒳` `(2)`,
 3. metà alla sinistra di `𝒴` `(3)`,
@@ -187,11 +187,11 @@ Se dimentichiamo di aggiungere il flag `pattern:u`, ci sarà un errore:
 '𝒳'.match(/[𝒳-𝒴]/); // Errore: Invalid regular expression
 ```
 
-La ragione è che senza il flag `pattern:u` le coppie surrogate sono percepite come due caratteri, quindi `[𝒳-𝒴]` è interpretato come `[<55349><56499>-<55349><56500>]` (ogni coppia di surrogato è sostituito con il suo codice). Ora è facile vedere che l'intervallo `56499-55349` non è valido: esso inizia con il codice `56499` che è inferiore che finisce con `55349`. Questa è la ragione formale dell'errore.
+La ragione è che senza il flag `pattern:u` le coppie surrogate sono percepite come due caratteri, quindi `[𝒳-𝒴]` è interpretato come `[<55349><56499>-<55349><56500>]` (ogni coppia surrogata è sostituita con i suoi codici). Ora è facile osservare che l'intervallo `56499-55349` non è valido: il suo codice iniziale `56499` è maggiore di quello finale `55349`. Questa è la ragione formale dell'errore.
 
 Con il flag `pattern:u` il modello funziona correttamente:
 
 ```js run
-// cerca per i caratteri da 𝒳 a 𝒵
+// cerca i caratteri da 𝒳 a 𝒵
 alert( '𝒴'.match(/[𝒳-𝒵]/u) ); // 𝒴
 ```
