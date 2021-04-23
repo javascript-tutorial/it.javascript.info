@@ -4,13 +4,13 @@
   padding: 0;
   display: block;
   
-  /* remove resizing handle in Firefox */
+  /* rimuoviamo il gestore di resize in Firefox */
   resize: none;
   
-  /* remove outline on focus in Chrome */
+  /* rimuoviamo l'outline al focus in Chrome */
   outline: none;
   
-  /* remove scrollbar in IE */
+  /* rimuoviamo la scrollbar in IE */
   overflow: auto;
 }
 

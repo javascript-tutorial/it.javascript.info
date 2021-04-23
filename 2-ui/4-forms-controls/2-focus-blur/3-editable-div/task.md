@@ -4,7 +4,7 @@ importance: 5
 
 # Div modificabile
 
-Creare un `<div>` che diventa una `<textarea>` al click.
+Create un `<div>` che diventa una `<textarea>` al click.
 
 La textarea permette di modificare l'HTML nel div `<div>`.
 

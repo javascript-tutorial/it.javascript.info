@@ -14,12 +14,12 @@
 }
 
 .edit {
-  /* replace padding with border (still 3px not to shift the contents) */
+  /* rimpiazziamo il padding con il bordo (sempre di 3px per non spostare il contenuto) */
   border: 3px solid blue;
   padding: 0px;
 }
 
 .edit:focus {
-  /* remove focus border in Safari */
+  /* rimuoviamo il bordo al focus in Safari */
   outline: none;
 }
