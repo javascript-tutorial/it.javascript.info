@@ -4,7 +4,7 @@ importance: 5
 
 # "Smart" tooltip
 
-Scrivere una funzione che mostri un tooltip su un elemento solo se l'utente sposta il mouse *su di esso*, e non *attraverso di esso*.
+Scrivete una funzione che mostri un tooltip su un elemento solo se l'utente sposta il mouse *su di esso*, e non *attraverso di esso*.
 
 In altre parole, se il visitatore sposta il mouse su questo elemento e si ferma lì -- mostra il tooltip. Se invece ha solo spostato il mouse passandoci sopra, non ce n'è bisogno, d'altronde chi mai vorrebbe altri elementi lampeggianti non desiderati?
 
