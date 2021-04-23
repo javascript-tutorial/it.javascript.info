@@ -43,7 +43,7 @@
       let fieldCoords = this.getBoundingClientRect();
 
       // la palla ha come position:absolute, il campo: position:relative
-      // quindi le coordinate della pall sono relative all'angolo in alto a sinistra del campo
+      // quindi le coordinate della palla sono relative all'angolo in alto a sinistra del campo
       let ballCoords = {
         top: event.clientY - fieldCoords.top - field.clientTop - ball.clientHeight / 2,
         left: event.clientX - fieldCoords.left - field.clientLeft - ball.clientWidth / 2
