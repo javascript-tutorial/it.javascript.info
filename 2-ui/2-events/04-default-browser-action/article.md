@@ -1,6 +1,6 @@
 # Azioni predefinite del browser
 
-Molti eventi vengono ricondotti verso determinate azioni del browser.
+Molti eventi vengono emessi al verificarsi di determinate azioni del browser.
 
 Per esempio:
 
@@ -12,12 +12,12 @@ Quando gestiamo un evento con JavaScript, potremmo non volere che la corrisponde
 
 ## Prevenire le azioni del browser
 
-Ci sono due maniere per comunicare al browser che non vogliamo che esegua l'azione predefinita:
+Ci sono due modi per comunicare al browser che non vogliamo che esegua l'azione predefinita:
 
-- La maniera più comune è quella di usare il metodo `event.preventDefault()`, incluso nell'oggetto `event`.
+- Il più comune è quello di usare il metodo `event.preventDefault()`, incluso nell'oggetto `event`.
 - Se il gestore viene assegnato tramite `on<event>` (e non tramite `addEventListener`), allora restituire `false` sortirà lo stesso effetto.
 
-In questo HTML un click su un link non porta a navigarne l'URL, e di fatto il browser  non fa nulla:
+In questo HTML un click su un link non innescherà la navigazione verso l'URL, e di fatto il browser non farà nulla:
 
 ```html autorun height=60 no-beautify
 <a href="/" onclick="return false">Clicca qui</a>
