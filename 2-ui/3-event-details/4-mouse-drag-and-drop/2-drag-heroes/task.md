@@ -6,7 +6,7 @@ importance: 5
 
 Questa attività può essere d'aiuto per comprendere vari aspetti del Drag'n'Drop e del DOM.
 
-Rendere tutti gli elementi trascinabili, attraverso la classe `draggable`, come il pallone nel capitolo appena studiato.
+Rendete tutti gli elementi trascinabili, attraverso la classe `draggable`, come il pallone nel capitolo appena studiato.
 
 Requisiti:
 

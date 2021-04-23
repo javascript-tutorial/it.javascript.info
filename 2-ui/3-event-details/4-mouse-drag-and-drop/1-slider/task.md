@@ -4,7 +4,7 @@ importance: 5
 
 # Slider
 
-Creare uno cursore a scorrimento:
+Create uno cursore a scorrimento:
 
 [iframe src="solution" height=60 border=1]
 
