@@ -23,13 +23,13 @@
   </div>
 
   <script>
-    // Show a half-transparent DIV to "shadow" the page
+    // Mostriamo un DIV semi trasparente per "nascondere" la pagina
     // (the form is not inside, but near it, because it shouldn't be half-transparent)
     function showCover() {
       let coverDiv = document.createElement('div');
       coverDiv.id = 'cover-div';
 
-      // make the page unscrollable while the modal form is open
+      // facciamo in modo che la pagina non sia scrollabile mentre la modale con il form è aperta
       document.body.style.overflowY = 'hidden';
 
       document.body.append(coverDiv);
@@ -56,7 +56,7 @@
 
       form.onsubmit = function() {
         let value = form.text.value;
-        if (value == '') return false; // ignore empty submit
+        if (value == '') return false; // ignoriamo i submit vuoti
 
         complete(value);
         return false;
