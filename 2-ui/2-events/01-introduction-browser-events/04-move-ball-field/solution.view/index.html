@@ -39,29 +39,29 @@
   <script>
     field.onclick = function(event) {
 
-      // window-relative field coordinates
+      // coordinate del campo relative alla finestra
       let fieldCoords = this.getBoundingClientRect();
 
-      // the ball has position:absolute, the field: position:relative
-      // so ball coordinates are relative to the field inner left-upper corner
+      // la palla ha come position:absolute, il campo: position:relative
+      // quindi le coordinate della palla sono relative all'angolo in alto a sinistra del campo
       let ballCoords = {
         top: event.clientY - fieldCoords.top - field.clientTop - ball.clientHeight / 2,
         left: event.clientX - fieldCoords.left - field.clientLeft - ball.clientWidth / 2
       };
 
-      // prevent crossing the top field boundary
+      // preveniamo il superamento del limite superiore del campo
       if (ballCoords.top < 0) ballCoords.top = 0;
 
-      // prevent crossing the left field boundary
+      // preveniamo il superamento del limite sinistro del campo
       if (ballCoords.left < 0) ballCoords.left = 0;
 
 
-      // // prevent crossing the right field boundary
+      // preveniamo il superamento del limite destro del campo
       if (ballCoords.left + ball.clientWidth > field.clientWidth) {
         ballCoords.left = field.clientWidth - ball.clientWidth;
       }
 
-      // prevent crossing the bottom field boundary
+      // preveniamo il superamento del limite inferiore del campo
       if (ballCoords.top + ball.clientHeight > field.clientHeight) {
         ballCoords.top = field.clientHeight - ball.clientHeight;
       }
