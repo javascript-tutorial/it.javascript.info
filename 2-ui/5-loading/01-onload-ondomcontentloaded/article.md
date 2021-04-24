@@ -2,28 +2,28 @@
 
 Il ciclo di vita di una pagina HTML è costituito da 3 importanti eventi:
 
-- `DOMContentLoaded` -- il browser ha completamente caricato l'HTML, e l'alberto del DOM è stato costruito, ma risorse esterne come immagini `<img>` e i fogli di stile potrebbero ancora non essere stati caricati.   
+- `DOMContentLoaded` -- il browser ha completamente caricato l'HTML, e l'albero del DOM è stato costruito, ma risorse esterne come immagini `<img>` e i fogli di stile potrebbero ancora non essere stati caricati.   
 - `load` -- non solo l'HTML è caricato ma anche tutte le risorse esterne: immagini, fogli di stile, ecc.
 - `beforeunload/unload` -- l'utente sta lasciando la pagina.
 
 Ogni evento potrebbe essere utile: 
 
-- `DOMContentLoaded` event -- il DOM è pronto, quindi l'handler può scorrere i nodi del DOM, inizializzare l'interfaccia.
-- `load` event -- tutte le risorse esterne sono caricate, quindi gli stile sono applicati, la dimensioni delle immagini nella pagina è nota, ecc.
-- `beforeunload` event -- l'utente sta lasciando la pagina: possiamo controllare se l'utente ha salvato le modifiche effettuate e chiedere loro se sono sicuri di voler lasciare la pagina.
-- `unload` -- l'utente ha quasi lasciato la pagina ma possiamo ancora effettuare alcune operazioni.
+- evento di `DOMContentLoaded` quando il DOM è pronto, quindi il gestore può scorrere i nodi del DOM, ed inizializzare l'interfaccia.
+- evento di `load` quando tutte le risorse esterne sono state caricate, ed anche gli stili sono stati applicati, le dimensioni delle immagini nella pagina è nota, ecc.
+- evento di `beforeunload` quando l'utente sta lasciando la pagina: possiamo controllare se l'utente ha salvato le modifiche effettuate ed eventualmente chiedergli se è sicuro di voler lasciare la pagina.
+- evento di `unload` quando l'utente ha quasi lasciato la pagina ma possiamo ancora effettuare alcune operazioni.
 
 Esploriamo i dettagli di questi eventi.
 
 ## DOMContentLoaded
 
-L'evento `DOMContentLoaded` avviene sull'oggetto `document`.
+L'evento `DOMContentLoaded` viene emesso dall'oggetto `document`.
 
-Dobbiamo utilizzare `addEventListener` per catturarlo:
+Dobbiamo quindi utilizzare `addEventListener` per catturarlo:
 
 ```js
 document.addEventListener("DOMContentLoaded", ready);
-// not "document.onDOMContentLoaded = ..."
+// non "document.onDOMContentLoaded = ..."
 ```
 
 Per esempio:
@@ -33,7 +33,7 @@ Per esempio:
   function ready() {
     alert('DOM is ready');
 
-    // l'immagine non è stata ancora caricata(a meno che non fosse cachata quindi la dimensione è 0x0
+    // l'immagine non è stata ancora caricata (a meno che non fosse già presente in cache) quindi la dimensione è 0x0
     alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
   }
 
@@ -45,11 +45,11 @@ Per esempio:
 <img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0">
 ```
 
-Nell'esempio l'handler dell'evento `DOMContentLoaded` si aziona quando il documento è car icato, quindi può vedere tutti gli elementi del DOM, compresa `<img>` sotto.
+Nell'esempio il gestore dell'evento `DOMContentLoaded` si aziona quando il documento è caricato, quindi può vedere tutti gli elementi del DOM, compresa `<img>` sotto.
 
-Ma non aspetta che l'immagine si carichi. Quindi `alert` mostra zero come dimensione.
+Ma non aspetta che l'immagine si carichi. Per questo `alert` mostra zero come dimensione.
 
-Ad una prima occhiata l'evento `DOMContentLoaded` è molto semplice. L'albero del DOM è pronto -- questo è l'evento. Ci sono alcune peculiarità però.
+Ad una prima occhiata l'evento `DOMContentLoaded` è molto semplice. Ci segnala che l'albero del DOM è pronto, tutto qui. Ci però sono alcune peculiarità.
 
 ### DOMContentLoaded e gli script
 
@@ -81,14 +81,14 @@ Ci sono 2 eccezioni per questa regola:
 
 ### DOMContentLoaded e stili
 
-I fogli di stile esterni non influenza il DOM, quindi `DOMContentLoaded` non aspetta il loro caricamento.
+I fogli di stile esterni non influenzano il caricamento del DOM, quindi `DOMContentLoaded` non aspetta il loro caricamento.
 
-Ma c'è una trappola. Se abbiamo uno script dopo uno stile quello script deve aspettare affinche il foglio di stile è caricato.
+Ma c'è una trappola. Se abbiamo uno script dopo uno stile quello script deve aspettare affinché il foglio di stile sia statio caricato.
 
 ```html run
 <link type="text/css" rel="stylesheet" href="style.css">
 <script>
-  // lo script non viene eseguito finche il foglio di stile non è caricato
+  // lo script non viene eseguito finché il foglio di stile non è caricato
   alert(getComputedStyle(document.body).marginTop);
 </script>
 ```
@@ -99,22 +99,22 @@ Quindi `DOMContentLoaded` aspetta il caricamento degli script e inoltre anche qu
 
 ### Riempimento automatico nativo del browser
 
-Firefox, Chrome e Opera riempiono automaticamente le form durante l'evento `DOMContentLoaded`. 
+Firefox, Chrome e Opera riempiono automaticamente i form durante l'evento `DOMContentLoaded`. 
 
-Per esempio, se la pagina a una form con username e password, e il browser si ricorda i valori, allora durante l'evento `DOMContentLoaded` prova a riempire automaticamente i campi (se approvato dall'utente).
+Per esempio, se la pagina contiene un form con username e password, e il browser ha memorizzato i valori, allora durante l'evento `DOMContentLoaded` prova a riempire automaticamente i campi (se approvato dall'utente).
 
-Se l'evento `DOMContentLoaded` viene rinviato a causa dei lunghi tempi di caricamento degli script, allora anche il riempimento automatico dovrà attendere. Probabilmente avrete visto questo comportamento su alcuni siti (se utilizzate browser con riempimento automatico) -- i campi della login/password non vengono riempiti immediatamente, ma c'è un delay(ritardo) finchè la pagina non è completamente caricata. Questo è in realtà il ritardo fino all'evento `DOMContentLoaded`.
+Se l'evento `DOMContentLoaded` viene rinviato a causa dei lunghi tempi di caricamento degli script, allora anche il riempimento automatico dovrà attendere. Probabilmente avrete visto questo comportamento su alcuni siti (se utilizzate browser con riempimento automatico) -- i campi della login/password non vengono riempiti immediatamente, ma c'è un delay(ritardo) finché la pagina non è completamente caricata. Questo è in realtà il ritardo dovuto all'evento `DOMContentLoaded`.
 
 
 ## window.onload [#window-onload]
 
-L'evento `load` sull'oggetto `window` scatta quando tutta la pagina è stata caricata, inclusi gli stili, immagini e altre risorse.
+L'evento `load` sull'oggetto `window` viene emesso quando tutta la pagina è stata caricata, inclusi gli stili, immagini e altre risorse.
 
-L'esempio sotto mostra correttamente le dimensioni dell'immagine, perchè `window.onload` aspetta il caricamento di tutte le immagini:
+L'esempio sotto mostra correttamente le dimensioni dell'immagine, perché `window.onload` aspetta il caricamento di tutte le immagini:
 
 ```html run height=200 refresh
 <script>
-  window.onload = function() { // same as window.addEventListener('load', (event) => {
+  window.onload = function() { // equivale window.addEventListener('load', (event) => {
     alert('Page loaded');
 
     // l'immagine è già caricata in questo momento
@@ -127,7 +127,7 @@ L'esempio sotto mostra correttamente le dimensioni dell'immagine, perchè `windo
 
 ## window.onunload
 
-Quando un utente lascia la pagina viene triggerato l'evento `unload` sulla `window`. Possiamo effettuare operazioni che non comportano un ritardo, come chiudere le finistre popup relative alla pagina.
+Quando un utente lascia la pagina viene emesso l'evento `unload` sulla `window`. Possiamo effettuare operazioni che non comportano un ritardo, come chiudere le finestre popup relative alla pagina.
 
 L'eccezione degna di nota è mandare dati analitici riguardo la pagina.
 
@@ -148,10 +148,10 @@ window.addEventListener("unload", function() {
 ```
 
 - La richiesta è effettuata come POST.
-- We can send not only a string, but also forms and other formats, as described in the chapter <info:fetch>, but usually it's a stringified object. Non possiamo mandare solo dati di tipo string ma anche form e altri formati, come descritto nel capitolo <info:fetch>, ma di solito è un oggetto sotto forma di stringa.
+- Non siamo limitati all'invio di sole stringhe, ma sono supportati anche `Form` ed altri formati, come descritto nel capitolo <info:fetch>, anche se solitamente si invia un oggetto sotto forma di stringa.
 - La dimensione massima dei dati è 64kb.
 
-Quando la richiesta `sendBeacon` è terminata il browser probabilmente  ha già lasciato il document e quindi non c'è modo di ottenere la risposta del server (che comunque di solito è vuota per i dati analitici).
+Quando la richiesta `sendBeacon` è terminata il browser probabilmente ha già lasciato il document e quindi non c'è modo di ottenere la risposta del server (che comunque di solito è vuota per i dati analitici).
 
 C'è anche un flag `keepalive` per effettuare richieste dopo che la pagina è stata lasciata. Potrai trovare maggiore informazioni nel capitolo <info:fetch-api>.
 
@@ -160,11 +160,11 @@ Se vogliamo cancellare il passaggio ad un'altra pagina non possiamo farlo qui ma
 
 ## window.onbeforeunload [#window.onbeforeunload]
 
-Se un utente sta cambiando pagina o sta cercando di chiudere la finestra, l'handler dell'evento `beforeunload` chiede una conferma aggiuntiva. 
+Se un utente sta cambiando pagina o sta cercando di chiudere la finestra, il gestore dell'evento `beforeunload` chiede una conferma aggiuntiva. 
 
 Se cancelliamo l'evento il browser potrebbe chiedere all'utente se confermano l'operazione.
 
-Puoi provare questo comportamento mandando in esecezione questo codice e poi ricaricando la pagina:
+Puoi provare questo comportamento eseguendo questo codice e poi ricaricando la pagina:
 
 ```js run
 window.onbeforeunload = function() {
@@ -174,7 +174,7 @@ window.onbeforeunload = function() {
 
 Per ragioni storiche, anche tornare una stringa non vuota conta come cancellazione dell'evento. Poco tempo fa i browser lo mostravano come un messaggio ma come dicono le [specifiche moderne](https://html.spec.whatwg.org/#unloading-documents), non dovrebbero.
 
-Here's an example:
+Qui vediamo un esempio:
 
 ```js run
 window.onbeforeunload = function() {
@@ -182,15 +182,15 @@ window.onbeforeunload = function() {
 };
 ```
 
-Il comportamento è stato cambiato perchè alcuni webmaster abusavano di questo evento mostrando messaggi fastidiosi e fuorvianti. Quindi ora i vecchi browser potrebbero mostrare ancora questi messaggi, ma a parte questo -- non c'è modo di customizzare il messaggio che viene mostrato all'utente.
+Il comportamento è stato cambiato perché alcuni webmaster abusavano di questo evento mostrando messaggi fastidiosi e fuorvianti. Quindi ora i vecchi browser potrebbero mostrare ancora questi messaggi, ma a parte questo -- non c'è modo di personalizzare il messaggio che viene mostrato all'utente.
 
 ## readyState
 
-Cosa succede se impostiamo l'handler dell'evento `DOMContentLoaded` dopo che il documento è stato caricato?
+Cosa succede se impostiamo il gestore dell'evento `DOMContentLoaded` dopo che il documento è stato caricato?
 
-Naturalmente, non viene mai eseguito.
+Naturalmente, non verrà mai eseguito.
 
-Ci sono dei casi in cui non siamo sicuri se il document è stato caricato o meno. Vorremmo che la nostra funzione fosse eseguita quando il DOM è stato caricato, sia adesso che dopo. 
+Ci sono dei casi in cui non siamo sicuri se il document è stato caricato o meno. Vorremmo che la nostra funzione venisse eseguita quando il DOM è stato caricato, sia adesso che dopo. 
 
 La proprietà `document.readyState` ci da informazioni a proposito dello stato di caricamento corrente.
 
@@ -216,7 +216,7 @@ if (document.readyState == 'loading') {
 }
 ```
 
-C'è anche l'evento `readystatechange` che scatta quando lo stato cambia, quindi possiamo stampare tutti questi stati in questo modo:
+Abbiamo a disposizione anche l'evento `readystatechange` che viene emesso quando lo stato cambia, quindi possiamo stampare il cambiamento di questi stati, come nell'esempio:
 
 ```js run
 // stato corrente
@@ -230,7 +230,7 @@ L'evento `readystatechange` è un meccanismo alternativo per il tracciamento del
 
 Vediamo il flusso di tutti gli eventi per completezza.
 
-Ecco un documento con `<iframe>`, `<img>` e handler che loggano gli eventi:
+Ecco un documento con `<iframe>`, `<img>` e handler che mostra gli eventi:
 
 ```html
 <script>
@@ -272,11 +272,11 @@ I numeri tra le parentesi quadre indicano il tempo approssimativo di quando l'ev
 Eventi di caricamento della pagina:
 
 - l'evento `DOMContentLoaded` scatta sul `document` quando il DOM è pronto. Possiamo quindi utilizzare Javascript sugli elementi della pagina in questa fase.
-  - Script come `<script>...</script>` o `<script src="..."></script>` bloccano DOMContentLoaded poichè il browser aspetta che finiscano di caricarsi per eseguirlo.
+  - Script come `<script>...</script>` o `<script src="..."></script>` bloccano DOMContentLoaded poiché il browser aspetta che finiscano di caricarsi per eseguirlo.
   - Immagini e altre risorse potrebbero prolungare ulteriormente il caricamento.
-- l'evento `load` sulla `window` si aziona quando la pagina e tutte le risorse sono caricate. Viene usato raramente perchè di solito non c'è bisogno di attendere per così tanto. 
+- l'evento `load` sulla `window` si aziona quando la pagina e tutte le risorse sono caricate. Viene usato raramente perché di solito non c'è bisogno di attendere per così tanto. 
 - l'evento `beforeunload` sulla `window` si aziona quando l'utente vuole lasciare la pagina. Se cancelliamo l'evento il browser chiede all'utente se vuole veramente lasciare la pagina (per esempio se ci sono modifiche non salvate).
-- l'evento `unload` sulla `window` si aziona quando l'utente sta proprio lasciando la pagina, nell'handler possiamo solo effettuare operazioni semplici che non comportano nessun ritardo o chiedere cose all'utente. Vista questa limitazione, viene usato raramente. Possiamo mandare richieste di rete con `navigator.sendBeacon`.
+- l'evento `unload` sulla `window` si aziona quando l'utente sta proprio lasciando la pagina, nelil gestore possiamo solo effettuare operazioni semplici che non comportano nessun ritardo o chiedere cose all'utente. Vista questa limitazione, viene usato raramente. Possiamo mandare richieste di rete con `navigator.sendBeacon`.
 - `document.readyState` è lo stato corrente del documento, i cambi possono essere tracciati nell'evento `readystatechange`: 
   - `loading` -- il document si sta caricando.
   - `interactive` -- il document è parsato, si verifica quasi allo stesso tempo di `DOMContentLoaded`, ma prima di esso.
