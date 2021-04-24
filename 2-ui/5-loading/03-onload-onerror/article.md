@@ -1,10 +1,10 @@
 # Caricamento delle risorse: onload e onerror
 
-Il browser permette di tracciare il caricamento di risorse esterne -- script, iframe, immagini e così via.
+Il browser permette di tracciare il caricamento di risorse esterne: script, iframe, immagini e così via.
 
 Esistono 2 eventi per tracciare il caricamento:
 
-- `onload` -- caricato con success,
+- `onload` -- caricato con successo,
 - `onerror` -- si è verificato un errore.
 
 ## Caricamento di uno script
@@ -20,7 +20,7 @@ script.src = "my.js";
 document.head.append(script);
 ```
 
-...Ma come possiamo eseguire la funzione dichiarata all'interno di quello script? Dobbiamo attendere finché lo script sia caricato e solo allora possiamo chiamare la funzione. 
+...Ma come possiamo eseguire la funzione dichiarata all'interno di quello script? Dobbiamo attendere la fine del caricamento dello script e successivamente chiamare la funzione. 
 
 ```smart
 Per i nostri script dovremmo utilizzare i [moduli JavaScript](info:modules) in questo caso, ma non sono largamente adottati dalle librerie di terze parti.
@@ -151,7 +151,7 @@ Ci sono tre livelli di accesso cross-origin:
 3. **`crossorigin="use-credentials"`** -- accesso consentito se il server manda indietro l'header `Access-Control-Allow-Origin` con la nostra origine (dominio) e `Access-Control-Allow-Credentials: true`. Il browser manda i dati e i cookie sull'autenticazione al server remoto.
 
 ```smart
-Può approfondire l'accesso cross-origin nel capitolo <info:fetch-crossorigin>. Descrive il metodo `fetch` per le richieste di rete, ma la policy è esattamente la stessa.
+Puoi approfondire l'accesso cross-origin nel capitolo <info:fetch-crossorigin>. Descrive il metodo `fetch` per le richieste di rete, ma la policy è esattamente la stessa.
 
 Ad esempio i "cookies" sono un argomento fuori dal nostro attuale ambito, ma puoi leggere informazioni a proposito nel capitolo <info:cookie>.
 ```
