@@ -15,11 +15,11 @@ Questo conduce a 2 importanti problematiche:
 
 <script src="https://javascript.info/article/script-async-defer/long.js?speed=1"></script>
 
-<!-- This isn't visible until the script loads -->
+<!-- Questo non sarà visibile finché non sarà terminato il caricamento dello script -->
 <p>...contenuto dopo lo script...</p>
 ```
 
-Ci sono alcuni accorgimenti per avere il comportamento desiderato. Per esempio, possiamo mettere lo script in fondo alla pagina. In questo modo vedrà gli elementi sopra di esso e non bloccherà la visualizzazione della pagina:
+Possiamo però applicare alcuni accorgimenti per ottenere il comportamento desiderato. Per esempio, possiamo mettere lo script in fondo alla pagina. In questo modo vedrà gli elementi sopra di esso e non bloccherà la visualizzazione della pagina:
 
 ```html
 <body>
@@ -31,7 +31,7 @@ Ci sono alcuni accorgimenti per avere il comportamento desiderato. Per esempio, 
 
 Ma questa soluzione è lontana dall'essere perfetta. Per esempio, il browser si accorge dello script (e può iniziarlo a scaricare) solo dopo che è stato scaricato tutto il documento HTML. Per pagine HTML molto lunghe ci potrebbe essere un notevole ritardo nel caricamento dello script.
 
-Such things are invisible for people using very fast connections, but many people in the world still have slower internet speeds and use far-from-perfect mobile internet. Queste cose sono invisibili per persone che utilizzano una connessione molto veloce ma molte persone nel mondo hanno ancora una connessione Internet più lenta e utilizzano connessioni mobile molto scarse.
+Queste cose sono invisibili per persone che utilizzano una connessione molto veloce, ma molte persone nel mondo hanno ancora una connessione Internet più lenta e utilizzano connessioni mobili molto scarse.
 
 Fortunatamente, ci sono 2 attributi del tag `<script>` che risolvono il problema per noi: `defer` e `async`.
 
@@ -47,7 +47,7 @@ Di seguito lo stesso esempio di sopra, ma con `defer`:
 
 <script defer src="https://javascript.info/article/script-async-defer/long.js?speed=1"></script>
 
-<!-- visible immediately -->
+<!-- visibile immediatamente -->
 <p>...contenuto dopo lo script...</p>
 ```
 
@@ -100,7 +100,7 @@ L'attributo `async` indica che uno script è completamente indipendente:
     - ...o dopo uno script `async` (se lo script è corto o era in cache)
 - Anche gli altri script non aspettano il caricamento degli script `async`, e gli script `async` non aspettano il caricamento degli altri script.
 
-In other words, `async` scripts load in the background and run when ready. The DOM and other scripts don't wait for them, and they don't wait for anything. A fully independent script that runs when loaded. As simple, as it can get, right?
+In altre parole, gli script `async` vengono caricati in background ed eseguiti quando pronti. Il DOM e gli altri script non restano in attesa che questi vengano caricati. Avremo quindi un script completamente indipendente che verrà eseguito al termine del caricamento. Piuttosto semplice, vero?
 
 Quindi, se abbiamo parecchi script `async`, potrebbero essere eseguiti in qualunque ordine. Qualunque di essi viene caricato prima -- viene eseguito prima:
 
@@ -131,7 +131,7 @@ Gli script async sono ottimali quando dobbiamo integrare uno script di terze par
 
 ## Script dinamici
 
-Possiamo anche aggiungere uno script dinamicamente usando Javascript:
+Possiamo anche aggiungere uno script dinamicamente usando JavaScript:
 
 ```js run
 let script = document.createElement('script');
