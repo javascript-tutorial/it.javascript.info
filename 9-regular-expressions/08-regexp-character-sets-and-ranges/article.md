@@ -72,7 +72,7 @@ Decifriamolo. Similarmente a `pattern:\w`, stiamo creando un nostro insieme che 
 - `Mark` (`M`) - per gli accenti,
 - `Decimal_Number` (`Nd`) - per i numeri,
 - `Connector_Punctuation` (`Pc`) - per il trattino basso `'_'` e caratteri simili,
-- `Join_Control` (`Join_C`) - due codici specialis `200c` e `200d`, usati nelle legature, a.e. in Arabo.
+- `Join_Control` (`Join_C`) - due codici speciali `200c` e `200d`, usati nelle legature, a.e. in Arabo.
 
 Un esempio di utilizzo:
 
