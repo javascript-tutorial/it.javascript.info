@@ -7,7 +7,7 @@ In teoria, possiamo creare qualunque elemento invisibile in qualunque punto dell
 
 Prima di tutto il contenuto può essere qualunque HTML valido, anche se, normalmente richiede un tag di inclusione appropriato.
 
-Per esempio, possiamo possiamo inserire una riga di una tabella `<tr>`:
+Per esempio, possiamo inserire la riga di una tabella `<tr>`:
 ```html
 <template>
   <tr>
@@ -16,7 +16,7 @@ Per esempio, possiamo possiamo inserire una riga di una tabella `<tr>`:
 </template>
 ```
 
-Solitamente, se proviamo a inserire un `<tr>` per esempio dentro un `<div>`, il browser riconoscerà una struttura non valida, "correggendola", aggiungendovi una tabella attorno. Questo non è il comportamento corretto, ma d'altra parte `<template>` mantiene le cose esattamente come le inseriamo.
+Solitamente, se proviamo a inserire un `<tr>`, per esempio, dentro un `<div>`, il browser riconoscerà una struttura non valida, "correggendola", aggiungendovi una tabella attorno. Questo non è il comportamento corretto, ma d'altra parte `<template>` mantiene le cose esattamente come le inseriamo.
 
 Dentro i tag `<template>` possiamo anche inserire stili e scripts:
 
@@ -102,7 +102,7 @@ Questi formano lo shadow DOM:
 ## Riepilogo
 
 - il contenuto di `<template>` può essere qualunque HTML sintatticamente corretto.
-- il contenuto di `<template>` essendo considerato "avulso dal documento", non modificherà, nè eseguirà alcunché al suo interno.
+- il contenuto di `<template>` essendo considerato "avulso dal documento", non modificherà, né eseguirà alcunché al suo interno.
 - Possiamo accedere a `template.content` via JavaScript, ed anche clonarlo per poterlo riutilizzare in un nuovo componente.
 
 Il tag `<template>` ha delle pecurialità uniche, in quanto:
