@@ -1,8 +1,8 @@
 # Blob
 
-Gli `ArrayBuffer` e i visualizzatori fanno parte dello standard ECMA, sono quindi una parte di JavaScript.
+Gli `ArrayBuffer` e i visualizzatori fanno parte dello standard ECMA; sono quindi parte di JavaScript.
 
-Nei browser, abbiamo a disposizione degli oggetti più ad alto livello, descritti in [File API](https://www.w3.org/TR/FileAPI/), in particolare, l'oggetto `Blob`.
+Nei browser, abbiamo a disposizione degli oggetti più ad alto livello, descritti in [File API](https://www.w3.org/TR/FileAPI/), in particolare l'oggetto `Blob`.
 
 L'oggetto `Blob` consiste di una stringa opzionale `type` (solitamente di tipo MIME), e di `blobParts`, una sequenza di oggetti `Blob`, stringhe e `BufferSource`.
 
@@ -17,7 +17,7 @@ new Blob(blobParts, options);
 - **`blobParts`** è un array di valori di tipo `Blob`/`BufferSource`/`String`.
 - **`options`** oggetto opzionale:
   - **`type`**, di tipo `Blob`, solitamente di tipo MIME, e.g. `image/png`,
-  - **`endings`**, se trasformare il carattere di fine riga per far si che il `Blob` contenga il carattere nuova riga del Sistema Operativo corrente (`\r\n` o `\n`). Di default vale `"transparent"` (non fa nulla), ma può assumere il valore `"native"` (effettua la trasformazione).
+  - **`endings`**, se trasformare il carattere di fine riga per far sì che il `Blob` contenga il carattere nuova riga del Sistema Operativo corrente (`\r\n` o `\n`). Di default è `"transparent"` (non fa nulla), ma può assumere il valore `"native"` (effettua la trasformazione).
 
 Ad esempio:
 
@@ -41,19 +41,19 @@ Possiamo estrarre le parti del `Blob` con:
 blob.slice([byteStart], [byteEnd], [contentType]);
 ```
 
-- **`byteStart`**, il byte di partenza, di default 0.
-- **`byteEnd`**, l'ultimo byte (escluso, fino alla fine di default).
-- **`contentType`**, il `type` del nuovo blob, di default lo stesso di quello di origine.
+- **`byteStart`** - il byte di partenza, di default 0.
+- **`byteEnd`** - l'ultimo byte (escluso, fino alla fine di default).
+- **`contentType`** - il `type` del nuovo blob, di default lo stesso di quello di origine.
 
-Gli argomenti sono simili al metodo `array.slice`, sono ammessi anche i valori negativi.
+Gli argomenti sono simili al metodo `array.slice`; sono ammessi anche i valori negativi.
 
 ```smart header="Gli oggetti `Blob` sono immutabili"
-Non possiamo modificare direttamente i dati di un `Blob`, ma possiamo estrarre parti di un `Blob`, utilizzarle per creare nuovi `Blob`, fondere insieme in un unico `Blob`, e molto altro.
+Non possiamo modificare direttamente i dati di un `Blob`, ma possiamo estrarne delle parti, utilizzarle per creare nuovi `Blob`, fonderle insieme in un unico `Blob`, e molto altro.
 
 Questo comportamento è simile alle stringhe JavaScript: non possiamo modificare direttamente un carattere in una stringa, ma possiamo creare una nuova stringa modificata.
 ```
 
-## Blob acome URL
+## Blob come URL
 
 Un `Blob` può essere utilizzato facilmente come URL per `<a>`, `<img>` o altri tag, per mostrarne i contenuti.
 
@@ -97,9 +97,9 @@ Questo è un esempio di come potrebbe apparire il valore di un `link.href`:
 blob:https://javascript.info/1e67e00e-860d-40a5-89ae-6ab0cbee6273
 ```
 
-Per ogni URL generato da `URL.createObjectURL` il browser memorizza in una mappa interna la coppia URL -> `Blob`. Cosi da rendere questi URL più corti, ma in grado di fornire comunque l'accesso al `Blob`.
+Per ogni URL generato da `URL.createObjectURL` il browser memorizza in una mappa interna la coppia URL -> `Blob`. Così da rendere questi URL più corti, ma in grado di fornire comunque l'accesso al `Blob`.
 
-Uno URL generato (e quindi anche il suo link) è valido solamente all'interno del `document` corrente, finché questo rimane aperto. E può essere utilizzato per fare riferimento al `Blob` nei tag `<img>`, `<a>`, e qualsiasi altro oggetto che accetta uno URL.
+Un URL generato (e quindi anche il suo link) è valido solamente all'interno del `document` corrente, finché questo rimane aperto. E può essere utilizzato per fare riferimento al `Blob` nei tag `<img>`, `<a>`, e qualsiasi altro oggetto che accetta un URL.
 
 Abbiamo però un effetto collaterale. Poiché i `Blob` sono mappati, ogni oggetto `Blob` risiede in memoria. Quindi il browser non potrà liberarla.
 
@@ -117,7 +117,7 @@ Nell'esempio precedente, con il link HTML cliccabile, non invochiamo `URL.revoke
 
 Un alternativa a `URL.createObjectURL` è quella di convertire un `Blob` in una stringa codificata in base 64.
 
-Questo tipo di encoding rappresenta i dati binari come una stringa leggibile di caratteri ultra-safe, con caratteri ASCII-code da 0 a 64. E molto più importante, possiamo utilizzare questo encoding nei "data-urls".
+Questo tipo di encoding rappresenta i dati binari come una stringa leggibile di caratteri ultra-safe, con caratteri ASCII-code da 0 a 64. E, molto più importante, possiamo utilizzare questo encoding nei "data-urls".
 
 Un [data url](mdn:/http/Data_URIs) è rappresentato nella forma `data:[<mediatype>][;base64],<data>`. Possiamo utilizzare questi URL ovunque, in alternativa agli URL "regolari".
 
@@ -162,11 +162,11 @@ Entrambi i modi per costruire un URL corrispondente ad un `Blob` sono utilizzabi
 
 ## Da image a blob
 
-Possiamo creare un `Blob` relativo ad un immagine, o addirittura fare uno screenshot della pagina. Può essere molto utile se abbiamo la necessita di caricarla da qualche parte.
+Possiamo creare un `Blob` relativo ad un immagine, o addirittura fare uno screenshot della pagina. Può essere molto utile se abbiamo la necessità di caricarla da qualche parte.
 
 Le operazioni sulle immagini sono fatte tramite l'elemento `<canvas>`:
 
-1. Disegniamo un'immagine (o una usa parte) su un canvas, utilizziamo [canvas.drawImage](mdn:/api/CanvasRenderingContext2D/drawImage).
+1. Disegniamo un'immagine (o una usa parte) su un canvas utilizziando [canvas.drawImage](mdn:/api/CanvasRenderingContext2D/drawImage).
 2. Invochiamo il metodo sui canvas [.toBlob(callback, format, quality)](mdn:/api/HTMLCanvasElement/toBlob) il quale crea un `Blob` ed esegue la `callback` al termine dell'operazione.
 
 Nell'esempio sotto, un'immagine è appena stata copiata, ma potremmo volerla tagliare, o trasformarla utilizzando un canvas, prima di creare un blob:
@@ -205,7 +205,7 @@ Se preferiamo, possiamo utilizzare `async/await` al posto delle callback:
 let blob = await new Promise(resolve => canvasElem.toBlob(resolve, 'image/png'));
 ```
 
-Per effettuare lo screenshot di una pagina, possiamo utilizzare una libreria come <https://github.com/niklasvh/html2canvas>. Ciò che fa è semplicemente attraversa la pagina e disegnarla su un `<canvas>`. Successivamente possiamo ottenere un `Blob`, come descritto sopra.
+Per effettuare lo screenshot di una pagina, possiamo utilizzare una libreria come <https://github.com/niklasvh/html2canvas>. Ciò che fa è semplicemente attraversare la pagina e disegnarla su un `<canvas>`. Successivamente possiamo ottenere un `Blob`, come descritto sopra.
 
 ## Da Blob a ArrayBuffer
 
@@ -233,7 +233,7 @@ Mentre `ArrayBuffer`, `Uint8Array` e gli altri `BufferSource` sono "dati binari"
 
 Questo rende i `Blob` convenienti per le operazioni di upload/download, che sono piuttosto comuni nei browser.
 
-I metodi che eseguono richieste web, come [XMLHttpRequest](info:xmlhttprequest), [fetch](info:fetch) e cosi via, sono in grado di operare con i `Blob` nativamente, come con tutti gli altri tipi di dato binari.
+I metodi che eseguono richieste web, come [XMLHttpRequest](info:xmlhttprequest), [fetch](info:fetch) e così via, sono in grado di operare con i `Blob` nativamente, come con tutti gli altri tipi di dato binari.
 
 Possiamo convertire molto rapidamente da `Blob` a dati binari a basso livello:
 
