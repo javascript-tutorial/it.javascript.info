@@ -101,19 +101,19 @@ Il risultato viene detto "flattened" DOM:
 </user-card>
 ```
 
-...Ma il flattened DOM esiste poer scopi puramente di rendering e di gestione degli eventi. È come se fosse "virtuale". Le cose vengono mostrate così. Ma i nodi nel documento non vengono spostati!
+...Tuttavia, il flattened DOM esiste puramente per scopi di rendering e gestione degli eventi. È come se fosse "virtuale". Le cose vengono mostrate così come le vediamo, ma i nodi nel documento non vengono spostati!
 
-Ciò può essere facilmente verificato se andiamo ad eseguire `querySelectorAll`: i nodi saranno al proprio posto.
+Ciò può essere facilmente verificato se eseguiamo`querySelectorAll`: i nodi saranno rimasti al proprio posto.
 
 ```js
-// gli nodi degli <span> del light DOM sono ancora nella stessa posizione, dentro `<user-card>`
+// i nodi degli <span> del light DOM sono ancora nella stessa posizione, quindi dentro `<user-card>`
 alert( document.querySelectorAll('user-card span').length ); // 2
 ```
 
-Quindi, il flattened DOM deriva dallo shadow DOM andando ad inserire gli slots. Il browser ne effettua il rendering e li usa per ereditare gli stili e per la propagazione degli eventi (vedremo questi aspetti più avanti). Ma JavaScript vede ancora il documento "per quello che è", cioè come era prima del flattening.
+Quindi, il flattened DOM deriva dallo shadow DOM con l'inserimento degli slots. Il browser ne effettua il rendering e li usa per ereditare gli stili e la propagazione degli eventi (vedremo questi aspetti più avanti). Ciononostante JavaScript vede ancora il documento "per quello che è", cioè come era prima del processo di flattening.
 
 ````warn header="Solo i figli top-level possono avere l'attributo slot=\"...\" "
-L'attrbibuto `slot="..."` è valido solamente per i figli diretti dello shadow host (nel nostro esempio, l'elemento `<user-card>`). Per gli elementi annidati vengono ignorati.
+L'attributo `slot="..."` è valido solamente per i figli diretti dello shadow host (nel nostro esempio, l'elemento `<user-card>`), gli elementi annidati, invece, vengono ignorati.
 
 Ad esempio, qui il secondo `<span>` viene ignorato (dal momento che non è un figlio top-level di `<user-card>`):
 ```html
@@ -127,9 +127,9 @@ Ad esempio, qui il secondo `<span>` viene ignorato (dal momento che non è un fi
 ```
 ````
 
-Se ci sono più elementi nel light DOM con lo stesso slot name, vengono inseriti nello slot, uno dopo l'altro, in successione.
+Se ci sono più elementi nel light DOM con lo stesso slot name, questi vengono inseriti nello slot, uno dopo l'altro in successione.
 
-Per esempio, qui abbiamo:
+Per esempio, qui:
 ```html
 <user-card>
   <span slot="username">John</span>
@@ -137,7 +137,7 @@ Per esempio, qui abbiamo:
 </user-card>
 ```
 
-Restituisce questo flattened DOM con due elementi dentro `<slot name="username">`:
+Restituisce il flattened DOM con due elementi dentro `<slot name="username">`:
 
 ```html
 <user-card>
@@ -156,7 +156,7 @@ Restituisce questo flattened DOM con due elementi dentro `<slot name="username">
 
 ## Slot fallback content
 
-Se inseriamo qualcosa dentro uno `<slot>`, quest'ultimo rappresenterà il contenuto di ripiego, cioè quello "predefinito". Nel caso in cui non vi fossero contenuti corrispondenti nel light DOM, sarà questo il contenuto mostrato dal browser.
+Se inseriamo qualcosa dentro l'elemento `<slot>`, rappresenterà il contenuto di ripiego, cioè quello "predefinito". Quindi, nel caso in cui non vi fossero contenuti corrispondenti nel light DOM, sarà questo il contenuto che verrà visualizzato dal browser.
 
 Per esempio, in questo pezzo di shadow DOM, verrà visualizzato `Anonymous` se non ci sono `slot="username"` nel light DOM.
 
@@ -168,7 +168,7 @@ Per esempio, in questo pezzo di shadow DOM, verrà visualizzato `Anonymous` se n
 
 ## Slot "default": il primo senza nome
 
-Il primo `<slot>` dello shadow DOM privo di nome è uno slot "default". Esso riceve tutti i nodi dal light DOM che non sono stati slottati da nessuna parte.
+Il primo `<slot>` dello shadow DOM privo di nome è uno slot "default". Esso riceve al suo interno tutti i nodi dal light DOM che non sono stati slottati da nessuna parte.
 
 Per esempio, aggiungiamo lo slot default al nostro `<user-card>` che mostrerà tutte le informazioni non slottate dell'utente:
 
@@ -207,9 +207,9 @@ customElements.define('user-card', class extends HTMLElement {
 </user-card>
 ```
 
-Tutti i contenuti del light DOM non slottati andranno a finire dentro il fieldset "Other information".
+Tutti i contenuti del light DOM unslotted andranno a finire dentro il fieldset "Other information".
 
-Glie elementi vengono accodati su uno slot, uno dopo l'altro, quindi anche i pezzi di informazione non slottare vanno a finire dentro lo slot default tutti insieme.
+Gli elementi vengono accodati su uno slot, uno dopo l'altro, quindi anche i pezzi di informazione unslotted vanno a finire dentro lo slot default, tutti insieme.
 
 Il flattened DOM apparirà come questo:
 
@@ -255,7 +255,7 @@ Ecco il markup per il `<custom-menu>`:
 </custom-menu>
 ```
 
-Invece il template dello shadow DOM con gli slot appropriati:
+Questo è invece il template dello shadow DOM con gli slot appropriati:
 
 ```html
 <template id="tmpl">
@@ -267,8 +267,8 @@ Invece il template dello shadow DOM con gli slot appropriati:
 </template>
 ```
 
-1. `<span slot="title">` andrà a finire dentro `<slot name="title">`.
-2. Ci sono tanti `<li slot="item">`, ma solo uno `<slot name="item">` nel template. Quindi tutti questi `<li slot="item">` verranno inseriti dentro `<slot name="item">` uno dopo l'altro, così da formare la lista.
+1. `<span slot="title">` verrà inserito dentro `<slot name="title">`.
+2. Ci sono tanti `<li slot="item">`, ma solo uno `<slot name="item">` nel template. Di conseguenza tutti gli elementi `<li slot="item">` verranno inseriti dentro `<slot name="item">` uno dopo l'altro, così da formare la lista.
 
 Il flattened DOM diventa:
 
@@ -291,9 +291,9 @@ Il flattened DOM diventa:
 </custom-menu>
 ```
 
-Qualcuno potrebbe fare notare che, in un DOM valido, un `<li>` dovrebbe essere figlio diretto di `<ul>`. Ma questo è un flattened DOM, che descrive come il componente verrà renderizzato, quindi è perfettamente regolare.
+Qualcuno potrebbe notare che, in un DOM valido, un `<li>` dovrebbe essere figlio diretto di `<ul>`. Tuttavia questo è un flattened DOM, che descrive la maniera nella qualre il componente verrà renderizzato, quindi è perfettamente lecito e regolare.
 
-Dobbiamo solo aggiungere un gestire al `click` per aprire e chiudere la lista, ed il `<custom-menu>` sarà pronto:
+Dobbiamo solo aggiungere una gestione per il `click`, per poter aprire e chiudere la lista, ed il `<custom-menu>` sarà pronto:
 
 ```js
 customElements.define('custom-menu', class extends HTMLElement {
@@ -322,11 +322,11 @@ Certamente possiamo andare ad aggiungere più funzionalità: eventi metodi e via
 
 E se volessimo aggiungere e rimuovere elementi del menù dinamicamente?
 
-**Il browser monitora gli slots e aggiorna la visualizzazione all'inserimento o rimozione di elementi slottati.**
+**Il browser monitora gli slots e aggiorna la visualizzazione all'inserimento o rimozione di elementi slotted.**
 
-Inoltre, dal momento che i nodi del light DOM non vengono copiati, ma solo visualizzati negli slots, le modifiche al loro interno saranno immediatamente visibili.
+Inoltre, dal momento che i nodi del light DOM non vengono copiati, ma solamente visualizzati negli slots, le modifiche al loro interno saranno immediatamente visibili.
 
-Quindi non dobbiamo fare nulla per aggiornare la visualizzazione. Ma se il codice del componente vuole avere dei dettagli sulla modifica degli slots, allora si potrà usare l'evento `slotchange`.
+Ne consegue che non dobbiamo fare assolutamente nulla per aggiornare la visualizzazione. Ma se il codice del componente vuole dei dettagli sulla modifica degli slots, allora si potrà usare l'evento `slotchange`.
 
 Per esempio, qui l'elemento del menù viene inserito dinamicamente dopo un secondo, ed il titolo cambia dopo 2 secondi:
 
@@ -344,7 +344,7 @@ customElements.define('custom-menu', class extends HTMLElement {
       <ul><slot name="item"></slot></ul>
     </div>`;
 
-    // shadowRoot non puo' gestori di evento, quindi usiamo il primo nodo figlio
+    // shadowRoot non puo' gestire l'evento, quindi usiamo il primo nodo figlio
     this.shadowRoot.firstElementChild.addEventListener('slotchange',
       e => alert("slotchange: " + e.target.name)
     );
@@ -372,23 +372,23 @@ In questo esempio, ci sono due eventi `slotchange`:
 
     `slotchange: item` viene scaturito quando viene aggiunto un nuovo `<li slot="item">`.
 
-Norta bene: non ci sono eventi `slotchange` dopo 2 secondi, quando viene modificato il contenuto di `slot="title"`. Questo perché non ci sono modifiche slot. Abbiamo modificato il contenuto dentro l'elemento slotted, che è tutt'altra cosa.
+Nota bene: non ci sono eventi `slotchange` dopo 2 secondi, quando viene modificato il contenuto di `slot="title"`. Questo perché non ci sono modifiche slot. Abbiamo modificato il contenuto dentro l'elemento slotted, che è uan cosa differente e non collegata.
 
-Volendo tenere traccia delle modifiche interne al light DOM tramite JavaScript, potremmo anche usare un meccanismo più generico come quello dei [MutationObserver](info:mutation-observer).
+Volendo però tenere traccia delle modifiche interne nel light DOM tramite JavaScript, potremmo anche usare un meccanismo più generico come quello dei [MutationObserver](info:mutation-observer).
 
 ## Slot API
 
 Infine, citiamo i metodi JavaScript inerenti gli slots.
 
-Come già visto, JavaScript osserva il DOM "effettivo", privo di flattening. Ma, se lo shadow tree ha il `{mode: 'open'}`, possiamo vedere quali elementi vengono assegnati a uno slot e, vice versa, lo slot con l'elemento al suo interno:
+Come già visto, JavaScript tiene d'occhio il DOM "effettivo", privo di flattening. Ma, se lo shadow tree ha il `{mode: 'open'}`, possiamo vedere quali elementi vengono assegnati a uno slot o, viceversa, lo slot con l'elemento al suo interno:
 
 - `node.assignedSlot` -- restiuisce l'elemento `<slot>` a cui è assegnato il `node`.
-- `slot.assignedNodes({flatten: true/false})` -- nodi DOM, assegnati allo slot. L'opzione `flatten` è `false` di default. Se impostata esplicitamente a `true`, analizzerà più in profondità nel flattened DOM, restituendo gli slot annidati in caso di componenti annidati o il fallsback content se non vi fossero nodi assegnati.
-- `slot.assignedElements({flatten: true/false})` -- Elementi DOM, assegnati allo slot (come sopra, ma solo elementi nodi).
+- `slot.assignedNodes({flatten: true/false})` -- nodi DOM, assegnati allo slot. L'opzione `flatten` è `false` di default. Se impostata esplicitamente a `true`, analizzerà più in profondità all'interno del flattened DOM, restituendo gli slot annidati in caso di componenti annidati o il fallback content, in assenza di nodi assegnati.
+- `slot.assignedElements({flatten: true/false})` -- Elementi DOM, assegnati allo slot (come sopra, ma solo elementi di tipo nodo).
 
-Questi metodi sono utili quando dobbiamo non solo mostrare lo sloetted content, ma anche tracciarli in JavaScript.
+Questi metodi sono utili quando dobbiamo mostrare, non solo lo slotted content, ma anche tenerne traccia con JavaScript.
 
-Ad esempio, se il componente `<custom-menu>` component vuole sapere, cosa mostra, può tracciare `slotchange` ed ottenere gli elementi da `slot.assignedElements`:
+Ad esempio, se il componente `<custom-menu>` vuole sapere cosa sta mostrando, può tracciare `slotchange` ed ottenere gli elementi da `slot.assignedElements`:
 
 ```html run untrusted height=120
 <custom-menu id="menu">
@@ -431,12 +431,12 @@ setTimeout(() => {
 
 ## Riepilogo
 
-Generalmente, se un elemento ha lo shadow DOM, il suo light DOM non viene mostrato. Gli slots permettono di mostrare gli elementi del light DOM ne punti contrassegnati dello shadow DOM.
+Generalmente, se un elemento ha lo shadow DOM, il suo light DOM non viene mostrato. Gli slots permettono di mostrare gli elementi del light DOM nei punti contrassegnati dello shadow DOM.
 
 Esistono due tipi di slots:
 
 - Named slots: `<slot name="X">...</slot>` -- ottiene i figli light tramite `slot="X"`.
-- Default slot: il primot `<slot>` senza un nome ( i successivi elementi privi di nome vengono ignorati) -- ottiene i figli light unslotted.
+- Default slot: il primot `<slot>` senza un nome (i successivi elementi privi di nome vengono ignorati) -- ottiene i figli light unslotted.
 - Se ci sono più elementi per uno stesso slot -- vengono accodati uno dopo l'altro.
 - Il contenuto dell'elemento `<slot>` viene usato come un ripeigo (fallback). Viene mostrato se non ci sono figli light per un determinato slot.
 
