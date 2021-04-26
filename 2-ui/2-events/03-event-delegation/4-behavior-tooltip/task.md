@@ -4,7 +4,7 @@ importance: 5
 
 # Comportamento tooltip
 
-Creare uno script JS per un tooltip.
+Create uno script JS per un tooltip.
 
 Quando il mouse passa sopra un elemento HTML con `data-tooltip`, dovrebbe comparire su di esso un tooltip, e scomparire dopo che ha abbandonato la usa area.
 

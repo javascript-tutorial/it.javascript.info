@@ -6,11 +6,11 @@ libs:
 
 # Alberatura DOM
 
-La struttura portante di un documento HTML è rappresentata dai tags
+La struttura portante di un documento HTML è rappresentata dai tags.
 
 Secondo il Document Object Model (DOM), ogni tag HTML è un oggetto. I tags annidati vengono chiamati "figli" del tag che li racchiude.
 
-Tutti questi oggetti sono accessibili usando JavaScript
+Tutti questi oggetti sono accessibili usando JavaScript.
 
 Ad esempio, `document.body` è l'oggetto che rappresenta il tag `<body>`.
 
@@ -19,7 +19,7 @@ Ad esempio, `document.body` è l'oggetto che rappresenta il tag `<body>`.
 ```js run
 document.body.style.background = 'red'; // rende il background rosso
 
-setTimeout(() => document.body.style.background = '', 3000); // ritorna back
+setTimeout(() => document.body.style.background = '', 3000); // reimposta il background
 ```
 
 Qui abbiamo utilizzato `style.background` per cambiare il colore del background di `document.body`, ma ci sono molte altre proprietà, come:
@@ -28,7 +28,7 @@ Qui abbiamo utilizzato `style.background` per cambiare il colore del background 
 - `offsetWidth` -- la larghezza del nodo (in pixel)
 - ...e molto altro.
 
-Presto apprenderemo diversi modi di manipolare il DOM, ma prima abbiamo bisogno di comprendere la sua struttura.
+Presto vedremo ulteriori modi di manipolare il DOM, ma prima abbiamo bisogno di comprenderne la sua struttura.
 
 ## Un esempio di DOM
 
@@ -46,7 +46,7 @@ Iniziamo con un esempio molto semplice di un documento:
 </html>
 ```
 
-Il DOM rappresenta l'HTML sotto forma di alberatura di tag. Questo è come appare:
+Il DOM rappresenta l'HTML sotto forma di alberatura di tag. Così è come appare:
 
 <div class="domtree"></div>
 
@@ -66,12 +66,12 @@ Il testo all'interno degli elementi forma dei *nodi testuali*, etichettati come 
 
 Per esempio, il tag `<title>` contiene il testo `"About elks"`.
 
-Fai caso ai caratteri speciali nei nodi di testo:
+Facciamo caso ai caratteri speciali nei nodi di testo:
 
 - il ritorno a capo: `↵` (conosciuto in JavaScript come `\n`)
 - lo spazio: `␣`
 
-Spazi e ritorni a capo sono caratteri assolutamente validi, costituiscono nodi testuali e diventano parte del DOM. Ad esempio, nel caso precedente, il tag `<head>` contiene alcuni spazi prima del `<title>`, e quel testo diventa un nodo `#text` (contiene un ritorno a capo e alcuni spazi).
+Spazi e ritorni a capo sono caratteri assolutamente validi, costituiscono nodi testuali e diventano parte del DOM. Ad esempio, nel caso precedente, il tag `<head>` conteneva alcuni spazi prima del `<title>`, e quel testo diventa un nodo `#text` (contiene un ritorno a capo e alcuni spazi).
 
 Esistono solo due particolari eccezioni:
 1. Spazi e ritorni a capo prima del tag `<head>` sono ignorati per ragioni storiche.
@@ -111,7 +111,7 @@ Se il browser riscontra HTML malformato, lo corregge automaticamente in fase di 
 
 Ad esempio, il tag di livello più alto è sempre `<html>`. Anche se esso non è presente nel documento esisterà nel DOM, perché il browser lo creerà. Lo stesso vale per il `<body>`.
 
-Ipotizziamo che l'HTML sia costituito dalla singola parola `"Hello"`, in questo caso il browser racchiuderà la parola tra il tag `<html>` e `<body>`, aggiungendo inoltre l'obbligatorio tag `<head>`, fino a ottenere:
+Ipotizziamo che l'HTML sia costituito dalla singola parola `"Hello"`, in questo caso il browser racchiuderà la parola tra il tag `<html>` e `<body>`, aggiungendo inoltre il tag obbligatorio `<head>`, fino a ottenere:
 
 <div class="domtree"></div>
 
@@ -161,6 +161,7 @@ drawHtmlTree(node5,  'div.domtree', 600, 200);
 </script>
 
 Visto? Il `<tbody>` è apparso dal nulla. Per evitare sorprese, dovresti ricordarti di questa cosa in futuro nel momento in cui ti troverai a lavorare con le tabelle.
+````
 
 ## Altre tipologie di nodo
 
@@ -202,15 +203,10 @@ L'oggetto `document` che rappresenta l'intero documento è anch'esso, formalment
 
 In teoria esistono [12 tipologie di nodo](https://dom.spec.whatwg.org/#node), ma solitamente nella pratica si lavora con solo 4 di esse:
 
-1. `document` -- il punto d'ingresso del DOM.
-2. nodi elemento -- tags HTML che rappresentano i blocchi con cui costruiamo l'alberatura.
-3. nodi testuali -- contengono testo.
-4. commenti -- qualche volta possiamo aggiungere informazioni, non verranno mostrate, ma JS potrà leggerle dal DOM.
-
-1. `document` -- il "punto di ingresso" del DOM.
-2. nodi elemento -- HTML-tags, i blocchi che compongono l'albero.
-3. nodi testuali -- contengono testo.
-4. commenti -- spesso possono essere inserite informazioni che non verranno mostrate, però JavaScript è in grado di leggerle dal DOM.
+1. `document`: il punto d'ingresso del DOM.
+2. nodi elemento: tags HTML che rappresentano i blocchi con cui costruiamo l'alberatura.
+3. nodi testuali: contengono testo.
+4. commenti: qualche volta possiamo aggiungere informazioni, non verranno mostrate, ma JS potrà leggerle dal DOM.
 
 Per vedere la struttura del DOM in real-time, prova [Live DOM Viewer](http://software.hixie.ch/utilities/js/live-dom-viewer/). Inizia a scrivere e vedrai istantaneamente le modifiche aggiunte al DOM.
 

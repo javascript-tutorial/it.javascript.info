@@ -22,14 +22,14 @@ function sayHi() {
   alert("Hello");
 }
 
-// global functions are methods of the global object:
+// le funzioni globali sono metodi dell'oggetto globale:
 window.sayHi();
 ```
 
 E qui invece come finestra del browser, vogliamo visualizzarne l'altezza:
 
 ```js run
-alert(window.innerHeight); // inner window height
+alert(window.innerHeight); // altezza interna della finestra
 ```
 
 Ci sono molte altre funzionalità dell'oggetto `window`, ma le vedremo più avanti.
@@ -41,24 +41,14 @@ L'oggetto `document` dà accesso al contenuto della pagina e ci permette di camb
 Ad esempio:
 
 ```js run
-// change the background color to red
+// cambiamo il colore di background a red
 document.body.style.background = "red";
 
-// change it back after 1 second
+// lo cambiamo nuovamente dopo 1 secondo-
 setTimeout(() => document.body.style.background = "", 1000);
 ```
 
 In questo caso abbiamo usato `document.body.style`, ma c'è molto di più. Proprietà e metodi sono descritti all'interno della specifica  [DOM Living Standard](https://dom.spec.whatwg.org).
-
-Come normalmente accade, i due gruppi non sono sempre d'accordo, questo fa sì che esistano due tipi di standard. Fortunatamente le differenze non sono mai così distanti tra loro e si riesce a unirle sotto un'unica voce. La documentazione reperibile ai link indicati è al 99% simile. Le differenze sono talmente minime da non accorgersene nemmeno.
-
-Personalmente, trovo più gradevole utilizzare <https://dom.spec.whatwg.org> 
-
-In tempi antichi non esisteva uno standard comune, ogni browser aveva il proprio e lo implementava a proprio piacimento. Browser differenti avevano metodi e proprietà differenti per svolgere lo stesso compito, così gli sviluppatori erano costretti a scrivere codice per ogni browser. Tempi bui e incasinati.
-
-Anche oggi può capitare di incappare in vecchio codice che aggira delle incompatibilità e sfrutta delle proprietà specifiche del browser. In questo tutorial utilizzeremo strumenti moderni, non ci sarà bisogno di imparare codice obsoleto a meno che non sia strettamente necessario (le probabilità che questo accada sono molto basse).
-
-A questo punto fa la sua comparsa lo "standard" del DOM, nel tentativo di mettere tutti d'accordo. La prima versione era la "DOM Level 1", poi c'è stata la "DOM Level 2", la "DOM Level 3" e ad oggi abbiamo la "DOM Level 4". Il gruppo WhatWG, stufo di numerare le versioni, ha deciso di chiamarlo solamente "DOM", senza numerazione. Noi faremo lo stesso.
 
 ```smart header="Il DOM non è solo per i browser"
 La specifica del DOM spiega la struttura di un documento e fornisce oggetti per la sua manipolazione. Esistono strumenti al di fuori del browser che usano comunque il DOM.

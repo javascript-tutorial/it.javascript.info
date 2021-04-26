@@ -353,6 +353,8 @@ Un esempio di utilizzo (visualizza gli autori delle commit nella console):
     }
   }
 })();
+
+// Note: If you are running this in an external sandbox, you'll need to paste here the function fetchCommits described above 
 ```
 
 Questo &egrave; esattamente quello che volevamo. I meccanismi interni delle richieste paginate sono invisibili dall'esterno. Per noi non &egrave; altro che un generatore asincrono che ritorna delle commit.

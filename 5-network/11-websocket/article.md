@@ -93,7 +93,7 @@ Sec-WebSocket-Version: 13
 - `Origin` -- l'origine della pagina del client, ad esempio:  `https://javascript.info`. Gli oggetti WebSocket sono per loro natura cross-origin. Non vi sono headers particolari o altre limitazioni. I server di vecchia data non gestiscono i WebSocket in nessun modo, quindi non ci sono problemi di compatibilità. Ma l'header `Origin` è importante, dal momento che permette al server di decidere se parlare o meno con quel sito.
 - `Connection: Upgrade` -- indica che il client vuole cambiare protocollo di comunicazione.
 - `Upgrade: websocket` -- il protocollo richiesto è "websocket".
-- `Sec-WebSocket-Key` -- una chiave generata randomicamente dal browser per sicurezza.
+- `Sec-WebSocket-Key` -- una chiave casuale generata dal browser per sicurezza.
 - `Sec-WebSocket-Version` -- versione di protocollo del WebSocket, 13 è quella corrente.
 
 ```smart header="L'handsnake del WebSocket non può essere emulato."

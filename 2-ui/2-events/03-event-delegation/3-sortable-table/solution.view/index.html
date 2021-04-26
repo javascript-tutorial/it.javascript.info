@@ -59,10 +59,10 @@
       if (e.target.tagName != 'TH') return;
 
       let th = e.target;
-      // if TH, then sort
-      // cellIndex is the number of th:
-      //   0 for the first column
-      //   1 for the second column, etc
+      // se TH, allora ordina
+      // cellIndex è il numero di th:
+      //   0 per la prima colonna
+      //   1 per la seconda colonna, etc
       sortGrid(th.cellIndex, th.dataset.type);
     };
 
@@ -71,7 +71,7 @@
 
       let rowsArray = Array.from(tbody.rows);
 
-      // compare(a, b) compares two rows, need for sorting
+      // compare(a, b) confronta due righe, utile per l'ordinamento
       let compare;
 
       switch (type) {
@@ -87,7 +87,7 @@
           break;
       }
 
-      // sort
+      // ordiniamo
       rowsArray.sort(compare);
 
       tbody.append(...rowsArray);

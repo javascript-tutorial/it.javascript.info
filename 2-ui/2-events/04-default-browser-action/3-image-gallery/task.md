@@ -4,7 +4,7 @@ importance: 5
 
 # Galleria di immagini
 
-Creare una galleria di immagini dove l'immagine principale cambi al click su una thumbnail.
+Create una galleria di immagini dove l'immagine principale cambi al click su una thumbnail.
 
 Come in questo esempio:
 

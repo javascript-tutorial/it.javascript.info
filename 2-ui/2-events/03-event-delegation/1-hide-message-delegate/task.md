@@ -4,7 +4,7 @@ importance: 5
 
 # Nascondere messaggi traminte delegation
 
-C'è una lista di messaggi con il pulsante di rimozione `[x]`. Fare in modo che il pulsante funzioni.
+Avete a disposizione una lista di messaggi con il pulsante di rimozione `[x]`. Fate in modo che il pulsante funzioni.
 
 Come questo per esempio:
 

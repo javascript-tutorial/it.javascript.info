@@ -4,7 +4,7 @@ importance: 5
 
 # Comportamento del tooltip migliorato
 
-Scrivere del codice JavaScript che mostri un tooltip su un elemento con un attributo `data-tooltip`. Il valore di questo attributo dovrebbe rappresentare il testo del tooltip.
+Scrivete del codice JavaScript che mostri un tooltip su un elemento con un attributo `data-tooltip`. Il valore di questo attributo dovrebbe rappresentare il testo del tooltip.
 
 Questo compito è come quello di <info:task/behavior-tooltip>, con la differenza che qui gli elementi delle annotazioni possono essere annidati. Deve essere mostrato il tooltip più annidato.
 

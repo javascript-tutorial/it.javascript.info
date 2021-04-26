@@ -24,13 +24,13 @@
 
   <script>
     /**
-     * Positions elem relative to anchor as said in position.
+     * Posiziona elem relativamente a anchor come indicato in position.
      *
-     * @param {Node} anchor     Anchor element for positioning
-     * @param {string} position One of: top/right/bottom
-     * @param {Node} elem       Element to position
+     * @param {Node} anchor     Elemento di riferimento per il posizionamento
+     * @param {string} position Un valore tra: top/right/bottom
+     * @param {Node} elem       Elemento da posizionare
      *
-     * Both elements: elem and anchor must be in the document
+     * Entrambi gli elementi, elem e anchor, devono essere visibili nel documento
      */
     function positionAt(anchor, position, elem) {
 
@@ -55,10 +55,10 @@
 
     }
 
-    /**
-     * Shows a note with the given html at the given position
-     * relative to the anchor element.
-     */
+     /**
+      * Mostra una nota con l'html passato come parametro nella posizione indicata
+      * relativa all'elemento anchor.
+      */
     function showNote(anchor, position, html) {
 
       let note = document.createElement('div');
@@ -69,7 +69,7 @@
       positionAt(anchor, position, note);
     }
 
-    // test it
+    // prova
     let blockquote = document.querySelector('blockquote');
 
     showNote(blockquote, "top", "note above");

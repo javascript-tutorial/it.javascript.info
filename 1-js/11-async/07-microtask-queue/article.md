@@ -30,7 +30,7 @@ Come detto nella [specifica](https://tc39.github.io/ecma262/#sec-jobs-and-job-qu
 - La coda è primo-dentro-primo-fuori: i task messi in coda per primi sono eseguiti per primi.
 - L'esecuzione di un task è iniziata solo quando nient'altro è in esecuzione.
 
-Oppure, per dirla in modo semplice, quando una promise è pronta, i suoi gestori `.then/catch/finally` sono messi nella coda. Non sono ancora eseguiti. Il motore JavaScript prende un task dalla coda e lo esegue, quando diventa libero dal codice corrente.
+Oppure, per dirla in modo semplice, quando una promise è pronta, i suoi gestori `.then/catch/finally` sono messi nella coda. Non vengono ancora eseguiti. Il motore JavaScript prende un task dalla coda e lo esegue, quando diventa libero dal codice corrente.
 
 Questo è il motivo per cui "codice finito" nell'esempio sopra viene mostrato prima.
 
@@ -40,7 +40,7 @@ I gestori delle promise passano sempre da quella coda interna.
 
 Se c'è una catena con diversi `.then/catch/finally`, allora ognuno di essi viene eseguito in modo asincrono. Cioè, viene prima messo in coda ed eseguito quando il codice corrente è completo e i gestori messi in coda precedentemente sono finiti.
 
-**Che cosa succede se per noi l'ordine è importante? Come possiamo far funzionare `codice finito` dopo `promise completa`?**
+**Che cosa succede se per noi l'ordine è importante? Come possiamo far funzionare `code finished` dopo `promise done`?**
 
 Facile, basta metterlo in coda con `.then`:
 

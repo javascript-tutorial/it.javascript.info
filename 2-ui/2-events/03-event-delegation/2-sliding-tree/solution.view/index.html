@@ -54,15 +54,15 @@
   </ul>
 
   <script>
-    // move all text into <span>
-    // they occupy exactly the place necessary for the text,
+    // spostiamo tutto il testo all'interno dello <span>
+    // questi occupano esattamente lo spazio necessario per contenere il testo,
     for (let li of tree.querySelectorAll('li')) {
       let span = document.createElement('span');
       li.prepend(span);
-      span.append(span.nextSibling); // move the text node into span
+      span.append(span.nextSibling); // spostiamo il nodo di testo dentro allo span
     }
 
-    // catch clicks on whole tree
+    // catturiamo i click in tutto l'albero
     tree.onclick = function(event) {
 
       if (event.target.tagName != 'SPAN') {
@@ -70,7 +70,7 @@
       }
 
       let childrenContainer = event.target.parentNode.querySelector('ul');
-      if (!childrenContainer) return; // no children
+      if (!childrenContainer) return; // nessun figlio
 
       childrenContainer.hidden = !childrenContainer.hidden;
     }

@@ -186,6 +186,7 @@ let context = canvas.getContext('2d');
 context.drawImage(img, 0, 0);
 // possiamo context.rotate(), ed effettuare molte altre operazioni tramite il canvas
 
+
 // toBlob è un'operazione asincrona, verrà invocata la  funzione di callback al termine
 canvas.toBlob(function(blob) {
   // il blob è pronto, lo scarichiamo
