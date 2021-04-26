@@ -156,7 +156,7 @@ Restituisce questo flattened DOM con due elementi dentro `<slot name="username">
 
 ## Slot fallback content
 
-Se inseriamo qualcosa dentro uno `<slot>`, diverrà il contenuto di ripiego, quello "default". Il browser mostrerà questo, nel caso in cui non vi fossero contenuti corrispondenti nel light DOM.
+Se inseriamo qualcosa dentro uno `<slot>`, quest'ultimo rappresenterà il contenuto di ripiego, cioè quello "predefinito". Nel caso in cui non vi fossero contenuti corrispondenti nel light DOM, sarà questo il contenuto mostrato dal browser.
 
 Per esempio, in questo pezzo di shadow DOM, verrà visualizzato `Anonymous` se non ci sono `slot="username"` nel light DOM.
 
@@ -322,9 +322,9 @@ Certamente possiamo andare ad aggiungere più funzionalità: eventi metodi e via
 
 E se volessimo aggiungere e rimuovere elementi del menù dinamicamente?
 
-**Il browser monitora dgli slots e aggiorna la visualizzazione all'inserimento o rimozione di elementi slottati.**
+**Il browser monitora gli slots e aggiorna la visualizzazione all'inserimento o rimozione di elementi slottati.**
 
-Inoltre, dal momento che i nodi del light DOM non vengono copiati, ma solo visualizzati negli slots, le modifiche al loro interno divengono immmediatamente visibili.
+Inoltre, dal momento che i nodi del light DOM non vengono copiati, ma solo visualizzati negli slots, le modifiche al loro interno saranno immediatamente visibili.
 
 Quindi non dobbiamo fare nulla per aggiornare la visualizzazione. Ma se il codice del componente vuole avere dei dettagli sulla modifica degli slots, allora si potrà usare l'evento `slotchange`.
 
@@ -374,7 +374,7 @@ In questo esempio, ci sono due eventi `slotchange`:
 
 Norta bene: non ci sono eventi `slotchange` dopo 2 secondi, quando viene modificato il contenuto di `slot="title"`. Questo perché non ci sono modifiche slot. Abbiamo modificato il contenuto dentro l'elemento slotted, che è tutt'altra cosa.
 
-Se volessimo tenere traccia delle modifiche interne del light DOM tramite JavaScript, si potrebbe anche usare un meccanismo più generico: I [MutationObserver](info:mutation-observer).
+Volendo tenere traccia delle modifiche interne al light DOM tramite JavaScript, potremmo anche usare un meccanismo più generico come quello dei [MutationObserver](info:mutation-observer).
 
 ## Slot API
 
@@ -383,18 +383,18 @@ Infine, citiamo i metodi JavaScript inerenti gli slots.
 Come già visto, JavaScript osserva il DOM "effettivo", privo di flattening. Ma, se lo shadow tree ha il `{mode: 'open'}`, possiamo vedere quali elementi vengono assegnati a uno slot e, vice versa, lo slot con l'elemento al suo interno:
 
 - `node.assignedSlot` -- restiuisce l'elemento `<slot>` a cui è assegnato il `node`.
-- `slot.assignedNodes({flatten: true/false})` -- nodi DOM, assegnati allo slot. L'opzione `flatten` è `false` di default. Se impostata explicitly set to `true`, then it looks more deeply into the flattened DOM, returning nested slots in case of nested components and the fallback content if no node assigned.
-- `slot.assignedElements({flatten: true/false})` -- DOM elements, assigned to the slot (same as above, but only element nodes).
+- `slot.assignedNodes({flatten: true/false})` -- nodi DOM, assegnati allo slot. L'opzione `flatten` è `false` di default. Se impostata esplicitamente a `true`, analizzerà più in profondità nel flattened DOM, restituendo gli slot annidati in caso di componenti annidati o il fallsback content se non vi fossero nodi assegnati.
+- `slot.assignedElements({flatten: true/false})` -- Elementi DOM, assegnati allo slot (come sopra, ma solo elementi nodi).
 
-These methods are useful when we need not just show the slotted content, but also track it in JavaScript.
+Questi metodi sono utili quando dobbiamo non solo mostrare lo sloetted content, ma anche tracciarli in JavaScript.
 
-For example, if `<custom-menu>` component wants to know, what it shows, then it could track `slotchange` and get the items from `slot.assignedElements`:
+Ad esempio, se il componente `<custom-menu>` component vuole sapere, cosa mostra, può tracciare `slotchange` ed ottenere gli elementi da `slot.assignedElements`:
 
 ```html run untrusted height=120
 <custom-menu id="menu">
-  <span slot="title">Candy menu</span>
-  <li slot="item">Lollipop</li>
-  <li slot="item">Fruit Toast</li>
+  <span slot="title">Menù dei dolciumi</span>
+  <li slot="item">Lecca-lecca</li>
+  <li slot="item">Toast alla frutta</li>
 </custom-menu>
 
 <script>
@@ -408,7 +408,7 @@ customElements.define('custom-menu', class extends HTMLElement {
       <ul><slot name="item"></slot></ul>
     </div>`;
 
-    // triggers when slot content changes
+    // viene generato quando cambia il contenuto dello slot
 *!*
     this.shadowRoot.firstElementChild.addEventListener('slotchange', e => {
       let slot = e.target;
@@ -421,7 +421,7 @@ customElements.define('custom-menu', class extends HTMLElement {
   }
 });
 
-// items update after 1 second
+// gli elementi vengono aggiornati dopo 1 secondo
 setTimeout(() => {
   menu.insertAdjacentHTML('beforeEnd', '<li slot="item">Cup Cake</li>')
 }, 1000);
@@ -429,29 +429,29 @@ setTimeout(() => {
 ```
 
 
-## Summary
+## Riepilogo
 
-Usually, if an element has shadow DOM, then its light DOM is not displayed. Slots allow to show elements from light DOM in specified places of shadow DOM.
+Generalmente, se un elemento ha lo shadow DOM, il suo light DOM non viene mostrato. Gli slots permettono di mostrare gli elementi del light DOM ne punti contrassegnati dello shadow DOM.
 
-There are two kinds of slots:
+Esistono due tipi di slots:
 
-- Named slots: `<slot name="X">...</slot>` -- gets light children with `slot="X"`.
-- Default slot: the first `<slot>` without a name (subsequent unnamed slots are ignored) -- gets unslotted light children.
-- If there are many elements for the same slot -- they are appended one after another.
-- The content of `<slot>` element is used as a fallback. It's shown if there are no light children for the slot.
+- Named slots: `<slot name="X">...</slot>` -- ottiene i figli light tramite `slot="X"`.
+- Default slot: il primot `<slot>` senza un nome ( i successivi elementi privi di nome vengono ignorati) -- ottiene i figli light unslotted.
+- Se ci sono più elementi per uno stesso slot -- vengono accodati uno dopo l'altro.
+- Il contenuto dell'elemento `<slot>` viene usato come un ripeigo (fallback). Viene mostrato se non ci sono figli light per un determinato slot.
 
-The process of rendering slotted elements inside their slots is called "composition". The result is called a "flattened DOM".
+Il processo di rendering degli elementi slotted all'interno dei loro slots viene chiamato "composition". Il risultato viene soprannominato "flattened DOM".
 
-Composition does not really move nodes, from JavaScript point of view the DOM is still same.
+La Composition non sposta realmente i nodi, dal punto di vista di JavaScript il DOM rimane immutato.
 
-JavaScript can access slots using methods:
-- `slot.assignedNodes/Elements()` -- returns nodes/elements inside the `slot`.
-- `node.assignedSlot` -- the reverse property, returns slot by a node.
+JavaScript può accedere agli slots tramite:
+- `slot.assignedNodes/Elements()` -- restituisce i nodi o gli elementi dentro lo `slot`.
+- `node.assignedSlot` -- la proprietà inversa, restiuisce lo slot partendo dal nodo.
 
-If we'd like to know what we're showing, we can track slot contents using:
-- `slotchange` event -- triggers the first time a slot is filled, and on any add/remove/replace operation of the slotted element, but not its children. The slot is `event.target`.
-- [MutationObserver](info:mutation-observer) to go deeper into slot content, watch changes inside it.
+Se volessimo conoscere cosa stiamo mostrando, possiamo tracciare il contenuto degli slot tramite:
+- `slotchange` evento -- viene generato la prima volta che uno slot viene viene riempito, e per ogni operazione di aggiunta/rimozione degli elementi slotted, ma non i loro figli. Lo slot sarà `event.target`.
+- [MutationObserver](info:mutation-observer) se vogliamo andare in profondità all'interno dello slot content, e tenere traccia dei cambiamenti all'interno di essi.
 
-Now, as we know how to show elements from light DOM in shadow DOM, let's see how to style them properly. The basic rule is that shadow elements are styled inside, and light elements -- outside, but there are notable exceptions.
+Ora, dal momento che conosciamo come mostrare gli elementi dal light DOM allo shadow DOM, possiamo vedere come stilizzarli in maniera consona. La regola di base è che gli elementi shadow vegono stilizzati dentro, mentre gli elementi light esternamente, ma ci sono delle eccezioni degne di nota.
 
-We'll see the details in the next chapter.
+Lo vedremo in dettaglio nel prossimo capitolo.
