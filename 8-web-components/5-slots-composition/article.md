@@ -1,8 +1,8 @@
 # Shadow DOM slots, composition
 
-Molti tipi di components, come tabs, menù, gallerie di immagini e così via, necessitano di contenuti da visualizzare.
+Molti tipi di components, come tabs, menù, gallerie di immagini ed altri ancora, necessitano di contenuti da visualizzare.
 
-Proprio come gli elementi built-in del browser, dove `<select>` si aspetta degli elementi `<option>`, i nostri `<custom-tabs>` potrebbero aspettarsi che gli venga passato l'attuale contenuto del tab. Ed un `<custom-menu>`, ad esempio, si aspetterebbe degli elemetni del menù.
+Proprio come gli elementi built-in del browser, in cui `<select>` si aspetta gli elementi `<option>`, i nostri `<custom-tabs>` potrebbero avere la necessità che gli venga passato il contenuto attuale del tab. Oppure un `<custom-menu>`, ad esempio, si aspetterebbe gli elementi del menù.
 
 Il codice che fa uso del `<custom-menu>` potrebbe essere questo:
 
@@ -15,11 +15,11 @@ Il codice che fa uso del `<custom-menu>` potrebbe essere questo:
 </custom-menu>
 ```
 
-...Quindi il nostro "component" dovrebbe visualizzarsi correttamente, come un menù con titolo e relativi elementi, gestione degli eventi e tutto il resto...
+...Il nostro "component" potrebbe visualizzarsi correttamente in questo modo, come un menù con titolo ed i suoi elementi, la gestione degli eventi e tutto il resto...
 
 Come si può implementare?
 
-Possiamo provare ad analizzare il contenuto dell'elemento, e copiare e poi riarrangiare dinamicamente i nodi DOM. Ciò è sicuramente fattibile, ma se stiamo spostando gli elementi nello shadow DOM, e quindi gli stili CSS del documento non verranno applicati in quella sezione, potremmo perdere lo stile visuale. Ed anche questo richiederebbe un po' di gestione lato codice.
+Possiamo provare ad analizzare il contenuto dell'elemento, e poi copiare e riarrangiare dinamicamente i nodi DOM. Ciò è sicuramente fattibile, ma se stiamo spostando gli elementi nello shadow DOM, e quindi gli stili CSS del documento non verranno applicati in quella sezione, potremmo incorrere in difetti di visualizzazione degli stili, cosa che richiederebbe un po' di gestione lato codice.
 
 Fortunatamente, non è necessario. Lo Shadow DOM supporta gli elementi `<slot>`, che vengono automaticamente riempiti dal contenuto del light DOM.
 
@@ -56,9 +56,9 @@ customElements.define('user-card', class extends HTMLElement {
 </user-card>
 ```
 
-Nello shadow DOM, `<slot name="X">` definisce un "punto di inserimento", un posto dove vengono visualizzati gli elementi con `slot="X"`.
+Nello shadow DOM, `<slot name="X">` definisce un "punto di inserimento", cioè una posizione all'interno della quale vengono visualizzati gli elementi con `slot="X"`.
 
-Quindi il browser esegue la "composizione": prende gli elementi dal light DOM e ne esegue il rendering negli slots corrispondenti dello shadow DOM. Quindi alla fine, avremo esattamente quello che vogliamo: un componente che può essere riempito con dei dati.
+Quindi, il browser esegue la "composition": prende gli elementi dal light DOM e ne esegue il rendering all'interno degli slots corrispondenti dello shadow DOM. Ed alla fine del processo, avremo esattamente quello che vogliamo: un componente che può essere riempito con dei dati.
 
 Ecco come sarà la struttura dopo lo script, senza il coinvolgimento della composition:
 
@@ -76,13 +76,13 @@ Ecco come sarà la struttura dopo lo script, senza il coinvolgimento della compo
 </user-card>
 ```
 
-Abbiamo creato lo shadow DOM, quindi eccolo, dentro `#shadow-root`. Ora ha sia lo shadow che il light DOM.
+Abbiamo creato lo shadow DOM, ed eccolo dentro `#shadow-root`. Ora contiene sia lo shadow che il light DOM.
 
-Per esigenze di rendering, per ogni `<slot name="...">` dello shadow DOM, il browser cerca uno `slot="..."` con lo stesso nome all'interno del light DOM. Questi elementi vengono renderizzati dentro gli slots:
+Per esigenze di rendering, per ogni `<slot name="...">` dello shadow DOM, il browser cerca uno `slot="..."` con lo stesso nome, all'interno del light DOM. Questi elementi vengono renderizzati dentro gli slots:
 
 ![](shadow-dom-user-card.svg)
 
-Il risultato viene soprannominato "flattened" DOM:
+Il risultato viene detto "flattened" DOM:
 
 ```html
 <user-card>
