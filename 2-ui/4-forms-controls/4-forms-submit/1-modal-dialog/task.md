@@ -4,7 +4,7 @@ importance: 5
 
 # Modal form
 
-Creare una funzione `showPrompt(html, callback)` che mostra un form con un messaggio `html`, un campo di input ed i pulsanti `OK/CANCEL`.
+Create una funzione `showPrompt(html, callback)` che mostra un form con un messaggio `html`, un campo di input ed i pulsanti `OK/CANCEL`.
 
 - Un utente dovrebbe digitare qualcosa nel campo di testo e premere `key:Enter` o il pulsante OK, quindi verrà chiamata `callback(value)` con il valore che è stato inserito.
 - Altrimenti, se l'utente preme `key:Esc` oppure CANCEL, viene chiamata `callback(null)`.
