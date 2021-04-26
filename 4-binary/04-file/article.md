@@ -10,12 +10,12 @@ Il primo, utilizzando il costruttore, molto simile a `Blob`:
 new File(fileParts, fileName, [options])
 ```
 
-- **`fileParts`**, è una array di valori di tipo Blob/BufferSource/String.
-- **`fileName`**, il nome del file.
+- **`fileParts`**, è un array di valori di tipo Blob/BufferSource/String.
+- **`fileName`** - il nome del file.
 - **`options`**, oggetto opzionale:
     - **`lastModified`**, il timestamp dell'ultima modifica (un intero).
 
-Il secondo modo, si applica quando otteniamo un file tramite `<input type="file">`, con il drag'n'drop o con altre interfacce browser. In questo caso, il file prende le informazioni dal sistema operativo.
+Il secondo modo si applica quando otteniamo un file tramite `<input type="file">`, con il drag'n'drop o con altre interfacce browser. In questo caso, il file prende le informazioni dal sistema operativo.
 
 Poiché `File` eredita da `Blob`, gli oggetti di tipo `File` possiedono le stesse proprietà, con l'aggiunta di:
 - `name`, il nome del file,
@@ -59,7 +59,7 @@ I metodi principali:
 - **`readAsDataURL(blob)`**, legge i dati in formato binario e li codifica come URL in base64.
 - **`abort()`**, annulla l'operazione.
 
-La scelta di quale metodo di `read*` utilizzare, dipende molto dal formato che preferiamo utilizzare, e a come andremo ad utilizzare i dati.
+La scelta di quale metodo di `read*` utilizzare dipende molto dal formato che preferiamo utilizzare, e a come andremo ad utilizzare i dati.
 
 - `readAsArrayBuffer`, per file di tipo binario, per eseguire operazioni a basso livello. Per operazioni ad alto livello, come la rimozione di porzioni di file, `File` eredita da `Blob`, quindi possiamo invocare i suoi metodi direttamente, senza iniziare la lettura.
 - `readAsText`, per file di tipo testuale, per ottenerli sotto forma di stringa.
@@ -133,6 +133,6 @@ Gli oggetti `FileReader` possono leggere un `File` o un `Blob`, in uno dei segue
 - `ArrayBuffer` (`readAsArrayBuffer`).
 - Data URL, codificati in base-64 (`readAsDataURL`).
 
-In molti casi però, non necessitiamo di leggere il contenuto di un file. Proprio come abbiamo fatto con i `Blob`, possiamo creare un URL con `URL.createObjectURL(file)` ed assegnarlo ad un tag `<a>` o `<img>`. In questo modo il file potrà essere scaricato o mostrato come immagine, come parte di un canvas etc.
+In molti casi, però, non necessitiamo di leggere il contenuto di un file. Proprio come abbiamo fatto con i `Blob`, possiamo creare un URL con `URL.createObjectURL(file)` ed assegnarlo ad un tag `<a>` o `<img>`. In questo modo il file potrà essere scaricato o mostrato come immagine, come parte di un canvas etc.
 
 E nel caso in cui provassimo ad inviare un `File` sulla rete, sarà ancora più facile: le API di rete come `XMLHttpRequest` o `fetch` accettano nativamente oggetti di tipo `File`.
