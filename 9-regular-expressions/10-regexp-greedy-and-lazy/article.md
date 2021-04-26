@@ -1,10 +1,10 @@
 # Modalità greedy e lazy dei quantificatori
 
-I quantificatori sono molto semplici a prima vista, ma in realtà possono essere complicati.
+I quantificatori sono molto semplici a prima vista, ma in realtà possono riverlarsi complicati.
 
 Dovremmo comprendere appieno come funziona la ricerca se intendiamo cercare qualcosa di più complesso di `pattern:/\d+/`.
 
-Prendiamo ad esempio la seguente attività.
+Prendiamo ad esempio la seguente esercitazione.
 
 Abbiamo bisogno di rimpiazzare tutti i doppi apici `"..."` in un testo con le virgolette basse: `«...»`, che sono preferite nella tipografia di molti paesi.
 
@@ -54,15 +54,15 @@ Questa procedura generica non ci spiega con evidenza perché l'espressione regol
 
     ![](witch_greedy2.svg)
 
-3. Then the dot repeats because of the quantifier `pattern:.+`. The regular expression engine adds to the match one character after another.
+3. Successivamente il punto trova ulteriori riscontri per via del quantificatore `pattern:.+`. Il motore dell'espressione regolare aggiunge un carattere dopo l'altro.
 
-    ...Until when? All characters match the dot, so it only stops when it reaches the end of the string:
+    ...Fino a quando? Tutti i caratteri corrispondono al punto, quindi si ferma solo quando raggiunge la fine della stringa:
 
     ![](witch_greedy3.svg)
 
-4. Now the engine finished repeating `pattern:.+` and tries to find the next character of the pattern. It's the quote `pattern:"`. But there's a problem: the string has finished, there are no more characters!
+4. A questo punto il motore cessa di ripetere `pattern:.+` e prova a trovare il prossimo carattere del pattern. Si tratta del doppio apice `pattern:"`. C'è un problema però: la stringa è finita, non ci sono più caratteri!
 
-    The regular expression engine understands that it took too many `pattern:.+` and starts to *backtrack*.
+    Il motore dell'espressione regolare capisce che ha preso troppi caratteri per `pattern:.+` e comincia a *retrocedere*.
 
     In other words, it shortens the match for the quantifier by one character:
 
