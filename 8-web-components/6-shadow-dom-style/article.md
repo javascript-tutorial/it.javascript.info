@@ -1,12 +1,12 @@
 # Shadow DOM styling
 
-Shadow DOM may include both `<style>` and `<link rel="stylesheet" href="…">` tags. In the latter case, stylesheets are HTTP-cached, so they are not redownloaded for multiple components that use same template.
+Lo shadow DOM può includere sia `<style>` che tags `<link rel="stylesheet" href="…">`. Nel secondo caso, i fogli di stili sono HTTP-cached, quindi non verranno ricaricati per più componenti che usino lo stesso template.
 
-As a general rule, local styles work only inside the shadow tree, and document styles work outside of it. But there are few exceptions.
+Come regola generale, gli stili locali hanno effetto solamente all'interno dello shadow tree, e gli stili del documento hanno effetto al di fuori di esso. Con qualche eccezione.
 
 ## :host
 
-The `:host` selector allows to select the shadow host (the element containing the shadow tree).
+Il selettore `:host` permette di selezionare lo shadow host (l'elemento contenten lo shadow tree).
 
 For instance, we're making `<custom-dialog>` element that should be centered. For that we need to style the `<custom-dialog>` element itself.
 
