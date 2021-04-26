@@ -33,7 +33,7 @@ Dentro i tag `<template>` possiamo anche inserire stili e scripts:
 
 Il browser considera il contenuto di `<template>` "avulso dal documento": gli stili non verranno applicati, gli script non verranno eseguiti, i `<video autoplay>` non partiranno in automatico, etc.
 
-Il contenuto prende vita (gli stili vengono applicati, gli script vengono eseguiti, etc) solo quando viene inseririto dentro il documento.
+Il contenuto prende vita (gli stili vengono applicati, gli script vengono eseguiti, etc) solo quando viene inserito dentro il documento.
 
 ## Inserimento del template
 
@@ -105,7 +105,7 @@ Questi formano lo shadow DOM:
 - il contenuto di `<template>` essendo considerato "avulso dal documento", non modificherà, né eseguirà alcunché al suo interno.
 - Possiamo accedere a `template.content` via JavaScript, ed anche clonarlo per poterlo riutilizzare in un nuovo componente.
 
-Il tag `<template>` ha delle pecurialità uniche, in quanto:
+Il tag `<template>` ha delle peculiarità uniche, in quanto:
 
 - Il browser controlla la sintassi HTML al suo interno (diversamente dall'uso di un template string dentro uno script).
 - ...Tuttavia è permesso l'uso di tag HTML top-level, anche quelli che non avrebbero alcun senso se privi del loro appropriato contenitore (per esempio i `<tr>`).
