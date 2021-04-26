@@ -1,27 +1,27 @@
-# File and FileReader
+# File e FileReader
 
-A [File](https://www.w3.org/TR/FileAPI/#dfn-file) object inherits from `Blob` and is extended with filesystem-related capabilities.
+Un oggetto di tipo [File](https://www.w3.org/TR/FileAPI/#dfn-file) eredita da `Blob` e lo estende con funzionalità legate al filesystem.
 
-There are two ways to obtain it.
+Ci sono due modi per costruirlo.
 
-First, there's a constructor, similar to `Blob`:
+Il primo, utilizzando il costruttore, molto simile a `Blob`:
 
 ```js
 new File(fileParts, fileName, [options])
 ```
 
-- **`fileParts`** -- is an array of Blob/BufferSource/String values.
-- **`fileName`** -- file name string.
-- **`options`** -- optional object:
-    - **`lastModified`** -- the timestamp (integer date) of last modification.
+- **`fileParts`**, è un array di valori di tipo Blob/BufferSource/String.
+- **`fileName`** - il nome del file.
+- **`options`**, oggetto opzionale:
+    - **`lastModified`**, il timestamp dell'ultima modifica (un intero).
 
-Second, more often we get a file from `<input type="file">` or drag'n'drop or other browser interfaces. In that case, the file gets this information from OS.
+Il secondo modo si applica quando otteniamo un file tramite `<input type="file">`, con il drag'n'drop o con altre interfacce browser. In questo caso, il file prende le informazioni dal sistema operativo.
 
-As `File` inherits from `Blob`, `File` objects have the same properties, plus:
-- `name` -- the file name,
-- `lastModified` -- the timestamp of last modification.
+Poiché `File` eredita da `Blob`, gli oggetti di tipo `File` possiedono le stesse proprietà, con l'aggiunta di:
+- `name`, il nome del file,
+- `lastModified`, il timestamp dell'ultima modifica.
 
-That's how we can get a `File` object from `<input type="file">`:
+Vediamo come ottenere un oggetto `File` tramite `<input type="file">`:
 
 ```html run
 <input type="file" onchange="showFile(this)">
@@ -37,49 +37,49 @@ function showFile(input) {
 ```
 
 ```smart
-The input may select multiple files, so `input.files` is an array-like object with them. Here we have only one file, so we just take `input.files[0]`.
+Tramite l'input è possibile selezionare più file, quindi `input.files` è un array. In questo caso abbiamo solamente un file, quindi è sufficiente prendere `input.files[0]`.
 ```
 
 ## FileReader
 
-[FileReader](https://www.w3.org/TR/FileAPI/#dfn-filereader) is an object with the sole purpose of reading data from `Blob` (and hence `File` too) objects.
+[FileReader](https://www.w3.org/TR/FileAPI/#dfn-filereader) è un oggetto il cui unico scopo è quello di leggere dati da oggetti di tipo `Blob` (e quindi anche da quelli di tipo `File`).
 
-It delivers the data using events, as reading from disk may take time.
+Questo fornisce i dati utilizzando gli eventi, in quanto la lettura da disco potrebbe richiedere tempo.
 
-The constructor:
+Il suo costruttore:
 
 ```js
 let reader = new FileReader(); // no arguments
 ```
 
-The main methods:
+I metodi principali:
 
-- **`readAsArrayBuffer(blob)`** -- read the data in binary format `ArrayBuffer`.
-- **`readAsText(blob, [encoding])`** -- read the data as a text string with the given encoding (`utf-8` by default).
-- **`readAsDataURL(blob)`** -- read the binary data and encode it as base64 data url.
-- **`abort()`** -- cancel the operation.
+- **`readAsArrayBuffer(blob)`**, legge i dati in formato binario da `ArrayBuffer`.
+- **`readAsText(blob, [encoding])`**, legge i dati come stringa di testo con uno specifico encoding (`utf-8` di default).
+- **`readAsDataURL(blob)`**, legge i dati in formato binario e li codifica come URL in base64.
+- **`abort()`**, annulla l'operazione.
 
-The choice of `read*` method depends on which format we prefer, how we're going to use the data.
+La scelta di quale metodo di `read*` utilizzare dipende molto dal formato che preferiamo utilizzare, e a come andremo ad utilizzare i dati.
 
-- `readAsArrayBuffer` -- for binary files, to do low-level binary operations. For high-level operations, like slicing, `File` inherits from `Blob`, so we can call them directly, without reading.
-- `readAsText` -- for text files, when we'd like to get a string.
-- `readAsDataURL` -- when we'd like to use this data in `src` for `img` or another tag. There's an alternative to reading a file for that, as discussed in chapter <info:blob>: `URL.createObjectURL(file)`.
+- `readAsArrayBuffer`, per file di tipo binario, per eseguire operazioni a basso livello. Per operazioni ad alto livello, come la rimozione di porzioni di file, `File` eredita da `Blob`, quindi possiamo invocare i suoi metodi direttamente, senza iniziare la lettura.
+- `readAsText`, per file di tipo testuale, per ottenerli sotto forma di stringa.
+- `readAsDataURL`, quando siamo interessati da utilizzare questi dati come `src` su un `img` o un altro tag. In questo caso c'è un ulteriore alternativa , che abbiamo discusso nel capitolo <info:blob>: `URL.createObjectURL(file)`.
 
-As the reading proceeds, there are events:
-- `loadstart` -- loading started.
-- `progress` -- occurs during reading.
-- `load` -- no errors, reading complete.
-- `abort` -- `abort()` called.
-- `error` -- error has occurred.
-- `loadend` -- reading finished with either success or failure.
+Mentre il processo di lettura prosegue, vengono emessi degli eventi:
+- `loadstart`, la lettura è iniziata.
+- `progress`, durante la lettura.
+- `load`, nessun errore, lettura completata.
+- `abort`, invocato `abort()`.
+- `error`, si è verificato un errore.
+- `loadend`, lettura completata con o senza errori.
 
-When the reading is finished, we can access the result as:
-- `reader.result` is the result (if successful)
-- `reader.error` is the error (if failed).
+Quando la lettura è completa, possiamo accedere al risultato come:
+- `reader.result` il risultato (se la lettura è avvenuta con successo)
+- `reader.error` l'errore (se la lettura è fallita).
 
-The most widely used events are for sure `load` and `error`.
+Gli eventi più utilizzati sono sicuramente `load` e `error`.
 
-Here's an example of reading a file:
+Qui vediamo un esempio di lettura di un file:
 
 ```html run
 <input type="file" onchange="readFile(this)">
@@ -104,35 +104,35 @@ function readFile(input) {
 </script>
 ```
 
-```smart header="`FileReader` for blobs"
-As mentioned in the chapter <info:blob>, `FileReader` can read not just files, but any blobs.
+```smart header="`FileReader` per blobs"
+Come accennato nel capitolo <info:blob>, `FileReader` può essere utilizzano non solo per la lettura di file, ma per qualsiasi blob.
 
-We can use it to convert a blob to another format:
-- `readAsArrayBuffer(blob)` -- to `ArrayBuffer`,
-- `readAsText(blob, [encoding])` -- to string (an alternative to `TextDecoder`),
-- `readAsDataURL(blob)` -- to base64 data url.
+Possiamo utilizzarlo per convertire un `Blob` in un altro formato:
+- `readAsArrayBuffer(blob)`, per convertirlo ad `ArrayBuffer`,
+- `readAsText(blob, [encoding])`, per convertirlo a string (un'alternativa a `TextDecoder`),
+- `readAsDataURL(blob)`, per convertirlo ad url in base64.
 ```
 
 
-```smart header="`FileReaderSync` is available inside Web Workers"
-For Web Workers, there also exists a synchronous variant of `FileReader`, called [FileReaderSync](https://www.w3.org/TR/FileAPI/#FileReaderSync).
+```smart header="`FileReaderSync` è disponibile all'interno dei Web Workers"
+Nel caso dei Web Workers, esiste anche una variante sincrona dell'oggetto `FileReader`, chiamata [FileReaderSync](https://www.w3.org/TR/FileAPI/#FileReaderSync).
 
-Its reading methods `read*` do not generate events, but rather return a result, as regular functions do.
+I suoi metodi di lettura `read*` non generano eventi, ma ritorna un risultato, come una qualsiasi funzione regolare.
 
-That's only inside a Web Worker though, because delays in synchronous calls, that are possible while reading from files, in Web Workers are less important. They do not affect the page.
+Questo è possibile solamente all'interno di un Web Worker, a causa dei ritardi dovuti alle chiamate sincrone che si possono verificare quando si legge da file, questi ritardi nei Web Workers sono meno importanti. In quanto non intaccano le performance della pagina.
 ```
 
-## Summary
+## Riepilogo
 
-`File` objects inherit from `Blob`.
+Gli oggetti di tipo `File` ereditano da `Blob`.
 
-In addition to `Blob` methods and properties, `File` objects also have `name` and `lastModified` properties, plus the internal ability to read from filesystem. We usually get `File` objects from user input, like `<input>` or Drag'n'Drop events (`ondragend`).
+In aggiunta ai metodi ed alle proprietà ereditate da `Blob`, gli oggetti `File` possiedono le proprietà `name` e `lastModified`, oltre alla capacità di leggere direttamente dal filesystem. Solitamente otteniamo oggetti `File` tramite input da utente, come `<input>` o eventi di Drag'n'Drop (`ondragend`).
 
-`FileReader` objects can read from a file or a blob, in one of three formats:
-- String (`readAsText`).
+Gli oggetti `FileReader` possono leggere un `File` o un `Blob`, in uno dei seguenti formati:
+- Stringa (`readAsText`).
 - `ArrayBuffer` (`readAsArrayBuffer`).
-- Data url, base-64 encoded (`readAsDataURL`).
+- Data URL, codificati in base-64 (`readAsDataURL`).
 
-In many cases though, we don't have to read the file contents. Just as we did with blobs, we can create a short url with `URL.createObjectURL(file)` and assign it to `<a>` or `<img>`. This way the file can be downloaded or shown up as an image, as a part of canvas etc.
+In molti casi, però, non necessitiamo di leggere il contenuto di un file. Proprio come abbiamo fatto con i `Blob`, possiamo creare un URL con `URL.createObjectURL(file)` ed assegnarlo ad un tag `<a>` o `<img>`. In questo modo il file potrà essere scaricato o mostrato come immagine, come parte di un canvas etc.
 
-And if we're going to send a `File` over a network, that's also easy: network API like `XMLHttpRequest` or `fetch` natively accepts `File` objects.
+E nel caso in cui provassimo ad inviare un `File` sulla rete, sarà ancora più facile: le API di rete come `XMLHttpRequest` o `fetch` accettano nativamente oggetti di tipo `File`.
