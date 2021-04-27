@@ -62,43 +62,43 @@ Questa procedura generica non ci spiega con evidenza perché l'espressione regol
 
 4. A questo punto il motore cessa di ripetere `pattern:.+` e prova a trovare il prossimo carattere del pattern. Si tratta del doppio apice `pattern:"`. C'è un problema però: la stringa è finita, non ci sono più caratteri!
 
-    Il motore dell'espressione regolare capisce che ha preso troppi caratteri per `pattern:.+` e comincia a *retrocedere*.
+    Il motore dell'espressione regolare capisce di aver preso troppi caratteri per `pattern:.+` e comincia a *retrocedere*.
 
-    In other words, it shortens the match for the quantifier by one character:
+    In altre parole accorcia di un carattere la corrispondenza per il quantificatore:
 
     ![](witch_greedy4.svg)
 
-    Now it assumes that `pattern:.+` ends one character before the string end and tries to match the rest of the pattern from that position.
+    A questo punto presume che `pattern:.+` finisca un carattere prima della fine della stringa e verifica la corrispondenza del resto del pattern da quella posizione.
 
-    If there were a quote there, then the search would end, but the last character is `subject:'e'`, so there's no match.
+    Se ci fosse stato un doppio apice, la ricerca sarebbe terminata, ma l'ultima carattere è una `subject:'e'`, nessun riscontro quindi.
 
-5. ...So the engine decreases the number of repetitions of `pattern:.+` by one more character:
+5. ...Allora il motore diminuisce di un ulteriore carattere il numero delle ripetizioni di `pattern:.+`:
 
     ![](witch_greedy5.svg)
 
-    The quote `pattern:'"'` does not match `subject:'n'`.
+    Anche il carattere `subject:'n'` non soddisfa la ricerca di `pattern:'"'`.
 
-6. The engine keep backtracking: it decreases the count of repetition for `pattern:'.'` until the rest of the pattern (in our case `pattern:'"'`) matches:
+6. Il motore continua a retrocedere: diminuisce le ripetizioni per `pattern:'.'` finché il resto del pattern (nel nostro caso `pattern:'"'`) non trova riscontro:
 
     ![](witch_greedy6.svg)
 
-7. The match is complete.
+7. La ricerca è completa.
 
-8. So the first match is `match:"witch" and her "broom"`. If the regular expression has flag `pattern:g`, then the search will continue from where the first match ends. There are no more quotes in the rest of the string `subject:is one`, so no more results.
+8. Il primo riscontro è quindi `match:"witch" and her "broom"`. Se l'espressione regolare ha il flag `pattern:g`, allora la ricerca proseguirà a partire dalla fine della prima corrispondenza. Non ci sono più doppi apici nel resto della stringa `subject:is one`e, pertanto, non c'è nessun altro risultato.
 
-That's probably not what we expected, but that's how it works.
+Probabilmente non è quello che ci aspettavamo, ma funziona così.
 
-**In the greedy mode (by default) a quantified character is repeated as many times as possible.**
+**In modalità greedy (quella predefinita) un quantificatore viene ripetuto quante più volte possibile.**
 
-The regexp engine adds to the match as many characters as it can for `pattern:.+`, and then shortens that one by one, if the rest of the pattern doesn't match.
+Il motore della regexp aggiunge quanti più caratteri possibili alla corrispondenza con `pattern:.+`, successivamente retrocede di un carattere alla volta se il resto del pattern non trova riscontro.
 
-For our task we want another thing. That's where a lazy mode can help.
+L'obiettivo della nostra esercitazione non è questo, proprio in questi casi viene in soccorso la modalità lazy.
 
-## Lazy mode
+## Modalità lazy
 
-The lazy mode of quantifiers is an opposite to the greedy mode. It means: "repeat minimal number of times".
+La modalità lazy di un quantificatore è l'opposto della modalità greedy. Significa: "ripeti il minor numero di volte".
 
-We can enable it by putting a question mark `pattern:'?'` after the quantifier, so that it becomes  `pattern:*?` or `pattern:+?` or even `pattern:??` for `pattern:'?'`.
+Possiamo abilitarla mettendo un punto interrogativo `pattern:'?'` dopo il quantificatore, così che diventi `pattern:*?` o `pattern:+?` o ancora `pattern:??` per `pattern:'?'`.
 
 To make things clear: usually a question mark `pattern:?` is a quantifier by itself (zero or one), but if added *after another quantifier (or even itself)* it gets another meaning -- it switches the matching mode from greedy to lazy.
 
