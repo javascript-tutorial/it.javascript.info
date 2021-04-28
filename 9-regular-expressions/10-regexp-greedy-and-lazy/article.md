@@ -94,15 +94,15 @@ Il motore della regexp aggiunge quanti più caratteri possibili alla corrisponde
 
 L'obiettivo della nostra esercitazione non è questo, proprio in questi casi viene in soccorso la modalità lazy.
 
-## Modalità lazy
+## Modalità lazy (pigra)
 
 La modalità lazy di un quantificatore è l'opposto della modalità greedy. Significa: "ripeti il minor numero di volte".
 
 Possiamo abilitarla mettendo un punto interrogativo `pattern:'?'` dopo il quantificatore, così che diventi `pattern:*?` o `pattern:+?` o ancora `pattern:??` per `pattern:'?'`.
 
-To make things clear: usually a question mark `pattern:?` is a quantifier by itself (zero or one), but if added *after another quantifier (or even itself)* it gets another meaning -- it switches the matching mode from greedy to lazy.
+Ricapitoliamo per chiarezza: di norma il punto interrogativo `pattern:?` è di per sé un quantificatore (zero o un carattere), ma se aggiunto *dopo un altro quantificatore (anche dopo se stesso)* assume un altro significato: cambia la modalità di corrispondenza da greedy a lazy.
 
-The regexp `pattern:/".+?"/g` works as intended: it finds `match:"witch"` and `match:"broom"`:
+La regexp `pattern:/".+?"/g` soddisfa le nostre esigenze: trova `match:"witch"` e `match:"broom"`:
 
 ```js run
 let regexp = /".+?"/g;
@@ -112,55 +112,55 @@ let str = 'a "witch" and her "broom" is one';
 alert( str.match(regexp) ); // "witch", "broom"
 ```
 
-To clearly understand the change, let's trace the search step by step.
+Per comprendere distintamente cosa sia cambiato, seguiamo la ricerca passo dopo passo.
 
-1. The first step is the same: it finds the pattern start `pattern:'"'` at the 3rd position:
+1. Il primo step non cambia: trova l'inizio del pattern `pattern:'"'` nella terza posizione:
 
     ![](witch_greedy1.svg)
 
-2. The next step is also similar: the engine finds a match for the dot `pattern:'.'`:
+2. Anche il secondo step è simile: il motore trova una corrispondenza per il punto `pattern:'.'`:
 
     ![](witch_greedy2.svg)
 
-3. And now the search goes differently. Because we have a lazy mode for `pattern:+?`, the engine doesn't try to match a dot one more time, but stops and tries to match the rest of the pattern  `pattern:'"'` right now:
+3. Da questo punto la ricerca procede in modo differente. Dal momento che il quantificatore è in modalità lazy `pattern:+?`, il motore non prova a cercare il punto più di una volta, si ferma e cerca subito la corrispondenza con il resto del pattern  `pattern:'"'`:
 
     ![](witch_lazy3.svg)
 
-    If there were a quote there, then the search would end, but there's `'i'`, so there's no match.
-4. Then the regular expression engine increases the number of repetitions for the dot and tries one more time:
+    Se ci fosse un doppio apice a questo punto la ricerca sarebbe già terminata, ma c'è una `'i'` e quindi nessuna corrispondenza.
+4. Il motore della regexp allora aumenta il numero delle ripetizioni per il punto e riprova:
 
     ![](witch_lazy4.svg)
 
-    Failure again. Then the number of repetitions is increased again and again...
-5. ...Till the match for the rest of the pattern is found:
+    Ancora nessun risultato. Il numero delle ripetizioni, pertanto, si accresce di volta in volta...
+5. ...finché viene riscontrata la corrispondenza con il resto del pattern:
 
     ![](witch_lazy5.svg)
 
-6. The next search starts from the end of the current match and yield one more result:
+6. La ricerca successiva inizia dalla fine della corrispondenza corrente e produce un altro risultato:
 
     ![](witch_lazy6.svg)
 
-In this example we saw how the lazy mode works for `pattern:+?`. Quantifiers `pattern:*?` and `pattern:??` work the similar way -- the regexp engine increases the number of repetitions only if the rest of the pattern can't match on the given position.
+In questo esempio abbiamo visto come funziona la modalità lazy per `pattern:+?`. I quantificatori `pattern:*?` e `pattern:??` operano in modo simile: il motore della regexp aumenta il numero delle ripetizioni solo se il resto del pattern non ha corrispondenza in una data posizione.
 
-**Laziness is only enabled for the quantifier with `?`.**
+**La modalità lazy è abilitata unicamente per il quantificatore seguito da `?`.**
 
-Other quantifiers remain greedy.
+Gli altri quantificatori continuano ad operare in modalità greedy.
 
-For instance:
+Per esempio:
 
 ```js run
 alert( "123 456".match(/\d+ \d+?/) ); // 123 4
 ```
 
-1. The pattern `pattern:\d+` tries to match as many digits as it can (greedy mode), so it finds  `match:123` and stops, because the next character is a space `pattern:' '`.
-2. Then there's a space in the pattern, it matches.
-3. Then there's `pattern:\d+?`. The quantifier is in lazy mode, so it finds one digit `match:4` and tries to check if the rest of the pattern matches from there.
+1. Il pattern `pattern:\d+` cerca quanti più caratteri gli è possibile (modalità greedy), e si ferma quindi dopo aver trovato `match:123`, perché il carattere successivo è una spaziatura `pattern:' '`.
+2. Segue la corrispondenza dello spazio nel pattern.
+3. A questo punto c'è `pattern:\d+?`. Il quantificatore è modalità lazy, perciò trova solo una cifra `match:4` e prova a verificare se il resto del pattern è soddisfatto.
 
-    ...But there's nothing in the pattern after `pattern:\d+?`.
+    ...Nel pattern, tuttavia, non c'è niente dopo `pattern:\d+?`.
 
-    The lazy mode doesn't repeat anything without a need. The pattern finished, so we're done. We have a match `match:123 4`.
+    La modalità lazy non ripete nulla se non c'è un motivo. Il pattern è finito e conclude la ricerca. La nostra corrispondenza è `match:123 4`.
 
-```smart header="Optimizations"
+```smart header="Ottimizzazioni"
 Modern regular expression engines can optimize internal algorithms to work faster. So they may work a bit differently from the described algorithm.
 
 But to understand how regular expressions work and to build regular expressions, we don't need to know about that. They are only used internally to optimize things.
@@ -168,7 +168,7 @@ But to understand how regular expressions work and to build regular expressions,
 Complex regular expressions are hard to optimize, so the search may work exactly as described as well.
 ```
 
-## Alternative approach
+## Approccio alternativo
 
 With regexps, there's often more than one way to do the same thing.
 
