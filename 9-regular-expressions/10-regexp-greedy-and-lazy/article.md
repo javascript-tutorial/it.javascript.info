@@ -161,11 +161,11 @@ alert( "123 456".match(/\d+ \d+?/) ); // 123 4
     La modalità lazy non ripete nulla se non c'è un motivo. Il pattern è finito e conclude la ricerca. La nostra corrispondenza è `match:123 4`.
 
 ```smart header="Ottimizzazioni"
-Modern regular expression engines can optimize internal algorithms to work faster. So they may work a bit differently from the described algorithm.
+I moderni motori delle regexp possono ottimizzare internamente i loro algoritimi per essere più rapidi. Potrebbero quindi operare in modo leggermente diverso da quanto abbiamo spiegato prima.
 
-But to understand how regular expressions work and to build regular expressions, we don't need to know about that. They are only used internally to optimize things.
+Ma per comprendere come funzionino le espressioni regolari e come implementarle non abbiamo bisogno di conoscere questi dettagli. Si tratta di meccanismi interni per ottimizzare il rendimento.
 
-Complex regular expressions are hard to optimize, so the search may work exactly as described as well.
+Del resto è difficile ottimizzare le espressioni regolari complesse, pertanto la ricerca potrebbe anche funzionare esattamente come indicato.
 ```
 
 ## Approccio alternativo
