@@ -1,5 +1,5 @@
 
-The solution is `pattern:<[^<>]+>`.
+La soluzione è `pattern:<[^<>]+>`.
 
 ```js run
 let regexp = /<[^<>]+>/g;
