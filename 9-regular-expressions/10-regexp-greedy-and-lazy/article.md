@@ -1,6 +1,6 @@
 # Modalità greedy e lazy dei quantificatori
 
-I quantificatori sono molto semplici a prima vista, ma in realtà possono riverlarsi complicati.
+I quantificatori sono molto semplici a prima vista, ma in realtà possono rivelarsi complicati.
 
 Dovremmo comprendere appieno come funziona la ricerca se intendiamo cercare qualcosa di più complesso di `pattern:/\d+/`.
 
@@ -100,7 +100,7 @@ La modalità lazy di un quantificatore è l'opposto della modalità greedy. Sign
 
 Possiamo abilitarla mettendo un punto interrogativo `pattern:'?'` dopo il quantificatore, così che diventi `pattern:*?` o `pattern:+?` o ancora `pattern:??` per `pattern:'?'`.
 
-Ricapitoliamo per chiarezza: di norma il punto interrogativo `pattern:?` è di per sé un quantificatore (zero o un carattere), ma se aggiunto *dopo un altro quantificatore (anche dopo se stesso)* assume un altro significato: cambia la modalità di corrispondenza da greedy a lazy.
+Ricapitoliamo per chiarezza: di norma il punto interrogativo `pattern:?` è di per sé un quantificatore (zero o un carattere), ma se aggiunto *dopo un altro quantificatore (anche dopo se stesso)* assume un altro significato: cambia la modalità di ricerca da greedy a lazy.
 
 La regexp `pattern:/".+?"/g` soddisfa le nostre esigenze: trova `match:"witch"` e `match:"broom"`:
 
@@ -161,7 +161,7 @@ alert( "123 456".match(/\d+ \d+?/) ); // 123 4
     La modalità lazy non ripete nulla se non c'è un motivo. Il pattern è finito e conclude la ricerca. La nostra corrispondenza è `match:123 4`.
 
 ```smart header="Ottimizzazioni"
-I moderni motori delle regexp possono ottimizzare internamente i loro algoritimi per essere più rapidi. Potrebbero quindi operare in modo leggermente diverso da quanto abbiamo spiegato prima.
+I moderni motori delle regexp possono ottimizzare internamente i loro algoritmi per essere più rapidi. Potrebbero quindi operare in modo leggermente diverso da quanto abbiamo spiegato prima.
 
 Ma per comprendere come funzionino le espressioni regolari e come implementarle non abbiamo bisogno di conoscere questi dettagli. Si tratta di meccanismi interni per ottimizzare il rendimento.
 
@@ -219,7 +219,7 @@ alert( str.match(regexp) ); // <a href="link1" class="doc">... <a href="link2" c
 
 Il risultato adesso è errato per lo stesso motivo dell'esempio di prima con "witches". Il quantificatore `pattern:.*` ha preso troppi caratteri.
 
-Possiamo spiegare la corrispondenza in questo modo:
+Possiamo rappresentare la corrispondenza in questo modo:
 
 ```html
 <a href="....................................." class="doc">
@@ -243,7 +243,7 @@ Ora sembra sembra funzionare, ci sono due riscontri:
 <a href="link1" class="doc">... <a href="link2" class="doc">
 ```
 
-Ma proviamo ancora su un altro testo:
+Ma proviamo ancora su un testo differente:
 
 ```js run
 let str = '...<a href="link1" class="wrong">... <p style="" class="doc">...';
@@ -298,4 +298,4 @@ Greedy
 Lazy
 : Abilitata dal punto interrogativo `pattern:?` dopo il quantificatore. L'interprete delle regexp prova la corrispondenza del resto del pattern prima di ogni ripetizione di un carattere quantificato.
 
-Come abbiamo visto, la modalità lazy non è una "panacea" per i problemi della ricerca greedy. Un'alternativa può essere una ricerca greedy "calibrata", avvalendoci di esclusioni come nel pattern `pattern:"[^"]+"`.
+Come abbiamo visto, la modalità lazy non è una "panacea" per i problemi della ricerca greedy. Un'alternativa può essere una ricerca greedy "calibrata", avvalendoci delle esclusioni come nel pattern `pattern:"[^"]+"`.
