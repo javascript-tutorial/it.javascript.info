@@ -1,31 +1,31 @@
-# Capturing groups
+# I gruppi di acquisizione (capturing group)
 
-A part of a pattern can be enclosed in parentheses `pattern:(...)`. This is called a "capturing group".
+Una parte del pattern può essere racchiusa tra parentesi `pattern:(...)`, diventando così un "gruppo di acquisizione" (capturing group).
 
-That has two effects:
+Ciò comporta due conseguenze:
 
-1. It allows to get a part of the match as a separate item in the result array.
-2. If we put a quantifier after the parentheses, it applies to the parentheses as a whole.
+1. Possiamo acquisire una parte della corrispondenza come elemento separato all'interno di un array di risultati.
+2. Se poniamo un quantificatore dopo le parentesi, questo si applica all'intero gruppo di acquisizione.
 
-## Examples
+## Esempi
 
-Let's see how parentheses work in examples.
+Vediamo come operano le parentesi attraverso degli esempi.
 
-### Example: gogogo
+### Esempio: gogogo
 
-Without parentheses, the pattern `pattern:go+` means `subject:g` character, followed by `subject:o` repeated one or more times. For instance, `match:goooo` or `match:gooooooooo`.
+Senza parentesi, il pattern `pattern:go+` significa: il carattere `subject:g` seguito da `subject:o` ripetuto una o più volte. Per esempio `match:goooo` o `match:gooooooooo`.
 
-Parentheses group characters together, so `pattern:(go)+` means `match:go`, `match:gogo`, `match:gogogo` and so on.
+Le parentesi raggruppano i caratteri, pertanto `pattern:(go)+` significa `match:go`, `match:gogo`, `match:gogogo` e così via.
 
 ```js run
 alert( 'Gogogo now!'.match(/(go)+/ig) ); // "Gogogo"
 ```
 
-### Example: domain
+### Esempio: dominio
 
-Let's make something more complex -- a regular expression to search for a website domain.
+Facciamo un esempio un po' più complesso, un'espressione regolare per cercare il dominio di un sito.
 
-For example:
+Per esempio:
 
 ```
 mail.com
@@ -33,9 +33,9 @@ users.mail.com
 smith.users.mail.com
 ```
 
-As we can see, a domain consists of repeated words, a dot after each one except the last one.
+Come possiamo vedere, un dominio consiste in parole ripetute, un punto segue ciascuna parola tranne l'ultima.
 
-In regular expressions that's `pattern:(\w+\.)+\w+`:
+Tradotto in un'espressione regolare diventa `pattern:(\w+\.)+\w+`:
 
 ```js run
 let regexp = /(\w+\.)+\w+/g;
@@ -43,17 +43,17 @@ let regexp = /(\w+\.)+\w+/g;
 alert( "site.com my.site.com".match(regexp) ); // site.com,my.site.com
 ```
 
-The search works, but the pattern can't match a domain with a hyphen, e.g. `my-site.com`, because the hyphen does not belong to class `pattern:\w`.
+La ricerca funziona, ma il pattern non trova riscontro con domini contenenti un trattino, es. `my-site.com`, perché il trattino non appartiene alla classe `pattern:\w`.
 
-We can fix it by replacing `pattern:\w` with `pattern:[\w-]` in every word except the last one: `pattern:([\w-]+\.)+\w+`.
+Possiamo correggere il tiro rimpiazzando `pattern:\w` con `pattern:[\w-]` in ogni parola eccetto l'ultima: `pattern:([\w-]+\.)+\w+`.
 
-### Example: email
+### Esempio: email
 
-The previous example can be extended. We can create a regular expression for emails based on it.
+Il precedente esempio può essere esteso. A partire da questo possiamo creare un'espressione regolare per le email.
 
-The email format is: `name@domain`. Any word can be the name, hyphens and dots are allowed. In regular expressions that's `pattern:[-.\w]+`.
+Il formato delle email è: `name@domain`. Qualsiasi parola può essere "name", sono consentiti trattini e punti. L'espressione regolare diventa `pattern:[-.\w]+`.
 
-The pattern:
+Ecco il pattern:
 
 ```js run
 let regexp = /[-.\w]+@([\w-]+\.)+[\w-]+/g;
@@ -61,24 +61,24 @@ let regexp = /[-.\w]+@([\w-]+\.)+[\w-]+/g;
 alert("my@mail.com @ his@site.com.uk".match(regexp)); // my@mail.com, his@site.com.uk
 ```
 
-That regexp is not perfect, but mostly works and helps to fix accidental mistypes. The only truly reliable check for an email can only be done by sending a letter.
+Questa regexp non è perfetta, ma per lo più funziona e aiuta a correggere errori di battitura accidentali. L'unica verifica davvero efficace per un'email può essere fatta soltanto inviandone una.
 
-## Parentheses contents in the match
+## I contenuti tra parentesi nella corrispondenza
 
-Parentheses are numbered from left to right. The search engine memorizes the content matched by each of them and allows to get it in the result.
+I gruppi tra parentesi sono numerati da sinistra verso destra. Il motore di ricerca memorizza il contenuto associato a ciascuno di essi e consente di recuperarlo nel risultato.
 
-The method `str.match(regexp)`, if `regexp` has no flag `g`, looks for the first match and returns it as an array:
+Il metodo `str.match(regexp)`, se `regexp` non ha il flag `g`, cerca la prima corrispondenza e la restituisce in un array:
 
-1. At index `0`: the full match.
-2. At index `1`: the contents of the first parentheses.
-3. At index `2`: the contents of the second parentheses.
-4. ...and so on...
+1. Nell'indice `0`: l'intera corrispondenza.
+2. Nell'indice `1`: il contenuto del primo gruppo tra parentesi.
+3. Nell'indice `2`: il contenuto del secondo.
+4. ...e così via...
 
-For instance, we'd like to find HTML tags `pattern:<.*?>`, and process them. It would be convenient to have tag content (what's inside the angles), in a separate variable.
+Ad esempio se volessimo trovare i tag HTML `pattern:<.*?>` per elaborarli, sarebbe conveniente averne il contenuto (ciò che è all'interno delle parentesi uncinate) in una variabile separata.
 
-Let's wrap the inner content into parentheses, like this: `pattern:<(.*?)>`.
+Racchiudiamo il contenuto tra parentesi, in questo modo: `pattern:<(.*?)>`.
 
-Now we'll get both the tag as a whole `match:<h1>` and its contents `match:h1` in the resulting array:
+Adesso otterremo sia l'intero tag `match:<h1>` sia il suo contenuto `match:h1` nell'array di risultati:
 
 ```js run
 let str = '<h1>Hello, world!</h1>';
@@ -89,23 +89,23 @@ alert( tag[0] ); // <h1>
 alert( tag[1] ); // h1
 ```
 
-### Nested groups
+### Gruppi annidati
 
-Parentheses can be nested. In this case the numbering also goes from left to right.
+Le parentesi possono essere annidate. Anche in questo caso la numerazione procede da sinistra verso destra.
 
-For instance, when searching a tag in `subject:<span class="my">` we may be interested in:
+Per esempio durante la ricerca del tag in `subject:<span class="my">` potrebbe interessarci:
 
-1. The tag content as a whole: `match:span class="my"`.
-2. The tag name: `match:span`.
-3. The tag attributes: `match:class="my"`.
+1. L'intero contenuto del tag: `match:span class="my"`.
+2. Il nome del tag: `match:span`.
+3. Gli attributi del tag: `match:class="my"`.
 
-Let's add parentheses for them: `pattern:<(([a-z]+)\s*([^>]*))>`.
+Aggiungiamo le parentesi per questo scopo: `pattern:<(([a-z]+)\s*([^>]*))>`.
 
-Here's how they are numbered (left to right, by the opening paren):
+Ecco come sono numerate (da sinistra verso destra, a partire dalla parentesi di apertura):
 
 ![](regexp-nested-groups-pattern.svg)
 
-In action:
+In azione:
 
 ```js run
 let str = '<span class="my">';
@@ -119,13 +119,13 @@ alert(result[2]); // span
 alert(result[3]); // class="my"
 ```
 
-The zero index of `result` always holds the full match.
+L'indice zero di `result` contiene sempre l'intera corrispondenza.
 
-Then groups, numbered from left to right by an opening paren. The first group is returned as `result[1]`. Here it encloses the whole tag content.
+Seguono i gruppi, numerati da sinistra verso destra, a partire dalla parentesi di apertura. Il primo gruppo è `result[1]`, esso racchiude l'intero contenuto del tag.
 
-Then in `result[2]` goes the group from the second opening paren `pattern:([a-z]+)` - tag name, then in `result[3]` the tag: `pattern:([^>]*)`.
+Troviamo il gruppo della seconda parentesi `pattern:([a-z]+)` in `result[2]`, a seguire il nome del tag `pattern:([^>]*)` in `result[3]`.
 
-The contents of every group in the string:
+Ed ecco la rappresentazione del contenuto di ciascun gruppo nella stringa:
 
 ![](regexp-nested-groups-matches.svg)
 
