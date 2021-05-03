@@ -1,10 +1,10 @@
 
-# Autosave a form field
+# Autosave di un campo di un form
 
-Create a `textarea` field that "autosaves" its value on every change.
+Create un campo di `textarea` che "auto salva" il suo contenuto ad ogni cambiamento.
 
-So, if the user accidentally closes the page, and opens it again, he'll find his unfinished input at place.
+Quindi se l'utente chiude accidentalmente la pagina, e la riapre, troverà il suo input come in precedenza.
 
-Like this:
+Come nell'esempio:
 
 [iframe src="solution" height=120]
