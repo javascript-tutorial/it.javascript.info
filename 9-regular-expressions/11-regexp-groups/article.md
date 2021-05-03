@@ -63,7 +63,7 @@ alert("my@mail.com @ his@site.com.uk".match(regexp)); // my@mail.com, his@site.c
 
 Questa regexp non è perfetta, ma per lo più funziona e aiuta a correggere errori di battitura accidentali. L'unica verifica davvero efficace per un'email può essere fatta soltanto inviandone una.
 
-## I contenuti tra parentesi nella corrispondenza
+## I contenuti tra parentesi della corrispondenza
 
 I gruppi tra parentesi sono numerati da sinistra verso destra. Il motore di ricerca memorizza il contenuto associato a ciascuno di essi e consente di recuperarlo nel risultato.
 
@@ -129,44 +129,44 @@ Ed ecco la rappresentazione del contenuto di ciascun gruppo nella stringa:
 
 ![](regexp-nested-groups-matches.svg)
 
-### Optional groups
+### Gruppi opzionali
 
-Even if a group is optional and doesn't exist in the match (e.g. has the quantifier `pattern:(...)?`), the corresponding `result` array item is present and equals `undefined`.
+Anche se un gruppo è opzionale e non ha alcun riscontro (ad esempio ha il quantificatore `pattern:(...)?`), l'elemento corrispondente nell'array `result` è ugualmente presente ed equivale a `undefined`.
 
-For instance, let's consider the regexp `pattern:a(z)?(c)?`. It looks for `"a"` optionally followed by `"z"` optionally followed by `"c"`.
+Consideriamo per esempio la regexp `pattern:a(z)?(c)?` che cerca la `"a"` facoltativamente seguita da `"z"` e da `"c"`.
 
-If we run it on the string with a single letter `subject:a`, then the result is:
+Se la eseguiamo sulla stringa con la singola lettera `subject:a`, questo è il risultato:
 
 ```js run
 let match = 'a'.match(/a(z)?(c)?/);
 
 alert( match.length ); // 3
-alert( match[0] ); // a (whole match)
+alert( match[0] ); // a (l'intera corrispondenza)
 alert( match[1] ); // undefined
 alert( match[2] ); // undefined
 ```
 
-The array has the length of `3`, but all groups are empty.
+L'array è costituito da `3` elementi, ma tutti i gruppi sono vuoti.
 
-And here's a more complex match for the string `subject:ac`:
+Ed ora ecco un riscontro più articolato per la stringa `subject:ac`:
 
 ```js run
 let match = 'ac'.match(/a(z)?(c)?/)
 
 alert( match.length ); // 3
-alert( match[0] ); // ac (whole match)
-alert( match[1] ); // undefined, because there's nothing for (z)?
+alert( match[0] ); // ac (l'intera corrispondenza)
+alert( match[1] ); // undefined, perché non c'è riscontro per (z)?
 alert( match[2] ); // c
 ```
 
-The array length is permanent: `3`. But there's nothing for the group `pattern:(z)?`, so the result is `["ac", undefined, "c"]`.
+La lunghezza dell'array resta in ogni caso: `3`, ma non c'è riscontro per il gruppo `pattern:(z)?`, quindi il risultato è `["ac", undefined, "c"]`.
 
-## Searching for all matches with groups: matchAll
+## Ricerca di tutte le corrispondenze con gruppi: matchAll
 
-```warn header="`matchAll` is a new method, polyfill may be needed"
-The method `matchAll` is not supported in old browsers.
+```warn header="`matchAll` è un nuovo metodo, potrebbe essere necessario un polyfill"
+Il metodo `matchAll` non è supportato nei browsers più datati.
 
-A polyfill may be required, such as <https://github.com/ljharb/String.prototype.matchAll>.
+Potrebbe essere richiesto un polyfill come <https://github.com/ljharb/String.prototype.matchAll>.
 ```
 
 When we search for all matches (flag `pattern:g`), the `match` method does not return contents for groups.
@@ -346,7 +346,7 @@ alert( result[1] ); // John
 alert( result.length ); // 2 (no more items in the array)
 ```
 
-## Summary
+## Riepilogo
 
 Parentheses group together a part of the regular expression, so that the quantifier applies to it as a whole.
 
