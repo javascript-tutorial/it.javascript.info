@@ -169,9 +169,9 @@ Il metodo `matchAll` non è supportato nei browsers più datati.
 Potrebbe essere richiesto un polyfill come <https://github.com/ljharb/String.prototype.matchAll>.
 ```
 
-When we search for all matches (flag `pattern:g`), the `match` method does not return contents for groups.
+Quando cerchiamo tutte le corrispondenze (flag `pattern:g`), il metodo `match` non restituisce il contenuto dei gruppi.
 
-For example, let's find all tags in a string:
+Cerchiamo ad esempio tutti i tag in una stringa:
 
 ```js run
 let str = '<h1> <h2>';
@@ -181,32 +181,32 @@ let tags = str.match(/<(.*?)>/g);
 alert( tags ); // <h1>,<h2>
 ```
 
-The result is an array of matches, but without details about each of them. But in practice we usually need contents of capturing groups in the result.
+Il risultato è un array di riscontri, ma senza i dettagli di ciascuno di essi. Nella pratica comune, tuttavia, nel risultato ci occorre il contenuto dei gruppi di acquisizione.
 
-To get them, we should search using the method `str.matchAll(regexp)`.
+Per ottenerlo, dovremmo utilizzare la ricerca con il metodo `str.matchAll(regexp)`.
 
-It was added to JavaScript language long after `match`, as its "new and improved version".
+È stato aggiunto al linguaggio JavaScript molto tempo dopo `match`, come sua "versione nuova e migliorata".
 
-Just like `match`, it looks for matches, but there are 3 differences:
+Proprio come `match` cerca le corrispondenze, ma ci sono 3 differenze:
 
-1. It returns not an array, but an iterable object.
-2. When the flag `pattern:g` is present, it returns every match as an array with groups.
-3. If there are no matches, it returns not `null`, but an empty iterable object.
+1. Non restituisce un array, ma un oggetto iterabile.
+2. Quando è presente il flag `pattern:g`, restituisce ogni riscontro come un array i cui elementi corrispondono ai gruppi.
+3. Se non c'è alcun riscontro, non restituisce `null`, bensì un oggetto iterabile vuoto.
 
-For instance:
+Per esempio:
 
 ```js run
 let results = '<h1> <h2>'.matchAll(/<(.*?)>/gi);
 
-// results - is not an array, but an iterable object
+// results, non è un array ma un oggetto iterabile
 alert(results); // [object RegExp String Iterator]
 
 alert(results[0]); // undefined (*)
 
-results = Array.from(results); // let's turn it into array
+results = Array.from(results); // convertiamolo in un array
 
-alert(results[0]); // <h1>,h1 (1st tag)
-alert(results[1]); // <h2>,h2 (2nd tag)
+alert(results[0]); // <h1>,h1 (primo tag)
+alert(results[1]); // <h2>,h2 (secondo tag)
 ```
 
 As we can see, the first difference is very important, as demonstrated in the line `(*)`. We can't get the match as `results[0]`, because that object isn't pseudoarray. We can turn it into a real `Array` using `Array.from`. There are more details about pseudoarrays and iterables in the article <info:iterable>.
