@@ -209,27 +209,27 @@ alert(results[0]); // <h1>,h1 (primo tag)
 alert(results[1]); // <h2>,h2 (secondo tag)
 ```
 
-As we can see, the first difference is very important, as demonstrated in the line `(*)`. We can't get the match as `results[0]`, because that object isn't pseudoarray. We can turn it into a real `Array` using `Array.from`. There are more details about pseudoarrays and iterables in the article <info:iterable>.
+Come possiamo notare la prima differenza è davvero rilevante, lo dimostra la linea `(*)`. Non possiamo ricavare la corrispondenza come `results[0]` perché quell'oggetto non è uno pseudo array. Possiamo convertirlo in un `Array` a tutti gli effetti tramite `Array.from`. Trovate ulteriori dettagli sugli pseudo array e sugli iterabili nell'articolo <info:iterable>.
 
-There's no need in `Array.from` if we're looping over results:
+Non occorre la conversione con `Array.from` se adoperiamo un ciclo iterativo sui risultati:
 
 ```js run
 let results = '<h1> <h2>'.matchAll(/<(.*?)>/gi);
 
 for(let result of results) {
   alert(result);
-  // first alert: <h1>,h1
-  // second: <h2>,h2
+  // primo alert: <h1>,h1
+  // secondo: <h2>,h2
 }
 ```
 
-...Or using destructuring:
+...Oppure se ci avvaliamo della sintassi destrutturata:
 
 ```js
 let [tag1, tag2] = '<h1> <h2>'.matchAll(/<(.*?)>/gi);
 ```
 
-Every match, returned by `matchAll`, has the same format as returned by `match` without flag `pattern:g`: it's an array with additional properties `index` (match index in the string) and `input` (source string):
+Ogni elemento dell'oggetto di risultati restituito da `matchAll` ha lo stesso formato del risultato di `match` senza il flag `pattern:g`: si tratta di un array con le proprietà aggiuntive `index` (la posizione del riscontro nella stringa) e `input` (la stringa sorgente):
 
 ```js run
 let results = '<h1> <h2>'.matchAll(/<(.*?)>/gi);
@@ -242,23 +242,23 @@ alert( tag1.index ); // 0
 alert( tag1.input ); // <h1> <h2>
 ```
 
-```smart header="Why is a result of `matchAll` an iterable object, not an array?"
-Why is the method designed like that? The reason is simple - for the optimization.
+```smart header="Perché il risultato di `matchAll` è un oggetto iterabile e non un array?"
+Perché questo metodo è progettato in questo modo? La ragione è semplice, per l'ottimizzazione.
 
-The call to `matchAll` does not perform the search. Instead, it returns an iterable object, without the results initially. The search is performed each time we iterate over it, e.g. in the loop.
+La chiamata a `matchAll` non esegue la ricerca. Al contrario, restituisce un oggetto iterabile inizialmente privo di risultati. La ricerca è eseguita ogni volta che richiediamo un elemento, ad esempio all'interno di un ciclo iterativo.
 
-So, there will be found as many results as needed, not more.
+Verranno pertanto trovati tutti i risultati necessari, non di più.
 
-E.g. there are potentially 100 matches in the text, but in a `for..of` loop we found 5 of them, then decided it's enough and made a `break`. Then the engine won't spend time finding other 95 matches.
+Considerate che potrebbero esserci anche 100 riscontri nel testo, ma potremmo decidere che sono sufficienti le prime cinque iterazioni di un ciclo `for..of` e interrompere con `break`. L'interprete a quel punto non sprecherà tempo a recuperare gli altri 95 risultati.
 ```
 
-## Named groups
+## I gruppi nominati
 
-Remembering groups by their numbers is hard. For simple patterns it's doable, but for more complex ones counting parentheses is inconvenient. We have a much better option: give names to parentheses.
+Ricordare i gruppi con i rispettivi numeri è difficoltoso. È fattibile per i pattern semplici, ma per quelli più complessi contare le parentesi è scomodo. Abbiamo a disposizione un'opzione decisamente migliore: dare un nome alle parentesi.
 
-That's done by putting `pattern:?<name>` immediately after the opening paren.
+Per farlo inseriamo `pattern:?<name>` subito dopo la parentesi di apertura.
 
-For example, let's look for a date in the format "year-month-day":
+Cerchiamo una data, ad esempio, nel formato "year-month-day":
 
 ```js run
 *!*
