@@ -35,14 +35,14 @@ Questo fenomeno può essere descritto così: "l'avidità è la causa di tutti i 
 Per trovare un riscontro, l'interprete dell'espressione regolare usa il seguente algoritmo:
 
 - Per ogni posizione nella stringa
-    - Prova a trovare un riscontro del pattern in quella posizione.
+    - Cerca un riscontro del pattern in quella posizione.
     - Se non c'è un riscontro, passa alla posizione successiva.
 
 Questa procedura generica non ci spiega con evidenza perché l'espressione regolare fallisca, quindi approfondiamo come funziona la ricerca per il pattern `pattern:".+"`.
 
 1. Il primo carattere del pattern è un doppio apice `pattern:"`.
 
-    L'interprete dell'espressione regolare prova a trovarlo nella posizione zero della stringa `subject:a "witch" and her "broom" is one`, ma in quel punto trova `subject:a`, pertanto non c'è immediata corrispondenza.
+    L'interprete dell'espressione regolare lo cerca alla posizione zero della stringa `subject:a "witch" and her "broom" is one`, ma in quel punto trova `subject:a`, pertanto non c'è immediata corrispondenza.
 
     Quindi procede: passa alle successive posizioni nella stringa sorgente e prova a trovare lì il primo carattere del pattern, prima fallisce nuovamente, e poi trova finalmente il doppio apice nella terza posizione:
 
@@ -163,14 +163,14 @@ alert( "123 456".match(/\d+ \d+?/) ); // 123 4
 ```smart header="Ottimizzazioni"
 I moderni motori delle regexp possono ottimizzare internamente i loro algoritmi per essere più rapidi. Potrebbero quindi operare in modo leggermente diverso da quanto abbiamo spiegato prima.
 
-Ma per comprendere come funzionino le espressioni regolari e come implementarle non abbiamo bisogno di conoscere questi dettagli. Si tratta di meccanismi interni per ottimizzare il rendimento.
+Ma per comprendere come funzionino le espressioni regolari e come implementarle non abbiamo bisogno di conoscere questi dettagli. Si tratta di meccanismi interni per ottimizzarne il rendimento.
 
 Del resto è difficile ottimizzare le espressioni regolari complesse, pertanto la ricerca potrebbe anche funzionare esattamente come indicato.
 ```
 
 ## Un approccio alternativo
 
-Con le espressioni regolari, spesso c'è più di un modo di ottenere lo stesso risultato.
+Con le espressioni regolari, spesso abbiamo a disposizione diversi modi di ottenere lo stesso risultato.
 
 Nel nostro caso potremmo trovare le stringhe tra doppi apici senza la modalità lazy, usando la regexp `pattern:"[^"]+"`:
 
@@ -182,7 +182,7 @@ let str = 'a "witch" and her "broom" is one';
 alert( str.match(regexp) ); // "witch", "broom"
 ```
 
-La regexp `pattern:"[^"]+"` dà il risultato corretto, perché cerca un doppio apice `pattern:'"'`, seguito da uno o più caratteri che non siano doppi apici `pattern:[^"]` e successivamente un doppio apice di chiusura.
+La regexp `pattern:"[^"]+"` restituisce il risultato corretto, perché cerca un doppio apice `pattern:'"'`, seguito da uno o più caratteri che non siano doppi apici `pattern:[^"]` e successivamente un doppio apice di chiusura.
 
 Quando l'interprete della regexp cerca `pattern:[^"]+` si arresta quando incontra il doppio apice di chiusura e termina il suo lavoro.
 
@@ -236,7 +236,7 @@ let regexp = /<a href=".*?" class="doc">/g;
 alert( str.match(regexp) ); // <a href="link1" class="doc">, <a href="link2" class="doc">
 ```
 
-Ora sembra sembra funzionare, ci sono due riscontri:
+Ora sembra funzionare, ci sono due riscontri:
 
 ```html
 <a href="....." class="doc">    <a href="....." class="doc">
