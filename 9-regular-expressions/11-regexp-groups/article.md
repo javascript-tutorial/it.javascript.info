@@ -63,7 +63,7 @@ alert("my@mail.com @ his@site.com.uk".match(regexp)); // my@mail.com, his@site.c
 
 Questa regexp non è perfetta, ma per lo più funziona e aiuta a correggere errori di battitura accidentali. L'unica verifica davvero efficace per un'email può essere fatta soltanto inviandone una.
 
-## I contenuti tra parentesi della corrispondenza
+## I contenuti tra parentesi nella corrispondenza
 
 I gruppi tra parentesi sono numerati da sinistra verso destra. Il motore di ricerca memorizza il contenuto associato a ciascuno di essi e consente di recuperarlo nel risultato.
 
