@@ -1,4 +1,4 @@
-# Controllo MAC-address
+# Verificate il MAC-address
 
 Il [MAC-address](https://it.wikipedia.org/wiki/Indirizzo_MAC) di un'interfaccia di rete è composto da 6 coppie di cifre esadecimali separati dai due punti.
 
