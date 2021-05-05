@@ -99,7 +99,7 @@ Per esempio durante la ricerca del tag in `subject:<span class="my">` potrebbe i
 2. Il nome del tag: `match:span`.
 3. Gli attributi del tag: `match:class="my"`.
 
-Aggiungiamo le parentesi per questo scopo: `pattern:<(([a-z]+)\s*([^>]*))>`.
+Aggiungiamo le parentesi a questo scopo: `pattern:<(([a-z]+)\s*([^>]*))>`.
 
 Ecco come sono numerate (da sinistra verso destra, a partire dalla parentesi di apertura):
 
@@ -123,7 +123,7 @@ L'indice zero di `result` contiene sempre l'intera corrispondenza.
 
 Seguono i gruppi, numerati da sinistra verso destra, a partire dalla parentesi di apertura. Il primo gruppo è `result[1]`, esso racchiude l'intero contenuto del tag.
 
-Troviamo il gruppo della seconda parentesi `pattern:([a-z]+)` in `result[2]`, a seguire il nome del tag `pattern:([^>]*)` in `result[3]`.
+Troviamo il gruppo della seconda parentesi `pattern:([a-z]+)` in `result[2]` ed a seguire il nome del tag `pattern:([^>]*)` in `result[3]`.
 
 Ed ecco la rappresentazione del contenuto di ciascun gruppo nella stringa:
 
@@ -131,7 +131,7 @@ Ed ecco la rappresentazione del contenuto di ciascun gruppo nella stringa:
 
 ### Gruppi opzionali
 
-Anche se un gruppo è opzionale e non ha alcun riscontro (ad esempio ha il quantificatore `pattern:(...)?`), l'elemento corrispondente nell'array `result` è ugualmente presente ed equivale a `undefined`.
+Anche se un gruppo è opzionale e non ha alcun riscontro (ad esempio ha il quantificatore `pattern:(...)?`), l'elemento corrispondente è comunque presente nell'array `result` ed equivale a `undefined`.
 
 Consideriamo per esempio la regexp `pattern:a(z)?(c)?` che cerca la `"a"` facoltativamente seguita da `"z"` e da `"c"`.
 
@@ -164,7 +164,7 @@ La lunghezza dell'array resta in ogni caso: `3`, ma non c'è riscontro per il gr
 ## Ricerca di tutte le corrispondenze con gruppi: matchAll
 
 ```warn header="`matchAll` è un nuovo metodo, potrebbe essere necessario un polyfill"
-Il metodo `matchAll` non è supportato nei browsers più datati.
+Il metodo `matchAll` non è supportato nei browser più datati.
 
 Potrebbe essere richiesto un polyfill come <https://github.com/ljharb/String.prototype.matchAll>.
 ```
@@ -277,7 +277,7 @@ Come potete osservare, troviamo i gruppi dentro la proprietà `.groups`.
 
 Per cercare tutte le date, possiamo aggiungere il flag `pattern:g`.
 
-Abbiamo inoltre bisogno di `matchAll` per ottenere sia le corrispondenze sia i dettagli dei gruppi:
+Abbiamo inoltre bisogno di `matchAll` per ottenere sia le corrispondenze sia il dettaglio dei gruppi:
 
 ```js run
 let dateRegexp = /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/g;
@@ -325,7 +325,7 @@ alert( str.replace(regexp, '$<day>.$<month>.$<year>') );
 
 Talvolta abbiamo bisogno delle parentesi per applicare correttamente un quantificatore, ma non vogliamo il loro contenuto nel risultato.
 
-Un gruppo può essere escluso aggiungendo `pattern:?:` all'inizio.
+Un gruppo può essere escluso aggiungendo `pattern:?:` dopo la parentesi di apertura.
 
 Se desideriamo, ad esempio, cercare `pattern:(go)+`, ma non vogliamo il contenuto tra le parentesi (`go`) in un elemento dell'array, scriveremo: `pattern:(?:go)+`.
 
@@ -352,13 +352,13 @@ Le parentesi raggruppano insieme una parte dell'espressione regolare, in modo ch
 
 I gruppi tra parentesi sono numerati da sinistra verso destra, e, facoltativamente, si può attribuire loro un nome `(?<name>...)`.
 
-Il loro contenuto di un gruppo può essere ottenuto nei risultati:
+Il contenuto di un gruppo può essere ottenuto nei risultati:
 
 - Il metodo `str.match` restituisce i gruppi di acquisizione solo se non è presente il flag `pattern:g`.
-- Il metodo `str.matchAll` restituisce sempre i gruppi di acquisizione.
+- Il metodo `str.matchAll` restituisce in ogni caso i gruppi di acquisizione.
 
-Se le parentesi non hanno alcun nome, il loro contenuto è disponibile nell'array dei risultati col loro numero. I gruppi nominati sono disponibili anche nella proprietà `groups`.
+Se le parentesi non hanno alcun nome, il loro contenuto è disponibile nell'array dei risultati col rispettivo numero. I gruppi nominati sono disponibili anche nella proprietà `groups`.
 
-Possiamo usare inoltre il contenuto tra parentesi nella sostituzione di stringhe con `str.replace`: in base al numero `$n` o in base al nome `$<name>`.
+Possiamo usare, inoltre, il contenuto tra parentesi nella sostituzione di stringhe con `str.replace`: in base al numero `$n` o in base al nome `$<name>`.
 
-Un gruppo può essere escluso dalla numerazione aggiungendo `pattern:?:` all'inizio. Di solito si fa se abbiamo bisogno di applicare un quantificatore ad un intero gruppo, ma non vogliamo che quel gruppo compaia come elemento distinto nell'array dei risultati. In questo caso non possiamo nemmeno usare un riferimento a tali gruppi nella sostituzione di stringhe.
+Un gruppo può essere escluso dalla numerazione aggiungendo `pattern:?:` dopo la parentesi di apertura. Di solito si fa se abbiamo bisogno di applicare un quantificatore ad un intero gruppo, ma non vogliamo che quel gruppo compaia come elemento distinto nell'array dei risultati. In quel caso non possiamo nemmeno usare un riferimento a tali gruppi nella sostituzione di stringhe.
