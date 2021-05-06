@@ -1,6 +1,6 @@
 
-The result is: `match:123 4`.
+Il risultato è: `match:123 4`.
 
-First the lazy `pattern:\d+?` tries to take as little digits as it can, but it has to reach the space, so it takes  `match:123`.
+Inizialmente il quantificatore lazy `pattern:\d+?` prova a prendere il minor numero di cifre, ma deve raggiungere lo spazio, perciò include `match:123`.
 
-Then the second `\d+?` takes only one digit, because that's enough.
+Il secondo `\d+?` prende una cifra soltanto perché è sufficiente.
