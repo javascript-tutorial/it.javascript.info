@@ -8,26 +8,26 @@ Ci si può riferire ad un gruppo nel pattern usando `pattern:\N`, in cui `N` ind
 
 Per comprendere chiaramente perché sia utile, consideriamo l'esercitazione seguente.
 
-We need to find quoted strings: either single-quoted `subject:'...'` or a double-quoted `subject:"..."` -- both variants should match.
+Dobbiamo trovare le stringhe tra apici: sia quelli singoli `subject:'...'` sia quelli doppi `subject:"..."`, entrambi devono dare luogo a riscontro.
 
-How to find them?
+Come trovarle?
 
-We can put both kinds of quotes in the square brackets: `pattern:['"](.*?)['"]`, but it would find strings with mixed quotes, like `match:"...'` and `match:'..."`. That would lead to incorrect matches when one quote appears inside other ones, like in the string `subject:"She's the one!"`:
+Potremmo mettere i due tipi di apici all'interno di parentesi quadre: `pattern:['"](.*?)['"]`, ma in questo modo troveremmo anche le stringhe con apici misti come `match:"...'` e `match:'..."`. Questo porterebbe a risultati inesatti quando un tipo di apice compare tra due dell'altro tipo, come nella stringa `subject:"She's the one!"`:
 
 ```js run
 let str = `He said: "She's the one!".`;
 
 let regexp = /['"](.*?)['"]/g;
 
-// The result is not what we'd like to have
+// Il risultato non è quello che vorremmo
 alert( str.match(regexp) ); // "She'
 ```
 
-As we can see, the pattern found an opening quote `match:"`, then the text is consumed till the other quote `match:'`, that closes the match.
+Come possiamo osservare, il pattern ha trovato un apice di apertura `match:"`, quindi il testo fino al successivo apice `match:'` che chiude la corrispondenza.
 
-To make sure that the pattern looks for the closing quote exactly the same as the opening one, we can wrap it into a capturing group and backreference it: `pattern:(['"])(.*?)\1`.
+Per accertarci che il pattern trovi l'apice di chiusura uguale a quello di apertura, possiamo racchiuderlo in un gruppo di acquisizione e fare riferimento ad esso: `pattern:(['"])(.*?)\1`.
 
-Here's the correct code:
+Ecco il codice corretto:
 
 ```js run
 let str = `He said: "She's the one!".`;
@@ -39,7 +39,7 @@ let regexp = /(['"])(.*?)\1/g;
 alert( str.match(regexp) ); // "She's the one!"
 ```
 
-Now it works! The regular expression engine finds the first quote `pattern:(['"])` and memorizes its content. That's the first capturing group.
+Ora funziona! The regular expression engine finds the first quote `pattern:(['"])` and memorizes its content. That's the first capturing group.
 
 Further in the pattern `pattern:\1` means "find the same text as in the first group", exactly the same quote in our case.
 
@@ -53,7 +53,7 @@ If we use `?:` in the group, then we can't reference it. Groups that are exclude
 In the replacement string we use a dollar sign: `pattern:$1`, while in the pattern - a backslash `pattern:\1`.
 ```
 
-## Backreference by name: `\k<name>`
+## Riferimento all'indietro per nome: `\k<name>`
 
 If a regexp has many parentheses, it's convenient to give them names.
 
