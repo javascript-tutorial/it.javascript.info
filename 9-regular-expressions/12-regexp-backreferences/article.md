@@ -1,12 +1,12 @@
-# Backreferences in pattern: \N and \k<name>
+# Riferimenti all'indietro (backreference) nei pattern: \N e \k<name>
 
-We can use the contents of capturing groups `pattern:(...)` not only in the result or in the replacement string, but also in the pattern itself.
+Possiamo usare il contenuto dei gruppi di acquisizione `pattern:(...)` non soltanto nel risultato o nella stringa di sostituzione, ma anche all'interno del pattern stesso.
 
-## Backreference by number: \N
+## Riferimento all'indietro per numero: \N
 
-A group can be referenced in the pattern using `pattern:\N`, where `N` is the group number.
+Ci si può riferire ad un gruppo nel pattern usando `pattern:\N`, in cui `N` indica il numero del gruppo.
 
-To make clear why that's helpful, let's consider a task.
+Per comprendere chiaramente perché sia utile, consideriamo l'esercitazione seguente.
 
 We need to find quoted strings: either single-quoted `subject:'...'` or a double-quoted `subject:"..."` -- both variants should match.
 
