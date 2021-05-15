@@ -1,6 +1,6 @@
-L'espressione regolare per cercare un colore di 3 cifre `#abc` è : `pattern:/#[a-f0-9]{3}/i`.
+L'espressione regolare per cercare il codice di un colore di 3 cifre `#abc` è : `pattern:/#[a-f0-9]{3}/i`.
 
-Possiamo aggiungere esattamente 3 ulteriori cifre esadecimali opzionali. Non abbiamo bisogno di altro. Il colore ha 3 o 6 cifre.
+Possiamo aggiungere esattamente 3 ulteriori cifre esadecimali opzionali. Non abbiamo bisogno di altro. Il codice di un colore è composto da 3 o 6 cifre.
 
 Usiamo il quantificatore `pattern:{1,2}` a questo scopo: avremo `pattern:/#([a-f0-9]{3}){1,2}/i`.
 

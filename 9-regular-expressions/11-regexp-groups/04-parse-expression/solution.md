@@ -2,7 +2,7 @@ L'espressione regolare per un numero è: `pattern:-?\d+(\.\d+)?`. L'abbiamo crea
 
 Per trovare un operatore usiamo `pattern:[-+*/]`. Il trattino `pattern:-` va posto all'inizio nelle parentesi quadre, in mezzo significherebbe un intervallo di caratteri, mentre noi vogliamo soltanto il carattere `-`.
 
-Si dovrebbe fare l'escape dello slash `/` dentro una regexp JavaScript `pattern:/.../`, lo faremo dopo.
+Dovremmo fare l'escape dello slash `/` dentro una regexp JavaScript `pattern:/.../`, lo faremo dopo.
 
 Abbiamo bisogno di un numero, un operatore, e quindi un altro numero. Tra di essi ci possono essere spazi opzionali.
 
