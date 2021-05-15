@@ -317,18 +317,18 @@ Lo shadow DOM può includere stili, sia con `<style>` che con `<link rel="styles
 
 Gli stili in locale possono influenzare:
 - lo shadow tree,
-- lo shadow host atraverso lka famiglia di pseudocalssi `:host`,
-- gli slotted elements (in arrivo dal light DOM), `::slotted(selector)` permettono di selezionare gli slotted elements stessi ma non i loro figli.
+- lo shadow host attraverso la famiglia di pseudoclassi `:host`,
+- gli slotted elements (in arrivo dal light DOM), `::slotted(selector)` permettono di selezionare gli slotted elements stessi, ma non i loro figli.
 
 Gli stili del document possono influenzare:
-- lo shadow host (poiché riesiede nell'outer document)
-- gli slotted elements ed il loro contenuto (anche qui, perché risiede nell'outer document)
+- lo shadow host (poiché risiede nell'outer document)
+- gli slotted elements ed il loro contenuto (anche qui, poiché risiede nell'outer document)
 
-Quando delle proprietà CSS vanno in conflitto, normalmente gli stili del documento hanno la precedenza, a meno che la proprietà non venga contrassegnata come `!important`, ed in questo caso gli stili locali avrebbero la precedenza.
+Quando delle proprietà CSS vanno in conflitto, normalmente gli stili del documento hanno la precedenza, a meno che la proprietà non venga contrassegnata come `!important`, ed in questo caso gli stili locali hanno la precedenza.
 
-Le proprietà CSS custom permeano attraverso lo shadow DOM. Vengono usati come "hooks" per stilizzare il componente:
+Le proprietà CSS custom permeano attraverso lo shadow DOM e vengono usati come "hooks" per stilizzare il componente:
 
 1. Il componente usa una proprietà CSS personalizzata, per stilizzare gli elementi chiave, come `var(--component-name-title, <default value>)`.
-2. L'autore del componente pubblica queste proprietà per gli sviluppatori, sono importanti tanto quanti gli altri metodi del componente.
+2. L'autore del componente pubblica queste proprietà per gli sviluppatori, importanti tanto quanti gli altri metodi del componente.
 3. Quando una sviluppatore vuole stilizzare un titolo, gli basta assegnare la proprietà CSS `--component-name-title` partendo dallo shadow host o anche più in alto.
 4. Utilissimo!
