@@ -1,21 +1,21 @@
-A regexp for a number is: `pattern:-?\d+(\.\d+)?`. We created it in the previous task.
+L'espressione regolare per un numero è: `pattern:-?\d+(\.\d+)?`. L'abbiamo creata nell'esercizione precedente.
 
-An operator is `pattern:[-+*/]`. The hyphen `pattern:-` goes first in the square brackets, because in the middle it would mean a character range, while we just want a character `-`.
+Per trovare un operatore usiamo `pattern:[-+*/]`. Il trattino `pattern:-` va posto all'inizio nelle parentesi quadre, in mezzo significherebbe un intervallo di caratteri, mentre noi vogliamo soltanto il carattere `-`.
 
-The slash `/` should be escaped inside a JavaScript regexp `pattern:/.../`, we'll do that later.
+Dovremmo fare l'escape dello slash `/` dentro una regexp JavaScript `pattern:/.../`, lo faremo dopo.
 
-We need a number, an operator, and then another number. And optional spaces between them.
+Abbiamo bisogno di un numero, un operatore, e quindi un altro numero. Tra di essi ci possono essere spazi opzionali.
 
-The full regular expression: `pattern:-?\d+(\.\d+)?\s*[-+*/]\s*-?\d+(\.\d+)?`.
+Ecco l'intera espressione regolare: `pattern:-?\d+(\.\d+)?\s*[-+*/]\s*-?\d+(\.\d+)?`.
 
-It has 3 parts, with `pattern:\s*` between them:
-1. `pattern:-?\d+(\.\d+)?` - the first number,
-1. `pattern:[-+*/]` - the operator,
-1. `pattern:-?\d+(\.\d+)?` - the second number.
+Questa consta di 3 parti, intervallate da `pattern:\s*`:
+1. `pattern:-?\d+(\.\d+)?` - il primo numero,
+1. `pattern:[-+*/]` - l'operatore,
+1. `pattern:-?\d+(\.\d+)?` - il secondo numero.
 
-To make each of these parts a separate element of the result array, let's enclose them in parentheses: `pattern:(-?\d+(\.\d+)?)\s*([-+*/])\s*(-?\d+(\.\d+)?)`.
+Per rendere ciascuna di queste parti un elemento separato dell'array di risultati le racchiudiamo tra parentesi: `pattern:(-?\d+(\.\d+)?)\s*([-+*/])\s*(-?\d+(\.\d+)?)`.
 
-In action:
+In azione:
 
 ```js run
 let regexp = /(-?\d+(\.\d+)?)\s*([-+*\/])\s*(-?\d+(\.\d+)?)/;
@@ -23,22 +23,22 @@ let regexp = /(-?\d+(\.\d+)?)\s*([-+*\/])\s*(-?\d+(\.\d+)?)/;
 alert( "1.2 + 12".match(regexp) );
 ```
 
-The result includes:
+Il risultato include:
 
-- `result[0] == "1.2 + 12"` (full match)
-- `result[1] == "1.2"` (first group `(-?\d+(\.\d+)?)` -- the first number, including the decimal part)
-- `result[2] == ".2"` (second group`(\.\d+)?` -- the first decimal part)
-- `result[3] == "+"` (third group `([-+*\/])` -- the operator)
-- `result[4] == "12"` (forth group `(-?\d+(\.\d+)?)` -- the second number)
-- `result[5] == undefined` (fifth group `(\.\d+)?` -- the last decimal part is absent, so it's undefined)
+- `result[0] == "1.2 + 12"` (l'intera corrispondenza)
+- `result[1] == "1.2"` (il primo gruppo `(-?\d+(\.\d+)?)`, il primo numero compresa la parte decimale)
+- `result[2] == ".2"` (il secondo gruppo`(\.\d+)?`, la prima parte decimale)
+- `result[3] == "+"` (il terzo gruppo `([-+*\/])`, l'operatore)
+- `result[4] == "12"` (il quarto gruppo `(-?\d+(\.\d+)?)`, il secondo numero)
+- `result[5] == undefined` (il quinto gruppo `(\.\d+)?`, l'ultima parte decimale è assente, quindi equivale ad undefined)
 
-We only want the numbers and the operator, without the full match or the decimal parts, so let's "clean" the result a bit.
+Il nostro scopo è ottenere i numeri e l'operatore, senza l'intera corrispondenza o le parti decimali, quindi "puliamo" un po' il risultato.
 
-The full match (the arrays first item) can be removed by shifting the array `result.shift()`.
+L'intera corrispondenza (il primo elemento dell'array) possiamo rimuoverla con `result.shift()`.
 
-Groups that contain decimal parts (number 2 and 4) `pattern:(.\d+)` can be excluded by adding  `pattern:?:` to the beginning: `pattern:(?:\.\d+)?`.
+I gruppi che contengono le parti decimali (gli elementi 2 e 4) `pattern:(.\d+)` li escludiamo aggiungendo  `pattern:?:` all'inizio: `pattern:(?:\.\d+)?`.
 
-The final solution:
+La soluzione finale:
 
 ```js run
 function parse(expr) {
