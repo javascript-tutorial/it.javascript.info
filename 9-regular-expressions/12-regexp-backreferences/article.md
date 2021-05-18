@@ -1,33 +1,33 @@
-# Backreferences in pattern: \N and \k<name>
+# Riferimenti all'indietro (backreference) nei pattern: \N e \k<name>
 
-We can use the contents of capturing groups `pattern:(...)` not only in the result or in the replacement string, but also in the pattern itself.
+Possiamo usare il contenuto dei gruppi di acquisizione `pattern:(...)` non soltanto nel risultato o nella stringa di sostituzione, ma anche all'interno del pattern stesso.
 
-## Backreference by number: \N
+## Riferimento all'indietro per numero: \N
 
-A group can be referenced in the pattern using `pattern:\N`, where `N` is the group number.
+Ci si può riferire ad un gruppo nel pattern usando `pattern:\N`, in cui `N` indica il numero del gruppo.
 
-To make clear why that's helpful, let's consider a task.
+Per comprendere chiaramente perché sia utile, consideriamo l'esercitazione seguente.
 
-We need to find quoted strings: either single-quoted `subject:'...'` or a double-quoted `subject:"..."` -- both variants should match.
+Dobbiamo trovare le stringhe tra apici: sia quelli singoli `subject:'...'` sia quelli doppi `subject:"..."`, entrambi devono dare luogo a riscontro.
 
-How to find them?
+Come trovarli?
 
-We can put both kinds of quotes in the square brackets: `pattern:['"](.*?)['"]`, but it would find strings with mixed quotes, like `match:"...'` and `match:'..."`. That would lead to incorrect matches when one quote appears inside other ones, like in the string `subject:"She's the one!"`:
+Potremmo mettere i due tipi di apici all'interno di parentesi quadre: `pattern:['"](.*?)['"]`, ma in questo modo troveremmo anche le stringhe con apici misti come `match:"...'` e `match:'..."`. Questo porterebbe a risultati inesatti quando un tipo di apice compare tra due dell'altro tipo, come nella stringa `subject:"She's the one!"`:
 
 ```js run
 let str = `He said: "She's the one!".`;
 
 let regexp = /['"](.*?)['"]/g;
 
-// The result is not what we'd like to have
+// Il risultato non è quello che vorremmo
 alert( str.match(regexp) ); // "She'
 ```
 
-As we can see, the pattern found an opening quote `match:"`, then the text is consumed till the other quote `match:'`, that closes the match.
+Come possiamo osservare, il pattern ha trovato un apice di apertura `match:"`, quindi il testo fino al successivo apice `match:'` che chiude la corrispondenza.
 
-To make sure that the pattern looks for the closing quote exactly the same as the opening one, we can wrap it into a capturing group and backreference it: `pattern:(['"])(.*?)\1`.
+Per accertarci che il pattern trovi l'apice di chiusura uguale a quello di apertura, possiamo racchiuderlo in un gruppo di acquisizione e fare riferimento ad esso: `pattern:(['"])(.*?)\1`.
 
-Here's the correct code:
+Ecco il codice corretto:
 
 ```js run
 let str = `He said: "She's the one!".`;
@@ -39,27 +39,27 @@ let regexp = /(['"])(.*?)\1/g;
 alert( str.match(regexp) ); // "She's the one!"
 ```
 
-Now it works! The regular expression engine finds the first quote `pattern:(['"])` and memorizes its content. That's the first capturing group.
+Ora funziona! L'interprete dell'espressione regolare trova il primo apice `pattern:(['"])` e lo memorizza. Questo è il primo gruppo di acquisizione.
 
-Further in the pattern `pattern:\1` means "find the same text as in the first group", exactly the same quote in our case.
+Più avanti nel pattern `pattern:\1` significa "trova lo stesso testo del primo gruppo", nel nostro caso esattamente lo stesso apice.
 
-Similar to that, `pattern:\2` would mean the contents of the second group, `pattern:\3` - the 3rd group, and so on.
+Similmente `pattern:\2` indicherebbe il contenuto del secondo gruppo, `pattern:\3` quello del terzo gruppo, e così via.
 
 ```smart
-If we use `?:` in the group, then we can't reference it. Groups that are excluded from capturing `(?:...)` are not memorized by the engine.
+Se nel gruppo usiamo `?:` non sarà possibile riferirsi ad esso. I gruppi esclusi dall'acquisizione `(?:...)` non sono memorizzati dall'interprete.
 ```
 
-```warn header="Don't mess up: in the pattern `pattern:\1`, in the replacement: `pattern:$1`"
-In the replacement string we use a dollar sign: `pattern:$1`, while in the pattern - a backslash `pattern:\1`.
+```warn header="Non fare confusione: nel pattern `pattern:\1`, nelle sostituzioni `pattern:$1`"
+Nelle sostituzioni di stringa si adopera il segno di dollaro: `pattern:$1`, mentre nel contesto di un pattern il backslash `pattern:\1`.
 ```
 
-## Backreference by name: `\k<name>`
+## Riferimento all'indietro per nome: `\k<name>`
 
-If a regexp has many parentheses, it's convenient to give them names.
+Se un'espressione regolare ha tante parentesi, è opportuno dare loro dei nomi.
 
-To reference a named group we can use `pattern:\k<name>`.
+Per riferirsi ad un gruppo nominato si usa `pattern:\k<name>`.
 
-In the example below the group with quotes is named `pattern:?<quote>`, so the backreference is `pattern:\k<quote>`:
+Nell'esempio sotto il gruppo con gli apici è nominato `pattern:?<quote>`, pertanto il riferimento è `pattern:\k<quote>`:
 
 ```js run
 let str = `He said: "She's the one!".`;
