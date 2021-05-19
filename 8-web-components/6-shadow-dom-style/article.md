@@ -1,6 +1,6 @@
 # Shadow DOM styling
 
-Lo shadow DOM può includere i `<style>` e `<link rel="stylesheet" href="…">`. Nel secondo caso, i fogli di stile sono HTTP-cached, e non verranno ricaricati per più componenti che usino lo stesso template.
+Lo shadow DOM può includere i tags `<style>` e `<link rel="stylesheet" href="…">`. Nel secondo caso, i fogli di stile sono HTTP-cached, e non verranno ricaricati per più componenti che usino lo stesso template.
 
 Come regola generale, gli stili locali hanno effetto solamente all'interno dello shadow tree, mentre quelli del documento hanno effetto al di fuori di esso. Con qualche eccezione.
 
@@ -8,7 +8,7 @@ Come regola generale, gli stili locali hanno effetto solamente all'interno dello
 
 Il selettore `:host` permette di selezionare lo shadow host (l'elemento contenente lo shadow tree).
 
-Ad esempio, se stiamo crendo un elemento `<custom-dialog>` da centrare sulla pagina. Per fare ciò dovremmo creare lo all'interno dello stesso `<custom-dialog>`.
+Ad esempio, se stiamo creando un elemento `<custom-dialog>` da centrare sulla pagina. Per fare ciò dovremo creare lo stile all'interno dello stesso `<custom-dialog>`.
 
 Questo è ciò che fa `:host`:
 
@@ -58,9 +58,9 @@ custom-dialog {
 ```
 ...in questo caso il `<custom-dialog>` non avrebbe nessun padding.
 
-Questo cosa può fare comodo, perché in pratica ci permette di impostare gli stili di "default" di un componente nelle sue regole `:host`, per poterle poi facilmente sovrascrivere nel documento.
+Questo comportamento può fare comodo, perché in pratica ci permette di impostare gli stili di "default" di un componente nelle sue regole `:host`, per poterle poi facilmente sovrascrivere nel documento.
 
-Un'eccezione a questo comportamento è però quando una proprietà locale viene contrassegnata come `!important`, di conseguenza gli stili locali avranno la precedenza.
+Un'eccezione a questo comportamento si verifica quando una proprietà locale viene contrassegnata come `!important`, di conseguenza gli stili locali avranno la precedenza.
 
 
 ## :host(selector)
@@ -244,7 +244,7 @@ Come si possono stilizzare gli elementi interni di un componente, applicando sti
 
 I selettori com `:host` applicano le loro regole all'elemento `<custom-dialog>` o `<user-card>`, ma come possiamo stilizzare gli elementi dello shadow DOM al suo interno?
 
-Non abbiamo dei selettori che possano direttamente influire gli stili dello shadow DOM dal documento. Ma dal momento che possiamo esporre dei metodi per interagire con i nostri componenti, possiamo anche esporre delle variabili CSS (proprietà CSS personalizzate) per stilizzarli.
+Non abbiamo dei selettori che possano direttamente influire sugli stili dello shadow DOM dal documento. Ma dal momento che possiamo esporre dei metodi per interagire con i nostri componenti, possiamo anche esporre delle variabili CSS (proprietà CSS personalizzate) per stilizzarli.
 
 **Le proprietà Custom CSS risiedono in tutti i livelli, sia nel light che nello shadow.**
 
@@ -330,5 +330,5 @@ Le proprietà CSS custom permeano attraverso lo shadow DOM e vengono usati come 
 
 1. Il componente usa una proprietà CSS personalizzata, per stilizzare gli elementi chiave, come `var(--component-name-title, <default value>)`.
 2. L'autore del componente pubblica queste proprietà per gli sviluppatori, importanti tanto quanti gli altri metodi del componente.
-3. Quando una sviluppatore vuole stilizzare un titolo, gli basta assegnare la proprietà CSS `--component-name-title` partendo dallo shadow host o anche più in alto.
+3. Quando uno sviluppatore vuole stilizzare un titolo, gli basta assegnare la proprietà CSS `--component-name-title` partendo dallo shadow host o anche più in alto.
 4. Utilissimo!
