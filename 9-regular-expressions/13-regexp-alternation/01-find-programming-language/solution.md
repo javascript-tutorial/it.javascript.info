@@ -1,7 +1,7 @@
 
-The first idea can be to list the languages with `|` in-between.
+La prima idea potrebbe essere elencare i linguaggi separati da `|`.
 
-But that doesn't work right:
+Ma non funziona bene:
 
 ```js run
 let regexp = /Java|JavaScript|PHP|C|C\+\+/g;
@@ -11,18 +11,18 @@ let str = "Java, JavaScript, PHP, C, C++";
 alert( str.match(regexp) ); // Java,Java,PHP,C,C
 ```
 
-The regular expression engine looks for alternations one-by-one. That is: first it checks if we have  `match:Java`, otherwise -- looks for `match:JavaScript` and so on.
+L'interprete dell'espressione regolare cerca le alternanze una per una. In altre parole: per prima cosa cerca `match:Java`, se non la trova cerca `match:JavaScript` e così via.
 
-As a result, `match:JavaScript` can never be found, just because `match:Java` is checked first.
+Il risultato è che `match:JavaScript` non trova mai corrispondenza proprio perché `match:Java` viene controllato per prima.
 
-The same with `match:C` and `match:C++`.
+Lo stesso accade con `match:C` e `match:C++`.
 
-There are two solutions for that problem:
+Ci sono due soluzioni per questo problema:
 
-1. Change the order to check the longer match first: `pattern:JavaScript|Java|C\+\+|C|PHP`.
-2. Merge variants with the same start: `pattern:Java(Script)?|C(\+\+)?|PHP`.
+1. Cambiare l'ordine di verifica mettendo per primo il termine più lungo: `pattern:JavaScript|Java|C\+\+|C|PHP`.
+2. Unire le varianti che cominciano allo stesso modo: `pattern:Java(Script)?|C(\+\+)?|PHP`.
 
-In action:
+In azione:
 
 ```js run
 let regexp = /Java(Script)?|C(\+\+)?|PHP/g;

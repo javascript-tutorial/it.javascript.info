@@ -1,8 +1,8 @@
-# Find programming languages
+# Trovate il nome dei linguaggi di programmazione
 
-There are many programming languages, for instance Java, JavaScript, PHP, C, C++.
+Ci sono molti linguaggi di programmazione, Per esempio Java, JavaScript, PHP, C, C++.
 
-Create a regexp that finds them in the string `subject:Java JavaScript PHP C++ C`:
+Create una regexp che li trovi nella stringa `subject:Java JavaScript PHP C++ C`:
 
 ```js
 let regexp = /your regexp/g;

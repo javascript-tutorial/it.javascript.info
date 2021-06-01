@@ -1,25 +1,25 @@
-# Find bbtag pairs
+# Trovate le coppie di bbtag
 
-A "bb-tag" looks like `[tag]...[/tag]`, where `tag` is one of: `b`, `url` or `quote`.
+Un "bb-tag" si presenta così `[tag]...[/tag]`, in cui `tag` è uno tra: `b`, `url` o `quote`.
 
-For instance:
+Ad esempio:
 ```
 [b]text[/b]
 [url]http://google.com[/url]
 ```
 
-BB-tags can be nested. But a tag can't be nested into itself, for instance:
+I BB-tags possono essere annidati. Un tag, tuttavia, non può essere contenuto all'interno di uno dello stesso tipo, ad esempio:
 
 ```
-Normal:
+Normale:
 [url] [b]http://google.com[/b] [/url]
 [quote] [b]text[/b] [/quote]
 
-Can't happen:
+Non può verificarsi:
 [b][b]text[/b][/b]
 ```
 
-Tags can contain line breaks, that's normal:
+I tag possono contenere interruzioni di linea, questo è del tutto normale:
 
 ```
 [quote]
@@ -27,9 +27,9 @@ Tags can contain line breaks, that's normal:
 [/quote]
 ```
 
-Create a regexp to find all BB-tags with their contents.
+Create una regexp per trovare tutti i BB-tags con il loro contenuto.
 
-For instance:
+Per esempio:
 
 ```js
 let regexp = /your regexp/flags;
@@ -38,7 +38,7 @@ let str = "..[url]http://google.com[/url]..";
 alert( str.match(regexp) ); // [url]http://google.com[/url]
 ```
 
-If tags are nested, then we need the outer tag (if we want we can continue the search in its content):
+In caso di tag annidati ci occorre il tag esterno (se lo desideriamo possiamo continuare la ricerca nel contenuto appena ricavato):
 
 ```js
 let regexp = /your regexp/flags;
