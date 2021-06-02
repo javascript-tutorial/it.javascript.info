@@ -1,13 +1,13 @@
-The solution: `pattern:/"(\\.|[^"\\])*"/g`.
+La soluzione: `pattern:/"(\\.|[^"\\])*"/g`.
 
-Step by step:
+Passo dopo passo:
 
-- First we look for an opening quote `pattern:"`
-- Then if we have a backslash `pattern:\\` (we have to double it in the pattern because it is a special character), then any character is fine after it (a dot).
-- Otherwise we take any character except a quote (that would mean the end of the string) and a backslash (to prevent lonely backslashes, the backslash is only used with some other symbol after it): `pattern:[^"\\]`
-- ...And so on till the closing quote.
+- Innanzitutto cerchiamo un doppio apice di apertura `pattern:"`
+- Quindi se abbiamo un backslash `pattern:\\` (dobbiamo raddoppiarlo nel pattern perché è un carattere speciale), qualsiasi carattere dopo di esso è consentito (il punto).
+- Altrimenti consideriamo ogni carattere eccetto un doppio apice (che significherebbe la fine della stringa) ed un backslash (per evitare backslashe isolati, il backslash è usato soltanto in congiunzione con altri simboli dopo di esso): `pattern:[^"\\]`
+- ...e così via fino al doppio apice di chiusura.
 
-In action:
+In azione:
 
 ```js run
 let regexp = /"(\\.|[^"\\])*"/g;

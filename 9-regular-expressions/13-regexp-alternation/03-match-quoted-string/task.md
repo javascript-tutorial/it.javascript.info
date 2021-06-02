@@ -1,32 +1,32 @@
-# Find quoted strings
+# Trovate le stringhe tra doppi apici
 
-Create a regexp to find strings in double quotes `subject:"..."`.
+Create una regexp per trovare le stringhe tra doppi apici `subject:"..."`.
 
-The strings should support escaping, the same way as JavaScript strings do. For instance, quotes can be inserted as `subject:\"` a newline as `subject:\n`, and the slash itself as `subject:\\`.
+Le stringhe dovrebbero supportare l'escape allo stesso modo delle stringhe JavaScript. Per esempio, i doppi apici possono essere inseriti come `subject:\"` una nuova linea come `subject:\n`, e lo stesso slash come `subject:\\`.
 
 ```js
 let str = "Just like \"here\".";
 ```
 
-Please note, in particular, that an escaped quote `subject:\"` does not end a string.
+Si noti che, in particolare, un doppio apice con escape `subject:\"` non termina una stringa.
 
-So we should search from one quote to the other ignoring escaped quotes on the way.
+Noi dovremmo cercare, pertanto, da un doppio apice fino all'altro ignorando quelli con escape tra i due.
 
-That's the essential part of the task, otherwise it would be trivial.
+Questo è la parte fondamentale dell'esercitazione, altrimenti diventerebbe banale.
 
-Examples of strings to match:
+Ecco degli esempi di stringhe che corrispondono:
 ```js
 .. *!*"test me"*/!* ..  
-.. *!*"Say \"Hello\"!"*/!* ... (escaped quotes inside)
-.. *!*"\\"*/!* ..  (double slash inside)
-.. *!*"\\ \""*/!* ..  (double slash and an escaped quote inside)
+.. *!*"Say \"Hello\"!"*/!* ... (contiene doppi apici con escape)
+.. *!*"\\"*/!* ..  (contiene un doppio slash)
+.. *!*"\\ \""*/!* ..  (contiene un doppio slash e un doppio apice con escape)
 ```
 
-In JavaScript we need to double the slashes to pass them right into the string, like this:
+In JavaScript abbiamo bisogno di raddoppiare lo slash per passarli correttamente all'interno della stringa, in questo modo:
 
 ```js run
 let str = ' .. "test me" .. "Say \\"Hello\\"!" .. "\\\\ \\"" .. ';
 
-// the in-memory string
+// la stringa in memoria
 alert(str); //  .. "test me" .. "Say \"Hello\"!" .. "\\ \"" ..
 ```
