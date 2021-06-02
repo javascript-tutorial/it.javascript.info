@@ -15,7 +15,7 @@ Normale:
 [url] [b]http://google.com[/b] [/url]
 [quote] [b]text[/b] [/quote]
 
-Non può verificarsi:
+Non deve verificarsi:
 [b][b]text[/b][/b]
 ```
 
