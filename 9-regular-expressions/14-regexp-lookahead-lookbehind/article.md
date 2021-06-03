@@ -1,6 +1,6 @@
-# Lookahead and lookbehind
+# Lookahead e lookbehind
 
-Sometimes we need to find only those matches for a pattern that are followed or preceded by another pattern.
+Talvolta abbiamo bisogno di trovare soltanto quei riscontri per un pattern che sono seguiti o preceduti da un altro pattern.
 
 There's a special syntax for that, called "lookahead" and "lookbehind", together referred to as "lookaround".
 
