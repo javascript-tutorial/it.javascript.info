@@ -2,32 +2,32 @@
 
 Talvolta abbiamo bisogno di trovare soltanto quei riscontri per un pattern che sono seguiti o preceduti da un altro pattern.
 
-There's a special syntax for that, called "lookahead" and "lookbehind", together referred to as "lookaround".
+Esiste a questo scopo una sintassi speciale denominata "lookahead" e "lookbehind", indicata complessivamente con il termine "lookaround".
 
-For the start, let's find the price from the string like `subject:1 turkey costs 30€`. That is: a number, followed by `subject:€` sign.
+Per cominciare troviamo il prezzo in una stringa come `subject:1 turkey costs 30€`. In parole semplici: un numero seguito dal simbolo di valuta `subject:€`.
 
 ## Lookahead
 
-The syntax is: `pattern:X(?=Y)`, it means "look for `pattern:X`, but match only if followed by `pattern:Y`". There may be any pattern instead of `pattern:X` and `pattern:Y`.
+La sintassi è: `pattern:X(?=Y)`, che significa "cerca `pattern:X`, ma trova la corrispondenza solo se seguita da `pattern:Y`". Possiamo sostituire `pattern:X` e `pattern:Y` con un pattern qualsiasi.
 
-For an integer number followed by `subject:€`, the regexp will be `pattern:\d+(?=€)`:
+Per un numero intero seguito da `subject:€`, la regexp sarà `pattern:\d+(?=€)`:
 
 ```js run
 let str = "1 turkey costs 30€";
 
-alert( str.match(/\d+(?=€)/) ); // 30, the number 1 is ignored, as it's not followed by €
+alert( str.match(/\d+(?=€)/) ); // 30, viene ignorato il numero 1 in quanto non seguito da €
 ```
 
-Please note: the lookahead is merely a test, the contents of the parentheses `pattern:(?=...)` is not included in the result `match:30`.
+Si noti che la parte lookahead è solo un test e pertanto il contenuto tra parentesi `pattern:(?=...)` non è incluso nel risultato `match:30`.
 
-When we look for `pattern:X(?=Y)`, the regular expression engine finds `pattern:X` and then checks if there's `pattern:Y` immediately after it. If it's not so, then the potential match is skipped, and the search continues.
+Quando cerchiamo `pattern:X(?=Y)` l'interprete dell'espressione regolare trova `pattern:X` e successivamente verifica anche la presenza di `pattern:Y` subito dopo di esso. In caso contrario la corrispondenza potenziale viene scartata e la ricerca prosegue.
 
-More complex tests are possible, e.g. `pattern:X(?=Y)(?=Z)` means:
+Sono possibili test più complessi, ad esempio `pattern:X(?=Y)(?=Z)` significa:
 
-1. Find `pattern:X`.
-2. Check if `pattern:Y` is immediately after `pattern:X` (skip if isn't).
-3. Check if `pattern:Z` is also immediately after `pattern:X` (skip if isn't).
-4. If both tests passed, then the `pattern:X` is a match, otherwise continue searching.
+1. Trova `pattern:X`.
+2. Verifica se `pattern:Y` sia subito dopo `pattern:X` (non proseguire in caso contrario).
+3. Verifica se `pattern:Z` sia anch'esso dopo `pattern:X` (non proseguire in caso contrario).
+4. Se entrambi i test trovano riscontro considera `pattern:X` una corrispondenza, diversamente continua la ricerca.
 
 In other words, such pattern means that we're looking for `pattern:X` followed by `pattern:Y` and `pattern:Z` at the same time.
 
@@ -110,7 +110,7 @@ let regexp = /(?<=(\$|£))\d+/;
 alert( str.match(regexp) ); // 30, $
 ```
 
-## Summary
+## Riepilogo
 
 Lookahead and lookbehind (commonly referred to as "lookaround") are useful when we'd like to match something depending on the context before/after it.
 
