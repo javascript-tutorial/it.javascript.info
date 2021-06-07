@@ -86,22 +86,22 @@ alert( str.match(/(?<!\$)\b\d+/g) ); // 2 (il risultato non include il prezzo)
 
 ## Gruppi di acquisizione
 
-Generally, the contents inside lookaround parentheses does not become a part of the result.
+Generalmente il contenuto dentro le parentesi di lookaround non diventa parte del risultato.
 
-E.g. in the pattern `pattern:\d+(?=€)`, the `pattern:€` sign doesn't get captured as a part of the match. That's natural: we look for a number `pattern:\d+`, while `pattern:(?=€)` is just a test that it should be followed by `subject:€`.
+Nel pattern `pattern:\d+(?=€)`, ad esempio, il segno `pattern:€` non viene acquisito nella corrispondenza. È del tutto normale: stiamo cercando il numero `pattern:\d+`, mentre `pattern:(?=€)` è solo un test che indica che il numero dovrebbe essere seguito da `subject:€`.
 
-But in some situations we might want to capture the lookaround expression as well, or a part of it. That's possible. Just wrap that part into additional parentheses.
+In alcune situazioni, tuttavia, potremmo voler catturare anche l'espressione del lookaround, o una parte di essa. Questo è possibile: è sufficiente racchiudere la parte desiderata all'interno di parentesi aggiuntive.
 
-In the example below the currency sign `pattern:(€|kr)` is captured, along with the amount:
+Nell'esempio sotto, il segno di valuta `pattern:(€|kr)` viene acquisito insieme all'importo:
 
 ```js run
 let str = "1 turkey costs 30€";
-let regexp = /\d+(?=(€|kr))/; // extra parentheses around €|kr
+let regexp = /\d+(?=(€|kr))/; // parentesi addizionali intorno €|kr
 
 alert( str.match(regexp) ); // 30, €
 ```
 
-And here's the same for lookbehind:
+Stesso discorso per il lookbehind:
 
 ```js run
 let str = "1 turkey costs $30";
@@ -112,19 +112,19 @@ alert( str.match(regexp) ); // 30, $
 
 ## Riepilogo
 
-Lookahead and lookbehind (commonly referred to as "lookaround") are useful when we'd like to match something depending on the context before/after it.
+Il lookahead e il lookbehind (comunemente denominati con il termine "lookaround") sono utili quando vogliamo trovare qualcosa in base a ciò viene prima o dopo di esso.
 
-For simple regexps we can do the similar thing manually. That is: match everything, in any context, and then filter by context in the loop.
+Nel caso di espressioni regolari semplici potremmo ottenere lo stesso risultato manualmente. In altre parole: troviamo ogni riscontro, e quindi filtriamo i risultati in base alla posizione nel ciclo iterativo.
 
-Remember, `str.match` (without flag `pattern:g`) and `str.matchAll` (always) return matches as arrays with `index` property, so we know where exactly in the text it is, and can check the context.
+Ricordiamoci che `str.match` (senza il flag `pattern:g`) e `str.matchAll` (sempre) restituiscono i risultati in un array con la proprietà `index`, conosciamo pertanto l'esatta posizione della corrispondenza e possiamo stabilirne il contesto.
 
-But generally lookaround is more convenient.
+Generalmente, però, il lookaround è più efficiente.
 
-Lookaround types:
+Tipi di lookaround:
 
-| Pattern            | type             | matches |
+| Pattern            | Tipo             | Riscontri |
 |--------------------|------------------|---------|
-| `X(?=Y)`   | Positive lookahead | `pattern:X` if followed by `pattern:Y` |
-| `X(?!Y)`   | Negative lookahead | `pattern:X` if not followed by `pattern:Y` |
-| `(?<=Y)X` |  Positive lookbehind | `pattern:X` if after `pattern:Y` |
-| `(?<!Y)X` | Negative lookbehind | `pattern:X` if not after `pattern:Y` |
+| `X(?=Y)`   | Lookahead positivo | `pattern:X` se seguito da `pattern:Y` |
+| `X(?!Y)`   | Lookahead negativo | `pattern:X` se seguito da `pattern:Y` |
+| `(?<=Y)X` |  Lookbehind positivo | `pattern:X` se dopo `pattern:Y` |
+| `(?<!Y)X` | Lookbehind negativo | `pattern:X` se dopo `pattern:Y` |
