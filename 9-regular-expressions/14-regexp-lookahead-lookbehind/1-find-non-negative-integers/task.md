@@ -1,10 +1,8 @@
-# Find non-negative integers
+# Trovate gli interi non negativi
 
-There's a string of integer numbers.
+Data una stringa di numeri interi, create una regexp che cerchi solo quelli non negativi (lo zero è consentito).
 
-Create a regexp that looks for only non-negative ones (zero is allowed).
-
-An example of use:
+Un esempio d'uso:
 ```js
 let regexp = /your regexp/g;
 
