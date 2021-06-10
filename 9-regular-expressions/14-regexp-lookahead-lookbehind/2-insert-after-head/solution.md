@@ -1,8 +1,8 @@
-In order to insert after the `<body>` tag, we must first find it. We can use the regular expression pattern `pattern:<body.*?>` for that.
+Per inserire qualcosa dopo il tag `<body>` dobbiamo prima trovarlo. A questo scopo possiamo usare l'espressione regolare `pattern:<body.*?>`.
 
-In this task we don't need to modify the `<body>` tag. We only need to add the text after it.
+In questa esercitazione non abbiamo bisogno di modificare il tag `<body>`. Dobbiamo solo aggiungere del testo dopo di esso.
 
-Here's how we can do it:
+Ecco come possiamo farlo:
 
 ```js run
 let str = '...<body style="...">...';
@@ -11,9 +11,9 @@ str = str.replace(/<body.*?>/, '$&<h1>Hello</h1>');
 alert(str); // ...<body style="..."><h1>Hello</h1>...
 ```
 
-In the replacement string `$&` means the match itself, that is, the part of the source text that corresponds to `pattern:<body.*?>`. It gets replaced by itself plus `<h1>Hello</h1>`.
+Nella stringa di sostituzione `$&` identifica la stessa corrispondenza, in altre parole, la parte della stringa sorgente che trova riscontro con `pattern:<body.*?>`. Essa viene sostituita da se stessa più l'aggiunta di `<h1>Hello</h1>`.
 
-An alternative is to use lookbehind:
+L'uso del lookbehind costituisce un'alternativa:
 
 ```js run
 let str = '...<body style="...">...';
@@ -22,15 +22,15 @@ str = str.replace(/(?<=<body.*?>)/, `<h1>Hello</h1>`);
 alert(str); // ...<body style="..."><h1>Hello</h1>...
 ```
 
-As you can see, there's only lookbehind part in this regexp.
+Come potete osservare, c'è solo la parte di lookbehind in questa regexp.
 
-It works like this:
-- At every position in the text.
-- Check if it's preceeded by `pattern:<body.*?>`.
-- If it's so then we have the match.
+Funziona in questo modo:
+- Per ogni posizione nella stringa.
+- Verifica se è preceduta da `pattern:<body.*?>`.
+- In caso affermativo abbiamo trovato la corrispondenza.
 
-The tag `pattern:<body.*?>` won't be returned. The result of this regexp is literally an empty string, but it matches only at positions preceeded by `pattern:<body.*?>`.
+Il tag `pattern:<body.*?>` non verrà restituito. Il risultato di questa regexp è letteralmente una stringa vuota, ma individua le posizioni precedute da `pattern:<body.*?>`.
 
-So it replaces the "empty line", preceeded by `pattern:<body.*?>`, with `<h1>Hello</h1>`. That's the insertion after `<body>`.
+Quindi sostituisce uno "spazio vuoto" preceduto da `pattern:<body.*?>`, con `<h1>Hello</h1>`. In altre parole effettua un inserimento dopo `<body>`.
 
-P.S. Regexp flags, such as `pattern:s` and `pattern:i` can also be useful: `pattern:/<body.*?>/si`. The `pattern:s` flag makes the dot `pattern:.` match a newline character, and `pattern:i` flag makes `pattern:<body>` also match `match:<BODY>` case-insensitively.
+P.S. I flag `pattern:s` e `pattern:i` potrebbero inoltre risultare utili: `pattern:/<body.*?>/si`. Il flag `pattern:s` fa in modo che il `pattern:.` identifichi anche un carattere di nuova riga, e con il flag `pattern:i` otteniamo che `pattern:<body>` e `match:<BODY>` costituiscano entrambi un riscontro.
