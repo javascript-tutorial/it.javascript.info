@@ -64,7 +64,7 @@ I numeri con valore speciale appartengono formalmente al tipo "numerico". Ovviam
 
 Vedremo di più su come lavorare con i numeri nel capitolo <info:number>.
 
-## BigInt
+## BigInt [#bigint-type]
 
 In JavaScript, il tipo "number" non può rappresentare valori interni più grandi di <code>(2<sup>53</sup>-1)</code> (che equivale a `9007199254740991`), o minori di <code>-(2<sup>53</sup>-1)</code>. Questa è una limitazione tecnica dovuta alla loro rappresentazione interna.
 

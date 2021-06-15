@@ -45,7 +45,11 @@ Per esempio:
 <img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0">
 ```
 
+<<<<<<< HEAD
 Nell'esempio il gestore dell'evento `DOMContentLoaded` si aziona quando il documento è caricato, quindi può vedere tutti gli elementi del DOM, compresa `<img>` sotto.
+=======
+In the example, the `DOMContentLoaded` handler runs when the document is loaded, so it can see all the elements, including `<img>` below.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 Ma non aspetta che l'immagine si carichi. Per questo `alert` mostra zero come dimensione.
 

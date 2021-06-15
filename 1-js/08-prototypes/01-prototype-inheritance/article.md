@@ -12,7 +12,11 @@ In JavaScript, gli oggetti possiedono una speciale proprietà nascosta `[[Protot
 
 ![prototype](object-prototype-empty.svg)
 
+<<<<<<< HEAD
 Quando leggiamo una proprietà da `object`, e questa non esiste, JavaScript prova automaticamente a recuperarla dal suo prototype. In programmazione, questo comportamento viene definito "prototypal inheritance". Presto vederemo diversi esempi di questo tipo di ereditarietà, e vedremo anche delle interessanti caratteristiche del linguaggio basate su di essa. 
+=======
+When we read a property from `object`, and it's missing, JavaScript automatically takes it from the prototype. In programming, this is called "prototypal inheritance". And soon we'll study many examples of such inheritance, as well as cooler language features built upon it.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 La proprietà `[[Prototype]]` è interna e nascosta, ma esistono diversi modi per poterla impostare.
 

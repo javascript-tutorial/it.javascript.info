@@ -302,18 +302,32 @@ L'unica differenza di sintassi tra `call` e` apply` è che `call` si aspetta una
 Queste due chiamate sono praticamente identiche:
 
 ```js
+<<<<<<< HEAD
 func.call(context, ...args); // passa un array come lista, usando la sintassi spread
 func.apply(context, args);   // è uguale all'uso di call
 ```
 
 C'è solo una sottile differenza:
+=======
+func.call(context, ...args);
+func.apply(context, args);
+```
+
+They perform the same call of `func` with given context and arguments.
+
+There's only a subtle difference regarding `args`:
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 - La sintassi `...` permette di passare `args` *iterabili* come lista a `call`.
 - `apply` accetta solo *simil-array* `args`.
 
+<<<<<<< HEAD
 Quindi, se ci aspettiamo un iterabile usiamo `call`, se invece ci aspettiamo un array, usiamo ` apply`.
 
 E per oggetti che sono sia iterabili che simil-array, come un vero array, possiamo usarne uno qualsiasi, ma `apply` sarà probabilmente più veloce, perché è meglio ottimizzato nella maggior parte dei motori JavaScript.
+=======
+...And for objects that are both iterable and array-like, such as a real array, we can use any of them, but `apply` will probably be faster, because most JavaScript engines internally optimize it better.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 Il passaggio di tutti gli argomenti insieme al contesto a un'altra funzione è chiamato *call forwarding* (inoltro di chiamata).
 

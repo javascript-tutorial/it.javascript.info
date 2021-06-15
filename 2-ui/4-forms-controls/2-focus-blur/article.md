@@ -104,7 +104,11 @@ La pratica migliore è quella di fare attenzione nell'uso di questi eventi. Se v
 ```
 ## Permettere il focus su ogni elemento: tabindex
 
+<<<<<<< HEAD
 Di default ci sono una varietà di elementi che non supportano il focus.
+=======
+By default, many elements do not support focusing.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 La lista varia leggermente a seconda del browser, ma una cosa è sempre vera: il supporto al `focus/blur` viene garantito per elementi con i quali l'utente può interagire: `<button>`, `<input>`, `<select>`, `<a>` e così via.
 
@@ -118,7 +122,11 @@ Ossia: se abbiamo due elementi, il primo dei quali ha `tabindex="1"`, ed il seco
 
 L'ordine di spostamento è: gli elementi con `tabindex` da `1` in sù vanno prima ( nell'ordine `tabindex`), e successivamente gli altri elementi privi di `tabindex` (ad esempio un normale `<input>`).
 
+<<<<<<< HEAD
 A parità di `tabindex` andranno spostati nell'ordine del sorgente del documento (l'ordine predefinito).
+=======
+Elements without matching `tabindex` are switched in the document source order (the default order).
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 Ci sono due valori speciali:
 

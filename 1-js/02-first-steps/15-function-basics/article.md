@@ -20,10 +20,14 @@ function showMessage() {
 }
 ```
 
+<<<<<<< HEAD
 La parola chiave `function` va posta all'inizio; viene seguita dal *nome della funzione*, poi c'è una lista di *parametri*, racchiusi tra parentesi (in questo esempio la lista è vuota) e infine il codice della funzione, chiamato anche "corpo della funzione", racchiuso tra parentesi graffe.
+=======
+The `function` keyword goes first, then goes the *name of the function*, then a list of *parameters* between the parentheses (comma-separated, empty in the example above, we'll see examples later) and finally the code of the function, also named "the function body", between curly braces.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 ```js
-function name(parameters) {
+function name(parameter1, parameter2, ... parameterN) {
   ...body...
 }
 ```
@@ -137,25 +141,30 @@ Solitamente, una funzione dichiara internamente tutte le variabili necessarie pe
 
 ## Parametri
 
+<<<<<<< HEAD
 Possiamo passare dei dati arbitrari ad una funzione usando i parametri (chiamati anche *argomenti della funzione*).
+=======
+We can pass arbitrary data to functions using parameters.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 Nell'esempio sotto, la funzione ha due parametri: `from` e `text`.
 
 ```js run
+<<<<<<< HEAD
 function showMessage(*!*from, text*/!*) { // argomenti: from, text
+=======
+function showMessage(*!*from, text*/!*) { // parameters: from, text
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
   alert(from + ': ' + text);
 }
 
-*!*
-showMessage('Ann', 'Hello!'); // Ann: Hello! (*)
-showMessage('Ann', "What's up?"); // Ann: What's up? (**)
-*/!*
+*!*showMessage('Ann', 'Hello!');*/!* // Ann: Hello! (*)
+*!*showMessage('Ann', "What's up?");*/!* // Ann: What's up? (**)
 ```
 
 Quando la funzione viene chiamata nelle righe `(*)` e `(**)`, il valore passato viene copiato nelle variabili locali `from` e `text`, che verranno utilizzate nella chiamata ad `alert`.
 
 Guardiamo un altro esempio: abbiamo una variabile `from` e la passiamo a una funzione. Da notare: la funzione cambia `from`, ma il cambiamento non è visibile all'esterno perché la funzione usa sempre una copia del valore passato:
-
 
 ```js run
 function showMessage(from, text) {
@@ -175,9 +184,27 @@ showMessage(from, "Hello"); // *Ann*: Hello
 alert( from ); // Ann
 ```
 
+<<<<<<< HEAD
 ## Valori di default
 
 Se non viene fornito alcun parametro, questa assume il valore `undefined`.
+=======
+When a value is passed as a function parameter, it's also called an *argument*.
+
+In other words, to put these terms straight:
+
+- A parameter is the variable listed inside the parentheses in the function declaration (it's a declaration time term)
+- An argument is the value that is passed to the function when it is called (it's a call time term).
+
+We declare functions listing their parameters, then call them passing arguments.
+
+In the example above, one might say: "the function `sayMessage` is declared with two parameters, then called with two arguments: `from` and `"Hello"`".
+
+
+## Default values
+
+If a function is called, but an argument is not provided, then the corresponding value becomes `undefined`.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 Ad esempio, la funzione menzionata sopra `showMessage(from, text)` può essere chiamata con un solo argomento:
 
@@ -185,9 +212,15 @@ Ad esempio, la funzione menzionata sopra `showMessage(from, text)` può essere c
 showMessage("Ann");
 ```
 
+<<<<<<< HEAD
 Questo non è un errore. Una chiamata simile mostrerà `"Ann: undefined"`.  Non c'è nessun valore `text`, quindi si assume che `text === undefined`.
 
 Se volessimo utilizzare un `text` di "default", dovremmo specificarlo dopo `=`:
+=======
+That's not an error. Such a call would output `"*Ann*: undefined"`. As the value for `text` isn't passed, it becomes `undefined`.
+
+We can specify the so-called "default" (to use if omitted) value for a parameter in the function declaration, using `=`:
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 ```js run
 function showMessage(from, *!*text = "no text given"*/!*) {
@@ -208,20 +241,37 @@ function showMessage(from, text = anotherFunction()) {
 }
 ```
 
+<<<<<<< HEAD
 ```smart header="Valutazione dei parametri di default"
 In JavaScript, un parametro di default viene valutato ogni volta che viene chiamata una funzione senza i rispettivi parametri. Nell'esempio sopra, `anotherFunctions()` viene richiamata ogni volta che `someMessage()` viene chiamata senza il parametro `text`.
+=======
+```smart header="Evaluation of default parameters"
+In JavaScript, a default parameter is evaluated every time the function is called without the respective parameter.
+
+In the example above, `anotherFunction()` isn't called at all, if the `text` parameter is provided.
+
+On the other hand, it's independently called every time when `text` is missing.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 ```
 
 
+<<<<<<< HEAD
 #Parametri di default alternativi
 In alcuni casi vorremmo assegnare un valore di default a un parametro non nella dichiarazione della funzione, ma dopo, durante la sua esecuzione. (inoltre, le vecchie edizioni di JavaScript non supportavano i parametri di default; quel che segue è un metodo per ovviare ad entrambe le necessità, e che potreste trovare di frequente nei vecchi script).
 
 Per controllare se un parametro è stato omesso possiamo compararlo con `undefined`:
+=======
+Sometimes it makes sense to assign default values for parameters not in the function declaration, but at a later stage.
+
+We can check if the parameter is passed during the function execution, by comparing it with `undefined`:
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 ```js run
 function showMessage(text) {
+  // ...
+
 *!*
-  if (text === undefined) {
+  if (text === undefined) { // if the parameter is missing
     text = 'empty message';
   }
 */!*
@@ -232,21 +282,37 @@ function showMessage(text) {
 showMessage(); // empty message
 ```
 
+<<<<<<< HEAD
 ...Oppure utilizzare l'operatore `||`:
 
 ```js
 function showMessage(from, text) {
   // se text è falso allora text assume il valore di default
   text = text || 'no text given';
+=======
+...Or we could use the `??` operator:
+
+```js
+function showMessage(text) {
+  // if text is undefined or otherwise falsy, set it to 'empty'
+  text = text || 'empty';
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
   ...
 }
 ```
 
+<<<<<<< HEAD
 I moderni motori JavaScript supportano il [nullish coalescing operator](info:nullish-coalescing-operator) `??`, più efficiente quando valori falsi come `0`vengono considerati regolari:
 
 ```js run
 //se non c'è un parametro "count", mostra "unknown"
+=======
+Modern JavaScript engines support the [nullish coalescing operator](info:nullish-coalescing-operator) `??`, it's better when most falsy values, such as `0`, should be considered "normal":
+
+```js run
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 function showCount(count) {
+  // if count is undefined or null, show "unknown"
   alert(count ?? "unknown");
 }
 

@@ -4,7 +4,11 @@
 ```warn header="Caratteristica avanzata di linguaggio"
 Questo articolo tratta un argomento avanzato, utile per capire meglio alcuni casi limite.
 
+<<<<<<< HEAD
 Non è di fondamentale importanza. Molti sviluppatori esperti vivono bene senza esserne a conoscenza. Continua la lettura solamente se sei interessato a sapere come funzionano le cose internamente.
+=======
+It's not important. Many experienced developers live fine without knowing it. Read on if you want to know how things work under the hood.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 ```
 
 Un'invocazione di un metodo valutata dinamicamente può perdere il `this`.

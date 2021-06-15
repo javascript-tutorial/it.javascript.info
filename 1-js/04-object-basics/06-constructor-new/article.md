@@ -64,13 +64,21 @@ Ora, se vogliamo creare altri utenti, possiamo chiamare `new User("Ann")`, `new 
 
 Questo è il principale scopo dei costruttori -- implementare codice riutilizzabile per la creazione di oggetti.
 
+<<<<<<< HEAD
 Ribadiamo -- tecnicamente, ogni funzione può essere utilizzata come costruttore. Ovvero: ogni funzione può essere eseguita con `new`. La "prima lettera maiuscola" è semplicemente una convenzione, per rendere esplicito che la funzione deve essere eseguita con `new`.
 
 ````smart header="new function() { ... }"
 Se abbiamo molte linee di codice utili alla creazione di un unico oggetto, possiamo raggrupparle in un costruttore, come qui:
+=======
+Let's note once again -- technically, any function (except arrow functions, as they don't have `this`) can be used as a constructor. It can be run with `new`, and it will execute the algorithm above. The "capital letter first" is a common agreement, to make it clear that a function is to be run with `new`.
+
+````smart header="new function() { ... }"
+If we have many lines of code all about creation of a single complex object, we can wrap them in an immediately called constructor function, like this:
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 ```js
-let user = new function() {
+// create a function and immediately call it with new
+let user = new function() { 
   this.name = "John";
   this.isAdmin = false;
 
@@ -80,7 +88,11 @@ let user = new function() {
 };
 ```
 
+<<<<<<< HEAD
 Il costruttore non può essere chiamato nuovamente, perché non è salvato da nessuna parte; viene solo creato e chiamato. Questo trucco consente di incapsulare un codice che costruisce un singolo oggetto, senza possibilità di riutilizzo futuro.
+=======
+This constructor can't be called again, because it is not saved anywhere, just created and called. So this trick aims to encapsulate the code that constructs the single object, without future reuse.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 ````
 
 ## Costruttori modalità test: new.target

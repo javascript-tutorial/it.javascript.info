@@ -65,7 +65,11 @@ Un ricerca simile, in uno degli esempi precedenti, funzionava con `pattern:/\d\.
 
 Il motivo è che i backslash vengono "consumati" dalla stringa. Ricordate, le stringhe "normali" hanno i loro caratteri speciali, come `\n`, e un backslash viene utilizzato per fare escaping.
 
+<<<<<<< HEAD
 Così è come "\d\.\d" viene percepita:
+=======
+Here's how "\d\.\d" is perceived:
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 ```js run
 alert("\d\.\d"); // d.d

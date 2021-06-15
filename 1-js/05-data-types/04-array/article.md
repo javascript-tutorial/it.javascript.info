@@ -379,9 +379,13 @@ alert( arr[0] ); // undefined! nessun elemento.
 alert( arr.length ); // length 2
 ```
 
+<<<<<<< HEAD
 Nel codice sopra, `new Array(number)` ha tutti gli elementi `undefined`.
 
 Per evitare queste spiacevoli sorprese, solitamente si utilizzano le parentesi quadre, a meno di non sapere davvero che cosa si sta faccendo.
+=======
+To avoid such surprises, we usually use square brackets, unless we really know what we're doing.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 ## Array multi-dimensionali
 

@@ -192,7 +192,11 @@ Esiste una proposta JavaScript in via di approvazione, che fornisce il supporto 
 
 I campi privati dovrebbero essere preceduti da `#`. Questi saranno accessibili solamente dall'interno della classe.
 
+<<<<<<< HEAD
 Ad esempio, qui abbiamo una proprietà privata `#waterLimit` e un metodo privato per il controllo del livello dell'acqua `#checkWater`:
+=======
+For instance, here's a private `#waterLimit` property and the water-checking private method `#fixWaterAmount`:
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 ```js run
 class CoffeeMachine {

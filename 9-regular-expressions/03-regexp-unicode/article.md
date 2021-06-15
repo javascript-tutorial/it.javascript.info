@@ -50,7 +50,76 @@ for(let i=0; i<'𝒳𝒴'.length; i++) {
 };
 ```
 
+<<<<<<< HEAD
 Quindi trova solo la "metà sinistra" di `𝒳`.
+=======
+Here's the main character categories and their subcategories:
+
+- Letter `L`:
+  - lowercase `Ll`
+  - modifier `Lm`,
+  - titlecase `Lt`,
+  - uppercase `Lu`,
+  - other `Lo`.
+- Number `N`:
+  - decimal digit `Nd`,
+  - letter number `Nl`,
+  - other `No`.
+- Punctuation `P`:
+  - connector `Pc`,
+  - dash `Pd`,
+  - initial quote `Pi`,
+  - final quote `Pf`,
+  - open `Ps`,
+  - close `Pe`,
+  - other `Po`.
+- Mark `M` (accents etc):
+  - spacing combining `Mc`,
+  - enclosing `Me`,
+  - non-spacing `Mn`.
+- Symbol `S`:
+  - currency `Sc`,
+  - modifier `Sk`,
+  - math `Sm`,
+  - other `So`.
+- Separator `Z`:
+  - line `Zl`,
+  - paragraph `Zp`,
+  - space `Zs`.
+- Other `C`:
+  - control `Cc`,
+  - format `Cf`,
+  - not assigned `Cn`,
+  - private use `Co`,
+  - surrogate `Cs`.
+
+
+So, e.g. if we need letters in lower case, we can write `pattern:\p{Ll}`, punctuation signs: `pattern:\p{P}` and so on.
+
+There are also other derived categories, like:
+- `Alphabetic` (`Alpha`), includes Letters `L`, plus letter numbers `Nl` (e.g. Ⅻ - a character for the roman number 12), plus some other symbols `Other_Alphabetic` (`OAlpha`).
+- `Hex_Digit` includes hexadecimal digits: `0-9`, `a-f`.
+- ...And so on.
+
+Unicode supports many different properties, their full list would require a lot of space, so here are the references:
+
+- List all properties by a character: <https://unicode.org/cldr/utility/character.jsp>.
+- List all characters by a property: <https://unicode.org/cldr/utility/list-unicodeset.jsp>.
+- Short aliases for properties: <https://www.unicode.org/Public/UCD/latest/ucd/PropertyValueAliases.txt>.
+- A full base of Unicode characters in text format, with all properties, is here: <https://www.unicode.org/Public/UCD/latest/ucd/>.
+
+### Example: hexadecimal numbers
+
+For instance, let's look for hexadecimal numbers, written as `xFF`, where `F` is a hex digit (0..9 or A..F).
+
+A hex digit can be denoted as `pattern:\p{Hex_Digit}`:
+
+```js run
+let regexp = /x\p{Hex_Digit}\p{Hex_Digit}/u;
+
+alert("number: xAF".match(regexp)); // xAF
+```
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 In altre parole, la ricerca funziona come `'12'.match(/[1234]/)`: solo `1` viene restituito.
 

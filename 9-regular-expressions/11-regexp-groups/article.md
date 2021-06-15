@@ -335,7 +335,11 @@ Nell'esempio qui di seguito otterremo solo il nome `match:John` come elemento di
 let str = "Gogogo John!";
 
 *!*
+<<<<<<< HEAD
 // ?: esclude 'go' dall'acquisizione
+=======
+// ?: excludes 'go' from capturing
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 let regexp = /(?:go)+ (\w+)/i;
 */!*
 

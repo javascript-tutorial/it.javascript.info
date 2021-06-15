@@ -45,7 +45,11 @@ alert(3 +
 + 2);
 ```
 
+<<<<<<< HEAD
 Il codice stampa `6` perché, in questo caso, JavaScript non inserisce un punto e virgola. E' abbastanza ovvio che se la riga finisce con un `"+"`, allora è un "espressione incompleta", quindi il punto e virgola non verrà inserito. Per questo, nell'esempio sopra, tutto funziona come dovrebbe.
+=======
+The code outputs `6` because JavaScript does not insert semicolons here. It is intuitively obvious that if the line ends with a plus `"+"`, then it is an "incomplete expression", so a semicolon there would be incorrect. And in this case, that works as intended.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 **Ma ci sono casi in cui JavaScript "fallisce" nell'interpretare un punto e virgola, dove invece sarebbe necessario.**
 
@@ -55,39 +59,62 @@ Gli errori di questo tipo sono molto difficili da trovare e sistemare.
 Se sei curioso di vedere un esempio concreto di questo tipo di errore, dai un occhiata al seguente codice:
 
 ```js run
-[1, 2].forEach(alert)
+alert("Hello");
+
+[1, 2].forEach(alert);
 ```
 
+<<<<<<< HEAD
 Non c'e bisogno di pensare al significato delle parentesi `[]` e al `forEach`. Li studieremo più avanti, per ora è sufficiente sapere il risultato: mostrerà `1` e poi `2`.
 
 Adesso andiamo ad aggiungere un `alert` prima del codice e *non* concludiamo la riga con il punto e virgola:
+=======
+No need to think about the meaning of the brackets `[]` and `forEach` yet. We'll study them later. For now, just remember the result of running the code: it shows `Hello`, then `1`, then `2`.
+
+Now let's remove the semicolon after the `alert`:
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 ```js run no-beautify
-alert("There will be an error")
+alert("Hello")
 
-[1, 2].forEach(alert)
+[1, 2].forEach(alert);
 ```
 
+<<<<<<< HEAD
 Adesso se lo eseguiamo, solo il primo `alert` viene mostrato, poi avremmo un errore!
 
 Ma tutto si risolve aggiungendo un punto e virgola dopo `alert`:
 ```js run
 alert("All fine now");
+=======
+The difference compared to the code above is only one character: the semicolon at the end of the first line is gone.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
-[1, 2].forEach(alert)  
-```
+If we run this code, only the first `Hello` shows (and there's an error, you may need to open the console to see it). There are no numbers any more.
 
+<<<<<<< HEAD
 Adesso avremmo il messaggio "All fine now", successivamente `1` seguito da `2`.
 
 L'errore nel non aver messo il punto e virgola è avvenuto perché JavaScript non inserisce automaticamente un punto e virgola prima delle parentesi quadre `[...]`.
 
 Quindi, poiché il punto e virgola non viene auto-inserito, il codice del precedente esempio viene trattato come un istruzione singola. Infatti il motore JavaScript lo vede cosi:
+=======
+That's because JavaScript does not assume a semicolon before square brackets `[...]`. So, the code in the last example is treated as a single statement.
+
+Here's how the engine sees it:
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 ```js run no-beautify
-alert("There will be an error")[1, 2].forEach(alert)
+alert("Hello")[1, 2].forEach(alert);
 ```
 
+<<<<<<< HEAD
 Anche se se in realtà sono due istruzioni separate, non una singola. Questo tipo di interpretazione, in questo caso è errata. Ci possono essere altre situazioni in cui si verifica questo tipo di errore.
+=======
+Looks weird, right? Such merging in this case is just wrong. We need to put a semicolon after `alert` for the code to work correctly.
+
+This can happen in other situations also.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 ````
 
 E' consigliato quindi, di inserire il punto e virgola fra ogni istruzione, anche se vengono scritte in righe diverse. Questa è una regola largamente adottata dalla community. Ripetiamolo nuovamente -- *è possibile* omettere il punto e virgola la maggior parte delle volte. Ma è più sicuro -- specialmente per un novizio -- inserirlo al termine di ogni istruzione.

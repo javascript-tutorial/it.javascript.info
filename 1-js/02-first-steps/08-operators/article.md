@@ -66,7 +66,11 @@ Ad esempio:
 
 ```js run
 alert( 2 ** 2 ); // 2² = 4
+<<<<<<< HEAD
 alert( 2 ** 3 ); // 2³ = 8 
+=======
+alert( 2 ** 3 ); // 2³ = 8
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 alert( 2 ** 4 ); // 2⁴ = 16
 ```
 

@@ -24,9 +24,15 @@ Il browser ha un suo motore JavaScript integrato, chiamato alle volte "JavaScrip
 
 Esistono altri motori JavaScript, tra cui:
 
+<<<<<<< HEAD
 - [V8](https://en.wikipedia.org/wiki/V8_(JavaScript_engine)) -- per Chrome e Opera.
 - [SpiderMonkey](https://en.wikipedia.org/wiki/SpiderMonkey) -- per Firefox.
 - ...Ci sono altri codenames come "Chakra" per IE, "ChakraCore" specifico per Microsoft Edge, "Nitro" e "SquirrelFish" per Safari, etc.
+=======
+- [V8](https://en.wikipedia.org/wiki/V8_(JavaScript_engine)) -- in Chrome and Opera.
+- [SpiderMonkey](https://en.wikipedia.org/wiki/SpiderMonkey) -- in Firefox.
+- ...There are other codenames like "Chakra" for IE, "JavaScriptCore", "Nitro" and "SquirrelFish" for Safari, etc.
+>>>>>>> fb4fc33a2234445808100ddc9f5e4dcec8b3d24c
 
 I nomi citati sopra possono essere utili da ricordare, poiché si possono trovare spesso in articoli che trattano di sviluppo web. Anche noi li useremo. Ad esempio, se "una caratteristica X è supportata da V8", probabilmente funzioneranno senza problemi in Chrome e Opera.
 
