@@ -45,7 +45,7 @@ Per esempio:
 <img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0">
 ```
 
-Nell'esempio il gestore dell'evento `DOMContentLoaded` si aziona quando il documento è caricato, quindi può vedere tutti gli elementi del DOM, compresa `<img>` sotto.
+Nell'esempio il gestore `DOMContentLoaded` si aziona quando il documento è caricato, quindi può vedere tutti gli elementi del DOM, compresa `<img>` sotto.
 
 Ma non aspetta che l'immagine si carichi. Per questo `alert` mostra zero come dimensione.
 
@@ -83,7 +83,7 @@ Ci sono 2 eccezioni per questa regola:
 
 I fogli di stile esterni non influenzano il caricamento del DOM, quindi `DOMContentLoaded` non aspetta il loro caricamento.
 
-Ma c'è una trappola. Se abbiamo uno script dopo uno stile quello script deve aspettare affinché il foglio di stile sia statio caricato.
+Ma c'è una trappola. Se abbiamo uno script dopo uno stile quello script deve aspettare affinché il foglio di stile sia stato caricato.
 
 ```html run
 <link type="text/css" rel="stylesheet" href="style.css">

@@ -58,7 +58,7 @@ In questo modo:
 Il browser recupera ed elabora automaticamente il modulo importato (e i suoi import se necessario), e infine esegue lo script.
 
 ```warn header="Modules work only via HTTP(s), not in local files"
-Se provate ad aprire una pagina web in locale, tramite il protocollo `file://`, scoprirete che le direttive `import/export` non funzionano. Per questo vanno utilizzati dei web-server localum come [static-server](https://www.npmjs.com/package/static-server#getting-started) oppure utilizzando la funzionalità "live server" dell'editor di codice, come quello di VS Code [Live Server Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) per testare i moduli.
+Se provate ad aprire una pagina web in locale, tramite il protocollo `file://`, scoprirete che le direttive `import/export` non funzionano. Per questo vanno utilizzati dei web-server locali come [static-server](https://www.npmjs.com/package/static-server#getting-started) oppure utilizzando la funzionalità "live server" dell'editor di codice, come quello di VS Code [Live Server Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) per testare i moduli.
 ```
 
 ## Funzionalità principali dei moduli
@@ -69,7 +69,7 @@ Ci sono delle funzionalità aggiunte, valide sia per codice JavaScript all'inter
 
 ### Hanno sempre "use strict"
 
-I moduli utilizzano sempre `use strict`, automaticamente. Ad esempio assegnare un valore ad una variabile non dichiarata genera un'errore.
+I moduli lavorano sempre in *strict mode*, automaticamente. Ad esempio, assegnare un valore ad una variabile non dichiarata genera un'errore.
 
 ```html run
 <script type="module">
@@ -81,19 +81,24 @@ I moduli utilizzano sempre `use strict`, automaticamente. Ad esempio assegnare u
 
 Ogni modulo ha la propria visibilità delle variabili di massimo livello. In altre parole le variabili dichiarate a livello maggiore all'interno di un modulo non sono visibili negli altri script.
 
-Nell'esempio seguente, due script sono stati importati, `hello.js` prova ad utilizzare la variabile `user` dichiarata in `user.js`, ma fallisce:
+In the example below, two scripts are imported, and `hello.js` tries to use `user` variable declared in `user.js`. It fails, because it's a separate module (you'll see the error in the console):
 
 [codetabs src="scopes" height="140" current="index.html"]
 
-I moduli devono esportare con `export` quello che vogliono rendere accessibile all'esterno e devono importare con `import` quello di cui hanno bisogno.
+I moduli dovrebbero eseguire l'`export` di ciò che vogliono che sia accessibile dall'esterno e l'`import` ciò di cui hanno bisogno.
 
-Quindi dobbiamo importare `user.js` all'interno di `hello.js`e prendere la funzionalità che ci servono da esso senza basarci sulle variabili globali.
+- `user.js` dovrebbe esportare la variabile `user`.
+- `hello.js` dovrebbe importarla dal modulo `user.js`.
+
+In altre parole, con i moduli usiamo import/export invece di affidarci alle variabili globali.
 
 Questa è la versione corretta:
 
 [codetabs src="scopes-working" height="140" current="hello.js"]
 
-All'interno del browser esiste uno scope di livello massimo all'interno di ogni `<script type="module">`:
+All'interno del browser, se parliamo di pagine HTML, esiste uno scope indipendente all'interno di ogni `<script type="module">`.
+
+Ecco due script sulla stessa pagina, entrambi `type="module"`. Non vedono le variabili di primo livello l'uno dell'altro:
 
 ```html run
 <script type="module">
@@ -108,13 +113,22 @@ All'interno del browser esiste uno scope di livello massimo all'interno di ogni 
 </script>
 ```
 
-Se abbiamo realmente la necessità di dichiarare una variabile globale all'interno del browser possiamo assegnarla a `window` e accederci attraverso `window.user`. Questa è un'eccezione che dovrebbe essere usata solo se ci sono delle buone ragioni.
+```smart
+Nel browser, possiamo creare una variabile globale assegnandola esplicitamente ad una proprietà di `window`, ad esempio `window.user = "John"`.
+
+Così sarà accessibile a tutti gli scripts, sia con `type="module"` che senza. 
+
+Detto questo, creare questo genere di variabili è una cattiva pratica, cercate di evitarlo. 
+
+```
 
 ### Un modulo viene eseguito solo la prima volta che viene importato
 
-Se uno stesso modulo verrà importato varie volte in più posti, il suo codice verrà eseguito solo la prima volta, successivamente le variabili e le funzioni esportate saranno assegnate a tutti i moduli che lo importano.
+Se lo stesso modulo viene importato in vari altri moduli, il suo codice viene eseguito solo una volta, durante il primo import. Successivamente tutti i suoi exports vengono distribuiti agli altri moduli che la importano.
 
-Questo ha delle conseguenze importanti. Vediamo degli esempi.
+La valutazione una tantum ha conseguenze importanti di cui dovremmo essere consapevoli.
+
+Vediamo degli esempi.
 
 Prima di tutto, se eseguire un modulo ha altri effetti, come far apparire un messaggio, importare quel modulo più volte lo farà apparire solamente una volta, la prima:
 
@@ -133,11 +147,13 @@ import `./alert.js`; // Il modulo è stato eseguito!
 import `./alert.js`; // (non appare nulla)
 ```
 
-Il pratica, il codice a livello maggiore di un modulo viene principalmente usato per inizializzarlo, creare la struttura dei dati interni e, se vogliamo qualcosa di riutilizzabile, esportarlo con `export`.
+La seconda importazione non mostra nulla, perché il modulo è già stato valutato.
 
-Vediamo adesso un esempio più complesso.
+C'è una regola: il codice del modulo di primo livello dovrebbe essere usato per l'inizializzazione, la creazione di strutture dati interne specifiche del modulo. Se abbiamo bisogno di rendere qualcosa richiamabile più volte, dovremmo esportarlo come una funzione, come abbiamo fatto con `sayHi` sopra.
 
-Prendiamo in considerazione un modulo che exporta un oggetto:
+Vediamo ora un esempio più complesso.
+
+Prendiamo in considerazione un modulo che esporta un oggetto:
 
 ```js
 // 📁 admin.js
@@ -160,54 +176,68 @@ import {admin} from './admin.js';
 alert(admin.name); // Pete
 
 *!*
-// Entrambi 1.js e 2.js ottengono lo stesso ogetto
+// Entrambi 1.js e 2.js si riferiscono allo stesso oggetto
 // I cambiamenti fatti in 1.js sono visibili in 2.js
 */!*
 ```
 
-Facendo un punto della situazione, il modulo viene eseguito una sola volta. Tutto quello esportato con `export` viene generato, e successivamente viene condiviso con tutti quelli che lo hanno importato, di conseguenza ogni cambiamento fatto sull'oggetto `admin` verrà visto anche dagli altri moduli.
+Come puoi vedere, quando `1.js` cambia la proprietà `name` nell'`admin` importato, allora anche `2.js` può vedere il nuovo `admin.name`.
 
-Questo comportamento ci permette di *configurare* i moduli quando vengono importati la prima volta. Possiamo configurare le proprietà una volta, e saranno pronte per tutti gli altri import successivi.
+Questo è il motivo per cui il modulo viene eseguito solo una volta. Le esportazioni vengono generate e quindi condivise tra gli importatori, quindi se qualcosa cambia l'oggetto `admin`, gli altri moduli lo vedranno.
 
-Per fare un esempio, il modulo `admin.js` può fornire alcune funzionalità ma si aspetta di ricevere le credenziali all'interno dell'oggetto `admin` dall'esterno:
+**Questo comportamento in realtà è molto utile, perché ci permette di *configurare* i moduli.**
+
+In altre parole, un modulo può fornire una funzionalità generica che necessita di una configurazione. Per esempio. l'autenticazione necessita di credenziali. Quindi può esportare un oggetto di configurazione aspettandosi che il codice esterno gli venga assegnato.
+
+Ecco lo schema classico:
+1. Un modulo esporta alcuni strumenti di configurazione, ad es. un oggetto di configurazione.
+2. Alla prima importazione lo inizializziamo, impostando le sue proprietà. Potrebbe farlo lo script di livello più alto.
+3. Ulteriori importazioni utilizzano il modulo.
+
+Per fare un esempio, il modulo `admin.js` può fornire alcune funzionalità (ad esempio l'autenticazione), ma si aspetta di ricevere le credenziali all'interno dell'oggetto `config` dall'esterno:
 
 ```js
 // 📁 admin.js
-export let admin = { };
+export let config = { };
 
 export function sayHi() {
-  alert(`Sono pronto, ${admin.name}!`);
+  alert(`Sono pronto, ${config.user}!`);
 }
 ```
 
-All'interno di `init.js`, il primo script della nostra app, impostiamo `admin.name`. In questo modo sarà visibile a tutti, comprese le chiamate fatte all'interno di `admin.js` stesso:
+Qui, `admin.js` esporta l'oggetto `config` (inizialmente vuoto, ma potrebbe anche avere proprietà predefinite).
+
+Quindi in `init.js`, il primo script della nostra applicazione, importiamo `config` ed impostiamo `config.user`:
 
 ```js
 // 📁 init.js
-import {admin} from './admin.js';
-admin.name = "Pete";
+import {config} from './admin.js';
+config.user = "Pete";
 ```
 
-Un'altro modulo può comunque vedere `admin.name`:
+...Ora il modulo `admin.js` è configurato. 
+
+Le successive importazioni chiamarlo, e verrà mostrato correttamente lo user corrente:
+
 
 ```js
-// 📁 other.js
-import {admin, sayHi} from './admin.js';
-
-alert(admin.name); // *!*Pete*/!*
+// 📁 another.js
+import {sayHi} from './admin.js';
 
 sayHi(); // Sono pronto, *!*Pete*/!*!
 ```
+
 
 ### import.meta
 
 L'oggetto `import.meta` contiene le informazioni riguardanti il modulo corrente.
 
-Il suo contenuto dipende dall'ambiente di esecuzione. Nel browser, contiene l'URL dello script o dell'attuale pagina web se inserito all'interno dell'HTML
+Il suo contenuto dipende dall'ambiente di esecuzione. Nel browser, contiene l'URL dello script o dell'attuale pagina web se inserito all'interno dell'HTML:
 
 ```html run height=0
 <script type="module">
-  alert(import.meta.url); // script url (l'url della pagina html per gli script in linea)
+  alert(import.meta.url); // script URL
+  // per gli inline script è l'URL della pagina corrente
 </script>
 ```
 
@@ -233,7 +263,7 @@ Facciamo il confronto con uno script che non è un modulo, dove `this` è un ogg
 
 Ci sono diverse funzionalità specifiche dei moduli utilizzati all'interno del browser con `type="module"`.
 
-Potresti voler saltare questa sezione se stai leggedo per la prima volta , oppure se non hai intenzione di usare JavaScript all'interno del browser.
+Potresti voler saltare questa sezione se stai leggendo per la prima volta , oppure se non hai intenzione di usare JavaScript all'interno del browser.
 
 ### I moduli sono caricati in modo differito
 
@@ -260,7 +290,7 @@ Confrontiamo lo script normale:
 
 <script>
 *!*
-  alert(typeof button); // Error: button is undefined, lo scripr non riesce a vedere il bottone
+  alert(typeof button); // Error: button is undefined, lo script non riesce a vedere il bottone
 */!*
   // Gli script normali vengono eseguiti immediatamente, prima che il resto della pagina venga processata
 </script>

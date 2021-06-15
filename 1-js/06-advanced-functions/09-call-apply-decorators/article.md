@@ -306,6 +306,8 @@ func.call(context, ...args); // passa un array come lista, usando la sintassi sp
 func.apply(context, args);   // è uguale all'uso di call
 ```
 
+Eseguono la medesima chiamata a `func` con un dati contesto ed argomenti.
+
 C'è solo una sottile differenza:
 
 - La sintassi `...` permette di passare `args` *iterabili* come lista a `call`.

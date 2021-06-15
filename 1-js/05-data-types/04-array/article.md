@@ -329,7 +329,7 @@ Generalmente, non dovremmo utilizzare `for..in` per gli array.
 
 La proprietà `length` si aggiorna automaticamente ad ogni modifica. Volendo essere precisi non ne rappresenta la lunghezza, ma l'ultimo indice numerico più uno.
 
-Ad esempio, un singolo elemento con un indice molto alto fornisce un'altrettanto grande lunghezza:
+Ad esempio, un singolo elemento con un indice molto alto fornisce un altrettanto grande lunghezza:
 
 ```js run
 let fruits = [];
@@ -381,7 +381,7 @@ alert( arr.length ); // length 2
 
 Nel codice sopra, `new Array(number)` ha tutti gli elementi `undefined`.
 
-Per evitare queste spiacevoli sorprese, solitamente si utilizzano le parentesi quadre, a meno di non sapere davvero che cosa si sta faccendo.
+Per evitare queste spiacevoli sorprese, solitamente si utilizzano le parentesi quadre, a meno di non sapere davvero che cosa si sta facendo.
 
 ## Array multi-dimensionali
 

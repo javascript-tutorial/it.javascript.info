@@ -1,4 +1,4 @@
-# Debugging in Chrome
+# Debugging in the browser
 
 Prima di scrivere codice più complesso, dovremmo parlare di debugging.
 

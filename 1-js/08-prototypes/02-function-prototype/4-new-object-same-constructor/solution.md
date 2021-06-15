@@ -38,7 +38,12 @@ Perché `user2.name` è `undefined`?
 Ecco come `new user.constructor('Pete')` funziona:
 
 1. Prima, controlla se esiste `constructor` in `user`. Niente.
-2. Successivamente segue la catena di prototype. Il prototype di `user` è `User.prototype`, e anche qui non c'è nulla.
-3. Il valore di `User.prototype` è un oggetto semplice `{}`, il suo prototype è `Object.prototype`. E c'è un `Object.prototype.constructor == Object`. Quindi verrà utilizzato.
+2. Successivamente segue la catena di prototype. Il prototype di `user` è `User.prototype`, e anche qui non c'è un `constructor` (perché ci siamo "dimenticati" di impostarlo!).
+3. Seguendo la catena, `User.prototype` è un oggetto semplice, il suo prototype è `Object.prototype`. 
+4. Infine, per `Object.prototype`, c'è `Object.prototype.constructor == Object`. Quindi verrà utilizzato.
 
-In conclusione, abbiamo `let user2 = new Object('Pete')`. Il costruttore integrato di `Object` ignora gli argomenti, crea sempre un oggetto vuoto, in maniera simile a `let user2 = {}`, questo è ciò che abbiamo in `user2` alla fine di tutto.
+In conclusione, abbiamo `let user2 = new Object('Pete')`. 
+
+Probabilmente, non è quello che avremmo voluto, ossia creare `new User`, non `new Object`. Questo è il risultato del `costruttore` mancante.
+
+(Nel caso tu sia curioso, la chiamata `new Object(...)` converte il suo argomento in un oggetto. Questa è una cosa teorica, in pratica nessuno chiama `new Object` con un valore, e generalmente non usiamo mai `new Object` per creare oggetti.

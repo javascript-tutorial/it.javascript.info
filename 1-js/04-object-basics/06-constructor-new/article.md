@@ -64,13 +64,14 @@ Ora, se vogliamo creare altri utenti, possiamo chiamare `new User("Ann")`, `new 
 
 Questo è il principale scopo dei costruttori -- implementare codice riutilizzabile per la creazione di oggetti.
 
-Ribadiamo -- tecnicamente, ogni funzione può essere utilizzata come costruttore. Ovvero: ogni funzione può essere eseguita con `new`. La "prima lettera maiuscola" è semplicemente una convenzione, per rendere esplicito che la funzione deve essere eseguita con `new`.
+Ribadiamo -- tecnicamente, ogni funzione (eccetto le arrow functions, siccome non hanno `this`) può essere utilizzata come costruttore. Ovvero: ogni funzione può essere eseguita con `new`. La "prima lettera maiuscola" è semplicemente una convenzione, per rendere esplicito che la funzione deve essere eseguita con `new`.
 
 ````smart header="new function() { ... }"
-Se abbiamo molte linee di codice utili alla creazione di un unico oggetto, possiamo raggrupparle in un costruttore, come qui:
+Se abbiamo molte linee di codice utili alla creazione di un unico oggetto, possiamo raggrupparle in un costruttore richiamato contestualmente, come qui:
 
 ```js
-let user = new function() {
+// create a function and immediately call it with new
+let user = new function() { 
   this.name = "John";
   this.isAdmin = false;
 
@@ -80,7 +81,7 @@ let user = new function() {
 };
 ```
 
-Il costruttore non può essere chiamato nuovamente, perché non è salvato da nessuna parte; viene solo creato e chiamato. Questo trucco consente di incapsulare un codice che costruisce un singolo oggetto, senza possibilità di riutilizzo futuro.
+Il costruttore non può essere chiamato nuovamente, perché non è salvato da nessuna parte; viene solo creato e chiamato. Questo trucco consente di incapsulare un codice che costruisce un singolo oggetto, senza necessità di riutilizzo futuro.
 ````
 
 ## Costruttori modalità test: new.target

@@ -611,7 +611,7 @@ Ad esempio, se abbiamo `S` con uno speciale "punto sopra" (codice `\u0307`), vie
 alert( 'S\u0307' ); // Ṡ
 ```
 
-Se abbiamo bisogno di un ulteriore segno sopra la lettera (o sotto) -- nessun problema, è succificiente aggiungere il simbolo necessario.
+Se abbiamo bisogno di un ulteriore segno sopra la lettera (o sotto) -- nessun problema, è sufficiente aggiungere il simbolo necessario.
 
 Ad esempio, se vogliamo aggiungere un "punto sotto" (codice `\u0323`), allora otterremo una "S con due punti, sopra e sotto": `Ṩ`.
 
@@ -665,7 +665,7 @@ Se volete approfondire il tema della normalizzazione e le sue varianti -- vengon
 
 Ci sono molti altri metodi utili per operare con le stringhe:
 
-- `str.trim()` -- rimuove gli spazi all'inzio e alla fine della stringa.
+- `str.trim()` -- rimuove gli spazi all'inizio e alla fine della stringa.
 - `str.repeat(n)` -- ripete la stringa `n` volte.
 - ...e molto altro. Guarda il [manuale](mdn:js/String) per maggiori dettagli.
 

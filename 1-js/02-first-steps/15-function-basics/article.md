@@ -20,10 +20,10 @@ function showMessage() {
 }
 ```
 
-La parola chiave `function` va posta all'inizio; viene seguita dal *nome della funzione*, poi c'è una lista di *parametri*, racchiusi tra parentesi (in questo esempio la lista è vuota) e infine il codice della funzione, chiamato anche "corpo della funzione", racchiuso tra parentesi graffe.
+La parola chiave `function` va posta all'inizio; viene seguita dal *nome della funzione*, poi c'è una lista di *parametri*, racchiusi tra parentesi (separati da virgola, in questo esempio la lista è vuota, vedremo un esempio più avanti) e infine il codice della funzione, chiamato anche "corpo della funzione", racchiuso tra parentesi graffe.
 
 ```js
-function name(parameters) {
+function name(parameter1, parameter2, ... parameterN) {
   ...body...
 }
 ```
@@ -137,25 +137,22 @@ Solitamente, una funzione dichiara internamente tutte le variabili necessarie pe
 
 ## Parametri
 
-Possiamo passare dei dati arbitrari ad una funzione usando i parametri (chiamati anche *argomenti della funzione*).
+Possiamo passare dei dati arbitrari ad una funzione usando i parametri.
 
 Nell'esempio sotto, la funzione ha due parametri: `from` e `text`.
 
 ```js run
-function showMessage(*!*from, text*/!*) { // argomenti: from, text
+function showMessage(*!*from, text*/!*) { // parametri: from, text
   alert(from + ': ' + text);
 }
 
-*!*
-showMessage('Ann', 'Hello!'); // Ann: Hello! (*)
-showMessage('Ann', "What's up?"); // Ann: What's up? (**)
-*/!*
+*!*showMessage('Ann', 'Hello!');*/!* // Ann: Hello! (*)
+*!*showMessage('Ann', "What's up?");*/!* // Ann: What's up? (**)
 ```
 
 Quando la funzione viene chiamata nelle righe `(*)` e `(**)`, il valore passato viene copiato nelle variabili locali `from` e `text`, che verranno utilizzate nella chiamata ad `alert`.
 
 Guardiamo un altro esempio: abbiamo una variabile `from` e la passiamo a una funzione. Da notare: la funzione cambia `from`, ma il cambiamento non è visibile all'esterno perché la funzione usa sempre una copia del valore passato:
-
 
 ```js run
 function showMessage(from, text) {
@@ -175,6 +172,18 @@ showMessage(from, "Hello"); // *Ann*: Hello
 alert( from ); // Ann
 ```
 
+Quando un valore viene passato come parametro di funzione, vine anche chiamato *argomento*.
+
+In altre parole
+In other words, per chiarire questi termini:
+
+- Un parametro è la variabile elencata tra parentesi nella dichiarazione della funzione (fa parte della dichiarazione).
+- Un argomento è il valore passato alla funzione quando viene chiamata (fa parte della chiamata).
+
+Dichiariamo le funzioni elencando i loro parametri, quindi le chiamiamo passando gli argomenti.
+
+Nell'esempio sopra, si potrebbe dire: "la funzione `showMessage` è dichiarata con due parametri, quindi viene chiamata con due argomenti: `from` and `"Hello"`".
+
 ## Valori di default
 
 Se non viene fornito alcun parametro, questa assume il valore `undefined`.
@@ -185,9 +194,9 @@ Ad esempio, la funzione menzionata sopra `showMessage(from, text)` può essere c
 showMessage("Ann");
 ```
 
-Questo non è un errore. Una chiamata simile mostrerà `"Ann: undefined"`.  Non c'è nessun valore `text`, quindi si assume che `text === undefined`.
+Questo non è un errore. Una chiamata simile mostrerà `"*Ann*: undefined"`. Siccome non viene passato nessun valore per `text`, questo è `undefined`.
 
-Se volessimo utilizzare un `text` di "default", dovremmo specificarlo dopo `=`:
+Possiamo specificare un cosiddetto valore "default" (da usare se l'argomento è omesso) per i parametri nella dichiarazione di funzione, usando `=`:
 
 ```js run
 function showMessage(from, *!*text = "no text given"*/!*) {
@@ -209,19 +218,23 @@ function showMessage(from, text = anotherFunction()) {
 ```
 
 ```smart header="Valutazione dei parametri di default"
-In JavaScript, un parametro di default viene valutato ogni volta che viene chiamata una funzione senza i rispettivi parametri. Nell'esempio sopra, `anotherFunctions()` viene richiamata ogni volta che `someMessage()` viene chiamata senza il parametro `text`.
+In JavaScript, un parametro di default viene valutato ogni volta che viene chiamata una funzione senza i rispettivo argomento. 
+
+Nell'esempio sopra, `anotherFunctions()` non viene chiamata se viene passato il parametro `text`.
+
+Viene invece chiamata ogni volta che il parametro manca.
 ```
 
+A volte ha senso assegnare valori default ai parametri, non nella dichiarazione della funzione, ma in una fase successiva.
 
-#Parametri di default alternativi
-In alcuni casi vorremmo assegnare un valore di default a un parametro non nella dichiarazione della funzione, ma dopo, durante la sua esecuzione. (inoltre, le vecchie edizioni di JavaScript non supportavano i parametri di default; quel che segue è un metodo per ovviare ad entrambe le necessità, e che potreste trovare di frequente nei vecchi script).
-
-Per controllare se un parametro è stato omesso possiamo compararlo con `undefined`:
+Possiamo verificare se il parametro viene passato durante l'esecuzione della funzione, confrontandolo con `undefined`:
 
 ```js run
 function showMessage(text) {
+  // ...
+
 *!*
-  if (text === undefined) {
+  if (text === undefined) { // if the parameter is missing
     text = 'empty message';
   }
 */!*
@@ -242,11 +255,12 @@ function showMessage(from, text) {
 }
 ```
 
-I moderni motori JavaScript supportano il [nullish coalescing operator](info:nullish-coalescing-operator) `??`, più efficiente quando valori falsi come `0`vengono considerati regolari:
+I moderni motori JavaScript supportano il [nullish coalescing operator](info:nullish-coalescing-operator) `??`, più efficiente quando valori falsi come `0` vengono considerati regolari:
 
 ```js run
 //se non c'è un parametro "count", mostra "unknown"
 function showCount(count) {
+  // if count is undefined or null, show "unknown"
   alert(count ?? "unknown");
 }
 

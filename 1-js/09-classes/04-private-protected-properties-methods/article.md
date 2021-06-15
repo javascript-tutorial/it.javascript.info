@@ -11,7 +11,7 @@ Solitamente, i dispositivi che utilizziamo sono piuttosto complessi. Poter delim
 
 ## Un esempio del mondo reale
 
-Prendiamo l'esempio di una macchina del caffè. Semplice all'esterno: un bottone, un dispaly, un paio di fori... E, ovviamente, il risultato: un ottimo caffè! :)
+Prendiamo l'esempio di una macchina del caffè. Semplice all'esterno: un bottone, un display, un paio di fori... E, ovviamente, il risultato: un ottimo caffè! :)
 
 ![](coffee.jpg)
 
@@ -192,7 +192,7 @@ Esiste una proposta JavaScript in via di approvazione, che fornisce il supporto 
 
 I campi privati dovrebbero essere preceduti da `#`. Questi saranno accessibili solamente dall'interno della classe.
 
-Ad esempio, qui abbiamo una proprietà privata `#waterLimit` e un metodo privato per il controllo del livello dell'acqua `#checkWater`:
+Ad esempio, qui abbiamo una proprietà privata `#waterLimit` e un metodo privato per il controllo del livello dell'acqua `#fixWaterAmount`:
 
 ```js run
 class CoffeeMachine {

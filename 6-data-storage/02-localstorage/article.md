@@ -125,17 +125,17 @@ Da notare che sia key che i value devono essere stringhe.
 Se ci fosse un altro tipo di dato, come un numero, o un object, verrebbe automaticamente convertito a stringa:
 
 ```js run
-sessionStorage.user = {name: "John"};
-alert(sessionStorage.user); // [object Object]
+localStorage.user = {name: "John"};
+alert(localStorage.user); // [object Object]
 ```
 
 Possiamo usare `JSON` per archiviare oggetti:
 
 ```js run
-sessionStorage.user = JSON.stringify({name: "John"});
+localStorage.user = JSON.stringify({name: "John"});
 
-// subito dopo
-let user = JSON.parse( sessionStorage.user );
+// successivamente
+let user = JSON.parse( localStorage.user );
 alert( user.name ); // John
 ```
 

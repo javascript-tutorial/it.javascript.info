@@ -65,7 +65,7 @@ Un ricerca simile, in uno degli esempi precedenti, funzionava con `pattern:/\d\.
 
 Il motivo è che i backslash vengono "consumati" dalla stringa. Ricordate, le stringhe "normali" hanno i loro caratteri speciali, come `\n`, e un backslash viene utilizzato per fare escaping.
 
-Così è come "\d\.\d" viene percepita:
+Ecco come "\d\.\d" viene percepita:
 
 ```js run
 alert("\d\.\d"); // d.d
