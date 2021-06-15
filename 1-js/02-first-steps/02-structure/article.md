@@ -45,7 +45,7 @@ alert(3 +
 + 2);
 ```
 
-Il codice stampa `6` perché, in questo caso, JavaScript non inserisce un punto e virgola. E' abbastanza ovvio che se la riga finisce con un `"+"`, allora è un "espressione incompleta", quindi il punto e virgola non verrà inserito. Per questo, nell'esempio sopra, tutto funziona come dovrebbe.
+Il codice stampa `6` perché, in questo caso, JavaScript non inserisce un punto e virgola. E' abbastanza ovvio che se la riga finisce con un `"+"`, allora è un "espressione incompleta", quindi il punto e virgola sarebbe errato. Per questo, nell'esempio sopra, tutto funziona come dovrebbe.
 
 **Ma ci sono casi in cui JavaScript "fallisce" nell'interpretare un punto e virgola, dove invece sarebbe necessario.**
 
@@ -55,39 +55,38 @@ Gli errori di questo tipo sono molto difficili da trovare e sistemare.
 Se sei curioso di vedere un esempio concreto di questo tipo di errore, dai un occhiata al seguente codice:
 
 ```js run
-[1, 2].forEach(alert)
+alert("Hello");
+
+[1, 2].forEach(alert);
 ```
 
 Non c'e bisogno di pensare al significato delle parentesi `[]` e al `forEach`. Li studieremo più avanti, per ora è sufficiente sapere il risultato: mostrerà `1` e poi `2`.
 
-Adesso andiamo ad aggiungere un `alert` prima del codice e *non* concludiamo la riga con il punto e virgola:
+Adesso andiamo a rimuovere il punto e virgola dopo `alert`:
 
 ```js run no-beautify
-alert("There will be an error")
+alert("Hello")
 
-[1, 2].forEach(alert)
+[1, 2].forEach(alert);
 ```
 
-Adesso se lo eseguiamo, solo il primo `alert` viene mostrato, poi avremmo un errore!
+La differenza rispetto al codice precedente è solo un carattere, il punto e virgola al termine della prima line è sparito.  
 
-Ma tutto si risolve aggiungendo un punto e virgola dopo `alert`:
-```js run
-alert("All fine now");
+Se eseguiamo il codice, verrà mostrato solo il primo `Hello` (ci sarà un errore, ma per visualizzarlo bisogna aprire la console). Non verranno più mostrati i numeri.
 
-[1, 2].forEach(alert)  
-```
+Questo perché JavaScript non inserisce il punto e virgola prima della parentesi quadre `[...]`. Quindi il codice viene interpretato come un singolo comando.
 
-Adesso avremmo il messaggio "All fine now", successivamente `1` seguito da `2`.
-
-L'errore nel non aver messo il punto e virgola è avvenuto perché JavaScript non inserisce automaticamente un punto e virgola prima delle parentesi quadre `[...]`.
-
-Quindi, poiché il punto e virgola non viene auto-inserito, il codice del precedente esempio viene trattato come un istruzione singola. Infatti il motore JavaScript lo vede cosi:
+Ecco come il motore interpreta il codice:
 
 ```js run no-beautify
-alert("There will be an error")[1, 2].forEach(alert)
+alert("Hello")[1, 2].forEach(alert);
 ```
 
-Anche se se in realtà sono due istruzioni separate, non una singola. Questo tipo di interpretazione, in questo caso è errata. Ci possono essere altre situazioni in cui si verifica questo tipo di errore.
+Looks weird, right? Such merging in this case is just wrong. We need to put a semicolon after `alert` for the code to work correctly.
+
+Sembra strano, vero? Questo comportamento in questo caso è errato. E' necessario mettere un punto e virgola dopo `alert` affinché il codice funzioni correttamente.
+
+Questo accade anche in altre situazioni.
 ````
 
 E' consigliato quindi, di inserire il punto e virgola fra ogni istruzione, anche se vengono scritte in righe diverse. Questa è una regola largamente adottata dalla community. Ripetiamolo nuovamente -- *è possibile* omettere il punto e virgola la maggior parte delle volte. Ma è più sicuro -- specialmente per un novizio -- inserirlo al termine di ogni istruzione.
@@ -110,7 +109,7 @@ alert('Hello');
 alert('World'); // Questo commento segue un istruzione
 ```
 
-**I commenti multilinea incominciano con un singolo carattere di slahs ed un asterisco <code>/&#42;</code> e finiscono con un asterisco ed un carattere di slash <code>&#42;/</code>.**
+**I commenti multilinea incominciano con un singolo carattere di slash ed un asterisco <code>/&#42;</code> e finiscono con un asterisco ed un carattere di slash <code>&#42;/</code>.**
 
 Come nell'esempio:
 

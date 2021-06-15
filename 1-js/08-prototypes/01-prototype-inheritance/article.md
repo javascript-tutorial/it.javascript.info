@@ -173,7 +173,7 @@ rabbit.walk = function() {
 rabbit.walk(); // Rabbit! Bounce-bounce!
 ```
 
-Da questo punto in poi, la chiamata `rabbit.walk()` troverà il metodo direttamente nell'oggetto e lo eseguirà, senza utilizare il prototype:
+Da questo punto in poi, la chiamata `rabbit.walk()` troverà il metodo direttamente nell'oggetto e lo eseguirà, senza utilizzare il prototype:
 
 ![](proto-animal-rabbit-walk-2.svg)
 

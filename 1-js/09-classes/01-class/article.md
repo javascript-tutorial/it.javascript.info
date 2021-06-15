@@ -144,7 +144,7 @@ Il risultato di questo codice è circa lo stesso. È quindi logico pensare che `
 
 Ci sono però delle importanti differenze.
 
-1. Una funzione creata attraverso `class` viene etichettata dalla proprietà interna `[[FunctionKind]]:"classConstructor"`.
+1. Una funzione creata attraverso `class` viene etichettata dalla speciale proprietà interna `[[IsClassConstructor]]: true`. Quindi non è esattamente uguale che crearla manualmente.
 
     A differenza di una normale funzione, il costruttore di una classe può essere richiamato solo attraverso la parola chiave `new`:
 

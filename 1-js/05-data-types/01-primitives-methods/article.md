@@ -41,7 +41,7 @@ Gli oggetti sono più "pesanti" dei tipi primitivi. Richiedono risorse extra per
 
 Questo è il paradosso contro cui si è scontato il creatore di JavaScript:
 
-- Esitono molte operazioni che uno sviluppatore vorrebbe poter fare con i diversi tipi primitivi, come una stringa o un numero. Sarebbe molto bello poter utilizzare questi tipi di dato con dei metodi.
+- Esistono molte operazioni che uno sviluppatore vorrebbe poter fare con i diversi tipi primitivi, come una stringhe o un numeri. Sarebbe molto bello poter accedere a dei metodi per questi tipi di dato.
 - I tipi primitivi devono essere veloci e il più leggeri possibile.
 
 La soluzione sembra un po' strana:

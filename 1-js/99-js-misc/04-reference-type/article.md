@@ -4,7 +4,7 @@
 ```warn header="Caratteristica avanzata di linguaggio"
 Questo articolo tratta un argomento avanzato, utile per capire meglio alcuni casi limite.
 
-Non è di fondamentale importanza. Molti sviluppatori esperti vivono bene senza esserne a conoscenza. Continua la lettura solamente se sei interessato a sapere come funzionano le cose internamente.
+Non è di fondamentale importanza. Molti sviluppatori esperti vivono bene senza esserne a conoscenza. Continua la lettura se sei interessato a sapere come funzionano le cose internamente.
 ```
 
 Un'invocazione di un metodo valutata dinamicamente può perdere il `this`.

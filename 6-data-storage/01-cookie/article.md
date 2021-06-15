@@ -259,7 +259,10 @@ Quindi, ciò che `samesite=lax` fa è semplicemente garantire alla più comune o
 
 Se questo ti è sufficiente, aggiungere `samesite=lax` probabilmente non intaccherà l'esperienza utente e, allo stesso tempo, aggiungerà protezione.
 
-Generalmente, `samesite` è un'opzione fantastica, ma con un importante svantaggio:
+Generalmente, `samesite` è un'ottima scelta.
+
+Ma c'è uno svantaggio:
+
 - `samesite` viene ignorato (non è supportato) dai vecchi browser, dal 2017 circa.
 
 **Quindi se ci affidiamo a `samesite` per garantire protezione, allora i vecchi browser saranno vulnerabili.**
