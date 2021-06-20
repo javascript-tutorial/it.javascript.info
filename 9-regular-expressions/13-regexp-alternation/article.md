@@ -1,14 +1,14 @@
-# Alternation (OR) |
+# Alternanza (OR) |
 
-Alternation is the term in regular expression that is actually a simple "OR".
+Alternanza è un termine usato nelle espressioni regolari che, in realtà, consiste in un semplice "OR".
 
-In a regular expression it is denoted with a vertical line character `pattern:|`.
+È indicata con un carattere di linea verticale `pattern:|`.
 
-For instance, we need to find programming languages: HTML, PHP, Java or JavaScript.
+Supponiamo di aver bisogno di trovare il nome di un linguaggio di programmazione: HTML, PHP, Java o JavaScript.
 
-The corresponding regexp: `pattern:html|php|java(script)?`.
+Ecco la regexp corrispondente: `pattern:html|php|java(script)?`.
 
-A usage example:
+Ed ora un esempio d'uso:
 
 ```js run
 let regexp = /html|php|css|java(script)?/gi;
@@ -18,50 +18,50 @@ let str = "First HTML appeared, then CSS, then JavaScript";
 alert( str.match(regexp) ); // 'HTML', 'CSS', 'JavaScript'
 ```
 
-We already saw a similar thing -- square brackets. They allow to choose between multiple characters, for instance `pattern:gr[ae]y` matches `match:gray` or `match:grey`.
+Abbiamo già incontrato una funzionalità simile: le parentesi quadre. Essi permettono di scegliere tra più caratteri, ad esempio `pattern:gr[ae]y` trova corrispondenza con `match:gray` o `match:grey`.
 
-Square brackets allow only characters or character classes. Alternation allows any expressions. A regexp `pattern:A|B|C` means one of expressions `A`, `B` or `C`.
+Le parentesi quadre consentono solo caratteri o classi di caratteri. L'alternanza consente qualsiasi espressione. Una regexp `pattern:A|B|C` significa una delle espressioni `A`, `B` o `C`.
 
-For instance:
+Per esempio:
 
-- `pattern:gr(a|e)y` means exactly the same as `pattern:gr[ae]y`.
-- `pattern:gra|ey` means `match:gra` or `match:ey`.
+- `pattern:gr(a|e)y` ha lo stesso identico significato di `pattern:gr[ae]y`.
+- `pattern:gra|ey` significa `match:gra` o `match:ey`.
 
-To apply alternation to a chosen part of the pattern, we can enclose it in parentheses:
-- `pattern:I love HTML|CSS` matches `match:I love HTML` or `match:CSS`.
-- `pattern:I love (HTML|CSS)` matches `match:I love HTML` or `match:I love CSS`.
+Per applicare l'alternanza ad una determinata parte di un pattern, dobbiamo racchiuderla tra parentesi:
+- `pattern:I love HTML|CSS` trova `match:I love HTML` o `match:CSS`.
+- `pattern:I love (HTML|CSS)` corrisponde a `match:I love HTML` o `match:I love CSS`.
 
-## Example: regexp for time
+## Esempio: regexp per un orario
 
-In previous articles there was a task to build a regexp for searching time in the form `hh:mm`, for instance `12:00`. But a simple `pattern:\d\d:\d\d` is too vague. It accepts `25:99` as the time (as 99 minutes match the pattern, but that time is invalid).
+Negli articoli precedenti abbiamo effettuato un'esercitazione per realizzare una regexp e trovare un orario nel formato `hh:mm`, ad esempio `12:00`. Un semplice `pattern:\d\d:\d\d`, tuttavia, è troppo impreciso. Accetta un orario come `25:99` (poiché 99 minuti trova corrispondenza nel pattern, ma non è un orario valido).
 
-How can we make a better pattern?
+Come possiamo migliorare questo pattern?
 
-We can use more careful matching. First, the hours:
+Possiamo cercare una corrispondenza più accurata. Per prima cosa, le ore:
 
-- If the first digit is `0` or `1`, then the next digit can be any: `pattern:[01]\d`.
-- Otherwise, if the first digit is `2`, then the next must be `pattern:[0-3]`.
-- (no other first digit is allowed)
+- Se la prima cifra è `0` o `1`, allora la cifra successiva può essere una qualsiasi: `pattern:[01]\d`.
+- Diversamente, se la prima cifra è `2`, la successiva deve essere `pattern:[0-3]`.
+- Non può esserci un altro carattere come prima cifra.
 
-We can write both variants in a regexp using alternation: `pattern:[01]\d|2[0-3]`.
+Possiamo scrivere entrambe le varianti in una regexp usando l'alternanza: `pattern:[01]\d|2[0-3]`.
 
-Next, minutes must be from `00` to `59`. In the regular expression language that can be written as `pattern:[0-5]\d`: the first digit `0-5`, and then any digit.
+I minuti a seguire, essi devono essere compresi in un intervallo tra `00` e `59`. In un'espressione regolare ciò può essere reso come `pattern:[0-5]\d`: la prima cifra `0-5`, quindi un numero qualsiasi.
 
-If we glue hours and minutes together, we get the pattern: `pattern:[01]\d|2[0-3]:[0-5]\d`.
+Unendo le ore con i minuti otteniamo il pattern seguente: `pattern:[01]\d|2[0-3]:[0-5]\d`.
 
-We're almost done, but there's a problem. The alternation `pattern:|` now happens to be between `pattern:[01]\d` and `pattern:2[0-3]:[0-5]\d`.
+Abbiamo quasi finito, ma c'è ancora un problema. L'alternanza `pattern:|` al momento sembra avvenire tra `pattern:[01]\d` e `pattern:2[0-3]:[0-5]\d`.
 
-That is: minutes are added to the second alternation variant, here's a clear picture:
+In altre parole: i minuti sono aggiunti al secondo termine dell'alternanza, ecco una rappresentazione più chiara:
 
 ```
 [01]\d  |  2[0-3]:[0-5]\d
 ```
 
-That pattern looks for `pattern:[01]\d` or `pattern:2[0-3]:[0-5]\d`.
+Questo pattern cerca `pattern:[01]\d` o `pattern:2[0-3]:[0-5]\d`.
 
-But that's wrong, the alternation should only be used in the "hours" part of the regular expression, to allow `pattern:[01]\d` OR `pattern:2[0-3]`. Let's correct that by enclosing "hours" into parentheses: `pattern:([01]\d|2[0-3]):[0-5]\d`.
+Non è quello che vogliamo, l'alternanza dovrebbe riguardare solo le ore e consentire `pattern:[01]\d` o `pattern:2[0-3]`. Correggiamo racchiudendo le ore tra parentesi: `pattern:([01]\d|2[0-3]):[0-5]\d`.
 
-The final solution:
+Ed ecco la soluzione definitiva:
 
 ```js run
 let regexp = /([01]\d|2[0-3]):[0-5]\d/g;
