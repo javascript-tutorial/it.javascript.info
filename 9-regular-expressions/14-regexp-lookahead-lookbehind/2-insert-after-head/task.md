@@ -1,10 +1,10 @@
-# Insert After Head
+# Inserimento dopo la sezione head
 
-We have a string with an HTML Document.
+Abbiamo una stringa e un documento HTML.
 
-Write a regular expression that inserts `<h1>Hello</h1>` immediately after `<body>` tag. The tag may have attributes.
+Scrivete un'espressione regolare che inserisca `<h1>Hello</h1>` subito dopo il tag `<body>`. Il tag può avere degli attributi.
 
-For instance:
+Per esempio:
 
 ```js
 let regexp = /your regular expression/;
@@ -20,7 +20,7 @@ let str = `
 str = str.replace(regexp, `<h1>Hello</h1>`);
 ```
 
-After that the value of `str` should be:
+Dopo l'inserimento il valore di `str` dovrebbe essere:
 ```html
 <html>
   <body style="height: 200px"><h1>Hello</h1>
