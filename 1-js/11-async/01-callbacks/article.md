@@ -2,12 +2,12 @@
 
 # Introduzione: callbacks
 
-```warn header="Utilizeremo i metodi browser in questi esempi"
-Per dimostrare l'utilizzo di callbacks, promise ed altri concetti astratti, utilizzeremo alcuni metodi del browser: nello specifico, caricamento di script e sempliici manipolazioni del documento.
+```warn header="Utilizzeremo i metodi browser in questi esempi"
+Per dimostrare l'utilizzo di callbacks, promise ed altri concetti astratti, utilizzeremo alcuni metodi del browser: nello specifico, caricamento di script e semplici manipolazioni del documento.
 
 Se questi metodi non vi sono familiari, e il loro utilizzo negli esempi vi risulta di difficile comprensione, potreste voler leggere un paio di capitolo della [prossima parte](/document) del tutorial.
 
-Anche se, povreremo a mantenere le spiegazioni più chiare possibili. Non ci sarà nulla di realmente complesso dal punto di vista del browser.
+Anche se, proveremo a mantenere le spiegazioni più chiare possibili. Non ci sarà nulla di realmente complesso dal punto di vista del browser.
 ```
 
 Molte funzioni vengono fornite da ambienti JavaScript che permettono di schedulare azioni *asincrone*. In altre parole, azioni che iniziano ora, ma finiranno in un secondo momento.
@@ -28,7 +28,7 @@ function loadScript(src) {
 }
 ```
 
-Lo scopo della funzione è quello di caricare un nuovo script. Quando aggiunge il tag `<script src="…">` al documento, il browser lo caricherà ed eseguirà.
+La funzione inserisce nel documento il nuovo script creato dinamicamente `<script src="…">` con il dato `src`. Il browser eseguità automaticamente il caricamento ed una volta terminato eseguirà lo script.
 
 Possiamo usare la funzione in questo modo:
 
@@ -37,7 +37,7 @@ Possiamo usare la funzione in questo modo:
 loadScript('/my/script.js');
 ```
 
-La funzione è chiamata "asincronamente", perché l'azione (il caricamento dello script) non finirà adesso ma in seguito.
+La funzione è chiamata in modo asincrono, perché l'azione (il caricamento dello script) non finirà adesso ma in seguito.
 
 Se c'è del codice sotto `loadScript(…)`, non dovrà attender fino al caricamento dello script.
 
@@ -103,12 +103,12 @@ function loadScript(src, callback) {
 *!*
 loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', script => {
   alert(`Cool, the ${script.src} is loaded`);
-  alert( _ ); // funzione dichiatata nello script caricato
+  alert( _ ); // funzione dichiarata nello script caricato
 });
 */!*
 ```
 
-Questo è lo stile di programmazione asincrona "callback-based". Una funzione che fa qualcosa asincronamente dovrebbe prevedere un argomento `callback` in cui mettiamo la funzione da eseguire al completamento dell'operazione asincrona.
+Questo è lo stile di programmazione asincrona "callback-based". Una funzione che fa qualcosa in modo asincrono dovrebbe prevedere un argomento `callback` in cui mettiamo la funzione da eseguire al completamento dell'operazione asincrona.
 
 In questo esempio lo abbiamo fatto in `loadScript` ma, ovviamente, è un approccio generale.
 

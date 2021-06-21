@@ -60,10 +60,10 @@ In altre parole, un numero negativo dopo `"e"` significa una divisione per 1 seg
 
 ```js
 // -3 divide 1 con 3 zeri
-1e-3 = 1 / 1000 (=0.001)
+1e-3 = 1 / 1000; // 0.001
 
 // -6 divide 1 con 6 zeri
-1.23e-6 = 1.23 / 1000000 (=0.00000123)
+1.23e-6 = 1.23 / 1000000; // 0.00000123
 ```
 
 ### Numeri esadecimali, binari e ottali
@@ -440,7 +440,7 @@ Per diversi sistemi numerici:
 
 Per convertire a numeri valori del tipo `12pt` e `100px`:
 
-- Utilizzate parseInt/parseFloat per un conversione "soft", i quali provano a leggere un numero da una stringa e ritornano ciò che sono riusciuti ad estrarre prima di interrompersi.
+- Utilizzate parseInt/parseFloat per un conversione "soft", i quali provano a leggere un numero da una stringa e ritornano ciò che sono riusciti ad estrarre prima di interrompersi.
 
 Per i numeri con la virgola:
 
