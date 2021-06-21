@@ -267,4 +267,4 @@ L'algoritmo di conversione segue questi passi:
 
 Nella pratica, spesso è sufficiente implementare solo `obj.toString()` come metodo che "cattura tutte" le conversioni e ritorna una rappresentazione dell'oggetto "interpretabile dall'uomo", per mostrarlo o per il debugging.
 
-Per quanto riguarda le operazioni matematiche, JavaScript non fornisce un modo per "sovrascriverle" utilizzando i metodi, quindi vengono raramente utilizzate in progetti reali.
+Per quanto riguarda le operazioni matematiche, JavaScript non fornisce un modo per "sovrascriverle" utilizzando i metodi, quindi vengono raramente utilizzate sugli oggetti.

@@ -139,22 +139,29 @@ Ora un esempio: il seguente campo `<input>` si aspetta un numero di telefono, qu
 ```html autorun height=60 run
 <script>
 function checkPhoneKey(key) {
-  return (key >= '0' && key <= '9') || key == '+' || key == '(' || key == ')' || key == '-';
+  return (key >= '0' && key <= '9') || ['+','(',')','-'].includes(key);
 }
 </script>
 <input *!*onkeydown="return checkPhoneKey(event.key)"*/!* placeholder="Inserire un numero di telefono" type="tel">
 ```
 
+Qui il gestore `onkeydown` utilizza `checkPhoneKey` per controllare i testi premuti. Se sono validi (da `0..9` o uno tra `+-()`), allora ritorna `true`, altrimenti `false`.
+
+Come sappiamo, il valore `false` restituito da un gestore di evento, assegnato usando un attributo o una proprietà DOM, come in questo caso, previene l'azione default, quindi non appare nulla in `<input>` per i tasti che non passano il tets. (Il valore `true` restituito non influenza nulla, conta solo la restituzione di `false`)
+
 È interessante notare che i tasti speciali, come `key:Backspace`, `key:Left`, `key:Right`, `key:Ctrl+V`, non funzionano nel campo input. Questo è un effetto collaterale delle restrizioni del filtro `checkPhoneKey`.
 
-Facciamolo "rilassare" un attimo:
+Rendiamolo un po' più rilassato permettendo i tasti freccia `key:Left`, `key:Right` e `key:Delete`, `key:Backspace`::
 
+Please note that special keys, such as `key:Backspace`, `key:Left`, `key:Right`, do not work in the input. That's a side-effect of the strict filter `checkPhoneKey`. These keys make it return `false`.
+
+Let's relax the filter a little bit by allowing arrow keys `key:Left`, `key:Right` and `key:Delete`, `key:Backspace`:
 
 ```html autorun height=60 run
 <script>
 function checkPhoneKey(key) {
-  return (key >= '0' && key <= '9') || key == '+' || key == '(' || key == ')' || key == '-' ||
-    key == 'ArrowLeft' || key == 'ArrowRight' || key == 'Delete' || key == 'Backspace';
+  return (key >= '0' && key <= '9') ||
+    ['+','(',')','-',*!*'ArrowLeft','ArrowRight','Delete','Backspace'*/!*].includes(key);
 }
 </script>
 <input onkeydown="return checkPhoneKey(event.key)" placeholder="Phone, please" type="tel">
@@ -162,7 +169,9 @@ function checkPhoneKey(key) {
 
 Adesso le frecce e il tasto cancella funzionano.
 
-...Tuttavia, siamo ancora in grado di inserire qualunque valore, usando il mouse, attraverso la funzionalità tasto destro + Incolla. Quindi il filtro non è al 100% affidabile. Volendo, possiamo lasciarlo così, dato che funzionerà la maggior parte delle volte. Un approccio alternativo, invece, potrebbe essere quello di tenere traccia dell'evento `input`, che scaturisce dopo ogni modifica al campo di testo. In questo modo possiamo sempre verificare il nuovo valore ed evidenziarlo/modificarlo se non ritenuto valido.
+Anche se abbiamo il filtro chiave, è comunque possibile inserire qualsiasi cosa utilizzando il mouse e facendo clic con il pulsante destro del mouse + Incolla. I dispositivi mobili forniscono altri mezzi per immettere valori. Quindi il filtro non è affidabile al 100%.
+
+L'approccio alternativo sarebbe quello di tenere traccia dell'evento `oninput`, che si attiva *dopo* qualsiasi modifica. Lì possiamo controllare il nuovo `input.value` e modificarlo/evidenziare `<input>` quando non è valido. Oppure possiamo usare entrambi i gestori di evento insieme.
 
 ## Eredità
 

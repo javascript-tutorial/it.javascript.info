@@ -116,7 +116,7 @@ class CoffeeMachine {
 let coffeeMachine = new CoffeeMachine(100);
 
 // aggiungiamo acqua
-coffeeMachine.waterAmount = -10; // Errore: valore dell'acqua negativo 
+coffeeMachine.waterAmount = -10; // _waterAmount diventerà 0, non -10
 ```
 
 Ora l'accesso è sotto controllo, quindi non è più possibile impostare la quantità d'acqua ad un valore negativo.
