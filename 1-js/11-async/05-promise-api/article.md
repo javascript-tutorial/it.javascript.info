@@ -18,7 +18,11 @@ let promise = Promise.all([...promises...]);
 
 `Promise.all` accetta un array di promise (tecnicamente si può usare qualsiasi iterabile, ma solitamente si usa un array) e ritorna una nuova promise.
 
+<<<<<<< HEAD
 La nuova promise risolve (resolves) quando tutte le promise elencate sono ferme (settled) ed ha un array dei loro risultati (?).
+=======
+The new promise resolves when all listed promises are resolved, and the array of their results becomes its result.
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 Per esempio, il `Promise.all` sotto si ferma (settles) dopo 3 secondi, ed il suo risultato è un array `[1, 2, 3]`:
 

@@ -28,7 +28,11 @@ function loadScript(src) {
 }
 ```
 
+<<<<<<< HEAD
 Lo scopo della funzione è quello di caricare un nuovo script. Quando aggiunge il tag `<script src="…">` al documento, il browser lo caricherà ed eseguirà.
+=======
+It inserts into the document a new, dynamically created, tag `<script src="…">` with the given `src`. The browser automatically starts loading it and executes when complete.
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 Possiamo usare la funzione in questo modo:
 

@@ -47,6 +47,10 @@ Lasciamo il compito in questione al lettore come esercizio. Inoltre, alla fine d
 Possiamo scrivere nel `document.cookie`. Ma fate attenzione che questa non è una proprietà, ma piuttosto un metodo di accesso (getter/setter) per leggere e scrivere.
 Un assegnazione a quest'ultimo è trattato in modo particolare.
 
+<<<<<<< HEAD
+=======
+We can write to `document.cookie`. But it's not a data property, it's an [accessor (getter/setter)](info:property-accessors). An assignment to it is treated specially.
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 **Un'operazione di scritture nel `document.cookie` aggiorna solo i cookies menzionati all interno del documento stesso, ma non affligge altri cookies.**
 

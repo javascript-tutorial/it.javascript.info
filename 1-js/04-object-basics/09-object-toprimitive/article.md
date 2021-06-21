@@ -9,7 +9,11 @@ Nel caso si effettuassero queste operazioni, gli oggetti vengono convertiti auto
 
 Questa è un'importante limitazione, in quanto il risultato di `obj1 + obj2` non può essere un altro oggetto!
 
+<<<<<<< HEAD
 Per esempio. non possiamo creare oggetti che rappresentano vettori o matrici (o archievements o altro), sommarli ed aspettarsi un oggetto "somma" come risultato. Tali architetture non sono contemplate.
+=======
+E.g. we can't make objects representing vectors or matrices (or achievements or whatever), add them and expect a "summed" object as the result. Such architectural feats are automatically "off the board".
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 Quindi, poiché non possiamo intervenire, non c'è matematica con oggetti in progetti reali. Quando succede, di solito è a causa di un errore di codice.
 
@@ -127,8 +131,13 @@ Come possiamo vedere nel codice, `user` diventa una stringa auto-descrittiva o u
 
 Non esiste alcun `Symbol.toPrimitive` quindi JavaScript prova a trovare i metodi `toString` e `valueOf`:
 
+<<<<<<< HEAD
 - Per "string" hint: `toString`, e se non esiste, `valueOf` (quindi `toString` ha la priorità per la conversione di stringhe).
 - Per altri hints: `valueOf`, e se non esiste, `toString` (quindi `valueOf` ha la priorità per le operazioni matematiche).
+=======
+- For the "string" hint: `toString`, and if it doesn't exist, then `valueOf` (so `toString` has the priority for string conversions).
+- For other hints: `valueOf`, and if it doesn't exist, then `toString` (so `valueOf` has the priority for maths).
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
 
 Mi metodi `toString` arrivano `valueOf` da molto lontano. Non sono symbols (i symbols non esistevano tempo fa), ma piuttosto "normali" metodi. Forniscono un modo alternativo "vecchio stile" per implementare la conversione.
 
@@ -267,4 +276,8 @@ L'algoritmo di conversione segue questi passi:
 
 Nella pratica, spesso è sufficiente implementare solo `obj.toString()` come metodo che "cattura tutte" le conversioni e ritorna una rappresentazione dell'oggetto "interpretabile dall'uomo", per mostrarlo o per il debugging.
 
+<<<<<<< HEAD
 Per quanto riguarda le operazioni matematiche, JavaScript non fornisce un modo per "sovrascriverle" utilizzando i metodi, quindi vengono raramente utilizzate in progetti reali.
+=======
+As for math operations, JavaScript doesn't provide a way to "override" them using methods, so real life projects rarely use them on objects.
+>>>>>>> 8558fa8f5cfb16ef62aa537d323e34d9bef6b4de
