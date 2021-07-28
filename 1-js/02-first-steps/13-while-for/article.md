@@ -379,7 +379,11 @@ label: {
 }
 ```
 
+<<<<<<< HEAD
 ...Comunque, nel 99.9% dei casi, `break` viene usato nei cicli, come abbiamo visto negli esempi precedenti.
+=======
+...Although, 99.9% of the time `break` is used inside loops, as we've seen in the examples above.
+>>>>>>> ef8d576821ff28c69bfb7410dc79fd216b0a315b
 
 La chiamata a `continue` è possibile solo dall'interno di un ciclo
 ````
