@@ -199,8 +199,13 @@ Dovresti aprire questa pagina in due browser per testare il seguente codice.
 Se entrambe le finestre sono connesse a `window.onstorage`, allora reagiranno agli aggiornamenti che accadono in una delle due.
 
 ```js run
+<<<<<<< HEAD
 // attiva un aggiornamento fatto dallo stesso archivio degli altri documenti
 window.onstorage = event => { // identico a window.addEventListener('storage', event => {
+=======
+// triggers on updates made to the same storage from other documents
+window.onstorage = event => { // can also use window.addEventListener('storage', event => {
+>>>>>>> ef8d576821ff28c69bfb7410dc79fd216b0a315b
   if (event.key != 'now') return;
   alert(event.key + ':' + event.newValue + " at " + event.URL);
 };
