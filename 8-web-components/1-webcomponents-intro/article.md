@@ -26,9 +26,15 @@ La Stazione Spaziale Internazionale:
 
 ...E questa cosa orbita, mantenendo delle persone in vita nello spazio!
 
+<<<<<<< HEAD
 Come vengono create delle strutture così complesse?
 
 Quali principi possiamo prendere in prestito, per rendere il nostro sviluppo affidabile e scalabile allo stesso modo? O almeno, per quanto possibile, avvicinarci un po'.
+=======
+How are such complex devices created?
+
+Which principles could we borrow to make our development same-level reliable and scalable? Or, at least, close to it?
+>>>>>>> bc08fd1b32285304b14afea12a9deaa10d13452b
 
 ## Architettura di un componente
 
