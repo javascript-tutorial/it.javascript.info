@@ -280,7 +280,7 @@ alert( "Again " + worker.slow(3, 5) ); // anche qui funziona (dalla cache)
 
 Ora funziona con qualsiasi numero di argomenti (anche la funzione hash dovrebbe essere sistemata per consentire un numero qualsiasi di argomenti. Un modo interessante per farlo sarà trattato di seguito).
 
-Ci sono du cambiamenti:
+Ci sono due cambiamenti:
 
 - Nella linea `(*)` viene chiamato `hash` per creare una chiave unica da `arguments`. In questo caso abbiamo usato una semplice funzione di unione che trasforma gli argomenti `(3, 5)` nella chiave `"3,5"`. Casi più complessi potrebbero richiedere approcci differenti per la funzione di *hashing*.
 - Successivamente `(**)` usa `func.call(this, ...arguments)` per passare alla funzione originale sia il contesto che tutti gli argomenti ricevuti dal *wrapper*.
