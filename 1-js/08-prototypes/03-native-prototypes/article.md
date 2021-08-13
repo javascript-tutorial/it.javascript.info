@@ -94,7 +94,7 @@ Gli altri ogetti integrati funzionano allo stesso modo. Anche le funzioni -- poi
 function f() {}
 
 alert(f.__proto__ == Function.prototype); // true
-alert(f.__proto__.__proto__ == Object.prototype); // true, eredita da objects
+alert(f.__proto__.__proto__ == Object.prototype); // true, eredità da objects
 ```
 
 ## Primitivi
@@ -103,7 +103,7 @@ La situazione è molto più complessa con strings, numbers e booleans.
 
 Come abbiamo già visto, questi non sono oggetti. Ma se proviamo ad accedere alle loro proprietà, viene creato un oggetto temporaneo utilizzando i rispettivi costruttori `String`, `Number` e `Boolean`. Essi forniscono metodi e poi spariscono.
 
-Questi oggetti vengono creati di "nascosto" e in realtà molti motori ottimizzano il loro utilizzo, ma la specifica li descrive in questo modo. I metodi di questi oggetti sono memorizzati in proprietà del loro prototype, e sono disponibili tramite `String.prototype`, `Number.prototype` e `Boolean.prototype`.
+Questi oggetti vengono creati di "nascosto" e in realtà molti motori ottimizzano il loro utilizzo, ma la specifica li descrive in questo modo. I metodi di questi oggetti sono memorizzati nella proprietà del loro prototype, e sono disponibili tramite `String.prototype`, `Number.prototype` e `Boolean.prototype`.
 
 ```warn header="I valori `null` e `undefined` non possiedono degli oggetti che li contengono"
 I valori speciali `null` e `undefined` si comportano diversamente. Non possiedono degli oggetti contenitori, quindi non avremmo a disposizione proprietà e metodi. E non avremmo nemmeno il propotype corrispondente.
