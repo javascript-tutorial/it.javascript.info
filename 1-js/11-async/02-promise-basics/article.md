@@ -107,7 +107,7 @@ La ragione di questo sarà presto evidente.
 
 ````smart header="Chiamare immediatamente `resolve`/`reject`"
 In pratica, un esecutore di norma fa qualcosa in modo asincrono e chiama `resolve`/`reject` dopo un po' di tempo, ma non è obbligato a farlo. Possiamo anche chiamare `resolve` o `reject` immediatamente, come sotto:
-````
+
 
 ```js
 let promise = new Promise(function(resolve, reject) {
@@ -121,9 +121,9 @@ Per esempio, questo può accadere quando iniziamo a fare un lavoro ma poi vediam
 Questo va bene. Abbiamo immediatamente una Promise soddisfatta, non c'è niente di sbagliato in questo.
 ````
 
-```smart header="`state` e `result` sono interni"
+````smart header="`state` e `result` sono interni"
 Le proprietà `state` e `result` dell'oggetto Promise sono interne. Non possiamo accedervi direttamente dal nostro "codice consumatore". Possiamo usare i metodi `.then`/`.catch`/`.finally` per questo. Questi metodi sono descritti sotto.
-```
+````
 
 ## Consumatori (consumers): then, catch, finally
 
