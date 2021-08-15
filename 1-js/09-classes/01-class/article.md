@@ -166,7 +166,7 @@ Ci sono però delle importanti differenze.
 
         alert(User); // class User { ... }
     ```
-    Ci sono altre differenze, gli scopriremo più avanti.
+    Ci sono altre differenze, che scopriremo più avanti.
 
 2. I metodi delle classi non sono     numerabili. La definizione di una classe imposta il flag `enumerable` a `false` per tutti i metodi all'interno di `"prototype"`.
 
