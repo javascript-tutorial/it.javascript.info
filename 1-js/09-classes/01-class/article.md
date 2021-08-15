@@ -337,7 +337,7 @@ alert(user.name); // John
 
 ### Creazione di metodi vincolati a campi di classe
 
-Come dimostrato nel capitolo <info:bind> le funzioni in JavaScript hanno un `this` dinamico. Dipende dal contesto della chiamata.
+Come dimostrato nel capitolo <info:bind>, le funzioni in JavaScript hanno un `this` dinamico che dipende dal contesto della chiamata.
 
 Quindi, se un metodo di un object viene passato e chiamato in un altro contesto, `this` non sarà più un riferimento al suo object.
 
