@@ -4,7 +4,11 @@
 ```smart header="Questo articolo è utile per la comprensione dei vecchi script"
 Le informazioni contenute in questo articolo sono utili per la comprensione dei vecchi script.
 
+<<<<<<< HEAD
 Non è il modo corretto di scrive il codice oggi.
+=======
+That's not how we write new code.
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 ```
 
 Nei primi capitoli in cui abbiamo parlato di [variabili](info:variables), abbiamo menzionato tre diversi tipi di dichiarazione:
