@@ -76,7 +76,11 @@ Ad esempio, il seguente codice previene tutti questi eventi, mostrando cosa stia
 
 Nota bene, è possibile copiare/incollare non soltanto testo, ma qualunque cosa. Per esempio possiamo copiare un file nel sistema operativo ed incollarlo nel documento.
 
+<<<<<<< HEAD
 Questo perché `clipboardData` implementa l'interfaccia `DataTransfer`, usata comunemente per il drag'n'drop ed il copia/incolla. Va un pochino oltre i nostri scopi, ma puoi trovare i relativi metodi [nelle specifiche](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
+=======
+That's because `clipboardData` implements `DataTransfer` interface, commonly used for drag'n'drop and copy/pasting. It's bit beyond our scope now, but you can find its methods [in the specification](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
+>>>>>>> 4d01fc20d4d82358e61518a31efe80dec9bb2602
 
 ```warn header="ClipboardAPI: restrizione per la sicurezza dell'utente"
 La clipboard è una caratteristica "globale" a livello del sistema operativo. I browser quindi, per ragioni di sicurezza, consentono l'accesso in lettura/scrittura solo per certe azioni dell'utente, ad esempio nei gestori evento `onclick`.
