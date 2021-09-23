@@ -86,7 +86,7 @@ alert( firstMatch.index );  // 0
 alert( firstMatch.input );  // <h1>Hello, world!</h1>
 ```
 
-Se usiamo `for..of` to loop over le corrispondenze di `matchAll`, non necessitiamo più di `Array.from`.
+Se usiamo `for..of` per accedere alle corrispondenze di `matchAll`, non necessitiamo più di `Array.from`.
 
 ## str.split(regexp|substr, limit)
 
@@ -254,14 +254,14 @@ Si comporta differentemente a seconda della presenza o meno della flag `pattern:
 Se non c'è `pattern:g`, `regexp.exec(str)` restituisce la prima corrispondenza, esattamente come  `str.match(regexp)`. Questo comportamento non comporta niente di nuovo.
 
 Ma se c'è una flag `pattern:g`, allora:
-- A call to `regexp.exec(str)` returns the first match and saves the position immediately after it in the property `regexp.lastIndex`.
-- The next such call starts the search from position `regexp.lastIndex`, returns the next match and saves the position after it in `regexp.lastIndex`.
-- ...And so on.
-- If there are no matches, `regexp.exec` returns `null` and resets `regexp.lastIndex` to `0`.
+- Una chiamata a `regexp.exec(str)` restituisce la prima corrispondenza e salva la posizione immediatamente successiva a essa nella proprietà `regexp.lastIndex`.
+- La successiva chiamata di tale tipo inizia la ricerca a partire dalla posizione `regexp.lastIndex`, restituisce la corrispondenza successiva e salva la posizione seguente in `regexp.lastIndex`.
+- ...E così via.
+- Se non esistono corrispondenze, `regexp.exec` restituisce `null` e reimposta `regexp.lastIndex` a `0`.
 
-So, repeated calls return all matches one after another, using property `regexp.lastIndex` to keep track of the current search position.
+Perciò, chiamate ripetute restituiscono tutte le corrispondenze una dopo l'altra, usando la proprietà `regexp.lastIndex` per tenere traccia della posizione di ricerca corrente.
 
-In the past, before the method `str.matchAll` was added to JavaScript, calls of `regexp.exec` were used in the loop to get all matches with groups:
+Nel passato, prima che il metodo `str.matchAll` fosse implementato in JavaScript, le chiamate a `regexp.exec` erano usate nel loop per ottenere tutte le corrispondenze con i gruppi:
 
 ```js run
 let str = 'More about JavaScript at https://javascript.info';
@@ -271,56 +271,56 @@ let result;
 
 while (result = regexp.exec(str)) {
   alert( `Found ${result[0]} at position ${result.index}` );
-  // Found JavaScript at position 11, then
-  // Found javascript at position 33
+  // JavaScript trovato alla posizione 11, quindi
+  // javascript trovato alla posizione 33
 }
 ```
 
-This works now as well, although for newer browsers `str.matchAll` is usually more convenient.
+Questo funziona anche adesso, anche se per i browser moderni solitamente `str.matchAll` è più conveniente.
 
-**We can use `regexp.exec` to search from a given position by manually setting `lastIndex`.**
+**Possiamo usare `regexp.exec` per cercare a partire da una posizione data impostando manualmente `lastIndex`.**
 
-For instance:
+Per esempio:
 
 ```js run
 let str = 'Hello, world!';
 
-let regexp = /\w+/g; // without flag "g", lastIndex property is ignored
-regexp.lastIndex = 5; // search from 5th position (from the comma)
+let regexp = /\w+/g; // senza la flag "g", la proprietà lastIndex viene ignorata
+regexp.lastIndex = 5; // ricerca a partire dalla quinta posizione (dalla virgola)
 
 alert( regexp.exec(str) ); // world
 ```
 
-If the regexp has flag `pattern:y`, then the search will be performed exactly at the  position `regexp.lastIndex`, not any further.
+Se l'espressione regolare presenta la flag `pattern:y`, la ricerca sarà eseguita esattamente alla posizione `regexp.lastIndex`, senza andare oltre.
 
-Let's replace flag `pattern:g` with `pattern:y` in the example above. There will be no matches, as there's no word at position `5`:
+Sostituiamo la flag `pattern:g` con `pattern:y` nell'esempio sopra. Non ci saranno corrispondenze, in quanto non c'è una parola alla posizione `5`:
 
 ```js run
 let str = 'Hello, world!';
 
 let regexp = /\w+/y;
-regexp.lastIndex = 5; // search exactly at position 5
+regexp.lastIndex = 5; // ricerca esattamente alla posizione 5
 
 alert( regexp.exec(str) ); // null
 ```
 
-That's convenient for situations when we need to "read" something from the string by a regexp at the exact position, not somewhere further.
+Ciò è conveniente per le situazioni in cui abbiamo bisogno di "leggere" qualcosa dalla stringa con un'espressione regolare alla posizione esatta, non da qualche parte più lontano.
 
 ## regexp.test(str)
 
-The method `regexp.test(str)` looks for a match and returns `true/false` whether it exists.
+Il metodo `regexp.test(str)` cerca una corrispondenza e restituisce `true/false` a seconda della sua esistenza.
 
-For instance:
+Per esempio:
 
 ```js run
 let str = "I love JavaScript";
 
-// these two tests do the same
+// questi due esempi fanno la stessa cosa
 alert( *!*/love/i*/!*.test(str) ); // true
 alert( str.search(*!*/love/i*/!*) != -1 ); // true
 ```
 
-An example with the negative answer:
+Un esempio con la risposta negativa:
 
 ```js run
 let str = "Bla-bla-bla";
@@ -329,33 +329,33 @@ alert( *!*/love/i*/!*.test(str) ); // false
 alert( str.search(*!*/love/i*/!*) != -1 ); // false
 ```
 
-If the regexp has flag `pattern:g`, then `regexp.test` looks from `regexp.lastIndex` property and updates this property, just like `regexp.exec`.
+Se l'espressione regolare ha la flag `pattern:g`, `regexp.test` cerca dalla proprietà `regexp.lastIndex` e l'aggiorna, come fa `regexp.exec`.
 
-So we can use it to search from a given position:
+Pertanto possiamo usarlo per cercare da una posizione data:
 
 ```js run
 let regexp = /love/gi;
 
 let str = "I love JavaScript";
 
-// start the search from position 10:
+// la ricerca inizia dalla posizione 10:
 regexp.lastIndex = 10;
-alert( regexp.test(str) ); // false (no match)
+alert( regexp.test(str) ); // false (nessuna corrispondenza)
 ```
 
 ````warn header="Same global regexp tested repeatedly on different sources may fail"
-If we apply the same global regexp to different inputs, it may lead to wrong result, because `regexp.test` call advances `regexp.lastIndex` property, so the search in another string may start from non-zero position.
+Se applichiamo la stessa espressione regolare globale a input differenti, potrebbe produrre un risultato sbagliato, poiché la chiamata di `regexp.test` manda avanti la proprietà `regexp.lastIndex`, pertanto la ricerca in un'altra stringa potrebbe iniziare da una posizione diversa da 0.
 
-For instance, here we call `regexp.test` twice on the same text, and the second time fails:
+Per esempio, qui chiamiamo `regexp.test` due volte sullo stesso testo, e la seconda volta fallisce:
 
 ```js run
-let regexp = /javascript/g;  // (regexp just created: regexp.lastIndex=0)
+let regexp = /javascript/g;  // (espressione regolare appena creata: regexp.lastIndex=0)
 
-alert( regexp.test("javascript") ); // true (regexp.lastIndex=10 now)
+alert( regexp.test("javascript") ); // true (ora regexp.lastIndex=10)
 alert( regexp.test("javascript") ); // false
 ```
 
-That's exactly because `regexp.lastIndex` is non-zero in the second test.
+Ciò avviene esattamente perché `regexp.lastIndex` è diverso da 0 nella seconda prova.
 
-To work around that, we can set `regexp.lastIndex = 0` before each search. Or instead of calling methods on regexp, use string methods `str.match/search/...`, they don't use `lastIndex`.
+Per risolvere, possiamo impostare `regexp.lastIndex = 0` prima di ogni ricerca. O invece di chiamare metodi sull'espressione regolare, usare i metodi delle stringhe `str.match/search/...`; essi non usano `lastIndex`.
 ````
