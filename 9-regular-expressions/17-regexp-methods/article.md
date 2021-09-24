@@ -19,12 +19,12 @@ Ha 3 modalità:
     alert( result[1] );     // Script (primo gruppo di acquisizione)
     alert( result.length ); // 2
 
-    // Additional information:
+    // Informazioni aggiuntive:
     alert( result.index );  // 7 (posizione della corrispondenza)
     alert( result.input );  // I love JavaScript (stringa sorgente)
     ```
 
-2. Se la `regexp` presenta la flag `pattern:g`, restituisce un array contenente tutte le corrispondenze sotto forma di stringhe, senza i gruppi di acquisizione né ulteriori dettagli.
+2. Se la `regexp` presenta la flag `pattern:g`, restituisce un array contenente tutte le corrispondenze sotto forma di stringhe, senza i gruppi di acquisizione o ulteriori dettagli.
     ```js run
     let str = "I love JavaScript";
 
@@ -34,7 +34,7 @@ Ha 3 modalità:
     alert( result.length ); // 1
     ```
 
-3. Se non esistono corrispondenze, indipendentemente dalla presenza o meno della flag `pattern:g`, è restituito `null`.
+3. Se non esistono corrispondenze, indipendentemente dalla presenza o meno della flag `pattern:g`, ci viene restituito `null`.
 
     È una differenza sottile, ma importante. Se non esistono corrispondenze, infatti, non ci viene restituito un array vuoto, ma `null`. È facile sbagliare dimenticandosene, e.g.:
 
@@ -86,22 +86,22 @@ alert( firstMatch.index );  // 0
 alert( firstMatch.input );  // <h1>Hello, world!</h1>
 ```
 
-Se usiamo `for..of` per accedere alle corrispondenze di `matchAll`, non necessitiamo più di `Array.from`.
+Se usiamo `for..of` per accedere alle corrispondenze di `matchAll`, non abbiamo più bisogno di usare `Array.from`.
 
 ## str.split(regexp|substr, limit)
 
-Divide la stringa usando l'espressione regolare (o una sottostringa) come separatore.
+Questo metodo divide una stringa utilizzando un'espressione regolare (o una sottostringa) come separatore.
 
-Possiamo usare `split` con le stringhe, nel seguente modo:
+Possiamo usare `split` con le stringhe nel seguente modo:
 
 ```js run
-alert('12-34-56'.split('-')) // array di ['12', '34', '56']
+alert('12-34-56'.split('-')) // ['12', '34', '56']
 ```
 
-Possiamo anche dividere con un'espressione regolare, allo stesso modo:
+Possiamo dividere le stringhe tramite un'espressione regolare, allo stesso modo:
 
 ```js run
-alert('12, 34, 56'.split(/,\s*/)) // array di ['12', '34', '56']
+alert('12, 34, 56'.split(/,\s*/)) // ['12', '34', '56']
 ```
 
 ## str.search(regexp)
@@ -114,13 +114,13 @@ let str = "A drop of ink may make a million think";
 alert( str.search( /ink/i ) ); // 10 (posizione della prima corrispondenza)
 ```
 
-**La limitazione importante: `search` trova solo la prima corrispondenza.**
+**La limitazione importante: `search` trova solamente la prima corrispondenza.**
 
-Se abbiamo bisogno della posizione di una corrispondenza successiva, dobbiamo usare altri mezzi, ad esempio trovandole tutte con `str.matchAll(regexp)`.
+Se avessimo bisogno della posizione di una corrispondenza successiva, dovremmo usare altri mezzi, ad esempio `str.matchAll(regexp)` per trovarle tutte.
 
 ## str.replace(str|regexp, str|func)
 
-Questo è un metodo generico per cercare e sostituire e uno dei più utili: è l'equivalente di un coltellino svizzero in questo campo.  
+Questo è un metodo generico per cercare e sostituire, ed è uno dei più utili: è l'equivalente di un coltellino svizzero in questo campo.  
 
 Possiamo usarlo senza espressioni regolari, per cercare e sostituire una sottostringa:
 
@@ -129,11 +129,11 @@ Possiamo usarlo senza espressioni regolari, per cercare e sostituire una sottost
 alert('12-34-56'.replace("-", ":")) // 12:34-56
 ```
 
-Tuttavia, vi è un'insidia.
+Tuttavia, c'è un'insidia.
 
-**Quando il primo argomento di `replace` è una stringa, solo la prima corrispondenza viene sostituita.**
+**Quando il primo argomento di `replace` è una stringa, solo la prima corrispondenza sarà sostituita.**
 
-Si può vedere nell'esempio sopra: solo il primo `"-"` è stato sostituito da `":"`.
+È possibile osservarlo nell'esempio sopra: solo il primo `"-"` è stato sostituito da `":"`.
 
 Per trovare tutti i trattini, non dobbiamo usare la stringa `"-"`, ma l'espressione regolare `pattern:/-/g`, obbligatoriamente con la flag`pattern:g`:
 
@@ -144,7 +144,7 @@ alert( '12-34-56'.replace( *!*/-/g*/!*, ":" ) )  // 12:34:56
 
 Il secondo argomento è una stringa di sostituzione. Possiamo usare caratteri speciali al suo interno:
 
-| Simboli | Azione nella stringa di sostituzione |
+| Caratteri | Azione eseguita nella stringa di sostituzione |
 |--------|--------|
 |`$&`|inserisce l'intera corrispondenza|
 |<code>$&#096;</code>|inserisce una parte della stringa prima della corrispondenza|
@@ -158,25 +158,25 @@ Per esempio:
 ```js run
 let str = "John Smith";
 
-// inver
+// invertire nome e cognome
 alert(str.replace(/(john) (smith)/i, '$2, $1')) // Smith, John
 ```
 
 **Per situazioni che richiedono sostituzioni "intelligenti", il secondo argomento può essere una funzione.**
 
-Essa sarà chiamata per ogni corrispondenza, e il valore restituito sarà inserito come sostituto.
+Essa sarà chiamata per ogni corrispondenza, e il valore restituito sarà la sostituzione.
 
 La funzione è chiamata con gli argomenti `func(match, p1, p2, ..., pn, offset, input, groups)`:
 
 1. `match` -- la corrispondenza,
-2. `p1, p2, ..., pn` -- contenuti dei gruppi di acquisizione (se ce ne sono),
-3. `offset` -- posizione della corrispondenza,
+2. `p1, p2, ..., pn` -- i contenuti dei gruppi di acquisizione (se ce ne sono),
+3. `offset` -- la posizione della corrispondenza,
 4. `input` -- la stringa sorgente,
 5. `groups` -- un oggetto con i gruppi nominati.
 
 Se non ci sono parentesi all'interno dell'espressione regolare, la funzione avrà solo 3 argomenti: `func(str, offset, input)`.
 
-Per esempio, rendiamo maiuscole tutte le corrispondenze:
+Per esempio, per rendere maiuscole tutte le corrispondenze:
 
 ```js run
 let str = "html and css";
@@ -186,13 +186,13 @@ let result = str.replace(/html|css/gi, str => str.toUpperCase());
 alert(result); // HTML and CSS
 ```
 
-Rimpiazzare ogni corrispondenza con la sua posizione nella stringa:
+Per rimpiazzare ogni corrispondenza con la sua posizione nella stringa:
 
 ```js run
 alert("Ho-Ho-ho".replace(/ho/gi, (match, offset) => offset)); // 0-3-6
 ```
 
-Nell'esempio seguente ci sono due parentesi, pertanto la funzione di sostituzione è chiamata con 5 argomenti: la prima è la corrispondenza completa, poi le 2 parentesi, e dopo di esse la posizione della corrispondenza e la stringa sorgente (non usate nell'esempio):
+Nell'esempio seguente ci sono due parentesi, di conseguenza la funzione di sostituzione è chiamata con 5 argomenti: la prima è la corrispondenza completa, poi le 2 parentesi, e dopo di esse la posizione della corrispondenza e la stringa sorgente (omesse nell'esempio):
 
 ```js run
 let str = "John Smith";
@@ -212,7 +212,7 @@ let result = str.replace(/(\w+) (\w+)/, (...match) => `${match[2]}, ${match[1]}`
 alert(result); // Smith, John
 ```
 
-O, se stiamo usando gruppi nominati, l'oggetto `groups` essi contenente è sempre l'ultimo, così possiamo ottenerlo in questo modo:
+Altrimenti, se stiamo usando gruppi nominati, l'oggetto `groups` essi contenente è sempre l'ultimo e possiamo ottenerlo in questo modo:
 
 ```js run
 let str = "John Smith";
@@ -226,16 +226,16 @@ let result = str.replace(/(?<name>\w+) (?<surname>\w+)/, (...match) => {
 alert(result); // Smith, John
 ```
 
-Usare una funzione ci permette di usare un potere sostitutivo supremo, poiché ottiene tutte le informazioni sulla corrispondenza, ha accesso alle variabili esterne e può fare qualsiasi cosa.
+Usare una funzione ci permette di adoperare un potere sostitutivo supremo, poiché essa ottiene tutte le informazioni sulla corrispondenza, ha accesso alle variabili esterne e può fare qualsiasi cosa.
 
 ## str.replaceAll(str|regexp, str|func)
 
 Questo metodo è praticamente uguale a `str.replace`, ma con due differenze rilevanti:
 
 1. Se il primo argomento è una stringa, sostituisce *tutte le corrispondenze* della stringa, mentre `replace` sostituisce solamente la *prima corrispondenza*.
-2. Se il primo argomento è un'espressione regolare con la flag `g`, sarà generato un errore. Con la `g` flag, funziona come `replace`.
+2. Se il primo argomento è un'espressione regolare con la flag `g`, sarà restituito un errore. Con la `g` flag, infatti, funziona come `replace`.
 
-Il caso principale in cui si usa `replaceAll` è la sostituzione di tutte le corrispondenze di una stringa.
+Il motivo principale per cui si usa `replaceAll` è la necessità di sostituire ogni corrispondenza in una stringa.
 
 In questo modo:
 
@@ -251,17 +251,17 @@ Il metodo `regexp.exec(str)` restituisce una corrispondenza di `regexp` nella st
 
 Si comporta differentemente a seconda della presenza o meno della flag `pattern:g` nell'espressione regolare.
 
-Se non c'è `pattern:g`, `regexp.exec(str)` restituisce la prima corrispondenza, esattamente come  `str.match(regexp)`. Questo comportamento non comporta niente di nuovo.
+Se non c'è `pattern:g`, `regexp.exec(str)` restituirà la prima corrispondenza, esattamente come  `str.match(regexp)`. Questo comportamento non comporta niente di nuovo.
 
 Ma se c'è una flag `pattern:g`, allora:
 - Una chiamata a `regexp.exec(str)` restituisce la prima corrispondenza e salva la posizione immediatamente successiva a essa nella proprietà `regexp.lastIndex`.
 - La successiva chiamata di tale tipo inizia la ricerca a partire dalla posizione `regexp.lastIndex`, restituisce la corrispondenza successiva e salva la posizione seguente in `regexp.lastIndex`.
 - ...E così via.
-- Se non esistono corrispondenze, `regexp.exec` restituisce `null` e reimposta `regexp.lastIndex` a `0`.
+- Se non esistono corrispondenze, `regexp.exec` restituirà `null` e reimposterà `regexp.lastIndex` a `0`.
 
-Perciò, chiamate ripetute restituiscono tutte le corrispondenze una dopo l'altra, usando la proprietà `regexp.lastIndex` per tenere traccia della posizione di ricerca corrente.
+Perciò le chiamate ripetute restituiscono tutte le corrispondenze una dopo l'altra, usando la proprietà `regexp.lastIndex` per tenere traccia della posizione di ricerca corrente.
 
-Nel passato, prima che il metodo `str.matchAll` fosse implementato in JavaScript, le chiamate a `regexp.exec` erano usate nel loop per ottenere tutte le corrispondenze con i gruppi:
+Nel passato, prima che il metodo `str.matchAll` fosse implementato in JavaScript, le chiamate a `regexp.exec` erano usate nei loop per ottenere tutte le corrispondenze con i gruppi:
 
 ```js run
 let str = 'More about JavaScript at https://javascript.info';
@@ -276,9 +276,9 @@ while (result = regexp.exec(str)) {
 }
 ```
 
-Questo funziona anche adesso, anche se per i browser moderni solitamente `str.matchAll` è più conveniente.
+Questo approccio funziona anche adesso, anche se per i browser moderni solitamente `str.matchAll` è più conveniente rispetto a un loop contenente `regexp.exec`. 
 
-**Possiamo usare `regexp.exec` per cercare a partire da una posizione data impostando manualmente `lastIndex`.**
+**Possiamo usare `regexp.exec` per cercare a partire da una posizione da noi scelta impostando manualmente `lastIndex`.**
 
 Per esempio:
 
@@ -293,7 +293,7 @@ alert( regexp.exec(str) ); // world
 
 Se l'espressione regolare presenta la flag `pattern:y`, la ricerca sarà eseguita esattamente alla posizione `regexp.lastIndex`, senza andare oltre.
 
-Sostituiamo la flag `pattern:g` con `pattern:y` nell'esempio sopra. Non ci saranno corrispondenze, in quanto non c'è una parola alla posizione `5`:
+Sostituiamo la flag `pattern:g` con `pattern:y` nell'esempio sopra. Non ci saranno corrispondenze, perché non c'è una parola alla posizione `5`:
 
 ```js run
 let str = 'Hello, world!';
@@ -304,11 +304,11 @@ regexp.lastIndex = 5; // ricerca esattamente alla posizione 5
 alert( regexp.exec(str) ); // null
 ```
 
-Ciò è conveniente per le situazioni in cui abbiamo bisogno di "leggere" qualcosa dalla stringa con un'espressione regolare alla posizione esatta, non da qualche parte più lontano.
+Ciò è conveniente per le situazioni in cui abbiamo bisogno di "leggere" qualcosa dalla stringa con un'espressione regolare alla posizione esatta, non a un'altra posizione più avanti.
 
 ## regexp.test(str)
 
-Il metodo `regexp.test(str)` cerca una corrispondenza e restituisce `true/false` a seconda della sua esistenza.
+Il metodo `regexp.test(str)` cerca una corrispondenza in una stringa `str` e restituisce `true/false` a seconda della sua esistenza.
 
 Per esempio:
 
@@ -320,7 +320,7 @@ alert( *!*/love/i*/!*.test(str) ); // true
 alert( str.search(*!*/love/i*/!*) != -1 ); // true
 ```
 
-Un esempio con la risposta negativa:
+Un esempio con l'esito negativo:
 
 ```js run
 let str = "Bla-bla-bla";
@@ -329,9 +329,9 @@ alert( *!*/love/i*/!*.test(str) ); // false
 alert( str.search(*!*/love/i*/!*) != -1 ); // false
 ```
 
-Se l'espressione regolare ha la flag `pattern:g`, `regexp.test` cerca dalla proprietà `regexp.lastIndex` e l'aggiorna, come fa `regexp.exec`.
+Se l'espressione regolare ha la flag `pattern:g`, `regexp.test` cerca a partire dal valore della proprietà `regexp.lastIndex` e l'aggiorna, come fa `regexp.exec`.
 
-Pertanto possiamo usarlo per cercare da una posizione data:
+Pertanto possiamo usarlo per cercare a partire da una posizione da noi scelta:
 
 ```js run
 let regexp = /love/gi;
@@ -344,7 +344,7 @@ alert( regexp.test(str) ); // false (nessuna corrispondenza)
 ```
 
 ````warn header="Same global regexp tested repeatedly on different sources may fail"
-Se applichiamo la stessa espressione regolare globale a input differenti, potrebbe produrre un risultato sbagliato, poiché la chiamata di `regexp.test` manda avanti la proprietà `regexp.lastIndex`, pertanto la ricerca in un'altra stringa potrebbe iniziare da una posizione diversa da 0.
+Se applichiamo la stessa espressione regolare globale a stringhe differenti potrebbero verificarsi risultati errati, poiché la chiamata di `regexp.test` aggiorna la proprietà `regexp.lastIndex`, per cui la ricerca in un'altra stringa potrebbe iniziare da una posizione diversa da 0.
 
 Per esempio, qui chiamiamo `regexp.test` due volte sullo stesso testo, e la seconda volta fallisce:
 
@@ -355,7 +355,7 @@ alert( regexp.test("javascript") ); // true (ora regexp.lastIndex=10)
 alert( regexp.test("javascript") ); // false
 ```
 
-Ciò avviene esattamente perché `regexp.lastIndex` è diverso da 0 nella seconda prova.
+Ciò avviene proprio perché `regexp.lastIndex` è diverso da 0 nella seconda prova.
 
-Per risolvere, possiamo impostare `regexp.lastIndex = 0` prima di ogni ricerca. O invece di chiamare metodi sull'espressione regolare, usare i metodi delle stringhe `str.match/search/...`; essi non usano `lastIndex`.
+Per risolvere il problema, possiamo impostare `regexp.lastIndex = 0` prima di ogni ricerca, o piuttosto che chiamare metodi sull'espressione regolare, usare i metodi delle stringhe `str.match/search/...`: essi infatti non usano la proprietà `lastIndex`.
 ````
