@@ -106,10 +106,19 @@ Esaminiamo l'istruzione `for` parte per parte:
 
 | Parte |          |                                                                            |
 |-------|----------|----------------------------------------------------------------------------|
+<<<<<<< HEAD
 | begin | `i = 0`    | Viene eseguito una volta sola, all'entrata nel ciclo.                          |
 | condition | `i < 3`| Viene controllata prima di ogni iterazione; se falsa, il ciclo si interrompe.|
 | body | `alert(i)`| Viene eseguito fino a quando la condizione è vera.
 | step| `i++`      | Viene eseguito ad ogni iterazione, dopo il corpo, fintato che la condizione è `true`.|
+=======
+| begin | `let i = 0`    | Executes once upon entering the loop.                                      |
+| condition | `i < 3`| Checked before every loop iteration. If false, the loop stops.              |
+| body | `alert(i)`| Runs again and again while the condition is truthy.                         |
+| step| `i++`      | Executes after the body on each iteration. |
+
+The general loop algorithm works like this:
+>>>>>>> b09e38c5573346c401a9f9f7410b4ff9be5f4115
 
 L'iterazione, generalmente, funziona nel modo seguente:
 ```
@@ -379,7 +388,11 @@ label: {
 }
 ```
 
+<<<<<<< HEAD
 ...Comunque, nel 99.9% dei casi, `break` viene usato nei cicli, come abbiamo visto negli esempi precedenti.
+=======
+...Although, 99.9% of the time `break` is used inside loops, as we've seen in the examples above.
+>>>>>>> b09e38c5573346c401a9f9f7410b4ff9be5f4115
 
 La chiamata a `continue` è possibile solo dall'interno di un ciclo
 ````
