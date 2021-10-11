@@ -4,7 +4,11 @@ Nella versione moderna di JavaScript ci sono due differenti tipi di numeri:
 
 1. I numeri regolari, che vengono memorizzati nel formato a 64 bit [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), conosciuti anche come "numeri in virgola mobile con doppia precisione". Questi sono i numeri che utilizziamo la maggior parte del tempo, e sono quelli di cui parleremo in questo capitolo.
 
+<<<<<<< HEAD
 2. I BigInt, che vengono utilizzati per rappresentare numeri interi di lunghezza arbitraria. Talvolta possono tornare utili, poiché i numeri regolari non possono eccedere <code>2<sup>53</sup></code> od essere inferiori di <code>-2<sup>53</sup></code>. Poiché i BigInt vengono utilizzati in alcune aree speciali, gli abbiamo dedicato un capitolo <info:bigint>.
+=======
+2. BigInt numbers, to represent integers of arbitrary length. They are sometimes needed, because a regular number can't safely exceed <code>2<sup>53</sup></code> or be less than <code>-2<sup>53</sup></code>. As bigints are used in few special areas, we devote them a special chapter <info:bigint>.
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 
 Quindi in questo capitolo parleremo dei numeri regolari.
 
@@ -54,7 +58,11 @@ Come prima, l'utilizzo di `"e"` può aiutare. Se volessimo evitare di scrivere e
 let ms = 1e-6; // sei zeri alla sinistra di 1
 ```
 
+<<<<<<< HEAD
 Se contiamo gli zeri in `0.000001`, ce ne sono 6. Quindi ovviamente `1e-6`.  
+=======
+If we count the zeroes in `0.000001`, there are 6 of them. So naturally it's `1e-6`.
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 
 In altre parole, un numero negativo dopo `"e"` significa una divisione per 1 seguito dal numero di zeri dati:
 
@@ -336,7 +344,11 @@ let num = +prompt("Enter a number", '');
 alert( isFinite(num) );
 ```
 
+<<<<<<< HEAD
 Da notare che una stringa vuota o contenente solo spazi viene trattata come `0` in qualsiasi funzione numerica, compresa `isFinite`.  
+=======
+Please note that an empty or a space-only string is treated as `0` in all numeric functions including `isFinite`.
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 
 ```smart header="Confronto con `Object.is`"
 

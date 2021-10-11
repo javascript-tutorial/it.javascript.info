@@ -2,7 +2,11 @@
 
 E se il dato binario in realtà fosse una stringa? Ad esempio, se ricevessimo un file contente dati testuali.
 
+<<<<<<< HEAD
 L'oggetto integrato [TextDecoder](https://encoding.spec.whatwg.org/#interface-textdecoder), dato il buffer e l'encoding, ci consente di leggere il valore come se fosse una stringa JavaScript.
+=======
+The built-in [TextDecoder](https://encoding.spec.whatwg.org/#interface-textdecoder) object allows one to read the value into an actual JavaScript string, given the buffer and the encoding.
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 
 Come prima cosa dobbiamo crearlo:
 ```js

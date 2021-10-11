@@ -14,8 +14,15 @@ Ogni modifica all'input dovrebbe essere processata immediatamente.
 
 La formula è:
 ```js
+<<<<<<< HEAD
 // initial: la somma iniziale di denaro
 // interest: ad esempio 0.05 significa 5% annualer
 // years: quanti anni attendere
 let result = Math.round(initial * (1 + interest * years));
+=======
+// initial: the initial money sum
+// interest: e.g. 0.05 means 5% per year
+// years: how many years to wait
+let result = Math.round(initial * (1 + interest) ** years);
+>>>>>>> 193319c963b9ba86ac7d9590f7261a36ecdcc4d2
 ```
