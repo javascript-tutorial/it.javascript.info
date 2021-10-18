@@ -4,6 +4,10 @@ importance: 4
 
 # Create un oggetto da un array
 
+<<<<<<< HEAD
+=======
+Let's say we received an array of users in the form `{id:..., name:..., age:... }`.
+>>>>>>> eda333d423db8ade41f75d2e2d30ea06c7d997ef
 
 Immaginiamo di ricevere un array di utenti nella forma `{id:..., name:..., age... }`.
 

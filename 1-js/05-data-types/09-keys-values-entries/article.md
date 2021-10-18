@@ -76,9 +76,15 @@ Per gli oggetti mancano molti metodi che sono invece presenti per gli array, ad 
 
 Se volessimo comunque applicarli, allora possiamo utilizzare `Object.entries` seguito da `Object.fromEntries`:
 
+<<<<<<< HEAD
 1. Applichiamo `Object.entries(obj)` per ottenere un array di coppie chiave/valore da `obj`.
 2. Applichiamo il metodo, ad esempio `map`.
 3. Applichiamo `Object.fromEntries(array)` all'array risultante per ottenere nuovamente un oggetto.
+=======
+1. Use `Object.entries(obj)` to get an array of key/value pairs from `obj`.
+2. Use array methods on that array, e.g. `map`, to transform these key/value pairs.
+3. Use `Object.fromEntries(array)` on the resulting array to turn it back into an object.
+>>>>>>> eda333d423db8ade41f75d2e2d30ea06c7d997ef
 
 Ad esempio, se abbiamo un oggetto di prezzi che vogliamo raddoppiare:
 
@@ -91,13 +97,23 @@ let prices = {
 
 *!*
 let doublePrices = Object.fromEntries(
+<<<<<<< HEAD
   // converte ad array, chiama map, e successivamente fromEntries ci ritorna l'oggetto
   Object.entries(prices).map(([key, value]) => [key, value * 2])
+=======
+  // convert prices to array, map each key/value pair into another pair
+  // and then fromEntries gives back the object
+  Object.entries(prices).map(entry => [entry[0], entry[1] * 2])
+>>>>>>> eda333d423db8ade41f75d2e2d30ea06c7d997ef
 );
 */!*
 
 alert(doublePrices.meat); // 8
-```   
+```
 
+<<<<<<< HEAD
 Ad un primo sguardo potrebbe risultare complesso, ma diventa molto più familiare dopo un paio di utilizzi. In questo modo possono essere create potenti catene per la trasformazione.
 
+=======
+It may look difficult at first sight, but becomes easy to understand after you use it once or twice. We can make powerful chains of transforms this way.
+>>>>>>> eda333d423db8ade41f75d2e2d30ea06c7d997ef

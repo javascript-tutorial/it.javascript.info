@@ -194,7 +194,12 @@ Ma ci sono anche differenze essenziali tra loro:
 ```warn header="Una pagina senza script dovrebbe essere utilizzabile"
 Ricordati che se stai usando `defer`, allora la pagina è visibile *prima* che lo script sia caricato.
 
+<<<<<<< HEAD
 Quindi l'utente potrebbe leggere la pagina ma probabilmente alcuni componenti grafici potrebbero essere non ancora pronti.
+=======
+```warn header="Page without scripts should be usable"
+Please note: if you're using `defer` or `async`, then user will see the page *before* the script loads.
+>>>>>>> eda333d423db8ade41f75d2e2d30ea06c7d997ef
 
 Dovrebbero esserci delle indicazioni di "caricamento" negli appositi spazi, i bottoni non funzionanti dovrebbero essere disabilitati, per mostrare chiaramente all'utente cosa è già pronto o cosa no.
 ```
