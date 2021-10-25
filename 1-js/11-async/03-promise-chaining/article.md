@@ -34,17 +34,29 @@ new Promise(function(resolve, reject) {
 
 L'idea è che il risultato viene passato attraverso la catena di gestori (handler) `.then`.
 
+<<<<<<< HEAD
 Il flusso dell'esempio è:
 1. La promise iniziale è risolta (resolves) in 1 secondo `(*)`,
 2. Poi (then) il `.then` viene chiamato `(**)`.
 3. Il valore che ritorna è passato al prossimo gestore (handler) `.then` `(***)`
 4. ...e così via.
+=======
+Here the flow is:
+1. The initial promise resolves in 1 second `(*)`,
+2. Then the `.then` handler is called `(**)`, which in turn creates a new promise (resolved with `2` value).
+3. The next `then` `(***)` gets the result of the previous one, processes it (doubles) and passes the next handler.
+4. ...and so on.
+>>>>>>> 3699f73b4ccb2a57ac5ef990d2687bf31ccf564c
 
 Mano a mano che il risultato viene passato attraverso la catena di gestori (handler), possiamo vedere una sequenza di chiamate `alert`: `1` -> `2` -> `4`.
 
 ![](promise-then-chain.svg)
 
+<<<<<<< HEAD
 Tutto questo funziona, perché una chiamata a `promise.then` ritorna una promise, in questo modo possiamo chiamare il `.then` sula promise ritornata.
+=======
+The whole thing works, because every call to a `.then` returns a new promise, so that we can call the next `.then` on it.
+>>>>>>> 3699f73b4ccb2a57ac5ef990d2687bf31ccf564c
 
 Quando un gestore (handler) ritorna un valore, questo diventa il risultato della promise con il quale sarà chiamato il prossimo `.then`.
 
@@ -336,8 +348,7 @@ function loadJson(url) {
 }
 
 function loadGithubUser(name) {
-  return fetch(`https://api.github.com/users/${name}`)
-    .then(response => response.json());
+  return loadJson(`https://api.github.com/users/${name}`);
 }
 
 function showAvatar(githubUser) {
