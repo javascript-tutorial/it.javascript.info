@@ -82,8 +82,6 @@ Ecco come il motore interpreta il codice:
 alert("Hello")[1, 2].forEach(alert);
 ```
 
-Looks weird, right? Such merging in this case is just wrong. We need to put a semicolon after `alert` for the code to work correctly.
-
 Sembra strano, vero? Questo comportamento in questo caso è errato. E' necessario mettere un punto e virgola dopo `alert` affinché il codice funzioni correttamente.
 
 Questo accade anche in altre situazioni.
