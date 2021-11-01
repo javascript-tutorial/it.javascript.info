@@ -50,7 +50,11 @@ La soluzione sembra un po' strana:
 2. Il linguaggio consente di accedere alle proprietà e ai metodi di stringhe, numeri, booleani e symbol.
 3. Quando questo accade, viene creato uno speciale "oggetto contenitore" che fornisce le funzionalità extra, successivamente questo verrà distrutto.
 
+<<<<<<< HEAD
 Gli "oggetti contenitore" sono diversi per ogni primitiva e sono chiamati: `String`, `Number`, `Boolean` e `Symbol`. Questi forniscono diversi insiemi di metodi.
+=======
+The "object wrappers" are different for each primitive type and are called: `String`, `Number`, `Boolean`, `Symbol` and `BigInt`. Thus, they provide different sets of methods.
+>>>>>>> 6989312841d843f2350803ab552d9082437be569
 
 Ad esempio, esiste un metodo [str.toUpperCase()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) che ritorna la stringa con la prima lettera maiuscola.
 

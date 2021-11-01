@@ -24,11 +24,19 @@ Il browser ha un suo motore JavaScript integrato, chiamato alle volte "JavaScrip
 
 Esistono altri motori JavaScript, tra cui:
 
+<<<<<<< HEAD
 - [V8](https://en.wikipedia.org/wiki/V8_(JavaScript_engine)) -- per Chrome e Opera.
 - [SpiderMonkey](https://en.wikipedia.org/wiki/SpiderMonkey) -- per Firefox.
 - ...Ci sono altri codenames come "Chakra" per IE, "JavaScriptCore", "Nitro" e "SquirrelFish" per Safari, etc.
 
 I nomi citati sopra possono essere utili da ricordare, poiché si possono trovare spesso in articoli che trattano di sviluppo web. Anche noi li useremo. Ad esempio, se "una caratteristica X è supportata da V8", probabilmente funzioneranno senza problemi in Chrome e Opera.
+=======
+- [V8](https://en.wikipedia.org/wiki/V8_(JavaScript_engine)) -- in Chrome, Opera and Edge.
+- [SpiderMonkey](https://en.wikipedia.org/wiki/SpiderMonkey) -- in Firefox.
+- ...There are other codenames like "Chakra" for IE, "JavaScriptCore", "Nitro" and "SquirrelFish" for Safari, etc.
+
+The terms above are good to remember because they are used in developer articles on the internet. We'll use them too. For instance, if "a feature X is supported by V8", then it probably works in Chrome, Opera and Edge.
+>>>>>>> 6989312841d843f2350803ab552d9082437be569
 
 ```smart header="Come funzionano questi motori?"
 
@@ -60,7 +68,11 @@ Ad esempio, è possibile:
 
 ## Cosa NON può fare JavaScript a livello browser?
 
+<<<<<<< HEAD
 Per la sicurezza dell'utente, le possibilità di JavaScript nel browser sono limitate. L'intento è di prevenire che una pagina "maligna" tenti di accedere alle informazioni personali o di danneggiare i dati degli utenti.
+=======
+JavaScript's abilities in the browser are limited for the sake of a user's safety. The aim is to prevent an evil webpage from accessing private information or harming the user's data.
+>>>>>>> 6989312841d843f2350803ab552d9082437be569
 
 Esempi di queste restrizioni possono essere:
 
@@ -85,9 +97,15 @@ Queste limitazioni non si pongono se JavaScript viene eseguito fuori dal browser
 Ci sono almeno *tre* cose che rendono JavaScript cosi unico:
 
 ```compare
+<<<<<<< HEAD
 + Completa integrazione con HTML/CSS.
 + Operazioni semplici vengono eseguite semplicemente.
 + Supportato dai maggiori browser ed integrato di default.
+=======
++ Full integration with HTML/CSS.
++ Simple things are done simply.
++ Supported by all major browsers and enabled by default.
+>>>>>>> 6989312841d843f2350803ab552d9082437be569
 ```
 JavaScript è l'unica tecnologia in ambiente browser che combina queste tre caratteristiche.
 
@@ -118,6 +136,12 @@ Ce ne sono molti altri. Ovviamente, per comprendere cosa stiamo facendo, se util
 
 ## Riepilogo
 
+<<<<<<< HEAD
 - JavaScript è stato creato specificamente per i browser, ma attualmente viene utilizzato con efficacia in molti altri ambienti.
 - Attualmente, per quanto riguarda lo sviluppo del web, JavaScript si trova in una posizione unica grazie ad una completa integrazione con HTML/CSS.
 - Ci sono molti linguaggi che possono essere "convertiti" in JavaScript; essi provvedono le stesse funzionalità e risolvono gli stessi problemi. E' fortemente consigliato di leggere brevemente le funzionalità di alcuni di essi, dopo avert studiato e compreso JavaScript.
+=======
+- JavaScript was initially created as a browser-only language, but it is now used in many other environments as well.
+- Today, JavaScript has a unique position as the most widely-adopted browser language, fully integrated with HTML/CSS.
+- There are many languages that get "transpiled" to JavaScript and provide certain features. It is recommended to take a look at them, at least briefly, after mastering JavaScript.
+>>>>>>> 6989312841d843f2350803ab552d9082437be569
