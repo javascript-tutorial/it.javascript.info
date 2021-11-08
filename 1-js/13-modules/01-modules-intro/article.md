@@ -263,7 +263,11 @@ Facciamo il confronto con uno script che non è un modulo, dove `this` è un ogg
 
 Ci sono diverse funzionalità specifiche dei moduli utilizzati all'interno del browser con `type="module"`.
 
+<<<<<<< HEAD
 Potresti voler saltare questa sezione se stai leggendo per la prima volta , oppure se non hai intenzione di usare JavaScript all'interno del browser.
+=======
+You may want to skip this section for now if you're reading for the first time, or if you don't use JavaScript in a browser.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 ### I moduli sono caricati in modo differito
 

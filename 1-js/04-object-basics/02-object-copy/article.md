@@ -135,7 +135,11 @@ clone.name = "Pete"; // cambiamo la proprietà name
 alert( user.name ); // nell'oggetto originale è rimasto "John"
 ```
 
+<<<<<<< HEAD
 Possiamo anche usare il metodo [Object.assign](mdn:js/Object/assign) .
+=======
+Also we can use the method [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) for that.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 La sintassi è:
 

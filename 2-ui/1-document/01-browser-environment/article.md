@@ -17,7 +17,7 @@ C'è un oggetto "padre" chiamato `window` che ha due ruoli:
 
 In questo caso lo utilizziamo come oggetto globale:
 
-```js run
+```js run global
 function sayHi() {
   alert("Hello");
 }

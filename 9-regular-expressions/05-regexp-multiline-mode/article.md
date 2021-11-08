@@ -15,7 +15,11 @@ let str = `1o posto: Winnie
 33o posto: Eeyore`;
 
 *!*
+<<<<<<< HEAD
 alert( str.match(/^\d+/gm) ); // 1, 2, 33
+=======
+console.log( str.match(/^\d/gm) ); // 1, 2, 3
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 */!*
 ```
 
@@ -28,7 +32,11 @@ let str = `1o posto: Winnie
 33o posto: Eeyore`;
 
 *!*
+<<<<<<< HEAD
 alert( str.match(/^\d+/g) ); // 1
+=======
+console.log( str.match(/^\d/g) ); // 1
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 */!*
 ```
 
@@ -51,7 +59,11 @@ let str = `1o posto: Winnie
 2o posto: Piglet
 33o posto: Eeyore`;
 
+<<<<<<< HEAD
 alert( str.match(/\w+$/gim) ); // Winnie,Piglet,Eeyore
+=======
+console.log( str.match(/\d$/gm) ); // 1,2,3
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 ```
 
 Senza il flag `pattern:/.../m` il dollaro `pattern:$` troverebbe corrispondenza solo con la fine dell'intera stringa, dunque risulterebbe solo l'ultima parola dell'intero testo.
@@ -65,10 +77,18 @@ La prima differenza è che, contrariamente alle ancore, il carattere `\n` "consu
 Ad esempio qui lo usiamo al posto di `pattern:$`:
 
 ```js run
+<<<<<<< HEAD
 let str = `1o posto: Winnie
 2o posto: Piglet
 33o posto: Eeyore`;
 alert( str.match(/\w+\n/gim) ); // Winnie\n,Piglet\n
+=======
+let str = `Winnie: 1
+Piglet: 2
+Eeyore: 3`;
+
+console.log( str.match(/\d\n/g) ); // 1\n,2\n
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 ```
 
 Qui ogni corrispondenza è una parola più il carattere a-capo.

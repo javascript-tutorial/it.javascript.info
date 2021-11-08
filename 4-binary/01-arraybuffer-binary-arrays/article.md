@@ -126,9 +126,15 @@ new TypedArray();
 
 Possiamo creare un `TypedArray` direttamente, senza menzionare `ArrayBuffer`. Ma un visualizzatore non può esistere senza un relativo `ArrayBuffer`, quindi questo verrà creato automaticamente in tutti i casi, ad eccezione del primo (in cui viene fornito).
 
+<<<<<<< HEAD
 Per accedere all'`ArrayBuffer`, abbiamo a disposizione le seguenti proprietà:
 - `arr.buffer`, che fa riferimento a `ArrayBuffer`.
 - `arr.byteLength`, la lunghezza dell'`ArrayBuffer`.
+=======
+To access the underlying `ArrayBuffer`, there are following properties in `TypedArray`:
+- `buffer` -- references the `ArrayBuffer`.
+- `byteLength` -- the length of the `ArrayBuffer`.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 Quindi possiamo sempre cambiare da un visualizzatore ad un altro:
 ```js

@@ -31,11 +31,18 @@ In pratica, tuttavia, gli editor semplici possono avere molti plugin, tra cui la
 
 Meritano attenzione le seguenti opzioni:
 
+<<<<<<< HEAD
 - [Atom](https://atom.io/) (*cross-platform*, gratuito).
 - [Visual Studio Code](https://code.visualstudio.com/) (*cross-platform*, gratuito).
 - [Sublime Text](http://www.sublimetext.com) (*cross-platform*, con prova gratuita).
 - [Notepad++](https://notepad-plus-plus.org/) (Windows, gratuito).
 - [Vim](http://www.vim.org/) e [Emacs](https://www.gnu.org/software/emacs/) sono particolarmente carini se si sanno utilizzare.
+=======
+- [Atom](https://atom.io/) (cross-platform, free).
+- [Sublime Text](http://www.sublimetext.com) (cross-platform, shareware).
+- [Notepad++](https://notepad-plus-plus.org/) (Windows, free).
+- [Vim](http://www.vim.org/) and [Emacs](https://www.gnu.org/software/emacs/) are also cool if you know how to use them.
+>>>>>>> 4541b7af7584014a676da731f6e8774da5e059f6
 
 ## Non intestarditevi
 
