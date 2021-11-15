@@ -7,7 +7,14 @@ Molti operatori di confronto già li conosciamo dalla matematica:
 - Uguaglianza: `a == b` (da notare che il doppio simbolo `=` indica un test di uguaglianza, mentre il simbolo unico `a = b` rappresenta un' assegnazione).
 - Disuguaglianza. In matematica la notazione è <code>&ne;</code>, mentre in JavaScript viene scritto come <code>a != b</code>.
 
+<<<<<<< HEAD
 In questo articolo impareremo più approfonditamente i vari tipi di confronto, come vengono gestiti in JavaScript, incluse alcune importanti peculiarità
+=======
+- Greater/less than: <code>a &gt; b</code>, <code>a &lt; b</code>.
+- Greater/less than or equals: <code>a &gt;= b</code>, <code>a &lt;= b</code>.
+- Equals: `a == b`, please note the double equality sign `==` means the equality test, while a single one `a = b` means an assignment.
+- Not equals: In maths the notation is <code>&ne;</code>, but in JavaScript it's written as <code>a != b</code>.
+>>>>>>> a82915575863d33db6b892087975f84dea6cb425
 
 ## Il risultato è booleano
 
