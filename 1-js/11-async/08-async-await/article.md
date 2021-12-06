@@ -122,16 +122,31 @@ showAvatar();
 
 Piuttosto pulito e facile da leggere, vero? Molto meglio che prima.
 
+<<<<<<< HEAD
 ````smart header="`await` Non funzionerà nel codice di livello più alto"
 Le persone che hanno appena iniziato ad utilizzare `await` tendono a dimenticare il fatto che non possiamo utilizzare `await` nel codice di livello piú alto. Per esempio, questo non funzionerà:
+=======
+````smart header="Modern browsers allow top-level `await` in modules"
+In modern browsers, `await` on top level works just fine, when we're inside a module. We'll cover modules in article <info:modules-intro>.
+>>>>>>> a82915575863d33db6b892087975f84dea6cb425
 
-```js run
-// syntax error in top-level code
+For instance:
+
+```js run module
+// we assume this code runs at top level, inside a module
 let response = await fetch('/article/promise-chaining/user.json');
 let user = await response.json();
+
+console.log(user);
 ```
 
+<<<<<<< HEAD
 Possiamo "avvolgerlo" wrap in una funzione async anonima, come qui:
+=======
+If we're not using modules, or [older browsers](https://caniuse.com/mdn-javascript_operators_await_top_level) must be supported, there's a universal recipe: wrapping into an anonymous async function.
+
+Lke this:
+>>>>>>> a82915575863d33db6b892087975f84dea6cb425
 
 ```js
 (async () => {
@@ -141,7 +156,6 @@ Possiamo "avvolgerlo" wrap in una funzione async anonima, come qui:
 })();
 ```
 
-P.S. New feature: starting from V8 engine version 8.9+, top-level await works in [modules](info:modules).
 ````
 ````smart header="`await` accetta i \"thenables\""
 Come `promise.then`, `await` permette di usare gli oggetti "thenable" (quelli con un metodo `then`). L' idea è che un oggetto di terze parti possa non essere una promise, ma essere promise-compatibile: se supporta `.then`, è abbastanza per usarlo con `await`.
@@ -300,8 +314,13 @@ La parola chiave `async` prima di una funzione ha due effetti:
 
 La parola chiave `await` prima di una promise fa attendere JavaScript fino a quando la promise è ferma, e poi:
 
+<<<<<<< HEAD
 1. Se c'è un errore, l'eccezione è generata, come se `throw error` fosse stato chiamato in quel punto.
 2. Altrimenti, ritorna il risultato.
+=======
+1. If it's an error, an exception is generated — same as if `throw error` were called at that very place.
+2. Otherwise, it returns the result.
+>>>>>>> a82915575863d33db6b892087975f84dea6cb425
 
 Insieme forniscono una ottima struttura per scrivere codice asincrono che sia facile sia da leggere che da scrivere.
 
