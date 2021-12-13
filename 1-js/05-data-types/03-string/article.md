@@ -74,9 +74,15 @@ Ci sono altri caratteri "speciali" meno comuni. Qui una lista:
 
 | Carattere | Descrizione |
 |-----------|-------------|
+<<<<<<< HEAD
 |`\n`|Nuova linea|
 |`\r`|Ritorno a capo: non utilizzato da solo. I file di testo Windows utilizzano una combinazione di due caratteri `\n\r` per rappresentare il termine della riga. |
 |`\'`, `\"`|Apici|
+=======
+|`\n`|New line|
+|`\r`|In Windows text files a combination of two characters `\r\n` represents a new break, while on non-Windows OS it's just `\n`. That's for historical reasons, most Windows software also understands `\n`. |
+|`\'`, `\"`|Quotes|
+>>>>>>> c5358c59494b53efb832c81a5338e0a23b22c269
 |`\\`|Backslash|
 |`\t`|Tab|
 |`\b`, `\f`,`\v` | Backspace, Form Feed, Vertical Tab -- mantenuti per retrocompatibilità, oggi non sono utilizzati. |

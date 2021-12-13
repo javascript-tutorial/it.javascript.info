@@ -121,8 +121,16 @@ Questo ci permette alcuni utilizzi interessanti rispetto al "puro e classico OR 
 
     Gli operandi, oltre che valori, possono essere anche espressioni arbitrarie. L'operatore OR esegue la valutazione da sinistra a destra e si ferma al primo risultato vero, il quale viene ritornato. Il processo è chiamato "valutazione a corto-circuito" perché cerca di concludersi il prima possibile, senza dover elaborare tutti gli operandi. 
 
+<<<<<<< HEAD
     Il logical OR è particolarmente utile quando il secondo argomento causerebbe un *side-effect* come l'assegnazione di una variabile o la chiamata a una funzione.
     Nell'esempio che segue solo il secondo messaggio verrà mostrato. 
+=======
+    It means that `||` processes its arguments until the first truthy value is reached, and then the value is returned immediately, without even touching the other argument.
+
+    The importance of this feature becomes obvious if an operand isn't just a value, but an expression with a side effect, such as a variable assignment or a function call.
+
+    In the example below, only the second message is printed:
+>>>>>>> c5358c59494b53efb832c81a5338e0a23b22c269
 
     ```js run no-beautify
     *!*true*/!* || alert("not printed");

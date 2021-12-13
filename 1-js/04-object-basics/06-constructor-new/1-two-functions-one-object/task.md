@@ -4,7 +4,11 @@ importance: 2
 
 # Due funzioni – un oggetto
 
+<<<<<<< HEAD
 E' possibile creare due funzioni `A` e `B` tali che `new A()==new B()`?
+=======
+Is it possible to create functions `A` and `B` so that `new A() == new B()`?
+>>>>>>> c5358c59494b53efb832c81a5338e0a23b22c269
 
 ```js no-beautify
 function A() { ... }

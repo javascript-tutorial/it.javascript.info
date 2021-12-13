@@ -3,9 +3,15 @@
 
 Come abbiamo visto, un backslash `pattern:\` viene utilizzato per indicare classi di caratteri, e.g. `pattern:\d`. Quindi nelle regexp è un carattere speciale (proprio come nelle stringhe).
 
+<<<<<<< HEAD
 Esistono anche altri caratteri speciali, che hanno un significato speciale nelle regexp. Vengono utilizzati per ricerche più avanzate. Qui vediamo la lista completa: `pattern:[ \ ^ $ . | ? * + ( )`.
 
 Non provate ad imparare a memoria la lista, presto inizieremo ad utilizzarli e sarete in grado di ricordarli automaticamente.
+=======
+There are other special characters as well, that have special meaning in a regexp, such as `pattern:[ ] { } ( ) \ ^ $ . | ? * +`. They are used to do more powerful searches.
+
+Don't try to remember the list -- soon we'll deal with each of them, and you'll know them by heart automatically.
+>>>>>>> c5358c59494b53efb832c81a5338e0a23b22c269
 
 ## Escaping
 

@@ -158,7 +158,11 @@ button.onclick = sayThanks;
 button.onclick = sayThanks();
 ```
 
+<<<<<<< HEAD
 Se aggiungessimo le parentesi, allora `sayThanks()` diverrebbe una chiamata a funzione. Di conseguenza il valore dell'assegnazione dell'ultima riga dell'esempio, sarebbe il risultato della chiamata, ossia `undefined` (dato che la funzione non restituisce nulla), e verrebbe assegnato ad `onclick`. Ovviamente così non potrebbe andare bene, ed inoltre non sarebbe nemmeno l'effetto voluto.
+=======
+If we add parentheses, then `sayThanks()` becomes a function call. So the last line actually takes the *result* of the function execution, that is `undefined` (as the function returns nothing), and assigns it to `onclick`. That doesn't work.
+>>>>>>> c5358c59494b53efb832c81a5338e0a23b22c269
 
 ...D'altra parte, però, nel markup abbiamo bisogno delle parentesi:
 
