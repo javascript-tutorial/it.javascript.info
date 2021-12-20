@@ -28,12 +28,14 @@ ladder.up();
 ladder.up();
 ladder.down();
 ladder.showStep(); // 1
+ladder.down();
+ladder.showStep(); // 0
 ```
 
 Modificare il codice di `up`, `down` e `showStep` per rendere le chiamate concatenabili, come in questo esempio:
 
 ```js
-ladder.up().up().down().showStep(); // 1
+ladder.up().up().down().showStep().down().showStep(); // shows 1 then 0
 ```
 
 Questo approccio è largamente utilizzato dalle librerie JavaScript.

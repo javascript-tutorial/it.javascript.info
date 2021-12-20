@@ -33,7 +33,11 @@ printReverseList(list);
 
 # Soluzione iterativa
 
+<<<<<<< HEAD
 Anche la soluzione iterativa risulta essere un pò complicata.
+=======
+The loop variant is also a little bit more complicated than the direct output.
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 Non abbiamo alcun modo per ottenere l'ultimo valore della nostra `list`. E comunque non potremmo "andare indietro".
 

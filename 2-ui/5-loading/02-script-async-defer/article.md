@@ -128,6 +128,16 @@ Gli script async sono ottimali quando dobbiamo integrare uno script di terze par
 <script async src="https://google-analytics.com/analytics.js"></script>
 ```
 
+<<<<<<< HEAD
+=======
+```smart header="The `async` attribute is only for external scripts"
+Just like `defer`, the `async` attribute is ignored if the `<script>` tag has no `src`.
+```
+
+## Dynamic scripts
+
+There's one more important way of adding a script to the page.
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 ## Script dinamici
 
@@ -188,13 +198,25 @@ Ma ci sono anche differenze essenziali tra loro:
 
 |         | Order | `DOMContentLoaded` |
 |---------|---------|---------|
+<<<<<<< HEAD
 | `async` | *Load-first order*. Il loro ordine nel documento non importa  -- dipende da quale script viene caricato prima |  Irrilevante. Potrebbe essere caricato ed eseguito mentre la pagina non è stata ancora stata scaricata. Questo avviene se gli script sono piccoli o in cache, e la pagina è abbastanza lunga. |
 | `defer` | *Document order* (cioè come sono posizionati nella pagina). |Vengono eseguiti dopo che il document è stato caricato ed elaborato (aspettano se necessario), poco prima dell'evento `DOMContentLoaded`. |
+=======
+| `async` | *Load-first order*. Their document order doesn't matter -- which loads first runs first |  Irrelevant. May load and execute while the document has not yet been fully downloaded. That happens if scripts are small or cached, and the document is long enough. |
+| `defer` | *Document order* (as they go in the document). |  Execute after the document is loaded and parsed (they wait if needed), right before `DOMContentLoaded`. |
+
+In practice, `defer` is used for scripts that need the whole DOM and/or their relative execution order is important.
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 ```warn header="Una pagina senza script dovrebbe essere utilizzabile"
 Ricordati che se stai usando `defer`, allora la pagina è visibile *prima* che lo script sia caricato.
 
+<<<<<<< HEAD
 Quindi l'utente potrebbe leggere la pagina ma probabilmente alcuni componenti grafici potrebbero essere non ancora pronti.
+=======
+```warn header="Page without scripts should be usable"
+Please note: if you're using `defer` or `async`, then user will see the page *before* the script loads.
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 Dovrebbero esserci delle indicazioni di "caricamento" negli appositi spazi, i bottoni non funzionanti dovrebbero essere disabilitati, per mostrare chiaramente all'utente cosa è già pronto o cosa no.
 ```

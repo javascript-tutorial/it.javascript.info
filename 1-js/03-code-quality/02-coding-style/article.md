@@ -301,11 +301,19 @@ La miglior cosa di questi strumenti è che il controllo dello stile in qualche o
 
 Alcuni fra i linter più conosciuti:
 
+<<<<<<< HEAD
 - [JSLint](http://www.jslint.com/) -- uno dei primi linter.
 - [JSHint](http://www.jshint.com/) -- molte più opzioni di JSLint.
 - [ESLint](http://eslint.org/) -- il più recente.
 
 Tutti quelli elencati svolgono molto bene il lavoro. L'autore della guida utilizza [ESLint](http://eslint.org/).
+=======
+- [JSLint](https://www.jslint.com/) -- one of the first linters.
+- [JSHint](https://jshint.com/) -- more settings than JSLint.
+- [ESLint](https://eslint.org/) -- probably the newest one.
+
+All of them can do the job. The author uses [ESLint](https://eslint.org/).
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 Molti linter sono integrati negli editor più popolari: è sufficiente attivare il plugin e configurare lo stile desiderato.
 
@@ -335,7 +343,11 @@ Qui un esempio di di un file `.eslintrc`:
 
 La direttiva `"extends"` indica che la configurazione è basata sulla lista dei setting "eslint:recommended". Dopodiché potremo specificare il nostro stile personale.
 
+<<<<<<< HEAD
 E' anche possibile scaricare un set di regole dal web ed estenderle a nostro piacimento. Vedi <http://eslint.org/docs/user-guide/getting-started> per maggiori dettagli riguardo l'installazione.
+=======
+It is also possible to download style rule sets from the web and extend them instead. See <https://eslint.org/docs/user-guide/getting-started> for more details about installation.
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 Molti IDE hanno dei linter integrati, che sono comodi ma non sono editabili come ESLint.
 

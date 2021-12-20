@@ -182,7 +182,11 @@ In other words, per chiarire questi termini:
 
 Dichiariamo le funzioni elencando i loro parametri, quindi le chiamiamo passando gli argomenti.
 
+<<<<<<< HEAD
 Nell'esempio sopra, si potrebbe dire: "la funzione `showMessage` è dichiarata con due parametri, quindi viene chiamata con due argomenti: `from` and `"Hello"`".
+=======
+In the example above, one might say: "the function `showMessage` is declared with two parameters, then called with two arguments: `from` and `"Hello"`".
+>>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 ## Valori di default
 
