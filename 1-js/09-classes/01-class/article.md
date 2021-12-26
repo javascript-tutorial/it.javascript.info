@@ -166,7 +166,7 @@ Ci sono però delle importanti differenze.
 
         alert(User); // class User { ... }
     ```
-    There are other differences, we'll see them soon.
+    Ci sono altre differenze, che scopriremo più avanti.
 
 2. I metodi delle classi non sono     numerabili. La definizione di una classe imposta il flag `enumerable` a `false` per tutti i metodi all'interno di `"prototype"`.
 
@@ -337,11 +337,11 @@ alert(user.name); // John
 
 ### Creazione di metodi vincolati a campi di classe
 
-As demonstrated in the chapter <info:bind> functions in JavaScript have a dynamic `this`. It depends on the context of the call.
+Come dimostrato nel capitolo <info:bind>, le funzioni in JavaScript hanno un `this` dinamico che dipende dal contesto della chiamata.
 
-So if an object method is passed around and called in another context, `this` won't be a reference to its object any more.
+Quindi, se un metodo di un object viene passato e chiamato in un altro contesto, `this` non sarà più un riferimento al suo object.
 
-For instance, this code will show `undefined`:
+Per esempio, questo codice mostrerà `undefined`:
 
 ```js run
 class Button {
