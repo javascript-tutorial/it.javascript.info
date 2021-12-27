@@ -207,10 +207,18 @@ Fino a qualche tempo fa nessuno avrebbe potuto supporre che una pagina web fosse
 
 Così, per evitare fraintendimenti, per ogni "unsafe" request -- che tempo fa non sarebbero stata possibile, il browser non esegue direttamente queste request. Prima invia una richiesta, chiamata "preflight", per richiedere il permesso.
 
+<<<<<<< HEAD
 Una preflight request usa il method `OPTIONS`, nessun body e due headers:
 
 - `Access-Control-Request-Method` che indica il method della unsafe request.
 - `Access-Control-Request-Headers` che contiene una lista, separata da virgole, degli unsafe HTTP-headers della request.
+=======
+A preflight request uses the method `OPTIONS`, no body and three headers:
+
+- `Access-Control-Request-Method` header has the method of the unsafe request.
+- `Access-Control-Request-Headers` header provides a comma-separated list of its unsafe HTTP-headers.
+- `Origin` header tells from where the request came. (such as `https://javascript.info`)
+>>>>>>> 3c934b5a46a76861255e3a4f29da6fd54ab05c8c
 
 Se il server accetta di servire la request, invia una risposta con un body vuoto, uno status 200 e le headers:
 
