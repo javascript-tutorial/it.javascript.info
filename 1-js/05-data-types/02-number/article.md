@@ -49,13 +49,17 @@ In altre parole, `"e"` moltiplica il numero `1` seguito dal numero di zeri dati.
 Ora proviamo a scrivere qualcosa di molto piccolo. Ad esempio, 1 microsecondo (un milionesimo di secondo): 
 
 ```js
-let ms = 0.000001;
+let mсs = 0.000001;
 ```
 
 Come prima, l'utilizzo di `"e"` può aiutare. Se volessimo evitare di scrivere esplicitamente tutti gli "0", potremmo scrivere:
 
 ```js
+<<<<<<< HEAD
 let ms = 1e-6; // sei zeri alla sinistra di 1
+=======
+let mcs = 1e-6; // six zeroes to the left from 1
+>>>>>>> bae0ef44d0208506f6e9b7f3421ee640ab41af2b
 ```
 
 <<<<<<< HEAD
