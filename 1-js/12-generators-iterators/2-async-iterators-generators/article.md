@@ -342,10 +342,16 @@ Un esempio di utilizzo (visualizza gli autori delle commit nella console):
 (async () => {
   let count = 0;
 
+<<<<<<< HEAD
   for await (const commit of fetchCommits(
     "javascript-tutorial/en.javascript.info"
   )) {
     console.log(commit.author.login);
+=======
+  for await (const commit of fetchCommits('javascript-tutorial/en.javascript.info')) {
+
+    console.log(commit.author.name);
+>>>>>>> 0f748275e20a81700c8514f22a7cc80c4422d09c
 
     if (++count == 100) {
       // let's stop at 100 commits

@@ -107,7 +107,11 @@ Quindi, `event.code` può corrispondere a un carattere errato su layout non cont
 
 Per il tracciamento affidabile dei caratteri che sono dipendenti dal layout, `event.key` potrebbe essere la soluzione migliore.
 
+<<<<<<< HEAD
 Di contro, `event.code` ha il beneficio di essere sempre lo stesso, legato alla posizione fisica del tasto, anche se il visitatore dovesse modificare la lingua. E le scorciatoie ad esso relative funzioneranno bene anche in caso di cambio lingua.
+=======
+On the other hand, `event.code` has the benefit of staying always the same, bound to the physical key location. So hotkeys that rely on it work well even in case of a language switch.
+>>>>>>> 0f748275e20a81700c8514f22a7cc80c4422d09c
 
 Vogliamo gestire dei tasti dipendenti dal layout? Ecco che `event.key` è quello che fa per noi.
 
