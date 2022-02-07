@@ -5,7 +5,11 @@ Le due strutture dati più utilizzate in JavaScript sono `Object` e `Array`.
 - Gli oggetti ci consentono di creare un'unica entità che memorizza elementi nel formato chiave-valore
 - Gli array ci consentono di raccogliere elementi in elenchi ordinati.
 
+<<<<<<< HEAD
 A volte, quando li passiamo ad una funzione, potrebbe non essere necessario tutto l'oggetto/array, ma solo una parte di esso.
+=======
+Although, when we pass those to a function, it may need not be an object/array as a whole. It may need individual pieces.
+>>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
 
 *L'assegnamento di destrutturazione (Destructuring assignment)* è una speciale sintassi che ci consente di "spacchettare" oggetti o array in gruppi di variabili; questo a volte risulta molto conveniente.
 

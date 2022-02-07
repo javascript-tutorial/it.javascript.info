@@ -27,10 +27,17 @@ let range = {
 
 Per rendere iterabile l'oggetto `range` (e poter quindi utilizzare correttamente `for..of`) abbiamo bisogno di aggiungervi un metodo chiamato `Symbol.iterator` (uno speciale simbolo integrato).
 
+<<<<<<< HEAD
 1. Quando `for..of` inizia, prova a chiamare questo metodo (o ritorna un errore se non lo trova). Il metodo deve ritornare un *iteratore* -- un oggetto con il metodo `next`.
 2. La possibilità di avanzare di `for..of` funziona *solamente con l'oggetto ritornato*.
 3. Quando `for..of` vuole il prossimo valore, chiama `next()` su quell'oggetto.
 4. Il risultato di `next()` deve avere la forma `{done: Boolean, value: any}`, dove `done=true` significa che l'iterazione è completa, altrimenti `value` deve contenere il valore successivo.
+=======
+1. When `for..of` starts, it calls that method once (or errors if not found). The method must return an *iterator* -- an object with the method `next`.
+2. Onward, `for..of` works *only with that returned object*.
+3. When `for..of` wants the next value, it calls `next()` on that object.
+4. The result of `next()` must have the form `{done: Boolean, value: any}`, where `done=true` means that the loop is finished, otherwise `value` is the next value.
+>>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
 
 Qui l'implementazione completa per `range`:
 
@@ -43,11 +50,16 @@ let range = {
 // 1. la chiamata a for..of inizialmente chiama questo
 range[Symbol.iterator] = function() {
 
+<<<<<<< HEAD
   // ...ritorna l'oggetto iteratore:
   // 2. Da qui in poi, for..of lavora solamente con questo iteratore, richiedendogli il prossimo valore
+=======
+  // ...it returns the iterator object:
+  // 2. Onward, for..of works only with the iterator object below, asking it for next values
+>>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
   return {
     current: this.from,
-    last: this.to,      
+    last: this.to,
 
     // 3. next() viene invocato ad ogni iterazione del ciclo for..of
     next() {
@@ -269,7 +281,11 @@ for (let char of str) {
 alert(chars);
 ```
 
+<<<<<<< HEAD
 ...Ma è più breve.    
+=======
+...But it is shorter.
+>>>>>>> 71da17e5960f1c76aad0d04d21f10bc65318d3f6
 
 Possiamo anche eseguire un surrogato di `slice`:
 
