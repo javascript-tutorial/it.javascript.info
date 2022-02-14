@@ -61,7 +61,12 @@ delete localStorage.test;
 
 Questo è permesso per ragioni storiche, e principalmente funziona, ma generalmente non è raccomandato, perché:
 
+<<<<<<< HEAD
 1. Se la key è generata dall'utente, può essere qualsiasi cosa, come `length` o `toString`, o un altro metodo integrato di `localStorage`. In questo caso `getItem/setItem` funziona normalmente, mentre l'accesso in stile oggetto non funziona:
+=======
+1. If the key is user-generated, it can be anything, like `length` or `toString`, or another built-in method of `localStorage`. In that case `getItem/setItem` work fine, while object-like access fails:
+
+>>>>>>> 29216730a877be28d0a75a459676db6e7f5c4834
     ```js run
     let key = 'length';
     localStorage[key] = 5; // Error, can't assign length
@@ -117,8 +122,12 @@ for(let key of keys) {
 
 Un lavoro extra, poiché `Object.keys` restituisce solo le keys che appartengono all oggetto, ignorando il prototype.
 
+<<<<<<< HEAD
 
 ## Solo stringhe
+=======
+## Strings only
+>>>>>>> 29216730a877be28d0a75a459676db6e7f5c4834
 
 Da notare che sia key che i value devono essere stringhe.
 
@@ -145,7 +154,6 @@ Inoltre è possibile convertire a stringa l'intero archivio di oggetti, per esem
 // aggiunte le opzioni di formattazione a JSON.stringify per rendere object migliore
 alert( JSON.stringify(localStorage, null, 2) );
 ```
-
 
 ## sessionStorage
 
@@ -178,7 +186,11 @@ Questo perché `sessionStorage` è legato non solo all'origine, ma anche alla ta
 
 ## Evento di storage
 
+<<<<<<< HEAD
 Quando i dati vengono aggiornati in `localStorage` o `sessionStorage`, un evento di [storage](https://www.w3.org/TR/webstorage/#the-storage-event) viene emesso, con le seguenti proprietà:
+=======
+When the data gets updated in `localStorage` or `sessionStorage`, [storage](https://html.spec.whatwg.org/multipage/webstorage.html#the-storageevent-interface) event triggers, with properties:
+>>>>>>> 29216730a877be28d0a75a459676db6e7f5c4834
 
 - `key`: La key che è stata modificata (`null` se è stato invocato `.clear()`).
 - `oldValue`: Il vecchio valore (`null` se la chiave è nuova).
@@ -222,11 +234,20 @@ I browser moderni supportano [Broadcast channel API](https://developer.mozilla.o
 
 ## Riepilogo
 
+<<<<<<< HEAD
 Gli oggetti web storage `localStorage` e `sessionStorage` permettono di archiviare key/value nel browser.
 - Sia `key` e `value` devono essere stringhe.
 - Il limite è 2mb+, dipende dal browser.
 - Non scadono.
 - I dati sono legati alla sorgente (domain/port/protocol).
+=======
+Web storage objects `localStorage` and `sessionStorage` allow to store key/value in the browser.
+
+- Both `key` and `value` must be strings.
+- The limit is 5mb+, depends on the browser.
+- They do not expire.
+- The data is bound to the origin (domain/port/protocol).
+>>>>>>> 29216730a877be28d0a75a459676db6e7f5c4834
 
 | `localStorage` | `sessionStorage` |
 |----------------|------------------|

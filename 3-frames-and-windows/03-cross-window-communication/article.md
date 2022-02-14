@@ -116,7 +116,18 @@ document.domain = 'site.com';
 
 Questo è tutto. Da questo momento in poi potranno interagire senza limitazioni. Nuovamente, questo è possibile solamente per pagine che appartengono allo stesso dominio di secondo livello.
 
+<<<<<<< HEAD
 ## Iframe: il tranello del document errato
+=======
+```warn header="Deprecated, but still working"
+The `document.domain` property is in the process of being removed from the [specification](https://html.spec.whatwg.org/multipage/origin.html#relaxing-the-same-origin-restriction). The cross-window messaging (explained soon below) is the suggested replacement.
+
+That said, as of now all browsers support it. And the support will be kept for the future, not to break old code that relies on `document.domain`.
+```
+
+
+## Iframe: wrong document pitfall
+>>>>>>> 29216730a877be28d0a75a459676db6e7f5c4834
 
 Quando un iframe appartiene alla stessa origine, con la possibilità quindi di accedere al suo `document`, c'è un piccolo tranello a cui prestare attenzione. Non è strettamente legato al cross-origin, ma è comunque importante esserne a conoscenza.
 

@@ -13,10 +13,14 @@ Ecco a cosa serve `Promise.all`.
 La sintassi è:
 
 ```js
-let promise = Promise.all([...promises...]);
+let promise = Promise.all(iterable);
 ```
 
+<<<<<<< HEAD
 `Promise.all` accetta un array di promise (tecnicamente si può usare qualsiasi iterabile, ma solitamente si usa un array) e ritorna una nuova promise.
+=======
+`Promise.all` takes an iterable (usually, an array of promises) and returns a new promise.
+>>>>>>> 29216730a877be28d0a75a459676db6e7f5c4834
 
 La nuova promise si risolve quando tutte le promise elencate vengono risolte, e l'array dei loro risultati diventa il risultato finale.
 
