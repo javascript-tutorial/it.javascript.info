@@ -199,22 +199,30 @@ Un estratto della [tabella delle precedenze](https://developer.mozilla.org/en/Ja
 | Precedence | Name | Sign |
 |------------|------|------|
 | ... | ... | ... |
-| 17 | unary plus | `+` |
-| 17 | unary negation | `-` |
-| 16 | exponentiation | `**` |
-| 15 | multiplication | `*` |
-| 15 | division | `/` |
-| 13 | addition | `+` |
-| 13 | subtraction | `-` |
+| 15 | unary plus | `+` |
+| 15 | unary negation | `-` |
+| 14 | exponentiation | `**` |
+| 13 | multiplication | `*` |
+| 13 | division | `/` |
+| 12 | addition | `+` |
+| 12 | subtraction | `-` |
 | ... | ... | ... |
-| 3 | assignment | `=` |
+| 2 | assignment | `=` |
 | ... | ... | ... |
 
+<<<<<<< HEAD
 Come possiamo vedere, la "somma unaria"(unary plus) ha una priorità di `17`, che è maggiore del `13` dell'addizione(`+` binario). Questo è il motivo per cui l'espressione `"+apples + +oranges"` esegue prima il `+` unario, e successivamente l'addizione.
+=======
+As we can see, the "unary plus" has a priority of `15` which is higher than the `12` of "addition" (binary plus). That's why, in the expression `"+apples + +oranges"`, unary pluses work before the addition.
+>>>>>>> e2f9e5840737e00846bfd492192d8a3828820c60
 
 ## Assegnazione
 
+<<<<<<< HEAD
 Da notare che anche l'assegnazione `=` è un operatore. Viene infatti elencato nella tabella delle precedenze con una priorità molto bassa: `3`.
+=======
+Let's note that an assignment `=` is also an operator. It is listed in the precedence table with the very low priority of `2`.
+>>>>>>> e2f9e5840737e00846bfd492192d8a3828820c60
 
 Questo è il motivo per cui quando assegniamo un valore ad una variabile, come `x = 2 * 2 + 1`, i calcoli vengono eseguiti per primi, e successivamente viene valutato l'operatore `=`, che memorizza il risultato in `x`.
 

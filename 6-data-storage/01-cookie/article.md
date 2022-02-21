@@ -464,10 +464,17 @@ GDPR non riguarda solo i cookies, ma anche altri problemi legati alla privacy, m
 
 ## Riepilogo
 
+<<<<<<< HEAD
 `document.cookie` fornisce l'accesso ai cookies
 - opera la modifica solamente nei cookies menzionati al suo interno.
 - name/value devono essere codificati.
 - un cookie può contenere fino a 4kb, 20+cookies per sito (dipende dal browser).
+=======
+`document.cookie` provides access to cookies.
+- Write operations modify only cookies mentioned in it.
+- Name/value must be encoded.
+- One cookie may not exceed 4KB in size. The number of cookies allowed on a domain is around 20+ (varies by browser).
+>>>>>>> e2f9e5840737e00846bfd492192d8a3828820c60
 
 Opzioni dei cookie:
 - `path=/`, il percorso di default, rende il cookie visibile solo all'interno di quel percorso.

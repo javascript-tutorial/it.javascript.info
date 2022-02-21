@@ -37,7 +37,11 @@ let sum = function(a, b) {
 alert( sum(1, 2) ); // 3
 ```
 
+<<<<<<< HEAD
 Come puoi vedere `(a, b) => a + b` rappresenta una funzione che accetta due argomenti `a` e `b`. Al momento dell'esecuzione, questa valuta l'espressione `a + b` e restituisce il risultato.
+=======
+As you can see, `(a, b) => a + b` means a function that accepts two arguments named `a` and `b`. Upon the execution, it evaluates the expression `a + b` and returns the result.
+>>>>>>> e2f9e5840737e00846bfd492192d8a3828820c60
 
 - Se abbiamo un solo argomento, le parentesi che racchiudono gli argomenti possono essere omesse, abbreviando ulteriormente il codice.
 
@@ -90,7 +94,11 @@ In questo modo:
 let sum = (a, b) => {  // le parentesi graffe aprono una funzione multilinea
   let result = a + b;
 *!*
+<<<<<<< HEAD
   return result; // se usiamo le parentesi graffe abbiamo bisogno di un esplicito "return" 
+=======
+  return result; // if we use curly braces, then we need an explicit "return"
+>>>>>>> e2f9e5840737e00846bfd492192d8a3828820c60
 */!*
 };
 
