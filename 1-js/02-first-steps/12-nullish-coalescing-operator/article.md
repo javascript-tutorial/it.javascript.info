@@ -102,7 +102,11 @@ alert(height ?? 100); // 0
 
 Se un'altezza pari a zero è un valore accettabile, questo non dovrebbe essere rimpiazzato con il valore di default (il secondo operatore, nel'esempio sopra `100`); in questo caso il *nullish coalescing operator* `??` è la scelta giusta.
 
+<<<<<<< HEAD
 ## Precedenza
+=======
+The precedence of the `??` operator is the same as `||`. They both equal `4` in the [MDN table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table).
+>>>>>>> 2cca9a9d09fdd45819832294225aa3721fa5a2d4
 
 La precedenza dell'operatore `??` è piuttosto bassa: `5` nella [MDN table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table). Quindi `??` è valutato prima di `=` e `?`, ma dopo la maggior parte degli altri operatori, come `+` o `*`.
 
