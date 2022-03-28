@@ -26,7 +26,11 @@ Questo è il risultato che ci si aspetta. JavaScript funziona in questo modo. Se
 
 Nella maggior parte dei casi, preferiremmo avere `undefined` piuttosto di un errore (in questo caso con il significato "nessuna via").
 
+<<<<<<< HEAD
 ... Un altro esempio. Il metodo `document.querySelector('.elem')` ritorna un oggetto che corrisponde ad un elemento della pagina web, che ritorna `null` quando l'elemento non esiste.
+=======
+...and another example. In Web development, we can get an object that corresponds to a web page element using a special method call, such as `document.querySelector('.elem')`, and it returns `null` when there's no such element.
+>>>>>>> 741d90ce8a730d66e987bff5e9794d6e41cb2f05
 
 ```js run
 // document.querySelector('.elem') è null se non esiste l'elemento
@@ -109,9 +113,15 @@ Ad esempio in `user?.address.street.name` il costrutto `?.` permette alla propri
 ```warn header="Non abusate della concatenazione opzionale"
 Dovremmo utilizzare `?.` solamente quando va bene che una proprietà possa non esistere.
 
+<<<<<<< HEAD
 Ad esempio, considerando la logica del nostro codice, l'oggetto `user` deve necessariamente esistere, mentre `address` è opzionale, quindi dovremmo scrivere `user.address?.street`, non `user?.address?.street`.
 
 Quindi, se `user` dovesse essere `undefined` per errore, otterremo un errore e potremmo sistemarlo. Altrimenti, gli errori di programmazione potrebbero essere silenziati in modo non appropriato, rendendo il debug molto difficile.
+=======
+For example, if according to our code logic `user` object must exist, but `address` is optional, then we should write `user.address?.street`, but not `user?.address?.street`.
+
+Then, if `user` happens to be undefined, we'll see a programming error about it and fix it. Otherwise, if we overuse `?.`, coding errors can be silenced where not appropriate, and become more difficult to debug.
+>>>>>>> 741d90ce8a730d66e987bff5e9794d6e41cb2f05
 ```
 
 ````warn header="La variabile che precede `?.` deve essere dichiarata"
@@ -128,7 +138,11 @@ La variabile deve essere dichiarata (ad esempio come `let/const/var user` o come
 
 Come detto in precedenza, il costrutto `?.` interrompe immediatamente (manda in "corto circuito") la valutazione se la proprietà a destra non esiste.
 
+<<<<<<< HEAD
 Quindi, nel caso ci siano ulteriori chiamate a funzione o side-effects, questi non verranno eseguiti.
+=======
+So, if there are any further function calls or operations to the right of `?.`, they won't be made.
+>>>>>>> 741d90ce8a730d66e987bff5e9794d6e41cb2f05
 
 Ad esempio:
 
@@ -136,7 +150,11 @@ Ad esempio:
 let user = null;
 let x = 0;
 
+<<<<<<< HEAD
 user?.sayHi(x++); // non esiste "sayHi", quindi l'esecuzione non raggiungerà x++
+=======
+user?.sayHi(x++); // no "user", so the execution doesn't reach sayHi call and x++
+>>>>>>> 741d90ce8a730d66e987bff5e9794d6e41cb2f05
 
 alert(x); // 0, valore non incrementato
 ```
@@ -180,7 +198,7 @@ let user1 = {
   firstName: "John"
 };
 
-let user2 = null; 
+let user2 = null;
 
 alert( user1?.[key] ); // John
 alert( user2?.[key] ); // undefined

@@ -13,9 +13,13 @@ function sayHi() {
 E' disponibile un'altra sintassi per creare una funzione, chiamata *function expression*.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 La sintassi:
 =======
 It allows to create a new function in the middle of any expression.
+=======
+It allows us to create a new function in the middle of any expression.
+>>>>>>> 741d90ce8a730d66e987bff5e9794d6e41cb2f05
 
 For example:
 >>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
