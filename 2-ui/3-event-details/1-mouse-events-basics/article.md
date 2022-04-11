@@ -39,9 +39,15 @@ Quando un'azione singola inizia eventi multipli, il loro ordine è fisso. Ossia,
 ```online
 Premi il seguente pulsante e vedrai gli eventi. prova anche il doppio click.
 
+<<<<<<< HEAD
 Nel banco di prova in basso, vengono elencati tutti gli eventi del mouse, e se passa più di un secondo tra uno e l'altro vengono separati da una riga orizzontale.
 
 Possiamo inoltre notare la proprietà `button` che permette di rilevare il pulsante del mouse, viene spiegato successivamente.
+=======
+On the teststand below, all mouse events are logged, and if there is more than a 1 second delay between them, they are separated by a horizontal rule.
+
+Also, we can see the `button` property that allows us to detect the mouse button; it's explained below.
+>>>>>>> ac7daa516fa8e687427eac51186af97154748afa
 
 <input onmousedown="return logMouse(event)" onmouseup="return logMouse(event)" onclick="return logMouse(event)" oncontextmenu="return logMouse(event)" ondblclick="return logMouse(event)" value="Cliccami con il pulsante destro o sinistro del mouse" type="button"> <input onclick="logClear('test')" value="Clear" type="button"> <form id="testform" name="testform"> <textarea style="font-size:12px;height:150px;width:360px;"></textarea></form>
 ```

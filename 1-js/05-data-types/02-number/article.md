@@ -49,13 +49,20 @@ In altre parole, `"e"` moltiplica il numero `1` seguito dal numero di zeri dati.
 Ora proviamo a scrivere qualcosa di molto piccolo. Ad esempio, 1 microsecondo (un milionesimo di secondo): 
 
 ```js
-let ms = 0.000001;
+let mсs = 0.000001;
 ```
 
+<<<<<<< HEAD
 Come prima, l'utilizzo di `"e"` può aiutare. Se volessimo evitare di scrivere esplicitamente tutti gli "0", potremmo scrivere:
 
 ```js
 let ms = 1e-6; // sei zeri alla sinistra di 1
+=======
+Just like before, using `"e"` can help. If we'd like to avoid writing the zeroes explicitly, we could write the same as:
+
+```js
+let mcs = 1e-6; // six zeroes to the left from 1
+>>>>>>> ac7daa516fa8e687427eac51186af97154748afa
 ```
 
 <<<<<<< HEAD
@@ -166,7 +173,11 @@ Ci sono due modi per farlo:
 
 1. Moltiplica e dividi.
 
+<<<<<<< HEAD
     Ad esempio, per arrotondare un numero alla seconda cifra decimale, possiamo moltiplicare il numero per `100`,  chiamare la funzione di arrotondamento e dividerlo nuovamente.
+=======
+    For example, to round the number to the 2nd digit after the decimal, we can multiply the number by `100`, call the rounding function and then divide it back.
+>>>>>>> ac7daa516fa8e687427eac51186af97154748afa
     ```js run
     let num = 1.23456;
 
@@ -194,13 +205,21 @@ Ci sono due modi per farlo:
     alert( num.toFixed(5) ); // "12.34000", aggiunti gli zeri per renderlo esattamente di 5 cifre decimali
     ```
 
+<<<<<<< HEAD
     Possiamo convertire il risultato al tipo numerico utilizzando la somma unaria o chiamando il metodo `Number()`: `+num.toFixed(5)`.
+=======
+    We can convert it to a number using the unary plus or a `Number()` call, e.g write `+num.toFixed(5)`.
+>>>>>>> ac7daa516fa8e687427eac51186af97154748afa
 
 ## Calcoli imprecisi
 
 Internamente, un numero è rappresentato in formato 64-bit [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), quindi vengono utilizzati esattamente 64 bit per rappresentare un numero: 52 vengono utilizzati per rappresentare le cifre, 11 per la parte decimale, e infine 1 bit per il segno.
 
+<<<<<<< HEAD
 Se un numero è troppo grande, tale da superare i 64 bit disponibili, come ad esempio un numero potenzialmente infinito:
+=======
+If a number is really huge, it may overflow the 64-bit storage and become a special numeric value `Infinity`:
+>>>>>>> ac7daa516fa8e687427eac51186af97154748afa
 
 ```js run
 alert( 1e500 ); // Infinity
@@ -208,7 +227,11 @@ alert( 1e500 ); // Infinity
 
 Potrebbe essere poco ovvio, ma quello che accade è la perdita di precisione.
 
+<<<<<<< HEAD
 Consideriamo questo test (falso!):
+=======
+Consider this (falsy!) equality test:
+>>>>>>> ac7daa516fa8e687427eac51186af97154748afa
 
 ```js run
 alert( 0.1 + 0.2 == 0.3 ); // *!*false*/!*
@@ -222,13 +245,21 @@ Strano! Quale può essere il risultato se non `0.3`?
 alert( 0.1 + 0.2 ); // 0.30000000000000004
 ```
 
+<<<<<<< HEAD
 Ouch! Un confronto errato di questo tipo può generare diverse conseguenze. Immaginate di progettare un sito di e-shop in cui i visitatori aggiungono al carrello articoli da `$0.10` e `$0.20`. Poi come prezzo totale viene mostrato `$0.30000000000000004`. Questo risultato lascerebbe sorpreso chiunque.
+=======
+Ouch! Imagine you're making an e-shopping site and the visitor puts `$0.10` and `$0.20` goods into their cart. The order total will be `$0.30000000000000004`. That would surprise anyone.
+>>>>>>> ac7daa516fa8e687427eac51186af97154748afa
 
 Ma perché accade questo?
 
 Un numero viene memorizzato nella sua forma binaria, una sequenza di "1" e "0". I numeri con virgola come `0.1`, `0.2` che visti nella loro forma decimale sembrano semplici, sono in realtà una sequenza infinita di cifre nella forma binaria.
 
+<<<<<<< HEAD
 In altre parole, cos'è `0.1`? Vale 1 diviso 10 `1/10`, "un decimo". Nel sistema decimale questi numeri sono facilmente rappresentabili. Prendiamo invece "un terzo": `1/3`. Diventa un numero con infiniti decimali `0.33333(3)`. 
+=======
+What is `0.1`? It is one divided by ten `1/10`, one-tenth. In decimal numeral system such numbers are easily representable. Compare it to one-third: `1/3`. It becomes an endless fraction `0.33333(3)`.
+>>>>>>> ac7daa516fa8e687427eac51186af97154748afa
 
 Quindi, le divisioni per potenze di `10` funzionano molto bene nel sistema decimale, non vale lo stesso con la divisione per `3`. Per la stessa ragione, nel sistema binario le divisioni per potenze di `2` sono una garanzia, ma `1/10` diventa una sequenza infinita di cifre.
 
