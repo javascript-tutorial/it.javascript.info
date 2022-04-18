@@ -13,9 +13,13 @@ function sayHi() {
 E' disponibile un'altra sintassi per creare una funzione, chiamata *function expression*.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 La sintassi:
 =======
 It allows to create a new function in the middle of any expression.
+=======
+It allows us to create a new function in the middle of any expression.
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 For example:
 >>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
@@ -222,8 +226,13 @@ Primo, la sintassi: come  distinguerle nel codice.
       return a + b;
     }
     ```
+<<<<<<< HEAD
 - *Function expression:* una funzione, creata all'interno di un'espressione o all'interno di un altro costrutto. Qui, la funzione è creata alla destra dell' "espressione di assegnazione" `=`:
     
+=======
+- *Function Expression:* a function, created inside an expression or inside another syntax construct. Here, the function is created on the right side of the "assignment expression" `=`:
+
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
     ```js
     // function expression
     let sum = function(a, b) {
@@ -319,9 +328,15 @@ if (age < 18) {
   welcome();               // \   (esegue)
 */!*
                            //  |
+<<<<<<< HEAD
   function welcome() {     //  |  
     alert("Hello!");       //  |  Dichiarazione di funzione disponibile
   }                        //  |  ovunque nel blocco in cui è stata dichiarata
+=======
+  function welcome() {     //  |
+    alert("Hello!");       //  |  Function Declaration is available
+  }                        //  |  everywhere in the block where it's declared
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
                            //  |
 *!*
   welcome();               // /   (esegue)
@@ -329,7 +344,11 @@ if (age < 18) {
 
 } else {
 
+<<<<<<< HEAD
   function welcome() {     
+=======
+  function welcome() {
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
     alert("Greetings!");
   }
 }
