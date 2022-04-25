@@ -59,7 +59,7 @@ Se spostiamo queste istruzioni in righe separate, allora `this` verrà sicuramen
 let user = {
   name: "John",
   hi() { alert(this.name); }
-}
+};
 
 *!*
 // dividiamo l'accesso e l'invocazione in due righe

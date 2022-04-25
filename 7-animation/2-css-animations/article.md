@@ -314,8 +314,13 @@ Il processo progredirà in questo modo:
 - `0s` -- `-10%` (il primo cambiamento all'inizio del primo secondo, immediatamente)
 - `1s` -- `-20%`
 - ...
+<<<<<<< HEAD
 - `8s` -- `-80%`
 - (l'ultimo secondo mostra il valore finale).
+=======
+- `8s` -- `-90%`
+- (the last second shows the final value).
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 In alternativa il valore `end` starà a significare che il cambiamento dovrebbe essere applicato non dall'inizio, ma alla fine di ogni secondo.
 
