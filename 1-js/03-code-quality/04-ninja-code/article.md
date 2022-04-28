@@ -2,7 +2,7 @@
 
 
 ```quote author="Confucio"
-Imparare senza pensare è lavoro sprecatao; pensare senza imparare è pericoloso.
+Imparare senza pensare è lavoro sprecato; pensare senza imparare è pericoloso.
 ```
 I programmatori ninja in passato hanno usato queste tecniche per formare le menti dei manutentori del codice.
 
