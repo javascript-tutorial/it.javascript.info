@@ -105,7 +105,6 @@ Solitamente, dovremmo impostare `path` nella cartella principale: `path=/` affin
 
 Un dominio definisce dove il cookie è accessibile. In realtà, ci sono delle limitazioni. Non possiamo impostare nessun dominio.
 
-<<<<<<< HEAD
 Di default, un cookie è accessibile solo nel dominio in cui è stato impostato. Cosi se il cookie è stato impostato da `site.com`, non lo otterremo su `other.com`
 
 ...Inoltre, non otterremo il cookie nel sotto dominio `forum.site.com`!
@@ -128,34 +127,6 @@ Questa è una restrizione per motivi di sicurezza, per consentirci di immagazzin
 // su site.com
 // rende il cookie accessibile su ogni sotto dominio *.site.com:
 document.cookie = "user=John; domain=site.com"
-=======
-**There's no way to let a cookie be accessible from another 2nd-level domain, so `other.com` will never receive a cookie set at `site.com`.**
-
-It's a safety restriction, to allow us to store sensitive data in cookies that should be available only on one site.
-
-By default, a cookie is accessible only at the domain that set it.
-
-Please note, by default a cookie is also not shared to a subdomain as well, such as `forum.site.com`.
-
-```js
-// if we set a cookie at site.com website...
-document.cookie = "user=John"
-
-// ...we won't see it at forum.site.com
-alert(document.cookie); // no user
-```
-
-...But this can be changed. If we'd like to allow subdomains like `forum.site.com` to get a cookie set at `site.com`, that's possible.
-
-For that to happen, when setting a cookie at `site.com`, we should explicitly set the `domain` option to the root domain: `domain=site.com`. Then all subdomains will see such cookie.
-
-For example:
-
-```js
-// at site.com
-// make the cookie accessible on any subdomain *.site.com:
-document.cookie = "user=John; *!*domain=site.com*/!*"
->>>>>>> 3c934b5a46a76861255e3a4f29da6fd54ab05c8c
 
 // dopo
 
@@ -163,16 +134,10 @@ document.cookie = "user=John; *!*domain=site.com*/!*"
 alert(document.cookie); // possiede un cookie user=John
 ```
 
-<<<<<<< HEAD
 Per ragioni storiche, `domain=.site.com` (un punto prima di `site.com`) funziona nello stesso modo, garantendo accesso al cookie dal sotto dominio. Questa è una vecchia notazione, dovrebbe essere utilizzata se dobbiamo supportare vecchi browsers.
 
 
 Ricapitolando, l'opzione `domain` ci consente di rendere un cookie accessibile ai sotto domini.
-=======
-For historical reasons, `domain=.site.com` (with a dot before `site.com`) also works the same way, allowing access to the cookie from subdomains. That's an old notation and should be used if we need to support very old browsers.
-
-To summarize, the `domain` option allows to make a cookie accessible at subdomains.
->>>>>>> 3c934b5a46a76861255e3a4f29da6fd54ab05c8c
 
 ## expires, max-age
 
@@ -292,11 +257,7 @@ Quindi, ciò che `samesite=lax` fa è semplicemente garantire alla più comune o
 
 Se questo ti è sufficiente, aggiungere `samesite=lax` probabilmente non intaccherà l'esperienza utente e, allo stesso tempo, aggiungerà protezione.
 
-<<<<<<< HEAD
 Generalmente, `samesite` è un'ottima scelta.
-=======
-Overall, `samesite` is a great option.
->>>>>>> 3c934b5a46a76861255e3a4f29da6fd54ab05c8c
 
 Ma c'è uno svantaggio:
 

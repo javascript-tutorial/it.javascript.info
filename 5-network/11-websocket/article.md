@@ -1,10 +1,6 @@
 # WebSocket
 
-<<<<<<< HEAD
 Il protocollo `WebSocket`, descritto nelle specifiche [RFC 6455](http://tools.ietf.org/html/rfc6455) fornisce un mezzo di scambio dati tra server e browser utilizzando una connessione persistente. I dati vengono scambiati in entrambe le direzioni come dei "pacchetti" (packets), senza la necessità di interrompere la connessione o di creare nuovi headers-HTTP per le richieste successive.
-=======
-The `WebSocket` protocol, described in the specification [RFC 6455](https://datatracker.ietf.org/doc/html/rfc6455) provides a way to exchange data between browser and server via a persistent connection. The data can be passed in both directions as "packets", without breaking the connection and additional HTTP-requests.
->>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 I WebSocket sono particolarmente adatti per servizi che richiedono scambi continui di dati, come ad esempio giochi online, sistemi di trading in real-time e così via.
 

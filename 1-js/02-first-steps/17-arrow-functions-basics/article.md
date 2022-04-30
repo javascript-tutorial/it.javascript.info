@@ -8,11 +8,7 @@ E' chiamata "arrow functions", perché si presenta in questo modo:
 let func = (arg1, arg2, ..., argN) => expression;
 ```
 
-<<<<<<< HEAD
 Questo codice crea una funzione `func` che accetta gli argomenti `arg1..argN` e li utilizza per valutare `expression` e restituirne il risultato.
-=======
-This creates a function `func` that accepts arguments `arg1..argN`, then evaluates the `expression` on the right side with their use and returns its result.
->>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 In altre parole è una versione abbreviata di:
 

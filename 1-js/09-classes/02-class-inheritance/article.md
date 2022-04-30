@@ -314,21 +314,13 @@ new Rabbit(); // animal
 */!*
 ```
 
-<<<<<<< HEAD
 Qui, la classe `Rabbit` estende `Animal` e sovrascrive il campo `name` con il suo valore.
-=======
-Here, class `Rabbit` extends `Animal` and overrides the `name` field with its own value.
->>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 Non c'è alcun costruttore in `Rabbit`, quindi viene invocato quello di `Animal`.
 
 E' interessante notare che in entrambi i casi: `new Animal()` e `new Rabbit()`, l'istruzione di `alert` nella riga `(*)` mostra `animal`.
 
-<<<<<<< HEAD
 **In altre parole, il costruttore genitore utilizza sempre i suoi campi dati, non quelli sovrascritti.**
-=======
-**In other words, the parent constructor always uses its own field value, not the overridden one.**
->>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 Cosa c'è di strano in questo?
 
@@ -365,19 +357,11 @@ E questo è quello che ci aspetteremmo. Quando il costruttore genitore viene inv
 
 ...Ma per i campi dati non è cosi. Come già detto, il costruttore genitore utilizza sempre i suoi campi dati.
 
-<<<<<<< HEAD
 Perché c'è questa differenza?
 
 Il motivo sta nell'ordine di inizializzazione dei campi dati. I campi dati di una classe vengono inizializzati:
 - Prima del costruttore per la classe base,
 - Subito dopo `super()` per le classi derivate.
-=======
-Why is there a difference?
-
-Well, the reason is the field initialization order. The class field is initialized:
-- Before constructor for the base class (that doesn't extend anything),
-- Immediately after `super()` for the derived class.
->>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 Nel nostro caso, `Rabbit` è la classe derivata. Non c'è alcun `constructor()` al suo interno. Come detto precedentemente, questo equivale ad avere un costruttore vuoto con la sola chiamata a `super(...args)`.
 
