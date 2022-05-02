@@ -4,7 +4,11 @@
 
 Il *nullish coalescing operator* è rappresentato da due punti di domanda `??`.
 
+<<<<<<< HEAD
 Siccome trattiamo `null` e `undefined` in modo simile, avremo bisogno di una definizione particolare. In questo articolo, diremo che un'espressione è "definita" quando non è né `null` né `undefined`.
+=======
+As it treats `null` and `undefined` similarly, we'll use a special term here, in this article. For brevity, we'll say that a value is "defined" when it's neither `null` nor `undefined`.
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 Il risultato di `a ?? b` è:
 - se `a` è definito, allora `a`,
@@ -22,7 +26,13 @@ result = (a !== null && a !== undefined) ? a : b;
 
 Un caso d'uso comune per l'operatore `??` è quello di fornire un valore di default per una variabile potenzialmente "non definita".
 
+<<<<<<< HEAD
 Per esempio, qui mostriamo `Anonymous` se `user` non è definito:
+=======
+The common use case for `??` is to provide a default value.
+
+For example, here we show `user` if its value isn't `null/undefined`, otherwise `Anonymous`:
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 ```js run
 let user;
@@ -40,9 +50,15 @@ alert(user ?? "Anonymous"); // John (user defined)
 
 Possiamo anche usare una sequenza di `??` per selezionare, da una lista, il primo valore che non sia `null/undefined`.
 
+<<<<<<< HEAD
 Per esempio, supponiamo di avere i dati di un utente nelle variabili `firstName`, `lastName` o `nickName`. Tutte queste potrebbero essere non definite, se l'utente dovesse decidere di non inserirne i valori.
 
 Vorremmo visualizzare il nome dell'utente usando una di queste variabili, oppure mostrare "Anonymous" se nessuna di esse è definita.
+=======
+Let's say we have a user's data in variables `firstName`, `lastName` or `nickName`. All of them may be not defined, if the user decided not to fill in the corresponding values.
+
+We'd like to display the user name using one of these variables, or show "Anonymous" if all of them are `null/undefined`.
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 Usiamo l'operatore `??`:
 
@@ -102,11 +118,19 @@ alert(height ?? 100); // 0
 
 Se un'altezza pari a zero è un valore accettabile, questo non dovrebbe essere rimpiazzato con il valore di default (il secondo operatore, nel'esempio sopra `100`); in questo caso il *nullish coalescing operator* `??` è la scelta giusta.
 
+<<<<<<< HEAD
 ## Precedenza
+=======
+The precedence of the `??` operator is the same as `||`. They both equal `4` in the [MDN table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table).
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 La precedenza dell'operatore `??` è piuttosto bassa: `5` nella [MDN table](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#Table). Quindi `??` è valutato prima di `=` e `?`, ma dopo la maggior parte degli altri operatori, come `+` o `*`.
 
+<<<<<<< HEAD
 Quindi, se volessimo scegliere un valore tramite l'operatore `??` in un'espressione contenente altri operatori, dovremmo considerare l'utilizzo delle parentesi:
+=======
+So we may need to add parentheses in expressions like this:
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 ```js run
 let height = null;
@@ -124,7 +148,11 @@ Altrimenti, se omettessimo le parentesi, siccome `*` ha una precedenza maggiore 
 // senza parentesi
 let area = height ?? 100 * width ?? 50;
 
+<<<<<<< HEAD
 // ...funziona allo stesso modo del seguente codice (probabilmente non ciò che vogliamo)
+=======
+// ...works this way (not what we want):
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 let area = height ?? (100 * width) ?? 50;
 ```
 

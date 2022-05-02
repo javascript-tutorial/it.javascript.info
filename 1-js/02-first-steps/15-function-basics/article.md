@@ -177,8 +177,13 @@ Quando un valore viene passato come parametro di funzione, vine anche chiamato *
 In altre parole
 In other words, per chiarire questi termini:
 
+<<<<<<< HEAD
 - Un parametro è la variabile elencata tra parentesi nella dichiarazione della funzione (fa parte della dichiarazione).
 - Un argomento è il valore passato alla funzione quando viene chiamata (fa parte della chiamata).
+=======
+- A parameter is the variable listed inside the parentheses in the function declaration (it's a declaration time term).
+- An argument is the value that is passed to the function when it is called (it's a call time term).
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 Dichiariamo le funzioni elencando i loro parametri, quindi le chiamiamo passando gli argomenti.
 
@@ -229,7 +234,45 @@ Nell'esempio sopra, `anotherFunctions()` non viene chiamata se viene passato il 
 Viene invece chiamata ogni volta che il parametro manca.
 ```
 
+<<<<<<< HEAD
 A volte ha senso assegnare valori default ai parametri, non nella dichiarazione della funzione, ma in una fase successiva.
+=======
+````smart header="Default parameters in old JavaScript code"
+Several years ago, JavaScript didn't support the syntax for default parameters. So people used other ways to specify them.
+
+Nowadays, we can come across them in old scripts.
+
+For example, an explicit check for `undefined`:
+
+```js
+function showMessage(from, text) {
+*!*
+  if (text === undefined) {
+    text = 'no text given';
+  }
+*/!*
+
+  alert( from + ": " + text );
+}
+```
+
+...Or using the `||` operator:
+
+```js
+function showMessage(from, text) {
+  // If the value of text is falsy, assign the default value
+  // this assumes that text == "" is the same as no text at all
+  text = text || 'no text given';
+  ...
+}
+```
+````
+
+
+### Alternative default parameters
+
+Sometimes it makes sense to assign default values for parameters not in the function declaration, but at a later stage.
+>>>>>>> 291b5c05b99452cf8a0d32bd32426926dbcc0ce0
 
 Possiamo verificare se il parametro viene passato durante l'esecuzione della funzione, confrontandolo con `undefined`:
 
