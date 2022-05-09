@@ -45,9 +45,13 @@ let guestList = "Guests: // Error: Unexpected token ILLEGAL
   * John";
 ```
 
+<<<<<<< HEAD
 Gli apici singoli e doppi sono nati insieme al linguaggio, quando non era stato ancora messo in conto la possibilità di stringhe multilinea. Le backticks sono apparse più tardi, per questo risultano più versatili.
 
 Le backticks ci consentono anche di specificare un "template di funzione" prima della backtick di apertura. La sintassi è: <code>func&#96;string&#96;</code>. La funzione `func` viene chiamata automaticamente, gli viene passata la "string", può essere cosi trattata dalla funzione. Potete approfondire leggendo la [documentazione](mdn:/JavaScript/Reference/Template_literals#Tagged_templates). Questo viene chiamata "funzione template". Con questa caratteristica diventa più facile raccogliere stringhe da passare a funzioni, ma è raramente utilizzata.
+=======
+Single and double quotes come from ancient times of language creation, when the need for multiline strings was not taken into account. Backticks appeared much later and thus are more versatile.
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
 
 
 ## Caratteri speciali
@@ -214,7 +218,7 @@ alert( 'Interface'.toLowerCase() ); // interface
 
 Altrimenti, possiamo agire anche su un singolo carattere:
 
-```js
+```js run
 alert( 'Interface'[0].toLowerCase() ); // 'i'
 ```
 
@@ -371,8 +375,13 @@ alert( "Midget".includes("id", 3) ); // false, dalla posizione 3 non c'è "id"
 I metodi [str.startsWith](mdn:js/String/startsWith) e [str.endsWith](mdn:js/String/endsWith) fanno esattamente ciò che dicono i loro nomi:
 
 ```js run
+<<<<<<< HEAD
 alert( "Widget".startsWith("Wid") ); // true, "Widget" inizia con "Wid"
 alert( "Widget".endsWith("get") );   // true, "Widget" finisce con "get"
+=======
+alert( "*!*Wid*/!*get".startsWith("Wid") ); // true, "Widget" starts with "Wid"
+alert( "Wid*!*get*/!*".endsWith("get") ); // true, "Widget" ends with "get"
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
 ```
 
 ## Estrarre una sotto-stringa
@@ -605,7 +614,11 @@ Nel capitolo <info:iterable> troverete molti altri modi per operare con le coppi
 
 ### Lettere speciali e normalizzazione
 
+<<<<<<< HEAD
 In molte lingue ci sono lettere composte da un carattere di base completato da un simbolo che può stare sopra/sotto.
+=======
+In many languages, there are symbols that are composed of the base character with a mark above/under it.
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
 
 Ad esempio, la lettera `a` può essere il carattere di base per: `àáâäãåā`. Molti dei caratteri "composti" hanno una loro rappresentazione nella tabella UTF-16. Però non tutte, poiché le combinazioni possibili sono veramente molte.
 

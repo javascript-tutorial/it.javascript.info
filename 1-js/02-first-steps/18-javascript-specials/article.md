@@ -258,7 +258,11 @@ Abbiamo studiato tre modi per creare funzioni in JavaScript:
 3. Funzione freccia:
 
     ```js
+<<<<<<< HEAD
     // espressione dalla parte destra
+=======
+    // expression on the right side
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
     let sum = (a, b) => a + b;
 
     // oppure la sintassi multi-riga con { ... }, è necessario esplicitare return

@@ -195,8 +195,13 @@ let 1a; // non può cominciare con una stringa
 let my-name; // '-' non è consentito nei nomi
 ```
 
+<<<<<<< HEAD
 ```smart header="La questione delle lettere"
 Le variabili `apple` ed `AppLE` sono distinte.
+=======
+```smart header="Case matters"
+Variables named `apple` and `APPLE` are two different variables.
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
 ```
 
 ````smart header="Le lettere non latine sono permesse, ma sono sconsigliate"
@@ -301,7 +306,11 @@ const pageLoadTime = /* tempo necessario da una pagina web per caricare */;
 
 Il valore di `pageLoadTime` non è noto prima del caricamento della pagina, quindi viene trattato come una normale variabile. Ma rimane comunque una costante, perché non potrà più cambiare dopo che gli sarà stato assegnato un valore.
 
+<<<<<<< HEAD
 In altre parole, i nomi delle costanti in maiuscolo vengono utilizzati con variabili dal valore noto prima dell'esecuzione.
+=======
+In other words, capital-named constants are only used as aliases for "hard-coded" values.
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
 
 ## Dare i giusti nomi alle cose
 

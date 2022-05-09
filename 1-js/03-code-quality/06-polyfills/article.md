@@ -42,7 +42,11 @@ In genere lo sviluppatore fa girare il transpiler in locale sul proprio computer
 
 Facendo qualche nome, [Babel](https://babeljs.io) è uno dei più diffusi transpilers del momento. 
 
+<<<<<<< HEAD
 I moderni 'bundler' utilizzati per 'assemblare' progetti, come [webpack](http://webpack.github.io/), possono eseguire il transpiler automaticamente ad ogni modifica del codice, è quindi molto facile integrarlo nei processi di sviluppo.
+=======
+Modern project build systems, such as [webpack](https://webpack.js.org/), provide means to run transpiler automatically on every code change, so it's very easy to integrate into development process.
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
 
 ## Polyfills
 
@@ -82,7 +86,11 @@ In questo capitolo vorremmo motivarvi a studiare le funzionalità più moderne e
 
 Basta non dimenticare di usare transpiler (se si utilizza la sintassi o gli operatori moderni) e i polyfill (per aggiungere funzioni che potrebbero mancare). Questi si assicureranno che il codice funzioni.
 
+<<<<<<< HEAD
 Ad esempio, in seguito, quando avrai familiarità con JavaScript, potrai configurare un sistema di compilazione del codice basato su [webpack](http://webpack.github.io/) con [babel-loader](https://github.com/babel/babel-loader) plugin.
+=======
+For example, later when you're familiar with JavaScript, you can setup a code build system based on [webpack](https://webpack.js.org/) with [babel-loader](https://github.com/babel/babel-loader) plugin.
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
 
 Buone risorse che mostrano lo stato attuale del supporto per varie funzionalità:
 - <https://kangax.github.io/compat-table/es6/> - per puro JavaScript.

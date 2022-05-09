@@ -96,7 +96,11 @@ Il valore ritornato, `requestId`, può essere utilizzato per annullare l'invocaz
 cancelAnimationFrame(requestId);
 ```
 
+<<<<<<< HEAD
 La `callback` riceve un solo argomento, il tempo trascorso dall'inizio del caricamento della pagina, in microsecondi. Possiamo ottenere questa informazione anche invocando [performance.now()](mdn:api/Performance/now).
+=======
+The `callback` gets one argument -- the time passed from the beginning of the page load in milliseconds. This time can also be obtained by calling [performance.now()](mdn:api/Performance/now).
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
 
 Solitamente `callback` viene eseguita molto presto, a meno che la CPU non sia in uno stato di sovraccarico, la batteria del portatile non sia quasi scarica, o per altri motivi.
 
@@ -159,7 +163,11 @@ La funzione `animate` accetta 3 parametri che descrivono l'animazione:
     }
     ```
 
+<<<<<<< HEAD
     La curva corrispondente:
+=======
+    Its graph:
+>>>>>>> 206485fc3a5465f961608b6e7303fae2e1a0e0b5
     ![](linear.svg)
 
     Proprio come `transition-timing-function: linear`. Vengono mostrare altre varianti sotto.
