@@ -207,6 +207,14 @@ Un buon libro "The Garbage Collection Handbook: The Art of Automatic Memory Mana
  
 Se conoscete la programmazione a basso livello, informazioni più dettagliate riguardo il Garbage collector V8 sono disponibili nell'articolo [A tour of V8: Garbage Collection](http://jayconrod.com/posts/55/a-tour-of-v8-garbage-collection).
 
+<<<<<<< HEAD
 [V8 blog](http://v8project.blogspot.com/) pubblica articoli riguardo i cambiamenti nella gestione della memoria. Ovviamente per apprendere il processo di garbage collection, è fortemente consigliato imparare il funzionamento del garbage collector V8 leggendo il blog [Vyacheslav Egorov](http://mrale.ph) che ha lavorato come ingegnere per lo sviluppo del V8. Vi dico "V8" perché è quello più utilizzato e maggiormente spiegato su internet. Per gli altri motori, gli approcci sono simili, ci sono alcune sottili differenze.
 
 Le conoscenze profonde dei motori sono importanti quando necessitate di ottimizzazioni a basso livello. Potrebbe essere un buon traguardo dopo essere diventati familiari con il linguaggio.
+=======
+If you are familiar with low-level programming, more detailed information about V8's garbage collector is in the article [A tour of V8: Garbage Collection](http://jayconrod.com/posts/55/a-tour-of-v8-garbage-collection).
+
+The [V8 blog](https://v8.dev/) also publishes articles about changes in memory management from time to time. Naturally, to learn more about garbage collection, you'd better prepare by learning about V8 internals in general and read the blog of [Vyacheslav Egorov](http://mrale.ph) who worked as one of the V8 engineers. I'm saying: "V8", because it is best covered by articles on the internet. For other engines, many approaches are similar, but garbage collection differs in many aspects.
+
+In-depth knowledge of engines is good when you need low-level optimizations. It would be wise to plan that as the next step after you're familiar with the language.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469

@@ -129,7 +129,12 @@ Ad esempio, qui il secondo `<span>` viene ignorato (dal momento che non è un fi
 
 Se ci sono più elementi nel light DOM con lo stesso slot name, questi vengono inseriti nello slot, uno dopo l'altro in successione.
 
+<<<<<<< HEAD
 Come nel seguente esempio:
+=======
+For example, this:
+
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 ```html
 <user-card>
   <span slot="username">John</span>

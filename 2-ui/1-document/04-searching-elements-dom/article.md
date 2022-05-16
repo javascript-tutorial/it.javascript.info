@@ -54,8 +54,13 @@ Inoltre, c'è una variabile globale chiamata come l'`id` che fa riferimento all'
 </script>
 ```
 
+<<<<<<< HEAD
 ```warn header="Non utilizzate le variabili-id globali per accedere agli elementi"
 Questo comportamento è descritto [nella specifica](http://www.whatwg.org/specs/web-apps/current-work/#dom-window-nameditem), quindi è quasi uno standard, ma è supportato principalmente per una questione di compatibilità.
+=======
+```warn header="Please don't use id-named global variables to access elements"
+This behavior is described [in the specification](http://www.whatwg.org/specs/web-apps/current-work/#dom-window-nameditem), so it's a kind of standard. But it is supported mainly for compatibility.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 Il browser cerca di aiutarci mischiando i namespaces di JS e del DOM. Questo va bene per un semplice script, ma generalmente non è una buona cosa. Potrebbero esserci conflitti tra i nomi. Inoltre, quando uno legge il codice JS e non ha sott'occhio quello HTML non è ovvia la provenienza di una variabile.
 
@@ -154,7 +159,7 @@ Ad esempio:
 <div class="contents">
   <ul class="book">
     <li class="chapter">Chapter 1</li>
-    <li class="chapter">Chapter 1</li>
+    <li class="chapter">Chapter 2</li>
   </ul>
 </div>
 

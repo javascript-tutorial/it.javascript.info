@@ -55,7 +55,11 @@ Per abilitare completamente tutte le caratteristiche del moderno JavaScript, dov
 
 La direttiva deve essere posta all'inizio di ogni script o all'inizio di una funzione.
 
+<<<<<<< HEAD
 Senza `"use strict"`, tutto continuerebbe a funzionare, ma alcune caratteristiche si comporterebbero in vecchio-stile, per retrocompatibilità. Generalmente si preferisce la modalità con i comportamenti moderni.
+=======
+Without `"use strict"`, everything still works, but some features behave in the old-fashioned, "compatible" way. We'd generally prefer the modern behavior.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 Alcune caratteristiche moderne del linguaggio (come le classi che studieremo più avanti) attivano automaticamente la modalità script.
 
@@ -258,7 +262,11 @@ Abbiamo studiato tre modi per creare funzioni in JavaScript:
 3. Funzione freccia:
 
     ```js
+<<<<<<< HEAD
     // espressione dalla parte destra
+=======
+    // expression on the right side
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
     let sum = (a, b) => a + b;
 
     // oppure la sintassi multi-riga con { ... }, è necessario esplicitare return

@@ -356,7 +356,11 @@ for (let key in user) {
 
 Un'altra differenza è che `for..in` ignora le proprietà di tipo `symbol`, mentre `Object.getOwnPropertyDescriptors` ritorna *tutti* i descrittori, inclusi quelli di tipo symbol.
 
+<<<<<<< HEAD
 ## Sigillare un oggetto globalmente
+=======
+Another difference is that `for..in` ignores symbolic and non-enumerable properties, but `Object.getOwnPropertyDescriptors` returns *all* property descriptors including symbolic and non-enumerable ones.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 I descrittori di proprietà permettono di lavorare a livello di proprietà.
 

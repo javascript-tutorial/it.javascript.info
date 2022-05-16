@@ -208,7 +208,11 @@ Nota bene: l'evento deve avere il flag `cancelable: true`, altrimenti la chiamat
 
 ## Gli eventi annidati sono sincroni
 
+<<<<<<< HEAD
 Solitamente gli eventi vengono elaborati in una coda. Ossia: se il browser sta elaborando `onclick` e viene generato un nuovo evento, ad esempio il mouse viene mosso, il suo gestore verrà messo in coda, ed i corrispondenti gestori di `mousemove` verranno chiamati dopo che l'elaborazione di `onclick` sarà terminata.
+=======
+Usually events are processed in a queue. That is: if the browser is processing `onclick` and a new event occurs, e.g. mouse moved, then its handling is queued up, corresponding `mousemove` handlers will be called after `onclick` processing is finished.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 L'eccezione degna di nota è quando un evento viene inizializzato all'interno di un altro, ad esempio usando `dispatchEvent`. Questi eventi vengono elaborati immediatamente: i gestori del nuovo evento vengono chiamati, e successivamente viene ristabilita la gestione dell'evento corrente.
 

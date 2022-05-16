@@ -177,8 +177,13 @@ Quando un valore viene passato come parametro di funzione, vine anche chiamato *
 In altre parole
 In other words, per chiarire questi termini:
 
+<<<<<<< HEAD
 - Un parametro è la variabile elencata tra parentesi nella dichiarazione della funzione (fa parte della dichiarazione).
 - Un argomento è il valore passato alla funzione quando viene chiamata (fa parte della chiamata).
+=======
+- A parameter is the variable listed inside the parentheses in the function declaration (it's a declaration time term).
+- An argument is the value that is passed to the function when it is called (it's a call time term).
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 Dichiariamo le funzioni elencando i loro parametri, quindi le chiamiamo passando gli argomenti.
 
@@ -229,7 +234,45 @@ Nell'esempio sopra, `anotherFunctions()` non viene chiamata se viene passato il 
 Viene invece chiamata ogni volta che il parametro manca.
 ```
 
+<<<<<<< HEAD
 A volte ha senso assegnare valori default ai parametri, non nella dichiarazione della funzione, ma in una fase successiva.
+=======
+````smart header="Default parameters in old JavaScript code"
+Several years ago, JavaScript didn't support the syntax for default parameters. So people used other ways to specify them.
+
+Nowadays, we can come across them in old scripts.
+
+For example, an explicit check for `undefined`:
+
+```js
+function showMessage(from, text) {
+*!*
+  if (text === undefined) {
+    text = 'no text given';
+  }
+*/!*
+
+  alert( from + ": " + text );
+}
+```
+
+...Or using the `||` operator:
+
+```js
+function showMessage(from, text) {
+  // If the value of text is falsy, assign the default value
+  // this assumes that text == "" is the same as no text at all
+  text = text || 'no text given';
+  ...
+}
+```
+````
+
+
+### Alternative default parameters
+
+Sometimes it makes sense to assign default values for parameters not in the function declaration, but at a later stage.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 Possiamo verificare se il parametro viene passato durante l'esecuzione della funzione, confrontandolo con `undefined`:
 
@@ -481,7 +524,11 @@ function name(parameters, delimited, by, comma) {
 
 Per rendere il codice pulito e più facile da leggere, è consigliabile utilizzare principalmente variabili locali e parametri di funzione, non variabili esterne.
 
+<<<<<<< HEAD
 E' sempre più facile capire una funzione che accetta parametri, li lavora e ritorna un valore piuttosto di una funzione che non richiede parametri ma, come effetto collaterale, modifica variabili esterne.
+=======
+It is always easier to understand a function which gets parameters, works with them and returns a result than a function which gets no parameters, but modifies outer variables as a side effect.
+>>>>>>> 2901e0c64590a67d8a2bde1ea76a514d96f80469
 
 Denominare le funzioni:
 
