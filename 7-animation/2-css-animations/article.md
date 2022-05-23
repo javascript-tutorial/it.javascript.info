@@ -222,7 +222,6 @@ Gli altri nomi sono delle abbreviazioni per le seguenti curve `cubic-bezier`:
 
 Potremmo quindi utilizzare `ease-out` per rallentare l'animazione del treno:
 
-
 ```css
 .train {
   left: 0;
@@ -237,7 +236,12 @@ Anche se apparirà leggermente diversa.
 
 I punti di controllo nella curva, sono liberi di definire un valore qualsiasi per le coordindate `y`: sia valori grandi che negativi. Questo si rifletterà sulla curva di Bezier che potrà essere molto alta o molto bassa, facendo eccedere l'animazione dal suo intervallo normale. 
 
+<<<<<<< HEAD
 Nell'esempio sotto il codice dell'animazione è:
+=======
+In the example below the animation code is:
+
+>>>>>>> d5e8b6d308869738bd1f08dde62b64c969b0673e
 ```css
 .train {
   left: 100px;
@@ -314,8 +318,13 @@ Il processo progredirà in questo modo:
 - `0s` -- `-10%` (il primo cambiamento all'inizio del primo secondo, immediatamente)
 - `1s` -- `-20%`
 - ...
+<<<<<<< HEAD
 - `8s` -- `-80%`
 - (l'ultimo secondo mostra il valore finale).
+=======
+- `8s` -- `-90%`
+- (the last second shows the final value).
+>>>>>>> d5e8b6d308869738bd1f08dde62b64c969b0673e
 
 In alternativa il valore `end` starà a significare che il cambiamento dovrebbe essere applicato non dall'inizio, ma alla fine di ogni secondo.
 
