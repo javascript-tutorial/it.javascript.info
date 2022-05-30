@@ -524,7 +524,11 @@ Terminologia:
     list = { value, next -> list }
     ```
 
+<<<<<<< HEAD
     Gli elementi HTML o la definizione di dipartimento sono definizioni ricorsive: ogni ramo può avere altri rami.
+=======
+    Trees like HTML elements tree or the department tree from this chapter are also naturally recursive: they have branches and every branch can have other branches.
+>>>>>>> 2efe0dce18a57f2b6121ed6656d6fe10b0ee8f96
 
     Si possono utilizzare funzioni ricorsive per attraversare questo tipo di oggetti, come abbiamo visto nell'esempio `sumSalary`.
 
