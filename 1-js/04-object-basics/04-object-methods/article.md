@@ -51,7 +51,7 @@ let user = {
 // prima la dichiariamo
 function sayHi() {
   alert("Hello!");
-};
+}
 
 // poi la aggiungiamo come metodo
 user.sayHi = sayHi;

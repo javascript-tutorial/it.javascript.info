@@ -183,7 +183,11 @@ alert(admin.name); // Pete
 
 Come puoi vedere, quando `1.js` cambia la proprietà `name` nell'`admin` importato, allora anche `2.js` può vedere il nuovo `admin.name`.
 
+<<<<<<< HEAD
 Questo è il motivo per cui il modulo viene eseguito solo una volta. Le esportazioni vengono generate e quindi condivise tra gli importatori, quindi se qualcosa cambia l'oggetto `admin`, gli altri moduli lo vedranno.
+=======
+That's exactly because the module is executed only once. Exports are generated, and then they are shared between importers, so if something changes the `admin` object, other importers will see that.
+>>>>>>> 2efe0dce18a57f2b6121ed6656d6fe10b0ee8f96
 
 **Questo comportamento in realtà è molto utile, perché ci permette di *configurare* i moduli.**
 
@@ -278,7 +282,11 @@ In altre parole:
 - I moduli attendono fino al momento in cui l'HTML è pronto (anche se sono molto piccoli e possono essere elaborati più velocemente dell'HTML), e poi vengono eseguiti.
 - L'ordine relativo degli script viene mantenuto: gli script che appaiono prima nel documento vengono eseguiti per primi.
 
+<<<<<<< HEAD
 Come conseguenza, i moduli "vedono" sempre la pagina HTML completamente caricata, inclusi gli elementi sotto di essi.
+=======
+As a side effect, module scripts always "see" the fully loaded HTML-page, including HTML elements below them.
+>>>>>>> 2efe0dce18a57f2b6121ed6656d6fe10b0ee8f96
 
 Ad esempio:
 
