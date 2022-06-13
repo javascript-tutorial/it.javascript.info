@@ -53,7 +53,11 @@ describe("pow", function() {
 Una spec ha tre principali blocchi:
 
 `describe("title", function() { ... })`
+<<<<<<< HEAD
 : Viene descritta la funzionalità. Utilizzata per raggruppare le "attività" -- i blocchi `it`. Nel nostro caso descriviamo la funzione `pow`.
+=======
+: What functionality we're describing? In our case we're describing the function `pow`. Used to group "workers" -- the `it` blocks.
+>>>>>>> 7bb6066eb6ea3a030b875cdc75433c458f80997e
 
 `it("title", function() { ... })`
 : Nel titolo di `it` descriviamo il particolare caso d'uso *leggibile per gli umani*, come secondo argomento una funzione che lo testa.

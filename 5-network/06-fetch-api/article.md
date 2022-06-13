@@ -185,7 +185,11 @@ L'opzione `integrity` permette di controllare se la risposta combacia con il che
 
 Come descritto nelle [specifiche](https://w3c.github.io/webappsec-subresource-integrity/), funzione hash supportate sono SHA-256, SHA-384, e SHA-512, potrebbero essercene altre a discrezione del browser.
 
+<<<<<<< HEAD
 Per esempio, stiamo scaricando un file, e sappiamo che il suo checksum SHA-256 è "abcdef" (un checksum reale è più lungo, chiaramente).
+=======
+For example, we're downloading a file, and we know that its SHA-256 checksum is "abcdef" (a real checksum is longer, of course).
+>>>>>>> 7bb6066eb6ea3a030b875cdc75433c458f80997e
 
 Possiamo inserirlo dentro l'opzione `integrity`:
 
