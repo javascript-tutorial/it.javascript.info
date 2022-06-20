@@ -30,7 +30,11 @@ Eliminiamo subito una possibile fonte di confusione. `ArrayBuffer` non ha nulla 
 
 **Per manipolare un `ArrayBuffer`, dobbiamo utilizzare un oggetto "visualizzatore".**
 
+<<<<<<< HEAD
 Un oggetto visualizzatore non memorizza nulla. Funge da "lente di ingrandimento" che fornisce un interpretazione dei byte memorizzati in un `ArrayBuffer`.
+=======
+A view object does not store anything on its own. It's the "eyeglasses" that give an interpretation of the bytes stored in the `ArrayBuffer`.
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
 
 Ad esempio:
 

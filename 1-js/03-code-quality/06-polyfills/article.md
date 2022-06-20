@@ -5,7 +5,11 @@ Il linguaggio JavaScript si evolve costantemente. Nuove proposte per il linguagg
 
 I team che stanno dietro il motore di JavaScript hanno le loro personali idee riguardo cosa implementare. Potrebbero quindi decidere di implementare delle proposte recenti e posticipare quelle più vecchie a causa di difficoltà nell'implementazione.
 
+<<<<<<< HEAD
 Quindi per un motore di script è naturale implementare solo le cose che si trovano nello standard.
+=======
+So it's quite common for an engine to implement only part of the standard.
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
 
 Se si vuole rimanere aggiornati riguardo lo stato di supporto delle caratteristiche si può controllare la pagina <https://kangax.github.io/compat-table/es6/> (è molto grande, dovremmo studiare ancora molto).
 
@@ -40,9 +44,15 @@ Ora il codice riscritto è adatto anche ai vecchi motori JavaScript.
 
 In genere lo sviluppatore fa girare il transpiler in locale sul proprio computer, quindi distribuisce sul server il codice riscritto.
 
+<<<<<<< HEAD
 Facendo qualche nome, [Babel](https://babeljs.io) è uno dei più diffusi transpilers del momento. 
 
 I moderni 'bundler' utilizzati per 'assemblare' progetti, come [webpack](http://webpack.github.io/), possono eseguire il transpiler automaticamente ad ogni modifica del codice, è quindi molto facile integrarlo nei processi di sviluppo.
+=======
+Speaking of names, [Babel](https://babeljs.io) is one of the most prominent transpilers out there.
+
+Modern project build systems, such as [webpack](https://webpack.js.org/), provide a means to run a transpiler automatically on every code change, so it's very easy to integrate into the development process.
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
 
 ## Polyfills
 
@@ -69,20 +79,34 @@ if (!Math.trunc) { // se la funzione non esiste
 }
 ```
 
+<<<<<<< HEAD
 JavaScript è un linguaggio altamente dinamico, gli script possono aggiungere/modificare qualsiasi funzione, anche quelle integrate.
 
 Due interessanti librerie polyfills sono:
 - [core js](https://github.com/zloirock/core-js) ha molte funzioni e consente di includere solo le funzionalità necessarie.
 - [polyfill.io](http://polyfill.io) servizio che fornisce uno script con polyfill, a seconda delle funzionalità e del browser dell'utente.
+=======
+JavaScript is a highly dynamic language. Scripts may add/modify any function, even built-in ones.
+
+Two interesting polyfill libraries are:
+- [core js](https://github.com/zloirock/core-js) that supports a lot, allows to include only needed features.
+- [polyfill.io](http://polyfill.io) service that provides a script with polyfills, depending on the features and user's browser.
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
 
 
 ## Riepilogo
 
 In questo capitolo vorremmo motivarvi a studiare le funzionalità più moderne ed all'avanguardia" del linguaggio, anche se non sono ancora ben supportate dai motori JavaScript.
 
+<<<<<<< HEAD
 Basta non dimenticare di usare transpiler (se si utilizza la sintassi o gli operatori moderni) e i polyfill (per aggiungere funzioni che potrebbero mancare). Questi si assicureranno che il codice funzioni.
 
 Ad esempio, in seguito, quando avrai familiarità con JavaScript, potrai configurare un sistema di compilazione del codice basato su [webpack](http://webpack.github.io/) con [babel-loader](https://github.com/babel/babel-loader) plugin.
+=======
+Just don't forget to use a transpiler (if using modern syntax or operators) and polyfills (to add functions that may be missing). They'll ensure that the code works.
+
+For example, later when you're familiar with JavaScript, you can setup a code build system based on [webpack](https://webpack.js.org/) with the [babel-loader](https://github.com/babel/babel-loader) plugin.
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
 
 Buone risorse che mostrano lo stato attuale del supporto per varie funzionalità:
 - <https://kangax.github.io/compat-table/es6/> - per puro JavaScript.

@@ -8,7 +8,13 @@ Abbiamo già a disposizione i cookies. Perché usare altri oggetti?
 - Inoltre, il server non può manipolare la memorizzazione degli oggetti tramite HTTP headers. Tutto viene fatto in JavaScript.
 - L'archiviazione è legata alla sorgete (origin) (domain/protocol/port triplet). Questo perché, protocolli differenti o sotto domini deducono diverse archiviazioni a oggetti e non possono accedere ai dati tra di loro.
 
+<<<<<<< HEAD
 Le due archiviazioni a oggetti propongono stessi metodi e proprietà:
+=======
+- Unlike cookies, web storage objects are not sent to server with each request. Because of that, we can store much more. Most modern browsers allow at least 5 megabytes of data (or more) and have settings to configure that.
+- Also unlike cookies, the server can't manipulate storage objects via HTTP headers. Everything's done in JavaScript.
+- The storage is bound to the origin (domain/protocol/port triplet). That is, different protocols or subdomains infer different storage objects, they can't access data from each other.
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
 
 - `setItem(key, value)`: memorizza la coppia key/value.
 - `getItem(key)`: lettura del valore dalla key.
@@ -61,7 +67,12 @@ delete localStorage.test;
 
 Questo è permesso per ragioni storiche, e principalmente funziona, ma generalmente non è raccomandato, perché:
 
+<<<<<<< HEAD
 1. Se la key è generata dall'utente, può essere qualsiasi cosa, come `length` o `toString`, o un altro metodo integrato di `localStorage`. In questo caso `getItem/setItem` funziona normalmente, mentre l'accesso in stile oggetto non funziona:
+=======
+1. If the key is user-generated, it can be anything, like `length` or `toString`, or another built-in method of `localStorage`. In that case `getItem/setItem` work fine, while object-like access fails:
+
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
     ```js run
     let key = 'length';
     localStorage[key] = 5; // Error, can't assign length
@@ -117,8 +128,12 @@ for(let key of keys) {
 
 Un lavoro extra, poiché `Object.keys` restituisce solo le keys che appartengono all oggetto, ignorando il prototype.
 
+<<<<<<< HEAD
 
 ## Solo stringhe
+=======
+## Strings only
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
 
 Da notare che sia key che i value devono essere stringhe.
 
@@ -145,7 +160,6 @@ Inoltre è possibile convertire a stringa l'intero archivio di oggetti, per esem
 // aggiunte le opzioni di formattazione a JSON.stringify per rendere object migliore
 alert( JSON.stringify(localStorage, null, 2) );
 ```
-
 
 ## sessionStorage
 
@@ -178,7 +192,11 @@ Questo perché `sessionStorage` è legato non solo all'origine, ma anche alla ta
 
 ## Evento di storage
 
+<<<<<<< HEAD
 Quando i dati vengono aggiornati in `localStorage` o `sessionStorage`, un evento di [storage](https://www.w3.org/TR/webstorage/#the-storage-event) viene emesso, con le seguenti proprietà:
+=======
+When the data gets updated in `localStorage` or `sessionStorage`, [storage](https://html.spec.whatwg.org/multipage/webstorage.html#the-storageevent-interface) event triggers, with properties:
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
 
 - `key`: La key che è stata modificata (`null` se è stato invocato `.clear()`).
 - `oldValue`: Il vecchio valore (`null` se la chiave è nuova).
@@ -222,11 +240,20 @@ I browser moderni supportano [Broadcast channel API](https://developer.mozilla.o
 
 ## Riepilogo
 
+<<<<<<< HEAD
 Gli oggetti web storage `localStorage` e `sessionStorage` permettono di archiviare key/value nel browser.
 - Sia `key` e `value` devono essere stringhe.
 - Il limite è 2mb+, dipende dal browser.
 - Non scadono.
 - I dati sono legati alla sorgente (domain/port/protocol).
+=======
+Web storage objects `localStorage` and `sessionStorage` allow to store key/value in the browser.
+
+- Both `key` and `value` must be strings.
+- The limit is 5mb+, depends on the browser.
+- They do not expire.
+- The data is bound to the origin (domain/port/protocol).
+>>>>>>> 7964b11b8fa2c314d9a09a82ea4b585cda618c80
 
 | `localStorage` | `sessionStorage` |
 |----------------|------------------|
