@@ -6,8 +6,15 @@ Ad esempio, `alert` converte automaticamente un valore qualsiasi in una stringa,
 
 Ci sono invece casi in cui è necessario convertire esplicitamente i valori per poter evitare errori.
 
+<<<<<<< HEAD
 ```smart header="Non parliamo ancora di oggetti"
 In questo capitolo non parleremo ancora di oggetti ma ci dedicheremo ai tipi primitivi. Approfondiremo gli oggetti e la loro conversione dopo averli studiati, nel capitolo <info:object-toprimitive>.
+=======
+```smart header="Not talking about objects yet"
+In this chapter, we won't cover objects. For now, we'll just be talking about primitives.
+
+Later, after we learn about objects, in the chapter <info:object-toprimitive> we'll see how objects fit in.
+>>>>>>> 30a5d5e2a7c3504c9afd5028f83f4a696e60aede
 ```
 
 ## Conversione di stringhe
