@@ -93,7 +93,11 @@ A prima vista, "importa tutto" sembra una cosa comoda, veloce da scrivere, quind
 
 Ecco alcune ragioni valide.
 
+<<<<<<< HEAD
 1. Gli strumenti moderni di build ([webpack](http://webpack.github.io) ed altri) impacchettano i moduli in modo da ottimizzarli, velocizzarne il caricamento e rimuovere le cose inutili.
+=======
+1. Modern build tools ([webpack](https://webpack.js.org/) and others) bundle modules together and optimize them to speedup loading and remove unused stuff.
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 
     Ipotizziamo di aggiungere una libreria di terze parti `say.js` al nostro progetto, che contiene molte funzioni:
     ```js
@@ -403,7 +407,11 @@ Potremmo incontrare due problemi:
 
 2. `export * from './user.js'` ri-esporta solamente i named exports, ma ignora quelli di default.
 
+<<<<<<< HEAD
     Nel caso in cui volessimo ri-esportare sia i named che i defaul export, allora avremmo bisogno di due istruzioni:
+=======
+    If we'd like to re-export both named and default exports, then two statements are needed:
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
     ```js
     export * from './user.js'; // per ri-esportare i named exports
     export {default} from './user.js'; // per ri-esportare i default export

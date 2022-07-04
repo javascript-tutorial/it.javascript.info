@@ -46,13 +46,23 @@ Oltre a i normali valori numeri, esistono anche i "valori numerici speciali" che
     alert( "not a number" / 2 ); // NaN, è una divisione errata
     ```
 
+<<<<<<< HEAD
     `NaN` è "fisso". Qualsiasi operazione su `NaN` restituirà `NaN`:
+=======
+    `NaN` is sticky. Any further mathematical operation on `NaN` returns `NaN`:
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 
     ```js run
-    alert( "not a number" / 2 + 5 ); // NaN
+    alert( NaN + 1 ); // NaN
+    alert( 3 * NaN ); // NaN
+    alert( "not a number" / 2 - 1 ); // NaN
     ```
 
+<<<<<<< HEAD
     Quindi, se è presente un `NaN` da qualche parte nell'operazione matematica, questo si propagherà fino al risultato.
+=======
+    So, if there's a `NaN` somewhere in a mathematical expression, it propagates to the whole result (there's only one exception to that: `NaN ** 0` is `1`).
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 
 ```smart header="Le operazioni matematiche sono sicure"
 In JavaScript le operazioni matematiche sono sicure. Possiamo fare qualsiasi cosa: dividere per zero, trattare stringhe non numeriche come numeri, etc.
@@ -274,6 +284,7 @@ Some people prefer `typeof(x)`, although the `typeof x` syntax is much more comm
 ```
 
 ## Summary
+<<<<<<< HEAD
 >>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 Ci sono 7 tipi base in JavaScript.
@@ -294,6 +305,24 @@ L'operatore `typeof` ci consente di vedere quale tipo è memorizzato nella varia
 - Ritorna una stringa con il nome del tipo, come `"string"`.
 - Il valore `null` ritorna `"object"` -- è un errore del linguaggio, infatti non è un oggetto.
 =======
+=======
+
+There are 8 basic data types in JavaScript.
+
+- Seven primitive data types:
+    - `number` for numbers of any kind: integer or floating-point, integers are limited by <code>±(2<sup>53</sup>-1)</code>.
+    - `bigint` for integer numbers of arbitrary length.
+    - `string` for strings. A string may have zero or more characters, there's no separate single-character type.
+    - `boolean` for `true`/`false`.
+    - `null` for unknown values -- a standalone type that has a single value `null`.
+    - `undefined` for unassigned values -- a standalone type that has a single value `undefined`.
+    - `symbol` for unique identifiers.
+- And one non-primitive data type:
+    - `object` for more complex data structures.
+
+The `typeof` operator allows us to see which type is stored in a variable.
+
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 - Usually used as `typeof x`, but `typeof(x)` is also possible.
 - Returns a string with the name of the type, like `"string"`.
 - For `null` returns `"object"` -- this is an error in the language, it's not actually an object.

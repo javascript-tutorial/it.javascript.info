@@ -12,8 +12,13 @@ Un IDE carica il progetto (possono essere molti file), consente la navigazione t
 
 Se non hai ancora considerato di scegliere un IDE, dai un'occhiata a queste alternative:
 
+<<<<<<< HEAD
 - [Visual Studio Code](https://code.visualstudio.com/) (*cross-platform*, gratutito).
 - [WebStorm](http://www.jetbrains.com/webstorm/) (*cross-platform*, a pagamento).
+=======
+- [Visual Studio Code](https://code.visualstudio.com/) (cross-platform, free).
+- [WebStorm](https://www.jetbrains.com/webstorm/) (cross-platform, paid).
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 
 Per Windows, c'è anche l'editor "Visual Studio", da non confondere con "Visual Studio Code". "Visual Studio" è un potente editor (a pagamento) disponibile solo per Windows, ottimo per le piattaforme .NET. E' disponibile anche una versione gratuita: ([Visual Studio Community](https://www.visualstudio.com/vs/community/).
 

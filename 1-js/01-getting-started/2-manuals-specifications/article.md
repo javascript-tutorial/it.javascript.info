@@ -28,6 +28,11 @@ Inoltre, se state sviluppando in ambiente browser, ci sono ulteriori specifiche 
 
 - **MSDN** – Manuale Microsoft con molte informazioni, tra cui su JavaScript (a cui viene fatto riferimento con il termine JScript). Se si ha bisogno di ottenere qualche informazione specifica per Internet Explorer, meglio consultare la guida: <http://msdn.microsoft.com/>.
 
+<<<<<<< HEAD
+=======
+- <https://caniuse.com> - per-feature tables of support, e.g. to see which engines support modern cryptography functions: <http://caniuse.com/#feat=cryptography>.
+- <https://kangax.github.io/compat-table> - a table with language features and engines that support those or don't support.
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 
 
 ## Tabelle di compatibilità

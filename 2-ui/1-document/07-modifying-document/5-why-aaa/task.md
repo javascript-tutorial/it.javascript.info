@@ -22,6 +22,10 @@ Perché?
   alert(table); // la tabella, come dovrebbe essere
 
   table.remove();
+<<<<<<< HEAD
   // perché aaa è ancora nel documento?
+=======
+  // why there's still "aaa" in the document?
+>>>>>>> fe1c4a241f12a0939d1e0977cec6504ccd67201f
 </script>
 ```
