@@ -125,12 +125,21 @@ Gli strumenti moderni rendono la conversione molto veloce e pulita, consentendo 
 
 Esempi di alcuni linguaggi:
 
+<<<<<<< HEAD
 - [CoffeeScript](http://coffeescript.org/) è un linguaggio che introduce una sintassi semplificata che consente di scrivere codice più leggibile. Amato dagli sviluppatori provenienti da Ruby.
 - [TypeScript](http://www.typescriptlang.org/) si occupa di aggiungere la "tipizzazione", per semplificare lo sviluppo e supportare sistemi più complessi. E' stato sviluppato da Microsoft.
 - [Flow](http://flow.org/) anche'esso aggiunge la tipizzazione dei dati, ma in un modo differente. Sviluppato da Facebook.
 - [Dart](https://www.dartlang.org/) è un linguaggio autonomo che possiede il suo motore, che esegue in ambienti esterni al browser (come mobile apps). E' stato introdotto da Google come alternativa a JavaScript, ma attualmente i browser richiedono la conversione in JavaScript, proprio come i precedenti.
 - [Brython](https://brython.info/) è un *transpiler*, scritto in Python, che consente di scrivere applicazioni in quest'ultimo senza utilizzare JavaScript.
 - [Kotlin](https://kotlinlang.org/docs/reference/js-overview.html) è un moderno, conciso e sicuro linguaggio di programmazione mirato ai browsers o a Node.
+=======
+- [CoffeeScript](https://coffeescript.org/) is a "syntactic sugar" for JavaScript. It introduces shorter syntax, allowing us to write clearer and more precise code. Usually, Ruby devs like it.
+- [TypeScript](https://www.typescriptlang.org/) is concentrated on adding "strict data typing" to simplify the development and support of complex systems. It is developed by Microsoft.
+- [Flow](https://flow.org/) also adds data typing, but in a different way. Developed by Facebook.
+- [Dart](https://www.dartlang.org/) is a standalone language that has its own engine that runs in non-browser environments (like mobile apps), but also can be transpiled to JavaScript. Developed by Google.
+- [Brython](https://brython.info/) is a Python transpiler to JavaScript that enables the writing of applications in pure Python without JavaScript.
+- [Kotlin](https://kotlinlang.org/docs/reference/js-overview.html) is a modern, concise and safe programming language that can target the browser or Node.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 Ce ne sono molti altri. Ovviamente, per comprendere cosa stiamo facendo, se utilizziamo uno di questi linguaggi dovremmo altresì conoscere JavaScript.
 

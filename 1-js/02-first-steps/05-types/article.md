@@ -46,13 +46,23 @@ Oltre a i normali valori numeri, esistono anche i "valori numerici speciali" che
     alert( "not a number" / 2 ); // NaN, è una divisione errata
     ```
 
+<<<<<<< HEAD
     `NaN` è "fisso". Qualsiasi operazione su `NaN` restituirà `NaN`:
+=======
+    `NaN` is sticky. Any further mathematical operation on `NaN` returns `NaN`:
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
     ```js run
-    alert( "not a number" / 2 + 5 ); // NaN
+    alert( NaN + 1 ); // NaN
+    alert( 3 * NaN ); // NaN
+    alert( "not a number" / 2 - 1 ); // NaN
     ```
 
+<<<<<<< HEAD
     Quindi, se è presente un `NaN` da qualche parte nell'operazione matematica, questo si propagherà fino al risultato.
+=======
+    So, if there's a `NaN` somewhere in a mathematical expression, it propagates to the whole result (there's only one exception to that: `NaN ** 0` is `1`).
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 ```smart header="Le operazioni matematiche sono sicure"
 In JavaScript le operazioni matematiche sono sicure. Possiamo fare qualsiasi cosa: dividere per zero, trattare stringhe non numeriche come numeri, etc.
@@ -66,9 +76,26 @@ Vedremo di più su come lavorare con i numeri nel capitolo <info:number>.
 
 ## BigInt [#bigint-type]
 
+<<<<<<< HEAD
 In JavaScript, il tipo "number" non può rappresentare valori interni più grandi di <code>(2<sup>53</sup>-1)</code> (che equivale a `9007199254740991`), o minori di <code>-(2<sup>53</sup>-1)</code>. Questa è una limitazione tecnica dovuta alla loro rappresentazione interna.
 
 Per la maggior parte degli scopi, questo intervallo è sufficiente, ma in alcuni casi potremmo aver bisogno di numeri molto grandi, ad esempio per la crittografia o timestamp con precisione al microsecondo.
+=======
+In JavaScript, the "number" type cannot safely represent integer values larger than <code>(2<sup>53</sup>-1)</code> (that's `9007199254740991`), or less than <code>-(2<sup>53</sup>-1)</code> for negatives.
+
+To be really precise, the "number" type can store larger integers (up to <code>1.7976931348623157 * 10<sup>308</sup></code>), but outside of the safe integer range <code>±(2<sup>53</sup>-1)</code> there'll be a precision error, because not all digits fit into the fixed 64-bit storage. So an "approximate" value may be stored.
+
+For example, these two numbers (right above the safe range) are the same:
+
+```js
+console.log(9007199254740991 + 1); // 9007199254740992
+console.log(9007199254740991 + 2); // 9007199254740992
+```
+
+So to say, all odd integers greater than <code>(2<sup>53</sup>-1)</code> can't be stored at all in the "number" type.
+
+For most purposes <code>±(2<sup>53</sup>-1)</code> range is quite enough, but sometimes we need the entire range of really big integers, e.g. for cryptography or microsecond-precision timestamps.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 Il tipo `BigInt` è stato aggiunto di recente al linguaggio, e consente di rappresentare numeri interi di lunghezza arbitraria.
 
@@ -274,6 +301,7 @@ Some people prefer `typeof(x)`, although the `typeof x` syntax is much more comm
 ```
 
 ## Summary
+<<<<<<< HEAD
 >>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 Ci sono 7 tipi base in JavaScript.
@@ -294,6 +322,24 @@ L'operatore `typeof` ci consente di vedere quale tipo è memorizzato nella varia
 - Ritorna una stringa con il nome del tipo, come `"string"`.
 - Il valore `null` ritorna `"object"` -- è un errore del linguaggio, infatti non è un oggetto.
 =======
+=======
+
+There are 8 basic data types in JavaScript.
+
+- Seven primitive data types:
+    - `number` for numbers of any kind: integer or floating-point, integers are limited by <code>±(2<sup>53</sup>-1)</code>.
+    - `bigint` for integer numbers of arbitrary length.
+    - `string` for strings. A string may have zero or more characters, there's no separate single-character type.
+    - `boolean` for `true`/`false`.
+    - `null` for unknown values -- a standalone type that has a single value `null`.
+    - `undefined` for unassigned values -- a standalone type that has a single value `undefined`.
+    - `symbol` for unique identifiers.
+- And one non-primitive data type:
+    - `object` for more complex data structures.
+
+The `typeof` operator allows us to see which type is stored in a variable.
+
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 - Usually used as `typeof x`, but `typeof(x)` is also possible.
 - Returns a string with the name of the type, like `"string"`.
 - For `null` returns `"object"` -- this is an error in the language, it's not actually an object.

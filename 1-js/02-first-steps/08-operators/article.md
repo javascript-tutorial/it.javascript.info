@@ -199,22 +199,30 @@ Un estratto della [tabella delle precedenze](https://developer.mozilla.org/en/Ja
 | Precedence | Name | Sign |
 |------------|------|------|
 | ... | ... | ... |
-| 17 | unary plus | `+` |
-| 17 | unary negation | `-` |
-| 16 | exponentiation | `**` |
-| 15 | multiplication | `*` |
-| 15 | division | `/` |
-| 13 | addition | `+` |
-| 13 | subtraction | `-` |
+| 15 | unary plus | `+` |
+| 15 | unary negation | `-` |
+| 14 | exponentiation | `**` |
+| 13 | multiplication | `*` |
+| 13 | division | `/` |
+| 12 | addition | `+` |
+| 12 | subtraction | `-` |
 | ... | ... | ... |
-| 3 | assignment | `=` |
+| 2 | assignment | `=` |
 | ... | ... | ... |
 
+<<<<<<< HEAD
 Come possiamo vedere, la "somma unaria"(unary plus) ha una priorità di `17`, che è maggiore del `13` dell'addizione(`+` binario). Questo è il motivo per cui l'espressione `"+apples + +oranges"` esegue prima il `+` unario, e successivamente l'addizione.
+=======
+As we can see, the "unary plus" has a priority of `15` which is higher than the `12` of "addition" (binary plus). That's why, in the expression `"+apples + +oranges"`, unary pluses work before the addition.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 ## Assegnazione
 
+<<<<<<< HEAD
 Da notare che anche l'assegnazione `=` è un operatore. Viene infatti elencato nella tabella delle precedenze con una priorità molto bassa: `3`.
+=======
+Let's note that an assignment `=` is also an operator. It is listed in the precedence table with the very low priority of `2`.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 Questo è il motivo per cui quando assegniamo un valore ad una variabile, come `x = 2 * 2 + 1`, i calcoli vengono eseguiti per primi, e successivamente viene valutato l'operatore `=`, che memorizza il risultato in `x`.
 
@@ -445,8 +453,12 @@ La lista degli operatori:
 - RIGHT SHIFT ( `>>` )
 - ZERO-FILL RIGHT SHIFT ( `>>>` )
 
+<<<<<<< HEAD
 Questi operatori vengono utilizzati molto raramente, quando abbiamo bisogno di lavorare con i numeri al più basso livello (bit per bit).  Non avremo bisogno di questi operatori molto presto, poiché lo sviluppo web ne fa un uso limitato, ma in alcune aree speciali, come la crittografia, sono utili.In caso di necessità potete leggere l'articolo [operatori BitWise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators) su MDN.
 
+=======
+These operators are used very rarely, when we need to fiddle with numbers on the very lowest (bitwise) level. We won't need these operators any time soon, as web development has little use of them, but in some special areas, such as cryptography, they are useful. You can read the [Bitwise Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#bitwise_operators) chapter on MDN when a need arises.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 ## Virgola
 

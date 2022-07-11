@@ -232,7 +232,11 @@ setTimeout(function() {...}, 100);
 
 Per `setInterval` la funzione resta in memoria fino a quando viene eseguito `clearInterval`.
 
+<<<<<<< HEAD
 C'è un effetto collaterale. Una funzione si riferisce all'ambiente lessicale esterno, quindi, finché vive, vivono anche le variabili esterne. Queste possono richiedere molta più memoria della funzione stessa. Ne consegue che quando non ci serve più la funzione pianificata, è meglio cancellarla, anche se è molto piccola.
+=======
+There's a side effect. A function references the outer lexical environment, so, while it lives, outer variables live too. They may take much more memory than the function itself. So when we don't need the scheduled function anymore, it's better to cancel it, even if it's very small.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 ````
 
 ## setTimeout con zero-delay (ritardo zero)
@@ -294,9 +298,16 @@ Per JavaScript lato server, questo limite non esiste e ci sono altri metodi per 
 
 Da notare che tutti i metodi di pianificazione non *garantiscono* un ritardo preciso.
 
+<<<<<<< HEAD
 Per esempio, il timer nel browser può rallentare per molte ragioni:
 - La CPU è sovraccarica.
 - La scheda del browser è sullo sfondo.
 - Il portatile ha la batteria scarica.
+=======
+For example, the in-browser timer may slow down for a lot of reasons:
+- The CPU is overloaded.
+- The browser tab is in the background mode.
+- The laptop is on battery saving mode.
+>>>>>>> 82ed8f11b40bd40797427a5dd1763edbe1fca523
 
 Tutto ciò può aumentare l'esecuzione minima del timer (il ritardo minimo) di 300ms o anche 1000ms a seconda del browser e le impostazioni di prestazione a livello dell'OS.
