@@ -60,10 +60,17 @@ Per creare un nuovo oggetto `Date`, chiamiamo `new Date()` con uno dei seguenti 
 
     Nota:
 
+<<<<<<< HEAD
     - Il campo `year` deve essere composto da 4 cifre: `2013` va bene, `98` non è corretto.
     - Il numero `month` inizia da `0` (Gennaio), fino a `11` (Dicembre).
     - Il parametro `date` rappresenta il giorno del mese, se non viene fornito il valore di default è `1`.
     - Se non vengono forniti `hours/minutes/seconds/ms`, il valore di default è `0`.
+=======
+    - The `year` should have 4 digits. For compatibility, 2 digits are also accepted and considered `19xx`, e.g. `98` is the same as `1998` here, but always using 4 digits is strongly encouraged.
+    - The `month` count starts with `0` (Jan), up to `11` (Dec).
+    - The `date` parameter is actually the day of month, if absent then `1` is assumed.
+    - If `hours/minutes/seconds/ms` is absent, they are assumed to be equal `0`.
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
     Ad esempio:
 
@@ -412,7 +419,7 @@ Possiamo utilizzare questo metodo insieme a `new Date` per creare un oggetto dal
 ```js run
 let date = new Date( Date.parse('2012-01-26T13:51:50.417-07:00') );
 
-alert(date);  
+alert(date);
 ```
 
 ## Riepilogo

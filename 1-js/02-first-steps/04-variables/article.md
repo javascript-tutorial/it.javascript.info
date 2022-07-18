@@ -67,7 +67,12 @@ let age = 25;
 let message = 'Hello';
 ```
 
+<<<<<<< HEAD
 Alcune persone scrivono variabili multiple in questo modo:
+=======
+Some people also define multiple variables in this multiline style:
+
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 ```js no-beautify
 let user = 'John',
   age = 25,
@@ -108,6 +113,11 @@ Possiamo inserire qualsiasi valore all'interno della scatola.
 
 Possiamo anche cambiarlo. Il valore può cambiare tutte le volte che ne abbiamo bisogno:
 
+<<<<<<< HEAD
+=======
+We can also change it as many times as we want:
+
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 ```js run
 let message;
 
@@ -195,8 +205,13 @@ let 1a; // non può cominciare con una stringa
 let my-name; // '-' non è consentito nei nomi
 ```
 
+<<<<<<< HEAD
 ```smart header="La questione delle lettere"
 Le variabili `apple` ed `AppLE` sono distinte.
+=======
+```smart header="Case matters"
+Variables named `apple` and `APPLE` are two different variables.
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 ```
 
 ````smart header="Le lettere non latine sono permesse, ma sono sconsigliate"
@@ -264,8 +279,12 @@ myBirthday = '01.01.2001'; // errore, non è possibile riassegnare la costante!
 
 Quando il programmatore è sicuro che il valore della variabile non cambierà mai, può utilizzare `const` per soddisfare questa esigenza, rendendolo cosi esplicito.
 
+<<<<<<< HEAD
 
 ### Le costanti maiuscole
+=======
+### Uppercase constants
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 Una pratica molto diffusa è di utilizzare le variabili costanti come alias di valori difficili da ricordare, e che sono noti prima dell'esecuzione.
 
@@ -294,14 +313,23 @@ Quando dovremmo utilizzare lettere maiuscole per una costante, e quando invece t
 
 Essere una "costante" significa che il valore non potrà mai cambiare. Ci sono costanti che sono note prima dell'esecuzione (come la codifica esadecimale del colore rosso), e ci sono quelle che vengono *calcolate* durante l'esecuzione, ma non cambieranno più dopo che gli sarà stato assegnato un valore.
 
+<<<<<<< HEAD
 Per esempio:
+=======
+For instance:
+
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 ```js
 const pageLoadTime = /* tempo necessario da una pagina web per caricare */;
 ```
 
 Il valore di `pageLoadTime` non è noto prima del caricamento della pagina, quindi viene trattato come una normale variabile. Ma rimane comunque una costante, perché non potrà più cambiare dopo che gli sarà stato assegnato un valore.
 
+<<<<<<< HEAD
 In altre parole, i nomi delle costanti in maiuscolo vengono utilizzati con variabili dal valore noto prima dell'esecuzione.
+=======
+In other words, capital-named constants are only used as aliases for "hard-coded" values.
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 ## Dare i giusti nomi alle cose
 
