@@ -129,7 +129,12 @@ Ad esempio, qui il secondo `<span>` viene ignorato (dal momento che non è un fi
 
 Se ci sono più elementi nel light DOM con lo stesso slot name, questi vengono inseriti nello slot, uno dopo l'altro in successione.
 
+<<<<<<< HEAD
 Come nel seguente esempio:
+=======
+For example, this:
+
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 ```html
 <user-card>
   <span slot="username">John</span>
@@ -267,8 +272,13 @@ Questo è invece il template dello shadow DOM con gli slot appropriati:
 </template>
 ```
 
+<<<<<<< HEAD
 1. `<span slot="title">` verrà inserito dentro `<slot name="title">`.
 2. Ci sono tanti `<li slot="item">`, ma solo uno `<slot name="item">` nel template. Di conseguenza tutti gli elementi `<li slot="item">` verranno inseriti dentro `<slot name="item">` uno dopo l'altro, così da formare la lista.
+=======
+1. `<span slot="title">` goes into `<slot name="title">`.
+2. There are many `<li slot="item">` in the `<custom-menu>`, but only one `<slot name="item">` in the template. So all such `<li slot="item">` are appended to `<slot name="item">` one after another, thus forming the list.
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 Il flattened DOM diventa:
 
