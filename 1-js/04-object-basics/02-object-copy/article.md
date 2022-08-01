@@ -37,7 +37,11 @@ Ed ecco come viene effettivamente archiviata in memoria:
 
 L'oggetto è archiviato da qualche parte nella memoria (a destra nell'immagine), mentre la variabile `user` (a sinistra) contiene il "riferimento" ad esso.
 
+<<<<<<< HEAD
 Potremmo immaginare la "variabile oggetto" `user`,  come un foglio di carta con scritto l'indirizzo dell'oggetto.
+=======
+We may think of an object variable, such as `user`, like a sheet of paper with the address of the object on it.
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 Quando eseguiamo azioni con l'oggetto, ad es. leggere una proprietà `user.name`, il motore JavaScript guarda cosa c'è a quell'indirizzo ed esegue l'operazione sull'oggetto reale.
 
@@ -105,12 +109,18 @@ Per confronti tra oggetti (Es. `obj1 > obj2`) o con primitivi (Es. `obj == 5`), 
 
 Come abbiamo detto, copiare una "variabile oggetto" crea un ulteriore riferimento allo stesso oggetto.
 
+<<<<<<< HEAD
 Quindi, come possiamo fare se abbiamo bisogno di duplicare un oggetto? Creare una copia indipendente, un clone?
 
 Anche questo è fattibile, ma con un po' di difficoltà visto che JavaScript non ha alcun metodo integrato per farlo. In realtà non è un'operazione frequente, il più delle volte la copia per riferimento è adatta alla situazione.
 
 Ma se proprio ne abbiamo bisogno, allora dobbiamo creare un nuovo oggetto e replicare la struttura di quello esistente iterando le sue proprietà
 e copiandole a livello primitivo.
+=======
+But what if we need to duplicate an object?
+
+We can create a new object and replicate the structure of the existing one, by iterating over its properties and copying them on the primitive level.
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 Così:
 
@@ -136,10 +146,14 @@ alert( user.name ); // nell'oggetto originale è rimasto "John"
 ```
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Possiamo anche usare il metodo [Object.assign](mdn:js/Object/assign) .
 =======
 Also we can use the method [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) for that.
 >>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
+=======
+We can also use the method [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 La sintassi è:
 
@@ -197,7 +211,11 @@ There are also other methods of cloning an object, e.g. using the [spread syntax
 
 Finora abbiamo assunto che le proprietà di `user` fossero primitive. Ma le proprietà possono anche essere riferimenti ad altri oggetti. Come si fa in questo caso? 
 
+<<<<<<< HEAD
 Così:
+=======
+Until now we assumed that all properties of `user` are primitive. But properties can be references to other objects.
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 ```js run
 let user = {
@@ -211,9 +229,13 @@ let user = {
 alert( user.sizes.height ); // 182
 ```
 
+<<<<<<< HEAD
 In questo caso non è sufficiente copiare `clone.sizes = user.sizes`. Siccome `user.sizes` è un oggetto, verrà copiato per riferimento. Quindi `clone` e `user` condivideranno lo stesso oggetto "sizes".
 
 Vediamo un esempio:
+=======
+Now it's not enough to copy `clone.sizes = user.sizes`, because `user.sizes` is an object, and will be copied by reference, so `clone` and `user` will share the same sizes:
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 ```js run
 let user = {
@@ -228,12 +250,21 @@ let clone = Object.assign({}, user);
 
 alert( user.sizes === clone.sizes ); // true, è lo stesso oggetto
 
+<<<<<<< HEAD
 // user e clone condividono sizes
 user.sizes.width++;       // cambiamo una proprietà da una parte 
 alert(clone.sizes.width); // 51, e vediamo il risultato dall'altra
 ```
 
 Per risolvere questo problema, dobbiamo usare un ciclo di clonazioni che esaminerà ogni valore di `user[key]` e, nel caso sia un oggetto, replichi anche la sua struttura. Questa operazione è chiamata "deep cloning" (copia profonda).
+=======
+// user and clone share sizes
+user.sizes.width++;       // change a property from one place
+alert(clone.sizes.width); // 51, get the result from the other one
+```
+
+To fix that and make `user` and `clone` truly separate objects, we should use a cloning loop that examines each value of `user[key]` and, if it's an object, then replicate its structure as well. That is called a "deep cloning".
+>>>>>>> 7000ede297bfd688f9a3767e8ca43abd9242f322
 
 Per implementare questa funzione possiamo usare la ricorsione. Oppure, per non reinventare la ruota, possiamo usare qualcosa di già pronto, ad esempio [_.cloneDeep(obj)](https://lodash.com/docs#cloneDeep) dalla libreria JavaScript [lodash](https://lodash.com).
 
