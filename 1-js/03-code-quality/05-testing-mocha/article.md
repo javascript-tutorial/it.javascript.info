@@ -53,7 +53,11 @@ describe("pow", function() {
 Una spec ha tre principali blocchi:
 
 `describe("title", function() { ... })`
+<<<<<<< HEAD
 : Viene descritta la funzionalità. Utilizzata per raggruppare le "attività" -- i blocchi `it`. Nel nostro caso descriviamo la funzione `pow`.
+=======
+: What functionality we're describing? In our case we're describing the function `pow`. Used to group "workers" -- the `it` blocks.
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 `it("title", function() { ... })`
 : Nel titolo di `it` descriviamo il particolare caso d'uso *leggibile per gli umani*, come secondo argomento una funzione che lo testa.
@@ -79,7 +83,11 @@ Il flusso di sviluppo solitamente segue i passi:
 
 Quindi la fase di sviluppo è *iterativa*. Scriviamo la specifica, la implementiamo, ci accertiamo che passi i test, ci assicuriamo che faccia ciò che deve. Al termine di questa procedura avremmo un implementazione già testata e funzionante.
 
+<<<<<<< HEAD
 Nel nostro caso, il primo step è completo: abbiamo un specifica iniziale di `pow`. Quindi ora passiamo all'implementazione. Come prima cosa facciamo l'esecuzione "zero" con le specifiche scritte, per essere sicuri che tutto funzioni (ovviamente i test dovrebbero fallire tutti).
+=======
+The first step is already complete: we have an initial spec for `pow`. Now, before making the implementation, let's use a few JavaScript libraries to run the tests, just to see that they are working (they will all fail).
+>>>>>>> 1edb0a38330b54d2e1916f5193fc043e6fbbea78
 
 ## La spec in azione
 
