@@ -52,7 +52,11 @@ Solitamente questo header viene impostato automaticamente e contiene l'URL della
 
 **L'opzione `referrer` permette di impostare qualunque `Referer` (all'interno dell'origine attuale) o di rimuoverlo.**
 
+<<<<<<< HEAD
 Per non inviare alcun referer, impostare una stringa vuota:
+=======
+To send no referrer, set an empty string:
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 ```js
 fetch('/page', {
 *!*
@@ -185,7 +189,11 @@ L'opzione `integrity` permette di controllare se la risposta combacia con il che
 
 Come descritto nelle [specifiche](https://w3c.github.io/webappsec-subresource-integrity/), funzione hash supportate sono SHA-256, SHA-384, e SHA-512, potrebbero essercene altre a discrezione del browser.
 
+<<<<<<< HEAD
 Per esempio, stiamo scaricando un file, e sappiamo che il suo checksum SHA-256 è "abcdef" (un checksum reale è più lungo, chiaramente).
+=======
+For example, we're downloading a file, and we know that its SHA-256 checksum is "abcdef" (a real checksum is longer, of course).
+>>>>>>> 53b35c16835b7020a0a5046da5a47599d313bbb8
 
 Possiamo inserirlo dentro l'opzione `integrity`:
 
