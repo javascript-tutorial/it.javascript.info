@@ -174,8 +174,7 @@ alert( from ); // Ann
 
 Quando un valore viene passato come parametro di funzione, vine anche chiamato *argomento*.
 
-In altre parole
-In other words, per chiarire questi termini:
+In altre parole, per chiarire questi termini:
 
 - Un parametro è la variabile elencata tra parentesi nella dichiarazione della funzione (fa parte della dichiarazione).
 - Un argomento è il valore passato alla funzione quando viene chiamata (fa parte della chiamata).
