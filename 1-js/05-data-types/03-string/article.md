@@ -45,9 +45,13 @@ let guestList = "Guests: // Error: Unexpected token ILLEGAL
   * John";
 ```
 
+<<<<<<< HEAD
 Gli apici singoli e doppi sono nati insieme al linguaggio, quando non era stato ancora messo in conto la possibilità di stringhe multilinea. Le backticks sono apparse più tardi, per questo risultano più versatili.
 
 Le backticks ci consentono anche di specificare un "template di funzione" prima della backtick di apertura. La sintassi è: <code>func&#96;string&#96;</code>. La funzione `func` viene chiamata automaticamente, gli viene passata la "string", può essere cosi trattata dalla funzione. Potete approfondire leggendo la [documentazione](mdn:/JavaScript/Reference/Template_literals#Tagged_templates). Questo viene chiamata "funzione template". Con questa caratteristica diventa più facile raccogliere stringhe da passare a funzioni, ma è raramente utilizzata.
+=======
+Single and double quotes come from ancient times of language creation, when the need for multiline strings was not taken into account. Backticks appeared much later and thus are more versatile.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 
 ## Caratteri speciali
@@ -57,10 +61,17 @@ E' comunque possibile creare stringhe multilinea con singoli apici utilizzando i
 ```js run
 let guestList = "Guests:\n * John\n * Pete\n * Mary";
 
+<<<<<<< HEAD
 alert(guestList); // una lista di guest multi riga
 ```
 
 Ad esempio, queste due funzioni portano allo stesso risultato:
+=======
+alert(guestList); // a multiline list of guests, same as above
+```
+
+As a simpler example, these two lines are equal, just written differently:
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 ```js run
 let str1 = "Hello\nWorld"; // due righe utilizzando il "carattere nuova riga"
@@ -70,7 +81,11 @@ let str2 = `Hello
 World`;
 ```
 
+<<<<<<< HEAD
 Ci sono altri caratteri "speciali" meno comuni. Qui una lista:
+=======
+There are other, less common "special" characters:
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 | Carattere | Descrizione |
 |-----------|-------------|
@@ -81,6 +96,7 @@ Ci sono altri caratteri "speciali" meno comuni. Qui una lista:
 =======
 |`\n`|New line|
 |`\r`|In Windows text files a combination of two characters `\r\n` represents a new break, while on non-Windows OS it's just `\n`. That's for historical reasons, most Windows software also understands `\n`. |
+<<<<<<< HEAD
 |`\'`, `\"`|Quotes|
 >>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 |`\\`|Backslash|
@@ -101,6 +117,22 @@ alert( "\u{1F60D}" ); // 😍, un simbolo di faccia sorridente (long unicode)
 Tutti i caratteri speciali iniziano con un backslash `\`. Che viene anche chiamato "carattere di escape".
 
 Dobbiamo utilizzarlo anche se abbiamo intenzione di inserire un apice all'interno della stringa.
+=======
+|`\'`,&nbsp;`\"`,&nbsp;<code>\\`</code>|Quotes|
+|`\\`|Backslash|
+|`\t`|Tab|
+|`\b`, `\f`, `\v`| Backspace, Form Feed, Vertical Tab -- mentioned for completeness, coming from old times, not used nowadays (you can forget them right now). |
+
+As you can see, all special characters start with a backslash character `\`. It is also called an "escape character".
+
+Because it's so special, if we need to show an actual backslash `\` within the string, we need to double it:
+
+```js run
+alert( `The backslash: \\` ); // The backslash: \
+```
+
+So-called "escaped" quotes `\'`, `\"`, <code>\\`</code> are used to insert a quote into the same-quoted string.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Ad esempio:
 
@@ -113,9 +145,10 @@ Avete visto che abbiamo inserito un backslash `\'` prima dell'apice interno, alt
 Ovviamente, questo è valido per un apice uguale a quello utilizzato in apertura. Quindi, possiamo optare per una soluzione più elegante, ad esempio i doppi apici o i backticks:
 
 ```js run
-alert( `I'm the Walrus!` ); // I'm the Walrus!
+alert( "I'm the Walrus!" ); // I'm the Walrus!
 ```
 
+<<<<<<< HEAD
 Da notare che il backslash `\` ha l'unico scopo di aiutare JavaScript nella lettura della stringa, questo verrà poi rimosso. La stringa in memoria non avrà `\`. Lo avrete sicuramente notato con gli `alert` dei vari esempi sopra.
 
 Ma se volessimo realmente mostrare un backslash `\` dentro la stringa?
@@ -125,6 +158,9 @@ E' possibile farlo, ma dobbiamo esplicitarlo con un doppio backslash `\\`:
 ```js run
 alert( `The backslash: \\` ); // The backslash: \
 ```
+=======
+Besides these special characters, there's also a special notation for Unicode codes `\u…`, we'll cover it a bit later in this chapter.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 ## String length
 
@@ -214,7 +250,7 @@ alert( 'Interface'.toLowerCase() ); // interface
 
 Altrimenti, possiamo agire anche su un singolo carattere:
 
-```js
+```js run
 alert( 'Interface'[0].toLowerCase() ); // 'i'
 ```
 
@@ -311,6 +347,7 @@ if (str.indexOf("Widget") != -1) {
 }
 ```
 
+<<<<<<< HEAD
 #### Il trucco del NOT bit a bit
 Uno dei trucchi più utilizzati è l'operatore di [NOT bit a bit](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Bitwise_NOT) `~`. Questo converte il numero ad un intero in 32bit (rimuovendo la parte decimale se presente) e successivamente inverte tutti i bit.
 
@@ -349,6 +386,8 @@ Per essere precisi, numeri molto grandi vengono troncati a 32bit dall'operatore 
 
 Attualmente questo trucco lo troviamo solamente nei codici vecchi, poiché JavaScript moderno fornisce un metodo dedicato, `.includes`(vedi sotto).
 
+=======
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 ### includes, startsWith, endsWith
 
 Un metodo più moderno come [str.includes(substr, pos)](mdn:js/String/includes) ritorna `true/false` basandosi solo sull'aver trovato in `str` la `substr`.
@@ -371,8 +410,13 @@ alert( "Midget".includes("id", 3) ); // false, dalla posizione 3 non c'è "id"
 I metodi [str.startsWith](mdn:js/String/startsWith) e [str.endsWith](mdn:js/String/endsWith) fanno esattamente ciò che dicono i loro nomi:
 
 ```js run
+<<<<<<< HEAD
 alert( "Widget".startsWith("Wid") ); // true, "Widget" inizia con "Wid"
 alert( "Widget".endsWith("get") );   // true, "Widget" finisce con "get"
+=======
+alert( "*!*Wid*/!*get".startsWith("Wid") ); // true, "Widget" starts with "Wid"
+alert( "Wid*!*get*/!*".endsWith("get") ); // true, "Widget" ends with "get"
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 ```
 
 ## Estrarre una sotto-stringa
@@ -407,9 +451,15 @@ Ci sono 3 metodi in JavaScript per estrarre una sotto-stringa: `substring`, `sub
     ```
 
 `str.substring(start [, end])`
+<<<<<<< HEAD
 : Ritorna la parte di stringa *compresa tra* `start` e `end`.
 
     E' molto simile a `slice`, ma consente di avere `start` maggiore di `end`.
+=======
+: Returns the part of the string *between* `start` and `end` (not including `end`).
+
+    This is almost the same as `slice`, but it allows `start` to be greater than `end` (in this case it simply swaps `start` and `end` values).
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
     Ad esempio:
 
@@ -445,19 +495,37 @@ Ci sono 3 metodi in JavaScript per estrarre una sotto-stringa: `substring`, `sub
     alert( str.substr(-4, 2) ); // gi, dalla quarta posizione prende 4 caratteri
     ```
 
+<<<<<<< HEAD
 Ricapitoliamo questi metodi per evitare confusione:
+=======
+    This method resides in the [Annex B](https://tc39.es/ecma262/#sec-string.prototype.substr) of the language specification. It means that only browser-hosted Javascript engines should support it, and it's not recommended to use it. In practice, it's supported everywhere.
+
+Let's recap these methods to avoid any confusion:
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 | metodo | selezione... | negativi |
 |--------|-----------|-----------|
+<<<<<<< HEAD
 | `slice(start, end)` | da `start` a `end` (`end` escluso) | indici negativi ammessi |
 | `substring(start, end)` | tra `start` e `end` | valori negativi valgono come `0` |
 | `substr(start, length)` | da `start` per `length` caratteri | consente indice di `start` negativo |
+=======
+| `slice(start, end)` | from `start` to `end` (not including `end`) | allows negatives |
+| `substring(start, end)` | between `start` and `end` (not including `end`)| negative values mean `0` |
+| `substr(start, length)` | from `start` get `length` characters | allows negative `start` |
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 
+<<<<<<< HEAD
 ```smart header="Quale scegliere?"
 Tutti i metodi esaminati possono portare a termine il lavoro. Formalmente, `substr` ha un piccolo inconveniente: non è descritto nelle specifiche del core JavaScript, ma in quelle di Annex B, che copre solo le caratteristiche utili nello sviluppo browser. Quindi ambienti diversi dal browser potrebbero non supportarla. Ma nella pratica viene utilizzata ovunque.
 
 L'autore della guida si trova spesso ad utilizzare il metodo `slice`.
+=======
+Of the other two variants, `slice` is a little bit more flexible, it allows negative arguments and shorter to write.
+
+So, for practical use it's enough to remember only `slice`.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 ```
 
 ## Confronto tra stringhe
@@ -485,12 +553,21 @@ Per capire cosa succede, dobbiamo guardare alla rappresentazione interna delle s
 Tutte le stringhe vengono codificate utilizzando [UTF-16](https://en.wikipedia.org/wiki/UTF-16). Cioè: ogni carattere ha un suo codice numerico. Ci sono alcuni metodi che consentono di ottenere il carattere dal codice (e viceversa).
 
 `str.codePointAt(pos)`
+<<<<<<< HEAD
 : Ritorna il codice per il carattere alla posizione `pos`:
 
     ```js run
     // lettere di timbro differente possiedono codici differenti
     alert( "z".codePointAt(0) ); // 122
+=======
+: Returns a decimal number representing the code for the character at position `pos`:
+
+    ```js run
+    // different case letters have different codes
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
     alert( "Z".codePointAt(0) ); // 90
+    alert( "z".codePointAt(0) ); // 122
+    alert( "z".codePointAt(0).toString(16) ); // 7a (if we need a more commonly used hex value of the code)
     ```
 
 `String.fromCodePoint(code)`
@@ -498,6 +575,7 @@ Tutte le stringhe vengono codificate utilizzando [UTF-16](https://en.wikipedia.o
 
     ```js run
     alert( String.fromCodePoint(90) ); // Z
+    alert( String.fromCodePoint(0x5a) ); // Z (we can also use a hex value as an argument)
     ```
 
     Possiamo anche aggiungere caratteri unicode tramite il loro codice utilizzando `\u` seguito dal codice esadecimale:
@@ -555,19 +633,65 @@ Questo metodo in realtà ha due argomenti opzionali specificati nella [documenta
 
 ## Internamente, Unicode
 
+<<<<<<< HEAD
 ```warn header="Apprendimento avanzato"
 Questa sezione andrà più in profondità riguardo le stringhe. Quello che leggerai ti potrà essere utile se hai intenzione di utilizzare emoji, simboli matematici o geroglifici.
 
 Puoi semplicemente saltare questa sezione se non hai in programma di utilizzarle.
+=======
+```warn header="Advanced knowledge"
+The section goes deeper into string internals. This knowledge will be useful for you if you plan to deal with emoji, rare mathematical or hieroglyphic characters or other rare symbols.
+```
+
+## Unicode characters
+
+As we already mentioned, JavaScript strings are based on [Unicode](https://en.wikipedia.org/wiki/Unicode).
+
+Each character is represented by a byte sequence of 1-4 bytes.
+
+JavaScript allows us to specify a character not only by directly including it into a stirng, but also by its hexadecimal Unicode code using these three notations:
+
+- `\xXX` -- a character whose Unicode code point is `U+00XX`.
+
+    `XX` is two hexadecimal digits with value between `00` and `FF`, so `\xXX` notation can be used only for the first 256 Unicode characters (including all 128 ASCII characters).
+
+    These first 256 characters include latin alphabet, most basic syntax characters and some others. For example, `"\x7A"` is the same as `"z"` (Unicode `U+007A`).
+- `\uXXXX` -- a character whose Unicode code point is `U+XXXX` (a character with the hex code `XXXX` in UTF-16 encoding).
+
+    `XXXX` must be exactly 4 hex digits with the value between `0000` and `FFFF`, so `\uXXXX` notation can be used for the first 65536 Unicode characters. Characters with Unicode value greater than `U+FFFF` can also be represented with this notation, but in this case we will need to use a so called surrogate pair (we will talk about surrogate pairs later in this chapter).
+- `\u{X…XXXXXX}` -- a character with any given Unicode code point (a character with the given hex code in UTF-32 encoding).
+
+    `X…XXXXXX` must be a hexadecimal value of 1 to 6 bytes between `0` and `10FFFF` (the highest code point defined by Unicode). This notation allows us to easily represent all existing Unicode characters.
+
+Examples with Unicode:
+
+```js run
+alert( "\uA9" ); // ©, the copyright symbol
+
+alert( "\u00A9" ); // ©, the same as above, using the 4-digit hex notation
+alert( "\u044F" ); // я, the cyrillic alphabet letter
+alert( "\u2191" ); // ↑, the arrow up symbol
+
+alert( "\u{20331}" ); // 佫, a rare Chinese hieroglyph (long Unicode)
+alert( "\u{1F60D}" ); // 😍, a smiling face symbol (another long Unicode)
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 ```
 
 ### Coppie surrogate
 
 Molti simboli hanno un codice composto da 2 byte. Molte lettere di alfabeti europei, numeri, e anche molti geroglifici, hanno una rappresentazione in 2 byte.
 
+<<<<<<< HEAD
 Ma con 2 byte sono consentite solamente 65536 combinazioni, non sono comunque sufficienti per ogni tipo di simbolo possibile. Quindi molti simboli vengono codificati con una coppia di 2 byte chiamati "coppia surrogata".
 
 La lunghezza di questi simboli è `2`:
+=======
+Initially, JavaScript was based on UTF-16 encoding that only allowed 2 bytes per character. But 2 bytes only allow 65536 combinations and that's not enough for every possible symbol of Unicode.
+
+So rare symbols that require more than 2 bytes are encoded with a pair of 2-byte characters called "a surrogate pair".
+
+As a side effect, the length of such symbols is `2`:
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 ```js run
 alert( '𝒳'.length ); // 2, X matematica
@@ -575,6 +699,7 @@ alert( '😂'.length ); // 2, faccia con lacrime di felicità
 alert( '𩷶'.length ); // 2, un raro geroglifico cinese
 ```
 
+<<<<<<< HEAD
 Da notare che le coppie surrogate non esistevano al momento della creazione di JavaScript, non vengono quindi processate correttamente dal linguaggio!
 
 In realtà abbiamo un solo simbolo in ogni stringa sopra, ma la `length` vale `2`.
@@ -589,9 +714,26 @@ alert( '𝒳'[1] ); // ...parte di una coppia surrogata
 ```
 
 Da notare che un pezzo di una coppia surrogata non ha alcun senso senza l'altro. Quindi nell'esempio sopra verrà mostrata "spazzatura".
+=======
+That's because surrogate pairs did not exist at the time when JavaScript was created, and thus are not correctly processed by the language!
+
+We actually have a single symbol in each of the strings above, but the `length` property shows a length of `2`.
+
+Getting a symbol can also be tricky, because most language features treat surrogate pairs as two characters.
+
+For example, here we can see two odd characters in the output:
+
+```js run
+alert( '𝒳'[0] ); // shows strange symbols...
+alert( '𝒳'[1] ); // ...pieces of the surrogate pair
+```
+
+Pieces of a surrogate pair have no meaning without each other. So the alerts in the example above actually display garbage.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Tecnicamente, le coppie surrogate sono decifrabili anche per i loro codici: se il primo carattere ha un intervallo di codice di `0xd800..0xdbff`. Allora il successivo carattere (seconda parte) deve avere l'intervallo `0xdc00..0xdfff`. Questi intervalli sono riservati esclusivamente per coppie surrogate definite dallo standard.
 
+<<<<<<< HEAD
 Nell'esempio sopra:
 
 ```js run
@@ -599,10 +741,34 @@ Nell'esempio sopra:
 
 alert( '𝒳'.charCodeAt(0).toString(16) ); // d835, tra 0xd800 e 0xdbff
 alert( '𝒳'.charCodeAt(1).toString(16) ); // dcb3, tra 0xdc00 e 0xdfff
+=======
+So the methods `String.fromCodePoint` and `str.codePointAt` were added in JavaScript to deal with surrogate pairs.
+
+They are essentially the same as [String.fromCharCode](mdn:js/String/fromCharCode) and [str.charCodeAt](mdn:js/String/charCodeAt), but they treat surrogate pairs correctly.
+
+One can see the difference here:
+
+```js run
+// charCodeAt is not surrogate-pair aware, so it gives codes for the 1st part of 𝒳:
+
+alert( '𝒳'.charCodeAt(0).toString(16) ); // d835
+
+// codePointAt is surrogate-pair aware
+alert( '𝒳'.codePointAt(0).toString(16) ); // 1d4b3, reads both parts of the surrogate pair
+```
+
+That said, if we take from position 1 (and that's rather incorrect here), then they both return only the 2nd part of the pair:
+
+```js run
+alert( '𝒳'.charCodeAt(1).toString(16) ); // dcb3
+alert( '𝒳'.codePointAt(1).toString(16) ); // dcb3
+// meaningless 2nd half of the pair
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 ```
 
 Nel capitolo <info:iterable> troverete molti altri modi per operare con le coppie surrogate. Ci sono anche delle librerie dedicate, ma nulla di abbastanza completo da meritare di essere menzionato.
 
+<<<<<<< HEAD
 ### Lettere speciali e normalizzazione
 
 In molte lingue ci sono lettere composte da un carattere di base completato da un simbolo che può stare sopra/sotto.
@@ -610,6 +776,29 @@ In molte lingue ci sono lettere composte da un carattere di base completato da u
 Ad esempio, la lettera `a` può essere il carattere di base per: `àáâäãåā`. Molti dei caratteri "composti" hanno una loro rappresentazione nella tabella UTF-16. Però non tutte, poiché le combinazioni possibili sono veramente molte.
 
 Per supportare composizioni arbitrarie, UTF-16 ci consente di utilizzare diversi caratteri unicode. Un carattere di base ed uno o più "simboli" con cui "decorare" il carattere di base.
+=======
+````warn header="Takeaway: splitting strings at an arbitrary point is dangerous"
+We can't just split a string at an arbitrary position, e.g. take `str.slice(0, 4)` and expect it to be a valid string, e.g.:
+
+```js run
+alert( 'hi 😂'.slice(0, 4) ); //  hi [?]
+```
+
+Here we can see a garbage character (first half of the smile surrogate pair) in the output.
+
+Just be aware of it if you intend to reliably work with surrogate pairs. May not be a big problem, but at least you should understand what happens.
+````
+
+### Diacritical marks and normalization
+
+In many languages, there are symbols that are composed of the base character with a mark above/under it.
+
+For instance, the letter `a` can be the base character for these characters: `àáâäãåā`.
+
+Most common "composite" characters have their own code in the Unicode table. But not all of them, because there are too many possible combinations.
+
+To support arbitrary compositions, Unicode standard allows us to use several Unicode characters: the base character followed by one or many "mark" characters that "decorate" it.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Ad esempio, se abbiamo `S` con uno speciale "punto sopra" (codice `\u0307`), viene mostrato Ṡ.
 
@@ -653,13 +842,18 @@ alert( "S\u0307\u0323".normalize().length ); // 1
 alert( "S\u0307\u0323".normalize() == "\u1e68" ); // true
 ```
 
+<<<<<<< HEAD
 In realtà, non è sempre cosi. La ragione è che il simbolo `Ṩ` è "abbastanza comune", quindi la tabella UTF-16 lo contiene già.
 
 Se volete approfondire il tema della normalizzazione e le sue varianti -- vengono descritte nell'appendice dello standard Unicode: [Unicode Normalization Forms](http://www.unicode.org/reports/tr15/), nella pratica le informazioni fornite in questa sezione, ti saranno sufficienti.
+=======
+In reality, this is not always the case. The reason being that the symbol `Ṩ` is "common enough", so Unicode creators included it in the main table and gave it the code.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 
 ## Riepilogo
 
+<<<<<<< HEAD
 - Ci sono 3 tipi di apici. Le backticks consentono stringhe multi-linea ed espressioni integrate.
 - Le stringhe in JavaScript vengono codificate usando UTF-16.
 - Possiamo utilizzare caratteri speciali come `\n` ed inserire lettere tramite il codice unicode `\u...`.
@@ -668,6 +862,16 @@ Se volete approfondire il tema della normalizzazione e le sue varianti -- vengon
 - Per cambiare il timbro delle lettere di una stringa si utilizza: `toLowerCase/toUpperCase`.
 - Per cercare una sotto-stringa, usate: `indexOf`, o `includes/startsWith/endsWith` per controlli semplici.
 - Per confrontare stringhe seguendo le regole della lingua, usate: `localeCompare`, altrimenti verranno comparate in base al codice del singolo carattere.
+=======
+- There are 3 types of quotes. Backticks allow a string to span multiple lines and embed expressions `${…}`.
+- Strings in JavaScript are encoded using UTF-16, with surrogate pairs for rare characters (and these cause glitches).
+- We can use special characters like `\n` and insert letters by their Unicode using `\u...`.
+- To get a character, use: `[]`.
+- To get a substring, use: `slice` or `substring`.
+- To lowercase/uppercase a string, use: `toLowerCase/toUpperCase`.
+- To look for a substring, use: `indexOf`, or `includes/startsWith/endsWith` for simple checks.
+- To compare strings according to the language, use: `localeCompare`, otherwise they are compared by character codes.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Ci sono molti altri metodi utili per operare con le stringhe:
 

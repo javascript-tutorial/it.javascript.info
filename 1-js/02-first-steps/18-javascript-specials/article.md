@@ -55,7 +55,11 @@ Per abilitare completamente tutte le caratteristiche del moderno JavaScript, dov
 
 La direttiva deve essere posta all'inizio di ogni script o all'inizio di una funzione.
 
+<<<<<<< HEAD
 Senza `"use strict"`, tutto continuerebbe a funzionare, ma alcune caratteristiche si comporterebbero in vecchio-stile, per retrocompatibilità. Generalmente si preferisce la modalità con i comportamenti moderni.
+=======
+Without `"use strict"`, everything still works, but some features behave in the old-fashioned, "compatible" way. We'd generally prefer the modern behavior.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Alcune caratteristiche moderne del linguaggio (come le classi che studieremo più avanti) attivano automaticamente la modalità script.
 
@@ -143,8 +147,13 @@ Aritmetici
 Assegnazione
 : Ci sono le assegnazioni semplici: `a = b` e quelle combinate `a *= 2`.
 
+<<<<<<< HEAD
 Bit a Bit
 : Gli operatori bit a bit funzionano con gli interi a livello di bit: guarda la [documentazione](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) se ne avrai bisogno.
+=======
+Bitwise
+: Bitwise operators work with 32-bit integers at the lowest, bit-level: see the [docs](mdn:/JavaScript/Guide/Expressions_and_Operators#bitwise_operators) when they are needed.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Ternari
 : C'è un solo operatore con tre parametri: `cond ? resultA : resultB`. Se `cond` è vera, ritorna `resultA`, altrimenti `resultB`.
@@ -258,7 +267,11 @@ Abbiamo studiato tre modi per creare funzioni in JavaScript:
 3. Funzione freccia:
 
     ```js
+<<<<<<< HEAD
     // espressione dalla parte destra
+=======
+    // expression on the right side
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
     let sum = (a, b) => a + b;
 
     // oppure la sintassi multi-riga con { ... }, è necessario esplicitare return

@@ -157,7 +157,11 @@ Such causes are:
 
 Ecco un caso reale di evento `pointercancel` per vedere cosa e come ci influenza.
 
+<<<<<<< HEAD
 Mettiamo il caso che stiamo implementando il drag'n'drop per un pallone, proprio come fatto all'inizio dell'articolo <info:mouse-drag-and-drop>.
+=======
+Let's say we're implementing drag'n'drop for a ball, just as in the beginning of the article <info:mouse-drag-and-drop>.
+>>>>>>> ff4ef57c8c2fd20f4a6aa9032ad37ddac93aa3c4
 
 Ecco il flusso delle azioni dell'utente e gli eventi corrispondenti:
 
