@@ -222,7 +222,6 @@ Gli altri nomi sono delle abbreviazioni per le seguenti curve `cubic-bezier`:
 
 Potremmo quindi utilizzare `ease-out` per rallentare l'animazione del treno:
 
-
 ```css
 .train {
   left: 0;
@@ -237,7 +236,12 @@ Anche se apparirà leggermente diversa.
 
 I punti di controllo nella curva, sono liberi di definire un valore qualsiasi per le coordindate `y`: sia valori grandi che negativi. Questo si rifletterà sulla curva di Bezier che potrà essere molto alta o molto bassa, facendo eccedere l'animazione dal suo intervallo normale. 
 
+<<<<<<< HEAD
 Nell'esempio sotto il codice dell'animazione è:
+=======
+In the example below the animation code is:
+
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 ```css
 .train {
   left: 100px;
@@ -270,7 +274,19 @@ Come sappiamo, `y` misura il "grado di completezza dell'animazione". Il valore `
 
 Questa ovviamente è una variante più "leggera". Se impostiamo `y` a valori come `-99` e `99` allora il treno eccederebbe l'intervallo più evidentemente.
 
+<<<<<<< HEAD
 Ma come possiamo definire una curva di Bezier per una specifica animazione? Esistono diversi strumenti che ci permettono di farlo. Ad esempio, possiamo utilizzare <http://cubic-bezier.com/>.
+=======
+But how do we make a Bezier curve for a specific task? There are many tools.
+
+- For instance, we can do it on the site <https://cubic-bezier.com>.
+- Browser developer tools also have special support for Bezier curves in CSS:
+    1. Open the developer tools with `key:F12` (Mac: `key:Cmd+Opt+I`).
+    2. Select the `Elements` tab, then pay attention to the `Styles` sub-panel at the right side.
+    3. CSS properties with a word `cubic-bezier` will have an icon before this word.
+    4. Click this icon to edit the curve.
+
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 ### Steps
 
@@ -286,7 +302,23 @@ Qui abbiamo un'elenco di cifre, senza alcuna animazione:
 
 [codetabs src="step-list"]
 
+<<<<<<< HEAD
 Ciò che faremo sarà far apparire le cifre in modo discreto facendo si che la lista esterna al box rosso sia invisibile, e faremo scorrere la lista a sinistra ad ogni step.
+=======
+In the HTML, a stripe of digits is enclosed into a fixed-length `<div id="digits">`:
+
+```html
+<div id="digit">
+  <div id="stripe">0123456789</div>
+</div>
+```
+
+The `#digit` div has a fixed width and a border, so it looks like a red window.
+
+We'll make a timer: the digits will appear one by one, in a discrete way.
+
+To achieve that, we'll hide the `#stripe` outside of `#digit` using `overflow: hidden`, and then shift the `#stripe` to the left step-by-step.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 Dovremo definire 9 step, uno per ogni cifra:
 
@@ -297,27 +329,48 @@ Dovremo definire 9 step, uno per ogni cifra:
 }
 ```
 
+<<<<<<< HEAD
 In azione:
 
 [codetabs src="step"]
 
 Il primo argomento di `steps(9, start)` è il numero di step. La `transform` verrà divisa in 9 parti (10% ad ognuna). Anche l'intervallo di tempo sarà diviso automaticamente in 9 parti, quindi `transition: 9s` farà durare l'animazione 9 secondi, 1 secondo per ogni cifra.
+=======
+The first argument of `steps(9, start)` is the number of steps. The transform will be split into 9 parts (10% each). The time interval is automatically divided into 9 parts as well, so `transition: 9s` gives us 9 seconds for the whole animation – 1 second per digit.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 Il secondo argomento è una delle due parole chiave: `start` o `end`.
 
 La parola chiave `start` significa che il primo step verrà eseguito immediatamente all'inizio dell'animazione.
 
+<<<<<<< HEAD
 Possiamo osservarlo durante l'animazione: quando clicchiamo su una cifra cambia ad `1` (il primo step) immediatamente, e successivamente cambierà al termine del secondo successivo.
+=======
+In action:
+
+[codetabs src="step"]
+
+A click on the digit changes it to `1` (the first step) immediately, and then changes in the beginning of the next second.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 Il processo progredirà in questo modo:
 
 - `0s` -- `-10%` (il primo cambiamento all'inizio del primo secondo, immediatamente)
 - `1s` -- `-20%`
 - ...
+<<<<<<< HEAD
 - `8s` -- `-80%`
 - (l'ultimo secondo mostra il valore finale).
 
 In alternativa il valore `end` starà a significare che il cambiamento dovrebbe essere applicato non dall'inizio, ma alla fine di ogni secondo.
+=======
+- `8s` -- `-90%`
+- (the last second shows the final value).
+
+Here, the first change was immediate because of `start` in the `steps`.
+
+The alternative value `end` would mean that the change should be applied not in the beginning, but at the end of each second.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 <<<<<<< HEAD
 Il processo progredirà in questo modo:
@@ -334,20 +387,36 @@ So the process for `steps(9, end)` would go like this:
 - ...
 - `9s` -- `-90%`
 
+<<<<<<< HEAD
 Qui vediamo `steps(9, end)` in azione (da notare la pausa tra il cambiamento della prima cifra):
 
 [codetabs src="step-end"]
 
 Anche in questo caso esistono delle abbreviazioni:
+=======
+Here's `steps(9, end)` in action (note the pause before the first digit change):
+
+[codetabs src="step-end"]
+
+There are also some pre-defined shorthands for `steps(...)`:
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 - `step-start` equivale a `steps(1, start)`. Ovvero, l'animazione inizierà immediatamente e compierà il primo step. Quindi inizierà e terminerà immediatamente, come se non ci fosse alcuna animazione.
 - `step-end` equivale a `steps(1, end)`: compie l'animazione in un solo step al termine di `transition-duration`.
 
+<<<<<<< HEAD
 Questi valori vengono utilizzati raramente. Poiché non definiscono delle vere animazioni, ma piuttosto un cambiamento di un solo step.
 
 ## L'evento transitionend
 
 Al termine dell'animazione CSS, verrà innescato l'evento `transitionend`.
+=======
+These values are rarely used, as they represent not a real animation, but rather a single-step change. We mention them here for completeness.
+
+## Event: "transitionend"
+
+When the CSS animation finishes, the `transitionend` event triggers.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 Viene spesso utilizzato per compiere un'azione al termine dell'animazione. In questo modo possiamo unire le animazioni.
 

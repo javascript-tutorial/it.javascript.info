@@ -21,9 +21,15 @@ let promise = fetch(url, {
     // a seconda del corpo della richiesta
     "Content-Type": "text/plain;charset=UTF-8"
   },
+<<<<<<< HEAD
   body: undefined // string, FormData, Blob, BufferSource, o URLSearchParams
   referrer: "about:client", // oppure "" per inviare un header di Referer nullo,
   // o un url dalla *origin* attuale
+=======
+  body: undefined, // string, FormData, Blob, BufferSource, or URLSearchParams
+  referrer: "about:client", // or "" to send no Referer header,
+  // or an url from the current origin
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
   referrerPolicy: "no-referrer-when-downgrade", // no-referrer, origin, same-origin...
   mode: "cors", // same-origin, no-cors
   credentials: "same-origin", // omit, include
@@ -52,7 +58,11 @@ Solitamente questo header viene impostato automaticamente e contiene l'URL della
 
 **L'opzione `referrer` permette di impostare qualunque `Referer` (all'interno dell'origine attuale) o di rimuoverlo.**
 
+<<<<<<< HEAD
 Per non inviare alcun referer, impostare una stringa vuota:
+=======
+To send no referrer, set an empty string:
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 ```js
 fetch('/page', {
 *!*
@@ -185,7 +195,11 @@ L'opzione `integrity` permette di controllare se la risposta combacia con il che
 
 Come descritto nelle [specifiche](https://w3c.github.io/webappsec-subresource-integrity/), funzione hash supportate sono SHA-256, SHA-384, e SHA-512, potrebbero essercene altre a discrezione del browser.
 
+<<<<<<< HEAD
 Per esempio, stiamo scaricando un file, e sappiamo che il suo checksum SHA-256 è "abcdef" (un checksum reale è più lungo, chiaramente).
+=======
+For example, we're downloading a file, and we know that its SHA-256 checksum is "abcdef" (a real checksum is longer, of course).
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 Possiamo inserirlo dentro l'opzione `integrity`:
 

@@ -212,7 +212,11 @@ L'oggetto range che abbiamo creato nell'esempio ha le seguenti proprietà:
 
 Ci sono una serie di metodi utili per manipolare i range.
 
+<<<<<<< HEAD
 Abbiamo già visto `setStart` e `setEnd`, di seguito alcuni metodi utili agli stessi scopi.
+=======
+There are many convenient methods to manipulate ranges.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 Impostare l'inizio del range:
 
@@ -433,7 +437,11 @@ As text: <span id="astext"></span>
 
 ## Metodi per la selezione
 
+<<<<<<< HEAD
 Possiamo lavorare con la selezione aggiungendo/rimuovendo ranges:
+=======
+We can work with the selection by adding/removing ranges:
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 - `getRangeAt(i)` -- legge il range alla posizione i, partendo da '0'. In tutti i browser, tranne Firefox, viene usato solo `0`.
 - `addRange(range)` -- aggiunge `range` alla selezione. Tutti i browser, eccetto Firefox, ignorano la chiamata, se la selezione ha già un range associato.
