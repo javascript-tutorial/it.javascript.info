@@ -30,7 +30,11 @@ Eliminiamo subito una possibile fonte di confusione. `ArrayBuffer` non ha nulla 
 
 **Per manipolare un `ArrayBuffer`, dobbiamo utilizzare un oggetto "visualizzatore".**
 
+<<<<<<< HEAD
 Un oggetto visualizzatore non memorizza nulla. Funge da "lente di ingrandimento" che fornisce un interpretazione dei byte memorizzati in un `ArrayBuffer`.
+=======
+A view object does not store anything on its own. It's the "eyeglasses" that give an interpretation of the bytes stored in the `ArrayBuffer`.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 Ad esempio:
 
@@ -71,7 +75,11 @@ for(let num of view) {
 
 ## TypedArray
 
+<<<<<<< HEAD
 Il termine comune utilizzato per i visualizzatori (`Uint8Array`, `Uint32Array`, etc) è [TypedArray](https://tc39.github.io/ecma262/#sec-typedarray-objects). Questi condividono lo stesso insieme di metodi e proprietà.
+=======
+The common term for all these views (`Uint8Array`, `Uint32Array`, etc) is [TypedArray](https://tc39.github.io/ecma262/#sec-typedarray-objects). They share the same set of methods and properties.
+>>>>>>> 18b1314af4e0ead5a2b10bb4bacd24cecbb3f18e
 
 Da notare, non esiste alcun costruttore per il tipo `TypedArray`, è semplicemente un "ombrello" comune per rappresentare un visualizzatore per `ArrayBuffer`: `Int8Array`, `Uint8Array` e così via, vedremo la lista completa a breve.
 
