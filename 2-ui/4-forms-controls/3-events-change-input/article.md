@@ -104,7 +104,7 @@ So the example above uses `document.getSelection()` to get the selected text. Yo
 
 It's possible to copy/paste not just text, but everything. For instance, we can copy a file in the OS file manager, and paste it.
 
-That's because `clipboardData` implements `DataTransfer` interface, commonly used for drag'n'drop and copy/pasting. It's bit beyond our scope now, but you can find its methods in the [DataTransfer specification](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
+That's because `clipboardData` implements `DataTransfer` interface, commonly used for drag'n'drop and copy/pasting. It's a bit beyond our scope now, but you can find its methods in the [DataTransfer specification](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
 
 Also, there's an additional asynchronous API of accessing the clipboard: `navigator.clipboard`. More about it in the specification [Clipboard API and events](https://www.w3.org/TR/clipboard-apis/), [not supported by Firefox](https://caniuse.com/async-clipboard).
 
@@ -120,8 +120,12 @@ Even if someone decides to save `event.clipboardData` in an event handler, and t
 
 To reiterate, [event.clipboardData](https://www.w3.org/TR/clipboard-apis/#clipboardevent-clipboarddata) works solely in the context of user-initiated event handlers.
 
+<<<<<<< HEAD
 On the other hand, [navigator.clipboard](https://www.w3.org/TR/clipboard-apis/#h-navigator-clipboard) is the more recent API, meant for use in any context. It asks for user permission, if needed. Not supported in Firefox.
 >>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
+=======
+On the other hand, [navigator.clipboard](https://www.w3.org/TR/clipboard-apis/#h-navigator-clipboard) is the more recent API, meant for use in any context. It asks for user permission, if needed.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ## Riepilogo
 

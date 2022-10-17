@@ -13,9 +13,13 @@ function sayHi() {
 E' disponibile un'altra sintassi per creare una funzione, chiamata *function expression*.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 La sintassi:
 =======
 It allows to create a new function in the middle of any expression.
+=======
+It allows us to create a new function in the middle of any expression.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 For example:
 >>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
@@ -109,8 +113,13 @@ let func = sayHi;
 Tutto funzionerebbe ugualmente. Risulta anche più chiaro cosa sta succedendo, giusto?
 
 
+<<<<<<< HEAD
 ````smart header="Perché c'è un punto e virgola alla fine?"
 Vi starete chiedendo perché con la function expression bisogna mettere `;` alla fine, mentre con la dichiarazione di funzione non serve:
+=======
+````smart header="Why is there a semicolon at the end?"
+You might wonder, why do Function Expressions have a semicolon `;` at the end, but Function Declarations do not:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js
 function sayHi() {
@@ -170,13 +179,21 @@ function showCancel() {
 ask("Do you agree?", showOk, showCancel);
 ```
 
+<<<<<<< HEAD
 Queste funzioni possono essere molto utili. La principale differenza tra un'implementazione realistica e gli esempi sopra è che le funzioni "reali" utilizzano modalità più complesse per interagire con l'utente, non un semplice `confirm`. In ambiente browser, queste funzioni mostrano spesso delle finestre molto carine per gli input dell'utente. Ma questo è un altro discorso.
+=======
+In practice, such functions are quite useful. The major difference between a real-life `ask` and the example above is that real-life functions use more complex ways to interact with the user than a simple `confirm`. In the browser, such functions usually draw a nice-looking question window. But that's another story.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 **Gli argomenti `showOk` e `showCancel` della `ask` sono chiamati *funzioni di richiamo* o semplicemente *callbacks*.**
 
 L'idea è di passare una funzione e di "richiamarla" più tardi se necessario. Nel nostro caso `showOk` diventa la callback per la risposta "yes", e `showCancel` per la risposta "no".
 
+<<<<<<< HEAD
 Possiamo utilizzare una function expression per scrivere la stessa funzione più concisamente:
+=======
+We can use Function Expressions to write an equivalent, shorter function:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js run no-beautify
 function ask(question, yes, no) {
@@ -214,7 +231,11 @@ Cerchiamo di elencare le differenze chiave tra Dichiarazioni ed Espressioni di F
 
 Primo, la sintassi: come  distinguerle nel codice.
 
+<<<<<<< HEAD
 - *Dichiarazione di funzione:* una funzione, dichiarata come un'istruzione separata, nel flusso principale del programma.
+=======
+- *Function Declaration:* a function, declared as a separate statement, in the main code flow:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
     ```js
     // Dichiarazione di funzione
@@ -222,8 +243,13 @@ Primo, la sintassi: come  distinguerle nel codice.
       return a + b;
     }
     ```
+<<<<<<< HEAD
 - *Function expression:* una funzione, creata all'interno di un'espressione o all'interno di un altro costrutto. Qui, la funzione è creata alla destra dell' "espressione di assegnazione" `=`:
     
+=======
+- *Function Expression:* a function, created inside an expression or inside another syntax construct. Here, the function is created on the right side of the "assignment expression" `=`:
+
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
     ```js
     // function expression
     let sum = function(a, b) {
@@ -319,9 +345,15 @@ if (age < 18) {
   welcome();               // \   (esegue)
 */!*
                            //  |
+<<<<<<< HEAD
   function welcome() {     //  |  
     alert("Hello!");       //  |  Dichiarazione di funzione disponibile
   }                        //  |  ovunque nel blocco in cui è stata dichiarata
+=======
+  function welcome() {     //  |
+    alert("Hello!");       //  |  Function Declaration is available
+  }                        //  |  everywhere in the block where it's declared
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
                            //  |
 *!*
   welcome();               // /   (esegue)
@@ -329,7 +361,11 @@ if (age < 18) {
 
 } else {
 
+<<<<<<< HEAD
   function welcome() {     
+=======
+  function welcome() {
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
     alert("Greetings!");
   }
 }
@@ -387,8 +423,13 @@ welcome(); // ora funziona
 ```
 
 
+<<<<<<< HEAD
 ```smart header="Quando conviene scegliere una dichiarazione di funzione piuttosto di una function expression?"
 Come regola fondamentale, quando abbiamo la necessità di dichiarare una funzione, la prima opzione da considerare è la dichiarazione di funzione. Fornisce maggiore libertà per quanto riguarda l'organizzazione del codice, poiché possiamo utilizzare la funzione anche prima della sua dichiarazione.
+=======
+```smart header="When to choose Function Declaration versus Function Expression?"
+As a rule of thumb, when we need to declare a function, the first thing to consider is Function Declaration syntax. It gives more freedom in how to organize our code, because we can call such functions before they are declared.
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Risulta anche più facile vedere `function f(…) {…}`, nel codice, piuttosto di `let f = function(…) {…}`. La dichiarazione di funzione è più facile da individuare.
 

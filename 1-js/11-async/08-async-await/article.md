@@ -145,8 +145,12 @@ Possiamo "avvolgerlo" wrap in una funzione async anonima, come qui:
 =======
 If we're not using modules, or [older browsers](https://caniuse.com/mdn-javascript_operators_await_top_level) must be supported, there's a universal recipe: wrapping into an anonymous async function.
 
+<<<<<<< HEAD
 Lke this:
 >>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
+=======
+Like this:
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 ```js
 (async () => {

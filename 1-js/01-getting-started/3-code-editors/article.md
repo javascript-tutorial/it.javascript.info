@@ -12,8 +12,13 @@ Un IDE carica il progetto (possono essere molti file), consente la navigazione t
 
 Se non hai ancora considerato di scegliere un IDE, dai un'occhiata a queste alternative:
 
+<<<<<<< HEAD
 - [Visual Studio Code](https://code.visualstudio.com/) (*cross-platform*, gratutito).
 - [WebStorm](http://www.jetbrains.com/webstorm/) (*cross-platform*, a pagamento).
+=======
+- [Visual Studio Code](https://code.visualstudio.com/) (cross-platform, free).
+- [WebStorm](https://www.jetbrains.com/webstorm/) (cross-platform, paid).
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 
 Per Windows, c'è anche l'editor "Visual Studio", da non confondere con "Visual Studio Code". "Visual Studio" è un potente editor (a pagamento) disponibile solo per Windows, ottimo per le piattaforme .NET. E' disponibile anche una versione gratuita: ([Visual Studio Community](https://www.visualstudio.com/vs/community/).
 
@@ -32,6 +37,7 @@ In pratica, tuttavia, gli editor semplici possono avere molti plugin, tra cui la
 Meritano attenzione le seguenti opzioni:
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 - [Atom](https://atom.io/) (*cross-platform*, gratuito).
 - [Visual Studio Code](https://code.visualstudio.com/) (*cross-platform*, gratuito).
 - [Sublime Text](http://www.sublimetext.com) (*cross-platform*, con prova gratuita).
@@ -39,6 +45,8 @@ Meritano attenzione le seguenti opzioni:
 - [Vim](http://www.vim.org/) e [Emacs](https://www.gnu.org/software/emacs/) sono particolarmente carini se si sanno utilizzare.
 =======
 - [Atom](https://atom.io/) (cross-platform, free).
+=======
+>>>>>>> bf7d8bb1af3b416d393af1c15b03cb1352da1f9c
 - [Sublime Text](http://www.sublimetext.com) (cross-platform, shareware).
 - [Notepad++](https://notepad-plus-plus.org/) (Windows, free).
 - [Vim](http://www.vim.org/) and [Emacs](https://www.gnu.org/software/emacs/) are also cool if you know how to use them.
