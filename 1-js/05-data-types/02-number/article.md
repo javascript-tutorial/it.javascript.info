@@ -2,6 +2,7 @@
 
 Nella versione moderna di JavaScript ci sono due differenti tipi di numeri:
 
+<<<<<<< HEAD
 1. I numeri regolari, che vengono memorizzati nel formato a 64 bit [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), conosciuti anche come "numeri in virgola mobile con doppia precisione". Questi sono i numeri che utilizziamo la maggior parte del tempo, e sono quelli di cui parleremo in questo capitolo.
 
 <<<<<<< HEAD
@@ -9,6 +10,11 @@ Nella versione moderna di JavaScript ci sono due differenti tipi di numeri:
 =======
 2. BigInt numbers, to represent integers of arbitrary length. They are sometimes needed, because a regular number can't safely exceed <code>2<sup>53</sup></code> or be less than <code>-2<sup>53</sup></code>. As bigints are used in few special areas, we devote them a special chapter <info:bigint>.
 >>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
+=======
+1. Regular numbers in JavaScript are stored in 64-bit format [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754), also known as "double precision floating point numbers". These are numbers that we're using most of the time, and we'll talk about them in this chapter.
+
+2. BigInt numbers represent integers of arbitrary length. They are sometimes needed because a regular integer number can't safely exceed <code>(2<sup>53</sup>-1)</code> or be less than <code>-(2<sup>53</sup>-1)</code>, as we mentioned earlier in the chapter <info:types>. As bigints are used in few special areas, we devote them a special chapter <info:bigint>.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Quindi in questo capitolo parleremo dei numeri regolari.
 
@@ -26,7 +32,11 @@ Possiamo anche usare il carattere underscore `_` come separatore:
 let billion = 1_000_000_000;
 ```
 
+<<<<<<< HEAD
 Qui il carattere `_` gioca il ruolo di "zucchero sintattico", cioè rende il numero più leggibile. Il motore JavaScript semplicemente ignorerà i caratteri `_` tra le cifre, quindi è equivalente al milione scritto sopra.
+=======
+Here the underscore `_` plays the role of the "[syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)", it makes the number more readable. The JavaScript engine simply ignores `_` between digits, so it's exactly the same one billion as above.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Nella vita reale però cerchiamo di evitare di scrivere lunghe file di zeri per evitare errori. E anche perché siamo pigri. Solitamente scriviamo qualcosa del tipo `"1ml"` per un milione o `"7.3ml"` 7 milioni e 300mila. Lo stesso vale per i numeri più grandi.
 
@@ -49,13 +59,20 @@ In altre parole, `"e"` moltiplica il numero `1` seguito dal numero di zeri dati.
 Ora proviamo a scrivere qualcosa di molto piccolo. Ad esempio, 1 microsecondo (un milionesimo di secondo): 
 
 ```js
-let ms = 0.000001;
+let mсs = 0.000001;
 ```
 
+<<<<<<< HEAD
 Come prima, l'utilizzo di `"e"` può aiutare. Se volessimo evitare di scrivere esplicitamente tutti gli "0", potremmo scrivere:
 
 ```js
 let ms = 1e-6; // sei zeri alla sinistra di 1
+=======
+Just like before, using `"e"` can help. If we'd like to avoid writing the zeroes explicitly, we could write the same as:
+
+```js
+let mcs = 1e-6; // five zeroes to the left from 1
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 ```
 
 <<<<<<< HEAD
@@ -70,8 +87,16 @@ In altre parole, un numero negativo dopo `"e"` significa una divisione per 1 seg
 // -3 divide 1 con 3 zeri
 1e-3 = 1 / 1000; // 0.001
 
+<<<<<<< HEAD
 // -6 divide 1 con 6 zeri
 1.23e-6 = 1.23 / 1000000; // 0.00000123
+=======
+// -6 divides by 1 with 6 zeroes
+1.23e-6 === 1.23 / 1000000; // 0.00000123
+
+// an example with a bigger number
+1234e-2 === 1234 / 100; // 12.34, decimal point moves 2 times
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 ```
 
 ### Numeri esadecimali, binari e ottali
@@ -166,7 +191,11 @@ Ci sono due modi per farlo:
 
 1. Moltiplica e dividi.
 
+<<<<<<< HEAD
     Ad esempio, per arrotondare un numero alla seconda cifra decimale, possiamo moltiplicare il numero per `100`,  chiamare la funzione di arrotondamento e dividerlo nuovamente.
+=======
+    For example, to round the number to the 2nd digit after the decimal, we can multiply the number by `100`, call the rounding function and then divide it back.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
     ```js run
     let num = 1.23456;
 
@@ -187,20 +216,34 @@ Ci sono due modi per farlo:
     alert( num.toFixed(1) ); // "12.4"
     ```
 
+<<<<<<< HEAD
     Da notare che il risultato di `toFixed` è una stringa. Se la parte decimale è più breve di quanto richiesto, verranno aggiunti degli zeri:
+=======
+    Please note that the result of `toFixed` is a string. If the decimal part is shorter than required, zeroes are appended to the end:
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
     ```js run
     let num = 12.34;
     alert( num.toFixed(5) ); // "12.34000", aggiunti gli zeri per renderlo esattamente di 5 cifre decimali
     ```
 
+<<<<<<< HEAD
     Possiamo convertire il risultato al tipo numerico utilizzando la somma unaria o chiamando il metodo `Number()`: `+num.toFixed(5)`.
+=======
+    We can convert it to a number using the unary plus or a `Number()` call, e.g write `+num.toFixed(5)`.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 ## Calcoli imprecisi
 
+<<<<<<< HEAD
 Internamente, un numero è rappresentato in formato 64-bit [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754-2008_revision), quindi vengono utilizzati esattamente 64 bit per rappresentare un numero: 52 vengono utilizzati per rappresentare le cifre, 11 per la parte decimale, e infine 1 bit per il segno.
 
 Se un numero è troppo grande, tale da superare i 64 bit disponibili, come ad esempio un numero potenzialmente infinito:
+=======
+Internally, a number is represented in 64-bit format [IEEE-754](https://en.wikipedia.org/wiki/IEEE_754), so there are exactly 64 bits to store a number: 52 of them are used to store the digits, 11 of them store the position of the decimal point, and 1 bit is for the sign.
+
+If a number is really huge, it may overflow the 64-bit storage and become a special numeric value `Infinity`:
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 ```js run
 alert( 1e500 ); // Infinity
@@ -208,7 +251,11 @@ alert( 1e500 ); // Infinity
 
 Potrebbe essere poco ovvio, ma quello che accade è la perdita di precisione.
 
+<<<<<<< HEAD
 Consideriamo questo test (falso!):
+=======
+Consider this (falsy!) equality test:
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 ```js run
 alert( 0.1 + 0.2 == 0.3 ); // *!*false*/!*
@@ -222,13 +269,21 @@ Strano! Quale può essere il risultato se non `0.3`?
 alert( 0.1 + 0.2 ); // 0.30000000000000004
 ```
 
+<<<<<<< HEAD
 Ouch! Un confronto errato di questo tipo può generare diverse conseguenze. Immaginate di progettare un sito di e-shop in cui i visitatori aggiungono al carrello articoli da `$0.10` e `$0.20`. Poi come prezzo totale viene mostrato `$0.30000000000000004`. Questo risultato lascerebbe sorpreso chiunque.
+=======
+Ouch! Imagine you're making an e-shopping site and the visitor puts `$0.10` and `$0.20` goods into their cart. The order total will be `$0.30000000000000004`. That would surprise anyone.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Ma perché accade questo?
 
 Un numero viene memorizzato nella sua forma binaria, una sequenza di "1" e "0". I numeri con virgola come `0.1`, `0.2` che visti nella loro forma decimale sembrano semplici, sono in realtà una sequenza infinita di cifre nella forma binaria.
 
+<<<<<<< HEAD
 In altre parole, cos'è `0.1`? Vale 1 diviso 10 `1/10`, "un decimo". Nel sistema decimale questi numeri sono facilmente rappresentabili. Prendiamo invece "un terzo": `1/3`. Diventa un numero con infiniti decimali `0.33333(3)`. 
+=======
+What is `0.1`? It is one divided by ten `1/10`, one-tenth. In decimal numeral system such numbers are easily representable. Compare it to one-third: `1/3`. It becomes an endless fraction `0.33333(3)`.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Quindi, le divisioni per potenze di `10` funzionano molto bene nel sistema decimale, non vale lo stesso con la divisione per `3`. Per la stessa ragione, nel sistema binario le divisioni per potenze di `2` sono una garanzia, ma `1/10` diventa una sequenza infinita di cifre.
 
@@ -257,7 +312,7 @@ Possiamo risolvere questo problema? Certamente, ci sono diverse soluzioni:
 
 ```js run
 let sum = 0.1 + 0.2;
-alert( sum.toFixed(2) ); // 0.30
+alert( sum.toFixed(2) ); // "0.30"
 ```
 
 Da notare che `toFixed` ritorna sempre una stringa. Viene cosi garantito che ci siano almeno due cifre dopo la virgola decimale. Questo ci torna molto utile se abbiamo un e-shopping e vogliamo mostrare `$0.30`. Per tutti gli altri casi possiamo semplicemente chiamare la conversione con l'operatore di somma unaria:
@@ -320,7 +375,11 @@ Questi appartengono al tipo `number`, ma non sono dei numeri "normali", esistono
     alert( isNaN("str") ); // true
     ```
 
+<<<<<<< HEAD
     Ma abbiamo veramente bisogno di questa funzione? Non possiamo semplicemente usare il confronto `=== NaN`? Purtroppo la risposta è no. Il valore `NaN` è unico in questo aspetto, non è uguale a niente, nemmeno a se stesso:
+=======
+    But do we need this function? Can't we just use the comparison `=== NaN`? Unfortunately not. The value `NaN` is unique in that it does not equal anything, including itself:
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
     ```js run
     alert( NaN === NaN ); // false
@@ -350,16 +409,57 @@ Da notare che una stringa vuota o contenente solo spazi viene trattata come `0` 
 Please note that an empty or a space-only string is treated as `0` in all numeric functions including `isFinite`.
 >>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
+<<<<<<< HEAD
 ```smart header="Confronto con `Object.is`"
 
 Esiste uno speciale metodo integrato [Object.is](mdn:js/Object/is) che confronta valori proprio come `===`, ma risulta molto più affidabile in due casi limite:
 
 1. Funziona con `NaN`: `Object.is(NaN, NaN) === true`, e questo è un bene. 
 2. I valori `0` e `-0` sono diversi: `Object.is(0, -0) === false`, tecnicamente sarebbero uguali, però internamente vengono rappresentati con il bit di segno, che in questo caso è diverso.
+=======
+````smart header="`Number.isNaN` and `Number.isFinite`"
+[Number.isNaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) and [Number.isFinite](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite) methods are the more "strict" versions of `isNaN` and `isFinite` functions. They do not autoconvert their argument into a number, but check if it belongs to the `number` type instead.
+
+- `Number.isNaN(value)` returns `true` if the argument belongs to the `number` type and it is `NaN`. In any other case it returns `false`.
+
+    ```js run
+    alert( Number.isNaN(NaN) ); // true
+    alert( Number.isNaN("str" / 2) ); // true
+
+    // Note the difference:
+    alert( Number.isNaN("str") ); // false, because "str" belongs to the string type, not the number type
+    alert( isNaN("str") ); // true, because isNaN converts string "str" into a number and gets NaN as a result of this conversion
+    ```
+
+- `Number.isFinite(value)` returns `true` if the argument belongs to the `number` type and it is not `NaN/Infinity/-Infinity`. In any other case it returns `false`.
+
+    ```js run
+    alert( Number.isFinite(123) ); // true
+    alert( Number.isFinite(Infinity) ); // false
+    alert( Number.isFinite(2 / 0) ); // false
+
+    // Note the difference:
+    alert( Number.isFinite("123") ); // false, because "123" belongs to the string type, not the number type
+    alert( isFinite("123") ); // true, because isFinite converts string "123" into a number 123
+    ```
+
+In a way, `Number.isNaN` and `Number.isFinite` are simpler and more straightforward than `isNaN` and `isFinite` functions. In practice though, `isNaN` and `isFinite` are mostly used, as they're shorter to write.
+````
+
+```smart header="Comparison with `Object.is`"
+There is a special built-in method `Object.is` that compares values like `===`, but is more reliable for two edge cases:
+
+1. It works with `NaN`: `Object.is(NaN, NaN) === true`, that's a good thing.
+2. Values `0` and `-0` are different: `Object.is(0, -0) === false`, technically that's correct, because internally the number has a sign bit that may be different even if all other bits are zeroes.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 In tutti gli altri casi, `Object.is(a, b)` equivale a `a === b`. 
 
+<<<<<<< HEAD
 Questo metodo di confronto viene spesso utilizzato in JavaScript. Quando un algoritmo interno ha necessità di verificare che due valori siano esattamente la stessa cosa, si utilizza `Object.is` (internamente chiamato [SameValue](https://tc39.github.io/ecma262/#sec-samevalue)).
+=======
+We mention `Object.is` here, because it's often used in JavaScript specification. When an internal algorithm needs to compare two values for being exactly the same, it uses `Object.is` (internally called [SameValue](https://tc39.github.io/ecma262/#sec-samevalue)).
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 ```
 
 
@@ -419,8 +519,13 @@ Un paio di esempi:
     alert( Math.random() ); // ... (numero casuale)
     ```
 
+<<<<<<< HEAD
 `Math.max(a, b, c...)` / `Math.min(a, b, c...)`
 : Ritorna il maggiore/minore fra una lista di argomenti.
+=======
+`Math.max(a, b, c...)` and `Math.min(a, b, c...)`
+: Returns the greatest and smallest from the arbitrary number of arguments.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
     ```js run
     alert( Math.max(3, 5, -10, 0, 1) ); // 5
@@ -452,7 +557,18 @@ Per diversi sistemi numerici:
 
 Per convertire a numeri valori del tipo `12pt` e `100px`:
 
+<<<<<<< HEAD
 - Utilizzate parseInt/parseFloat per un conversione "soft", i quali provano a leggere un numero da una stringa e ritornano ciò che sono riusciti ad estrarre prima di interrompersi.
+=======
+For regular number tests:
+
+- `isNaN(value)` converts its argument to a number and then tests it for being `NaN`
+- `Number.isNaN(value)` checks whether its argument belongs to the `number` type, and if so, tests it for being `NaN`
+- `isFinite(value)` converts its argument to a number and then tests it for not being `NaN/Infinity/-Infinity`
+- `Number.isFinite(value)` checks whether its argument belongs to the `number` type, and if so, tests it for not being `NaN/Infinity/-Infinity`
+
+For converting values like `12pt` and `100px` to a number:
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Per i numeri con la virgola:
 
