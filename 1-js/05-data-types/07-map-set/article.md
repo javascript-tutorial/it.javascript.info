@@ -14,6 +14,7 @@ Queste però non sono sufficienti. Esistono ulteriori strutture dati, come `Map`
 
 I metodi e le proprietà sono:
 
+<<<<<<< HEAD
 - `new Map()` -- crea la mappa.
 - `map.set(key, value)` -- memorizza il valore `value` con la chiave `key`.
 - `map.get(key)` -- ritorna il valore associato alla chiave `key`, `undefined` nel caos in cui `key` non esista.
@@ -21,6 +22,15 @@ I metodi e le proprietà sono:
 - `map.delete(key)` -- rimuove il valore con la chiave `key`.
 - `map.clear()` -- rimuove tutti gli elementi.
 - `map.size` -- ritorna il numero di elementi contenuti.
+=======
+- `new Map()` -- creates the map.
+- [`map.set(key, value)`](mdn:js/Map/set) -- stores the value by the key.
+- [`map.get(key)`](mdn:js/Map/get) -- returns the value by the key, `undefined` if `key` doesn't exist in map.
+- [`map.has(key)`](mdn:js/Map/has) -- returns `true` if the `key` exists, `false` otherwise.
+- [`map.delete(key)`](mdn:js/Map/delete) -- removes the value by the key.
+- [`map.clear()`](mdn:js/Map/clear) -- removes everything from the map.
+- [`map.size`](mdn:js/Map/size) -- returns the current element count.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Ad esempio:
 
@@ -102,9 +112,15 @@ map.set('1', 'str1')
 
 Per iterare attraverso gli elementi di `Map`, esistono 3 metodi:
 
+<<<<<<< HEAD
 - `map.keys()` -- ritorna un oggetto per iterare sulle chiavi,
 - `map.values()` -- ritorna un oggetto per iterare sui valori,
 - `map.entries()` -- ritorna un oggetto per iterare sulle coppie `[key, value]`, ed è il metodo utilizzato di default nel ciclo `for..of`.
+=======
+- [`map.keys()`](mdn:js/Map/keys) -- returns an iterable for keys,
+- [`map.values()`](mdn:js/Map/values) -- returns an iterable for values,
+- [`map.entries()`](mdn:js/Map/entries) -- returns an iterable for entries `[key, value]`, it's used by default in `for..of`.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Ad esempio:
 
@@ -234,12 +250,21 @@ Un `Set` è un tipo di collezione speciale - "set di valori" (senza chiavi), dov
 
 I suoi metodi principali sono:
 
+<<<<<<< HEAD
 - `new Set(iterable)` -- crea il set, e se gli viene fornito un oggetto `iterabile` (solitamente un array), ne copia i valori nel set.
 - `set.add(value)` -- aggiunge un valore, ritorna il set.
 - `set.delete(value)` -- rimuove il valore, ritorna `true` se `value` esiste, altrimenti `false`.
 - `set.has(value)` -- ritorna `true` se il valore esiste nel set, altrimenti `false`.
 - `set.clear()` -- rimuove tutti i valori dal set.
 - `set.size` -- ritorna il numero dei valori contenuti.
+=======
+- `new Set(iterable)` -- creates the set, and if an `iterable` object is provided (usually an array), copies values from it into the set.
+- [`set.add(value)`](mdn:js/Set/add) -- adds a value, returns the set itself.
+- [`set.delete(value)`](mdn:js/Set/delete) -- removes the value, returns `true` if `value` existed at the moment of the call, otherwise `false`.
+- [`set.has(value)`](mdn:js/Set/has) -- returns `true` if the value exists in the set, otherwise `false`.
+- [`set.clear()`](mdn:js/Set/clear) -- removes everything from the set.
+- [`set.size`](mdn:js/Set/size) -- is the elements count.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 La principale caratteristica dei set è che ripetute chiamate di `set.add(value)` con lo stesso valore non fanno nulla. Questo è il motivo per cui in un `Set` ogni valore può comparire una sola volta.
 
@@ -288,13 +313,23 @@ set.forEach((value, valueAgain, set) => {
 
 Da notare una cosa divertente. La funzione callback fornita a `forEach` ha 3 argomenti: un `value`, poi *lo stesso valore* `valueAgain`, e poi l'oggetto riferito da `this`. Proprio così, lo stesso valore appare due volte nella lista degli argomenti.
 
+<<<<<<< HEAD
 Questo accade per questioni di compatibilità con `Map`, in cui la funzione callback fornita al `forEach` possiede tre argomenti. E' un po' strano, ma in alcuni casi può aiutare rimpiazzare `Map` con `Set`, e vice versa.
+=======
+That's for compatibility with `Map` where the callback passed `forEach` has three arguments. Looks a bit strange, for sure. But this may help to replace `Map` with `Set` in certain cases with ease, and vice versa.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Sono supportati anche i metodi di iterazione di `Map`:
 
+<<<<<<< HEAD
 - `set.keys()` -- ritorna un oggetto per iterare sui valori,
 - `set.values()` -- lo stesso di `set.keys()`, per compatibilità con `Map`,
 - `set.entries()` -- ritorna un oggetto per iterare sulle voci `[value, value]`, esiste per compatibilità con `Map`.
+=======
+- [`set.keys()`](mdn:js/Set/keys) -- returns an iterable object for values,
+- [`set.values()`](mdn:js/Set/values) -- same as `set.keys()`, for compatibility with `Map`,
+- [`set.entries()`](mdn:js/Set/entries) -- returns an iterable object for entries `[value, value]`, exists for compatibility with `Map`.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 ## Riepilogo
 
@@ -302,6 +337,7 @@ Sono supportati anche i metodi di iterazione di `Map`:
 
 Metodi e proprietà:
 
+<<<<<<< HEAD
 - `new Map([iterable])` -- crea la mappa, accetta un oggetto iterabile (opzionale, e.g. array) di coppie `[key,value]` per l'inizializzazione.
 - `map.set(key, value)` -- memorizza il valore con la chiave fornita.
 - `map.get(key)` -- ritorna il valore associato alla chiave, `undefined` se la `key` non è presente nella `Map`.
@@ -309,6 +345,15 @@ Metodi e proprietà:
 - `map.delete(key)` -- rimuove il valore associato alla chiave.
 - `map.clear()` -- rimuove ogni elemento dalla mappa.
 - `map.size` -- ritorna il numero di elementi contenuti nella `map`.
+=======
+- `new Map([iterable])` -- creates the map, with optional `iterable` (e.g. array) of `[key,value]` pairs for initialization.
+- [`map.set(key, value)`](mdn:js/Map/set) -- stores the value by the key, returns the map itself.
+- [`map.get(key)`](mdn:js/Map/get) -- returns the value by the key, `undefined` if `key` doesn't exist in map.
+- [`map.has(key)`](mdn:js/Map/has) -- returns `true` if the `key` exists, `false` otherwise.
+- [`map.delete(key)`](mdn:js/Map/delete) -- removes the value by the key, returns `true` if `key` existed at the moment of the call, otherwise `false`.
+- [`map.clear()`](mdn:js/Map/clear) -- removes everything from the map.
+- [`map.size`](mdn:js/Map/size) -- returns the current element count.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 Le differenze da un `Object` standard:
 
@@ -319,11 +364,20 @@ Le differenze da un `Object` standard:
 
 Metodi e proprietà:
 
+<<<<<<< HEAD
 - `new Set([iterable])` -- crea un set, accetta un oggetto iterabile (opzionale, e.g. array) per l'inizializzazione.
 - `set.add(value)` -- aggiunge un valore (non fa nulla nel caso in cui il valore sia già contenuto nel set), e ritorna il set.
 - `set.delete(value)` -- rimuove il valore, ritorna `true` se `value` esiste, `false` altrimenti.
 - `set.has(value)` -- ritorna `true` se il valore esiste nel set, `false` altrimenti.
 - `set.clear()` -- rimuove tutti i valori dal set.
 - `set.size` -- ritorna il numero di valori contenuti.
+=======
+- `new Set([iterable])` -- creates the set, with optional `iterable` (e.g. array) of values for initialization.
+- [`set.add(value)`](mdn:js/Set/add) -- adds a value (does nothing if `value` exists), returns the set itself.
+- [`set.delete(value)`](mdn:js/Set/delete) -- removes the value, returns `true` if `value` existed at the moment of the call, otherwise `false`.
+- [`set.has(value)`](mdn:js/Set/has) -- returns `true` if the value exists in the set, otherwise `false`.
+- [`set.clear()`](mdn:js/Set/clear) -- removes everything from the set.
+- [`set.size`](mdn:js/Set/size) -- is the elements count.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 L'iterazione su `Map` e `Set` segue sempre l'ordine di inserimento, quindi possono essere definite delle collezioni ordinate; non è però possibile riordinare gli elementi oppure ottenere un valore tramite il suo indice.

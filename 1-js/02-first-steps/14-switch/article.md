@@ -140,7 +140,11 @@ switch (a) {
 
 Ora sia `3` che `5` mostreranno lo stesso messaggio.
 
+<<<<<<< HEAD
 L'abilità di "raggruppare" più `case` è un effetto collaterale di come `switch/case` funziona senza `break`. Qui l'esecuzione del `case 3` inizia dalla linea `(*)` e prosegue fino a `case 5`, perché non c'è alcun `break`.
+=======
+The ability to "group" cases is a side effect of how `switch/case` works without `break`. Here the execution of `case 3` starts from the line `(*)` and goes through `case 5`, because there's no `break`.
+>>>>>>> 5dff42ba283bce883428c383c080fa9392b71df8
 
 ## Il tipo conta
 
