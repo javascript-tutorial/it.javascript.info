@@ -103,7 +103,11 @@ Da notare che l'invocazione al metodo padre `super.say()` da `sayHiMixin` (alla 
 
 Questo accade perché i metodi `sayHi` e `sayBye` sono stati creati in `sayHiMixin`. Quindi, anche dopo essere stati copiati, le loro proprietà `[[HomeObject]]` fanno riferimento a `sayHiMixin`, come mostrato nella figura.
 
+<<<<<<< HEAD
 Poiché `super` ricerca i metodi in `[[HomeObject]].[[Prototype]]`, ciò significa che ricerca `sayHiMixin.[[Prototype]]`, non `User.[[Prototype]]`.
+=======
+As `super` looks for parent methods in `[[HomeObject]].[[Prototype]]`, that means it searches `sayHiMixin.[[Prototype]]`.
+>>>>>>> 8d9ecb724c7df59774d1e5ffb5e5167740b7d321
 
 ## EventMixin
 
