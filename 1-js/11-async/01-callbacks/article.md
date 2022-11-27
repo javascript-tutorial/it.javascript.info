@@ -28,7 +28,7 @@ function loadScript(src) {
 }
 ```
 
-La funzione inserisce nel documento il nuovo script creato dinamicamente `<script src="…">` con il dato `src`. Il browser eseguità automaticamente il caricamento ed una volta terminato eseguirà lo script.
+La funzione inserisce nel documento il nuovo script creato dinamicamente `<script src="…">` con il dato `src`. Il browser eseguirà automaticamente il caricamento ed una volta terminato eseguirà lo script.
 
 Possiamo usare la funzione in questo modo:
 
@@ -61,7 +61,8 @@ newFunction(); // nessuna funzione!
 
 Naturalmente, con buona probabilità il browser non ha avuto tempo di caricare lo script.
 Quindi la chiamata immediata alla nuova funzione fallirà. Allo stato attuale la funzione `loadScript` non prevede un modo di tracciare l'avvenuto caricamento.
-Lo script carica e poi viene eseguito, questo è quanto. Ma vorremmo sapere quando accade in modo da utilizzare nuove funzioni e variabili da quello script.
+Lo script carica e poi viene 
+o, questo è quanto. Ma vorremmo sapere quando accade in modo da utilizzare nuove funzioni e variabili da quello script.
 
 Aggiungiamo una funzione `callback` come secondo argomento a `loadScript` che dovrebbe essere eseguito una volta che lo script è stato caricato. 
 
