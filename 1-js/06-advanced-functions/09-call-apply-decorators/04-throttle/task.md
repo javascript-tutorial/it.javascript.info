@@ -8,9 +8,15 @@ Creare un "throttling" decorator `throttle(f, ms)` -- che ritorna un wrapper.
 
 Quando viene chiamato più volte, passa la chiamata a `f` al massimo una volta ogni `ms` millisecondi.
 
+<<<<<<< HEAD
 Rispetto al *debounce decorator* abbiamo un decorator completamente diverso:
 - `debounce` esegue la funzione una volta, dopo il periodo di "cooldown". Valido per processare il risultato finale.
 - `throttle` la esegue non più spesso dell'intervallo di tempo `ms`. Valido per aggiornamenti regolari ma non troppo frequenti.
+=======
+Compared to the debounce decorator, the behavior is completely different:
+- `debounce` runs the function once after the "cooldown" period. Good for processing the final result.
+- `throttle` runs it not more often than given `ms` time. Good for regular updates that shouldn't be very often.
+>>>>>>> 746ad803c878e33182e7fab1578c0d15b9b75ca0
 
 In altre parole, `throttle` è come una segretaria che accetta telefonate, ma le passa al capo (chiama `f`) non più di una volta ogni `ms` millisecondi.
 
