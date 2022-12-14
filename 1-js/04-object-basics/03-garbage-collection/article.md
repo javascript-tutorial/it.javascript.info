@@ -145,7 +145,7 @@ Questo esempio dimostra quanto sia importante il concetto della raggiungibilità
 
 E' ovvio che John e Ann siano ancora collegati, ma questo non è sufficiente.
 
-L'oggetto che li conteneva `"family"` è stato rimosso dalla radicem non esistono quindi dei rierimenti, l'isola diventa irraggiungibile e verrà cancellata.
+L'oggetto che li conteneva `"family"` è stato rimosso dalla radice, non esistono quindi dei rierimenti, l'isola diventa irraggiungibile e verrà cancellata.
 
 ## Algoritmi interni
 
