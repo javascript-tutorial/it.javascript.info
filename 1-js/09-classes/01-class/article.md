@@ -118,11 +118,7 @@ alert(Object.getOwnPropertyNames(User.prototype)); // constructor, sayHi
 
 ## Non solo una semplificazione (syntax sugar)
 
-<<<<<<< HEAD
 Talvolta si pensa che `class` in JavaScript sia solo "syntax sugar" (una sintassi creata per semplificare la lettura, ma che non apporta nulla di nuovo), dato che potremmo potremmo dichiarare la stessa cosa senza utilizzare la parola chiave `class`:
-=======
-Sometimes people say that `class` is a "syntactic sugar" (syntax that is designed to make things easier to read, but doesn't introduce anything new), because we could actually declare the same thing without using the `class` keyword at all:
->>>>>>> 3c934b5a46a76861255e3a4f29da6fd54ab05c8c
 
 ```js run
 // la classe User usando solo funzioni

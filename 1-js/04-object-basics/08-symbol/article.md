@@ -159,15 +159,7 @@ for (let key in user) alert(key); // name, age (nessun symbol)
 alert( "Direct: " + user[id] );
 ```
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-Anche `Object.keys(user)` li ignora. Questo fa parte del principio generale di occultazione delle proprietà symbol. Se uno script esterno o una libreria eseguisse un ciclo sul nostro oggetto, non avrebbe inaspettatamente accesso a una proprietà di tipo symbol.
-=======
-[Object.keys(user)](mdn:js/Object/keys) also ignores them. That's a part of the general "hiding symbolic properties" principle. If another script or a library loops over our object, it won't unexpectedly access a symbolic property.
->>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
-=======
-[Object.keys(user)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) also ignores them. That's a part of the general "hiding symbolic properties" principle. If another script or a library loops over our object, it won't unexpectedly access a symbolic property.
->>>>>>> 3c934b5a46a76861255e3a4f29da6fd54ab05c8c
+Anche [Object.keys(user)](mdn:js/Object/keys) li ignora. Questo fa parte del principio generale di occultazione delle proprietà symbol. Se uno script esterno o una libreria eseguisse un ciclo sul nostro oggetto, non avrebbe inaspettatamente accesso a una proprietà di tipo symbol.
 
 Invece [Object.assign](mdn:js/Object/assign) esegue la copia sia delle proprietà di tipo stringa sia di quelle symbol:
 

@@ -213,16 +213,12 @@ L'operatore `typeof` ritorna il tipo dell'argomento. E' utile quando vogliamo la
 
 Sono supportate due sintassi:
 
-<<<<<<< HEAD
 1. Come operatore: `typeof x`.
 2. Come funzione: `typeof(x)`.
 
 In altre parole, funziona sia con le parentesi che senza. Il risultato è lo stesso.
 
 Una chiamata a `typeof x` ritorna una stringa con il nome del tipo:
-=======
-A call to `typeof x` returns a string with the type name:
->>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 ```js
 typeof undefined // "undefined"
@@ -252,29 +248,11 @@ typeof alert // "function"  (3)
 
 Le ultime tre linee potrebbero richiedere una spiegazione ulteriore:
 
-<<<<<<< HEAD
 1. `Math` è un oggetto integrato che fornisce operazioni matematiche avanzate. Lo studieremo nel capitolo <info:number>. Qui ha il semplice scopo di rappresentare un oggetto.
 2. Il risultato di `typeof null` è `"object"`. Questo è un errore del linguaggio, ufficialmente riconosciuto e mantenuto per retro-compatibilità. Ovviamente, `null` non è un oggetto. E' un valore speciale che fa da tipo a se stesso. Quindi, nuovamente, questo è un errore del linguaggio.
 3. Il risultato di `typeof alert` è `"function"`, poiché `alert` è una funzione del linguaggio. Studieremo le funzioni nel prossimo capitolo, e vedremo che non c'e nessun tipo "funzione" nel linguaggio. Le funzioni appartengono al tipo oggetto. Ma `typeof` le tratta differentemente. Formalmente, è errato, ma molto utile nella pratica.
 
 ## Riepilogo
-=======
-1. `Math` is a built-in object that provides mathematical operations. We will learn it in the chapter <info:number>. Here, it serves just as an example of an object.
-2. The result of `typeof null` is `"object"`. That's an officially recognized error in `typeof`, coming from very early days of JavaScript and kept for compatibility. Definitely, `null` is not an object. It is a special value with a separate type of its own. The behavior of `typeof` is wrong here.
-3. The result of `typeof alert` is `"function"`, because `alert` is a function. We'll study functions in the next chapters where we'll also see that there's no special "function" type in JavaScript. Functions belong to the object type. But `typeof` treats them differently, returning `"function"`. That also comes from the early days of JavaScript. Technically, such behavior isn't correct, but can be convenient in practice.
-
-```smart header="The `typeof(x)` syntax"
-You may also come across another syntax: `typeof(x)`. It's the same as `typeof x`.
-
-To put it clear: `typeof` is an operator, not a function. The parentheses here aren't a part of `typeof`. It's the kind of parentheses used for mathematical grouping.
-
-Usually, such parentheses contain a mathematical expression, such as `(2 + 2)`, but here they contain only one argument `(x)`. Syntactically, they allow to avoid a space between the `typeof` operator and its argument, and some people like it.
-
-Some people prefer `typeof(x)`, although the `typeof x` syntax is much more common.
-```
-
-## Summary
->>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 Ci sono 7 tipi base in JavaScript.
 
@@ -289,14 +267,8 @@ Ci sono 7 tipi base in JavaScript.
 
 L'operatore `typeof` ci consente di vedere quale tipo è memorizzato nella variabile.
 
-<<<<<<< HEAD
 - Due forme: `typeof x` o `typeof(x)`.
 - Ritorna una stringa con il nome del tipo, come `"string"`.
 - Il valore `null` ritorna `"object"` -- è un errore del linguaggio, infatti non è un oggetto.
-=======
-- Usually used as `typeof x`, but `typeof(x)` is also possible.
-- Returns a string with the name of the type, like `"string"`.
-- For `null` returns `"object"` -- this is an error in the language, it's not actually an object.
->>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
 Nel prossimo capitolo ci concentreremo nei tipi primitivi e quando avremo preso familiarità, passeremo agli oggetti.

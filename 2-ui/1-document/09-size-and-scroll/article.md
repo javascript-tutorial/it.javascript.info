@@ -116,11 +116,7 @@ function isHidden(elem) {
 }
 ```
 
-<<<<<<< HEAD
 Si noti che questa funzione `isHidden` restituisce `true` anche per gli elementi che sono presenti sullo schermo, ma hanno dimensioni pari a zero (come un `<div>` vuoto).
-=======
-Please note that such `isHidden` returns `true` for elements that are on-screen, but have zero sizes.
->>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 ````
 
 ## clientTop/Left

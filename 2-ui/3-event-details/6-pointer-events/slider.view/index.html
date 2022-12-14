@@ -11,13 +11,8 @@
   let thumb = slider.querySelector('.thumb');
   let shiftX;
 
-<<<<<<< HEAD
   thumb.onpointerdown = function(event) {
     event.preventDefault(); // previene l'inizio della selezione (azione del browser)
-=======
-  function onThumbDown(event) {
-    event.preventDefault(); // prevent selection start (browser action)
->>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
 
     shiftX = event.clientX - thumb.getBoundingClientRect().left;
 
@@ -36,11 +31,7 @@
   function onThumbMove(event) {
     let newLeft = event.clientX - shiftX - slider.getBoundingClientRect().left;
 
-<<<<<<< HEAD
     // se il puntatore si trova fuori dall'area dello slider => aggiusta a sinistra per lasciarlo all'interno dei confini
-=======
-    // if the pointer is out of slider => adjust left to be within the boundaries
->>>>>>> 8d04d0d2db97276dbb2b451c30a7bd3e05d65831
     if (newLeft < 0) {
       newLeft = 0;
     }
