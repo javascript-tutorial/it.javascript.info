@@ -1,6 +1,10 @@
 # Long polling
 
+<<<<<<< HEAD
 Il "long polling" è il modo più semplice per avere una connessione persistente con il server, e contrariamente ai WebSocket o ai Server Side Events, non usa nessun tipo di protocollo specifico. 
+=======
+Long polling is the simplest way of having persistent connection with server, that doesn't use any specific protocol like WebSocket or Server Sent Events.
+>>>>>>> ea7738bb7c3616bb51ff14ae3db2a2747d7888ff
 
 Essendo molto semplice da implementare, è anche sufficientemente valido in molti casi d'uso.
 
