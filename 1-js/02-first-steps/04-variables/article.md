@@ -63,7 +63,12 @@ let age = 25;
 let message = 'Hello';
 ```
 
+<<<<<<< HEAD
 Alcune persone scrivono variabili multiple in questo modo:
+=======
+Some people also define multiple variables in this multiline style:
+
+>>>>>>> ea7738bb7c3616bb51ff14ae3db2a2747d7888ff
 ```js no-beautify
 let user = 'John',
   age = 25,
@@ -104,6 +109,11 @@ Possiamo inserire qualsiasi valore all'interno della scatola.
 
 Possiamo anche cambiarlo. Il valore può cambiare tutte le volte che ne abbiamo bisogno:
 
+<<<<<<< HEAD
+=======
+We can also change it as many times as we want:
+
+>>>>>>> ea7738bb7c3616bb51ff14ae3db2a2747d7888ff
 ```js run
 let message;
 
@@ -148,12 +158,21 @@ let message = "That"; // SyntaxError: 'message' has already been declared
 Quindi, dovremmo dichiarare una variabile una volta sola, e farne riferimento senza la parola chiave `let`.
 ````
 
+<<<<<<< HEAD
 ```smart header="Linguaggi funzionali"
 Può essere interessante sapere che esistono anche linguaggi di programmazione [funzionale](https://en.wikipedia.org/wiki/Functional_programming) che vietano di cambiare il valore di una variabile. Per esempio, [Scala](http://www.scala-lang.org/) o [Erlang](http://www.erlang.org/).
+=======
+```smart header="Functional languages"
+It's interesting to note that there exist so-called [pure functional](https://en.wikipedia.org/wiki/Purely_functional_programming) programming languages, such as [Haskell](https://en.wikipedia.org/wiki/Haskell), that forbid changing variable values.
+>>>>>>> ea7738bb7c3616bb51ff14ae3db2a2747d7888ff
 
 In questo tipo di linguaggi, una volta che il valore viene memorizzato "dentro la scatola", ci rimane per sempre. Se abbiamo bisogno di memorizzare qualcos altro, il linguaggio ci forza a creare una nuova scatola (dichiarare una nuova variabile). Non possiamo quindi riutilizzare quelle vecchie.
 
+<<<<<<< HEAD
 Anche se potrebbero sembrare un po' strano a prima vista, questi linguaggi sono veramente capaci di sviluppare grandi cose. Inoltre, ci sono certe situazioni come calcoli paralleli in cui questi limiti portano dei benefici. Studiare un linguaggio di questo tipo (anche se non abbiamo intenzione di utilizzarlo a breve) è consigliato per allargare le proprie conoscenze.
+=======
+Though it may seem a little odd at first sight, these languages are quite capable of serious development. More than that, there are areas like parallel computations where this limitation confers certain benefits.
+>>>>>>> ea7738bb7c3616bb51ff14ae3db2a2747d7888ff
 ```
 
 ## Nomi delle variabili [#variable-naming]
@@ -191,12 +210,21 @@ let 1a; // non può cominciare con una stringa
 let my-name; // '-' non è consentito nei nomi
 ```
 
+<<<<<<< HEAD
 ```smart header="La questione delle lettere"
 Le variabili `apple` ed `AppLE` sono distinte.
 ```
 
 ````smart header="Le lettere non latine sono permesse, ma sono sconsigliate"
 E' possibile utilizzare qualsiasi alfabeto, compreso quello cirillico o addirittura i geroglifici:
+=======
+```smart header="Case matters"
+Variables named `apple` and `APPLE` are two different variables.
+```
+
+````smart header="Non-Latin letters are allowed, but not recommended"
+It is possible to use any language, including cyrillic letters, Chinese logograms and so on, like this:
+>>>>>>> ea7738bb7c3616bb51ff14ae3db2a2747d7888ff
 
 ```js
 let имя = '...';
@@ -260,8 +288,12 @@ myBirthday = '01.01.2001'; // errore, non è possibile riassegnare la costante!
 
 Quando il programmatore è sicuro che il valore della variabile non cambierà mai, può utilizzare `const` per soddisfare questa esigenza, rendendolo cosi esplicito.
 
+<<<<<<< HEAD
 
 ### Le costanti maiuscole
+=======
+### Uppercase constants
+>>>>>>> ea7738bb7c3616bb51ff14ae3db2a2747d7888ff
 
 Una pratica molto diffusa è di utilizzare le variabili costanti come alias di valori difficili da ricordare, e che sono noti prima dell'esecuzione.
 
@@ -290,14 +322,23 @@ Quando dovremmo utilizzare lettere maiuscole per una costante, e quando invece t
 
 Essere una "costante" significa che il valore non potrà mai cambiare. Ci sono costanti che sono note prima dell'esecuzione (come la codifica esadecimale del colore rosso), e ci sono quelle che vengono *calcolate* durante l'esecuzione, ma non cambieranno più dopo che gli sarà stato assegnato un valore.
 
+<<<<<<< HEAD
 Per esempio:
+=======
+For instance:
+
+>>>>>>> ea7738bb7c3616bb51ff14ae3db2a2747d7888ff
 ```js
 const pageLoadTime = /* tempo necessario da una pagina web per caricare */;
 ```
 
 Il valore di `pageLoadTime` non è noto prima del caricamento della pagina, quindi viene trattato come una normale variabile. Ma rimane comunque una costante, perché non potrà più cambiare dopo che gli sarà stato assegnato un valore.
 
+<<<<<<< HEAD
 In altre parole, i nomi delle costanti in maiuscolo vengono utilizzati con variabili dal valore noto prima dell'esecuzione.
+=======
+In other words, capital-named constants are only used as aliases for "hard-coded" values.
+>>>>>>> ea7738bb7c3616bb51ff14ae3db2a2747d7888ff
 
 ## Dare i giusti nomi alle cose
 
