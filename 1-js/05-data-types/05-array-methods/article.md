@@ -691,7 +691,7 @@ let users = [
 
 *!*
 // trova tutti gli users più giovani di user
-let youngerUsers = users.filter(user.younger, user);
+let soldiers = users.filter(army.canJoin, army);
 */!*
 
 alert(soldiers.length); // 2
@@ -699,7 +699,7 @@ alert(soldiers[0].age); // 20
 alert(soldiers[1].age); // 23
 ```
 
-Nella chiamata sopra, utilizziamo `user.younger` come filtro e forniamo `user` come contesto. Se non avessimo fornito il contesto, `users.filter(user.younger)` avrebbe chiamato `user.younger` come funzione a sé stante, con `this=undefined`. Che avrebbe provocato un errore.
+Nella chiamata sopra, utilizziamo `army.canJoin` come filtro e forniamo `army` come contesto. Se non avessimo fornito il contesto, `users.filter(army.canJoin)` avrebbe chiamato `army.canJoin` come funzione a sé stante, con `this=undefined`. Che avrebbe provocato un errore.
 
 
 Una chiamata a `user.filter(army.canJoin, army)` può essere sostituita da 
