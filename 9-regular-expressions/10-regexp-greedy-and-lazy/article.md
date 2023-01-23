@@ -8,7 +8,11 @@ Prendiamo ad esempio la seguente esercitazione.
 
 Abbiamo bisogno di rimpiazzare tutti i doppi apici `"..."` in un testo con le virgolette basse: `«...»`, che sono preferite nella tipografia di molti paesi.
 
+<<<<<<< HEAD
 Ad esempio: `"Hello, world"` dovrebbe diventare `«Hello, world»`. Esistono altre virgolette, come `„Witam, świat!”` in Polonia o `「你好，世界」` in Cina, in questo caso, tuttavia, scegliamo `«...»`.
+=======
+For instance: `"Hello, world"` should become `«Hello, world»`. There exist other quotes, such as `„Witaj, świecie!”` (Polish) or `「你好，世界」` (Chinese), but for our task let's choose `«...»`.
+>>>>>>> ea7738bb7c3616bb51ff14ae3db2a2747d7888ff
 
 Innanzitutto dobbiamo individuare le stringhe tra doppi apici per poi sostituirli.
 
