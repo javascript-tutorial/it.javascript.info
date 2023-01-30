@@ -113,7 +113,7 @@ Una singola esecuzione di `count` fa una parte dell'operazione `(*)`, e rischedu
 Ora, se arriva un nuovo task da eseguire mentre il motore è occupato ad eseguire il passo 1, poniamo il caso ad esempio che venga sollevato un evento `onclick`, quest'ultimo viene messo in coda ed eseguito subito dopo il completamento del passo 1, ma subito prima del passo successivo. Questi periodici "ritorni" all'event loop tra una esecuzione di `count` e l'altra, fornisce abbastanza "respiro" al motore Javascript per occuparsi di qualcos'altro, ad esempio per reagire alle azioni degli utenti.
 
 
-Per renderli un po' più più comparabili, facciamo un miglioramento.
+Per renderli un po' più comparabili, facciamo un miglioramento.
 
 ```js run
 let i = 0;
