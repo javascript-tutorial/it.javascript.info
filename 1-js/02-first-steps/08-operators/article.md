@@ -57,7 +57,7 @@ alert( 8 % 3 ); // 2, è il resto dell'operazione 8 diviso 3
 
 ### Elevamento a Potenza **
 
-The exponentiation operator `a ** b` raises `a` to the power of `b`.
+L'operatore esponenziale `a ** b` eleva `a` alla potenza `b`.
 L'operatore di elevamento a potenza `a ** b` eleva a potenza `a` usando `b` come esponente.
 
 In nomenclatura matematica viene scritto come a<sup>b</sup>.
