@@ -8,7 +8,7 @@ Ci piacerebbe ricevere il tuo contributo nella traduzione e/o revisione degli ar
 
 Se hai idee da proporre o suggerimenti, allora fai riferimento al [repository inglese](https://github.com/javascript-tutorial/en.javascript.info).
 
-Prima di iniziare ti segnalo che esiste anche un **[Canale Discord](https://discord.gg/Dj9P3jCt6K)** in cui potrai parlare con gli altri contributors di quello che riguarda la traduzione e revisione degli articoli. O anche ricevere delle indicazioni su come iniziare! Non è assolutamente obbligatorio accedere al server per lavorare alle traduzioni, le informazioni necessarie sono tutte repereibili in questo repository.
+Prima di iniziare ti segnalo che esiste anche un **[Canale Discord](https://discord.gg/Dj9P3jCt6K)** in cui potrai parlare con gli altri contributors di quello che riguarda la traduzione e revisione degli articoli. O anche ricevere delle indicazioni su come iniziare! Non è assolutamente obbligatorio accedere al server per lavorare alle traduzioni, le informazioni necessarie sono tutte reperibili in questo repository.
 
 Se hai deciso di contribuire innanzitutto ti ringrazio per il supporto, e ti chiedo di leggere fino alla fine questo documento, in modo da velocizzare le revisioni e ridurre gli errori, ci vorranno meno di 5 minuti!
 
