@@ -234,6 +234,7 @@ Ora vedremo dei metodi per effettuare ricerche in un array.
 
 ### indexOf/lastIndexOf e include
 
+<<<<<<< HEAD
 I metodi [arr.indexOf](mdn:js/Array/indexOf), [arr.lastIndexOf](mdn:js/Array/lastIndexOf) e [arr.includes](mdn:js/Array/includes) hanno la stessa sintassi, e fanno praticamente la stessa cosa della loro controparte per stringhe, ma operano su elementi invece che su caratteri:
 
 - `arr.indexOf(item, from)` cerca un `item` a partire dall'indirizzo `from`, e ritorna l'indirizzo in cui è stato trovato, altrimenti ritorna `-1`.
@@ -241,6 +242,16 @@ I metodi [arr.indexOf](mdn:js/Array/indexOf), [arr.lastIndexOf](mdn:js/Array/las
 - `arr.includes(item, from)` -- cerca un `item` a partire dall'indice `from`, e ritorna `true` se lo trova.
 
 Ad esempio:
+=======
+The methods [arr.indexOf](mdn:js/Array/indexOf) and [arr.includes](mdn:js/Array/includes) have the similar syntax and do essentially the same as their string counterparts, but operate on items instead of characters:
+
+- `arr.indexOf(item, from)` -- looks for `item` starting from index `from`, and returns the index where it was found, otherwise `-1`.
+- `arr.includes(item, from)` -- looks for `item` starting from index `from`, returns `true` if found.
+
+Usually these methods are used with only one argument: the `item` to search. By default, the search is from the beginning.
+
+For instance:
+>>>>>>> d694e895efe89922a109702085b6ca1efeffea10
 
 ```js run
 let arr = [1, 0, false];
@@ -252,6 +263,7 @@ alert( arr.indexOf(null) ); // -1
 alert( arr.includes(1) ); // true
 ```
 
+<<<<<<< HEAD
 Da notare che questi metodi usano il confronto `===`. Quindi, se cerchiamo `false`, troveremo esattamente `false` e non zero.
 
 Se vogliamo solo verificare la presenza di un elemento, senza voler conoscere l'indirizzo, è preferibile utilizzare il metodo `arr.includes`.
@@ -262,9 +274,37 @@ Inoltre, una piccola differenza è che `includes` gestisce correttamente `NaN`, 
 const arr = [NaN];
 alert( arr.indexOf(NaN) ); // -1 (dovrebbe essere 0, ma l'uguaglianza === non funziona con NaN)
 alert( arr.includes(NaN) );// true (corretto)
+=======
+Please note that `indexOf` uses the strict equality `===` for comparison. So, if we look for `false`, it finds exactly `false` and not the zero.
+
+If we want to check if `item` exists in the array, and don't need the index, then `arr.includes` is preferred.
+
+The method [arr.lastIndexOf](mdn:js/Array/lastIndexOf) is the same as `indexOf`, but looks for from right to left.
+
+```js run
+let fruits = ['Apple', 'Orange', 'Apple']
+
+alert( fruits.indexOf('Apple') ); // 0 (first Apple)
+alert( fruits.lastIndexOf('Apple') ); // 2 (last Apple)
 ```
 
+````smart header="The `includes` method handles `NaN` correctly"
+A minor, but noteworthy feature of `includes` is that it correctly handles `NaN`, unlike `indexOf`:
+
+```js run
+const arr = [NaN];
+alert( arr.indexOf(NaN) ); // -1 (wrong, should be 0)
+alert( arr.includes(NaN) );// true (correct)
+>>>>>>> d694e895efe89922a109702085b6ca1efeffea10
+```
+That's because `includes` was added to JavaScript much later and uses the more up to date comparison algorithm internally.
+````
+
+<<<<<<< HEAD
 ### find e findIndex
+=======
+### find and findIndex/findLastIndex
+>>>>>>> d694e895efe89922a109702085b6ca1efeffea10
 
 Immaginiamo di avere un array di oggetti. Come possiamo trovare un oggetto che soddisfi specifiche condizioni?
 
@@ -304,7 +344,30 @@ alert(user.name); // John
 
 Da notare che nell'esempio noi forniamo a `find` un singolo argomento `item => item.id == 1`. Gli altri parametri di `find` sono raramente utilizzati.
 
+<<<<<<< HEAD
 Il metodo [arr.findIndex](mdn:js/Array/findIndex) fa essenzialmente la stessa cosa, ma ritorna l'indice in cui è stata trovata la corrispondenza piuttosto di ritornare l'oggetto stesso; se l'oggetto non viene trovato ritorna `-1`.
+=======
+The [arr.findIndex](mdn:js/Array/findIndex) method has the same syntax, but returns the index where the element was found instead of the element itself. The value of `-1` is returned if nothing is found.
+
+The [arr.findLastIndex](mdn:js/Array/findLastIndex) method is like `findIndex`, but searches from right to left, similar to `lastIndexOf`.
+
+Here's an example:
+
+```js run
+let users = [
+  {id: 1, name: "John"},
+  {id: 2, name: "Pete"},
+  {id: 3, name: "Mary"},
+  {id: 4, name: "John"}
+];
+
+// Find the index of the first John
+alert(users.findIndex(user => user.name == 'John')); // 0
+
+// Find the index of the last John
+alert(users.findLastIndex(user => user.name == 'John')); // 3
+```
+>>>>>>> d694e895efe89922a109702085b6ca1efeffea10
 
 ### filter
 
@@ -388,7 +451,12 @@ Letteralmente, tutti gli elementi vengono convertiti in stringhe e confrontati. 
 
 Per utilizzare un ordinamento arbitrario, dobbiamo fornire una funzione come argomento di `arr.sort()`.
 
+<<<<<<< HEAD
 La funzione dovrebbe essere simile a questa:
+=======
+The function should compare two arbitrary values and return:
+
+>>>>>>> d694e895efe89922a109702085b6ca1efeffea10
 ```js
 function compare(a, b) {
   if (a > b) return 1; // se il primo valore è maggiore del secondo
@@ -633,7 +701,6 @@ Quindi è fortemente consigliato di specificare sempre un valore iniziale.
 
 Il metodo [arr.reduceRight](mdn:js/Array/reduceRight) fa esattamente la stessa cosa, ma da destra verso sinistra.
 
-
 ## Array.isArray
 
 Gli array non sono un tipo di dato a sé del linguaggio. Sono basati sulla sintassi degli oggetti.
@@ -642,7 +709,11 @@ Quindi `typeof` non aiuta a distinguere un oggetto da un array:
 
 ```js run
 alert(typeof {}); // object
+<<<<<<< HEAD
 alert(typeof []); // lo stesso
+=======
+alert(typeof []); // object (same)
+>>>>>>> d694e895efe89922a109702085b6ca1efeffea10
 ```
 
 ...Ma gli array vengono utilizzati cosi spesso che esiste un metodo dedicato per questo: [Array.isArray(value)](mdn:js/Array/isArray). Ritorna `true` se `value` è un array, `false` altrimenti.
@@ -727,12 +798,17 @@ Un breve riepilogo dei metodi per array:
 - Per iterare sugli elementi:
   - `forEach(func)` -- invoca `func` su ogni elemento; non ritorna nulla.
 
+<<<<<<< HEAD
 - Per modificare un array:
   - `map(func)` -- crea un nuovo array con i risultati della chiamata `func` su tutti i suoi elementi.
   - `sort(func)` -- ordina l'array "sul posto", e lo ritorna.
   - `reverse()` -- inverte l'array sul posto, e lo ritorna.
   - `split/join` -- converte una stringa in array e vice versa.
   - `reduce/reduceRight(func, initial)` -- calcola un singolo valore chiamando `func` per ogni elemento e passando un risultato temporaneo tra una chiamata e l'altra
+=======
+- Additionally:
+  - `Array.isArray(value)` checks `value` for being an array, if so returns `true`, otherwise `false`.
+>>>>>>> d694e895efe89922a109702085b6ca1efeffea10
 
 - Un altro metodo utile:
   - `Array.isArray(arr)` controlla che `arr` sia un array.
@@ -747,7 +823,12 @@ I metodi elencati sono quelli utilizzati più spesso e sono in grado di coprire 
   
   Questi metodi si comportano quasi come gli operatori `||` e `&&`: se `fn` ritorna un valore vero, `arr.some()` ritorna immediatamente  `true` e conclude l'iterazione; se `fn` ritorna un valore falso, `arr.every()` ritorna immediatamente `false` e smette di iterare.
 
+<<<<<<< HEAD
   Possiamo utilizzare `every` per confrontare gli array:
+=======
+  We can use `every` to compare arrays:
+
+>>>>>>> d694e895efe89922a109702085b6ca1efeffea10
   ```js run
   function arraysEqual(arr1, arr2) {
     return arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index]);
