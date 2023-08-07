@@ -79,7 +79,11 @@ Questa serie di operazioni di repaint dovrebbero essere raggruppate, in modo tal
 
 C'è un ulteriore cosa a cui prestare attenzione. Talvolta la CPU potrebbe essere sovraccarica, oppure potrebbero esserci altri motivi per cui potremmo effettuare il repaint con minore frequenza (ad esempio quando la tab del browser non è visibile), quindi non è necessaria l'esecuzione ogni `20ms`.
 
+<<<<<<< HEAD
 Ma come facciamo ad avere controllo su questo utilizzando JavaScript? Abbiamo a disposizione [Animation timing](http://www.w3.org/TR/animation-timing/) definita nelle specifiche, che ci fornisce la funzione `requestAnimationFrame`. Questa ha lo scopo di aiutarci a risolvere questo tipo di problemi.
+=======
+But how do we know about that in JavaScript? There's a specification [Animation timing](https://www.w3.org/TR/animation-timing/) that provides the function `requestAnimationFrame`. It addresses all these issues and even more.
+>>>>>>> d694e895efe89922a109702085b6ca1efeffea10
 
 La sintassi:
 ```js
@@ -96,7 +100,11 @@ Il valore ritornato, `requestId`, può essere utilizzato per annullare l'invocaz
 cancelAnimationFrame(requestId);
 ```
 
+<<<<<<< HEAD
 La `callback` riceve un solo argomento, il tempo trascorso dall'inizio del caricamento della pagina, in microsecondi. Possiamo ottenere questa informazione anche invocando [performance.now()](mdn:api/Performance/now).
+=======
+The `callback` gets one argument -- the time passed from the beginning of the page load in milliseconds. This time can also be obtained by calling [performance.now()](mdn:api/Performance/now).
+>>>>>>> d694e895efe89922a109702085b6ca1efeffea10
 
 Solitamente `callback` viene eseguita molto presto, a meno che la CPU non sia in uno stato di sovraccarico, la batteria del portatile non sia quasi scarica, o per altri motivi.
 
@@ -159,7 +167,11 @@ La funzione `animate` accetta 3 parametri che descrivono l'animazione:
     }
     ```
 
+<<<<<<< HEAD
     La curva corrispondente:
+=======
+    Its graph:
+>>>>>>> d694e895efe89922a109702085b6ca1efeffea10
     ![](linear.svg)
 
     Proprio come `transition-timing-function: linear`. Vengono mostrare altre varianti sotto.
