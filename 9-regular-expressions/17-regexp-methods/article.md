@@ -232,10 +232,17 @@ Usare una funzione ci permette di adoperare un potere sostitutivo supremo, poich
 
 Questo metodo è praticamente uguale a `str.replace`, ma con due differenze rilevanti:
 
+<<<<<<< HEAD
 1. Se il primo argomento è una stringa, sostituisce *tutte le corrispondenze* della stringa, mentre `replace` sostituisce solamente la *prima corrispondenza*.
 2. Se il primo argomento è un'espressione regolare con la flag `g`, sarà restituito un errore. Con la `g` flag, infatti, funziona come `replace`.
 
 Il motivo principale per cui si usa `replaceAll` è la necessità di sostituire ogni corrispondenza in una stringa.
+=======
+1. If the first argument is a string, it replaces *all occurrences* of the string, while `replace` replaces only the *first occurrence*.
+2. If the first argument is a regular expression without the `g` flag, there'll be an error. With `g` flag, it works the same as `replace`.
+
+The main use case for `replaceAll` is replacing all occurrences of a string.
+>>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 In questo modo:
 

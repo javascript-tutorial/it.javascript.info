@@ -23,7 +23,13 @@ Per trovare corrispondenza con un'email, possiamo usare la regexp `pattern:[-.\w
 Per testare se la stringa finisca con una email, aggiungiamo `pattern:$` al pattern:
 
 ```js run
+<<<<<<< HEAD
 let reg = /[-.\w]+@([\w-]+\.)+[\w-]{2,20}$/g;
+=======
+let str1 = "its fleece was white as snow";
+alert( /snow$/.test(str1) ); // true
+```
+>>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 let str1 = 'My email is mail@site.com';
 let str2 = 'Everywhere Mary went, the lamp was sure to go';
