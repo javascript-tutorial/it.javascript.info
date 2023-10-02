@@ -23,7 +23,11 @@ function sum(a, b) {
 alert( sum(1, 2, 3, 4, 5) );
 ```
 
+<<<<<<< HEAD
 In questo caso non ci saranno errori dovuti "all'eccesso" di argomenti. Ma ovviamente il risultato terrò conto solamente dei primi due.
+=======
+There will be no error because of "excessive" arguments. But of course in the result only the first two will be counted, so the result in the code above is `3`.
+>>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 I parametri restanti possono essere menzionati nella definizione di una funzione con i tre punti `...`. Che significano letteralmente "raccogli gli altri parametri in un array".
 
