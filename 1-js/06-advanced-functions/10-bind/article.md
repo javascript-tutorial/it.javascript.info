@@ -202,7 +202,11 @@ for (let key in user) {
 }
 ```
 
+<<<<<<< HEAD
 Alcune librerie JavaScript forniscono utili funzioni per il *binding* di massa, ad esempio [_.bindAll(object, methodNames)](http://lodash.com/docs#bindAll) in lodash.
+=======
+JavaScript libraries also provide functions for convenient mass binding , e.g. [_.bindAll(object, methodNames)](https://lodash.com/docs#bindAll) in lodash.
+>>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 ````
 
 ## Funzioni parziali
