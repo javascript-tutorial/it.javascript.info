@@ -37,7 +37,7 @@ Fortunatamente, ci sono 2 attributi del tag `<script>` che risolvono il problema
 
 ## defer
 
-L'attributo `defer` dice al browser che che deve continuare nel caricamento della pagina e caricare lo script "in background", per poi eseguire lo script quando è caricato.
+L'attributo `defer` dice al browser che deve continuare nel caricamento della pagina e caricare lo script "in background", per poi eseguire lo script quando è caricato.
 
 
 Di seguito lo stesso esempio di sopra, ma con `defer`:
