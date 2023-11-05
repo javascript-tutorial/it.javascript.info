@@ -1,83 +1,83 @@
-# Catastrophic backtracking
+# Backtracking catastrofico
 
-Some regular expressions are looking simple, but can execute a veeeeeery long time, and even "hang" the JavaScript engine.
+Alcune espressioni regolari appaiono semplici, ma possono richiedere tempi esecuzione moooooolto lunghi, e possono perfino "appendere" (nel senso di "mantenere impegnato senza esito") il motore JavaScript.  
 
-Sooner or later most developers occasionally face such behavior. The typical symptom -- a regular expression works fine sometimes, but for certain strings it "hangs", consuming 100% of CPU.
+Prima o poi la maggior parte degli sviluppatori incapperà in tale fenomeno. Il sintomo tipico - una espressione regolare funziona bene delle volte, ma per certe stringhe resta "appesa", consumando il 100% della CPU.
 
-In such case a web-browser suggests to kill the script and reload the page. Not a good thing for sure.
+In tale evenienza un web-browser suggerisce di arrestare lo script e ricaricare la pagina. Non una buona soluzione, di certo.
 
-For server-side JavaScript such a regexp may hang the server process, that's even worse. So we definitely should take a look at it.
+Per JavaScript lato server, un'espressione regolare del genere può "appendere" il processo del server, che è ancora peggio. Così dovremmo definitivamente prestarvi attenzione.
 
-## Example
+## Esempio
 
-Let's say we have a string, and we'd like to check if it consists of words `pattern:\w+` with an optional space `pattern:\s?` after each.
+Supponiamo di avere una stringa, ci piacerebbe verificare se essa è formata dalle parole `pattern:\w+` aventi ciascuna uno spazio opzionale `pattern:\s?` a seguito.
 
-An obvious way to construct a regexp would be to take a word followed by an optional space `pattern:\w+\s?` and then repeat it with `*`.
+Un modo ovvio per costruire una espressione regolare sarebbe considerare una parola seguita da uno spazio opzionale `pattern:\w+\s?` e ripetere con `*`.
 
-That leads us to the regexp `pattern:^(\w+\s?)*$`, it specifies zero or more such words, that start at the beginning `pattern:^` and finish at the end `pattern:$` of the line.
+Ciò porta alla regexp `pattern:^(\w+\s?)*$`, essa specifica zero o più parole del genere, che cominciano all'inizio `pattern:^` e terminano alla fine `pattern:$` della riga.  
 
-In action:
+In azione:
 
 ```js run
 let regexp = /^(\w+\s?)*$/;
 
-alert( regexp.test("A good string") ); // true
-alert( regexp.test("Bad characters: $@#") ); // false
+alert( regexp.test("A good string") ); // vero
+alert( regexp.test("Bad characters: $@#") ); // falso
 ```
 
-The regexp seems to work. The result is correct. Although, on certain strings it takes a lot of time. So long that JavaScript engine "hangs" with 100% CPU consumption.
+La regexp sembra funzionare. Il risultato è corretto. Nonostante ciò, su certe stringhe prende molto tempo. Così tanto che il motore JavaScript si "appende" con un dispendio del 100% della CPU.
 
-If you run the example below, you probably won't see anything, as JavaScript will just "hang". A web-browser will stop reacting on events, the UI will stop working (most browsers allow only scrolling). After some time it will suggest to reload the page. So be careful with this:
+Se si esegue l'esempio in basso, probabilmente non si noterà nulla, poiché JavaScript semplicemente si "appenderà". Un web-browser smetterà di rispondere agli eventi, la UI smetterà di funzionare (la maggior parte dei browser permette solo lo scrolling). Dopo un po' di tempo verrà suggerito di ricaricare la pagina. Perciò siate cauti col seguente:
 
 ```js run
 let regexp = /^(\w+\s?)*$/;
 let str = "An input string that takes a long time or even makes this regexp hang!";
 
-// will take a very long time
+// richiederà molto tempo
 alert( regexp.test(str) );
 ```
 
-To be fair, let's note that some regular expression engines can handle such a search effectively, for example V8 engine version starting from 8.8 can do that (so Google Chrome 88 doesn't hang here), while Firefox browser does hang. 
+Ad essere onesti, notiamo che alcuni motori per espressioni regolari possono gestire tale ricerca efficacemente, per esempio le versioni del motore V8, a partire dalla 8.8, possono farlo (così Google Chrome 88 non resta appeso), mentre Firefox resta appeso.
 
-## Simplified example
+## Esempio Semplificato
 
-What's the matter? Why does the regular expression hang?
+Qual è il problema? Perché l'espressione regolare resta appesa?
 
-To understand that, let's simplify the example: remove spaces `pattern:\s?`. Then it becomes `pattern:^(\w+)*$`.
+Per comprenderlo, semplifichiamo l'esempio: rimuoviamo gli spazi `pattern:\s?`. Quindi l'espressione diventa `pattern:^(\w+)*$`.
 
-And, to make things more obvious, let's replace `pattern:\w` with `pattern:\d`. The resulting regular expression still hangs, for instance:
+E, per rendere le cose più ovvie, sostituiamo `pattern:\w` con `pattern:\d`. Le espressioni regolari risultanti restano ancora appese, ad esempio
 
 ```js run
 let regexp = /^(\d+)*$/;
 
 let str = "012345678901234567890123456789z";
 
-// will take a very long time (careful!)
+// richiederà molto tempo (attenzione!)
 alert( regexp.test(str) );
 ```
 
-So what's wrong with the regexp?
+Allora, cosa non va con le regexp?
 
-First, one may notice that the regexp `pattern:(\d+)*` is a little bit strange. The quantifier `pattern:*` looks extraneous. If we want a number, we can use `pattern:\d+`.
+In primo luogo, uno può notare che la regexp `pattern:(\d+)*` è un po' strana. Il quantificatore `pattern:*` sembra estraneo. Se vogliamo un numero, possiamo usare  `pattern:\d+`.
 
-Indeed, the regexp is artificial; we got it by simplifying the previous example. But the reason why it is slow is the same. So let's understand it, and then the previous example will become obvious.
+Infatti, la regexp è artificiosa; l'abbiamo ottenuta semplificando il precedente esempio. Ma la ragione per cui risulta lenta è la stessa. Perciò comprendiamola e il precedente esempio diverrà ovvio.
 
-What happens during the search of `pattern:^(\d+)*$` in the line `subject:123456789z` (shortened a bit for clarity, please note a non-digit character `subject:z` at the end, it's important), why does it take so long?
+Cosa succede nella ricerca di `pattern:^(\d+)*$` nella riga `subject:123456789z` (abbreviata leggermente per chiarezza, notare un carattere non numerico `subject:z` alla fine, è importante), perché ci vuole così tanto?
 
-Here's what the regexp engine does:
+Ecco cosa fa il motore regexp:
 
-1. First, the regexp engine tries to find the content of the parentheses: the number `pattern:\d+`. The plus `pattern:+` is greedy by default, so it consumes all digits:
+1. Dapprima, il motore regexp prova a cercare il contenuto delle parentesi: il numero `pattern:\d+`. Il segno "più" `pattern:+` è greedy per default, così vengono vagliate tutte le cifre.
 
     ```
     \d+.......
     (123456789)z
     ```
 
-    After all digits are consumed, `pattern:\d+` is considered found (as `match:123456789`).
+    Dopo aver vagliato tutte le cifre, `pattern:\d+` si considera individuato (come `match:123456789`).
 
-    Then the star quantifier `pattern:(\d+)*` applies. But there are no more digits in the text, so the star doesn't give anything.
+    Dopodiché si applica il quantificatore *stella* `pattern:(\d+)*`. Ma non ci sono più cifre nel testo, per cui la stella non restituisce nulla.
 
-    The next character in the pattern is the string end `pattern:$`. But in the text we have `subject:z` instead, so there's no match:
+    Il carattere successivo nel pattern è il fine stringa `pattern:$`. Invece nel testo abbiamo `subject:z`, perciò non c'è alcuna corrispondenza:
 
     ```
                X
@@ -85,16 +85,17 @@ Here's what the regexp engine does:
     (123456789)z
     ```
 
-2. As there's no match, the greedy quantifier `pattern:+` decreases the count of repetitions, backtracks one character back.
-
-    Now `pattern:\d+` takes all digits except the last one (`match:12345678`):
+2. Siccome non vi è alcuna corrispondenza, il quantificatore greedy `pattern:+` riduce il conteggio delle ripetizioni, limitandosi di un carattere all'indietro. 
+        
+    Ora `pattern:\d+` comprende tutte le cifre eccetto l'ultima (`match:12345678`):
     ```
     \d+.......
     (12345678)9z
     ```
-3. Then the engine tries to continue the search from the next position (right after `match:12345678`).
 
-    The star `pattern:(\d+)*` can be applied -- it gives one more match of `pattern:\d+`, the number `match:9`:
+3. Allora il motore tenta di proseguire la ricerca dalla posizione successiva (giusto dopo `match:12345678`). 
+
+    La stella `pattern:(\d+)*` può essere applicata -- restituisce un'altra corrispondenza di `pattern:\d+`, il numero `match:9`:
 
     ```
 
@@ -102,7 +103,7 @@ Here's what the regexp engine does:
     (12345678)(9)z
     ```
 
-    The engine tries to match `pattern:$` again, but fails, because it meets `subject:z` instead:
+    Il motore tenta nuovamente la corrispondenza con `pattern:$`, ma fallisce perché, invece, incontra `subject:z`:
 
     ```
                  X
@@ -110,12 +111,11 @@ Here's what the regexp engine does:
     (12345678)(9)z
     ```
 
+4. Non c'è corrispondenza, così il motore continuerà il backtracking, riducendo il numero di ripetizioni. Il backtracking generalmente funziona così: l'ultimo quantificatore greedy riduce il numero di ripetizioni fino a raggiungere il minimo. Dopodiché si opera la riduzione sul precedente quantificatore greedy, e così via.
 
-4. There's no match, so the engine will continue backtracking, decreasing the number of repetitions. Backtracking generally works like this: the last greedy quantifier decreases the number of repetitions until it reaches the minimum. Then the previous greedy quantifier decreases, and so on.
+    Si tentano tutte le possibili combinazioni. Eccone gli esempi. 
 
-    All possible combinations are attempted. Here are their examples.
-
-    The first number `pattern:\d+` has 7 digits, and then a number of 2 digits:
+    Il primo numero `pattern:\d+` ha 7 cifre, poi un numero di 2 cifre:
 
     ```
                  X
@@ -123,7 +123,7 @@ Here's what the regexp engine does:
     (1234567)(89)z
     ```
 
-    The first number has 7 digits, and then two numbers of 1 digit each:
+    Il primo numero ha 7 cifre, poi due numeri di 1 cifra ciascuno:
 
     ```
                    X
@@ -131,7 +131,7 @@ Here's what the regexp engine does:
     (1234567)(8)(9)z
     ```
 
-    The first number has 6 digits, and then a number of 3 digits:
+    Il primo numero ha 6 cifre, poi un numero di 3 cifre:
 
     ```
                  X
@@ -139,7 +139,7 @@ Here's what the regexp engine does:
     (123456)(789)z
     ```
 
-    The first number has 6 digits, and then 2 numbers:
+    Il primo numero ha 6 cifre, poi 2 numeri:
 
     ```
                    X
@@ -147,22 +147,22 @@ Here's what the regexp engine does:
     (123456)(78)(9)z
     ```
 
-    ...And so on.
+    ...E così via.
 
 
-There are many ways to split a sequence of digits `123456789` into numbers. To be precise, there are <code>2<sup>n</sup>-1</code>, where `n` is the length of the sequence.
+Ci sono molti modi di suddividere una sequenza di cifre  `123456789` in numeri. Precisamente, ve ne sono sono <code>2<sup>n</sup>-1</code>, dove `n` è la lunghezza della sequenza.
 
-- For `123456789` we have `n=9`, that gives 511 combinations.
-- For a longer sequence with `n=20` there are about one million (1048575) combinations.
-- For `n=30` - a thousand times more (1073741823 combinations).
+- Per `123456789` abbiamo `n=9`, che dà 511 combinazioni.
+- Per una sequenza più lunga con `n=20` ci sono circa un milione di combinazioni (1048575). 
+- Per `n=30` - mille volte tanto (1073741823 combinazioni).
 
-Trying each of them is exactly the reason why the search takes so long.
+Provare ciascuna di queste è esattamente la ragione per cui la ricerca impiega così tanto tempo.
 
-## Back to words and strings
+## Torniamo a parole e stringhe
 
-The similar thing happens in our first example, when we look for words by pattern `pattern:^(\w+\s?)*$` in the string `subject:An input that hangs!`.
+Una cosa simile accade nel nostro primo esempio, quando cerchiamo parole tramite il pattern `pattern:^(\w+\s?)*$` nella stringa `subject:An input that hangs!`.
 
-The reason is that a word can be represented as one `pattern:\w+` or many:
+Il motivo è che una parola può essere rappresentata come uno o più  `pattern:\w+`: 
 
 ```
 (input)
@@ -172,63 +172,63 @@ The reason is that a word can be represented as one `pattern:\w+` or many:
 ...
 ```
 
-For a human, it's obvious that there may be no match, because the string ends with an exclamation sign `!`, but the regular expression expects a wordly character `pattern:\w` or a space `pattern:\s` at the end. But the engine doesn't know that.
+Per un essere umano è ovvio che possano mancare corrispondenze perché la stringa termina con un punto esclamativo `!`, ma per l'espressione regolare è atteso un carattere di una parola `pattern:\w` oppure uno spazio `pattern:\s` alla fine. Ma questo il motore non lo sa. 
 
-It tries all combinations of how the regexp `pattern:(\w+\s?)*` can "consume" the string, including variants with spaces `pattern:(\w+\s)*` and without them `pattern:(\w+)*` (because spaces `pattern:\s?` are optional). As there are many such combinations (we've seen it with digits), the search takes a lot of time.
+Tenta tutte le combinazioni in cui la regexp `pattern:(\w+\s?)*` possa "consumare" la stringa, incluse le varianti con gli spazi `pattern:(\w+\s)*` e senza `pattern:(\w+)*` (perché gli spazi `pattern:\s?` sono opzionali). Poiché tali combinazioni sono molte (l'abbiamo visto con le cifre), la ricerca impiega un sacco di tempo. 
 
-What to do?
+Cosa fare?
 
-Should we turn on the lazy mode?
+Dovremmo attivare la modalità lazy?
 
-Unfortunately, that won't help: if we replace `pattern:\w+` with `pattern:\w+?`, the regexp will still hang. The order of combinations will change, but not their total count.
+Sfortunatamente ciò non servirà: se sostituiamo `pattern:\w+` con `pattern:\w+?`, la regexp resterà ancora appesa. L'ordine delle combinazioni cambierà, ma non il loro numero totale.
 
-Some regular expression engines have tricky tests and finite automations that allow to avoid going through all combinations or make it much faster, but most engines don't, and it doesn't always help.
+Alcuni motori per espressioni regolari hanno test complicati e automazioni finite che permettono di evitare di considerare tutte le combinazioni o di velocizzare, ma la maggior parte dei motori non le ha e ciò non sempre aiuta.
 
-## How to fix?
+## Come risolvere?
 
-There are two main approaches to fixing the problem.
+Ci sono due approcci principali per risolvere il problema.
 
-The first is to lower the number of possible combinations.
+Il primo è ridurre il numero delle combinazioni possibili.
 
-Let's make the space non-optional by rewriting the regular expression as `pattern:^(\w+\s)*\w*$` - we'll look for any number of words followed by a space `pattern:(\w+\s)*`, and then (optionally) a final word `pattern:\w*`.
+Rendiamo lo spazio non-opzionale riscrivendo l'espressione regolare come `pattern:^(\w+\s)*\w*$` - cercheremo qualunque numero di parole seguite da uno spazio `pattern:(\w+\s)*`, e poi (opzionalmente) una parola finale `pattern:\w*`.
 
-This regexp is equivalent to the previous one (matches the same) and works well:
+Questa regexp è equivalente alla precedente (dà le stesse corrispondenze) e funziona bene:
 
 ```js run
 let regexp = /^(\w+\s)*\w*$/;
 let str = "An input string that takes a long time or even makes this regex hang!";
 
-alert( regexp.test(str) ); // false
+alert( regexp.test(str) ); // falso
 ```
 
-Why did the problem disappear?
+Perché il problema è sparito?
 
-That's because now the space is mandatory.
+Perché ora lo spazio è obbligatorio.
 
-The previous regexp, if we omit the space, becomes `pattern:(\w+)*`, leading to many combinations of `\w+` within a single word
+La precedente regexp, se omettiamo lo spazio, diviene `pattern:(\w+)*`, che porta a molte combinazioni di `\w+` con una singola parola.
 
-So `subject:input` could be matched as two repetitions of `pattern:\w+`, like this:
+Perciò `subject:input` può corrispondere a due ripetizioni di `pattern:\w+`, così: 
 
 ```
 \w+  \w+
 (inp)(ut)
 ```
 
-The new pattern is different: `pattern:(\w+\s)*` specifies repetitions of words followed by a space! The `subject:input` string can't be matched as two repetitions of `pattern:\w+\s`, because the space is mandatory.
+Il nuovo pattern è differente: `pattern:(\w+\s)*` specifica ripetizioni di parole seguite da uno spazio! La stringa  `subject:input` non può corrispondere a due ripetizioni di `pattern:\w+\s`, perché lo spazio è obbligatorio. 
 
-The time needed to try a lot of (actually most of) combinations is now saved.
+Il tempo necessario per provare molte (di fatto la maggior parte) combinazioni è ora risparmiato.
 
-## Preventing backtracking
+## Prevenire il backtracking
 
-It's not always convenient to rewrite a regexp though. In the example above it was easy, but it's not always obvious how to do it.
+Non è sempre conveniente riscrivere una regexp, tuttavia. Nell'esempio sopra è stato facile, ma non è sempre ovvio come farlo.
 
-Besides, a rewritten regexp is usually more complex, and that's not good. Regexps are complex enough without extra efforts.
+Inoltre, una regexp riscritta è solitamente più complessa e questo non va bene. Le regexp sono abbastanza complesse senza ulteriori sforzi.
 
-Luckily, there's an alternative approach. We can forbid backtracking for the quantifier.
+Fortunatamente c'è un approccio alternativo. Possiamo proibire il backtracking per il quantificatore.
 
-The root of the problem is that the regexp engine tries many combinations that are obviously wrong for a human.
+La radice del problema è che il motore regexp prova molte combinazioni che sono ovviamente sbagliate per un umano.
 
-E.g. in the regexp `pattern:(\d+)*$` it's obvious for a human, that `pattern:+` shouldn't backtrack. If we replace one `pattern:\d+` with two separate `pattern:\d+\d+`, nothing changes:
+Ad es. nella regexp `pattern:(\d+)*$` è ovvio, per un umano, che `pattern:+` non dovrebbe operare alcun backtracking. Se rimpiazziamo un `pattern:\d+` con due `pattern:\d+\d+` separati non cambia nulla:
 
 ```
 \d+........
@@ -238,81 +238,84 @@ E.g. in the regexp `pattern:(\d+)*$` it's obvious for a human, that `pattern:+` 
 (1234)(56789)!
 ```
 
-And in the original example `pattern:^(\w+\s?)*$` we may want to forbid backtracking in `pattern:\w+`. That is: `pattern:\w+` should match a whole word, with the maximal possible length. There's no need to lower the repetitions count in `pattern:\w+` or to split it into two words `pattern:\w+\w+` and so on.
+E nell'esempio originale `pattern:^(\w+\s?)*$` potremmo voler proibire il backtracking in `pattern:\w+`. Ovvero: `pattern:\w+` dovrebbe trovare una corrispondenza con una parola intera, con la massima lunghezza possibile. Non c'è alcun bisogno di ridurre il conteggio delle ripetizioni in  `pattern:\w+` o spezzarlo in due parole `pattern:\w+\w+` e così via.
 
-Modern regular expression engines support possessive quantifiers for that. Regular quantifiers become possessive if we add `pattern:+` after them. That is, we use `pattern:\d++` instead of `pattern:\d+` to stop `pattern:+` from backtracking.
+I motori di espressioni regolari moderni supportano i quantificatori possessivi per questo. I quantificatori regolari divengono possessivi se aggiungiamo `pattern:+` dopo di essi. Cioè, usiamo `pattern:\d++` invece di `pattern:\d+` per evitare il backtracking di `pattern:+`.
 
-Possessive quantifiers are in fact simpler than "regular" ones. They just match as many as they can, without any backtracking. The search process without backtracking is simpler.
+Difatti, i quantificatori possessivi sono più semplici di quelli "regolari". Essi trovano quante più corrispondenze è possibile, senza alcun backtrack.
 
-There are also so-called "atomic capturing groups" - a way to disable backtracking inside parentheses.
+Ci sono anche i cosiddetti "atomic capturing groups" - un modo di disabilitare il backtracking all'interno delle parentesi.
 
-...But the bad news is that, unfortunately, in JavaScript they are not supported.
+...Ma la cattiva notizia è che, sfortunatamente, in JavaScript non sono supportati.
 
-We can emulate them though using a "lookahead transform".
+Possiamo emularli usando una "trasformazione lookahead".
 
-### Lookahead to the rescue!
+### Lookahead in soccorso!
 
-So we've come to real advanced topics. We'd like a quantifier, such as `pattern:+` not to backtrack, because sometimes backtracking makes no sense.
+Così siamo giunti ai veri argomenti avanzati. Vorremmo che un quantificatore come `pattern:+` non operasse backtracking, perché delle volte il backtracking non ha senso.
 
-The pattern to take as many repetitions of `pattern:\w` as possible without backtracking is: `pattern:(?=(\w+))\1`. Of course, we could take another pattern instead of `pattern:\w`.
+Il pattern per prendere quante più ripetizioni di `pattern:\w` possibili senza backtracking è: `pattern:(?=(\w+))\1`. Naturalmente, possiamo prendere un altro pattern al posto di `pattern:\w`. 
 
-That may seem odd, but it's actually a very simple transform.
+Questo può sembrare strano, ma in realtà è una trasformazione molto semplice.
 
-Let's decipher it:
+Decifriamo:
 
-- Lookahead `pattern:?=` looks forward for the longest word `pattern:\w+` starting at the current position.
-- The contents of parentheses with `pattern:?=...` isn't memorized by the engine, so wrap `pattern:\w+` into parentheses. Then the engine will memorize their contents
-- ...And allow us to reference it in the pattern as `pattern:\1`.
+- Lookahead `pattern:?=` cerca in avanti la parola più lunga `pattern:\w+` che inizia dalla posizione corrente.
+- Il contenuto delle parentesi con `pattern:?=...` non è memorizzato dal motore, quindi si racchiude `pattern:\w+` tra le parentesi. In seguito il motore memorizzerà il loro contenuto.
+- ...E ci permetterà di riferirlo nel pattern come `pattern:\1`. 
 
-That is: we look ahead - and if there's a word `pattern:\w+`, then match it as `pattern:\1`.
+Cioè: noi guardiamo in avanti - e se c'è una parola `pattern:\w+`, la si fa corrispondere a `pattern:\1`.
 
-Why? That's because the lookahead finds a word `pattern:\w+` as a whole and we capture it into the pattern with `pattern:\1`. So we essentially implemented a possessive plus `pattern:+` quantifier. It captures only the whole word `pattern:\w+`, not a part of it.
+Perché? Perché la trasformazione lookahead trova una parola per intero `pattern:\w+` e noi la catturiamo nel pattern con `pattern:\1`. Quindi, essenzialmente, implementiamo un quantificatore (con segno più) possessivo `pattern:+`. Esso cattura solo la parola intera `pattern:\w+`, non una sua parte.
 
-For instance, in the word `subject:JavaScript` it may not only match `match:Java`, but leave out `match:Script` to match the rest of the pattern.
+Per esempio, nella parola `subject:JavaScript` potrebbe non soltanto trovare la corrispondenza `match:Java`, ma lasciare fuori `match:Script` per trovare corrispondenze col resto del pattern.
 
-Here's the comparison of two patterns:
+Ecco i due pattern a confronto:
 
 ```js run
 alert( "JavaScript".match(/\w+Script/)); // JavaScript
 alert( "JavaScript".match(/(?=(\w+))\1Script/)); // null
 ```
 
-1. In the first variant `pattern:\w+` first captures the whole word `subject:JavaScript` but then `pattern:+` backtracks character by character, to try to match the rest of the pattern, until it finally succeeds (when `pattern:\w+` matches `match:Java`).
-2. In the second variant `pattern:(?=(\w+))` looks ahead and finds the word  `subject:JavaScript`, that is included into the pattern as a whole by `pattern:\1`, so there remains no way to find `subject:Script` after it.
+1. Nella prima variante `pattern:\w+` inizialmente cattura la parola intera `subject:JavaScript` ma poi `pattern:+` usa il backtrack carattere dopo carattere nel tentativo di trovare il resto del pattern, finché alla fine riesce (quando `pattern:\w+` trova `match:Java`).
+2. Nella seconda variante `pattern:(?=(\w+))` guarda in avanti e trova la parola `subject:JavaScript`, che è inclusa nel pattern, per intero, da `pattern:\1`, così non resta alcun modo per trovare `subject:Script` dopo di essa. 
 
-We can put a more complex regular expression into `pattern:(?=(\w+))\1` instead of `pattern:\w`, when we need to forbid backtracking for `pattern:+` after it.
+Possiamo porre un'espressione regolare più complicata in `pattern:(?=(\w+))\1` al posto di `pattern:\w`, quando abbiamo bisogno di impedire il backtracking per `pattern:\+` dopo di questa.
 
-```smart
-There's more about the relation between possessive quantifiers and lookahead in articles [Regex: Emulate Atomic Grouping (and Possessive Quantifiers) with LookAhead](http://instanceof.me/post/52245507631/regex-emulate-atomic-grouping-with-lookahead) and [Mimicking Atomic Groups](http://blog.stevenlevithan.com/archives/mimic-atomic-groups).
-```
+---
 
-Let's rewrite the first example using lookahead to prevent backtracking:
+C'è altro materiale sulla relazione tra quantificatori possessivi e lookahead negli articoli [Regex: Emulate Atomic Grouping (and Possessive Quantifiers) with LookAhead](http://instanceof.me/post/52245507631/regex-emulate-atomic-grouping-with-lookahead) e [Mimicking Atomic Groups](http://blog.stevenlevithan.com/archives/mimic-atomic-groups).
+
+---
+
+Riscriviamo il primo esempio usando un'espressione lookahead per prevenire il backtracking
 
 ```js run
 let regexp = /^((?=(\w+))\2\s?)*$/;
 
-alert( regexp.test("A good string") ); // true
+alert( regexp.test("A good string") ); // vero
 
 let str = "An input string that takes a long time or even makes this regex hang!";
 
-alert( regexp.test(str) ); // false, works and fast!
+alert( regexp.test(str) ); // falso, funziona ed è veloce!
 ```
 
-Here `pattern:\2` is used instead of `pattern:\1`, because there are additional outer parentheses. To avoid messing up with the numbers, we can give the parentheses a name, e.g. `pattern:(?<word>\w+)`.
+Qui `pattern:\2` è usato al posto di `pattern:\1`, perché ci sono parentesi esterne addizionali. Per evitare problemi con i numeri, possiamo dare un nome alle parentesi, ad esempio `pattern:(?<word>\w+)`.
 
 ```js run
-// parentheses are named ?<word>, referenced as \k<word>
+// le parentesi sono denominate ?<word>, riferite come \k<word>
 let regexp = /^((?=(?<word>\w+))\k<word>\s?)*$/;
 
 let str = "An input string that takes a long time or even makes this regex hang!";
 
-alert( regexp.test(str) ); // false
+alert( regexp.test(str) ); // falso
 
-alert( regexp.test("A correct string") ); // true
+alert( regexp.test("A correct string") ); // vero
 ```
 
-The problem described in this article is called "catastrophic backtracking".
+Il problema descritto in questo articolo è detto "backtracking catastrofico".
 
-We covered two ways how to solve it:
-- Rewrite the regexp to lower the possible combinations count.
-- Prevent backtracking.
+Abbiamo trattato due modi per risolverlo:
+- Riscrivere la regexp per ridurre il numero di combinazioni possibili.
+- Prevenire il backtracking.
+
