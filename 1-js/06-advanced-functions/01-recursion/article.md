@@ -331,7 +331,7 @@ Proviamo con la ricorsione.
 Come possiamo vedere, quando la nostra funzione richiede la somma dei salari di un dipartimento, ci sono due casi possibili:
 
 1. Siamo in caso "semplice" in cui il dipartimento contiene solamente *array di persone* -- allora possiamo semplicemente sommare i salari con un ciclo.
-2. Siao nel caso *un oggetto con `N` sotto-dipartimenti* -- allora possiamo eseguire `N` chiamate ricorsive per ottenere la somma dei vari sotto-dipartimenti e combinarle per ottenere il risultato finale.
+2. Siamo nel caso *un oggetto con `N` sotto-dipartimenti* -- allora possiamo eseguire `N` chiamate ricorsive per ottenere la somma dei vari sotto-dipartimenti e combinarle per ottenere il risultato finale.
 
 Il caso base è (1), è banale.
 
