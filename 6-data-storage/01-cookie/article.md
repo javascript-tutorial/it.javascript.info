@@ -162,6 +162,10 @@ Se impostiamo `expires` a una data nel passato, il cookie verrà cancellato.
 
 -  **`max-age=3600`**
 
+<<<<<<< HEAD
+=======
+It's an alternative to `expires` and specifies the cookie's expiration in seconds from the current moment.
+>>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 Se zero o negativa, il cookie viene cancellato:
 
@@ -286,8 +290,11 @@ Ma se un cookie è `httpOnly`, allora il `document.cookie` non verrà mostrato, 
 
 Qui vediamo un paio di funzioni utili per lavorare con i cookies, più conveniente di una modifica manuale di `document.cookie`.
 
+<<<<<<< HEAD
 Esistono tante librerie per i cookie, quindi queste sono semplicemente per dimostrazione, ma comunque perfettamente funzionanti.
 
+=======
+>>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 ### getCookie(name)
 
 Il modo più veloce di accedere i cookie è quello di usare un' [espressione regolare](info:regular-expressions).
@@ -425,10 +432,17 @@ GDPR non riguarda solo i cookies, ma anche altri problemi legati alla privacy, m
 
 ## Riepilogo
 
+<<<<<<< HEAD
 `document.cookie` fornisce l'accesso ai cookies
 - opera la modifica solamente nei cookies menzionati al suo interno.
 - name/value devono essere codificati.
 - un cookie può contenere fino a 4kb, 20+cookies per sito (dipende dal browser).
+=======
+`document.cookie` provides access to cookies.
+- Write operations modify only cookies mentioned in it.
+- Name/value must be encoded.
+- One cookie may not exceed 4KB in size. The number of cookies allowed on a domain is around 20+ (varies by browser).
+>>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 Opzioni dei cookie:
 - `path=/`, il percorso di default, rende il cookie visibile solo all'interno di quel percorso.

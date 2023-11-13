@@ -90,8 +90,15 @@ Se inseriamo qualcosa nell'input e proviamo ad usare `key:Tab` o cliccare fuori 
 
 Nota bene che non possiamo "prevenire la perdita del focus" chiamando `event.preventDefault()` su `onblur`, poiché `onblur` viene creato *dopo* che l'elemento ha perso il focus.
 
+<<<<<<< HEAD
 ```warn header="Perdita del focus creata tramite JavaScript"
 La perdita del focus può avvenire per varie ragioni.
+=======
+In practice though, one should think well, before implementing something like this, because we generally *should show errors* to the user, but *should not prevent their progress* in filling our form. They may want to fill other fields first.
+
+```warn header="JavaScript-initiated focus loss"
+A focus loss can occur for many reasons.
+>>>>>>> 285083fc71ee3a7cf55fd8acac9c91ac6f62105c
 
 Una di queste è quando il visitatore clicca da qualche altra parte. Ma anche JavaScript stesso può causarlo, per esempio:
 
