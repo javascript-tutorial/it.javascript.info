@@ -44,7 +44,7 @@ La sintassi è:
 arr.splice(start[, deleteCount, elem1, ..., elemN])
 ```
 
-Modifica l'array partendo dall'indice `start`; rimuove `deleteCount` elementi ed inserisce `elem1, ..., elemN`. Infine ritorna un array contenente gli elementi rimossi.
+Modifica l'array partendo dall'indice `start`; rimuove `deleteCount` elementi ed inserisce `elem1, ..., elemN`. Infine restituisce un array contenente gli elementi rimossi.
 
 Questo metodo è facile da capire tramite esempi.
 
@@ -73,7 +73,7 @@ arr.splice(0, 3, "Let's", "dance");
 alert( arr ) // ora [*!*"Let's", "dance"*/!*, "right", "now"]
 ```
 
-Possiamo vedere l'array ritornato da `splice` contenente gli elementi rimossi:
+Possiamo vedere l'array restituito da `splice` contenente gli elementi rimossi:
 
 ```js run
 let arr = [*!*"I", "study",*/!* "JavaScript", "right", "now"];
@@ -122,7 +122,7 @@ La sintassi è:
 arr.slice([start], [end])
 ```
 
-Ritorna un nuovo array contente tutti gli elementi a partire da `"start"` fino ad `"end"` (`"end"` escluso). Sia `start` che `end` possono essere negativi; in tal caso si inizierà a contare dalla coda dell'array.
+Restituisce un nuovo array contente tutti gli elementi a partire da `"start"` fino ad `"end"` (`"end"` escluso). Sia `start` che `end` possono essere negativi; in tal caso si inizierà a contare dalla coda dell'array.
 
 Funziona come `str.slice`, ma crea dei sotto-array piuttosto che sotto-stringhe.
 
@@ -236,9 +236,9 @@ Ora vedremo dei metodi per effettuare ricerche in un array.
 
 I metodi [arr.indexOf](mdn:js/Array/indexOf), [arr.lastIndexOf](mdn:js/Array/lastIndexOf) e [arr.includes](mdn:js/Array/includes) hanno la stessa sintassi, e fanno praticamente la stessa cosa della loro controparte per stringhe, ma operano su elementi invece che su caratteri:
 
-- `arr.indexOf(item, from)` cerca un `item` a partire dall'indirizzo `from`, e ritorna l'indirizzo in cui è stato trovato, altrimenti ritorna `-1`.
+- `arr.indexOf(item, from)` cerca un `item` a partire dall'indirizzo `from`, e restituisce l'indirizzo in cui è stato trovato, altrimenti restituisce `-1`.
 - `arr.lastIndexOf(item, from)` -- lo stesso, ma esegue la ricerca a partire da destra verso sinistra.
-- `arr.includes(item, from)` -- cerca un `item` a partire dall'indice `from`, e ritorna `true` se lo trova.
+- `arr.includes(item, from)` -- cerca un `item` a partire dall'indice `from`, e restituisce `true` se lo trova.
 
 Ad esempio:
 
@@ -273,8 +273,8 @@ In questi casi si utilizza il metodo [arr.find](mdn:js/Array/find).
 La sintassi è:
 ```js
 let result = arr.find(function(item, index, array) {
-  // se viene ritornato true, viene ritornato l'elemento e l'iterazione si ferma
-  // altrimenti ritorna undefined
+  // se viene restituito true, viene restituito l'elemento e l'iterazione si ferma
+  // altrimenti restituisce undefined
 });
 ```
 
@@ -284,7 +284,7 @@ La funzione viene chiamata per ogni elemento dell'array:
 - `index` è il suo indice.
 - `array` è l'array stesso.
 
-Se la chiamata ritorna `true`, la ricerca viene interrotta e viene ritornato `item`. Se non viene trovato nulla verrà ritornato `undefined`.
+Se la chiamata restituisce `true`, la ricerca viene interrotta e viene restituito `item`. Se non viene trovato nulla verrà restituito `undefined`.
 
 Ad esempio, abbiamo un array di utenti, ognuno con i campi `id` e `name`. Cerchiamo quello con `id == 1`:
 
@@ -304,20 +304,20 @@ alert(user.name); // John
 
 Da notare che nell'esempio noi forniamo a `find` un singolo argomento `item => item.id == 1`. Gli altri parametri di `find` sono raramente utilizzati.
 
-Il metodo [arr.findIndex](mdn:js/Array/findIndex) fa essenzialmente la stessa cosa, ma ritorna l'indice in cui è stata trovata la corrispondenza piuttosto di ritornare l'oggetto stesso; se l'oggetto non viene trovato ritorna `-1`.
+Il metodo [arr.findIndex](mdn:js/Array/findIndex) fa essenzialmente la stessa cosa, ma restituisce l'indice in cui è stata trovata la corrispondenza piuttosto di ritornare l'oggetto stesso; se l'oggetto non viene trovato restituisce `-1`.
 
 ### filter
 
-Il metodo `find` cerca un singola occorrenza dell'elemento, la prima, e se trovata ritorna `true`.
+Il metodo `find` cerca un singola occorrenza dell'elemento, la prima, e se trovata restituisce `true`.
 
 Se vogliamo cercare più occorrenze, possiamo utilizzare [arr.filter(fn)](mdn:js/Array/filter).
 
-La sintassi è pressoché la stessa di `find`, ma ritorna un array contenente tutte le corrispondenze trovate:
+La sintassi è pressoché la stessa di `find`, ma restituisce un array contenente tutte le corrispondenze trovate:
 
 ```js
 let results = arr.filter(function(item, index, array) {
   // se un item è true viene messo dentro results e l'iterazione continua
-  // ritorna un array vuoto qualora nessun elemento ritornasse true
+  // restituisce un array vuoto qualora nessun elemento ritornasse true
 });
 ```
 
@@ -330,7 +330,7 @@ let users = [
   {id: 3, name: "Mary"}
 ];
 
-// ritorna un array con i primi due users
+// restituisce un array con i primi due users
 let someUsers = users.filter(item => item.id < 3);
 
 alert(someUsers.length); // 2
@@ -348,11 +348,11 @@ La sintassi è:
 
 ```js
 let result = arr.map(function(item, index, array) {
-  // ritorna il nuovo valore piuttosto di item
+  // restituisce il nuovo valore piuttosto di item
 })
 ```
 
-La funzione viene chiamata per ogni elemento dell'array e ritorna un array con i risultati.
+La funzione viene chiamata per ogni elemento dell'array e restituisce un array con i risultati.
 
 Ad esempio, qui trasformiamo ogni elemento nella propria `length`:
 
@@ -365,14 +365,14 @@ alert(lengths); // 5,7,6
 
 Il metodo [arr.sort](mdn:js/Array/sort) ordina l'array *sul posto*, ovvero cambia la posizione originale dei suoi elementi.
 
-Ritorna altresì l'array riordinato, ma il risultato viene di solito ignorato, essendo l'`arr` originale modificato.
+Restituisce altresì l'array riordinato, ma il risultato viene di solito ignorato, essendo l'`arr` originale modificato.
 
 Ad esempio:
 
 ```js run
 let arr = [ 1, 2, 15 ];
 
-// il metodo riordina il contenuto di arr (e lo ritorna)
+// il metodo riordina il contenuto di arr (e lo restituisce)
 arr.sort();
 
 alert( arr );  // *!*1, 15, 2*/!*
@@ -486,7 +486,7 @@ arr.reverse();
 alert( arr ); // 5,4,3,2,1
 ```
 
-Inoltre ritorna `arr` dopo averlo invertito.
+Inoltre restituisce `arr` dopo averlo invertito.
 
 ### split e join
 
@@ -645,7 +645,7 @@ alert(typeof {}); // object
 alert(typeof []); // lo stesso
 ```
 
-...Ma gli array vengono utilizzati cosi spesso che esiste un metodo dedicato per questo: [Array.isArray(value)](mdn:js/Array/isArray). Ritorna `true` se `value` è un array, `false` altrimenti.
+...Ma gli array vengono utilizzati cosi spesso che esiste un metodo dedicato per questo: [Array.isArray(value)](mdn:js/Array/isArray). Restituisce `true` se `value` è un array, `false` altrimenti.
 
 ```js run
 alert(Array.isArray({})); // false
@@ -716,21 +716,21 @@ Un breve riepilogo dei metodi per array:
   - `unshift(...items)` -- aggiunge un elemento alla testa.
   - `splice(pos, deleteCount, ...items)` -- all'indice `pos` cancella `deleteCount` elementi e al loro posto inserisce `items`.
   - `slice(start, end)` -- crea un nuovo array e copia al suo interno gli elementi da `start` fino ad `end` (escluso).
-  - `concat(...items)` -- ritorna un nuovo array: copia tutti gli elementi di quello corrente e ci aggiunge `items`. Se uno degli `items` è un array, allora vengono presi anche i suoi elementi.
+  - `concat(...items)` -- restituisce un nuovo array: copia tutti gli elementi di quello corrente e ci aggiunge `items`. Se uno degli `items` è un array, allora vengono presi anche i suoi elementi.
 
 - Ricercare elementi:
-  - `indexOf/lastIndexOf(item, pos)` -- cerca `item` a partire da `pos`, e ritorna l'indice, oppure `-1` se non lo trova.
-  - `includes(value)` -- ritorna `true` se l'array contiene `value`, altrimenti `false`.
-  - `find/filter(func)` -- filtra gli elementi tramite una funzione, ritorna il primo/tutti i valori che ritornano `true`.
-  - `findIndex` è simile a `find`, ma ritorna l'indice piuttosto del valore.
+  - `indexOf/lastIndexOf(item, pos)` -- cerca `item` a partire da `pos`, e restituisce l'indice, oppure `-1` se non lo trova.
+  - `includes(value)` -- restituisce `true` se l'array contiene `value`, altrimenti `false`.
+  - `find/filter(func)` -- filtra gli elementi tramite una funzione, restituisce il primo/tutti i valori che ritornano `true`.
+  - `findIndex` è simile a `find`, ma restituisce l'indice piuttosto del valore.
 
 - Per iterare sugli elementi:
-  - `forEach(func)` -- invoca `func` su ogni elemento; non ritorna nulla.
+  - `forEach(func)` -- invoca `func` su ogni elemento; non restituisce nulla.
 
 - Per modificare un array:
   - `map(func)` -- crea un nuovo array con i risultati della chiamata `func` su tutti i suoi elementi.
-  - `sort(func)` -- ordina l'array "sul posto", e lo ritorna.
-  - `reverse()` -- inverte l'array sul posto, e lo ritorna.
+  - `sort(func)` -- ordina l'array "sul posto", e lo restituisce.
+  - `reverse()` -- inverte l'array sul posto, e lo restituisce.
   - `split/join` -- converte una stringa in array e vice versa.
   - `reduce/reduceRight(func, initial)` -- calcola un singolo valore chiamando `func` per ogni elemento e passando un risultato temporaneo tra una chiamata e l'altra
 
@@ -743,9 +743,9 @@ I metodi elencati sono quelli utilizzati più spesso e sono in grado di coprire 
 
 - [arr.some(fn)](mdn:js/Array/some)/[arr.every(fn)](mdn:js/Array/every) controlla l'array.
 
-  La funzione `fn` viene invocata su ogni elemento dell'array in maniera simile a `map`. Se qualcuno/tutti i risultati sono `true`, ritorna `true`, altrimenti `false`.
+  La funzione `fn` viene invocata su ogni elemento dell'array in maniera simile a `map`. Se qualcuno/tutti i risultati sono `true`, restituisce `true`, altrimenti `false`.
   
-  Questi metodi si comportano quasi come gli operatori `||` e `&&`: se `fn` ritorna un valore vero, `arr.some()` ritorna immediatamente  `true` e conclude l'iterazione; se `fn` ritorna un valore falso, `arr.every()` ritorna immediatamente `false` e smette di iterare.
+  Questi metodi si comportano quasi come gli operatori `||` e `&&`: se `fn` restituisce un valore vero, `arr.some()` restituisce immediatamente  `true` e conclude l'iterazione; se `fn` restituisce un valore falso, `arr.every()` restituisce immediatamente `false` e smette di iterare.
 
   Possiamo utilizzare `every` per confrontare gli array:
   ```js run
