@@ -6,7 +6,7 @@ Abbiamo già a disposizione i cookies. Perché usare altri oggetti?
 
 - Rispetto ai cookies, gli oggetti web storage non vengono inviati al server con ogni richiesta. Per questo motivo, possiamo archiviarne molti di più. La maggior parte dei browser permette almeno 2 megabytes di dati (o più) e possiedono impostazioni per configurare questa scelta.
 - Inoltre, il server non può manipolare la memorizzazione degli oggetti tramite HTTP headers. Tutto viene fatto in JavaScript.
-- L'archiviazione è legata alla sorgete (origin) (domain/protocol/port triplet). Questo perché, protocolli differenti o sotto domini deducono diverse archiviazioni a oggetti e non possono accedere ai dati tra di loro.
+- L'archiviazione è legata alla sorgente (origin) (domain/protocol/port triplet). Questo perché, protocolli differenti o sotto domini deducono diverse archiviazioni a oggetti e non possono accedere ai dati tra di loro.
 
 Le due archiviazioni a oggetti propongono stessi metodi e proprietà:
 
