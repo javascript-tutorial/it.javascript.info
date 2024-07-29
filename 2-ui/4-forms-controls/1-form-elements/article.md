@@ -155,7 +155,11 @@ Parliamo un po' dei form controls.
 
 ### input e textarea
 
+<<<<<<< HEAD
 Possiamo accedere ai lori valori tramite `input.value` (string) o `input.checked` (boolean) per i checkbox.
+=======
+We can access their value as `input.value` (string) or `input.checked` (boolean) for checkboxes and radio buttons.
+>>>>>>> b258d7d5b635c88228f7556e14fbe5e5ca7f736d
 
 Come in questo caso:
 
