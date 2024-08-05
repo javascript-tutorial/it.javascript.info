@@ -112,7 +112,7 @@ Questo non funziona:
 
 Dobbiamo scegliere fra le due possibilità: script esterno `<script src="…">` o il semplice tag `<script>` con all'interno il codice.
 
-L'esempio precedete può essere diviso in due script:
+L'esempio precedente può essere diviso in due script:
 
 ```html
 <script src="file.js"></script>

@@ -224,7 +224,7 @@ let return = 5; // nemmeno "return", errore!
 Normalmente, abbiamo bisogno di definire variabili prima di utilizzarle. Ma una volta, era possibile definire una variabile semplicemente assegnandogli un valore, senza `let`. Questo è ancora possibile se non utilizziamo `use strict`. E' necessario per mantenere la compatibilità con i vecchi script.
 
 ```js run no-strict
-// da notare: no si utilizza "use strict" in questo esempio
+// da notare: non si utilizza "use strict" in questo esempio
 
 num = 5; // la variabile "num" se non esiste già
 
