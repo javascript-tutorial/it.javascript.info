@@ -315,10 +315,8 @@ let n = 2;
 n *= 3 + 5;
 
 alert( n ); // 16  (prima viene valutata la parte destra, equivale a n *= 8)
-
+```
 ## Incremento/Decremento
-
-<!-- Can't use -- in title, because the built-in parser turns it into a 'long dash' – -->
 
 L'incremento o il decremento di un numero di uno è una delle operazioni numeriche più comuni.
 
