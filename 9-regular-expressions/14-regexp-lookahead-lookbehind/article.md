@@ -59,7 +59,15 @@ alert( str.match(/\d+\b(?!€)/g) ); // 2 (il prezzo non costituisce corrisponde
 
 ## Lookbehind
 
+<<<<<<< HEAD
 Lookahead permette di porre una condizione per "quello che segue".
+=======
+```warn header="Lookbehind browser compatibility"
+Please Note: Lookbehind is not supported in non-V8 browsers, such as Safari, Internet Explorer.
+```
+
+Lookahead allows to add a condition for "what follows".
+>>>>>>> b258d7d5b635c88228f7556e14fbe5e5ca7f736d
 
 Lookbehind è simile, ma cerca quello che precede. Consente quindi di trovare una corrispondenza per un pattern solo se c'è qualcosa prima di esso.
 
