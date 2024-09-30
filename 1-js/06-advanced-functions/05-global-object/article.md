@@ -24,7 +24,11 @@ var gVar = 5;
 alert(window.gVar); // 5 (diventa una proprietà dell'oggetto globale)
 ```
 
+<<<<<<< HEAD
 Non affidatevi a questo! Questo comportamento esiste solamente per retrocompatibilità. Gli script moderni utilizzano i moduli JavaScript, che si comportano in maniera differente. Li studieremo più avanti nel capitolo [moduli JavaScript](info:modules).
+=======
+Function declarations have the same effect (statements with `function` keyword in the main code flow, not function expressions).
+>>>>>>> b258d7d5b635c88228f7556e14fbe5e5ca7f736d
 
 Inoltre, la dichiarazione di variabili in stile moderno, tramite `let` e `const` non hanno questo tipo di comportamento:
 

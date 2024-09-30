@@ -1,6 +1,10 @@
 # Long polling
 
+<<<<<<< HEAD
 Il "long polling" è il modo più semplice per avere una connessione persistente con il server, e contrariamente ai WebSocket o ai Server Side Events, non usa nessun tipo di protocollo specifico. 
+=======
+Long polling is the simplest way of having persistent connection with server, that doesn't use any specific protocol like WebSocket or Server Sent Events.
+>>>>>>> b258d7d5b635c88228f7556e14fbe5e5ca7f736d
 
 Essendo molto semplice da implementare, è anche sufficientemente valido in molti casi d'uso.
 
@@ -29,7 +33,11 @@ Flusso:
 3. Quando compare un messaggio, il server risponde alla richiesta con quest'ultimo.
 4. Il browser invia immediatamente una nuova richiesta.
 
+<<<<<<< HEAD
 Con questo metodo, la situazione in cui il browser ha inviato una nuova richiesta e ha una connessione pendente con il server, è la situazione standard. La connessione viene ristabilita, solo quando viene consegnato un messaggio.
+=======
+This situation, where the browser has sent a request and keeps a pending connection with the server, is standard for this method. Only when a message is delivered, the connection is closed and reestablished.
+>>>>>>> b258d7d5b635c88228f7556e14fbe5e5ca7f736d
 
 ![](long-polling.svg)
 
