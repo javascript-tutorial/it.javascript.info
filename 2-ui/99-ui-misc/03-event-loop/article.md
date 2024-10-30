@@ -142,7 +142,7 @@ Se lo esegui, è facile notare che impiega significativamente meno tempo.
 
 Perché?  
 
-Semplice: come saprai, c'è un ritardo minimo di 4ms all'interno del browser per tantissime chiamate annidate di `setTimeout`. Anche se noi lo abbiamo impostato a `0`, sarà di `4ms` (o qualcosa in pi&ugrave). Quindi, prima lo scheduliamo, più veloce sarà l'esecuzione. 
+Semplice: come saprai, c'è un ritardo minimo di 4ms all'interno del browser per tantissime chiamate annidate di `setTimeout`. Anche se noi lo abbiamo impostato a `0`, sarà di `4ms` (o qualcosa in più). Quindi, prima lo scheduliamo, più veloce sarà l'esecuzione. 
 Alla fine, abbiamo diviso un task affamato di CPU in porzioni - che adesso non bloccherà più l'interfaccia utente. Inoltre, il suo tempo di esecuzione complessivo non è tanto più lungo.
 
 
@@ -299,7 +299,7 @@ Questo è il più dettagliato algoritmo dell'event loop: (sebbene ancora semplic
 
 1. Rimuovi dalla coda ed esegui il task meno recente dalla coda dei *macrotask*  (ad esempio "script").
 2. Esegui tutti i *microtasks*:
-    - Se la cosa dei microtask non è vuota:
+    - Se la coda dei microtask non è vuota:
         - Rimuovi dalla coda ed esegui il meno recente dei microtask.
 3. Renderizza le modifiche se ve ne sono.
 4. Se la coda dei macrotask è vuota, vai in sleep fino al prossimo  macrotask.
