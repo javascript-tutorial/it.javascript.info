@@ -46,7 +46,7 @@ Inoltre, possiamo inserire `export` separatamente.
 
 In questo caso, prima dichiariamo e successivamente esportiamo:
 
-```js  
+```js
 // 📁 say.js
 function sayHi(user) {
   alert(`Hello, ${user}!`);
@@ -93,6 +93,7 @@ A prima vista, "importa tutto" sembra una cosa comoda, veloce da scrivere, quind
 
 Ecco alcune ragioni valide.
 
+<<<<<<< HEAD
 1. Gli strumenti moderni di build ([webpack](http://webpack.github.io) ed altri) impacchettano i moduli in modo da ottimizzarli, velocizzarne il caricamento e rimuovere le cose inutili.
 
     Ipotizziamo di aggiungere una libreria di terze parti `say.js` al nostro progetto, che contiene molte funzioni:
@@ -112,6 +113,16 @@ Ecco alcune ragioni valide.
 
 2. Elencare esplicitamente ciò che vogliamo importare ci fornisce nomi più brevi: `sayHi()` piuttosto di `say.sayHi()`.
 3. Elencare esplicitamente ciò che vogliamo importare ci fornisce una migliore visione della struttura del codice: cosa viene utilizzato e dove. Rende la manutenibilità e il refactoring del codice più semplice.
+=======
+1. Explicitly listing what to import gives shorter names: `sayHi()` instead of `say.sayHi()`.
+2. Explicit list of imports gives better overview of the code structure: what is used and where. It makes code support and refactoring easier.
+
+```smart header="Don't be afraid to import too much"
+Modern build tools, such as [webpack](https://webpack.js.org/) and others, bundle modules together and optimize them to speedup loading. They also remove unused imports.
+
+For instance, if you `import * as library` from a huge code library, and then use only few methods, then unused ones [will not be included](https://github.com/webpack/webpack/tree/main/examples/harmony-unused#examplejs) into the optimized bundle.
+```
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ## Import "as"
 
@@ -224,7 +235,7 @@ Senza `default`, questo export genererebbe un errore:
 export class { // Errore! (non-default export richiedono un nome)
   constructor() {}
 }
-```     
+```
 
 ### Il nome di "default"
 
@@ -326,7 +337,7 @@ Immaginiamo di scrivere un "package" (pacchetto): una cartella contenente molti 
 La struttura dei file potrebbe essere qualcosa del genere:
 ```
 auth/
-    index.js  
+    index.js
     user.js
     helpers.js
     tests/
@@ -372,7 +383,7 @@ La sintassi `export ... from ...` è semplicemente una notazione più breve per 
 
 ```js
 // 📁 auth/index.js
-// re-export login/logout 
+// re-export login/logout
 export {login, logout} from './helpers.js';
 
 // re-export il default export as User
@@ -380,7 +391,11 @@ export {default as User} from './user.js';
 ...
 ```
 
+<<<<<<< HEAD
 Un'importante differenza tra `export ... from` e `import/export`, è che i moduli ri-esportati non sono disponibili nel file corrente. Quindi, guardando l'esempio sopra `auth/index.js`, non possiamo utilizzare le funzioni ri-esportate `login/logout`. 
+=======
+The notable difference of `export ... from` compared to `import/export` is that re-exported modules aren't available in the current file. So inside the above example of `auth/index.js` we can't use re-exported `login/logout` functions.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ### Re-exporting il default export
 
@@ -399,11 +414,19 @@ Potremmo incontrare due problemi:
 
 1. `export User from './user.js'` non funziona. Genererebbe un errore sintattico.
 
+<<<<<<< HEAD
     Per ri-esportare il default export, dobbiamo scrivere `export {default as User}`, come nell'esempio sopra.
+=======
+    To re-export the default export, we have to write `export {default as User}`, as in the example above.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 2. `export * from './user.js'` ri-esporta solamente i named exports, ma ignora quelli di default.
 
+<<<<<<< HEAD
     Nel caso in cui volessimo ri-esportare sia i named che i defaul export, allora avremmo bisogno di due istruzioni:
+=======
+    If we'd like to re-export both named and default exports, then two statements are needed:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
     ```js
     export * from './user.js'; // per ri-esportare i named exports
     export {default} from './user.js'; // per ri-esportare i default export
@@ -430,7 +453,11 @@ Import:
 
 - Importare Named exports:
   - `import {x [as y], ...} from "module"`
+<<<<<<< HEAD
 - Importare il default export:  
+=======
+- Importing the default export:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
   - `import x from "module"`
   - `import {default as x} from "module"`
 - Importare tutto:

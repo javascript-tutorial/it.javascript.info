@@ -2,6 +2,7 @@
 
 Le due strutture dati più utilizzate in JavaScript sono `Object` e `Array`.
 
+<<<<<<< HEAD
 - Gli oggetti ci consentono di creare un'unica entità che memorizza elementi nel formato chiave-valore
 - Gli array ci consentono di raccogliere elementi in elenchi ordinati.
 
@@ -10,13 +11,27 @@ A volte, quando li passiamo ad una funzione, potrebbe non essere necessario tutt
 *L'assegnamento di destrutturazione (Destructuring assignment)* è una speciale sintassi che ci consente di "spacchettare" oggetti o array in gruppi di variabili; questo a volte risulta molto conveniente.
 
 La destrutturazione funziona alla grande anche con funzioni complesse che hanno molti parametri, valori predefiniti e così via. Presto lo vedremo.
+=======
+- Objects allow us to create a single entity that stores data items by key.
+- Arrays allow us to gather data items into an ordered list.
+
+However, when we pass these to a function, we may not need all of it. The function might only require certain elements or properties.
+
+*Destructuring assignment* is a special syntax that allows us to "unpack" arrays or objects into a bunch of variables, as sometimes that's more convenient.
+
+Destructuring also works well with complex functions that have a lot of parameters, default values, and so on. Soon we'll see that.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ## Destrutturazione di un array
 
 Ecco un esempio di come un array viene destrutturato in variabili:
 
 ```js
+<<<<<<< HEAD
 // abbiamo un array con nome e cognome
+=======
+// we have an array with a name and surname
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 let arr = ["John", "Smith"]
 
 *!*
@@ -40,8 +55,15 @@ alert(firstName); // John
 alert(surname);  // Smith
 ```
 
+<<<<<<< HEAD
 Come puoi vedere, la sintassi è semplice. Ci sono però molti dettagli peculiari. Vediamo altri esempi, per capirlo meglio.
 
+=======
+As you can see, the syntax is simple. There are several peculiar details though. Let's see more examples to understand it better.
+
+````smart header="\"Destructuring\" does not mean \"destructive\"."
+It's called "destructuring assignment," because it "destructurizes" by copying items into variables. However, the array itself is not modified.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ````smart header="\"Destrutturazione\" non significa \"distruzione\"."
 Viene chiamato "assegnamento di destrutturazione" perché "destruttura" copiando gli elementi all'interno di variabili. Ma l'array in sé non viene modificato.
@@ -67,7 +89,11 @@ let [firstName, , title] = ["Julius", "Caesar", "Consul", "of the Roman Republic
 alert( title ); // Consul
 ```
 
+<<<<<<< HEAD
 Nel codice sopra, il secondo elemento viene saltato, il terzo viene assegnato a `title`, il resto degli elementi vengono ignorati (visto che per loro non ci sono variabili).
+=======
+In the code above, the second element of the array is skipped, the third one is assigned to `title`, and the rest of the array items are also skipped (as there are no variables for them).
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ````
 
 ````smart header="Funziona con qualsiasi iterabile alla destra"
@@ -78,13 +104,22 @@ Nel codice sopra, il secondo elemento viene saltato, il terzo viene assegnato a 
 let [a, b, c] = "abc"; // ["a", "b", "c"]
 let [one, two, three] = new Set([1, 2, 3]);
 ```
+<<<<<<< HEAD
 
 Funziona, perché internamente un'assegnazione di destrutturazione lavora iterando sul valore a destra. E' una specie di "zucchero sintattico" per chiamare `for..of` sul valore a destra di `=`, assegnandone i valori.
+=======
+That works, because internally a destructuring assignment works by iterating over the right value. It's a kind of syntax sugar for calling `for..of` over the value to the right of `=` and assigning the values.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ````
 
 ````smart header="Assegna a qualsiasi cosa ci sia dalla parte sinistra"
 
+<<<<<<< HEAD
 Possiamo inserire qualsiasi cosa "assegnabile" a sinistra.
+=======
+````smart header="Assign to anything at the left-side"
+We can use any "assignables" on the left side.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ad esempio, la proprietà di un oggetto:
 ```js run
@@ -97,11 +132,18 @@ alert(user.surname); // Smith
 
 ````
 
+<<<<<<< HEAD
 ````smart header="Eseguire cicli con .entries()"
 
 Nel capitolo precedente abbiamo visto il metodo [Object.entries(obj)](mdn:js/Object/entries).
 
 Possiamo utilizzarlo con la destrutturazione per eseguire cicli sulle coppie chiave/valore di un oggetto:
+=======
+````smart header="Looping with .entries()"
+In the previous chapter, we saw the [Object.entries(obj)](mdn:js/Object/entries) method.
+
+We can use it with destructuring to loop over the keys-and-values of an object:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```js run
 let user = {
@@ -109,7 +151,11 @@ let user = {
   age: 30
 };
 
+<<<<<<< HEAD
 // ciclo su chiavi/valori
+=======
+// loop over the keys-and-values
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 *!*
 for (let [key, value] of Object.entries(user)) {
 */!*
@@ -177,13 +223,21 @@ Se vogliamo ottenere anche tutto ciò che segue, possiamo aggiungere un altro pa
 let [name1, name2, *!*...rest*/!*] = ["Julius", "Caesar", *!*"Consul", "of the Roman Republic"*/!*];
 
 *!*
+<<<<<<< HEAD
 // rest è un array con gli elementi a destra, partendo dal terzo
+=======
+// rest is an array of items, starting from the 3rd one
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 alert(rest[0]); // Consul
 alert(rest[1]); // of the Roman Republic
 alert(rest.length); // 2
 */!*
 ```
 
+<<<<<<< HEAD
+=======
+The value of `rest` is the array of the remaining array elements.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 La variabile `rest` è un array con i valori rimanenti dell'array a destra.
 
@@ -196,7 +250,11 @@ let [name1, name2, *!*...titles*/!*] = ["Julius", "Caesar", "Consul", "of the Ro
 
 ### Valori di default
 
+<<<<<<< HEAD
 Se ci sono meno elementi nell'array delle variabili da assegnare, non ci sarà alcun errore. I valori assenti vengono considerati undefined:
+=======
+If the array is shorter than the list of variables on the left, there will be no errors. Absent values are considered undefined:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```js run
 *!*
@@ -245,7 +303,11 @@ La sintassi è:
 let {var1, var2} = {var1:…, var2:…}
 ```
 
+<<<<<<< HEAD
 Abbiamo un oggetto alla destra dell'assegnazione, che vogliamo dividere in variabili. Nel lato sinistro abbiamo un "pattern" di proprietà corrispondenti. In questo semplice caso, abbiamo una lista di variabili raggruppate tra parentesi `{...}`.
+=======
+We should have an existing object on the right side, that we want to split into variables. The left side contains an object-like "pattern" for corresponding properties. In the simplest case, that's a list of variable names in `{...}`.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ad esempio:
 
@@ -265,9 +327,13 @@ alert(width);  // 100
 alert(height); // 200
 ```
 
+<<<<<<< HEAD
 Le proprietà `options.title`, `options.width` e `options.height` vengono assegnate alle variabili corrispondenti.
 
 L'ordine non ha importanza. Questo codice funzionerebbe comunque:
+=======
+Properties `options.title`, `options.width` and `options.height` are assigned to the corresponding variables.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 
 ```js
@@ -432,9 +498,15 @@ alert( title ); // Menu
 
 ## Destrutturazione annidata
 
+<<<<<<< HEAD
 Se un oggetto o un array contiene altri oggetti o array, possiamo utilizzare sequenze (pattern) di estrazione più complesse per andare più in profondità con l'estrazione.
 
 Nel codice sotto `options` possiede un ulteriore oggetto nella proprietà `size` ed un array nella proprietà `items`. Il pattern alla sinistra dell'assegnazione ha la stessa struttura:
+=======
+If an object or an array contains other nested objects and arrays, we can use more complex left-side patterns to extract deeper portions.
+
+In the code below `options` has another object in the property `size` and an array in the property `items`. The pattern on the left side of the assignment has the same structure to extract values from them:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```js run
 let options = {
@@ -443,7 +515,11 @@ let options = {
     height: 200
   },
   items: ["Cake", "Donut"],
+<<<<<<< HEAD
   extra: true    // qualche extra che non destruttureremo
+=======
+  extra: true
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 };
 
 // destructuring assignment split in multiple lines for clarity
@@ -463,7 +539,11 @@ alert(item1);  // Cake
 alert(item2);  // Donut
 ```
 
+<<<<<<< HEAD
 L'intero oggetto `options` ad eccezione di `extra`, il quale non viene menzionato, viene assegnato alle corrispondenti variabili.
+=======
+All properties of `options` object except `extra` which is absent in the left part, are assigned to corresponding variables:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ![](destructuring-complex.svg)
 
@@ -473,9 +553,15 @@ Nota che non ci sono variabili per `size` e `items`: prendiamo invece il loro co
 
 ## Parametri di funzione intelligenti
 
+<<<<<<< HEAD
 Ci sono casi in cui una funzione può accettare più parametri, molti dei quali opzionali. Questo è vero specialmente per le interfacce utente. Immaginate una funzione che crea un menu. Può avere una larghezza, un'altezza, un titolo, una lista di elementi e molto altro.
 
 Vediamo un pessimo modo per scrivere questo tipo di funzioni:
+=======
+There are times when a function has many parameters, most of which are optional. That's especially true for user interfaces. Imagine a function that creates a menu. It may have a width, a height, a title, an item list and so on.
+
+Here's a bad way to write such a function:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```js
 function showMenu(title = "Untitled", width = 200, height = 100, items = []) {
@@ -483,7 +569,11 @@ function showMenu(title = "Untitled", width = 200, height = 100, items = []) {
 }
 ```
 
+<<<<<<< HEAD
 Nella vita reale, il problema è ricordarsi l'ordine degli argomenti. Solitamente gli IDE ci aiutano in questo, specialmente se il codice è ben documentato, eppure... Un ulteriore problema è quello di chiamare una funzione nel caso in cui molti parametri ci vadano bene di default.
+=======
+In real-life, the problem is how to remember the order of arguments. Usually, IDEs try to help us, especially if the code is well-documented, but still... Another problem is how to call a function when most parameters are ok by default.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Come qui?
 
@@ -548,7 +638,13 @@ function({
 })
 ```
 
+<<<<<<< HEAD
 Da notare che la destrutturazione presuppone che `showMenu()` abbia un argomento. Se vogliamo tutti i valori di default, allora dovremmo specificare un oggetto vuoto:
+=======
+Then, for an object of parameters, there will be a variable `varName` for the property `incomingProperty`, with `defaultValue` by default.
+
+Please note that such destructuring assumes that `showMenu()` does have an argument. If we want all values by default, then we should specify an empty object:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```js
 showMenu({}); // ok, tutti i valori sono di default
@@ -575,7 +671,7 @@ Nel codice sopra, l'oggetto degli argomenti è `{}` di default, quindi ci sarà 
 - L'assegnamento di destrutturazione ci consente di mappare un oggetto o un array passandolo a variabili.
 - La sintassi per gli oggetti:
     ```js
-    let {prop : varName = default, ...rest} = object
+    let {prop : varName = defaultValue, ...rest} = object
     ```
 
     Questo significa che la proprietà `prop` dovrebbe andare nella variabile `varName` e, se non esiste alcuna proprietà, allora verrà utilizzato il valore di `default`.
@@ -583,9 +679,13 @@ Nel codice sopra, l'oggetto degli argomenti è `{}` di default, quindi ci sarà 
 - La sintassi per gli array:
 
     ```js
-    let [item1 = default, item2, ...rest] = array
+    let [item1 = defaultValue, item2, ...rest] = array
     ```
 
+<<<<<<< HEAD
     Il primo elemento va in `item1`; il secondo va in `item2`, tutti gli altri finiscono nell'array `rest`.
+=======
+    The first item goes to `item1`; the second goes into `item2`, and all the rest makes the array `rest`.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 - Per casi più complessi, la parte sinistra deve possedere la stessa struttura di quella destra.

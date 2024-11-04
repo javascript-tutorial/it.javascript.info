@@ -116,7 +116,18 @@ document.domain = 'site.com';
 
 Questo è tutto. Da questo momento in poi potranno interagire senza limitazioni. Nuovamente, questo è possibile solamente per pagine che appartengono allo stesso dominio di secondo livello.
 
+<<<<<<< HEAD
 ## Iframe: il tranello del document errato
+=======
+```warn header="Deprecated, but still working"
+The `document.domain` property is in the process of being removed from the [specification](https://html.spec.whatwg.org/multipage/origin.html#relaxing-the-same-origin-restriction). The cross-window messaging (explained soon below) is the suggested replacement.
+
+That said, as of now all browsers support it. And the support will be kept for the future, not to break old code that relies on `document.domain`.
+```
+
+
+## Iframe: wrong document pitfall
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Quando un iframe appartiene alla stessa origine, con la possibilità quindi di accedere al suo `document`, c'è un piccolo tranello a cui prestare attenzione. Non è strettamente legato al cross-origin, ma è comunque importante esserne a conoscenza.
 
@@ -268,7 +279,11 @@ Argomenti:
 `targetOrigin`
 : Specifica l'origine per la finestra target, in questo modo il messaggio verrà ricevuto solamente dalla giusta finestra.
 
+<<<<<<< HEAD
 Il parametro `targetOrigin` è una misura di sicurezza. Ricordate, se una finestra target appartiene ad una diversa origine, non possiamo leggere la sua `location` nella finestra mittente. Quindi non possiamo essere certi di quale sito sia aperto nella finestra a cui vogliamo inviare il messaggio: l'utente potrebbe aver cambiato sito, senza che la finestra mittente ne sia al corrente.
+=======
+The `targetOrigin` is a safety measure. Remember, if the target window comes from another origin, we can't read its `location` in the sender window. So we can't be sure which site is open in the intended window right now: the user could navigate away, and the sender window has no idea about it.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Specificando la proprietà `targetOrigin` ci assicuriamo che la finestra riceva i dati solamente se si trova nel sito che ci aspettiamo li riceva. Questa caratteristica è molto importante, specialmente per dati sensibili.
 

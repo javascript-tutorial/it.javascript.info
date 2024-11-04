@@ -182,12 +182,21 @@ Queste headers sono  controllate esclusivamente dal browser perché aiutano a ga
 
 Per eseguire una richiesta `POST` o una richiesta con un altro metodo, possiamo usare le opzioni di `fetch`:
 
+<<<<<<< HEAD
 - **`method`** -- metodo HTTP, es. `POST`,
 - **`body`** -- il body della richiesta, scegliendo tra:
   - una stringa (string) (es. JSON-encoded),
   - oggetto (object) `FormData`, per inviare i dati come `form/multipart`,
   - `Blob`/`BufferSource` per inviare binary data,
   - [URLSearchParams](info:url), per inviare i dati in `x-www-form-urlencoded` encoding, anche se raramente utilizzato.
+=======
+- **`method`** -- HTTP-method, e.g. `POST`,
+- **`body`** -- the request body, one of:
+  - a string (e.g. JSON-encoded),
+  - `FormData` object, to submit the data as `multipart/form-data`,
+  - `Blob`/`BufferSource` to send binary data,
+  - [URLSearchParams](info:url), to submit the data in `x-www-form-urlencoded` encoding, rarely used.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Il formato più comunemente utilizzato è il JSON.
 
@@ -286,6 +295,7 @@ fetch(url, options)
   .then(result => /* processa qui il result */)
 ```
 
+<<<<<<< HEAD
 Proprietà del response:
 - `response.status` -- codice HTTP della risposta,
 - `response.ok` -- `true` se lo status è 200-299.
@@ -297,6 +307,19 @@ Metodi per ricevere il response body:
 - **`response.formData()`** -- ritorna la risposta come oggetto (object) `FormData` (per il form/multipart encoding, vedi il prossimo capitolo),
 - **`response.blob()`** -- ritorna la risposta come oggetto (object) [Blob](info:blob) (binary data con type),
 - **`response.arrayBuffer()`** -- ritorna la risposta come oggetto (object) [ArrayBuffer](info:arraybuffer-binary-arrays) (low-level binary data),
+=======
+Response properties:
+- `response.status` -- HTTP code of the response,
+- `response.ok` -- `true` if the status is 200-299.
+- `response.headers` -- Map-like object with HTTP headers.
+
+Methods to get response body:
+- **`response.text()`** -- return the response as text,
+- **`response.json()`** -- parse the response as JSON object,
+- **`response.formData()`** -- return the response as `FormData` object (`multipart/form-data` encoding, see the next chapter),
+- **`response.blob()`** -- return the response as [Blob](info:blob) (binary data with type),
+- **`response.arrayBuffer()`** -- return the response as [ArrayBuffer](info:arraybuffer-binary-arrays) (low-level binary data),
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Altre opzioni di fetch:
 - `method` -- metodo HTTP,

@@ -129,8 +129,21 @@ setTimeout(() => document.body.style.display = "", 1000); // ritorna alla normal
 
 Se assegniamo una stringa vuota a `style.display`, il browser applica come di consueto le classi CSS ed i suoi stili predefiniti, come se non ci fosse alcuna proprietà `style.display`.
 
+<<<<<<< HEAD
 ````smart header="Riscrittura completa con `style.cssText`"
 Di solito usiamo `style.*` per assegnare le proprietà di stile individualmente. Non possiamo impostare tutti gli stili in questo modo `div.style="color: red; width: 100px"`, perché `div.style` è un oggetto ed è in sola lettura.
+=======
+Also there is a special method for that, `elem.style.removeProperty('style property')`. So, We can remove a property like this:
+
+```js run
+document.body.style.background = 'red'; //set background to red
+
+setTimeout(() => document.body.style.removeProperty('background'), 1000); // remove background after 1 second
+```
+
+````smart header="Full rewrite with `style.cssText`"
+Normally, we use `style.*` to assign individual style properties. We can't set the full style like `div.style="color: red; width: 100px"`, because `div.style` is an object, and it's read-only.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Per impostare tutti gli stili come stringa c'è una speciale proprietà `style.cssText`:
 
@@ -261,6 +274,7 @@ Attualmente, quindi, `getComputedStyle` restituisce il valore resolved della pro
 ````warn header="`getComputedStyle` richiede il nome completo della proprietà"
 Dovremmo sempre chiedere l'esatta proprietà che si desidera, come `paddingLeft` o `marginTop` o `borderTopWidth`. Diversamente il risultato corretto non è garantito.
 
+<<<<<<< HEAD
 Per esempio, se ci sono le proprietà `paddingLeft/paddingTop`, cosa otterremmo con `getComputedStyle(elem).padding`? Niente, o forse un valore "generato" a partire dai valori di padding noti? Non esiste una regola standard in questo caso.
 
 Ci sono altre incongruenze. Ad esempio, alcuni browser (Chrome) mostrano `10px` nel documento in basso, ed altri (Firefox) -- invece no:
@@ -276,6 +290,9 @@ Ci sono altre incongruenze. Ad esempio, alcuni browser (Chrome) mostrano `10px` 
   alert(style.margin); // Firefox restituisce una stringa vuota
 </script>
 ```
+=======
+For instance, if there are properties `paddingLeft/paddingTop`, then what should we get for `getComputedStyle(elem).padding`? Nothing, or maybe a "generated" value from known paddings? There's no standard rule here.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ````
 
 ```smart header="Gli stili applicati ai link `:visited` sono nascosti!"

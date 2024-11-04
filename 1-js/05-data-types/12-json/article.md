@@ -27,7 +27,11 @@ Fortunatamente, non c'è bisogno di scrivere del codice per gestire questa situa
 
 ## JSON.stringify
 
+<<<<<<< HEAD
 [JSON](http://en.wikipedia.org/wiki/JSON) (JavaScript Object Notation) è un formato per rappresentare valori e oggetti. Viene descritto nello standard [RFC 4627](http://tools.ietf.org/html/rfc4627). Inizialmente fu creato per lavorare con JavaScript, ma molti altri linguaggi possiedono delle librerie per la sua gestione. Quindi JSON risulta semplice da usare per lo scambio di dati quando il client utilizza JavaScript e il server codifica in Ruby/PHP/Java/Altro.
+=======
+The [JSON](https://en.wikipedia.org/wiki/JSON) (JavaScript Object Notation) is a general format to represent values and objects. It is described as in [RFC 4627](https://tools.ietf.org/html/rfc4627) standard. Initially it was made for JavaScript, but many other languages have libraries to handle it as well.  So it's easy to use JSON for data exchange when the client uses JavaScript and the server is written on Ruby/PHP/Java/Whatever.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 JavaScript fornisce i metodi:
 
@@ -41,7 +45,7 @@ let student = {
   age: 30,
   isAdmin: false,
   courses: ['html', 'css', 'js'],
-  wife: null
+  spouse: null
 };
 
 *!*
@@ -58,7 +62,7 @@ alert(json);
   "age": 30,
   "isAdmin": false,
   "courses": ["html", "css", "js"],
-  "wife": null
+  "spouse": null
 }
 */
 */!*
@@ -403,7 +407,7 @@ Per decodificare una stringa in JSON, abbiamo bisogno del metodo [JSON.parse](md
 
 La sintassi:
 ```js
-let value = JSON.parse(str, [reviver]);
+let value = JSON.parse(str[, reviver]);
 ```
 
 str
@@ -449,7 +453,11 @@ let json = `{
 
 Inoltre, JSON non supporta i commenti. Quindi l'aggiunta di un commento invaliderebbe il documento.
 
+<<<<<<< HEAD
 Esiste un altro formato chiamato [JSON5](http://json5.org/), che accetta chiavi senza virgolette, commenti etc. Ma consiste in una libreria a se stante, non fa parte della specifica del linguaggio.
+=======
+There's another format named [JSON5](https://json5.org/), which allows unquoted keys, comments etc. But this is a standalone library, not in the specification of the language.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Il JSON classico è cosi restrittivo non per pigrizia degli sviluppatori, ma per consentire una facile, affidabile e rapida implementazione degli algoritmi di analisi.
 

@@ -68,7 +68,11 @@ if (cond) {
 
 ## La clausola "else" 
 
+<<<<<<< HEAD
 L'istruzione `if` può essere seguita da un blocco opzionale "else". Questo viene eseguito quando la condizione è falsa.
+=======
+The `if` statement may contain an optional `else` block. It executes when the condition is falsy.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ad esempio:
 ```js run
@@ -180,10 +184,17 @@ alert( message );
 
 Potrebbe essere difficile, inizialmente, capirne la logica. Ma dopo averlo guardato da più vicino ci accorgeremo che è una semplice sequenza di condizioni.
 
+<<<<<<< HEAD
 1. Il primo operatore "?" controlla `age < 3`.
 2. Se è vero -- ritorna `'Hi, baby!'`, altrimenti -- segue la colonna `":"`, controlla `age < 18`.
 3. Se questo è vero -- ritorna `'Hello!'`, altrimenti -- segue la colonna `":"`, controlla `age < 100`.
 4. Se questo è vero -- ritorna `'Greetings!'`, altrimenti -- segue la colonna `":"`, ritorna `'What an unusual age!'`.
+=======
+1. The first question mark checks whether `age < 3`.
+2. If true -- it returns `'Hi, baby!'`. Otherwise, it continues to the expression after the colon ":", checking `age < 18`.
+3. If that's true -- it returns `'Hello!'`. Otherwise, it continues to the expression after the next colon ":", checking `age < 100`.
+4. If that's true -- it returns `'Greetings!'`. Otherwise, it continues to the expression after the last colon ":", returning `'What an unusual age!'`.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 La stessa logica riscritta utilizzando `if..else`:
 
