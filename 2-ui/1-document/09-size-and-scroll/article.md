@@ -17,8 +17,8 @@ Useremo l'elemento indicato sotto quale esempio di tali proprietà:
     width: 300px;
     height: 200px;
     border: 25px solid #E8C48F;
-    padding: 20px;              
-    overflow: auto;             
+    padding: 20px;
+    overflow: auto;
   }
 </style>
 ```
@@ -106,7 +106,11 @@ Le proprietà geometriche sono calcolate solo per gli elementi visibili.
 
 Se un elemento (o uno dei suoi antenati) ha `display:none` o non è nel documento, allora tutte le proprietà geometriche valgono zero (o `null` per `offsetParent`).
 
+<<<<<<< HEAD
 Per esempio, `offsetParent` vale `null`, e `offsetWidth`, `offsetHeight` sono `0` quando abbiamo creato un elemento, ma non lo abbiamo ancora inserito nel documento, o esso (o un suo antenato) ha `display:none`.
+=======
+For example, `offsetParent` is `null`, and `offsetWidth`, `offsetHeight` are `0` when we created an element, but haven't inserted it into the document yet, or it (or its ancestor) has `display:none`.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Possiamo servirci di questa particolarità per verificare se un elemento è nascosto, in questo modo:
 

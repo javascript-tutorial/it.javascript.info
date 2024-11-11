@@ -59,7 +59,7 @@ Se spostiamo queste istruzioni in righe separate, allora `this` verrà sicuramen
 let user = {
   name: "John",
   hi() { alert(this.name); }
-}
+};
 
 *!*
 // dividiamo l'accesso e l'invocazione in due righe
@@ -87,7 +87,11 @@ Il risultato dell'accesso alla proprietà `user.hi` non è una funzione, ma un v
 (user, "hi", true)
 ```
 
+<<<<<<< HEAD
 Quando le parentesi `()` vengono invocate in un tipo Reference, queste ricevono tutte le informazioni riguardo l'oggetto ed il metodo, e possono quindi impostare correttamente il valore di `this` (`=user` in questo caso).
+=======
+When parentheses `()` are called on the Reference Type, they receive the full information about the object and its method, and can set the right `this` (`user` in this case).
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Il tipo Reference è uno speciale tipo "intermedio" utilizzato internamente, con lo scopo di passare le informazioni dal punto `.` all'invocazione con le parentesi `()`.
 

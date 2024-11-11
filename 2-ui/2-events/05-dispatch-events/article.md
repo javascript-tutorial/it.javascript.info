@@ -8,7 +8,11 @@ Possiamo generare non solo eventi del tutto nuovi, creati apposta per i nostri s
 
 ## Costruttore dell'evento 
 
+<<<<<<< HEAD
 Le classi degli eventi predefiniti formano una gerarchia, similmente alle classi degli elementi del DOM. La classe base è [Event](http://www.w3.org/TR/dom/#event).
+=======
+Built-in event classes form a hierarchy, similar to DOM element classes. The root is the built-in [Event](https://dom.spec.whatwg.org/#events) class.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Gli oggetti `Event` vengono creati così:
 
@@ -208,7 +212,11 @@ Nota bene: l'evento deve avere il flag `cancelable: true`, altrimenti la chiamat
 
 ## Gli eventi annidati sono sincroni
 
+<<<<<<< HEAD
 Solitamente gli eventi vengono elaborati in una coda. Ossia: se il browser sta elaborando `onclick` e viene generato un nuovo evento, ad esempio il mouse viene mosso, il suo gestore verrà messo in coda, ed i corrispondenti gestori di `mousemove` verranno chiamati dopo che l'elaborazione di `onclick` sarà terminata.
+=======
+Usually events are processed in a queue. That is: if the browser is processing `onclick` and a new event occurs, e.g. mouse moved, then its handling is queued up, corresponding `mousemove` handlers will be called after `onclick` processing is finished.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 L'eccezione degna di nota è quando un evento viene inizializzato all'interno di un altro, ad esempio usando `dispatchEvent`. Questi eventi vengono elaborati immediatamente: i gestori del nuovo evento vengono chiamati, e successivamente viene ristabilita la gestione dell'evento corrente.
 

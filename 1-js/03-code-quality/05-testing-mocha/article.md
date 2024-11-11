@@ -53,7 +53,11 @@ describe("pow", function() {
 Una spec ha tre principali blocchi:
 
 `describe("title", function() { ... })`
+<<<<<<< HEAD
 : Viene descritta la funzionalità. Utilizzata per raggruppare le "attività" -- i blocchi `it`. Nel nostro caso descriviamo la funzione `pow`.
+=======
+: What functionality we're describing? In our case we're describing the function `pow`. Used to group "workers" -- the `it` blocks.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 `it("title", function() { ... })`
 : Nel titolo di `it` descriviamo il particolare caso d'uso *leggibile per gli umani*, come secondo argomento una funzione che lo testa.
@@ -67,7 +71,17 @@ Una spec ha tre principali blocchi:
 
 ## Il flusso di sviluppo
 
+<<<<<<< HEAD
 Il flusso di sviluppo solitamente segue i passi:
+=======
+1. An initial spec is written, with tests for the most basic functionality.
+2. An initial implementation is created.
+3. To check whether it works, we run the testing framework [Mocha](https://mochajs.org/) (more details soon) that runs the spec. While the functionality is not complete, errors are displayed. We make corrections until everything works.
+4. Now we have a working initial implementation with tests.
+5. We add more use cases to the spec, probably not yet supported by the implementations. Tests start to fail.
+6. Go to 3, update the implementation till tests give no errors.
+7. Repeat steps 3-6 till the functionality is ready.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 1. Viene scritta una spec iniziale, con dei test per le funzionalità di base.
 2. Si crea un implementazione di base.
@@ -79,15 +93,25 @@ Il flusso di sviluppo solitamente segue i passi:
 
 Quindi la fase di sviluppo è *iterativa*. Scriviamo la specifica, la implementiamo, ci accertiamo che passi i test, ci assicuriamo che faccia ciò che deve. Al termine di questa procedura avremmo un implementazione già testata e funzionante.
 
+<<<<<<< HEAD
 Nel nostro caso, il primo step è completo: abbiamo un specifica iniziale di `pow`. Quindi ora passiamo all'implementazione. Come prima cosa facciamo l'esecuzione "zero" con le specifiche scritte, per essere sicuri che tutto funzioni (ovviamente i test dovrebbero fallire tutti).
+=======
+The first step is already complete: we have an initial spec for `pow`. Now, before making the implementation, let's use a few JavaScript libraries to run the tests, just to see that they are working (they will all fail).
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ## La spec in azione
 
 In questo guida utilizzeremo le seguenti librerie JavaScript per fare test:
 
+<<<<<<< HEAD
 - [Mocha](http://mochajs.org/) -- un core framework: fornisce le maggiori funzioni di test come `describe` e `it` e le principali funzioni che eseguono i test.
 - [Chai](http://chaijs.com) -- una libreria con molte asserzioni. Ci consente di utilizzare molte asserzioni differenti, per ora ci servirà solamente `assert.equal`.
 - [Sinon](http://sinonjs.org/) -- una libreria per il controllo oltre le funzioni, emula funzioni integrate e molto altro, la utilizzeremo più avanti.
+=======
+- [Mocha](https://mochajs.org/) -- the core framework: it provides common testing functions including `describe` and `it` and the main function that runs tests.
+- [Chai](https://www.chaijs.com/) -- the library with many assertions. It allows to use a lot of different assertions, for now we need only `assert.equal`.
+- [Sinon](https://sinonjs.org/) -- a library to spy over functions, emulate built-in functions and more, we'll need it much later.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Queste librerie sono utili sia per per il test browser, sia per il test lato server. Qui considereremo la variante browser.
 
@@ -336,6 +360,7 @@ I nuovi test aggiunti falliranno, perché la nostra implementazione non li suppo
 
 ```smart header="Altre asserzioni"
 
+<<<<<<< HEAD
 Metto in evidenza l'asserzione `assert.isNaN`: che effettua controlli di tipo `NaN`.
 
 In Chai sono presenti molte altre asserzioni, ad esempio:
@@ -346,6 +371,16 @@ In Chai sono presenti molte altre asserzioni, ad esempio:
 - `assert.isTrue(value)` -- esegue il controllo `value === true`
 - `assert.isFalse(value)` -- verifica che `value === false`
 - ...l'inter lista è disponibile nella [documentazione](http://chaijs.com/api/assert/)
+=======
+There are other assertions in [Chai](https://www.chaijs.com/) as well, for instance:
+
+- `assert.equal(value1, value2)` -- checks the equality  `value1 == value2`.
+- `assert.strictEqual(value1, value2)` -- checks the strict equality `value1 === value2`.
+- `assert.notEqual`, `assert.notStrictEqual` -- inverse checks to the ones above.
+- `assert.isTrue(value)` -- checks that `value === true`
+- `assert.isFalse(value)` -- checks that `value === false`
+- ...the full list is in the [docs](https://www.chaijs.com/api/assert/)
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ```
 
 Dovremmo quindi aggiungere un paio di linee a `pow`:

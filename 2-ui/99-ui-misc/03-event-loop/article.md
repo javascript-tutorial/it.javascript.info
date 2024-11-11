@@ -18,7 +18,11 @@ A grandi linee, l'algoritmo del motore è così:
 
 Questa è una trasposizione di quello che vediamo mentre navighiamo in una pagina web. Il motore di Javascript non fa nulla per la maggior parte del tempo, e va in esecuzione quando si attiva uno script/handler/evento.
 
+<<<<<<< HEAD
 Esempio di tasks:
+=======
+That's a formalization of what we see when browsing a page. The JavaScript engine does nothing most of the time, it only runs if a script/handler/event activates.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 - Quando viene caricato uno script esterno `<script src="...">` (load), il task è quello di eseguirlo.
 - Quando un utente sposta il puntatore del mouse, il task è quello di lanciare il dispatch dell'evento `mousemove` ed eseguirne eventuali handlers (gestori).
@@ -29,6 +33,7 @@ I task vengono impostati -- il motore li gestisce -- quindi rimane in attesa per
 
 Però potrebbe succedere che mentre il motore è occupato, arrivi un task, in questo caso, questo viene messo in coda.
 
+<<<<<<< HEAD
 I task formano una coda, la cosiddetta "macrotask queue" (termine mutuato da V8, il motore Javascript di Chrome e di Node.js):
 
 ![](eventLoop.svg)
@@ -37,12 +42,29 @@ Ad esempio se, mentre il motore è occupato nell'esecuzione di uno `script`, l'u
 
 I tasks dalla coda vengono processati sulla base del "first come – first served", cioè secondo l'ordine per cui il primo arrivato sarà il primo ad essere servito (FIFO). 
 Quando il motore del browser avrà terminato con lo `script`, gestirà l'evento `mousemove`, quindi si occuperà del gestore del `setTimeout` (la callback), e via dicendo.
+=======
+It may happen that a task comes while the engine is busy, then it's enqueued.
+
+The tasks form a queue, the so-called "macrotask queue" ([v8](https://v8.dev/) term):
+
+![](eventLoop.svg)
+
+For instance, while the engine is busy executing a `script`, a user may move their mouse causing `mousemove`, and `setTimeout` may be due and so on, these tasks form a queue, as illustrated in the picture above.
+
+Tasks from the queue are processed on a "first come – first served" basis. When the engine browser is done with the `script`, it handles `mousemove` event, then `setTimeout` handler, and so on.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Fino a qui abbastanza semplice, giusto?
 
+<<<<<<< HEAD
 Ancora due dettagli:
 1. Il rendering non avviene mai quando il motore sta eseguendo un task. Non importa se questo impiega molto tempo. I cambiamenti al DOM vengono renderizzati (ridisegnati sul browser) solo dopo che il task viene completato.
 2. Se un task impiega troppo tempo, il browser non può eseguire altri tasks, processare altri eventi utente, e così dopo un certo periodo di tempo viene scaturito un alert di "Pagina bloccata" (Page Unresponsive) che ci suggerisce di terminare il task e l'intera pagina. Questo succede in concomitanza di una serie di calcoli complessi, o in seguito ad errori di programmazione che portano loop infiniti.
+=======
+Two more details:
+1. Rendering never happens while the engine executes a task. It doesn't matter if the task takes a long time. Changes to the DOM are painted only after the task is complete.
+2. If a task takes too long, the browser can't do other tasks, such as processing user events. So after some time, it raises an alert like "Page Unresponsive", suggesting killing the task with the whole page. That happens when there are a lot of complex calculations or a programming error leading to an infinite loop.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ok, questa era la teoria, ma vediamo come mettere in pratica questi concetti.
 
@@ -55,7 +77,11 @@ Per evidenziare il codice, compie delle analisi, crea molti elementi colorati, e
 
 Mentre il motore è occupato con l'evidenziazione, non può fare altre cose relative al DOM, processare gli eventi dell'utente, etc. può  persino causare rallentamenti al pc o addirittura bloccarlo, la qual cosa è inaccettabile.
 
+<<<<<<< HEAD
 Possiamo quindi tirarci fuori da questo tipo di problemi, spezzettando i task grossi in piccoli pezzi da eseguire. Evidenzia le prime 100 righe, quindi schedula un `setTimeout` (con zero-delay) con altre 100 righe, e così via fino alla fine.
+=======
+We can avoid problems by splitting the big task into pieces. Highlight the first 100 lines, then schedule `setTimeout` (with zero-delay) for the next 100 lines, and so on.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Per dimostrare questo tipo di approccio, e per amore della semplicità, anziché evidenziare una sintassi, prendiamo una funzione che conti i numeri da `1` a `1000000000`
 

@@ -1,6 +1,10 @@
 # The Modern JavaScript Tutorial in italiano
 
+<<<<<<< HEAD
 Benvenuti a tutti i nuovi contributors! 👋
+=======
+This repository hosts the English content of the Modern JavaScript Tutorial, published at [https://javascript.info](https://javascript.info).
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 In questa repository viene pubblicata la traduzione italiana del tutorial [javascript.info](https://javascript.info).
 
@@ -12,20 +16,32 @@ Prima di iniziare ti segnalo che esiste anche un **[Canale Discord](https://disc
 
 Se hai deciso di contribuire innanzitutto ti ringrazio per il supporto, e ti chiedo di leggere fino alla fine questo documento, in modo da velocizzare le revisioni e ridurre gli errori, ci vorranno meno di 5 minuti!
 
+<<<<<<< HEAD
 ## Indice
   - [Note importanti](#importante)
   - [Come contribuire](#come-contribuire)
   - [Consigli per la traduzione](#consigli-per-la-traduzione)
 
 ## Importante
+=======
+Something's wrong? A topic is missing? Explain it to people, add it as PR 👏
+
+**You can edit the text in any editor.** The tutorial uses an enhanced "markdown" format, easy to grasp. And if you want to see how it looks on-site, there's a server to run the tutorial locally at <https://github.com/javascript-tutorial/server>.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 - Quando effettui le traduzioni lavora **sempre** in un branch dedicato, in questo modo manteniamo il branch `master` il più pulito possibile. Continua a leggere per maggiori informazioni.
 
 - Quando effettui le traduzioni fai sempre riferimento al [repository inglese](https://github.com/javascript-tutorial/en.javascript.info). Il tutorial è in costante aggiornamento, quindi gli articoli presenti in questo repository potrebbero non essere aggiornati all'ultima versione.
 
+<<<<<<< HEAD
 ## Come contribuire
 
 Ti chiedo di leggere rapidamente anche il documento [CONTRIBUTING.MD](https://github.com/javascript-tutorial/it.javascript.info/blob/master/CONTRIBUTING.md), in cui potrai trovare tutte le informazioni sul modo migliore per collaborare al respository!
+=======
+Every chapter, article, or task has its folder.
+
+The folder is named like `N-url`, where `N` is a number for the sorting purposes and `URL` is the URL part with the title of the material.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ## Consigli per la traduzione
 

@@ -59,7 +59,11 @@ alert( getMaxSubSum([100, -9, 2, -3, 5]) ); // 100
 
 La soluzione ha una complessità di [O(n<sup>2</sup>)](https://en.wikipedia.org/wiki/Big_O_notation). In altre parole, se l'array fosse 2 volte più grande, l'algoritmo lavorerebbe 4 volte più lentamente.
 
+<<<<<<< HEAD
 Per grandi array (1000, 10000 o più elementi) questi algoritmi possono portare ad enormi attese.
+=======
+For big arrays (1000, 10000 or more items) such algorithms can lead to serious sluggishness.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 # Soluzione performante
 
@@ -91,4 +95,8 @@ alert( getMaxSubSum([-1, -2, -3]) ); // 0
 
 L'algoritmo richiede esattamente uno solo scorrimento dell'array, quindi la complessità è O(n).
 
+<<<<<<< HEAD
 Potete trovare maggiori dettagli riguardo l'algoritmo qui: [Maximum subarray problem](http://en.wikipedia.org/wiki/Maximum_subarray_problem). Se ancora non vi risulta ovvio il funzionamento, esaminate più in dettaglio il codice fornito sopra.
+=======
+You can find more detailed information about the algorithm here: [Maximum subarray problem](http://en.wikipedia.org/wiki/Maximum_subarray_problem). If it's still not obvious why that works, then please trace the algorithm on the examples above, see how it works, that's better than any words.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
