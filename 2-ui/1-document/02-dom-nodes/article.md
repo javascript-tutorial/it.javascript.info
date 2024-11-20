@@ -212,7 +212,7 @@ Per vedere la struttura del DOM in real-time, prova [Live DOM Viewer](http://sof
 
 Un altro modo per esplorare il DOM è usare gli "Strumenti per sviluppatori" del browser. Strumenti che usiamo quando sviluppiamo.
 
-Per procedere in questo modo, apri la pagina web [elks.html](elks.html), apri "Strumenti per sviluppatori" e spostati sulla scheda "Elements".
+Per procedere in questo modo, apri la pagina web [elk.html](elk.html), apri "Strumenti per sviluppatori" e spostati sulla scheda "Elements".
 
 Dovrebbe apparire così:
 
