@@ -189,7 +189,7 @@ let clone = Object.assign({}, user);
 
 Vengono copiate tutte le proprietà di `user` nell'oggetto vuoto, il quale, poi, viene restituito.
 
-There are also other methods of cloning an object, e.g. using the [spread syntax](info:rest-parameters-spread) `clone = {...user}`, covered later in the tutorial.
+Esistono altri metodi di clonazione di un oggetto, per esempio usando la [spread syntax](info:rest-parameters-spread) `clone = {...user}`, trattato più avanti nel tutorial.
 
 Finora abbiamo assunto che le proprietà di `user` fossero primitive. Ma le proprietà possono anche essere riferimenti ad altri oggetti. Come si fa in questo caso? 
 
