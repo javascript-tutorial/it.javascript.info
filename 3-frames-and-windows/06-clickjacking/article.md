@@ -154,7 +154,11 @@ In base al browser che state utilizzando, l'`iframe` definito sopra potrebbe o e
 
 ## Visualizzazione con funzionalità limitate
 
+<<<<<<< HEAD
 L'utilizzo dell'header `X-Frame-Options` causa un side-effect. Le altre pagine non saranno in grado di mostrare la nostra pagina in un iframe, anche se queste non avessero scopi malevoli.
+=======
+The `X-Frame-Options` header has a side effect. Other sites won't be able to show our page in a frame, even if they have good reasons to do so.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Quindi ci sono altre soluzioni... Ad esempio, possiamo "racchiudere" la pagina con un `<div>` e impostargli come stile `height: 100%; width: 100%;`, in questo modo intercetterà tutti i click. Andremo poi a rimuovere quel `<div>` nel caso in cui `window == top` o se ci rendiamo conto di non avere bisogno di questa protezione.
 
