@@ -78,7 +78,13 @@ function loadScript(src, *!*callback*/!*) {
 }
 ```
 
+<<<<<<< HEAD
 Ora se volessimo chiamare nuove funzioni dallo script, dovremmo scriverlo nella callback:
+=======
+The `onload` event is described in the article <info:onload-onerror#loading-a-script>, it basically executes a function after the script is loaded and executed.
+
+Now if we want to call new functions from the script, we should write that in the callback:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```js
 loadScript('/my/script.js', function() {
@@ -102,8 +108,13 @@ function loadScript(src, callback) {
 
 *!*
 loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', script => {
+<<<<<<< HEAD
   alert(`Cool, the ${script.src} is loaded`);
   alert( _ ); // funzione dichiarata nello script caricato
+=======
+  alert(`Cool, the script ${script.src} is loaded`);
+  alert( _ ); // _ is a function declared in the loaded script
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 });
 */!*
 ```
@@ -197,9 +208,15 @@ Quindi la singola funzione `callback` è usata sia per riportare gli errori che 
 
 ## Piramide del fato (Pyramid of Doom)
 
+<<<<<<< HEAD
 Ad una prima occhiata, è un modo pratico di programmare in modo asincrono. Ed infatti lo è. Per una, forse due, chiamate annidate sembra che funzioni.
 
 Ma per molte azioni asincrone che si susseguono una dopo l'altra avremo codice come questo:
+=======
+At first glance, it looks like a viable approach to asynchronous coding. And indeed it is. For one or maybe two nested calls it looks fine.
+
+But for multiple asynchronous actions that follow one after another, we'll have code like this:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```js
 loadScript('1.js', function(error, script) {
@@ -229,10 +246,17 @@ loadScript('1.js', function(error, script) {
 });
 ```
 
+<<<<<<< HEAD
 Nel codice sopra:
 1. Carichiamo `1.js`, poi se non ci sono errori.
 2. Carichiamo `2.js`, poi se non ci sono errori.
 3. Carichiamo `3.js`, poi se non ci sono errori -- facciamo qualcos'altro `(*)`.
+=======
+In the code above:
+1. We load `1.js`, then if there's no error...
+2. We load `2.js`, then if there's no error...
+3. We load `3.js`, then if there's no error -- do something else `(*)`.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Mano a mano che le chiamate diventano più annidate, il codice diventa più profondo e via via più complicato da gestire, specialmente se abbiamo codice reale invece di `...`, che può includere più cicli, condizioni e così via.
 
@@ -300,7 +324,11 @@ function step3(error, script) {
 }
 ```
 
+<<<<<<< HEAD
 Visto? Fa la stessa cosa, e non ci sono annidamenti profondi perché abbiamo reso ogni azione una funzione separata di primo livello.
+=======
+See? It does the same thing, and there's no deep nesting now because we made every action a separate top-level function.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Funziona ma il codice sembra un foglio di lavoro diviso. È difficile da leggere e probabilmente hai notato che bisogna saltare con lo sguardo tra i vari pezzi quando lo si legge. Non è conveniente, in particolare se il lettore non è familiare con il codice e non sa dove saltare con lo sguardo.
 
@@ -308,4 +336,8 @@ Inoltre, le funzioni chiamate `step*` sono tutte usate una sola volta, sono crea
 
 Ci piacerebbe avere qualcosa di meglio.
 
+<<<<<<< HEAD
 Fortunatamente, ci sono altri modi di evitare queste piramidi. Uno dei modi migliori è di usare le "promise" descritte nel capitolo successivo.
+=======
+Luckily, there are other ways to avoid such pyramids. One of the best ways is to use "promises", described in the next chapter.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3

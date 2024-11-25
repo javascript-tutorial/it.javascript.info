@@ -143,7 +143,11 @@ Documentare l'utilizzo di una funzione
 
     I molti casi, gli editor come [WebStorm](https://www.jetbrains.com/webstorm/) sono in grado di comprenderli e possono quindi utilizzarli per autocompletamenti e alcune verifiche automatiche del codice.
 
+<<<<<<< HEAD
     Ci sono anche tool come [JSDoc 3](https://github.com/jsdoc3/jsdoc) che possono generare documentazione in HTML a partire dai commenti. Puoi scoprire di più riguardo JSDoc su <http://usejsdoc.org/>.
+=======
+Also, there are tools like [JSDoc 3](https://github.com/jsdoc/jsdoc) that can generate HTML-documentation from the comments. You can read more information about JSDoc at <https://jsdoc.app>.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Perché l'azione viene risolta in quel modo?
 : Quello che viene scritto è fondamentale. Ma quello che *non* viene scritto potrebbe esserlo anche di più per capire cosa sta succedendo. Perché l'azione viene portata a termine in quel modo? Il codice non fornisce risposte.

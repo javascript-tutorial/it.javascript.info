@@ -18,11 +18,16 @@ L'algoritmo di base del Drag'n'Drop è qualcosa del genere:
 2. Quindi al `mousemove` spostalo variando `left/top` con il `position:absolute`.
 3. Al `mouseup` - esegui tutte le azioni coinvolte per completare il drag'n'drop.
 
+<<<<<<< HEAD
 Queste sono le basi. Dopo vedremo come gestire altre caratteristiche, come evidenziare gli altri elementi sottostanti mentre effettuiamo il trascinamento su di essi.
+=======
+These are the basics. Later we'll see how to add other features, such as highlighting current underlying elements while we drag over them.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ecco un'implementazione del trascinamento di un pallone:
 
 ```js
+<<<<<<< HEAD
 ball.onmousedown = function(event) { 
   // (1) preparazione dello spostamento: imposta il posizionamento assoluto e lo z-index al massimo valore utile
   ball.style.position = 'absolute';
@@ -31,6 +36,16 @@ ball.onmousedown = function(event) {
   // spostamento all'esterno da ogni elemento genitore e direttamente verso il body della pagina
   // per posizionarlo relativamente ad esso
   document.body.append(ball);  
+=======
+ball.onmousedown = function(event) {
+  // (1) prepare to moving: make absolute and on top by z-index
+  ball.style.position = 'absolute';
+  ball.style.zIndex = 1000;
+
+  // move it out of any current parents directly into body
+  // to make it positioned relative to the body
+  document.body.append(ball);
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
   // centratura del pallone alle coordinate (pageX, pageY)
   function moveAt(pageX, pageY) {
@@ -93,14 +108,22 @@ Di conseguenza dovremmo metterci in ascolto sul `document` per la cattura.
 
 ## Posizionamento corretto
 
+<<<<<<< HEAD
 Negli esempi precedenti il pallone viene sempre spostato in modo che il suo centro sia sotto il puntatore:
+=======
+In the examples above the ball is always moved so that its center is under the pointer:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```js
 ball.style.left = pageX - ball.offsetWidth / 2 + 'px';
 ball.style.top = pageY - ball.offsetHeight / 2 + 'px';
 ```
 
+<<<<<<< HEAD
 Non male, ma c'è un effetto collaterale. Per innescare il drag'n'drop, potremmo cominciare `mousedown` da un punto qualunque del pallone. Ma se lo "prendessimo" dai bordi, si centrerebbe repentinamente sotto il puntatore facendo una specie di "salto".
+=======
+Not bad, but there's a side effect. To initiate the drag'n'drop, we can `mousedown` anywhere on the ball. But if "take" it from its edge, then the ball suddenly "jumps" to become centered under the mouse pointer.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Sarebbe meglio se mantenessimo lo spostamento iniziale dell'elemento rispetto al puntatore.
 
@@ -219,7 +242,11 @@ Questo è il motivo per cui l'idea iniziale di impostare i gestori su dei potenz
 
 Come fare, quindi?
 
+<<<<<<< HEAD
 C'è un metodo chiamato `document.elementFromPoint(clientX, clientY)` che restituisce le coordinate relative alla window, dell'elemento più annidato (o `null` se le coordinate restituite sono fuori dalla window).
+=======
+There's a method called `document.elementFromPoint(clientX, clientY)`. It returns the most nested element on given window-relative coordinates (or `null` if given coordinates are out of the window). If there are multiple overlapping elements on the same coordinates, then the topmost one is returned.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Possiamo usarlo su qualunque nostro gestore di evento del mouse per rilevare dei potenziali droppable sotto il puntatore, in questo modo:
 

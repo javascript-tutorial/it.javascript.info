@@ -122,8 +122,13 @@ user.name = "Pete"; // Error: Cannot assign to read only property 'name'
 
 Ora nessuno potrà modificare il nome dell'utente, a meno che non vada a sovrascrivere il valore degli attributi con `defineProperty`.
 
+<<<<<<< HEAD
 ```smart header="Gli errori verranno mostrati solamente in strict mode"
 Se non siamo in "strict mode", e tentiamo di sovrascrivere una proprietà non-writable, non verrà mostrato alcun errore. Nonostante non venga mostrato l'errore, l'operazione fallirà comunque. Quindi le violazioni di attributi fuori dalla strict mode verranno silenziosamente  ignorate.
+=======
+```smart header="Errors appear only in strict mode"
+In non-strict mode, no errors occur when writing to non-writable properties and such. But the operation still won't succeed. Flag-violating actions are just silently ignored in non-strict.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ```
 
 Qui vediamo lo stesso esempio, ma la proprietà viene creata dal nulla:
@@ -315,7 +320,11 @@ for (let key in user) {
 
 ...Ma in questo modo non stiamo copiando gli attributi. Quindi per una clonazione più completa, l'utilizzo di `Object.defineProperties` è la scelta migliore.
 
+<<<<<<< HEAD
 Un'altra differenza è che `for..in` ignora le proprietà di tipo `symbol`, mentre `Object.getOwnPropertyDescriptors` ritorna *tutti* i descrittori, inclusi quelli di tipo symbol.
+=======
+Another difference is that `for..in` ignores symbolic and non-enumerable properties, but `Object.getOwnPropertyDescriptors` returns *all* property descriptors including symbolic and non-enumerable ones.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ## Sigillare un oggetto globalmente
 
