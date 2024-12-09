@@ -24,7 +24,7 @@ La parola chiave `function` va posta all'inizio; viene seguita dal *nome della f
 
 ```js
 function name(parameter1, parameter2, ... parameterN) {
-  ...body...
+ // body
 }
 ```
 
@@ -177,8 +177,13 @@ Quando un valore viene passato come parametro di funzione, vine anche chiamato *
 In altre parole
 In other words, per chiarire questi termini:
 
+<<<<<<< HEAD
 - Un parametro è la variabile elencata tra parentesi nella dichiarazione della funzione (fa parte della dichiarazione).
 - Un argomento è il valore passato alla funzione quando viene chiamata (fa parte della chiamata).
+=======
+- A parameter is the variable listed inside the parentheses in the function declaration (it's a declaration time term).
+- An argument is the value that is passed to the function when it is called (it's a call time term).
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Dichiariamo le funzioni elencando i loro parametri, quindi le chiamiamo passando gli argomenti.
 
@@ -206,7 +211,17 @@ function showMessage(from, *!*text = "no text given"*/!*) {
 showMessage("Ann"); // Ann: nessun text fornito
 ```
 
+<<<<<<< HEAD
 Adesso, se il parametro `text` non viene passato, assumerà il valore `"no text given"`
+=======
+Now if the `text` parameter is not passed, it will get the value `"no text given"`.
+
+The default value also jumps in if the parameter exists, but strictly equals `undefined`, like this:
+
+```js
+showMessage("Ann", undefined); // Ann: no text given
+```
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 In questo caso `"no text given"` è una stringa, ma potrebbe essere un'espressione più complessa, che viene valutata e assegnata solamente se il parametro non viene fornito. Quindi, è possibile anche:
 
@@ -225,7 +240,45 @@ Nell'esempio sopra, `anotherFunctions()` non viene chiamata se viene passato il 
 Viene invece chiamata ogni volta che il parametro manca.
 ```
 
+<<<<<<< HEAD
 A volte ha senso assegnare valori default ai parametri, non nella dichiarazione della funzione, ma in una fase successiva.
+=======
+````smart header="Default parameters in old JavaScript code"
+Several years ago, JavaScript didn't support the syntax for default parameters. So people used other ways to specify them.
+
+Nowadays, we can come across them in old scripts.
+
+For example, an explicit check for `undefined`:
+
+```js
+function showMessage(from, text) {
+*!*
+  if (text === undefined) {
+    text = 'no text given';
+  }
+*/!*
+
+  alert( from + ": " + text );
+}
+```
+
+...Or using the `||` operator:
+
+```js
+function showMessage(from, text) {
+  // If the value of text is falsy, assign the default value
+  // this assumes that text == "" is the same as no text at all
+  text = text || 'no text given';
+  ...
+}
+```
+````
+
+
+### Alternative default parameters
+
+Sometimes it makes sense to assign default values for parameters at a later stage after the function declaration.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Possiamo verificare se il parametro viene passato durante l'esecuzione della funzione, confrontandolo con `undefined`:
 
@@ -409,7 +462,11 @@ Questi esempi assumono i significati comuni dei prefissi. Il loro significato di
 ```smart header="Nomi di funzioni ultra-corti"
 Funzioni che vengono utilizzate *molto spesso* potrebbero avere nomi molto corti.
 
+<<<<<<< HEAD
 Ad esempio il framework [jQuery](http://jquery.com) definisce una funzione con `$`. La libreria [Lodash](http://lodash.com/) ha nel *core* una funzione denominata `_`.
+=======
+For example, the [jQuery](https://jquery.com/) framework defines a function with `$`. The [Lodash](https://lodash.com/) library has its core function named `_`.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Queste sono eccezioni. Generalmente i nomi delle funzioni dovrebbero essere concisi e descrittivi.
 ```
@@ -477,7 +534,11 @@ function name(parameters, delimited, by, comma) {
 
 Per rendere il codice pulito e più facile da leggere, è consigliabile utilizzare principalmente variabili locali e parametri di funzione, non variabili esterne.
 
+<<<<<<< HEAD
 E' sempre più facile capire una funzione che accetta parametri, li lavora e ritorna un valore piuttosto di una funzione che non richiede parametri ma, come effetto collaterale, modifica variabili esterne.
+=======
+It is always easier to understand a function which gets parameters, works with them and returns a result than a function which gets no parameters, but modifies outer variables as a side effect.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Denominare le funzioni:
 

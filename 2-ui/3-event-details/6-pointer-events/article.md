@@ -65,11 +65,19 @@ Gli eventi del puntatore hanno le stesse proprietà di quelli del mouse, come `c
 
 Alcuni dispositivi di puntamento misurano l'area di contatto e la pressione, ad esempio, nel caso del dito sul touchscreen, esistono delle apposite proprietà aggiuntive:
 
+<<<<<<< HEAD
 - `width` - la larghezza dell'area dello schermo toccato dal puntatore (ad esempio un dito). Dove non supportato, il valore è sempre `1`, come nel caso del mouse. 
 - `height` - l'altezza dell'area dello schermo toccato dal puntatore. Dove non supportato è sempre `1`.
 - `pressure` - la pressione della punta del dispositivo puntatore, in un intervallo di valori che va da 0 a 1. Per dispositivi che non supportano la pressione, i valori potranno essere `0` (non premuto) e `0.5` (premuto).
 - `tangentialPressure` - la pressione tangenziale normalizzata.
 - `tiltX`, `tiltY`, `twist` - proprietà specifiche delle penne che descrivono come la penna è posizionata rispetto alla superficie dello schermo.
+=======
+- `width` - the width of the area where the pointer (e.g. a finger) touches the device. Where unsupported, e.g. for a mouse, it's always `1`.
+- `height` - the height of the area where the pointer touches the device. Where unsupported, it's always `1`.
+- `pressure` - the pressure of the pointer tip, in range from 0 to 1. For devices that don't support pressure must be either `0.5` (pressed) or `0`.
+- `tangentialPressure` - the normalized tangential pressure.
+- `tiltX`, `tiltY`, `twist` - pen-specific properties that describe how the pen is positioned relative to the surface.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Queste proprietà non sono supportate dalla maggioranza dei dispositivi, per questo vengono usate raramente. In caso di necessità potete trovarne i dettagli nelle [specifiche](https://w3c.github.io/pointerevents/#pointerevent-interface).
 
@@ -111,7 +119,11 @@ Le cause possono essere:
 
 Ecco un caso reale di evento `pointercancel` per vedere cosa e come ci influenza.
 
+<<<<<<< HEAD
 Mettiamo il caso che stiamo implementando il drag'n'drop per un pallone, proprio come fatto all'inizio dell'articolo <info:mouse-drag-and-drop>.
+=======
+Let's say we're implementing drag'n'drop for a ball, just as in the beginning of the article <info:mouse-drag-and-drop>.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ecco il flusso delle azioni dell'utente e gli eventi corrispondenti:
 
@@ -126,7 +138,11 @@ Ecco il flusso delle azioni dell'utente e gli eventi corrispondenti:
 Qui il problema è che il browser "dirotta" l'interazione: viene generato `pointercancel` all'inizio del processo di "drag-and-drop", e non vengono più generati eventi `pointermove`.
 
 ```online
+<<<<<<< HEAD
 Ecco una demo con drag'n'drop con il tracciamento degli eventi del puntatore (solo per `up/down`, `move` e `cancel`) nella `textarea`: 
+=======
+Here's the drag'n'drop demo with logging of pointer events (only `up/down`, `move` and `cancel`) in the `textarea`:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 [iframe src="ball" height=240 edit]
 ```

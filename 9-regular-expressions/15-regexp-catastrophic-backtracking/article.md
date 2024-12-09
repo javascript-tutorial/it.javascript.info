@@ -282,7 +282,13 @@ alert( "JavaScript".match(/(?=(\w+))\1Script/)); // null
 
 Possiamo porre un'espressione regolare più complicata in `pattern:(?=(\w+))\1` al posto di `pattern:\w`, quando abbiamo bisogno di impedire il backtracking per `pattern:\+` dopo di questa.
 
+<<<<<<< HEAD
 ---
+=======
+```smart
+There's more about the relation between possessive quantifiers and lookahead in articles [Regex: Emulate Atomic Grouping (and Possessive Quantifiers) with LookAhead](https://instanceof.me/post/52245507631/regex-emulate-atomic-grouping-with-lookahead) and [Mimicking Atomic Groups](https://blog.stevenlevithan.com/archives/mimic-atomic-groups).
+```
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 C'è altro materiale sulla relazione tra quantificatori possessivi e lookahead negli articoli [Regex: Emulate Atomic Grouping (and Possessive Quantifiers) with LookAhead](http://instanceof.me/post/52245507631/regex-emulate-atomic-grouping-with-lookahead) e [Mimicking Atomic Groups](http://blog.stevenlevithan.com/archives/mimic-atomic-groups).
 

@@ -105,7 +105,11 @@ class Rabbit extends Animal {
 }
 ```
 
+<<<<<<< HEAD
 ...Normalmente però non vogliamo rimpiazzare completamente il metodo ereditato, ma piuttosto costruire su di esso, modificarlo leggermente o estendere le sue funzionalità. Nel nostro metodo compiamo delle azioni, ma ad un certo punto richiamiamo il metodo ereditato.
+=======
+Usually, however, we don't want to totally replace a parent method, but rather to build on top of it to tweak or extend its functionality. We do something in our method, but call the parent method before/after it or in the process.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Le classi forniscono la parola chiave `"super"` per questo scopo.
 
@@ -158,7 +162,12 @@ Ora `Rabbit` contiene il metodo `stop`, che richiama al suo interno il metodo `s
 ````smart header="Le funzioni a freccia (Arrow functions) non hanno `super`"
 Come accennato nel capitolo <info:arrow-functions>, all'interno delle funzioni a freccia (arrow functions)non si può utilizzare la parola `super` 
 
+<<<<<<< HEAD
 Se acceduto, esso viene preso dalla funzione esterna. Per esempio:
+=======
+If accessed, it's taken from the outer function. For instance:
+
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ```js
 class Rabbit extends Animal {
   stop() {
@@ -175,9 +184,13 @@ setTimeout(function() { super.stop() }, 1000);
 ```
 ````
 
+<<<<<<< HEAD
 ## Sovrascrivere il costruttore
 
 Sovrascrivere un costruttore è leggermente più complicato.
+=======
+## Overriding constructor
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Finora, `Rabbit` non ha avuto il suo metodo`constructor`.
 
@@ -278,11 +291,18 @@ alert(rabbit.earLength); // 10
 */!*
 ```
 
+<<<<<<< HEAD
 
 ### Sovrascrivere i campi di una classe
 
 ```warn header="Nota avanzata"
 Questa nota assume che voi abbiate una certa esperienza con le classi, anche in altri linguaggi di programmazione.
+=======
+### Overriding class fields: a tricky note
+
+```warn header="Advanced note"
+This note assumes you have a certain experience with classes, maybe in other programming languages.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Fornisce una spiegazione più dettagliata del linguaggio e ne illustra il comportamento che potrebbe essere fonte di errori (anche se molto rari).
 
@@ -367,14 +387,22 @@ Nel nostro caso, `Rabbit` è la classe derivata. Non c'è alcun `constructor()` 
 
 Quindi, `new Rabbit()` invoca `super()`, che esegue il costruttore genitore, e (per le regole che segue la classe derivata) solamente dopo vengono inizializzati i suoi campi dati. Al momento dell'esecuzione del costruttore genitore, non esiste alcun capo dato in `Rabbit`, questo è il motivo per cui vengono utilizzati i campi dati di `Animal`.
 
+<<<<<<< HEAD
 Abbiamo quindi una sottile differenza di trattamento tra i campi dati ed i metodi in JavaScript.
+=======
+This subtle difference between fields and methods is specific to JavaScript.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Fortunatamente, questo comportamento si verifica solamente se un campo dati va a sovrascrivere quelli della classe genitore. Potrebbe essere difficile da capire come comportamento, per questo lo abbiamo spiegato.
 
 Se dovesse verificarsi questo problema, si possono utilizzare i metodi invece dei campi dati.
 
+<<<<<<< HEAD
 
 ## Super: internamente, [[HomeObject]]
+=======
+## Super: internals, [[HomeObject]]
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```warn header="Informazioni avanzate"
 Se state leggendo il tutorial per la prima volta - questa sezione può essere saltata.

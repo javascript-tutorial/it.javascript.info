@@ -7,7 +7,11 @@ Sappiamo che una funzione può accedere alle variabili esterne, questa caratteri
 
 Cosa accade quando una variabile esterna cambia? La funzione utilizza il valore più recente o quello presente al momento della creazione della funzione?
 
+<<<<<<< HEAD
 Inoltre, cosa accade quando una funzione viene spostata in un altro punto del codice e viene richiamata -- avrebbe accesso alle variabile esterne della nuova posizione?
+=======
+And what if a function is passed along as an argument and called from another place of code, will it get access to outer variables at the new place?
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 In questa situazione linguaggi diversi si comportano in maniera diversa, in questo capitolo ci occuperemo del comportamento di JavaScript.
 
