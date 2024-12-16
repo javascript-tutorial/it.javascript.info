@@ -92,6 +92,38 @@ let fruits = [
 La "virgola pendente" rende più semplice inserire/rimuovere elementi, perché tutte le linee seguono la stessa struttura.
 ````
 
+## Get last elements with "at"
+
+[recent browser="new"]
+
+Let's say we want the last element of the array.
+
+Some programming languages allow the use of negative indexes for the same purpose, like `fruits[-1]`.
+
+Although, in JavaScript it won't work. The result will be `undefined`, because the index in square brackets is treated literally.
+
+We can explicitly calculate the last element index and then access it: `fruits[fruits.length - 1]`.
+
+```js run
+let fruits = ["Apple", "Orange", "Plum"];
+
+alert( fruits[fruits.length-1] ); // Plum
+```
+
+A bit cumbersome, isn't it? We need to write the variable name twice.
+
+Luckily, there's a shorter syntax: `fruits.at(-1)`:
+
+```js run
+let fruits = ["Apple", "Orange", "Plum"];
+
+// same as fruits[fruits.length-1]
+alert( fruits.at(-1) ); // Plum
+```
+
+In other words, `arr.at(i)`:
+- is exactly the same as `arr[i]`, if `i >= 0`.
+- for negative values of `i`, it steps back from the end of the array.
 
 ## I metodi pop/push, shift/unshift
 
@@ -121,9 +153,15 @@ Uno stack viene spesso illustrato come un pacco di carte: le nuove carte vengono
 
 Negli gli stack, l'ultimo elemento inserito viene prelevato per primo. Questo comportamento viene definito LIFO (Last-In-First-Out). Nel caso delle code, il comportamento viene chiamato FIFO (First-In-First-Out).
 
+<<<<<<< HEAD
 Gli array in JavaScript possono implementare sia una queue che uno stack. C'è la possibilità di aggiungere/rimuovere elementi sia in cima che in coda.
 
 In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/wiki/Double-ended_queue).
+=======
+Arrays in JavaScript can work both as a queue and as a stack. They allow you to add/remove elements, both to/from the beginning or the end.
+
+In computer science, the data structure that allows this, is called [deque](https://en.wikipedia.org/wiki/Double-ended_queue).
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 **Metodi che operano sulla coda di un array:**
 
@@ -137,6 +175,8 @@ In informatica questa struttura dati si chiama [deque](https://en.wikipedia.org/
 
     alert( fruits ); // Apple, Orange
     ```
+
+    Both `fruits.pop()` and `fruits.at(-1)` return the last element of the array, but `fruits.pop()` also modifies the array by removing it.
 
 `push`
 : Inserisce l'elemento in coda all'array:
@@ -248,7 +288,11 @@ Perché è più veloce eseguire operazioni sulla coda degli array rispetto a que
 fruits.shift(); // prende 1 elemento dall'inizio
 ```
 
+<<<<<<< HEAD
 Non è sufficiente prelevare e rimuovere l'elemento con l'indice `0`. Gli altri elementi dovranno essere rinumerati.
+=======
+It's not enough to take and remove the element with the index `0`. Other elements need to be renumbered as well.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 L'operazione di `shift` deve seguire 3 passi:
 
@@ -365,11 +409,19 @@ C'è un ulteriore sintassi per creare un array:
 let arr = *!*new Array*/!*("Apple", "Pear", "etc");
 ```
 
+<<<<<<< HEAD
 Viene utilizzata raramente, le parentesi `[]` risultano più brevi. Anche se c'è una caratteristica interessante che va osservata.
+=======
+It's rarely used, because square brackets `[]` are shorter. Also, there's a tricky feature with it.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Se utilizziamo `new Array` con un solo argomento di tipo numerico, allora verrà creato un array *vuoto, ma con lunghezza data*.
 
+<<<<<<< HEAD
 Quindi vediamo come ci si potrebbe sparare da soli al piede:
+=======
+Let's see how one can shoot themselves in the foot:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```js run
 let arr = new Array(2); // creerà un array [2] ?
@@ -394,7 +446,11 @@ let matrix = [
   [7, 8, 9]
 ];
 
+<<<<<<< HEAD
 alert( matrix[1][1] ); // l'elemento centrale
+=======
+alert( matrix[0][1] ); // 2, the second value of the first inner array
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ```
 
 ## toString
@@ -441,7 +497,11 @@ Ricordando velocemente le regole:
 - Se uno dei due argomenti forniti all'operatore `==` è un oggetto, e l'altro è un tipo primitivo, allora l'oggetto viene convertito a primitivo, come spiegato nel capitolo <info:object-toprimitive>.
 - ...Con l'eccezione di `null` e `undefined` che sono uguali solamente tra di loro.
 
+<<<<<<< HEAD
 Il confronto stretto con l'operatore `===` è ancora più semplice, poiché non converte i tipi. 
+=======
+The strict comparison `===` is even simpler, as it doesn't convert types.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Quindi, se confrontiamo array con `==`, non saranno mai equivalenti, a meno chè non confrontiamo due variabili che fanno riferimento allo stesso array.
 
@@ -461,7 +521,11 @@ alert( 0 == [] ); // true
 alert('0' == [] ); // false
 ```
 
+<<<<<<< HEAD
 Qui, in entrambi i casi, stiamo confrontando un tipo primitivo con un array. Quindi l'array `[]` viene convertito in tipo primitivo per effettuare il confronto e diventa una stringa vuota `''`. 
+=======
+Here, in both cases, we compare a primitive with an array object. So the array `[]` gets converted to primitive for the purpose of comparison and becomes an empty string `''`.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Successivamente il processo di confronto procede come descritto nel capitolo <info:type-conversions>:
 
@@ -480,6 +544,7 @@ Molto semplice: non utilizzando l'operatore`==`. Invece, vanno confrontati con u
 
 Gli array sono uno speciale tipo di oggetto, studiati per immagazzinare e gestire collezioni ordinate di dati.
 
+<<<<<<< HEAD
 - La dichiarazione:
 
     ```js
@@ -494,13 +559,35 @@ Gli array sono uno speciale tipo di oggetto, studiati per immagazzinare e gestir
 
 - La proprietà `length` è la lunghezza dell'array; in realtà, per essere precisi, contiene l'indice dell'ultimo elemento più uno. Questo valore viene aggiornato automaticamente. 
 - Se decrementiamo manualmente `length`, l'array viene troncato.
+=======
+The declaration:
+
+```js
+// square brackets (usual)
+let arr = [item1, item2...];
+
+// new Array (exceptionally rare)
+let arr = new Array(item1, item2...);
+```
+
+The call to `new Array(number)` creates an array with the given length, but without elements.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Possiamo eseguire sugli arrays le seguenti operazioni:
 
+<<<<<<< HEAD
 - `push(...items)` aggiunge `items` in coda.
 - `pop()` rimuove un elemento dalla coda e lo ritorna.
 - `shift()` rimuove un elemento dalla testa e lo ritorna.
 - `unshift(...items)` aggiunge un elemento alla testa.
+=======
+Getting the elements:
+
+- we can get element by its index, like `arr[0]`
+- also we can use `at(i)` method that allows negative indexes. For negative values of `i`, it steps back from the end of the array. If `i >= 0`, it works same as `arr[i]`.
+
+We can use an array as a deque with the following operations:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Per iterare sugli elementi di un array:
 

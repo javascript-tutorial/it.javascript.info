@@ -24,7 +24,11 @@ Ecco quindi una lista, degli eventi DOM più utili:
 **Eventi dei CSS:**
 - `transitionend` -- quando termina un'animazione CSS (CSS-animation).
 
+<<<<<<< HEAD
 Ci sono molti altri eventi più specifici, che verranno affrontati in dettaglio nei prossimi capitoli.
+=======
+There are many other events. We'll get into more details of particular events in upcoming chapters.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ## Gestori di evento
 
@@ -193,7 +197,11 @@ Assegnare un gestore a `elem.onclick`, e non a `elem.ONCLICK`, in quanto le prop
 
 ## addEventListener
 
+<<<<<<< HEAD
 Il problema principale della sopracitata maniera di assegnare i gestori è che non abbiamo modo di assegnare dei gestori multipli a un evento.
+=======
+The fundamental problem of the aforementioned ways to assign handlers is that we *can't assign multiple handlers to one event*.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ipotizziamo che una parte del nostro codice serva ad evidenziare un pulsante al click, e che un altro serva a mostrare un messaggio al medesimo click.
 
@@ -205,7 +213,11 @@ input.onclick = function() { alert(1); }
 input.onclick = function() { alert(2); } // sostituisce il gestore precedente
 ```
 
+<<<<<<< HEAD
 Gli sviluppatori degli standard web hanno intuito la cosa tempo addietro, e hanno suggerito un modo alternativo per trattare i gestori, usando i metodi speciali `addEventListener` e `removeEventListener`, i quali non sono affetti da questi problemi.
+=======
+Developers of web standards understood that long ago and suggested an alternative way of managing handlers using the special methods `addEventListener` and `removeEventListener` which aren't bound by such constraint.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ecco la sintassi per aggiungere un gestore:
 
@@ -259,7 +271,11 @@ input.removeEventListener("click", handler);
 Nota bene: se non assegnassimo la funzione a una variabile, non potremmo rimuoverla: non c'è alcun modo di "risalire" ai gestori assegnati tramite `addEventListener`.
 ````
 
+<<<<<<< HEAD
 Chiamate multiple a `addEventListener` permettono di aggiungere gestori multipli:
+=======
+Multiple calls to `addEventListener` allow it to add multiple handlers, like this:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```html run no-beautify
 <input id="elem" type="button" value="Click me"/>
@@ -286,7 +302,11 @@ Come visto nell'esempio, possiamo impostare i gestori *in entrambi i modi* sia c
 ````warn header="Per alcuni eventi, i gestori funzionano solo con `addEventListener`"
 Esistono eventi che non possono essere assegnati tramite una proprietà DOM, ma solo con `addEventListener`.
 
+<<<<<<< HEAD
 Un esempio di ciò, è l'evento `DOMContentLoaded`, innescato quando viene completamente caricato il documento e costruita tutta la struttura del DOM.
+=======
+For instance, the `DOMContentLoaded` event, that triggers when the document is loaded and the DOM has been built.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```js
 // non viene mai eseguito
@@ -332,10 +352,17 @@ Alcune proprietà dell'oggetto `event`:
 `event.currentTarget`
 : L'elemento che ha gestito l'evento. Questo è equivalente a `this`, ma se il gestore è una arrow function, o se il suo `this` è legato a qualcos'altro, possiamo usare `event.currentTarget`.
 
+<<<<<<< HEAD
 `event.clientX / event.clientY`
 : Coordinate del cursore relative alla Window, per eventi del puntatore.
 
 Esistono tante altre proprietà., molte delle quali dipendono dal tipo di evento: gli eventi della tastiera hanno un gruppo di proprietà, gli eventi del puntatore un altro ancora, e li studieremo più avanti quando andremo a vedere i vari eventi nel dettaglio.
+=======
+`event.clientX` / `event.clientY`
+: Window-relative coordinates of the cursor, for pointer events.
+
+There are more properties. Many of them depend on the event type: keyboard events have one set of properties, pointer events - another one, we'll study them later when as we move on to the details of different events.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ````smart header="L'oggetto evento è disponibile anche nei gestori HTML"
 Anche se assegniamo un gestore dentro l'HTML, possiamo usare l'oggetto `evento`:
@@ -368,7 +395,13 @@ Ad esempio:
 </script>
 ```
 
+<<<<<<< HEAD
 Come possiamo osservare, se `addEventListener` riceve un oggetto come gestore, allora chiama `obj.handleEvent(event)` nel caso ci sia un evento.
+=======
+As we can see, when `addEventListener` receives an object as the handler, it calls `obj.handleEvent(event)` in case of an event.
+
+We could also use objects of a custom class, like this:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Possiamo usare anche una classe:
 
@@ -391,6 +424,7 @@ Possiamo usare anche una classe:
 
 *!*
   let menu = new Menu();
+
   elem.addEventListener('mousedown', menu);
   elem.addEventListener('mouseup', menu);
 */!*

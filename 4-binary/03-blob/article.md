@@ -101,7 +101,11 @@ Per ogni URL generato da `URL.createObjectURL` il browser memorizza in una mappa
 
 Un URL generato (e quindi anche il suo link) è valido solamente all'interno del `document` corrente, finché questo rimane aperto. E può essere utilizzato per fare riferimento al `Blob` nei tag `<img>`, `<a>`, e qualsiasi altro oggetto che accetta un URL.
 
+<<<<<<< HEAD
 Abbiamo però un effetto collaterale. Poiché i `Blob` sono mappati, ogni oggetto `Blob` risiede in memoria. Quindi il browser non potrà liberarla.
+=======
+There's a side effect though. While there's a mapping for a `Blob`, the `Blob` itself resides in the memory. The browser can't free it.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 La mappa verrà automaticamente ripulita al momento dell'`unload` del `document`, quindi gli oggetti di `Blob` verranno eliminati in quel momento. Ma nel caso di applicazioni che "vivono a lungo", questa pulizia non avverrà presto.
 
@@ -212,21 +216,52 @@ Per effettuare lo screenshot di una pagina, possiamo utilizzare una libreria com
 
 Il costruttore del `Blob` consente di creare un `Blob` per qualsiasi cosa, inclusi i `BufferSource`.
 
+<<<<<<< HEAD
 Se abbiamo bisogno di eseguire operazioni di basso livello, possiamo ottenere il livello più basso, un `ArrayBuffer`, utilizzando `FileReader`:
 
 ```js
 // otteniamo arrayBuffer da un blob
 let fileReader = new FileReader();
+=======
+But if we need to perform low-level processing, we can get the lowest-level `ArrayBuffer` from `blob.arrayBuffer()`:
 
-*!*
-fileReader.readAsArrayBuffer(blob);
-*/!*
+```js
+// get arrayBuffer from blob
+const bufferPromise = await blob.arrayBuffer();
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
-fileReader.onload = function(event) {
-  let arrayBuffer = fileReader.result;
-};
+// or
+blob.arrayBuffer().then(buffer => /* process the ArrayBuffer */);
 ```
 
+## From Blob to stream
+
+When we read and write to a blob of more than `2 GB`, the use of `arrayBuffer` becomes more memory intensive for us. At this point, we can directly convert the blob to a stream.
+
+A stream is a special object that allows to read from it (or write into it) portion by portion. It's outside of our scope here, but here's an example, and you can read more at <https://developer.mozilla.org/en-US/docs/Web/API/Streams_API>. Streams are convenient for data that is suitable for processing piece-by-piece.
+
+The `Blob` interface's `stream()` method returns a `ReadableStream` which upon reading returns the data contained within the `Blob`.
+
+Then we can read from it, like this:
+
+```js
+// get readableStream from blob
+const readableStream = blob.stream();
+const stream = readableStream.getReader();
+
+while (true) {
+  // for each iteration: value is the next blob fragment
+  let { done, value } = await stream.read();
+  if (done) {
+    // no more data in the stream
+    console.log('all blob processed.');
+    break;
+  }
+
+   // do something with the data portion we've just read from the blob
+  console.log(value);
+}
+```
 
 ## Riepilogo
 
@@ -238,5 +273,12 @@ I metodi che eseguono richieste web, come [XMLHttpRequest](info:xmlhttprequest),
 
 Possiamo convertire molto rapidamente da `Blob` a dati binari a basso livello:
 
+<<<<<<< HEAD
 - Possiamo creare un `Blob` da un `TypedArray` utilizzando il costruttore `new Blob(...)`.
 - Possiamo ricostruire un `ArrayBuffer` da un `Blob` utilizzando `FileReader`, e successivamente creare un visualizzatore per visualizzare ed elaborare i dati binari a basso livello.
+=======
+- We can make a `Blob` from a typed array using `new Blob(...)` constructor.
+- We can get back `ArrayBuffer` from a Blob using `blob.arrayBuffer()`, and then create a view over it for low-level binary processing.
+
+Conversion streams are very useful when we need to handle large blob. You can easily create a `ReadableStream` from a blob. The `Blob` interface's `stream()` method returns a `ReadableStream` which upon reading returns the data contained within the blob.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3

@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 # Eventi del mouse 
+=======
+
+# Mouse events
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 In questo capitolo andremo un po' più a fondo sugli eventi del mouse e le loro proprietà.
 
@@ -39,9 +44,15 @@ Quando un'azione singola inizia eventi multipli, il loro ordine è fisso. Ossia,
 ```online
 Premi il seguente pulsante e vedrai gli eventi. prova anche il doppio click.
 
+<<<<<<< HEAD
 Nel banco di prova in basso, vengono elencati tutti gli eventi del mouse, e se passa più di un secondo tra uno e l'altro vengono separati da una riga orizzontale.
 
 Possiamo inoltre notare la proprietà `button` che permette di rilevare il pulsante del mouse, viene spiegato successivamente.
+=======
+On the teststand below, all mouse events are logged, and if there is more than a 1 second delay between them, they are separated by a horizontal rule.
+
+Also, we can see the `button` property that allows us to detect the mouse button; it's explained below.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 <input onmousedown="return logMouse(event)" onmouseup="return logMouse(event)" onclick="return logMouse(event)" oncontextmenu="return logMouse(event)" ondblclick="return logMouse(event)" value="Cliccami con il pulsante destro o sinistro del mouse" type="button"> <input onclick="logClear('test')" value="Clear" type="button"> <form id="testform" name="testform"> <textarea style="font-size:12px;height:150px;width:360px;"></textarea></form>
 ```
@@ -52,7 +63,11 @@ Gli eventi relativi al click contengono sempre la proprietà `button`, che perme
 
 Solitamente non lo usiamo per gli eventi `click` e `contextmenu`, perché il primo avviene solo per il click sul pulsante sinistro, ed il secondo -- solo per quelli sul tasto destro.
 
+<<<<<<< HEAD
 D'altra parte, i gestori `mousedown` e `mouseup` potrebbero necessitare di `event.button`, in quanto questi eventi vengono generati su qualunque pulsante, quindi `button` permette di discriminare tra "mousedown destro" e "mousedown sinistro".
+=======
+On the other hand, `mousedown` and `mouseup` handlers may need `event.button`, because these events trigger on any button, so `button` allows to distinguish between "right-mousedown" and "left-mousedown".
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 I valori possibili di `event.button` sono:
 
@@ -154,7 +169,11 @@ Muovere il mouse sopra il campo di testo per vedere `clientX/clientY` (l'esempio
 
 ## Prevenire la selezione su mousedown
 
+<<<<<<< HEAD
 Il doppio click del mouse ha un effetto collaterale che potrebbe dare fastidio in alcune interfacce: seleziona il testo.
+=======
+Double mouse click has a side effect that may be disturbing in some interfaces: it selects text.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Per esempio, il doppio click sul seguente testo lo seleziona in aggiunta al nostro gestore:
 

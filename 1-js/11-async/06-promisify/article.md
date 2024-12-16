@@ -23,7 +23,17 @@ function loadScript(src, callback) {
 // loadScript('path/script.js', (err, script) => {...})
 ```
 
+<<<<<<< HEAD
 Trasformiamolo in una promise. La nuova funzione `loadScriptPromise(src)` farà lo stesso, ma accetta solo `src` (senza callback) e ritorna una promise.
+=======
+The function loads a script with the given `src`, and then calls `callback(err)` in case of an error, or `callback(null, script)` in case of successful loading. That's a widespread agreement for using callbacks, we saw it before.
+
+Let's promisify it.
+
+We'll make a new function `loadScriptPromise(src)`, that does the same (loads the script), but returns a promise instead of using callbacks.
+
+In other words, we pass it only `src` (no `callback`) and get a promise in return, that resolves with `script` when the load is successful, and rejects with the error otherwise.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Here it is:
 ```js
@@ -111,7 +121,11 @@ In alcuni casi, `err` può essere del tutto assente: `callback(result)`, o c'è 
 Ci sono anche moduli con delle funzioni per trasformare in promise un po' più flessibili, ad esempio [es6-promisify](https://github.com/digitaldesignlabs/es6-promisify). In Node.js è presente una funzione `util.promisify`.
 
 ```smart
+<<<<<<< HEAD
 La trasformazione in promise (promisification) è un ottimo approccio, specialmente quando si utilizza `async/await` (nel prossimo capitolo), ma non è un sostituto totale per le callback.
+=======
+Promisification is a great approach, especially when you use `async/await` (covered later in the chapter <info:async-await>), but not a total replacement for callbacks.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ricorda, una promise può avere un solo risultato, ma una callback può tecnicamente essere chiamata più volte.
 

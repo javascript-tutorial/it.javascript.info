@@ -55,7 +55,11 @@ Per abilitare completamente tutte le caratteristiche del moderno JavaScript, dov
 
 La direttiva deve essere posta all'inizio di ogni script o all'inizio di una funzione.
 
+<<<<<<< HEAD
 Senza `"use strict"`, tutto continuerebbe a funzionare, ma alcune caratteristiche si comporterebbero in vecchio-stile, per retrocompatibilità. Generalmente si preferisce la modalità con i comportamenti moderni.
+=======
+Without `"use strict"`, everything still works, but some features behave in the old-fashioned, "compatible" way. We'd generally prefer the modern behavior.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Alcune caratteristiche moderne del linguaggio (come le classi che studieremo più avanti) attivano automaticamente la modalità script.
 
@@ -103,6 +107,7 @@ Di più in: <info:variables> e <info:types>.
 
 Abbiamo utilizzato solo il browser come ambiente di sviluppo, quindi le interfacce di base saranno:
 
+<<<<<<< HEAD
 [`prompt(question[, default])`](mdn:api/Window/prompt)
 : Pone una domanda `question`, e ritorna quello che l'utente ha inserito oppure `null` se ha premuto "cancel".
 
@@ -111,6 +116,16 @@ Abbiamo utilizzato solo il browser come ambiente di sviluppo, quindi le interfac
 
 [`alert(message)`](mdn:api/Window/alert)
 : Stampa un messaggio `message`.
+=======
+[`prompt(question, [default])`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
+: Ask a `question`, and return either what the visitor entered or `null` if they clicked "cancel".
+
+[`confirm(question)`](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm)
+: Ask a `question` and suggest to choose between Ok and Cancel. The choice is returned as `true/false`.
+
+[`alert(message)`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert)
+: Output a `message`.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Tutte queste funzioni sono dei *modal*, interrompono l'esecuzione e impediscono all'utente di interagire con una pagina fino a che il visitatore non risponde.
 
@@ -143,8 +158,13 @@ Aritmetici
 Assegnazione
 : Ci sono le assegnazioni semplici: `a = b` e quelle combinate `a *= 2`.
 
+<<<<<<< HEAD
 Bit a Bit
 : Gli operatori bit a bit funzionano con gli interi a livello di bit: guarda la [documentazione](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) se ne avrai bisogno.
+=======
+Bitwise
+: Bitwise operators work with 32-bit integers at the lowest, bit-level: see the [docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#bitwise_operators) when they are needed.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ternari
 : C'è un solo operatore con tre parametri: `cond ? resultA : resultB`. Se `cond` è vera, ritorna `resultA`, altrimenti `resultB`.
@@ -258,7 +278,11 @@ Abbiamo studiato tre modi per creare funzioni in JavaScript:
 3. Funzione freccia:
 
     ```js
+<<<<<<< HEAD
     // espressione dalla parte destra
+=======
+    // expression on the right side
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
     let sum = (a, b) => a + b;
 
     // oppure la sintassi multi-riga con { ... }, è necessario esplicitare return
