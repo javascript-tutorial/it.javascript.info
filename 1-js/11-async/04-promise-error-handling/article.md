@@ -344,4 +344,12 @@ Qui nella linea `(1)` indichiamo il caricamento oscurando il documento. Il metod
 
 Quando la promise è ferma (settled), che sia un fetch con successo o un errore, `finally` viene lanciato nella linea `(2)`  ferma l'indicatore.
 
+<<<<<<< HEAD
 C'è un piccolo trucco per i browser `(*)` nel ritornare una promise con timeout zero da `finally`. Questo perché alcuni browser (come Chrome) hanno bisogno "di un po' di tempo" fuori dai gestori (handlers) per diegnare cambiamenti al documento. Questo assicura che l'indicazione è visivamente ferma prima di andare avanti nella catena.
+=======
+- `.catch` handles errors in promises of all kinds: be it a `reject()` call, or an error thrown in a handler.
+- `.then` also catches errors in the same manner, if given the second argument (which is the error handler).
+- We should place `.catch` exactly in places where we want to handle errors and know how to handle them. The handler should analyze errors (custom error classes help) and rethrow unknown ones (maybe they are programming mistakes).
+- It's ok not to use `.catch` at all, if there's no way to recover from an error.
+- In any case we should have the `unhandledrejection` event handler (for browsers, and analogs for other environments) to track unhandled errors and inform the user (and probably our server) about them, so that our app never "just dies".
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3

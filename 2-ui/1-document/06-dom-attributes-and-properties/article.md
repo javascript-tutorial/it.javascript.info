@@ -162,7 +162,11 @@ Nell'esempio sotto `id` viene modificato come attributo, e possiamo vedere che a
 </script>
 ```
 
+<<<<<<< HEAD
 Ma ci sono eccezioni; ad esempio `input.value` si sincronizza solo da attributo a proprietà, ma non al contrario:
+=======
+But there are exclusions, for instance `input.value` synchronizes only from attribute -> property, but not back:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```html run
 <input>

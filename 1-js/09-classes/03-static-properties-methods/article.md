@@ -1,9 +1,15 @@
 
 # Proprietà e metodi statici
 
+<<<<<<< HEAD
 Possiamo anche assegnare metodi alle classi stesse, non solamente al loro `"prototype"`. Questi metodi sono detti *statici*.
 
 All'interno della classe, questi vengono preceduti dalla keyword `static`, come possiamo vedere nell'esempio:
+=======
+We can also assign a method to the class as a whole. Such methods are called *static*.
+
+In a class declaration, they are prepended by `static` keyword, like this:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```js run
 class User {
@@ -31,9 +37,17 @@ User.staticMethod(); // true
 
 Il valore di `this` nella chiamata `User.staticMethod()` è rappresentato dal costruttore dell classe `User` (la regola dell' "oggetto prima del punto").
 
+<<<<<<< HEAD
 Solitamente, i metodi statici vengono utilizzati per rappresentare funzioni che appartengono alla classe, ma non ad un oggetto in particolare.
 
 Ad esempio, potremmo avere degli oggetti di tipo `Article` e necessitare di una funzione per confrontarli. Una soluzione naturale sarebbe quella di aggiungere il metodo `Article.compare`, come nell'esempio:
+=======
+Usually, static methods are used to implement functions that belong to the class as a whole, but not to any particular object of it.
+
+For instance, we have `Article` objects and need a function to compare them.
+
+A natural solution would be to add `Article.compare` static method:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```js run
 class Article {
@@ -63,9 +77,17 @@ articles.sort(Article.compare);
 alert( articles[0].title ); // CSS
 ```
 
+<<<<<<< HEAD
 Qui `Article.compare` sta "al di sopra" degli articoli, poiché ha lo scopo di confrontarli. Non è un metodo di un articolo, ma piuttosto dell'intera classe.
 
 Un altro esempio comune è quello del "factory method" (un particolare design pattern). Immaginiamo di avere bisogno di diverse modalità di creazione di un articolo:
+=======
+Here `Article.compare` method stands "above" articles, as a means to compare them. It's not a method of an article, but rather of the whole class.
+
+Another example would be a so-called "factory" method.
+
+Let's say, we need multiple ways to create an article:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 1. Creazione con i parametri forniti (`title`, `date` etc).
 2. Creazione di un articolo vuoto con la data di oggi.
@@ -73,7 +95,11 @@ Un altro esempio comune è quello del "factory method" (un particolare design pa
 
 Il primo metodo può essere implementato tramite il costruttore. Mentre per il secondo, possiamo creare un metodo statico appartenente alla classe.
 
+<<<<<<< HEAD
 Come `Article.createTodays()` nell'esempio:
+=======
+Such as `Article.createTodays()` here:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```js run
 class Article {
@@ -100,12 +126,32 @@ Ora, ogni volta in cui avremo bisogno di crare un "today's digest", possiamo inv
 I metodi statici vengono utilizzati anche nelle classi database-related (relative a database), per poter cercare/salvare/rimuovere elementi dal database, come nell'esempio:
 
 ```js
+<<<<<<< HEAD
 // assumiamo che Article sia una classe speciale per la gestione degli articoli
 // metodo statico per la rimozione di un articolo:
 Article.remove({id: 12345});
 ```
 
 ## Proprietà statiche
+=======
+// assuming Article is a special class for managing articles
+// static method to remove the article by id:
+Article.remove({id: 12345});
+```
+
+````warn header="Static methods aren't available for individual objects"
+Static methods are callable on classes, not on individual objects.
+
+E.g. such code won't work:
+
+```js
+// ...
+article.createTodays(); /// Error: article.createTodays is not a function
+```
+````
+
+## Static properties
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 [recent browser=Chrome]
 

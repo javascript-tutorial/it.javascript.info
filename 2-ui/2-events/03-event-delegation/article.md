@@ -1,7 +1,11 @@
 
 # Event delegation
 
+<<<<<<< HEAD
 Capturing e bubbling ci permettono di implementare uno dei pattern più potenti nella gestione degli eventi, e cioè *event delegation*.
+=======
+Capturing and bubbling allow us to implement one of the most powerful event handling patterns called *event delegation*.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Il concetto di base è che se abbiamo una serie di elementi gestiti in maniera simile, allora, invece di assegnare un gestore per ognuno di essi, possiamo metterne uno solo sui loro antenati comuni.
 
