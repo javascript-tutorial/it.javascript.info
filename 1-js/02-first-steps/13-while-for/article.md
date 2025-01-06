@@ -6,7 +6,24 @@ Ad esempio, quando abbiamo bisogno di ritornare, una dopo l'altra, della merce d
 
 I *cicli* sono un modo di ripetere una stessa parte di codice più volte.
 
+<<<<<<< HEAD
 ## Il ciclo "while" 
+=======
+```smart header="The for..of and for..in loops"
+A small announcement for advanced readers.
+
+This article covers only basic loops: `while`, `do..while` and `for(..;..;..)`.
+
+If you came to this article searching for other types of loops, here are the pointers:
+
+- See [for..in](info:object#forin) to loop over object properties.
+- See [for..of](info:array#loops) and [iterables](info:iterable) for looping over arrays and iterable objects.
+
+Otherwise, please read on.
+```
+
+## The "while" loop
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Il ciclo `while` ha la seguente sintassi:
 
@@ -161,11 +178,14 @@ for (i = 0; i < 3; i++) { // utilizza una variabile esistente
 
 alert(i); // 3; la variabile `i` è accessibile (è stata dichiarata fuori dal corpo del ciclo)
 ```
-
 ````
 
+<<<<<<< HEAD
 
 ### Parti opzionali
+=======
+### Skipping parts
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ogni parte del ciclo `for` è opzionale.
 
@@ -265,7 +285,13 @@ for (let i = 0; i < 10; i++) {
 }
 ```
 
+<<<<<<< HEAD
 Ovviamente possiamo raccogliere il codice in un blocco `if` piuttosto di usare `continue`. Dal punto di vista tecnico l'esempio sopra è identico a quello che lo precede, che invece utilizza `continue`. Nell'esempio sopra il codice dentro il corpo di `if` è una semplice chiamata ad `alert`; ma se il codice fosse più lungo di un paio di righe si rischierebbe di perdere in leggibilità.
+=======
+From a technical point of view, this is identical to the example above. Surely, we can just wrap the code in an `if` block instead of using `continue`.
+
+But as a side effect, this created one more level of nesting (the `alert` call inside the curly braces). If the code inside of `if` is longer than a few lines, that may decrease the overall readability.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ````
 
 ````warn header="Vietato `break/continue` alla desta di '?'"
@@ -282,7 +308,6 @@ if (i > 5) {
 ```
 
 ...E lo riscriviamo utilizzando l'operatore ternario:
-
 
 ```js no-beautify
 (i > 5) ? alert(i) : *!*continue*/!*; // continue non è consentito qui
@@ -320,7 +345,12 @@ Abbiamo bisogno di un modo per bloccare il processo se l'utente annulla l'input.
 
 Un semplice `break` dopo la variabile `input` interromperebbe solo il ciclo più interno. Questo non è sufficiente. I *label* ci vengono in soccorso.
 
+<<<<<<< HEAD
 Un *label* ("etichetta") è un identificatore seguito da ":" e da un ciclo:
+=======
+A *label* is an identifier with a colon before a loop:
+
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ```js
 labelName: for (...) {
   ...
@@ -344,6 +374,7 @@ Come nell'esempio:
     // fa qualcosa con i valori...
   }
 }
+
 alert('Done!');
 ```
 
@@ -363,14 +394,24 @@ Anche la direttiva `continue` può essere utilizzata con un'etichetta. In questo
 ````warn header="I *label* non equivalgono a \"goto\""
 I *label* non permettono di saltare in un punto arbitrario del codice.
 
+<<<<<<< HEAD
 Ad esempio, non è possibile:
+=======
+For example, it is impossible to do this:
+
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ```js
 break label;  // non salta all'etichetta sotto
 
 label: for (...)
 ```
 
+<<<<<<< HEAD
 La direttiva `break` deve essere all'interno del blocco di codice. Tecnicamente l'etichettatura funzionerà con qualsiasi blocco di codice, ad esempio:
+=======
+A `break` directive must be inside a code block. Technically, any labelled code block will do, e.g.:
+
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ```js
 label: {
   // ...

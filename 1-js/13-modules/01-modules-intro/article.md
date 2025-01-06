@@ -9,11 +9,19 @@ Ma gli script man mano diventarono più grandi e complessi, di conseguenza la co
 
 Per esempio:
 
+<<<<<<< HEAD
 - [AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition) -- uno dei più vecchi sistemi per la gestione di moduli, inizialmente implementato dalla libreria [require.js](http://requirejs.org/).
 - [CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1) -- il sistema per la gestione di moduli creato per node.js server.
 - [UMD](https://github.com/umdjs/umd) -- un'altro sistema di gestione di moduli, che è stato suggerito come metodo universale, compativile sia con AMD sia con CommonJS.
 
 Ormai tutti questi sistemi vengono lentamente abbandonati, anche se ancora possono essere trovati in vecchi script.
+=======
+- [AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition) -- one of the most ancient module systems, initially implemented by the library [require.js](https://requirejs.org/).
+- [CommonJS](https://wiki.commonjs.org/wiki/Modules/1.1) -- the module system created for Node.js server.
+- [UMD](https://github.com/umdjs/umd) -- one more module system, suggested as a universal one, compatible with AMD and CommonJS.
+
+Now these all slowly became a part of history, but we still can find them in old scripts.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Il sistema per la gestione dei moduli nel linguaggio è stato standardizzato nel 2015, e si è gradualmente evoluto da quel momento in poi. Ora è supportato da tutti i browser principali e all'interno di node.js, da adesso in poi sarà questo il sistema che studieremo.
 
@@ -183,7 +191,11 @@ alert(admin.name); // Pete
 
 Come puoi vedere, quando `1.js` cambia la proprietà `name` nell'`admin` importato, allora anche `2.js` può vedere il nuovo `admin.name`.
 
+<<<<<<< HEAD
 Questo è il motivo per cui il modulo viene eseguito solo una volta. Le esportazioni vengono generate e quindi condivise tra gli importatori, quindi se qualcosa cambia l'oggetto `admin`, gli altri moduli lo vedranno.
+=======
+That's exactly because the module is executed only once. Exports are generated, and then they are shared between importers, so if something changes the `admin` object, other importers will see that.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 **Questo comportamento in realtà è molto utile, perché ci permette di *configurare* i moduli.**
 
@@ -274,7 +286,11 @@ In altre parole:
 - I moduli attendono fino al momento in cui l'HTML è pronto (anche se sono molto piccoli e possono essere elaborati più velocemente dell'HTML), e poi vengono eseguiti.
 - L'ordine relativo degli script viene mantenuto: gli script che appaiono prima nel documento vengono eseguiti per primi.
 
+<<<<<<< HEAD
 Come conseguenza, i moduli "vedono" sempre la pagina HTML completamente caricata, inclusi gli elementi sotto di essi.
+=======
+As a side effect, module scripts always "see" the fully loaded HTML-page, including HTML elements below them.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ad esempio:
 

@@ -61,7 +61,7 @@ Quando `pow(x, n)` viene chiamata, l'esecuzione si spezza in due rami:
               if n==1  = x
              /
 pow(x, n) =
-             \       
+             \
               else     = x * pow(x, n - 1)
 ```
 
@@ -277,7 +277,11 @@ La forma iterativa di `pow` utilizza un solo contesto d'esecuzione, modificando 
 
 **Qualsiasi ricorsione può essere riscritta come un ciclo. La variante che utilizza un ciclo spesso può essere più efficace.**
 
+<<<<<<< HEAD
 ...Qualche volta la traduzione potrebbe non essere banale, specialmente quando la funzione utilizza diverse sotto-chiamate ricorsive in base al verificarsi di certe condizioni, fonde i risultati delle diverse sotto-chiamate oppure quando le diramazioni diventano più complesse. In questi casi l'ottimizzazione potrebbe non essere necessaria o non valerne lo sforzo.
+=======
+...But sometimes the rewrite is non-trivial, especially when a function uses different recursive subcalls depending on conditions and merges their results or when the branching is more intricate. And the optimization may be unneeded and totally not worth the efforts.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 La ricorsione fornisce un codice più breve, più facile da capire e dimostrare. L'ottimizzazione non è sempre richiesta, spesso è meglio avere un buon codice, per questo viene molto utilizzata la ricorsione.
 
@@ -524,7 +528,11 @@ Terminologia:
     list = { value, next -> list }
     ```
 
+<<<<<<< HEAD
     Gli elementi HTML o la definizione di dipartimento sono definizioni ricorsive: ogni ramo può avere altri rami.
+=======
+    Trees like HTML elements tree or the department tree from this chapter are also naturally recursive: they have branches and every branch can have other branches.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
     Si possono utilizzare funzioni ricorsive per attraversare questo tipo di oggetti, come abbiamo visto nell'esempio `sumSalary`.
 

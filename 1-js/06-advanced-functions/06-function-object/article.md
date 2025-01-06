@@ -325,7 +325,11 @@ welcome(); // Hello, Guest (la chiamata annidata funziona correttamente)
 
 Ora funzione, perché il nome `"func"` è locale alla funzione. Non viene prelevato dall'esterno. Le specifiche garantisco che in questo modo si avrà sempre un riferimento alla funzione corrente.
 
+<<<<<<< HEAD
 Il codice esterno continuerà ad utilizzare la variabile `sayHi` o `welcome`. E `func` servirà da "nome interno" della funzione.
+=======
+The outer code still has its variable `sayHi` or `welcome`. And `func` is an "internal function name", the way for the function to can call itself reliably.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```smart header="Tutto questo non vale per la dichiarazione di funzione"
 La caratteristica del "nome interno" è disponibile solamente per le espressioni di funzione, non per le dichiarazioni di funzione. Per le dichiarazioni di funzione, non c'è alcun modo per aggiungere un ulteriore "nome interno".

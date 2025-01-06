@@ -107,7 +107,11 @@ Quindi, `event.code` può corrispondere a un carattere errato su layout non cont
 
 Per il tracciamento affidabile dei caratteri che sono dipendenti dal layout, `event.key` potrebbe essere la soluzione migliore.
 
+<<<<<<< HEAD
 Di contro, `event.code` ha il beneficio di essere sempre lo stesso, legato alla posizione fisica del tasto, anche se il visitatore dovesse modificare la lingua. E le scorciatoie ad esso relative funzioneranno bene anche in caso di cambio lingua.
+=======
+On the other hand, `event.code` has the benefit of staying always the same, bound to the physical key location. So hotkeys that rely on it work well even in case of a language switch.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Vogliamo gestire dei tasti dipendenti dal layout? Ecco che `event.key` è quello che fa per noi.
 
@@ -153,7 +157,7 @@ Come sappiamo, il valore `false` restituito da un gestore di evento, assegnato u
 
 Rendiamolo un po' più rilassato permettendo i tasti freccia `key:Left`, `key:Right` e `key:Delete`, `key:Backspace`::
 
-Please note that special keys, such as `key:Backspace`, `key:Left`, `key:Right`, do not work in the input. That's a side-effect of the strict filter `checkPhoneKey`. These keys make it return `false`.
+Please note that special keys, such as `key:Backspace`, `key:Left`, `key:Right`, do not work in the input. That's a side effect of the strict filter `checkPhoneKey`. These keys make it return `false`.
 
 Let's relax the filter a little bit by allowing arrow keys `key:Left`, `key:Right` and `key:Delete`, `key:Backspace`:
 
