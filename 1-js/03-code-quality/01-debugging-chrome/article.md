@@ -38,7 +38,11 @@ Se premiamo `key:Esc`, si apre una console in basso. Possiamo digitare comandi e
 
 Dopo l'esecuzione dell'istruzione, il risultato viene mostrato sotto.
 
+<<<<<<< HEAD
 Ad esempio, `1+2` con risultato `3`, ed `hello("debugger")` non ritorna nulla, quindi il risultato è `undefined`:
+=======
+For example, here `1+2` results in `3`, while the function call `hello("debugger")` returns nothing, so the result is `undefined`:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ![](chrome-sources-console.svg)
 
@@ -62,13 +66,22 @@ Possiamo anche visualizzare la lista dei breakpoint nel pannello di destra. Ques
 - Rimuovere breakpoint cliccando con il tasto destro e selezionando Rimuovi.
 - ...E molto altro.
 
+<<<<<<< HEAD
 ```smart header="Breakpoint condizionali"
 *Tasto destro* sul numero della riga ci consente di creare un breakpoint *condizionale*. Che viene attivato solo quando l'espressione fornita risulta vera.
+=======
+```smart header="Conditional breakpoints"
+*Right click* on the line number allows to create a *conditional* breakpoint. It only triggers when the given expression, that you should provide when you create it, is truthy.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Questa caratteristica risulta molto utile quando abbiamo bisogno di fermare il flusso di esecuzione per determinati valori di una variabile.
 ```
 
+<<<<<<< HEAD
 ## Comando debugger
+=======
+## The command "debugger"
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Possiamo mettere in pausa il codice anche utilizzando il comando `debugger`, come nell'esempio:
 
@@ -84,8 +97,12 @@ function hello(name) {
 }
 ```
 
+<<<<<<< HEAD
 Questo risulta molto utile quando stiamo lavorando in un editor e non vogliamo passare alla finestra del browser, cercare il punto corretto nello script interessato e impostare il breakpoint.
 
+=======
+Such command works only when the development tools are open, otherwise the browser ignores it.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ## Interrompere l'esecuzione e guardarsi intorno
 
@@ -99,7 +116,11 @@ Ora aprite il menu a cascata (quello con la freccetta accanto al nome). Ti conse
 
 1. **`Watch` -- mostra il valore corrente per ogni espressione.**
 
+<<<<<<< HEAD
     Puoi cliccare su `+` e inserire un espressione. Il debugger ti mostrerà il suo valore ad ogni istante, che verrà automaticamente ricalcolato durante l'esecuzione.
+=======
+    You can click the plus `+` and input an expression. The debugger will show its value, automatically recalculating it in the process of execution.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 2. **`Call Stack` -- mostra la catena delle chiamate annidate.**
 
@@ -134,12 +155,21 @@ Ci sono dei bottoni appositi nella parte superiore del pannello di destra. Provi
 
     Continuando a cliccare eseguiremo lo script un passo per volta.
 
+<<<<<<< HEAD
 <span class="devtools" style="background-position:-62px -192px"></span> -- "Step over": esegue il prossimo comando, ma *non entra nella funzione*, hotkey `key:F10`.
 : Molto simile al comando "Step", ma si comporta diversamente nel caso in cui l'istruzione successiva sia una chiamata a funzione. O meglio: non una funzione built-in come `alert`, ma una funzione definita da noi.
 
     Il comando "Step" entra nella funzione e mette in pausa l'esecuzione, mentre "Step over" esegue la chiamata a funzione, saltandone il contenuto.
 
     L'esecuzione viene interrotta al termine della chiamata.
+=======
+<span class="devtools" style="background-position:-62px -192px"></span> -- "Step over": run the next command, but *don't go into a function*, hotkey `key:F10`.
+: Similar to the previous "Step" command, but behaves differently if the next statement is a function call (not a built-in, like `alert`, but a function of our own).
+
+    If we compare them, the "Step" command goes into a nested function call and pauses the execution at its first line, while "Step over" executes the nested function call invisibly to us, skipping the function internals.
+
+    The execution is then paused immediately after that function call.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
     Questo è molto utile se non siamo interessati nel vedere cosa accade dentro la funzione.
 
@@ -157,8 +187,13 @@ Ci sono dei bottoni appositi nella parte superiore del pannello di destra. Provi
 <span class="devtools" style="background-position:-7px -28px"></span> -- attiva/disattiva tutti i breakpoint.
 : Questo bottone non influenza l'esecuzione. E' semplicemente un on/off per i breakpoint.
 
+<<<<<<< HEAD
 <span class="devtools" style="background-position:-264px -4px"></span> -- attiva/disattiva la pausa automatica in caso di errori.
 : Quando questa opzione è attiva, e il pannello degli strumenti sviluppatore è aperto, un errore nello script metterà automaticamente in pausa l'esecuzione. Cosi potremmo analizzare le variabili per capire cosa è andato storto. Quindi se il nostro script si blocca con un errore, possiamo aprire il debugger, attivare questa opzione e ricaricare la pagina per vedere dove si blocca lo script e capirne il motivo.
+=======
+<span class="devtools" style="background-position:-90px -146px"></span> -- enable/disable automatic pause in case of an error.
+: When enabled, if the developer tools is open, an error during the script execution automatically pauses it. Then we can analyze variables in the debugger to see what went wrong. So if our script dies with an error, we can open debugger, enable this option and reload the page to see where it dies and what's the context at that moment.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```smart header="Continua fino a qui"
 Premendo tasto destro su una riga di codice si aprirà un menu con una bellissima opzione denominata  "Continua fino a qui".
@@ -190,7 +225,11 @@ Come abbiamo visto, ci sono tre diversi modi di mettere in pausa uno script:
 2. L'istruzione `debugger`.
 3. Un errore (solo se gli strumenti sviluppatore sono aperti ed è attivo il bottone <span class="devtools" style="background-position:-264px -4px"></span>)
 
+<<<<<<< HEAD
 Cosi possiamo esaminare le variabili e capire cosa è andato male durante l'esecuzione.
+=======
+When paused, we can debug: examine variables and trace the code to see where the execution goes wrong.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ci sono veramente troppe opzioni negli strumenti da sviluppatore per coprirle qui. Il manuale completo è disponibile all'indirizzo <https://developers.google.com/web/tools/chrome-devtools>.
 

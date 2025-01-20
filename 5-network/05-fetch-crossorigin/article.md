@@ -44,7 +44,11 @@ Un modo per comunicare con un altro server era eseguire l'invio di un `<form>`. 
 <iframe name="iframe"></iframe>
 */!*
 
+<<<<<<< HEAD
 <!-- un form può essere generato in modo dinamico ed inviato da JavaScript -->
+=======
+<!-- a form could be dynamically generated and submitted by JavaScript -->
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 *!*
 <form target="iframe" method="POST" action="http://another.com/…">
 */!*
@@ -169,6 +173,7 @@ Per le cross-origin request, di default JavaScript può solo accedere alle così
 
 - `Cache-Control`
 - `Content-Language`
+- `Content-Length`
 - `Content-Type`
 - `Expires`
 - `Last-Modified`
@@ -176,6 +181,7 @@ Per le cross-origin request, di default JavaScript può solo accedere alle così
 
 L'accesso ad ogni altra response header causerà un errore.
 
+<<<<<<< HEAD
 ```smart header="Nota bene: nessuna `Content-Length`"
 Nota che nella lista non è contemplata l'header `Content-Length`!
 
@@ -183,6 +189,9 @@ Questa header contiene la dimensione completa del response. Così, se dovessimo 
 ```
 
 Per garantire l'accesso a JavaScript ad ogni altro response header, il server deve inviare l'header `Access-Control-Expose-Headers`. Esso contiene una lista separata da virgole dei nomi degli unsafe headers ai quali è possibile accedere.
+=======
+To grant JavaScript access to any other response header, the server must send the `Access-Control-Expose-Headers` header. It contains a comma-separated list of unsafe header names that should be made accessible.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Per esempio:
 
@@ -190,14 +199,19 @@ Per esempio:
 200 OK
 Content-Type:text/html; charset=UTF-8
 Content-Length: 12345
+Content-Encoding: gzip
 API-Key: 2c9de507f2c54aa1
 Access-Control-Allow-Origin: https://javascript.info
 *!*
-Access-Control-Expose-Headers: Content-Length,API-Key
+Access-Control-Expose-Headers: Content-Encoding,API-Key
 */!*
 ```
 
+<<<<<<< HEAD
 Con l'header `Access-Control-Expose-Headers`, lo script è autorizzato a leggere gli headers `Content-Length` e `API-Key` della response.
+=======
+With such an `Access-Control-Expose-Headers` header, the script is allowed to read the `Content-Encoding` and `API-Key` headers of the response.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ## "Unsafe" requests
 
