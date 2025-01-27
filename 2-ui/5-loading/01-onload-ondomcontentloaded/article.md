@@ -88,7 +88,11 @@ Ma c'è una trappola. Se abbiamo uno script dopo uno stile quello script deve as
 ```html run
 <link type="text/css" rel="stylesheet" href="style.css">
 <script>
+<<<<<<< HEAD
   // lo script non viene eseguito finché il foglio di stile non è caricato
+=======
+  // the script doesn't execute until the stylesheet is loaded
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
   alert(getComputedStyle(document.body).marginTop);
 </script>
 ```
@@ -264,7 +268,7 @@ Ecco un documento con `<iframe>`, `<img>` e handler che mostra gli eventi:
 
 <iframe src="iframe.html" onload="log('iframe onload')"></iframe>
 
-<img src="http://en.js.cx/clipart/train.gif" id="img">
+<img src="https://en.js.cx/clipart/train.gif" id="img">
 <script>
   img.onload = () => log('img onload');
 </script>

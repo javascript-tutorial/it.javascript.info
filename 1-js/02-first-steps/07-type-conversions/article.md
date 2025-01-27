@@ -6,8 +6,15 @@ Ad esempio, `alert` converte automaticamente un valore qualsiasi in una stringa,
 
 Ci sono invece casi in cui è necessario convertire esplicitamente i valori per poter evitare errori.
 
+<<<<<<< HEAD
 ```smart header="Non parliamo ancora di oggetti"
 In questo capitolo non parleremo ancora di oggetti ma ci dedicheremo ai tipi primitivi. Approfondiremo gli oggetti e la loro conversione dopo averli studiati, nel capitolo <info:object-toprimitive>.
+=======
+```smart header="Not talking about objects yet"
+In this chapter, we won't cover objects. For now, we'll just be talking about primitives.
+
+Later, after we learn about objects, in the chapter <info:object-toprimitive> we'll see how objects fit in.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ```
 
 ## Conversione di stringhe
@@ -32,7 +39,11 @@ La conversione in stringa è quella più semplice. Il valore `false` diventa la 
 
 ## Conversione numerica
 
+<<<<<<< HEAD
 La conversione a `Number` viene applicata automaticamente nelle funzioni ed espressioni matematiche.
+=======
+Numeric conversion in mathematical functions and expressions happens automatically.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ad esempio, quando la divisione `/` viene applicata ad un tipo non numerico:
 
@@ -67,8 +78,13 @@ Le regole di conversione numerica:
 |-------|-------------|
 |`undefined`|`NaN`|
 |`null`|`0`|
+<<<<<<< HEAD
 |<code>true&nbsp;e&nbsp;false</code> | `1` e `0` |
 | `string` | Gli spazi bianchi all'inizio e alla fine vengono rimossi. Se la stringa rimanente è vuota, il risultato sarà `0`. Altrimenti, il numero viene "letto" dalla stringa. Un errore restituirà `NaN`. |
+=======
+|<code>true&nbsp;and&nbsp;false</code> | `1` and `0` |
+| `string` | Whitespaces (includes spaces, tabs `\t`, newlines `\n` etc.) from the start and end are removed. If the remaining string is empty, the result is `0`. Otherwise, the number is "read" from the string. An error gives `NaN`. |
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Esempi:
 
@@ -140,7 +156,11 @@ La conversione segue le seguenti regole:
 |`undefined`|`NaN`|
 |`null`|`0`|
 |<code>true&nbsp;/&nbsp;false</code> | `1 / 0` |
+<<<<<<< HEAD
 | `string` | La stringa viene letta per "com'è", gli spazi bianchi agli estremi vengono ignorati. Una stringa vuota diventa `0`. Un errore restituisce `NaN`. |
+=======
+| `string` | The string is read "as is", whitespaces (includes spaces, tabs `\t`, newlines `\n` etc.) from both sides are ignored. An empty string becomes `0`. An error gives `NaN`. |
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 **`Conversione booleana`** -- Avviene nelle operazioni logiche, può anche essere richiamato esplicitamente con `Boolean(value)`.
 

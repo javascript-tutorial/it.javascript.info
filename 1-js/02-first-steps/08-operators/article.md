@@ -51,8 +51,14 @@ Il risultato di `a % b` è il [resto](https://en.wikipedia.org/wiki/Remainder) d
 Ad esempio:
 
 ```js run
+<<<<<<< HEAD
 alert( 5 % 2 ); // 1, è il resto dell'operazione 5 diviso 2
 alert( 8 % 3 ); // 2, è il resto dell'operazione 8 diviso 3
+=======
+alert( 5 % 2 ); // 1, the remainder of 5 divided by 2
+alert( 8 % 3 ); // 2, the remainder of 8 divided by 3
+alert( 8 % 4 ); // 0, the remainder of 8 divided by 4
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ```
 
 ### Elevamento a Potenza **
@@ -70,7 +76,11 @@ alert( 2 ** 3 ); // 2³ = 8
 alert( 2 ** 4 ); // 2⁴ = 16
 ```
 
+<<<<<<< HEAD
 Come in matematica, l'esponente può essere anche un valore numerico non intero.
+=======
+Just like in maths, the exponentiation operator is defined for non-integer numbers as well.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ad esempio, la radice quadrata può essere vista come un elevamento a potenza con esponente `1/2`:
 
@@ -82,7 +92,11 @@ alert( 8 ** (1/3) ); // 2 (potenza 1/3 equivale alla radice cubica)
 
 ##  Concatenazione di stringhe, operatore binario +
 
+<<<<<<< HEAD
 Adesso diamo un'occhiata alle caratteristiche degli operatori in JavaScript, che vanno oltre l'aritmetica scolastica.
+=======
+Let's meet the features of JavaScript operators that are beyond school arithmetics.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Solitamente l'operatore di somma `+` viene utilizzato per sommare due numeri.
 
@@ -199,22 +213,30 @@ Un estratto della [tabella delle precedenze](https://developer.mozilla.org/en/Ja
 | Precedence | Name | Sign |
 |------------|------|------|
 | ... | ... | ... |
-| 17 | unary plus | `+` |
-| 17 | unary negation | `-` |
-| 16 | exponentiation | `**` |
-| 15 | multiplication | `*` |
-| 15 | division | `/` |
-| 13 | addition | `+` |
-| 13 | subtraction | `-` |
+| 14 | unary plus | `+` |
+| 14 | unary negation | `-` |
+| 13 | exponentiation | `**` |
+| 12 | multiplication | `*` |
+| 12 | division | `/` |
+| 11 | addition | `+` |
+| 11 | subtraction | `-` |
 | ... | ... | ... |
-| 3 | assignment | `=` |
+| 2 | assignment | `=` |
 | ... | ... | ... |
 
+<<<<<<< HEAD
 Come possiamo vedere, la "somma unaria"(unary plus) ha una priorità di `17`, che è maggiore del `13` dell'addizione(`+` binario). Questo è il motivo per cui l'espressione `"+apples + +oranges"` esegue prima il `+` unario, e successivamente l'addizione.
+=======
+As we can see, the "unary plus" has a priority of `14` which is higher than the `11` of "addition" (binary plus). That's why, in the expression `"+apples + +oranges"`, unary pluses work before the addition.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ## Assegnazione
 
+<<<<<<< HEAD
 Da notare che anche l'assegnazione `=` è un operatore. Viene infatti elencato nella tabella delle precedenze con una priorità molto bassa: `3`.
+=======
+Let's note that an assignment `=` is also an operator. It is listed in the precedence table with the very low priority of `2`.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Questo è il motivo per cui quando assegniamo un valore ad una variabile, come `x = 2 * 2 + 1`, i calcoli vengono eseguiti per primi, e successivamente viene valutato l'operatore `=`, che memorizza il risultato in `x`.
 
@@ -312,9 +334,14 @@ Questi operatori hanno la stessa precedenza delle normali assegnazioni, quindi v
 ```js run
 let n = 2;
 
-n *= 3 + 5;
+n *= 3 + 5; // right part evaluated first, same as n *= 8
 
+<<<<<<< HEAD
 alert( n ); // 16  (prima viene valutata la parte destra, equivale a n *= 8)
+=======
+alert( n ); // 16
+```
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ## Incremento/Decremento
 
@@ -445,8 +472,12 @@ La lista degli operatori:
 - RIGHT SHIFT ( `>>` )
 - ZERO-FILL RIGHT SHIFT ( `>>>` )
 
+<<<<<<< HEAD
 Questi operatori vengono utilizzati molto raramente, quando abbiamo bisogno di lavorare con i numeri al più basso livello (bit per bit).  Non avremo bisogno di questi operatori molto presto, poiché lo sviluppo web ne fa un uso limitato, ma in alcune aree speciali, come la crittografia, sono utili.In caso di necessità potete leggere l'articolo [operatori BitWise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators) su MDN.
 
+=======
+These operators are used very rarely, when we need to fiddle with numbers on the very lowest (bitwise) level. We won't need these operators any time soon, as web development has little use of them, but in some special areas, such as cryptography, they are useful. You can read the [Bitwise Operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#bitwise_operators) chapter on MDN when a need arises.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ## Virgola
 
