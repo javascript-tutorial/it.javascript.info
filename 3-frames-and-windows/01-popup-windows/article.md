@@ -38,6 +38,7 @@ button.onclick = () => {
 
 In questo modo gli utenti sono parzialmente protetti dai popup indesiderati, ma allo stesso tempo la funzionalità di popup non viene completamente disattivata.
 
+<<<<<<< HEAD
 Cosa accadrebbe nel caso in cui un popup venisse aperto in seguito ad un evento di `onclick`, ma dopo un `setTimeout`? Questa domanda può essere ingannevole.
 
 Provate voi stessi questo codice:
@@ -58,6 +59,8 @@ setTimeout(() => window.open('http://google.com'), 1000);
 
 La differenza sta nel fatto che Firefox tratta un timeout di 2000ms, o inferiore, come accettabile, qualsiasi valore che sia superiore verrà trattato come "inaffidabile", assumendo che un tale timeout sia "fuori dall'azione dell'utente". Quindi nel primo caso il popup viene bloccato, mentre nel secondo no.
 
+=======
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ## window.open
 
 La sintassi da utilizzare per aprire un popup è: `window.open(url, name, params)`:
@@ -87,7 +90,11 @@ Impostazioni disponibili in `params`:
 
  Ci sono molte altre caratterstiche meno supportate e specifiche per alcuni browser, che generalmente non vengono utilizzate. Potete trovare degli esempi di queste nella documentazione <a href="https://developer.mozilla.org/en/DOM/window.open">window.open di MDN</a>.
 
+<<<<<<< HEAD
 ## Esempio: una finestra minimalista
+=======
+## Example: a minimalistic window
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Proviamo ad aprire una finestra con un limitato insieme di caratteristiche, in modo tale da renderci conto quali di queste i browser ci permettono di disabilitare:
 
@@ -120,7 +127,11 @@ Le regole applicate per le impostazioni omesse sono:
 
 ## Accedere al popup dalla finestra
 
+<<<<<<< HEAD
 L'invocazione di `open` ritorna un riferimento alla finestra appena aperta. Può quindi essere utilizzato per manipolarne le proprietà, cambiarne la posizione e molto altro.
+=======
+The `open` call returns a reference to the new window. It can be used to manipulate its properties, change location and even more.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 In questo esempio, generiamo del contenuto per il popup tramite JavaScript:
 
@@ -238,7 +249,11 @@ Abbiamo a disposizione anche l'evento `window.onscroll`.
 
 Teoricamente, avremmo a disposizione i metodi `window.focus()` e `window.blur()` per innescare il focus/unfocus su una finestra. E anche gli eventi `focus/blur` che ci permettono di verificare il momento in cui un utente entra in una finestra(focus) o la abbandona(blur).
 
+<<<<<<< HEAD
 Comunque, nella pratica, questi metodi sono fortemente limitati, perché in passato pagine con scopi malevoli ne hanno abusato. 
+=======
+Although, in practice they are severely limited, because in the past evil pages abused them.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ad esempio, date un'occhiata al seguente codice:
 
@@ -256,10 +271,17 @@ Esistono però situazioni in cui l'utilizzo del focus è permesso e può tornare
 
 Ad esempio:
 
+<<<<<<< HEAD
 - Quando apriamo un popup, potrebbe essere una buona idea, invocare `newWindow.focus()`. In questo caso, su alcune combinazioni di OS/browser potrebbe funzionare ed assicurarci che l'utente si trovi nella nuova finestra.
 - Se vogliamo tracciare quando un utente utilizza la nostra web app, possiamo osservare gli eventi `window.onfocus/onblur`. Questo ci consente di sospendere/riprendere alcune azioni, come le animazioni. Da notare però che, l'evento di `blur` sta a significare che l'utente è uscito dal contesto della finestra, ma potrebbe continuare ad osservarla. La finestra è in background, ma potrebbe essere ancora visibile.
 
 ## Riepilogo
+=======
+- When we open a popup, it might be a good idea to run `newWindow.focus()` on it. Just in case, for some OS/browser combinations it ensures that the user is in the new window now.
+- If we want to track when a visitor actually uses our web-app, we can track `window.onfocus/onblur`. That allows us to suspend/resume in-page activities, animations etc. But please note that the `blur` event means that the visitor switched out from the window, but they still may observe it. The window is in the background, but still may be visible.
+
+## Summary
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Le finestre popup vengono utilizzate raramente, ad oggi esistono diverse alternative: caricare e mostrare informazioni direttamente in pagina, oppure utilizzare un iframe.
 

@@ -129,7 +129,12 @@ Ad esempio, qui il secondo `<span>` viene ignorato (dal momento che non è un fi
 
 Se ci sono più elementi nel light DOM con lo stesso slot name, questi vengono inseriti nello slot, uno dopo l'altro in successione.
 
+<<<<<<< HEAD
 Come nel seguente esempio:
+=======
+For example, this:
+
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ```html
 <user-card>
   <span slot="username">John</span>
@@ -267,8 +272,13 @@ Questo è invece il template dello shadow DOM con gli slot appropriati:
 </template>
 ```
 
+<<<<<<< HEAD
 1. `<span slot="title">` verrà inserito dentro `<slot name="title">`.
 2. Ci sono tanti `<li slot="item">`, ma solo uno `<slot name="item">` nel template. Di conseguenza tutti gli elementi `<li slot="item">` verranno inseriti dentro `<slot name="item">` uno dopo l'altro, così da formare la lista.
+=======
+1. `<span slot="title">` goes into `<slot name="title">`.
+2. There are many `<li slot="item">` in the `<custom-menu>`, but only one `<slot name="item">` in the template. So all such `<li slot="item">` are appended to `<slot name="item">` one after another, thus forming the list.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Il flattened DOM diventa:
 
@@ -380,7 +390,11 @@ Volendo però tenere traccia delle modifiche interne nel light DOM tramite JavaS
 
 Infine, citiamo i metodi JavaScript inerenti gli slots.
 
+<<<<<<< HEAD
 Come già visto, JavaScript tiene d'occhio il DOM "effettivo", privo di flattening. Ma, se lo shadow tree ha il `{mode: 'open'}`, possiamo vedere quali elementi vengono assegnati a uno slot o, viceversa, lo slot con l'elemento al suo interno:
+=======
+As we've seen before, JavaScript looks at the "real" DOM, without flattening. But, if the shadow tree has `{mode: 'open'}`, then we can figure out which elements assigned to a slot and, vice-versa, the slot by the element inside it:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 - `node.assignedSlot` -- restituisce l'elemento `<slot>` a cui è assegnato il `node`.
 - `slot.assignedNodes({flatten: true/false})` -- nodi DOM, assegnati allo slot. L'opzione `flatten` è `false` di default. Se impostata esplicitamente a `true`, analizzerà più in profondità all'interno del flattened DOM, restituendo gli slot annidati in caso di componenti annidati o il fallback content, in assenza di nodi assegnati.

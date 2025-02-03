@@ -120,27 +120,46 @@ In genere non ci sono reali necessità di interrompere il *bubbling*. Un problem
 
 C'è un'altra fase nell'elaborazione degli eventi, chiamata "capturing". Viene usata raramente nel codice, ma talvolta può essere utile.
 
+<<<<<<< HEAD
 Lo standard [DOM Events](http://www.w3.org/TR/DOM-Level-3-Events/) descrive 3 fasi nella propagazione dell'evento:
+=======
+The standard [DOM Events](https://www.w3.org/TR/DOM-Level-3-Events/) describes 3 phases of event propagation:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 1. Fase capturing -- l'evento va sull'elemento.
 2. Fase target -- l'evento ha raggiunto l'elemento target.
 3. Fase bubbling -- l'evento risale su dall'elemento.
 
+<<<<<<< HEAD
 Ecco la figura estratta dalle specifiche, di un click su un `<td>` dentro una tabella:
+=======
+Here's the picture, taken from the specification, of the capturing `(1)`, target `(2)` and bubbling `(3)` phases for a click event on a `<td>` inside a table:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ![](eventflow.svg)
 
 Ossia: per un click su `<td>` l'evento prima attraversa la catena degli antenati e scende giù fino all'elemento (fase *capturing*), dopodiché raggiunge il target ed è lì che viene innescato (fase *target*), ed infine risale su (fase di *bubbling*) chiamando i gestori lungo il suo cammino.
 
+<<<<<<< HEAD
 **Prima abbiamo accennato solo al *bubbling*, in quanto la fase *capturing* è usata raramente. Normalmente è assolutamente trasparente.**
 
 I gestori aggiunti usando le proprietà `on<event>` o tramite gli attributi HTML o usando solo due argomenti in `addEventListener(event, handler)` non sanno nulla della fase di *capturing*, ma verranno coinvolti solo nella seconda e terza fase.
+=======
+Until now, we only talked about bubbling, because the capturing phase is rarely used.
+
+In fact, the capturing phase was invisible for us, because handlers added using `on<event>`-property or using HTML attributes or using two-argument `addEventListener(event, handler)` don't know anything about capturing, they only run on the 2nd and 3rd phases.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Per catturare un evento in questa fase, abbiamo bisogno di impostare l'opzione `capture` a `true` nel gestore:
 
 ```js
 elem.addEventListener(..., {capture: true})
+<<<<<<< HEAD
 // oppure solamente "true" che è un alias per {capture: true}
+=======
+
+// or, just "true" is an alias to {capture: true}
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 elem.addEventListener(..., true)
 ```
 
@@ -180,9 +199,16 @@ Il codice imposta i gestori di click per *ogni*  elemento nel documento per vede
 
 Se clicchiamo su `<p>`, la sequenza sarà:
 
+<<<<<<< HEAD
 1. `HTML` -> `BODY` -> `FORM` -> `DIV` (fase di *capturing*, il primo listener):
 2. `P` (fase target, viene innescata due volte, dato che abbiamo impostato due listener: *capturing* e *bubbling*)
 3. `DIV` -> `FORM` -> `BODY` -> `HTML` (fase *bubbling*, il secondo listener).
+=======
+1. `HTML` -> `BODY` -> `FORM` -> `DIV -> P` (capturing phase, the first listener):
+2. `P` -> `DIV` -> `FORM` -> `BODY` -> `HTML` (bubbling phase, the second listener).
+
+Please note, the `P` shows up twice, because we've set two listeners: capturing and bubbling. The target triggers at the end of the first and at the beginning of the second phase.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 La proprietà `event.eventPhase` restituisce il numero della fase in cui l'evento è stato catturato, ma viene usata raramente, dato che possiamo dedurla dal gestore.
 
@@ -190,14 +216,25 @@ La proprietà `event.eventPhase` restituisce il numero della fase in cui l'event
 Se abbiamo assegnato l'evento con `addEventListener(..., true)`, allora siamo obbligati a fare menzione della stessa fase in `removeEventListener(..., true)` per rimuovere l'handler con successo.
 ```
 
+<<<<<<< HEAD
 ````smart header="A parità di elemento e fase, i listeners verranno eseguiti secondo l'ordine di assegnazione"
 Nel caso in cui avessimo più gestori assegnati alla stessa fase, assegnati allo stesso evento, tramite `addEventListener`, verranno eseguiti secondo l'ordine di creazione:
+=======
+````smart header="Listeners on the same element and same phase run in their set order"
+If we have multiple event handlers on the same phase, assigned to the same element with `addEventListener`, they run in the same order as they are created:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```js
 elem.addEventListener("click", e => alert(1)); // vi è garanzia che venga eseguito prima
 elem.addEventListener("click", e => alert(2));
 ```
 ````
+
+```smart header="The `event.stopPropagation()` during the capturing also prevents the bubbling"
+The `event.stopPropagation()` method and its sibling `event.stopImmediatePropagation()` can also be called on the capturing phase. Then not only the futher capturing is stopped, but the bubbling as well.
+
+In other words, normally the event goes first down ("capturing") and then up ("bubbling"). But if `event.stopPropagation()` is called during the capturing phase, then the event travel stops, no bubbling will occur.
+```
 
 
 ## Riepilogo
@@ -216,7 +253,11 @@ Ogni handler accede alle proprietà dell'oggetto `event`:
 
 Qualunque gestore può interrompere la propagazione dell'evento chiamando `event.stopPropagation()`, ma non è raccomandabile, in quanto non possiamo essere del tutto sicuri che non ne abbiamo bisogno ai livelli superiori, magari per questioni del tutto differenti.
 
+<<<<<<< HEAD
 La fase di *capturing* viene usata molto raramente, solitamente gestiamo gli eventi nella fase di *bubbling*. Ed in questo c'è una logica.
+=======
+The capturing phase is used very rarely, usually we handle events on bubbling. And there's a logical explanation for that.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Nel mondo reale, quando avviene un incidente, prima intervengono le autorità locali. Loro conoscono meglio il posto dove è avvenuto. Quindi intervengono e autorità di alto livello in caso di necessità. 
 

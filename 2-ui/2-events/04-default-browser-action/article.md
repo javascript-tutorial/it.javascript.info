@@ -17,7 +17,11 @@ Ci sono due modi per comunicare al browser che non vogliamo che esegua l'azione 
 - Il più comune è quello di usare il metodo `event.preventDefault()`, incluso nell'oggetto `event`.
 - Se il gestore viene assegnato tramite `on<event>` (e non tramite `addEventListener`), allora restituire `false` sortirà lo stesso effetto.
 
+<<<<<<< HEAD
 In questo HTML un click su un link non innescherà la navigazione verso l'URL, e di fatto il browser non farà nulla:
+=======
+In this HTML, a click on a link doesn't lead to navigation; the browser doesn't do anything:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ```html autorun height=60 no-beautify
 <a href="/" onclick="return false">Clicca qui</a>
@@ -96,7 +100,11 @@ Questo perché l'azione del browser viene annullata sul `mousedown`. Il focus sa
 
 L'opzione facoltativa `passive: true` di `addEventListener` segnala al browser che il gestore non chiamerà `preventDefault()`.
 
+<<<<<<< HEAD
 Perché dovrebbe essere necessaria una cosa del genere?
+=======
+Why might that be needed?
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ci sono alcuni eventi come `touchmove` su dispositivi *mobile* (quando l'utente sposta le dita lungo lo schermo), che di default causerebbero lo scrolling, ma ciò può essere evitato con `preventDefault()` sul gestore.
 

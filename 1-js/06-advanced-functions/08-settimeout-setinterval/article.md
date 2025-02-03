@@ -27,7 +27,11 @@ Di solito è una funzione. Per ragioni storiche, si può passare una stringa (st
 : Il ritardo in millisecondi (1000 ms = 1 secondo) prima dell'esecuzione, di base 0.
 
 `arg1`, `arg2`...
+<<<<<<< HEAD
 : Gli argomenti della funzione (non supportati in IE9-)
+=======
+: Arguments for the function
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Per esempio, questo codice esegue `saluta()` dopo un secondo:
 
@@ -102,7 +106,11 @@ Come possiamo vedere dall'output dell'`alert`, in un browser l'identificatore de
 
 Anche qui, non ci sono specifiche universali per questi metodi, quindi va bene così.
 
+<<<<<<< HEAD
 Per i browser, i timer sono descritti nella [sezione Timers](https://www.w3.org/TR/html5/webappapis.html#timers) di HTML5 standard.
+=======
+For browsers, timers are described in the [timers section](https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers) of HTML Living Standard.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 ## setInterval
 
@@ -232,7 +240,11 @@ setTimeout(function() {...}, 100);
 
 Per `setInterval` la funzione resta in memoria fino a quando viene eseguito `clearInterval`.
 
+<<<<<<< HEAD
 C'è un effetto collaterale. Una funzione si riferisce all'ambiente lessicale esterno, quindi, finché vive, vivono anche le variabili esterne. Queste possono richiedere molta più memoria della funzione stessa. Ne consegue che quando non ci serve più la funzione pianificata, è meglio cancellarla, anche se è molto piccola.
+=======
+There's a side effect. A function references the outer lexical environment, so, while it lives, outer variables live too. They may take much more memory than the function itself. So when we don't need the scheduled function anymore, it's better to cancel it, even if it's very small.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ````
 
 ## setTimeout con zero-delay (ritardo zero)
@@ -255,8 +267,13 @@ La prima linea "mette in calendario" la chiamata dopo 0ms, ma la pianificazione 
 
 Ci sono anche casi di utilizzo avanzato relativi ai browser del timeout zero-delay, li discuteremo nel capitolo <info:event-loop>.
 
+<<<<<<< HEAD
 ````smart header="Zero-delay in effetti non è zero (in un browser)"
 In un browser c'è un limite a quanto spesso possono essere avviati i timer nidificati. L'[HTML5 standard](https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers) dice: "dopo cinque timer nidificati, l'intervallo è costretto a essere di almeno 4 millisecondi".
+=======
+````smart header="Zero delay is in fact not zero (in a browser)"
+In the browser, there's a limitation of how often nested timers can run. The [HTML Living Standard](https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers) says: "after five nested timers, the interval is forced to be at least 4 milliseconds.".
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Vediamo cosa significa con l'esempio qui sotto. La chiamata `setTimeout` riprogramma se stessa con zero-delay. Ogni chiamata ricorda il tempo reale dall'esecuzione precedente nell'array `tempi`. Come sono realmente i ritardi? Vediamo:
 
@@ -294,9 +311,16 @@ Per JavaScript lato server, questo limite non esiste e ci sono altri metodi per 
 
 Da notare che tutti i metodi di pianificazione non *garantiscono* un ritardo preciso.
 
+<<<<<<< HEAD
 Per esempio, il timer nel browser può rallentare per molte ragioni:
 - La CPU è sovraccarica.
 - La scheda del browser è sullo sfondo.
 - Il portatile ha la batteria scarica.
+=======
+For example, the in-browser timer may slow down for a lot of reasons:
+- The CPU is overloaded.
+- The browser tab is in the background mode.
+- The laptop is on battery saving mode.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Tutto ciò può aumentare l'esecuzione minima del timer (il ritardo minimo) di 300ms o anche 1000ms a seconda del browser e le impostazioni di prestazione a livello dell'OS.

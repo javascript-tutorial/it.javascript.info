@@ -21,10 +21,17 @@ let promise = fetch(url, {
     // a seconda del corpo della richiesta
     "Content-Type": "text/plain;charset=UTF-8"
   },
+<<<<<<< HEAD
   body: undefined // string, FormData, Blob, BufferSource, o URLSearchParams
   referrer: "about:client", // oppure "" per inviare un header di Referer nullo,
   // o un url dalla *origin* attuale
   referrerPolicy: "no-referrer-when-downgrade", // no-referrer, origin, same-origin...
+=======
+  body: undefined, // string, FormData, Blob, BufferSource, or URLSearchParams
+  referrer: "about:client", // or "" to send no Referer header,
+  // or an url from the current origin
+  referrerPolicy: "strict-origin-when-cross-origin", // no-referrer-when-downgrade, no-referrer, origin, same-origin...
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
   mode: "cors", // same-origin, no-cors
   credentials: "same-origin", // omit, include
   cache: "default", // no-store, reload, no-cache, force-cache, or only-if-cached
@@ -52,7 +59,11 @@ Solitamente questo header viene impostato automaticamente e contiene l'URL della
 
 **L'opzione `referrer` permette di impostare qualunque `Referer` (all'interno dell'origine attuale) o di rimuoverlo.**
 
+<<<<<<< HEAD
 Per non inviare alcun referer, impostare una stringa vuota:
+=======
+To send no referrer, set an empty string:
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 ```js
 fetch('/page', {
 *!*
@@ -85,6 +96,7 @@ Diversamente dall'opzione `referrer` che permette di impostare l'esatto valore d
 
 I valori possibili vengono descritti nelle [Specifiche di Referrer Policy](https://w3c.github.io/webappsec-referrer-policy/):
 
+<<<<<<< HEAD
 - **`"no-referrer-when-downgrade"`** -- il valore predefinito: viene sempre inviato il `Referer` completo, a meno che  non inviamo una richiesta da HTTPS ad HTTP (verso il protocollo meno sicuro).
 - **`"no-referrer"`** -- non invia mai il `Referer`.
 - **`"origin"`** -- invia solamente l'origin nel `Referer`, non l'URL completo della pagina, ad esempio solo `http://site.com` invece di `http://site.com/path`.
@@ -93,18 +105,28 @@ I valori possibili vengono descritti nelle [Specifiche di Referrer Policy](https
 - **`"strict-origin"`** -- invia solamente l'origin, non il `Referer` per richieste HTTPS→HTTP.
 - **`"strict-origin-when-cross-origin"`** -- per richieste same-origin invia il `Referer` completo, per quelle cross-origin invia solo l'origin, a meno che non sia una richiesta HTTPS→HTTP, per le quali non invierebbe nulla.
 - **`"unsafe-url"`** -- invia sempre l'url completo nel `Referer`, anche per richieste HTTPS→HTTP.
+=======
+- **`"strict-origin-when-cross-origin"`** -- the default value: for same-origin send the full `Referer`, for cross-origin send only the origin, unless it's HTTPS→HTTP request, then send nothing.
+- **`"no-referrer-when-downgrade"`** -- full `Referer` is always sent, unless we send a request from HTTPS to HTTP (to the less secure protocol).
+- **`"no-referrer"`** -- never send `Referer`.
+- **`"origin"`** -- only send the origin in `Referer`, not the full page URL, e.g. only `http://site.com` instead of `http://site.com/path`.
+- **`"origin-when-cross-origin"`** -- send the full `Referer` to the same origin, but only the origin part for cross-origin requests (as above).
+- **`"same-origin"`** -- send the full `Referer` to the same origin, but no `Referer` for cross-origin requests.
+- **`"strict-origin"`** -- send only the origin, not the `Referer` for HTTPS→HTTP requests.
+- **`"unsafe-url"`** -- always send the full url in `Referer`, even for HTTPS→HTTP requests.
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Ecco una tabella con tutte le combinazioni:
 
 | Value | To same origin | To another origin | HTTPS→HTTP |
 |-------|----------------|-------------------|------------|
 | `"no-referrer"` | - | - | - |
-| `"no-referrer-when-downgrade"` or `""` (default) | full | full | - |
+| `"no-referrer-when-downgrade"` | full | full | - |
 | `"origin"` | origin | origin | origin |
 | `"origin-when-cross-origin"` | full | origin | origin |
 | `"same-origin"` | full | - | - |
 | `"strict-origin"` | origin | origin | - |
-| `"strict-origin-when-cross-origin"` | full | origin | - |
+| `"strict-origin-when-cross-origin"` or `""` (default) | full | origin | - |
 | `"unsafe-url"` | full | full | full |
 
 Immaginiamo di avere un'area di amministrazione con una struttura URL che dovrebbe rimanere nascosta all'esterno del sito.
@@ -179,7 +201,11 @@ L'opzione `integrity` permette di controllare se la risposta combacia con il che
 
 Come descritto nelle [specifiche](https://w3c.github.io/webappsec-subresource-integrity/), funzione hash supportate sono SHA-256, SHA-384, e SHA-512, potrebbero essercene altre a discrezione del browser.
 
+<<<<<<< HEAD
 Per esempio, stiamo scaricando un file, e sappiamo che il suo checksum SHA-256 è "abcdef" (un checksum reale è più lungo, chiaramente).
+=======
+For example, we're downloading a file, and we know that its SHA-256 checksum is "abcdef" (a real checksum is longer, of course).
+>>>>>>> 34a80e70f8cce5794be259d25f815d7a7db7cbe3
 
 Possiamo inserirlo dentro l'opzione `integrity`:
 
