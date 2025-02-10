@@ -6,9 +6,15 @@ importance: 5
 
 Create un oggetto `calculator` con tre metodi:
 
+<<<<<<< HEAD
 - `read()` richiede tramite prompt due valori e li salva come proprietà dell'oggetto.
 - `sum()` ritorna la somma dei valori salvati.
 - `mul()` moltiplica i valori salvati e ritorna il risultato.
+=======
+- `read()` prompts for two values and saves them as object properties with names `a` and `b` respectively.
+- `sum()` returns the sum of saved values.
+- `mul()` multiplies saved values and returns the result.
+>>>>>>> 6236eb8c3cdde729dab761a1d0967a88a1a6197e
 
 ```js
 let calculator = {
@@ -21,4 +27,3 @@ alert( calculator.mul() );
 ```
 
 [demo]
-
