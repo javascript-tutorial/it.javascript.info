@@ -28,4 +28,8 @@ alert(dictionary); // "apple,__proto__"
 
 Possiamo crare una proprietà utilizzando un descriptor. Di default i flag vengono impostati a `false`. Quindi nel codice sopra, `dictionary.toString` è non-enumerable.
 
+<<<<<<< HEAD
 Vedi il capitolo [property descriptors](info:property-descriptors) se hai bisogno di ripassare l'argomento.
+=======
+See the chapter [](info:property-descriptors) for review.
+>>>>>>> 1dce5b72b16288dad31b7b3febed4f38b7a5cd8a
