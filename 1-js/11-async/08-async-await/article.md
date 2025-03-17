@@ -135,7 +135,13 @@ let user = await response.json();
 console.log(user);
 ```
 
+<<<<<<< HEAD
 Possiamo "avvolgerlo" wrap in una funzione async anonima, come qui:
+=======
+If we're not using modules, or [older browsers](https://caniuse.com/mdn-javascript_operators_await_top_level) must be supported, there's a universal recipe: wrapping into an anonymous async function.
+
+Like this:
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 
 ```js
 (async () => {

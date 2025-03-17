@@ -20,7 +20,12 @@ let str = `
 str = str.replace(regexp, `<h1>Hello</h1>`);
 ```
 
+<<<<<<< HEAD
 Dopo l'inserimento il valore di `str` dovrebbe essere:
+=======
+After that the value of `str` should be:
+
+>>>>>>> 3d7abb9cc8fa553963025547717f06f126c449b6
 ```html
 <html>
   <body style="height: 200px"><h1>Hello</h1>
