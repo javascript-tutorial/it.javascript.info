@@ -69,7 +69,15 @@ Vediamo un altro esempio.
 Se dimentichiamo la flag `u` e occasionalmente usiamo le coppie surrogate, possiamo incorrere in errori:
 
 ```js run
+<<<<<<< HEAD
 '𝒳'.match(/[𝒳-𝒴]/); // SyntaxError: intervallo non valido nella classe di caratteri
+=======
+let regexp = /\p{Sc}\d/gu;
+
+let str = `Prices: $2, €1, ¥9`;
+
+alert( str.match(regexp) ); // $2,€1,¥9
+>>>>>>> 540d753e90789205fc6e75c502f68382c87dea9b
 ```
 
 Di solito, le regexp interpretano `[a-z]` come un "intervallo di caratteri con codici tra `a` e `z`.
