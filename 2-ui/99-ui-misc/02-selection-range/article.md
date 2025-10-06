@@ -250,8 +250,55 @@ Fondamentalmente, con questi metodi possiamo fare qualunque cosa con i nodi sele
 Ecco il banco di prova per vederli in azione:
 
 
+<<<<<<< HEAD
 ```html run autorun height=260
 Clicca sui pulsanti per eseguire i metodi nella selezione, "resetExample" per resettare.
+=======
+## Range selection methods
+
+There are many convenient methods to manipulate ranges.
+
+We've already seen `setStart` and `setEnd`, here are other similar methods.
+
+Set range start:
+
+- `setStart(node, offset)` set start at: position `offset` in `node`
+- `setStartBefore(node)` set start at: right before `node`
+- `setStartAfter(node)` set start at: right after `node`
+
+Set range end (similar methods):
+
+- `setEnd(node, offset)` set end at: position `offset` in `node`
+- `setEndBefore(node)` set end at: right before `node`
+- `setEndAfter(node)` set end at: right after `node`
+
+Technically, `setStart/setEnd` can do anything, but more methods provide more convenience.
+
+In all these methods, `node` can be both a text or element node: for text nodes `offset` skips that many of characters, while for element nodes that many child nodes.
+
+Even more methods to create ranges:
+- `selectNode(node)` set range to select the whole `node`
+- `selectNodeContents(node)` set range to select the whole `node` contents
+- `collapse(toStart)` if `toStart=true` set end=start, otherwise set start=end, thus collapsing the range
+- `cloneRange()` creates a new range with the same start/end
+
+## Range editing methods
+
+Once the range is created, we can manipulate its content using these methods:
+
+- `deleteContents()` -- remove range content from the document
+- `extractContents()` -- remove range content from the document and return as [DocumentFragment](info:modifying-document#document-fragment)
+- `cloneContents()` -- clone range content and return as [DocumentFragment](info:modifying-document#document-fragment)
+- `insertNode(node)` -- insert `node` into the document at the beginning of the range
+- `surroundContents(node)` -- wrap `node` around range content. For this to work, the range must contain both opening and closing tags for all elements inside it: no partial ranges like `<i>abc`.
+
+With these methods we can do basically anything with selected nodes.
+
+Here's the test stand to see them in action:
+
+```html run refresh autorun height=260
+Click buttons to run methods on the selection, "resetExample" to reset it.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 <p id="p">Example: <i>italic</i> and <b>bold</b></p>
 
@@ -347,7 +394,11 @@ Le proprietà principali di selection sono:
 - `rangeCount` -- conto del numero di selezioni, massimo `1` su tutti i browser, eccetto Firefox.
 
 
+<<<<<<< HEAD
 ```smart header="Selection end/start contro Range"
+=======
+There's an important difference between a selection anchor/focus compared with a `Range` start/end.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 Esiste un'importante differenza tra una selection anchor/focus e un `Range` start/end.
 
@@ -402,8 +453,13 @@ From <input id="from" disabled> – To <input id="to" disabled>
 
 Ci sono due approcci alla copia del contenuto di una selezione:
 
+<<<<<<< HEAD
 1. Possiamo usare `document.getSelection().toString()` per avere il contenuto come testo.
 2. Oppure possiamo copiare il DOM completo (ad esempio se volgiamo mantenere la formattazione) recuperando i ranges con `getRangesAt(...)`. Un oggetto `Range` possiede il metodo `cloneContents()` che clona il contenuto e lo ritorna come oggetto `DocumentFragment`, che può essere inserito dove necessario.
+=======
+1. We can use `document.getSelection().toString()` to get it as text.
+2. Otherwise, to copy the full DOM, e.g. if we need to keep formatting, we can get the underlying ranges with `getRangeAt(...)`. A `Range` object, in turn, has `cloneContents()` method that clones its content and returns as `DocumentFragment` object, that we can insert elsewhere.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 Ecco la demo per copiare il contenuto selezionato, sia come testo che come nodi del DOM:
 
@@ -433,7 +489,11 @@ As text: <span id="astext"></span>
 
 ## Metodi per la selezione
 
+<<<<<<< HEAD
 Possiamo lavorare con la selezione aggiungendo/rimuovendo ranges:
+=======
+We can work with the selection by adding/removing ranges:
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 - `getRangeAt(i)` -- legge il range alla posizione i, partendo da '0'. In tutti i browser, tranne Firefox, viene usato solo `0`.
 - `addRange(range)` -- aggiunge `range` alla selezione. Tutti i browser, eccetto Firefox, ignorano la chiamata, se la selezione ha già un range associato.
