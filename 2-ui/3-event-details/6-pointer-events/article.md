@@ -71,7 +71,17 @@ Alcuni dispositivi di puntamento misurano l'area di contatto e la pressione, ad 
 - `tangentialPressure` - la pressione tangenziale normalizzata.
 - `tiltX`, `tiltY`, `twist` - proprietà specifiche delle penne che descrivono come la penna è posizionata rispetto alla superficie dello schermo.
 
+<<<<<<< HEAD
 Queste proprietà non sono supportate dalla maggioranza dei dispositivi, per questo vengono usate raramente. In caso di necessità potete trovarne i dettagli nelle [specifiche](https://w3c.github.io/pointerevents/#pointerevent-interface).
+=======
+- `width` - the width of the area where the pointer (e.g. a finger) touches the device. Where unsupported, e.g. for a mouse, it's always `1`.
+- `height` - the height of the area where the pointer touches the device. Where unsupported, it's always `1`.
+- `pressure` - the pressure of the pointer tip, in range from 0 to 1. For devices that don't support pressure must be either `0.5` (pressed) or `0`.
+- `tangentialPressure` - the normalized tangential pressure.
+- `tiltX`, `tiltY`, `twist` - pen-specific properties that describe how the pen is positioned relative to the surface.
+
+These properties aren't supported by most devices, so they are rarely used. You can find the details about them in the [specification](https://w3c.github.io/pointerevents/#pointerevent-interface) if needed.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 ## Multi-touch
 
@@ -111,7 +121,11 @@ Le cause possono essere:
 
 Ecco un caso reale di evento `pointercancel` per vedere cosa e come ci influenza.
 
+<<<<<<< HEAD
 Mettiamo il caso che stiamo implementando il drag'n'drop per un pallone, proprio come fatto all'inizio dell'articolo <info:mouse-drag-and-drop>.
+=======
+Let's say we're implementing drag'n'drop for a ball, just as in the beginning of the article <info:mouse-drag-and-drop>.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 Ecco il flusso delle azioni dell'utente e gli eventi corrispondenti:
 
@@ -126,7 +140,11 @@ Ecco il flusso delle azioni dell'utente e gli eventi corrispondenti:
 Qui il problema è che il browser "dirotta" l'interazione: viene generato `pointercancel` all'inizio del processo di "drag-and-drop", e non vengono più generati eventi `pointermove`.
 
 ```online
+<<<<<<< HEAD
 Ecco una demo con drag'n'drop con il tracciamento degli eventi del puntatore (solo per `up/down`, `move` e `cancel`) nella `textarea`: 
+=======
+Here's the drag'n'drop demo with logging of pointer events (only `up/down`, `move` and `cancel`) in the `textarea`:
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 [iframe src="ball" height=240 edit]
 ```
