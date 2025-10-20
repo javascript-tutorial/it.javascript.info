@@ -131,9 +131,14 @@ Ci sono solamente due limitazioni:
 
 Inoltre, anche se dovrebbe essere già ovvio: può esserci solamente un `[[Prototype]]`. Un oggetto non può ereditare da più oggetti.
 
+<<<<<<< HEAD
 
 ```smart header="`__proto__` è un getter/setter storico per `[[Prototype]]`"
 E' un errore comune tra i principianti quello di non conoscere la differenza tra questi due.
+=======
+```smart header="`__proto__` is a historical getter/setter for `[[Prototype]]`"
+It's a common mistake of novice developers not to know the difference between these two.
+>>>>>>> 51bc6d3cdc16b6eb79cb88820a58c4f037f3bf19
 
 Da notare che `__proto__` non è *la stessa cosa* della proprietà `[[Prototype]]`. E' solamente un getter/setter per `[[Prototype]]`. Più avanti vedremo alcune situazioni in cui questa differenza avrà importanza, ma per ora tenetelo solo a mente.
 
