@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 L'errore si verifica perché `askPassword` riceve le funzioni `loginOk/loginFail` senza l'oggetto.
+=======
+The error occurs because `askPassword` gets functions `loginOk/loginFail` without the object.
+>>>>>>> 5e893cffce8e2346d4e50926d5148c70af172533
 
 Quando le chiamiamo, naturalmente assumono `this=undefined`.
 

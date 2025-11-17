@@ -1,7 +1,11 @@
 
 # Elemento Template
 
+<<<<<<< HEAD
 L'elemento built-in `<template>` funziona come uno storage per i templates del markup HTML. Il browser ignora il suo contenuto, controllandone solamente la validità della sintassi, ma possiamo accedervi ed usarli via JavaScript, per creare altri elementi.
+=======
+A built-in `<template>` element serves as a storage for HTML markup templates. The browser ignores its contents, only checks for syntax validity, but we can access and use it in JavaScript, to create other elements.
+>>>>>>> 5e893cffce8e2346d4e50926d5148c70af172533
 
 In teoria, possiamo creare qualunque elemento invisibile in qualunque punto dell'HTML, al solo scopo di salvare del markup HTML. Cos'altro possiamo dire su `<template>`?
 
