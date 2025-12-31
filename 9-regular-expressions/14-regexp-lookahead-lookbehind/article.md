@@ -125,6 +125,6 @@ Tipi di lookaround:
 | Pattern            | Tipo             | Riscontri |
 |--------------------|------------------|---------|
 | `X(?=Y)`   | Lookahead positivo | `pattern:X` se seguito da `pattern:Y` |
-| `X(?!Y)`   | Lookahead negativo | `pattern:X` se seguito da `pattern:Y` |
+| `X(?!Y)`   | Lookahead negativo | `pattern:X` se non seguito da `pattern:Y` |
 | `(?<=Y)X` |  Lookbehind positivo | `pattern:X` se dopo `pattern:Y` |
-| `(?<!Y)X` | Lookbehind negativo | `pattern:X` se dopo `pattern:Y` |
+| `(?<!Y)X` | Lookbehind negativo | `pattern:X` se non dopo `pattern:Y` |
