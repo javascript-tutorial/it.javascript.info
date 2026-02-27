@@ -131,7 +131,7 @@ alert( `My\n`.length ); // 3
 Da notare che `\n` è contato come unico carattere "speciale", quindi la lunghezza risulta essere `3`.
 
 ```warn header="`length` è una proprietà"
-Alcune persone abituate ad altri linguaggi possono confondere al chiamata `str.length()` con `str.length`. Questo è un errore.
+Alcune persone abituate ad altri linguaggi possono confondere la forma corretta `str.length` scrivendo `str.length()`. Questo è un errore.
 
 Infatti `str.length` è una proprietà numerica, non una funzione. Non c'è alcun bisogno delle parentesi.
 ```
