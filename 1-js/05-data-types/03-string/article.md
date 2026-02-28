@@ -185,7 +185,7 @@ alert( str[0] ); // non funziona
 
 Il metodo utilizzato per aggirare questo problema è creare una nuova stringa ed assegnarla a `str` sostituendo quella vecchia.
 
-Ad esemepio:
+Ad esempio:
 
 ```js run
 let str = 'Hi';
