@@ -292,7 +292,7 @@ Studieremo più nel dettaglio `__proto__` nel [capitolo](info:prototype-inherita
 
 Un'importante caratteristica degli oggetti, in Javascript, è che è possibile accedere a una qualsiasi proprietà. Non ci sarà alcun errore se la proprietà non esiste! 
 
-L'accesso ad una variabile non esistente ritornerà `undefined`. Possiamo quindi facilmente verificare se una properietà esiste:
+L'accesso ad una variabile non esistente ritornerà `undefined`. Possiamo quindi facilmente verificare se una proprietà esiste:
 
 ```js run
 let user = {};
