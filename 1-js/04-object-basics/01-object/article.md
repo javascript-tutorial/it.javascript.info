@@ -220,7 +220,7 @@ let user = makeUser("John", 30);
 alert(user.name); // John
 ```
 
-Nell'esempio sopra, le proprietà hanno lo stesso nome delle varibili. Il caso d'uso di creare una proprietà da una variabile è molto comune, tanto che, per comodità, esiste una speciale *abbreviazione* .
+Nell'esempio sopra, le proprietà hanno lo stesso nome delle variabili. Il caso d'uso di creare una proprietà da una variabile è molto comune, tanto che, per comodità, esiste una speciale *abbreviazione* .
 
 Invece di scrivere `name:name` possiamo semplicemente scrivere `name`, come in questo esempio:
 
