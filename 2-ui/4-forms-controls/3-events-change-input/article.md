@@ -86,14 +86,38 @@ Questo perché `clipboardData` implementa l'interfaccia `DataTransfer`, usata co
 ```warn header="ClipboardAPI: restrizione per la sicurezza dell'utente"
 La clipboard è una caratteristica "globale" a livello del sistema operativo. I browser quindi, per ragioni di sicurezza, consentono l'accesso in lettura/scrittura solo per certe azioni dell'utente, ad esempio nei gestori evento `onclick`.
 
+<<<<<<< HEAD
 Inoltre è vietato generare eventi clipboard "personalizzati" tramite `dispatchEvent` in tutti i browser eccetto Firefox.
 ```
+=======
+That's because `clipboardData` implements `DataTransfer` interface, commonly used for drag'n'drop and copy/pasting. It's a bit beyond our scope now, but you can find its methods in the [DataTransfer specification](https://html.spec.whatwg.org/multipage/dnd.html#the-datatransfer-interface).
+>>>>>>> 52c1e61915bc8970a950a3f59bd845827e49b4bf
 
 ## Riepilogo
 
 Eventi di modifica dati:
 
+<<<<<<< HEAD
 | Evento | Descrizione | Speciali |
+=======
+The clipboard is a "global" OS-level thing. A user may switch between various applications, copy/paste different things, and a browser page shouldn't see all that.
+
+So most browsers allow seamless read/write access to the clipboard only in the scope of certain user actions, such as copying/pasting etc.
+
+It's forbidden to generate "custom" clipboard events with `dispatchEvent` in all browsers except Firefox. And even if we manage to dispatch such event, the specification clearly states that such "synthetic" events must not provide access to the clipboard.
+
+Even if someone decides to save `event.clipboardData` in an event handler, and then access it later -- it won't work.
+
+To reiterate, [event.clipboardData](https://www.w3.org/TR/clipboard-apis/#clipboardevent-clipboarddata) works solely in the context of user-initiated event handlers.
+
+On the other hand, [navigator.clipboard](https://www.w3.org/TR/clipboard-apis/#h-navigator-clipboard) is the more recent API, meant for use in any context. It asks for user permission, if needed.
+
+## Summary
+
+Data change events:
+
+| Event | Description | Specials |
+>>>>>>> 52c1e61915bc8970a950a3f59bd845827e49b4bf
 |---------|----------|-------------|
 | `change`| È stato modificato un valore. | Per il testo viene generato alla perdita del focus. |
 | `input` | Per gli input di testo ad ogni modifica. | Viene generato immediatamente diversamente da `change`. |
