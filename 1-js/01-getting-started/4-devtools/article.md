@@ -23,7 +23,7 @@ Gli strumenti di sviluppo, di default, si apriranno nella scheda Console.
 
 Assomiglierà a qualcosa di simile a questo:
 
-![chrome](chrome.png)
+![chrome](chrome.webp)
 
 Il look esatto degli strumenti di sviluppo dipenderà dalla tua versione di Chrome. Nel tempo potrebbe cambiare un po', ma dovrebbe essere comunque molto simile.
 
@@ -51,7 +51,11 @@ Anche l'aspetto è molto simile. Quando avrai imparato come utilizzare uno di qu
 
 Safari (Mac browser, non supportato da Windows/Linux) è un pò speciale in questo ambito. E' necessario attivare prima il "Menu di Sviluppo".
 
+<<<<<<< HEAD
 Apri le Impostazioni e vai sul pannello "Avanzate". In basso troverai un'opzione da spuntare:
+=======
+Open Settings and go to the "Advanced" pane. There's a checkbox at the bottom:
+>>>>>>> 52c1e61915bc8970a950a3f59bd845827e49b4bf
 
 ![safari](safari.png)
 
