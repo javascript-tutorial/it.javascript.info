@@ -206,8 +206,16 @@ Perché abbiamo studiato questi esempi? Dovremmo ricordarci queste peculiarità 
 
 ## Riepilogo
 
+<<<<<<< HEAD
 - Gli operatori di confronto restituiscono sempre un valore booleano.
 - Le stringhe vengono confrontate lettera per lettera seguendo l'ordine "lessicografico".
 - Quando valori di tipo differente vengono confrontati, questi vengono convertiti in numeri (ad eccezione del controllo di uguaglianza stretto).
 - I valori `null` e `undefined` sono `==` solo tra di loro, e a nessun altro valore.
 - Va prestata attenzione quando si utilizzano gli operatori di confronto come `>` o `<` con variabili che potrebbero contenere `null/undefined`. Controllare separatamente l'assegnazione di `null/undefined` è una buona idea.
+=======
+- Comparison operators return a boolean value.
+- Strings are compared letter-by-letter in the "dictionary" order.
+- When values of different types are compared, they get converted to numbers (with the exclusion of a strict equality check).
+- The values `null` and `undefined` are equal `==` to themselves and each other, but do not equal any other value.
+- Be careful when using comparisons like `>` or `<` with variables that can occasionally be `null/undefined`. Checking for `null/undefined` separately is a good idea.
+>>>>>>> 725653fd99b19d42195e837ac3bb23c1784f8f6e
