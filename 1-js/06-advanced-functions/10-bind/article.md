@@ -125,7 +125,11 @@ funcUser(); // John
 */!*
 ```
 
+<<<<<<< HEAD
 Qui `func.bind(user)` è come una "variante" di `func`, con `this=user` fisso.
+=======
+Here `func.bind(user)` is a "bound variant" of `func`, with fixed `this=user`.
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 
 Tutti gli argomenti vengono passati così come sono a `func` originale, ad esempio:
 
@@ -202,7 +206,11 @@ for (let key in user) {
 }
 ```
 
+<<<<<<< HEAD
 Alcune librerie JavaScript forniscono utili funzioni per il *binding* di massa, ad esempio [_.bindAll(object, methodNames)](http://lodash.com/docs#bindAll) in lodash.
+=======
+JavaScript libraries also provide functions for convenient mass binding , e.g. [_.bindAll(object, methodNames)](https://lodash.com/docs#bindAll) in lodash.
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 ````
 
 ## Funzioni parziali
