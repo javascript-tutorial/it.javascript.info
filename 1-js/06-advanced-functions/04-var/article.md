@@ -56,7 +56,7 @@ alert(test); // ReferenceError: test is not defined
 
 La stessa cosa accade con i cicli, `var` non può essere locale ad un blocco/ciclo:
 
-```js
+```js run
 for (var i = 0; i < 10; i++) {
   var one = 1;
   // ...
@@ -168,7 +168,7 @@ Lo dimostriamo con un esempio, come quello seguente:
 
 ```js run
 function sayHi() {
-  alert(phrase);  
+  alert(phrase);
 
 *!*
   var phrase = "Hello";
