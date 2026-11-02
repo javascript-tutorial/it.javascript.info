@@ -5,7 +5,11 @@ Come sappiamo dal capitolo *Tipi di dati*, in Javascript ci sono otto tipi di da
 
 Gli oggetti, invece, vengono utilizzati per catalogare vari tipi di dati ed altri elementi più complessi. In Javascript, essi permeano ogni aspetto del linguaggio. Dobbiamo perciò comprenderli bene prima di procedere nello studio approfondito di un qualsiasi altro argomento.
 
+<<<<<<< HEAD
 Un oggetto può essere creato tramite le parentesi graffe `{...}`, con un'opzionale lista di proprietà. Una proprietà è una coppia "chiave: valore", dove "chiave" è una stringa (detta anche "nome di proprietà"), mentre "valore" può essere qualsiasi cosa.
+=======
+An object can be created with curly braces `{…}` with an optional list of *properties*. A property is a "key: value" pair, where `key` is a string (also called a "property name"), and `value` can be anything.
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 
 Possiamo immaginare un oggetto come un archivio con dei documenti catalogati. Ogni dato viene archiviato utilizzando una specifica chiave. E' facile trovare un file quando se ne conosce il nome, oppure aggiungerne di nuovi o rimuovere quelli vecchi.
 
@@ -20,7 +24,11 @@ let user = {};  // sintassi "oggetto letterale"
 
 ![](object-user-empty.svg)
 
+<<<<<<< HEAD
 Solitamente vengono utilizzate le parentesi graffe `{...}`. Questo tipo di dichiarazione viene chiamata *object literal* ("oggetto letterale").
+=======
+Usually, the curly braces `{...}` are used. That declaration is called an *object literal*.
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 
 ## Le proprietà dei literal
 
@@ -44,7 +52,11 @@ L'oggetto `user` può essere visto come un archivio con due file etichettati com
 
 ![user object](object-user.svg)
 
+<<<<<<< HEAD
 Possiamo aggiungere, rimuovere o leggere un file in qualsiasi momento.
+=======
+We can add, remove and read files from it at any time.
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 
 I valori delle proprietà sono accessibili utilizzando la notazione puntata:
 
@@ -62,7 +74,11 @@ user.isAdmin = true;
 
 ![user object 2](object-user-isadmin.svg)
 
+<<<<<<< HEAD
 Per rimuovere una proprietà, possiamo utilizzare l'operatore `delete`:
+=======
+To remove a property, we can use the `delete` operator:
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 
 ```js
 delete user.age;
@@ -197,13 +213,21 @@ let bag = {
 };
 ```
 
+<<<<<<< HEAD
 Le parentesi quadre sono molto più potenti della notazione puntata. Ci permettono di assegnare qualsiasi nome, ma sono più "ingombranti".
 La maggior parte delle volte, quando il nome della proprietà è conosciuto e semplice, la notazione puntata viene preferita. Se invece necessitiamo di qualcosa di più complesso, possiamo utilizzare le parentesi quadre.
+=======
+Square brackets are much more powerful than dot notation. They allow any property names and variables. But they are also more cumbersome to write.
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 
 
 ## Abbreviazione per il valore di una proprietà
 
+<<<<<<< HEAD
 Spesso usiamo delle variabili esistenti come valori per i nomi delle proprietà.
+=======
+In real code, we often use existing variables as values for property names.
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 
 Ad esempio:
 
@@ -247,7 +271,15 @@ let user = {
 
 Come già sappiamo, una variabile non può avere il nome uguale ad una parola chiave riservata al linguaggio come "for", "let", "return" etc.
 
+<<<<<<< HEAD
 Ma per le proprietà degli oggetti, non ci sono restrizioni:
+=======
+## Property names limitations
+
+As we already know, a variable cannot have a name equal to one of the language-reserved words like "for", "let", "return" etc.
+
+But for an object property, there's no such restriction:
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 
 ```js run
 // queste variabili sono tutte corrette
@@ -318,7 +350,11 @@ alert( "blabla" in user ); // false, significa che user.blabla non esiste
 
 Da notare che alla sinistra di `in` deve esserci il *nome di una proprietà*. Questa, solitamente, è una stringa.
 
+<<<<<<< HEAD
 Se omettiamo le virgolette attorno alla proprietà da cercare, verrà cercata una variabile con quel nome e verrà utilizzato il suo valore. Ad esempio:
+=======
+If we omit quotes, that means a variable should contain the actual name to be tested. For instance:
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 
 ```js run
 let user = { age: 30 };
@@ -348,7 +384,11 @@ Nel codice sopra, tecnicamente, la proprietà `obj.test` esiste. Quindi l'operat
 Situazioni come questa capitano raramente, perché solitamente non si assegna `undefined`. Si usa più comunemente `null` per valori "sconosciuti" o "vuoti". Quindi l'operatore `in` è più un ospite "esotico" nel codice.
 
 
+<<<<<<< HEAD
 ## Il ciclo "for..in" 
+=======
+## The "for..in" loop [#forin]
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 
 Per attraversare tutte le chiavi di un oggetto, esiste una speciale forma di ciclo: `for..in`. Questo è completamente diverso da `for(;;)`.
 
@@ -406,7 +446,11 @@ for (let code in codes) {
 */!*
 ```
 
+<<<<<<< HEAD
 L'oggetto può essere utilizzato per suggerire una lista di opzioni all'utente. Se stiamo sviluppando un sito dedicato al pubblico tedesco propbabilmente vorrano vedersi apparire come primo valore `49`.
+=======
+The object may be used to suggest a list of options to the user. If we're making a site mainly for a German audience then we probably want `49` to be the first.
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 
 Se proviamo ad eseguire il codice, vedremo un risultato totalmente inaspettato:
 
@@ -418,6 +462,7 @@ I prefissi telefonici seguono un ordine crescente; questo accade perché sono nu
 ````smart header="Proprietà degli interi? Cos'è?"
 La "proprietà degli interi" è un termine che indica una stringa che può essere convertita da e ad un intero senza subire modifiche.
 
+<<<<<<< HEAD
 Quindi "49" segue la proprietà degli interi, perché quando viene trasformato in un numero intero e riportato a stringa, rimane uguale. Ad esempio "+49" e "1.2" non lo sono:
 
 ```js run
@@ -425,6 +470,16 @@ Quindi "49" segue la proprietà degli interi, perché quando viene trasformato i
 alert( String(Math.trunc(Number("49"))) ); // "49", rimane uguale
 alert( String(Math.trunc(Number("+49"))) ); // "49", è diverso da "+49" ⇒ non è un numero intero
 alert( String(Math.trunc(Number("1.2"))) ); // "1", è diverso da "1.2" ⇒ non è un numero intero
+=======
+So, `"49"` is an integer property name, because when it's transformed to an integer number and back, it's still the same. But `"+49"` and `"1.2"` are not:
+
+```js run
+// Number(...) explicitly converts to a number
+// Math.trunc is a built-in function that removes the decimal part
+alert( String(Math.trunc(Number("49"))) ); // "49", same, integer property
+alert( String(Math.trunc(Number("+49"))) ); // "49", not same "+49" ⇒ not integer property
+alert( String(Math.trunc(Number("1.2"))) ); // "1", not same "1.2" ⇒ not integer property
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 ```
 ````
 
@@ -476,10 +531,16 @@ Per accedere ad una proprietà possiamo utilizzare:
 - La notazione puntata: `obj.property`.
 - La notazione con parentesi quadre `obj["property"]`. Questa notazione consente di accettare chiavi dalle variabili, come `obj[varWithKey]`.
 
+<<<<<<< HEAD
 Operatori specifici:
 - Per cancellare una proprietà: `delete obj.prop`.
 - Per controllare se un una proprietà con un certo nome esiste: `"key" in obj`.
 - Per iterare un oggetto: `for(let key in obj)`.
+=======
+To access a property, we can use:
+- The dot notation: `obj.property`.
+- Square brackets notation `obj["property"]`. Square brackets allow taking the key from a variable, like `obj[varWithKey]`.
+>>>>>>> 20208769e528337949e946f526534d61d38bac47
 
 Gli oggetti vengono assegnati e copiati per riferimento. In altre parole, la variabile non memorizza il "valore dell'oggetto", ma piuttosto un "riferimento" (indirizzo di memoria). Quindi copiando questa variabile o passandola come argomento ad una funzione, fornirà un riferimento all'oggetto e non una copia. Tutte le operazioni effettuate su un oggetto copiato per riferimento (come aggiungere/rimuovere proprietà) vengono effettuate sullo stesso oggetto.
 
