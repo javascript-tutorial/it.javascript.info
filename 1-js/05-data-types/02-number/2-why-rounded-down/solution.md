@@ -28,6 +28,6 @@ Notate che `63.5` non provoca perdita di precisione. Infatti la parte decimale `
 
 
 ```js run
-alert( Math.round(6.35 * 10) / 10); // 6.35 -> 63.5 -> 64(rounded) -> 6.4
+alert( Math.round(6.35 * 10) / 10 ); // 6.35 -> 63.5 -> 64(rounded) -> 6.4
 ```
 
