@@ -48,7 +48,7 @@ Per ripristinare l'upload, abbiamo bisogno di conoscere *esattamente* il numero 
 
 3. Quindi, possiamo usare il metodo `slice` di `Blob` per inviare il file partendo da `startByte`:
     ```js
-    xhr.open("POST", "upload", true);
+    xhr.open("POST", "upload");
 
     // File id, in modo tale che il server possa sapere di quale file stiamo eseguendo l'upload
     xhr.setRequestHeader('X-File-Id', fileId);
